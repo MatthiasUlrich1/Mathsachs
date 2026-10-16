@@ -12,7 +12,7 @@ export const k5KriechtiereSchutz: BioBank = {
   url: "https://de.wikipedia.org/wiki/Reptilien",
   conceptPrefix: "bio:k5:krschutz",
   facts: [
-    { concept: "bio:k5:krschutz:f0", prompt: "Welche Rolle hat Artenschutz?", answer: "Es beschreibt Maßnahmen zum Erhalt bedrohter Arten, sodass man Artenschutz von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Artenschutz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Artenschutz.", "Ein Randdetail, das fachlich nicht erklärt, was Artenschutz leistet."],
+    { concept: "bio:k5:krschutz:f0", prompt: "Welche Rolle hat Artenschutz?", answer: "Es beschreibt maßnahmen zum Erhalt bedrohter Arten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Artenschutz: Maßnahmen zum Erhalt bedrohter Arten",
       wissen: fw(
         "Schützt Bestände und Lebensräume von Kriechtieren. Bezug: Kriechtierschutz.",
@@ -20,7 +20,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Maßnahmen zum Erhalt bedrohter Arten",
       gapAccepted: ["Artenschutz"],
     },
-    { concept: "bio:k5:krschutz:f1", prompt: "Was kennzeichnet Lebensraumverlust?", answer: "Es beschreibt das Verschwinden geeigneter Habitate, sodass man Lebensraumverlust von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lebensraumverlust.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lebensraumverlust.", "Ein Randdetail, das fachlich nicht erklärt, was Lebensraumverlust leistet."],
+    { concept: "bio:k5:krschutz:f1", prompt: "Was kennzeichnet Lebensraumverlust?", answer: "Es beschreibt verschwinden geeigneter Habitate, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
         "Hauptgefährdung vieler heimischer Reptilien. Bezug: Kriechtierschutz.",
@@ -28,7 +28,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Verschwinden geeigneter Habitate",
       gapAccepted: ["Lebensraumverlust"],
     },
-    { concept: "bio:k5:krschutz:f2", prompt: "Was kennzeichnet Zauneidechse?", answer: "Sie beschreibt eine heimische Eidechse warmer, strukturreicher Standorte, sodass man Zauneidechse von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zauneidechse.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zauneidechse.", "Ein Randdetail, das fachlich nicht erklärt, was Zauneidechse leistet."],
+    { concept: "bio:k5:krschutz:f2", prompt: "Was kennzeichnet Zauneidechse?", answer: "Sie beschreibt eine heimische Eidechse warmer, strukturreicher Standorte.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
         "Braucht Sonne, Verstecke und strukturreiche Flächen. Bezug: Kriechtierschutz.",
@@ -36,7 +36,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Heimische Eidechse warmer Standorte",
       gapAccepted: ["Zauneidechse"],
     },
-    { concept: "bio:k5:krschutz:f3", prompt: "Was beschreibt Ringelnatter?", answer: "Er beschreibt eine heimische Schlange feuchter Lebensräume, sodass man Ringelnatter von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ringelnatter.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ringelnatter.", "Ein Randdetail, das fachlich nicht erklärt, was Ringelnatter leistet."],
+    { concept: "bio:k5:krschutz:f3", prompt: "Was beschreibt Ringelnatter?", answer: "Er beschreibt heimische Schlange feuchter Lebensräume, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
         "Oft an Gewässern mit Amphibienbeute. Bezug: Kriechtierschutz.",
@@ -44,7 +44,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Heimische Schlange feuchter Lebensräume",
       gapAccepted: ["Ringelnatter"],
     },
-    { concept: "bio:k5:krschutz:f4", prompt: "Was kennzeichnet Totholz?", answer: "Abgestorbenes Holz, das Als wichtige Struktur im Ökosystem dient.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Totholz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Totholz.", "Ein Randdetail, das fachlich nicht erklärt, was Totholz leistet."],
+    { concept: "bio:k5:krschutz:f4", prompt: "Was kennzeichnet Totholz?", answer: "Abgestorbenes Holz, das Als wichtige Struktur im Ökosystem dient.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
         "Bietet Verstecke und Wärmespeicher. Bezug: Kriechtierschutz.",
@@ -52,7 +52,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Abgestorbenes Holz als Struktur",
       gapAccepted: ["Totholz"],
     },
-    { concept: "bio:k5:krschutz:f5", prompt: "Welche Rolle hat Steinhaufen?", answer: "Es ist die Lesesteine als Versteckstruktur, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Steinhaufen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Steinhaufen.", "Ein Randdetail, das fachlich nicht erklärt, was Steinhaufen leistet."],
+    { concept: "bio:k5:krschutz:f5", prompt: "Welche Rolle hat Steinhaufen?", answer: "Es beschreibt lesesteine als Versteckstruktur, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Steinhaufen: Lesesteine als Versteckstruktur",
       wissen: fw(
         "Wichtige Mikrohabitate für Eidechsen. Bezug: Kriechtierschutz.",
@@ -60,7 +60,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Lesesteine als Versteckstruktur",
       gapAccepted: ["Steinhaufen"],
     },
-    { concept: "bio:k5:krschutz:f6", prompt: "Was kennzeichnet Wechselwarm?", answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wechselwarm.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wechselwarm.", "Ein Randdetail, das fachlich nicht erklärt, was Wechselwarm leistet."],
+    { concept: "bio:k5:krschutz:f6", prompt: "Was kennzeichnet Wechselwarm?", answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Wechselwarm: Körpertemperatur folgt der Umwelt",
       wissen: fw(
         "Deshalb sind ungestörte Sonnenplätze nötig. Bezug: Kriechtierschutz.",
@@ -68,7 +68,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Körpertemperatur folgt der Umwelt",
       gapAccepted: ["Wechselwarm"],
     },
-    { concept: "bio:k5:krschutz:f7", prompt: "Was kennzeichnet Fragmentierung?", answer: "Sie ist die zerschnittene Lebensräume, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fragmentierung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fragmentierung.", "Ein Randdetail, das fachlich nicht erklärt, was Fragmentierung leistet."],
+    { concept: "bio:k5:krschutz:f7", prompt: "Was kennzeichnet Fragmentierung?", answer: "Sie beschreibt zerschnittene Lebensräume, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Fragmentierung: Zerschnittene Lebensräume",
       wissen: fw(
         "Straßen trennen Populationen und verursachen Verluste. Bezug: Kriechtierschutz.",
@@ -76,7 +76,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Zerschnittene Lebensräume",
       gapAccepted: ["Fragmentierung"],
     },
-    { concept: "bio:k5:krschutz:f8", prompt: "Was beschreibt Habitatpflege?", answer: "Sie ist die Pflege geeigneter Lebensräume, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpertemperatur folgt der Umwelt und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Habitatpflege.", "Eine typische Verwechslung mit einem Nachbarbegriff von Habitatpflege."],
+    { concept: "bio:k5:krschutz:f8", prompt: "Was beschreibt Habitatpflege?", answer: "Sie beschreibt pflege geeigneter Lebensräume, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Habitatpflege: Pflege geeigneter Lebensräume",
       wissen: fw(
         "Teil wirksamen Kriechtierschutzes. Bezug: Kriechtierschutz.",
@@ -84,7 +84,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Pflege geeigneter Lebensräume",
       gapAccepted: ["Habitatpflege"],
     },
-    { concept: "bio:k5:krschutz:f9", prompt: "Welche Rolle hat Naturnaher Garten?", answer: "Es ist den Garten mit Wildnisstrukturen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpertemperatur folgt der Umwelt und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Naturnaher Garten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Naturnaher Garten."],
+    { concept: "bio:k5:krschutz:f9", prompt: "Welche Rolle hat Naturnaher Garten?", answer: "Es beschreibt garten mit Wildnisstrukturen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Naturnaher Garten: Garten mit Wildnisstrukturen",
       wissen: fw(
         "Kann Ersatzlebensräume schaffen. Bezug: Kriechtierschutz.",
@@ -92,7 +92,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Garten mit Wildnisstrukturen",
       gapAccepted: ["Naturnaher Garten"],
     },
-    { concept: "bio:k5:krschutz:f10", prompt: "Welche Rolle hat Schutzgebiet?", answer: "Eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schutzgebiet.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schutzgebiet.", "Ein Randdetail, das fachlich nicht erklärt, was Schutzgebiet leistet."],
+    { concept: "bio:k5:krschutz:f10", prompt: "Welche Rolle hat Schutzgebiet?", answer: "Es beschreibt fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Schutzgebiet: Fläche mit besonderen Regeln",
       wissen: fw(
         "Sichert Lebensräume langfristig. Bezug: Kriechtierschutz.",
@@ -100,7 +100,7 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Fläche mit besonderen Regeln",
       gapAccepted: ["Schutzgebiet"],
     },
-    { concept: "bio:k5:krschutz:f11", prompt: "Woran erkennt man Brutruhe?", answer: "Sie ist die ungestörte Phasen an Lebensräumen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Brutruhe.", "Eine typische Verwechslung mit einem Nachbarbegriff von Brutruhe.", "Ein Randdetail, das fachlich nicht erklärt, was Brutruhe leistet."],
+    { concept: "bio:k5:krschutz:f11", prompt: "Woran erkennt man Brutruhe?", answer: "Sie beschreibt ungestörte Phasen an Lebensräumen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
         "Verringert Stress und Fluchtenergieverlust. Bezug: Kriechtierschutz.",
@@ -108,13 +108,13 @@ export const k5KriechtiereSchutz: BioBank = {
       gap: "Kriechtierschutz: ___ — Ungestörte Phasen an Lebensräumen",
       gapAccepted: ["Brutruhe"],
     },
-    { concept: "bio:k5:krschutz:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist die Thermoregulation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k5:krschutz:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt thermoregulation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Thermoregulation.",
       wissen: fw(
         "Ohne Wärmeplätze sinkt die Aktivität von Eidechsen und Schlangen stark.",
       ),
     },
-    { concept: "bio:k5:krschutz:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist das Begriff bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, und das Grenzt Begriff von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k5:krschutz:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt begriff bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Strukturreichtum.",
       wissen: fw(
         "Strukturreiche, sonnige Flächen sichern Verstecke und Eiablage.",
@@ -122,18 +122,18 @@ export const k5KriechtiereSchutz: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:krschutz:p0", term: "Artenschutz", meaning: "Umfasst Maßnahmen zum Erhalt bedrohter Arten", wissen: "Schützt Bestände und Lebensräume von Kriechtieren. Bezug: Kriechtierschutz. Artenschutz bedeutet: Umfasst Maßnahmen zum Erhalt bedrohter Arten." },
-    { concept: "bio:k5:krschutz:p1", term: "Lebensraumverlust", meaning: "Bedeutet das Verschwinden geeigneter Habitate", wissen: "Hauptgefährdung vieler heimischer Reptilien. Bezug: Kriechtierschutz. Lebensraumverlust bedeutet: Bedeutet das Verschwinden geeigneter Habitate." },
-    { concept: "bio:k5:krschutz:p2", term: "Zauneidechse", meaning: "Ist eine heimische Eidechse warmer, strukturreicher Standorte", wissen: "Braucht Sonne, Verstecke und strukturreiche Flächen. Bezug: Kriechtierschutz. Zauneidechse bedeutet: Ist eine heimische Eidechse warmer, strukturreicher Standorte." },
-    { concept: "bio:k5:krschutz:p3", term: "Ringelnatter", meaning: "Ist eine heimische Schlange feuchter Lebensräume", wissen: "Oft an Gewässern mit Amphibienbeute. Bezug: Kriechtierschutz. Ringelnatter bedeutet: Ist eine heimische Schlange feuchter Lebensräume." },
-    { concept: "bio:k5:krschutz:p4", term: "Totholz", meaning: "Ist abgestorbenes Holz, das als wichtige Struktur im Ökosystem dient", wissen: "Bietet Verstecke und Wärmespeicher. Bezug: Kriechtierschutz. Totholz bedeutet: Ist abgestorbenes Holz, das als wichtige Struktur im Ökosystem dient." },
-    { concept: "bio:k5:krschutz:p5", term: "Steinhaufen", meaning: "Ist die Lesesteine als Versteckstruktur", wissen: "Wichtige Mikrohabitate für Eidechsen. Bezug: Kriechtierschutz. Steinhaufen bedeutet: Ist die Lesesteine als Versteckstruktur." },
-    { concept: "bio:k5:krschutz:p6", term: "Wechselwarm", meaning: "Bedeutet, dass die Körpertemperatur der Umwelt folgt", wissen: "Deshalb sind ungestörte Sonnenplätze nötig. Bezug: Kriechtierschutz. Wechselwarm bedeutet: Bedeutet, dass die Körpertemperatur der Umwelt folgt." },
-    { concept: "bio:k5:krschutz:p7", term: "Fragmentierung", meaning: "Ist die zerschnittene Lebensräume", wissen: "Straßen trennen Populationen und verursachen Verluste. Bezug: Kriechtierschutz. Fragmentierung bedeutet: Ist die zerschnittene Lebensräume." },
-    { concept: "bio:k5:krschutz:p8", term: "Habitatpflege", meaning: "Ist die Pflege geeigneter Lebensräume", wissen: "Teil wirksamen Kriechtierschutzes. Bezug: Kriechtierschutz. Habitatpflege bedeutet: Ist die Pflege geeigneter Lebensräume." },
-    { concept: "bio:k5:krschutz:p9", term: "Naturnaher Garten", meaning: "Ist der Garten mit Wildnisstrukturen", wissen: "Kann Ersatzlebensräume schaffen. Bezug: Kriechtierschutz. Naturnaher Garten bedeutet: Ist der Garten mit Wildnisstrukturen." },
-    { concept: "bio:k5:krschutz:p10", term: "Schutzgebiet", meaning: "Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen", wissen: "Sichert Lebensräume langfristig. Bezug: Kriechtierschutz. Schutzgebiet bedeutet: Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen." },
-    { concept: "bio:k5:krschutz:p11", term: "Brutruhe", meaning: "Verringert Stress und Fluchtenergieverlust; es handelt sich um die ungestörte Phasen an Lebensräumen", wissen: "Verringert Stress und Fluchtenergieverlust. Bezug: Kriechtierschutz. Brutruhe bedeutet: Verringert Stress und Fluchtenergieverlust; es handelt sich um die ungestörte Phasen an Lebensräumen." },
+    { concept: "bio:k5:krschutz:p0", term: "Artenschutz", meaning: "Umfasst Maßnahmen zum Erhalt bedrohter Arten.", wissen: "Schützt Bestände und Lebensräume von Kriechtieren. Bezug: Kriechtierschutz. Artenschutz bedeutet: Umfasst Maßnahmen zum Erhalt bedrohter Arten." },
+    { concept: "bio:k5:krschutz:p1", term: "Lebensraumverlust", meaning: "Bedeutet das Verschwinden geeigneter Habitate.", wissen: "Hauptgefährdung vieler heimischer Reptilien. Bezug: Kriechtierschutz. Lebensraumverlust bedeutet: Bedeutet das Verschwinden geeigneter Habitate." },
+    { concept: "bio:k5:krschutz:p2", term: "Zauneidechse", meaning: "Ist eine heimische Eidechse warmer, strukturreicher Standorte.", wissen: "Braucht Sonne, Verstecke und strukturreiche Flächen. Bezug: Kriechtierschutz. Zauneidechse bedeutet: Ist eine heimische Eidechse warmer, strukturreicher Standorte." },
+    { concept: "bio:k5:krschutz:p3", term: "Ringelnatter", meaning: "Ist eine heimische Schlange feuchter Lebensräume.", wissen: "Oft an Gewässern mit Amphibienbeute. Bezug: Kriechtierschutz. Ringelnatter bedeutet: Ist eine heimische Schlange feuchter Lebensräume." },
+    { concept: "bio:k5:krschutz:p4", term: "Totholz", meaning: "Ist abgestorbenes Holz, das als wichtige Struktur im Ökosystem dient.", wissen: "Bietet Verstecke und Wärmespeicher. Bezug: Kriechtierschutz. Totholz bedeutet: Ist abgestorbenes Holz, das als wichtige Struktur im Ökosystem dient." },
+    { concept: "bio:k5:krschutz:p5", term: "Steinhaufen", meaning: "Beschreibt wichtige Mikrohabitate für Eidechsen als biologisches Merkmal mit klarer Funktion.", wissen: "Wichtige Mikrohabitate für Eidechsen. Bezug: Kriechtierschutz. Steinhaufen bedeutet: Ist die Lesesteine als Versteckstruktur." },
+    { concept: "bio:k5:krschutz:p6", term: "Wechselwarm", meaning: "Bedeutet, dass die Körpertemperatur der Umwelt folgt.", wissen: "Deshalb sind ungestörte Sonnenplätze nötig. Bezug: Kriechtierschutz. Wechselwarm bedeutet: Bedeutet, dass die Körpertemperatur der Umwelt folgt." },
+    { concept: "bio:k5:krschutz:p7", term: "Fragmentierung", meaning: "Straßen trennen Populationen und verursachen Verluste.", wissen: "Straßen trennen Populationen und verursachen Verluste. Bezug: Kriechtierschutz. Fragmentierung bedeutet: Ist die zerschnittene Lebensräume." },
+    { concept: "bio:k5:krschutz:p8", term: "Habitatpflege", meaning: "Beschreibt teil wirksamen Kriechtierschutzes als biologisches Merkmal mit klarer Funktion.", wissen: "Teil wirksamen Kriechtierschutzes. Bezug: Kriechtierschutz. Habitatpflege bedeutet: Ist die Pflege geeigneter Lebensräume." },
+    { concept: "bio:k5:krschutz:p9", term: "Naturnaher Garten", meaning: "Beschreibt kann Ersatzlebensräume schaffen als biologisches Merkmal mit klarer Funktion.", wissen: "Kann Ersatzlebensräume schaffen. Bezug: Kriechtierschutz. Naturnaher Garten bedeutet: Ist der Garten mit Wildnisstrukturen." },
+    { concept: "bio:k5:krschutz:p10", term: "Schutzgebiet", meaning: "Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wissen: "Sichert Lebensräume langfristig. Bezug: Kriechtierschutz. Schutzgebiet bedeutet: Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen." },
+    { concept: "bio:k5:krschutz:p11", term: "Brutruhe", meaning: "Verringert Stress und Fluchtenergieverlust; ungestörte Phasen an Lebensräumen.", wissen: "Verringert Stress und Fluchtenergieverlust. Bezug: Kriechtierschutz. Brutruhe bedeutet: Verringert Stress und Fluchtenergieverlust; es handelt sich um die ungestörte Phasen an Lebensräumen." },
   ],
   trueFalse: [
     {
@@ -159,7 +159,7 @@ export const k5VoegelSchnabel: BioBank = {
   url: "https://de.wikipedia.org/wiki/Schnabel",
   conceptPrefix: "bio:k5:schnabel",
   facts: [
-    { concept: "bio:k5:schnabel:f0", prompt: "Was kennzeichnet Körnerschnabel?", answer: "Das Kurz und kräftig zum Knacken von Samen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Körnerschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Körnerschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Körnerschnabel leistet."],
+    { concept: "bio:k5:schnabel:f0", prompt: "Was kennzeichnet Körnerschnabel?", answer: "Es beschreibt kurz und kräftig zum Knacken von Samen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Körnerschnabel: Kurz und kräftig zum Knacken von Samen",
       wissen: fw(
         "Typisch für viele Finken. Bezug: Schnabelformen.",
@@ -167,7 +167,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Kurz und kräftig zum Knacken von Samen",
       gapAccepted: ["Körnerschnabel"],
     },
-    { concept: "bio:k5:schnabel:f1", prompt: "Was beschreibt Hakenschnabel?", answer: "Es ist den Gebogen zum Zerreißen von Fleisch, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hakenschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hakenschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Hakenschnabel leistet."],
+    { concept: "bio:k5:schnabel:f1", prompt: "Was beschreibt Hakenschnabel?", answer: "Es ist den Gebogen zum Zerreißen von Fleisch.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hakenschnabel: Gebogen zum Zerreißen von Fleisch",
       wissen: fw(
         "Kennzeichen vieler Greifvögel. Bezug: Schnabelformen.",
@@ -175,7 +175,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Gebogen zum Zerreißen von Fleisch",
       gapAccepted: ["Hakenschnabel"],
     },
-    { concept: "bio:k5:schnabel:f2", prompt: "Was beschreibt Filterschnabel?", answer: "Es ist das Seiht Nahrung aus Wasser, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Filterschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Filterschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Filterschnabel leistet."],
+    { concept: "bio:k5:schnabel:f2", prompt: "Was beschreibt Filterschnabel?", answer: "Es beschreibt seiht Nahrung aus Wasser, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Filterschnabel: Seiht Nahrung aus Wasser",
       wissen: fw(
         "z. B. bei Enten. Bezug: Schnabelformen.",
@@ -183,7 +183,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Seiht Nahrung aus Wasser",
       gapAccepted: ["Filterschnabel"],
     },
-    { concept: "bio:k5:schnabel:f3", prompt: "Welche Rolle hat Nektarschnabel?", answer: "Es ist das Lang und schlank für Blütennektar, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nektarschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nektarschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Nektarschnabel leistet."],
+    { concept: "bio:k5:schnabel:f3", prompt: "Welche Rolle hat Nektarschnabel?", answer: "Es ist das Lang und schlank für Blütennektar.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nektarschnabel: Lang und schlank für Blütennektar",
       wissen: fw(
         "z. B. Kolibri. Bezug: Schnabelformen.",
@@ -191,7 +191,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Lang und schlank für Blütennektar",
       gapAccepted: ["Nektarschnabel"],
     },
-    { concept: "bio:k5:schnabel:f4", prompt: "Woran erkennt man Watvogelschnabel?", answer: "Es ist das Oft lang zum Stochern im Schlamm, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Watvogelschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Watvogelschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Watvogelschnabel leistet."],
+    { concept: "bio:k5:schnabel:f4", prompt: "Woran erkennt man Watvogelschnabel?", answer: "Es beschreibt das Oft lang zum Stochern im Schlamm.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Watvogelschnabel: Oft lang zum Stochern im Schlamm",
       wissen: fw(
         "Erreicht versteckte Beute. Bezug: Schnabelformen.",
@@ -199,7 +199,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Oft lang zum Stochern im Schlamm",
       gapAccepted: ["Watvogelschnabel"],
     },
-    { concept: "bio:k5:schnabel:f5", prompt: "Was kennzeichnet Insektenschnabel?", answer: "Es ist das Spitz zum präzisen Picken, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Insektenschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Insektenschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Insektenschnabel leistet."],
+    { concept: "bio:k5:schnabel:f5", prompt: "Was kennzeichnet Insektenschnabel?", answer: "Es beschreibt spitz zum präzisen Picken, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Insektenschnabel: Spitz zum präzisen Picken",
       wissen: fw(
         "Viele Singvögel. Bezug: Schnabelformen.",
@@ -207,7 +207,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Spitz zum präzisen Picken",
       gapAccepted: ["Insektenschnabel"],
     },
-    { concept: "bio:k5:schnabel:f6", prompt: "Was beschreibt Spechtschnabel?", answer: "Es ist das Meißelförmig für Holz, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Spechtschnabel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Spechtschnabel.", "Ein Randdetail, das fachlich nicht erklärt, was Spechtschnabel leistet."],
+    { concept: "bio:k5:schnabel:f6", prompt: "Was beschreibt Spechtschnabel?", answer: "Es beschreibt meißelförmig für Holz, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Spechtschnabel: Meißelförmig für Holz",
       wissen: fw(
         "Öffnet Gänge zu Insektenlarven. Bezug: Schnabelformen.",
@@ -215,7 +215,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Meißelförmig für Holz",
       gapAccepted: ["Spechtschnabel"],
     },
-    { concept: "bio:k5:schnabel:f7", prompt: "Was kennzeichnet Hornscheide?", answer: "Sie ist die äußere leichte Schnabelhaut, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Abgestorbenes Holz, das Als wichtige Struktur im Ökosystem dient.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hornscheide.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hornscheide."],
+    { concept: "bio:k5:schnabel:f7", prompt: "Was kennzeichnet Hornscheide?", answer: "Sie beschreibt äußere leichte Schnabelhaut, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Abgestorbenes Holz, das Als wichtige Struktur im Ökosystem dient.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Hornscheide: Äußere leichte Schnabelhaut",
       wissen: fw(
         "Ersetzt Zähne funktionell. Bezug: Schnabelformen.",
@@ -223,7 +223,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Äußere leichte Schnabelhaut",
       gapAccepted: ["Hornscheide"],
     },
-    { concept: "bio:k5:schnabel:f8", prompt: "Was kennzeichnet Muskelmagen?", answer: "Es ist das Zerkleinert Nahrung nach dem Schnabel, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Muskelmagen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Muskelmagen."],
+    { concept: "bio:k5:schnabel:f8", prompt: "Was kennzeichnet Muskelmagen?", answer: "Es ist das Zerkleinert Nahrung nach dem Schnabel.", wrong: ["Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Muskelmagen: Zerkleinert Nahrung nach dem Schnabel",
       wissen: fw(
         "Oft mit Steinchen. Bezug: Schnabelformen.",
@@ -231,7 +231,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Zerkleinert Nahrung nach dem Schnabel",
       gapAccepted: ["Muskelmagen"],
     },
-    { concept: "bio:k5:schnabel:f9", prompt: "Welche Rolle hat Nahrungsnische?", answer: "Sie ist die typische Ressource einer Art, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Die Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nahrungsnische.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nahrungsnische."],
+    { concept: "bio:k5:schnabel:f9", prompt: "Welche Rolle hat Nahrungsnische?", answer: "Sie beschreibt typische Ressource einer Art, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Nahrungsnische: Typische Ressource einer Art",
       wissen: fw(
         "Schnabelform erschließt sie. Bezug: Schnabelformen.",
@@ -239,7 +239,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Typische Ressource einer Art",
       gapAccepted: ["Nahrungsnische"],
     },
-    { concept: "bio:k5:schnabel:f10", prompt: "Was kennzeichnet Angepasstheit?", answer: "Sie ist die Bau passt zur Lebensweise, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Die Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", "Sie verringert Stress und Fluchtenergieverlust; es handelt sich um die ungestörte Phasen an Lebensräumen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Angepasstheit."],
+    { concept: "bio:k5:schnabel:f10", prompt: "Was kennzeichnet Angepasstheit?", answer: "Sie beschreibt bau passt zur Lebensweise, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Angepasstheit: Bau passt zur Lebensweise",
       wissen: fw(
         "Schnabel und Nahrung sind verknüpft. Bezug: Schnabelformen.",
@@ -247,7 +247,7 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Bau passt zur Lebensweise",
       gapAccepted: ["Angepasstheit"],
     },
-    { concept: "bio:k5:schnabel:f11", prompt: "Was kennzeichnet Greifvogel?", answer: "Es ist das Jagt oft Wirbeltiere, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Greifvogel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Greifvogel."],
+    { concept: "bio:k5:schnabel:f11", prompt: "Was kennzeichnet Greifvogel?", answer: "Es beschreibt jagt oft Wirbeltiere, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Greifvogel: Jagt oft Wirbeltiere",
       wissen: fw(
         "Haken und Krallen wirken zusammen. Bezug: Schnabelformen.",
@@ -255,13 +255,13 @@ export const k5VoegelSchnabel: BioBank = {
       gap: "Schnabelformen: ___ — Jagt oft Wirbeltiere",
       gapAccepted: ["Greifvogel"],
     },
-    { concept: "bio:k5:schnabel:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist das Leichtbau, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen, mit der man Begriff im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k5:schnabel:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt leichtbau, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Leichtbau.",
       wissen: fw(
         "Ein leichter Schnabel ohne Zähne passt zum Flug; weitere Zerkleinerung erfolgt im Muskelmagen.",
       ),
     },
-    { concept: "bio:k5:schnabel:x1", prompt: "Welche Rolle hat x1?", answer: "Form folgt Funktion sodass man ihn von ähnlichen Größen unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1."],
+    { concept: "bio:k5:schnabel:x1", prompt: "Welche Rolle hat x1?", answer: "Es beschreibt form folgt Funktion, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Form folgt Funktion.",
       wissen: fw(
         "Unterschiedliche Schnäbel erschließen verschiedene Nahrungsquellen.",
@@ -269,18 +269,18 @@ export const k5VoegelSchnabel: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:schnabel:p0", term: "Körnerschnabel", meaning: "Ist das Kurz und kräftig zum Knacken von Samen", wissen: "Typisch für viele Finken. Bezug: Schnabelformen. Körnerschnabel bedeutet: Ist das Kurz und kräftig zum Knacken von Samen." },
-    { concept: "bio:k5:schnabel:p1", term: "Hakenschnabel", meaning: "Ist der Gebogen zum Zerreißen von Fleisch", wissen: "Kennzeichen vieler Greifvögel. Bezug: Schnabelformen. Hakenschnabel bedeutet: Ist der Gebogen zum Zerreißen von Fleisch." },
-    { concept: "bio:k5:schnabel:p2", term: "Filterschnabel", meaning: "Ist das Seiht Nahrung aus Wasser", wissen: "z. B. bei Enten. Bezug: Schnabelformen. Filterschnabel bedeutet: Ist das Seiht Nahrung aus Wasser." },
-    { concept: "bio:k5:schnabel:p3", term: "Nektarschnabel", meaning: "Ist das Lang und schlank für Blütennektar", wissen: "z. B. Kolibri. Bezug: Schnabelformen. Nektarschnabel bedeutet: Ist das Lang und schlank für Blütennektar." },
-    { concept: "bio:k5:schnabel:p4", term: "Watvogelschnabel", meaning: "Ist das Oft lang zum Stochern im Schlamm", wissen: "Erreicht versteckte Beute. Bezug: Schnabelformen. Watvogelschnabel bedeutet: Ist das Oft lang zum Stochern im Schlamm." },
-    { concept: "bio:k5:schnabel:p5", term: "Insektenschnabel", meaning: "Ist das Spitz zum präzisen Picken", wissen: "Viele Singvögel. Bezug: Schnabelformen. Insektenschnabel bedeutet: Ist das Spitz zum präzisen Picken." },
-    { concept: "bio:k5:schnabel:p6", term: "Spechtschnabel", meaning: "Ist das meißelförmig für Holz", wissen: "Öffnet Gänge zu Insektenlarven. Bezug: Schnabelformen. Spechtschnabel bedeutet: Ist das meißelförmig für Holz." },
-    { concept: "bio:k5:schnabel:p7", term: "Hornscheide", meaning: "Ist die äußere leichte Schnabelhaut", wissen: "Ersetzt Zähne funktionell. Bezug: Schnabelformen. Hornscheide bedeutet: Ist die äußere leichte Schnabelhaut." },
-    { concept: "bio:k5:schnabel:p8", term: "Muskelmagen", meaning: "Ist das Zerkleinert Nahrung nach dem Schnabel", wissen: "Oft mit Steinchen. Bezug: Schnabelformen. Muskelmagen bedeutet: Ist das Zerkleinert Nahrung nach dem Schnabel." },
-    { concept: "bio:k5:schnabel:p9", term: "Nahrungsnische", meaning: "Ist die typische Ressource einer Art", wissen: "Schnabelform erschließt sie. Bezug: Schnabelformen. Nahrungsnische bedeutet: Ist die typische Ressource einer Art." },
-    { concept: "bio:k5:schnabel:p10", term: "Angepasstheit", meaning: "Schnabel und Nahrung sind verknüpft", wissen: "Schnabel und Nahrung sind verknüpft. Bezug: Schnabelformen. Angepasstheit bedeutet: Schnabel und Nahrung sind verknüpft." },
-    { concept: "bio:k5:schnabel:p11", term: "Greifvogel", meaning: "Ist das Jagt oft Wirbeltiere", wissen: "Haken und Krallen wirken zusammen. Bezug: Schnabelformen. Greifvogel bedeutet: Ist das Jagt oft Wirbeltiere." },
+    { concept: "bio:k5:schnabel:p0", term: "Körnerschnabel", meaning: "Ist das Kurz und kräftig zum Knacken von Samen.", wissen: "Typisch für viele Finken. Bezug: Schnabelformen. Körnerschnabel bedeutet: Ist das Kurz und kräftig zum Knacken von Samen." },
+    { concept: "bio:k5:schnabel:p1", term: "Hakenschnabel", meaning: "Beschreibt kennzeichen vieler Greifvögel als biologisches Merkmal mit klarer Funktion.", wissen: "Kennzeichen vieler Greifvögel. Bezug: Schnabelformen. Hakenschnabel bedeutet: Ist der Gebogen zum Zerreißen von Fleisch." },
+    { concept: "bio:k5:schnabel:p2", term: "Filterschnabel", meaning: "Beschreibt seiht Nahrung aus Wasser als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. bei Enten. Bezug: Schnabelformen. Filterschnabel bedeutet: Ist das Seiht Nahrung aus Wasser." },
+    { concept: "bio:k5:schnabel:p3", term: "Nektarschnabel", meaning: "Beschreibt lang und schlank für Blütennektar als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Kolibri. Bezug: Schnabelformen. Nektarschnabel bedeutet: Ist das Lang und schlank für Blütennektar." },
+    { concept: "bio:k5:schnabel:p4", term: "Watvogelschnabel", meaning: "Ist das Oft lang zum Stochern im Schlamm.", wissen: "Erreicht versteckte Beute. Bezug: Schnabelformen. Watvogelschnabel bedeutet: Ist das Oft lang zum Stochern im Schlamm." },
+    { concept: "bio:k5:schnabel:p5", term: "Insektenschnabel", meaning: "Beschreibt spitz zum präzisen Picken als biologisches Merkmal mit klarer Funktion.", wissen: "Viele Singvögel. Bezug: Schnabelformen. Insektenschnabel bedeutet: Ist das Spitz zum präzisen Picken." },
+    { concept: "bio:k5:schnabel:p6", term: "Spechtschnabel", meaning: "Beschreibt öffnet Gänge zu Insektenlarven als biologisches Merkmal mit klarer Funktion.", wissen: "Öffnet Gänge zu Insektenlarven. Bezug: Schnabelformen. Spechtschnabel bedeutet: Ist das meißelförmig für Holz." },
+    { concept: "bio:k5:schnabel:p7", term: "Hornscheide", meaning: "Beschreibt ersetzt Zähne funktionell als biologisches Merkmal mit klarer Funktion.", wissen: "Ersetzt Zähne funktionell. Bezug: Schnabelformen. Hornscheide bedeutet: Ist die äußere leichte Schnabelhaut." },
+    { concept: "bio:k5:schnabel:p8", term: "Muskelmagen", meaning: "Beschreibt oft mit Steinchen als biologisches Merkmal mit klarer Funktion.", wissen: "Oft mit Steinchen. Bezug: Schnabelformen. Muskelmagen bedeutet: Ist das Zerkleinert Nahrung nach dem Schnabel." },
+    { concept: "bio:k5:schnabel:p9", term: "Nahrungsnische", meaning: "Beschreibt schnabelform erschließt sie als biologisches Merkmal mit klarer Funktion.", wissen: "Schnabelform erschließt sie. Bezug: Schnabelformen. Nahrungsnische bedeutet: Ist die typische Ressource einer Art." },
+    { concept: "bio:k5:schnabel:p10", term: "Angepasstheit", meaning: "Beschreibt schnabel und Nahrung sind verknüpft als biologisches Merkmal mit klarer Funktion.", wissen: "Schnabel und Nahrung sind verknüpft. Bezug: Schnabelformen. Angepasstheit bedeutet: Schnabel und Nahrung sind verknüpft." },
+    { concept: "bio:k5:schnabel:p11", term: "Greifvogel", meaning: "Beschreibt haken und Krallen wirken als biologisches Merkmal mit klarer Funktion.", wissen: "Haken und Krallen wirken zusammen. Bezug: Schnabelformen. Greifvogel bedeutet: Ist das Jagt oft Wirbeltiere." },
   ],
   trueFalse: [
     {
@@ -306,7 +306,7 @@ export const k5VoegelVerhalten: BioBank = {
   url: "https://de.wikipedia.org/wiki/V%C3%B6gel",
   conceptPrefix: "bio:k5:vgverh",
   facts: [
-    { concept: "bio:k5:vgverh:f0", prompt: "Was kennzeichnet Balz?", answer: "Es ist den Werbeverhalten vor der Paarung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen, mit der man Balz im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Balz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Balz."],
+    { concept: "bio:k5:vgverh:f0", prompt: "Was kennzeichnet Balz?", answer: "Es beschreibt werbeverhalten vor der Paarung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Balz: Werbeverhalten vor der Paarung",
       wissen: fw(
         "Gesang, Posieren oder Flugmanöver. Bezug: Vogelverhalten.",
@@ -314,7 +314,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Werbeverhalten vor der Paarung",
       gapAccepted: ["Balz"],
     },
-    { concept: "bio:k5:vgverh:f1", prompt: "Was beschreibt Revier?", answer: "Er ist den verteidigten Lebensraum, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Der Kurz und kräftig zum Knacken von Samen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Revier.", "Eine typische Verwechslung mit einem Nachbarbegriff von Revier."],
+    { concept: "bio:k5:vgverh:f1", prompt: "Was beschreibt Revier?", answer: "Er beschreibt verteidigten Lebensraum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Revier: Verteidigter Lebensraum",
       wissen: fw(
         "Sichert Nahrung und Nistplatz. Bezug: Vogelverhalten.",
@@ -322,7 +322,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Verteidigter Lebensraum",
       gapAccepted: ["Revier"],
     },
-    { concept: "bio:k5:vgverh:f2", prompt: "Was kennzeichnet Vogelzug?", answer: "Es ist den saisonalen Ortswechsel, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Vogelzug.", "Eine typische Verwechslung mit einem Nachbarbegriff von Vogelzug."],
+    { concept: "bio:k5:vgverh:f2", prompt: "Was kennzeichnet Vogelzug?", answer: "Es beschreibt saisonalen Ortswechsel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Vogelzug: Saisonaler Ortswechsel",
       wissen: fw(
         "Anpassung an Nahrung und Klima. Bezug: Vogelverhalten.",
@@ -330,7 +330,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Saisonaler Ortswechsel",
       gapAccepted: ["Vogelzug"],
     },
-    { concept: "bio:k5:vgverh:f3", prompt: "Welche Rolle hat Nesthocker?", answer: "Er ist den Jungvogel lange nestabhängig, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Er ist der Kurz und kräftig zum Knacken von Samen, und das Grenzt Nesthocker von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nesthocker.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nesthocker."],
+    { concept: "bio:k5:vgverh:f3", prompt: "Welche Rolle hat Nesthocker?", answer: "Er beschreibt jungvogel lange nestabhängig, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er ist der Kurz und kräftig zum Knacken von Samen.", "Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Nesthocker: Jungvogel lange nestabhängig",
       wissen: fw(
         "Braucht intensive Fütterung. Bezug: Vogelverhalten.",
@@ -338,7 +338,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Jungvogel lange nestabhängig",
       gapAccepted: ["Nesthocker"],
     },
-    { concept: "bio:k5:vgverh:f4", prompt: "Woran erkennt man Nestflüchter?", answer: "Er ist den Jungvogel früh mobil, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Der Kurz und kräftig zum Knacken von Samen, mit der man Nestflüchter im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nestflüchter.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nestflüchter."],
+    { concept: "bio:k5:vgverh:f4", prompt: "Woran erkennt man Nestflüchter?", answer: "Er beschreibt jungvogel früh mobil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nestflüchter: Jungvogel früh mobil",
       wissen: fw(
         "Folgt bald den Eltern. Bezug: Vogelverhalten.",
@@ -346,7 +346,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Jungvogel früh mobil",
       gapAccepted: ["Nestflüchter"],
     },
-    { concept: "bio:k5:vgverh:f5", prompt: "Woran erkennt man Gesang?", answer: "Es ist die akustische Kommunikation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gesang.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gesang."],
+    { concept: "bio:k5:vgverh:f5", prompt: "Woran erkennt man Gesang?", answer: "Es beschreibt akustische Kommunikation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gesang: Akustische Kommunikation",
       wissen: fw(
         "Revierkennzeichnung und Partnerwahl. Bezug: Vogelverhalten.",
@@ -354,7 +354,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Akustische Kommunikation",
       gapAccepted: ["Gesang"],
     },
-    { concept: "bio:k5:vgverh:f6", prompt: "Welche Rolle hat Alarmruf?", answer: "Es ist das Warnsignal bei Gefahr, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Das Kurz und kräftig zum Knacken von Samen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Alarmruf.", "Eine typische Verwechslung mit einem Nachbarbegriff von Alarmruf."],
+    { concept: "bio:k5:vgverh:f6", prompt: "Welche Rolle hat Alarmruf?", answer: "Es beschreibt warnsignal bei Gefahr, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Alarmruf: Warnsignal bei Gefahr",
       wissen: fw(
         "Schützt Artgenossen. Bezug: Vogelverhalten.",
@@ -362,7 +362,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Warnsignal bei Gefahr",
       gapAccepted: ["Alarmruf"],
     },
-    { concept: "bio:k5:vgverh:f7", prompt: "Welche Rolle hat Gefiederpflege?", answer: "Sie ist den Putzen und Ordnen der Federn, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Die Kurz und kräftig zum Knacken von Samen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gefiederpflege.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gefiederpflege."],
+    { concept: "bio:k5:vgverh:f7", prompt: "Welche Rolle hat Gefiederpflege?", answer: "Sie beschreibt den Putzen und Ordnen der Federn.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Gefiederpflege: Putzen und Ordnen der Federn",
       wissen: fw(
         "Wichtig für Flug und Isolation. Bezug: Vogelverhalten.",
@@ -370,7 +370,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Putzen und Ordnen der Federn",
       gapAccepted: ["Gefiederpflege"],
     },
-    { concept: "bio:k5:vgverh:f8", prompt: "Was kennzeichnet Schwarm?", answer: "Es ist die Gruppe gemeinsam fliegender Vögel, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schwarm.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schwarm.", "Ein Randdetail, das fachlich nicht erklärt, was Schwarm leistet."],
+    { concept: "bio:k5:vgverh:f8", prompt: "Was kennzeichnet Schwarm?", answer: "Es beschreibt gruppe gemeinsam fliegender Vögel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schwarm: Gruppe gemeinsam fliegender Vögel",
       wissen: fw(
         "Kann Schutzvorteile bieten. Bezug: Vogelverhalten.",
@@ -378,7 +378,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Gruppe gemeinsam fliegender Vögel",
       gapAccepted: ["Schwarm"],
     },
-    { concept: "bio:k5:vgverh:f9", prompt: "Was beschreibt Imponieren?", answer: "Es ist das Zeigen von Stärke oder Status, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Imponieren.", "Eine typische Verwechslung mit einem Nachbarbegriff von Imponieren.", "Ein Randdetail, das fachlich nicht erklärt, was Imponieren leistet."],
+    { concept: "bio:k5:vgverh:f9", prompt: "Was beschreibt Imponieren?", answer: "Es beschreibt das Zeigen von Stärke oder Status.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Imponieren: Zeigen von Stärke oder Status",
       wissen: fw(
         "Klärt Konflikte oft ohne Kampf. Bezug: Vogelverhalten.",
@@ -386,7 +386,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Zeigen von Stärke oder Status",
       gapAccepted: ["Imponieren"],
     },
-    { concept: "bio:k5:vgverh:f10", prompt: "Was beschreibt Brutpflege?", answer: "Sie ist die Versorgung der Jungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Brutpflege.", "Eine typische Verwechslung mit einem Nachbarbegriff von Brutpflege.", "Ein Randdetail, das fachlich nicht erklärt, was Brutpflege leistet."],
+    { concept: "bio:k5:vgverh:f10", prompt: "Was beschreibt Brutpflege?", answer: "Sie beschreibt versorgung der Jungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Brutpflege: Versorgung der Jungen",
       wissen: fw(
         "Wärmen, Füttern, Schützen. Bezug: Vogelverhalten.",
@@ -394,7 +394,7 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Versorgung der Jungen",
       gapAccepted: ["Brutpflege"],
     },
-    { concept: "bio:k5:vgverh:f11", prompt: "Was kennzeichnet Nachahmung?", answer: "Sie ist den Lernen durch Beobachten, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Schnabel und Nahrung sind verknüpft und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nachahmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nachahmung."],
+    { concept: "bio:k5:vgverh:f11", prompt: "Was kennzeichnet Nachahmung?", answer: "Sie beschreibt lernen durch Beobachten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nachahmung: Lernen durch Beobachten",
       wissen: fw(
         "z. B. Gesangselemente. Bezug: Vogelverhalten.",
@@ -402,13 +402,13 @@ export const k5VoegelVerhalten: BioBank = {
       gap: "Vogelverhalten: ___ — Lernen durch Beobachten",
       gapAccepted: ["Nachahmung"],
     },
-    { concept: "bio:k5:vgverh:x0", prompt: "Woran erkennt man Vogelgesang häufig?", answer: "Es ist die Kommunikation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Vogelgesang häufig.", "Eine typische Verwechslung mit einem Nachbarbegriff von Vogelgesang häufig.", "Ein Randdetail, das fachlich nicht erklärt, was Vogelgesang häufig leistet."],
+    { concept: "bio:k5:vgverh:x0", prompt: "Woran erkennt man Vogelgesang häufig?", answer: "Es beschreibt kommunikation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Kommunikation.",
       wissen: fw(
         "Arttypische Gesänge übertragen Informationen über Besitz und Paarungsbereitschaft.",
       ),
     },
-    { concept: "bio:k5:vgverh:x1", prompt: "Was kennzeichnet x1?", answer: "Es ist den Komfortverhalten, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1.", "Ein Randdetail, das fachlich nicht erklärt, was x1 leistet."],
+    { concept: "bio:k5:vgverh:x1", prompt: "Was kennzeichnet x1?", answer: "Es beschreibt komfortverhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Komfortverhalten.",
       wissen: fw(
         "Intakte Federn sind für Flug und Thermoregulation entscheidend.",
@@ -416,18 +416,18 @@ export const k5VoegelVerhalten: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:vgverh:p0", term: "Balz", meaning: "Ist der Werbeverhalten vor der Paarung", wissen: "Gesang, Posieren oder Flugmanöver. Bezug: Vogelverhalten. Balz bedeutet: Ist der Werbeverhalten vor der Paarung." },
-    { concept: "bio:k5:vgverh:p1", term: "Revier", meaning: "Ist der verteidigten Lebensraum", wissen: "Sichert Nahrung und Nistplatz. Bezug: Vogelverhalten. Revier bedeutet: Ist der verteidigten Lebensraum." },
-    { concept: "bio:k5:vgverh:p2", term: "Vogelzug", meaning: "Ist der saisonalen Ortswechsel", wissen: "Anpassung an Nahrung und Klima. Bezug: Vogelverhalten. Vogelzug bedeutet: Ist der saisonalen Ortswechsel." },
-    { concept: "bio:k5:vgverh:p3", term: "Nesthocker", meaning: "Ist der Jungvogel lange nestabhängig", wissen: "Braucht intensive Fütterung. Bezug: Vogelverhalten. Nesthocker bedeutet: Ist der Jungvogel lange nestabhängig." },
-    { concept: "bio:k5:vgverh:p4", term: "Nestflüchter", meaning: "Folgt bald den Eltern; es handelt sich um der Jungvogel früh mobil", wissen: "Folgt bald den Eltern. Bezug: Vogelverhalten. Nestflüchter bedeutet: Folgt bald den Eltern; es handelt sich um der Jungvogel früh mobil." },
-    { concept: "bio:k5:vgverh:p5", term: "Gesang", meaning: "Ist die akustische Kommunikation", wissen: "Revierkennzeichnung und Partnerwahl. Bezug: Vogelverhalten. Gesang bedeutet: Ist die akustische Kommunikation." },
-    { concept: "bio:k5:vgverh:p6", term: "Alarmruf", meaning: "Ist das warnsignal bei Gefahr", wissen: "Schützt Artgenossen. Bezug: Vogelverhalten. Alarmruf bedeutet: Ist das warnsignal bei Gefahr." },
-    { concept: "bio:k5:vgverh:p7", term: "Gefiederpflege", meaning: "Ist der Putzen und Ordnen der Federn", wissen: "Wichtig für Flug und Isolation. Bezug: Vogelverhalten. Gefiederpflege bedeutet: Ist der Putzen und Ordnen der Federn." },
-    { concept: "bio:k5:vgverh:p8", term: "Schwarm", meaning: "Ist die Gruppe gemeinsam fliegender Vögel", wissen: "Kann Schutzvorteile bieten. Bezug: Vogelverhalten. Schwarm bedeutet: Ist die Gruppe gemeinsam fliegender Vögel." },
-    { concept: "bio:k5:vgverh:p9", term: "Imponieren", meaning: "Ist das zeigen von Stärke oder Status", wissen: "Klärt Konflikte oft ohne Kampf. Bezug: Vogelverhalten. Imponieren bedeutet: Ist das zeigen von Stärke oder Status." },
-    { concept: "bio:k5:vgverh:p10", term: "Brutpflege", meaning: "Ist die Versorgung der Jungen", wissen: "Wärmen, Füttern, Schützen. Bezug: Vogelverhalten. Brutpflege bedeutet: Ist die Versorgung der Jungen." },
-    { concept: "bio:k5:vgverh:p11", term: "Nachahmung", meaning: "Ist der Lernen durch Beobachten", wissen: "z. B. Gesangselemente. Bezug: Vogelverhalten. Nachahmung bedeutet: Ist der Lernen durch Beobachten." },
+    { concept: "bio:k5:vgverh:p0", term: "Balz", meaning: "Beschreibt gesang, Posieren oder Flugmanöver als biologisches Merkmal mit klarer Funktion.", wissen: "Gesang, Posieren oder Flugmanöver. Bezug: Vogelverhalten. Balz bedeutet: Ist der Werbeverhalten vor der Paarung." },
+    { concept: "bio:k5:vgverh:p1", term: "Revier", meaning: "Beschreibt sichert Nahrung und Nistplatz als biologisches Merkmal mit klarer Funktion.", wissen: "Sichert Nahrung und Nistplatz. Bezug: Vogelverhalten. Revier bedeutet: Ist der verteidigten Lebensraum." },
+    { concept: "bio:k5:vgverh:p2", term: "Vogelzug", meaning: "Beschreibt anpassung an Nahrung und Klima als biologisches Merkmal mit klarer Funktion.", wissen: "Anpassung an Nahrung und Klima. Bezug: Vogelverhalten. Vogelzug bedeutet: Ist der saisonalen Ortswechsel." },
+    { concept: "bio:k5:vgverh:p3", term: "Nesthocker", meaning: "Beschreibt braucht intensive Fütterung als biologisches Merkmal mit klarer Funktion.", wissen: "Braucht intensive Fütterung. Bezug: Vogelverhalten. Nesthocker bedeutet: Ist der Jungvogel lange nestabhängig." },
+    { concept: "bio:k5:vgverh:p4", term: "Nestflüchter", meaning: "Beschreibt folgt bald den Eltern als biologisches Merkmal mit klarer Funktion.", wissen: "Folgt bald den Eltern. Bezug: Vogelverhalten. Nestflüchter bedeutet: Folgt bald den Eltern; es handelt sich um der Jungvogel früh mobil." },
+    { concept: "bio:k5:vgverh:p5", term: "Gesang", meaning: "Beschreibt revierkennzeichnung und Partnerwahl als biologisches Merkmal mit klarer Funktion.", wissen: "Revierkennzeichnung und Partnerwahl. Bezug: Vogelverhalten. Gesang bedeutet: Ist die akustische Kommunikation." },
+    { concept: "bio:k5:vgverh:p6", term: "Alarmruf", meaning: "Beschreibt warnsignal bei Gefahr als biologisches Merkmal mit klarer Funktion.", wissen: "Schützt Artgenossen. Bezug: Vogelverhalten. Alarmruf bedeutet: Ist das warnsignal bei Gefahr." },
+    { concept: "bio:k5:vgverh:p7", term: "Gefiederpflege", meaning: "Beschreibt wichtig für Flug und Isolation als biologisches Merkmal mit klarer Funktion.", wissen: "Wichtig für Flug und Isolation. Bezug: Vogelverhalten. Gefiederpflege bedeutet: Ist der Putzen und Ordnen der Federn." },
+    { concept: "bio:k5:vgverh:p8", term: "Schwarm", meaning: "Beschreibt kann Schutzvorteile bieten als biologisches Merkmal mit klarer Funktion.", wissen: "Kann Schutzvorteile bieten. Bezug: Vogelverhalten. Schwarm bedeutet: Ist die Gruppe gemeinsam fliegender Vögel." },
+    { concept: "bio:k5:vgverh:p9", term: "Imponieren", meaning: "Beschreibt klärt Konflikte oft ohne Kampf als biologisches Merkmal mit klarer Funktion.", wissen: "Klärt Konflikte oft ohne Kampf. Bezug: Vogelverhalten. Imponieren bedeutet: Ist das zeigen von Stärke oder Status." },
+    { concept: "bio:k5:vgverh:p10", term: "Brutpflege", meaning: "Beschreibt wärmen, Füttern, Schützen als biologisches Merkmal mit klarer Funktion.", wissen: "Wärmen, Füttern, Schützen. Bezug: Vogelverhalten. Brutpflege bedeutet: Ist die Versorgung der Jungen." },
+    { concept: "bio:k5:vgverh:p11", term: "Nachahmung", meaning: "Beschreibt der Lernen durch Beobachten als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Gesangselemente. Bezug: Vogelverhalten. Nachahmung bedeutet: Ist der Lernen durch Beobachten." },
   ],
   trueFalse: [
     {
@@ -453,7 +453,7 @@ export const k5VoegelSchutz: BioBank = {
   url: "https://de.wikipedia.org/wiki/Vogelschutz",
   conceptPrefix: "bio:k5:vgschutz",
   facts: [
-    { concept: "bio:k5:vgschutz:f0", prompt: "Wozu dient Nistkasten?", answer: "Es ist die künstliche Nisthilfe, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nistkasten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nistkasten.", "Ein Randdetail, das fachlich nicht erklärt, was Nistkasten leistet."],
+    { concept: "bio:k5:vgschutz:f0", prompt: "Wozu dient Nistkasten?", answer: "Es beschreibt künstliche Nisthilfe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nistkasten: Künstliche Nisthilfe",
       wissen: fw(
         "Unterstützt Höhlenbrüter. Bezug: Vogelschutz.",
@@ -461,7 +461,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Künstliche Nisthilfe",
       gapAccepted: ["Nistkasten"],
     },
-    { concept: "bio:k5:vgschutz:f1", prompt: "Welche Rolle hat Hecke?", answer: "Sie ist den Gehölzstreifen als Lebensraum, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hecke.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hecke.", "Ein Randdetail, das fachlich nicht erklärt, was Hecke leistet."],
+    { concept: "bio:k5:vgschutz:f1", prompt: "Welche Rolle hat Hecke?", answer: "Sie beschreibt gehölzstreifen als Lebensraum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Hecke: Gehölzstreifen als Lebensraum",
       wissen: fw(
         "Nahrung, Deckung und Nistplätze. Bezug: Vogelschutz.",
@@ -469,7 +469,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Gehölzstreifen als Lebensraum",
       gapAccepted: ["Hecke"],
     },
-    { concept: "bio:k5:vgschutz:f2", prompt: "Was kennzeichnet Feuchtgebiet?", answer: "Es ist das nasses Schlüsselhabitat, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Feuchtgebiet.", "Eine typische Verwechslung mit einem Nachbarbegriff von Feuchtgebiet.", "Ein Randdetail, das fachlich nicht erklärt, was Feuchtgebiet leistet."],
+    { concept: "bio:k5:vgschutz:f2", prompt: "Was kennzeichnet Feuchtgebiet?", answer: "Es beschreibt nasses Schlüsselhabitat, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Feuchtgebiet: Nasses Schlüsselhabitat",
       wissen: fw(
         "Wichtig für Wat- und Wasservögel. Bezug: Vogelschutz.",
@@ -477,7 +477,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Nasses Schlüsselhabitat",
       gapAccepted: ["Feuchtgebiet"],
     },
-    { concept: "bio:k5:vgschutz:f3", prompt: "Was kennzeichnet Fensteranprall?", answer: "Es ist die Kollision an Glasflächen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fensteranprall.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fensteranprall.", "Ein Randdetail, das fachlich nicht erklärt, was Fensteranprall leistet."],
+    { concept: "bio:k5:vgschutz:f3", prompt: "Was kennzeichnet Fensteranprall?", answer: "Es beschreibt kollision an Glasflächen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Fensteranprall: Kollision an Glasflächen",
       wissen: fw(
         "Häufige Todesursache. Bezug: Vogelschutz.",
@@ -485,7 +485,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Kollision an Glasflächen",
       gapAccepted: ["Fensteranprall"],
     },
-    { concept: "bio:k5:vgschutz:f4", prompt: "Was kennzeichnet Brutruhe?", answer: "Sie ist die ungestörte Brutzeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Brutruhe.", "Eine typische Verwechslung mit einem Nachbarbegriff von Brutruhe.", "Ein Randdetail, das fachlich nicht erklärt, was Brutruhe leistet."],
+    { concept: "bio:k5:vgschutz:f4", prompt: "Was kennzeichnet Brutruhe?", answer: "Sie beschreibt ungestörte Brutzeit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Brutruhe: Ungestörte Brutzeit",
       wissen: fw(
         "Verringert Gelegeverluste. Bezug: Vogelschutz.",
@@ -493,7 +493,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Ungestörte Brutzeit",
       gapAccepted: ["Brutruhe"],
     },
-    { concept: "bio:k5:vgschutz:f5", prompt: "Was beschreibt Winterfütterung?", answer: "Sie ist den Zusatzfutten bei Mangel, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Winterfütterung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Winterfütterung.", "Ein Randdetail, das fachlich nicht erklärt, was Winterfütterung leistet."],
+    { concept: "bio:k5:vgschutz:f5", prompt: "Was beschreibt Winterfütterung?", answer: "Sie beschreibt zusatzfutten bei Mangel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Winterfütterung: Zusatzfutter bei Mangel",
       wissen: fw(
         "Ergänzt, ersetzt aber keine Habitate. Bezug: Vogelschutz.",
@@ -501,7 +501,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Zusatzfutter bei Mangel",
       gapAccepted: ["Winterfütterung"],
     },
-    { concept: "bio:k5:vgschutz:f6", prompt: "Was beschreibt Insektennahrung?", answer: "Sie ist die Beute für viele Jungvögel, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Insektennahrung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Insektennahrung.", "Ein Randdetail, das fachlich nicht erklärt, was Insektennahrung leistet."],
+    { concept: "bio:k5:vgschutz:f6", prompt: "Was beschreibt Insektennahrung?", answer: "Sie beschreibt beute für viele Jungvögel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Insektennahrung: Beute für viele Jungvögel",
       wissen: fw(
         "Insektenrückgang trifft Vögel. Bezug: Vogelschutz.",
@@ -509,7 +509,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Beute für viele Jungvögel",
       gapAccepted: ["Insektennahrung"],
     },
-    { concept: "bio:k5:vgschutz:f7", prompt: "Welche Rolle hat Schutzgebiet?", answer: "Eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schutzgebiet.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schutzgebiet.", "Ein Randdetail, das fachlich nicht erklärt, was Schutzgebiet leistet."],
+    { concept: "bio:k5:vgschutz:f7", prompt: "Welche Rolle hat Schutzgebiet?", answer: "Es beschreibt fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Schutzgebiet: Geschützte Fläche",
       wissen: fw(
         "Sichert Brut- und Rastplätze. Bezug: Vogelschutz.",
@@ -517,7 +517,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Geschützte Fläche",
       gapAccepted: ["Schutzgebiet"],
     },
-    { concept: "bio:k5:vgschutz:f8", prompt: "Was beschreibt Habitatverlust?", answer: "Es beschreibt das Verschwinden geeigneter Lebensräume, sodass man Habitatverlust von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Habitatverlust.", "Eine typische Verwechslung mit einem Nachbarbegriff von Habitatverlust.", "Ein Randdetail, das fachlich nicht erklärt, was Habitatverlust leistet."],
+    { concept: "bio:k5:vgschutz:f8", prompt: "Was beschreibt Habitatverlust?", answer: "Es beschreibt verschwinden geeigneter Lebensräume, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
         "Zentrale Gefährdung. Bezug: Vogelschutz.",
@@ -525,7 +525,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Verlust von Lebensraum",
       gapAccepted: ["Habitatverlust"],
     },
-    { concept: "bio:k5:vgschutz:f9", prompt: "Was kennzeichnet Schonzeit?", answer: "Es ist das zeitlicher Schutz vor Nutzung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schonzeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schonzeit.", "Ein Randdetail, das fachlich nicht erklärt, was Schonzeit leistet."],
+    { concept: "bio:k5:vgschutz:f9", prompt: "Was kennzeichnet Schonzeit?", answer: "Es beschreibt zeitlicher Schutz vor Nutzung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Schonzeit: Zeitlicher Schutz vor Nutzung",
       wissen: fw(
         "Schützt Bestände in sensiblen Phasen. Bezug: Vogelschutz.",
@@ -533,7 +533,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Zeitlicher Schutz vor Nutzung",
       gapAccepted: ["Schonzeit"],
     },
-    { concept: "bio:k5:vgschutz:f10", prompt: "Woran erkennt man Strukturvielfalt?", answer: "Es ist die viele Habitatstrukturen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Strukturvielfalt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Strukturvielfalt.", "Ein Randdetail, das fachlich nicht erklärt, was Strukturvielfalt leistet."],
+    { concept: "bio:k5:vgschutz:f10", prompt: "Woran erkennt man Strukturvielfalt?", answer: "Es beschreibt viele Habitatstrukturen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Strukturvielfalt: Viele Habitatstrukturen",
       wissen: fw(
         "Fördert Artenreichtum. Bezug: Vogelschutz.",
@@ -541,7 +541,7 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Viele Habitatstrukturen",
       gapAccepted: ["Strukturvielfalt"],
     },
-    { concept: "bio:k5:vgschutz:f11", prompt: "Welche Rolle hat Artenschutz?", answer: "Es beschreibt Maßnahmen zum Erhalt bedrohter Arten, sodass man Artenschutz von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Artenschutz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Artenschutz.", "Ein Randdetail, das fachlich nicht erklärt, was Artenschutz leistet."],
+    { concept: "bio:k5:vgschutz:f11", prompt: "Welche Rolle hat Artenschutz?", answer: "Es beschreibt maßnahmen zum Erhalt bedrohter Arten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Artenschutz: Schutz einzelner Arten",
       wissen: fw(
         "Wirkt zusammen mit Habitatschutz. Bezug: Vogelschutz.",
@@ -549,13 +549,13 @@ export const k5VoegelSchutz: BioBank = {
       gap: "Vogelschutz: ___ — Schutz einzelner Arten",
       gapAccepted: ["Artenschutz"],
     },
-    { concept: "bio:k5:vgschutz:x0", prompt: "Was kennzeichnet Begriff?", answer: "Es ist die Brutruhe, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k5:vgschutz:x0", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt brutruhe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Brutruhe.",
       wissen: fw(
         "Wiederholtes Aufscheuchen kostet Zeit und Energie und gefährdet den Bruterfolg.",
       ),
     },
-    { concept: "bio:k5:vgschutz:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist das Nistplatzangebot, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k5:vgschutz:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt nistplatzangebot, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Nistplatzangebot.",
       wissen: fw(
         "Höhlen sind oft der begrenzende Faktor für Meisen und ähnliche Arten.",
@@ -563,18 +563,18 @@ export const k5VoegelSchutz: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:vgschutz:p0", term: "Nistkasten", meaning: "Dient als künstliche Nisthilfe", wissen: "Unterstützt Höhlenbrüter. Bezug: Vogelschutz. Nistkasten bedeutet: Dient als künstliche Nisthilfe." },
-    { concept: "bio:k5:vgschutz:p1", term: "Hecke", meaning: "Ist der Gehölzstreifen als Lebensraum", wissen: "Nahrung, Deckung und Nistplätze. Bezug: Vogelschutz. Hecke bedeutet: Ist der Gehölzstreifen als Lebensraum." },
-    { concept: "bio:k5:vgschutz:p2", term: "Feuchtgebiet", meaning: "Ist das nasses Schlüsselhabitat", wissen: "Wichtig für Wat- und Wasservögel. Bezug: Vogelschutz. Feuchtgebiet bedeutet: Ist das nasses Schlüsselhabitat." },
-    { concept: "bio:k5:vgschutz:p3", term: "Fensteranprall", meaning: "Ist die Kollision an Glasflächen", wissen: "Häufige Todesursache. Bezug: Vogelschutz. Fensteranprall bedeutet: Ist die Kollision an Glasflächen." },
-    { concept: "bio:k5:vgschutz:p4", term: "Brutruhe", meaning: "Ist die ungestörte Brutzeit", wissen: "Verringert Gelegeverluste. Bezug: Vogelschutz. Brutruhe bedeutet: Ist die ungestörte Brutzeit." },
-    { concept: "bio:k5:vgschutz:p5", term: "Winterfütterung", meaning: "Ist der Zusatzfutten bei Mangel", wissen: "Ergänzt, ersetzt aber keine Habitate. Bezug: Vogelschutz. Winterfütterung bedeutet: Ist der Zusatzfutten bei Mangel." },
-    { concept: "bio:k5:vgschutz:p6", term: "Insektennahrung", meaning: "Ist die Beute für viele Jungvögel", wissen: "Insektenrückgang trifft Vögel. Bezug: Vogelschutz. Insektennahrung bedeutet: Ist die Beute für viele Jungvögel." },
-    { concept: "bio:k5:vgschutz:p7", term: "Schutzgebiet", meaning: "Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen", wissen: "Sichert Brut- und Rastplätze. Bezug: Vogelschutz. Schutzgebiet bedeutet: Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen." },
-    { concept: "bio:k5:vgschutz:p8", term: "Habitatverlust", meaning: "Bedeutet das Verschwinden geeigneter Lebensräume", wissen: "Zentrale Gefährdung. Bezug: Vogelschutz. Habitatverlust bedeutet: Bedeutet das Verschwinden geeigneter Lebensräume." },
-    { concept: "bio:k5:vgschutz:p9", term: "Schonzeit", meaning: "Schützt Bestände in sensiblen Phasen; es handelt sich um das zeitlicher Schutz vor Nutzung", wissen: "Schützt Bestände in sensiblen Phasen. Bezug: Vogelschutz. Schonzeit bedeutet: Schützt Bestände in sensiblen Phasen; es handelt sich um das zeitlicher Schutz vor Nutzung." },
-    { concept: "bio:k5:vgschutz:p10", term: "Strukturvielfalt", meaning: "Ist die viele Habitatstrukturen", wissen: "Fördert Artenreichtum. Bezug: Vogelschutz. Strukturvielfalt bedeutet: Ist die viele Habitatstrukturen." },
-    { concept: "bio:k5:vgschutz:p11", term: "Artenschutz", meaning: "Umfasst Maßnahmen zum Erhalt bedrohter Arten", wissen: "Wirkt zusammen mit Habitatschutz. Bezug: Vogelschutz. Artenschutz bedeutet: Umfasst Maßnahmen zum Erhalt bedrohter Arten." },
+    { concept: "bio:k5:vgschutz:p0", term: "Nistkasten", meaning: "Beschreibt künstliche Nisthilfe als biologisches Merkmal mit klarer Funktion.", wissen: "Unterstützt Höhlenbrüter. Bezug: Vogelschutz. Nistkasten bedeutet: Dient als künstliche Nisthilfe." },
+    { concept: "bio:k5:vgschutz:p1", term: "Hecke", meaning: "Beschreibt nahrung, Deckung und Nistplätze als biologisches Merkmal mit klarer Funktion.", wissen: "Nahrung, Deckung und Nistplätze. Bezug: Vogelschutz. Hecke bedeutet: Ist der Gehölzstreifen als Lebensraum." },
+    { concept: "bio:k5:vgschutz:p2", term: "Feuchtgebiet", meaning: "Beschreibt wichtig für Wat- und Wasservögel als biologisches Merkmal mit klarer Funktion.", wissen: "Wichtig für Wat- und Wasservögel. Bezug: Vogelschutz. Feuchtgebiet bedeutet: Ist das nasses Schlüsselhabitat." },
+    { concept: "bio:k5:vgschutz:p3", term: "Fensteranprall", meaning: "Beschreibt kollision an Glasflächen als biologisches Merkmal mit klarer Funktion.", wissen: "Häufige Todesursache. Bezug: Vogelschutz. Fensteranprall bedeutet: Ist die Kollision an Glasflächen." },
+    { concept: "bio:k5:vgschutz:p4", term: "Brutruhe", meaning: "Beschreibt ungestörte Brutzeit als biologisches Merkmal mit klarer Funktion.", wissen: "Verringert Gelegeverluste. Bezug: Vogelschutz. Brutruhe bedeutet: Ist die ungestörte Brutzeit." },
+    { concept: "bio:k5:vgschutz:p5", term: "Winterfütterung", meaning: "Beschreibt ergänzt, ersetzt aber keine Habitate als biologisches Merkmal mit klarer Funktion.", wissen: "Ergänzt, ersetzt aber keine Habitate. Bezug: Vogelschutz. Winterfütterung bedeutet: Ist der Zusatzfutten bei Mangel." },
+    { concept: "bio:k5:vgschutz:p6", term: "Insektennahrung", meaning: "Beschreibt insektenrückgang trifft Vögel als biologisches Merkmal mit klarer Funktion.", wissen: "Insektenrückgang trifft Vögel. Bezug: Vogelschutz. Insektennahrung bedeutet: Ist die Beute für viele Jungvögel." },
+    { concept: "bio:k5:vgschutz:p7", term: "Schutzgebiet", meaning: "Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", wissen: "Sichert Brut- und Rastplätze. Bezug: Vogelschutz. Schutzgebiet bedeutet: Ist eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen." },
+    { concept: "bio:k5:vgschutz:p8", term: "Habitatverlust", meaning: "Bedeutet das Verschwinden geeigneter Lebensräume.", wissen: "Zentrale Gefährdung. Bezug: Vogelschutz. Habitatverlust bedeutet: Bedeutet das Verschwinden geeigneter Lebensräume." },
+    { concept: "bio:k5:vgschutz:p9", term: "Schonzeit", meaning: "Schützt Bestände in sensiblen Phasen; zeitlicher Schutz vor Nutzung.", wissen: "Schützt Bestände in sensiblen Phasen. Bezug: Vogelschutz. Schonzeit bedeutet: Schützt Bestände in sensiblen Phasen; es handelt sich um das zeitlicher Schutz vor Nutzung." },
+    { concept: "bio:k5:vgschutz:p10", term: "Strukturvielfalt", meaning: "Beschreibt viele Habitatstrukturen als biologisches Merkmal mit klarer Funktion.", wissen: "Fördert Artenreichtum. Bezug: Vogelschutz. Strukturvielfalt bedeutet: Ist die viele Habitatstrukturen." },
+    { concept: "bio:k5:vgschutz:p11", term: "Artenschutz", meaning: "Umfasst Maßnahmen zum Erhalt bedrohter Arten.", wissen: "Wirkt zusammen mit Habitatschutz. Bezug: Vogelschutz. Artenschutz bedeutet: Umfasst Maßnahmen zum Erhalt bedrohter Arten." },
   ],
   trueFalse: [
     {
@@ -600,7 +600,7 @@ export const k5SaeugerVerhalten: BioBank = {
   url: "https://de.wikipedia.org/wiki/S%C3%A4ugetiere",
   conceptPrefix: "bio:k5:saeugverh",
   facts: [
-    { concept: "bio:k5:saeugverh:f0", prompt: "Woran erkennt man Beobachtung?", answer: "Sie ist die gezieltes Wahrnehmen von Verhalten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Beobachtung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Beobachtung.", "Ein Randdetail, das fachlich nicht erklärt, was Beobachtung leistet."],
+    { concept: "bio:k5:saeugverh:f0", prompt: "Woran erkennt man Beobachtung?", answer: "Sie beschreibt gezieltes Wahrnehmen von Verhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Beobachtung: Gezieltes Wahrnehmen von Verhalten",
       wissen: fw(
         "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten.",
@@ -608,7 +608,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Gezieltes Wahrnehmen von Verhalten",
       gapAccepted: ["Beobachtung"],
     },
-    { concept: "bio:k5:saeugverh:f1", prompt: "Was kennzeichnet Angeboren?", answer: "Es ist das Genetisch vorbereitetes Verhalten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Angeboren.", "Eine typische Verwechslung mit einem Nachbarbegriff von Angeboren.", "Ein Randdetail, das fachlich nicht erklärt, was Angeboren leistet."],
+    { concept: "bio:k5:saeugverh:f1", prompt: "Was kennzeichnet Angeboren?", answer: "Es beschreibt genetisch vorbereitetes Verhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Angeboren: Genetisch vorbereitetes Verhalten",
       wissen: fw(
         "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten.",
@@ -616,7 +616,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Genetisch vorbereitetes Verhalten",
       gapAccepted: ["Angeboren"],
     },
-    { concept: "bio:k5:saeugverh:f2", prompt: "Was kennzeichnet Erlernt?", answer: "Es gilt durch Erfahrung erworbenes Verhalten.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Erlernt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Erlernt.", "Ein Randdetail, das fachlich nicht erklärt, was Erlernt leistet."],
+    { concept: "bio:k5:saeugverh:f2", prompt: "Was kennzeichnet Erlernt?", answer: "Es beschreibt es gilt durch Erfahrung erworbenes Verhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Erlernt: Durch Erfahrung erworbenes Verhalten",
       wissen: fw(
         "Kann angepasst werden. Bezug: Säugerverhalten.",
@@ -624,7 +624,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Durch Erfahrung erworbenes Verhalten",
       gapAccepted: ["Erlernt"],
     },
-    { concept: "bio:k5:saeugverh:f3", prompt: "Was kennzeichnet Territorialität?", answer: "Sie ist die Verteidigen eines Gebiets, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Territorialität.", "Eine typische Verwechslung mit einem Nachbarbegriff von Territorialität.", "Ein Randdetail, das fachlich nicht erklärt, was Territorialität leistet."],
+    { concept: "bio:k5:saeugverh:f3", prompt: "Was kennzeichnet Territorialität?", answer: "Sie beschreibt verteidigen eines Gebiets, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Territorialität: Verteidigen eines Gebiets",
       wissen: fw(
         "Sichert Ressourcen. Bezug: Säugerverhalten.",
@@ -632,7 +632,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Verteidigen eines Gebiets",
       gapAccepted: ["Territorialität"],
     },
-    { concept: "bio:k5:saeugverh:f4", prompt: "Was kennzeichnet Fluchtverhalten?", answer: "Es ist die Reaktion auf Gefahr durch Weglaufen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fluchtverhalten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fluchtverhalten.", "Ein Randdetail, das fachlich nicht erklärt, was Fluchtverhalten leistet."],
+    { concept: "bio:k5:saeugverh:f4", prompt: "Was kennzeichnet Fluchtverhalten?", answer: "Es ist die Reaktion auf Gefahr durch Weglaufen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Fluchtverhalten: Reaktion auf Gefahr durch Weglaufen",
       wissen: fw(
         "Erhöht Überlebenschancen. Bezug: Säugerverhalten.",
@@ -640,7 +640,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Reaktion auf Gefahr durch Weglaufen",
       gapAccepted: ["Fluchtverhalten"],
     },
-    { concept: "bio:k5:saeugverh:f5", prompt: "Welche Rolle hat Nahrungssuche?", answer: "Sie ist das Suchen und Erlangen von Futter, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nahrungssuche.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nahrungssuche.", "Ein Randdetail, das fachlich nicht erklärt, was Nahrungssuche leistet."],
+    { concept: "bio:k5:saeugverh:f5", prompt: "Welche Rolle hat Nahrungssuche?", answer: "Sie beschreibt das Suchen und Erlangen von Futter.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nahrungssuche: Suchen und Erlangen von Futter",
       wissen: fw(
         "Zentraler Tagesablauf. Bezug: Säugerverhalten.",
@@ -648,7 +648,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Suchen und Erlangen von Futter",
       gapAccepted: ["Nahrungssuche"],
     },
-    { concept: "bio:k5:saeugverh:f6", prompt: "Welche Rolle hat Komfortverhalten?", answer: "Es ist den Putzen und Ruhen und Strecken, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Komfortverhalten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Komfortverhalten.", "Ein Randdetail, das fachlich nicht erklärt, was Komfortverhalten leistet."],
+    { concept: "bio:k5:saeugverh:f6", prompt: "Welche Rolle hat Komfortverhalten?", answer: "Es beschreibt den Putzen und Ruhen und Strecken.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Komfortverhalten: Putzen, Ruhen, Strecken",
       wissen: fw(
         "Erhält Körperfunktionen. Bezug: Säugerverhalten.",
@@ -656,7 +656,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Putzen, Ruhen, Strecken",
       gapAccepted: ["Komfortverhalten"],
     },
-    { concept: "bio:k5:saeugverh:f7", prompt: "Was kennzeichnet Markieren?", answer: "Es ist den Kennzeichnen mit Duft oder Kratzspuren, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Markieren.", "Eine typische Verwechslung mit einem Nachbarbegriff von Markieren.", "Ein Randdetail, das fachlich nicht erklärt, was Markieren leistet."],
+    { concept: "bio:k5:saeugverh:f7", prompt: "Was kennzeichnet Markieren?", answer: "Es ist den Kennzeichnen mit Duft oder Kratzspuren.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Markieren: Kennzeichnen mit Duft oder Kratzspuren",
       wissen: fw(
         "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten.",
@@ -664,7 +664,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Kennzeichnen mit Duft oder Kratzspuren",
       gapAccepted: ["Markieren"],
     },
-    { concept: "bio:k5:saeugverh:f8", prompt: "Welche Rolle hat Spielverhalten?", answer: "Es ist das Übungs- und sozialspiele Junger, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Die Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Spielverhalten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Spielverhalten."],
+    { concept: "bio:k5:saeugverh:f8", prompt: "Welche Rolle hat Spielverhalten?", answer: "Es beschreibt übungs- und sozialspiele Junger, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Spielverhalten: Übungs- und Sozialspiele Junger",
       wissen: fw(
         "Trainiert Fähigkeiten. Bezug: Säugerverhalten.",
@@ -672,7 +672,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Übungs- und Sozialspiele Junger",
       gapAccepted: ["Spielverhalten"],
     },
-    { concept: "bio:k5:saeugverh:f9", prompt: "Welche Rolle hat Aktivitätszeit?", answer: "Es ist das Tages- oder Nachtaktivität, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Bestände in sensiblen Phasen; es handelt sich um das zeitlicher Schutz vor Nutzung.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Aktivitätszeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Aktivitätszeit."],
+    { concept: "bio:k5:saeugverh:f9", prompt: "Welche Rolle hat Aktivitätszeit?", answer: "Es beschreibt tages- oder Nachtaktivität, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Bestände in sensiblen Phasen; zeitlicher Schutz vor Nutzung.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Aktivitätszeit: Tages- oder Nachtaktivität",
       wissen: fw(
         "Angepasst an Beute und Feinde. Bezug: Säugerverhalten.",
@@ -680,7 +680,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Tages- oder Nachtaktivität",
       gapAccepted: ["Aktivitätszeit"],
     },
-    { concept: "bio:k5:saeugverh:f10", prompt: "Was kennzeichnet Prägung?", answer: "Sie ist die schnelles Lernen in sensiblen Phasen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Prägung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Prägung.", "Ein Randdetail, das fachlich nicht erklärt, was Prägung leistet."],
+    { concept: "bio:k5:saeugverh:f10", prompt: "Was kennzeichnet Prägung?", answer: "Sie ist die schnelles Lernen in sensiblen Phasen.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Prägung: Schnelles Lernen in sensiblen Phasen",
       wissen: fw(
         "z. B. Elternbindung. Bezug: Säugerverhalten.",
@@ -688,7 +688,7 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Schnelles Lernen in sensiblen Phasen",
       gapAccepted: ["Prägung"],
     },
-    { concept: "bio:k5:saeugverh:f11", prompt: "Was kennzeichnet Motivation?", answer: "Sie ist die innere Bereitschaft zu Verhalten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt durch Erfahrung erworbenes Verhalten.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Motivation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Motivation."],
+    { concept: "bio:k5:saeugverh:f11", prompt: "Was kennzeichnet Motivation?", answer: "Sie beschreibt innere Bereitschaft zu Verhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Motivation: Innere Bereitschaft zu Verhalten",
       wissen: fw(
         "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten.",
@@ -696,13 +696,13 @@ export const k5SaeugerVerhalten: BioBank = {
       gap: "Säugerverhalten: ___ — Innere Bereitschaft zu Verhalten",
       gapAccepted: ["Motivation"],
     },
-    { concept: "bio:k5:saeugverh:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist das Vergleich, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k5:saeugverh:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt vergleich, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Vergleich.",
       wissen: fw(
         "Haustiere und Wildtiere zeigen angeborene und erlernte Anteile unterschiedlich stark.",
       ),
     },
-    { concept: "bio:k5:saeugverh:x1", prompt: "Was kennzeichnet x1?", answer: "Es ist die Duftkommunikation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1."],
+    { concept: "bio:k5:saeugverh:x1", prompt: "Was kennzeichnet x1?", answer: "Es beschreibt duftkommunikation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Duftkommunikation.",
       wissen: fw(
         "Duftmarken und Kratzspuren sind chemische oder visuelle Signale.",
@@ -710,18 +710,18 @@ export const k5SaeugerVerhalten: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:saeugverh:p0", term: "Beobachtung", meaning: "Ist die gezieltes Wahrnehmen von Verhalten", wissen: "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten. Beobachtung bedeutet: Ist die gezieltes Wahrnehmen von Verhalten." },
-    { concept: "bio:k5:saeugverh:p1", term: "Angeboren", meaning: "Ist das genetisch vorbereitetes Verhalten", wissen: "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten. Angeboren bedeutet: Ist das genetisch vorbereitetes Verhalten." },
-    { concept: "bio:k5:saeugverh:p2", term: "Erlernt", meaning: "Kann angepasst werden", wissen: "Kann angepasst werden. Bezug: Säugerverhalten. Erlernt bedeutet: Kann angepasst werden." },
-    { concept: "bio:k5:saeugverh:p3", term: "Territorialität", meaning: "Ist die verteidigen eines Gebiets", wissen: "Sichert Ressourcen. Bezug: Säugerverhalten. Territorialität bedeutet: Ist die verteidigen eines Gebiets." },
-    { concept: "bio:k5:saeugverh:p4", term: "Fluchtverhalten", meaning: "Ist die Reaktion auf Gefahr durch Weglaufen", wissen: "Erhöht Überlebenschancen. Bezug: Säugerverhalten. Fluchtverhalten bedeutet: Ist die Reaktion auf Gefahr durch Weglaufen." },
-    { concept: "bio:k5:saeugverh:p5", term: "Nahrungssuche", meaning: "Ist das Suchen und Erlangen von Futter", wissen: "Zentraler Tagesablauf. Bezug: Säugerverhalten. Nahrungssuche bedeutet: Ist das Suchen und Erlangen von Futter." },
-    { concept: "bio:k5:saeugverh:p6", term: "Komfortverhalten", meaning: "Ist der Putzen und Ruhen und Strecken", wissen: "Erhält Körperfunktionen. Bezug: Säugerverhalten. Komfortverhalten bedeutet: Ist der Putzen und Ruhen und Strecken." },
-    { concept: "bio:k5:saeugverh:p7", term: "Markieren", meaning: "Ist der Kennzeichnen mit Duft oder Kratzspuren", wissen: "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten. Markieren bedeutet: Ist der Kennzeichnen mit Duft oder Kratzspuren." },
-    { concept: "bio:k5:saeugverh:p8", term: "Spielverhalten", meaning: "Ist das Übungs- und sozialspiele Junger", wissen: "Trainiert Fähigkeiten. Bezug: Säugerverhalten. Spielverhalten bedeutet: Ist das Übungs- und sozialspiele Junger." },
-    { concept: "bio:k5:saeugverh:p9", term: "Aktivitätszeit", meaning: "Ist das Tages- oder Nachtaktivität", wissen: "Angepasst an Beute und Feinde. Bezug: Säugerverhalten. Aktivitätszeit bedeutet: Ist das Tages- oder Nachtaktivität." },
-    { concept: "bio:k5:saeugverh:p10", term: "Prägung", meaning: "Ist die schnelles Lernen in sensiblen Phasen", wissen: "z. B. Elternbindung. Bezug: Säugerverhalten. Prägung bedeutet: Ist die schnelles Lernen in sensiblen Phasen." },
-    { concept: "bio:k5:saeugverh:p11", term: "Motivation", meaning: "Ist die innere Bereitschaft zu Verhalten", wissen: "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten. Motivation bedeutet: Ist die innere Bereitschaft zu Verhalten." },
+    { concept: "bio:k5:saeugverh:p0", term: "Beobachtung", meaning: "Beschreibt grundmethode der Verhaltensbiologie als biologisches Merkmal mit klarer Funktion.", wissen: "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten. Beobachtung bedeutet: Ist die gezieltes Wahrnehmen von Verhalten." },
+    { concept: "bio:k5:saeugverh:p1", term: "Angeboren", meaning: "Beschreibt läuft ohne langes Lernen ab als biologisches Merkmal mit klarer Funktion.", wissen: "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten. Angeboren bedeutet: Ist das genetisch vorbereitetes Verhalten." },
+    { concept: "bio:k5:saeugverh:p2", term: "Erlernt", meaning: "Beschreibt kann angepasst werden als biologisches Merkmal mit klarer Funktion.", wissen: "Kann angepasst werden. Bezug: Säugerverhalten. Erlernt bedeutet: Kann angepasst werden." },
+    { concept: "bio:k5:saeugverh:p3", term: "Territorialität", meaning: "Beschreibt verteidigen eines Gebiets als biologisches Merkmal mit klarer Funktion.", wissen: "Sichert Ressourcen. Bezug: Säugerverhalten. Territorialität bedeutet: Ist die verteidigen eines Gebiets." },
+    { concept: "bio:k5:saeugverh:p4", term: "Fluchtverhalten", meaning: "Beschreibt reaktion auf Gefahr durch Weglaufen als biologisches Merkmal mit klarer Funktion.", wissen: "Erhöht Überlebenschancen. Bezug: Säugerverhalten. Fluchtverhalten bedeutet: Ist die Reaktion auf Gefahr durch Weglaufen." },
+    { concept: "bio:k5:saeugverh:p5", term: "Nahrungssuche", meaning: "Beschreibt suchen und Erlangen von Futter als biologisches Merkmal mit klarer Funktion.", wissen: "Zentraler Tagesablauf. Bezug: Säugerverhalten. Nahrungssuche bedeutet: Ist das Suchen und Erlangen von Futter." },
+    { concept: "bio:k5:saeugverh:p6", term: "Komfortverhalten", meaning: "Beschreibt der Putzen und Ruhen und Strecken als biologisches Merkmal mit klarer Funktion.", wissen: "Erhält Körperfunktionen. Bezug: Säugerverhalten. Komfortverhalten bedeutet: Ist der Putzen und Ruhen und Strecken." },
+    { concept: "bio:k5:saeugverh:p7", term: "Markieren", meaning: "Beschreibt kommuniziert Besitz oder Status als biologisches Merkmal mit klarer Funktion.", wissen: "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten. Markieren bedeutet: Ist der Kennzeichnen mit Duft oder Kratzspuren." },
+    { concept: "bio:k5:saeugverh:p8", term: "Spielverhalten", meaning: "Beschreibt übungs- und sozialspiele Junger als biologisches Merkmal mit klarer Funktion.", wissen: "Trainiert Fähigkeiten. Bezug: Säugerverhalten. Spielverhalten bedeutet: Ist das Übungs- und sozialspiele Junger." },
+    { concept: "bio:k5:saeugverh:p9", term: "Aktivitätszeit", meaning: "Beschreibt angepasst an Beute und Feinde als biologisches Merkmal mit klarer Funktion.", wissen: "Angepasst an Beute und Feinde. Bezug: Säugerverhalten. Aktivitätszeit bedeutet: Ist das Tages- oder Nachtaktivität." },
+    { concept: "bio:k5:saeugverh:p10", term: "Prägung", meaning: "Beschreibt schnelles Lernen in sensiblen Phasen als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Elternbindung. Bezug: Säugerverhalten. Prägung bedeutet: Ist die schnelles Lernen in sensiblen Phasen." },
+    { concept: "bio:k5:saeugverh:p11", term: "Motivation", meaning: "Beschreibt hunger oder Fortpflanzung als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten. Motivation bedeutet: Ist die innere Bereitschaft zu Verhalten." },
   ],
   trueFalse: [
     {
@@ -747,7 +747,7 @@ export const k5SaeugerSinne: BioBank = {
   url: "https://de.wikipedia.org/wiki/Sinnesorgan",
   conceptPrefix: "bio:k5:saeugsinn",
   facts: [
-    { concept: "bio:k5:saeugsinn:f0", prompt: "Was kennzeichnet Sender?", answer: "Er ist den Er erzeugt ein Signal, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sender.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sender."],
+    { concept: "bio:k5:saeugsinn:f0", prompt: "Was kennzeichnet Sender?", answer: "Er beschreibt er erzeugt ein Signal, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sender: Erzeugt ein Signal",
       wissen: fw(
         "z. B. Laut oder Duft. Bezug: Säugersinne.",
@@ -755,7 +755,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Erzeugt ein Signal",
       gapAccepted: ["Sender"],
     },
-    { concept: "bio:k5:saeugsinn:f1", prompt: "Welche Rolle hat Empfänger?", answer: "Er nimmt das Signal wahr sodass man ihn von ähnlichen Größen unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Empfänger.", "Eine typische Verwechslung mit einem Nachbarbegriff von Empfänger."],
+    { concept: "bio:k5:saeugsinn:f1", prompt: "Welche Rolle hat Empfänger?", answer: "Er beschreibt er nimmt das Signal wahr, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Empfänger: Nimmt das Signal wahr",
       wissen: fw(
         "Über Sinnesorgane. Bezug: Säugersinne.",
@@ -763,7 +763,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Nimmt das Signal wahr",
       gapAccepted: ["Empfänger"],
     },
-    { concept: "bio:k5:saeugsinn:f2", prompt: "Was kennzeichnet Signal?", answer: "Es ist das informationstragendes Zeichen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Signal.", "Eine typische Verwechslung mit einem Nachbarbegriff von Signal."],
+    { concept: "bio:k5:saeugsinn:f2", prompt: "Was kennzeichnet Signal?", answer: "Es beschreibt informationstragendes Zeichen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Signal: Informationstragendes Zeichen",
       wissen: fw(
         "Akustisch, optisch oder chemisch. Bezug: Säugersinne.",
@@ -771,7 +771,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Informationstragendes Zeichen",
       gapAccepted: ["Signal"],
     },
-    { concept: "bio:k5:saeugsinn:f3", prompt: "Was kennzeichnet Geruchssinn?", answer: "Es ist die Wahrnehmung von Duftstoffen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Geruchssinn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Geruchssinn."],
+    { concept: "bio:k5:saeugsinn:f3", prompt: "Was kennzeichnet Geruchssinn?", answer: "Es beschreibt wahrnehmung von Duftstoffen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Geruchssinn: Wahrnehmung von Duftstoffen",
       wissen: fw(
         "Bei vielen Säugern sehr leistungsfähig. Bezug: Säugersinne.",
@@ -779,7 +779,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Wahrnehmung von Duftstoffen",
       gapAccepted: ["Geruchssinn"],
     },
-    { concept: "bio:k5:saeugsinn:f4", prompt: "Was beschreibt Gehör?", answer: "Es ist die Wahrnehmung von Schall, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gehör.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gehör."],
+    { concept: "bio:k5:saeugsinn:f4", prompt: "Was beschreibt Gehör?", answer: "Es beschreibt wahrnehmung von Schall, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gehör: Wahrnehmung von Schall",
       wissen: fw(
         "Wichtig für Kommunikation und Gefahr. Bezug: Säugersinne.",
@@ -787,7 +787,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Wahrnehmung von Schall",
       gapAccepted: ["Gehör"],
     },
-    { concept: "bio:k5:saeugsinn:f5", prompt: "Welche Rolle hat Sehsinn?", answer: "Es ist die Wahrnehmung von Licht und Formen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sehsinn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sehsinn."],
+    { concept: "bio:k5:saeugsinn:f5", prompt: "Welche Rolle hat Sehsinn?", answer: "Es beschreibt die Wahrnehmung von Licht und Formen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Sehsinn: Wahrnehmung von Licht und Formen",
       wissen: fw(
         "Je nach Art unterschiedlich ausgeprägt. Bezug: Säugersinne.",
@@ -795,7 +795,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Wahrnehmung von Licht und Formen",
       gapAccepted: ["Sehsinn"],
     },
-    { concept: "bio:k5:saeugsinn:f6", prompt: "Was beschreibt Tastsinn?", answer: "Es ist die Wahrnehmung von Berührung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Tastsinn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Tastsinn."],
+    { concept: "bio:k5:saeugsinn:f6", prompt: "Was beschreibt Tastsinn?", answer: "Es beschreibt wahrnehmung von Berührung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Tastsinn: Wahrnehmung von Berührung",
       wissen: fw(
         "z. B. über Schnurrhaare. Bezug: Säugersinne.",
@@ -803,7 +803,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Wahrnehmung von Berührung",
       gapAccepted: ["Tastsinn"],
     },
-    { concept: "bio:k5:saeugsinn:f7", prompt: "Wozu dient die Schnurrhaare?", answer: "Sie ist die Tastorgane am Kopf, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schnurrhaare.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schnurrhaare."],
+    { concept: "bio:k5:saeugsinn:f7", prompt: "Wozu dient die Schnurrhaare?", answer: "Sie beschreibt tastorgane am Kopf, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schnurrhaare: Tastorgane am Kopf",
       wissen: fw(
         "Erfassen Raumnahe Hindernisse. Bezug: Säugersinne.",
@@ -811,7 +811,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Tastorgane am Kopf",
       gapAccepted: ["Schnurrhaare"],
     },
-    { concept: "bio:k5:saeugsinn:f8", prompt: "Was beschreibt Ultraschall?", answer: "Es ist das sehr hohe Schallfrequenzen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Kann angepasst werden und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ultraschall.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ultraschall."],
+    { concept: "bio:k5:saeugsinn:f8", prompt: "Was beschreibt Ultraschall?", answer: "Es beschreibt sehr hohe Schallfrequenzen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ultraschall: Sehr hohe Schallfrequenzen",
       wissen: fw(
         "z. B. bei Fledermaus-Echoortung. Bezug: Säugersinne.",
@@ -819,7 +819,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Sehr hohe Schallfrequenzen",
       gapAccepted: ["Ultraschall"],
     },
-    { concept: "bio:k5:saeugsinn:f9", prompt: "Welche Rolle hat Echoortung?", answer: "Sie ist die Orientierung über zurückgeworfenen Schall, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Echoortung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Echoortung.", "Ein Randdetail, das fachlich nicht erklärt, was Echoortung leistet."],
+    { concept: "bio:k5:saeugsinn:f9", prompt: "Welche Rolle hat Echoortung?", answer: "Sie beschreibt orientierung über zurückgeworfenen Schall, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Echoortung: Orientierung über zurückgeworfenen Schall",
       wissen: fw(
         "Typisch für Fledermäuse. Bezug: Säugersinne.",
@@ -827,7 +827,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Orientierung über zurückgeworfenen Schall",
       gapAccepted: ["Echoortung"],
     },
-    { concept: "bio:k5:saeugsinn:f10", prompt: "Welche Rolle hat Kommunikationslaut?", answer: "Es ist das Laut zur Information an Artgenossen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Kommunikationslaut.", "Eine typische Verwechslung mit einem Nachbarbegriff von Kommunikationslaut.", "Ein Randdetail, das fachlich nicht erklärt, was Kommunikationslaut leistet."],
+    { concept: "bio:k5:saeugsinn:f10", prompt: "Welche Rolle hat Kommunikationslaut?", answer: "Es ist das Laut zur Information an Artgenossen.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Kommunikationslaut: Laut zur Information an Artgenossen",
       wissen: fw(
         "Warnung, Lockruf, Revier. Bezug: Säugersinne.",
@@ -835,7 +835,7 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Laut zur Information an Artgenossen",
       gapAccepted: ["Kommunikationslaut"],
     },
-    { concept: "bio:k5:saeugsinn:f11", prompt: "Welche Rolle hat Sinnesleistung?", answer: "Sie ist die Leistungsfähigkeit eines Sinnes, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sinnesleistung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sinnesleistung.", "Ein Randdetail, das fachlich nicht erklärt, was Sinnesleistung leistet."],
+    { concept: "bio:k5:saeugsinn:f11", prompt: "Welche Rolle hat Sinnesleistung?", answer: "Sie beschreibt leistungsfähigkeit eines Sinnes, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Sinnesleistung: Leistungsfähigkeit eines Sinnes",
       wissen: fw(
         "An Lebensweise angepasst. Bezug: Säugersinne.",
@@ -843,13 +843,13 @@ export const k5SaeugerSinne: BioBank = {
       gap: "Säugersinne: ___ — Leistungsfähigkeit eines Sinnes",
       gapAccepted: ["Sinnesleistung"],
     },
-    { concept: "bio:k5:saeugsinn:x0", prompt: "Welche Rolle hat das Sender-Empfänger-Modell?", answer: "Es ist das Informationsaustausch, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es nimmt das Signal wahr und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu das Sender-Empfänger-Modell.", "Eine typische Verwechslung mit einem Nachbarbegriff von das Sender-Empfänger-Modell."],
+    { concept: "bio:k5:saeugsinn:x0", prompt: "Welche Rolle hat das Sender-Empfänger-Modell?", answer: "Es beschreibt informationsaustausch, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Informationsaustausch.",
       wissen: fw(
         "Verhalten und Sinne koppeln Information zwischen Individuen.",
       ),
     },
-    { concept: "bio:k5:saeugsinn:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist das Vergleich, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es nimmt das Signal wahr und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k5:saeugsinn:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt vergleich, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Vergleich.",
       wissen: fw(
         "Hunde sind oft geruchsstark, Katzen nachtakzentuiert — beide kommunizieren mit Lauten und Körpersprache.",
@@ -857,18 +857,18 @@ export const k5SaeugerSinne: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:saeugsinn:p0", term: "Sender", meaning: "Erzeugt ein Signal in diesem physikalischen oder fachlichen Zusammenhang", wissen: "z. B. Laut oder Duft. Bezug: Säugersinne. Sender bedeutet: Erzeugt ein Signal in diesem physikalischen oder fachlichen Zusammenhang." },
-    { concept: "bio:k5:saeugsinn:p1", term: "Empfänger", meaning: "Nimmt das Signal wahr in diesem physikalischen oder fachlichen Zusammenhang", wissen: "Über Sinnesorgane. Bezug: Säugersinne. Empfänger bedeutet: Nimmt das Signal wahr in diesem physikalischen oder fachlichen Zusammenhang." },
-    { concept: "bio:k5:saeugsinn:p2", term: "Signal", meaning: "Ist das informationstragendes Zeichen", wissen: "Akustisch, optisch oder chemisch. Bezug: Säugersinne. Signal bedeutet: Ist das informationstragendes Zeichen." },
-    { concept: "bio:k5:saeugsinn:p3", term: "Geruchssinn", meaning: "Ist die Wahrnehmung von Duftstoffen", wissen: "Bei vielen Säugern sehr leistungsfähig. Bezug: Säugersinne. Geruchssinn bedeutet: Ist die Wahrnehmung von Duftstoffen." },
-    { concept: "bio:k5:saeugsinn:p4", term: "Gehör", meaning: "Ist die Wahrnehmung von Schall", wissen: "Wichtig für Kommunikation und Gefahr. Bezug: Säugersinne. Gehör bedeutet: Ist die Wahrnehmung von Schall." },
-    { concept: "bio:k5:saeugsinn:p5", term: "Sehsinn", meaning: "Ist die Wahrnehmung von Licht und Formen", wissen: "Je nach Art unterschiedlich ausgeprägt. Bezug: Säugersinne. Sehsinn bedeutet: Ist die Wahrnehmung von Licht und Formen." },
-    { concept: "bio:k5:saeugsinn:p6", term: "Tastsinn", meaning: "Ist die Wahrnehmung von Berührung", wissen: "z. B. über Schnurrhaare. Bezug: Säugersinne. Tastsinn bedeutet: Ist die Wahrnehmung von Berührung." },
-    { concept: "bio:k5:saeugsinn:p7", term: "Schnurrhaare", meaning: "Dient als Tastorgane am Kopf", wissen: "Erfassen Raumnahe Hindernisse. Bezug: Säugersinne. Schnurrhaare bedeutet: Dient als Tastorgane am Kopf." },
-    { concept: "bio:k5:saeugsinn:p8", term: "Ultraschall", meaning: "Ist das Sehr hohe Schallfrequenzen", wissen: "z. B. bei Fledermaus-Echoortung. Bezug: Säugersinne. Ultraschall bedeutet: Ist das Sehr hohe Schallfrequenzen." },
-    { concept: "bio:k5:saeugsinn:p9", term: "Echoortung", meaning: "Ist die Orientierung über zurückgeworfenen Schall", wissen: "Typisch für Fledermäuse. Bezug: Säugersinne. Echoortung bedeutet: Ist die Orientierung über zurückgeworfenen Schall." },
-    { concept: "bio:k5:saeugsinn:p10", term: "Kommunikationslaut", meaning: "Ist das Laut zur Information an Artgenossen", wissen: "Warnung, Lockruf, Revier. Bezug: Säugersinne. Kommunikationslaut bedeutet: Ist das Laut zur Information an Artgenossen." },
-    { concept: "bio:k5:saeugsinn:p11", term: "Sinnesleistung", meaning: "Ist die Leistungsfähigkeit eines Sinnes", wissen: "An Lebensweise angepasst. Bezug: Säugersinne. Sinnesleistung bedeutet: Ist die Leistungsfähigkeit eines Sinnes." },
+    { concept: "bio:k5:saeugsinn:p0", term: "Sender", meaning: "Beschreibt laut oder Duft als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Laut oder Duft. Bezug: Säugersinne. Sender bedeutet: Erzeugt ein Signal in diesem physikalischen oder fachlichen Zusammenhang." },
+    { concept: "bio:k5:saeugsinn:p1", term: "Empfänger", meaning: "Beschreibt nimmt das Signal wahr als biologisches Merkmal mit klarer Funktion.", wissen: "Über Sinnesorgane. Bezug: Säugersinne. Empfänger bedeutet: Nimmt das Signal wahr in diesem physikalischen oder fachlichen Zusammenhang." },
+    { concept: "bio:k5:saeugsinn:p2", term: "Signal", meaning: "Beschreibt akustisch, optisch oder chemisch als biologisches Merkmal mit klarer Funktion.", wissen: "Akustisch, optisch oder chemisch. Bezug: Säugersinne. Signal bedeutet: Ist das informationstragendes Zeichen." },
+    { concept: "bio:k5:saeugsinn:p3", term: "Geruchssinn", meaning: "Beschreibt bei vielen Säugern sehr leistungsfähig als biologisches Merkmal mit klarer Funktion.", wissen: "Bei vielen Säugern sehr leistungsfähig. Bezug: Säugersinne. Geruchssinn bedeutet: Ist die Wahrnehmung von Duftstoffen." },
+    { concept: "bio:k5:saeugsinn:p4", term: "Gehör", meaning: "Beschreibt wichtig für Kommunikation und Gefahr als biologisches Merkmal mit klarer Funktion.", wissen: "Wichtig für Kommunikation und Gefahr. Bezug: Säugersinne. Gehör bedeutet: Ist die Wahrnehmung von Schall." },
+    { concept: "bio:k5:saeugsinn:p5", term: "Sehsinn", meaning: "Beschreibt je nach Art unterschiedlich ausgeprägt als biologisches Merkmal mit klarer Funktion.", wissen: "Je nach Art unterschiedlich ausgeprägt. Bezug: Säugersinne. Sehsinn bedeutet: Ist die Wahrnehmung von Licht und Formen." },
+    { concept: "bio:k5:saeugsinn:p6", term: "Tastsinn", meaning: "Beschreibt wahrnehmung von Berührung als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. über Schnurrhaare. Bezug: Säugersinne. Tastsinn bedeutet: Ist die Wahrnehmung von Berührung." },
+    { concept: "bio:k5:saeugsinn:p7", term: "Schnurrhaare", meaning: "Beschreibt erfassen Raumnahe Hindernisse als biologisches Merkmal mit klarer Funktion.", wissen: "Erfassen Raumnahe Hindernisse. Bezug: Säugersinne. Schnurrhaare bedeutet: Dient als Tastorgane am Kopf." },
+    { concept: "bio:k5:saeugsinn:p8", term: "Ultraschall", meaning: "Beschreibt sehr hohe Schallfrequenzen als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. bei Fledermaus-Echoortung. Bezug: Säugersinne. Ultraschall bedeutet: Ist das Sehr hohe Schallfrequenzen." },
+    { concept: "bio:k5:saeugsinn:p9", term: "Echoortung", meaning: "Beschreibt typisch für Fledermäuse als biologisches Merkmal mit klarer Funktion.", wissen: "Typisch für Fledermäuse. Bezug: Säugersinne. Echoortung bedeutet: Ist die Orientierung über zurückgeworfenen Schall." },
+    { concept: "bio:k5:saeugsinn:p10", term: "Kommunikationslaut", meaning: "Beschreibt warnung, Lockruf, Revier als biologisches Merkmal mit klarer Funktion.", wissen: "Warnung, Lockruf, Revier. Bezug: Säugersinne. Kommunikationslaut bedeutet: Ist das Laut zur Information an Artgenossen." },
+    { concept: "bio:k5:saeugsinn:p11", term: "Sinnesleistung", meaning: "Beschreibt an Lebensweise angepasst als biologisches Merkmal mit klarer Funktion.", wissen: "An Lebensweise angepasst. Bezug: Säugersinne. Sinnesleistung bedeutet: Ist die Leistungsfähigkeit eines Sinnes." },
   ],
   trueFalse: [
     {
@@ -894,7 +894,7 @@ export const k5SaeugerSozial: BioBank = {
   url: "https://de.wikipedia.org/wiki/Sozialverhalten",
   conceptPrefix: "bio:k5:saeugsoc",
   facts: [
-    { concept: "bio:k5:saeugsoc:f0", prompt: "Welche Rolle hat Rudel?", answer: "Es ist die soziale Gruppe mancher Säuger, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es nimmt das Signal wahr und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Rudel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Rudel."],
+    { concept: "bio:k5:saeugsoc:f0", prompt: "Welche Rolle hat Rudel?", answer: "Es beschreibt soziale Gruppe mancher Säuger, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Rudel: Soziale Gruppe mancher Säuger",
       wissen: fw(
         "Gemeinsame Jagd oder Schutz möglich. Bezug: Säugersozial.",
@@ -902,7 +902,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Soziale Gruppe mancher Säuger",
       gapAccepted: ["Rudel"],
     },
-    { concept: "bio:k5:saeugsoc:f1", prompt: "Was kennzeichnet Kooperation?", answer: "Sie ist die Zusammenarbeit zum gemeinsamen Vorteil, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie nimmt das Signal wahr und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Kooperation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Kooperation."],
+    { concept: "bio:k5:saeugsoc:f1", prompt: "Was kennzeichnet Kooperation?", answer: "Sie beschreibt zusammenarbeit zum gemeinsamen Vorteil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Kooperation: Zusammenarbeit zum gemeinsamen Vorteil",
       wissen: fw(
         "z. B. bei der Jagd. Bezug: Säugersozial.",
@@ -910,7 +910,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Zusammenarbeit zum gemeinsamen Vorteil",
       gapAccepted: ["Kooperation"],
     },
-    { concept: "bio:k5:saeugsoc:f2", prompt: "Was beschreibt Rangordnung?", answer: "Sie ist die Hierarchie in der Gruppe, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie nimmt das Signal wahr und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Rangordnung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Rangordnung."],
+    { concept: "bio:k5:saeugsoc:f2", prompt: "Was beschreibt Rangordnung?", answer: "Sie beschreibt hierarchie in der Gruppe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Rangordnung: Hierarchie in der Gruppe",
       wissen: fw(
         "Regelt Zugang zu Ressourcen. Bezug: Säugersozial.",
@@ -918,7 +918,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Hierarchie in der Gruppe",
       gapAccepted: ["Rangordnung"],
     },
-    { concept: "bio:k5:saeugsoc:f3", prompt: "Was beschreibt Aggression?", answer: "Sie ist die Angriffs- oder Drohverhalten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie nimmt das Signal wahr und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Aggression.", "Eine typische Verwechslung mit einem Nachbarbegriff von Aggression."],
+    { concept: "bio:k5:saeugsoc:f3", prompt: "Was beschreibt Aggression?", answer: "Sie beschreibt angriffs- oder Drohverhalten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Aggression: Angriffs- oder Drohverhalten",
       wissen: fw(
         "Kann Konflikte klären oder eskalieren. Bezug: Säugersozial.",
@@ -926,7 +926,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Angriffs- oder Drohverhalten",
       gapAccepted: ["Aggression"],
     },
-    { concept: "bio:k5:saeugsoc:f4", prompt: "Was kennzeichnet Revier?", answer: "Er ist den verteidigtes Gebiet, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Er nimmt das Signal wahr sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Revier.", "Eine typische Verwechslung mit einem Nachbarbegriff von Revier."],
+    { concept: "bio:k5:saeugsoc:f4", prompt: "Was kennzeichnet Revier?", answer: "Er beschreibt verteidigtes Gebiet, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(
         "Sichert Nahrung und Fortpflanzung. Bezug: Säugersozial.",
@@ -934,7 +934,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Verteidigtes Gebiet",
       gapAccepted: ["Revier"],
     },
-    { concept: "bio:k5:saeugsoc:f5", prompt: "Welche Rolle hat Sozialbindung?", answer: "Sie ist die dauerhafte Beziehung zwischen Individuen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie nimmt das Signal wahr und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sozialbindung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sozialbindung."],
+    { concept: "bio:k5:saeugsoc:f5", prompt: "Welche Rolle hat Sozialbindung?", answer: "Sie beschreibt dauerhafte Beziehung zwischen Individuen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Sozialbindung: Dauerhafte Beziehung zwischen Individuen",
       wissen: fw(
         "z. B. Eltern-Junges. Bezug: Säugersozial.",
@@ -942,7 +942,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Dauerhafte Beziehung zwischen Individuen",
       gapAccepted: ["Sozialbindung"],
     },
-    { concept: "bio:k5:saeugsoc:f6", prompt: "Welche Rolle hat Imponieren?", answer: "Es ist das Status zeigen ohne sofortigen Kampf, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es nimmt das Signal wahr und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Imponieren.", "Eine typische Verwechslung mit einem Nachbarbegriff von Imponieren."],
+    { concept: "bio:k5:saeugsoc:f6", prompt: "Welche Rolle hat Imponieren?", answer: "Es ist das Status zeigen ohne sofortigen Kampf.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Imponieren: Status zeigen ohne sofortigen Kampf",
       wissen: fw(
         "Spart Verletzungsrisiko. Bezug: Säugersozial.",
@@ -950,7 +950,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Status zeigen ohne sofortigen Kampf",
       gapAccepted: ["Imponieren"],
     },
-    { concept: "bio:k5:saeugsoc:f7", prompt: "Welche Rolle hat Unterwerfung?", answer: "Die Unterwerfung bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, die man von ähnlichen Größen klar unterscheiden kann.", wrong: ["Sie nimmt das Signal wahr und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Unterwerfung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Unterwerfung."],
+    { concept: "bio:k5:saeugsoc:f7", prompt: "Welche Rolle hat Unterwerfung?", answer: "Sie beschreibt unterwerfung bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Unterwerfung: Beschwichtigungsverhalten",
       wissen: fw(
         "Beendet Konflikte oft. Bezug: Säugersozial.",
@@ -958,7 +958,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Beschwichtigungsverhalten",
       gapAccepted: ["Unterwerfung"],
     },
-    { concept: "bio:k5:saeugsoc:f8", prompt: "Welche Rolle hat Gruppenjagd?", answer: "Es ist das gemeinsame Beutemachen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gruppenjagd.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gruppenjagd.", "Ein Randdetail, das fachlich nicht erklärt, was Gruppenjagd leistet."],
+    { concept: "bio:k5:saeugsoc:f8", prompt: "Welche Rolle hat Gruppenjagd?", answer: "Es beschreibt gemeinsame Beutemachen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gruppenjagd: Gemeinsames Beutemachen",
       wissen: fw(
         "Erhöht Erfolg bei großer Beute. Bezug: Säugersozial.",
@@ -966,7 +966,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Gemeinsames Beutemachen",
       gapAccepted: ["Gruppenjagd"],
     },
-    { concept: "bio:k5:saeugsoc:f9", prompt: "Woran erkennt man Alarmverhalten?", answer: "Es ist den Warnen der Gruppe, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Alarmverhalten.", "Eine typische Verwechslung mit einem Nachbarbegriff von Alarmverhalten.", "Ein Randdetail, das fachlich nicht erklärt, was Alarmverhalten leistet."],
+    { concept: "bio:k5:saeugsoc:f9", prompt: "Woran erkennt man Alarmverhalten?", answer: "Es beschreibt warnen der Gruppe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Alarmverhalten: Warnen der Gruppe",
       wissen: fw(
         "Schützt Artgenossen. Bezug: Säugersozial.",
@@ -974,7 +974,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Warnen der Gruppe",
       gapAccepted: ["Alarmverhalten"],
     },
-    { concept: "bio:k5:saeugsoc:f10", prompt: "Was beschreibt Alleinerziehend?", answer: "Es ist den Elterntien versorgt Junge, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Alleinerziehend.", "Eine typische Verwechslung mit einem Nachbarbegriff von Alleinerziehend.", "Ein Randdetail, das fachlich nicht erklärt, was Alleinerziehend leistet."],
+    { concept: "bio:k5:saeugsoc:f10", prompt: "Was beschreibt Alleinerziehend?", answer: "Es beschreibt elterntien versorgt Junge, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
         "Je nach Art unterschiedlich. Bezug: Säugersozial.",
@@ -982,7 +982,7 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Ein Elterntier versorgt Junge",
       gapAccepted: ["Alleinerziehend"],
     },
-    { concept: "bio:k5:saeugsoc:f11", prompt: "Was kennzeichnet Gruppenleben?", answer: "Es ist den Leben in sozialer Einheit, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gruppenleben.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gruppenleben.", "Ein Randdetail, das fachlich nicht erklärt, was Gruppenleben leistet."],
+    { concept: "bio:k5:saeugsoc:f11", prompt: "Was kennzeichnet Gruppenleben?", answer: "Es beschreibt leben in sozialer Einheit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gruppenleben: Leben in sozialer Einheit",
       wissen: fw(
         "Vorteile und Konkurrenz zugleich. Bezug: Säugersozial.",
@@ -990,13 +990,13 @@ export const k5SaeugerSozial: BioBank = {
       gap: "Säugersozial: ___ — Leben in sozialer Einheit",
       gapAccepted: ["Gruppenleben"],
     },
-    { concept: "bio:k5:saeugsoc:x0", prompt: "Woran erkennt man Begriff?", answer: "Es ist das Sozialvorteil, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es regelt Zugang zu Ressourcen und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k5:saeugsoc:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt sozialvorteil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Sozialvorteil.",
       wissen: fw(
         "Gemeinsames Verhalten kann Feinde abwehren und große Beute erlegen.",
       ),
     },
-    { concept: "bio:k5:saeugsoc:x1", prompt: "Was kennzeichnet eine Rangordnung?", answer: "Sie regelt Konflikte und Ressourcenverteilung und lässt sich im Experiment oder an einem Beispiel prüfen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu eine Rangordnung.", "Eine typische Verwechslung mit einem Nachbarbegriff von eine Rangordnung.", "Ein Randdetail, das fachlich nicht erklärt, was eine Rangordnung leistet."],
+    { concept: "bio:k5:saeugsoc:x1", prompt: "Was kennzeichnet eine Rangordnung?", answer: "Sie beschreibt sie regelt Konflikte und Ressourcenverteilung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Hierarchie.",
       wissen: fw(
         "Klare Ränge reduzieren ständige Kämpfe, können aber Dominanzkosten erzeugen.",
@@ -1004,18 +1004,18 @@ export const k5SaeugerSozial: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k5:saeugsoc:p0", term: "Rudel", meaning: "Ist die soziale Gruppe mancher Säuger", wissen: "Gemeinsame Jagd oder Schutz möglich. Bezug: Säugersozial. Rudel bedeutet: Ist die soziale Gruppe mancher Säuger." },
-    { concept: "bio:k5:saeugsoc:p1", term: "Kooperation", meaning: "Ist die Zusammenarbeit zum gemeinsamen Vorteil", wissen: "z. B. bei der Jagd. Bezug: Säugersozial. Kooperation bedeutet: Ist die Zusammenarbeit zum gemeinsamen Vorteil." },
-    { concept: "bio:k5:saeugsoc:p2", term: "Rangordnung", meaning: "Regelt Zugang zu Ressourcen in diesem physikalischen oder fachlichen Zusammenhang", wissen: "Regelt Zugang zu Ressourcen. Bezug: Säugersozial. Rangordnung bedeutet: Regelt Zugang zu Ressourcen in diesem physikalischen oder fachlichen Zusammenhang." },
-    { concept: "bio:k5:saeugsoc:p3", term: "Aggression", meaning: "Ist die Angriffs- oder Drohverhalten", wissen: "Kann Konflikte klären oder eskalieren. Bezug: Säugersozial. Aggression bedeutet: Ist die Angriffs- oder Drohverhalten." },
-    { concept: "bio:k5:saeugsoc:p4", term: "Revier", meaning: "Ist der verteidigtes Gebiet", wissen: "Sichert Nahrung und Fortpflanzung. Bezug: Säugersozial. Revier bedeutet: Ist der verteidigtes Gebiet." },
-    { concept: "bio:k5:saeugsoc:p5", term: "Sozialbindung", meaning: "Ist die dauerhafte Beziehung zwischen Individuen", wissen: "z. B. Eltern-Junges. Bezug: Säugersozial. Sozialbindung bedeutet: Ist die dauerhafte Beziehung zwischen Individuen." },
-    { concept: "bio:k5:saeugsoc:p6", term: "Imponieren", meaning: "Ist das Status zeigen ohne sofortigen Kampf", wissen: "Spart Verletzungsrisiko. Bezug: Säugersozial. Imponieren bedeutet: Ist das Status zeigen ohne sofortigen Kampf." },
-    { concept: "bio:k5:saeugsoc:p7", term: "Unterwerfung", meaning: "Ist der Beschwichtigungsverhalten", wissen: "Beendet Konflikte oft. Bezug: Säugersozial. Unterwerfung bedeutet: Ist der Beschwichtigungsverhalten." },
-    { concept: "bio:k5:saeugsoc:p8", term: "Gruppenjagd", meaning: "Erhöht Erfolg bei großer Beute; es handelt sich um das gemeinsame Beutemachen", wissen: "Erhöht Erfolg bei großer Beute. Bezug: Säugersozial. Gruppenjagd bedeutet: Erhöht Erfolg bei großer Beute; es handelt sich um das gemeinsame Beutemachen." },
-    { concept: "bio:k5:saeugsoc:p9", term: "Alarmverhalten", meaning: "Ist der Warnen der Gruppe", wissen: "Schützt Artgenossen. Bezug: Säugersozial. Alarmverhalten bedeutet: Ist der Warnen der Gruppe." },
-    { concept: "bio:k5:saeugsoc:p10", term: "Alleinerziehend", meaning: "Ist der Elterntien versorgt Junge", wissen: "Je nach Art unterschiedlich. Bezug: Säugersozial. Alleinerziehend bedeutet: Ist der Elterntien versorgt Junge." },
-    { concept: "bio:k5:saeugsoc:p11", term: "Gruppenleben", meaning: "Ist der Leben in sozialer Einheit", wissen: "Vorteile und Konkurrenz zugleich. Bezug: Säugersozial. Gruppenleben bedeutet: Ist der Leben in sozialer Einheit." },
+    { concept: "bio:k5:saeugsoc:p0", term: "Rudel", meaning: "Beschreibt gemeinsame Jagd oder Schutz möglich als biologisches Merkmal mit klarer Funktion.", wissen: "Gemeinsame Jagd oder Schutz möglich. Bezug: Säugersozial. Rudel bedeutet: Ist die soziale Gruppe mancher Säuger." },
+    { concept: "bio:k5:saeugsoc:p1", term: "Kooperation", meaning: "Beschreibt bei der Jagd als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. bei der Jagd. Bezug: Säugersozial. Kooperation bedeutet: Ist die Zusammenarbeit zum gemeinsamen Vorteil." },
+    { concept: "bio:k5:saeugsoc:p2", term: "Rangordnung", meaning: "Beschreibt regelt Zugang zu Ressourcen als biologisches Merkmal mit klarer Funktion.", wissen: "Regelt Zugang zu Ressourcen. Bezug: Säugersozial. Rangordnung bedeutet: Regelt Zugang zu Ressourcen in diesem physikalischen oder fachlichen Zusammenhang." },
+    { concept: "bio:k5:saeugsoc:p3", term: "Aggression", meaning: "Beschreibt kann Konflikte klären oder eskalieren als biologisches Merkmal mit klarer Funktion.", wissen: "Kann Konflikte klären oder eskalieren. Bezug: Säugersozial. Aggression bedeutet: Ist die Angriffs- oder Drohverhalten." },
+    { concept: "bio:k5:saeugsoc:p4", term: "Revier", meaning: "Beschreibt sichert Nahrung und Fortpflanzung als biologisches Merkmal mit klarer Funktion.", wissen: "Sichert Nahrung und Fortpflanzung. Bezug: Säugersozial. Revier bedeutet: Ist der verteidigtes Gebiet." },
+    { concept: "bio:k5:saeugsoc:p5", term: "Sozialbindung", meaning: "Beschreibt dauerhafte Beziehung zwischen Individuen als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Eltern-Junges. Bezug: Säugersozial. Sozialbindung bedeutet: Ist die dauerhafte Beziehung zwischen Individuen." },
+    { concept: "bio:k5:saeugsoc:p6", term: "Imponieren", meaning: "Beschreibt status zeigen ohne sofortigen Kampf als biologisches Merkmal mit klarer Funktion.", wissen: "Spart Verletzungsrisiko. Bezug: Säugersozial. Imponieren bedeutet: Ist das Status zeigen ohne sofortigen Kampf." },
+    { concept: "bio:k5:saeugsoc:p7", term: "Unterwerfung", meaning: "Beschreibt beendet Konflikte oft als biologisches Merkmal mit klarer Funktion.", wissen: "Beendet Konflikte oft. Bezug: Säugersozial. Unterwerfung bedeutet: Ist der Beschwichtigungsverhalten." },
+    { concept: "bio:k5:saeugsoc:p8", term: "Gruppenjagd", meaning: "Beschreibt erhöht Erfolg bei großer Beute als biologisches Merkmal mit klarer Funktion.", wissen: "Erhöht Erfolg bei großer Beute. Bezug: Säugersozial. Gruppenjagd bedeutet: Erhöht Erfolg bei großer Beute; es handelt sich um das gemeinsame Beutemachen." },
+    { concept: "bio:k5:saeugsoc:p9", term: "Alarmverhalten", meaning: "Beschreibt der Warnen der Gruppe als biologisches Merkmal mit klarer Funktion.", wissen: "Schützt Artgenossen. Bezug: Säugersozial. Alarmverhalten bedeutet: Ist der Warnen der Gruppe." },
+    { concept: "bio:k5:saeugsoc:p10", term: "Alleinerziehend", meaning: "Beschreibt je nach Art unterschiedlich als biologisches Merkmal mit klarer Funktion.", wissen: "Je nach Art unterschiedlich. Bezug: Säugersozial. Alleinerziehend bedeutet: Ist der Elterntien versorgt Junge." },
+    { concept: "bio:k5:saeugsoc:p11", term: "Gruppenleben", meaning: "Beschreibt vorteile und Konkurrenz zugleich als biologisches Merkmal mit klarer Funktion.", wissen: "Vorteile und Konkurrenz zugleich. Bezug: Säugersozial. Gruppenleben bedeutet: Ist der Leben in sozialer Einheit." },
   ],
   trueFalse: [
     {
@@ -1041,7 +1041,7 @@ export const k6InsektenAtmung: BioBank = {
   url: "https://de.wikipedia.org/wiki/Trachee_(Wirbellose)",
   conceptPrefix: "bio:k6:insatm",
   facts: [
-    { concept: "bio:k6:insatm:f0", prompt: "Was kennzeichnet Trachee?", answer: "Sie ist die Luftröhre im Insektenkörper, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie regelt Zugang zu Ressourcen sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Trachee.", "Eine typische Verwechslung mit einem Nachbarbegriff von Trachee."],
+    { concept: "bio:k6:insatm:f0", prompt: "Was kennzeichnet Trachee?", answer: "Sie beschreibt luftröhre im Insektenkörper, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Trachee: Luftröhre im Insektenkörper",
       wissen: fw(
         "Leitet Luft zu den Geweben. Bezug: Insektenatmung.",
@@ -1049,7 +1049,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Luftröhre im Insektenkörper",
       gapAccepted: ["Trachee"],
     },
-    { concept: "bio:k6:insatm:f1", prompt: "Welche Rolle hat Tracheole?", answer: "Sie ist die feinste Endverzweigung der Tracheen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie regelt Zugang zu Ressourcen sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Tracheole.", "Eine typische Verwechslung mit einem Nachbarbegriff von Tracheole."],
+    { concept: "bio:k6:insatm:f1", prompt: "Welche Rolle hat Tracheole?", answer: "Sie beschreibt feinste Endverzweigung der Tracheen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Tracheole: Feinste Endverzweigung der Tracheen",
       wissen: fw(
         "Nahe an den Zellen. Bezug: Insektenatmung.",
@@ -1057,7 +1057,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Feinste Endverzweigung der Tracheen",
       gapAccepted: ["Tracheole"],
     },
-    { concept: "bio:k6:insatm:f2", prompt: "Was beschreibt Stigma?", answer: "Es ist die Atemöffnung an der Körperseite, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es regelt Zugang zu Ressourcen und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stigma.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stigma."],
+    { concept: "bio:k6:insatm:f2", prompt: "Was beschreibt Stigma?", answer: "Es beschreibt atemöffnung an der Körperseite, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stigma: Atemöffnung an der Körperseite",
       wissen: fw(
         "Eintritt der Luft. Bezug: Insektenatmung.",
@@ -1065,7 +1065,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Atemöffnung an der Körperseite",
       gapAccepted: ["Stigma"],
     },
-    { concept: "bio:k6:insatm:f3", prompt: "Was kennzeichnet Diffusion?", answer: "Sie beschreibt die Nettobewegung von Teilchen entlang des Konzentrationsgefälles, sodass man Diffusion von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Diffusion.", "Eine typische Verwechslung mit einem Nachbarbegriff von Diffusion.", "Ein Randdetail, das fachlich nicht erklärt, was Diffusion leistet."],
+    { concept: "bio:k6:insatm:f3", prompt: "Was kennzeichnet Diffusion?", answer: "Sie beschreibt die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Diffusion: Gasbewegung ohne Pumpe wie Lunge",
       wissen: fw(
         "Treibt O₂ und CO₂ in Tracheen. Bezug: Insektenatmung.",
@@ -1073,7 +1073,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Gasbewegung ohne Pumpe wie Lunge",
       gapAccepted: ["Diffusion"],
     },
-    { concept: "bio:k6:insatm:f4", prompt: "Woran erkennt man Chitinpanzer?", answer: "Er ist die äußere Körperhülle, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Er regelt Zugang zu Ressourcen und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Chitinpanzer.", "Eine typische Verwechslung mit einem Nachbarbegriff von Chitinpanzer."],
+    { concept: "bio:k6:insatm:f4", prompt: "Woran erkennt man Chitinpanzer?", answer: "Er beschreibt äußere Körperhülle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Chitinpanzer: Äußere Körperhülle",
       wissen: fw(
         "Schützt, begrenzt aber Atmung mit. Bezug: Insektenatmung.",
@@ -1081,7 +1081,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Äußere Körperhülle",
       gapAccepted: ["Chitinpanzer"],
     },
-    { concept: "bio:k6:insatm:f5", prompt: "Welche Rolle hat Wasserkäferkieme?", answer: "Sie ist die Anpassung mancher Wasserinsekten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie regelt Zugang zu Ressourcen sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wasserkäferkieme.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wasserkäferkieme."],
+    { concept: "bio:k6:insatm:f5", prompt: "Welche Rolle hat Wasserkäferkieme?", answer: "Sie beschreibt anpassung mancher Wasserinsekten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Wasserkäferkieme: Anpassung mancher Wasserinsekten",
       wissen: fw(
         "Nimmt O₂ aus Wasser oder Luftvorrat. Bezug: Insektenatmung.",
@@ -1089,7 +1089,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Anpassung mancher Wasserinsekten",
       gapAccepted: ["Wasserkäferkieme"],
     },
-    { concept: "bio:k6:insatm:f6", prompt: "Welche Rolle hat Luftvorrat?", answer: "Es ist die mitgeführte Luftblase unter Wasser, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es regelt Zugang zu Ressourcen und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Luftvorrat.", "Eine typische Verwechslung mit einem Nachbarbegriff von Luftvorrat."],
+    { concept: "bio:k6:insatm:f6", prompt: "Welche Rolle hat Luftvorrat?", answer: "Es beschreibt mitgeführte Luftblase unter Wasser, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Luftvorrat: Mitgeführte Luftblase unter Wasser",
       wissen: fw(
         "Ermöglicht Tauchen. Bezug: Insektenatmung.",
@@ -1097,7 +1097,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Mitgeführte Luftblase unter Wasser",
       gapAccepted: ["Luftvorrat"],
     },
-    { concept: "bio:k6:insatm:f7", prompt: "Welche Rolle hat Oberflächenvergrößerung?", answer: "Sie ist die Viele feine Röhren vergrößern Fläche, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie regelt Zugang zu Ressourcen sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Oberflächenvergrößerung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Oberflächenvergrößerung."],
+    { concept: "bio:k6:insatm:f7", prompt: "Welche Rolle hat Oberflächenvergrößerung?", answer: "Sie ist die Viele feine Röhren vergrößern Fläche.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Oberflächenvergrößerung: Viele feine Röhren vergrößern Fläche",
       wissen: fw(
         "Effizienter Gasaustausch. Bezug: Insektenatmung.",
@@ -1105,7 +1105,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Viele feine Röhren vergrößern Fläche",
       gapAccepted: ["Oberflächenvergrößerung"],
     },
-    { concept: "bio:k6:insatm:f8", prompt: "Welche Rolle hat Landatmung?", answer: "Sie ist die Atmung mit Luft über Tracheen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Landatmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Landatmung.", "Ein Randdetail, das fachlich nicht erklärt, was Landatmung leistet."],
+    { concept: "bio:k6:insatm:f8", prompt: "Welche Rolle hat Landatmung?", answer: "Sie beschreibt die Atmung mit Luft über Tracheen.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Landatmung: Atmung mit Luft über Tracheen",
       wissen: fw(
         "Typisch für Landinsekten. Bezug: Insektenatmung.",
@@ -1113,7 +1113,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Atmung mit Luft über Tracheen",
       gapAccepted: ["Landatmung"],
     },
-    { concept: "bio:k6:insatm:f9", prompt: "Welche Rolle hat Stoffwechselrate?", answer: "Sie ist die Geschwindigkeit des Stoffwechsels, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie erhöht Erfolg bei großer Beute; es handelt sich um das gemeinsame Beutemachen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stoffwechselrate.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stoffwechselrate."],
+    { concept: "bio:k6:insatm:f9", prompt: "Welche Rolle hat Stoffwechselrate?", answer: "Sie beschreibt geschwindigkeit des Stoffwechsels, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stoffwechselrate: Geschwindigkeit des Stoffwechsels",
       wissen: fw(
         "Beeinflusst Sauerstoffbedarf. Bezug: Insektenatmung.",
@@ -1121,7 +1121,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Geschwindigkeit des Stoffwechsels",
       gapAccepted: ["Stoffwechselrate"],
     },
-    { concept: "bio:k6:insatm:f10", prompt: "Woran erkennt man Häutung?", answer: "Sie ist den Abstreifen des Panzers, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Häutung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Häutung.", "Ein Randdetail, das fachlich nicht erklärt, was Häutung leistet."],
+    { concept: "bio:k6:insatm:f10", prompt: "Woran erkennt man Häutung?", answer: "Sie beschreibt abstreifen des Panzers, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Häutung: Abstreifen des Panzers",
       wissen: fw(
         "Tracheen wachsen mit dem Körper. Bezug: Insektenatmung.",
@@ -1129,7 +1129,7 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Abstreifen des Panzers",
       gapAccepted: ["Häutung"],
     },
-    { concept: "bio:k6:insatm:f11", prompt: "Was kennzeichnet Gasaustausch?", answer: "Es ist die aufnahme O₂ und abgabe CO₂, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gasaustausch.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gasaustausch."],
+    { concept: "bio:k6:insatm:f11", prompt: "Was kennzeichnet Gasaustausch?", answer: "Es beschreibt die aufnahme O₂ und abgabe CO₂.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Gasaustausch: Aufnahme O₂, Abgabe CO₂",
       wissen: fw(
         "Ziel der Tracheenatmung. Bezug: Insektenatmung.",
@@ -1137,13 +1137,13 @@ export const k6InsektenAtmung: BioBank = {
       gap: "Insektenatmung: ___ — Aufnahme O₂, Abgabe CO₂",
       gapAccepted: ["Gasaustausch"],
     },
-    { concept: "bio:k6:insatm:x0", prompt: "Woran erkennt man x0?", answer: "Es ist das Tracheensystem, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0."],
+    { concept: "bio:k6:insatm:x0", prompt: "Woran erkennt man x0?", answer: "Es beschreibt tracheensystem, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Tracheensystem.",
       wissen: fw(
         "Luft gelangt durch Stigmen in ein Röhrensystem bis nahe an die Zellen.",
       ),
     },
-    { concept: "bio:k6:insatm:x1", prompt: "Woran erkennt man Begriff?", answer: "Es ist die Direktversorgung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k6:insatm:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt direktversorgung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Direktversorgung.",
       wissen: fw(
         "Im Gegensatz zu Lungenatmung entfällt ein zentraler Gasaustauschort mit Bluttransport oft weitgehend.",
@@ -1151,18 +1151,18 @@ export const k6InsektenAtmung: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:insatm:p0", term: "Trachee", meaning: "Leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper", wissen: "Leitet Luft zu den Geweben. Bezug: Insektenatmung. Trachee bedeutet: Leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper." },
-    { concept: "bio:k6:insatm:p1", term: "Tracheole", meaning: "Ist die feinste Endverzweigung der Tracheen", wissen: "Nahe an den Zellen. Bezug: Insektenatmung. Tracheole bedeutet: Ist die feinste Endverzweigung der Tracheen." },
-    { concept: "bio:k6:insatm:p2", term: "Stigma", meaning: "Ist die Atemöffnung an der Körperseite", wissen: "Eintritt der Luft. Bezug: Insektenatmung. Stigma bedeutet: Ist die Atemöffnung an der Körperseite." },
-    { concept: "bio:k6:insatm:p3", term: "Diffusion", meaning: "Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles", wissen: "Treibt O₂ und CO₂ in Tracheen. Bezug: Insektenatmung. Diffusion bedeutet: Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles." },
-    { concept: "bio:k6:insatm:p4", term: "Chitinpanzer", meaning: "Schützt, begrenzt aber Atmung mit; es handelt sich um die äußere Körperhülle", wissen: "Schützt, begrenzt aber Atmung mit. Bezug: Insektenatmung. Chitinpanzer bedeutet: Schützt, begrenzt aber Atmung mit; es handelt sich um die äußere Körperhülle." },
-    { concept: "bio:k6:insatm:p5", term: "Wasserkäferkieme", meaning: "Nimmt O₂ aus Wasser oder Luftvorrat; es handelt sich um die Anpassung mancher Wasserinsekten", wissen: "Nimmt O₂ aus Wasser oder Luftvorrat. Bezug: Insektenatmung. Wasserkäferkieme bedeutet: Nimmt O₂ aus Wasser oder Luftvorrat; es handelt sich um die Anpassung mancher Wasserinsekten." },
-    { concept: "bio:k6:insatm:p6", term: "Luftvorrat", meaning: "Dient als mitgeführte Luftblase unter Wasser", wissen: "Ermöglicht Tauchen. Bezug: Insektenatmung. Luftvorrat bedeutet: Dient als mitgeführte Luftblase unter Wasser." },
-    { concept: "bio:k6:insatm:p7", term: "Oberflächenvergrößerung", meaning: "Ist die Viele feine Röhren vergrößern Fläche", wissen: "Effizienter Gasaustausch. Bezug: Insektenatmung. Oberflächenvergrößerung bedeutet: Ist die Viele feine Röhren vergrößern Fläche." },
-    { concept: "bio:k6:insatm:p8", term: "Landatmung", meaning: "Ist die Atmung mit Luft über Tracheen", wissen: "Typisch für Landinsekten. Bezug: Insektenatmung. Landatmung bedeutet: Ist die Atmung mit Luft über Tracheen." },
-    { concept: "bio:k6:insatm:p9", term: "Stoffwechselrate", meaning: "Ist die Geschwindigkeit des Stoffwechsels", wissen: "Beeinflusst Sauerstoffbedarf. Bezug: Insektenatmung. Stoffwechselrate bedeutet: Ist die Geschwindigkeit des Stoffwechsels." },
-    { concept: "bio:k6:insatm:p10", term: "Häutung", meaning: "Ist der Abstreifen des Panzers", wissen: "Tracheen wachsen mit dem Körper. Bezug: Insektenatmung. Häutung bedeutet: Ist der Abstreifen des Panzers." },
-    { concept: "bio:k6:insatm:p11", term: "Gasaustausch", meaning: "Ist die aufnahme O₂ und abgabe CO₂", wissen: "Ziel der Tracheenatmung. Bezug: Insektenatmung. Gasaustausch bedeutet: Ist die aufnahme O₂ und abgabe CO₂." },
+    { concept: "bio:k6:insatm:p0", term: "Trachee", meaning: "Leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", wissen: "Leitet Luft zu den Geweben. Bezug: Insektenatmung. Trachee bedeutet: Leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper." },
+    { concept: "bio:k6:insatm:p1", term: "Tracheole", meaning: "Beschreibt nahe an den Zellen als biologisches Merkmal mit klarer Funktion.", wissen: "Nahe an den Zellen. Bezug: Insektenatmung. Tracheole bedeutet: Ist die feinste Endverzweigung der Tracheen." },
+    { concept: "bio:k6:insatm:p2", term: "Stigma", meaning: "Beschreibt eintritt der Luft als biologisches Merkmal mit klarer Funktion.", wissen: "Eintritt der Luft. Bezug: Insektenatmung. Stigma bedeutet: Ist die Atemöffnung an der Körperseite." },
+    { concept: "bio:k6:insatm:p3", term: "Diffusion", meaning: "Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wissen: "Treibt O₂ und CO₂ in Tracheen. Bezug: Insektenatmung. Diffusion bedeutet: Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles." },
+    { concept: "bio:k6:insatm:p4", term: "Chitinpanzer", meaning: "Beschreibt schützt, begrenzt aber Atmung mit als biologisches Merkmal mit klarer Funktion.", wissen: "Schützt, begrenzt aber Atmung mit. Bezug: Insektenatmung. Chitinpanzer bedeutet: Schützt, begrenzt aber Atmung mit; es handelt sich um die äußere Körperhülle." },
+    { concept: "bio:k6:insatm:p5", term: "Wasserkäferkieme", meaning: "Nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.", wissen: "Nimmt O₂ aus Wasser oder Luftvorrat. Bezug: Insektenatmung. Wasserkäferkieme bedeutet: Nimmt O₂ aus Wasser oder Luftvorrat; es handelt sich um die Anpassung mancher Wasserinsekten." },
+    { concept: "bio:k6:insatm:p6", term: "Luftvorrat", meaning: "Beschreibt mitgeführte Luftblase unter Wasser als biologisches Merkmal mit klarer Funktion.", wissen: "Ermöglicht Tauchen. Bezug: Insektenatmung. Luftvorrat bedeutet: Dient als mitgeführte Luftblase unter Wasser." },
+    { concept: "bio:k6:insatm:p7", term: "Oberflächenvergrößerung", meaning: "Beschreibt viele feine Röhren vergrößern Fläche als biologisches Merkmal mit klarer Funktion.", wissen: "Effizienter Gasaustausch. Bezug: Insektenatmung. Oberflächenvergrößerung bedeutet: Ist die Viele feine Röhren vergrößern Fläche." },
+    { concept: "bio:k6:insatm:p8", term: "Landatmung", meaning: "Beschreibt typisch für Landinsekten als biologisches Merkmal mit klarer Funktion.", wissen: "Typisch für Landinsekten. Bezug: Insektenatmung. Landatmung bedeutet: Ist die Atmung mit Luft über Tracheen." },
+    { concept: "bio:k6:insatm:p9", term: "Stoffwechselrate", meaning: "Beschreibt geschwindigkeit des Stoffwechsels als biologisches Merkmal mit klarer Funktion.", wissen: "Beeinflusst Sauerstoffbedarf. Bezug: Insektenatmung. Stoffwechselrate bedeutet: Ist die Geschwindigkeit des Stoffwechsels." },
+    { concept: "bio:k6:insatm:p10", term: "Häutung", meaning: "Beschreibt tracheen wachsen mit dem Körper als biologisches Merkmal mit klarer Funktion.", wissen: "Tracheen wachsen mit dem Körper. Bezug: Insektenatmung. Häutung bedeutet: Ist der Abstreifen des Panzers." },
+    { concept: "bio:k6:insatm:p11", term: "Gasaustausch", meaning: "Beschreibt ziel der Tracheenatmung als biologisches Merkmal mit klarer Funktion.", wissen: "Ziel der Tracheenatmung. Bezug: Insektenatmung. Gasaustausch bedeutet: Ist die aufnahme O₂ und abgabe CO₂." },
   ],
   trueFalse: [
     {
@@ -1188,7 +1188,7 @@ export const k6SkelettVergleich: BioBank = {
   url: "https://de.wikipedia.org/wiki/Skelett",
   conceptPrefix: "bio:k6:skverg",
   facts: [
-    { concept: "bio:k6:skverg:f0", prompt: "Was beschreibt Innenskelett?", answer: "Es ist das Stützgerüst im Körperinneren, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Innenskelett.", "Eine typische Verwechslung mit einem Nachbarbegriff von Innenskelett."],
+    { concept: "bio:k6:skverg:f0", prompt: "Was beschreibt Innenskelett?", answer: "Es beschreibt stützgerüst im Körperinneren, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Innenskelett: Stützgerüst im Körperinneren",
       wissen: fw(
         "Typisch für Wirbeltiere. Bezug: Skelettvergleich.",
@@ -1196,7 +1196,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Stützgerüst im Körperinneren",
       gapAccepted: ["Innenskelett"],
     },
-    { concept: "bio:k6:skverg:f1", prompt: "Was beschreibt Außenskelett?", answer: "Es ist das Stütz- und Schutzpanzer außen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Außenskelett.", "Eine typische Verwechslung mit einem Nachbarbegriff von Außenskelett."],
+    { concept: "bio:k6:skverg:f1", prompt: "Was beschreibt Außenskelett?", answer: "Es beschreibt stütz- und Schutzpanzer außen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Außenskelett: Stütz- und Schutzpanzer außen",
       wissen: fw(
         "Typisch für viele Gliederfüßer. Bezug: Skelettvergleich.",
@@ -1204,7 +1204,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Stütz- und Schutzpanzer außen",
       gapAccepted: ["Außenskelett"],
     },
-    { concept: "bio:k6:skverg:f2", prompt: "Was kennzeichnet Wirbelsäule?", answer: "Sie ist die zentrale Knochenachse, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wirbelsäule.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wirbelsäule."],
+    { concept: "bio:k6:skverg:f2", prompt: "Was kennzeichnet Wirbelsäule?", answer: "Sie beschreibt zentrale Knochenachse, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Wirbelsäule: Zentrale Knochenachse",
       wissen: fw(
         "Merkmal der Wirbeltiere. Bezug: Skelettvergleich.",
@@ -1212,7 +1212,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Zentrale Knochenachse",
       gapAccepted: ["Wirbelsäule"],
     },
-    { concept: "bio:k6:skverg:f3", prompt: "Was kennzeichnet Chitin?", answer: "Es ist den Material vieler Außenskelette, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Chitin.", "Eine typische Verwechslung mit einem Nachbarbegriff von Chitin."],
+    { concept: "bio:k6:skverg:f3", prompt: "Was kennzeichnet Chitin?", answer: "Es beschreibt material vieler Außenskelette, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Chitin: Material vieler Außenskelette",
       wissen: fw(
         "Leicht und fest. Bezug: Skelettvergleich.",
@@ -1220,7 +1220,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Material vieler Außenskelette",
       gapAccepted: ["Chitin"],
     },
-    { concept: "bio:k6:skverg:f4", prompt: "Woran erkennt man Knochen?", answer: "Es ist das mineralisiertes Stützgewebe, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Knochen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Knochen."],
+    { concept: "bio:k6:skverg:f4", prompt: "Woran erkennt man Knochen?", answer: "Es beschreibt mineralisiertes Stützgewebe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Knochen: Mineralisiertes Stützgewebe",
       wissen: fw(
         "Wächst mit und speichert Mineralstoffe. Bezug: Skelettvergleich.",
@@ -1228,7 +1228,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Mineralisiertes Stützgewebe",
       gapAccepted: ["Knochen"],
     },
-    { concept: "bio:k6:skverg:f5", prompt: "Was beschreibt Häutung?", answer: "Sie ist den Abstreifen des Panzers, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Häutung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Häutung."],
+    { concept: "bio:k6:skverg:f5", prompt: "Was beschreibt Häutung?", answer: "Sie beschreibt abstreifen des Panzers, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Häutung: Abstreifen des Außenskeletts",
       wissen: fw(
         "Nötig zum Wachstum bei Arthropoden. Bezug: Skelettvergleich.",
@@ -1236,7 +1236,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Abstreifen des Außenskeletts",
       gapAccepted: ["Häutung"],
     },
-    { concept: "bio:k6:skverg:f6", prompt: "Was kennzeichnet Gliedmaßen?", answer: "Es ist die bewegliche Anhänge zur Fortbewegung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet Luft zu den Geweben; es handelt sich um die Luftröhre im Insektenkörper.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gliedmaßen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gliedmaßen."],
+    { concept: "bio:k6:skverg:f6", prompt: "Was kennzeichnet Gliedmaßen?", answer: "Es beschreibt bewegliche Anhänge zur Fortbewegung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es leitet Luft zu den Geweben; Luftröhre im Insektenkörper.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Gliedmaßen: Bewegliche Anhänge zur Fortbewegung",
       wissen: fw(
         "Unterschiedlich gebaut je Lebensraum. Bezug: Skelettvergleich.",
@@ -1244,7 +1244,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Bewegliche Anhänge zur Fortbewegung",
       gapAccepted: ["Gliedmaßen"],
     },
-    { concept: "bio:k6:skverg:f7", prompt: "Wozu dient die Schutzfunktion?", answer: "Skelett schützt Organe sodass man ihn von ähnlichen Größen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schutzfunktion.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schutzfunktion.", "Ein Randdetail, das fachlich nicht erklärt, was Schutzfunktion leistet."],
+    { concept: "bio:k6:skverg:f7", prompt: "Wozu dient die Schutzfunktion?", answer: "Sie beschreibt skelett schützt Organe, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Schutzfunktion: Skelett schützt Organe",
       wissen: fw(
         "Panzer oder Rippenkorb. Bezug: Skelettvergleich.",
@@ -1252,7 +1252,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Skelett schützt Organe",
       gapAccepted: ["Schutzfunktion"],
     },
-    { concept: "bio:k6:skverg:f8", prompt: "Was beschreibt Hebelmechanik?", answer: "Sie ist die Knochen/Muskeln als Hebel, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie schützt, begrenzt aber Atmung mit; es handelt sich um die äußere Körperhülle.", "Sie nimmt O₂ aus Wasser oder Luftvorrat; es handelt sich um die Anpassung mancher Wasserinsekten.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hebelmechanik."],
+    { concept: "bio:k6:skverg:f8", prompt: "Was beschreibt Hebelmechanik?", answer: "Sie beschreibt knochen/Muskeln als Hebel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie schützt, begrenzt aber Atmung mit; äußere Körperhülle.", "Sie nimmt O₂ aus Wasser oder Luftvorrat; Anpassung mancher Wasserinsekten.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Hebelmechanik: Knochen/Muskeln als Hebel",
       wissen: fw(
         "Ermöglicht Bewegung. Bezug: Skelettvergleich.",
@@ -1260,7 +1260,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Knochen/Muskeln als Hebel",
       gapAccepted: ["Hebelmechanik"],
     },
-    { concept: "bio:k6:skverg:f9", prompt: "Was beschreibt Exoskelett?", answer: "Es ist den anderen Name für Außenskelett, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Exoskelett.", "Eine typische Verwechslung mit einem Nachbarbegriff von Exoskelett.", "Ein Randdetail, das fachlich nicht erklärt, was Exoskelett leistet."],
+    { concept: "bio:k6:skverg:f9", prompt: "Was beschreibt Exoskelett?", answer: "Es beschreibt anderen Name für Außenskelett, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Exoskelett: Anderer Name für Außenskelett",
       wissen: fw(
         "Bei Insekten und Krebsen. Bezug: Skelettvergleich.",
@@ -1268,7 +1268,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Anderer Name für Außenskelett",
       gapAccepted: ["Exoskelett"],
     },
-    { concept: "bio:k6:skverg:f10", prompt: "Was kennzeichnet Endoskelett?", answer: "Es ist den anderen Name für Innenskelett, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Endoskelett.", "Eine typische Verwechslung mit einem Nachbarbegriff von Endoskelett.", "Ein Randdetail, das fachlich nicht erklärt, was Endoskelett leistet."],
+    { concept: "bio:k6:skverg:f10", prompt: "Was kennzeichnet Endoskelett?", answer: "Es beschreibt anderen Name für Innenskelett, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Endoskelett: Anderer Name für Innenskelett",
       wissen: fw(
         "Bei Wirbeltieren. Bezug: Skelettvergleich.",
@@ -1276,7 +1276,7 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Anderer Name für Innenskelett",
       gapAccepted: ["Endoskelett"],
     },
-    { concept: "bio:k6:skverg:f11", prompt: "Was kennzeichnet Segmentierung?", answer: "Sie ist die Körpergliederung in Abschnitte, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Segmentierung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Segmentierung.", "Ein Randdetail, das fachlich nicht erklärt, was Segmentierung leistet."],
+    { concept: "bio:k6:skverg:f11", prompt: "Was kennzeichnet Segmentierung?", answer: "Sie beschreibt körpergliederung in Abschnitte, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Segmentierung: Körpergliederung in Abschnitte",
       wissen: fw(
         "Bei Ringelwürmern und Arthropoden sichtbar. Bezug: Skelettvergleich.",
@@ -1284,13 +1284,13 @@ export const k6SkelettVergleich: BioBank = {
       gap: "Skelettvergleich: ___ — Körpergliederung in Abschnitte",
       gapAccepted: ["Segmentierung"],
     },
-    { concept: "bio:k6:skverg:x0", prompt: "Woran erkennt man x0?", answer: "Es ist das x0 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, und das Grenzt x0 von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0.", "Ein Randdetail, das fachlich nicht erklärt, was x0 leistet."],
+    { concept: "bio:k6:skverg:x0", prompt: "Woran erkennt man x0?", answer: "Es beschreibt x0 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Bauplan.",
       wissen: fw(
         "Wirbeltiere tragen ein Innenskelett; Insekten ein Außenskelett, das gehäutet werden muss.",
       ),
     },
-    { concept: "bio:k6:skverg:x1", prompt: "Woran erkennt man Begriff?", answer: "Es ist das Wachstum, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k6:skverg:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt wachstum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Wachstum.",
       wissen: fw(
         "Nach der Häutung ist der neue Panzer zunächst weich und härtet aus.",
@@ -1298,18 +1298,18 @@ export const k6SkelettVergleich: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:skverg:p0", term: "Innenskelett", meaning: "Ist das Stützgerüst im Körperinneren", wissen: "Typisch für Wirbeltiere. Bezug: Skelettvergleich. Innenskelett bedeutet: Ist das Stützgerüst im Körperinneren." },
-    { concept: "bio:k6:skverg:p1", term: "Außenskelett", meaning: "Ist das Stütz- und Schutzpanzer außen", wissen: "Typisch für viele Gliederfüßer. Bezug: Skelettvergleich. Außenskelett bedeutet: Ist das Stütz- und Schutzpanzer außen." },
-    { concept: "bio:k6:skverg:p2", term: "Wirbelsäule", meaning: "Ist die zentrale Knochenachse", wissen: "Merkmal der Wirbeltiere. Bezug: Skelettvergleich. Wirbelsäule bedeutet: Ist die zentrale Knochenachse." },
-    { concept: "bio:k6:skverg:p3", term: "Chitin", meaning: "Ist der material vieler Außenskelette", wissen: "Leicht und fest. Bezug: Skelettvergleich. Chitin bedeutet: Ist der material vieler Außenskelette." },
-    { concept: "bio:k6:skverg:p4", term: "Knochen", meaning: "Ist das mineralisiertes Stützgewebe", wissen: "Wächst mit und speichert Mineralstoffe. Bezug: Skelettvergleich. Knochen bedeutet: Ist das mineralisiertes Stützgewebe." },
-    { concept: "bio:k6:skverg:p5", term: "Häutung", meaning: "Ist der Abstreifen des Außenskeletts", wissen: "Nötig zum Wachstum bei Arthropoden. Bezug: Skelettvergleich. Häutung bedeutet: Ist der Abstreifen des Außenskeletts." },
-    { concept: "bio:k6:skverg:p6", term: "Gliedmaßen", meaning: "Ist die bewegliche Anhänge zur Fortbewegung", wissen: "Unterschiedlich gebaut je Lebensraum. Bezug: Skelettvergleich. Gliedmaßen bedeutet: Ist die bewegliche Anhänge zur Fortbewegung." },
-    { concept: "bio:k6:skverg:p7", term: "Schutzfunktion", meaning: "Skelett schützt Organe", wissen: "Panzer oder Rippenkorb. Bezug: Skelettvergleich. Schutzfunktion bedeutet: Skelett schützt Organe." },
-    { concept: "bio:k6:skverg:p8", term: "Hebelmechanik", meaning: "Ist die Knochen/Muskeln als Hebel", wissen: "Ermöglicht Bewegung. Bezug: Skelettvergleich. Hebelmechanik bedeutet: Ist die Knochen/Muskeln als Hebel." },
-    { concept: "bio:k6:skverg:p9", term: "Exoskelett", meaning: "Ist der anderen Name für Außenskelett", wissen: "Bei Insekten und Krebsen. Bezug: Skelettvergleich. Exoskelett bedeutet: Ist der anderen Name für Außenskelett." },
-    { concept: "bio:k6:skverg:p10", term: "Endoskelett", meaning: "Ist der anderen Name für Innenskelett", wissen: "Bei Wirbeltieren. Bezug: Skelettvergleich. Endoskelett bedeutet: Ist der anderen Name für Innenskelett." },
-    { concept: "bio:k6:skverg:p11", term: "Segmentierung", meaning: "Ist die Körpergliederung in Abschnitte", wissen: "Bei Ringelwürmern und Arthropoden sichtbar. Bezug: Skelettvergleich. Segmentierung bedeutet: Ist die Körpergliederung in Abschnitte." },
+    { concept: "bio:k6:skverg:p0", term: "Innenskelett", meaning: "Beschreibt typisch für Wirbeltiere als biologisches Merkmal mit klarer Funktion.", wissen: "Typisch für Wirbeltiere. Bezug: Skelettvergleich. Innenskelett bedeutet: Ist das Stützgerüst im Körperinneren." },
+    { concept: "bio:k6:skverg:p1", term: "Außenskelett", meaning: "Beschreibt typisch für viele Gliederfüßer als biologisches Merkmal mit klarer Funktion.", wissen: "Typisch für viele Gliederfüßer. Bezug: Skelettvergleich. Außenskelett bedeutet: Ist das Stütz- und Schutzpanzer außen." },
+    { concept: "bio:k6:skverg:p2", term: "Wirbelsäule", meaning: "Beschreibt merkmal der Wirbeltiere als biologisches Merkmal mit klarer Funktion.", wissen: "Merkmal der Wirbeltiere. Bezug: Skelettvergleich. Wirbelsäule bedeutet: Ist die zentrale Knochenachse." },
+    { concept: "bio:k6:skverg:p3", term: "Chitin", meaning: "Beschreibt leicht und fest als biologisches Merkmal mit klarer Funktion.", wissen: "Leicht und fest. Bezug: Skelettvergleich. Chitin bedeutet: Ist der material vieler Außenskelette." },
+    { concept: "bio:k6:skverg:p4", term: "Knochen", meaning: "Beschreibt wächst mit und speichert Mineralstoffe als biologisches Merkmal mit klarer Funktion.", wissen: "Wächst mit und speichert Mineralstoffe. Bezug: Skelettvergleich. Knochen bedeutet: Ist das mineralisiertes Stützgewebe." },
+    { concept: "bio:k6:skverg:p5", term: "Häutung", meaning: "Beschreibt nötig zum Wachstum bei Arthropoden als biologisches Merkmal mit klarer Funktion.", wissen: "Nötig zum Wachstum bei Arthropoden. Bezug: Skelettvergleich. Häutung bedeutet: Ist der Abstreifen des Außenskeletts." },
+    { concept: "bio:k6:skverg:p6", term: "Gliedmaßen", meaning: "Beschreibt unterschiedlich gebaut je Lebensraum als biologisches Merkmal mit klarer Funktion.", wissen: "Unterschiedlich gebaut je Lebensraum. Bezug: Skelettvergleich. Gliedmaßen bedeutet: Ist die bewegliche Anhänge zur Fortbewegung." },
+    { concept: "bio:k6:skverg:p7", term: "Schutzfunktion", meaning: "Beschreibt panzer oder Rippenkorb als biologisches Merkmal mit klarer Funktion.", wissen: "Panzer oder Rippenkorb. Bezug: Skelettvergleich. Schutzfunktion bedeutet: Skelett schützt Organe." },
+    { concept: "bio:k6:skverg:p8", term: "Hebelmechanik", meaning: "Beschreibt knochen/Muskeln als Hebel als biologisches Merkmal mit klarer Funktion.", wissen: "Ermöglicht Bewegung. Bezug: Skelettvergleich. Hebelmechanik bedeutet: Ist die Knochen/Muskeln als Hebel." },
+    { concept: "bio:k6:skverg:p9", term: "Exoskelett", meaning: "Beschreibt bei Insekten und Krebsen als biologisches Merkmal mit klarer Funktion.", wissen: "Bei Insekten und Krebsen. Bezug: Skelettvergleich. Exoskelett bedeutet: Ist der anderen Name für Außenskelett." },
+    { concept: "bio:k6:skverg:p10", term: "Endoskelett", meaning: "Beschreibt der anderen Name für Innenskelett als biologisches Merkmal mit klarer Funktion.", wissen: "Bei Wirbeltieren. Bezug: Skelettvergleich. Endoskelett bedeutet: Ist der anderen Name für Innenskelett." },
+    { concept: "bio:k6:skverg:p11", term: "Segmentierung", meaning: "Beschreibt bei Ringelwürmern und Arthropoden sichtbar als biologisches Merkmal mit klarer Funktion.", wissen: "Bei Ringelwürmern und Arthropoden sichtbar. Bezug: Skelettvergleich. Segmentierung bedeutet: Ist die Körpergliederung in Abschnitte." },
   ],
   trueFalse: [
     {
@@ -1342,7 +1342,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Atemorgan für Wasser",
       gapAccepted: ["Kieme"],
     },
-    { concept: "bio:k6:atmverg:f1", prompt: "Wozu dient die Lunge?", answer: "Sie ist das Atemorgan für Luft, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lunge.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lunge.", "Ein Randdetail, das fachlich nicht erklärt, was Lunge leistet."],
+    { concept: "bio:k6:atmverg:f1", prompt: "Wozu dient die Lunge?", answer: "Sie beschreibt atemorgan für Luft, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Lunge: Atemorgan für Luft",
       wissen: fw(
         "Bei vielen Landwirbeltieren. Bezug: Atmungsvergleich.",
@@ -1350,7 +1350,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Atemorgan für Luft",
       gapAccepted: ["Lunge"],
     },
-    { concept: "bio:k6:atmverg:f2", prompt: "Was beschreibt Trachee?", answer: "Sie ist das Luftröhrensystem der Insekten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Trachee.", "Eine typische Verwechslung mit einem Nachbarbegriff von Trachee.", "Ein Randdetail, das fachlich nicht erklärt, was Trachee leistet."],
+    { concept: "bio:k6:atmverg:f2", prompt: "Was beschreibt Trachee?", answer: "Sie beschreibt luftröhrensystem der Insekten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Trachee: Luftröhrensystem der Insekten",
       wissen: fw(
         "Direkte Gewebeversorgung. Bezug: Atmungsvergleich.",
@@ -1358,7 +1358,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Luftröhrensystem der Insekten",
       gapAccepted: ["Trachee"],
     },
-    { concept: "bio:k6:atmverg:f3", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie ist die Gasaustausch über die Körperoberfläche, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hautatmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hautatmung.", "Ein Randdetail, das fachlich nicht erklärt, was Hautatmung leistet."],
+    { concept: "bio:k6:atmverg:f3", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie beschreibt gasaustausch über die Körperoberfläche, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Hautatmung: Gasaustausch über die Körperoberfläche",
       wissen: fw(
         "z. B. bei manchen Lurchen. Bezug: Atmungsvergleich.",
@@ -1366,7 +1366,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Gasaustausch über die Körperoberfläche",
       gapAccepted: ["Hautatmung"],
     },
-    { concept: "bio:k6:atmverg:f4", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie ist die Vergrößerung der Austauschfläche, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Oberflächenvergrößerung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Oberflächenvergrößerung.", "Ein Randdetail, das fachlich nicht erklärt, was Oberflächenvergrößerung leistet."],
+    { concept: "bio:k6:atmverg:f4", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie beschreibt vergrößerung der Austauschfläche, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
         "Gemeinsames Prinzip aller Atemorgane. Bezug: Atmungsvergleich.",
@@ -1374,7 +1374,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Vergrößerung der Austauschfläche",
       gapAccepted: ["Oberflächenvergrößerung"],
     },
-    { concept: "bio:k6:atmverg:f5", prompt: "Welche Rolle hat Medium?", answer: "Es ist den Wassen oder Luft als Gasquelle, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Medium.", "Eine typische Verwechslung mit einem Nachbarbegriff von Medium.", "Ein Randdetail, das fachlich nicht erklärt, was Medium leistet."],
+    { concept: "bio:k6:atmverg:f5", prompt: "Welche Rolle hat Medium?", answer: "Es beschreibt den Wassen oder Luft als Gasquelle.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Medium: Wasser oder Luft als Gasquelle",
       wissen: fw(
         "Bestimmt den Atemorgan-Typ. Bezug: Atmungsvergleich.",
@@ -1382,7 +1382,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Wasser oder Luft als Gasquelle",
       gapAccepted: ["Medium"],
     },
-    { concept: "bio:k6:atmverg:f6", prompt: "Was kennzeichnet Diffusion?", answer: "Sie beschreibt die Nettobewegung von Teilchen entlang des Konzentrationsgefälles, sodass man Diffusion von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Diffusion.", "Eine typische Verwechslung mit einem Nachbarbegriff von Diffusion.", "Ein Randdetail, das fachlich nicht erklärt, was Diffusion leistet."],
+    { concept: "bio:k6:atmverg:f6", prompt: "Was kennzeichnet Diffusion?", answer: "Sie beschreibt die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Diffusion: Grundprinzip des Gasaustauschs",
       wissen: fw(
         "Kurze Wege und große Fläche helfen. Bezug: Atmungsvergleich.",
@@ -1390,7 +1390,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Grundprinzip des Gasaustauschs",
       gapAccepted: ["Diffusion"],
     },
-    { concept: "bio:k6:atmverg:f7", prompt: "Woran erkennt man Feuchte Oberfläche?", answer: "Sie ist die Erleichtert Gasdiffusion, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Feuchte Oberfläche.", "Eine typische Verwechslung mit einem Nachbarbegriff von Feuchte Oberfläche.", "Ein Randdetail, das fachlich nicht erklärt, was Feuchte Oberfläche leistet."],
+    { concept: "bio:k6:atmverg:f7", prompt: "Woran erkennt man Feuchte Oberfläche?", answer: "Sie beschreibt erleichtert Gasdiffusion, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Feuchte Oberfläche: Erleichtert Gasdiffusion",
       wissen: fw(
         "Typisch für Kiemen und Lungen innen. Bezug: Atmungsvergleich.",
@@ -1398,7 +1398,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Erleichtert Gasdiffusion",
       gapAccepted: ["Feuchte Oberfläche"],
     },
-    { concept: "bio:k6:atmverg:f8", prompt: "Was beschreibt Landleben?", answer: "Es ist den Leben außerhalb des Wassers, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Landleben.", "Eine typische Verwechslung mit einem Nachbarbegriff von Landleben.", "Ein Randdetail, das fachlich nicht erklärt, was Landleben leistet."],
+    { concept: "bio:k6:atmverg:f8", prompt: "Was beschreibt Landleben?", answer: "Es beschreibt leben außerhalb des Wassers, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Landleben: Leben außerhalb des Wassers",
       wissen: fw(
         "Begünstigt Lungen oder Tracheen. Bezug: Atmungsvergleich.",
@@ -1406,7 +1406,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Leben außerhalb des Wassers",
       gapAccepted: ["Landleben"],
     },
-    { concept: "bio:k6:atmverg:f9", prompt: "Was beschreibt Wasserleben?", answer: "Es ist den Leben im Wasser, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Skelett schützt Organe sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wasserleben.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wasserleben."],
+    { concept: "bio:k6:atmverg:f9", prompt: "Was beschreibt Wasserleben?", answer: "Es beschreibt leben im Wasser, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Wasserleben: Leben im Wasser",
       wissen: fw(
         "Begünstigt Kiemen. Bezug: Atmungsvergleich.",
@@ -1414,7 +1414,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Leben im Wasser",
       gapAccepted: ["Wasserleben"],
     },
-    { concept: "bio:k6:atmverg:f10", prompt: "Was kennzeichnet Doppelstrategie?", answer: "Sie ist die mehrere Atemwege parallel, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Doppelstrategie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Doppelstrategie.", "Ein Randdetail, das fachlich nicht erklärt, was Doppelstrategie leistet."],
+    { concept: "bio:k6:atmverg:f10", prompt: "Was kennzeichnet Doppelstrategie?", answer: "Sie beschreibt mehrere Atemwege parallel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Doppelstrategie: Mehrere Atemwege parallel",
       wissen: fw(
         "z. B. Haut und Lunge bei Lurchen. Bezug: Atmungsvergleich.",
@@ -1422,7 +1422,7 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Mehrere Atemwege parallel",
       gapAccepted: ["Doppelstrategie"],
     },
-    { concept: "bio:k6:atmverg:f11", prompt: "Was kennzeichnet Angepasstheit?", answer: "Bau folgt dem Lebensraum und lässt sich im Experiment oder an einem Beispiel prüfen.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Angepasstheit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Angepasstheit."],
+    { concept: "bio:k6:atmverg:f11", prompt: "Was kennzeichnet Angepasstheit?", answer: "Sie beschreibt bau folgt dem Lebensraum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Angepasstheit: Bau folgt dem Lebensraum",
       wissen: fw(
         "Atemorgan spiegelt Umwelt. Bezug: Atmungsvergleich.",
@@ -1430,13 +1430,13 @@ export const k6AtmungVergleich: BioBank = {
       gap: "Atmungsvergleich: ___ — Bau folgt dem Lebensraum",
       gapAccepted: ["Angepasstheit"],
     },
-    { concept: "bio:k6:atmverg:x0", prompt: "Was kennzeichnet x0?", answer: "Es ist die Oberflächenvergrößerung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu x0."],
+    { concept: "bio:k6:atmverg:x0", prompt: "Was kennzeichnet x0?", answer: "Es beschreibt oberflächenvergrößerung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird."],
       explanation: "Oberflächenvergrößerung.",
       wissen: fw(
         "Alle effizienten Atemorgane vergrößern die Fläche und halten kurze Diffusionswege.",
       ),
     },
-    { concept: "bio:k6:atmverg:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist das Medium, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu Begriff."],
+    { concept: "bio:k6:atmverg:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt medium, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird."],
       explanation: "Medium.",
       wissen: fw(
         "Luftatmung braucht andere Strukturen als Wasseratmung. Bezug: Atmungsvergleich.",
@@ -1444,18 +1444,18 @@ export const k6AtmungVergleich: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:atmverg:p0", term: "Kieme", meaning: "Entzieht dem Wasser Sauerstoff und dient der Atmung", wissen: "Bei Fischen und vielen Krebsen. Bezug: Atmungsvergleich. Kieme bedeutet: Entzieht dem Wasser Sauerstoff und dient der Atmung." },
-    { concept: "bio:k6:atmverg:p1", term: "Lunge", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Bei vielen Landwirbeltieren. Bezug: Atmungsvergleich. Lunge bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p2", term: "Trachee", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Direkte Gewebeversorgung. Bezug: Atmungsvergleich. Trachee bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p3", term: "Hautatmung", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "z. B. bei manchen Lurchen. Bezug: Atmungsvergleich. Hautatmung bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p4", term: "Oberflächenvergrößerung", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Gemeinsames Prinzip aller Atemorgane. Bezug: Atmungsvergleich. Oberflächenvergrößerung bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p5", term: "Medium", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Bestimmt den Atemorgan-Typ. Bezug: Atmungsvergleich. Medium bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p6", term: "Diffusion", meaning: "Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles", wissen: "Kurze Wege und große Fläche helfen. Bezug: Atmungsvergleich. Diffusion bedeutet: Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles." },
-    { concept: "bio:k6:atmverg:p7", term: "Feuchte Oberfläche", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Typisch für Kiemen und Lungen innen. Bezug: Atmungsvergleich. Feuchte Oberfläche bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p8", term: "Landleben", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Begünstigt Lungen oder Tracheen. Bezug: Atmungsvergleich. Landleben bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p9", term: "Wasserleben", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Begünstigt Kiemen. Bezug: Atmungsvergleich. Wasserleben bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p10", term: "Doppelstrategie", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "z. B. Haut und Lunge bei Lurchen. Bezug: Atmungsvergleich. Doppelstrategie bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
-    { concept: "bio:k6:atmverg:p11", term: "Angepasstheit", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird", wissen: "Atemorgan spiegelt Umwelt. Bezug: Atmungsvergleich. Angepasstheit bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p0", term: "Kieme", meaning: "Entzieht dem Wasser Sauerstoff und dient der Atmung.", wissen: "Bei Fischen und vielen Krebsen. Bezug: Atmungsvergleich. Kieme bedeutet: Entzieht dem Wasser Sauerstoff und dient der Atmung." },
+    { concept: "bio:k6:atmverg:p1", term: "Lunge", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Bei vielen Landwirbeltieren. Bezug: Atmungsvergleich. Lunge bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p2", term: "Trachee", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Direkte Gewebeversorgung. Bezug: Atmungsvergleich. Trachee bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p3", term: "Hautatmung", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "z. B. bei manchen Lurchen. Bezug: Atmungsvergleich. Hautatmung bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p4", term: "Oberflächenvergrößerung", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Gemeinsames Prinzip aller Atemorgane. Bezug: Atmungsvergleich. Oberflächenvergrößerung bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p5", term: "Medium", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Bestimmt den Atemorgan-Typ. Bezug: Atmungsvergleich. Medium bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p6", term: "Diffusion", meaning: "Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", wissen: "Kurze Wege und große Fläche helfen. Bezug: Atmungsvergleich. Diffusion bedeutet: Ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles." },
+    { concept: "bio:k6:atmverg:p7", term: "Feuchte Oberfläche", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Typisch für Kiemen und Lungen innen. Bezug: Atmungsvergleich. Feuchte Oberfläche bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p8", term: "Landleben", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Begünstigt Lungen oder Tracheen. Bezug: Atmungsvergleich. Landleben bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p9", term: "Wasserleben", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Begünstigt Kiemen. Bezug: Atmungsvergleich. Wasserleben bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p10", term: "Doppelstrategie", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "z. B. Haut und Lunge bei Lurchen. Bezug: Atmungsvergleich. Doppelstrategie bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
+    { concept: "bio:k6:atmverg:p11", term: "Angepasstheit", meaning: "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", wissen: "Atemorgan spiegelt Umwelt. Bezug: Atmungsvergleich. Angepasstheit bedeutet: Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird." },
   ],
   trueFalse: [
     {
@@ -1481,7 +1481,7 @@ export const k6FortpflanzungFormen: BioBank = {
   url: "https://de.wikipedia.org/wiki/Fortpflanzung",
   conceptPrefix: "bio:k6:fortform",
   facts: [
-    { concept: "bio:k6:fortform:f0", prompt: "Welche Rolle hat Äußere Befruchtung?", answer: "Sie ist den Keimzellen treffen sich außerhalb des Körpers, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Äußere Befruchtung."],
+    { concept: "bio:k6:fortform:f0", prompt: "Welche Rolle hat Äußere Befruchtung?", answer: "Sie ist den Keimzellen treffen sich außerhalb des Körpers.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Äußere Befruchtung: Keimzellen treffen sich außerhalb des Körpers",
       wissen: fw(
         "Häufig im Wasser. Bezug: Fortpflanzungsformen.",
@@ -1489,7 +1489,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Keimzellen treffen sich außerhalb des Körpers",
       gapAccepted: ["Äußere Befruchtung"],
     },
-    { concept: "bio:k6:fortform:f1", prompt: "Welche Rolle hat Innere Befruchtung?", answer: "Sie ist die Befruchtung im Körper, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Innere Befruchtung."],
+    { concept: "bio:k6:fortform:f1", prompt: "Welche Rolle hat Innere Befruchtung?", answer: "Sie beschreibt befruchtung im Körper, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird."],
       explanation: "Innere Befruchtung: Befruchtung im Körper",
       wissen: fw(
         "Typisch für viele Landtiere. Bezug: Fortpflanzungsformen.",
@@ -1497,7 +1497,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Befruchtung im Körper",
       gapAccepted: ["Innere Befruchtung"],
     },
-    { concept: "bio:k6:fortform:f2", prompt: "Welche Rolle hat Eiablage?", answer: "Sie ist die Ablage von Eiern, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Eiablage."],
+    { concept: "bio:k6:fortform:f2", prompt: "Welche Rolle hat Eiablage?", answer: "Sie beschreibt ablage von Eiern, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Eiablage: Ablage von Eiern",
       wissen: fw(
         "Entwicklung oft außerhalb der Mutter. Bezug: Fortpflanzungsformen.",
@@ -1505,7 +1505,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Ablage von Eiern",
       gapAccepted: ["Eiablage"],
     },
-    { concept: "bio:k6:fortform:f3", prompt: "Was kennzeichnet Lebendgeburt?", answer: "Es ist das Geburt entwickelter Jungtiere, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lebendgeburt."],
+    { concept: "bio:k6:fortform:f3", prompt: "Was kennzeichnet Lebendgeburt?", answer: "Es beschreibt geburt entwickelter Jungtiere, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Lebendgeburt: Geburt entwickelter Jungtiere",
       wissen: fw(
         "Bei vielen Säugern. Bezug: Fortpflanzungsformen.",
@@ -1513,7 +1513,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Geburt entwickelter Jungtiere",
       gapAccepted: ["Lebendgeburt"],
     },
-    { concept: "bio:k6:fortform:f4", prompt: "Woran erkennt man Metamorphose?", answer: "Sie ist den Gestaltwechsel der Entwicklung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Metamorphose."],
+    { concept: "bio:k6:fortform:f4", prompt: "Woran erkennt man Metamorphose?", answer: "Sie beschreibt gestaltwechsel der Entwicklung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Metamorphose: Gestaltwechsel der Entwicklung",
       wissen: fw(
         "z. B. Insekten und Lurche. Bezug: Fortpflanzungsformen.",
@@ -1521,7 +1521,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Gestaltwechsel der Entwicklung",
       gapAccepted: ["Metamorphose"],
     },
-    { concept: "bio:k6:fortform:f5", prompt: "Was kennzeichnet Brutpflege?", answer: "Sie ist die Versorgung der Nachkommen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie entzieht dem wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Brutpflege."],
+    { concept: "bio:k6:fortform:f5", prompt: "Was kennzeichnet Brutpflege?", answer: "Sie beschreibt versorgung der Nachkommen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Brutpflege: Versorgung der Nachkommen",
       wissen: fw(
         "Erhöht Überleben. Bezug: Fortpflanzungsformen.",
@@ -1529,7 +1529,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Versorgung der Nachkommen",
       gapAccepted: ["Brutpflege"],
     },
-    { concept: "bio:k6:fortform:f6", prompt: "Was kennzeichnet ungeschlechtlich?", answer: "Es ist die Vermehrung ohne Gametenverschmelzung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu ungeschlechtlich.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu ungeschlechtlich."],
+    { concept: "bio:k6:fortform:f6", prompt: "Was kennzeichnet ungeschlechtlich?", answer: "Es beschreibt vermehrung ohne Gametenverschmelzung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "ungeschlechtlich: Vermehrung ohne Gametenverschmelzung",
       wissen: fw(
         "z. B. Teilung bei manchen Wirbellosen. Bezug: Fortpflanzungsformen.",
@@ -1537,7 +1537,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Vermehrung ohne Gametenverschmelzung",
       gapAccepted: ["ungeschlechtlich"],
     },
-    { concept: "bio:k6:fortform:f7", prompt: "Woran erkennt man geschlechtlich?", answer: "Es ist die Vermehrung mit Befruchtung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu geschlechtlich.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu geschlechtlich."],
+    { concept: "bio:k6:fortform:f7", prompt: "Woran erkennt man geschlechtlich?", answer: "Es beschreibt vermehrung mit Befruchtung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "geschlechtlich: Vermehrung mit Befruchtung",
       wissen: fw(
         "Erhöht genetische Vielfalt. Bezug: Fortpflanzungsformen.",
@@ -1545,7 +1545,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Vermehrung mit Befruchtung",
       gapAccepted: ["geschlechtlich"],
     },
-    { concept: "bio:k6:fortform:f8", prompt: "Welche Rolle hat Larve?", answer: "Sie ist das Jugendstadium mit anderer Gestalt, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu Larve.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Larve."],
+    { concept: "bio:k6:fortform:f8", prompt: "Welche Rolle hat Larve?", answer: "Sie beschreibt jugendstadium mit anderer Gestalt, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Larve: Jugendstadium mit anderer Gestalt",
       wissen: fw(
         "Oft andere Lebensweise. Bezug: Fortpflanzungsformen.",
@@ -1553,7 +1553,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Jugendstadium mit anderer Gestalt",
       gapAccepted: ["Larve"],
     },
-    { concept: "bio:k6:fortform:f9", prompt: "Was kennzeichnet Puppe?", answer: "Sie ist das Ruhe-/Umwandlungsstadium, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein anderer fachlicher Aspekt ohne klaren Bezug zu Puppe.", "Sie ist die typische Verwechslung mit einem Nachbarbegriff von Puppe, und das Grenzt Puppe von typischen Verwechslungen ab."],
+    { concept: "bio:k6:fortform:f9", prompt: "Was kennzeichnet Puppe?", answer: "Sie beschreibt ruhe-/Umwandlungsstadium, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie ist die typische Verwechslung mit einem Nachbarbegriff von Puppe.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Puppe: Ruhe-/Umwandlungsstadium",
       wissen: fw(
         "Bei holometabolen Insekten. Bezug: Fortpflanzungsformen.",
@@ -1561,7 +1561,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Ruhe-/Umwandlungsstadium",
       gapAccepted: ["Puppe"],
     },
-    { concept: "bio:k6:fortform:f10", prompt: "Was kennzeichnet Wasserabhängigkeit?", answer: "Sie ist die Fortpflanzung an Wasser gebunden, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wasserabhängigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wasserabhängigkeit."],
+    { concept: "bio:k6:fortform:f10", prompt: "Was kennzeichnet Wasserabhängigkeit?", answer: "Sie beschreibt fortpflanzung an Wasser gebunden, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Atemorgan, mit dem Sauerstoff aus dem Wasser aufgenommen wird.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Wasserabhängigkeit: Fortpflanzung an Wasser gebunden",
       wissen: fw(
         "z. B. viele Amphibien. Bezug: Fortpflanzungsformen.",
@@ -1569,7 +1569,7 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Fortpflanzung an Wasser gebunden",
       gapAccepted: ["Wasserabhängigkeit"],
     },
-    { concept: "bio:k6:fortform:f11", prompt: "Welche Rolle hat Landunabhängigkeit?", answer: "Sie ist die Fortpflanzung ohne freies Wasser, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Landunabhängigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Landunabhängigkeit.", "Ein Randdetail, das fachlich nicht erklärt, was Landunabhängigkeit leistet."],
+    { concept: "bio:k6:fortform:f11", prompt: "Welche Rolle hat Landunabhängigkeit?", answer: "Sie beschreibt fortpflanzung ohne freies Wasser, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Landunabhängigkeit: Fortpflanzung ohne freies Wasser",
       wissen: fw(
         "Schalenei oder innere Entwicklung. Bezug: Fortpflanzungsformen.",
@@ -1577,13 +1577,13 @@ export const k6FortpflanzungFormen: BioBank = {
       gap: "Fortpflanzungsformen: ___ — Fortpflanzung ohne freies Wasser",
       gapAccepted: ["Landunabhängigkeit"],
     },
-    { concept: "bio:k6:fortform:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist das Austrocknungsschutz, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k6:fortform:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt austrocknungsschutz, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Austrocknungsschutz.",
       wissen: fw(
         "Am Land schützt innere Befruchtung die Keimzellen vor dem Austrocknen.",
       ),
     },
-    { concept: "bio:k6:fortform:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist das Entwicklungsort, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k6:fortform:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt entwicklungsort, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Entwicklungsort.",
       wissen: fw(
         "Beide Strategien können mit Brutpflege kombiniert sein. Bezug: Fortpflanzungsformen.",
@@ -1591,18 +1591,18 @@ export const k6FortpflanzungFormen: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:fortform:p0", term: "Äußere Befruchtung", meaning: "Ist der Keimzellen treffen sich außerhalb des Körpers", wissen: "Häufig im Wasser. Bezug: Fortpflanzungsformen. Äußere Befruchtung bedeutet: Ist der Keimzellen treffen sich außerhalb des Körpers." },
-    { concept: "bio:k6:fortform:p1", term: "Innere Befruchtung", meaning: "Ist die Befruchtung im Körper", wissen: "Typisch für viele Landtiere. Bezug: Fortpflanzungsformen. Innere Befruchtung bedeutet: Ist die Befruchtung im Körper." },
-    { concept: "bio:k6:fortform:p2", term: "Eiablage", meaning: "Ist die Ablage von Eiern", wissen: "Entwicklung oft außerhalb der Mutter. Bezug: Fortpflanzungsformen. Eiablage bedeutet: Ist die Ablage von Eiern." },
-    { concept: "bio:k6:fortform:p3", term: "Lebendgeburt", meaning: "Ist das Geburt entwickelter Jungtiere", wissen: "Bei vielen Säugern. Bezug: Fortpflanzungsformen. Lebendgeburt bedeutet: Ist das Geburt entwickelter Jungtiere." },
-    { concept: "bio:k6:fortform:p4", term: "Metamorphose", meaning: "Ist der Gestaltwechsel der Entwicklung", wissen: "z. B. Insekten und Lurche. Bezug: Fortpflanzungsformen. Metamorphose bedeutet: Ist der Gestaltwechsel der Entwicklung." },
-    { concept: "bio:k6:fortform:p5", term: "Brutpflege", meaning: "Ist die Versorgung der Nachkommen", wissen: "Erhöht Überleben. Bezug: Fortpflanzungsformen. Brutpflege bedeutet: Ist die Versorgung der Nachkommen." },
-    { concept: "bio:k6:fortform:p6", term: "ungeschlechtlich", meaning: "Ist die Vermehrung ohne Gametenverschmelzung", wissen: "z. B. Teilung bei manchen Wirbellosen. Bezug: Fortpflanzungsformen. ungeschlechtlich bedeutet: Ist die Vermehrung ohne Gametenverschmelzung." },
-    { concept: "bio:k6:fortform:p7", term: "geschlechtlich", meaning: "Erhöht genetische Vielfalt; es handelt sich um die Vermehrung mit Befruchtung", wissen: "Erhöht genetische Vielfalt. Bezug: Fortpflanzungsformen. geschlechtlich bedeutet: Erhöht genetische Vielfalt; es handelt sich um die Vermehrung mit Befruchtung." },
-    { concept: "bio:k6:fortform:p8", term: "Larve", meaning: "Ist das Jugendstadium mit anderer Gestalt", wissen: "Oft andere Lebensweise. Bezug: Fortpflanzungsformen. Larve bedeutet: Ist das Jugendstadium mit anderer Gestalt." },
-    { concept: "bio:k6:fortform:p9", term: "Puppe", meaning: "Ist das Ruhe-/Umwandlungsstadium", wissen: "Bei holometabolen Insekten. Bezug: Fortpflanzungsformen. Puppe bedeutet: Ist das Ruhe-/Umwandlungsstadium." },
-    { concept: "bio:k6:fortform:p10", term: "Wasserabhängigkeit", meaning: "Ist die Fortpflanzung an Wasser gebunden", wissen: "z. B. viele Amphibien. Bezug: Fortpflanzungsformen. Wasserabhängigkeit bedeutet: Ist die Fortpflanzung an Wasser gebunden." },
-    { concept: "bio:k6:fortform:p11", term: "Landunabhängigkeit", meaning: "Ist die Fortpflanzung ohne freies Wasser", wissen: "Schalenei oder innere Entwicklung. Bezug: Fortpflanzungsformen. Landunabhängigkeit bedeutet: Ist die Fortpflanzung ohne freies Wasser." },
+    { concept: "bio:k6:fortform:p0", term: "Äußere Befruchtung", meaning: "Ist der Keimzellen treffen sich außerhalb des Körpers.", wissen: "Häufig im Wasser. Bezug: Fortpflanzungsformen. Äußere Befruchtung bedeutet: Ist der Keimzellen treffen sich außerhalb des Körpers." },
+    { concept: "bio:k6:fortform:p1", term: "Innere Befruchtung", meaning: "Beschreibt typisch für viele Landtiere als biologisches Merkmal mit klarer Funktion.", wissen: "Typisch für viele Landtiere. Bezug: Fortpflanzungsformen. Innere Befruchtung bedeutet: Ist die Befruchtung im Körper." },
+    { concept: "bio:k6:fortform:p2", term: "Eiablage", meaning: "Beschreibt entwicklung oft außerhalb der Mutter als biologisches Merkmal mit klarer Funktion.", wissen: "Entwicklung oft außerhalb der Mutter. Bezug: Fortpflanzungsformen. Eiablage bedeutet: Ist die Ablage von Eiern." },
+    { concept: "bio:k6:fortform:p3", term: "Lebendgeburt", meaning: "Beschreibt bei vielen Säugern als biologisches Merkmal mit klarer Funktion.", wissen: "Bei vielen Säugern. Bezug: Fortpflanzungsformen. Lebendgeburt bedeutet: Ist das Geburt entwickelter Jungtiere." },
+    { concept: "bio:k6:fortform:p4", term: "Metamorphose", meaning: "Beschreibt insekten und Lurche als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Insekten und Lurche. Bezug: Fortpflanzungsformen. Metamorphose bedeutet: Ist der Gestaltwechsel der Entwicklung." },
+    { concept: "bio:k6:fortform:p5", term: "Brutpflege", meaning: "Beschreibt versorgung der Nachkommen als biologisches Merkmal mit klarer Funktion.", wissen: "Erhöht Überleben. Bezug: Fortpflanzungsformen. Brutpflege bedeutet: Ist die Versorgung der Nachkommen." },
+    { concept: "bio:k6:fortform:p6", term: "ungeschlechtlich", meaning: "Beschreibt teilung bei manchen Wirbellosen als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Teilung bei manchen Wirbellosen. Bezug: Fortpflanzungsformen. ungeschlechtlich bedeutet: Ist die Vermehrung ohne Gametenverschmelzung." },
+    { concept: "bio:k6:fortform:p7", term: "geschlechtlich", meaning: "Beschreibt erhöht genetische Vielfalt als biologisches Merkmal mit klarer Funktion.", wissen: "Erhöht genetische Vielfalt. Bezug: Fortpflanzungsformen. geschlechtlich bedeutet: Erhöht genetische Vielfalt; es handelt sich um die Vermehrung mit Befruchtung." },
+    { concept: "bio:k6:fortform:p8", term: "Larve", meaning: "Beschreibt oft andere Lebensweise als biologisches Merkmal mit klarer Funktion.", wissen: "Oft andere Lebensweise. Bezug: Fortpflanzungsformen. Larve bedeutet: Ist das Jugendstadium mit anderer Gestalt." },
+    { concept: "bio:k6:fortform:p9", term: "Puppe", meaning: "Beschreibt bei holometabolen Insekten als biologisches Merkmal mit klarer Funktion.", wissen: "Bei holometabolen Insekten. Bezug: Fortpflanzungsformen. Puppe bedeutet: Ist das Ruhe-/Umwandlungsstadium." },
+    { concept: "bio:k6:fortform:p10", term: "Wasserabhängigkeit", meaning: "Beschreibt fortpflanzung an Wasser gebunden als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. viele Amphibien. Bezug: Fortpflanzungsformen. Wasserabhängigkeit bedeutet: Ist die Fortpflanzung an Wasser gebunden." },
+    { concept: "bio:k6:fortform:p11", term: "Landunabhängigkeit", meaning: "Beschreibt schalenei oder innere Entwicklung als biologisches Merkmal mit klarer Funktion.", wissen: "Schalenei oder innere Entwicklung. Bezug: Fortpflanzungsformen. Landunabhängigkeit bedeutet: Ist die Fortpflanzung ohne freies Wasser." },
   ],
   trueFalse: [
     {
@@ -1628,7 +1628,7 @@ export const k6Zelltheorie: BioBank = {
   url: "https://de.wikipedia.org/wiki/Zelltheorie",
   conceptPrefix: "bio:k6:zellth",
   facts: [
-    { concept: "bio:k6:zellth:f0", prompt: "Was kennzeichnet Zelle?", answer: "Sie ist die Kleinste lebende Einheit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zelle.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zelle.", "Ein Randdetail, das fachlich nicht erklärt, was Zelle leistet."],
+    { concept: "bio:k6:zellth:f0", prompt: "Was kennzeichnet Zelle?", answer: "Sie beschreibt kleinste lebende Einheit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Zelle: Kleinste lebende Einheit",
       wissen: fw(
         "Baustein aller Organismen. Bezug: Zelltheorie.",
@@ -1636,7 +1636,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Kleinste lebende Einheit",
       gapAccepted: ["Zelle"],
     },
-    { concept: "bio:k6:zellth:f1", prompt: "Welche Rolle hat Zelltheorie?", answer: "Sie ist das Lebewesen bestehen aus Zellen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zelltheorie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zelltheorie.", "Ein Randdetail, das fachlich nicht erklärt, was Zelltheorie leistet."],
+    { concept: "bio:k6:zellth:f1", prompt: "Welche Rolle hat Zelltheorie?", answer: "Sie beschreibt lebewesen bestehen aus Zellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Zelltheorie: Lebewesen bestehen aus Zellen",
       wissen: fw(
         "Zellen entstehen aus Zellen. Bezug: Zelltheorie.",
@@ -1644,7 +1644,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Lebewesen bestehen aus Zellen",
       gapAccepted: ["Zelltheorie"],
     },
-    { concept: "bio:k6:zellth:f2", prompt: "Wozu dient Einzeller?", answer: "Er ist den Organismus aus einer Zelle, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Einzeller.", "Eine typische Verwechslung mit einem Nachbarbegriff von Einzeller.", "Ein Randdetail, das fachlich nicht erklärt, was Einzeller leistet."],
+    { concept: "bio:k6:zellth:f2", prompt: "Wozu dient Einzeller?", answer: "Er beschreibt organismus aus einer Zelle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Einzeller: Organismus aus einer Zelle",
       wissen: fw(
         "z. B. viele Protisten. Bezug: Zelltheorie.",
@@ -1652,7 +1652,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Organismus aus einer Zelle",
       gapAccepted: ["Einzeller"],
     },
-    { concept: "bio:k6:zellth:f3", prompt: "Wozu dient Vielzeller?", answer: "Er ist den Organismus aus vielen Zellen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Vielzeller.", "Eine typische Verwechslung mit einem Nachbarbegriff von Vielzeller.", "Ein Randdetail, das fachlich nicht erklärt, was Vielzeller leistet."],
+    { concept: "bio:k6:zellth:f3", prompt: "Wozu dient Vielzeller?", answer: "Er beschreibt organismus aus vielen Zellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Vielzeller: Organismus aus vielen Zellen",
       wissen: fw(
         "Arbeitsteilung möglich. Bezug: Zelltheorie.",
@@ -1660,7 +1660,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Organismus aus vielen Zellen",
       gapAccepted: ["Vielzeller"],
     },
-    { concept: "bio:k6:zellth:f4", prompt: "Was kennzeichnet Zellkern?", answer: "Es enthält Erbinformation bei Eukaryoten und grenzt den Begriff von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zellkern.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zellkern.", "Ein Randdetail, das fachlich nicht erklärt, was Zellkern leistet."],
+    { concept: "bio:k6:zellth:f4", prompt: "Was kennzeichnet Zellkern?", answer: "Es beschreibt es enthält Erbinformation bei Eukaryoten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Zellkern: Enthält Erbinformation bei Eukaryoten",
       wissen: fw(
         "Steuert Zellprozesse. Bezug: Zelltheorie.",
@@ -1668,7 +1668,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Enthält Erbinformation bei Eukaryoten",
       gapAccepted: ["Zellkern"],
     },
-    { concept: "bio:k6:zellth:f5", prompt: "Woran erkennt man Mikroskop?", answer: "Das Vergrößert kleine Objekte durch Objektiv und Okular.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Mikroskop.", "Eine typische Verwechslung mit einem Nachbarbegriff von Mikroskop.", "Ein Randdetail, das fachlich nicht erklärt, was Mikroskop leistet."],
+    { concept: "bio:k6:zellth:f5", prompt: "Woran erkennt man Mikroskop?", answer: "Es beschreibt vergrößert kleine Objekte durch Objektiv und Okular.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Mikroskop: Gerät zur Sichtbarmachung von Zellen",
       wissen: fw(
         "Ermöglichte die Zelltheorie. Bezug: Zelltheorie.",
@@ -1676,7 +1676,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Gerät zur Sichtbarmachung von Zellen",
       gapAccepted: ["Mikroskop"],
     },
-    { concept: "bio:k6:zellth:f6", prompt: "Was kennzeichnet Gewebe?", answer: "Sie ist die Verband gleichartiger Zellen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gewebe.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gewebe.", "Ein Randdetail, das fachlich nicht erklärt, was Gewebe leistet."],
+    { concept: "bio:k6:zellth:f6", prompt: "Was kennzeichnet Gewebe?", answer: "Sie beschreibt verband gleichartiger Zellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Gewebe: Verband gleichartiger Zellen",
       wissen: fw(
         "Baustein von Organen. Bezug: Zelltheorie.",
@@ -1684,7 +1684,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Verband gleichartiger Zellen",
       gapAccepted: ["Gewebe"],
     },
-    { concept: "bio:k6:zellth:f7", prompt: "Wozu dient Organ?", answer: "Es ist die Funktionseinheit aus Geweben, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Organ.", "Eine typische Verwechslung mit einem Nachbarbegriff von Organ.", "Ein Randdetail, das fachlich nicht erklärt, was Organ leistet."],
+    { concept: "bio:k6:zellth:f7", prompt: "Wozu dient Organ?", answer: "Es beschreibt funktionseinheit aus Geweben, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Organ: Funktionseinheit aus Geweben",
       wissen: fw(
         "z. B. Blatt oder Herz. Bezug: Zelltheorie.",
@@ -1692,7 +1692,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Funktionseinheit aus Geweben",
       gapAccepted: ["Organ"],
     },
-    { concept: "bio:k6:zellth:f8", prompt: "Woran erkennt man Schleiden?", answer: "Es ist den Mitbegründen der pflanzlichen Zelltheorie, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schleiden.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schleiden.", "Ein Randdetail, das fachlich nicht erklärt, was Schleiden leistet."],
+    { concept: "bio:k6:zellth:f8", prompt: "Woran erkennt man Schleiden?", answer: "Es beschreibt mitbegründen der pflanzlichen Zelltheorie, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schleiden: Mitbegründer der pflanzlichen Zelltheorie",
       wissen: fw(
         "Zellen als Grundeinheit der Pflanzen. Bezug: Zelltheorie.",
@@ -1700,7 +1700,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Mitbegründer der pflanzlichen Zelltheorie",
       gapAccepted: ["Schleiden"],
     },
-    { concept: "bio:k6:zellth:f9", prompt: "Was beschreibt Schwann?", answer: "Es ist das Übertrug Zellgedanken auf Tiere, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es erhöht genetische Vielfalt; es handelt sich um die Vermehrung mit Befruchtung.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schwann.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schwann."],
+    { concept: "bio:k6:zellth:f9", prompt: "Was beschreibt Schwann?", answer: "Es beschreibt übertrug Zellgedanken auf Tiere, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schwann: Übertrug Zellgedanken auf Tiere",
       wissen: fw(
         "Zellen auch bei Tieren. Bezug: Zelltheorie.",
@@ -1708,7 +1708,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Übertrug Zellgedanken auf Tiere",
       gapAccepted: ["Schwann"],
     },
-    { concept: "bio:k6:zellth:f10", prompt: "Was kennzeichnet Virchow?", answer: "Es ist den Zellen entstehen aus Zellen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Virchow.", "Eine typische Verwechslung mit einem Nachbarbegriff von Virchow.", "Ein Randdetail, das fachlich nicht erklärt, was Virchow leistet."],
+    { concept: "bio:k6:zellth:f10", prompt: "Was kennzeichnet Virchow?", answer: "Es beschreibt zellen entstehen aus Zellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Virchow: Zellen entstehen aus Zellen",
       wissen: fw(
         "Omnis cellula e cellula. Bezug: Zelltheorie.",
@@ -1716,7 +1716,7 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Zellen entstehen aus Zellen",
       gapAccepted: ["Virchow"],
     },
-    { concept: "bio:k6:zellth:f11", prompt: "Was beschreibt Differenzierung?", answer: "Sie ist die Spezialisierung von Zellen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Differenzierung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Differenzierung.", "Ein Randdetail, das fachlich nicht erklärt, was Differenzierung leistet."],
+    { concept: "bio:k6:zellth:f11", prompt: "Was beschreibt Differenzierung?", answer: "Sie beschreibt spezialisierung von Zellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Differenzierung: Spezialisierung von Zellen",
       wissen: fw(
         "Unterschiedliche Aufgaben. Bezug: Zelltheorie.",
@@ -1724,13 +1724,13 @@ export const k6Zelltheorie: BioBank = {
       gap: "Zelltheorie: ___ — Spezialisierung von Zellen",
       gapAccepted: ["Differenzierung"],
     },
-    { concept: "bio:k6:zellth:x0", prompt: "Was kennzeichnet Begriff?", answer: "Es ist das Grundprinzip, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k6:zellth:x0", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt grundprinzip, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Grundprinzip.",
       wissen: fw(
         "Die Zelltheorie verbindet Beobachtung am Mikroskop mit der Idee gemeinsamer Bausteine des Lebens.",
       ),
     },
-    { concept: "bio:k6:zellth:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist die Methode, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k6:zellth:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt methode, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Methode.",
       wissen: fw(
         "Erst Vergrößerung machte Zellgrenzen und -kerne sichtbar. Bezug: Zelltheorie.",
@@ -1738,18 +1738,18 @@ export const k6Zelltheorie: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:zellth:p0", term: "Zelle", meaning: "Ist die Kleinste lebende Einheit", wissen: "Baustein aller Organismen. Bezug: Zelltheorie. Zelle bedeutet: Ist die Kleinste lebende Einheit." },
-    { concept: "bio:k6:zellth:p1", term: "Zelltheorie", meaning: "Ist das Lebewesen bestehen aus Zellen", wissen: "Zellen entstehen aus Zellen. Bezug: Zelltheorie. Zelltheorie bedeutet: Ist das Lebewesen bestehen aus Zellen." },
-    { concept: "bio:k6:zellth:p2", term: "Einzeller", meaning: "Dient als Organismus aus einer Zelle", wissen: "z. B. viele Protisten. Bezug: Zelltheorie. Einzeller bedeutet: Dient als Organismus aus einer Zelle." },
-    { concept: "bio:k6:zellth:p3", term: "Vielzeller", meaning: "Dient als Organismus aus vielen Zellen", wissen: "Arbeitsteilung möglich. Bezug: Zelltheorie. Vielzeller bedeutet: Dient als Organismus aus vielen Zellen." },
-    { concept: "bio:k6:zellth:p4", term: "Zellkern", meaning: "Enthält Erbinformation bei Eukaryoten in diesem physikalischen oder fachlichen Zusammenhang", wissen: "Steuert Zellprozesse. Bezug: Zelltheorie. Zellkern bedeutet: Enthält Erbinformation bei Eukaryoten in diesem physikalischen oder fachlichen Zusammenhang." },
-    { concept: "bio:k6:zellth:p5", term: "Mikroskop", meaning: "Vergrößert kleine Objekte durch Objektiv und Okular", wissen: "Ermöglichte die Zelltheorie. Bezug: Zelltheorie. Mikroskop bedeutet: Vergrößert kleine Objekte durch Objektiv und Okular." },
-    { concept: "bio:k6:zellth:p6", term: "Gewebe", meaning: "Ist die Verband gleichartiger Zellen", wissen: "Baustein von Organen. Bezug: Zelltheorie. Gewebe bedeutet: Ist die Verband gleichartiger Zellen." },
-    { concept: "bio:k6:zellth:p7", term: "Organ", meaning: "Ist die Funktionseinheit aus Geweben", wissen: "z. B. Blatt oder Herz. Bezug: Zelltheorie. Organ bedeutet: Ist die Funktionseinheit aus Geweben." },
-    { concept: "bio:k6:zellth:p8", term: "Schleiden", meaning: "Ist der Mitbegründer der pflanzlichen Zelltheorie", wissen: "Zellen als Grundeinheit der Pflanzen. Bezug: Zelltheorie. Schleiden bedeutet: Ist der Mitbegründer der pflanzlichen Zelltheorie." },
-    { concept: "bio:k6:zellth:p9", term: "Schwann", meaning: "Ist das Übertrug Zellgedanken auf Tiere", wissen: "Zellen auch bei Tieren. Bezug: Zelltheorie. Schwann bedeutet: Ist das Übertrug Zellgedanken auf Tiere." },
-    { concept: "bio:k6:zellth:p10", term: "Virchow", meaning: "Ist der Zellen entstehen aus Zellen", wissen: "Omnis cellula e cellula. Bezug: Zelltheorie. Virchow bedeutet: Ist der Zellen entstehen aus Zellen." },
-    { concept: "bio:k6:zellth:p11", term: "Differenzierung", meaning: "Ist die Spezialisierung von Zellen", wissen: "Unterschiedliche Aufgaben. Bezug: Zelltheorie. Differenzierung bedeutet: Ist die Spezialisierung von Zellen." },
+    { concept: "bio:k6:zellth:p0", term: "Zelle", meaning: "Beschreibt baustein aller Organismen als biologisches Merkmal mit klarer Funktion.", wissen: "Baustein aller Organismen. Bezug: Zelltheorie. Zelle bedeutet: Ist die Kleinste lebende Einheit." },
+    { concept: "bio:k6:zellth:p1", term: "Zelltheorie", meaning: "Beschreibt zellen entstehen aus Zellen als biologisches Merkmal mit klarer Funktion.", wissen: "Zellen entstehen aus Zellen. Bezug: Zelltheorie. Zelltheorie bedeutet: Ist das Lebewesen bestehen aus Zellen." },
+    { concept: "bio:k6:zellth:p2", term: "Einzeller", meaning: "Beschreibt organismus aus einer Zelle als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. viele Protisten. Bezug: Zelltheorie. Einzeller bedeutet: Dient als Organismus aus einer Zelle." },
+    { concept: "bio:k6:zellth:p3", term: "Vielzeller", meaning: "Beschreibt organismus aus vielen Zellen als biologisches Merkmal mit klarer Funktion.", wissen: "Arbeitsteilung möglich. Bezug: Zelltheorie. Vielzeller bedeutet: Dient als Organismus aus vielen Zellen." },
+    { concept: "bio:k6:zellth:p4", term: "Zellkern", meaning: "Beschreibt enthält Erbinformation bei Eukaryoten als biologisches Merkmal mit klarer Funktion.", wissen: "Steuert Zellprozesse. Bezug: Zelltheorie. Zellkern bedeutet: Enthält Erbinformation bei Eukaryoten in diesem physikalischen oder fachlichen Zusammenhang." },
+    { concept: "bio:k6:zellth:p5", term: "Mikroskop", meaning: "Vergrößert kleine Objekte durch Objektiv und Okular.", wissen: "Ermöglichte die Zelltheorie. Bezug: Zelltheorie. Mikroskop bedeutet: Vergrößert kleine Objekte durch Objektiv und Okular." },
+    { concept: "bio:k6:zellth:p6", term: "Gewebe", meaning: "Beschreibt baustein von Organen als biologisches Merkmal mit klarer Funktion.", wissen: "Baustein von Organen. Bezug: Zelltheorie. Gewebe bedeutet: Ist die Verband gleichartiger Zellen." },
+    { concept: "bio:k6:zellth:p7", term: "Organ", meaning: "Beschreibt blatt oder Herz als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Blatt oder Herz. Bezug: Zelltheorie. Organ bedeutet: Ist die Funktionseinheit aus Geweben." },
+    { concept: "bio:k6:zellth:p8", term: "Schleiden", meaning: "Beschreibt zellen als Grundeinheit der Pflanzen als biologisches Merkmal mit klarer Funktion.", wissen: "Zellen als Grundeinheit der Pflanzen. Bezug: Zelltheorie. Schleiden bedeutet: Ist der Mitbegründer der pflanzlichen Zelltheorie." },
+    { concept: "bio:k6:zellth:p9", term: "Schwann", meaning: "Beschreibt zellen auch bei Tieren als biologisches Merkmal mit klarer Funktion.", wissen: "Zellen auch bei Tieren. Bezug: Zelltheorie. Schwann bedeutet: Ist das Übertrug Zellgedanken auf Tiere." },
+    { concept: "bio:k6:zellth:p10", term: "Virchow", meaning: "Beschreibt omnis cellula e cellula als biologisches Merkmal mit klarer Funktion.", wissen: "Omnis cellula e cellula. Bezug: Zelltheorie. Virchow bedeutet: Ist der Zellen entstehen aus Zellen." },
+    { concept: "bio:k6:zellth:p11", term: "Differenzierung", meaning: "Beschreibt spezialisierung von Zellen als biologisches Merkmal mit klarer Funktion.", wissen: "Unterschiedliche Aufgaben. Bezug: Zelltheorie. Differenzierung bedeutet: Ist die Spezialisierung von Zellen." },
   ],
   trueFalse: [
     {
@@ -1775,7 +1775,7 @@ export const k6OrganellenEnergie: BioBank = {
   url: "https://de.wikipedia.org/wiki/Organelle",
   conceptPrefix: "bio:k6:orgene",
   facts: [
-    { concept: "bio:k6:orgene:f0", prompt: "Welche Rolle hat Mitochondrium?", answer: "Es ist das Ort der Zellatmung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Mitochondrium.", "Eine typische Verwechslung mit einem Nachbarbegriff von Mitochondrium.", "Ein Randdetail, das fachlich nicht erklärt, was Mitochondrium leistet."],
+    { concept: "bio:k6:orgene:f0", prompt: "Welche Rolle hat Mitochondrium?", answer: "Es beschreibt ort der Zellatmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Mitochondrium: Ort der Zellatmung",
       wissen: fw(
         "Liefert viel ATP. Bezug: Energieorganellen.",
@@ -1783,7 +1783,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Ort der Zellatmung",
       gapAccepted: ["Mitochondrium"],
     },
-    { concept: "bio:k6:orgene:f1", prompt: "Was beschreibt Chloroplast?", answer: "Es ist das Ort der Fotosynthese, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Chloroplast.", "Eine typische Verwechslung mit einem Nachbarbegriff von Chloroplast.", "Ein Randdetail, das fachlich nicht erklärt, was Chloroplast leistet."],
+    { concept: "bio:k6:orgene:f1", prompt: "Was beschreibt Chloroplast?", answer: "Es beschreibt ort der Fotosynthese, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Chloroplast: Ort der Fotosynthese",
       wissen: fw(
         "Bildet Zucker und O₂. Bezug: Energieorganellen.",
@@ -1791,7 +1791,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Ort der Fotosynthese",
       gapAccepted: ["Chloroplast"],
     },
-    { concept: "bio:k6:orgene:f2", prompt: "Welche Rolle hat ATP?", answer: "Es ist die Energiewährung der Zelle, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu ATP.", "Eine typische Verwechslung mit einem Nachbarbegriff von ATP.", "Ein Randdetail, das fachlich nicht erklärt, was ATP leistet."],
+    { concept: "bio:k6:orgene:f2", prompt: "Welche Rolle hat ATP?", answer: "Es beschreibt energiewährung der Zelle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "ATP: Energiewährung der Zelle",
       wissen: fw(
         "Treibt energiebedürftige Prozesse. Bezug: Energieorganellen.",
@@ -1799,7 +1799,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Energiewährung der Zelle",
       gapAccepted: ["ATP"],
     },
-    { concept: "bio:k6:orgene:f3", prompt: "Woran erkennt man Zellatmung?", answer: "Sie ist die Abbau von Zucker mit Energiegewinn, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zellatmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zellatmung.", "Ein Randdetail, das fachlich nicht erklärt, was Zellatmung leistet."],
+    { concept: "bio:k6:orgene:f3", prompt: "Woran erkennt man Zellatmung?", answer: "Sie ist die Abbau von Zucker mit Energiegewinn.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Zellatmung: Abbau von Zucker mit Energiegewinn",
       wissen: fw(
         "Braucht oft Sauerstoff. Bezug: Energieorganellen.",
@@ -1807,7 +1807,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Abbau von Zucker mit Energiegewinn",
       gapAccepted: ["Zellatmung"],
     },
-    { concept: "bio:k6:orgene:f4", prompt: "Wozu dient die Fotosynthese im Thema Energieorganellen?", answer: "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", wrong: ["Sie betrifft einen anderen Aspekt in diesem Lernbereich."],
+    { concept: "bio:k6:orgene:f4", prompt: "Wozu dient die Fotosynthese im Thema Energieorganellen?", answer: "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Fotosynthese: Aufbau organischer Stoffe mit Licht",
       wissen: fw(
         "In Chloroplasten. Bezug: Energieorganellen.",
@@ -1815,7 +1815,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Aufbau organischer Stoffe mit Licht",
       gapAccepted: ["Fotosynthese"],
     },
-    { concept: "bio:k6:orgene:f5", prompt: "Wozu dient Doppelmembran?", answer: "Es beschreibt Zwei Membranen um Organell, sodass man Doppelmembran von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Doppelmembran.", "Eine typische Verwechslung mit einem Nachbarbegriff von Doppelmembran.", "Ein Randdetail, das fachlich nicht erklärt, was Doppelmembran leistet."],
+    { concept: "bio:k6:orgene:f5", prompt: "Wozu dient Doppelmembran?", answer: "Es beschreibt zwei Membranen um Organell, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Doppelmembran: Zwei Membranen um Organell",
       wissen: fw(
         "Bei Mitochondrium und Chloroplast. Bezug: Energieorganellen.",
@@ -1823,7 +1823,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Zwei Membranen um Organell",
       gapAccepted: ["Doppelmembran"],
     },
-    { concept: "bio:k6:orgene:f6", prompt: "Was kennzeichnet Energieumwandlung?", answer: "Sie ist die Umwandlung von Energieformen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Energieumwandlung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Energieumwandlung.", "Ein Randdetail, das fachlich nicht erklärt, was Energieumwandlung leistet."],
+    { concept: "bio:k6:orgene:f6", prompt: "Was kennzeichnet Energieumwandlung?", answer: "Sie beschreibt umwandlung von Energieformen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Energieumwandlung: Umwandlung von Energieformen",
       wissen: fw(
         "Licht → chemisch; chemisch → ATP. Bezug: Energieorganellen.",
@@ -1831,7 +1831,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Umwandlung von Energieformen",
       gapAccepted: ["Energieumwandlung"],
     },
-    { concept: "bio:k6:orgene:f7", prompt: "Welche Rolle hat Cytoplasma?", answer: "Es ist das Zellinnenraum, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Cytoplasma.", "Eine typische Verwechslung mit einem Nachbarbegriff von Cytoplasma.", "Ein Randdetail, das fachlich nicht erklärt, was Cytoplasma leistet."],
+    { concept: "bio:k6:orgene:f7", prompt: "Welche Rolle hat Cytoplasma?", answer: "Es beschreibt zellinnenraum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Cytoplasma: Zellinnenraum",
       wissen: fw(
         "Ort vieler Stoffwechselwege. Bezug: Energieorganellen.",
@@ -1839,7 +1839,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Zellinnenraum",
       gapAccepted: ["Cytoplasma"],
     },
-    { concept: "bio:k6:orgene:f8", prompt: "Was kennzeichnet Glukose?", answer: "Sie ist den wichtigen Energieträger, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie enthält Erbinformation bei Eukaryoten sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Glukose.", "Eine typische Verwechslung mit einem Nachbarbegriff von Glukose."],
+    { concept: "bio:k6:orgene:f8", prompt: "Was kennzeichnet Glukose?", answer: "Sie beschreibt wichtigen Energieträger, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Glukose: Wichtiger Energieträger",
       wissen: fw(
         "Produkt der Fotosynthese. Bezug: Energieorganellen.",
@@ -1847,7 +1847,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Wichtiger Energieträger",
       gapAccepted: ["Glukose"],
     },
-    { concept: "bio:k6:orgene:f9", prompt: "Welche Rolle hat Sauerstoff?", answer: "Es ist das Reaktand der aeroben Atmung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es enthält Erbinformation bei Eukaryoten und grenzt den Begriff von typischen Verwechslungen ab.", "Das Vergrößert kleine Objekte durch Objektiv und Okular, mit der man Sauerstoff im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sauerstoff."],
+    { concept: "bio:k6:orgene:f9", prompt: "Welche Rolle hat Sauerstoff?", answer: "Es beschreibt reaktand der aeroben Atmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sauerstoff: Reaktand der aeroben Atmung",
       wissen: fw(
         "Produkt der Fotosynthese. Bezug: Energieorganellen.",
@@ -1855,7 +1855,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Reaktand der aeroben Atmung",
       gapAccepted: ["Sauerstoff"],
     },
-    { concept: "bio:k6:orgene:f10", prompt: "Woran erkennt man Autotrophie?", answer: "Sie ist die Selbsternährung über Assimilation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Autotrophie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Autotrophie.", "Ein Randdetail, das fachlich nicht erklärt, was Autotrophie leistet."],
+    { concept: "bio:k6:orgene:f10", prompt: "Woran erkennt man Autotrophie?", answer: "Sie beschreibt selbsternährung über Assimilation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Autotrophie: Selbsternährung über Assimilation",
       wissen: fw(
         "Pflanzen mit Chloroplasten. Bezug: Energieorganellen.",
@@ -1863,7 +1863,7 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Selbsternährung über Assimilation",
       gapAccepted: ["Autotrophie"],
     },
-    { concept: "bio:k6:orgene:f11", prompt: "Wozu dient die Heterotrophie?", answer: "Sie ist die Abhängigkeit von organischer Nahrung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Heterotrophie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Heterotrophie.", "Ein Randdetail, das fachlich nicht erklärt, was Heterotrophie leistet."],
+    { concept: "bio:k6:orgene:f11", prompt: "Wozu dient die Heterotrophie?", answer: "Sie beschreibt abhängigkeit von organischer Nahrung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Heterotrophie: Abhängigkeit von organischer Nahrung",
       wissen: fw(
         "Tiere ohne Chloroplasten. Bezug: Energieorganellen.",
@@ -1871,13 +1871,13 @@ export const k6OrganellenEnergie: BioBank = {
       gap: "Energieorganellen: ___ — Abhängigkeit von organischer Nahrung",
       gapAccepted: ["Heterotrophie"],
     },
-    { concept: "bio:k6:orgene:x0", prompt: "Woran erkennt man x0?", answer: "Es ist das x0 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, und das Grenzt x0 von typischen Verwechslungen ab.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Es treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0."],
+    { concept: "bio:k6:orgene:x0", prompt: "Woran erkennt man x0?", answer: "Es beschreibt x0 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Energieorganellen.",
       wissen: fw(
         "Chloroplasten speichern Lichtenergie in Zucker; Mitochondrien setzen Energie als ATP frei.",
       ),
     },
-    { concept: "bio:k6:orgene:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es ist das Stoffkreislauf, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k6:orgene:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es beschreibt stoffkreislauf, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Stoffkreislauf.",
       wissen: fw(
         "Fotosynthese liefert Zucker und O₂; Zellatmung verbraucht sie und liefert CO₂ und Wasser zurück.",
@@ -1885,18 +1885,18 @@ export const k6OrganellenEnergie: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k6:orgene:p0", term: "Mitochondrium", meaning: "Ist das Ort der Zellatmung", wissen: "Liefert viel ATP. Bezug: Energieorganellen. Mitochondrium bedeutet: Ist das Ort der Zellatmung." },
-    { concept: "bio:k6:orgene:p1", term: "Chloroplast", meaning: "Zucker und O₂; es handelt sich um das Ort der Fotosynthese", wissen: "Bildet Zucker und O₂. Bezug: Energieorganellen. Chloroplast bedeutet: Zucker und O₂; es handelt sich um das Ort der Fotosynthese." },
-    { concept: "bio:k6:orgene:p2", term: "ATP", meaning: "Treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle", wissen: "Treibt energiebedürftige Prozesse. Bezug: Energieorganellen. ATP bedeutet: Treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle." },
-    { concept: "bio:k6:orgene:p3", term: "Zellatmung", meaning: "Ist die Abbau von Zucker mit Energiegewinn", wissen: "Braucht oft Sauerstoff. Bezug: Energieorganellen. Zellatmung bedeutet: Ist die Abbau von Zucker mit Energiegewinn." },
-    { concept: "bio:k6:orgene:p4", term: "Fotosynthese", meaning: "Wandelt Lichtenergie in chemische Energie in Form von Glucose um", wissen: "In Chloroplasten. Bezug: Energieorganellen. Fotosynthese bedeutet: Wandelt Lichtenergie in chemische Energie in Form von Glucose um." },
-    { concept: "bio:k6:orgene:p5", term: "Doppelmembran", meaning: "Dient als Zwei Membranen um Organell", wissen: "Bei Mitochondrium und Chloroplast. Bezug: Energieorganellen. Doppelmembran bedeutet: Dient als Zwei Membranen um Organell." },
-    { concept: "bio:k6:orgene:p6", term: "Energieumwandlung", meaning: "Ist die Umwandlung von Energieformen", wissen: "Licht → chemisch; chemisch → ATP. Bezug: Energieorganellen. Energieumwandlung bedeutet: Ist die Umwandlung von Energieformen." },
-    { concept: "bio:k6:orgene:p7", term: "Cytoplasma", meaning: "Ist das Zellinnenraum", wissen: "Ort vieler Stoffwechselwege. Bezug: Energieorganellen. Cytoplasma bedeutet: Ist das Zellinnenraum." },
-    { concept: "bio:k6:orgene:p8", term: "Glukose", meaning: "Ist der wichtigen Energieträger", wissen: "Produkt der Fotosynthese. Bezug: Energieorganellen. Glukose bedeutet: Ist der wichtigen Energieträger." },
-    { concept: "bio:k6:orgene:p9", term: "Sauerstoff", meaning: "Ist das Reaktand der aeroben Atmung", wissen: "Produkt der Fotosynthese. Bezug: Energieorganellen. Sauerstoff bedeutet: Ist das Reaktand der aeroben Atmung." },
-    { concept: "bio:k6:orgene:p10", term: "Autotrophie", meaning: "Ist die Selbsternährung über Assimilation", wissen: "Pflanzen mit Chloroplasten. Bezug: Energieorganellen. Autotrophie bedeutet: Ist die Selbsternährung über Assimilation." },
-    { concept: "bio:k6:orgene:p11", term: "Heterotrophie", meaning: "Dient als Abhängigkeit von organischer Nahrung", wissen: "Tiere ohne Chloroplasten. Bezug: Energieorganellen. Heterotrophie bedeutet: Dient als Abhängigkeit von organischer Nahrung." },
+    { concept: "bio:k6:orgene:p0", term: "Mitochondrium", meaning: "Beschreibt liefert viel ATP als biologisches Merkmal mit klarer Funktion.", wissen: "Liefert viel ATP. Bezug: Energieorganellen. Mitochondrium bedeutet: Ist das Ort der Zellatmung." },
+    { concept: "bio:k6:orgene:p1", term: "Chloroplast", meaning: "Beschreibt zucker und O₂ als biologisches Merkmal mit klarer Funktion.", wissen: "Bildet Zucker und O₂. Bezug: Energieorganellen. Chloroplast bedeutet: Zucker und O₂; es handelt sich um das Ort der Fotosynthese." },
+    { concept: "bio:k6:orgene:p2", term: "ATP", meaning: "Beschreibt treibt energiebedürftige Prozesse als biologisches Merkmal mit klarer Funktion.", wissen: "Treibt energiebedürftige Prozesse. Bezug: Energieorganellen. ATP bedeutet: Treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle." },
+    { concept: "bio:k6:orgene:p3", term: "Zellatmung", meaning: "Beschreibt braucht oft Sauerstoff als biologisches Merkmal mit klarer Funktion.", wissen: "Braucht oft Sauerstoff. Bezug: Energieorganellen. Zellatmung bedeutet: Ist die Abbau von Zucker mit Energiegewinn." },
+    { concept: "bio:k6:orgene:p4", term: "Fotosynthese", meaning: "Wandelt Lichtenergie in chemische Energie in Form von Glucose um.", wissen: "In Chloroplasten. Bezug: Energieorganellen. Fotosynthese bedeutet: Wandelt Lichtenergie in chemische Energie in Form von Glucose um." },
+    { concept: "bio:k6:orgene:p5", term: "Doppelmembran", meaning: "Beschreibt bei Mitochondrium und Chloroplast als biologisches Merkmal mit klarer Funktion.", wissen: "Bei Mitochondrium und Chloroplast. Bezug: Energieorganellen. Doppelmembran bedeutet: Dient als Zwei Membranen um Organell." },
+    { concept: "bio:k6:orgene:p6", term: "Energieumwandlung", meaning: "Licht → chemisch; chemisch → ATP.", wissen: "Licht → chemisch; chemisch → ATP. Bezug: Energieorganellen. Energieumwandlung bedeutet: Ist die Umwandlung von Energieformen." },
+    { concept: "bio:k6:orgene:p7", term: "Cytoplasma", meaning: "Beschreibt ort vieler Stoffwechselwege als biologisches Merkmal mit klarer Funktion.", wissen: "Ort vieler Stoffwechselwege. Bezug: Energieorganellen. Cytoplasma bedeutet: Ist das Zellinnenraum." },
+    { concept: "bio:k6:orgene:p8", term: "Glukose", meaning: "Beschreibt produkt der Fotosynthese als biologisches Merkmal mit klarer Funktion.", wissen: "Produkt der Fotosynthese. Bezug: Energieorganellen. Glukose bedeutet: Ist der wichtigen Energieträger." },
+    { concept: "bio:k6:orgene:p9", term: "Sauerstoff", meaning: "Beschreibt produkt der Fotosynthese als biologisches Merkmal mit klarer Funktion.", wissen: "Produkt der Fotosynthese. Bezug: Energieorganellen. Sauerstoff bedeutet: Ist das Reaktand der aeroben Atmung." },
+    { concept: "bio:k6:orgene:p10", term: "Autotrophie", meaning: "Beschreibt pflanzen mit Chloroplasten als biologisches Merkmal mit klarer Funktion.", wissen: "Pflanzen mit Chloroplasten. Bezug: Energieorganellen. Autotrophie bedeutet: Ist die Selbsternährung über Assimilation." },
+    { concept: "bio:k6:orgene:p11", term: "Heterotrophie", meaning: "Beschreibt tiere ohne Chloroplasten als biologisches Merkmal mit klarer Funktion.", wissen: "Tiere ohne Chloroplasten. Bezug: Energieorganellen. Heterotrophie bedeutet: Dient als Abhängigkeit von organischer Nahrung." },
   ],
   trueFalse: [
     {
@@ -1922,7 +1922,7 @@ export const k7PulsBlutdruck: BioBank = {
   url: "https://de.wikipedia.org/wiki/Puls",
   conceptPrefix: "bio:k7:puls",
   facts: [
-    { concept: "bio:k7:puls:f0", prompt: "Was kennzeichnet Puls?", answer: "Die fühlbare Druckwelle der Herzschläge in den Arterien.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Puls.", "Eine typische Verwechslung mit einem Nachbarbegriff von Puls.", "Ein Randdetail, das fachlich nicht erklärt, was Puls leistet."],
+    { concept: "bio:k7:puls:f0", prompt: "Was kennzeichnet Puls?", answer: "Es beschreibt fühlbare Druckwelle der Herzschläge in den Arterien.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
         "Entspricht grob der Herzfrequenz. Bezug: Puls/Blutdruck.",
@@ -1930,7 +1930,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Spürbare Druckwelle der Arterien",
       gapAccepted: ["Puls"],
     },
-    { concept: "bio:k7:puls:f1", prompt: "Was kennzeichnet Pulsfrequenz?", answer: "Sie ist die Schläge pro Minute, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Pulsfrequenz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Pulsfrequenz."],
+    { concept: "bio:k7:puls:f1", prompt: "Was kennzeichnet Pulsfrequenz?", answer: "Sie beschreibt schläge pro Minute, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Pulsfrequenz: Schläge pro Minute",
       wissen: fw(
         "Steigt bei Belastung. Bezug: Puls/Blutdruck.",
@@ -1938,7 +1938,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Schläge pro Minute",
       gapAccepted: ["Pulsfrequenz"],
     },
-    { concept: "bio:k7:puls:f2", prompt: "Was kennzeichnet Blutdruck?", answer: "Es beschreibt den Druck des Blutes auf die Gefäßwände, sodass man Blutdruck von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Blutdruck.", "Eine typische Verwechslung mit einem Nachbarbegriff von Blutdruck.", "Ein Randdetail, das fachlich nicht erklärt, was Blutdruck leistet."],
+    { concept: "bio:k7:puls:f2", prompt: "Was kennzeichnet Blutdruck?", answer: "Es beschreibt den Druck des Blutes auf die Gefäßwände.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
         "Systolisch und diastolisch. Bezug: Puls/Blutdruck.",
@@ -1946,7 +1946,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Druck des Blutes auf Arterienwände",
       gapAccepted: ["Blutdruck"],
     },
-    { concept: "bio:k7:puls:f3", prompt: "Woran erkennt man Systole?", answer: "Die Auswurfphase des Herzens.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Sie treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um."],
+    { concept: "bio:k7:puls:f3", prompt: "Woran erkennt man Systole?", answer: "Sie beschreibt auswurfphase des Herzens, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Systole: Auswurfphase des Herzens",
       wissen: fw(
         "Höherer Druckwert. Bezug: Puls/Blutdruck.",
@@ -1954,7 +1954,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Auswurfphase des Herzens",
       gapAccepted: ["Systole"],
     },
-    { concept: "bio:k7:puls:f4", prompt: "Was beschreibt Diastole?", answer: "Sie ist die EntspannungsFüllungsphasese, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Sie treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Diastole."],
+    { concept: "bio:k7:puls:f4", prompt: "Was beschreibt Diastole?", answer: "Sie beschreibt entspannungsFüllungsphasese, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Diastole: Entspannungs-/Füllungsphase",
       wissen: fw(
         "Niedrigerer Druckwert. Bezug: Puls/Blutdruck.",
@@ -1962,7 +1962,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Entspannungs-/Füllungsphase",
       gapAccepted: ["Diastole"],
     },
-    { concept: "bio:k7:puls:f5", prompt: "Was kennzeichnet Ruhepuls?", answer: "Es ist das Puls in entspanntem Zustand, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Es treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ruhepuls."],
+    { concept: "bio:k7:puls:f5", prompt: "Was kennzeichnet Ruhepuls?", answer: "Es beschreibt puls in entspanntem Zustand, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ruhepuls: Puls in entspanntem Zustand",
       wissen: fw(
         "Vergleichswert zur Belastung. Bezug: Puls/Blutdruck.",
@@ -1970,7 +1970,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Puls in entspanntem Zustand",
       gapAccepted: ["Ruhepuls"],
     },
-    { concept: "bio:k7:puls:f6", prompt: "Woran erkennt man Belastungspuls?", answer: "Es ist das Puls unter körperlicher Arbeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Es treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Belastungspuls."],
+    { concept: "bio:k7:puls:f6", prompt: "Woran erkennt man Belastungspuls?", answer: "Es beschreibt puls unter körperlicher Arbeit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Belastungspuls: Puls unter körperlicher Arbeit",
       wissen: fw(
         "Steigt mit Sauerstoffbedarf. Bezug: Puls/Blutdruck.",
@@ -1978,7 +1978,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Puls unter körperlicher Arbeit",
       gapAccepted: ["Belastungspuls"],
     },
-    { concept: "bio:k7:puls:f7", prompt: "Was beschreibt mmHg?", answer: "Es ist die Einheit des Blutdrucks, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Zucker und O₂; es handelt sich um das Ort der Fotosynthese.", "Es treibt energiebedürftige Prozesse; es handelt sich um die Energiewährung der Zelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu mmHg."],
+    { concept: "bio:k7:puls:f7", prompt: "Was beschreibt mmHg?", answer: "Es beschreibt einheit des Blutdrucks, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "mmHg: Einheit des Blutdrucks",
       wissen: fw(
         "Millimeter Quecksilbersäule. Bezug: Puls/Blutdruck.",
@@ -1986,7 +1986,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Einheit des Blutdrucks",
       gapAccepted: ["mmHg"],
     },
-    { concept: "bio:k7:puls:f8", prompt: "Was kennzeichnet Arterie?", answer: "Die Führt sauerstoffreiches Blut vom Herzen zu den Organen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Arterie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Arterie.", "Ein Randdetail, das fachlich nicht erklärt, was Arterie leistet."],
+    { concept: "bio:k7:puls:f8", prompt: "Was kennzeichnet Arterie?", answer: "Sie beschreibt sie führt sauerstoffreiches Blut vom Herzen zu den Organen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Arterie: Gefäß vom Herzen weg",
       wissen: fw(
         "Dort ist Puls tastbar. Bezug: Puls/Blutdruck.",
@@ -1994,7 +1994,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Gefäß vom Herzen weg",
       gapAccepted: ["Arterie"],
     },
-    { concept: "bio:k7:puls:f9", prompt: "Woran erkennt man Vitalparameter?", answer: "Er ist die grundlegende Körperwerte, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Der Vitalparameter bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Vitalparameter.", "Eine typische Verwechslung mit einem Nachbarbegriff von Vitalparameter."],
+    { concept: "bio:k7:puls:f9", prompt: "Woran erkennt man Vitalparameter?", answer: "Er beschreibt grundlegende Körperwerte, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Vitalparameter: Grundlegende Körperwerte",
       wissen: fw(
         "u. a. Puls und Blutdruck. Bezug: Puls/Blutdruck.",
@@ -2002,7 +2002,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Grundlegende Körperwerte",
       gapAccepted: ["Vitalparameter"],
     },
-    { concept: "bio:k7:puls:f10", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es ist das Dauerhaft zu hoher Blutdruck, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bluthochdruck.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bluthochdruck.", "Ein Randdetail, das fachlich nicht erklärt, was Bluthochdruck leistet."],
+    { concept: "bio:k7:puls:f10", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es beschreibt dauerhaft zu hoher Blutdruck, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Bluthochdruck: Dauerhaft zu hoher Blutdruck",
       wissen: fw(
         "Belastet Herz und Gefäße. Bezug: Puls/Blutdruck.",
@@ -2010,7 +2010,7 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Dauerhaft zu hoher Blutdruck",
       gapAccepted: ["Bluthochdruck"],
     },
-    { concept: "bio:k7:puls:f11", prompt: "Wozu dient die Messmanschette?", answer: "Sie ist den Hilfsmittel der Blutdruckmessung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Messmanschette.", "Eine typische Verwechslung mit einem Nachbarbegriff von Messmanschette.", "Ein Randdetail, das fachlich nicht erklärt, was Messmanschette leistet."],
+    { concept: "bio:k7:puls:f11", prompt: "Wozu dient die Messmanschette?", answer: "Sie beschreibt hilfsmittel der Blutdruckmessung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Messmanschette: Hilfsmittel der Blutdruckmessung",
       wissen: fw(
         "Ermöglicht standardisierte Messung. Bezug: Puls/Blutdruck.",
@@ -2018,13 +2018,13 @@ export const k7PulsBlutdruck: BioBank = {
       gap: "Puls/Blutdruck: ___ — Hilfsmittel der Blutdruckmessung",
       gapAccepted: ["Messmanschette"],
     },
-    { concept: "bio:k7:puls:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist die Druckwelle, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k7:puls:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt druckwelle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Druckwelle.",
       wissen: fw(
         "Jeder Herzschlag erzeugt eine Welle in den Arterien, die tastbar ist.",
       ),
     },
-    { concept: "bio:k7:puls:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist die Diagnostik, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k7:puls:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt diagnostik, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Diagnostik.",
       wissen: fw(
         "Abweichungen können auf Fitness, Stress oder Erkrankungen hinweisen.",
@@ -2032,18 +2032,18 @@ export const k7PulsBlutdruck: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k7:puls:p0", term: "Puls", meaning: "Ist die fühlbare Druckwelle der Herzschläge in den Arterien", wissen: "grob der Herzfrequenz. Bezug: Puls/Blutdruck. Puls bedeutet: Ist die fühlbare Druckwelle der Herzschläge in den Arterien." },
-    { concept: "bio:k7:puls:p1", term: "Pulsfrequenz", meaning: "Ist die Schläge pro Minute", wissen: "Steigt bei Belastung. Bezug: Puls/Blutdruck. Pulsfrequenz bedeutet: Ist die Schläge pro Minute." },
-    { concept: "bio:k7:puls:p2", term: "Blutdruck", meaning: "Ist der Druck des Blutes auf die Gefäßwände", wissen: "Systolisch und diastolisch. Bezug: Puls/Blutdruck. Blutdruck bedeutet: Ist der Druck des Blutes auf die Gefäßwände." },
-    { concept: "bio:k7:puls:p3", term: "Systole", meaning: "Ist die Auswurfphase des Herzens", wissen: "Höherer Druckwert. Bezug: Puls/Blutdruck. Systole bedeutet: Ist die Auswurfphase des Herzens." },
-    { concept: "bio:k7:puls:p4", term: "Diastole", meaning: "Ist die Entspannungs-/Füllungsphase", wissen: "Niedrigerer Druckwert. Bezug: Puls/Blutdruck. Diastole bedeutet: Ist die Entspannungs-/Füllungsphase." },
-    { concept: "bio:k7:puls:p5", term: "Ruhepuls", meaning: "Ist das Puls in entspanntem Zustand", wissen: "Vergleichswert zur Belastung. Bezug: Puls/Blutdruck. Ruhepuls bedeutet: Ist das Puls in entspanntem Zustand." },
-    { concept: "bio:k7:puls:p6", term: "Belastungspuls", meaning: "Ist das Puls unter körperlicher Arbeit", wissen: "Steigt mit Sauerstoffbedarf. Bezug: Puls/Blutdruck. Belastungspuls bedeutet: Ist das Puls unter körperlicher Arbeit." },
-    { concept: "bio:k7:puls:p7", term: "mmHg", meaning: "Ist die Einheit des Blutdrucks", wissen: "Millimeter Quecksilbersäule. Bezug: Puls/Blutdruck. mmHg bedeutet: Ist die Einheit des Blutdrucks." },
-    { concept: "bio:k7:puls:p8", term: "Arterie", meaning: "Führt sauerstoffreiches Blut vom Herzen zu den Organen", wissen: "Dort ist Puls tastbar. Bezug: Puls/Blutdruck. Arterie bedeutet: Führt sauerstoffreiches Blut vom Herzen zu den Organen." },
-    { concept: "bio:k7:puls:p9", term: "Vitalparameter", meaning: "Ist die grundlegende Körperwerte", wissen: "u. a. Puls und Blutdruck. Bezug: Puls/Blutdruck. Vitalparameter bedeutet: Ist die grundlegende Körperwerte." },
-    { concept: "bio:k7:puls:p10", term: "Bluthochdruck", meaning: "Ist das Dauerhaft zu hoher Blutdruck", wissen: "Belastet Herz und Gefäße. Bezug: Puls/Blutdruck. Bluthochdruck bedeutet: Ist das Dauerhaft zu hoher Blutdruck." },
-    { concept: "bio:k7:puls:p11", term: "Messmanschette", meaning: "Ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung", wissen: "Ermöglicht standardisierte Messung. Bezug: Puls/Blutdruck. Messmanschette bedeutet: Ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung." },
+    { concept: "bio:k7:puls:p0", term: "Puls", meaning: "Ist die fühlbare Druckwelle der Herzschläge in den Arterien.", wissen: "grob der Herzfrequenz. Bezug: Puls/Blutdruck. Puls bedeutet: Ist die fühlbare Druckwelle der Herzschläge in den Arterien." },
+    { concept: "bio:k7:puls:p1", term: "Pulsfrequenz", meaning: "Beschreibt steigt bei Belastung als biologisches Merkmal mit klarer Funktion.", wissen: "Steigt bei Belastung. Bezug: Puls/Blutdruck. Pulsfrequenz bedeutet: Ist die Schläge pro Minute." },
+    { concept: "bio:k7:puls:p2", term: "Blutdruck", meaning: "Ist der Druck des Blutes auf die Gefäßwände.", wissen: "Systolisch und diastolisch. Bezug: Puls/Blutdruck. Blutdruck bedeutet: Ist der Druck des Blutes auf die Gefäßwände." },
+    { concept: "bio:k7:puls:p3", term: "Systole", meaning: "Beschreibt auswurfphase des Herzens als biologisches Merkmal mit klarer Funktion.", wissen: "Höherer Druckwert. Bezug: Puls/Blutdruck. Systole bedeutet: Ist die Auswurfphase des Herzens." },
+    { concept: "bio:k7:puls:p4", term: "Diastole", meaning: "Beschreibt entspannungs-/Füllungsphase als biologisches Merkmal mit klarer Funktion.", wissen: "Niedrigerer Druckwert. Bezug: Puls/Blutdruck. Diastole bedeutet: Ist die Entspannungs-/Füllungsphase." },
+    { concept: "bio:k7:puls:p5", term: "Ruhepuls", meaning: "Beschreibt vergleichswert zur Belastung als biologisches Merkmal mit klarer Funktion.", wissen: "Vergleichswert zur Belastung. Bezug: Puls/Blutdruck. Ruhepuls bedeutet: Ist das Puls in entspanntem Zustand." },
+    { concept: "bio:k7:puls:p6", term: "Belastungspuls", meaning: "Beschreibt steigt mit Sauerstoffbedarf als biologisches Merkmal mit klarer Funktion.", wissen: "Steigt mit Sauerstoffbedarf. Bezug: Puls/Blutdruck. Belastungspuls bedeutet: Ist das Puls unter körperlicher Arbeit." },
+    { concept: "bio:k7:puls:p7", term: "mmHg", meaning: "Beschreibt einheit des Blutdrucks als biologisches Merkmal mit klarer Funktion.", wissen: "Millimeter Quecksilbersäule. Bezug: Puls/Blutdruck. mmHg bedeutet: Ist die Einheit des Blutdrucks." },
+    { concept: "bio:k7:puls:p8", term: "Arterie", meaning: "Führt sauerstoffreiches Blut vom Herzen zu den Organen.", wissen: "Dort ist Puls tastbar. Bezug: Puls/Blutdruck. Arterie bedeutet: Führt sauerstoffreiches Blut vom Herzen zu den Organen." },
+    { concept: "bio:k7:puls:p9", term: "Vitalparameter", meaning: "Beschreibt puls und Blutdruck als biologisches Merkmal mit klarer Funktion.", wissen: "u. a. Puls und Blutdruck. Bezug: Puls/Blutdruck. Vitalparameter bedeutet: Ist die grundlegende Körperwerte." },
+    { concept: "bio:k7:puls:p10", term: "Bluthochdruck", meaning: "Beschreibt belastet Herz und Gefäße als biologisches Merkmal mit klarer Funktion.", wissen: "Belastet Herz und Gefäße. Bezug: Puls/Blutdruck. Bluthochdruck bedeutet: Ist das Dauerhaft zu hoher Blutdruck." },
+    { concept: "bio:k7:puls:p11", term: "Messmanschette", meaning: "Ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.", wissen: "Ermöglicht standardisierte Messung. Bezug: Puls/Blutdruck. Messmanschette bedeutet: Ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung." },
   ],
   trueFalse: [
     {
@@ -2069,7 +2069,7 @@ export const k7KreislaufGesundheit: BioBank = {
   url: "https://de.wikipedia.org/wiki/Herz-Kreislauf-Erkrankung",
   conceptPrefix: "bio:k7:krges",
   facts: [
-    { concept: "bio:k7:krges:f0", prompt: "Welche Rolle hat Bewegung?", answer: "Die Regelmäßige körperliche Aktivität.", wrong: ["Die fühlbare Druckwelle der Herzschläge in den Arterien.", "Die Führt sauerstoffreiches Blut vom Herzen zu den Organen.", "Sie ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung."],
+    { concept: "bio:k7:krges:f0", prompt: "Welche Rolle hat Bewegung?", answer: "Sie beschreibt regelmäßige körperliche Aktivität, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Bewegung: Regelmäßige körperliche Aktivität",
       wissen: fw(
         "Stärkt Herz und Gefäße. Bezug: Kreislaufgesundheit.",
@@ -2077,7 +2077,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Regelmäßige körperliche Aktivität",
       gapAccepted: ["Bewegung"],
     },
-    { concept: "bio:k7:krges:f1", prompt: "Was beschreibt Ausgewogene Ernährung?", answer: "Sie ist die Nährstoffreiche und abwechslungsreiche Kost, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ausgewogene Ernährung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ausgewogene Ernährung.", "Ein Randdetail, das fachlich nicht erklärt, was Ausgewogene Ernährung leistet."],
+    { concept: "bio:k7:krges:f1", prompt: "Was beschreibt Ausgewogene Ernährung?", answer: "Sie beschreibt nährstoffreiche und abwechslungsreiche Kost, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ausgewogene Ernährung: Nährstoffreiche, abwechslungsreiche Kost",
       wissen: fw(
         "Senkt Risikofaktoren. Bezug: Kreislaufgesundheit.",
@@ -2085,7 +2085,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Nährstoffreiche, abwechslungsreiche Kost",
       gapAccepted: ["Ausgewogene Ernährung"],
     },
-    { concept: "bio:k7:krges:f2", prompt: "Woran erkennt man Nichtrauchen?", answer: "Es ist das Verzicht auf Tabakrauch, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nichtrauchen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nichtrauchen.", "Ein Randdetail, das fachlich nicht erklärt, was Nichtrauchen leistet."],
+    { concept: "bio:k7:krges:f2", prompt: "Woran erkennt man Nichtrauchen?", answer: "Es beschreibt verzicht auf Tabakrauch, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nichtrauchen: Verzicht auf Tabakrauch",
       wissen: fw(
         "Schützt Gefäße und Herz. Bezug: Kreislaufgesundheit.",
@@ -2093,7 +2093,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Verzicht auf Tabakrauch",
       gapAccepted: ["Nichtrauchen"],
     },
-    { concept: "bio:k7:krges:f3", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es ist das Dauerhaft zu hoher Blutdruck, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bluthochdruck.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bluthochdruck.", "Ein Randdetail, das fachlich nicht erklärt, was Bluthochdruck leistet."],
+    { concept: "bio:k7:krges:f3", prompt: "Welche Rolle hat Bluthochdruck?", answer: "Es beschreibt dauerhaft zu hoher Blutdruck, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Bluthochdruck: Dauerhaft erhöhter Blutdruck",
       wissen: fw(
         "Risikofaktor für Schäden. Bezug: Kreislaufgesundheit.",
@@ -2101,7 +2101,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Dauerhaft erhöhter Blutdruck",
       gapAccepted: ["Bluthochdruck"],
     },
-    { concept: "bio:k7:krges:f4", prompt: "Welche Rolle hat Arteriosklerose?", answer: "Sie ist die Gefäßverkalkungverengungng, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Arteriosklerose.", "Eine typische Verwechslung mit einem Nachbarbegriff von Arteriosklerose.", "Ein Randdetail, das fachlich nicht erklärt, was Arteriosklerose leistet."],
+    { concept: "bio:k7:krges:f4", prompt: "Welche Rolle hat Arteriosklerose?", answer: "Sie beschreibt gefäßverkalkungverengungng, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Arteriosklerose: Gefäßverkalkung/-verengung",
       wissen: fw(
         "Behindert Blutfluss. Bezug: Kreislaufgesundheit.",
@@ -2109,7 +2109,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Gefäßverkalkung/-verengung",
       gapAccepted: ["Arteriosklerose"],
     },
-    { concept: "bio:k7:krges:f5", prompt: "Was kennzeichnet Cholesterin?", answer: "Es ist das Blutfettstoff mit Risiko bei Überschuss, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Cholesterin.", "Eine typische Verwechslung mit einem Nachbarbegriff von Cholesterin.", "Ein Randdetail, das fachlich nicht erklärt, was Cholesterin leistet."],
+    { concept: "bio:k7:krges:f5", prompt: "Was kennzeichnet Cholesterin?", answer: "Es ist das Blutfettstoff mit Risiko bei Überschuss.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Cholesterin: Blutfettstoff mit Risiko bei Überschuss",
       wissen: fw(
         "Beeinflusst Gefäßgesundheit. Bezug: Kreislaufgesundheit.",
@@ -2117,7 +2117,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Blutfettstoff mit Risiko bei Überschuss",
       gapAccepted: ["Cholesterin"],
     },
-    { concept: "bio:k7:krges:f6", prompt: "Was beschreibt Stressmanagement?", answer: "Es ist das Umgang mit Dauerstress, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stressmanagement.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stressmanagement.", "Ein Randdetail, das fachlich nicht erklärt, was Stressmanagement leistet."],
+    { concept: "bio:k7:krges:f6", prompt: "Was beschreibt Stressmanagement?", answer: "Es beschreibt umgang mit Dauerstress, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stressmanagement: Umgang mit Dauerstress",
       wissen: fw(
         "Mindert ungünstige Belastung. Bezug: Kreislaufgesundheit.",
@@ -2125,7 +2125,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Umgang mit Dauerstress",
       gapAccepted: ["Stressmanagement"],
     },
-    { concept: "bio:k7:krges:f7", prompt: "Welche Rolle hat Herzinfarkt?", answer: "Es ist das Verschluss eines Herzkranzgefäßes, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Herzinfarkt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Herzinfarkt.", "Ein Randdetail, das fachlich nicht erklärt, was Herzinfarkt leistet."],
+    { concept: "bio:k7:krges:f7", prompt: "Welche Rolle hat Herzinfarkt?", answer: "Es beschreibt verschluss eines Herzkranzgefäßes, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Herzinfarkt: Verschluss eines Herzkranzgefäßes",
       wissen: fw(
         "Schwere Folgeerkrankung. Bezug: Kreislaufgesundheit.",
@@ -2133,7 +2133,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Verschluss eines Herzkranzgefäßes",
       gapAccepted: ["Herzinfarkt"],
     },
-    { concept: "bio:k7:krges:f8", prompt: "Was kennzeichnet Schlaganfall?", answer: "Es ist die Durchblutungsstörung im Gehirn, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schlaganfall.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schlaganfall.", "Ein Randdetail, das fachlich nicht erklärt, was Schlaganfall leistet."],
+    { concept: "bio:k7:krges:f8", prompt: "Was kennzeichnet Schlaganfall?", answer: "Es beschreibt durchblutungsstörung im Gehirn, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schlaganfall: Durchblutungsstörung im Gehirn",
       wissen: fw(
         "Kann durch Gefäßrisiken begünstigt sein. Bezug: Kreislaufgesundheit.",
@@ -2141,7 +2141,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Durchblutungsstörung im Gehirn",
       gapAccepted: ["Schlaganfall"],
     },
-    { concept: "bio:k7:krges:f9", prompt: "Was beschreibt Ausdauer?", answer: "Er ist die Fähigkeit zu längerer Belastung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Dort ist Puls tastbar und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ausdauer.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ausdauer."],
+    { concept: "bio:k7:krges:f9", prompt: "Was beschreibt Ausdauer?", answer: "Er beschreibt fähigkeit zu längerer Belastung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Ausdauer: Fähigkeit zu längerer Belastung",
       wissen: fw(
         "Trainierbar durch Sport. Bezug: Kreislaufgesundheit.",
@@ -2149,7 +2149,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Fähigkeit zu längerer Belastung",
       gapAccepted: ["Ausdauer"],
     },
-    { concept: "bio:k7:krges:f10", prompt: "Was kennzeichnet Risikofaktor?", answer: "Der Umstand der Erkrankungswahrscheinlichkeit erhöht.", wrong: ["Er ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.", "Er ist der Vorgang aus dem Nachbarthema ohne klaren Bezug zu Risikofaktor.", "Die typische Verwechslung mit einem Nachbarbegriff von Risikofaktor, mit der man Risikofaktor im Versuch oder in der Deutung prüft."],
+    { concept: "bio:k7:krges:f10", prompt: "Was kennzeichnet Risikofaktor?", answer: "Er beschreibt umstand der Erkrankungswahrscheinlichkeit erhöht, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er ermöglicht standardisierte Messung und dient als Hilfsmittel der Blutdruckmessung.", "Er ist der Vorgang aus dem Nachbarthema ohne klaren Bezug zu Risikofaktor.", "Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird."],
       explanation: "Risikofaktor: Umstand der Erkrankungswahrscheinlichkeit erhöht",
       wissen: fw(
         "z. B. Rauchen, Bewegungsmangel. Bezug: Kreislaufgesundheit.",
@@ -2157,7 +2157,7 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Umstand der Erkrankungswahrscheinlichkeit erhöht",
       gapAccepted: ["Risikofaktor"],
     },
-    { concept: "bio:k7:krges:f11", prompt: "Was kennzeichnet Prävention?", answer: "Sie ist die Vorbeugung durch Lebensstil, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein anderer fachlicher Aspekt ohne klaren Bezug zu Prävention.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Prävention.", "Eine typische Verwechslung mit einem Nachbarbegriff von Prävention."],
+    { concept: "bio:k7:krges:f11", prompt: "Was kennzeichnet Prävention?", answer: "Sie beschreibt vorbeugung durch Lebensstil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Prävention: Vorbeugung durch Lebensstil",
       wissen: fw(
         "Wirksamer als spätere Schäden. Bezug: Kreislaufgesundheit.",
@@ -2165,13 +2165,13 @@ export const k7KreislaufGesundheit: BioBank = {
       gap: "Kreislaufgesundheit: ___ — Vorbeugung durch Lebensstil",
       gapAccepted: ["Prävention"],
     },
-    { concept: "bio:k7:krges:x0", prompt: "Was kennzeichnet x0?", answer: "Es ist das Lebensstil, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0."],
+    { concept: "bio:k7:krges:x0", prompt: "Was kennzeichnet x0?", answer: "Es beschreibt lebensstil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Lebensstil.",
       wissen: fw(
         "Bewegung, gute Ernährung und Nichtrauchen senken Risiken für Herz-Kreislauf-Erkrankungen.",
       ),
     },
-    { concept: "bio:k7:krges:x1", prompt: "Woran erkennt man Begriff?", answer: "Es ist den Folgeschäden, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k7:krges:x1", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt folgeschäden, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Folgeschäden.",
       wissen: fw(
         "Unbehandelt steigt das Risiko für Infarkt, Schlaganfall und andere Schäden.",
@@ -2179,18 +2179,18 @@ export const k7KreislaufGesundheit: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k7:krges:p0", term: "Bewegung", meaning: "Ist die regelmäßige körperliche Aktivität", wissen: "Stärkt Herz und Gefäße. Bezug: Kreislaufgesundheit. Bewegung bedeutet: Ist die regelmäßige körperliche Aktivität." },
-    { concept: "bio:k7:krges:p1", term: "Ausgewogene Ernährung", meaning: "Ist die Nährstoffreiche und abwechslungsreiche Kost", wissen: "Senkt Risikofaktoren. Bezug: Kreislaufgesundheit. Ausgewogene Ernährung bedeutet: Ist die Nährstoffreiche und abwechslungsreiche Kost." },
-    { concept: "bio:k7:krges:p2", term: "Nichtrauchen", meaning: "Schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch", wissen: "Schützt Gefäße und Herz. Bezug: Kreislaufgesundheit. Nichtrauchen bedeutet: Schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch." },
-    { concept: "bio:k7:krges:p3", term: "Bluthochdruck", meaning: "Ist das Dauerhaft erhöhter Blutdruck", wissen: "Risikofaktor für Schäden. Bezug: Kreislaufgesundheit. Bluthochdruck bedeutet: Ist das Dauerhaft erhöhter Blutdruck." },
-    { concept: "bio:k7:krges:p4", term: "Arteriosklerose", meaning: "Ist die Gefäßverkalkung/-verengung", wissen: "Behindert Blutfluss. Bezug: Kreislaufgesundheit. Arteriosklerose bedeutet: Ist die Gefäßverkalkung/-verengung." },
-    { concept: "bio:k7:krges:p5", term: "Cholesterin", meaning: "Ist das Blutfettstoff mit Risiko bei Überschuss", wissen: "Beeinflusst Gefäßgesundheit. Bezug: Kreislaufgesundheit. Cholesterin bedeutet: Ist das Blutfettstoff mit Risiko bei Überschuss." },
-    { concept: "bio:k7:krges:p6", term: "Stressmanagement", meaning: "Ist das Umgang mit Dauerstress", wissen: "Mindert ungünstige Belastung. Bezug: Kreislaufgesundheit. Stressmanagement bedeutet: Ist das Umgang mit Dauerstress." },
-    { concept: "bio:k7:krges:p7", term: "Herzinfarkt", meaning: "Ist das Verschluss eines Herzkranzgefäßes", wissen: "Schwere Folgeerkrankung. Bezug: Kreislaufgesundheit. Herzinfarkt bedeutet: Ist das Verschluss eines Herzkranzgefäßes." },
-    { concept: "bio:k7:krges:p8", term: "Schlaganfall", meaning: "Ist die Durchblutungsstörung im Gehirn", wissen: "Kann durch Gefäßrisiken begünstigt sein. Bezug: Kreislaufgesundheit. Schlaganfall bedeutet: Ist die Durchblutungsstörung im Gehirn." },
-    { concept: "bio:k7:krges:p9", term: "Ausdauer", meaning: "Ist die Fähigkeit zu längerer Belastung", wissen: "Trainierbar durch Sport. Bezug: Kreislaufgesundheit. Ausdauer bedeutet: Ist die Fähigkeit zu längerer Belastung." },
-    { concept: "bio:k7:krges:p10", term: "Risikofaktor", meaning: "Ist der Umstand der Erkrankungswahrscheinlichkeit erhöht", wissen: "z. B. Rauchen, Bewegungsmangel. Bezug: Kreislaufgesundheit. Risikofaktor bedeutet: Ist der Umstand der Erkrankungswahrscheinlichkeit erhöht." },
-    { concept: "bio:k7:krges:p11", term: "Prävention", meaning: "Ist die Vorbeugung durch Lebensstil", wissen: "Wirksamer als spätere Schäden. Bezug: Kreislaufgesundheit. Prävention bedeutet: Ist die Vorbeugung durch Lebensstil." },
+    { concept: "bio:k7:krges:p0", term: "Bewegung", meaning: "Beschreibt stärkt Herz und Gefäße als biologisches Merkmal mit klarer Funktion.", wissen: "Stärkt Herz und Gefäße. Bezug: Kreislaufgesundheit. Bewegung bedeutet: Ist die regelmäßige körperliche Aktivität." },
+    { concept: "bio:k7:krges:p1", term: "Ausgewogene Ernährung", meaning: "Beschreibt nährstoffreiche und abwechslungsreiche Kost als biologisches Merkmal mit klarer Funktion.", wissen: "Senkt Risikofaktoren. Bezug: Kreislaufgesundheit. Ausgewogene Ernährung bedeutet: Ist die Nährstoffreiche und abwechslungsreiche Kost." },
+    { concept: "bio:k7:krges:p2", term: "Nichtrauchen", meaning: "Beschreibt schützt Gefäße und Herz als biologisches Merkmal mit klarer Funktion.", wissen: "Schützt Gefäße und Herz. Bezug: Kreislaufgesundheit. Nichtrauchen bedeutet: Schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch." },
+    { concept: "bio:k7:krges:p3", term: "Bluthochdruck", meaning: "Beschreibt risikofaktor für Schäden als biologisches Merkmal mit klarer Funktion.", wissen: "Risikofaktor für Schäden. Bezug: Kreislaufgesundheit. Bluthochdruck bedeutet: Ist das Dauerhaft erhöhter Blutdruck." },
+    { concept: "bio:k7:krges:p4", term: "Arteriosklerose", meaning: "Beschreibt gefäßverkalkung/-verengung als biologisches Merkmal mit klarer Funktion.", wissen: "Behindert Blutfluss. Bezug: Kreislaufgesundheit. Arteriosklerose bedeutet: Ist die Gefäßverkalkung/-verengung." },
+    { concept: "bio:k7:krges:p5", term: "Cholesterin", meaning: "Beschreibt blutfettstoff mit Risiko bei Überschuss als biologisches Merkmal mit klarer Funktion.", wissen: "Beeinflusst Gefäßgesundheit. Bezug: Kreislaufgesundheit. Cholesterin bedeutet: Ist das Blutfettstoff mit Risiko bei Überschuss." },
+    { concept: "bio:k7:krges:p6", term: "Stressmanagement", meaning: "Beschreibt mindert ungünstige Belastung als biologisches Merkmal mit klarer Funktion.", wissen: "Mindert ungünstige Belastung. Bezug: Kreislaufgesundheit. Stressmanagement bedeutet: Ist das Umgang mit Dauerstress." },
+    { concept: "bio:k7:krges:p7", term: "Herzinfarkt", meaning: "Beschreibt verschluss eines Herzkranzgefäßes als biologisches Merkmal mit klarer Funktion.", wissen: "Schwere Folgeerkrankung. Bezug: Kreislaufgesundheit. Herzinfarkt bedeutet: Ist das Verschluss eines Herzkranzgefäßes." },
+    { concept: "bio:k7:krges:p8", term: "Schlaganfall", meaning: "Beschreibt kann durch Gefäßrisiken begünstigt sein als biologisches Merkmal mit klarer Funktion.", wissen: "Kann durch Gefäßrisiken begünstigt sein. Bezug: Kreislaufgesundheit. Schlaganfall bedeutet: Ist die Durchblutungsstörung im Gehirn." },
+    { concept: "bio:k7:krges:p9", term: "Ausdauer", meaning: "Beschreibt trainierbar durch Sport als biologisches Merkmal mit klarer Funktion.", wissen: "Trainierbar durch Sport. Bezug: Kreislaufgesundheit. Ausdauer bedeutet: Ist die Fähigkeit zu längerer Belastung." },
+    { concept: "bio:k7:krges:p10", term: "Risikofaktor", meaning: "Beschreibt der Umstand der Erkrankungswahrscheinlichkeit erhöht als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Rauchen, Bewegungsmangel. Bezug: Kreislaufgesundheit. Risikofaktor bedeutet: Ist der Umstand der Erkrankungswahrscheinlichkeit erhöht." },
+    { concept: "bio:k7:krges:p11", term: "Prävention", meaning: "Beschreibt wirksamer als spätere Schäden als biologisches Merkmal mit klarer Funktion.", wissen: "Wirksamer als spätere Schäden. Bezug: Kreislaufgesundheit. Prävention bedeutet: Ist die Vorbeugung durch Lebensstil." },
   ],
   trueFalse: [
     {
@@ -2216,7 +2216,7 @@ export const k7Haltung: BioBank = {
   url: "https://de.wikipedia.org/wiki/K%C3%B6rperhaltung",
   conceptPrefix: "bio:k7:haltung",
   facts: [
-    { concept: "bio:k7:haltung:f0", prompt: "Woran erkennt man Körperhaltung?", answer: "Sie ist die Stellung von Rumpf und Wirbelsäule, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Körperhaltung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Körperhaltung."],
+    { concept: "bio:k7:haltung:f0", prompt: "Woran erkennt man Körperhaltung?", answer: "Sie ist die Stellung von Rumpf und Wirbelsäule.", wrong: ["Sie schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Körperhaltung: Stellung von Rumpf und Wirbelsäule",
       wissen: fw(
         "Beeinflusst Belastung von Gelenken. Bezug: Haltungsschäden.",
@@ -2224,7 +2224,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Stellung von Rumpf und Wirbelsäule",
       gapAccepted: ["Körperhaltung"],
     },
-    { concept: "bio:k7:haltung:f1", prompt: "Was kennzeichnet Haltungsschaden?", answer: "Es ist die dauerhafte Fehlbelastung der Haltung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Haltungsschaden.", "Eine typische Verwechslung mit einem Nachbarbegriff von Haltungsschaden."],
+    { concept: "bio:k7:haltung:f1", prompt: "Was kennzeichnet Haltungsschaden?", answer: "Es beschreibt dauerhafte Fehlbelastung der Haltung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Haltungsschaden: Dauerhafte Fehlbelastung der Haltung",
       wissen: fw(
         "Kann Schmerzen und Einschränkungen fördern. Bezug: Haltungsschäden.",
@@ -2232,7 +2232,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Dauerhafte Fehlbelastung der Haltung",
       gapAccepted: ["Haltungsschaden"],
     },
-    { concept: "bio:k7:haltung:f2", prompt: "Was kennzeichnet Rundrücken?", answer: "Es ist die verstärkte Krümmung der Brustwirbelsäule.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Das Vorgang aus dem Nachbarthema ohne klaren Bezug zu Rundrücken.", "Es ist die typische Verwechslung mit einem Nachbarbegriff von Rundrücken, und das Grenzt Rundrücken von typischen Verwechslungen ab."],
+    { concept: "bio:k7:haltung:f2", prompt: "Was kennzeichnet Rundrücken?", answer: "Es beschreibt verstärkte Krümmung der Brustwirbelsäule, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es ist die typische Verwechslung mit einem Nachbarbegriff von Rundrücken.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische."],
       explanation: "Rundrücken: Verstärkte Krümmung der Brustwirbelsäule",
       wissen: fw(
         "Beispiel einer Haltungsabweichung. Bezug: Haltungsschäden.",
@@ -2240,7 +2240,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Verstärkte Krümmung der Brustwirbelsäule",
       gapAccepted: ["Rundrücken"],
     },
-    { concept: "bio:k7:haltung:f3", prompt: "Was kennzeichnet Hohlkreuz?", answer: "Es ist die verstärkte Lendenlordose, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hohlkreuz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hohlkreuz."],
+    { concept: "bio:k7:haltung:f3", prompt: "Was kennzeichnet Hohlkreuz?", answer: "Es beschreibt verstärkte Lendenlordose, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Hohlkreuz: Verstärkte Lendenlordose",
       wissen: fw(
         "Kann die Lendenwirbelsäule belasten. Bezug: Haltungsschäden.",
@@ -2248,7 +2248,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Verstärkte Lendenlordose",
       gapAccepted: ["Hohlkreuz"],
     },
-    { concept: "bio:k7:haltung:f4", prompt: "Was beschreibt Muskelkorsett?", answer: "Es ist die stabilisierende Rumpfmuskulatur, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Muskelkorsett.", "Eine typische Verwechslung mit einem Nachbarbegriff von Muskelkorsett."],
+    { concept: "bio:k7:haltung:f4", prompt: "Was beschreibt Muskelkorsett?", answer: "Es beschreibt stabilisierende Rumpfmuskulatur, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Muskelkorsett: Stabilisierende Rumpfmuskulatur",
       wissen: fw(
         "Stützt die Wirbelsäule. Bezug: Haltungsschäden.",
@@ -2256,7 +2256,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Stabilisierende Rumpfmuskulatur",
       gapAccepted: ["Muskelkorsett"],
     },
-    { concept: "bio:k7:haltung:f5", prompt: "Welche Rolle hat Bewegungsmangel?", answer: "Es gilt zu wenig körperliche Aktivität.", wrong: ["Es schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bewegungsmangel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bewegungsmangel."],
+    { concept: "bio:k7:haltung:f5", prompt: "Welche Rolle hat Bewegungsmangel?", answer: "Es beschreibt es gilt zu wenig körperliche Aktivität, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Bewegungsmangel: Zu wenig körperliche Aktivität",
       wissen: fw(
         "Schwächt Haltungs muskulatur. Bezug: Haltungsschäden.",
@@ -2264,7 +2264,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Zu wenig körperliche Aktivität",
       gapAccepted: ["Bewegungsmangel"],
     },
-    { concept: "bio:k7:haltung:f6", prompt: "Was beschreibt Ergonomie?", answer: "Sie ist die Arbeitsplatz an den Körpen anpassen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ergonomie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ergonomie."],
+    { concept: "bio:k7:haltung:f6", prompt: "Was beschreibt Ergonomie?", answer: "Sie ist die Arbeitsplatz an den Körpen anpassen.", wrong: ["Sie schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Ergonomie: Arbeitsplatz an den Körper anpassen",
       wissen: fw(
         "Verringert Fehlhaltungen. Bezug: Haltungsschäden.",
@@ -2272,7 +2272,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Arbeitsplatz an den Körper anpassen",
       gapAccepted: ["Ergonomie"],
     },
-    { concept: "bio:k7:haltung:f7", prompt: "Was beschreibt Wirbelsäule?", answer: "Sie ist die zentrale Stützachse, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie schützt Gefäße und Herz; es handelt sich um das Verzicht auf Tabakrauch.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Wirbelsäule.", "Eine typische Verwechslung mit einem Nachbarbegriff von Wirbelsäule."],
+    { concept: "bio:k7:haltung:f7", prompt: "Was beschreibt Wirbelsäule?", answer: "Sie beschreibt zentrale Stützachse, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie schützt Gefäße und Herz; Verzicht auf Tabakrauch.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Wirbelsäule: Zentrale Stützachse",
       wissen: fw(
         "Trägt und federt Lasten. Bezug: Haltungsschäden.",
@@ -2280,7 +2280,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Zentrale Stützachse",
       gapAccepted: ["Wirbelsäule"],
     },
-    { concept: "bio:k7:haltung:f8", prompt: "Woran erkennt man Bandscheibe?", answer: "Sie ist den Polsten zwischen Wirbeln, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bandscheibe.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bandscheibe.", "Ein Randdetail, das fachlich nicht erklärt, was Bandscheibe leistet."],
+    { concept: "bio:k7:haltung:f8", prompt: "Woran erkennt man Bandscheibe?", answer: "Sie beschreibt polsten zwischen Wirbeln, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Bandscheibe: Polster zwischen Wirbeln",
       wissen: fw(
         "Empfindlich bei Dauerfehlbelastung. Bezug: Haltungsschäden.",
@@ -2288,7 +2288,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Polster zwischen Wirbeln",
       gapAccepted: ["Bandscheibe"],
     },
-    { concept: "bio:k7:haltung:f9", prompt: "Woran erkennt man Dehnung?", answer: "Sie ist die Beweglichkeitstraining, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Dehnung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Dehnung.", "Ein Randdetail, das fachlich nicht erklärt, was Dehnung leistet."],
+    { concept: "bio:k7:haltung:f9", prompt: "Woran erkennt man Dehnung?", answer: "Sie beschreibt beweglichkeitstraining, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Dehnung: Beweglichkeitstraining",
       wissen: fw(
         "Ergänzt Kraft für Haltung. Bezug: Haltungsschäden.",
@@ -2296,7 +2296,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Beweglichkeitstraining",
       gapAccepted: ["Dehnung"],
     },
-    { concept: "bio:k7:haltung:f10", prompt: "Was beschreibt Krafttraining?", answer: "Es ist die Stärkung der Muskulatur, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Krafttraining.", "Eine typische Verwechslung mit einem Nachbarbegriff von Krafttraining.", "Ein Randdetail, das fachlich nicht erklärt, was Krafttraining leistet."],
+    { concept: "bio:k7:haltung:f10", prompt: "Was beschreibt Krafttraining?", answer: "Es beschreibt stärkung der Muskulatur, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Krafttraining: Stärkung der Muskulatur",
       wissen: fw(
         "Stabilisiert Gelenke und Rumpf. Bezug: Haltungsschäden.",
@@ -2304,7 +2304,7 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Stärkung der Muskulatur",
       gapAccepted: ["Krafttraining"],
     },
-    { concept: "bio:k7:haltung:f11", prompt: "Woran erkennt man Prävention?", answer: "Sie ist die Vorbeugung durch Bewegung und Haltung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Prävention.", "Eine typische Verwechslung mit einem Nachbarbegriff von Prävention.", "Ein Randdetail, das fachlich nicht erklärt, was Prävention leistet."],
+    { concept: "bio:k7:haltung:f11", prompt: "Woran erkennt man Prävention?", answer: "Sie ist die Vorbeugung durch Bewegung und Haltung.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Prävention: Vorbeugung durch Bewegung und Haltung",
       wissen: fw(
         "Besser als spätere Beschwerden. Bezug: Haltungsschäden.",
@@ -2312,13 +2312,13 @@ export const k7Haltung: BioBank = {
       gap: "Haltungsschäden: ___ — Vorbeugung durch Bewegung und Haltung",
       gapAccepted: ["Prävention"],
     },
-    { concept: "bio:k7:haltung:x0", prompt: "Was kennzeichnet x0?", answer: "Es ist die Fehlbelastung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0.", "Ein Randdetail, das fachlich nicht erklärt, was x0 leistet."],
+    { concept: "bio:k7:haltung:x0", prompt: "Was kennzeichnet x0?", answer: "Es beschreibt fehlbelastung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Fehlbelastung.",
       wissen: fw(
         "Langes Sitzen ohne Ausgleich und einseitige Lasten begünstigen Fehlhaltungen.",
       ),
     },
-    { concept: "bio:k7:haltung:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist die Prävention, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k7:haltung:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt prävention, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Prävention.",
       wissen: fw(
         "Sport und bewusste Haltung entlasten Wirbelsäule und Gelenke.",
@@ -2326,18 +2326,18 @@ export const k7Haltung: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k7:haltung:p0", term: "Körperhaltung", meaning: "Ist die Stellung von Rumpf und Wirbelsäule", wissen: "Beeinflusst Belastung von Gelenken. Bezug: Haltungsschäden. Körperhaltung bedeutet: Ist die Stellung von Rumpf und Wirbelsäule." },
-    { concept: "bio:k7:haltung:p1", term: "Haltungsschaden", meaning: "Ist die dauerhafte Fehlbelastung der Haltung", wissen: "Kann Schmerzen und Einschränkungen fördern. Bezug: Haltungsschäden. Haltungsschaden bedeutet: Ist die dauerhafte Fehlbelastung der Haltung." },
-    { concept: "bio:k7:haltung:p2", term: "Rundrücken", meaning: "Ist die verstärkte Krümmung der Brustwirbelsäule", wissen: "Beispiel einer Haltungsabweichung. Bezug: Haltungsschäden. Rundrücken bedeutet: Ist die verstärkte Krümmung der Brustwirbelsäule." },
-    { concept: "bio:k7:haltung:p3", term: "Hohlkreuz", meaning: "Ist die verstärkte Lendenlordose", wissen: "Kann die Lendenwirbelsäule belasten. Bezug: Haltungsschäden. Hohlkreuz bedeutet: Ist die verstärkte Lendenlordose." },
-    { concept: "bio:k7:haltung:p4", term: "Muskelkorsett", meaning: "Ist die stabilisierende Rumpfmuskulatur", wissen: "Stützt die Wirbelsäule. Bezug: Haltungsschäden. Muskelkorsett bedeutet: Ist die stabilisierende Rumpfmuskulatur." },
-    { concept: "bio:k7:haltung:p5", term: "Bewegungsmangel", meaning: "Gilt Zu wenig körperliche Aktivität", wissen: "Schwächt Haltungs muskulatur. Bezug: Haltungsschäden. Bewegungsmangel bedeutet: Gilt Zu wenig körperliche Aktivität." },
-    { concept: "bio:k7:haltung:p6", term: "Ergonomie", meaning: "Ist die Arbeitsplatz an den Körpen anpassen", wissen: "Verringert Fehlhaltungen. Bezug: Haltungsschäden. Ergonomie bedeutet: Ist die Arbeitsplatz an den Körpen anpassen." },
-    { concept: "bio:k7:haltung:p7", term: "Wirbelsäule", meaning: "Ist die zentrale Stützachse", wissen: "Trägt und federt Lasten. Bezug: Haltungsschäden. Wirbelsäule bedeutet: Ist die zentrale Stützachse." },
-    { concept: "bio:k7:haltung:p8", term: "Bandscheibe", meaning: "Ist der Polsten zwischen Wirbeln", wissen: "Empfindlich bei Dauerfehlbelastung. Bezug: Haltungsschäden. Bandscheibe bedeutet: Ist der Polsten zwischen Wirbeln." },
-    { concept: "bio:k7:haltung:p9", term: "Dehnung", meaning: "Ist die Beweglichkeitstraining", wissen: "Ergänzt Kraft für Haltung. Bezug: Haltungsschäden. Dehnung bedeutet: Ist die Beweglichkeitstraining." },
-    { concept: "bio:k7:haltung:p10", term: "Krafttraining", meaning: "Ist die Stärkung der Muskulatur", wissen: "Stabilisiert Gelenke und Rumpf. Bezug: Haltungsschäden. Krafttraining bedeutet: Ist die Stärkung der Muskulatur." },
-    { concept: "bio:k7:haltung:p11", term: "Prävention", meaning: "Ist die Vorbeugung durch Bewegung und Haltung", wissen: "Besser als spätere Beschwerden. Bezug: Haltungsschäden. Prävention bedeutet: Ist die Vorbeugung durch Bewegung und Haltung." },
+    { concept: "bio:k7:haltung:p0", term: "Körperhaltung", meaning: "Beschreibt beeinflusst Belastung von Gelenken als biologisches Merkmal mit klarer Funktion.", wissen: "Beeinflusst Belastung von Gelenken. Bezug: Haltungsschäden. Körperhaltung bedeutet: Ist die Stellung von Rumpf und Wirbelsäule." },
+    { concept: "bio:k7:haltung:p1", term: "Haltungsschaden", meaning: "Beschreibt kann Schmerzen und Einschränkungen fördern als biologisches Merkmal mit klarer Funktion.", wissen: "Kann Schmerzen und Einschränkungen fördern. Bezug: Haltungsschäden. Haltungsschaden bedeutet: Ist die dauerhafte Fehlbelastung der Haltung." },
+    { concept: "bio:k7:haltung:p2", term: "Rundrücken", meaning: "Beschreibt beispiel einer Haltungsabweichung als biologisches Merkmal mit klarer Funktion.", wissen: "Beispiel einer Haltungsabweichung. Bezug: Haltungsschäden. Rundrücken bedeutet: Ist die verstärkte Krümmung der Brustwirbelsäule." },
+    { concept: "bio:k7:haltung:p3", term: "Hohlkreuz", meaning: "Beschreibt kann die Lendenwirbelsäule belasten als biologisches Merkmal mit klarer Funktion.", wissen: "Kann die Lendenwirbelsäule belasten. Bezug: Haltungsschäden. Hohlkreuz bedeutet: Ist die verstärkte Lendenlordose." },
+    { concept: "bio:k7:haltung:p4", term: "Muskelkorsett", meaning: "Beschreibt stützt die Wirbelsäule als biologisches Merkmal mit klarer Funktion.", wissen: "Stützt die Wirbelsäule. Bezug: Haltungsschäden. Muskelkorsett bedeutet: Ist die stabilisierende Rumpfmuskulatur." },
+    { concept: "bio:k7:haltung:p5", term: "Bewegungsmangel", meaning: "Beschreibt schwächt Haltungs muskulatur als biologisches Merkmal mit klarer Funktion.", wissen: "Schwächt Haltungs muskulatur. Bezug: Haltungsschäden. Bewegungsmangel bedeutet: Gilt Zu wenig körperliche Aktivität." },
+    { concept: "bio:k7:haltung:p6", term: "Ergonomie", meaning: "Beschreibt arbeitsplatz an den Körpen anpassen als biologisches Merkmal mit klarer Funktion.", wissen: "Verringert Fehlhaltungen. Bezug: Haltungsschäden. Ergonomie bedeutet: Ist die Arbeitsplatz an den Körpen anpassen." },
+    { concept: "bio:k7:haltung:p7", term: "Wirbelsäule", meaning: "Beschreibt trägt und federt Lasten als biologisches Merkmal mit klarer Funktion.", wissen: "Trägt und federt Lasten. Bezug: Haltungsschäden. Wirbelsäule bedeutet: Ist die zentrale Stützachse." },
+    { concept: "bio:k7:haltung:p8", term: "Bandscheibe", meaning: "Beschreibt empfindlich bei Dauerfehlbelastung als biologisches Merkmal mit klarer Funktion.", wissen: "Empfindlich bei Dauerfehlbelastung. Bezug: Haltungsschäden. Bandscheibe bedeutet: Ist der Polsten zwischen Wirbeln." },
+    { concept: "bio:k7:haltung:p9", term: "Dehnung", meaning: "Beschreibt ergänzt Kraft für Haltung als biologisches Merkmal mit klarer Funktion.", wissen: "Ergänzt Kraft für Haltung. Bezug: Haltungsschäden. Dehnung bedeutet: Ist die Beweglichkeitstraining." },
+    { concept: "bio:k7:haltung:p10", term: "Krafttraining", meaning: "Beschreibt stabilisiert Gelenke und Rumpf als biologisches Merkmal mit klarer Funktion.", wissen: "Stabilisiert Gelenke und Rumpf. Bezug: Haltungsschäden. Krafttraining bedeutet: Ist die Stärkung der Muskulatur." },
+    { concept: "bio:k7:haltung:p11", term: "Prävention", meaning: "Beschreibt besser als spätere Beschwerden als biologisches Merkmal mit klarer Funktion.", wissen: "Besser als spätere Beschwerden. Bezug: Haltungsschäden. Prävention bedeutet: Ist die Vorbeugung durch Bewegung und Haltung." },
   ],
   trueFalse: [
     {
@@ -2363,7 +2363,7 @@ export const k8Sucht: BioBank = {
   url: "https://de.wikipedia.org/wiki/Abh%C3%A4ngigkeit_(Medizin)",
   conceptPrefix: "bio:k8:sucht",
   facts: [
-    { concept: "bio:k8:sucht:f0", prompt: "Was beschreibt Sucht?", answer: "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sucht.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sucht.", "Ein Randdetail, das fachlich nicht erklärt, was Sucht leistet."],
+    { concept: "bio:k8:sucht:f0", prompt: "Was beschreibt Sucht?", answer: "Es ist die krankhafte Abhängigkeit von Stoff oder Verhalten.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sucht: Krankhafte Abhängigkeit von Stoff oder Verhalten",
       wissen: fw(
         "Kontrollverlust und Fortsetzung trotz Schaden. Bezug: Suchtgefahren.",
@@ -2371,7 +2371,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Krankhafte Abhängigkeit von Stoff oder Verhalten",
       gapAccepted: ["Sucht"],
     },
-    { concept: "bio:k8:sucht:f1", prompt: "Wozu dient Suchtmittel?", answer: "Es ist die Substanz mit Abhängigkeitspotenzial, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Suchtmittel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Suchtmittel.", "Ein Randdetail, das fachlich nicht erklärt, was Suchtmittel leistet."],
+    { concept: "bio:k8:sucht:f1", prompt: "Wozu dient Suchtmittel?", answer: "Es beschreibt substanz mit Abhängigkeitspotenzial, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Suchtmittel: Substanz mit Abhängigkeitspotenzial",
       wissen: fw(
         "z. B. Alkohol, Nikotin. Bezug: Suchtgefahren.",
@@ -2379,7 +2379,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Substanz mit Abhängigkeitspotenzial",
       gapAccepted: ["Suchtmittel"],
     },
-    { concept: "bio:k8:sucht:f2", prompt: "Was beschreibt Toleranz?", answer: "Sie ist die Gewöhnung mit Dosissteigerung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Toleranz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Toleranz.", "Ein Randdetail, das fachlich nicht erklärt, was Toleranz leistet."],
+    { concept: "bio:k8:sucht:f2", prompt: "Was beschreibt Toleranz?", answer: "Sie beschreibt gewöhnung mit Dosissteigerung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Toleranz: Gewöhnung mit Dosissteigerung",
       wissen: fw(
         "Gleiche Wirkung braucht mehr Substanz. Bezug: Suchtgefahren.",
@@ -2387,7 +2387,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Gewöhnung mit Dosissteigerung",
       gapAccepted: ["Toleranz"],
     },
-    { concept: "bio:k8:sucht:f3", prompt: "Woran erkennt man Entzug?", answer: "Es ist den Beschwerden beim Absetzen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Entzug.", "Eine typische Verwechslung mit einem Nachbarbegriff von Entzug.", "Ein Randdetail, das fachlich nicht erklärt, was Entzug leistet."],
+    { concept: "bio:k8:sucht:f3", prompt: "Woran erkennt man Entzug?", answer: "Es beschreibt beschwerden beim Absetzen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Entzug: Beschwerden beim Absetzen",
       wissen: fw(
         "Körperliche und psychische Symptome. Bezug: Suchtgefahren.",
@@ -2395,7 +2395,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Beschwerden beim Absetzen",
       gapAccepted: ["Entzug"],
     },
-    { concept: "bio:k8:sucht:f4", prompt: "Was kennzeichnet psychische Abhängigkeit?", answer: "Sie ist die starkes Verlangen und Kontrollverlust, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu psychische Abhängigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von psychische Abhängigkeit.", "Ein Randdetail, das fachlich nicht erklärt, was psychische Abhängigkeit leistet."],
+    { concept: "bio:k8:sucht:f4", prompt: "Was kennzeichnet psychische Abhängigkeit?", answer: "Sie beschreibt starkes Verlangen und Kontrollverlust, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "psychische Abhängigkeit: Starkes Verlangen und Kontrollverlust",
       wissen: fw(
         "Auch ohne starke körperliche Entzüge möglich. Bezug: Suchtgefahren.",
@@ -2403,7 +2403,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Starkes Verlangen und Kontrollverlust",
       gapAccepted: ["psychische Abhängigkeit"],
     },
-    { concept: "bio:k8:sucht:f5", prompt: "Was beschreibt körperliche Abhängigkeit?", answer: "Körper stellt sich auf Substanz ein Und grenzt den Begriff von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu körperliche Abhängigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von körperliche Abhängigkeit.", "Ein Randdetail, das fachlich nicht erklärt, was körperliche Abhängigkeit leistet."],
+    { concept: "bio:k8:sucht:f5", prompt: "Was beschreibt körperliche Abhängigkeit?", answer: "Sie beschreibt körper stellt sich auf Substanz ein.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "körperliche Abhängigkeit: Körper stellt sich auf Substanz ein",
       wissen: fw(
         "Entzug als Gegenreaktion. Bezug: Suchtgefahren.",
@@ -2411,7 +2411,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Körper stellt sich auf Substanz ein",
       gapAccepted: ["körperliche Abhängigkeit"],
     },
-    { concept: "bio:k8:sucht:f6", prompt: "Was kennzeichnet Mediengebrauch?", answer: "Es ist die Nutzung digitaler Angebote, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Mediengebrauch.", "Eine typische Verwechslung mit einem Nachbarbegriff von Mediengebrauch.", "Ein Randdetail, das fachlich nicht erklärt, was Mediengebrauch leistet."],
+    { concept: "bio:k8:sucht:f6", prompt: "Was kennzeichnet Mediengebrauch?", answer: "Es beschreibt nutzung digitaler Angebote, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Mediengebrauch: Nutzung digitaler Angebote",
       wissen: fw(
         "Kann problematisch entgleisen. Bezug: Suchtgefahren.",
@@ -2419,7 +2419,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Nutzung digitaler Angebote",
       gapAccepted: ["Mediengebrauch"],
     },
-    { concept: "bio:k8:sucht:f7", prompt: "Welche Rolle hat soziale Folge?", answer: "Sie ist die Belastung von Beziehungen und Schule, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu soziale Folge.", "Eine typische Verwechslung mit einem Nachbarbegriff von soziale Folge.", "Ein Randdetail, das fachlich nicht erklärt, was soziale Folge leistet."],
+    { concept: "bio:k8:sucht:f7", prompt: "Welche Rolle hat soziale Folge?", answer: "Sie ist die Belastung von Beziehungen und Schule.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "soziale Folge: Belastung von Beziehungen und Schule",
       wissen: fw(
         "Sucht wirkt über den Körper hinaus. Bezug: Suchtgefahren.",
@@ -2427,7 +2427,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Belastung von Beziehungen und Schule",
       gapAccepted: ["soziale Folge"],
     },
-    { concept: "bio:k8:sucht:f8", prompt: "Was beschreibt psychische Folge?", answer: "Sie ist die Angst und Reizbarkeit und Konzentrationsprobleme, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu wenig körperliche Aktivität.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu psychische Folge.", "Eine typische Verwechslung mit einem Nachbarbegriff von psychische Folge."],
+    { concept: "bio:k8:sucht:f8", prompt: "Was beschreibt psychische Folge?", answer: "Sie ist die Angst und Reizbarkeit und Konzentrationsprobleme.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "psychische Folge: Angst, Reizbarkeit, Konzentrationsprobleme",
       wissen: fw(
         "Häufig bei problematischem Konsum. Bezug: Suchtgefahren.",
@@ -2435,7 +2435,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Angst, Reizbarkeit, Konzentrationsprobleme",
       gapAccepted: ["psychische Folge"],
     },
-    { concept: "bio:k8:sucht:f9", prompt: "Wozu dient die physische Folge?", answer: "Sie ist den Schäden an Organen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein anderer fachlicher Aspekt ohne klaren Bezug zu physische Folge.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu physische Folge.", "Eine typische Verwechslung mit einem Nachbarbegriff von physische Folge."],
+    { concept: "bio:k8:sucht:f9", prompt: "Wozu dient die physische Folge?", answer: "Sie beschreibt schäden an Organen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "physische Folge: Schäden an Organen",
       wissen: fw(
         "Je nach Substanz unterschiedlich. Bezug: Suchtgefahren.",
@@ -2443,7 +2443,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Schäden an Organen",
       gapAccepted: ["physische Folge"],
     },
-    { concept: "bio:k8:sucht:f10", prompt: "Woran erkennt man Prävention?", answer: "Sie ist die Vorbeugung durch Bewegung und Haltung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpen stellt sich auf Substanz ein Und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Prävention.", "Eine typische Verwechslung mit einem Nachbarbegriff von Prävention."],
+    { concept: "bio:k8:sucht:f10", prompt: "Woran erkennt man Prävention?", answer: "Sie ist die Vorbeugung durch Bewegung und Haltung.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Prävention: Vorbeugung durch Wissen und Alternativen",
       wissen: fw(
         "Frühe Hilfe wirkt besser. Bezug: Suchtgefahren.",
@@ -2451,7 +2451,7 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Vorbeugung durch Wissen und Alternativen",
       gapAccepted: ["Prävention"],
     },
-    { concept: "bio:k8:sucht:f11", prompt: "Wozu dient die Hilfesuche?", answer: "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hilfesuche.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hilfesuche.", "Ein Randdetail, das fachlich nicht erklärt, was Hilfesuche leistet."],
+    { concept: "bio:k8:sucht:f11", prompt: "Wozu dient die Hilfesuche?", answer: "Sie bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hilfesuche: Professionelle Unterstützung nutzen",
       wissen: fw(
         "Wichtig bei Kontrollverlust. Bezug: Suchtgefahren.",
@@ -2459,13 +2459,13 @@ export const k8Sucht: BioBank = {
       gap: "Suchtgefahren: ___ — Professionelle Unterstützung nutzen",
       gapAccepted: ["Hilfesuche"],
     },
-    { concept: "bio:k8:sucht:x0", prompt: "Woran erkennt man Begriff?", answer: "Es ist die Verhaltensaspekte, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:sucht:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt verhaltensaspekte, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Verhaltensaspekte.",
       wissen: fw(
         "Belohnungssysteme reagieren auf Likes und Dauerreize; problematische Muster können entstehen.",
       ),
     },
-    { concept: "bio:k8:sucht:x1", prompt: "Was beschreibt Begriff?", answer: "Es ist die Urteilsbildung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:sucht:x1", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt urteilsbildung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Urteilsbildung.",
       wissen: fw(
         "Fachliche Beschreibung von Folgen ist von Werturteilen über Verhalten zu trennen.",
@@ -2473,18 +2473,18 @@ export const k8Sucht: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:sucht:p0", term: "Sucht", meaning: "Ist die krankhafte Abhängigkeit von Stoff oder Verhalten", wissen: "Kontrollverlust und Fortsetzung trotz Schaden. Bezug: Suchtgefahren. Sucht bedeutet: Ist die krankhafte Abhängigkeit von Stoff oder Verhalten." },
-    { concept: "bio:k8:sucht:p1", term: "Suchtmittel", meaning: "Ist die Substanz mit Abhängigkeitspotenzial", wissen: "z. B. Alkohol, Nikotin. Bezug: Suchtgefahren. Suchtmittel bedeutet: Ist die Substanz mit Abhängigkeitspotenzial." },
-    { concept: "bio:k8:sucht:p2", term: "Toleranz", meaning: "Ist die Gewöhnung mit Dosissteigerung", wissen: "Gleiche Wirkung braucht mehr Substanz. Bezug: Suchtgefahren. Toleranz bedeutet: Ist die Gewöhnung mit Dosissteigerung." },
-    { concept: "bio:k8:sucht:p3", term: "Entzug", meaning: "Ist der Beschwerden beim Absetzen", wissen: "Körperliche und psychische Symptome. Bezug: Suchtgefahren. Entzug bedeutet: Ist der Beschwerden beim Absetzen." },
-    { concept: "bio:k8:sucht:p4", term: "psychische Abhängigkeit", meaning: "Ist die starkes Verlangen und Kontrollverlust", wissen: "Auch ohne starke körperliche Entzüge möglich. Bezug: Suchtgefahren. psychische Abhängigkeit bedeutet: Ist die starkes Verlangen und Kontrollverlust." },
-    { concept: "bio:k8:sucht:p5", term: "körperliche Abhängigkeit", meaning: "Körpen stellt sich auf Substanz ein", wissen: "Entzug als Gegenreaktion. Bezug: Suchtgefahren. körperliche Abhängigkeit bedeutet: Körpen stellt sich auf Substanz ein." },
-    { concept: "bio:k8:sucht:p6", term: "Mediengebrauch", meaning: "Ist die Nutzung digitaler Angebote", wissen: "Kann problematisch entgleisen. Bezug: Suchtgefahren. Mediengebrauch bedeutet: Ist die Nutzung digitaler Angebote." },
-    { concept: "bio:k8:sucht:p7", term: "soziale Folge", meaning: "Ist die Belastung von Beziehungen und Schule", wissen: "Sucht wirkt über den Körper hinaus. Bezug: Suchtgefahren. soziale Folge bedeutet: Ist die Belastung von Beziehungen und Schule." },
-    { concept: "bio:k8:sucht:p8", term: "psychische Folge", meaning: "Ist die Angst und Reizbarkeit und Konzentrationsprobleme", wissen: "Häufig bei problematischem Konsum. Bezug: Suchtgefahren. psychische Folge bedeutet: Ist die Angst und Reizbarkeit und Konzentrationsprobleme." },
-    { concept: "bio:k8:sucht:p9", term: "physische Folge", meaning: "Dient als Schäden an Organen", wissen: "Je nach Substanz unterschiedlich. Bezug: Suchtgefahren. physische Folge bedeutet: Dient als Schäden an Organen." },
-    { concept: "bio:k8:sucht:p10", term: "Prävention", meaning: "Ist die Vorbeugung durch Wissen und Alternativen", wissen: "Frühe Hilfe wirkt besser. Bezug: Suchtgefahren. Prävention bedeutet: Ist die Vorbeugung durch Wissen und Alternativen." },
-    { concept: "bio:k8:sucht:p11", term: "Hilfesuche", meaning: "Bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen", wissen: "Wichtig bei Kontrollverlust. Bezug: Suchtgefahren. Hilfesuche bedeutet: Ist die professionelle Unterstützung nutzen." },
+    { concept: "bio:k8:sucht:p0", term: "Sucht", meaning: "Ist die krankhafte Abhängigkeit von Stoff oder Verhalten.", wissen: "Kontrollverlust und Fortsetzung trotz Schaden. Bezug: Suchtgefahren. Sucht bedeutet: Ist die krankhafte Abhängigkeit von Stoff oder Verhalten." },
+    { concept: "bio:k8:sucht:p1", term: "Suchtmittel", meaning: "Beschreibt substanz mit Abhängigkeitspotenzial als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Alkohol, Nikotin. Bezug: Suchtgefahren. Suchtmittel bedeutet: Ist die Substanz mit Abhängigkeitspotenzial." },
+    { concept: "bio:k8:sucht:p2", term: "Toleranz", meaning: "Beschreibt gleiche Wirkung braucht mehr Substanz als biologisches Merkmal mit klarer Funktion.", wissen: "Gleiche Wirkung braucht mehr Substanz. Bezug: Suchtgefahren. Toleranz bedeutet: Ist die Gewöhnung mit Dosissteigerung." },
+    { concept: "bio:k8:sucht:p3", term: "Entzug", meaning: "Beschreibt körperliche und psychische Symptome als biologisches Merkmal mit klarer Funktion.", wissen: "Körperliche und psychische Symptome. Bezug: Suchtgefahren. Entzug bedeutet: Ist der Beschwerden beim Absetzen." },
+    { concept: "bio:k8:sucht:p4", term: "psychische Abhängigkeit", meaning: "Auch ohne starke körperliche Entzüge möglich.", wissen: "Auch ohne starke körperliche Entzüge möglich. Bezug: Suchtgefahren. psychische Abhängigkeit bedeutet: Ist die starkes Verlangen und Kontrollverlust." },
+    { concept: "bio:k8:sucht:p5", term: "körperliche Abhängigkeit", meaning: "Beschreibt entzug als Gegenreaktion als biologisches Merkmal mit klarer Funktion.", wissen: "Entzug als Gegenreaktion. Bezug: Suchtgefahren. körperliche Abhängigkeit bedeutet: Körpen stellt sich auf Substanz ein." },
+    { concept: "bio:k8:sucht:p6", term: "Mediengebrauch", meaning: "Beschreibt kann problematisch entgleisen als biologisches Merkmal mit klarer Funktion.", wissen: "Kann problematisch entgleisen. Bezug: Suchtgefahren. Mediengebrauch bedeutet: Ist die Nutzung digitaler Angebote." },
+    { concept: "bio:k8:sucht:p7", term: "soziale Folge", meaning: "Sucht wirkt über den Körper hinaus.", wissen: "Sucht wirkt über den Körper hinaus. Bezug: Suchtgefahren. soziale Folge bedeutet: Ist die Belastung von Beziehungen und Schule." },
+    { concept: "bio:k8:sucht:p8", term: "psychische Folge", meaning: "Beschreibt häufig bei problematischem Konsum als biologisches Merkmal mit klarer Funktion.", wissen: "Häufig bei problematischem Konsum. Bezug: Suchtgefahren. psychische Folge bedeutet: Ist die Angst und Reizbarkeit und Konzentrationsprobleme." },
+    { concept: "bio:k8:sucht:p9", term: "physische Folge", meaning: "Beschreibt je nach Substanz unterschiedlich als biologisches Merkmal mit klarer Funktion.", wissen: "Je nach Substanz unterschiedlich. Bezug: Suchtgefahren. physische Folge bedeutet: Dient als Schäden an Organen." },
+    { concept: "bio:k8:sucht:p10", term: "Prävention", meaning: "Beschreibt frühe Hilfe wirkt besser als biologisches Merkmal mit klarer Funktion.", wissen: "Frühe Hilfe wirkt besser. Bezug: Suchtgefahren. Prävention bedeutet: Ist die Vorbeugung durch Wissen und Alternativen." },
+    { concept: "bio:k8:sucht:p11", term: "Hilfesuche", meaning: "Bedeutet, professionelle Unterstützung bei Problemen gezielt zu nutzen.", wissen: "Wichtig bei Kontrollverlust. Bezug: Suchtgefahren. Hilfesuche bedeutet: Ist die professionelle Unterstützung nutzen." },
   ],
   trueFalse: [
     {
@@ -2510,7 +2510,7 @@ export const k8AugeAkkommodation: BioBank = {
   url: "https://de.wikipedia.org/wiki/Akkommodation_(Auge)",
   conceptPrefix: "bio:k8:akkom",
   facts: [
-    { concept: "bio:k8:akkom:f0", prompt: "Was kennzeichnet Akkommodation?", answer: "Sie ist die Scharfstellung auf unterschiedliche Entfernungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Akkommodation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Akkommodation.", "Ein Randdetail, das fachlich nicht erklärt, was Akkommodation leistet."],
+    { concept: "bio:k8:akkom:f0", prompt: "Was kennzeichnet Akkommodation?", answer: "Sie beschreibt scharfstellung auf unterschiedliche Entfernungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Akkommodation: Scharfstellung auf unterschiedliche Entfernungen",
       wissen: fw(
         "Linse ändert Brechkraft. Bezug: Akkommodation.",
@@ -2518,7 +2518,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Scharfstellung auf unterschiedliche Entfernungen",
       gapAccepted: ["Akkommodation"],
     },
-    { concept: "bio:k8:akkom:f1", prompt: "Was kennzeichnet Adaptation?", answer: "Sie ist die Anpassung an Helligkeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Adaptation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Adaptation.", "Ein Randdetail, das fachlich nicht erklärt, was Adaptation leistet."],
+    { concept: "bio:k8:akkom:f1", prompt: "Was kennzeichnet Adaptation?", answer: "Sie beschreibt anpassung an Helligkeit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Adaptation: Anpassung an Helligkeit",
       wissen: fw(
         "Pupille und Sinneszellen wirken mit. Bezug: Akkommodation.",
@@ -2526,7 +2526,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Anpassung an Helligkeit",
       gapAccepted: ["Adaptation"],
     },
-    { concept: "bio:k8:akkom:f2", prompt: "Was kennzeichnet Linse?", answer: "Sie ist die brechendes Element im Auge, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Linse.", "Eine typische Verwechslung mit einem Nachbarbegriff von Linse.", "Ein Randdetail, das fachlich nicht erklärt, was Linse leistet."],
+    { concept: "bio:k8:akkom:f2", prompt: "Was kennzeichnet Linse?", answer: "Sie beschreibt brechendes Element im Auge, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Linse: Brechendes Element im Auge",
       wissen: fw(
         "Verformbar für Nah/Fern. Bezug: Akkommodation.",
@@ -2534,7 +2534,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Brechendes Element im Auge",
       gapAccepted: ["Linse"],
     },
-    { concept: "bio:k8:akkom:f3", prompt: "Was beschreibt Ziliarmuskel?", answer: "Es ist den Muskel zur Linsenverformung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ziliarmuskel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ziliarmuskel.", "Ein Randdetail, das fachlich nicht erklärt, was Ziliarmuskel leistet."],
+    { concept: "bio:k8:akkom:f3", prompt: "Was beschreibt Ziliarmuskel?", answer: "Es beschreibt muskel zur Linsenverformung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ziliarmuskel: Muskel zur Linsenverformung",
       wissen: fw(
         "Anspannung für Nahsehen. Bezug: Akkommodation.",
@@ -2542,7 +2542,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Muskel zur Linsenverformung",
       gapAccepted: ["Ziliarmuskel"],
     },
-    { concept: "bio:k8:akkom:f4", prompt: "Was kennzeichnet Strahlengang?", answer: "Es ist das Weg der Lichtstrahlen im Auge, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Strahlengang.", "Eine typische Verwechslung mit einem Nachbarbegriff von Strahlengang.", "Ein Randdetail, das fachlich nicht erklärt, was Strahlengang leistet."],
+    { concept: "bio:k8:akkom:f4", prompt: "Was kennzeichnet Strahlengang?", answer: "Es beschreibt das Weg der Lichtstrahlen im Auge.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Strahlengang: Weg der Lichtstrahlen im Auge",
       wissen: fw(
         "Hornhaut und Linse brechen Licht. Bezug: Akkommodation.",
@@ -2550,7 +2550,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Weg der Lichtstrahlen im Auge",
       gapAccepted: ["Strahlengang"],
     },
-    { concept: "bio:k8:akkom:f5", prompt: "Was beschreibt Netzhaut?", answer: "Es ist das Ort der Sinneszellen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Netzhaut.", "Eine typische Verwechslung mit einem Nachbarbegriff von Netzhaut.", "Ein Randdetail, das fachlich nicht erklärt, was Netzhaut leistet."],
+    { concept: "bio:k8:akkom:f5", prompt: "Was beschreibt Netzhaut?", answer: "Es beschreibt ort der Sinneszellen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Netzhaut: Ort der Sinneszellen",
       wissen: fw(
         "Bild muss scharf auftreffen. Bezug: Akkommodation.",
@@ -2558,7 +2558,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Ort der Sinneszellen",
       gapAccepted: ["Netzhaut"],
     },
-    { concept: "bio:k8:akkom:f6", prompt: "Was kennzeichnet Nahpunkt?", answer: "Es ist die kürzeste Distanz scharfen Sehens, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Nahpunkt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Nahpunkt.", "Ein Randdetail, das fachlich nicht erklärt, was Nahpunkt leistet."],
+    { concept: "bio:k8:akkom:f6", prompt: "Was kennzeichnet Nahpunkt?", answer: "Es beschreibt kürzeste Distanz scharfen Sehens, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nahpunkt: Kürzeste Distanz scharfen Sehens",
       wissen: fw(
         "Mit Alter oft weiter weg. Bezug: Akkommodation.",
@@ -2566,7 +2566,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Kürzeste Distanz scharfen Sehens",
       gapAccepted: ["Nahpunkt"],
     },
-    { concept: "bio:k8:akkom:f7", prompt: "Was kennzeichnet Fernpunkt?", answer: "Es ist den weitesten Punkt scharfen Sehens, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fernpunkt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fernpunkt.", "Ein Randdetail, das fachlich nicht erklärt, was Fernpunkt leistet."],
+    { concept: "bio:k8:akkom:f7", prompt: "Was kennzeichnet Fernpunkt?", answer: "Es beschreibt weitesten Punkt scharfen Sehens, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Fernpunkt: Weitester Punkt scharfen Sehens",
       wissen: fw(
         "Bei normalsichtig im Unendlichen. Bezug: Akkommodation.",
@@ -2574,7 +2574,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Weitester Punkt scharfen Sehens",
       gapAccepted: ["Fernpunkt"],
     },
-    { concept: "bio:k8:akkom:f8", prompt: "Woran erkennt man Kurzsichtigkeit?", answer: "Sie ist die scharfes Sehen vor allem nah, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpen stellt sich auf Substanz ein Und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Kurzsichtigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Kurzsichtigkeit."],
+    { concept: "bio:k8:akkom:f8", prompt: "Woran erkennt man Kurzsichtigkeit?", answer: "Sie beschreibt die scharfes Sehen vor allem nah.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Kurzsichtigkeit: Scharfes Sehen vor allem nah",
       wissen: fw(
         "Bild vor der Netzhaut. Bezug: Akkommodation.",
@@ -2582,7 +2582,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Scharfes Sehen vor allem nah",
       gapAccepted: ["Kurzsichtigkeit"],
     },
-    { concept: "bio:k8:akkom:f9", prompt: "Was kennzeichnet Weitsichtigkeit?", answer: "Sie ist die Probleme vor allem in der Nähe, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Weitsichtigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Weitsichtigkeit.", "Ein Randdetail, das fachlich nicht erklärt, was Weitsichtigkeit leistet."],
+    { concept: "bio:k8:akkom:f9", prompt: "Was kennzeichnet Weitsichtigkeit?", answer: "Sie beschreibt die Probleme vor allem in der Nähe.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Weitsichtigkeit: Probleme vor allem in der Nähe",
       wissen: fw(
         "Bild hinter der Netzhaut. Bezug: Akkommodation.",
@@ -2590,7 +2590,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Probleme vor allem in der Nähe",
       gapAccepted: ["Weitsichtigkeit"],
     },
-    { concept: "bio:k8:akkom:f10", prompt: "Was beschreibt Leseabstand?", answer: "Es ist den sinnvollen Abstand beim Lesen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Leseabstand.", "Eine typische Verwechslung mit einem Nachbarbegriff von Leseabstand.", "Ein Randdetail, das fachlich nicht erklärt, was Leseabstand leistet."],
+    { concept: "bio:k8:akkom:f10", prompt: "Was beschreibt Leseabstand?", answer: "Es beschreibt sinnvollen Abstand beim Lesen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Leseabstand: Sinnvoller Abstand beim Lesen",
       wissen: fw(
         "Entlastet das Auge. Bezug: Akkommodation.",
@@ -2598,7 +2598,7 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Sinnvoller Abstand beim Lesen",
       gapAccepted: ["Leseabstand"],
     },
-    { concept: "bio:k8:akkom:f11", prompt: "Woran erkennt man Arbeitsschutz Auge?", answer: "Sie beschreibt Maßnahmen gegen Überlastung, sodass man Arbeitsschutz Auge von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Arbeitsschutz Auge.", "Eine typische Verwechslung mit einem Nachbarbegriff von Arbeitsschutz Auge.", "Ein Randdetail, das fachlich nicht erklärt, was Arbeitsschutz Auge leistet."],
+    { concept: "bio:k8:akkom:f11", prompt: "Woran erkennt man Arbeitsschutz Auge?", answer: "Sie beschreibt maßnahmen gegen Überlastung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Arbeitsschutz Auge: Maßnahmen gegen Überlastung",
       wissen: fw(
         "Pausen und Beleuchtung. Bezug: Akkommodation.",
@@ -2606,13 +2606,13 @@ export const k8AugeAkkommodation: BioBank = {
       gap: "Akkommodation: ___ — Maßnahmen gegen Überlastung",
       gapAccepted: ["Arbeitsschutz Auge"],
     },
-    { concept: "bio:k8:akkom:x0", prompt: "Woran erkennt man Begriff?", answer: "Es ist das NahFernn, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:akkom:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt nahFernn, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Nah/Fern.",
       wissen: fw(
         "Ziliarmuskel und Linse stellen die Brechkraft ein, damit das Bild auf der Netzhaut scharf ist.",
       ),
     },
-    { concept: "bio:k8:akkom:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es ist die Gesunderhaltung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:akkom:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es beschreibt gesunderhaltung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Gesunderhaltung.",
       wissen: fw(
         "Übermäßige Naharbeit ohne Ausgleich kann ermüden; Arbeitsschutz entlastet.",
@@ -2620,18 +2620,18 @@ export const k8AugeAkkommodation: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:akkom:p0", term: "Akkommodation", meaning: "Ist die Scharfstellung auf unterschiedliche Entfernungen", wissen: "Linse ändert Brechkraft. Bezug: Akkommodation. Akkommodation bedeutet: Ist die Scharfstellung auf unterschiedliche Entfernungen." },
-    { concept: "bio:k8:akkom:p1", term: "Adaptation", meaning: "Ist die Anpassung an Helligkeit", wissen: "Pupille und Sinneszellen wirken mit. Bezug: Akkommodation. Adaptation bedeutet: Ist die Anpassung an Helligkeit." },
-    { concept: "bio:k8:akkom:p2", term: "Linse", meaning: "Ist die brechendes Element im Auge", wissen: "Verformbar für Nah/Fern. Bezug: Akkommodation. Linse bedeutet: Ist die brechendes Element im Auge." },
-    { concept: "bio:k8:akkom:p3", term: "Ziliarmuskel", meaning: "Ist der Muskel zur Linsenverformung", wissen: "Anspannung für Nahsehen. Bezug: Akkommodation. Ziliarmuskel bedeutet: Ist der Muskel zur Linsenverformung." },
-    { concept: "bio:k8:akkom:p4", term: "Strahlengang", meaning: "Ist das Weg der Lichtstrahlen im Auge", wissen: "Hornhaut und Linse brechen Licht. Bezug: Akkommodation. Strahlengang bedeutet: Ist das Weg der Lichtstrahlen im Auge." },
-    { concept: "bio:k8:akkom:p5", term: "Netzhaut", meaning: "Ist das Ort der Sinneszellen", wissen: "Bild muss scharf auftreffen. Bezug: Akkommodation. Netzhaut bedeutet: Ist das Ort der Sinneszellen." },
-    { concept: "bio:k8:akkom:p6", term: "Nahpunkt", meaning: "Ist die kürzeste Distanz scharfen Sehens", wissen: "Mit Alter oft weiter weg. Bezug: Akkommodation. Nahpunkt bedeutet: Ist die kürzeste Distanz scharfen Sehens." },
-    { concept: "bio:k8:akkom:p7", term: "Fernpunkt", meaning: "Ist der weitesten Punkt scharfen Sehens", wissen: "Bei normalsichtig im Unendlichen. Bezug: Akkommodation. Fernpunkt bedeutet: Ist der weitesten Punkt scharfen Sehens." },
-    { concept: "bio:k8:akkom:p8", term: "Kurzsichtigkeit", meaning: "Ist die scharfes Sehen vor allem nah", wissen: "Bild vor der Netzhaut. Bezug: Akkommodation. Kurzsichtigkeit bedeutet: Ist die scharfes Sehen vor allem nah." },
-    { concept: "bio:k8:akkom:p9", term: "Weitsichtigkeit", meaning: "Ist die Probleme vor allem in der Nähe", wissen: "Bild hinter der Netzhaut. Bezug: Akkommodation. Weitsichtigkeit bedeutet: Ist die Probleme vor allem in der Nähe." },
-    { concept: "bio:k8:akkom:p10", term: "Leseabstand", meaning: "Ist der sinnvollen Abstand beim Lesen", wissen: "Entlastet das Auge. Bezug: Akkommodation. Leseabstand bedeutet: Ist der sinnvollen Abstand beim Lesen." },
-    { concept: "bio:k8:akkom:p11", term: "Arbeitsschutz Auge", meaning: "Ist Maßnahmen gegen Überlastung", wissen: "Pausen und Beleuchtung. Bezug: Akkommodation. Arbeitsschutz Auge bedeutet: Ist Maßnahmen gegen Überlastung." },
+    { concept: "bio:k8:akkom:p0", term: "Akkommodation", meaning: "Beschreibt linse ändert Brechkraft als biologisches Merkmal mit klarer Funktion.", wissen: "Linse ändert Brechkraft. Bezug: Akkommodation. Akkommodation bedeutet: Ist die Scharfstellung auf unterschiedliche Entfernungen." },
+    { concept: "bio:k8:akkom:p1", term: "Adaptation", meaning: "Beschreibt pupille und Sinneszellen wirken mit als biologisches Merkmal mit klarer Funktion.", wissen: "Pupille und Sinneszellen wirken mit. Bezug: Akkommodation. Adaptation bedeutet: Ist die Anpassung an Helligkeit." },
+    { concept: "bio:k8:akkom:p2", term: "Linse", meaning: "Beschreibt verformbar für Nah/Fern als biologisches Merkmal mit klarer Funktion.", wissen: "Verformbar für Nah/Fern. Bezug: Akkommodation. Linse bedeutet: Ist die brechendes Element im Auge." },
+    { concept: "bio:k8:akkom:p3", term: "Ziliarmuskel", meaning: "Beschreibt anspannung für Nahsehen als biologisches Merkmal mit klarer Funktion.", wissen: "Anspannung für Nahsehen. Bezug: Akkommodation. Ziliarmuskel bedeutet: Ist der Muskel zur Linsenverformung." },
+    { concept: "bio:k8:akkom:p4", term: "Strahlengang", meaning: "Beschreibt hornhaut und Linse brechen Licht als biologisches Merkmal mit klarer Funktion.", wissen: "Hornhaut und Linse brechen Licht. Bezug: Akkommodation. Strahlengang bedeutet: Ist das Weg der Lichtstrahlen im Auge." },
+    { concept: "bio:k8:akkom:p5", term: "Netzhaut", meaning: "Beschreibt bild muss scharf auftreffen als biologisches Merkmal mit klarer Funktion.", wissen: "Bild muss scharf auftreffen. Bezug: Akkommodation. Netzhaut bedeutet: Ist das Ort der Sinneszellen." },
+    { concept: "bio:k8:akkom:p6", term: "Nahpunkt", meaning: "Beschreibt mit Alter oft weiter weg als biologisches Merkmal mit klarer Funktion.", wissen: "Mit Alter oft weiter weg. Bezug: Akkommodation. Nahpunkt bedeutet: Ist die kürzeste Distanz scharfen Sehens." },
+    { concept: "bio:k8:akkom:p7", term: "Fernpunkt", meaning: "Beschreibt bei normalsichtig im Unendlichen als biologisches Merkmal mit klarer Funktion.", wissen: "Bei normalsichtig im Unendlichen. Bezug: Akkommodation. Fernpunkt bedeutet: Ist der weitesten Punkt scharfen Sehens." },
+    { concept: "bio:k8:akkom:p8", term: "Kurzsichtigkeit", meaning: "Beschreibt bild vor der Netzhaut als biologisches Merkmal mit klarer Funktion.", wissen: "Bild vor der Netzhaut. Bezug: Akkommodation. Kurzsichtigkeit bedeutet: Ist die scharfes Sehen vor allem nah." },
+    { concept: "bio:k8:akkom:p9", term: "Weitsichtigkeit", meaning: "Ist die Probleme vor allem in der Nähe.", wissen: "Bild hinter der Netzhaut. Bezug: Akkommodation. Weitsichtigkeit bedeutet: Ist die Probleme vor allem in der Nähe." },
+    { concept: "bio:k8:akkom:p10", term: "Leseabstand", meaning: "Beschreibt entlastet das Auge als biologisches Merkmal mit klarer Funktion.", wissen: "Entlastet das Auge. Bezug: Akkommodation. Leseabstand bedeutet: Ist der sinnvollen Abstand beim Lesen." },
+    { concept: "bio:k8:akkom:p11", term: "Arbeitsschutz Auge", meaning: "Beschreibt pausen und Beleuchtung als biologisches Merkmal mit klarer Funktion.", wissen: "Pausen und Beleuchtung. Bezug: Akkommodation. Arbeitsschutz Auge bedeutet: Ist Maßnahmen gegen Überlastung." },
   ],
   trueFalse: [
     {
@@ -2657,7 +2657,7 @@ export const k8Gehirn: BioBank = {
   url: "https://de.wikipedia.org/wiki/Gehirn",
   conceptPrefix: "bio:k8:gehirn",
   facts: [
-    { concept: "bio:k8:gehirn:f0", prompt: "Was beschreibt Großhirn?", answer: "Es ist das Sitz bewusster Prozesse und Cortex, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Großhirn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Großhirn.", "Ein Randdetail, das fachlich nicht erklärt, was Großhirn leistet."],
+    { concept: "bio:k8:gehirn:f0", prompt: "Was beschreibt Großhirn?", answer: "Es ist das Sitz bewusster Prozesse und Cortex.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Großhirn: Sitz bewusster Prozesse und Cortex",
       wissen: fw(
         "Wahrnehmung, Denken, Willkürmotorik. Bezug: Gehirn/Gedächtnis.",
@@ -2665,7 +2665,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Sitz bewusster Prozesse und Cortex",
       gapAccepted: ["Großhirn"],
     },
-    { concept: "bio:k8:gehirn:f1", prompt: "Was beschreibt Kleinhirn?", answer: "Es ist die Koordination von Bewegungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Kleinhirn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Kleinhirn.", "Ein Randdetail, das fachlich nicht erklärt, was Kleinhirn leistet."],
+    { concept: "bio:k8:gehirn:f1", prompt: "Was beschreibt Kleinhirn?", answer: "Es beschreibt koordination von Bewegungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Kleinhirn: Koordination von Bewegungen",
       wissen: fw(
         "Feinabstimmung und Gleichgewicht. Bezug: Gehirn/Gedächtnis.",
@@ -2673,7 +2673,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Koordination von Bewegungen",
       gapAccepted: ["Kleinhirn"],
     },
-    { concept: "bio:k8:gehirn:f2", prompt: "Was beschreibt Stammhirn?", answer: "Es ist die grundlegende Lebensfunktionen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stammhirn.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stammhirn.", "Ein Randdetail, das fachlich nicht erklärt, was Stammhirn leistet."],
+    { concept: "bio:k8:gehirn:f2", prompt: "Was beschreibt Stammhirn?", answer: "Es beschreibt grundlegende Lebensfunktionen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stammhirn: Grundlegende Lebensfunktionen",
       wissen: fw(
         "Atmung und Kreislaufregulation. Bezug: Gehirn/Gedächtnis.",
@@ -2681,7 +2681,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Grundlegende Lebensfunktionen",
       gapAccepted: ["Stammhirn"],
     },
-    { concept: "bio:k8:gehirn:f3", prompt: "Woran erkennt man Gedächtnis?", answer: "Es ist die Speicherung von Informationen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gedächtnis.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gedächtnis.", "Ein Randdetail, das fachlich nicht erklärt, was Gedächtnis leistet."],
+    { concept: "bio:k8:gehirn:f3", prompt: "Woran erkennt man Gedächtnis?", answer: "Es beschreibt speicherung von Informationen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gedächtnis: Speicherung von Informationen",
       wissen: fw(
         "Kurz- und Langzeitgedächtnis. Bezug: Gehirn/Gedächtnis.",
@@ -2689,7 +2689,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Speicherung von Informationen",
       gapAccepted: ["Gedächtnis"],
     },
-    { concept: "bio:k8:gehirn:f4", prompt: "Woran erkennt man Informationsspeicherung?", answer: "Sie ist den Ablegen von Erfahrungen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Informationsspeicherung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Informationsspeicherung.", "Ein Randdetail, das fachlich nicht erklärt, was Informationsspeicherung leistet."],
+    { concept: "bio:k8:gehirn:f4", prompt: "Woran erkennt man Informationsspeicherung?", answer: "Sie beschreibt ablegen von Erfahrungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Informationsspeicherung: Ablegen von Erfahrungen",
       wissen: fw(
         "Über synaptische Veränderungen. Bezug: Gehirn/Gedächtnis.",
@@ -2697,7 +2697,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Ablegen von Erfahrungen",
       gapAccepted: ["Informationsspeicherung"],
     },
-    { concept: "bio:k8:gehirn:f5", prompt: "Woran erkennt man Synapse?", answer: "Sie ist die Kontaktstelle zwischen Neuronen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Synapse.", "Eine typische Verwechslung mit einem Nachbarbegriff von Synapse.", "Ein Randdetail, das fachlich nicht erklärt, was Synapse leistet."],
+    { concept: "bio:k8:gehirn:f5", prompt: "Woran erkennt man Synapse?", answer: "Sie beschreibt kontaktstelle zwischen Neuronen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Synapse: Kontaktstelle zwischen Neuronen",
       wissen: fw(
         "Chemische Übertragung. Bezug: Gehirn/Gedächtnis.",
@@ -2705,7 +2705,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Kontaktstelle zwischen Neuronen",
       gapAccepted: ["Synapse"],
     },
-    { concept: "bio:k8:gehirn:f6", prompt: "Was kennzeichnet Neuron?", answer: "Es ist die Nervenzelle, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Neuron.", "Eine typische Verwechslung mit einem Nachbarbegriff von Neuron.", "Ein Randdetail, das fachlich nicht erklärt, was Neuron leistet."],
+    { concept: "bio:k8:gehirn:f6", prompt: "Was kennzeichnet Neuron?", answer: "Es beschreibt nervenzelle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Neuron: Nervenzelle",
       wissen: fw(
         "Leitet und verarbeitet Erregungen. Bezug: Gehirn/Gedächtnis.",
@@ -2713,7 +2713,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Nervenzelle",
       gapAccepted: ["Neuron"],
     },
-    { concept: "bio:k8:gehirn:f7", prompt: "Welche Rolle hat Hirnrinde?", answer: "Sie ist die äußere Schicht des Großhirns, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hirnrinde.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hirnrinde.", "Ein Randdetail, das fachlich nicht erklärt, was Hirnrinde leistet."],
+    { concept: "bio:k8:gehirn:f7", prompt: "Welche Rolle hat Hirnrinde?", answer: "Sie beschreibt äußere Schicht des Großhirns, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hirnrinde: Äußere Schicht des Großhirns",
       wissen: fw(
         "Viele höhere Leistungen. Bezug: Gehirn/Gedächtnis.",
@@ -2721,7 +2721,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Äußere Schicht des Großhirns",
       gapAccepted: ["Hirnrinde"],
     },
-    { concept: "bio:k8:gehirn:f8", prompt: "Welche Rolle hat Lernprozess?", answer: "Es ist die Veränderung durch Erfahrung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lernprozess.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lernprozess.", "Ein Randdetail, das fachlich nicht erklärt, was Lernprozess leistet."],
+    { concept: "bio:k8:gehirn:f8", prompt: "Welche Rolle hat Lernprozess?", answer: "Es beschreibt veränderung durch Erfahrung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Lernprozess: Veränderung durch Erfahrung",
       wissen: fw(
         "Stärkt oder schwächt Verbindungen. Bezug: Gehirn/Gedächtnis.",
@@ -2729,7 +2729,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Veränderung durch Erfahrung",
       gapAccepted: ["Lernprozess"],
     },
-    { concept: "bio:k8:gehirn:f9", prompt: "Was kennzeichnet Schlaf?", answer: "Es ist das Erholungs- und Konsolidierungsphase, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schlaf.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schlaf.", "Ein Randdetail, das fachlich nicht erklärt, was Schlaf leistet."],
+    { concept: "bio:k8:gehirn:f9", prompt: "Was kennzeichnet Schlaf?", answer: "Es beschreibt erholungs- und Konsolidierungsphase, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Schlaf: Erholungs- und Konsolidierungsphase",
       wissen: fw(
         "Wichtig für Gedächtnis. Bezug: Gehirn/Gedächtnis.",
@@ -2737,7 +2737,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Erholungs- und Konsolidierungsphase",
       gapAccepted: ["Schlaf"],
     },
-    { concept: "bio:k8:gehirn:f10", prompt: "Was kennzeichnet Lokalisation?", answer: "Sie ist die Zuordnung von Leistungen zu Regionen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lokalisation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lokalisation.", "Ein Randdetail, das fachlich nicht erklärt, was Lokalisation leistet."],
+    { concept: "bio:k8:gehirn:f10", prompt: "Was kennzeichnet Lokalisation?", answer: "Sie ist die Zuordnung von Leistungen zu Regionen.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Lokalisation: Zuordnung von Leistungen zu Regionen",
       wissen: fw(
         "Nicht alles ist streng getrennt. Bezug: Gehirn/Gedächtnis.",
@@ -2745,7 +2745,7 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Zuordnung von Leistungen zu Regionen",
       gapAccepted: ["Lokalisation"],
     },
-    { concept: "bio:k8:gehirn:f11", prompt: "Was kennzeichnet Netzwerk?", answer: "Es ist das Zusammenarbeit vieler Areale, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Netzwerk.", "Eine typische Verwechslung mit einem Nachbarbegriff von Netzwerk.", "Ein Randdetail, das fachlich nicht erklärt, was Netzwerk leistet."],
+    { concept: "bio:k8:gehirn:f11", prompt: "Was kennzeichnet Netzwerk?", answer: "Es beschreibt zusammenarbeit vieler Areale, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Netzwerk: Zusammenarbeit vieler Areale",
       wissen: fw(
         "Komplexe Leistungen entstehen verteilt. Bezug: Gehirn/Gedächtnis.",
@@ -2753,13 +2753,13 @@ export const k8Gehirn: BioBank = {
       gap: "Gehirn/Gedächtnis: ___ — Zusammenarbeit vieler Areale",
       gapAccepted: ["Netzwerk"],
     },
-    { concept: "bio:k8:gehirn:x0", prompt: "Welche Rolle hat das Gehirn für das Gedächtnis?", answer: "Es ist die Informationsverarbeitung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu das Gehirn für das Gedächtnis.", "Eine typische Verwechslung mit einem Nachbarbegriff von das Gehirn für das Gedächtnis.", "Ein Randdetail, das fachlich nicht erklärt, was das Gehirn für das Gedächtnis leistet."],
+    { concept: "bio:k8:gehirn:x0", prompt: "Welche Rolle hat das Gehirn für das Gedächtnis?", answer: "Es beschreibt informationsverarbeitung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Informationsverarbeitung.",
       wissen: fw(
         "Lernen verändert Synapsenstärken; Speicherung und Abruf sind Gehirnleistungen.",
       ),
     },
-    { concept: "bio:k8:gehirn:x1", prompt: "Woran erkennt man x1?", answer: "Es ist die Konsolidierung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1.", "Ein Randdetail, das fachlich nicht erklärt, was x1 leistet."],
+    { concept: "bio:k8:gehirn:x1", prompt: "Woran erkennt man x1?", answer: "Es beschreibt konsolidierung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Konsolidierung.",
       wissen: fw(
         "Während des Schlafs werden Gedächtnisspuren stabilisiert. Bezug: Gehirn/Gedächtnis.",
@@ -2767,18 +2767,18 @@ export const k8Gehirn: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:gehirn:p0", term: "Großhirn", meaning: "Ist das Sitz bewusster Prozesse und Cortex", wissen: "Wahrnehmung, Denken, Willkürmotorik. Bezug: Gehirn/Gedächtnis. Großhirn bedeutet: Ist das Sitz bewusster Prozesse und Cortex." },
-    { concept: "bio:k8:gehirn:p1", term: "Kleinhirn", meaning: "Ist die Koordination von Bewegungen", wissen: "Feinabstimmung und Gleichgewicht. Bezug: Gehirn/Gedächtnis. Kleinhirn bedeutet: Ist die Koordination von Bewegungen." },
-    { concept: "bio:k8:gehirn:p2", term: "Stammhirn", meaning: "Ist die grundlegende Lebensfunktionen", wissen: "Atmung und Kreislaufregulation. Bezug: Gehirn/Gedächtnis. Stammhirn bedeutet: Ist die grundlegende Lebensfunktionen." },
-    { concept: "bio:k8:gehirn:p3", term: "Gedächtnis", meaning: "Ist die Speicherung von Informationen", wissen: "Kurz- und Langzeitgedächtnis. Bezug: Gehirn/Gedächtnis. Gedächtnis bedeutet: Ist die Speicherung von Informationen." },
-    { concept: "bio:k8:gehirn:p4", term: "Informationsspeicherung", meaning: "Ist der Ablegen von Erfahrungen", wissen: "Über synaptische Veränderungen. Bezug: Gehirn/Gedächtnis. Informationsspeicherung bedeutet: Ist der Ablegen von Erfahrungen." },
-    { concept: "bio:k8:gehirn:p5", term: "Synapse", meaning: "Ist die Kontaktstelle zwischen Neuronen", wissen: "Chemische Übertragung. Bezug: Gehirn/Gedächtnis. Synapse bedeutet: Ist die Kontaktstelle zwischen Neuronen." },
-    { concept: "bio:k8:gehirn:p6", term: "Neuron", meaning: "Leitet und verarbeitet Erregungen; es handelt sich um die Nervenzelle", wissen: "Leitet und verarbeitet Erregungen. Bezug: Gehirn/Gedächtnis. Neuron bedeutet: Leitet und verarbeitet Erregungen; es handelt sich um die Nervenzelle." },
-    { concept: "bio:k8:gehirn:p7", term: "Hirnrinde", meaning: "Dient als äußere Schicht des Großhirns", wissen: "Viele höhere Leistungen. Bezug: Gehirn/Gedächtnis. Hirnrinde bedeutet: Dient als äußere Schicht des Großhirns." },
-    { concept: "bio:k8:gehirn:p8", term: "Lernprozess", meaning: "Ist die Veränderung durch Erfahrung", wissen: "Stärkt oder schwächt Verbindungen. Bezug: Gehirn/Gedächtnis. Lernprozess bedeutet: Ist die Veränderung durch Erfahrung." },
-    { concept: "bio:k8:gehirn:p9", term: "Schlaf", meaning: "Ist das Erholungs- und Konsolidierungsphase", wissen: "Wichtig für Gedächtnis. Bezug: Gehirn/Gedächtnis. Schlaf bedeutet: Ist das Erholungs- und Konsolidierungsphase." },
-    { concept: "bio:k8:gehirn:p10", term: "Lokalisation", meaning: "Nicht alles ist streng getrennt", wissen: "Nicht alles ist streng getrennt. Bezug: Gehirn/Gedächtnis. Lokalisation bedeutet: Nicht alles ist streng getrennt." },
-    { concept: "bio:k8:gehirn:p11", term: "Netzwerk", meaning: "Ist das Zusammenarbeit vieler Areale", wissen: "Komplexe Leistungen entstehen verteilt. Bezug: Gehirn/Gedächtnis. Netzwerk bedeutet: Ist das Zusammenarbeit vieler Areale." },
+    { concept: "bio:k8:gehirn:p0", term: "Großhirn", meaning: "Beschreibt wahrnehmung, Denken, Willkürmotorik als biologisches Merkmal mit klarer Funktion.", wissen: "Wahrnehmung, Denken, Willkürmotorik. Bezug: Gehirn/Gedächtnis. Großhirn bedeutet: Ist das Sitz bewusster Prozesse und Cortex." },
+    { concept: "bio:k8:gehirn:p1", term: "Kleinhirn", meaning: "Beschreibt feinabstimmung und Gleichgewicht als biologisches Merkmal mit klarer Funktion.", wissen: "Feinabstimmung und Gleichgewicht. Bezug: Gehirn/Gedächtnis. Kleinhirn bedeutet: Ist die Koordination von Bewegungen." },
+    { concept: "bio:k8:gehirn:p2", term: "Stammhirn", meaning: "Beschreibt atmung und Kreislaufregulation als biologisches Merkmal mit klarer Funktion.", wissen: "Atmung und Kreislaufregulation. Bezug: Gehirn/Gedächtnis. Stammhirn bedeutet: Ist die grundlegende Lebensfunktionen." },
+    { concept: "bio:k8:gehirn:p3", term: "Gedächtnis", meaning: "Beschreibt kurz- und Langzeitgedächtnis als biologisches Merkmal mit klarer Funktion.", wissen: "Kurz- und Langzeitgedächtnis. Bezug: Gehirn/Gedächtnis. Gedächtnis bedeutet: Ist die Speicherung von Informationen." },
+    { concept: "bio:k8:gehirn:p4", term: "Informationsspeicherung", meaning: "Beschreibt über synaptische Veränderungen als biologisches Merkmal mit klarer Funktion.", wissen: "Über synaptische Veränderungen. Bezug: Gehirn/Gedächtnis. Informationsspeicherung bedeutet: Ist der Ablegen von Erfahrungen." },
+    { concept: "bio:k8:gehirn:p5", term: "Synapse", meaning: "Beschreibt kontaktstelle zwischen Neuronen als biologisches Merkmal mit klarer Funktion.", wissen: "Chemische Übertragung. Bezug: Gehirn/Gedächtnis. Synapse bedeutet: Ist die Kontaktstelle zwischen Neuronen." },
+    { concept: "bio:k8:gehirn:p6", term: "Neuron", meaning: "Beschreibt leitet und verarbeitet Erregungen als biologisches Merkmal mit klarer Funktion.", wissen: "Leitet und verarbeitet Erregungen. Bezug: Gehirn/Gedächtnis. Neuron bedeutet: Leitet und verarbeitet Erregungen; es handelt sich um die Nervenzelle." },
+    { concept: "bio:k8:gehirn:p7", term: "Hirnrinde", meaning: "Beschreibt viele höhere Leistungen als biologisches Merkmal mit klarer Funktion.", wissen: "Viele höhere Leistungen. Bezug: Gehirn/Gedächtnis. Hirnrinde bedeutet: Dient als äußere Schicht des Großhirns." },
+    { concept: "bio:k8:gehirn:p8", term: "Lernprozess", meaning: "Beschreibt stärkt oder schwächt Verbindungen als biologisches Merkmal mit klarer Funktion.", wissen: "Stärkt oder schwächt Verbindungen. Bezug: Gehirn/Gedächtnis. Lernprozess bedeutet: Ist die Veränderung durch Erfahrung." },
+    { concept: "bio:k8:gehirn:p9", term: "Schlaf", meaning: "Beschreibt wichtig für Gedächtnis als biologisches Merkmal mit klarer Funktion.", wissen: "Wichtig für Gedächtnis. Bezug: Gehirn/Gedächtnis. Schlaf bedeutet: Ist das Erholungs- und Konsolidierungsphase." },
+    { concept: "bio:k8:gehirn:p10", term: "Lokalisation", meaning: "Beschreibt nicht alles ist streng getrennt als biologisches Merkmal mit klarer Funktion.", wissen: "Nicht alles ist streng getrennt. Bezug: Gehirn/Gedächtnis. Lokalisation bedeutet: Nicht alles ist streng getrennt." },
+    { concept: "bio:k8:gehirn:p11", term: "Netzwerk", meaning: "Beschreibt komplexe Leistungen entstehen verteilt als biologisches Merkmal mit klarer Funktion.", wissen: "Komplexe Leistungen entstehen verteilt. Bezug: Gehirn/Gedächtnis. Netzwerk bedeutet: Ist das Zusammenarbeit vieler Areale." },
   ],
   trueFalse: [
     {
@@ -2804,7 +2804,7 @@ export const k8NervGesundheit: BioBank = {
   url: "https://de.wikipedia.org/wiki/Nervensystem",
   conceptPrefix: "bio:k8:nervges",
   facts: [
-    { concept: "bio:k8:nervges:f0", prompt: "Was kennzeichnet Schlaf?", answer: "Es ist das Erholungs- und Konsolidierungsphase, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schlaf.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schlaf.", "Ein Randdetail, das fachlich nicht erklärt, was Schlaf leistet."],
+    { concept: "bio:k8:nervges:f0", prompt: "Was kennzeichnet Schlaf?", answer: "Es beschreibt erholungs- und Konsolidierungsphase, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schlaf: Erholung für Gehirn und Körper",
       wissen: fw(
         "Mangel beeinträchtigt Leistung. Bezug: Nervengesundheit.",
@@ -2812,7 +2812,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Erholung für Gehirn und Körper",
       gapAccepted: ["Schlaf"],
     },
-    { concept: "bio:k8:nervges:f1", prompt: "Woran erkennt man Reizüberflutung?", answer: "Sie gilt zu viele Reize gleichzeitig.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Reizüberflutung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Reizüberflutung.", "Ein Randdetail, das fachlich nicht erklärt, was Reizüberflutung leistet."],
+    { concept: "bio:k8:nervges:f1", prompt: "Woran erkennt man Reizüberflutung?", answer: "Sie beschreibt sie gilt zu viele Reize gleichzeitig, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Reizüberflutung: Zu viele Reize gleichzeitig",
       wissen: fw(
         "Kann Stress und Ermüdung fördern. Bezug: Nervengesundheit.",
@@ -2820,7 +2820,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Zu viele Reize gleichzeitig",
       gapAccepted: ["Reizüberflutung"],
     },
-    { concept: "bio:k8:nervges:f2", prompt: "Wozu dient Stress?", answer: "Es ist die Belastungsreaktion des Organismus, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stress.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stress.", "Ein Randdetail, das fachlich nicht erklärt, was Stress leistet."],
+    { concept: "bio:k8:nervges:f2", prompt: "Wozu dient Stress?", answer: "Es beschreibt belastungsreaktion des Organismus, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Stress: Belastungsreaktion des Organismus",
       wissen: fw(
         "Kurz hilfreich, dauerhaft schädlich. Bezug: Nervengesundheit.",
@@ -2828,7 +2828,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Belastungsreaktion des Organismus",
       gapAccepted: ["Stress"],
     },
-    { concept: "bio:k8:nervges:f3", prompt: "Woran erkennt man Entspannung?", answer: "Sie ist den Absenken der Anspannung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Entspannung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Entspannung.", "Ein Randdetail, das fachlich nicht erklärt, was Entspannung leistet."],
+    { concept: "bio:k8:nervges:f3", prompt: "Woran erkennt man Entspannung?", answer: "Sie beschreibt absenken der Anspannung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Entspannung: Absenken der Anspannung",
       wissen: fw(
         "Gegenspieler zu Dauerstress. Bezug: Nervengesundheit.",
@@ -2836,7 +2836,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Absenken der Anspannung",
       gapAccepted: ["Entspannung"],
     },
-    { concept: "bio:k8:nervges:f4", prompt: "Was kennzeichnet Bildschirmzeit?", answer: "Es ist den Dauen der Mediennutzung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bildschirmzeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bildschirmzeit.", "Ein Randdetail, das fachlich nicht erklärt, was Bildschirmzeit leistet."],
+    { concept: "bio:k8:nervges:f4", prompt: "Was kennzeichnet Bildschirmzeit?", answer: "Es beschreibt dauen der Mediennutzung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Bildschirmzeit: Dauer der Mediennutzung",
       wissen: fw(
         "Zu viel kann Schlaf und Fokus stören. Bezug: Nervengesundheit.",
@@ -2844,7 +2844,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Dauer der Mediennutzung",
       gapAccepted: ["Bildschirmzeit"],
     },
-    { concept: "bio:k8:nervges:f5", prompt: "Was beschreibt Pausen?", answer: "Es ist den Unterbrechungen der Belastung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Pausen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Pausen.", "Ein Randdetail, das fachlich nicht erklärt, was Pausen leistet."],
+    { concept: "bio:k8:nervges:f5", prompt: "Was beschreibt Pausen?", answer: "Es beschreibt unterbrechungen der Belastung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Pausen: Unterbrechungen der Belastung",
       wissen: fw(
         "Schützen Konzentration. Bezug: Nervengesundheit.",
@@ -2852,7 +2852,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Unterbrechungen der Belastung",
       gapAccepted: ["Pausen"],
     },
-    { concept: "bio:k8:nervges:f6", prompt: "Woran erkennt man Bewegung?", answer: "Sie ist die körperliche Aktivität, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bewegung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bewegung.", "Ein Randdetail, das fachlich nicht erklärt, was Bewegung leistet."],
+    { concept: "bio:k8:nervges:f6", prompt: "Woran erkennt man Bewegung?", answer: "Sie beschreibt körperliche Aktivität, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Bewegung: Körperliche Aktivität",
       wissen: fw(
         "Wirkt positiv auf Stressregulation. Bezug: Nervengesundheit.",
@@ -2860,7 +2860,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Körperliche Aktivität",
       gapAccepted: ["Bewegung"],
     },
-    { concept: "bio:k8:nervges:f7", prompt: "Was kennzeichnet Suchtgefahr?", answer: "Es ist das Risiko problematischer Gewohnheiten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Suchtgefahr.", "Eine typische Verwechslung mit einem Nachbarbegriff von Suchtgefahr.", "Ein Randdetail, das fachlich nicht erklärt, was Suchtgefahr leistet."],
+    { concept: "bio:k8:nervges:f7", prompt: "Was kennzeichnet Suchtgefahr?", answer: "Es beschreibt risiko problematischer Gewohnheiten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Suchtgefahr: Risiko problematischer Gewohnheiten",
       wissen: fw(
         "Belastet das Nervensystem mit. Bezug: Nervengesundheit.",
@@ -2868,7 +2868,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Risiko problematischer Gewohnheiten",
       gapAccepted: ["Suchtgefahr"],
     },
-    { concept: "bio:k8:nervges:f8", prompt: "Was kennzeichnet Konzentration?", answer: "Sie ist die fokussierte Aufmerksamkeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie leitet und verarbeitet Erregungen; es handelt sich um die Nervenzelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Konzentration.", "Eine typische Verwechslung mit einem Nachbarbegriff von Konzentration."],
+    { concept: "bio:k8:nervges:f8", prompt: "Was kennzeichnet Konzentration?", answer: "Sie beschreibt fokussierte Aufmerksamkeit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Konzentration: Fokussierte Aufmerksamkeit",
       wissen: fw(
         "Braucht Erholung und Reizdosierung. Bezug: Nervengesundheit.",
@@ -2876,7 +2876,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Fokussierte Aufmerksamkeit",
       gapAccepted: ["Konzentration"],
     },
-    { concept: "bio:k8:nervges:f9", prompt: "Was kennzeichnet Recovery?", answer: "Es ist die Erholung nach Belastung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es leitet und verarbeitet Erregungen; es handelt sich um die Nervenzelle.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Recovery.", "Eine typische Verwechslung mit einem Nachbarbegriff von Recovery."],
+    { concept: "bio:k8:nervges:f9", prompt: "Was kennzeichnet Recovery?", answer: "Es beschreibt erholung nach Belastung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Recovery: Erholung nach Belastung",
       wissen: fw(
         "Notwendig für Leistungsfähigkeit. Bezug: Nervengesundheit.",
@@ -2884,7 +2884,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Erholung nach Belastung",
       gapAccepted: ["Recovery"],
     },
-    { concept: "bio:k8:nervges:f10", prompt: "Welche Rolle hat Tagesrhythmus?", answer: "Er ist den Wechsel von Aktivität und Ruhe, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Tagesrhythmus.", "Eine typische Verwechslung mit einem Nachbarbegriff von Tagesrhythmus.", "Ein Randdetail, das fachlich nicht erklärt, was Tagesrhythmus leistet."],
+    { concept: "bio:k8:nervges:f10", prompt: "Welche Rolle hat Tagesrhythmus?", answer: "Er beschreibt den Wechsel von Aktivität und Ruhe.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Tagesrhythmus: Wechsel von Aktivität und Ruhe",
       wissen: fw(
         "Unterstützt Schlafqualität. Bezug: Nervengesundheit.",
@@ -2892,7 +2892,7 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Wechsel von Aktivität und Ruhe",
       gapAccepted: ["Tagesrhythmus"],
     },
-    { concept: "bio:k8:nervges:f11", prompt: "Was beschreibt Selbstregulation?", answer: "Sie ist die Steuern von Belastung und Erholung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Selbstregulation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Selbstregulation."],
+    { concept: "bio:k8:nervges:f11", prompt: "Was beschreibt Selbstregulation?", answer: "Sie ist die Steuern von Belastung und Erholung.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Selbstregulation: Steuern von Belastung und Erholung",
       wissen: fw(
         "Schlüssel zur Gesunderhaltung. Bezug: Nervengesundheit.",
@@ -2900,13 +2900,13 @@ export const k8NervGesundheit: BioBank = {
       gap: "Nervengesundheit: ___ — Steuern von Belastung und Erholung",
       gapAccepted: ["Selbstregulation"],
     },
-    { concept: "bio:k8:nervges:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist die Erholung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff."],
+    { concept: "bio:k8:nervges:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt erholung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Erholung.",
       wissen: fw(
         "Schlafmangel mindert Aufmerksamkeit, Stimmung und Lernleistung.",
       ),
     },
-    { concept: "bio:k8:nervges:x1", prompt: "Welche Rolle hat x1?", answer: "Es ist die Dosierung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1."],
+    { concept: "bio:k8:nervges:x1", prompt: "Welche Rolle hat x1?", answer: "Es beschreibt dosierung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Dosierung.",
       wissen: fw(
         "Weniger gleichzeitige Reize entlasten Aufmerksamkeit und Stressachsen.",
@@ -2914,18 +2914,18 @@ export const k8NervGesundheit: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:nervges:p0", term: "Schlaf", meaning: "Ist die Erholung für Gehirn und Körper", wissen: "Mangel beeinträchtigt Leistung. Bezug: Nervengesundheit. Schlaf bedeutet: Ist die Erholung für Gehirn und Körper." },
-    { concept: "bio:k8:nervges:p1", term: "Reizüberflutung", meaning: "Gilt Zu viele Reize gleichzeitig", wissen: "Kann Stress und Ermüdung fördern. Bezug: Nervengesundheit. Reizüberflutung bedeutet: Gilt Zu viele Reize gleichzeitig." },
-    { concept: "bio:k8:nervges:p2", term: "Stress", meaning: "Dient als Belastungsreaktion des Organismus", wissen: "Kurz hilfreich, dauerhaft schädlich. Bezug: Nervengesundheit. Stress bedeutet: Dient als Belastungsreaktion des Organismus." },
-    { concept: "bio:k8:nervges:p3", term: "Entspannung", meaning: "Ist der Absenken der Anspannung", wissen: "Gegenspieler zu Dauerstress. Bezug: Nervengesundheit. Entspannung bedeutet: Ist der Absenken der Anspannung." },
-    { concept: "bio:k8:nervges:p4", term: "Bildschirmzeit", meaning: "Ist der Dauen der Mediennutzung", wissen: "Zu viel kann Schlaf und Fokus stören. Bezug: Nervengesundheit. Bildschirmzeit bedeutet: Ist der Dauen der Mediennutzung." },
-    { concept: "bio:k8:nervges:p5", term: "Pausen", meaning: "Ist der Unterbrechungen der Belastung", wissen: "Schützen Konzentration. Bezug: Nervengesundheit. Pausen bedeutet: Ist der Unterbrechungen der Belastung." },
-    { concept: "bio:k8:nervges:p6", term: "Bewegung", meaning: "Ist die körperliche Aktivität", wissen: "Wirkt positiv auf Stressregulation. Bezug: Nervengesundheit. Bewegung bedeutet: Ist die körperliche Aktivität." },
-    { concept: "bio:k8:nervges:p7", term: "Suchtgefahr", meaning: "Ist das Risiko problematischer Gewohnheiten", wissen: "Belastet das Nervensystem mit. Bezug: Nervengesundheit. Suchtgefahr bedeutet: Ist das Risiko problematischer Gewohnheiten." },
-    { concept: "bio:k8:nervges:p8", term: "Konzentration", meaning: "Ist die fokussierte Aufmerksamkeit", wissen: "Braucht Erholung und Reizdosierung. Bezug: Nervengesundheit. Konzentration bedeutet: Ist die fokussierte Aufmerksamkeit." },
-    { concept: "bio:k8:nervges:p9", term: "Recovery", meaning: "Ist die Erholung nach Belastung", wissen: "Notwendig für Leistungsfähigkeit. Bezug: Nervengesundheit. Recovery bedeutet: Ist die Erholung nach Belastung." },
-    { concept: "bio:k8:nervges:p10", term: "Tagesrhythmus", meaning: "Ist der Wechsel von Aktivität und Ruhe", wissen: "Unterstützt Schlafqualität. Bezug: Nervengesundheit. Tagesrhythmus bedeutet: Ist der Wechsel von Aktivität und Ruhe." },
-    { concept: "bio:k8:nervges:p11", term: "Selbstregulation", meaning: "Ist die Steuern von Belastung und Erholung", wissen: "Schlüssel zur Gesunderhaltung. Bezug: Nervengesundheit. Selbstregulation bedeutet: Ist die Steuern von Belastung und Erholung." },
+    { concept: "bio:k8:nervges:p0", term: "Schlaf", meaning: "Beschreibt mangel beeinträchtigt Leistung als biologisches Merkmal mit klarer Funktion.", wissen: "Mangel beeinträchtigt Leistung. Bezug: Nervengesundheit. Schlaf bedeutet: Ist die Erholung für Gehirn und Körper." },
+    { concept: "bio:k8:nervges:p1", term: "Reizüberflutung", meaning: "Beschreibt kann Stress und Ermüdung fördern als biologisches Merkmal mit klarer Funktion.", wissen: "Kann Stress und Ermüdung fördern. Bezug: Nervengesundheit. Reizüberflutung bedeutet: Gilt Zu viele Reize gleichzeitig." },
+    { concept: "bio:k8:nervges:p2", term: "Stress", meaning: "Beschreibt kurz hilfreich, dauerhaft schädlich als biologisches Merkmal mit klarer Funktion.", wissen: "Kurz hilfreich, dauerhaft schädlich. Bezug: Nervengesundheit. Stress bedeutet: Dient als Belastungsreaktion des Organismus." },
+    { concept: "bio:k8:nervges:p3", term: "Entspannung", meaning: "Beschreibt gegenspieler zu Dauerstress als biologisches Merkmal mit klarer Funktion.", wissen: "Gegenspieler zu Dauerstress. Bezug: Nervengesundheit. Entspannung bedeutet: Ist der Absenken der Anspannung." },
+    { concept: "bio:k8:nervges:p4", term: "Bildschirmzeit", meaning: "Zu viel kann Schlaf und Fokus stören.", wissen: "Zu viel kann Schlaf und Fokus stören. Bezug: Nervengesundheit. Bildschirmzeit bedeutet: Ist der Dauen der Mediennutzung." },
+    { concept: "bio:k8:nervges:p5", term: "Pausen", meaning: "Beschreibt der Unterbrechungen der Belastung als biologisches Merkmal mit klarer Funktion.", wissen: "Schützen Konzentration. Bezug: Nervengesundheit. Pausen bedeutet: Ist der Unterbrechungen der Belastung." },
+    { concept: "bio:k8:nervges:p6", term: "Bewegung", meaning: "Beschreibt wirkt positiv auf Stressregulation als biologisches Merkmal mit klarer Funktion.", wissen: "Wirkt positiv auf Stressregulation. Bezug: Nervengesundheit. Bewegung bedeutet: Ist die körperliche Aktivität." },
+    { concept: "bio:k8:nervges:p7", term: "Suchtgefahr", meaning: "Beschreibt belastet das Nervensystem mit als biologisches Merkmal mit klarer Funktion.", wissen: "Belastet das Nervensystem mit. Bezug: Nervengesundheit. Suchtgefahr bedeutet: Ist das Risiko problematischer Gewohnheiten." },
+    { concept: "bio:k8:nervges:p8", term: "Konzentration", meaning: "Beschreibt braucht Erholung und Reizdosierung als biologisches Merkmal mit klarer Funktion.", wissen: "Braucht Erholung und Reizdosierung. Bezug: Nervengesundheit. Konzentration bedeutet: Ist die fokussierte Aufmerksamkeit." },
+    { concept: "bio:k8:nervges:p9", term: "Recovery", meaning: "Beschreibt notwendig für Leistungsfähigkeit als biologisches Merkmal mit klarer Funktion.", wissen: "Notwendig für Leistungsfähigkeit. Bezug: Nervengesundheit. Recovery bedeutet: Ist die Erholung nach Belastung." },
+    { concept: "bio:k8:nervges:p10", term: "Tagesrhythmus", meaning: "Beschreibt der Wechsel von Aktivität und Ruhe als biologisches Merkmal mit klarer Funktion.", wissen: "Unterstützt Schlafqualität. Bezug: Nervengesundheit. Tagesrhythmus bedeutet: Ist der Wechsel von Aktivität und Ruhe." },
+    { concept: "bio:k8:nervges:p11", term: "Selbstregulation", meaning: "Beschreibt schlüssel zur Gesunderhaltung als biologisches Merkmal mit klarer Funktion.", wissen: "Schlüssel zur Gesunderhaltung. Bezug: Nervengesundheit. Selbstregulation bedeutet: Ist die Steuern von Belastung und Erholung." },
   ],
   trueFalse: [
     {
@@ -2951,7 +2951,7 @@ export const k8Zyklus: BioBank = {
   url: "https://de.wikipedia.org/wiki/Menstruationszyklus",
   conceptPrefix: "bio:k8:zyklus",
   facts: [
-    { concept: "bio:k8:zyklus:f0", prompt: "Was kennzeichnet Menstruationszyklus?", answer: "Er ist den monatlichen Regelkreis der Gebärmutterschleimhaut, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Er gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Menstruationszyklus.", "Eine typische Verwechslung mit einem Nachbarbegriff von Menstruationszyklus."],
+    { concept: "bio:k8:zyklus:f0", prompt: "Was kennzeichnet Menstruationszyklus?", answer: "Er beschreibt monatlichen Regelkreis der Gebärmutterschleimhaut, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Menstruationszyklus: Monatlicher Regelkreis der Gebärmutterschleimhaut",
       wissen: fw(
         "Gesteuert durch Hormone. Bezug: Menstruationszyklus.",
@@ -2959,7 +2959,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Monatlicher Regelkreis der Gebärmutterschleimhaut",
       gapAccepted: ["Menstruationszyklus"],
     },
-    { concept: "bio:k8:zyklus:f1", prompt: "Welche Rolle hat Eisprung?", answer: "Sie ist die Freisetzung einer Eizelle, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Eisprung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Eisprung."],
+    { concept: "bio:k8:zyklus:f1", prompt: "Welche Rolle hat Eisprung?", answer: "Sie beschreibt freisetzung einer Eizelle, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Eisprung: Freisetzung einer Eizelle",
       wissen: fw(
         "Etwa Zyklusmitte. Bezug: Menstruationszyklus.",
@@ -2967,7 +2967,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Freisetzung einer Eizelle",
       gapAccepted: ["Eisprung"],
     },
-    { concept: "bio:k8:zyklus:f2", prompt: "Woran erkennt man Follikelphase?", answer: "Sie ist die Reifungsphase vor dem Eisprung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Follikelphase.", "Eine typische Verwechslung mit einem Nachbarbegriff von Follikelphase."],
+    { concept: "bio:k8:zyklus:f2", prompt: "Woran erkennt man Follikelphase?", answer: "Sie beschreibt reifungsphase vor dem Eisprung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Follikelphase: Reifungsphase vor dem Eisprung",
       wissen: fw(
         "Östrogene steigen typischerweise. Bezug: Menstruationszyklus.",
@@ -2975,7 +2975,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Reifungsphase vor dem Eisprung",
       gapAccepted: ["Follikelphase"],
     },
-    { concept: "bio:k8:zyklus:f3", prompt: "Was kennzeichnet Lutealphase?", answer: "Sie ist die Phase nach dem Eisprung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lutealphase.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lutealphase."],
+    { concept: "bio:k8:zyklus:f3", prompt: "Was kennzeichnet Lutealphase?", answer: "Sie beschreibt phase nach dem Eisprung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Lutealphase: Phase nach dem Eisprung",
       wissen: fw(
         "Progesteron dominiert oft. Bezug: Menstruationszyklus.",
@@ -2983,7 +2983,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Phase nach dem Eisprung",
       gapAccepted: ["Lutealphase"],
     },
-    { concept: "bio:k8:zyklus:f4", prompt: "Was beschreibt Menstruation?", answer: "Sie ist den Abstoßen der Schleimhaut, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Menstruation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Menstruation."],
+    { concept: "bio:k8:zyklus:f4", prompt: "Was beschreibt Menstruation?", answer: "Sie beschreibt abstoßen der Schleimhaut, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Menstruation: Abstoßen der Schleimhaut",
       wissen: fw(
         "Beginn eines neuen Zyklus. Bezug: Menstruationszyklus.",
@@ -2991,7 +2991,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Abstoßen der Schleimhaut",
       gapAccepted: ["Menstruation"],
     },
-    { concept: "bio:k8:zyklus:f5", prompt: "Woran erkennt man Östrogen?", answer: "Es ist das weibliche Geschlechtshormon, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Östrogen.", "Eine typische Verwechslung mit einem Nachbarbegriff von Östrogen."],
+    { concept: "bio:k8:zyklus:f5", prompt: "Woran erkennt man Östrogen?", answer: "Es beschreibt weibliche Geschlechtshormon, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Östrogen: Weibliches Geschlechtshormon",
       wissen: fw(
         "Baut Schleimhaut mit auf. Bezug: Menstruationszyklus.",
@@ -2999,7 +2999,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Weibliches Geschlechtshormon",
       gapAccepted: ["Östrogen"],
     },
-    { concept: "bio:k8:zyklus:f6", prompt: "Woran erkennt man Progesteron?", answer: "Es ist das Gelbkörperhormon, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Progesteron.", "Eine typische Verwechslung mit einem Nachbarbegriff von Progesteron."],
+    { concept: "bio:k8:zyklus:f6", prompt: "Woran erkennt man Progesteron?", answer: "Es beschreibt gelbkörperhormon, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Progesteron: Gelbkörperhormon",
       wissen: fw(
         "Bereitet auf mögliche Schwangerschaft vor. Bezug: Menstruationszyklus.",
@@ -3007,7 +3007,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Gelbkörperhormon",
       gapAccepted: ["Progesteron"],
     },
-    { concept: "bio:k8:zyklus:f7", prompt: "Was kennzeichnet Gebärmutterschleimhaut?", answer: "Es ist die innere Auskleidung der Gebärmutter, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es gilt zu viele Reize gleichzeitig.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gebärmutterschleimhaut.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gebärmutterschleimhaut."],
+    { concept: "bio:k8:zyklus:f7", prompt: "Was kennzeichnet Gebärmutterschleimhaut?", answer: "Es beschreibt innere Auskleidung der Gebärmutter, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gebärmutterschleimhaut: Innere Auskleidung der Gebärmutter",
       wissen: fw(
         "Wird zyklisch auf- und abgebaut. Bezug: Menstruationszyklus.",
@@ -3015,7 +3015,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Innere Auskleidung der Gebärmutter",
       gapAccepted: ["Gebärmutterschleimhaut"],
     },
-    { concept: "bio:k8:zyklus:f8", prompt: "Welche Rolle hat Gelbkörper?", answer: "Er ist den Restfollikel nach Eisprung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Gelbkörper.", "Eine typische Verwechslung mit einem Nachbarbegriff von Gelbkörper.", "Ein Randdetail, das fachlich nicht erklärt, was Gelbkörper leistet."],
+    { concept: "bio:k8:zyklus:f8", prompt: "Welche Rolle hat Gelbkörper?", answer: "Er beschreibt restfollikel nach Eisprung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Gelbkörper: Restfollikel nach Eisprung",
       wissen: fw(
         "Bildet Progesteron. Bezug: Menstruationszyklus.",
@@ -3023,7 +3023,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Restfollikel nach Eisprung",
       gapAccepted: ["Gelbkörper"],
     },
-    { concept: "bio:k8:zyklus:f9", prompt: "Woran erkennt man Regulation?", answer: "Sie ist die Steuerung durch Hypophyse und Eierstöcke, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Regulation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Regulation.", "Ein Randdetail, das fachlich nicht erklärt, was Regulation leistet."],
+    { concept: "bio:k8:zyklus:f9", prompt: "Woran erkennt man Regulation?", answer: "Sie ist die Steuerung durch Hypophyse und Eierstöcke.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Regulation: Steuerung durch Hypophyse und Eierstöcke",
       wissen: fw(
         "Rückkopplung der Hormone. Bezug: Menstruationszyklus.",
@@ -3031,7 +3031,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Steuerung durch Hypophyse und Eierstöcke",
       gapAccepted: ["Regulation"],
     },
-    { concept: "bio:k8:zyklus:f10", prompt: "Was beschreibt Zykluslänge?", answer: "Sie ist den Dauen eines Zyklus, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zykluslänge.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zykluslänge.", "Ein Randdetail, das fachlich nicht erklärt, was Zykluslänge leistet."],
+    { concept: "bio:k8:zyklus:f10", prompt: "Was beschreibt Zykluslänge?", answer: "Sie beschreibt dauen eines Zyklus, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Zykluslänge: Dauer eines Zyklus",
       wissen: fw(
         "Individuell variabel um ~28 Tage. Bezug: Menstruationszyklus.",
@@ -3039,7 +3039,7 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Dauer eines Zyklus",
       gapAccepted: ["Zykluslänge"],
     },
-    { concept: "bio:k8:zyklus:f11", prompt: "Was kennzeichnet Fruchtbare Tage?", answer: "Sie ist das Zeitraum erhöhter Empfängniswahrscheinlichkeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fruchtbare Tage.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fruchtbare Tage.", "Ein Randdetail, das fachlich nicht erklärt, was Fruchtbare Tage leistet."],
+    { concept: "bio:k8:zyklus:f11", prompt: "Was kennzeichnet Fruchtbare Tage?", answer: "Sie beschreibt zeitraum erhöhter Empfängniswahrscheinlichkeit, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Fruchtbare Tage: Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       wissen: fw(
         "Um den Eisprung. Bezug: Menstruationszyklus.",
@@ -3047,13 +3047,13 @@ export const k8Zyklus: BioBank = {
       gap: "Menstruationszyklus: ___ — Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       gapAccepted: ["Fruchtbare Tage"],
     },
-    { concept: "bio:k8:zyklus:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist die Regulation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:zyklus:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt regulation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Regulation.",
       wissen: fw(
         "Rückkopplungen zwischen Steuerhormonen und Eierstockhormonen takten Aufbau, Eisprung und Abbau.",
       ),
     },
-    { concept: "bio:k8:zyklus:x1", prompt: "Was kennzeichnet x1?", answer: "Das x1 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, die man von ähnlichen Größen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x1.", "Eine typische Verwechslung mit einem Nachbarbegriff von x1.", "Ein Randdetail, das fachlich nicht erklärt, was x1 leistet."],
+    { concept: "bio:k8:zyklus:x1", prompt: "Was kennzeichnet x1?", answer: "Es beschreibt x1 bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Timing.",
       wissen: fw(
         "Die genaue Lage variiert; die fruchtbaren Tage liegen um den Eisprung.",
@@ -3061,18 +3061,18 @@ export const k8Zyklus: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:zyklus:p0", term: "Menstruationszyklus", meaning: "Ist der monatlicher Regelkreis der Gebärmutterschleimhaut", wissen: "Gesteuert durch Hormone. Bezug: Menstruationszyklus. Menstruationszyklus bedeutet: Ist der monatlicher Regelkreis der Gebärmutterschleimhaut." },
-    { concept: "bio:k8:zyklus:p1", term: "Eisprung", meaning: "Ist die Freisetzung einer Eizelle", wissen: "Etwa Zyklusmitte. Bezug: Menstruationszyklus. Eisprung bedeutet: Ist die Freisetzung einer Eizelle." },
-    { concept: "bio:k8:zyklus:p2", term: "Follikelphase", meaning: "Ist die Reifungsphase vor dem Eisprung", wissen: "Östrogene steigen typischerweise. Bezug: Menstruationszyklus. Follikelphase bedeutet: Ist die Reifungsphase vor dem Eisprung." },
-    { concept: "bio:k8:zyklus:p3", term: "Lutealphase", meaning: "Ist die Phase nach dem Eisprung", wissen: "Progesteron dominiert oft. Bezug: Menstruationszyklus. Lutealphase bedeutet: Ist die Phase nach dem Eisprung." },
-    { concept: "bio:k8:zyklus:p4", term: "Menstruation", meaning: "Ist der Abstoßen der Schleimhaut", wissen: "Beginn eines neuen Zyklus. Bezug: Menstruationszyklus. Menstruation bedeutet: Ist der Abstoßen der Schleimhaut." },
-    { concept: "bio:k8:zyklus:p5", term: "Östrogen", meaning: "Ist das weibliche Geschlechtshormon", wissen: "Baut Schleimhaut mit auf. Bezug: Menstruationszyklus. Östrogen bedeutet: Ist das weibliche Geschlechtshormon." },
-    { concept: "bio:k8:zyklus:p6", term: "Progesteron", meaning: "Ist das Gelbkörperhormon", wissen: "Bereitet auf mögliche Schwangerschaft vor. Bezug: Menstruationszyklus. Progesteron bedeutet: Ist das Gelbkörperhormon." },
-    { concept: "bio:k8:zyklus:p7", term: "Gebärmutterschleimhaut", meaning: "Wird zyklisch auf- und abgebaut", wissen: "Wird zyklisch auf- und abgebaut. Bezug: Menstruationszyklus. Gebärmutterschleimhaut bedeutet: Wird zyklisch auf- und abgebaut." },
-    { concept: "bio:k8:zyklus:p8", term: "Gelbkörper", meaning: "Ist der Restfollikel nach Eisprung", wissen: "Bildet Progesteron. Bezug: Menstruationszyklus. Gelbkörper bedeutet: Ist der Restfollikel nach Eisprung." },
-    { concept: "bio:k8:zyklus:p9", term: "Regulation", meaning: "Ist die Steuerung durch Hypophyse und Eierstöcke", wissen: "Rückkopplung der Hormone. Bezug: Menstruationszyklus. Regulation bedeutet: Ist die Steuerung durch Hypophyse und Eierstöcke." },
-    { concept: "bio:k8:zyklus:p10", term: "Zykluslänge", meaning: "Ist der Dauen eines Zyklus", wissen: "Individuell variabel um ~28 Tage. Bezug: Menstruationszyklus. Zykluslänge bedeutet: Ist der Dauen eines Zyklus." },
-    { concept: "bio:k8:zyklus:p11", term: "Fruchtbare Tage", meaning: "Ist das Zeitraum erhöhter Empfängniswahrscheinlichkeit", wissen: "Um den Eisprung. Bezug: Menstruationszyklus. Fruchtbare Tage bedeutet: Ist das Zeitraum erhöhter Empfängniswahrscheinlichkeit." },
+    { concept: "bio:k8:zyklus:p0", term: "Menstruationszyklus", meaning: "Beschreibt gesteuert durch Hormone als biologisches Merkmal mit klarer Funktion.", wissen: "Gesteuert durch Hormone. Bezug: Menstruationszyklus. Menstruationszyklus bedeutet: Ist der monatlicher Regelkreis der Gebärmutterschleimhaut." },
+    { concept: "bio:k8:zyklus:p1", term: "Eisprung", meaning: "Beschreibt freisetzung einer Eizelle als biologisches Merkmal mit klarer Funktion.", wissen: "Etwa Zyklusmitte. Bezug: Menstruationszyklus. Eisprung bedeutet: Ist die Freisetzung einer Eizelle." },
+    { concept: "bio:k8:zyklus:p2", term: "Follikelphase", meaning: "Beschreibt östrogene steigen typischerweise als biologisches Merkmal mit klarer Funktion.", wissen: "Östrogene steigen typischerweise. Bezug: Menstruationszyklus. Follikelphase bedeutet: Ist die Reifungsphase vor dem Eisprung." },
+    { concept: "bio:k8:zyklus:p3", term: "Lutealphase", meaning: "Beschreibt progesteron dominiert oft als biologisches Merkmal mit klarer Funktion.", wissen: "Progesteron dominiert oft. Bezug: Menstruationszyklus. Lutealphase bedeutet: Ist die Phase nach dem Eisprung." },
+    { concept: "bio:k8:zyklus:p4", term: "Menstruation", meaning: "Beschreibt beginn eines neuen Zyklus als biologisches Merkmal mit klarer Funktion.", wissen: "Beginn eines neuen Zyklus. Bezug: Menstruationszyklus. Menstruation bedeutet: Ist der Abstoßen der Schleimhaut." },
+    { concept: "bio:k8:zyklus:p5", term: "Östrogen", meaning: "Beschreibt baut Schleimhaut mit auf als biologisches Merkmal mit klarer Funktion.", wissen: "Baut Schleimhaut mit auf. Bezug: Menstruationszyklus. Östrogen bedeutet: Ist das weibliche Geschlechtshormon." },
+    { concept: "bio:k8:zyklus:p6", term: "Progesteron", meaning: "Beschreibt bereitet auf mögliche Schwangerschaft vor als biologisches Merkmal mit klarer Funktion.", wissen: "Bereitet auf mögliche Schwangerschaft vor. Bezug: Menstruationszyklus. Progesteron bedeutet: Ist das Gelbkörperhormon." },
+    { concept: "bio:k8:zyklus:p7", term: "Gebärmutterschleimhaut", meaning: "Beschreibt wird zyklisch auf- und abgebaut als biologisches Merkmal mit klarer Funktion.", wissen: "Wird zyklisch auf- und abgebaut. Bezug: Menstruationszyklus. Gebärmutterschleimhaut bedeutet: Wird zyklisch auf- und abgebaut." },
+    { concept: "bio:k8:zyklus:p8", term: "Gelbkörper", meaning: "Beschreibt der Restfollikel nach Eisprung als biologisches Merkmal mit klarer Funktion.", wissen: "Bildet Progesteron. Bezug: Menstruationszyklus. Gelbkörper bedeutet: Ist der Restfollikel nach Eisprung." },
+    { concept: "bio:k8:zyklus:p9", term: "Regulation", meaning: "Beschreibt rückkopplung der Hormone als biologisches Merkmal mit klarer Funktion.", wissen: "Rückkopplung der Hormone. Bezug: Menstruationszyklus. Regulation bedeutet: Ist die Steuerung durch Hypophyse und Eierstöcke." },
+    { concept: "bio:k8:zyklus:p10", term: "Zykluslänge", meaning: "Beschreibt individuell variabel um ~28 Tage als biologisches Merkmal mit klarer Funktion.", wissen: "Individuell variabel um ~28 Tage. Bezug: Menstruationszyklus. Zykluslänge bedeutet: Ist der Dauen eines Zyklus." },
+    { concept: "bio:k8:zyklus:p11", term: "Fruchtbare Tage", meaning: "Beschreibt um den Eisprung als biologisches Merkmal mit klarer Funktion.", wissen: "Um den Eisprung. Bezug: Menstruationszyklus. Fruchtbare Tage bedeutet: Ist das Zeitraum erhöhter Empfängniswahrscheinlichkeit." },
   ],
   trueFalse: [
     {
@@ -3098,7 +3098,7 @@ export const k8Vielfalt: BioBank = {
   url: "https://de.wikipedia.org/wiki/Geschlechtliche_Vielfalt",
   conceptPrefix: "bio:k8:vielfalt",
   facts: [
-    { concept: "bio:k8:vielfalt:f0", prompt: "Was kennzeichnet sexuelle Vielfalt?", answer: "Es ist die Unterschiedliche sexuelle Orientierungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu sexuelle Vielfalt.", "Eine typische Verwechslung mit einem Nachbarbegriff von sexuelle Vielfalt.", "Ein Randdetail, das fachlich nicht erklärt, was sexuelle Vielfalt leistet."],
+    { concept: "bio:k8:vielfalt:f0", prompt: "Was kennzeichnet sexuelle Vielfalt?", answer: "Es beschreibt unterschiedliche sexuelle Orientierungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "sexuelle Vielfalt: Unterschiedliche sexuelle Orientierungen",
       wissen: fw(
         "Teil menschlicher Vielfalt. Bezug: Sexuelle Vielfalt.",
@@ -3106,7 +3106,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Unterschiedliche sexuelle Orientierungen",
       gapAccepted: ["sexuelle Vielfalt"],
     },
-    { concept: "bio:k8:vielfalt:f1", prompt: "Welche Rolle hat geschlechtliche Vielfalt?", answer: "Es ist den unterschiedliche Geschlechtsidentitäten und -merkmale, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu geschlechtliche Vielfalt.", "Eine typische Verwechslung mit einem Nachbarbegriff von geschlechtliche Vielfalt.", "Ein Randdetail, das fachlich nicht erklärt, was geschlechtliche Vielfalt leistet."],
+    { concept: "bio:k8:vielfalt:f1", prompt: "Welche Rolle hat geschlechtliche Vielfalt?", answer: "Es beschreibt unterschiedliche Geschlechtsidentitäten und -merkmale, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "geschlechtliche Vielfalt: Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wissen: fw(
         "Biologisch und sozial differenziert. Bezug: Sexuelle Vielfalt.",
@@ -3114,7 +3114,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Unterschiedliche Geschlechtsidentitäten und -merkmale",
       gapAccepted: ["geschlechtliche Vielfalt"],
     },
-    { concept: "bio:k8:vielfalt:f2", prompt: "Was beschreibt Heterosexualität?", answer: "Sie ist die Anziehung zum anderen Geschlecht, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Heterosexualität.", "Eine typische Verwechslung mit einem Nachbarbegriff von Heterosexualität.", "Ein Randdetail, das fachlich nicht erklärt, was Heterosexualität leistet."],
+    { concept: "bio:k8:vielfalt:f2", prompt: "Was beschreibt Heterosexualität?", answer: "Sie beschreibt anziehung zum anderen Geschlecht, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Heterosexualität: Anziehung zum anderen Geschlecht",
       wissen: fw(
         "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt.",
@@ -3122,7 +3122,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Anziehung zum anderen Geschlecht",
       gapAccepted: ["Heterosexualität"],
     },
-    { concept: "bio:k8:vielfalt:f3", prompt: "Woran erkennt man Homosexualität?", answer: "Sie ist die Anziehung zum gleichen Geschlecht, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Homosexualität.", "Eine typische Verwechslung mit einem Nachbarbegriff von Homosexualität.", "Ein Randdetail, das fachlich nicht erklärt, was Homosexualität leistet."],
+    { concept: "bio:k8:vielfalt:f3", prompt: "Woran erkennt man Homosexualität?", answer: "Sie beschreibt anziehung zum gleichen Geschlecht, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Homosexualität: Anziehung zum gleichen Geschlecht",
       wissen: fw(
         "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt.",
@@ -3130,7 +3130,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Anziehung zum gleichen Geschlecht",
       gapAccepted: ["Homosexualität"],
     },
-    { concept: "bio:k8:vielfalt:f4", prompt: "Was kennzeichnet Intersexualität im Thema Sexuelle Vielfalt?", answer: "Sie ist den Varianten der Geschlechtsmerkmale, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Intersexualität.", "Eine typische Verwechslung mit einem Nachbarbegriff von Intersexualität.", "Ein Randdetail, das fachlich nicht erklärt, was Intersexualität leistet."],
+    { concept: "bio:k8:vielfalt:f4", prompt: "Woran erkennt man Intersexualität im Thema Sexuelle Vielfalt?", answer: "Sie beschreibt varianten der Geschlechtsmerkmale, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Intersexualität: Varianten der Geschlechtsmerkmale",
       wissen: fw(
         "Nicht immer eindeutig weiblich/männlich. Bezug: Sexuelle Vielfalt.",
@@ -3138,7 +3138,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Varianten der Geschlechtsmerkmale",
       gapAccepted: ["Intersexualität"],
     },
-    { concept: "bio:k8:vielfalt:f5", prompt: "Woran erkennt man Transgender im Thema Sexuelle Vielfalt?", answer: "Er ist die Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Transgender.", "Eine typische Verwechslung mit einem Nachbarbegriff von Transgender.", "Ein Randdetail, das fachlich nicht erklärt, was Transgender leistet."],
+    { concept: "bio:k8:vielfalt:f5", prompt: "Woran erkennt man Transgender im Thema Sexuelle Vielfalt?", answer: "Er ist die Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Transgender: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wissen: fw(
         "Identität ist subjektiv erlebt. Bezug: Sexuelle Vielfalt.",
@@ -3146,7 +3146,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       gapAccepted: ["Transgender"],
     },
-    { concept: "bio:k8:vielfalt:f6", prompt: "Was kennzeichnet Partnerbeziehung?", answer: "Sie ist die Beziehungsform zwischen Menschen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Partnerbeziehung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Partnerbeziehung.", "Ein Randdetail, das fachlich nicht erklärt, was Partnerbeziehung leistet."],
+    { concept: "bio:k8:vielfalt:f6", prompt: "Was kennzeichnet Partnerbeziehung?", answer: "Sie beschreibt beziehungsform zwischen Menschen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Partnerbeziehung: Beziehungsform zwischen Menschen",
       wissen: fw(
         "Vielfältig gestaltet. Bezug: Sexuelle Vielfalt.",
@@ -3154,7 +3154,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Beziehungsform zwischen Menschen",
       gapAccepted: ["Partnerbeziehung"],
     },
-    { concept: "bio:k8:vielfalt:f7", prompt: "Was beschreibt Konsens im Thema Sexuelle Vielfalt?", answer: "Es ist die freiwillige Zustimmung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Konsens.", "Eine typische Verwechslung mit einem Nachbarbegriff von Konsens.", "Ein Randdetail, das fachlich nicht erklärt, was Konsens leistet."],
+    { concept: "bio:k8:vielfalt:f7", prompt: "Was beschreibt Konsens im Thema Sexuelle Vielfalt?", answer: "Es beschreibt freiwillige Zustimmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Konsens: Freiwillige Zustimmung",
       wissen: fw(
         "Grundlage respektvoller Sexualität. Bezug: Sexuelle Vielfalt.",
@@ -3162,7 +3162,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Freiwillige Zustimmung",
       gapAccepted: ["Konsens"],
     },
-    { concept: "bio:k8:vielfalt:f8", prompt: "Was beschreibt Jugendschutz?", answer: "Es ist das Schutz Minderjähriger, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es wird zyklisch auf- und abgebaut.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Jugendschutz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Jugendschutz."],
+    { concept: "bio:k8:vielfalt:f8", prompt: "Was beschreibt Jugendschutz?", answer: "Es beschreibt schutz Minderjähriger, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Jugendschutz: Schutz Minderjähriger",
       wissen: fw(
         "Rechtliche und ethische Grenze. Bezug: Sexuelle Vielfalt.",
@@ -3170,7 +3170,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Schutz Minderjähriger",
       gapAccepted: ["Jugendschutz"],
     },
-    { concept: "bio:k8:vielfalt:f9", prompt: "Was kennzeichnet Medieninfluss?", answer: "Es ist die Wirkung von Internet und sozialen Medien, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Medieninfluss.", "Eine typische Verwechslung mit einem Nachbarbegriff von Medieninfluss.", "Ein Randdetail, das fachlich nicht erklärt, was Medieninfluss leistet."],
+    { concept: "bio:k8:vielfalt:f9", prompt: "Was kennzeichnet Medieninfluss?", answer: "Es ist die Wirkung von Internet und sozialen Medien.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Medieninfluss: Wirkung von Internet und Sozialen Medien",
       wissen: fw(
         "Kann Meinungen verzerren. Bezug: Sexuelle Vielfalt.",
@@ -3178,7 +3178,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Wirkung von Internet und Sozialen Medien",
       gapAccepted: ["Medieninfluss"],
     },
-    { concept: "bio:k8:vielfalt:f10", prompt: "Welche Rolle hat Respekt?", answer: "Es ist die Achtung der Würde anderer, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Respekt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Respekt.", "Ein Randdetail, das fachlich nicht erklärt, was Respekt leistet."],
+    { concept: "bio:k8:vielfalt:f10", prompt: "Welche Rolle hat Respekt?", answer: "Es beschreibt achtung der Würde anderer, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Respekt: Achtung der Würde anderer",
       wissen: fw(
         "Gegen Ausgrenzung. Bezug: Sexuelle Vielfalt.",
@@ -3186,7 +3186,7 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Achtung der Würde anderer",
       gapAccepted: ["Respekt"],
     },
-    { concept: "bio:k8:vielfalt:f11", prompt: "Was kennzeichnet Aufklärung?", answer: "Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt und lässt sich im Experiment oder an einem Beispiel prüfen.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Aufklärung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Aufklärung.", "Ein Randdetail, das fachlich nicht erklärt, was Aufklärung leistet."],
+    { concept: "bio:k8:vielfalt:f11", prompt: "Was kennzeichnet Aufklärung?", answer: "Sie beschreibt vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Aufklärung: Sachliche Information",
       wissen: fw(
         "Reduziert Vorurteile. Bezug: Sexuelle Vielfalt.",
@@ -3194,13 +3194,13 @@ export const k8Vielfalt: BioBank = {
       gap: "Sexuelle Vielfalt: ___ — Sachliche Information",
       gapAccepted: ["Aufklärung"],
     },
-    { concept: "bio:k8:vielfalt:x0", prompt: "Woran erkennt man Begriff?", answer: "Es ist das Vielfalt, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:vielfalt:x0", prompt: "Woran erkennt man Begriff?", answer: "Es beschreibt vielfalt, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Vielfalt.",
       wissen: fw(
         "Menschen unterscheiden sich in Orientierung und Identität; Respekt und Sachlichkeit sind zentral.",
       ),
     },
-    { concept: "bio:k8:vielfalt:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es ist die Medienbildung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k8:vielfalt:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es beschreibt medienbildung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Medienbildung.",
       wissen: fw(
         "Kritischer Umgang mit Darstellungen in Internet und Sozialen Medien ist Teil der Aufklärung.",
@@ -3208,18 +3208,18 @@ export const k8Vielfalt: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k8:vielfalt:p0", term: "sexuelle Vielfalt", meaning: "Ist die unterschiedliche sexuelle Orientierungen", wissen: "Teil menschlicher Vielfalt. Bezug: Sexuelle Vielfalt. sexuelle Vielfalt bedeutet: Ist die unterschiedliche sexuelle Orientierungen." },
-    { concept: "bio:k8:vielfalt:p1", term: "geschlechtliche Vielfalt", meaning: "Ist der unterschiedliche Geschlechtsidentitäten und -merkmale", wissen: "Biologisch und sozial differenziert. Bezug: Sexuelle Vielfalt. geschlechtliche Vielfalt bedeutet: Ist der unterschiedliche Geschlechtsidentitäten und -merkmale." },
-    { concept: "bio:k8:vielfalt:p2", term: "Heterosexualität", meaning: "Ist die Anziehung zum anderen Geschlecht", wissen: "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt. Heterosexualität bedeutet: Ist die Anziehung zum anderen Geschlecht." },
-    { concept: "bio:k8:vielfalt:p3", term: "Homosexualität", meaning: "Ist die Anziehung zum gleichen Geschlecht", wissen: "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt. Homosexualität bedeutet: Ist die Anziehung zum gleichen Geschlecht." },
-    { concept: "bio:k8:vielfalt:p4", term: "Intersexualität", meaning: "Ist der Varianten der Geschlechtsmerkmale", wissen: "Nicht immer eindeutig weiblich/männlich. Bezug: Sexuelle Vielfalt. Intersexualität bedeutet: Ist der Varianten der Geschlechtsmerkmale." },
-    { concept: "bio:k8:vielfalt:p5", term: "Transgender", meaning: "Identität ist subjektiv erlebt", wissen: "Identität ist subjektiv erlebt. Bezug: Sexuelle Vielfalt. Transgender bedeutet: Identität ist subjektiv erlebt." },
-    { concept: "bio:k8:vielfalt:p6", term: "Partnerbeziehung", meaning: "Ist die Beziehungsform zwischen Menschen", wissen: "Vielfältig gestaltet. Bezug: Sexuelle Vielfalt. Partnerbeziehung bedeutet: Ist die Beziehungsform zwischen Menschen." },
-    { concept: "bio:k8:vielfalt:p7", term: "Konsens", meaning: "Ist die freiwillige Zustimmung", wissen: "Grundlage respektvoller Sexualität. Bezug: Sexuelle Vielfalt. Konsens bedeutet: Ist die freiwillige Zustimmung." },
-    { concept: "bio:k8:vielfalt:p8", term: "Jugendschutz", meaning: "Ist das Schutz Minderjähriger", wissen: "Rechtliche und ethische Grenze. Bezug: Sexuelle Vielfalt. Jugendschutz bedeutet: Ist das Schutz Minderjähriger." },
-    { concept: "bio:k8:vielfalt:p9", term: "Medieninfluss", meaning: "Ist die Wirkung von Internet und sozialen Medien", wissen: "Kann Meinungen verzerren. Bezug: Sexuelle Vielfalt. Medieninfluss bedeutet: Ist die Wirkung von Internet und sozialen Medien." },
-    { concept: "bio:k8:vielfalt:p10", term: "Respekt", meaning: "Ist die Achtung der Würde anderer", wissen: "Gegen Ausgrenzung. Bezug: Sexuelle Vielfalt. Respekt bedeutet: Ist die Achtung der Würde anderer." },
-    { concept: "bio:k8:vielfalt:p11", term: "Aufklärung", meaning: "Stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt", wissen: "Reduziert Vorurteile. Bezug: Sexuelle Vielfalt. Aufklärung bedeutet: Stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt." },
+    { concept: "bio:k8:vielfalt:p0", term: "sexuelle Vielfalt", meaning: "Beschreibt teil menschlicher Vielfalt als biologisches Merkmal mit klarer Funktion.", wissen: "Teil menschlicher Vielfalt. Bezug: Sexuelle Vielfalt. sexuelle Vielfalt bedeutet: Ist die unterschiedliche sexuelle Orientierungen." },
+    { concept: "bio:k8:vielfalt:p1", term: "geschlechtliche Vielfalt", meaning: "Beschreibt biologisch und sozial differenziert als biologisches Merkmal mit klarer Funktion.", wissen: "Biologisch und sozial differenziert. Bezug: Sexuelle Vielfalt. geschlechtliche Vielfalt bedeutet: Ist der unterschiedliche Geschlechtsidentitäten und -merkmale." },
+    { concept: "bio:k8:vielfalt:p2", term: "Heterosexualität", meaning: "Beschreibt form sexueller Orientierung als biologisches Merkmal mit klarer Funktion.", wissen: "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt. Heterosexualität bedeutet: Ist die Anziehung zum anderen Geschlecht." },
+    { concept: "bio:k8:vielfalt:p3", term: "Homosexualität", meaning: "Beschreibt form sexueller Orientierung als biologisches Merkmal mit klarer Funktion.", wissen: "Eine Form sexueller Orientierung. Bezug: Sexuelle Vielfalt. Homosexualität bedeutet: Ist die Anziehung zum gleichen Geschlecht." },
+    { concept: "bio:k8:vielfalt:p4", term: "Intersexualität", meaning: "Beschreibt nicht immer eindeutig weiblich/männlich als biologisches Merkmal mit klarer Funktion.", wissen: "Nicht immer eindeutig weiblich/männlich. Bezug: Sexuelle Vielfalt. Intersexualität bedeutet: Ist der Varianten der Geschlechtsmerkmale." },
+    { concept: "bio:k8:vielfalt:p5", term: "Transgender", meaning: "Beschreibt identität ist subjektiv erlebt als biologisches Merkmal mit klarer Funktion.", wissen: "Identität ist subjektiv erlebt. Bezug: Sexuelle Vielfalt. Transgender bedeutet: Identität ist subjektiv erlebt." },
+    { concept: "bio:k8:vielfalt:p6", term: "Partnerbeziehung", meaning: "Beschreibt beziehungsform zwischen Menschen als biologisches Merkmal mit klarer Funktion.", wissen: "Vielfältig gestaltet. Bezug: Sexuelle Vielfalt. Partnerbeziehung bedeutet: Ist die Beziehungsform zwischen Menschen." },
+    { concept: "bio:k8:vielfalt:p7", term: "Konsens", meaning: "Beschreibt grundlage respektvoller Sexualität als biologisches Merkmal mit klarer Funktion.", wissen: "Grundlage respektvoller Sexualität. Bezug: Sexuelle Vielfalt. Konsens bedeutet: Ist die freiwillige Zustimmung." },
+    { concept: "bio:k8:vielfalt:p8", term: "Jugendschutz", meaning: "Beschreibt rechtliche und ethische Grenze als biologisches Merkmal mit klarer Funktion.", wissen: "Rechtliche und ethische Grenze. Bezug: Sexuelle Vielfalt. Jugendschutz bedeutet: Ist das Schutz Minderjähriger." },
+    { concept: "bio:k8:vielfalt:p9", term: "Medieninfluss", meaning: "Ist die Wirkung von Internet und sozialen Medien.", wissen: "Kann Meinungen verzerren. Bezug: Sexuelle Vielfalt. Medieninfluss bedeutet: Ist die Wirkung von Internet und sozialen Medien." },
+    { concept: "bio:k8:vielfalt:p10", term: "Respekt", meaning: "Beschreibt achtung der Würde anderer als biologisches Merkmal mit klarer Funktion.", wissen: "Gegen Ausgrenzung. Bezug: Sexuelle Vielfalt. Respekt bedeutet: Ist die Achtung der Würde anderer." },
+    { concept: "bio:k8:vielfalt:p11", term: "Aufklärung", meaning: "Stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.", wissen: "Reduziert Vorurteile. Bezug: Sexuelle Vielfalt. Aufklärung bedeutet: Stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt." },
   ],
   trueFalse: [
     {
@@ -3245,7 +3245,7 @@ export const k9Gewaesser: BioBank = {
   url: "https://de.wikipedia.org/wiki/See",
   conceptPrefix: "bio:k9:gewaesser",
   facts: [
-    { concept: "bio:k9:gewaesser:f0", prompt: "Was kennzeichnet Zonierung?", answer: "Sie ist die Gliederung eines Sees in Lebenszonen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zonierung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zonierung.", "Ein Randdetail, das fachlich nicht erklärt, was Zonierung leistet."],
+    { concept: "bio:k9:gewaesser:f0", prompt: "Was kennzeichnet Zonierung?", answer: "Sie ist die Gliederung eines Sees in Lebenszonen.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Zonierung: Gliederung eines Sees in Lebenszonen",
       wissen: fw(
         "Ufer, Freiwasser, Boden. Bezug: See/Zonierung.",
@@ -3253,7 +3253,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Gliederung eines Sees in Lebenszonen",
       gapAccepted: ["Zonierung"],
     },
-    { concept: "bio:k9:gewaesser:f1", prompt: "Was kennzeichnet Litoral?", answer: "Es ist die Uferzone, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Litoral.", "Eine typische Verwechslung mit einem Nachbarbegriff von Litoral.", "Ein Randdetail, das fachlich nicht erklärt, was Litoral leistet."],
+    { concept: "bio:k9:gewaesser:f1", prompt: "Was kennzeichnet Litoral?", answer: "Es beschreibt uferzone, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Litoral: Uferzone",
       wissen: fw(
         "Lichtreich, viele Pflanzen. Bezug: See/Zonierung.",
@@ -3261,7 +3261,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Uferzone",
       gapAccepted: ["Litoral"],
     },
-    { concept: "bio:k9:gewaesser:f2", prompt: "Welche Rolle hat Pelagial?", answer: "Es ist die Freiwasserzone, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Pelagial.", "Eine typische Verwechslung mit einem Nachbarbegriff von Pelagial.", "Ein Randdetail, das fachlich nicht erklärt, was Pelagial leistet."],
+    { concept: "bio:k9:gewaesser:f2", prompt: "Welche Rolle hat Pelagial?", answer: "Es beschreibt freiwasserzone, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Pelagial: Freiwasserzone",
       wissen: fw(
         "Plankton dominiert oft. Bezug: See/Zonierung.",
@@ -3269,7 +3269,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Freiwasserzone",
       gapAccepted: ["Pelagial"],
     },
-    { concept: "bio:k9:gewaesser:f3", prompt: "Woran erkennt man Profundal?", answer: "Es ist die Bodenzone, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Profundal.", "Eine typische Verwechslung mit einem Nachbarbegriff von Profundal.", "Ein Randdetail, das fachlich nicht erklärt, was Profundal leistet."],
+    { concept: "bio:k9:gewaesser:f3", prompt: "Woran erkennt man Profundal?", answer: "Es beschreibt bodenzone, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Profundal: Bodenzone",
       wissen: fw(
         "Abbau und Sedimente. Bezug: See/Zonierung.",
@@ -3277,7 +3277,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Bodenzone",
       gapAccepted: ["Profundal"],
     },
-    { concept: "bio:k9:gewaesser:f4", prompt: "Welche Rolle hat Phytoplankton?", answer: "Es ist das pflanzliche Plankton, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Phytoplankton.", "Eine typische Verwechslung mit einem Nachbarbegriff von Phytoplankton.", "Ein Randdetail, das fachlich nicht erklärt, was Phytoplankton leistet."],
+    { concept: "bio:k9:gewaesser:f4", prompt: "Welche Rolle hat Phytoplankton?", answer: "Es beschreibt pflanzliche Plankton, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Phytoplankton: Pflanzliches Plankton",
       wissen: fw(
         "Produzenten im Freiwasser. Bezug: See/Zonierung.",
@@ -3285,7 +3285,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Pflanzliches Plankton",
       gapAccepted: ["Phytoplankton"],
     },
-    { concept: "bio:k9:gewaesser:f5", prompt: "Was beschreibt Zooplankton?", answer: "Es ist das tierische Plankton, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zooplankton.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zooplankton.", "Ein Randdetail, das fachlich nicht erklärt, was Zooplankton leistet."],
+    { concept: "bio:k9:gewaesser:f5", prompt: "Was beschreibt Zooplankton?", answer: "Es beschreibt tierische Plankton, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Zooplankton: Tierisches Plankton",
       wissen: fw(
         "Konsumenten kleiner Organismen. Bezug: See/Zonierung.",
@@ -3293,7 +3293,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Tierisches Plankton",
       gapAccepted: ["Zooplankton"],
     },
-    { concept: "bio:k9:gewaesser:f6", prompt: "Welche Rolle hat Vollzirkulation?", answer: "Sie ist die Durchmischung der Wasserschichten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Vollzirkulation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Vollzirkulation.", "Ein Randdetail, das fachlich nicht erklärt, was Vollzirkulation leistet."],
+    { concept: "bio:k9:gewaesser:f6", prompt: "Welche Rolle hat Vollzirkulation?", answer: "Sie beschreibt durchmischung der Wasserschichten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Vollzirkulation: Durchmischung der Wasserschichten",
       wissen: fw(
         "Oft Frühjahr/Herbst. Bezug: See/Zonierung.",
@@ -3301,7 +3301,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Durchmischung der Wasserschichten",
       gapAccepted: ["Vollzirkulation"],
     },
-    { concept: "bio:k9:gewaesser:f7", prompt: "Woran erkennt man Stagnation?", answer: "Sie ist die Schichtung ohne Durchmischung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stagnation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stagnation.", "Ein Randdetail, das fachlich nicht erklärt, was Stagnation leistet."],
+    { concept: "bio:k9:gewaesser:f7", prompt: "Woran erkennt man Stagnation?", answer: "Sie beschreibt schichtung ohne Durchmischung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stagnation: Schichtung ohne Durchmischung",
       wissen: fw(
         "Sommer/Winter typisch. Bezug: See/Zonierung.",
@@ -3309,7 +3309,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Schichtung ohne Durchmischung",
       gapAccepted: ["Stagnation"],
     },
-    { concept: "bio:k9:gewaesser:f8", prompt: "Was kennzeichnet Sprungschicht?", answer: "Sie ist die Temperaturgrenze im Sommer, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Identität ist subjektiv erlebt und lässt sich im Experiment oder an einem Beispiel prüfen.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sprungschicht.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sprungschicht."],
+    { concept: "bio:k9:gewaesser:f8", prompt: "Was kennzeichnet Sprungschicht?", answer: "Sie beschreibt temperaturgrenze im Sommer, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sprungschicht: Temperaturgrenze im Sommer",
       wissen: fw(
         "Trennt warmes Ober- und kaltes Tiefenwasser. Bezug: See/Zonierung.",
@@ -3317,7 +3317,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Temperaturgrenze im Sommer",
       gapAccepted: ["Sprungschicht"],
     },
-    { concept: "bio:k9:gewaesser:f9", prompt: "Woran erkennt man Ufervegetation?", answer: "Sie ist den Pflanzen am Gewässerrand, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ufervegetation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ufervegetation.", "Ein Randdetail, das fachlich nicht erklärt, was Ufervegetation leistet."],
+    { concept: "bio:k9:gewaesser:f9", prompt: "Woran erkennt man Ufervegetation?", answer: "Sie beschreibt pflanzen am Gewässerrand, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Ufervegetation: Pflanzen am Gewässerrand",
       wissen: fw(
         "Struktur und Lebensraum. Bezug: See/Zonierung.",
@@ -3325,7 +3325,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Pflanzen am Gewässerrand",
       gapAccepted: ["Ufervegetation"],
     },
-    { concept: "bio:k9:gewaesser:f10", prompt: "Was kennzeichnet Trophiestufe?", answer: "Sie ist die Ernährungsstufe im Nahrungsnetz, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Trophiestufe.", "Eine typische Verwechslung mit einem Nachbarbegriff von Trophiestufe.", "Ein Randdetail, das fachlich nicht erklärt, was Trophiestufe leistet."],
+    { concept: "bio:k9:gewaesser:f10", prompt: "Was kennzeichnet Trophiestufe?", answer: "Sie beschreibt ernährungsstufe im Nahrungsnetz, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Trophiestufe: Ernährungsstufe im Nahrungsnetz",
       wissen: fw(
         "Produzent bis Destruent. Bezug: See/Zonierung.",
@@ -3333,7 +3333,7 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Ernährungsstufe im Nahrungsnetz",
       gapAccepted: ["Trophiestufe"],
     },
-    { concept: "bio:k9:gewaesser:f11", prompt: "Was beschreibt Sauerstoffgehalt?", answer: "Es ist den gelösten O₂ im Wasser, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein anderer fachlicher Aspekt ohne klaren Bezug zu Sauerstoffgehalt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sauerstoffgehalt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sauerstoffgehalt."],
+    { concept: "bio:k9:gewaesser:f11", prompt: "Was beschreibt Sauerstoffgehalt?", answer: "Es beschreibt gelösten O₂ im Wasser, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Sauerstoffgehalt: Gelöster O₂ im Wasser",
       wissen: fw(
         "Begrenzt viele Organismen. Bezug: See/Zonierung.",
@@ -3341,13 +3341,13 @@ export const k9Gewaesser: BioBank = {
       gap: "See/Zonierung: ___ — Gelöster O₂ im Wasser",
       gapAccepted: ["Sauerstoffgehalt"],
     },
-    { concept: "bio:k9:gewaesser:x0", prompt: "Was kennzeichnet Zonierung eines Sees?", answer: "Es ist die Raumstruktur, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Zonierung eines Sees.", "Eine typische Verwechslung mit einem Nachbarbegriff von Zonierung eines Sees.", "Ein Randdetail, das fachlich nicht erklärt, was Zonierung eines Sees leistet."],
+    { concept: "bio:k9:gewaesser:x0", prompt: "Was kennzeichnet Zonierung eines Sees?", answer: "Es beschreibt raumstruktur, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Raumstruktur.",
       wissen: fw(
         "Licht, Temperatur und Substrat unterscheiden Litoral, Pelagial und Profundal.",
       ),
     },
-    { concept: "bio:k9:gewaesser:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist das Begriff bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, und das Grenzt Begriff von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k9:gewaesser:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt begriff bezeichnet einen prüfbaren Lehrplaninhalt dieses Themas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Durchmischung.",
       wissen: fw(
         "Frühjahr und Herbst ermöglichen oft den Austausch von Nährstoffen und Sauerstoff.",
@@ -3355,18 +3355,18 @@ export const k9Gewaesser: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k9:gewaesser:p0", term: "Zonierung", meaning: "Ist die Gliederung eines Sees in Lebenszonen", wissen: "Ufer, Freiwasser, Boden. Bezug: See/Zonierung. Zonierung bedeutet: Ist die Gliederung eines Sees in Lebenszonen." },
-    { concept: "bio:k9:gewaesser:p1", term: "Litoral", meaning: "Ist die Uferzone", wissen: "Lichtreich, viele Pflanzen. Bezug: See/Zonierung. Litoral bedeutet: Ist die Uferzone." },
-    { concept: "bio:k9:gewaesser:p2", term: "Pelagial", meaning: "Ist die Freiwasserzone", wissen: "Plankton dominiert oft. Bezug: See/Zonierung. Pelagial bedeutet: Ist die Freiwasserzone." },
-    { concept: "bio:k9:gewaesser:p3", term: "Profundal", meaning: "Ist die Bodenzone", wissen: "Abbau und Sedimente. Bezug: See/Zonierung. Profundal bedeutet: Ist die Bodenzone." },
-    { concept: "bio:k9:gewaesser:p4", term: "Phytoplankton", meaning: "Ist das pflanzliche Plankton", wissen: "Produzenten im Freiwasser. Bezug: See/Zonierung. Phytoplankton bedeutet: Ist das pflanzliche Plankton." },
-    { concept: "bio:k9:gewaesser:p5", term: "Zooplankton", meaning: "Ist das tierische Plankton", wissen: "Konsumenten kleiner Organismen. Bezug: See/Zonierung. Zooplankton bedeutet: Ist das tierische Plankton." },
-    { concept: "bio:k9:gewaesser:p6", term: "Vollzirkulation", meaning: "Dient als Durchmischung der Wasserschichten", wissen: "Oft Frühjahr/Herbst. Bezug: See/Zonierung. Vollzirkulation bedeutet: Dient als Durchmischung der Wasserschichten." },
-    { concept: "bio:k9:gewaesser:p7", term: "Stagnation", meaning: "Dient als Schichtung ohne Durchmischung", wissen: "Sommer/Winter typisch. Bezug: See/Zonierung. Stagnation bedeutet: Dient als Schichtung ohne Durchmischung." },
-    { concept: "bio:k9:gewaesser:p8", term: "Sprungschicht", meaning: "Ist die Temperaturgrenze im Sommer", wissen: "Trennt warmes Ober- und kaltes Tiefenwasser. Bezug: See/Zonierung. Sprungschicht bedeutet: Ist die Temperaturgrenze im Sommer." },
-    { concept: "bio:k9:gewaesser:p9", term: "Ufervegetation", meaning: "Ist der Pflanzen am Gewässerrand", wissen: "Struktur und Lebensraum. Bezug: See/Zonierung. Ufervegetation bedeutet: Ist der Pflanzen am Gewässerrand." },
-    { concept: "bio:k9:gewaesser:p10", term: "Trophiestufe", meaning: "Ist die Ernährungsstufe im Nahrungsnetz", wissen: "Produzent bis Destruent. Bezug: See/Zonierung. Trophiestufe bedeutet: Ist die Ernährungsstufe im Nahrungsnetz." },
-    { concept: "bio:k9:gewaesser:p11", term: "Sauerstoffgehalt", meaning: "Begrenzt viele Organismen; es handelt sich um der gelöster O₂ im Wasser", wissen: "Begrenzt viele Organismen. Bezug: See/Zonierung. Sauerstoffgehalt bedeutet: Begrenzt viele Organismen; es handelt sich um der gelöster O₂ im Wasser." },
+    { concept: "bio:k9:gewaesser:p0", term: "Zonierung", meaning: "Beschreibt ufer, Freiwasser, Boden als biologisches Merkmal mit klarer Funktion.", wissen: "Ufer, Freiwasser, Boden. Bezug: See/Zonierung. Zonierung bedeutet: Ist die Gliederung eines Sees in Lebenszonen." },
+    { concept: "bio:k9:gewaesser:p1", term: "Litoral", meaning: "Beschreibt lichtreich, viele Pflanzen als biologisches Merkmal mit klarer Funktion.", wissen: "Lichtreich, viele Pflanzen. Bezug: See/Zonierung. Litoral bedeutet: Ist die Uferzone." },
+    { concept: "bio:k9:gewaesser:p2", term: "Pelagial", meaning: "Beschreibt plankton dominiert oft als biologisches Merkmal mit klarer Funktion.", wissen: "Plankton dominiert oft. Bezug: See/Zonierung. Pelagial bedeutet: Ist die Freiwasserzone." },
+    { concept: "bio:k9:gewaesser:p3", term: "Profundal", meaning: "Beschreibt abbau und Sedimente als biologisches Merkmal mit klarer Funktion.", wissen: "Abbau und Sedimente. Bezug: See/Zonierung. Profundal bedeutet: Ist die Bodenzone." },
+    { concept: "bio:k9:gewaesser:p4", term: "Phytoplankton", meaning: "Beschreibt produzenten im Freiwasser als biologisches Merkmal mit klarer Funktion.", wissen: "Produzenten im Freiwasser. Bezug: See/Zonierung. Phytoplankton bedeutet: Ist das pflanzliche Plankton." },
+    { concept: "bio:k9:gewaesser:p5", term: "Zooplankton", meaning: "Beschreibt konsumenten kleiner Organismen als biologisches Merkmal mit klarer Funktion.", wissen: "Konsumenten kleiner Organismen. Bezug: See/Zonierung. Zooplankton bedeutet: Ist das tierische Plankton." },
+    { concept: "bio:k9:gewaesser:p6", term: "Vollzirkulation", meaning: "Beschreibt durchmischung der Wasserschichten als biologisches Merkmal mit klarer Funktion.", wissen: "Oft Frühjahr/Herbst. Bezug: See/Zonierung. Vollzirkulation bedeutet: Dient als Durchmischung der Wasserschichten." },
+    { concept: "bio:k9:gewaesser:p7", term: "Stagnation", meaning: "Beschreibt schichtung ohne Durchmischung als biologisches Merkmal mit klarer Funktion.", wissen: "Sommer/Winter typisch. Bezug: See/Zonierung. Stagnation bedeutet: Dient als Schichtung ohne Durchmischung." },
+    { concept: "bio:k9:gewaesser:p8", term: "Sprungschicht", meaning: "Trennt warmes Ober- und kaltes Tiefenwasser.", wissen: "Trennt warmes Ober- und kaltes Tiefenwasser. Bezug: See/Zonierung. Sprungschicht bedeutet: Ist die Temperaturgrenze im Sommer." },
+    { concept: "bio:k9:gewaesser:p9", term: "Ufervegetation", meaning: "Beschreibt struktur und Lebensraum als biologisches Merkmal mit klarer Funktion.", wissen: "Struktur und Lebensraum. Bezug: See/Zonierung. Ufervegetation bedeutet: Ist der Pflanzen am Gewässerrand." },
+    { concept: "bio:k9:gewaesser:p10", term: "Trophiestufe", meaning: "Beschreibt produzent bis Destruent als biologisches Merkmal mit klarer Funktion.", wissen: "Produzent bis Destruent. Bezug: See/Zonierung. Trophiestufe bedeutet: Ist die Ernährungsstufe im Nahrungsnetz." },
+    { concept: "bio:k9:gewaesser:p11", term: "Sauerstoffgehalt", meaning: "Beschreibt begrenzt viele Organismen als biologisches Merkmal mit klarer Funktion.", wissen: "Begrenzt viele Organismen. Bezug: See/Zonierung. Sauerstoffgehalt bedeutet: Begrenzt viele Organismen; es handelt sich um der gelöster O₂ im Wasser." },
   ],
   trueFalse: [
     {
@@ -3392,7 +3392,7 @@ export const k9Sukzession: BioBank = {
   url: "https://de.wikipedia.org/wiki/Sukzession_(Biologie)",
   conceptPrefix: "bio:k9:suks",
   facts: [
-    { concept: "bio:k9:suks:f0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie ist die gerichtete Abfolge von Lebensgemeinschaften, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sukzession.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sukzession.", "Ein Randdetail, das fachlich nicht erklärt, was Sukzession leistet."],
+    { concept: "bio:k9:suks:f0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie beschreibt gerichtete Abfolge von Lebensgemeinschaften, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sukzession: Gerichtete Abfolge von Lebensgemeinschaften",
       wissen: fw(
         "Zeitliche Veränderung eines Ökosystems. Bezug: Sukzession.",
@@ -3400,7 +3400,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Gerichtete Abfolge von Lebensgemeinschaften",
       gapAccepted: ["Sukzession"],
     },
-    { concept: "bio:k9:suks:f1", prompt: "Woran erkennt man Pionierart?", answer: "Es ist die frühe Besiedler gestörter Flächen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Pionierart.", "Eine typische Verwechslung mit einem Nachbarbegriff von Pionierart.", "Ein Randdetail, das fachlich nicht erklärt, was Pionierart leistet."],
+    { concept: "bio:k9:suks:f1", prompt: "Woran erkennt man Pionierart?", answer: "Es beschreibt frühe Besiedler gestörter Flächen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Pionierart: Frühe Besiedler gestörter Flächen",
       wissen: fw(
         "Anspruchslos, oft schnellwüchsig. Bezug: Sukzession.",
@@ -3408,7 +3408,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Frühe Besiedler gestörter Flächen",
       gapAccepted: ["Pionierart"],
     },
-    { concept: "bio:k9:suks:f2", prompt: "Was kennzeichnet Klimax?", answer: "Es ist die Relativ stabile Endgesellschaft, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Klimax.", "Eine typische Verwechslung mit einem Nachbarbegriff von Klimax.", "Ein Randdetail, das fachlich nicht erklärt, was Klimax leistet."],
+    { concept: "bio:k9:suks:f2", prompt: "Was kennzeichnet Klimax?", answer: "Es beschreibt relativ stabile Endgesellschaft, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Klimax: Relativ stabile Endgesellschaft",
       wissen: fw(
         "Unter gegebenen Bedingungen. Bezug: Sukzession.",
@@ -3416,7 +3416,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Relativ stabile Endgesellschaft",
       gapAccepted: ["Klimax"],
     },
-    { concept: "bio:k9:suks:f3", prompt: "Was kennzeichnet Primärsukzession?", answer: "Sie ist die Neubesiedlung ohne Bodenstart, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Primärsukzession.", "Eine typische Verwechslung mit einem Nachbarbegriff von Primärsukzession.", "Ein Randdetail, das fachlich nicht erklärt, was Primärsukzession leistet."],
+    { concept: "bio:k9:suks:f3", prompt: "Was kennzeichnet Primärsukzession?", answer: "Sie beschreibt neubesiedlung ohne Bodenstart, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Primärsukzession: Neubesiedlung ohne Bodenstart",
       wissen: fw(
         "z. B. auf blankem Gestein. Bezug: Sukzession.",
@@ -3424,7 +3424,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Neubesiedlung ohne Bodenstart",
       gapAccepted: ["Primärsukzession"],
     },
-    { concept: "bio:k9:suks:f4", prompt: "Woran erkennt man Sekundärsukzession?", answer: "Sie ist die Neuentwicklung nach Störung mit Boden, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sekundärsukzession.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sekundärsukzession.", "Ein Randdetail, das fachlich nicht erklärt, was Sekundärsukzession leistet."],
+    { concept: "bio:k9:suks:f4", prompt: "Woran erkennt man Sekundärsukzession?", answer: "Sie ist die Neuentwicklung nach Störung mit Boden.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Sekundärsukzession: Neuentwicklung nach Störung mit Boden",
       wissen: fw(
         "z. B. nach Rodung. Bezug: Sukzession.",
@@ -3432,7 +3432,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Neuentwicklung nach Störung mit Boden",
       gapAccepted: ["Sekundärsukzession"],
     },
-    { concept: "bio:k9:suks:f5", prompt: "Welche Rolle hat Artwechsel?", answer: "Es ist den Austausch dominanter Arten, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Artwechsel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Artwechsel.", "Ein Randdetail, das fachlich nicht erklärt, was Artwechsel leistet."],
+    { concept: "bio:k9:suks:f5", prompt: "Welche Rolle hat Artwechsel?", answer: "Es beschreibt austausch dominanter Arten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Artwechsel: Austausch dominanter Arten",
       wissen: fw(
         "Im Lauf der Sukzession. Bezug: Sukzession.",
@@ -3440,7 +3440,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Austausch dominanter Arten",
       gapAccepted: ["Artwechsel"],
     },
-    { concept: "bio:k9:suks:f6", prompt: "Welche Rolle hat Bodenbildung?", answer: "Sie ist die Entwicklung von Bodenhorizonten, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bodenbildung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bodenbildung.", "Ein Randdetail, das fachlich nicht erklärt, was Bodenbildung leistet."],
+    { concept: "bio:k9:suks:f6", prompt: "Welche Rolle hat Bodenbildung?", answer: "Sie beschreibt entwicklung von Bodenhorizonten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Bodenbildung: Entwicklung von Bodenhorizonten",
       wissen: fw(
         "Ermöglicht anspruchsvollere Pflanzen. Bezug: Sukzession.",
@@ -3448,7 +3448,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Entwicklung von Bodenhorizonten",
       gapAccepted: ["Bodenbildung"],
     },
-    { concept: "bio:k9:suks:f7", prompt: "Was beschreibt Konkurrenz?", answer: "Sie ist die Wettbewerb um Ressourcen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Konkurrenz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Konkurrenz.", "Ein Randdetail, das fachlich nicht erklärt, was Konkurrenz leistet."],
+    { concept: "bio:k9:suks:f7", prompt: "Was beschreibt Konkurrenz?", answer: "Sie beschreibt wettbewerb um Ressourcen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
         "Verdrängt Pioniere später oft. Bezug: Sukzession.",
@@ -3456,7 +3456,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Wettbewerb um Ressourcen",
       gapAccepted: ["Konkurrenz"],
     },
-    { concept: "bio:k9:suks:f8", prompt: "Welche Rolle hat Störung?", answer: "Sie ist die Ereignis das Gemeinschaften zurücksetzt, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Störung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Störung.", "Ein Randdetail, das fachlich nicht erklärt, was Störung leistet."],
+    { concept: "bio:k9:suks:f8", prompt: "Welche Rolle hat Störung?", answer: "Sie beschreibt ereignis das Gemeinschaften zurücksetzt, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Störung: Ereignis das Gemeinschaften zurücksetzt",
       wissen: fw(
         "z. B. Sturm oder Brand. Bezug: Sukzession.",
@@ -3464,7 +3464,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Ereignis das Gemeinschaften zurücksetzt",
       gapAccepted: ["Störung"],
     },
-    { concept: "bio:k9:suks:f9", prompt: "Welche Rolle hat Biodiversitätsverlauf?", answer: "Es ist die Änderung der Artenzahl über Zeit, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Biodiversitätsverlauf.", "Eine typische Verwechslung mit einem Nachbarbegriff von Biodiversitätsverlauf.", "Ein Randdetail, das fachlich nicht erklärt, was Biodiversitätsverlauf leistet."],
+    { concept: "bio:k9:suks:f9", prompt: "Welche Rolle hat Biodiversitätsverlauf?", answer: "Es beschreibt die Änderung der Artenzahl über Zeit.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Biodiversitätsverlauf: Änderung der Artenzahl über Zeit",
       wissen: fw(
         "Oft Anstieg dann Umschichtung. Bezug: Sukzession.",
@@ -3472,7 +3472,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Änderung der Artenzahl über Zeit",
       gapAccepted: ["Biodiversitätsverlauf"],
     },
-    { concept: "bio:k9:suks:f10", prompt: "Was kennzeichnet Moosstadium?", answer: "Es ist die frühe Phase auf Rohboden, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es begrenzt viele Organismen; es handelt sich um der gelöster O₂ im Wasser.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Moosstadium.", "Eine typische Verwechslung mit einem Nachbarbegriff von Moosstadium."],
+    { concept: "bio:k9:suks:f10", prompt: "Was kennzeichnet Moosstadium?", answer: "Es beschreibt frühe Phase auf Rohboden, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Moosstadium: Frühe Phase auf Rohboden",
       wissen: fw(
         "Pioniermoose und Flechten. Bezug: Sukzession.",
@@ -3480,7 +3480,7 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Frühe Phase auf Rohboden",
       gapAccepted: ["Moosstadium"],
     },
-    { concept: "bio:k9:suks:f11", prompt: "Woran erkennt man Waldstadium?", answer: "Es ist die späte Phase mit Gehölzen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Waldstadium.", "Eine typische Verwechslung mit einem Nachbarbegriff von Waldstadium.", "Ein Randdetail, das fachlich nicht erklärt, was Waldstadium leistet."],
+    { concept: "bio:k9:suks:f11", prompt: "Woran erkennt man Waldstadium?", answer: "Es beschreibt späte Phase mit Gehölzen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Waldstadium: Späte Phase mit Gehölzen",
       wissen: fw(
         "Oft nahe Klimax in Mitteleuropa. Bezug: Sukzession.",
@@ -3488,13 +3488,13 @@ export const k9Sukzession: BioBank = {
       gap: "Sukzession: ___ — Späte Phase mit Gehölzen",
       gapAccepted: ["Waldstadium"],
     },
-    { concept: "bio:k9:suks:x0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie ist die gerichtete Abfolge von Lebensgemeinschaften, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Sukzession.", "Eine typische Verwechslung mit einem Nachbarbegriff von Sukzession.", "Ein Randdetail, das fachlich nicht erklärt, was Sukzession leistet."],
+    { concept: "bio:k9:suks:x0", prompt: "Welche Rolle hat Sukzession?", answer: "Sie beschreibt gerichtete Abfolge von Lebensgemeinschaften, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Entwicklung.",
       wissen: fw(
         "Nach Störungen oder Neubesiedlung lösen sich Gemeinschaften typischerweise ab.",
       ),
     },
-    { concept: "bio:k9:suks:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es ist die Konkurrenz, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k9:suks:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es beschreibt konkurrenz, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Konkurrenz.",
       wissen: fw(
         "Mit Bodenbildung und Beschattung ändern sich die Bedingungen zugunsten anderer Arten.",
@@ -3502,18 +3502,18 @@ export const k9Sukzession: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k9:suks:p0", term: "Sukzession", meaning: "Ist die gerichtete Abfolge von Lebensgemeinschaften", wissen: "Zeitliche Veränderung eines Ökosystems. Bezug: Sukzession. Sukzession bedeutet: Ist die gerichtete Abfolge von Lebensgemeinschaften." },
-    { concept: "bio:k9:suks:p1", term: "Pionierart", meaning: "Ist die frühe Besiedler gestörter Flächen", wissen: "Anspruchslos, oft schnellwüchsig. Bezug: Sukzession. Pionierart bedeutet: Ist die frühe Besiedler gestörter Flächen." },
-    { concept: "bio:k9:suks:p2", term: "Klimax", meaning: "Ist die relativ stabile Endgesellschaft", wissen: "Unter gegebenen Bedingungen. Bezug: Sukzession. Klimax bedeutet: Ist die relativ stabile Endgesellschaft." },
-    { concept: "bio:k9:suks:p3", term: "Primärsukzession", meaning: "Ist die Neubesiedlung ohne Bodenstart", wissen: "z. B. auf blankem Gestein. Bezug: Sukzession. Primärsukzession bedeutet: Ist die Neubesiedlung ohne Bodenstart." },
-    { concept: "bio:k9:suks:p4", term: "Sekundärsukzession", meaning: "Ist die Neuentwicklung nach Störung mit Boden", wissen: "z. B. nach Rodung. Bezug: Sukzession. Sekundärsukzession bedeutet: Ist die Neuentwicklung nach Störung mit Boden." },
-    { concept: "bio:k9:suks:p5", term: "Artwechsel", meaning: "Ist den Austausch dominanter Arten", wissen: "Im Lauf der Sukzession. Bezug: Sukzession. Artwechsel bedeutet: Ist den Austausch dominanter Arten." },
-    { concept: "bio:k9:suks:p6", term: "Bodenbildung", meaning: "Ermöglicht anspruchsvollere Pflanzen; es handelt sich um die Entwicklung von Bodenhorizonten", wissen: "Ermöglicht anspruchsvollere Pflanzen. Bezug: Sukzession. Bodenbildung bedeutet: Ermöglicht anspruchsvollere Pflanzen; es handelt sich um die Entwicklung von Bodenhorizonten." },
-    { concept: "bio:k9:suks:p7", term: "Konkurrenz", meaning: "Ist die Wettbewerb um Ressourcen", wissen: "Verdrängt Pioniere später oft. Bezug: Sukzession. Konkurrenz bedeutet: Ist die Wettbewerb um Ressourcen." },
-    { concept: "bio:k9:suks:p8", term: "Störung", meaning: "Ist die Ereignis das Gemeinschaften zurücksetzt", wissen: "z. B. Sturm oder Brand. Bezug: Sukzession. Störung bedeutet: Ist die Ereignis das Gemeinschaften zurücksetzt." },
-    { concept: "bio:k9:suks:p9", term: "Biodiversitätsverlauf", meaning: "Ist die Änderung der Artenzahl über Zeit", wissen: "Oft Anstieg dann Umschichtung. Bezug: Sukzession. Biodiversitätsverlauf bedeutet: Ist die Änderung der Artenzahl über Zeit." },
-    { concept: "bio:k9:suks:p10", term: "Moosstadium", meaning: "Ist die frühe Phase auf Rohboden", wissen: "Pioniermoose und Flechten. Bezug: Sukzession. Moosstadium bedeutet: Ist die frühe Phase auf Rohboden." },
-    { concept: "bio:k9:suks:p11", term: "Waldstadium", meaning: "Ist die späte Phase mit Gehölzen", wissen: "Oft nahe Klimax in Mitteleuropa. Bezug: Sukzession. Waldstadium bedeutet: Ist die späte Phase mit Gehölzen." },
+    { concept: "bio:k9:suks:p0", term: "Sukzession", meaning: "Beschreibt zeitliche Veränderung eines Ökosystems als biologisches Merkmal mit klarer Funktion.", wissen: "Zeitliche Veränderung eines Ökosystems. Bezug: Sukzession. Sukzession bedeutet: Ist die gerichtete Abfolge von Lebensgemeinschaften." },
+    { concept: "bio:k9:suks:p1", term: "Pionierart", meaning: "Beschreibt anspruchslos, oft schnellwüchsig als biologisches Merkmal mit klarer Funktion.", wissen: "Anspruchslos, oft schnellwüchsig. Bezug: Sukzession. Pionierart bedeutet: Ist die frühe Besiedler gestörter Flächen." },
+    { concept: "bio:k9:suks:p2", term: "Klimax", meaning: "Beschreibt unter gegebenen Bedingungen als biologisches Merkmal mit klarer Funktion.", wissen: "Unter gegebenen Bedingungen. Bezug: Sukzession. Klimax bedeutet: Ist die relativ stabile Endgesellschaft." },
+    { concept: "bio:k9:suks:p3", term: "Primärsukzession", meaning: "Beschreibt auf blankem Gestein als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. auf blankem Gestein. Bezug: Sukzession. Primärsukzession bedeutet: Ist die Neubesiedlung ohne Bodenstart." },
+    { concept: "bio:k9:suks:p4", term: "Sekundärsukzession", meaning: "Beschreibt neuentwicklung nach Störung mit Boden als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. nach Rodung. Bezug: Sukzession. Sekundärsukzession bedeutet: Ist die Neuentwicklung nach Störung mit Boden." },
+    { concept: "bio:k9:suks:p5", term: "Artwechsel", meaning: "Beschreibt im Lauf der Sukzession als biologisches Merkmal mit klarer Funktion.", wissen: "Im Lauf der Sukzession. Bezug: Sukzession. Artwechsel bedeutet: Ist den Austausch dominanter Arten." },
+    { concept: "bio:k9:suks:p6", term: "Bodenbildung", meaning: "Beschreibt ermöglicht anspruchsvollere Pflanzen als biologisches Merkmal mit klarer Funktion.", wissen: "Ermöglicht anspruchsvollere Pflanzen. Bezug: Sukzession. Bodenbildung bedeutet: Ermöglicht anspruchsvollere Pflanzen; es handelt sich um die Entwicklung von Bodenhorizonten." },
+    { concept: "bio:k9:suks:p7", term: "Konkurrenz", meaning: "Beschreibt verdrängt Pioniere später oft als biologisches Merkmal mit klarer Funktion.", wissen: "Verdrängt Pioniere später oft. Bezug: Sukzession. Konkurrenz bedeutet: Ist die Wettbewerb um Ressourcen." },
+    { concept: "bio:k9:suks:p8", term: "Störung", meaning: "Beschreibt sturm oder Brand als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Sturm oder Brand. Bezug: Sukzession. Störung bedeutet: Ist die Ereignis das Gemeinschaften zurücksetzt." },
+    { concept: "bio:k9:suks:p9", term: "Biodiversitätsverlauf", meaning: "Beschreibt oft Anstieg dann Umschichtung als biologisches Merkmal mit klarer Funktion.", wissen: "Oft Anstieg dann Umschichtung. Bezug: Sukzession. Biodiversitätsverlauf bedeutet: Ist die Änderung der Artenzahl über Zeit." },
+    { concept: "bio:k9:suks:p10", term: "Moosstadium", meaning: "Beschreibt pioniermoose und Flechten als biologisches Merkmal mit klarer Funktion.", wissen: "Pioniermoose und Flechten. Bezug: Sukzession. Moosstadium bedeutet: Ist die frühe Phase auf Rohboden." },
+    { concept: "bio:k9:suks:p11", term: "Waldstadium", meaning: "Beschreibt oft nahe Klimax in Mitteleuropa als biologisches Merkmal mit klarer Funktion.", wissen: "Oft nahe Klimax in Mitteleuropa. Bezug: Sukzession. Waldstadium bedeutet: Ist die späte Phase mit Gehölzen." },
   ],
   trueFalse: [
     {
@@ -3539,7 +3539,7 @@ export const k9Faktoren: BioBank = {
   url: "https://de.wikipedia.org/wiki/Umweltfaktor",
   conceptPrefix: "bio:k9:fakt",
   facts: [
-    { concept: "bio:k9:fakt:f0", prompt: "Was beschreibt abiotischer Faktor?", answer: "Er ist die unbelebte Umweltgröße, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu abiotischer Faktor.", "Eine typische Verwechslung mit einem Nachbarbegriff von abiotischer Faktor.", "Ein Randdetail, das fachlich nicht erklärt, was abiotischer Faktor leistet."],
+    { concept: "bio:k9:fakt:f0", prompt: "Was beschreibt abiotischer Faktor?", answer: "Er beschreibt unbelebte Umweltgröße, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "abiotischer Faktor: Unbelebte Umweltgröße",
       wissen: fw(
         "Temperatur, Licht, Wasser. Bezug: Umweltfaktoren.",
@@ -3547,7 +3547,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Unbelebte Umweltgröße",
       gapAccepted: ["abiotischer Faktor"],
     },
-    { concept: "bio:k9:fakt:f1", prompt: "Was kennzeichnet biotischer Faktor?", answer: "Er ist die Wirkung durch Lebewesen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu biotischer Faktor.", "Eine typische Verwechslung mit einem Nachbarbegriff von biotischer Faktor.", "Ein Randdetail, das fachlich nicht erklärt, was biotischer Faktor leistet."],
+    { concept: "bio:k9:fakt:f1", prompt: "Was kennzeichnet biotischer Faktor?", answer: "Er beschreibt wirkung durch Lebewesen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "biotischer Faktor: Wirkung durch Lebewesen",
       wissen: fw(
         "Konkurrenz, Symbiose, Fraß. Bezug: Umweltfaktoren.",
@@ -3555,7 +3555,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Wirkung durch Lebewesen",
       gapAccepted: ["biotischer Faktor"],
     },
-    { concept: "bio:k9:fakt:f2", prompt: "Welche Rolle hat Toleranzbereich?", answer: "Es ist den Bereich erträglicher Faktorwerte, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Toleranzbereich.", "Eine typische Verwechslung mit einem Nachbarbegriff von Toleranzbereich.", "Ein Randdetail, das fachlich nicht erklärt, was Toleranzbereich leistet."],
+    { concept: "bio:k9:fakt:f2", prompt: "Welche Rolle hat Toleranzbereich?", answer: "Es beschreibt bereich erträglicher Faktorwerte, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Toleranzbereich: Bereich erträglicher Faktorwerte",
       wissen: fw(
         "Außerhalb: Stress oder Tod. Bezug: Umweltfaktoren.",
@@ -3563,7 +3563,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Bereich erträglicher Faktorwerte",
       gapAccepted: ["Toleranzbereich"],
     },
-    { concept: "bio:k9:fakt:f3", prompt: "Was kennzeichnet Ökologische Potenz?", answer: "Sie ist die Reaktionsbreite einer Art, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Ökologische Potenz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Ökologische Potenz.", "Ein Randdetail, das fachlich nicht erklärt, was Ökologische Potenz leistet."],
+    { concept: "bio:k9:fakt:f3", prompt: "Was kennzeichnet Ökologische Potenz?", answer: "Sie beschreibt reaktionsbreite einer Art, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ökologische Potenz: Reaktionsbreite einer Art",
       wissen: fw(
         "Breit oder eng. Bezug: Umweltfaktoren.",
@@ -3571,7 +3571,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Reaktionsbreite einer Art",
       gapAccepted: ["Ökologische Potenz"],
     },
-    { concept: "bio:k9:fakt:f4", prompt: "Welche Rolle hat Minimumfaktor?", answer: "Er ist den Knappsten begrenzender Faktor, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Minimumfaktor.", "Eine typische Verwechslung mit einem Nachbarbegriff von Minimumfaktor.", "Ein Randdetail, das fachlich nicht erklärt, was Minimumfaktor leistet."],
+    { concept: "bio:k9:fakt:f4", prompt: "Welche Rolle hat Minimumfaktor?", answer: "Er beschreibt knappsten begrenzender Faktor, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Minimumfaktor: Knappster begrenzender Faktor",
       wissen: fw(
         "Limitiert Wachstum. Bezug: Umweltfaktoren.",
@@ -3579,7 +3579,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Knappster begrenzender Faktor",
       gapAccepted: ["Minimumfaktor"],
     },
-    { concept: "bio:k9:fakt:f5", prompt: "Was kennzeichnet Optimum?", answer: "Es ist den günstigsten Bereich eines Faktors, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Optimum.", "Eine typische Verwechslung mit einem Nachbarbegriff von Optimum.", "Ein Randdetail, das fachlich nicht erklärt, was Optimum leistet."],
+    { concept: "bio:k9:fakt:f5", prompt: "Was kennzeichnet Optimum?", answer: "Es beschreibt günstigsten Bereich eines Faktors, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Optimum: Günstigster Bereich eines Faktors",
       wissen: fw(
         "Höchste Leistungsfähigkeit. Bezug: Umweltfaktoren.",
@@ -3587,7 +3587,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Günstigster Bereich eines Faktors",
       gapAccepted: ["Optimum"],
     },
-    { concept: "bio:k9:fakt:f6", prompt: "Woran erkennt man Lichtpflanze?", answer: "Sie ist die Art mit hohem Lichtbedarf, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lichtpflanze.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lichtpflanze.", "Ein Randdetail, das fachlich nicht erklärt, was Lichtpflanze leistet."],
+    { concept: "bio:k9:fakt:f6", prompt: "Woran erkennt man Lichtpflanze?", answer: "Sie beschreibt art mit hohem Lichtbedarf, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Lichtpflanze: Art mit hohem Lichtbedarf",
       wissen: fw(
         "Wächst schlecht im Schatten. Bezug: Umweltfaktoren.",
@@ -3595,7 +3595,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Art mit hohem Lichtbedarf",
       gapAccepted: ["Lichtpflanze"],
     },
-    { concept: "bio:k9:fakt:f7", prompt: "Was kennzeichnet Schattenpflanze?", answer: "Sie ist die Art an geringe Lichtstärke angepasst, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Schattenpflanze.", "Eine typische Verwechslung mit einem Nachbarbegriff von Schattenpflanze.", "Ein Randdetail, das fachlich nicht erklärt, was Schattenpflanze leistet."],
+    { concept: "bio:k9:fakt:f7", prompt: "Was kennzeichnet Schattenpflanze?", answer: "Sie ist die Art an geringe Lichtstärke angepasst.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Schattenpflanze: Art an geringe Lichtstärke angepasst",
       wissen: fw(
         "Verträgt starke Sonne schlecht. Bezug: Umweltfaktoren.",
@@ -3603,7 +3603,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Art an geringe Lichtstärke angepasst",
       gapAccepted: ["Schattenpflanze"],
     },
-    { concept: "bio:k9:fakt:f8", prompt: "Was kennzeichnet Xerophyt?", answer: "Es ist die trockenangepasste Pflanze, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es ermöglicht anspruchsvollere Pflanzen; es handelt sich um die Entwicklung von Bodenhorizonten.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Xerophyt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Xerophyt."],
+    { concept: "bio:k9:fakt:f8", prompt: "Was kennzeichnet Xerophyt?", answer: "Es beschreibt trockenangepasste Pflanze, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Xerophyt: Trockenangepasste Pflanze",
       wissen: fw(
         "Spart Wasser. Bezug: Umweltfaktoren.",
@@ -3611,7 +3611,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Trockenangepasste Pflanze",
       gapAccepted: ["Xerophyt"],
     },
-    { concept: "bio:k9:fakt:f9", prompt: "Welche Rolle hat Hygrophyt?", answer: "Es ist die feuchteangepasste Pflanze, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hygrophyt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hygrophyt.", "Ein Randdetail, das fachlich nicht erklärt, was Hygrophyt leistet."],
+    { concept: "bio:k9:fakt:f9", prompt: "Welche Rolle hat Hygrophyt?", answer: "Es beschreibt feuchteangepasste Pflanze, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hygrophyt: Feuchteangepasste Pflanze",
       wissen: fw(
         "Braucht viel Wasser. Bezug: Umweltfaktoren.",
@@ -3619,7 +3619,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Feuchteangepasste Pflanze",
       gapAccepted: ["Hygrophyt"],
     },
-    { concept: "bio:k9:fakt:f10", prompt: "Was beschreibt Konkurrenz?", answer: "Sie ist die Wettbewerb um Ressourcen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Konkurrenz.", "Eine typische Verwechslung mit einem Nachbarbegriff von Konkurrenz.", "Ein Randdetail, das fachlich nicht erklärt, was Konkurrenz leistet."],
+    { concept: "bio:k9:fakt:f10", prompt: "Was beschreibt Konkurrenz?", answer: "Sie beschreibt wettbewerb um Ressourcen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Konkurrenz: Wettbewerb um Ressourcen",
       wissen: fw(
         "Biotischer Faktor. Bezug: Umweltfaktoren.",
@@ -3627,7 +3627,7 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Wettbewerb um Ressourcen",
       gapAccepted: ["Konkurrenz"],
     },
-    { concept: "bio:k9:fakt:f11", prompt: "Was beschreibt Räuber-Beute?", answer: "Sie ist die Fraßbeziehung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Räuber-Beute.", "Eine typische Verwechslung mit einem Nachbarbegriff von Räuber-Beute.", "Ein Randdetail, das fachlich nicht erklärt, was Räuber-Beute leistet."],
+    { concept: "bio:k9:fakt:f11", prompt: "Was beschreibt Räuber-Beute?", answer: "Sie beschreibt fraßbeziehung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Räuber-Beute: Fraßbeziehung",
       wissen: fw(
         "Reguliert Populationen. Bezug: Umweltfaktoren.",
@@ -3635,13 +3635,13 @@ export const k9Faktoren: BioBank = {
       gap: "Umweltfaktoren: ___ — Fraßbeziehung",
       gapAccepted: ["Räuber-Beute"],
     },
-    { concept: "bio:k9:fakt:x0", prompt: "Was kennzeichnet x0?", answer: "Es ist den Umweltfaktoren, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0.", "Ein Randdetail, das fachlich nicht erklärt, was x0 leistet."],
+    { concept: "bio:k9:fakt:x0", prompt: "Was kennzeichnet x0?", answer: "Es beschreibt umweltfaktoren, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Umweltfaktoren.",
       wissen: fw(
         "Temperatur und Licht sind abiotisch; Konkurrenz und Symbiose biotisch.",
       ),
     },
-    { concept: "bio:k9:fakt:x1", prompt: "Was beschreibt der Toleranzbereich?", answer: "Es ist die Toleranz, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein anderer fachlicher Aspekt ohne klaren Bezug zu der Toleranzbereich.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu der Toleranzbereich.", "Eine typische Verwechslung mit einem Nachbarbegriff von der Toleranzbereich."],
+    { concept: "bio:k9:fakt:x1", prompt: "Was beschreibt der Toleranzbereich?", answer: "Es beschreibt toleranz, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Toleranz.",
       wissen: fw(
         "Außerhalb des Toleranzbereichs sinkt die Leistungsfähigkeit stark.",
@@ -3649,18 +3649,18 @@ export const k9Faktoren: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k9:fakt:p0", term: "abiotischer Faktor", meaning: "Ist die unbelebte Umweltgröße", wissen: "Temperatur, Licht, Wasser. Bezug: Umweltfaktoren. abiotischer Faktor bedeutet: Ist die unbelebte Umweltgröße." },
-    { concept: "bio:k9:fakt:p1", term: "biotischer Faktor", meaning: "Ist die Wirkung durch Lebewesen", wissen: "Konkurrenz, Symbiose, Fraß. Bezug: Umweltfaktoren. biotischer Faktor bedeutet: Ist die Wirkung durch Lebewesen." },
-    { concept: "bio:k9:fakt:p2", term: "Toleranzbereich", meaning: "Ist der Bereich erträglicher Faktorwerte", wissen: "Außerhalb: Stress oder Tod. Bezug: Umweltfaktoren. Toleranzbereich bedeutet: Ist der Bereich erträglicher Faktorwerte." },
-    { concept: "bio:k9:fakt:p3", term: "Ökologische Potenz", meaning: "Ist die Reaktionsbreite einer Art", wissen: "Breit oder eng. Bezug: Umweltfaktoren. Ökologische Potenz bedeutet: Ist die Reaktionsbreite einer Art." },
-    { concept: "bio:k9:fakt:p4", term: "Minimumfaktor", meaning: "Ist der Knappsten begrenzender Faktor", wissen: "Limitiert Wachstum. Bezug: Umweltfaktoren. Minimumfaktor bedeutet: Ist der Knappsten begrenzender Faktor." },
-    { concept: "bio:k9:fakt:p5", term: "Optimum", meaning: "Ist der günstigsten Bereich eines Faktors", wissen: "Höchste Leistungsfähigkeit. Bezug: Umweltfaktoren. Optimum bedeutet: Ist der günstigsten Bereich eines Faktors." },
-    { concept: "bio:k9:fakt:p6", term: "Lichtpflanze", meaning: "Ist die Art mit hohem Lichtbedarf", wissen: "Wächst schlecht im Schatten. Bezug: Umweltfaktoren. Lichtpflanze bedeutet: Ist die Art mit hohem Lichtbedarf." },
-    { concept: "bio:k9:fakt:p7", term: "Schattenpflanze", meaning: "Ist die Art an geringe Lichtstärke angepasst", wissen: "Verträgt starke Sonne schlecht. Bezug: Umweltfaktoren. Schattenpflanze bedeutet: Ist die Art an geringe Lichtstärke angepasst." },
-    { concept: "bio:k9:fakt:p8", term: "Xerophyt", meaning: "Ist die trockenangepasste Pflanze", wissen: "Spart Wasser. Bezug: Umweltfaktoren. Xerophyt bedeutet: Ist die trockenangepasste Pflanze." },
-    { concept: "bio:k9:fakt:p9", term: "Hygrophyt", meaning: "Ist die feuchteangepasste Pflanze", wissen: "Braucht viel Wasser. Bezug: Umweltfaktoren. Hygrophyt bedeutet: Ist die feuchteangepasste Pflanze." },
-    { concept: "bio:k9:fakt:p10", term: "Konkurrenz", meaning: "Ist die Wettbewerb um Ressourcen", wissen: "Biotischer Faktor. Bezug: Umweltfaktoren. Konkurrenz bedeutet: Ist die Wettbewerb um Ressourcen." },
-    { concept: "bio:k9:fakt:p11", term: "Räuber-Beute", meaning: "Ist die Fraßbeziehung", wissen: "Reguliert Populationen. Bezug: Umweltfaktoren. Räuber-Beute bedeutet: Ist die Fraßbeziehung." },
+    { concept: "bio:k9:fakt:p0", term: "abiotischer Faktor", meaning: "Beschreibt temperatur, Licht, Wasser als biologisches Merkmal mit klarer Funktion.", wissen: "Temperatur, Licht, Wasser. Bezug: Umweltfaktoren. abiotischer Faktor bedeutet: Ist die unbelebte Umweltgröße." },
+    { concept: "bio:k9:fakt:p1", term: "biotischer Faktor", meaning: "Beschreibt konkurrenz, Symbiose, Fraß als biologisches Merkmal mit klarer Funktion.", wissen: "Konkurrenz, Symbiose, Fraß. Bezug: Umweltfaktoren. biotischer Faktor bedeutet: Ist die Wirkung durch Lebewesen." },
+    { concept: "bio:k9:fakt:p2", term: "Toleranzbereich", meaning: "Beschreibt außerhalb: Stress oder Tod als biologisches Merkmal mit klarer Funktion.", wissen: "Außerhalb: Stress oder Tod. Bezug: Umweltfaktoren. Toleranzbereich bedeutet: Ist der Bereich erträglicher Faktorwerte." },
+    { concept: "bio:k9:fakt:p3", term: "Ökologische Potenz", meaning: "Beschreibt breit oder eng als biologisches Merkmal mit klarer Funktion.", wissen: "Breit oder eng. Bezug: Umweltfaktoren. Ökologische Potenz bedeutet: Ist die Reaktionsbreite einer Art." },
+    { concept: "bio:k9:fakt:p4", term: "Minimumfaktor", meaning: "Beschreibt der Knappsten begrenzender Faktor als biologisches Merkmal mit klarer Funktion.", wissen: "Limitiert Wachstum. Bezug: Umweltfaktoren. Minimumfaktor bedeutet: Ist der Knappsten begrenzender Faktor." },
+    { concept: "bio:k9:fakt:p5", term: "Optimum", meaning: "Beschreibt der günstigsten Bereich eines Faktors als biologisches Merkmal mit klarer Funktion.", wissen: "Höchste Leistungsfähigkeit. Bezug: Umweltfaktoren. Optimum bedeutet: Ist der günstigsten Bereich eines Faktors." },
+    { concept: "bio:k9:fakt:p6", term: "Lichtpflanze", meaning: "Beschreibt wächst schlecht im Schatten als biologisches Merkmal mit klarer Funktion.", wissen: "Wächst schlecht im Schatten. Bezug: Umweltfaktoren. Lichtpflanze bedeutet: Ist die Art mit hohem Lichtbedarf." },
+    { concept: "bio:k9:fakt:p7", term: "Schattenpflanze", meaning: "Beschreibt verträgt starke Sonne schlecht als biologisches Merkmal mit klarer Funktion.", wissen: "Verträgt starke Sonne schlecht. Bezug: Umweltfaktoren. Schattenpflanze bedeutet: Ist die Art an geringe Lichtstärke angepasst." },
+    { concept: "bio:k9:fakt:p8", term: "Xerophyt", meaning: "Beschreibt trockenangepasste Pflanze als biologisches Merkmal mit klarer Funktion.", wissen: "Spart Wasser. Bezug: Umweltfaktoren. Xerophyt bedeutet: Ist die trockenangepasste Pflanze." },
+    { concept: "bio:k9:fakt:p9", term: "Hygrophyt", meaning: "Beschreibt braucht viel Wasser als biologisches Merkmal mit klarer Funktion.", wissen: "Braucht viel Wasser. Bezug: Umweltfaktoren. Hygrophyt bedeutet: Ist die feuchteangepasste Pflanze." },
+    { concept: "bio:k9:fakt:p10", term: "Konkurrenz", meaning: "Beschreibt wettbewerb um Ressourcen als biologisches Merkmal mit klarer Funktion.", wissen: "Biotischer Faktor. Bezug: Umweltfaktoren. Konkurrenz bedeutet: Ist die Wettbewerb um Ressourcen." },
+    { concept: "bio:k9:fakt:p11", term: "Räuber-Beute", meaning: "Beschreibt fraßbeziehung als biologisches Merkmal mit klarer Funktion.", wissen: "Reguliert Populationen. Bezug: Umweltfaktoren. Räuber-Beute bedeutet: Ist die Fraßbeziehung." },
   ],
   trueFalse: [
     {
@@ -3686,7 +3686,7 @@ export const k9Klima: BioBank = {
   url: "https://de.wikipedia.org/wiki/Klima",
   conceptPrefix: "bio:k9:klima",
   facts: [
-    { concept: "bio:k9:klima:f0", prompt: "Woran erkennt man Klima?", answer: "Es ist den langfristiges Wettergeschehen einer Region, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Klima.", "Eine typische Verwechslung mit einem Nachbarbegriff von Klima.", "Ein Randdetail, das fachlich nicht erklärt, was Klima leistet."],
+    { concept: "bio:k9:klima:f0", prompt: "Woran erkennt man Klima?", answer: "Es beschreibt langfristiges Wettergeschehen einer Region, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Klima: Langfristiges Wettergeschehen einer Region",
       wissen: fw(
         "Unterscheidet sich vom Tageswetter. Bezug: Klima/Ökosystem.",
@@ -3694,7 +3694,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Langfristiges Wettergeschehen einer Region",
       gapAccepted: ["Klima"],
     },
-    { concept: "bio:k9:klima:f1", prompt: "Woran erkennt man Treibhauseffekt?", answer: "Es ist die Erwärmung durch Spurengase, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Treibhauseffekt.", "Eine typische Verwechslung mit einem Nachbarbegriff von Treibhauseffekt.", "Ein Randdetail, das fachlich nicht erklärt, was Treibhauseffekt leistet."],
+    { concept: "bio:k9:klima:f1", prompt: "Woran erkennt man Treibhauseffekt?", answer: "Es beschreibt erwärmung durch Spurengase, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Treibhauseffekt: Erwärmung durch Spurengase",
       wissen: fw(
         "Natürlich und anthropogen verstärkt. Bezug: Klima/Ökosystem.",
@@ -3702,7 +3702,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Erwärmung durch Spurengase",
       gapAccepted: ["Treibhauseffekt"],
     },
-    { concept: "bio:k9:klima:f2", prompt: "Was kennzeichnet CO₂?", answer: "Es ist das wichtige Treibhausgas, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu CO₂.", "Eine typische Verwechslung mit einem Nachbarbegriff von CO₂.", "Ein Randdetail, das fachlich nicht erklärt, was CO₂ leistet."],
+    { concept: "bio:k9:klima:f2", prompt: "Was kennzeichnet CO₂?", answer: "Es beschreibt wichtige Treibhausgas, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "CO₂: Wichtiges Treibhausgas",
       wissen: fw(
         "Steigt durch Verbrennung fossilier Energien. Bezug: Klima/Ökosystem.",
@@ -3710,7 +3710,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Wichtiges Treibhausgas",
       gapAccepted: ["CO₂"],
     },
-    { concept: "bio:k9:klima:f3", prompt: "Was beschreibt Klimawandel?", answer: "Es ist die langfristige Klimaänderung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Klimawandel.", "Eine typische Verwechslung mit einem Nachbarbegriff von Klimawandel.", "Ein Randdetail, das fachlich nicht erklärt, was Klimawandel leistet."],
+    { concept: "bio:k9:klima:f3", prompt: "Was beschreibt Klimawandel?", answer: "Es beschreibt langfristige Klimaänderung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Klimawandel: Langfristige Klimaänderung",
       wissen: fw(
         "Beeinflusst Ökosysteme. Bezug: Klima/Ökosystem.",
@@ -3718,7 +3718,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Langfristige Klimaänderung",
       gapAccepted: ["Klimawandel"],
     },
-    { concept: "bio:k9:klima:f4", prompt: "Was kennzeichnet Phänologie?", answer: "Sie ist den jahreszeitliche Entwicklungszeiten, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Phänologie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Phänologie.", "Ein Randdetail, das fachlich nicht erklärt, was Phänologie leistet."],
+    { concept: "bio:k9:klima:f4", prompt: "Was kennzeichnet Phänologie?", answer: "Sie beschreibt jahreszeitliche Entwicklungszeiten, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Phänologie: Jahreszeitliche Entwicklungszeiten",
       wissen: fw(
         "Verschiebt sich mit Erwärmung. Bezug: Klima/Ökosystem.",
@@ -3726,7 +3726,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Jahreszeitliche Entwicklungszeiten",
       gapAccepted: ["Phänologie"],
     },
-    { concept: "bio:k9:klima:f5", prompt: "Welche Rolle hat Dürre?", answer: "Sie ist den längeren Wassermangel, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Dürre.", "Eine typische Verwechslung mit einem Nachbarbegriff von Dürre.", "Ein Randdetail, das fachlich nicht erklärt, was Dürre leistet."],
+    { concept: "bio:k9:klima:f5", prompt: "Welche Rolle hat Dürre?", answer: "Sie beschreibt längeren Wassermangel, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Dürre: Längerer Wassermangel",
       wissen: fw(
         "Stress für Pflanzen und Gewässer. Bezug: Klima/Ökosystem.",
@@ -3734,7 +3734,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Längerer Wassermangel",
       gapAccepted: ["Dürre"],
     },
-    { concept: "bio:k9:klima:f6", prompt: "Was kennzeichnet Extremwetter?", answer: "Er ist die Seltene starke Wetterereignisse, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Extremwetter.", "Eine typische Verwechslung mit einem Nachbarbegriff von Extremwetter.", "Ein Randdetail, das fachlich nicht erklärt, was Extremwetter leistet."],
+    { concept: "bio:k9:klima:f6", prompt: "Was kennzeichnet Extremwetter?", answer: "Er beschreibt seltene starke Wetterereignisse, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Extremwetter: Seltene starke Wetterereignisse",
       wissen: fw(
         "Können häufiger/intensiver werden. Bezug: Klima/Ökosystem.",
@@ -3742,7 +3742,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Seltene starke Wetterereignisse",
       gapAccepted: ["Extremwetter"],
     },
-    { concept: "bio:k9:klima:f7", prompt: "Was beschreibt Habitatverschiebung?", answer: "Sie ist den Arten wandern mit Klimazonen, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Habitatverschiebung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Habitatverschiebung.", "Ein Randdetail, das fachlich nicht erklärt, was Habitatverschiebung leistet."],
+    { concept: "bio:k9:klima:f7", prompt: "Was beschreibt Habitatverschiebung?", answer: "Sie beschreibt arten wandern mit Klimazonen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Habitatverschiebung: Arten wandern mit Klimazonen",
       wissen: fw(
         "Nicht alle können folgen. Bezug: Klima/Ökosystem.",
@@ -3750,7 +3750,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Arten wandern mit Klimazonen",
       gapAccepted: ["Habitatverschiebung"],
     },
-    { concept: "bio:k9:klima:f8", prompt: "Welche Rolle hat Kohlenstoffkreislauf?", answer: "Den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen, die man von ähnlichen Größen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Kohlenstoffkreislauf.", "Eine typische Verwechslung mit einem Nachbarbegriff von Kohlenstoffkreislauf.", "Ein Randdetail, das fachlich nicht erklärt, was Kohlenstoffkreislauf leistet."],
+    { concept: "bio:k9:klima:f8", prompt: "Welche Rolle hat Kohlenstoffkreislauf?", answer: "Es beschreibt austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Kohlenstoffkreislauf: Austausch von C zwischen Sphären",
       wissen: fw(
         "Gekoppelt an Klima. Bezug: Klima/Ökosystem.",
@@ -3758,7 +3758,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Austausch von C zwischen Sphären",
       gapAccepted: ["Kohlenstoffkreislauf"],
     },
-    { concept: "bio:k9:klima:f9", prompt: "Woran erkennt man Mitigation?", answer: "Sie ist die Minderung von Emissionen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Mitigation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Mitigation.", "Ein Randdetail, das fachlich nicht erklärt, was Mitigation leistet."],
+    { concept: "bio:k9:klima:f9", prompt: "Woran erkennt man Mitigation?", answer: "Sie beschreibt minderung von Emissionen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Mitigation: Minderung von Emissionen",
       wissen: fw(
         "Klimaschutzmaßnahme. Bezug: Klima/Ökosystem.",
@@ -3766,7 +3766,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Minderung von Emissionen",
       gapAccepted: ["Mitigation"],
     },
-    { concept: "bio:k9:klima:f10", prompt: "Woran erkennt man Adaptation?", answer: "Anpassung an Folgen sodass man ihn von ähnlichen Größen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Adaptation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Adaptation.", "Ein Randdetail, das fachlich nicht erklärt, was Adaptation leistet."],
+    { concept: "bio:k9:klima:f10", prompt: "Woran erkennt man Adaptation?", answer: "Sie beschreibt anpassung an Folgen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Adaptation: Anpassung an Folgen",
       wissen: fw(
         "z. B. Wassermanagement. Bezug: Klima/Ökosystem.",
@@ -3774,7 +3774,7 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Anpassung an Folgen",
       gapAccepted: ["Adaptation"],
     },
-    { concept: "bio:k9:klima:f11", prompt: "Was kennzeichnet Bioindikator?", answer: "Er ist den Art die Umweltzustand anzeigt, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Bioindikator.", "Eine typische Verwechslung mit einem Nachbarbegriff von Bioindikator.", "Ein Randdetail, das fachlich nicht erklärt, was Bioindikator leistet."],
+    { concept: "bio:k9:klima:f11", prompt: "Was kennzeichnet Bioindikator?", answer: "Er beschreibt art die Umweltzustand anzeigt, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Bioindikator: Art die Umweltzustand anzeigt",
       wissen: fw(
         "Reagiert auf Klimaänderungen. Bezug: Klima/Ökosystem.",
@@ -3782,13 +3782,13 @@ export const k9Klima: BioBank = {
       gap: "Klima/Ökosystem: ___ — Art die Umweltzustand anzeigt",
       gapAccepted: ["Bioindikator"],
     },
-    { concept: "bio:k9:klima:x0", prompt: "Welche Rolle hat x0?", answer: "Es ist die Ökosystemwirkung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0.", "Ein Randdetail, das fachlich nicht erklärt, was x0 leistet."],
+    { concept: "bio:k9:klima:x0", prompt: "Welche Rolle hat x0?", answer: "Es beschreibt ökosystemwirkung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Ökosystemwirkung.",
       wissen: fw(
         "Temperatur und Niederschlag ändern Lebensbedingungen; manche Arten wandern oder gehen zurück.",
       ),
     },
-    { concept: "bio:k9:klima:x1", prompt: "Was kennzeichnet der Unterschied zwischen Wetter und Klima?", answer: "Es ist das Zeitraum, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein anderer fachlicher Aspekt ohne klaren Bezug zu der Unterschied zwischen Wetter und Klima.", "Es ist die typische Verwechslung mit einem Nachbarbegriff von der Unterschied zwischen Wetter und Klima.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu der Unterschied zwischen Wetter und Klima."],
+    { concept: "bio:k9:klima:x1", prompt: "Was kennzeichnet der Unterschied zwischen Wetter und Klima?", answer: "Es beschreibt zeitraum, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es ist die typische Verwechslung mit einem Nachbarbegriff von der Unterschied zwischen Wetter und Klima.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Zeitraum.",
       wissen: fw(
         "Klima beschreibt typische Muster über Jahrzehnte. Bezug: Klima/Ökosystem.",
@@ -3796,18 +3796,18 @@ export const k9Klima: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k9:klima:p0", term: "Klima", meaning: "Ist der langfristiges Wettergeschehen einer Region", wissen: "Unterscheidet sich vom Tageswetter. Bezug: Klima/Ökosystem. Klima bedeutet: Ist der langfristiges Wettergeschehen einer Region." },
-    { concept: "bio:k9:klima:p1", term: "Treibhauseffekt", meaning: "Ist die Erwärmung durch Spurengase", wissen: "Natürlich und anthropogen verstärkt. Bezug: Klima/Ökosystem. Treibhauseffekt bedeutet: Ist die Erwärmung durch Spurengase." },
-    { concept: "bio:k9:klima:p2", term: "CO₂", meaning: "Ist das wichtige Treibhausgas", wissen: "Steigt durch Verbrennung fossilier Energien. Bezug: Klima/Ökosystem. CO₂ bedeutet: Ist das wichtige Treibhausgas." },
-    { concept: "bio:k9:klima:p3", term: "Klimawandel", meaning: "Ist die langfristige Klimaänderung", wissen: "Beeinflusst Ökosysteme. Bezug: Klima/Ökosystem. Klimawandel bedeutet: Ist die langfristige Klimaänderung." },
-    { concept: "bio:k9:klima:p4", term: "Phänologie", meaning: "Ist der jahreszeitliche Entwicklungszeiten", wissen: "Verschiebt sich mit Erwärmung. Bezug: Klima/Ökosystem. Phänologie bedeutet: Ist der jahreszeitliche Entwicklungszeiten." },
-    { concept: "bio:k9:klima:p5", term: "Dürre", meaning: "Ist der längeren Wassermangel", wissen: "Stress für Pflanzen und Gewässer. Bezug: Klima/Ökosystem. Dürre bedeutet: Ist der längeren Wassermangel." },
-    { concept: "bio:k9:klima:p6", term: "Extremwetter", meaning: "Können häufiger/intensiver werden", wissen: "Können häufiger/intensiver werden. Bezug: Klima/Ökosystem. Extremwetter bedeutet: Können häufiger/intensiver werden." },
-    { concept: "bio:k9:klima:p7", term: "Habitatverschiebung", meaning: "Nicht alle können folgen", wissen: "Nicht alle können folgen. Bezug: Klima/Ökosystem. Habitatverschiebung bedeutet: Nicht alle können folgen." },
-    { concept: "bio:k9:klima:p8", term: "Kohlenstoffkreislauf", meaning: "Beschreibt den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen", wissen: "Gekoppelt an Klima. Bezug: Klima/Ökosystem. Kohlenstoffkreislauf bedeutet: Ist den Austausch von C zwischen Sphären." },
-    { concept: "bio:k9:klima:p9", term: "Mitigation", meaning: "Ist die Minderung von Emissionen", wissen: "Klimaschutzmaßnahme. Bezug: Klima/Ökosystem. Mitigation bedeutet: Ist die Minderung von Emissionen." },
-    { concept: "bio:k9:klima:p10", term: "Adaptation", meaning: "Anpassung an Folgen", wissen: "z. B. Wassermanagement. Bezug: Klima/Ökosystem. Adaptation bedeutet: Anpassung an Folgen." },
-    { concept: "bio:k9:klima:p11", term: "Bioindikator", meaning: "Ist der Art die Umweltzustand anzeigt", wissen: "Reagiert auf Klimaänderungen. Bezug: Klima/Ökosystem. Bioindikator bedeutet: Ist der Art die Umweltzustand anzeigt." },
+    { concept: "bio:k9:klima:p0", term: "Klima", meaning: "Beschreibt unterscheidet sich vom Tageswetter als biologisches Merkmal mit klarer Funktion.", wissen: "Unterscheidet sich vom Tageswetter. Bezug: Klima/Ökosystem. Klima bedeutet: Ist der langfristiges Wettergeschehen einer Region." },
+    { concept: "bio:k9:klima:p1", term: "Treibhauseffekt", meaning: "Beschreibt natürlich und anthropogen verstärkt als biologisches Merkmal mit klarer Funktion.", wissen: "Natürlich und anthropogen verstärkt. Bezug: Klima/Ökosystem. Treibhauseffekt bedeutet: Ist die Erwärmung durch Spurengase." },
+    { concept: "bio:k9:klima:p2", term: "CO₂", meaning: "Beschreibt steigt durch Verbrennung fossilier Energien als biologisches Merkmal mit klarer Funktion.", wissen: "Steigt durch Verbrennung fossilier Energien. Bezug: Klima/Ökosystem. CO₂ bedeutet: Ist das wichtige Treibhausgas." },
+    { concept: "bio:k9:klima:p3", term: "Klimawandel", meaning: "Beschreibt langfristige Klimaänderung als biologisches Merkmal mit klarer Funktion.", wissen: "Beeinflusst Ökosysteme. Bezug: Klima/Ökosystem. Klimawandel bedeutet: Ist die langfristige Klimaänderung." },
+    { concept: "bio:k9:klima:p4", term: "Phänologie", meaning: "Beschreibt verschiebt sich mit Erwärmung als biologisches Merkmal mit klarer Funktion.", wissen: "Verschiebt sich mit Erwärmung. Bezug: Klima/Ökosystem. Phänologie bedeutet: Ist der jahreszeitliche Entwicklungszeiten." },
+    { concept: "bio:k9:klima:p5", term: "Dürre", meaning: "Beschreibt stress für Pflanzen und Gewässer als biologisches Merkmal mit klarer Funktion.", wissen: "Stress für Pflanzen und Gewässer. Bezug: Klima/Ökosystem. Dürre bedeutet: Ist der längeren Wassermangel." },
+    { concept: "bio:k9:klima:p6", term: "Extremwetter", meaning: "Beschreibt können häufiger/intensiver werden als biologisches Merkmal mit klarer Funktion.", wissen: "Können häufiger/intensiver werden. Bezug: Klima/Ökosystem. Extremwetter bedeutet: Können häufiger/intensiver werden." },
+    { concept: "bio:k9:klima:p7", term: "Habitatverschiebung", meaning: "Beschreibt nicht alle können folgen als biologisches Merkmal mit klarer Funktion.", wissen: "Nicht alle können folgen. Bezug: Klima/Ökosystem. Habitatverschiebung bedeutet: Nicht alle können folgen." },
+    { concept: "bio:k9:klima:p8", term: "Kohlenstoffkreislauf", meaning: "Beschreibt den Austausch von Kohlenstoff zwischen Atmosphäre, Lebewesen und Gesteinen.", wissen: "Gekoppelt an Klima. Bezug: Klima/Ökosystem. Kohlenstoffkreislauf bedeutet: Ist den Austausch von C zwischen Sphären." },
+    { concept: "bio:k9:klima:p9", term: "Mitigation", meaning: "Beschreibt minderung von Emissionen als biologisches Merkmal mit klarer Funktion.", wissen: "Klimaschutzmaßnahme. Bezug: Klima/Ökosystem. Mitigation bedeutet: Ist die Minderung von Emissionen." },
+    { concept: "bio:k9:klima:p10", term: "Adaptation", meaning: "Beschreibt anpassung an Folgen als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Wassermanagement. Bezug: Klima/Ökosystem. Adaptation bedeutet: Anpassung an Folgen." },
+    { concept: "bio:k9:klima:p11", term: "Bioindikator", meaning: "Beschreibt reagiert auf Klimaänderungen als biologisches Merkmal mit klarer Funktion.", wissen: "Reagiert auf Klimaänderungen. Bezug: Klima/Ökosystem. Bioindikator bedeutet: Ist der Art die Umweltzustand anzeigt." },
   ],
   trueFalse: [
     {
@@ -3833,7 +3833,7 @@ export const k10Humangenetik: BioBank = {
   url: "https://de.wikipedia.org/wiki/Humangenetik",
   conceptPrefix: "bio:k10:humangen",
   facts: [
-    { concept: "bio:k10:humangen:f0", prompt: "Welche Rolle hat Stammbaumanalyse?", answer: "Sie ist den Vererbungsmusten in Familien rekonstruieren, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Stammbaumanalyse.", "Eine typische Verwechslung mit einem Nachbarbegriff von Stammbaumanalyse.", "Ein Randdetail, das fachlich nicht erklärt, was Stammbaumanalyse leistet."],
+    { concept: "bio:k10:humangen:f0", prompt: "Welche Rolle hat Stammbaumanalyse?", answer: "Sie beschreibt vererbungsmusten in Familien rekonstruieren, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Stammbaumanalyse: Vererbungsmuster in Familien rekonstruieren",
       wissen: fw(
         "Zeigt dominant/rezessiv und gonosomal. Bezug: Humangenetik.",
@@ -3841,7 +3841,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Vererbungsmuster in Familien rekonstruieren",
       gapAccepted: ["Stammbaumanalyse"],
     },
-    { concept: "bio:k10:humangen:f1", prompt: "Was beschreibt AB0-System?", answer: "Der blutgruppen A und B und AB und 0, mit der man AB0-System im Versuch oder in der Deutung prüft.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu AB0-System.", "Eine typische Verwechslung mit einem Nachbarbegriff von AB0-System.", "Ein Randdetail, das fachlich nicht erklärt, was AB0-System leistet."],
+    { concept: "bio:k10:humangen:f1", prompt: "Was beschreibt AB0-System?", answer: "Es beschreibt blutgruppen A und B und AB und 0.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "AB0-System: Blutgruppen A, B, AB, 0",
       wissen: fw(
         "Klassisches Beispiel multipler Allele. Bezug: Humangenetik.",
@@ -3849,7 +3849,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Blutgruppen A, B, AB, 0",
       gapAccepted: ["AB0-System"],
     },
-    { concept: "bio:k10:humangen:f2", prompt: "Woran erkennt man Rhesussystem?", answer: "Es ist das Rh-Faktor positiv/negativ, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Rhesussystem.", "Eine typische Verwechslung mit einem Nachbarbegriff von Rhesussystem.", "Ein Randdetail, das fachlich nicht erklärt, was Rhesussystem leistet."],
+    { concept: "bio:k10:humangen:f2", prompt: "Woran erkennt man Rhesussystem?", answer: "Es beschreibt rh-Faktor positiv/negativ, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Rhesussystem: Rh-Faktor positiv/negativ",
       wissen: fw(
         "Relevant bei Schwangerschaft. Bezug: Humangenetik.",
@@ -3857,7 +3857,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Rh-Faktor positiv/negativ",
       gapAccepted: ["Rhesussystem"],
     },
-    { concept: "bio:k10:humangen:f3", prompt: "Was kennzeichnet autosomal?", answer: "Es ist den Gen auf Autosom, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu autosomal.", "Eine typische Verwechslung mit einem Nachbarbegriff von autosomal.", "Ein Randdetail, das fachlich nicht erklärt, was autosomal leistet."],
+    { concept: "bio:k10:humangen:f3", prompt: "Was kennzeichnet autosomal?", answer: "Es beschreibt gen auf Autosom, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "autosomal: Gen auf Autosom",
       wissen: fw(
         "Betrifft beide Geschlechter ähnlich. Bezug: Humangenetik.",
@@ -3865,7 +3865,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Gen auf Autosom",
       gapAccepted: ["autosomal"],
     },
-    { concept: "bio:k10:humangen:f4", prompt: "Was kennzeichnet gonosomal?", answer: "Es ist den Gen auf Geschlechtschromosom, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu gonosomal.", "Eine typische Verwechslung mit einem Nachbarbegriff von gonosomal.", "Ein Randdetail, das fachlich nicht erklärt, was gonosomal leistet."],
+    { concept: "bio:k10:humangen:f4", prompt: "Was kennzeichnet gonosomal?", answer: "Es beschreibt gen auf Geschlechtschromosom, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "gonosomal: Gen auf Geschlechtschromosom",
       wissen: fw(
         "Oft X-chromosomal. Bezug: Humangenetik.",
@@ -3873,7 +3873,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Gen auf Geschlechtschromosom",
       gapAccepted: ["gonosomal"],
     },
-    { concept: "bio:k10:humangen:f5", prompt: "Woran erkennt man Trisomie 21?", answer: "Es beschreibt Drei Chromosomen 21, sodass man Trisomie 21 von Nachbarbegriffen unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Trisomie 21.", "Eine typische Verwechslung mit einem Nachbarbegriff von Trisomie 21.", "Ein Randdetail, das fachlich nicht erklärt, was Trisomie 21 leistet."],
+    { concept: "bio:k10:humangen:f5", prompt: "Woran erkennt man Trisomie 21?", answer: "Es beschreibt drei Chromosomen 21, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Trisomie 21: Drei Chromosomen 21",
       wissen: fw(
         "Genommutation mit typischem Syndrom. Bezug: Humangenetik.",
@@ -3881,7 +3881,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Drei Chromosomen 21",
       gapAccepted: ["Trisomie 21"],
     },
-    { concept: "bio:k10:humangen:f6", prompt: "Woran erkennt man Hämophilie?", answer: "Sie ist die Blutgerinnungsstörung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hämophilie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hämophilie.", "Ein Randdetail, das fachlich nicht erklärt, was Hämophilie leistet."],
+    { concept: "bio:k10:humangen:f6", prompt: "Woran erkennt man Hämophilie?", answer: "Sie beschreibt blutgerinnungsstörung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hämophilie: Blutgerinnungsstörung",
       wissen: fw(
         "Klassisch X-chromosomal. Bezug: Humangenetik.",
@@ -3889,7 +3889,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Blutgerinnungsstörung",
       gapAccepted: ["Hämophilie"],
     },
-    { concept: "bio:k10:humangen:f7", prompt: "Was kennzeichnet Phenylketonurie?", answer: "Sie ist die Stoffwechselstörung durch Genmutation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Phenylketonurie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Phenylketonurie.", "Ein Randdetail, das fachlich nicht erklärt, was Phenylketonurie leistet."],
+    { concept: "bio:k10:humangen:f7", prompt: "Was kennzeichnet Phenylketonurie?", answer: "Sie beschreibt stoffwechselstörung durch Genmutation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Phenylketonurie: Stoffwechselstörung durch Genmutation",
       wissen: fw(
         "Frühdiagnostik wichtig. Bezug: Humangenetik.",
@@ -3897,7 +3897,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Stoffwechselstörung durch Genmutation",
       gapAccepted: ["Phenylketonurie"],
     },
-    { concept: "bio:k10:humangen:f8", prompt: "Was kennzeichnet pränatale Diagnostik?", answer: "Sie ist die Untersuchung vor der Geburt, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu pränatale Diagnostik.", "Eine typische Verwechslung mit einem Nachbarbegriff von pränatale Diagnostik.", "Ein Randdetail, das fachlich nicht erklärt, was pränatale Diagnostik leistet."],
+    { concept: "bio:k10:humangen:f8", prompt: "Was kennzeichnet pränatale Diagnostik?", answer: "Sie beschreibt untersuchung vor der Geburt, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "pränatale Diagnostik: Untersuchung vor der Geburt",
       wissen: fw(
         "Ethisch und rechtlich sensibel. Bezug: Humangenetik.",
@@ -3905,7 +3905,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Untersuchung vor der Geburt",
       gapAccepted: ["pränatale Diagnostik"],
     },
-    { concept: "bio:k10:humangen:f9", prompt: "Welche Rolle hat Erbkrankheit?", answer: "Sie ist die Genetisch bedingte Erkrankung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Können häufiger/intensiver werden und klärt, woran man den Sachverhalt sicher erkennt.", "Nicht alle können folgen und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Erbkrankheit."],
+    { concept: "bio:k10:humangen:f9", prompt: "Welche Rolle hat Erbkrankheit?", answer: "Sie beschreibt genetisch bedingte Erkrankung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Erbkrankheit: Genetisch bedingte Erkrankung",
       wissen: fw(
         "Ursachen, Symptome, Therapie unterschiedlich. Bezug: Humangenetik.",
@@ -3913,7 +3913,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Genetisch bedingte Erkrankung",
       gapAccepted: ["Erbkrankheit"],
     },
-    { concept: "bio:k10:humangen:f10", prompt: "Was kennzeichnet Beratung?", answer: "Sie ist die humangenetische Aufklärung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Anpassung an Folgen sodass man ihn von ähnlichen Größen unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Beratung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Beratung."],
+    { concept: "bio:k10:humangen:f10", prompt: "Was kennzeichnet Beratung?", answer: "Sie beschreibt humangenetische Aufklärung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Beratung: Humangenetische Aufklärung",
       wissen: fw(
         "Unterstützt informierte Entscheidungen. Bezug: Humangenetik.",
@@ -3921,7 +3921,7 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Humangenetische Aufklärung",
       gapAccepted: ["Beratung"],
     },
-    { concept: "bio:k10:humangen:f11", prompt: "Woran erkennt man Inklusion?", answer: "Sie ist die Teilhabe betroffener Menschen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Inklusion.", "Eine typische Verwechslung mit einem Nachbarbegriff von Inklusion."],
+    { concept: "bio:k10:humangen:f11", prompt: "Woran erkennt man Inklusion?", answer: "Sie beschreibt teilhabe betroffener Menschen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Inklusion: Teilhabe betroffener Menschen",
       wissen: fw(
         "Ethischer Aspekt neben Diagnostik. Bezug: Humangenetik.",
@@ -3929,13 +3929,13 @@ export const k10Humangenetik: BioBank = {
       gap: "Humangenetik: ___ — Teilhabe betroffener Menschen",
       gapAccepted: ["Inklusion"],
     },
-    { concept: "bio:k10:humangen:x0", prompt: "Was kennzeichnet eine Stammbaumanalyse?", answer: "Sie zeigt dominant/rezessiv und gonosomal; es handelt sich um die Sie rekonstruiert Vererbungsmuster in Familien.", wrong: ["Sie misst nur den Puls und klärt, woran man den Sachverhalt sicher erkennt.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu eine Stammbaumanalyse.", "Eine typische Verwechslung mit einem Nachbarbegriff von eine Stammbaumanalyse."],
+    { concept: "bio:k10:humangen:x0", prompt: "Was kennzeichnet eine Stammbaumanalyse?", answer: "Sie zeigt dominant/rezessiv und gonosomal; Sie rekonstruiert Vererbungsmuster in Familien.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Humangenetik.",
       wissen: fw(
         "Symbole und Generationen zeigen, ob Merkmale autosomal oder gonosomal vererbt werden.",
       ),
     },
-    { concept: "bio:k10:humangen:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist die Werteorientierung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff."],
+    { concept: "bio:k10:humangen:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt werteorientierung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Werteorientierung.",
       wissen: fw(
         "Pränatale Diagnostik und Umgang mit Erbkrankheiten verlangen sorgfältige Abwägung.",
@@ -3943,18 +3943,18 @@ export const k10Humangenetik: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k10:humangen:p0", term: "Stammbaumanalyse", meaning: "Zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren", wissen: "Zeigt dominant/rezessiv und gonosomal. Bezug: Humangenetik. Stammbaumanalyse bedeutet: Zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren." },
-    { concept: "bio:k10:humangen:p1", term: "AB0-System", meaning: "Ist der blutgruppen A und B und AB und 0", wissen: "Klassisches Beispiel multipler Allele. Bezug: Humangenetik. AB0-System bedeutet: Ist der blutgruppen A und B und AB und 0." },
-    { concept: "bio:k10:humangen:p2", term: "Rhesussystem", meaning: "Ist das Rh-Faktor positiv/negativ", wissen: "Relevant bei Schwangerschaft. Bezug: Humangenetik. Rhesussystem bedeutet: Ist das Rh-Faktor positiv/negativ." },
-    { concept: "bio:k10:humangen:p3", term: "autosomal", meaning: "Ist der Gen auf Autosom", wissen: "Betrifft beide Geschlechter ähnlich. Bezug: Humangenetik. autosomal bedeutet: Ist der Gen auf Autosom." },
-    { concept: "bio:k10:humangen:p4", term: "gonosomal", meaning: "Ist der Gen auf Geschlechtschromosom", wissen: "Oft X-chromosomal. Bezug: Humangenetik. gonosomal bedeutet: Ist der Gen auf Geschlechtschromosom." },
-    { concept: "bio:k10:humangen:p5", term: "Trisomie 21", meaning: "Ist Drei Chromosomen 21", wissen: "Genommutation mit typischem Syndrom. Bezug: Humangenetik. Trisomie 21 bedeutet: Ist Drei Chromosomen 21." },
-    { concept: "bio:k10:humangen:p6", term: "Hämophilie", meaning: "Ist die Blutgerinnungsstörung", wissen: "Klassisch X-chromosomal. Bezug: Humangenetik. Hämophilie bedeutet: Ist die Blutgerinnungsstörung." },
-    { concept: "bio:k10:humangen:p7", term: "Phenylketonurie", meaning: "Ist die Stoffwechselstörung durch Genmutation", wissen: "Frühdiagnostik wichtig. Bezug: Humangenetik. Phenylketonurie bedeutet: Ist die Stoffwechselstörung durch Genmutation." },
-    { concept: "bio:k10:humangen:p8", term: "pränatale Diagnostik", meaning: "Ist die Untersuchung vor der Geburt", wissen: "Ethisch und rechtlich sensibel. Bezug: Humangenetik. pränatale Diagnostik bedeutet: Ist die Untersuchung vor der Geburt." },
-    { concept: "bio:k10:humangen:p9", term: "Erbkrankheit", meaning: "Ist die genetisch bedingte Erkrankung", wissen: "Ursachen, Symptome, Therapie unterschiedlich. Bezug: Humangenetik. Erbkrankheit bedeutet: Ist die genetisch bedingte Erkrankung." },
-    { concept: "bio:k10:humangen:p10", term: "Beratung", meaning: "Unterstützt informierte Entscheidungen; es handelt sich um die humangenetische Aufklärung", wissen: "Unterstützt informierte Entscheidungen. Bezug: Humangenetik. Beratung bedeutet: Unterstützt informierte Entscheidungen; es handelt sich um die humangenetische Aufklärung." },
-    { concept: "bio:k10:humangen:p11", term: "Inklusion", meaning: "Ist die Teilhabe betroffener Menschen", wissen: "Ethischer Aspekt neben Diagnostik. Bezug: Humangenetik. Inklusion bedeutet: Ist die Teilhabe betroffener Menschen." },
+    { concept: "bio:k10:humangen:p0", term: "Stammbaumanalyse", meaning: "Zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", wissen: "Zeigt dominant/rezessiv und gonosomal. Bezug: Humangenetik. Stammbaumanalyse bedeutet: Zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren." },
+    { concept: "bio:k10:humangen:p1", term: "AB0-System", meaning: "Ist der blutgruppen A und B und AB und 0.", wissen: "Klassisches Beispiel multipler Allele. Bezug: Humangenetik. AB0-System bedeutet: Ist der blutgruppen A und B und AB und 0." },
+    { concept: "bio:k10:humangen:p2", term: "Rhesussystem", meaning: "Beschreibt relevant bei Schwangerschaft als biologisches Merkmal mit klarer Funktion.", wissen: "Relevant bei Schwangerschaft. Bezug: Humangenetik. Rhesussystem bedeutet: Ist das Rh-Faktor positiv/negativ." },
+    { concept: "bio:k10:humangen:p3", term: "autosomal", meaning: "Beschreibt betrifft beide Geschlechter ähnlich als biologisches Merkmal mit klarer Funktion.", wissen: "Betrifft beide Geschlechter ähnlich. Bezug: Humangenetik. autosomal bedeutet: Ist der Gen auf Autosom." },
+    { concept: "bio:k10:humangen:p4", term: "gonosomal", meaning: "Beschreibt der Gen auf Geschlechtschromosom als biologisches Merkmal mit klarer Funktion.", wissen: "Oft X-chromosomal. Bezug: Humangenetik. gonosomal bedeutet: Ist der Gen auf Geschlechtschromosom." },
+    { concept: "bio:k10:humangen:p5", term: "Trisomie 21", meaning: "Beschreibt genommutation mit typischem Syndrom als biologisches Merkmal mit klarer Funktion.", wissen: "Genommutation mit typischem Syndrom. Bezug: Humangenetik. Trisomie 21 bedeutet: Ist Drei Chromosomen 21." },
+    { concept: "bio:k10:humangen:p6", term: "Hämophilie", meaning: "Beschreibt blutgerinnungsstörung als biologisches Merkmal mit klarer Funktion.", wissen: "Klassisch X-chromosomal. Bezug: Humangenetik. Hämophilie bedeutet: Ist die Blutgerinnungsstörung." },
+    { concept: "bio:k10:humangen:p7", term: "Phenylketonurie", meaning: "Beschreibt stoffwechselstörung durch Genmutation als biologisches Merkmal mit klarer Funktion.", wissen: "Frühdiagnostik wichtig. Bezug: Humangenetik. Phenylketonurie bedeutet: Ist die Stoffwechselstörung durch Genmutation." },
+    { concept: "bio:k10:humangen:p8", term: "pränatale Diagnostik", meaning: "Beschreibt ethisch und rechtlich sensibel als biologisches Merkmal mit klarer Funktion.", wissen: "Ethisch und rechtlich sensibel. Bezug: Humangenetik. pränatale Diagnostik bedeutet: Ist die Untersuchung vor der Geburt." },
+    { concept: "bio:k10:humangen:p9", term: "Erbkrankheit", meaning: "Beschreibt Ursachen, Symptome, Therapie unterschiedlich als biologisches Merkmal mit klarer Funktion.", wissen: "Ursachen, Symptome, Therapie unterschiedlich. Bezug: Humangenetik. Erbkrankheit bedeutet: Ist die genetisch bedingte Erkrankung." },
+    { concept: "bio:k10:humangen:p10", term: "Beratung", meaning: "Beschreibt unterstützt informierte Entscheidungen als biologisches Merkmal mit klarer Funktion.", wissen: "Unterstützt informierte Entscheidungen. Bezug: Humangenetik. Beratung bedeutet: Unterstützt informierte Entscheidungen; es handelt sich um die humangenetische Aufklärung." },
+    { concept: "bio:k10:humangen:p11", term: "Inklusion", meaning: "Beschreibt ethischer Aspekt neben Diagnostik als biologisches Merkmal mit klarer Funktion.", wissen: "Ethischer Aspekt neben Diagnostik. Bezug: Humangenetik. Inklusion bedeutet: Ist die Teilhabe betroffener Menschen." },
   ],
   trueFalse: [
     {
@@ -3980,7 +3980,7 @@ export const k10Evolutionstheorie: BioBank = {
   url: "https://de.wikipedia.org/wiki/Evolutionstheorie",
   conceptPrefix: "bio:k10:evoth",
   facts: [
-    { concept: "bio:k10:evoth:f0", prompt: "Welche Rolle hat Linné?", answer: "Es ist den Systematiken der binären Nomenklatur, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Linné."],
+    { concept: "bio:k10:evoth:f0", prompt: "Welche Rolle hat Linné?", answer: "Es beschreibt systematiken der binären Nomenklatur, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Linné: Systematiker der binären Nomenklatur",
       wissen: fw(
         "Ordnete Arten, ohne moderne Evolutionstheorie. Bezug: Evolutionstheorie.",
@@ -3988,7 +3988,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Systematiker der binären Nomenklatur",
       gapAccepted: ["Linné"],
     },
-    { concept: "bio:k10:evoth:f1", prompt: "Welche Rolle hat Lamarck?", answer: "Es ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lamarck."],
+    { concept: "bio:k10:evoth:f1", prompt: "Welche Rolle hat Lamarck?", answer: "Es ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Lamarck: Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       wissen: fw(
         "Heute so nicht haltbar. Bezug: Evolutionstheorie.",
@@ -3996,7 +3996,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       gapAccepted: ["Lamarck"],
     },
-    { concept: "bio:k10:evoth:f2", prompt: "Was kennzeichnet Darwin?", answer: "Es ist den Begründen der Selektionstheorie, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0, mit der man Darwin im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Darwin."],
+    { concept: "bio:k10:evoth:f2", prompt: "Was kennzeichnet Darwin?", answer: "Es beschreibt begründen der Selektionstheorie, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Darwin: Begründer der Selektionstheorie",
       wissen: fw(
         "Natürliche Auslese erklärt Anpassung. Bezug: Evolutionstheorie.",
@@ -4004,7 +4004,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Begründer der Selektionstheorie",
       gapAccepted: ["Darwin"],
     },
-    { concept: "bio:k10:evoth:f3", prompt: "Was kennzeichnet natürliche Selektion?", answer: "Sie ist die unterschiedlicher Fortpflanzungserfolg, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu natürliche Selektion."],
+    { concept: "bio:k10:evoth:f3", prompt: "Was kennzeichnet natürliche Selektion?", answer: "Sie beschreibt unterschiedlicher Fortpflanzungserfolg, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "natürliche Selektion: Unterschiedlicher Fortpflanzungserfolg",
       wissen: fw(
         "Filtert Variation. Bezug: Evolutionstheorie.",
@@ -4012,7 +4012,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Unterschiedlicher Fortpflanzungserfolg",
       gapAccepted: ["natürliche Selektion"],
     },
-    { concept: "bio:k10:evoth:f4", prompt: "Woran erkennt man Artbegriff?", answer: "Es ist das biologische Art als Fortpflanzungsgemeinschaft, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Artbegriff."],
+    { concept: "bio:k10:evoth:f4", prompt: "Woran erkennt man Artbegriff?", answer: "Es beschreibt biologische Art als Fortpflanzungsgemeinschaft, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles."],
       explanation: "Artbegriff: Biologische Art als Fortpflanzungsgemeinschaft",
       wissen: fw(
         "Ein Konzept unter mehreren. Bezug: Evolutionstheorie.",
@@ -4020,7 +4020,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Biologische Art als Fortpflanzungsgemeinschaft",
       gapAccepted: ["Artbegriff"],
     },
-    { concept: "bio:k10:evoth:f5", prompt: "Was beschreibt Population?", answer: "Sie ist den Individuen einer Art in einem Gebiet, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; es handelt sich um der Vererbungsmuster in Familien rekonstruieren.", "Der blutgruppen A und B und AB und 0, die man von ähnlichen Größen klar unterscheiden kann.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Population."],
+    { concept: "bio:k10:evoth:f5", prompt: "Was beschreibt Population?", answer: "Sie ist den Individuen einer Art in einem Gebiet.", wrong: ["Sie zeigt dominant/rezessiv und gonosomal; Vererbungsmuster in Familien rekonstruieren.", "Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet."],
       explanation: "Population: Individuen einer Art in einem Gebiet",
       wissen: fw(
         "Evolutionsraum. Bezug: Evolutionstheorie.",
@@ -4028,7 +4028,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Individuen einer Art in einem Gebiet",
       gapAccepted: ["Population"],
     },
-    { concept: "bio:k10:evoth:f6", prompt: "Woran erkennt man Mutation?", answer: "Sie ist die Änderung der Erbinformation, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Der blutgruppen A und B und AB und 0, mit der man Mutation im Versuch oder in der Deutung prüft.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Mutation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Mutation."],
+    { concept: "bio:k10:evoth:f6", prompt: "Woran erkennt man Mutation?", answer: "Sie beschreibt änderung der Erbinformation, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Mutation: Änderung der Erbinformation",
       wissen: fw(
         "Liefert Variation. Bezug: Evolutionstheorie.",
@@ -4036,7 +4036,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Änderung der Erbinformation",
       gapAccepted: ["Mutation"],
     },
-    { concept: "bio:k10:evoth:f7", prompt: "Was kennzeichnet Rekombination?", answer: "Sie ist die Neukombination von Allelen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Rekombination.", "Eine typische Verwechslung mit einem Nachbarbegriff von Rekombination.", "Ein Randdetail, das fachlich nicht erklärt, was Rekombination leistet."],
+    { concept: "bio:k10:evoth:f7", prompt: "Was kennzeichnet Rekombination?", answer: "Sie beschreibt neukombination von Allelen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Rekombination: Neukombination von Allelen",
       wissen: fw(
         "Erhöht Vielfalt. Bezug: Evolutionstheorie.",
@@ -4044,7 +4044,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Neukombination von Allelen",
       gapAccepted: ["Rekombination"],
     },
-    { concept: "bio:k10:evoth:f8", prompt: "Woran erkennt man Isolation?", answer: "Sie verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter und grenzt den Begriff von typischen Verwechslungen ab.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Isolation.", "Eine typische Verwechslung mit einem Nachbarbegriff von Isolation.", "Ein Randdetail, das fachlich nicht erklärt, was Isolation leistet."],
+    { concept: "bio:k10:evoth:f8", prompt: "Woran erkennt man Isolation?", answer: "Sie beschreibt sie verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Isolation: Unterbrechung des Genflusses",
       wissen: fw(
         "Fördert Artbildung. Bezug: Evolutionstheorie.",
@@ -4052,7 +4052,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Unterbrechung des Genflusses",
       gapAccepted: ["Isolation"],
     },
-    { concept: "bio:k10:evoth:f9", prompt: "Woran erkennt man Synthetische Theorie?", answer: "Sie ist die modernes Zusammenspiel der Evolutionsfaktoren, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie unterstützt informierte Entscheidungen; es handelt sich um die humangenetische Aufklärung.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Synthetische Theorie.", "Eine typische Verwechslung mit einem Nachbarbegriff von Synthetische Theorie."],
+    { concept: "bio:k10:evoth:f9", prompt: "Woran erkennt man Synthetische Theorie?", answer: "Sie beschreibt modernes Zusammenspiel der Evolutionsfaktoren, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Synthetische Theorie: Modernes Zusammenspiel der Evolutionsfaktoren",
       wissen: fw(
         "Mutation, Selektion, Drift, Genfluss. Bezug: Evolutionstheorie.",
@@ -4060,7 +4060,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Modernes Zusammenspiel der Evolutionsfaktoren",
       gapAccepted: ["Synthetische Theorie"],
     },
-    { concept: "bio:k10:evoth:f10", prompt: "Was kennzeichnet Fitness?", answer: "Es ist das relativer Fortpflanzungserfolg, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Fitness.", "Eine typische Verwechslung mit einem Nachbarbegriff von Fitness.", "Ein Randdetail, das fachlich nicht erklärt, was Fitness leistet."],
+    { concept: "bio:k10:evoth:f10", prompt: "Was kennzeichnet Fitness?", answer: "Es beschreibt relativer Fortpflanzungserfolg, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Fitness: Relativer Fortpflanzungserfolg",
       wissen: fw(
         "Maß der Angepasstheit. Bezug: Evolutionstheorie.",
@@ -4068,7 +4068,7 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Relativer Fortpflanzungserfolg",
       gapAccepted: ["Fitness"],
     },
-    { concept: "bio:k10:evoth:f11", prompt: "Woran erkennt man Anpassung?", answer: "Sie ist die Merkmal mit Selektionsvorteil, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Anpassung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Anpassung.", "Ein Randdetail, das fachlich nicht erklärt, was Anpassung leistet."],
+    { concept: "bio:k10:evoth:f11", prompt: "Woran erkennt man Anpassung?", answer: "Sie beschreibt merkmal mit Selektionsvorteil, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Anpassung: Merkmal mit Selektionsvorteil",
       wissen: fw(
         "Historisch entstanden. Bezug: Evolutionstheorie.",
@@ -4076,13 +4076,13 @@ export const k10Evolutionstheorie: BioBank = {
       gap: "Evolutionstheorie: ___ — Merkmal mit Selektionsvorteil",
       gapAccepted: ["Anpassung"],
     },
-    { concept: "bio:k10:evoth:x0", prompt: "Was beschreibt Begriff?", answer: "Es ist die Wissenschaftsgeschichte, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k10:evoth:x0", prompt: "Was beschreibt Begriff?", answer: "Es beschreibt wissenschaftsgeschichte, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Wissenschaftsgeschichte.",
       wissen: fw(
         "Die moderne Theorie baut auf Variation und Selektion, nicht auf gezielte Vererbung erworbener Übungen.",
       ),
     },
-    { concept: "bio:k10:evoth:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es ist die Systematik, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k10:evoth:x1", prompt: "Welche Rolle hat Begriff?", answer: "Es beschreibt systematik, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Systematik.",
       wissen: fw(
         "Linnés Ordnung war Voraussetzung späterer Evolutionsvergleiche, ohne selbst moderne Selektion zu begründen.",
@@ -4090,18 +4090,18 @@ export const k10Evolutionstheorie: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k10:evoth:p0", term: "Linné", meaning: "Ist der Systematiker der binären Nomenklatur", wissen: "Ordnete Arten, ohne moderne Evolutionstheorie. Bezug: Evolutionstheorie. Linné bedeutet: Ist der Systematiker der binären Nomenklatur." },
-    { concept: "bio:k10:evoth:p1", term: "Lamarck", meaning: "Ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale", wissen: "Heute so nicht haltbar. Bezug: Evolutionstheorie. Lamarck bedeutet: Ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale." },
-    { concept: "bio:k10:evoth:p2", term: "Darwin", meaning: "Ist der Begründen der Selektionstheorie", wissen: "Natürliche Auslese erklärt Anpassung. Bezug: Evolutionstheorie. Darwin bedeutet: Ist der Begründen der Selektionstheorie." },
-    { concept: "bio:k10:evoth:p3", term: "natürliche Selektion", meaning: "Ist die unterschiedlicher Fortpflanzungserfolg", wissen: "Filtert Variation. Bezug: Evolutionstheorie. natürliche Selektion bedeutet: Ist die unterschiedlicher Fortpflanzungserfolg." },
-    { concept: "bio:k10:evoth:p4", term: "Artbegriff", meaning: "Ist das biologische Art als Fortpflanzungsgemeinschaft", wissen: "Ein Konzept unter mehreren. Bezug: Evolutionstheorie. Artbegriff bedeutet: Ist das biologische Art als Fortpflanzungsgemeinschaft." },
-    { concept: "bio:k10:evoth:p5", term: "Population", meaning: "Ist der Individuen einer Art in einem Gebiet", wissen: "Evolutionsraum. Bezug: Evolutionstheorie. Population bedeutet: Ist der Individuen einer Art in einem Gebiet." },
-    { concept: "bio:k10:evoth:p6", term: "Mutation", meaning: "Ist die Änderung der Erbinformation", wissen: "Liefert Variation. Bezug: Evolutionstheorie. Mutation bedeutet: Ist die Änderung der Erbinformation." },
-    { concept: "bio:k10:evoth:p7", term: "Rekombination", meaning: "Ist die Neukombination von Allelen", wissen: "Erhöht Vielfalt. Bezug: Evolutionstheorie. Rekombination bedeutet: Ist die Neukombination von Allelen." },
-    { concept: "bio:k10:evoth:p8", term: "Isolation", meaning: "Verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter", wissen: "Fördert Artbildung. Bezug: Evolutionstheorie. Isolation bedeutet: Verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter." },
-    { concept: "bio:k10:evoth:p9", term: "Synthetische Theorie", meaning: "Ist die modernes Zusammenspiel der Evolutionsfaktoren", wissen: "Mutation, Selektion, Drift, Genfluss. Bezug: Evolutionstheorie. Synthetische Theorie bedeutet: Ist die modernes Zusammenspiel der Evolutionsfaktoren." },
-    { concept: "bio:k10:evoth:p10", term: "Fitness", meaning: "Ist das relativer Fortpflanzungserfolg", wissen: "Maß der Angepasstheit. Bezug: Evolutionstheorie. Fitness bedeutet: Ist das relativer Fortpflanzungserfolg." },
-    { concept: "bio:k10:evoth:p11", term: "Anpassung", meaning: "Ist die merkmal mit Selektionsvorteil", wissen: "Historisch entstanden. Bezug: Evolutionstheorie. Anpassung bedeutet: Ist die merkmal mit Selektionsvorteil." },
+    { concept: "bio:k10:evoth:p0", term: "Linné", meaning: "Beschreibt ordnete Arten, ohne moderne Evolutionstheorie als biologisches Merkmal mit klarer Funktion.", wissen: "Ordnete Arten, ohne moderne Evolutionstheorie. Bezug: Evolutionstheorie. Linné bedeutet: Ist der Systematiker der binären Nomenklatur." },
+    { concept: "bio:k10:evoth:p1", term: "Lamarck", meaning: "Ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", wissen: "Heute so nicht haltbar. Bezug: Evolutionstheorie. Lamarck bedeutet: Ist die frühe Evolutionstheorie mit Vererbung erworbener Merkmale." },
+    { concept: "bio:k10:evoth:p2", term: "Darwin", meaning: "Beschreibt natürliche Auslese erklärt Anpassung als biologisches Merkmal mit klarer Funktion.", wissen: "Natürliche Auslese erklärt Anpassung. Bezug: Evolutionstheorie. Darwin bedeutet: Ist der Begründen der Selektionstheorie." },
+    { concept: "bio:k10:evoth:p3", term: "natürliche Selektion", meaning: "Beschreibt unterschiedlicher Fortpflanzungserfolg als biologisches Merkmal mit klarer Funktion.", wissen: "Filtert Variation. Bezug: Evolutionstheorie. natürliche Selektion bedeutet: Ist die unterschiedlicher Fortpflanzungserfolg." },
+    { concept: "bio:k10:evoth:p4", term: "Artbegriff", meaning: "Beschreibt konzept unter mehreren als biologisches Merkmal mit klarer Funktion.", wissen: "Ein Konzept unter mehreren. Bezug: Evolutionstheorie. Artbegriff bedeutet: Ist das biologische Art als Fortpflanzungsgemeinschaft." },
+    { concept: "bio:k10:evoth:p5", term: "Population", meaning: "Ist der Individuen einer Art in einem Gebiet.", wissen: "Evolutionsraum. Bezug: Evolutionstheorie. Population bedeutet: Ist der Individuen einer Art in einem Gebiet." },
+    { concept: "bio:k10:evoth:p6", term: "Mutation", meaning: "Beschreibt änderung der Erbinformation als biologisches Merkmal mit klarer Funktion.", wissen: "Liefert Variation. Bezug: Evolutionstheorie. Mutation bedeutet: Ist die Änderung der Erbinformation." },
+    { concept: "bio:k10:evoth:p7", term: "Rekombination", meaning: "Beschreibt neukombination von Allelen als biologisches Merkmal mit klarer Funktion.", wissen: "Erhöht Vielfalt. Bezug: Evolutionstheorie. Rekombination bedeutet: Ist die Neukombination von Allelen." },
+    { concept: "bio:k10:evoth:p8", term: "Isolation", meaning: "Verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter.", wissen: "Fördert Artbildung. Bezug: Evolutionstheorie. Isolation bedeutet: Verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter." },
+    { concept: "bio:k10:evoth:p9", term: "Synthetische Theorie", meaning: "Beschreibt mutation, Selektion, Drift, Genfluss als biologisches Merkmal mit klarer Funktion.", wissen: "Mutation, Selektion, Drift, Genfluss. Bezug: Evolutionstheorie. Synthetische Theorie bedeutet: Ist die modernes Zusammenspiel der Evolutionsfaktoren." },
+    { concept: "bio:k10:evoth:p10", term: "Fitness", meaning: "Beschreibt maß der Angepasstheit als biologisches Merkmal mit klarer Funktion.", wissen: "Maß der Angepasstheit. Bezug: Evolutionstheorie. Fitness bedeutet: Ist das relativer Fortpflanzungserfolg." },
+    { concept: "bio:k10:evoth:p11", term: "Anpassung", meaning: "Beschreibt merkmal mit Selektionsvorteil als biologisches Merkmal mit klarer Funktion.", wissen: "Historisch entstanden. Bezug: Evolutionstheorie. Anpassung bedeutet: Ist die merkmal mit Selektionsvorteil." },
   ],
   trueFalse: [
     {
@@ -4127,7 +4127,7 @@ export const k10Progression: BioBank = {
   url: "https://de.wikipedia.org/wiki/Evolution",
   conceptPrefix: "bio:k10:prog",
   facts: [
-    { concept: "bio:k10:prog:f0", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie ist die Vergrößerung der Austauschfläche, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Oberflächenvergrößerung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Oberflächenvergrößerung.", "Ein Randdetail, das fachlich nicht erklärt, was Oberflächenvergrößerung leistet."],
+    { concept: "bio:k10:prog:f0", prompt: "Was kennzeichnet Oberflächenvergrößerung?", answer: "Sie beschreibt vergrößerung der Austauschfläche, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Oberflächenvergrößerung: Vergrößerung der Austauschfläche",
       wissen: fw(
         "z. B. Lungenbläschen. Bezug: Evolutionsprogression.",
@@ -4135,7 +4135,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Vergrößerung der Austauschfläche",
       gapAccepted: ["Oberflächenvergrößerung"],
     },
-    { concept: "bio:k10:prog:f1", prompt: "Was kennzeichnet Lungenoberfläche?", answer: "Sie ist die innere Fläche der Lunge, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lungenoberfläche.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lungenoberfläche.", "Ein Randdetail, das fachlich nicht erklärt, was Lungenoberfläche leistet."],
+    { concept: "bio:k10:prog:f1", prompt: "Was kennzeichnet Lungenoberfläche?", answer: "Sie beschreibt innere Fläche der Lunge, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Lungenoberfläche: Innere Fläche der Lunge",
       wissen: fw(
         "Steigt zu Säugern hin stark. Bezug: Evolutionsprogression.",
@@ -4143,7 +4143,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Innere Fläche der Lunge",
       gapAccepted: ["Lungenoberfläche"],
     },
-    { concept: "bio:k10:prog:f2", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie ist die Gasaustausch über die Haut, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Hautatmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Hautatmung.", "Ein Randdetail, das fachlich nicht erklärt, was Hautatmung leistet."],
+    { concept: "bio:k10:prog:f2", prompt: "Was kennzeichnet Hautatmung?", answer: "Sie beschreibt gasaustausch über die Haut, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Hautatmung: Gasaustausch über die Haut",
       wissen: fw(
         "Bei Lurchen bedeutsam. Bezug: Evolutionsprogression.",
@@ -4151,7 +4151,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Gasaustausch über die Haut",
       gapAccepted: ["Hautatmung"],
     },
-    { concept: "bio:k10:prog:f3", prompt: "Was kennzeichnet Lungenatmung?", answer: "Sie ist die Gasaustausch über Lungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Lungenatmung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Lungenatmung.", "Ein Randdetail, das fachlich nicht erklärt, was Lungenatmung leistet."],
+    { concept: "bio:k10:prog:f3", prompt: "Was kennzeichnet Lungenatmung?", answer: "Sie beschreibt gasaustausch über Lungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Lungenatmung: Gasaustausch über Lungen",
       wissen: fw(
         "Dominanz bei Landwirbeltieren. Bezug: Evolutionsprogression.",
@@ -4159,7 +4159,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Gasaustausch über Lungen",
       gapAccepted: ["Lungenatmung"],
     },
-    { concept: "bio:k10:prog:f4", prompt: "Woran erkennt man Feuchtlufttier?", answer: "Er ist den Tien mit feuchtigkeitsabhängiger Hautatmung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Feuchtlufttier.", "Eine typische Verwechslung mit einem Nachbarbegriff von Feuchtlufttier.", "Ein Randdetail, das fachlich nicht erklärt, was Feuchtlufttier leistet."],
+    { concept: "bio:k10:prog:f4", prompt: "Woran erkennt man Feuchtlufttier?", answer: "Er beschreibt tien mit feuchtigkeitsabhängiger Hautatmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Er ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Er bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Feuchtlufttier: Tier mit feuchtigkeitsabhängiger Hautatmung",
       wissen: fw(
         "Viele Lurche. Bezug: Evolutionsprogression.",
@@ -4167,7 +4167,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Tier mit feuchtigkeitsabhängiger Hautatmung",
       gapAccepted: ["Feuchtlufttier"],
     },
-    { concept: "bio:k10:prog:f5", prompt: "Wozu dient Trockenlufttier?", answer: "Er ist den Tien mit geschützter Luftatmung, den man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Trockenlufttier.", "Eine typische Verwechslung mit einem Nachbarbegriff von Trockenlufttier.", "Ein Randdetail, das fachlich nicht erklärt, was Trockenlufttier leistet."],
+    { concept: "bio:k10:prog:f5", prompt: "Wozu dient Trockenlufttier?", answer: "Er beschreibt tien mit geschützter Luftatmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Er bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Er ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Er ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Trockenlufttier: Tier mit geschützter Luftatmung",
       wissen: fw(
         "Kriechtiere und Säuger. Bezug: Evolutionsprogression.",
@@ -4175,7 +4175,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Tier mit geschützter Luftatmung",
       gapAccepted: ["Trockenlufttier"],
     },
-    { concept: "bio:k10:prog:f6", prompt: "Was kennzeichnet wechselwarm?", answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu wechselwarm.", "Eine typische Verwechslung mit einem Nachbarbegriff von wechselwarm.", "Ein Randdetail, das fachlich nicht erklärt, was wechselwarm leistet."],
+    { concept: "bio:k10:prog:f6", prompt: "Was kennzeichnet wechselwarm?", answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: ["Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Es ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Es ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "wechselwarm: Körpertemperatur folgt Umwelt",
       wissen: fw(
         "Geringerer Dauerenergiebedarf. Bezug: Evolutionsprogression.",
@@ -4183,7 +4183,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Körpertemperatur folgt Umwelt",
       gapAccepted: ["wechselwarm"],
     },
-    { concept: "bio:k10:prog:f7", prompt: "Wozu dient gleichwarm?", answer: "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu gleichwarm.", "Eine typische Verwechslung mit einem Nachbarbegriff von gleichwarm.", "Ein Randdetail, das fachlich nicht erklärt, was gleichwarm leistet."],
+    { concept: "bio:k10:prog:f7", prompt: "Wozu dient gleichwarm?", answer: "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "gleichwarm: Körpertemperatur weitgehend konstant",
       wissen: fw(
         "Hoher Energie- und O₂-Bedarf. Bezug: Evolutionsprogression.",
@@ -4191,7 +4191,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Körpertemperatur weitgehend konstant",
       gapAccepted: ["gleichwarm"],
     },
-    { concept: "bio:k10:prog:f8", prompt: "Was kennzeichnet Leistungssteigerung?", answer: "Sie ist die Zunahme physiologischer Kapazität, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Leistungssteigerung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Leistungssteigerung.", "Ein Randdetail, das fachlich nicht erklärt, was Leistungssteigerung leistet."],
+    { concept: "bio:k10:prog:f8", prompt: "Was kennzeichnet Leistungssteigerung?", answer: "Sie beschreibt zunahme physiologischer Kapazität, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Leistungssteigerung: Zunahme physiologischer Kapazität",
       wissen: fw(
         "z. B. bessere O₂-Versorgung. Bezug: Evolutionsprogression.",
@@ -4199,7 +4199,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Zunahme physiologischer Kapazität",
       gapAccepted: ["Leistungssteigerung"],
     },
-    { concept: "bio:k10:prog:f9", prompt: "Was beschreibt Umweltunabhängigkeit?", answer: "Sie ist die geringere Bindung an Umweltfaktoren, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Sie verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Umweltunabhängigkeit.", "Eine typische Verwechslung mit einem Nachbarbegriff von Umweltunabhängigkeit."],
+    { concept: "bio:k10:prog:f9", prompt: "Was beschreibt Umweltunabhängigkeit?", answer: "Sie beschreibt geringere Bindung an Umweltfaktoren, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Sie bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Umweltunabhängigkeit: Geringere Bindung an Umweltfaktoren",
       wissen: fw(
         "z. B. Temperatur oder Feuchte. Bezug: Evolutionsprogression.",
@@ -4207,7 +4207,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Geringere Bindung an Umweltfaktoren",
       gapAccepted: ["Umweltunabhängigkeit"],
     },
-    { concept: "bio:k10:prog:f10", prompt: "Welche Rolle hat Progression?", answer: "Sie ist die gerichtete Steigerung von Leistungen, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpertemperatur folgt Umwelt und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Progression.", "Eine typische Verwechslung mit einem Nachbarbegriff von Progression."],
+    { concept: "bio:k10:prog:f10", prompt: "Welche Rolle hat Progression?", answer: "Sie beschreibt gerichtete Steigerung von Leistungen, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Progression: Gerichtete Steigerung von Leistungen",
       wissen: fw(
         "Vergleichender Evolutionsaspekt. Bezug: Evolutionsprogression.",
@@ -4215,7 +4215,7 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Gerichtete Steigerung von Leistungen",
       gapAccepted: ["Progression"],
     },
-    { concept: "bio:k10:prog:f11", prompt: "Wozu dient die Organveränderung?", answer: "Sie ist die Umbau von Organen im Verlauf, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Körpertemperatur folgt Umwelt und grenzt den Begriff von typischen Verwechslungen ab.", "Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Organveränderung.", "Eine typische Verwechslung mit einem Nachbarbegriff von Organveränderung."],
+    { concept: "bio:k10:prog:f11", prompt: "Wozu dient die Organveränderung?", answer: "Sie beschreibt die Umbau von Organen im Verlauf.", wrong: ["Sie bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", "Sie ist der Druck des Blutes auf die Gefäßwände im Kreislaufsystem."],
       explanation: "Organveränderung: Umbau von Organen im Verlauf",
       wissen: fw(
         "Struktur folgt neuer Funktion. Bezug: Evolutionsprogression.",
@@ -4223,13 +4223,13 @@ export const k10Progression: BioBank = {
       gap: "Evolutionsprogression: ___ — Umbau von Organen im Verlauf",
       gapAccepted: ["Organveränderung"],
     },
-    { concept: "bio:k10:prog:x0", prompt: "Was passiert bei x0?", answer: "Es ist das Energie und Atmung, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu x0.", "Eine typische Verwechslung mit einem Nachbarbegriff von x0.", "Ein Randdetail, das fachlich nicht erklärt, was x0 leistet."],
+    { concept: "bio:k10:prog:x0", prompt: "Was passiert bei x0?", answer: "Es beschreibt energie und Atmung, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Energie und Atmung.",
       wissen: fw(
         "Gleichwarme Tiere halten Temperatur und brauchen dafür viel Energie — und effizienten Gasaustausch.",
       ),
     },
-    { concept: "bio:k10:prog:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es ist die Progression, die man von ähnlichen Begriffen klar unterscheiden kann.", wrong: ["Ein Vorgang aus dem Nachbarthema ohne klaren Bezug zu Begriff.", "Eine typische Verwechslung mit einem Nachbarbegriff von Begriff.", "Ein Randdetail, das fachlich nicht erklärt, was Begriff leistet."],
+    { concept: "bio:k10:prog:x1", prompt: "Was kennzeichnet Begriff?", answer: "Es beschreibt progression, ein biologisches Merkmal mit klarer Funktion im Organismus oder Ökosystem.", wrong: ["Es entzieht dem Wasser Sauerstoff und dient der Atmung der Fische.", "Es ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles.", "Es bedeutet, dass sich der Protoplast bei Wasserverlust von der Zellwand löst."],
       explanation: "Progression.",
       wissen: fw(
         "Von feuchtigkeitsgebundener Haut-/Lungenatmung zu leistungsfähiger Landlungenatmung nimmt die Unabhängigkeit zu.",
@@ -4237,18 +4237,18 @@ export const k10Progression: BioBank = {
     },
   ],
   pairs: [
-    { concept: "bio:k10:prog:p0", term: "Oberflächenvergrößerung", meaning: "Ist die Vergrößerung der Austauschfläche", wissen: "z. B. Lungenbläschen. Bezug: Evolutionsprogression. Oberflächenvergrößerung bedeutet: Ist die Vergrößerung der Austauschfläche." },
-    { concept: "bio:k10:prog:p1", term: "Lungenoberfläche", meaning: "Ist die innere Fläche der Lunge", wissen: "Steigt zu Säugern hin stark. Bezug: Evolutionsprogression. Lungenoberfläche bedeutet: Ist die innere Fläche der Lunge." },
-    { concept: "bio:k10:prog:p2", term: "Hautatmung", meaning: "Ist die Gasaustausch über die Haut", wissen: "Bei Lurchen bedeutsam. Bezug: Evolutionsprogression. Hautatmung bedeutet: Ist die Gasaustausch über die Haut." },
-    { concept: "bio:k10:prog:p3", term: "Lungenatmung", meaning: "Ist die Gasaustausch über Lungen", wissen: "Dominanz bei Landwirbeltieren. Bezug: Evolutionsprogression. Lungenatmung bedeutet: Ist die Gasaustausch über Lungen." },
-    { concept: "bio:k10:prog:p4", term: "Feuchtlufttier", meaning: "Ist der Tien mit feuchtigkeitsabhängiger Hautatmung", wissen: "Viele Lurche. Bezug: Evolutionsprogression. Feuchtlufttier bedeutet: Ist der Tien mit feuchtigkeitsabhängiger Hautatmung." },
-    { concept: "bio:k10:prog:p5", term: "Trockenlufttier", meaning: "Ist der Tien mit geschützter Luftatmung", wissen: "Kriechtiere und Säuger. Bezug: Evolutionsprogression. Trockenlufttier bedeutet: Ist der Tien mit geschützter Luftatmung." },
-    { concept: "bio:k10:prog:p6", term: "wechselwarm", meaning: "Bedeutet, dass die Körpertemperatur der Umwelt folgt", wissen: "Geringerer Dauerenergiebedarf. Bezug: Evolutionsprogression. wechselwarm bedeutet: Bedeutet, dass die Körpertemperatur der Umwelt folgt." },
-    { concept: "bio:k10:prog:p7", term: "gleichwarm", meaning: "Bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird", wissen: "Hoher Energie- und O₂-Bedarf. Bezug: Evolutionsprogression. gleichwarm bedeutet: Bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird." },
-    { concept: "bio:k10:prog:p8", term: "Leistungssteigerung", meaning: "Ist die Zunahme physiologischer Kapazität", wissen: "z. B. bessere O₂-Versorgung. Bezug: Evolutionsprogression. Leistungssteigerung bedeutet: Ist die Zunahme physiologischer Kapazität." },
-    { concept: "bio:k10:prog:p9", term: "Umweltunabhängigkeit", meaning: "Ist die geringere Bindung an Umweltfaktoren", wissen: "z. B. Temperatur oder Feuchte. Bezug: Evolutionsprogression. Umweltunabhängigkeit bedeutet: Ist die geringere Bindung an Umweltfaktoren." },
-    { concept: "bio:k10:prog:p10", term: "Progression", meaning: "Ist die gerichtete Steigerung von Leistungen", wissen: "Vergleichender Evolutionsaspekt. Bezug: Evolutionsprogression. Progression bedeutet: Ist die gerichtete Steigerung von Leistungen." },
-    { concept: "bio:k10:prog:p11", term: "Organveränderung", meaning: "Dient als Umbau von Organen im Verlauf", wissen: "Struktur folgt neuer Funktion. Bezug: Evolutionsprogression. Organveränderung bedeutet: Dient als Umbau von Organen im Verlauf." },
+    { concept: "bio:k10:prog:p0", term: "Oberflächenvergrößerung", meaning: "Beschreibt vergrößerung der Austauschfläche als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Lungenbläschen. Bezug: Evolutionsprogression. Oberflächenvergrößerung bedeutet: Ist die Vergrößerung der Austauschfläche." },
+    { concept: "bio:k10:prog:p1", term: "Lungenoberfläche", meaning: "Beschreibt steigt zu Säugern hin stark als biologisches Merkmal mit klarer Funktion.", wissen: "Steigt zu Säugern hin stark. Bezug: Evolutionsprogression. Lungenoberfläche bedeutet: Ist die innere Fläche der Lunge." },
+    { concept: "bio:k10:prog:p2", term: "Hautatmung", meaning: "Beschreibt bei Lurchen bedeutsam als biologisches Merkmal mit klarer Funktion.", wissen: "Bei Lurchen bedeutsam. Bezug: Evolutionsprogression. Hautatmung bedeutet: Ist die Gasaustausch über die Haut." },
+    { concept: "bio:k10:prog:p3", term: "Lungenatmung", meaning: "Beschreibt dominanz bei Landwirbeltieren als biologisches Merkmal mit klarer Funktion.", wissen: "Dominanz bei Landwirbeltieren. Bezug: Evolutionsprogression. Lungenatmung bedeutet: Ist die Gasaustausch über Lungen." },
+    { concept: "bio:k10:prog:p4", term: "Feuchtlufttier", meaning: "Beschreibt der Tien mit feuchtigkeitsabhängiger Hautatmung als biologisches Merkmal mit klarer Funktion.", wissen: "Viele Lurche. Bezug: Evolutionsprogression. Feuchtlufttier bedeutet: Ist der Tien mit feuchtigkeitsabhängiger Hautatmung." },
+    { concept: "bio:k10:prog:p5", term: "Trockenlufttier", meaning: "Beschreibt kriechtiere und Säuger als biologisches Merkmal mit klarer Funktion.", wissen: "Kriechtiere und Säuger. Bezug: Evolutionsprogression. Trockenlufttier bedeutet: Ist der Tien mit geschützter Luftatmung." },
+    { concept: "bio:k10:prog:p6", term: "wechselwarm", meaning: "Bedeutet, dass die Körpertemperatur der Umwelt folgt.", wissen: "Geringerer Dauerenergiebedarf. Bezug: Evolutionsprogression. wechselwarm bedeutet: Bedeutet, dass die Körpertemperatur der Umwelt folgt." },
+    { concept: "bio:k10:prog:p7", term: "gleichwarm", meaning: "Bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird.", wissen: "Hoher Energie- und O₂-Bedarf. Bezug: Evolutionsprogression. gleichwarm bedeutet: Bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird." },
+    { concept: "bio:k10:prog:p8", term: "Leistungssteigerung", meaning: "Beschreibt zunahme physiologischer Kapazität als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. bessere O₂-Versorgung. Bezug: Evolutionsprogression. Leistungssteigerung bedeutet: Ist die Zunahme physiologischer Kapazität." },
+    { concept: "bio:k10:prog:p9", term: "Umweltunabhängigkeit", meaning: "Beschreibt temperatur oder Feuchte als biologisches Merkmal mit klarer Funktion.", wissen: "z. B. Temperatur oder Feuchte. Bezug: Evolutionsprogression. Umweltunabhängigkeit bedeutet: Ist die geringere Bindung an Umweltfaktoren." },
+    { concept: "bio:k10:prog:p10", term: "Progression", meaning: "Beschreibt gerichtete Steigerung von Leistungen als biologisches Merkmal mit klarer Funktion.", wissen: "Vergleichender Evolutionsaspekt. Bezug: Evolutionsprogression. Progression bedeutet: Ist die gerichtete Steigerung von Leistungen." },
+    { concept: "bio:k10:prog:p11", term: "Organveränderung", meaning: "Beschreibt struktur folgt neuer Funktion als biologisches Merkmal mit klarer Funktion.", wissen: "Struktur folgt neuer Funktion. Bezug: Evolutionsprogression. Organveränderung bedeutet: Dient als Umbau von Organen im Verlauf." },
   ],
   trueFalse: [
     {
