@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.110] – 2026-10-16
+
+### Behoben
+- **Installer-CI (v0.28.109):** Test-Fixture in `biologieQuality.test.ts`
+  fehlte das Pflichtfeld `wissen` an einem `BioPair` — TypeScript-Fehler
+  beim `tsc`-Schritt von `electron:dist` (alle drei Plattformen).
+
 ## [0.28.109] – 2026-10-16
 
 ### Behoben

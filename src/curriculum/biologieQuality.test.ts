@@ -461,7 +461,15 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
           wissen: 'Kurz.',
         },
       ],
-      pairs: [{ concept: 'bio:test:gloss:p0', term: 'Feuchtgebiet', meaning: 'Nasses Schlüsselhabitat' }],
+      pairs: [
+        {
+          concept: 'bio:test:gloss:p0',
+          term: 'Feuchtgebiet',
+          meaning: 'Nasses Schlüsselhabitat',
+          wissen:
+            'Feuchtgebiete sind wassergeprägte Lebensräume wie Auen und Moore. Sie sind Schlüsselhabitate für viele Wasser- und Watvögel.',
+        },
+      ],
       multis: [
         {
           concept: 'bio:test:gloss:m0',
