@@ -201,6 +201,339 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Wozu dient ein Versuchsprotokoll?",
         "answer": "Es dokumentiert Versuchsschritte und Messwerte so, dass andere den Versuch wiederholen können.",
     },
+    # Physik shared experiment-method core (≈54 topics)
+    "hypothese": {
+        "prompt": "Wozu formuliert man vor dem Versuch eine Hypothese?",
+        "answer": "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.",
+    },
+    "variable": {
+        "prompt": "Was ist eine Variable im Versuch?",
+        "answer": "Sie ist die veränderliche Größe; man unterscheidet unabhängige und abhängige Variable.",
+    },
+    "konstant halten": {
+        "prompt": "Warum hält man Störgrößen konstant?",
+        "answer": "Man kontrolliert Störgrößen, damit der Vergleich fair bleibt und nur eine Größe wirkt.",
+    },
+    "messreihe": {
+        "prompt": "Wozu dient eine Messreihe?",
+        "answer": "Sie liefert mehrere Messwerte, damit Streuung erkennbar und auswertbar wird.",
+    },
+    "fehler": {
+        "prompt": "Was versteht man unter einem Messfehler?",
+        "answer": "Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.",
+    },
+    "auswertung": {
+        "prompt": "Was leistet die Auswertung eines Versuchs?",
+        "answer": "Sie stellt Diagramme und Schlüsse her und prüft sie an der Hypothese.",
+    },
+    "wiederholung": {
+        "prompt": "Wozu wiederholt man Messungen?",
+        "answer": "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.",
+    },
+    "messgerät": {
+        "prompt": "Worauf achtet man bei der Wahl des Messgeräts?",
+        "answer": "Man wählt ein geeignetes Gerät zur Messgröße und mit passender Genauigkeit.",
+    },
+    "sicherheit": {
+        "prompt": "Was gehört zur Sicherheit im Physikversuch?",
+        "answer": "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.",
+    },
+    "frage": {
+        "prompt": "Woran erkennt man eine gute Versuchsfrage?",
+        "answer": "Sie ist klar und messbar formuliert, bevor der Versuch startet.",
+    },
+    "modell": {
+        "prompt": "Wozu dient ein Modell in der Physik?",
+        "answer": "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.",
+    },
+    "einheit": {
+        "prompt": "Wozu braucht jede Messgröße eine Einheit?",
+        "answer": "Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.",
+    },
+    "vergleich": {
+        "prompt": "Wozu dient der Vergleich mit der Erwartung?",
+        "answer": "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.",
+    },
+    # Physik Wärme / Ausdehnung
+    "temperatur": {
+        "prompt": "Was beschreibt die Temperatur?",
+        "answer": "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.",
+    },
+    "ausdehnung": {
+        "prompt": "Was bewirkt die Wärmeausdehnung bei vielen Stoffen?",
+        "answer": "Das Volumen wächst mit steigender Temperatur bei vielen Stoffen.",
+    },
+    "aggregatzustand": {
+        "prompt": "Was meint der Aggregatzustand?",
+        "answer": "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab.",
+    },
+    "schmelzen": {
+        "prompt": "Was geschieht beim Schmelzen?",
+        "answer": "Der Stoff geht bei der Schmelztemperatur vom festen in den flüssigen Zustand über.",
+    },
+    "sieden": {
+        "prompt": "Was geschieht beim Sieden?",
+        "answer": "Die Flüssigkeit geht bei der Siedetemperatur in den gasförmigen Zustand über.",
+    },
+    "wärmeleitung": {
+        "prompt": "Wie transportiert Wärmeleitung Energie?",
+        "answer": "Sie überträgt Wärme durch Kontakt; Metalle leiten dabei besonders gut.",
+    },
+    "dämmung": {
+        "prompt": "Wozu dient die Dämmung?",
+        "answer": "Sie verringert den Wärmefluss, oft mit Hilfe von Luftpolstern.",
+    },
+    "thermometer": {
+        "prompt": "Wozu dient ein Thermometer?",
+        "answer": "Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.",
+    },
+    "kelvin": {
+        "prompt": "Was ist die Kelvin-Skala?",
+        "answer": "Sie ist die SI-Temperaturskala; 0 K entspricht dem absoluten Nullpunkt.",
+    },
+    "wärme": {
+        "prompt": "Was versteht man unter Wärme?",
+        "answer": "Sie ist übertragene Energie und ist nicht dasselbe wie Temperatur.",
+    },
+    "mischung": {
+        "prompt": "Was bestimmt die Endtemperatur einer Mischung?",
+        "answer": "Die gemeinsame Endtemperatur folgt aus der Energiebilanz der Anteile.",
+    },
+    "spezifische wärme": {
+        "prompt": "Was beschreibt die spezifische Wärme?",
+        "answer": "Sie gibt an, wie viel Wärme pro Masse und Kelvin nötig ist, und ist stoffabhängig.",
+    },
+    "konvektion": {
+        "prompt": "Wie transportiert Konvektion Wärme?",
+        "answer": "Sie transportiert Wärme mit einer strömenden Flüssigkeit oder Luft, etwa bei Heizungsluft.",
+    },
+    "strahlung": {
+        "prompt": "Wie transportiert Wärmestrahlung Energie?",
+        "answer": "Sie überträgt Wärme ohne stoffliches Medium, zum Beispiel als Sonnenstrahlung.",
+    },
+    # Physik Kraft / Mechanik
+    "kraft": {
+        "prompt": "Was bewirkt eine Kraft?",
+        "answer": "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.",
+    },
+    "gewichtskraft": {
+        "prompt": "Was beschreibt die Gewichtskraft?",
+        "answer": "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.",
+    },
+    "reibung": {
+        "prompt": "Was bewirkt Reibung?",
+        "answer": "Sie hemmt die Bewegung zwischen Berührflächen und wandelt Bewegungsenergie in Wärme um.",
+    },
+    "federkraft": {
+        "prompt": "Woran erkennt man die Federkraft?",
+        "answer": "Sie wirkt zurücktreibend proportional zur Auslenkung der Feder.",
+    },
+    "hebel": {
+        "prompt": "Wozu dient ein Hebel?",
+        "answer": "Er wandelt Kräfte über Hebelarme und erleichtert so das Heben oder Drehen.",
+    },
+    "flaschenzug": {
+        "prompt": "Wozu dient ein Flaschenzug?",
+        "answer": "Er verringert die nötige Zugkraft, indem er die Last auf mehrere Seilabschnitte verteilt.",
+    },
+    "auftrieb": {
+        "prompt": "Was bewirkt der Auftrieb in Flüssigkeiten?",
+        "answer": "Er wirkt der Gewichtskraft entgegen und entspricht dem Gewicht der verdrängten Flüssigkeit.",
+    },
+    "druck": {
+        "prompt": "Was beschreibt der Druck?",
+        "answer": "Er ist Kraft pro Fläche und wirkt in Flüssigkeiten und Gasen nach allen Seiten.",
+    },
+    "magnetkraft": {
+        "prompt": "Woran erkennt man Magnetkraft?",
+        "answer": "Sie wirkt anziehend oder abstoßend zwischen Magneten und magnetisierbaren Stoffen.",
+    },
+    "elektrostatik": {
+        "prompt": "Was beschreibt die Elektrostatik?",
+        "answer": "Sie beschreibt Kräfte und Felder ruhender elektrischer Ladungen.",
+    },
+    "kraftwandler": {
+        "prompt": "Wozu dient ein Kraftwandler?",
+        "answer": "Er verändert Betrag oder Richtung einer Kraft, etwa mit Hebel oder Flaschenzug.",
+    },
+    "gleichgewicht": {
+        "prompt": "Woran erkennt man mechanisches Gleichgewicht?",
+        "answer": "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.",
+    },
+    "richtung": {
+        "prompt": "Warum gehört zur Kraft eine Richtung?",
+        "answer": "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.",
+    },
+    # Physik Stromkreis
+    "stromkreis": {
+        "prompt": "Woran erkennt man einen geschlossenen Stromkreis?",
+        "answer": "Er bildet einen geschlossenen Weg für Ladung mit Quelle, Leiter und Verbraucher.",
+    },
+    "leiter": {
+        "prompt": "Woran erkennt man einen elektrischen Leiter?",
+        "answer": "Er enthält frei bewegliche Ladungen; Metalle leiten deshalb gut.",
+    },
+    "isolator": {
+        "prompt": "Welche Eigenschaft hat ein Isolator?",
+        "answer": "Er lässt nur sehr geringen Strom zu, etwa Kunststoff oder Keramik.",
+    },
+    "widerstand": {
+        "prompt": "Was bewirkt ein Widerstand im Stromkreis?",
+        "answer": "Er hemmt den Strom; oft gilt R = U / I.",
+    },
+    "reihenschaltung": {
+        "prompt": "Woran erkennt man eine Reihenschaltung?",
+        "answer": "Es gibt einen Stromweg, und die Stromstärke ist überall gleich.",
+    },
+    "parallelschaltung": {
+        "prompt": "Woran erkennt man eine Parallelschaltung?",
+        "answer": "Es gibt mehrere Stromwege, und die Spannung an den Zweigen ist gleich.",
+    },
+    "symbol": {
+        "prompt": "Wozu dienen Schaltsymbole?",
+        "answer": "Sie sind normierte Schaltzeichen für Bauteile in Stromkreisskizzen.",
+    },
+    "spannung": {
+        "prompt": "Was bewirkt die elektrische Spannung?",
+        "answer": "Sie ist die Ursache des Stroms und wird in Volt gemessen.",
+    },
+    "stromstärke": {
+        "prompt": "Was beschreibt die Stromstärke?",
+        "answer": "Sie gibt die Ladung pro Zeit an und wird in Ampere gemessen.",
+    },
+    "kurzschluss": {
+        "prompt": "Was geschieht bei einem Kurzschluss?",
+        "answer": "Der Strom nimmt einen Weg mit sehr geringem Widerstand und kann gefährlich ansteigen.",
+    },
+    "sicherung": {
+        "prompt": "Wozu dient eine Sicherung?",
+        "answer": "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.",
+    },
+    "gefahr": {
+        "prompt": "Warum ist Strom gefährlich?",
+        "answer": "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.",
+    },
+    "ohmsches gesetz": {
+        "prompt": "Was besagt das Ohmsche Gesetz?",
+        "answer": "Es verknüpft Spannung, Stromstärke und Widerstand in der Form U = R · I.",
+    },
+    # Physik Energie / Elektronik residuals
+    "energie": {
+        "prompt": "Was beschreibt Energie in der Physik?",
+        "answer": "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.",
+    },
+    "umwandlung": {
+        "prompt": "Was geschieht bei einer Energieumwandlung?",
+        "answer": "Die Energieform ändert sich, während die Gesamtenergie erhalten bleibt.",
+    },
+    "umwandlung__motion": {
+        "prompt": "Wozu dient die Umwandlung von km/h in m/s?",
+        "answer": "Sie rechnet Geschwindigkeiten mit dem Faktor 3,6 zwischen km/h und m/s um.",
+    },
+    "wirkungsgrad": {
+        "prompt": "Was beschreibt den Wirkungsgrad?",
+        "answer": "Er gibt den nützlichen Anteil der zugeführten Energie an, oft als E_nutz geteilt durch E_zu.",
+    },
+    "leistung": {
+        "prompt": "Was beschreibt die Leistung?",
+        "answer": "Sie gibt die Energie pro Zeit an, oft mit P = E / t.",
+    },
+    "kinetische energie": {
+        "prompt": "Was beschreibt die kinetische Energie?",
+        "answer": "Sie beschreibt die Energie der Bewegung und hängt von Masse und Geschwindigkeit ab.",
+    },
+    "potenzielle energie": {
+        "prompt": "Was beschreibt die potenzielle Energie?",
+        "answer": "Sie beschreibt die Lageenergie im Schwerefeld der Erde.",
+    },
+    "wärmeenergie": {
+        "prompt": "Was beschreibt Wärmeenergie?",
+        "answer": "Sie beschreibt die ungeordnete Teilchenbewegung und ist thermische Energie.",
+    },
+    "elektrische energie": {
+        "prompt": "Wie wird elektrische Energie transportiert?",
+        "answer": "Sie wird über den Strom transportiert, etwa im Haushalt.",
+    },
+    "sparen": {
+        "prompt": "Wozu dient Energiesparen?",
+        "answer": "Es senkt den Verbrauch, zum Beispiel durch Dämmung oder LED-Lampen.",
+    },
+    "generator": {
+        "prompt": "Wozu dient ein Generator?",
+        "answer": "Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk.",
+    },
+    "kraftwerk": {
+        "prompt": "Wozu dient ein Kraftwerk?",
+        "answer": "Es erzeugt elektrische Energie aus verschiedenen Primärquellen.",
+    },
+    "erneuerbar": {
+        "prompt": "Woran erkennt man erneuerbare Energiequellen?",
+        "answer": "Sie nutzen nachwachsende oder kontinuierliche Quellen wie Sonne, Wind oder Wasser.",
+    },
+    "netz": {
+        "prompt": "Wozu dient das elektrische Netz?",
+        "answer": "Es verteilt elektrische Energie über verschiedene Spannungsebenen.",
+    },
+    "arbeit": {
+        "prompt": "Was beschreibt mechanische Arbeit?",
+        "answer": "Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.",
+    },
+    "diode": {
+        "prompt": "Wozu dient eine Diode?",
+        "answer": "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.",
+    },
+    "transistor": {
+        "prompt": "Wozu dient ein Transistor?",
+        "answer": "Er verstärkt oder schaltet Strom, gesteuert über die Basis.",
+    },
+    "bauteil": {
+        "prompt": "Was ist ein elektronisches Bauteil?",
+        "answer": "Es ist ein Bauelement wie Widerstand, Kondensator oder Diode im Stromkreis.",
+    },
+    "led": {
+        "prompt": "Wozu dient eine LED?",
+        "answer": "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.",
+    },
+    "digital": {
+        "prompt": "Was kennzeichnet digitale Elektronik?",
+        "answer": "Sie arbeitet mit den Zuständen 0 und 1 in Logikgattern.",
+    },
+    "kennlinie": {
+        "prompt": "Wozu dient eine Kennlinie?",
+        "answer": "Sie zeigt das Bauteilverhalten als U-I-Diagramm.",
+    },
+    "gleichrichtung": {
+        "prompt": "Was bewirkt die Gleichrichtung?",
+        "answer": "Sie wandelt Wechselspannung mit einer Diode in pulsierende Gleichspannung um.",
+    },
+    "schaltplan": {
+        "prompt": "Was zeigt ein Schaltplan?",
+        "answer": "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.",
+    },
+    "signal": {
+        "prompt": "Was ist ein elektrisches Signal?",
+        "answer": "Es überträgt Information als elektrische Größe, etwa Spannung oder Strom.",
+    },
+    "messung__elektronik": {
+        "prompt": "Womit misst man in der Elektronik?",
+        "answer": "Man misst mit dem Multimeter und wählt passende Messbereiche.",
+    },
+    "sicherheit__elektronik": {
+        "prompt": "Was bedeutet Sicherheit an elektronischen Bauteilen?",
+        "answer": "Man überlastet Bauteile nicht und beachtet die Angaben im Datenblatt.",
+    },
+    "versorgung__elektronik": {
+        "prompt": "Was meint die Versorgung in einer Schaltung?",
+        "answer": "Sie liefert die Betriebsspannung; die Polarität muss stimmen.",
+    },
+    "vorwiderstand": {
+        "prompt": "Wozu dient ein Vorwiderstand bei einer LED?",
+        "answer": "Er schützt die LED, indem er den Strom begrenzt.",
+    },
+    "bauelement": {
+        "prompt": "Was ist ein Bauelement in einer Schaltung?",
+        "answer": "Es ist ein Einzelteil der Schaltung wie Widerstand, Kondensator oder Diode.",
+    },
     # Lurche
     "hautatmung": {
         "prompt": "Wozu dient die Hautatmung bei Lurchen?",
@@ -405,7 +738,9 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Was propagierte die Volksgemeinschaft?",
         "answer": "Sie propagierte die NS-Ideologie einer einheitlichen Volkszugehörigkeit unter Ausschluss von Minderheiten.",
     },
-    "widerstand": {
+    # Geschichte only — electrical "widerstand" stays in Physik HAND above;
+    # lookup is subject-aware via hand_entry().
+    "widerstand__ge": {
         "prompt": "Was umfasst Widerstand gegen Diktatur?",
         "answer": "Er umfasst mutige Handlungen gegen Unrecht und Diktatur trotz hoher Gefahr.",
     },
@@ -621,6 +956,38 @@ def norm_term(term: str) -> str:
     return t
 
 
+def hand_entry(term: str, concept: str = "") -> dict[str, object] | None:
+    """Subject-aware HAND lookup (Geschichte Widerstand ≠ Physik Widerstand)."""
+    key = norm_term(term)
+    base = re.sub(r"\s*\(.*$", "", key).strip()
+    c = (concept or "").lower()
+    if c.startswith("ge:") or ":ge:" in c or "geschichte" in c:
+        for k in (f"{key}__ge", f"{base}__ge", key, base):
+            if k in HAND:
+                return HAND[k]
+        return None
+    # Topic-tagged terms: Messung (elektronik) ≠ motion Messung
+    paren = re.search(r"\(([^)]+)\)", term or "")
+    if paren:
+        tag = paren.group(1).lower().strip()
+        tagged = f"{base}__{tag}"
+        if tagged in HAND:
+            return HAND[tagged]
+        # Do not fall back to generic HAND for shared method words
+        if base in {"messung", "sicherheit", "signal", "versorgung", "netz", "arbeit", "kraftwerk"}:
+            return None
+    # Motion unit conversion vs energy conversion
+    if base == "umwandlung" and (
+        "lb2-wegzeit" in c or "lb2-einheiten" in c or "wegzeit" in c
+    ):
+        if "umwandlung__motion" in HAND:
+            return HAND["umwandlung__motion"]
+    for k in (key, base):
+        if k in HAND and not str(k).endswith(("__ge", "__motion", "__elektronik")):
+            return HAND[k]
+    return None
+
+
 def tip_from_wissen(wissen: str) -> str:
     if not wissen:
         return ""
@@ -689,14 +1056,14 @@ def fix_casing(s: str) -> str:
     return s
 
 
-def curated_core(term: str, meaning: str) -> str:
+def curated_core(term: str, meaning: str, concept: str = "") -> str:
     key = norm_term(term)
     # strip topic parenthetical for lookup
     base = re.sub(r"\s*\(.*$", "", key).strip()
+    he = hand_entry(term, concept)
+    if he and isinstance(he.get("answer"), str):
+        return p6.strip_period(str(he["answer"]))
     for k in (key, base, key.split()[0] if key else ""):
-        if k in HAND and isinstance(HAND[k].get("answer"), str):
-            # Prefer full hand answer later; core from hand answer without period
-            return p6.strip_period(HAND[k]["answer"])  # type: ignore[index]
         if k in p6.CURATED:
             return p6.strip_period(p6.CURATED[k])
         if k in fin.EXTRA:
@@ -780,7 +1147,7 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
     return True
 
 
-def natural_answer(term: str, meaning: str, wissen: str) -> str:
+def natural_answer(term: str, meaning: str, wissen: str, concept: str = "") -> str:
     key = norm_term(term)
     base = re.sub(r"\s*\(.*$", "", key).strip()
     tip = tip_from_wissen(wissen)
@@ -793,14 +1160,14 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
             tip,
         )
 
-    # Full hand answer
-    for k in (key, base):
-        if k in HAND and "answer" in HAND[k]:
-            ans = ensure_period(fix_casing(str(HAND[k]["answer"])))
-            if not BANNED_OUT.search(ans) and not BAD_ANSWER.search(ans) and len(ans.split()) >= 6:
-                return ans
+    # Full hand answer (subject-aware)
+    he = hand_entry(term, concept)
+    if he and "answer" in he:
+        ans = ensure_period(fix_casing(str(he["answer"])))
+        if not BANNED_OUT.search(ans) and not BAD_ANSWER.search(ans) and len(ans.split()) >= 6:
+            return ans
 
-    core = curated_core(term, meaning)
+    core = curated_core(term, meaning, concept)
     # If curated_core returned a full HAND answer (with pronoun), strip for rebuild
     if core.startswith(("Sie ", "Er ", "Es ")):
         return ensure_period(fix_casing(core))
@@ -865,15 +1232,15 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
 def natural_prompt(term: str, meaning: str, concept: str) -> str:
     key = norm_term(term)
     base = re.sub(r"\s*\(.*$", "", key).strip()
-    for k in (key, base):
-        if k in HAND and "prompt" in HAND[k]:
-            return str(HAND[k]["prompt"])
+    he = hand_entry(term, concept)
+    if he and "prompt" in he:
+        return str(he["prompt"])
     disp = p6.display_term(term)
     art = p6.article_for_head(disp.split()[0], term)
     # accusative/dative helpers for stems
     art_acc = {"der": "den", "die": "die", "das": "das"}[art]
     h = int(hashlib.md5(concept.encode()).hexdigest()[:8], 16)
-    core = curated_core(term, meaning)
+    core = curated_core(term, meaning, concept)
     if base == "opak":
         return "Welche Eigenschaft hat ein opaker Körper?"
     if base in {"transparent", "transluzent"}:
@@ -909,6 +1276,7 @@ def sibling_answers(
     term: str,
     pairs: list[tuple[str, str, str]],
     n: int = 3,
+    concept: str = "",
 ) -> list[str]:
     others = [(t, m, w) for t, m, w in pairs if norm_term(t) != norm_term(term)]
     # stable shuffle by term
@@ -916,7 +1284,7 @@ def sibling_answers(
     out: list[str] = []
     seen: set[str] = set()
     for t, m, w in others:
-        ans = natural_answer(t, m, w)
+        ans = natural_answer(t, m, w, concept)
         key = ans.lower()
         if key in seen:
             continue
@@ -958,13 +1326,19 @@ def parse_pairs_near(text: str, fact_start: int) -> list[tuple[str, str, str]]:
     return pairs
 
 
-def needs_rewrite(prompt: str, answer: str, wrongs: list[str], term: str = "") -> bool:
+def needs_rewrite(
+    prompt: str,
+    answer: str,
+    wrongs: list[str],
+    term: str = "",
+    concept: str = "",
+) -> bool:
     blob = " ".join([prompt, answer, *wrongs])
-    key = norm_term(term) if term else ""
-    base = re.sub(r"\s*\(.*$", "", key).strip()
-    if key in HAND or base in HAND:
+    if hand_entry(term, concept):
         # Always refresh HAND terms (answers + sibling distractors stay in sync)
         return True
+    if "Diktatur" in blob and (concept or "").startswith("ph:"):
+        return True  # leaked Geschichte Widerstand into Physik
     if MECH_ANS.search(answer) or MECH_ANS.search(blob):
         return True
     if BANNED_OUT.search(blob):
@@ -1065,14 +1439,14 @@ def process_file(
             meaning, wissen = pairs[0][1], pairs[0][2]
 
         scanned += 1
-        if not needs_rewrite(prompt, answer, wrongs, term):
+        if not needs_rewrite(prompt, answer, wrongs, term, concept):
             continue
         if limit is not None and changed >= limit:
             break
 
         new_prompt = natural_prompt(term, meaning, concept)
-        new_answer = natural_answer(term, meaning, wissen)
-        new_wrongs = sibling_answers(term, pairs, 3)
+        new_answer = natural_answer(term, meaning, wissen, concept)
+        new_wrongs = sibling_answers(term, pairs, 3, concept)
         new_wrongs = [w for w in new_wrongs if w.lower() != new_answer.lower()]
         new_wrongs = new_wrongs[:3]
         if len(new_wrongs) < 3:

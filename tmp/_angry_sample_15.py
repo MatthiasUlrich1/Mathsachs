@@ -66,7 +66,17 @@ VERB = re.compile(
     r"errichtete|unterwarf|übertrug|entmachtete|teilt|begründet|"
     r"lenkt|strebt|sieht|forderte|fordert|stürzte|propagierte|"
     r"prägte|bezeichnet|regelte|regelt|lebte|lebten|verbreitete|zementierte|"
-    r"betont|bedeutet|ausgetragen)\b",
+    r"betont|bedeutet|ausgetragen|"
+    r"wächst|wählt|entspricht|nennt|folgt|überträgt|liefert|prüft|"
+    r"diskutiert|bestätigt|widerlegt|hemmt|wandelt|verändert|erleichtert|"
+    r"verringert|verteilt|heben|beschleunigt|kontrolliert|unterscheidet|"
+    r"formuliert|braucht|gilt|wirkt|bildet|enthält|unterbricht|verknüpft|"
+    r"nimmt|kann|können|steigt|geht|hängt|misst|leitet|transportiert|"
+    r"überträgt|nützt|nutzt|nutze[nt]?|stellt|erhöht|dokumentiert|schützt|sendet|"
+    r"modelliert|erzeugt|ändert|wirft|lässt|bleibt|absorbiert|deutet|"
+    r"beschreibt|regelt|organisiert|prägt|prüft|führt|errichtet|"
+    r"arbeitet|zeigt|senkt|rechnet|verstärkt|schaltet|steuert|teilt|"
+    r"überlastet|beachtet|wählt|liefert|schützt|wandelt|lässt)\b",
     re.I,
 )
 
