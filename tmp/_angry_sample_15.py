@@ -61,7 +61,12 @@ VERB = re.compile(
     r"ersetzt|vermeidet|absorbiert|deutet|entsteht|bleibt|wirft|"
     r"zurückgeworfen|aussendet|beleuchtet|unbeleuchtet|"
     r"gibt|stellt|steckt|erscheint|dokumentiert|wiederholen|hat|"
-    r"verbindet|gewährt|vereint|lebt\w*|bildet)\b",
+    r"verbindet|gewährt|vereint|lebt\w*|bildet|"
+    r"war|waren|prüft|führte|führt|gestaltet|zerstörte|vollzog|"
+    r"errichtete|unterwarf|übertrug|entmachtete|teilt|begründet|"
+    r"lenkt|strebt|sieht|forderte|fordert|stürzte|propagierte|"
+    r"prägte|bezeichnet|regelte|regelt|lebte|lebten|verbreitete|zementierte|"
+    r"betont|bedeutet|ausgetragen)\b",
     re.I,
 )
 

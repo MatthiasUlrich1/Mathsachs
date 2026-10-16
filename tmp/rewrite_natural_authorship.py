@@ -325,11 +325,11 @@ HAND: dict[str, dict[str, object]] = {
         "answer": "Es vereint Gebet, Arbeit und Wissenspflege als geistliches Zentrum.",
     },
     "frondienst": {
-        "prompt": "Was bedeutet Frondienst?",
+        "prompt": "Woran erkennt man den Frondienst?",
         "answer": "Er beschreibt die Arbeitsleistung unfreier Bauern für den Grundherrn.",
     },
     "zehnten": {
-        "prompt": "Was bedeutet der Zehnten?",
+        "prompt": "Woran erkennt man den Zehnt?",
         "answer": "Er beschreibt die Abgabe an die Kirche, oft ein Zehntel der Erträge.",
     },
     "schriftlichkeit": {
@@ -339,6 +339,171 @@ HAND: dict[str, dict[str, object]] = {
     "juden im mittelalter": {
         "prompt": "Welche Lage hatten Juden im Mittelalter?",
         "answer": "Sie lebten als Minderheit mit Sonderstatus zwischen Schutz und Verfolgung.",
+    },
+    # Geschichte densify — high-frequency Moderne / NS / Kalter Krieg
+    "weimarer republik": {
+        "prompt": "Was war die Weimarer Republik?",
+        "answer": "Sie war die erste deutsche Demokratie nach dem Ersten Weltkrieg von 1919 bis 1933.",
+    },
+    "blockbildung": {
+        "prompt": "Was kennzeichnet die Blockbildung nach 1945?",
+        "answer": "Sie kennzeichnet die Lagerbildung im Ost-West-Konflikt nach 1945.",
+    },
+    "stellvertreterkrieg": {
+        "prompt": "Was beschreibt einen Stellvertreterkrieg?",
+        "answer": "Er beschreibt einen Konflikt, der über Drittstaaten oder Proxys ausgetragen wird.",
+    },
+    "ddr": {
+        "prompt": "Was war die DDR?",
+        "answer": "Sie war der sozialistische deutsche Staat auf dem Gebiet der sowjetischen Besatzungszone.",
+    },
+    "brd": {
+        "prompt": "Was war die BRD nach 1949?",
+        "answer": "Sie war die Bundesrepublik Deutschland als demokratischer Weststaat nach 1949.",
+    },
+    "quellenkritik": {
+        "prompt": "Wozu dient die Quellenkritik?",
+        "answer": "Sie prüft Herkunft, Absicht und Glaubwürdigkeit einer historischen Quelle.",
+    },
+    "friedliche revolution": {
+        "prompt": "Was bewirkte die Friedliche Revolution 1989?",
+        "answer": "Sie führte 1989 in der DDR durch Proteste zum Ende der SED-Herrschaft.",
+    },
+    "erinnerungskultur": {
+        "prompt": "Was gestaltet die Erinnerungskultur?",
+        "answer": "Sie gestaltet den gesellschaftlichen Umgang mit Vergangenheit und Gedenken.",
+    },
+    "inflation 1923": {
+        "prompt": "Was kennzeichnet die Inflation 1923?",
+        "answer": "Sie zerstörte Geldwerte und Ersparnisse in der Weimarer Republik durch Hyperinflation.",
+    },
+    "wiedervereinigung": {
+        "prompt": "Was vollzog die Wiedervereinigung 1990?",
+        "answer": "Sie vollzog 1990 die staatliche Einheit Deutschlands nach dem Ende der DDR.",
+    },
+    "mauerbau": {
+        "prompt": "Was bewirkte der Mauerbau 1961?",
+        "answer": "Er errichtete 1961 die Berliner Mauer und zementierte die deutsche Teilung.",
+    },
+    "gleichschaltung": {
+        "prompt": "Was bewirkte die Gleichschaltung?",
+        "answer": "Sie unterwarf Parteien, Verbände und Institutionen der einheitlichen NS-Kontrolle.",
+    },
+    "holocaust": {
+        "prompt": "Was bezeichnet der Holocaust?",
+        "answer": "Er bezeichnet den systematischen Völkermord an Juden und anderen Verfolgten im NS.",
+    },
+    "weltwirtschaftskrise": {
+        "prompt": "Was bezeichnet die Weltwirtschaftskrise?",
+        "answer": "Sie bezeichnet den globalen Wirtschaftseinbruch ab 1929 mit Massenarbeitslosigkeit.",
+    },
+    "warschauer pakt": {
+        "prompt": "Was war der Warschauer Pakt?",
+        "answer": "Er war das östliche Militärbündnis unter Führung der Sowjetunion im Kalten Krieg.",
+    },
+    "volksgemeinschaft": {
+        "prompt": "Was propagierte die Volksgemeinschaft?",
+        "answer": "Sie propagierte die NS-Ideologie einer einheitlichen Volkszugehörigkeit unter Ausschluss von Minderheiten.",
+    },
+    "widerstand": {
+        "prompt": "Was umfasst Widerstand gegen Diktatur?",
+        "answer": "Er umfasst mutige Handlungen gegen Unrecht und Diktatur trotz hoher Gefahr.",
+    },
+    "ermächtigungsgesetz": {
+        "prompt": "Was bewirkte das Ermächtigungsgesetz 1933?",
+        "answer": "Es übertrug 1933 der Regierung Gesetzgebungsrechte und entmachtete den Reichstag.",
+    },
+    "propaganda": {
+        "prompt": "Wozu dient Propaganda in Diktaturen?",
+        "answer": "Sie steuert die öffentliche Meinung durch gezielte Medien- und Massenbeeinflussung.",
+    },
+    "nato": {
+        "prompt": "Was ist die NATO?",
+        "answer": "Sie ist das westliche Verteidigungsbündnis mit Beistandspflicht der Mitgliedstaaten.",
+    },
+    "kalter krieg": {
+        "prompt": "Was kennzeichnet den Kalten Krieg?",
+        "answer": "Er kennzeichnet den Ost-West-Konflikt nach 1945 mit Blockbildung und Abschreckung.",
+    },
+    "potsdamer konferenz": {
+        "prompt": "Was beschloss die Potsdamer Konferenz?",
+        "answer": "Sie regelte 1945 Besatzung, Demilitarisierung und Grenzen Deutschlands nach dem Krieg.",
+    },
+    "industrialisierung": {
+        "prompt": "Was prägte die Industrialisierung?",
+        "answer": "Sie prägte Wirtschaft und Gesellschaft durch Maschinen, Fabrik und Kapital.",
+    },
+    "gewaltenteilung": {
+        "prompt": "Was bewirkt die Gewaltenteilung?",
+        "answer": "Sie teilt staatliche Macht in Legislative, Exekutive und Judikative.",
+    },
+    "gesellschaftsvertrag": {
+        "prompt": "Was begründet der Gesellschaftsvertrag?",
+        "answer": "Er begründet Herrschaft durch Zustimmung der Bürger statt allein durch Gottesgnadentum.",
+    },
+    "reformation": {
+        "prompt": "Was bezeichnet die Reformation?",
+        "answer": "Sie bezeichnet die Kirchenspaltung und Erneuerung im 16. Jahrhundert.",
+    },
+    "aufklärung": {
+        "prompt": "Was stellt die Aufklärung in den Mittelpunkt?",
+        "answer": "Sie stellt Vernunft und Kritik als Leitideen der Gesellschaft in den Mittelpunkt.",
+    },
+    "absolutismus": {
+        "prompt": "Woran erkennt man den Absolutismus?",
+        "answer": "Er bedeutet unumschränkte Fürstenmacht über Staat und Untertanen.",
+    },
+    "merkantilismus": {
+        "prompt": "Wozu dient der Merkantilismus?",
+        "answer": "Er lenkt die Wirtschaft staatlich zugunsten von Handelsüberschüssen.",
+    },
+    "imperialismus": {
+        "prompt": "Was strebt der Imperialismus an?",
+        "answer": "Er strebt die globale Machtausdehnung von Staaten an.",
+    },
+    "liberalismus": {
+        "prompt": "Was betont der Liberalismus?",
+        "answer": "Er betont individuelle Freiheitsrechte und begrenzte Staatseingriffe.",
+    },
+    "nationalismus": {
+        "prompt": "Was sieht der Nationalismus als zentral an?",
+        "answer": "Er sieht die Nation als zentrale politische Einheit.",
+    },
+    "humanismus": {
+        "prompt": "Was betont der Humanismus?",
+        "answer": "Er betont Bildung und die Würde des Menschen nach antiken Vorbildern.",
+    },
+    "amerikanische revolution": {
+        "prompt": "Was bewirkte die Amerikanische Revolution?",
+        "answer": "Sie führte 1776 zur Unabhängigkeit der amerikanischen Kolonien von Großbritannien.",
+    },
+    "französische revolution": {
+        "prompt": "Was bewirkte die Französische Revolution?",
+        "answer": "Sie stürzte ab 1789 die alte Ordnung in Frankreich und verbreitete Freiheitsideen.",
+    },
+    "napoleonische ordnung": {
+        "prompt": "Was prägte die Napoleonische Ordnung?",
+        "answer": "Sie prägte Europa durch französische Herrschaft, Reformen und Kriege um 1800.",
+    },
+    "arbeiterbewegung": {
+        "prompt": "Was forderte die Arbeiterbewegung?",
+        "answer": "Sie forderte soziale Rechte und politische Mitbestimmung der Industriearbeiterschaft.",
+    },
+    "nationalstaat": {
+        "prompt": "Was beschreibt den Nationalstaat?",
+        "answer": "Er beschreibt einen Staat, der Nation, Territorium und zentrale Herrschaft verbindet.",
+    },
+    "wiener kongress": {
+        "prompt": "Was regelte der Wiener Kongress?",
+        "answer": "Er regelte 1814/15 die Neuordnung Europas nach den Napoleonischen Kriegen.",
+    },
+    "parlamentarismus": {
+        "prompt": "Was kennzeichnet den Parlamentarismus?",
+        "answer": "Er kennzeichnet Herrschaft durch ein gewähltes Parlament mit Gesetzgebungsrechten.",
+    },
+    "urbanisierung": {
+        "prompt": "Was bewirkt die Urbanisierung?",
+        "answer": "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.",
     },
 }
 
@@ -448,8 +613,14 @@ def tip_from_wissen(wissen: str) -> str:
     w = re.sub(r"\.\s*$", "", w)
     if len(w) > 80:
         w = w.split(".")[0].strip()
-    # Avoid meta
+    # Avoid meta / densify crumbs like "vorindustriell. Merkantilismus"
     if re.search(r"Lehrplan|Thema hilft|Gemeint ist", w, re.I):
+        return ""
+    if re.search(r"\.\s*[A-ZÄÖÜ]", w):
+        return ""
+    if len(w.split()) <= 2:
+        return ""
+    if not re.search(r"[a-zäöü]", w):  # all-caps / label
         return ""
     return w
 
@@ -622,14 +793,15 @@ def natural_answer(term: str, meaning: str, wissen: str) -> str:
     core = fix_casing(core)
     pron = p6.pronoun(term)
 
-    # Prefer verb-led always when possible — but avoid "Sie ist ein…" from "Ist …"
-    if re.match(r"^Ist (ein|eine|der|die|das)\b", core, re.I):
-        body = re.sub(r"^Ist\s+", "", core, flags=re.I).strip()
-        # Prefer verb rewrite via curated if still noun-only and short
+    # Prefer verb-led always when possible — avoid mechanical "Sie ist eine…"
+    if re.match(r"^Ist (ein|eine)\b", core, re.I):
+        body = re.sub(r"^Ist\s+(ein|eine)\s+", "", core, flags=re.I).strip()
         if re.search(r"\b(organisiert|verbindet|beschreibt|regelt|bildet|lebt)\b", body, re.I):
             sent = body[0].upper() + body[1:] if body else core
         else:
-            sent = body[0].upper() + body[1:] if body else core
+            sent = f"{pron} gilt als {('ein ' if re.match(r'^Ist ein\b', core, re.I) else 'eine ')}{body}"
+    elif re.match(r"^Ist (der|die|das)\b", core, re.I):
+        sent = f"{pron} {p6.lower_first(core)}"
     elif VERB_LEAD.match(core) or VERBISH.match(core):
         sent = f"{pron} {p6.lower_first(core)}"
     elif re.match(r"^(der|die|das|ein|eine)\b", core, re.I):
