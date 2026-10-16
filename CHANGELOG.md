@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.108] – 2026-10-16
+
+### Behoben
+- **Flache Glossar-MC systemweit gestoppt (Bio/GE/Physik):** Term→Kurzsynonym
+  („Feuchtgebiet“ → „Nasses Schlüsselhabitat“, „Was beschreibt … fachlich?“)
+  wird in `bankGenerate`/`sanitize` verworfen. Thin-Fill-Mix Bio/Physik nur noch
+  Notfall ohne Qualitätsbank. Lehrplan-Gaps Biologie mit echtem Fachwissen
+  (u. a. Vogelschutz: Ramsar, Feuchtgebiet-Typen, Nistkasten/Glas/Hecke);
+  Geschichte Quellen/Lehnswesen verdichtet. Bio-Pack **1.10.0**, Geschichte
+  **1.12.1**.
+
 ## [0.28.107] – 2026-10-16
 
 ### Behoben

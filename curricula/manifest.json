@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-16T05:51:28.031Z",
+  "updatedAt": "2026-10-16T06:48:20.024Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.12.0",
+      "version": "1.12.1",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 163169,
-      "changelog": "Lehrplan-Durchgang Geschichte Gym: K5-Polis-Bank, Physik-Müll aus Schulstoff/Zeitrechnung entfernt, Thin-Fill-Mix aus, Spoiler/Themenbindung gehärtet. Kein neues released:true. 332 Themen."
+      "size": 163120,
+      "changelog": "Flache Glossar-MC über bankGenerate geblockt; Quellen/Lehnswesen mit gehaltvollen Multi/TF verdichtet. Kein neues released:true. 332 Themen."
     },
     {
       "id": "gym-sachsen-biologie",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.9.9",
+      "version": "1.10.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 162064,
-      "changelog": "K8–K10 Dichte-Pass: +24 Lehrplan-Topics (u. a. K9 Blüte/Zellatmung, K10 Replikation/Proteinsynthese/Homininen). released:false. 340 Themen."
+      "size": 162093,
+      "changelog": "Glossar-Synonym-MC entfernt (bankGenerate-Härtung); Lehrplan-Gaps mit echtem Fachwissen (u. a. Vogelschutz/Ramsar/Feuchtgebiete). Thin-Fill nur noch Notfall. 340 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

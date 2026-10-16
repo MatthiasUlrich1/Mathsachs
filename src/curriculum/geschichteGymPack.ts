@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.12.0',
-    changelog: `Lehrplan-Durchgang Geschichte Gym: K5-Polis-Bank, Physik-Müll aus Schulstoff/Zeitrechnung entfernt, Thin-Fill-Mix aus, Spoiler/Themenbindung gehärtet. Kein neues released:true. ${topics} Themen.`,
+    version: '1.12.1',
+    changelog: `Flache Glossar-MC über bankGenerate geblockt; Quellen/Lehnswesen mit gehaltvollen Multi/TF verdichtet. Kein neues released:true. ${topics} Themen.`,
     official,
     extras: [],
   }

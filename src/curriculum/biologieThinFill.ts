@@ -4,7 +4,6 @@
  * Regenerate: node tmp/gen-thin-fill.mjs
  */
 import { bankGenerate } from './biologieBank'
-import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 
 export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
@@ -11736,13 +11735,14 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
   }),
 }
 
-/** Mix filler 3:1 over base so rounds stay dense without dropping specialty UX. */
+/**
+ * Thin-Fill nur als Notfall, wenn keine Qualitätsbank existiert.
+ * Kein 3:1-Mix mehr — Glossar-Füller (Was bedeutet…?) dürfen Qualitätsbanken nicht verwässern.
+ */
 export function withThinFill(
   id: string,
   base: Topic['generate'] | undefined,
 ): Topic['generate'] | undefined {
-  const fill = BIOLOGIE_THIN_FILL_BANKS[id]
-  if (!fill) return base
-  if (!base) return fill
-  return mixedVariants(fill, fill, fill, base)
+  if (base) return base
+  return BIOLOGIE_THIN_FILL_BANKS[id]
 }
