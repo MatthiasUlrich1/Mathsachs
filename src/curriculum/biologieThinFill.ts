@@ -31,7 +31,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb2:fische:f0',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Kieme“?',
+      prompt: 'Was trifft auf „Kieme“ zu?',
       answer: 'Atmungsorgan im Wasser',
       wrong: ['Steuer- und Antriebsorgan', 'Äußere Schutzschicht', 'Sinnesorgan für Druckwellen'],
       explanation: 'Entzieht dem Wasser Sauerstoff. Kieme bedeutet: Atmungsorgan im Wasser.',
@@ -42,7 +42,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f1',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Flosse“?',
+      prompt: 'Was trifft auf „Flosse“ zu?',
       answer: 'Steuer- und Antriebsorgan',
       wrong: ['Atmungsorgan im Wasser', 'Äußere Schutzschicht', 'Sinnesorgan für Druckwellen'],
       explanation: 'Rücken-, Schwanz- und Bauchflossen. Flosse bedeutet: Steuer- und Antriebsorgan.',
@@ -53,7 +53,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f2',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Schuppe“?',
+      prompt: 'Was trifft auf „Schuppe“ zu?',
       answer: 'Äußere Schutzschicht',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Sinnesorgan für Druckwellen'],
       explanation: 'Oft mit Schleimhaut überzogen. Schuppe bedeutet: Äußere Schutzschicht.',
@@ -64,7 +64,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f3',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Seitenlinie“?',
+      prompt: 'Was trifft auf „Seitenlinie“ zu?',
       answer: 'Sinnesorgan für Druckwellen',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Erfasst Bewegungen im Wasser. Seitenlinie bedeutet: Sinnesorgan für Druckwellen.',
@@ -75,7 +75,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f4',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Schwimmblase“?',
+      prompt: 'Was trifft auf „Schwimmblase“ zu?',
       answer: 'Auftriebshilfe vieler Knochenfische',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Reguliert die Schwebehöhe. Schwimmblase bedeutet: Auftriebshilfe vieler Knochenfische.',
@@ -86,7 +86,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f5',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Stromlinienform“?',
+      prompt: 'Was trifft auf „Stromlinienform“ zu?',
       answer: 'Widerstandsarme Körperform',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Angepasstheit an Schwimmen. Stromlinienform bedeutet: Widerstandsarme Körperform.',
@@ -97,7 +97,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f6',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Kiemendeckel“?',
+      prompt: 'Was trifft auf „Kiemendeckel“ zu?',
       answer: 'Schützt die Kiemen',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Bewegt Wasser über die Kiemen. Kiemendeckel bedeutet: Schützt die Kiemen.',
@@ -108,7 +108,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f7',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Laich“?',
+      prompt: 'Was trifft auf „Laich“ zu?',
       answer: 'Eigelege der Fische',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Oft im Wasser abgelegt. Laich bedeutet: Eigelege der Fische.',
@@ -119,7 +119,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f8',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Rogen“?',
+      prompt: 'Was trifft auf „Rogen“ zu?',
       answer: 'Fischeier',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Weibliche Geschlechtsprodukte. Rogen bedeutet: Fischeier.',
@@ -130,7 +130,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f9',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Milch“?',
+      prompt: 'Was trifft auf „Milch“ zu?',
       answer: 'Samenzellen der Fische',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'Männliche Geschlechtsprodukte. Milch bedeutet: Samenzellen der Fische.',
@@ -141,7 +141,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f10',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Raubfisch“?',
+      prompt: 'Was trifft auf „Raubfisch“ zu?',
       answer: 'Ernährt sich von anderen Tieren',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'z. B. Hecht. Raubfisch bedeutet: Ernährt sich von anderen Tieren.',
@@ -152,7 +152,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f11',
-      prompt: '[k5-lb2-fische] Was bedeutet der Fachbegriff „Friedfisch“?',
+      prompt: 'Was trifft auf „Friedfisch“ zu?',
       answer: 'Ernährt sich vor allem pflanzlich/planktisch',
       wrong: ['Atmungsorgan im Wasser', 'Steuer- und Antriebsorgan', 'Äußere Schutzschicht'],
       explanation: 'z. B. Rotauge. Friedfisch bedeutet: Ernährt sich vor allem pflanzlich/planktisch.',
@@ -214,7 +214,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f0',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Kiemenatmung“?',
+      prompt: 'Was trifft auf „Kiemenatmung“ zu?',
       answer: 'Sauerstoffaufnahme aus Wasser',
       wrong: ['Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb', 'Steuerung und Bremsen'],
       explanation: 'Über Kiemenblätter. Kiemenatmung bedeutet: Sauerstoffaufnahme aus Wasser.',
@@ -225,7 +225,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f1',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Schleimhaut“?',
+      prompt: 'Was trifft auf „Schleimhaut“ zu?',
       answer: 'Verringert Reibung und schützt',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Hauptsächlicher Vortrieb', 'Steuerung und Bremsen'],
       explanation: 'Auf Schuppen und Haut. Schleimhaut bedeutet: Verringert Reibung und schützt.',
@@ -236,7 +236,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f2',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Schwanzflosse“?',
+      prompt: 'Was trifft auf „Schwanzflosse“ zu?',
       answer: 'Hauptsächlicher Vortrieb',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Steuerung und Bremsen'],
       explanation: 'Seitliche Schläge. Schwanzflosse bedeutet: Hauptsächlicher Vortrieb.',
@@ -247,7 +247,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f3',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Brustflosse“?',
+      prompt: 'Was trifft auf „Brustflosse“ zu?',
       answer: 'Steuerung und Bremsen',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Paarige Flosse. Brustflosse bedeutet: Steuerung und Bremsen.',
@@ -258,7 +258,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f4',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Rückenflosse“?',
+      prompt: 'Was trifft auf „Rückenflosse“ zu?',
       answer: 'Stabilisiert die Lage',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Verhindert Rollen. Rückenflosse bedeutet: Stabilisiert die Lage.',
@@ -269,7 +269,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f5',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Augenlinse“?',
+      prompt: 'Was trifft auf „Augenlinse“ zu?',
       answer: 'Scharfes Sehen unter Wasser',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Angepasst an Brechung. Augenlinse bedeutet: Scharfes Sehen unter Wasser.',
@@ -280,7 +280,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f6',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Knochenfisch“?',
+      prompt: 'Was trifft auf „Knochenfisch“ zu?',
       answer: 'Skelett vorwiegend knöchern',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'z. B. Forelle. Knochenfisch bedeutet: Skelett vorwiegend knöchern.',
@@ -291,7 +291,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f7',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Knorpelfisch“?',
+      prompt: 'Was trifft auf „Knorpelfisch“ zu?',
       answer: 'Skelett aus Knorpel',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'z. B. Hai. Knorpelfisch bedeutet: Skelett aus Knorpel.',
@@ -302,7 +302,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f8',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Wechselwarm“?',
+      prompt: 'Was trifft auf „Wechselwarm“ zu?',
       answer: 'Körpertemperatur folgt Umgebung',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Poikilotherm. Wechselwarm bedeutet: Körpertemperatur folgt Umgebung.',
@@ -313,7 +313,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f9',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Schuppenformel“?',
+      prompt: 'Was trifft auf „Schuppenformel“ zu?',
       answer: 'Zählung der Schuppenreihen',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Artmerkmal. Schuppenformel bedeutet: Zählung der Schuppenreihen.',
@@ -324,7 +324,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f10',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Kiemenlamelle“?',
+      prompt: 'Was trifft auf „Kiemenlamelle“ zu?',
       answer: 'Vergrößert Austauschfläche',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'In der Kieme. Kiemenlamelle bedeutet: Vergrößert Austauschfläche.',
@@ -335,7 +335,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f11',
-      prompt: '[k5-lb2-fische-merkmale] Was bedeutet der Fachbegriff „Seitensinnesorgan“?',
+      prompt: 'Was trifft auf „Seitensinnesorgan“ zu?',
       answer: 'Anderer Name der Seitenlinie',
       wrong: ['Sauerstoffaufnahme aus Wasser', 'Verringert Reibung und schützt', 'Hauptsächlicher Vortrieb'],
       explanation: 'Druckwahrnehmung. Seitensinnesorgan bedeutet: Anderer Name der Seitenlinie.',
@@ -397,7 +397,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:f0',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Amphibie“?',
+      prompt: 'Was trifft auf „Amphibie“ zu?',
       answer: 'Anderer Name für Lurch',
       wrong: ['Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform', 'Wasserlebende Larve'],
       explanation: 'Leben oft wasser- und landbezogen. Amphibie bedeutet: Anderer Name für Lurch.',
@@ -408,7 +408,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f1',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Hautatmung“?',
+      prompt: 'Was trifft auf „Hautatmung“ zu?',
       answer: 'Gasaustausch über feuchte Haut',
       wrong: ['Anderer Name für Lurch', 'Umwandlung Larve zu Adultform', 'Wasserlebende Larve'],
       explanation: 'Ergänzt Lungenatmung. Hautatmung bedeutet: Gasaustausch über feuchte Haut.',
@@ -419,7 +419,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f2',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Metamorphose“?',
+      prompt: 'Was trifft auf „Metamorphose“ zu?',
       answer: 'Umwandlung Larve zu Adultform',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Wasserlebende Larve'],
       explanation: 'Kaulquappe zum Frosch. Metamorphose bedeutet: Umwandlung Larve zu Adultform.',
@@ -430,7 +430,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f3',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Kaulquappe“?',
+      prompt: 'Was trifft auf „Kaulquappe“ zu?',
       answer: 'Wasserlebende Larve',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Zuerst mit Kiemen. Kaulquappe bedeutet: Wasserlebende Larve.',
@@ -441,7 +441,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f4',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Laich“?',
+      prompt: 'Was trifft auf „Laich“ zu?',
       answer: 'Eigelege im Wasser',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Gallertig umhüllt. Laich bedeutet: Eigelege im Wasser.',
@@ -452,7 +452,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f5',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Feuchte Haut“?',
+      prompt: 'Was trifft auf „Feuchte Haut“ zu?',
       answer: 'Ermöglicht Hautatmung',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Trocknet leicht aus. Feuchte Haut bedeutet: Ermöglicht Hautatmung.',
@@ -463,7 +463,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f6',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Froschlurch“?',
+      prompt: 'Was trifft auf „Froschlurch“ zu?',
       answer: 'Ohne Schwanz als Adult',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Frosch, Kröte. Froschlurch bedeutet: Ohne Schwanz als Adult.',
@@ -474,7 +474,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f7',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Schwanzlurch“?',
+      prompt: 'Was trifft auf „Schwanzlurch“ zu?',
       answer: 'Mit Schwanz als Adult',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult.',
@@ -485,7 +485,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f8',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Lungenatmung“?',
+      prompt: 'Was trifft auf „Lungenatmung“ zu?',
       answer: 'Atmung über Lungen',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Beim adulten Lurch wichtig. Lungenatmung bedeutet: Atmung über Lungen.',
@@ -496,7 +496,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f9',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Landgang“?',
+      prompt: 'Was trifft auf „Landgang“ zu?',
       answer: 'Erwachsener Lurch lebt oft an Land',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Atmung und Haut brauchen Feuchtigkeit. Landgang bedeutet: Erwachsener Lurch lebt oft an Land.',
@@ -507,7 +507,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f10',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Wanderung“?',
+      prompt: 'Was trifft auf „Wanderung“ zu?',
       answer: 'Zug zu Laichgewässern',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Gefährdung im Verkehr. Wanderung bedeutet: Zug zu Laichgewässern.',
@@ -518,7 +518,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f11',
-      prompt: '[k5-lb3-lurche] Was bedeutet der Fachbegriff „Giftstoffe“?',
+      prompt: 'Was trifft auf „Giftstoffe“ zu?',
       answer: 'Hautsekrete mancher Arten',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Schutz vor Fressfeinden. Giftstoffe bedeutet: Hautsekrete mancher Arten.',
@@ -580,7 +580,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f0',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Drüsensekret“?',
+      prompt: 'Was trifft auf „Drüsensekret“ zu?',
       answer: 'Feuchthält und schützt die Haut',
       wrong: ['Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine', 'Haut zwischen Zehen'],
       explanation: 'Bei vielen Amphibien. Drüsensekret bedeutet: Feuchthält und schützt die Haut.',
@@ -591,7 +591,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f1',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Trommelfell“?',
+      prompt: 'Was trifft auf „Trommelfell“ zu?',
       answer: 'Hörorgan am Kopf vieler Frösche',
       wrong: ['Feuchthält und schützt die Haut', 'Kraftvolle Hinterbeine', 'Haut zwischen Zehen'],
       explanation: 'Schallwahrnehmung. Trommelfell bedeutet: Hörorgan am Kopf vieler Frösche.',
@@ -602,7 +602,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f2',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Springbeine“?',
+      prompt: 'Was trifft auf „Springbeine“ zu?',
       answer: 'Kraftvolle Hinterbeine',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Haut zwischen Zehen'],
       explanation: 'Fortbewegung an Land. Springbeine bedeutet: Kraftvolle Hinterbeine.',
@@ -613,7 +613,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f3',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Schwimmhaut“?',
+      prompt: 'Was trifft auf „Schwimmhaut“ zu?',
       answer: 'Haut zwischen Zehen',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Schwimmen im Wasser. Schwimmhaut bedeutet: Haut zwischen Zehen.',
@@ -624,7 +624,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f4',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Lidschlag“?',
+      prompt: 'Was trifft auf „Lidschlag“ zu?',
       answer: 'Befeuchtet und schützt Augen',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Anpassung an Landleben. Lidschlag bedeutet: Befeuchtet und schützt Augen.',
@@ -635,7 +635,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f5',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Kloake“?',
+      prompt: 'Was trifft auf „Kloake“ zu?',
       answer: 'Gemeinsame Körperöffnung',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Verdauung und Fortpflanzung. Kloake bedeutet: Gemeinsame Körperöffnung.',
@@ -646,7 +646,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f6',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Nictitans“?',
+      prompt: 'Was trifft auf „Nictitans“ zu?',
       answer: 'Nickhaut am Auge',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Schutz unter Wasser. Nictitans bedeutet: Nickhaut am Auge.',
@@ -657,7 +657,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f7',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Haut Capillarnetz“?',
+      prompt: 'Was trifft auf „Haut Capillarnetz“ zu?',
       answer: 'Blutgefäße nah an der Oberfläche',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Für Hautatmung. Haut Capillarnetz bedeutet: Blutgefäße nah an der Oberfläche.',
@@ -668,7 +668,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f8',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Poikilothermie“?',
+      prompt: 'Was trifft auf „Poikilothermie“ zu?',
       answer: 'Wechselwarme Körpertemperatur',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Abhängig von Umgebung. Poikilothermie bedeutet: Wechselwarme Körpertemperatur.',
@@ -679,7 +679,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f9',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Laichschnur“?',
+      prompt: 'Was trifft auf „Laichschnur“ zu?',
       answer: 'Eiform mancher Kröten',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Lange Schnüre. Laichschnur bedeutet: Eiform mancher Kröten.',
@@ -690,7 +690,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f10',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Laichballen“?',
+      prompt: 'Was trifft auf „Laichballen“ zu?',
       answer: 'Eiform vieler Frösche',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Gallerte im Wasser. Laichballen bedeutet: Eiform vieler Frösche.',
@@ -701,7 +701,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f11',
-      prompt: '[k5-lb3-lurche-merkmale] Was bedeutet der Fachbegriff „Warnfärbung“?',
+      prompt: 'Was trifft auf „Warnfärbung“ zu?',
       answer: 'Signalisiert Giftigkeit',
       wrong: ['Feuchthält und schützt die Haut', 'Hörorgan am Kopf vieler Frösche', 'Kraftvolle Hinterbeine'],
       explanation: 'Bei manchen Arten. Warnfärbung bedeutet: Signalisiert Giftigkeit.',
@@ -763,7 +763,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f0',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Amphibie“?',
+      prompt: 'Was trifft auf „Amphibie“ zu?',
       answer: 'Anderer Name für Lurch',
       wrong: ['Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform', 'Wasserlebende Larve'],
       explanation: 'Leben oft wasser- und landbezogen. Amphibie bedeutet: Anderer Name für Lurch.',
@@ -774,7 +774,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f1',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Hautatmung“?',
+      prompt: 'Was trifft auf „Hautatmung“ zu?',
       answer: 'Gasaustausch über feuchte Haut',
       wrong: ['Anderer Name für Lurch', 'Umwandlung Larve zu Adultform', 'Wasserlebende Larve'],
       explanation: 'Ergänzt Lungenatmung. Hautatmung bedeutet: Gasaustausch über feuchte Haut.',
@@ -785,7 +785,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f2',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Metamorphose“?',
+      prompt: 'Was trifft auf „Metamorphose“ zu?',
       answer: 'Umwandlung Larve zu Adultform',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Wasserlebende Larve'],
       explanation: 'Kaulquappe zum Frosch. Metamorphose bedeutet: Umwandlung Larve zu Adultform.',
@@ -796,7 +796,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f3',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Kaulquappe“?',
+      prompt: 'Was trifft auf „Kaulquappe“ zu?',
       answer: 'Wasserlebende Larve',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Zuerst mit Kiemen. Kaulquappe bedeutet: Wasserlebende Larve.',
@@ -807,7 +807,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f4',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Laich“?',
+      prompt: 'Was trifft auf „Laich“ zu?',
       answer: 'Eigelege im Wasser',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Gallertig umhüllt. Laich bedeutet: Eigelege im Wasser.',
@@ -818,7 +818,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f5',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Feuchte Haut“?',
+      prompt: 'Was trifft auf „Feuchte Haut“ zu?',
       answer: 'Ermöglicht Hautatmung',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Trocknet leicht aus. Feuchte Haut bedeutet: Ermöglicht Hautatmung.',
@@ -829,7 +829,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f6',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Froschlurch“?',
+      prompt: 'Was trifft auf „Froschlurch“ zu?',
       answer: 'Ohne Schwanz als Adult',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Frosch, Kröte. Froschlurch bedeutet: Ohne Schwanz als Adult.',
@@ -840,7 +840,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f7',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Schwanzlurch“?',
+      prompt: 'Was trifft auf „Schwanzlurch“ zu?',
       answer: 'Mit Schwanz als Adult',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult.',
@@ -851,7 +851,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f8',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Lungenatmung“?',
+      prompt: 'Was trifft auf „Lungenatmung“ zu?',
       answer: 'Atmung über Lungen',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Beim adulten Lurch wichtig. Lungenatmung bedeutet: Atmung über Lungen.',
@@ -862,7 +862,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f9',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Kiemenstadium“?',
+      prompt: 'Was trifft auf „Kiemenstadium“ zu?',
       answer: 'Larve atmet mit Kiemen',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Vor der Metamorphose. Kiemenstadium bedeutet: Larve atmet mit Kiemen.',
@@ -873,7 +873,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f10',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Wanderung“?',
+      prompt: 'Was trifft auf „Wanderung“ zu?',
       answer: 'Zug zu Laichgewässern',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Gefährdung im Verkehr. Wanderung bedeutet: Zug zu Laichgewässern.',
@@ -884,7 +884,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f11',
-      prompt: '[k5-lb3-lurche-meta] Was bedeutet der Fachbegriff „Kiemenrückbildung“?',
+      prompt: 'Was trifft auf „Kiemenrückbildung“ zu?',
       answer: 'Kiemen verschwinden bei der Umwandlung',
       wrong: ['Anderer Name für Lurch', 'Gasaustausch über feuchte Haut', 'Umwandlung Larve zu Adultform'],
       explanation: 'Teil der Metamorphose zum landlebenden Adult. Kiemenrückbildung bedeutet: Kiemen verschwinden bei der Umwandlung.',
@@ -946,7 +946,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f0',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Äußere Befruchtung“?',
+      prompt: 'Was trifft auf „Äußere Befruchtung“ zu?',
       answer: 'Samen trifft Eier im Wasser',
       wrong: ['Umklammerung bei der Paarung', 'Ort der Eiablage', 'Nährstoffvorrat im Ei'],
       explanation: 'Typisch bei vielen Fröschen. Äußere Befruchtung bedeutet: Samen trifft Eier im Wasser.',
@@ -957,7 +957,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f1',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Amplexus“?',
+      prompt: 'Was trifft auf „Amplexus“ zu?',
       answer: 'Umklammerung bei der Paarung',
       wrong: ['Samen trifft Eier im Wasser', 'Ort der Eiablage', 'Nährstoffvorrat im Ei'],
       explanation: 'Männchen hält Weibchen. Amplexus bedeutet: Umklammerung bei der Paarung.',
@@ -968,7 +968,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f2',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Laichgewässer“?',
+      prompt: 'Was trifft auf „Laichgewässer“ zu?',
       answer: 'Ort der Eiablage',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Nährstoffvorrat im Ei'],
       explanation: 'Tümpel, Weiher. Laichgewässer bedeutet: Ort der Eiablage.',
@@ -979,7 +979,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f3',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Dotter“?',
+      prompt: 'Was trifft auf „Dotter“ zu?',
       answer: 'Nährstoffvorrat im Ei',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Ernährt den Embryo. Dotter bedeutet: Nährstoffvorrat im Ei.',
@@ -990,7 +990,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f4',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Gallerte“?',
+      prompt: 'Was trifft auf „Gallerte“ zu?',
       answer: 'Schutzhülle um den Laich',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Hält Feuchtigkeit. Gallerte bedeutet: Schutzhülle um den Laich.',
@@ -1001,7 +1001,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f5',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Innenkiemen“?',
+      prompt: 'Was trifft auf „Innenkiemen“ zu?',
       answer: 'Spätere Larvenkiemen',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Unter Hautfalten. Innenkiemen bedeutet: Spätere Larvenkiemen.',
@@ -1012,7 +1012,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f6',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Außenkiemen“?',
+      prompt: 'Was trifft auf „Außenkiemen“ zu?',
       answer: 'Frühe Larvenkiemen',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Frei sichtbar. Außenkiemen bedeutet: Frühe Larvenkiemen.',
@@ -1023,7 +1023,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f7',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Hinterbeinanlage“?',
+      prompt: 'Was trifft auf „Hinterbeinanlage“ zu?',
       answer: 'Erste Beine der Kaulquappe',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Wachsen während Meta. Hinterbeinanlage bedeutet: Erste Beine der Kaulquappe.',
@@ -1034,7 +1034,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f8',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Schwanzrückbildung“?',
+      prompt: 'Was trifft auf „Schwanzrückbildung“ zu?',
       answer: 'Schwanz schwindet beim Frosch',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Am Ende der Meta. Schwanzrückbildung bedeutet: Schwanz schwindet beim Frosch.',
@@ -1045,7 +1045,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f9',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Brutpflege“?',
+      prompt: 'Was trifft auf „Brutpflege“ zu?',
       answer: 'Selten bei Amphibien',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Manche tragen Eier. Brutpflege bedeutet: Selten bei Amphibien.',
@@ -1056,7 +1056,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f10',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Rufe“?',
+      prompt: 'Was trifft auf „Rufe“ zu?',
       answer: 'Paarungsrufe der Männchen',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Locken Weibchen. Rufe bedeutet: Paarungsrufe der Männchen.',
@@ -1067,7 +1067,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f11',
-      prompt: '[k5-lb3-lurche-fortpflanzung] Was bedeutet der Fachbegriff „Samenleiter“?',
+      prompt: 'Was trifft auf „Samenleiter“ zu?',
       answer: 'Transport männlicher Keimzellen',
       wrong: ['Samen trifft Eier im Wasser', 'Umklammerung bei der Paarung', 'Ort der Eiablage'],
       explanation: 'Zur äußeren Befruchtung. Samenleiter bedeutet: Transport männlicher Keimzellen.',
@@ -1129,7 +1129,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f0',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Reptil“?',
+      prompt: 'Was trifft auf „Reptil“ zu?',
       answer: 'Anderer Name für Kriechtier',
       wrong: ['Trockene Hautbedeckung', 'Hauptatmung an Land', 'Ei mit kalkiger/ledriger Schale'],
       explanation: 'Schuppen/Hornschicht. Reptil bedeutet: Anderer Name für Kriechtier.',
@@ -1140,7 +1140,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f1',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Hornschicht“?',
+      prompt: 'Was trifft auf „Hornschicht“ zu?',
       answer: 'Trockene Hautbedeckung',
       wrong: ['Anderer Name für Kriechtier', 'Hauptatmung an Land', 'Ei mit kalkiger/ledriger Schale'],
       explanation: 'Schutz vor Austrocknung. Hornschicht bedeutet: Trockene Hautbedeckung.',
@@ -1151,7 +1151,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f2',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Lungenatmung“?',
+      prompt: 'Was trifft auf „Lungenatmung“ zu?',
       answer: 'Hauptatmung an Land',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Ei mit kalkiger/ledriger Schale'],
       explanation: 'Keine Hautatmung wie Lurche. Lungenatmung bedeutet: Hauptatmung an Land.',
@@ -1162,7 +1162,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f3',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Schalenei“?',
+      prompt: 'Was trifft auf „Schalenei“ zu?',
       answer: 'Ei mit kalkiger/ledriger Schale',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Entwicklung an Land. Schalenei bedeutet: Ei mit kalkiger/ledriger Schale.',
@@ -1173,7 +1173,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f4',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Innere Befruchtung“?',
+      prompt: 'Was trifft auf „Innere Befruchtung“ zu?',
       answer: 'Befruchtung im Körper',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Typisch für Reptilien. Innere Befruchtung bedeutet: Befruchtung im Körper.',
@@ -1184,7 +1184,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f5',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Poikilotherm“?',
+      prompt: 'Was trifft auf „Poikilotherm“ zu?',
       answer: 'Wechselwarm',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Sonnenbaden zur Erwärmung. Poikilotherm bedeutet: Wechselwarm.',
@@ -1195,7 +1195,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f6',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Häutung“?',
+      prompt: 'Was trifft auf „Häutung“ zu?',
       answer: 'Abstreifen der Hornschicht',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Bei Schlangen und Echsen. Häutung bedeutet: Abstreifen der Hornschicht.',
@@ -1206,7 +1206,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f7',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Kloake“?',
+      prompt: 'Was trifft auf „Kloake“ zu?',
       answer: 'Gemeinsame Körperöffnung',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Wie bei Vögeln und Lurchen. Kloake bedeutet: Gemeinsame Körperöffnung.',
@@ -1217,7 +1217,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f8',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Eidechse“?',
+      prompt: 'Was trifft auf „Eidechse“ zu?',
       answer: 'Heimisches Kriechtier',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Beine und langer Schwanz. Eidechse bedeutet: Heimisches Kriechtier.',
@@ -1228,7 +1228,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f9',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Schlange“?',
+      prompt: 'Was trifft auf „Schlange“ zu?',
       answer: 'Beinloses Kriechtier',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Kriechende Fortbewegung. Schlange bedeutet: Beinloses Kriechtier.',
@@ -1239,7 +1239,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f10',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Schildkröte“?',
+      prompt: 'Was trifft auf „Schildkröte“ zu?',
       answer: 'Panzer aus Knochenplatten',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Land- oder Wasserschildkröte. Schildkröte bedeutet: Panzer aus Knochenplatten.',
@@ -1250,7 +1250,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f11',
-      prompt: '[k5-lb4-kriechtiere] Was bedeutet der Fachbegriff „Dottersack“?',
+      prompt: 'Was trifft auf „Dottersack“ zu?',
       answer: 'Nährstoffversorgung im Ei',
       wrong: ['Anderer Name für Kriechtier', 'Trockene Hautbedeckung', 'Hauptatmung an Land'],
       explanation: 'Beim Embryo. Dottersack bedeutet: Nährstoffversorgung im Ei.',
@@ -1312,7 +1312,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f0',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Trockene Haut“?',
+      prompt: 'Was trifft auf „Trockene Haut“ zu?',
       answer: 'Weniger Wasserverlust',
       wrong: ['Äußere Schuppe', 'Erwärmung des Körpers', 'Riechorgan vieler Schlangen'],
       explanation: 'Angepasstheit an Land. Trockene Haut bedeutet: Weniger Wasserverlust.',
@@ -1323,7 +1323,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f1',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Hornschuppe“?',
+      prompt: 'Was trifft auf „Hornschuppe“ zu?',
       answer: 'Äußere Schuppe',
       wrong: ['Weniger Wasserverlust', 'Erwärmung des Körpers', 'Riechorgan vieler Schlangen'],
       explanation: 'Aus Keratin. Hornschuppe bedeutet: Äußere Schuppe.',
@@ -1334,7 +1334,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f2',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Sonnenbaden“?',
+      prompt: 'Was trifft auf „Sonnenbaden“ zu?',
       answer: 'Erwärmung des Körpers',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Riechorgan vieler Schlangen'],
       explanation: 'Aktivitätssteuerung. Sonnenbaden bedeutet: Erwärmung des Körpers.',
@@ -1345,7 +1345,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f3',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Jacobsonsches Organ“?',
+      prompt: 'Was trifft auf „Jacobsonsches Organ“ zu?',
       answer: 'Riechorgan vieler Schlangen',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Züngeln. Jacobsonsches Organ bedeutet: Riechorgan vieler Schlangen.',
@@ -1356,7 +1356,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f4',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Panzer“?',
+      prompt: 'Was trifft auf „Panzer“ zu?',
       answer: 'Schutz der Schildkröte',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Rücken- und Bauchschild. Panzer bedeutet: Schutz der Schildkröte.',
@@ -1367,7 +1367,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f5',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Giftzahn“?',
+      prompt: 'Was trifft auf „Giftzahn“ zu?',
       answer: 'Bei manchen Schlangen',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Beutefang/Verteidigung. Giftzahn bedeutet: Bei manchen Schlangen.',
@@ -1378,7 +1378,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f6',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Kriechen“?',
+      prompt: 'Was trifft auf „Kriechen“ zu?',
       answer: 'Fortbewegung ohne Beine',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Bei Schlangen. Kriechen bedeutet: Fortbewegung ohne Beine.',
@@ -1389,7 +1389,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f7',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Zehenkralle“?',
+      prompt: 'Was trifft auf „Zehenkralle“ zu?',
       answer: 'Kralle an Zehen',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Bei Eidechsen. Zehenkralle bedeutet: Kralle an Zehen.',
@@ -1400,7 +1400,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f8',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Lidlosigkeit“?',
+      prompt: 'Was trifft auf „Lidlosigkeit“ zu?',
       answer: 'Schlangen ohne bewegliche Lider',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Schutzbrille. Lidlosigkeit bedeutet: Schlangen ohne bewegliche Lider.',
@@ -1411,7 +1411,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f9',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Fluchtreflex“?',
+      prompt: 'Was trifft auf „Fluchtreflex“ zu?',
       answer: 'Schnelles Weghuschen',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Bei Eidechsen. Fluchtreflex bedeutet: Schnelles Weghuschen.',
@@ -1422,7 +1422,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f10',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Autotomie“?',
+      prompt: 'Was trifft auf „Autotomie“ zu?',
       answer: 'Schwanzabwurf',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Ablenkung von Feinden. Autotomie bedeutet: Schwanzabwurf.',
@@ -1433,7 +1433,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f11',
-      prompt: '[k5-lb4-kriechtiere-merkmale] Was bedeutet der Fachbegriff „Nierenkonzentrierung“?',
+      prompt: 'Was trifft auf „Nierenkonzentrierung“ zu?',
       answer: 'Wassersparende Ausscheidung',
       wrong: ['Weniger Wasserverlust', 'Äußere Schuppe', 'Erwärmung des Körpers'],
       explanation: 'Landleben. Nierenkonzentrierung bedeutet: Wassersparende Ausscheidung.',
@@ -1495,7 +1495,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f0',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Zauneidechse“?',
+      prompt: 'Was trifft auf „Zauneidechse“ zu?',
       answer: 'Heimische Eidechse',
       wrong: ['Kleine heimische Eidechse', 'Beinlose Echse', 'Ungiftige Wassernatter'],
       explanation: 'Sonnige Säume. Zauneidechse bedeutet: Heimische Eidechse.',
@@ -1506,7 +1506,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f1',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Waldeidechse“?',
+      prompt: 'Was trifft auf „Waldeidechse“ zu?',
       answer: 'Kleine heimische Eidechse',
       wrong: ['Heimische Eidechse', 'Beinlose Echse', 'Ungiftige Wassernatter'],
       explanation: 'Oft in Wäldern. Waldeidechse bedeutet: Kleine heimische Eidechse.',
@@ -1517,7 +1517,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f2',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Blindschleiche“?',
+      prompt: 'Was trifft auf „Blindschleiche“ zu?',
       answer: 'Beinlose Echse',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Ungiftige Wassernatter'],
       explanation: 'Kein Gift, kein Schlangenbau. Blindschleiche bedeutet: Beinlose Echse.',
@@ -1528,7 +1528,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f3',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Ringelnatter“?',
+      prompt: 'Was trifft auf „Ringelnatter“ zu?',
       answer: 'Ungiftige Wassernatter',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Oft an Gewässern. Ringelnatter bedeutet: Ungiftige Wassernatter.',
@@ -1539,7 +1539,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f4',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Kreuzotter“?',
+      prompt: 'Was trifft auf „Kreuzotter“ zu?',
       answer: 'Giftige heimische Schlange',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Zickzackband. Kreuzotter bedeutet: Giftige heimische Schlange.',
@@ -1550,7 +1550,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f5',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Europäische Sumpfschildkröte“?',
+      prompt: 'Was trifft auf „Europäische Sumpfschildkröte“ zu?',
       answer: 'Heimische Schildkröte',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Selten, geschützt. Europäische Sumpfschildkröte bedeutet: Heimische Schildkröte.',
@@ -1561,7 +1561,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f6',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Mauereidechse“?',
+      prompt: 'Was trifft auf „Mauereidechse“ zu?',
       answer: 'Wärme liebende Eidechse',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'An Felsen/Mauern. Mauereidechse bedeutet: Wärme liebende Eidechse.',
@@ -1572,7 +1572,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f7',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Aspisviper“?',
+      prompt: 'Was trifft auf „Aspisviper“ zu?',
       answer: 'Giftige Viper (südl.)',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Nicht überall heimisch. Aspisviper bedeutet: Giftige Viper (südl.).',
@@ -1583,7 +1583,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f8',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Würfelnatter“?',
+      prompt: 'Was trifft auf „Würfelnatter“ zu?',
       answer: 'Wassernatter',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Gefleckte Zeichnung. Würfelnatter bedeutet: Wassernatter.',
@@ -1594,7 +1594,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f9',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Östliche Eidechse“?',
+      prompt: 'Was trifft auf „Östliche Eidechse“ zu?',
       answer: 'Artenkenntnis regional',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Vergleich mit Zauneidechse. Östliche Eidechse bedeutet: Artenkenntnis regional.',
@@ -1605,7 +1605,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f10',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Landschildkröte“?',
+      prompt: 'Was trifft auf „Landschildkröte“ zu?',
       answer: 'Pflanzenfressend, Panzer',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Terrariumarten ≠ heimisch wild. Landschildkröte bedeutet: Pflanzenfressend, Panzer.',
@@ -1616,7 +1616,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f11',
-      prompt: '[k5-lb4-kriechtiere-arten] Was bedeutet der Fachbegriff „Seeschlange“?',
+      prompt: 'Was trifft auf „Seeschlange“ zu?',
       answer: 'Meeresreptil',
       wrong: ['Heimische Eidechse', 'Kleine heimische Eidechse', 'Beinlose Echse'],
       explanation: 'Nicht heimisch in Sachsen. Seeschlange bedeutet: Meeresreptil.',
@@ -1678,7 +1678,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f0',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Innere Befruchtung“?',
+      prompt: 'Was trifft auf „Innere Befruchtung“ zu?',
       answer: 'Samenübertragung im Körper',
       wrong: ['Ablegen der Schaleneier', 'Nährstoff im Ei', 'Sich entwickelnder Organismus'],
       explanation: 'Vor der Eiablage. Innere Befruchtung bedeutet: Samenübertragung im Körper.',
@@ -1689,7 +1689,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f1',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Eiablage“?',
+      prompt: 'Was trifft auf „Eiablage“ zu?',
       answer: 'Ablegen der Schaleneier',
       wrong: ['Samenübertragung im Körper', 'Nährstoff im Ei', 'Sich entwickelnder Organismus'],
       explanation: 'Oft in Sand/Erde. Eiablage bedeutet: Ablegen der Schaleneier.',
@@ -1700,7 +1700,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f2',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Dotter“?',
+      prompt: 'Was trifft auf „Dotter“ zu?',
       answer: 'Nährstoff im Ei',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Sich entwickelnder Organismus'],
       explanation: 'Ernährt den Embryo. Dotter bedeutet: Nährstoff im Ei.',
@@ -1711,7 +1711,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f3',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Embryo“?',
+      prompt: 'Was trifft auf „Embryo“ zu?',
       answer: 'Sich entwickelnder Organismus',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Im Ei geschützt. Embryo bedeutet: Sich entwickelnder Organismus.',
@@ -1722,7 +1722,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f4',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Inkubation“?',
+      prompt: 'Was trifft auf „Inkubation“ zu?',
       answer: 'Bebrütung durch Wärme',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Umgebungstemperatur. Inkubation bedeutet: Bebrütung durch Wärme.',
@@ -1733,7 +1733,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f5',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Oviparie“?',
+      prompt: 'Was trifft auf „Oviparie“ zu?',
       answer: 'Eiablegende Fortpflanzung',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Viele Reptilien. Oviparie bedeutet: Eiablegende Fortpflanzung.',
@@ -1744,7 +1744,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f6',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Ovoviviparie“?',
+      prompt: 'Was trifft auf „Ovoviviparie“ zu?',
       answer: 'Eier entwickeln sich im Mutterleib',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Manche Schlangen. Ovoviviparie bedeutet: Eier entwickeln sich im Mutterleib.',
@@ -1755,7 +1755,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f7',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Gelege“?',
+      prompt: 'Was trifft auf „Gelege“ zu?',
       answer: 'Anzahl abgelegter Eier',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Artspezifisch. Gelege bedeutet: Anzahl abgelegter Eier.',
@@ -1766,7 +1766,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f8',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Nistplatz“?',
+      prompt: 'Was trifft auf „Nistplatz“ zu?',
       answer: 'Ort der Eiablage',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Warm und geschützt. Nistplatz bedeutet: Ort der Eiablage.',
@@ -1777,7 +1777,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f9',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Schlüpfling“?',
+      prompt: 'Was trifft auf „Schlüpfling“ zu?',
       answer: 'Frisch geschlüpftes Jungtier',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Selbstständig oft. Schlüpfling bedeutet: Frisch geschlüpftes Jungtier.',
@@ -1788,7 +1788,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f10',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Elternfürsorge“?',
+      prompt: 'Was trifft auf „Elternfürsorge“ zu?',
       answer: 'Meist gering bei Reptilien',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Ausnahmen selten. Elternfürsorge bedeutet: Meist gering bei Reptilien.',
@@ -1799,7 +1799,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f11',
-      prompt: '[k5-lb4-kriechtiere-fortpflanzung] Was bedeutet der Fachbegriff „Paarungszeit“?',
+      prompt: 'Was trifft auf „Paarungszeit“ zu?',
       answer: 'Zeit der Fortpflanzung',
       wrong: ['Samenübertragung im Körper', 'Ablegen der Schaleneier', 'Nährstoff im Ei'],
       explanation: 'Oft Frühjahr/Sommer. Paarungszeit bedeutet: Zeit der Fortpflanzung.',
@@ -1861,7 +1861,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb5:voegel:f0',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Feder“?',
+      prompt: 'Was trifft auf „Feder“ zu?',
       answer: 'Körperbedeckung der Vögel',
       wrong: ['Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems', 'Leichte Knochenstruktur'],
       explanation: 'Wärme und Flug. Feder bedeutet: Körperbedeckung der Vögel.',
@@ -1872,7 +1872,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f1',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Schnabel“?',
+      prompt: 'Was trifft auf „Schnabel“ zu?',
       answer: 'Mundwerkzeug ohne Zähne',
       wrong: ['Körperbedeckung der Vögel', 'Teil des Atmungssystems', 'Leichte Knochenstruktur'],
       explanation: 'Form folgt Ernährung. Schnabel bedeutet: Mundwerkzeug ohne Zähne.',
@@ -1883,7 +1883,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f2',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Luftsack“?',
+      prompt: 'Was trifft auf „Luftsack“ zu?',
       answer: 'Teil des Atmungssystems',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Leichte Knochenstruktur'],
       explanation: 'Effiziente Sauerstoffversorgung. Luftsack bedeutet: Teil des Atmungssystems.',
@@ -1894,7 +1894,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f3',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Hohlknochen“?',
+      prompt: 'Was trifft auf „Hohlknochen“ zu?',
       answer: 'Leichte Knochenstruktur',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Fluganpassung. Hohlknochen bedeutet: Leichte Knochenstruktur.',
@@ -1905,7 +1905,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f4',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Brustbeinkamm“?',
+      prompt: 'Was trifft auf „Brustbeinkamm“ zu?',
       answer: 'Ansatz der Flugmuskeln',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Bei Flugvögeln stark. Brustbeinkamm bedeutet: Ansatz der Flugmuskeln.',
@@ -1916,7 +1916,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f5',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Gleichwarm“?',
+      prompt: 'Was trifft auf „Gleichwarm“ zu?',
       answer: 'Konstante Körpertemperatur',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Endotherm. Gleichwarm bedeutet: Konstante Körpertemperatur.',
@@ -1927,7 +1927,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f6',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Kropf“?',
+      prompt: 'Was trifft auf „Kropf“ zu?',
       answer: 'Vorratsmagen-ähnliche Erweiterung',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Speichert Nahrung. Kropf bedeutet: Vorratsmagen-ähnliche Erweiterung.',
@@ -1938,7 +1938,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f7',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Muskelmagen“?',
+      prompt: 'Was trifft auf „Muskelmagen“ zu?',
       answer: 'Zerkleinert Nahrung',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Mit Steinchen oft. Muskelmagen bedeutet: Zerkleinert Nahrung.',
@@ -1949,7 +1949,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f8',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Nest“?',
+      prompt: 'Was trifft auf „Nest“ zu?',
       answer: 'Brut- und Aufzuchtort',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Artspezifischer Bau. Nest bedeutet: Brut- und Aufzuchtort.',
@@ -1960,7 +1960,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f9',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Nesthocker“?',
+      prompt: 'Was trifft auf „Nesthocker“ zu?',
       answer: 'Jungvogel braucht lange Pflege',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'z. B. Singvögel. Nesthocker bedeutet: Jungvogel braucht lange Pflege.',
@@ -1971,7 +1971,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f10',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Nestflüchter“?',
+      prompt: 'Was trifft auf „Nestflüchter“ zu?',
       answer: 'Jungvogel bald mobil',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'z. B. Entenküken. Nestflüchter bedeutet: Jungvogel bald mobil.',
@@ -1982,7 +1982,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f11',
-      prompt: '[k5-lb5-voegel] Was bedeutet der Fachbegriff „Zugvogel“?',
+      prompt: 'Was trifft auf „Zugvogel“ zu?',
       answer: 'Wechselt den Lebensraum saisonal',
       wrong: ['Körperbedeckung der Vögel', 'Mundwerkzeug ohne Zähne', 'Teil des Atmungssystems'],
       explanation: 'Vogelzug. Zugvogel bedeutet: Wechselt den Lebensraum saisonal.',
@@ -2044,7 +2044,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f0',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Balz“?',
+      prompt: 'Was trifft auf „Balz“ zu?',
       answer: 'Paarungsverhalten',
       wrong: ['Eizahl im Nest', 'Wärmen der Eier', 'Nährstoff im Vogelei'],
       explanation: 'Gesang, Posieren. Balz bedeutet: Paarungsverhalten.',
@@ -2055,7 +2055,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f1',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Gelege“?',
+      prompt: 'Was trifft auf „Gelege“ zu?',
       answer: 'Eizahl im Nest',
       wrong: ['Paarungsverhalten', 'Wärmen der Eier', 'Nährstoff im Vogelei'],
       explanation: 'Artspezifisch. Gelege bedeutet: Eizahl im Nest.',
@@ -2066,7 +2066,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f2',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Bebrütung“?',
+      prompt: 'Was trifft auf „Bebrütung“ zu?',
       answer: 'Wärmen der Eier',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Nährstoff im Vogelei'],
       explanation: 'Durch Elterntiere. Bebrütung bedeutet: Wärmen der Eier.',
@@ -2077,7 +2077,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f3',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Dotter“?',
+      prompt: 'Was trifft auf „Dotter“ zu?',
       answer: 'Nährstoff im Vogelei',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Für den Embryo. Dotter bedeutet: Nährstoff im Vogelei.',
@@ -2088,7 +2088,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f4',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Kalkschale“?',
+      prompt: 'Was trifft auf „Kalkschale“ zu?',
       answer: 'Äußere Eischale',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Schutz und Calcium. Kalkschale bedeutet: Äußere Eischale.',
@@ -2099,7 +2099,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f5',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Brütrevier“?',
+      prompt: 'Was trifft auf „Brütrevier“ zu?',
       answer: 'Verteidigtes Gebiet',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Um das Nest. Brütrevier bedeutet: Verteidigtes Gebiet.',
@@ -2110,7 +2110,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f6',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Füttern“?',
+      prompt: 'Was trifft auf „Füttern“ zu?',
       answer: 'Nahrung für Jungvögel',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Eltern bringen Beute. Füttern bedeutet: Nahrung für Jungvögel.',
@@ -2121,7 +2121,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f7',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Flügge“?',
+      prompt: 'Was trifft auf „Flügge“ zu?',
       answer: 'Flugfähig geworden',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Ende der Nestphase. Flügge bedeutet: Flugfähig geworden.',
@@ -2132,7 +2132,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f8',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Nachgelege“?',
+      prompt: 'Was trifft auf „Nachgelege“ zu?',
       answer: 'Neues Gelege nach Verlust',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Bei manchen Arten. Nachgelege bedeutet: Neues Gelege nach Verlust.',
@@ -2143,7 +2143,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f9',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Koloniebrut“?',
+      prompt: 'Was trifft auf „Koloniebrut“ zu?',
       answer: 'Viele Nester nah beieinander',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'z. B. Möwen. Koloniebrut bedeutet: Viele Nester nah beieinander.',
@@ -2154,7 +2154,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f10',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Huder“?',
+      prompt: 'Was trifft auf „Huder“ zu?',
       answer: 'Wärmen der Küken unter Federn',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Wärmeübertragung. Huder bedeutet: Wärmen der Küken unter Federn.',
@@ -2165,7 +2165,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f11',
-      prompt: '[k5-lb5-voegel-fortpflanzung] Was bedeutet der Fachbegriff „Innere Befruchtung“?',
+      prompt: 'Was trifft auf „Innere Befruchtung“ zu?',
       answer: 'Befruchtung vor Eiablage',
       wrong: ['Paarungsverhalten', 'Eizahl im Nest', 'Wärmen der Eier'],
       explanation: 'Wie bei Reptilien. Innere Befruchtung bedeutet: Befruchtung vor Eiablage.',
@@ -2227,7 +2227,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f0',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Fell“?',
+      prompt: 'Was trifft auf „Fell“ zu?',
       answer: 'Haarkleid',
       wrong: ['Erzeugt Milch', 'Stabile Körpertemperatur', 'Trennt Brust- und Bauchhöhle'],
       explanation: 'Wärmeschutz. Fell bedeutet: Haarkleid.',
@@ -2238,7 +2238,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f1',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Milchdrüse“?',
+      prompt: 'Was trifft auf „Milchdrüse“ zu?',
       answer: 'Erzeugt Milch',
       wrong: ['Haarkleid', 'Stabile Körpertemperatur', 'Trennt Brust- und Bauchhöhle'],
       explanation: 'Säugen der Jungen. Milchdrüse bedeutet: Erzeugt Milch.',
@@ -2249,7 +2249,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f2',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Gleichwarm“?',
+      prompt: 'Was trifft auf „Gleichwarm“ zu?',
       answer: 'Stabile Körpertemperatur',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Trennt Brust- und Bauchhöhle'],
       explanation: 'Endotherm. Gleichwarm bedeutet: Stabile Körpertemperatur.',
@@ -2260,7 +2260,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f3',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Zwerchfell“?',
+      prompt: 'Was trifft auf „Zwerchfell“ zu?',
       answer: 'Trennt Brust- und Bauchhöhle',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'Wichtig für Atmung. Zwerchfell bedeutet: Trennt Brust- und Bauchhöhle.',
@@ -2271,7 +2271,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f4',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Gebiss“?',
+      prompt: 'Was trifft auf „Gebiss“ zu?',
       answer: 'Zähne unterschiedlicher Form',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'Angepasst an Nahrung. Gebiss bedeutet: Zähne unterschiedlicher Form.',
@@ -2282,7 +2282,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f5',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Plazenta“?',
+      prompt: 'Was trifft auf „Plazenta“ zu?',
       answer: 'Versorgung im Mutterleib',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'Bei den meisten Säugern. Plazenta bedeutet: Versorgung im Mutterleib.',
@@ -2293,7 +2293,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f6',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Beutel“?',
+      prompt: 'Was trifft auf „Beutel“ zu?',
       answer: 'Aufzucht bei Beuteltieren',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'z. B. Känguru. Beutel bedeutet: Aufzucht bei Beuteltieren.',
@@ -2304,7 +2304,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f7',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Echoortung“?',
+      prompt: 'Was trifft auf „Echoortung“ zu?',
       answer: 'Orientierung mit Schall',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'Bei Fledermäusen. Echoortung bedeutet: Orientierung mit Schall.',
@@ -2315,7 +2315,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f8',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Winterschlaf“?',
+      prompt: 'Was trifft auf „Winterschlaf“ zu?',
       answer: 'Tiefe Winterruhe mit Stoffwechselabsenkung',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'z. B. Igel. Winterschlaf bedeutet: Tiefe Winterruhe mit Stoffwechselabsenkung.',
@@ -2326,7 +2326,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f9',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Winterruhe“?',
+      prompt: 'Was trifft auf „Winterruhe“ zu?',
       answer: 'Leichtere Absenkung',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'z. B. Eichhörnchen. Winterruhe bedeutet: Leichtere Absenkung.',
@@ -2337,7 +2337,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f10',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Revieren“?',
+      prompt: 'Was trifft auf „Revieren“ zu?',
       answer: 'Markieren und Verteidigen',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'Duft, Laute. Revieren bedeutet: Markieren und Verteidigen.',
@@ -2348,7 +2348,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f11',
-      prompt: '[k5-lb6-saeugetiere] Was bedeutet der Fachbegriff „Sozialverband“?',
+      prompt: 'Was trifft auf „Sozialverband“ zu?',
       answer: 'Gruppe mit Rollen',
       wrong: ['Haarkleid', 'Erzeugt Milch', 'Stabile Körpertemperatur'],
       explanation: 'z. B. Wolfsrudel. Sozialverband bedeutet: Gruppe mit Rollen.',
@@ -2410,7 +2410,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f0',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Schädel“?',
+      prompt: 'Was trifft auf „Schädel“ zu?',
       answer: 'Knöcherne Kopfkapsel',
       wrong: ['Zentrale Körperachse', 'Knochen des Brustkorbs', 'Vorderer Brustkorbknochen'],
       explanation: 'Schützt das Gehirn. Schädel bedeutet: Knöcherne Kopfkapsel.',
@@ -2421,7 +2421,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f1',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Wirbelsäule“?',
+      prompt: 'Was trifft auf „Wirbelsäule“ zu?',
       answer: 'Zentrale Körperachse',
       wrong: ['Knöcherne Kopfkapsel', 'Knochen des Brustkorbs', 'Vorderer Brustkorbknochen'],
       explanation: 'Aus Wirbeln. Wirbelsäule bedeutet: Zentrale Körperachse.',
@@ -2432,7 +2432,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f2',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Rippe“?',
+      prompt: 'Was trifft auf „Rippe“ zu?',
       answer: 'Knochen des Brustkorbs',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Vorderer Brustkorbknochen'],
       explanation: 'Schützt Organe. Rippe bedeutet: Knochen des Brustkorbs.',
@@ -2443,7 +2443,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f3',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Brustbein“?',
+      prompt: 'Was trifft auf „Brustbein“ zu?',
       answer: 'Vorderer Brustkorbknochen',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Rippenansatz. Brustbein bedeutet: Vorderer Brustkorbknochen.',
@@ -2454,7 +2454,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f4',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Oberarmknochen“?',
+      prompt: 'Was trifft auf „Oberarmknochen“ zu?',
       answer: 'Knochen der oberen Extremität',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Zwischen Schulter und Ellbogen. Oberarmknochen bedeutet: Knochen der oberen Extremität.',
@@ -2465,7 +2465,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f5',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Oberschenkelknochen“?',
+      prompt: 'Was trifft auf „Oberschenkelknochen“ zu?',
       answer: 'Längster Beinknochen',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Trägt Körpergewicht. Oberschenkelknochen bedeutet: Längster Beinknochen.',
@@ -2476,7 +2476,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f6',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Gelenk“?',
+      prompt: 'Was trifft auf „Gelenk“ zu?',
       answer: 'Bewegliche Knochenverbindung',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Mit Knorpel und Kapsel. Gelenk bedeutet: Bewegliche Knochenverbindung.',
@@ -2487,7 +2487,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f7',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Schultergürtel“?',
+      prompt: 'Was trifft auf „Schultergürtel“ zu?',
       answer: 'Verbindung Arm–Rumpf',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Schulterblatt, Schlüsselbein. Schultergürtel bedeutet: Verbindung Arm–Rumpf.',
@@ -2498,7 +2498,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f8',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Beckengürtel“?',
+      prompt: 'Was trifft auf „Beckengürtel“ zu?',
       answer: 'Verbindung Bein–Rumpf',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Hüftbein. Beckengürtel bedeutet: Verbindung Bein–Rumpf.',
@@ -2509,7 +2509,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f9',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Halswirbel“?',
+      prompt: 'Was trifft auf „Halswirbel“ zu?',
       answer: 'Wirbel im Nacken',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Meist sieben bei Säugern. Halswirbel bedeutet: Wirbel im Nacken.',
@@ -2520,7 +2520,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f10',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Schwanzwirbel“?',
+      prompt: 'Was trifft auf „Schwanzwirbel“ zu?',
       answer: 'Wirbel im Schwanz',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Anzahl artspezifisch. Schwanzwirbel bedeutet: Wirbel im Schwanz.',
@@ -2531,7 +2531,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f11',
-      prompt: '[k5-lb6-saeuger-skelett] Was bedeutet der Fachbegriff „Knochenmark“?',
+      prompt: 'Was trifft auf „Knochenmark“ zu?',
       answer: 'Im Inneren langer Knochen',
       wrong: ['Knöcherne Kopfkapsel', 'Zentrale Körperachse', 'Knochen des Brustkorbs'],
       explanation: 'Blutbildung. Knochenmark bedeutet: Im Inneren langer Knochen.',
@@ -2593,7 +2593,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f0',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Grabfuß“?',
+      prompt: 'Was trifft auf „Grabfuß“ zu?',
       answer: 'Angepasstheit an Graben',
       wrong: ['Schnelle Fortbewegung', 'Greifen und Klettern', 'Gleitflug'],
       explanation: 'z. B. Maulwurf. Grabfuß bedeutet: Angepasstheit an Graben.',
@@ -2604,7 +2604,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f1',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Laufbein“?',
+      prompt: 'Was trifft auf „Laufbein“ zu?',
       answer: 'Schnelle Fortbewegung',
       wrong: ['Angepasstheit an Graben', 'Greifen und Klettern', 'Gleitflug'],
       explanation: 'z. B. Reh. Laufbein bedeutet: Schnelle Fortbewegung.',
@@ -2615,7 +2615,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f2',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Klettergliedmaße“?',
+      prompt: 'Was trifft auf „Klettergliedmaße“ zu?',
       answer: 'Greifen und Klettern',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Gleitflug'],
       explanation: 'z. B. Eichhörnchen. Klettergliedmaße bedeutet: Greifen und Klettern.',
@@ -2626,7 +2626,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f3',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Flughaut“?',
+      prompt: 'Was trifft auf „Flughaut“ zu?',
       answer: 'Gleitflug',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'z. B. Gleitbeutler, Fledermausflügel. Flughaut bedeutet: Gleitflug.',
@@ -2637,7 +2637,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f4',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Schwimmhaut“?',
+      prompt: 'Was trifft auf „Schwimmhaut“ zu?',
       answer: 'Schwimmen',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'z. B. Biber. Schwimmhaut bedeutet: Schwimmen.',
@@ -2648,7 +2648,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f5',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Stoßzahn“?',
+      prompt: 'Was trifft auf „Stoßzahn“ zu?',
       answer: 'Werkzeug/Waffe',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'z. B. Wildschwein. Stoßzahn bedeutet: Werkzeug/Waffe.',
@@ -2659,7 +2659,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f6',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Rüssel“?',
+      prompt: 'Was trifft auf „Rüssel“ zu?',
       answer: 'Greif- und Tastorgan',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'z. B. Elefant. Rüssel bedeutet: Greif- und Tastorgan.',
@@ -2670,7 +2670,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f7',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Echoortung“?',
+      prompt: 'Was trifft auf „Echoortung“ zu?',
       answer: 'Nächtliche Orientierung per Schall',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'Fledermaus. Echoortung bedeutet: nächtliche Orientierung per Schall.',
@@ -2681,7 +2681,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f8',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Winterschlaf“?',
+      prompt: 'Was trifft auf „Winterschlaf“ zu?',
       answer: 'Überdauerung der Kälte',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'Stoffwechselabsenkung. Winterschlaf bedeutet: Überdauerung der Kälte.',
@@ -2692,7 +2692,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f9',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Reviergröße“?',
+      prompt: 'Was trifft auf „Reviergröße“ zu?',
       answer: 'Angepasst an Ressourcen',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'Je nach Art. Reviergröße bedeutet: Angepasst an Ressourcen.',
@@ -2703,7 +2703,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f10',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Sozialstruktur“?',
+      prompt: 'Was trifft auf „Sozialstruktur“ zu?',
       answer: 'Einzelgänger oder Gruppe',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'Angepasstheit. Sozialstruktur bedeutet: Einzelgänger oder Gruppe.',
@@ -2714,7 +2714,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f11',
-      prompt: '[k5-lb6-saeuger-angepasst] Was bedeutet der Fachbegriff „Nahrungsspezialist“?',
+      prompt: 'Was trifft auf „Nahrungsspezialist“ zu?',
       answer: 'Enge Nahrungsnische',
       wrong: ['Angepasstheit an Graben', 'Schnelle Fortbewegung', 'Greifen und Klettern'],
       explanation: 'z. B. Ameisenbär. Nahrungsspezialist bedeutet: Enge Nahrungsnische.',
@@ -2776,7 +2776,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f0',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Artenschutz“?',
+      prompt: 'Was trifft auf „Artenschutz“ zu?',
       answer: 'Schutz bedrohter Arten',
       wrong: ['Verbindung von Lebensräumen', 'Querungshilfe über Straßen', 'Regeln zur Bejagung'],
       explanation: 'Gesetze und Biotope. Artenschutz bedeutet: Schutz bedrohter Arten.',
@@ -2787,7 +2787,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f1',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Biotopverbund“?',
+      prompt: 'Was trifft auf „Biotopverbund“ zu?',
       answer: 'Verbindung von Lebensräumen',
       wrong: ['Schutz bedrohter Arten', 'Querungshilfe über Straßen', 'Regeln zur Bejagung'],
       explanation: 'Wanderkorridore. Biotopverbund bedeutet: Verbindung von Lebensräumen.',
@@ -2798,7 +2798,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f2',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Wildbrücke“?',
+      prompt: 'Was trifft auf „Wildbrücke“ zu?',
       answer: 'Querungshilfe über Straßen',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Regeln zur Bejagung'],
       explanation: 'Verringert Verkehrsopfer. Wildbrücke bedeutet: Querungshilfe über Straßen.',
@@ -2809,7 +2809,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f3',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Jagdrecht“?',
+      prompt: 'Was trifft auf „Jagdrecht“ zu?',
       answer: 'Regeln zur Bejagung',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Nachhaltige Nutzung. Jagdrecht bedeutet: Regeln zur Bejagung.',
@@ -2820,7 +2820,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f4',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Rote Liste“?',
+      prompt: 'Was trifft auf „Rote Liste“ zu?',
       answer: 'Gefährdungseinstufung',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Für Arten. Rote Liste bedeutet: Gefährdungseinstufung.',
@@ -2831,7 +2831,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f5',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Naturschutzgebiet“?',
+      prompt: 'Was trifft auf „Naturschutzgebiet“ zu?',
       answer: 'Geschützte Fläche',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Eingriffe begrenzt. Naturschutzgebiet bedeutet: Geschützte Fläche.',
@@ -2842,7 +2842,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f6',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Neozoon“?',
+      prompt: 'Was trifft auf „Neozoon“ zu?',
       answer: 'Eingebürgerte Art',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'z. B. Waschbär. Neozoon bedeutet: Eingebürgerte Art.',
@@ -2853,7 +2853,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f7',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Prädation“?',
+      prompt: 'Was trifft auf „Prädation“ zu?',
       answer: 'Beutefang durch Räuber',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Natürliche Regulation. Prädation bedeutet: Beutefang durch Räuber.',
@@ -2864,7 +2864,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f8',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Lebensraumverlust“?',
+      prompt: 'Was trifft auf „Lebensraumverlust“ zu?',
       answer: 'Hauptgefährdung vieler Arten',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Durch Bebauung/Landwirtschaft. Lebensraumverlust bedeutet: Hauptgefährdung vieler Arten.',
@@ -2875,7 +2875,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f9',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Lärmschutz“?',
+      prompt: 'Was trifft auf „Lärmschutz“ zu?',
       answer: 'Weniger Störung',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Für sensible Arten. Lärmschutz bedeutet: Weniger Störung.',
@@ -2886,7 +2886,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f10',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Wiederansiedlung“?',
+      prompt: 'Was trifft auf „Wiederansiedlung“ zu?',
       answer: 'Aussetzen nach lokalem Aussterben',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Mit Monitoring. Wiederansiedlung bedeutet: Aussetzen nach lokalem Aussterben.',
@@ -2897,7 +2897,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f11',
-      prompt: '[k5-lb6-saeuger-schutz] Was bedeutet der Fachbegriff „Citizen Science“?',
+      prompt: 'Was trifft auf „Citizen Science“ zu?',
       answer: 'Mitmachen bei Beobachtungen',
       wrong: ['Schutz bedrohter Arten', 'Verbindung von Lebensräumen', 'Querungshilfe über Straßen'],
       explanation: 'Daten für Schutz. Citizen Science bedeutet: Mitmachen bei Beobachtungen.',
@@ -2959,7 +2959,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f0',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Pubertät“?',
+      prompt: 'Was trifft auf „Pubertät“ zu?',
       answer: 'Beginn der Geschlechtsreife',
       wrong: ['Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss', 'Erzeugen Samenzellen'],
       explanation: 'Körperliche Veränderungen. Pubertät bedeutet: Beginn der Geschlechtsreife.',
@@ -2970,7 +2970,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f1',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Menstruation“?',
+      prompt: 'Was trifft auf „Menstruation“ zu?',
       answer: 'Abstoßung der Gebärmutterschleimhaut',
       wrong: ['Beginn der Geschlechtsreife', 'unwillkürlicher Samenerguss', 'Erzeugen Samenzellen'],
       explanation: 'Zyklus. Menstruation bedeutet: Abstoßung der Gebärmutterschleimhaut.',
@@ -2981,7 +2981,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f2',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Pollution“?',
+      prompt: 'Was trifft auf „Pollution“ zu?',
       answer: 'unwillkürlicher Samenerguss',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'Erzeugen Samenzellen'],
       explanation: 'In der Pubertät möglich. Pollution bedeutet: unwillkürlicher Samenerguss.',
@@ -2992,7 +2992,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f3',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Hoden“?',
+      prompt: 'Was trifft auf „Hoden“ zu?',
       answer: 'Erzeugen Samenzellen',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Männliche Keimdrüse. Hoden bedeutet: Erzeugen Samenzellen.',
@@ -3003,7 +3003,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f4',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Eierstock“?',
+      prompt: 'Was trifft auf „Eierstock“ zu?',
       answer: 'Erzeugt Eizellen',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Weibliche Keimdrüse. Eierstock bedeutet: Erzeugt Eizellen.',
@@ -3014,7 +3014,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f5',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Gebärmutter“?',
+      prompt: 'Was trifft auf „Gebärmutter“ zu?',
       answer: 'Ort der Embryonalentwicklung',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Uterus. Gebärmutter bedeutet: Ort der Embryonalentwicklung.',
@@ -3025,7 +3025,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f6',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Plazenta“?',
+      prompt: 'Was trifft auf „Plazenta“ zu?',
       answer: 'Versorgung über die Mutter',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Austauschorgan. Plazenta bedeutet: Versorgung über die Mutter.',
@@ -3036,7 +3036,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f7',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Schwangerschaft“?',
+      prompt: 'Was trifft auf „Schwangerschaft“ zu?',
       answer: 'Zeit der Entwicklung im Mutterleib',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Beim Menschen ca. 40 Wochen. Schwangerschaft bedeutet: Zeit der Entwicklung im Mutterleib.',
@@ -3047,7 +3047,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f8',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Geburt“?',
+      prompt: 'Was trifft auf „Geburt“ zu?',
       answer: 'Ende der Schwangerschaft',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Kind verlässt den Mutterleib. Geburt bedeutet: Ende der Schwangerschaft.',
@@ -3058,7 +3058,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f9',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Säugen“?',
+      prompt: 'Was trifft auf „Säugen“ zu?',
       answer: 'Ernährung mit Muttermilch',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Namensgebend. Säugen bedeutet: Ernährung mit Muttermilch.',
@@ -3069,7 +3069,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f10',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Eltern-Kind-Bindung“?',
+      prompt: 'Was trifft auf „Eltern-Kind-Bindung“ zu?',
       answer: 'Fürsorge und Schutz',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Wichtig für Entwicklung. Eltern-Kind-Bindung bedeutet: Fürsorge und Schutz.',
@@ -3080,7 +3080,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f11',
-      prompt: '[k5-lb6-saeuger-fortpflanzung] Was bedeutet der Fachbegriff „Verhütung“?',
+      prompt: 'Was trifft auf „Verhütung“ zu?',
       answer: 'Verhindern einer Schwangerschaft',
       wrong: ['Beginn der Geschlechtsreife', 'Abstoßung der Gebärmutterschleimhaut', 'unwillkürlicher Samenerguss'],
       explanation: 'Verantwortung. Verhütung bedeutet: Verhindern einer Schwangerschaft.',
@@ -3142,7 +3142,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb7:systematik:f0',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Wirbeltier“?',
+      prompt: 'Was trifft auf „Wirbeltier“ zu?',
       answer: 'Tier mit Wirbelsäule',
       wrong: ['Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule.',
@@ -3153,7 +3153,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f1',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Fisch“?',
+      prompt: 'Was trifft auf „Fisch“ zu?',
       answer: 'Kiemen und Flossen',
       wrong: ['Tier mit Wirbelsäule', 'Oft Metamorphose und feuchte Haut', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Wasserleben. Fisch bedeutet: Kiemen und Flossen.',
@@ -3164,7 +3164,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f2',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Lurch“?',
+      prompt: 'Was trifft auf „Lurch“ zu?',
       answer: 'Oft Metamorphose und feuchte Haut',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
@@ -3175,7 +3175,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f3',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Kriechtier“?',
+      prompt: 'Was trifft auf „Kriechtier“ zu?',
       answer: 'Trockene Hornschicht, Schalenei',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Reptil. Kriechtier bedeutet: Trockene Hornschicht, Schalenei.',
@@ -3186,7 +3186,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f4',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Vogel“?',
+      prompt: 'Was trifft auf „Vogel“ zu?',
       answer: 'Federn und Schnabel',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Oft Flug. Vogel bedeutet: Federn und Schnabel.',
@@ -3197,7 +3197,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f5',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Säugetier“?',
+      prompt: 'Was trifft auf „Säugetier“ zu?',
       answer: 'Fell und Milchdrüsen',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Säugen. Säugetier bedeutet: Fell und Milchdrüsen.',
@@ -3208,7 +3208,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f6',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Merkmal“?',
+      prompt: 'Was trifft auf „Merkmal“ zu?',
       answer: 'Unterscheidendes Kennzeichen',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen.',
@@ -3219,7 +3219,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f7',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Klasse“?',
+      prompt: 'Was trifft auf „Klasse“ zu?',
       answer: 'Systematische Großgruppe',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'z. B. Vögel. Klasse bedeutet: Systematische Großgruppe.',
@@ -3230,7 +3230,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f8',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Atmungstyp“?',
+      prompt: 'Was trifft auf „Atmungstyp“ zu?',
       answer: 'Kieme, Lunge, Haut',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut.',
@@ -3241,7 +3241,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f9',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Körperbedeckung“?',
+      prompt: 'Was trifft auf „Körperbedeckung“ zu?',
       answer: 'Schuppe, Feder, Fell',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell.',
@@ -3252,7 +3252,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f10',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Fortpflanzungstyp“?',
+      prompt: 'Was trifft auf „Fortpflanzungstyp“ zu?',
       answer: 'Laich, Schalenei, Lebendgeburt',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt.',
@@ -3263,7 +3263,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f11',
-      prompt: '[k5-lb7-systematik] Was bedeutet der Fachbegriff „Gleichwarm“?',
+      prompt: 'Was trifft auf „Gleichwarm“ zu?',
       answer: 'Stabile Temperatur',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vögel und Säuger. Gleichwarm bedeutet: Stabile Temperatur.',
@@ -3325,7 +3325,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f0',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Kiemen+Flossen“?',
+      prompt: 'Was trifft auf „Kiemen+Flossen“ zu?',
       answer: 'Passt zu Fischen',
       wrong: ['Passt zu Vögeln', 'Passt zu Säugetieren', 'Passt zu Kriechtieren'],
       explanation: 'Wasseratmung. Kiemen+Flossen bedeutet: Passt zu Fischen.',
@@ -3336,7 +3336,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f1',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Federn+Schnabel“?',
+      prompt: 'Was trifft auf „Federn+Schnabel“ zu?',
       answer: 'Passt zu Vögeln',
       wrong: ['Passt zu Fischen', 'Passt zu Säugetieren', 'Passt zu Kriechtieren'],
       explanation: 'Flug/Wärme. Federn+Schnabel bedeutet: Passt zu Vögeln.',
@@ -3347,7 +3347,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f2',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Fell+Säugen“?',
+      prompt: 'Was trifft auf „Fell+Säugen“ zu?',
       answer: 'Passt zu Säugetieren',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Kriechtieren'],
       explanation: 'Milchdrüsen. Fell+Säugen bedeutet: Passt zu Säugetieren.',
@@ -3358,7 +3358,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f3',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Hornschicht+Schalenei“?',
+      prompt: 'Was trifft auf „Hornschicht+Schalenei“ zu?',
       answer: 'Passt zu Kriechtieren',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Landleben. Hornschicht+Schalenei bedeutet: Passt zu Kriechtieren.',
@@ -3369,7 +3369,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f4',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Feuchte Haut+Meta“?',
+      prompt: 'Was trifft auf „Feuchte Haut+Meta“ zu?',
       answer: 'Passt zu Lurchen',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Kaulquappe. Feuchte Haut+Meta bedeutet: Passt zu Lurchen.',
@@ -3380,7 +3380,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f5',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Wechselwarm“?',
+      prompt: 'Was trifft auf „Wechselwarm“ zu?',
       answer: 'Fische, Lurche, Kriechtiere',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Umgebungstemperatur. Wechselwarm bedeutet: Fische, Lurche, Kriechtiere.',
@@ -3391,7 +3391,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f6',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Gleichwarm“?',
+      prompt: 'Was trifft auf „Gleichwarm“ zu?',
       answer: 'Vögel und Säuger',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Eigene Wärme. Gleichwarm bedeutet: Vögel und Säuger.',
@@ -3402,7 +3402,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f7',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Laich im Wasser“?',
+      prompt: 'Was trifft auf „Laich im Wasser“ zu?',
       answer: 'Fische und viele Lurche',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Äußere Entwicklung. Laich im Wasser bedeutet: Fische und viele Lurche.',
@@ -3413,7 +3413,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f8',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Nestbrut“?',
+      prompt: 'Was trifft auf „Nestbrut“ zu?',
       answer: 'Typisch Vögel',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Bebrütung. Nestbrut bedeutet: Typisch Vögel.',
@@ -3424,7 +3424,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f9',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Plazenta“?',
+      prompt: 'Was trifft auf „Plazenta“ zu?',
       answer: 'Viele Säuger',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Embryoversorgung. Plazenta bedeutet: Viele Säuger.',
@@ -3435,7 +3435,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f10',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Häutung“?',
+      prompt: 'Was trifft auf „Häutung“ zu?',
       answer: 'Kriechtiere',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Hornschichtwechsel. Häutung bedeutet: Kriechtiere.',
@@ -3446,7 +3446,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f11',
-      prompt: '[k5-lb7-zuordnung] Was bedeutet der Fachbegriff „Schwimmblase“?',
+      prompt: 'Was trifft auf „Schwimmblase“ zu?',
       answer: 'Viele Knochenfische',
       wrong: ['Passt zu Fischen', 'Passt zu Vögeln', 'Passt zu Säugetieren'],
       explanation: 'Auftrieb. Schwimmblase bedeutet: Viele Knochenfische.',
@@ -3508,7 +3508,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lbw:winter:f0',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Winterschlaf“?',
+      prompt: 'Was trifft auf „Winterschlaf“ zu?',
       answer: 'Tiefe Stoffwechselabsenkung',
       wrong: ['Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte', 'Saisonale Wanderung'],
       explanation: 'z. B. Igel, Fledermaus. Winterschlaf bedeutet: Tiefe Stoffwechselabsenkung.',
@@ -3519,7 +3519,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f1',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Winterruhe“?',
+      prompt: 'Was trifft auf „Winterruhe“ zu?',
       answer: 'Leichtere Absenkung mit Aufwachen',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Bewegungslosigkeit bei Kälte', 'Saisonale Wanderung'],
       explanation: 'z. B. Eichhörnchen. Winterruhe bedeutet: Leichtere Absenkung mit Aufwachen.',
@@ -3530,7 +3530,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f2',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Kältestarre“?',
+      prompt: 'Was trifft auf „Kältestarre“ zu?',
       answer: 'Bewegungslosigkeit bei Kälte',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Saisonale Wanderung'],
       explanation: 'Bei wechselwarmen Tieren. Kältestarre bedeutet: Bewegungslosigkeit bei Kälte.',
@@ -3541,7 +3541,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f3',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Vogelzug“?',
+      prompt: 'Was trifft auf „Vogelzug“ zu?',
       answer: 'Saisonale Wanderung',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Zugvögel. Vogelzug bedeutet: Saisonale Wanderung.',
@@ -3552,7 +3552,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f4',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Standvogel“?',
+      prompt: 'Was trifft auf „Standvogel“ zu?',
       answer: 'Bleibt im Wintergebiet',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'z. B. Amsel oft. Standvogel bedeutet: Bleibt im Wintergebiet.',
@@ -3563,7 +3563,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f5',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Fettvorrat“?',
+      prompt: 'Was trifft auf „Fettvorrat“ zu?',
       answer: 'Energiespeicher für den Winter',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Vor dem Schlaf. Fettvorrat bedeutet: Energiespeicher für den Winter.',
@@ -3574,7 +3574,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f6',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Winterfell“?',
+      prompt: 'Was trifft auf „Winterfell“ zu?',
       answer: 'Dichteres Haarkleid',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Wärmeschutz. Winterfell bedeutet: Dichteres Haarkleid.',
@@ -3585,7 +3585,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f7',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Vorratshaltung“?',
+      prompt: 'Was trifft auf „Vorratshaltung“ zu?',
       answer: 'Sammeln von Nahrung',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Eichhörnchen. Vorratshaltung bedeutet: Sammeln von Nahrung.',
@@ -3596,7 +3596,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f8',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Überwinterungsquartier“?',
+      prompt: 'Was trifft auf „Überwinterungsquartier“ zu?',
       answer: 'Geschützter Ort',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Höhle, Keller, Schlamm. Überwinterungsquartier bedeutet: Geschützter Ort.',
@@ -3607,7 +3607,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f9',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Tagesschlafplatz“?',
+      prompt: 'Was trifft auf „Tagesschlafplatz“ zu?',
       answer: 'Ruheplatz im Winter',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Bei manchen Arten. Tagesschlafplatz bedeutet: Ruheplatz im Winter.',
@@ -3618,7 +3618,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f10',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Frostschutz“?',
+      prompt: 'Was trifft auf „Frostschutz“ zu?',
       answer: 'Vermeidung von Einfrieren',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'Verhalten/Standort. Frostschutz bedeutet: Vermeidung von Einfrieren.',
@@ -3629,7 +3629,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f11',
-      prompt: '[k5-lbw-winter] Was bedeutet der Fachbegriff „Aktivitätsfenster“?',
+      prompt: 'Was trifft auf „Aktivitätsfenster“ zu?',
       answer: 'Kurze Aktivitätsphasen',
       wrong: ['Tiefe Stoffwechselabsenkung', 'Leichtere Absenkung mit Aufwachen', 'Bewegungslosigkeit bei Kälte'],
       explanation: 'An milden Tagen. Aktivitätsfenster bedeutet: Kurze Aktivitätsphasen.',
@@ -3691,7 +3691,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lbw:saurier:f0',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Dinosaurier“?',
+      prompt: 'Was trifft auf „Dinosaurier“ zu?',
       answer: 'Ausgestorbene Kriechtiere',
       wrong: ['Versteinerter Rest', 'Wissenschaft von Fossilien', 'Erdzeitalter'],
       explanation: 'Mesozoikum. Dinosaurier bedeutet: Ausgestorbene Kriechtiere.',
@@ -3702,7 +3702,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f1',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Fossil“?',
+      prompt: 'Was trifft auf „Fossil“ zu?',
       answer: 'Versteinerter Rest',
       wrong: ['Ausgestorbene Kriechtiere', 'Wissenschaft von Fossilien', 'Erdzeitalter'],
       explanation: 'Knochen, Spuren. Fossil bedeutet: Versteinerter Rest.',
@@ -3713,7 +3713,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f2',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Paläontologie“?',
+      prompt: 'Was trifft auf „Paläontologie“ zu?',
       answer: 'Wissenschaft von Fossilien',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Erdzeitalter'],
       explanation: 'Rekonstruktion. Paläontologie bedeutet: Wissenschaft von Fossilien.',
@@ -3724,7 +3724,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f3',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Trias“?',
+      prompt: 'Was trifft auf „Trias“ zu?',
       answer: 'Ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Frühe Dinosaurier. Trias bedeutet: Ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern.',
@@ -3735,7 +3735,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f4',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Jura“?',
+      prompt: 'Was trifft auf „Jura“ zu?',
       answer: 'Mittleres Mesozoikum mit vielen Saurierarten',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Viele Saurierarten. Jura bedeutet: Mittleres Mesozoikum mit vielen Saurierarten.',
@@ -3746,7 +3746,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f5',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Kreide“?',
+      prompt: 'Was trifft auf „Kreide“ zu?',
       answer: 'Jüngstes Mesozoikum bis zum großen Sauriersterben',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Ende vieler Dinosaurier. Kreide bedeutet: Jüngstes Mesozoikum bis zum großen Sauriersterben.',
@@ -3757,7 +3757,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f6',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Aussterben“?',
+      prompt: 'Was trifft auf „Aussterben“ zu?',
       answer: 'Verschwinden von Arten',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Massenaussterben K/T. Aussterben bedeutet: Verschwinden von Arten.',
@@ -3768,7 +3768,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f7',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Flugsaurier“?',
+      prompt: 'Was trifft auf „Flugsaurier“ zu?',
       answer: 'Flugfähige Reptilien',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Keine Vögel. Flugsaurier bedeutet: Flugfähige Reptilien.',
@@ -3779,7 +3779,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f8',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Meeresreptil“?',
+      prompt: 'Was trifft auf „Meeresreptil“ zu?',
       answer: 'z. B. Ichthyosaurier',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'An Wasser angepasst. Meeresreptil bedeutet: z. B. Ichthyosaurier.',
@@ -3790,7 +3790,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f9',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Saurischia“?',
+      prompt: 'Was trifft auf „Saurischia“ zu?',
       answer: 'Echsenbeckensaurier',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Systematikgruppe. Saurischia bedeutet: Echsenbeckensaurier.',
@@ -3801,7 +3801,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f10',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Ornithischia“?',
+      prompt: 'Was trifft auf „Ornithischia“ zu?',
       answer: 'Vogelbeckensaurier',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Systematikgruppe. Ornithischia bedeutet: Vogelbeckensaurier.',
@@ -3812,7 +3812,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f11',
-      prompt: '[k5-lbw-saurier] Was bedeutet der Fachbegriff „Spurensicherung“?',
+      prompt: 'Was trifft auf „Spurensicherung“ zu?',
       answer: 'Fährten fossil',
       wrong: ['Ausgestorbene Kriechtiere', 'Versteinerter Rest', 'Wissenschaft von Fossilien'],
       explanation: 'Verhaltenshinweise. Spurensicherung bedeutet: Fährten fossil.',
@@ -3874,7 +3874,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lbw:haltung:f0',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Artgerecht“?',
+      prompt: 'Was trifft auf „Artgerecht“ zu?',
       answer: 'Haltung nach Bedürfnissen der Art',
       wrong: ['Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung', 'Ausreichendes Volumen'],
       explanation: 'Platz, Klima, Soziales. Artgerecht bedeutet: Haltung nach Bedürfnissen der Art.',
@@ -3885,7 +3885,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f1',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Aquarium“?',
+      prompt: 'Was trifft auf „Aquarium“ zu?',
       answer: 'Wasserlebensraum für Fische',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Land-/Feuchtlandhaltung', 'Ausreichendes Volumen'],
       explanation: 'Filter, Temperatur. Aquarium bedeutet: Wasserlebensraum für Fische.',
@@ -3896,7 +3896,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f2',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Terrarium“?',
+      prompt: 'Was trifft auf „Terrarium“ zu?',
       answer: 'Land-/Feuchtlandhaltung',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Ausreichendes Volumen'],
       explanation: 'Für Reptilien/Amphibien. Terrarium bedeutet: Land-/Feuchtlandhaltung.',
@@ -3907,7 +3907,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f3',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Beckengröße“?',
+      prompt: 'Was trifft auf „Beckengröße“ zu?',
       answer: 'Ausreichendes Volumen',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Artabhängig. Beckengröße bedeutet: Ausreichendes Volumen.',
@@ -3918,7 +3918,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f4',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Wasserqualität“?',
+      prompt: 'Was trifft auf „Wasserqualität“ zu?',
       answer: 'Chemie und Sauberkeit',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Für Fische kritisch. Wasserqualität bedeutet: Chemie und Sauberkeit.',
@@ -3929,7 +3929,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f5',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Temperaturzone“?',
+      prompt: 'Was trifft auf „Temperaturzone“ zu?',
       answer: 'Wärme- und Kühlebereich',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Für Reptilien. Temperaturzone bedeutet: Wärme- und Kühlebereich.',
@@ -3940,7 +3940,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f6',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Futterplan“?',
+      prompt: 'Was trifft auf „Futterplan“ zu?',
       answer: 'Angepasste Ernährung',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Nicht einseitig. Futterplan bedeutet: Angepasste Ernährung.',
@@ -3951,7 +3951,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f7',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Quarantäne“?',
+      prompt: 'Was trifft auf „Quarantäne“ zu?',
       answer: 'Isolation neuer Tiere',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Krankheitschutz. Quarantäne bedeutet: Isolation neuer Tiere.',
@@ -3962,7 +3962,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f8',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Tierschutzgesetz“?',
+      prompt: 'Was trifft auf „Tierschutzgesetz“ zu?',
       answer: 'Rechtlicher Rahmen',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Pflichten der Halter. Tierschutzgesetz bedeutet: Rechtlicher Rahmen.',
@@ -3973,7 +3973,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f9',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Überforderung“?',
+      prompt: 'Was trifft auf „Überforderung“ zu?',
       answer: 'Zu hohe Pflegeansprüche',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Vor dem Kauf klären. Überforderung bedeutet: Zu hohe Pflegeansprüche.',
@@ -3984,7 +3984,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f10',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Sozialbedarf“?',
+      prompt: 'Was trifft auf „Sozialbedarf“ zu?',
       answer: 'Allein oder Gruppe',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Artspezifisch. Sozialbedarf bedeutet: Allein oder Gruppe.',
@@ -3995,7 +3995,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f11',
-      prompt: '[k5-lbw-haltung] Was bedeutet der Fachbegriff „Auswilderung“?',
+      prompt: 'Was trifft auf „Auswilderung“ zu?',
       answer: 'Nicht ohne Fachkenntnis',
       wrong: ['Haltung nach Bedürfnissen der Art', 'Wasserlebensraum für Fische', 'Land-/Feuchtlandhaltung'],
       explanation: 'Oft ungeeignet. Auswilderung bedeutet: Nicht ohne Fachkenntnis.',
@@ -4059,7 +4059,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f0',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Hautflügler“?',
+      prompt: 'Was trifft auf „Hautflügler“ zu?',
       answer: 'Bienen, Wespen, Ameisen',
       wrong: ['Deckflügel', 'Schuppenflügel', 'Ein Flügelpaar'],
       explanation: 'Häutige Flügel. Hautflügler bedeutet: Bienen, Wespen, Ameisen.',
@@ -4070,7 +4070,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f1',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Käfer“?',
+      prompt: 'Was trifft auf „Käfer“ zu?',
       answer: 'Deckflügel',
       wrong: ['Bienen, Wespen, Ameisen', 'Schuppenflügel', 'Ein Flügelpaar'],
       explanation: 'Artenreichste Ordnung. Käfer bedeutet: Deckflügel.',
@@ -4081,7 +4081,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f2',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Schmetterling“?',
+      prompt: 'Was trifft auf „Schmetterling“ zu?',
       answer: 'Schuppenflügel',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Ein Flügelpaar'],
       explanation: 'Oft Saugrüssel. Schmetterling bedeutet: Schuppenflügel.',
@@ -4092,7 +4092,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f3',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Zweiflügler“?',
+      prompt: 'Was trifft auf „Zweiflügler“ zu?',
       answer: 'Ein Flügelpaar',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Halteren. Zweiflügler bedeutet: Ein Flügelpaar.',
@@ -4103,7 +4103,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f4',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Beißwerkzeug“?',
+      prompt: 'Was trifft auf „Beißwerkzeug“ zu?',
       answer: 'Zerkleinern fester Nahrung',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Viele Käfer. Beißwerkzeug bedeutet: Zerkleinern fester Nahrung.',
@@ -4114,7 +4114,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f5',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Saugrüssel“?',
+      prompt: 'Was trifft auf „Saugrüssel“ zu?',
       answer: 'Nektar aufnehmen',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Viele Falter. Saugrüssel bedeutet: Nektar aufnehmen.',
@@ -4125,7 +4125,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f6',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Stechrüssel“?',
+      prompt: 'Was trifft auf „Stechrüssel“ zu?',
       answer: 'Stechen und saugen',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Mücken. Stechrüssel bedeutet: Stechen und saugen.',
@@ -4136,7 +4136,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f7',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Trachee“?',
+      prompt: 'Was trifft auf „Trachee“ zu?',
       answer: 'Atmungsröhre',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Landinsekten. Trachee bedeutet: Atmungsröhre.',
@@ -4147,7 +4147,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f8',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Deckflügel“?',
+      prompt: 'Was trifft auf „Deckflügel“ zu?',
       answer: 'Schutz der Hinterflügel',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Käfer. Deckflügel bedeutet: Schutz der Hinterflügel.',
@@ -4158,7 +4158,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f9',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Halteren“?',
+      prompt: 'Was trifft auf „Halteren“ zu?',
       answer: 'Schwingkölbchen',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Zweiflügler. Halteren bedeutet: Schwingkölbchen.',
@@ -4169,7 +4169,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f10',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Metamorphose“?',
+      prompt: 'Was trifft auf „Metamorphose“ zu?',
       answer: 'Gestaltwechsel',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Vollständig/unvollständig. Metamorphose bedeutet: Gestaltwechsel.',
@@ -4180,7 +4180,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f11',
-      prompt: '[k6-lb2-ordnungen] Was bedeutet der Fachbegriff „Flügelschuppe“?',
+      prompt: 'Was trifft auf „Flügelschuppe“ zu?',
       answer: 'Auf Schmetterlingsflügeln',
       wrong: ['Bienen, Wespen, Ameisen', 'Deckflügel', 'Schuppenflügel'],
       explanation: 'Farbe/Muster. Flügelschuppe bedeutet: Auf Schmetterlingsflügeln.',
@@ -4244,7 +4244,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f0',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Königin“?',
+      prompt: 'Was trifft auf „Königin“ zu?',
       answer: 'Eierlegendes Weibchen',
       wrong: ['Aufgabenwechsel', 'Männliche Biene', 'Futterkommunikation'],
       explanation: 'Pheromone. Königin bedeutet: Eierlegendes Weibchen.',
@@ -4255,7 +4255,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f1',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Arbeiterin“?',
+      prompt: 'Was trifft auf „Arbeiterin“ zu?',
       answer: 'Aufgabenwechsel',
       wrong: ['Eierlegendes Weibchen', 'Männliche Biene', 'Futterkommunikation'],
       explanation: 'Sammeln, Pflegen. Arbeiterin bedeutet: Aufgabenwechsel.',
@@ -4266,7 +4266,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f2',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Drohne“?',
+      prompt: 'Was trifft auf „Drohne“ zu?',
       answer: 'Männliche Biene',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Futterkommunikation'],
       explanation: 'Paarung. Drohne bedeutet: Männliche Biene.',
@@ -4277,7 +4277,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f3',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Schwänzeltanz“?',
+      prompt: 'Was trifft auf „Schwänzeltanz“ zu?',
       answer: 'Futterkommunikation',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Richtung/Entfernung. Schwänzeltanz bedeutet: Futterkommunikation.',
@@ -4288,7 +4288,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f4',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Wabe“?',
+      prompt: 'Was trifft auf „Wabe“ zu?',
       answer: 'Wachszellenbau',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Honig und Brut. Wabe bedeutet: Wachszellenbau.',
@@ -4299,7 +4299,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f5',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Nektar“?',
+      prompt: 'Was trifft auf „Nektar“ zu?',
       answer: 'Zuckerquelle',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Wird zu Honig. Nektar bedeutet: Zuckerquelle.',
@@ -4310,7 +4310,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f6',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Pollen“?',
+      prompt: 'Was trifft auf „Pollen“ zu?',
       answer: 'Eiweißquelle',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Für die Brut. Pollen bedeutet: Eiweißquelle.',
@@ -4321,7 +4321,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f7',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Pheromon“?',
+      prompt: 'Was trifft auf „Pheromon“ zu?',
       answer: 'Duftkommunikation',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Königinnen-Duft. Pheromon bedeutet: Duftkommunikation.',
@@ -4332,7 +4332,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f8',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Bestäubung“?',
+      prompt: 'Was trifft auf „Bestäubung“ zu?',
       answer: 'Pollenübertragung',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Ökologischer Nutzen. Bestäubung bedeutet: Pollenübertragung.',
@@ -4343,7 +4343,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f9',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Honig“?',
+      prompt: 'Was trifft auf „Honig“ zu?',
       answer: 'Energiespeicher',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Aus Nektar. Honig bedeutet: Energiespeicher.',
@@ -4354,7 +4354,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f10',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Tierstaat“?',
+      prompt: 'Was trifft auf „Tierstaat“ zu?',
       answer: 'Sozialer Verband',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Arbeitsteilung. Tierstaat bedeutet: Sozialer Verband.',
@@ -4365,7 +4365,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f11',
-      prompt: '[k6-lb2-honigbiene] Was bedeutet der Fachbegriff „Trachtflug“?',
+      prompt: 'Was trifft auf „Trachtflug“ zu?',
       answer: 'Sammelflug',
       wrong: ['Eierlegendes Weibchen', 'Aufgabenwechsel', 'Männliche Biene'],
       explanation: 'Arbeiterinnen. Trachtflug bedeutet: Sammelflug.',
@@ -4429,7 +4429,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb2:parasiten:f0',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Parasit“?',
+      prompt: 'Was trifft auf „Parasit“ zu?',
       answer: 'Nutzt Wirt und schadet',
       wrong: ['Beherbergt den Parasiten', 'Lebt außen', 'Lebt innen'],
       explanation: 'Einseitiger Vorteil. Parasit bedeutet: Nutzt Wirt und schadet.',
@@ -4440,7 +4440,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f1',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Wirt“?',
+      prompt: 'Was trifft auf „Wirt“ zu?',
       answer: 'Beherbergt den Parasiten',
       wrong: ['Nutzt Wirt und schadet', 'Lebt außen', 'Lebt innen'],
       explanation: 'Wird belastet. Wirt bedeutet: Beherbergt den Parasiten.',
@@ -4451,7 +4451,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f2',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Ektoparasit“?',
+      prompt: 'Was trifft auf „Ektoparasit“ zu?',
       answer: 'Lebt außen',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt innen'],
       explanation: 'Zecke, Floh. Ektoparasit bedeutet: Lebt außen.',
@@ -4462,7 +4462,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f3',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Endoparasit“?',
+      prompt: 'Was trifft auf „Endoparasit“ zu?',
       answer: 'Lebt innen',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Spulwurm. Endoparasit bedeutet: Lebt innen.',
@@ -4473,7 +4473,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f4',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Spulwurm“?',
+      prompt: 'Was trifft auf „Spulwurm“ zu?',
       answer: 'Darmparasit',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Askaris. Spulwurm bedeutet: Darmparasit.',
@@ -4484,7 +4484,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f5',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Zecke“?',
+      prompt: 'Was trifft auf „Zecke“ zu?',
       answer: 'Blutsauger',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Erregerübertragung möglich. Zecke bedeutet: Blutsauger.',
@@ -4495,7 +4495,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f6',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Bandwurm“?',
+      prompt: 'Was trifft auf „Bandwurm“ zu?',
       answer: 'Darmparasit',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Oft über Fleisch. Bandwurm bedeutet: Darmparasit.',
@@ -4506,7 +4506,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f7',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Floh“?',
+      prompt: 'Was trifft auf „Floh“ zu?',
       answer: 'Blutsaugendes Insekt',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Ektoparasit. Floh bedeutet: Blutsaugendes Insekt.',
@@ -4517,7 +4517,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f8',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Prophylaxe“?',
+      prompt: 'Was trifft auf „Prophylaxe“ zu?',
       answer: 'Vorbeugung',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Hygiene, Garen. Prophylaxe bedeutet: Vorbeugung.',
@@ -4528,7 +4528,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f9',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Übertragung“?',
+      prompt: 'Was trifft auf „Übertragung“ zu?',
       answer: 'Infektionsweg',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Eier, Stich, Nahrung. Übertragung bedeutet: Infektionsweg.',
@@ -4539,7 +4539,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f10',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Finne“?',
+      prompt: 'Was trifft auf „Finne“ zu?',
       answer: 'Larvenstadium mancher Bandwürmer',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Im Zwischenwirt. Finne bedeutet: Larvenstadium mancher Bandwürmer.',
@@ -4550,7 +4550,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f11',
-      prompt: '[k6-lb2-parasiten] Was bedeutet der Fachbegriff „Zwischenwirt“?',
+      prompt: 'Was trifft auf „Zwischenwirt“ zu?',
       answer: 'Zusätzlicher Wirt im Zyklus',
       wrong: ['Nutzt Wirt und schadet', 'Beherbergt den Parasiten', 'Lebt außen'],
       explanation: 'Bei manchen Parasiten. Zwischenwirt bedeutet: Zusätzlicher Wirt im Zyklus.',
@@ -4614,7 +4614,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb4:nahrung:f0',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Produzent“?',
+      prompt: 'Was trifft auf „Produzent“ zu?',
       answer: 'Bildet Biomasse',
       wrong: ['Frisst andere Organismen', 'Zersetzt Totes', 'Lineare Beziehung'],
       explanation: 'Fotosynthese. Produzent bedeutet: Bildet Biomasse.',
@@ -4625,7 +4625,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f1',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Konsument“?',
+      prompt: 'Was trifft auf „Konsument“ zu?',
       answer: 'Frisst andere Organismen',
       wrong: ['Bildet Biomasse', 'Zersetzt Totes', 'Lineare Beziehung'],
       explanation: 'Pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen.',
@@ -4636,7 +4636,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f2',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Destruent“?',
+      prompt: 'Was trifft auf „Destruent“ zu?',
       answer: 'Zersetzt Totes',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Lineare Beziehung'],
       explanation: 'Pilze, Bakterien. Destruent bedeutet: Zersetzt Totes.',
@@ -4647,7 +4647,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f3',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Nahrungskette“?',
+      prompt: 'Was trifft auf „Nahrungskette“ zu?',
       answer: 'Lineare Beziehung',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Energiefluss. Nahrungskette bedeutet: Lineare Beziehung.',
@@ -4658,7 +4658,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f4',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Nahrungsnetz“?',
+      prompt: 'Was trifft auf „Nahrungsnetz“ zu?',
       answer: 'Vernetzte Beziehungen',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Realistisch. Nahrungsnetz bedeutet: Vernetzte Beziehungen.',
@@ -4669,7 +4669,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f5',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Kronenschicht“?',
+      prompt: 'Was trifft auf „Kronenschicht“ zu?',
       answer: 'Obere Baumschicht',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Viel Licht. Kronenschicht bedeutet: Obere Baumschicht.',
@@ -4680,7 +4680,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f6',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Strauchschicht“?',
+      prompt: 'Was trifft auf „Strauchschicht“ zu?',
       answer: 'Mittlere Gehölze',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Unter der Krone. Strauchschicht bedeutet: Mittlere Gehölze.',
@@ -4691,7 +4691,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f7',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Krautschicht“?',
+      prompt: 'Was trifft auf „Krautschicht“ zu?',
       answer: 'Kräuter und Farne',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Bodennah. Krautschicht bedeutet: Kräuter und Farne.',
@@ -4702,7 +4702,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f8',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Moosschicht“?',
+      prompt: 'Was trifft auf „Moosschicht“ zu?',
       answer: 'Niedrigste Schicht',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Feucht. Moosschicht bedeutet: Niedrigste Schicht.',
@@ -4713,7 +4713,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f9',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Herbivor“?',
+      prompt: 'Was trifft auf „Herbivor“ zu?',
       answer: 'Pflanzenfresser',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Primärkonsument. Herbivor bedeutet: Pflanzenfresser.',
@@ -4724,7 +4724,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f10',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Carnivor“?',
+      prompt: 'Was trifft auf „Carnivor“ zu?',
       answer: 'Fleischfresser',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Höhere Stufe. Carnivor bedeutet: Fleischfresser.',
@@ -4735,7 +4735,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f11',
-      prompt: '[k6-lb4-nahrung] Was bedeutet der Fachbegriff „Trophieebene“?',
+      prompt: 'Was trifft auf „Trophieebene“ zu?',
       answer: 'Stufe im Netz',
       wrong: ['Bildet Biomasse', 'Frisst andere Organismen', 'Zersetzt Totes'],
       explanation: 'Energieverlust. Trophieebene bedeutet: Stufe im Netz.',
@@ -4799,7 +4799,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f0',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Spore“?',
+      prompt: 'Was trifft auf „Spore“ zu?',
       answer: 'Ausbreitungszelle',
       wrong: ['Kleine Sporenpflanze', 'Wedel mit Sori', 'Zersetzer/Symbiont'],
       explanation: 'Ohne Samenembryo. Spore bedeutet: Ausbreitungszelle.',
@@ -4810,7 +4810,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f1',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Moos“?',
+      prompt: 'Was trifft auf „Moos“ zu?',
       answer: 'Kleine Sporenpflanze',
       wrong: ['Ausbreitungszelle', 'Wedel mit Sori', 'Zersetzer/Symbiont'],
       explanation: 'Feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze.',
@@ -4821,7 +4821,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f2',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Farn“?',
+      prompt: 'Was trifft auf „Farn“ zu?',
       answer: 'Wedel mit Sori',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Zersetzer/Symbiont'],
       explanation: 'Sporen unterseits. Farn bedeutet: Wedel mit Sori.',
@@ -4832,7 +4832,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f3',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Pilz“?',
+      prompt: 'Was trifft auf „Pilz“ zu?',
       answer: 'Zersetzer/Symbiont',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Fruchtkörper. Pilz bedeutet: Zersetzer/Symbiont.',
@@ -4843,7 +4843,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f4',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Sorus“?',
+      prompt: 'Was trifft auf „Sorus“ zu?',
       answer: 'Sporenbehälterhäufchen',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Am Farnwedel. Sorus bedeutet: Sporenbehälterhäufchen.',
@@ -4854,7 +4854,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f5',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Mykorrhiza“?',
+      prompt: 'Was trifft auf „Mykorrhiza“ zu?',
       answer: 'Pilz-Wurzel-Symbiose',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Nährstofftausch. Mykorrhiza bedeutet: Pilz-Wurzel-Symbiose.',
@@ -4865,7 +4865,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f6',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Wedel“?',
+      prompt: 'Was trifft auf „Wedel“ zu?',
       answer: 'Farnblatt',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Oft gefiedert. Wedel bedeutet: Farnblatt.',
@@ -4876,7 +4876,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f7',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Krautschicht“?',
+      prompt: 'Was trifft auf „Krautschicht“ zu?',
       answer: 'Niedrige Schicht',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Moose/Farne. Krautschicht bedeutet: Niedrige Schicht.',
@@ -4887,7 +4887,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f8',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Zersetzer“?',
+      prompt: 'Was trifft auf „Zersetzer“ zu?',
       answer: 'Abbau von Totholz',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Pilze. Zersetzer bedeutet: Abbau von Totholz.',
@@ -4898,7 +4898,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f9',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Samenpflanze“?',
+      prompt: 'Was trifft auf „Samenpflanze“ zu?',
       answer: 'Fortpflanzung über Samen',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Abgrenzung. Samenpflanze bedeutet: Fortpflanzung über Samen.',
@@ -4909,7 +4909,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f10',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Vorkeim“?',
+      prompt: 'Was trifft auf „Vorkeim“ zu?',
       answer: 'Aus Spore wachsend',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Bei Farnen. Vorkeim bedeutet: Aus Spore wachsend.',
@@ -4920,7 +4920,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f11',
-      prompt: '[k6-lb4-sporempflanzen] Was bedeutet der Fachbegriff „Fruchtkörper“?',
+      prompt: 'Was trifft auf „Fruchtkörper“ zu?',
       answer: 'Sichtbarer Pilzteil',
       wrong: ['Ausbreitungszelle', 'Kleine Sporenpflanze', 'Wedel mit Sori'],
       explanation: 'Sporenbildung. Fruchtkörper bedeutet: Sichtbarer Pilzteil.',
@@ -4984,7 +4984,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f0',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Waldschaden“?',
+      prompt: 'Was trifft auf „Waldschaden“ zu?',
       answer: 'Beeinträchtigung des Bestands',
       wrong: ['Mehrere Baumarten', 'Nutzung mit Erhalt', 'Besondere Regeln'],
       explanation: 'Klima, Schädlinge. Waldschaden bedeutet: Beeinträchtigung des Bestands.',
@@ -4995,7 +4995,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f1',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Mischwald“?',
+      prompt: 'Was trifft auf „Mischwald“ zu?',
       answer: 'Mehrere Baumarten',
       wrong: ['Beeinträchtigung des Bestands', 'Nutzung mit Erhalt', 'Besondere Regeln'],
       explanation: 'Stabiler oft. Mischwald bedeutet: Mehrere Baumarten.',
@@ -5006,7 +5006,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f2',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Nachhaltigkeit“?',
+      prompt: 'Was trifft auf „Nachhaltigkeit“ zu?',
       answer: 'Nutzung mit Erhalt',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Besondere Regeln'],
       explanation: 'Zukunftsfähig. Nachhaltigkeit bedeutet: Nutzung mit Erhalt.',
@@ -5017,7 +5017,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f3',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Schutzgebiet“?',
+      prompt: 'Was trifft auf „Schutzgebiet“ zu?',
       answer: 'Besondere Regeln',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Biotopschutz. Schutzgebiet bedeutet: Besondere Regeln.',
@@ -5028,7 +5028,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f4',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Destruent“?',
+      prompt: 'Was trifft auf „Destruent“ zu?',
       answer: 'Zersetzer',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Stoffkreislauf. Destruent bedeutet: Zersetzer.',
@@ -5039,7 +5039,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f5',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Kronenschicht“?',
+      prompt: 'Was trifft auf „Kronenschicht“ zu?',
       answer: 'Obere Schicht',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Lichtfang. Kronenschicht bedeutet: Obere Schicht.',
@@ -5050,7 +5050,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f6',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Bodenschutz“?',
+      prompt: 'Was trifft auf „Bodenschutz“ zu?',
       answer: 'Erosion vermeiden',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Wurzeln/Streu. Bodenschutz bedeutet: Erosion vermeiden.',
@@ -5061,7 +5061,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f7',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Emission“?',
+      prompt: 'Was trifft auf „Emission“ zu?',
       answer: 'Schadstoffausstoß',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Belastung. Emission bedeutet: Schadstoffausstoß.',
@@ -5072,7 +5072,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f8',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Aufforstung“?',
+      prompt: 'Was trifft auf „Aufforstung“ zu?',
       answer: 'Neubegründung',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Nach Schäden. Aufforstung bedeutet: Neubegründung.',
@@ -5083,7 +5083,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f9',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Borkenkäfer“?',
+      prompt: 'Was trifft auf „Borkenkäfer“ zu?',
       answer: 'Holzschädling',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Bei Trockenstress. Borkenkäfer bedeutet: Holzschädling.',
@@ -5094,7 +5094,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f10',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Trockenstress“?',
+      prompt: 'Was trifft auf „Trockenstress“ zu?',
       answer: 'Wassermangel der Bäume',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Klimafaktor. Trockenstress bedeutet: Wassermangel der Bäume.',
@@ -5105,7 +5105,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f11',
-      prompt: '[k6-lb4-waldschutz] Was bedeutet der Fachbegriff „Biotop“?',
+      prompt: 'Was trifft auf „Biotop“ zu?',
       answer: 'Lebensraum',
       wrong: ['Beeinträchtigung des Bestands', 'Mehrere Baumarten', 'Nutzung mit Erhalt'],
       explanation: 'Waldkomplex. Biotop bedeutet: Lebensraum.',
@@ -5167,7 +5167,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f0',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Kohlenhydrat“?',
+      prompt: 'Was trifft auf „Kohlenhydrat“ zu?',
       answer: 'Energielieferant',
       wrong: ['Baustoff', 'Energiespeicher', 'Wirkstoff in Spuren'],
       explanation: 'Brot, Obst. Kohlenhydrat bedeutet: Energielieferant.',
@@ -5178,7 +5178,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f1',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Eiweiß“?',
+      prompt: 'Was trifft auf „Eiweiß“ zu?',
       answer: 'Baustoff',
       wrong: ['Energielieferant', 'Energiespeicher', 'Wirkstoff in Spuren'],
       explanation: 'Muskeln, Enzyme. Eiweiß bedeutet: Baustoff.',
@@ -5189,7 +5189,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f2',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Fett“?',
+      prompt: 'Was trifft auf „Fett“ zu?',
       answer: 'Energiespeicher',
       wrong: ['Energielieferant', 'Baustoff', 'Wirkstoff in Spuren'],
       explanation: 'Zellmembranen. Fett bedeutet: Energiespeicher.',
@@ -5200,7 +5200,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f3',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Vitamin“?',
+      prompt: 'Was trifft auf „Vitamin“ zu?',
       answer: 'Wirkstoff in Spuren',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Obst/Gemüse. Vitamin bedeutet: Wirkstoff in Spuren.',
@@ -5211,7 +5211,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f4',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Mineralstoff“?',
+      prompt: 'Was trifft auf „Mineralstoff“ zu?',
       answer: 'z. B. Calcium',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Knochen. Mineralstoff bedeutet: z. B. Calcium.',
@@ -5222,7 +5222,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f5',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Ballaststoff“?',
+      prompt: 'Was trifft auf „Ballaststoff“ zu?',
       answer: 'Verdauungsfördernd',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Vollkorn. Ballaststoff bedeutet: Verdauungsfördernd.',
@@ -5233,7 +5233,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f6',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Energiebilanz“?',
+      prompt: 'Was trifft auf „Energiebilanz“ zu?',
       answer: 'Zufuhr minus Verbrauch',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Gewicht. Energiebilanz bedeutet: Zufuhr minus Verbrauch.',
@@ -5244,7 +5244,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f7',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Ausgewogenheit“?',
+      prompt: 'Was trifft auf „Ausgewogenheit“ zu?',
       answer: 'Vielfalt und Maß',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Nicht einseitig. Ausgewogenheit bedeutet: Vielfalt und Maß.',
@@ -5255,7 +5255,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f8',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Flüssigkeit“?',
+      prompt: 'Was trifft auf „Flüssigkeit“ zu?',
       answer: 'Wasserversorgung',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Transport. Flüssigkeit bedeutet: Wasserversorgung.',
@@ -5266,7 +5266,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f9',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Vollwertig“?',
+      prompt: 'Was trifft auf „Vollwertig“ zu?',
       answer: 'Wenig verarbeitet',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Nährstoffreich. Vollwertig bedeutet: Wenig verarbeitet.',
@@ -5277,7 +5277,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f10',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Zuckerfalle“?',
+      prompt: 'Was trifft auf „Zuckerfalle“ zu?',
       answer: 'Versteckte Zucker',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Getränke/Snacks. Zuckerfalle bedeutet: Versteckte Zucker.',
@@ -5288,7 +5288,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f11',
-      prompt: '[k7-lbw-ernaehrung-persoenlichkeit] Was bedeutet der Fachbegriff „Mahlzeitentakt“?',
+      prompt: 'Was trifft auf „Mahlzeitentakt“ zu?',
       answer: 'Regelmäßigkeit',
       wrong: ['Energielieferant', 'Baustoff', 'Energiespeicher'],
       explanation: 'Stabilere Energie. Mahlzeitentakt bedeutet: Regelmäßigkeit.',
@@ -5350,7 +5350,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k7:lbw:fitness:f0',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Ausdauer“?',
+      prompt: 'Was trifft auf „Ausdauer“ zu?',
       answer: 'Länger belastbar',
       wrong: ['Widerstand überwinden', 'Vorbereitung', 'Anpassungspause'],
       explanation: 'Herz-Kreislauf. Ausdauer bedeutet: Länger belastbar.',
@@ -5361,7 +5361,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f1',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Kraft“?',
+      prompt: 'Was trifft auf „Kraft“ zu?',
       answer: 'Widerstand überwinden',
       wrong: ['Länger belastbar', 'Vorbereitung', 'Anpassungspause'],
       explanation: 'Muskeln. Kraft bedeutet: Widerstand überwinden.',
@@ -5372,7 +5372,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f2',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Aufwärmen“?',
+      prompt: 'Was trifft auf „Aufwärmen“ zu?',
       answer: 'Vorbereitung',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Anpassungspause'],
       explanation: 'Verletzungsrisiko. Aufwärmen bedeutet: Vorbereitung.',
@@ -5383,7 +5383,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f3',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Erholung“?',
+      prompt: 'Was trifft auf „Erholung“ zu?',
       answer: 'Anpassungspause',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Schlaf. Erholung bedeutet: Anpassungspause.',
@@ -5394,7 +5394,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f4',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Puls“?',
+      prompt: 'Was trifft auf „Puls“ zu?',
       answer: 'Herzfrequenz',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Belastungsanzeige. Puls bedeutet: Herzfrequenz.',
@@ -5405,7 +5405,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f5',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Koordination“?',
+      prompt: 'Was trifft auf „Koordination“ zu?',
       answer: 'Nerv-Muskel-Zusammenspiel',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Sicherheit. Koordination bedeutet: Nerv-Muskel-Zusammenspiel.',
@@ -5416,7 +5416,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f6',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Dehnen“?',
+      prompt: 'Was trifft auf „Dehnen“ zu?',
       answer: 'Beweglichkeit',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Ergänzung. Dehnen bedeutet: Beweglichkeit.',
@@ -5427,7 +5427,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f7',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Belastung“?',
+      prompt: 'Was trifft auf „Belastung“ zu?',
       answer: 'Trainingsreiz',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Dosieren. Belastung bedeutet: Trainingsreiz.',
@@ -5438,7 +5438,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f8',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Haltung“?',
+      prompt: 'Was trifft auf „Haltung“ zu?',
       answer: 'Rumpfstellung',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Muskelstütze. Haltung bedeutet: Rumpfstellung.',
@@ -5449,7 +5449,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f9',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Alltagsbewegung“?',
+      prompt: 'Was trifft auf „Alltagsbewegung“ zu?',
       answer: 'Gehen, Treppen',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Zählt mit. Alltagsbewegung bedeutet: Gehen, Treppen.',
@@ -5460,7 +5460,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f10',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Überlastung“?',
+      prompt: 'Was trifft auf „Überlastung“ zu?',
       answer: 'Zu viel Reiz',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Schmerzen/Erschöpfung. Überlastung bedeutet: Zu viel Reiz.',
@@ -5471,7 +5471,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f11',
-      prompt: '[k7-lbw-fitness] Was bedeutet der Fachbegriff „Cool-down“?',
+      prompt: 'Was trifft auf „Cool-down“ zu?',
       answer: 'Ausklingen nach Sport',
       wrong: ['Länger belastbar', 'Widerstand überwinden', 'Vorbereitung'],
       explanation: 'Abbau Belastung. Cool-down bedeutet: Ausklingen nach Sport.',
@@ -5533,7 +5533,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k7:lbw:mikroben:f0',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Gärung“?',
+      prompt: 'Was trifft auf „Gärung“ zu?',
       answer: 'Stoffwechsel ohne O₂',
       wrong: ['Keime begrenzen', 'Mikrobiom', 'Krankheitserreger'],
       explanation: 'Hefe. Gärung bedeutet: Stoffwechsel ohne O₂.',
@@ -5544,7 +5544,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f1',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Hygiene“?',
+      prompt: 'Was trifft auf „Hygiene“ zu?',
       answer: 'Keime begrenzen',
       wrong: ['Stoffwechsel ohne O₂', 'Mikrobiom', 'Krankheitserreger'],
       explanation: 'Hände/Lebensmittel. Hygiene bedeutet: Keime begrenzen.',
@@ -5555,7 +5555,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f2',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Darmflora“?',
+      prompt: 'Was trifft auf „Darmflora“ zu?',
       answer: 'Mikrobiom',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Krankheitserreger'],
       explanation: 'Verdauung. Darmflora bedeutet: Mikrobiom.',
@@ -5566,7 +5566,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f3',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Pathogen“?',
+      prompt: 'Was trifft auf „Pathogen“ zu?',
       answer: 'Krankheitserreger',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Teil der Mikroben. Pathogen bedeutet: Krankheitserreger.',
@@ -5577,7 +5577,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f4',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Antibiotikum“?',
+      prompt: 'Was trifft auf „Antibiotikum“ zu?',
       answer: 'Gegen Bakterien',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Nicht gegen Viren. Antibiotikum bedeutet: Gegen Bakterien.',
@@ -5588,7 +5588,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f5',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Hefe“?',
+      prompt: 'Was trifft auf „Hefe“ zu?',
       answer: 'Einzelliger Pilz',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Teig/Gärung. Hefe bedeutet: Einzelliger Pilz.',
@@ -5599,7 +5599,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f6',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Milchbakterium“?',
+      prompt: 'Was trifft auf „Milchbakterium“ zu?',
       answer: 'Joghurt/Käse',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Nützlich. Milchbakterium bedeutet: Joghurt/Käse.',
@@ -5610,7 +5610,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f7',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Resistenz“?',
+      prompt: 'Was trifft auf „Resistenz“ zu?',
       answer: 'Unempfindlichkeit',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Falscher Einsatz. Resistenz bedeutet: Unempfindlichkeit.',
@@ -5621,7 +5621,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f8',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Konservierung“?',
+      prompt: 'Was trifft auf „Konservierung“ zu?',
       answer: 'Haltbarmachen',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Kühlen/Erhitzen. Konservierung bedeutet: Haltbarmachen.',
@@ -5632,7 +5632,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f9',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Infektion“?',
+      prompt: 'Was trifft auf „Infektion“ zu?',
       answer: 'Erregervermehrung',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Hygiene senkt Risiko. Infektion bedeutet: Erregervermehrung.',
@@ -5643,7 +5643,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f10',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Impfung“?',
+      prompt: 'Was trifft auf „Impfung“ zu?',
       answer: 'Schutzaufbau',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Gegen Erreger. Impfung bedeutet: Schutzaufbau.',
@@ -5654,7 +5654,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:mikroben:f11',
-      prompt: '[k7-lbw-mikroben] Was bedeutet der Fachbegriff „Pasteurisieren“?',
+      prompt: 'Was trifft auf „Pasteurisieren“ zu?',
       answer: 'Erhitzen von Milch',
       wrong: ['Stoffwechsel ohne O₂', 'Keime begrenzen', 'Mikrobiom'],
       explanation: 'Keimreduktion. Pasteurisieren bedeutet: Erhitzen von Milch.',
@@ -5716,7 +5716,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f0',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Neuron“?',
+      prompt: 'Was trifft auf „Neuron“ zu?',
       answer: 'Nervenzelle',
       wrong: ['Langer Fortsatz', 'Übergang zwischen Zellen', 'Rezeptor–Zentrum–Effektor'],
       explanation: 'Reizleitung. Neuron bedeutet: Nervenzelle.',
@@ -5727,7 +5727,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f1',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Axon“?',
+      prompt: 'Was trifft auf „Axon“ zu?',
       answer: 'Langer Fortsatz',
       wrong: ['Nervenzelle', 'Übergang zwischen Zellen', 'Rezeptor–Zentrum–Effektor'],
       explanation: 'Signalweg. Axon bedeutet: Langer Fortsatz.',
@@ -5738,7 +5738,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f2',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Synapse“?',
+      prompt: 'Was trifft auf „Synapse“ zu?',
       answer: 'Übergang zwischen Zellen',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Rezeptor–Zentrum–Effektor'],
       explanation: 'Botenstoffe. Synapse bedeutet: Übergang zwischen Zellen.',
@@ -5749,7 +5749,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f3',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Reflexbogen“?',
+      prompt: 'Was trifft auf „Reflexbogen“ zu?',
       answer: 'Rezeptor–Zentrum–Effektor',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Schnell. Reflexbogen bedeutet: Rezeptor–Zentrum–Effektor.',
@@ -5760,7 +5760,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f4',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Rückenmark“?',
+      prompt: 'Was trifft auf „Rückenmark“ zu?',
       answer: 'Schaltzentrale vieler Reflexe',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Ohne Großhirnentscheid. Rückenmark bedeutet: Schaltzentrale vieler Reflexe.',
@@ -5771,7 +5771,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f5',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Dendrit“?',
+      prompt: 'Was trifft auf „Dendrit“ zu?',
       answer: 'Empfangender Fortsatz',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Eingang. Dendrit bedeutet: Empfangender Fortsatz.',
@@ -5782,7 +5782,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f6',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Myelin“?',
+      prompt: 'Was trifft auf „Myelin“ zu?',
       answer: 'Isolierschicht',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Schnellere Leitung. Myelin bedeutet: Isolierschicht.',
@@ -5793,7 +5793,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f7',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Rezeptor“?',
+      prompt: 'Was trifft auf „Rezeptor“ zu?',
       answer: 'Reizaufnehmer',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Sinnesorgan. Rezeptor bedeutet: Reizaufnehmer.',
@@ -5804,7 +5804,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f8',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Effektor“?',
+      prompt: 'Was trifft auf „Effektor“ zu?',
       answer: 'Muskel oder Drüse',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Antwort. Effektor bedeutet: Muskel oder Drüse.',
@@ -5815,7 +5815,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f9',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Reiz“?',
+      prompt: 'Was trifft auf „Reiz“ zu?',
       answer: 'Auslöser',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Physikalisch/chemisch. Reiz bedeutet: Auslöser.',
@@ -5826,7 +5826,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f10',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Reaktion“?',
+      prompt: 'Was trifft auf „Reaktion“ zu?',
       answer: 'Antwort des Organismus',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Auf den Reiz. Reaktion bedeutet: Antwort des Organismus.',
@@ -5837,7 +5837,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f11',
-      prompt: '[k8-lb1-nerv-reflex] Was bedeutet der Fachbegriff „Zentrales Nervensystem“?',
+      prompt: 'Was trifft auf „Zentrales Nervensystem“ zu?',
       answer: 'Gehirn und Rückenmark',
       wrong: ['Nervenzelle', 'Langer Fortsatz', 'Übergang zwischen Zellen'],
       explanation: 'Steuerung. Zentrales Nervensystem bedeutet: Gehirn und Rückenmark.',
@@ -5899,7 +5899,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lb1:haut:f0',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Epidermis“?',
+      prompt: 'Was trifft auf „Epidermis“ zu?',
       answer: 'Oberhaut',
       wrong: ['Lederhaut', 'Kühlung', 'Fettet Haut/Haar'],
       explanation: 'Schutzschicht. Epidermis bedeutet: Oberhaut.',
@@ -5910,7 +5910,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f1',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Dermis“?',
+      prompt: 'Was trifft auf „Dermis“ zu?',
       answer: 'Lederhaut',
       wrong: ['Oberhaut', 'Kühlung', 'Fettet Haut/Haar'],
       explanation: 'Festigkeit. Dermis bedeutet: Lederhaut.',
@@ -5921,7 +5921,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f2',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Schweißdrüse“?',
+      prompt: 'Was trifft auf „Schweißdrüse“ zu?',
       answer: 'Kühlung',
       wrong: ['Oberhaut', 'Lederhaut', 'Fettet Haut/Haar'],
       explanation: 'Salzwasser. Schweißdrüse bedeutet: Kühlung.',
@@ -5932,7 +5932,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f3',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Talgdrüse“?',
+      prompt: 'Was trifft auf „Talgdrüse“ zu?',
       answer: 'Fettet Haut/Haar',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Schutzfilm. Talgdrüse bedeutet: Fettet Haut/Haar.',
@@ -5943,7 +5943,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f4',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Melanin“?',
+      prompt: 'Was trifft auf „Melanin“ zu?',
       answer: 'Farbstoff',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'UV-Schutz. Melanin bedeutet: Farbstoff.',
@@ -5954,7 +5954,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f5',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Sinneszelle“?',
+      prompt: 'Was trifft auf „Sinneszelle“ zu?',
       answer: 'Tast/Temperatur/Schmerz',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'In der Haut. Sinneszelle bedeutet: Tast/Temperatur/Schmerz.',
@@ -5965,7 +5965,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f6',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Hornschicht“?',
+      prompt: 'Was trifft auf „Hornschicht“ zu?',
       answer: 'Äußere abgestorbene Zellen',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Barriere. Hornschicht bedeutet: Äußere abgestorbene Zellen.',
@@ -5976,7 +5976,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f7',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Kapillare“?',
+      prompt: 'Was trifft auf „Kapillare“ zu?',
       answer: 'Feine Blutgefäße',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Wärmeaustausch. Kapillare bedeutet: Feine Blutgefäße.',
@@ -5987,7 +5987,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f8',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Vitamin-D-Bildung“?',
+      prompt: 'Was trifft auf „Vitamin-D-Bildung“ zu?',
       answer: 'Unter UV-Einfluss',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'In der Haut. Vitamin-D-Bildung bedeutet: Unter UV-Einfluss.',
@@ -5998,7 +5998,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f9',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Wundheilung“?',
+      prompt: 'Was trifft auf „Wundheilung“ zu?',
       answer: 'Reparatur der Haut',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Zellteilung. Wundheilung bedeutet: Reparatur der Haut.',
@@ -6009,7 +6009,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f10',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Hautflora“?',
+      prompt: 'Was trifft auf „Hautflora“ zu?',
       answer: 'Mikroben auf der Haut',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Schutzrolle. Hautflora bedeutet: Mikroben auf der Haut.',
@@ -6020,7 +6020,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f11',
-      prompt: '[k8-lb1-haut] Was bedeutet der Fachbegriff „Rezeptor“?',
+      prompt: 'Was trifft auf „Rezeptor“ zu?',
       answer: 'Reizempfänger',
       wrong: ['Oberhaut', 'Lederhaut', 'Kühlung'],
       explanation: 'Sinneseindruck. Rezeptor bedeutet: Reizempfänger.',
@@ -6082,7 +6082,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f0',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Embryo“?',
+      prompt: 'Was trifft auf „Embryo“ zu?',
       answer: 'Frühe Entwicklung',
       wrong: ['Spätere Phase', 'Geschlechtsreifung', 'Größenzunahme'],
       explanation: 'Im Mutterleib. Embryo bedeutet: Frühe Entwicklung.',
@@ -6093,7 +6093,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f1',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Fetus“?',
+      prompt: 'Was trifft auf „Fetus“ zu?',
       answer: 'Spätere Phase',
       wrong: ['Frühe Entwicklung', 'Geschlechtsreifung', 'Größenzunahme'],
       explanation: 'Organe ausdifferenziert. Fetus bedeutet: Spätere Phase.',
@@ -6104,7 +6104,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f2',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Pubertät“?',
+      prompt: 'Was trifft auf „Pubertät“ zu?',
       answer: 'Geschlechtsreifung',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Größenzunahme'],
       explanation: 'Hormone. Pubertät bedeutet: Geschlechtsreifung.',
@@ -6115,7 +6115,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f3',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Wachstum“?',
+      prompt: 'Was trifft auf „Wachstum“ zu?',
       answer: 'Größenzunahme',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Zellteilung. Wachstum bedeutet: Größenzunahme.',
@@ -6126,7 +6126,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f4',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Differenzierung“?',
+      prompt: 'Was trifft auf „Differenzierung“ zu?',
       answer: 'Zellspezialisierung',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Gewebe. Differenzierung bedeutet: Zellspezialisierung.',
@@ -6137,7 +6137,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f5',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Hormone“?',
+      prompt: 'Was trifft auf „Hormone“ zu?',
       answer: 'Botenstoffe',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Steuern Entwicklung. Hormone bedeutet: Botenstoffe.',
@@ -6148,7 +6148,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f6',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Menstruationszyklus“?',
+      prompt: 'Was trifft auf „Menstruationszyklus“ zu?',
       answer: 'Monatlicher Zyklus',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Gebärmutterschleimhaut. Menstruationszyklus bedeutet: Monatlicher Zyklus.',
@@ -6159,7 +6159,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f7',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Spermatogenese“?',
+      prompt: 'Was trifft auf „Spermatogenese“ zu?',
       answer: 'Bildung von Samenzellen',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'In den Hoden. Spermatogenese bedeutet: Bildung von Samenzellen.',
@@ -6170,7 +6170,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f8',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Oogenese“?',
+      prompt: 'Was trifft auf „Oogenese“ zu?',
       answer: 'Bildung von Eizellen',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Im Eierstock. Oogenese bedeutet: Bildung von Eizellen.',
@@ -6181,7 +6181,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f9',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Befruchtung“?',
+      prompt: 'Was trifft auf „Befruchtung“ zu?',
       answer: 'Verschmelzung der Keimzellen',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Zygote. Befruchtung bedeutet: Verschmelzung der Keimzellen.',
@@ -6192,7 +6192,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f10',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Geburt“?',
+      prompt: 'Was trifft auf „Geburt“ zu?',
       answer: 'Ende der Schwangerschaft',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Kind kommt zur Welt. Geburt bedeutet: Ende der Schwangerschaft.',
@@ -6203,7 +6203,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f11',
-      prompt: '[k8-lb2-entwicklung] Was bedeutet der Fachbegriff „Altern“?',
+      prompt: 'Was trifft auf „Altern“ zu?',
       answer: 'Altersprozesse',
       wrong: ['Frühe Entwicklung', 'Spätere Phase', 'Geschlechtsreifung'],
       explanation: 'Teil der Ontogenese. Altern bedeutet: Altersprozesse.',
@@ -6265,7 +6265,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lbw:stress:f0',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Stressor“?',
+      prompt: 'Was trifft auf „Stressor“ zu?',
       answer: 'Belastender Reiz',
       wrong: ['Stresshormon', 'Weiteres Stresshormon', 'Akute Stressreaktion'],
       explanation: 'Auslöser. Stressor bedeutet: Belastender Reiz.',
@@ -6276,7 +6276,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f1',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Adrenalin“?',
+      prompt: 'Was trifft auf „Adrenalin“ zu?',
       answer: 'Stresshormon',
       wrong: ['Belastender Reiz', 'Weiteres Stresshormon', 'Akute Stressreaktion'],
       explanation: 'Kurzfristige Aktivierung. Adrenalin bedeutet: Stresshormon.',
@@ -6287,7 +6287,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f2',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Cortisol“?',
+      prompt: 'Was trifft auf „Cortisol“ zu?',
       answer: 'Weiteres Stresshormon',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Akute Stressreaktion'],
       explanation: 'Länger wirksam. Cortisol bedeutet: Weiteres Stresshormon.',
@@ -6298,7 +6298,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f3',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Kampf-oder-Flucht“?',
+      prompt: 'Was trifft auf „Kampf-oder-Flucht“ zu?',
       answer: 'Akute Stressreaktion',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Sympathikus. Kampf-oder-Flucht bedeutet: Akute Stressreaktion.',
@@ -6309,7 +6309,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f4',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Erholung“?',
+      prompt: 'Was trifft auf „Erholung“ zu?',
       answer: 'Abbau von Anspannung',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Schlaf, Pausen. Erholung bedeutet: Abbau von Anspannung.',
@@ -6320,7 +6320,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f5',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Überforderung“?',
+      prompt: 'Was trifft auf „Überforderung“ zu?',
       answer: 'Dauerhafte Überlastung',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Gesundheitsrisiko. Überforderung bedeutet: Dauerhafte Überlastung.',
@@ -6331,7 +6331,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f6',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Entspannungstechnik“?',
+      prompt: 'Was trifft auf „Entspannungstechnik“ zu?',
       answer: 'Atmung, Bewegung',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Gegenspieler. Entspannungstechnik bedeutet: Atmung, Bewegung.',
@@ -6342,7 +6342,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f7',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Schlafhygiene“?',
+      prompt: 'Was trifft auf „Schlafhygiene“ zu?',
       answer: 'Gute Schlafbedingungen',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Regeneration. Schlafhygiene bedeutet: Gute Schlafbedingungen.',
@@ -6353,7 +6353,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f8',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Zeitdruck“?',
+      prompt: 'Was trifft auf „Zeitdruck“ zu?',
       answer: 'Häufiger Stressor',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Planung hilft. Zeitdruck bedeutet: Häufiger Stressor.',
@@ -6364,7 +6364,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f9',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Soziale Unterstützung“?',
+      prompt: 'Was trifft auf „Soziale Unterstützung“ zu?',
       answer: 'Hilfe durch andere',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Puffert Stress. Soziale Unterstützung bedeutet: Hilfe durch andere.',
@@ -6375,7 +6375,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f10',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Burnout-Risiko“?',
+      prompt: 'Was trifft auf „Burnout-Risiko“ zu?',
       answer: 'Bei chronischem Stress',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Frühzeichen beachten. Burnout-Risiko bedeutet: Bei chronischem Stress.',
@@ -6386,7 +6386,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:stress:f11',
-      prompt: '[k8-lbw-stress] Was bedeutet der Fachbegriff „Resilienz“?',
+      prompt: 'Was trifft auf „Resilienz“ zu?',
       answer: 'Widerstandskraft',
       wrong: ['Belastender Reiz', 'Stresshormon', 'Weiteres Stresshormon'],
       explanation: 'Trainierbar. Resilienz bedeutet: Widerstandskraft.',
@@ -6448,7 +6448,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lbw:sinne:f0',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Auge“?',
+      prompt: 'Was trifft auf „Auge“ zu?',
       answer: 'Sehsinn',
       wrong: ['Hör- und Gleichgewichtssinn', 'Geruchssinn', 'Geschmackssinn'],
       explanation: 'Lichtreize. Auge bedeutet: Sehsinn.',
@@ -6459,7 +6459,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f1',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Ohr“?',
+      prompt: 'Was trifft auf „Ohr“ zu?',
       answer: 'Hör- und Gleichgewichtssinn',
       wrong: ['Sehsinn', 'Geruchssinn', 'Geschmackssinn'],
       explanation: 'Schall/Lage. Ohr bedeutet: Hör- und Gleichgewichtssinn.',
@@ -6470,7 +6470,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f2',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Nase“?',
+      prompt: 'Was trifft auf „Nase“ zu?',
       answer: 'Geruchssinn',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geschmackssinn'],
       explanation: 'Duftstoffe. Nase bedeutet: Geruchssinn.',
@@ -6481,7 +6481,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f3',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Zunge“?',
+      prompt: 'Was trifft auf „Zunge“ zu?',
       answer: 'Geschmackssinn',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Grundqualitäten. Zunge bedeutet: Geschmackssinn.',
@@ -6492,7 +6492,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f4',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Hautsinn“?',
+      prompt: 'Was trifft auf „Hautsinn“ zu?',
       answer: 'Tasten, Temperatur, Schmerz',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Rezeptoren. Hautsinn bedeutet: Tasten, Temperatur, Schmerz.',
@@ -6503,7 +6503,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f5',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Sinnestäuschung“?',
+      prompt: 'Was trifft auf „Sinnestäuschung“ zu?',
       answer: 'Fehlinterpretation',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Gehirn ergänzt. Sinnestäuschung bedeutet: Fehlinterpretation.',
@@ -6514,7 +6514,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f6',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Adaptation“?',
+      prompt: 'Was trifft auf „Adaptation“ zu?',
       answer: 'Gewöhnung an Reiz',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Empfindlichkeit sinkt. Adaptation bedeutet: Gewöhnung an Reiz.',
@@ -6525,7 +6525,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f7',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Reizschwelle“?',
+      prompt: 'Was trifft auf „Reizschwelle“ zu?',
       answer: 'Minimale Intensität',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Für Wahrnehmung. Reizschwelle bedeutet: Minimale Intensität.',
@@ -6536,7 +6536,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f8',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Sinnesorgan“?',
+      prompt: 'Was trifft auf „Sinnesorgan“ zu?',
       answer: 'Reizaufnehmer',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Spezialisiert. Sinnesorgan bedeutet: Reizaufnehmer.',
@@ -6547,7 +6547,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f9',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Wahrnehmung“?',
+      prompt: 'Was trifft auf „Wahrnehmung“ zu?',
       answer: 'Verarbeitung im Gehirn',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Nicht nur Reiz. Wahrnehmung bedeutet: Verarbeitung im Gehirn.',
@@ -6558,7 +6558,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f10',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Synästhesie“?',
+      prompt: 'Was trifft auf „Synästhesie“ zu?',
       answer: 'Vermischung von Sinnen',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Selten. Synästhesie bedeutet: Vermischung von Sinnen.',
@@ -6569,7 +6569,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f11',
-      prompt: '[k8-lbw-sinne] Was bedeutet der Fachbegriff „Propriozeption“?',
+      prompt: 'Was trifft auf „Propriozeption“ zu?',
       answer: 'Tiefensensibilität',
       wrong: ['Sehsinn', 'Hör- und Gleichgewichtssinn', 'Geruchssinn'],
       explanation: 'Körperlage. Propriozeption bedeutet: Tiefensensibilität.',
@@ -6631,7 +6631,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f0',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Notruf“?',
+      prompt: 'Was trifft auf „Notruf“ zu?',
       answer: '112',
       wrong: ['Eigene Sicherheit zuerst', 'Ansprechen/Schütteln', 'Sehen-Hören-Fühlen'],
       explanation: 'Sofort bei Notfall. Notruf bedeutet: 112.',
@@ -6642,7 +6642,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f1',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Sicherung“?',
+      prompt: 'Was trifft auf „Sicherung“ zu?',
       answer: 'Eigene Sicherheit zuerst',
       wrong: ['112', 'Ansprechen/Schütteln', 'Sehen-Hören-Fühlen'],
       explanation: 'Unfallstelle. Sicherung bedeutet: Eigene Sicherheit zuerst.',
@@ -6653,7 +6653,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f2',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Bewusstsein prüfen“?',
+      prompt: 'Was trifft auf „Bewusstsein prüfen“ zu?',
       answer: 'Ansprechen/Schütteln',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Sehen-Hören-Fühlen'],
       explanation: 'Zustand klären. Bewusstsein prüfen bedeutet: Ansprechen/Schütteln.',
@@ -6664,7 +6664,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f3',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Atemkontrolle“?',
+      prompt: 'Was trifft auf „Atemkontrolle“ zu?',
       answer: 'Sehen-Hören-Fühlen',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Atmung vorhanden? Atemkontrolle bedeutet: Sehen-Hören-Fühlen.',
@@ -6675,7 +6675,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f4',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Stabile Seitenlage“?',
+      prompt: 'Was trifft auf „Stabile Seitenlage“ zu?',
       answer: 'Bei Bewusstlosigkeit mit Atmung',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Atemwege frei. Stabile Seitenlage bedeutet: Bei Bewusstlosigkeit mit Atmung.',
@@ -6686,7 +6686,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f5',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Herzdruckmassage“?',
+      prompt: 'Was trifft auf „Herzdruckmassage“ zu?',
       answer: 'Bei Kreislaufstillstand',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Reanimation. Herzdruckmassage bedeutet: Bei Kreislaufstillstand.',
@@ -6697,7 +6697,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f6',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Wundversorgung“?',
+      prompt: 'Was trifft auf „Wundversorgung“ zu?',
       answer: 'Blutung stillen',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Druckverband. Wundversorgung bedeutet: Blutung stillen.',
@@ -6708,7 +6708,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f7',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Schocklage“?',
+      prompt: 'Was trifft auf „Schocklage“ zu?',
       answer: 'Beine hoch',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Bei Kreislaufschock Verdacht. Schocklage bedeutet: Beine hoch.',
@@ -6719,7 +6719,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f8',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Verbrennung“?',
+      prompt: 'Was trifft auf „Verbrennung“ zu?',
       answer: 'Kühlen mit Wasser',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Nicht Fett. Verbrennung bedeutet: Kühlen mit Wasser.',
@@ -6730,7 +6730,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f9',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Allergie“?',
+      prompt: 'Was trifft auf „Allergie“ zu?',
       answer: 'Notfallmedikation kennen',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Bei bekannter Neigung. Allergie bedeutet: Notfallmedikation kennen.',
@@ -6741,7 +6741,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f10',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „AED“?',
+      prompt: 'Was trifft auf „AED“ zu?',
       answer: 'Defibrillator',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Wenn verfügbar nutzen. AED bedeutet: Defibrillator.',
@@ -6752,7 +6752,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f11',
-      prompt: '[k8-lbw-erste-hilfe] Was bedeutet der Fachbegriff „Handschuhe“?',
+      prompt: 'Was trifft auf „Handschuhe“ zu?',
       answer: 'Eigenschutz',
       wrong: ['112', 'Eigene Sicherheit zuerst', 'Ansprechen/Schütteln'],
       explanation: 'Infektionsrisiko. Handschuhe bedeutet: Eigenschutz.',
@@ -6814,7 +6814,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f0',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Ökosystem“?',
+      prompt: 'Was trifft auf „Ökosystem“ zu?',
       answer: 'Lebewesen + Umwelt',
       wrong: ['Unbelebte Faktoren', 'Belebte Faktoren', 'Fluss/Bach'],
       explanation: 'Wechselwirkung. Ökosystem bedeutet: Lebewesen + Umwelt.',
@@ -6825,7 +6825,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f1',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Abiotisch“?',
+      prompt: 'Was trifft auf „Abiotisch“ zu?',
       answer: 'Unbelebte Faktoren',
       wrong: ['Lebewesen + Umwelt', 'Belebte Faktoren', 'Fluss/Bach'],
       explanation: 'Licht, Temperatur. Abiotisch bedeutet: Unbelebte Faktoren.',
@@ -6836,7 +6836,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f2',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Biotisch“?',
+      prompt: 'Was trifft auf „Biotisch“ zu?',
       answer: 'Belebte Faktoren',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Fluss/Bach'],
       explanation: 'Konkurrenz, Fraß. Biotisch bedeutet: Belebte Faktoren.',
@@ -6847,7 +6847,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f3',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Fließgewässer“?',
+      prompt: 'Was trifft auf „Fließgewässer“ zu?',
       answer: 'Fluss/Bach',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Strömung. Fließgewässer bedeutet: Fluss/Bach.',
@@ -6858,7 +6858,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f4',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Stillgewässer“?',
+      prompt: 'Was trifft auf „Stillgewässer“ zu?',
       answer: 'See/Weiher',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Schichtung möglich. Stillgewässer bedeutet: See/Weiher.',
@@ -6869,7 +6869,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f5',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Uferzone“?',
+      prompt: 'Was trifft auf „Uferzone“ zu?',
       answer: 'Übergang Land–Wasser',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Artenreich. Uferzone bedeutet: Übergang Land–Wasser.',
@@ -6880,7 +6880,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f6',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Plankton“?',
+      prompt: 'Was trifft auf „Plankton“ zu?',
       answer: 'Schwebende Organismen',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Im Wasser. Plankton bedeutet: Schwebende Organismen.',
@@ -6891,7 +6891,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f7',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Benthos“?',
+      prompt: 'Was trifft auf „Benthos“ zu?',
       answer: 'Bodenbewohner',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Gewässergrund. Benthos bedeutet: Bodenbewohner.',
@@ -6902,7 +6902,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f8',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Mischwald“?',
+      prompt: 'Was trifft auf „Mischwald“ zu?',
       answer: 'Mehrere Baumarten',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Strukturreich. Mischwald bedeutet: Mehrere Baumarten.',
@@ -6913,7 +6913,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f9',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Stoffkreislauf“?',
+      prompt: 'Was trifft auf „Stoffkreislauf“ zu?',
       answer: 'Elemente zirkulieren',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'C, N, H₂O. Stoffkreislauf bedeutet: Elemente zirkulieren.',
@@ -6924,7 +6924,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f10',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Energiefluss“?',
+      prompt: 'Was trifft auf „Energiefluss“ zu?',
       answer: 'Einbahnstraße',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Verluste als Wärme. Energiefluss bedeutet: Einbahnstraße.',
@@ -6935,7 +6935,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f11',
-      prompt: '[k9-lb2-wald-gewaesser] Was bedeutet der Fachbegriff „Bioindikator“?',
+      prompt: 'Was trifft auf „Bioindikator“ zu?',
       answer: 'Zeigerart',
       wrong: ['Lebewesen + Umwelt', 'Unbelebte Faktoren', 'Belebte Faktoren'],
       explanation: 'Umweltzustand. Bioindikator bedeutet: Zeigerart.',
@@ -6997,7 +6997,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f0',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Kohlenstoffkreislauf“?',
+      prompt: 'Was trifft auf „Kohlenstoffkreislauf“ zu?',
       answer: 'CO₂ ↔ organisch',
       wrong: ['Bindet CO₂', 'Setzt CO₂ frei', 'Mineralisiert'],
       explanation: 'Fotosynthese/Atmung. Kohlenstoffkreislauf bedeutet: CO₂ ↔ organisch.',
@@ -7008,7 +7008,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f1',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Fotosynthese“?',
+      prompt: 'Was trifft auf „Fotosynthese“ zu?',
       answer: 'Bindet CO₂',
       wrong: ['CO₂ ↔ organisch', 'Setzt CO₂ frei', 'Mineralisiert'],
       explanation: 'Produzenten. Fotosynthese bedeutet: Bindet CO₂.',
@@ -7019,7 +7019,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f2',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Zellatmung“?',
+      prompt: 'Was trifft auf „Zellatmung“ zu?',
       answer: 'Setzt CO₂ frei',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Mineralisiert'],
       explanation: 'Konsumenten/Destruenten. Zellatmung bedeutet: Setzt CO₂ frei.',
@@ -7030,7 +7030,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f3',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Destruent“?',
+      prompt: 'Was trifft auf „Destruent“ zu?',
       answer: 'Mineralisiert',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.',
@@ -7041,7 +7041,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f4',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Biomasse“?',
+      prompt: 'Was trifft auf „Biomasse“ zu?',
       answer: 'Organische Substanz',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Lebewesen. Biomasse bedeutet: Organische Substanz.',
@@ -7052,7 +7052,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f5',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Fossiler Kohlenstoff“?',
+      prompt: 'Was trifft auf „Fossiler Kohlenstoff“ zu?',
       answer: 'Kohle/Öl/Gas',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Langzeitspeicher. Fossiler Kohlenstoff bedeutet: Kohle/Öl/Gas.',
@@ -7063,7 +7063,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f6',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Treibhausgas“?',
+      prompt: 'Was trifft auf „Treibhausgas“ zu?',
       answer: 'CO₂ u. a.',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a..',
@@ -7074,7 +7074,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f7',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Senke“?',
+      prompt: 'Was trifft auf „Senke“ zu?',
       answer: 'Aufnahmeort',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Wald, Ozean. Senke bedeutet: Aufnahmeort.',
@@ -7085,7 +7085,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f8',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Quelle“?',
+      prompt: 'Was trifft auf „Quelle“ zu?',
       answer: 'Abgabeort',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Verbrennung. Quelle bedeutet: Abgabeort.',
@@ -7096,7 +7096,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f9',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Humus“?',
+      prompt: 'Was trifft auf „Humus“ zu?',
       answer: 'Organik im Boden',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Speicher. Humus bedeutet: Organik im Boden.',
@@ -7107,7 +7107,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f10',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Respiration“?',
+      prompt: 'Was trifft auf „Respiration“ zu?',
       answer: 'Atmung',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'CO₂-Abgabe. Respiration bedeutet: Atmung.',
@@ -7118,7 +7118,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f11',
-      prompt: '[k9-lb2-stoffkreis] Was bedeutet der Fachbegriff „Assimilation“?',
+      prompt: 'Was trifft auf „Assimilation“ zu?',
       answer: 'Aufbau organischer Stoffe',
       wrong: ['CO₂ ↔ organisch', 'Bindet CO₂', 'Setzt CO₂ frei'],
       explanation: 'Pflanzen. Assimilation bedeutet: Aufbau organischer Stoffe.',
@@ -7180,7 +7180,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f0',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Stickstofffixierung“?',
+      prompt: 'Was trifft auf „Stickstofffixierung“ zu?',
       answer: 'N₂ zu Ammonium',
       wrong: ['Ammonium zu Nitrat', 'Nitrat zu N₂', 'Organischer N zu Ammonium'],
       explanation: 'Knöllchenbakterien. Stickstofffixierung bedeutet: N₂ zu Ammonium.',
@@ -7191,7 +7191,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f1',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Nitrifikation“?',
+      prompt: 'Was trifft auf „Nitrifikation“ zu?',
       answer: 'Ammonium zu Nitrat',
       wrong: ['N₂ zu Ammonium', 'Nitrat zu N₂', 'Organischer N zu Ammonium'],
       explanation: 'Bodenbakterien. Nitrifikation bedeutet: Ammonium zu Nitrat.',
@@ -7202,7 +7202,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f2',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Denitrifikation“?',
+      prompt: 'Was trifft auf „Denitrifikation“ zu?',
       answer: 'Nitrat zu N₂',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Organischer N zu Ammonium'],
       explanation: 'Zurück in die Luft. Denitrifikation bedeutet: Nitrat zu N₂.',
@@ -7213,7 +7213,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f3',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Ammonifikation“?',
+      prompt: 'Was trifft auf „Ammonifikation“ zu?',
       answer: 'Organischer N zu Ammonium',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Zersetzung. Ammonifikation bedeutet: Organischer N zu Ammonium.',
@@ -7224,7 +7224,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f4',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Nitrat“?',
+      prompt: 'Was trifft auf „Nitrat“ zu?',
       answer: 'Pflanzenverfügbare Form',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Dünger. Nitrat bedeutet: Pflanzenverfügbare Form.',
@@ -7235,7 +7235,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f5',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Ammonium“?',
+      prompt: 'Was trifft auf „Ammonium“ zu?',
       answer: 'Weitere N-Form',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Im Boden. Ammonium bedeutet: Weitere N-Form.',
@@ -7246,7 +7246,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f6',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Leguminose“?',
+      prompt: 'Was trifft auf „Leguminose“ zu?',
       answer: 'Stickstoffbinder-Pflanze',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Fabaceae. Leguminose bedeutet: Stickstoffbinder-Pflanze.',
@@ -7257,7 +7257,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f7',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Überdüngung“?',
+      prompt: 'Was trifft auf „Überdüngung“ zu?',
       answer: 'Zu viel Stickstoff',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Gewässerbelastung. Überdüngung bedeutet: Zu viel Stickstoff.',
@@ -7268,7 +7268,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f8',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Eutrophierung“?',
+      prompt: 'Was trifft auf „Eutrophierung“ zu?',
       answer: 'Nährstoffüberangebot',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Algenblüte. Eutrophierung bedeutet: Nährstoffüberangebot.',
@@ -7279,7 +7279,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f9',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Stickstoffkreislauf“?',
+      prompt: 'Was trifft auf „Stickstoffkreislauf“ zu?',
       answer: 'Globaler Stoffkreis',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Luft–Boden–Lebewesen. Stickstoffkreislauf bedeutet: Globaler Stoffkreis.',
@@ -7290,7 +7290,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f10',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Aminoäure“?',
+      prompt: 'Was trifft auf „Aminoäure“ zu?',
       answer: 'N-haltiger Baustein',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'In Proteinen. Aminoäure bedeutet: N-haltiger Baustein.',
@@ -7301,7 +7301,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f11',
-      prompt: '[k9-lb2-stickstoff] Was bedeutet der Fachbegriff „Harnstoff“?',
+      prompt: 'Was trifft auf „Harnstoff“ zu?',
       answer: 'Ausscheidungsprodukt',
       wrong: ['N₂ zu Ammonium', 'Ammonium zu Nitrat', 'Nitrat zu N₂'],
       explanation: 'Säuger. Harnstoff bedeutet: Ausscheidungsprodukt.',
@@ -7363,7 +7363,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lbw:wiese:f0',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Magerrasen“?',
+      prompt: 'Was trifft auf „Magerrasen“ zu?',
       answer: 'Nährstoffarme Wiese',
       wrong: ['Nährstoffreich', 'Schnittnutzung', 'Nutztierfraß'],
       explanation: 'Artenreich oft. Magerrasen bedeutet: Nährstoffarme Wiese.',
@@ -7374,7 +7374,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f1',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Fettwiese“?',
+      prompt: 'Was trifft auf „Fettwiese“ zu?',
       answer: 'Nährstoffreich',
       wrong: ['Nährstoffarme Wiese', 'Schnittnutzung', 'Nutztierfraß'],
       explanation: 'Weniger Arten oft. Fettwiese bedeutet: Nährstoffreich.',
@@ -7385,7 +7385,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f2',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Mahd“?',
+      prompt: 'Was trifft auf „Mahd“ zu?',
       answer: 'Schnittnutzung',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Nutztierfraß'],
       explanation: 'Zeitpunkt wichtig. Mahd bedeutet: Schnittnutzung.',
@@ -7396,7 +7396,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f3',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Beweidung“?',
+      prompt: 'Was trifft auf „Beweidung“ zu?',
       answer: 'Nutztierfraß',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Offenhaltung. Beweidung bedeutet: Nutztierfraß.',
@@ -7407,7 +7407,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f4',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Blühstreifen“?',
+      prompt: 'Was trifft auf „Blühstreifen“ zu?',
       answer: 'Fördermaßnahme',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Insekten. Blühstreifen bedeutet: Fördermaßnahme.',
@@ -7418,7 +7418,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f5',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Heuschrecke“?',
+      prompt: 'Was trifft auf „Heuschrecke“ zu?',
       answer: 'Typischer Wiesenbewohner',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Insekt. Heuschrecke bedeutet: Typischer Wiesenbewohner.',
@@ -7429,7 +7429,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f6',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Schmetterling“?',
+      prompt: 'Was trifft auf „Schmetterling“ zu?',
       answer: 'Bestäuber',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Raupen an Pflanzen. Schmetterling bedeutet: Bestäuber.',
@@ -7440,7 +7440,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f7',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Kräuterreichtum“?',
+      prompt: 'Was trifft auf „Kräuterreichtum“ zu?',
       answer: 'Viele Pflanzenarten',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Struktur. Kräuterreichtum bedeutet: Viele Pflanzenarten.',
@@ -7451,7 +7451,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f8',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Bodenbrüter“?',
+      prompt: 'Was trifft auf „Bodenbrüter“ zu?',
       answer: 'Nest am Boden',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Störungsempfindlich. Bodenbrüter bedeutet: Nest am Boden.',
@@ -7462,7 +7462,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f9',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Sukzession“?',
+      prompt: 'Was trifft auf „Sukzession“ zu?',
       answer: 'Verbuschung ohne Pflege',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Zur Waldentwicklung. Sukzession bedeutet: Verbuschung ohne Pflege.',
@@ -7473,7 +7473,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f10',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Extensiv“?',
+      prompt: 'Was trifft auf „Extensiv“ zu?',
       answer: 'Wenig Intensität',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Naturschutzfreundlich. Extensiv bedeutet: Wenig Intensität.',
@@ -7484,7 +7484,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f11',
-      prompt: '[k9-lbw-wiese] Was bedeutet der Fachbegriff „Intensiv“?',
+      prompt: 'Was trifft auf „Intensiv“ zu?',
       answer: 'Hohe Nutzung/Düngung',
       wrong: ['Nährstoffarme Wiese', 'Nährstoffreich', 'Schnittnutzung'],
       explanation: 'Ertrag vs. Vielfalt. Intensiv bedeutet: Hohe Nutzung/Düngung.',
@@ -7546,7 +7546,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lbw:pilze:f0',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Myzel“?',
+      prompt: 'Was trifft auf „Myzel“ zu?',
       answer: 'Fadengeflecht',
       wrong: ['Hut/Stiel oft', 'Ausbreitungseinheit', 'Zersetzer'],
       explanation: 'Eigentlicher Pilzkörper. Myzel bedeutet: Fadengeflecht.',
@@ -7557,7 +7557,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f1',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Fruchtkörper“?',
+      prompt: 'Was trifft auf „Fruchtkörper“ zu?',
       answer: 'Hut/Stiel oft',
       wrong: ['Fadengeflecht', 'Ausbreitungseinheit', 'Zersetzer'],
       explanation: 'Sporenbildung. Fruchtkörper bedeutet: Hut/Stiel oft.',
@@ -7568,7 +7568,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f2',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Spore“?',
+      prompt: 'Was trifft auf „Spore“ zu?',
       answer: 'Ausbreitungseinheit',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Zersetzer'],
       explanation: 'Keine Samen. Spore bedeutet: Ausbreitungseinheit.',
@@ -7579,7 +7579,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f3',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Saprobiont“?',
+      prompt: 'Was trifft auf „Saprobiont“ zu?',
       answer: 'Zersetzer',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Totholz/Laub. Saprobiont bedeutet: Zersetzer.',
@@ -7590,7 +7590,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f4',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Parasit“?',
+      prompt: 'Was trifft auf „Parasit“ zu?',
       answer: 'Schädigt Wirt',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Manche Pilze. Parasit bedeutet: Schädigt Wirt.',
@@ -7601,7 +7601,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f5',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Mykorrhiza“?',
+      prompt: 'Was trifft auf „Mykorrhiza“ zu?',
       answer: 'Symbiose mit Wurzeln',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Nährstofftausch. Mykorrhiza bedeutet: Symbiose mit Wurzeln.',
@@ -7612,7 +7612,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f6',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Hutpilz“?',
+      prompt: 'Was trifft auf „Hutpilz“ zu?',
       answer: 'Bekannte Form',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Röhren/Lamellen. Hutpilz bedeutet: Bekannte Form.',
@@ -7623,7 +7623,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f7',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Schimmel“?',
+      prompt: 'Was trifft auf „Schimmel“ zu?',
       answer: 'Mikroskopische Pilze',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Lebensmittel. Schimmel bedeutet: Mikroskopische Pilze.',
@@ -7634,7 +7634,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f8',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Hefe“?',
+      prompt: 'Was trifft auf „Hefe“ zu?',
       answer: 'Einzeller',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Gärung. Hefe bedeutet: Einzeller.',
@@ -7645,7 +7645,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f9',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Chitin“?',
+      prompt: 'Was trifft auf „Chitin“ zu?',
       answer: 'Zellwandstoff',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Bei Pilzen. Chitin bedeutet: Zellwandstoff.',
@@ -7656,7 +7656,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f10',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Giftpilz“?',
+      prompt: 'Was trifft auf „Giftpilz“ zu?',
       answer: 'Toxisch',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Bestimmung nötig. Giftpilz bedeutet: Toxisch.',
@@ -7667,7 +7667,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f11',
-      prompt: '[k9-lbw-pilze] Was bedeutet der Fachbegriff „Speisepilz“?',
+      prompt: 'Was trifft auf „Speisepilz“ zu?',
       answer: 'Essbar',
       wrong: ['Fadengeflecht', 'Hut/Stiel oft', 'Ausbreitungseinheit'],
       explanation: 'Nur bei sicherer ID. Speisepilz bedeutet: Essbar.',
@@ -7729,7 +7729,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lbw:bier:f0',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Gerste“?',
+      prompt: 'Was trifft auf „Gerste“ zu?',
       answer: 'Braugetreide',
       wrong: ['Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff', 'Gärungserreger'],
       explanation: 'Stärkequelle. Gerste bedeutet: Braugetreide.',
@@ -7740,7 +7740,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f1',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Malz“?',
+      prompt: 'Was trifft auf „Malz“ zu?',
       answer: 'Gekeimte und gedarrte Gerste',
       wrong: ['Braugetreide', 'Bitter- und Aromastoff', 'Gärungserreger'],
       explanation: 'Enzyme. Malz bedeutet: Gekeimte und gedarrte Gerste.',
@@ -7751,7 +7751,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f2',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Hopfen“?',
+      prompt: 'Was trifft auf „Hopfen“ zu?',
       answer: 'Bitter- und Aromastoff',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Gärungserreger'],
       explanation: 'Konservierend. Hopfen bedeutet: Bitter- und Aromastoff.',
@@ -7762,7 +7762,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f3',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Hefe“?',
+      prompt: 'Was trifft auf „Hefe“ zu?',
       answer: 'Gärungserreger',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Alkohol und CO₂. Hefe bedeutet: Gärungserreger.',
@@ -7773,7 +7773,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f4',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Würze“?',
+      prompt: 'Was trifft auf „Würze“ zu?',
       answer: 'Zuckerlösung vor Gärung',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Aus Malz. Würze bedeutet: Zuckerlösung vor Gärung.',
@@ -7784,7 +7784,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f5',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Maischen“?',
+      prompt: 'Was trifft auf „Maischen“ zu?',
       answer: 'Stärke → Zucker',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Mit Wasser und Hitze. Maischen bedeutet: Stärke → Zucker.',
@@ -7795,7 +7795,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f6',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Gärung“?',
+      prompt: 'Was trifft auf „Gärung“ zu?',
       answer: 'Zucker → Alkohol',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Anaerob. Gärung bedeutet: Zucker → Alkohol.',
@@ -7806,7 +7806,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f7',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Lagerung“?',
+      prompt: 'Was trifft auf „Lagerung“ zu?',
       answer: 'Reifung',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Geschmack. Lagerung bedeutet: Reifung.',
@@ -7817,7 +7817,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f8',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Filterung“?',
+      prompt: 'Was trifft auf „Filterung“ zu?',
       answer: 'Klären',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Optional. Filterung bedeutet: Klären.',
@@ -7828,7 +7828,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f9',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Stammwürze“?',
+      prompt: 'Was trifft auf „Stammwürze“ zu?',
       answer: 'Zuckergehalt vor Gärung',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Kennzahl. Stammwürze bedeutet: Zuckergehalt vor Gärung.',
@@ -7839,7 +7839,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f10',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Alkoholgehalt“?',
+      prompt: 'Was trifft auf „Alkoholgehalt“ zu?',
       answer: 'Produkt der Gärung',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Vol.-%. Alkoholgehalt bedeutet: Produkt der Gärung.',
@@ -7850,7 +7850,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f11',
-      prompt: '[k9-lbw-bier] Was bedeutet der Fachbegriff „Reinheitsgebot“?',
+      prompt: 'Was trifft auf „Reinheitsgebot“ zu?',
       answer: 'Historische Zutatenregel',
       wrong: ['Braugetreide', 'Gekeimte und gedarrte Gerste', 'Bitter- und Aromastoff'],
       explanation: 'Wasser, Malz, Hopfen, Hefe. Reinheitsgebot bedeutet: Historische Zutatenregel.',
@@ -7912,7 +7912,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lb1:mendel:f0',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Allel“?',
+      prompt: 'Was trifft auf „Allel“ zu?',
       answer: 'Ausprägungsform eines Gens',
       wrong: ['Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar', 'Genetische Ausstattung'],
       explanation: 'Auf homologen Chromosomen. Allel bedeutet: Ausprägungsform eines Gens.',
@@ -7923,7 +7923,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f1',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Dominant“?',
+      prompt: 'Was trifft auf „Dominant“ zu?',
       answer: 'Setzt sich im Phänotyp durch',
       wrong: ['Ausprägungsform eines Gens', 'Nur homozygot sichtbar', 'Genetische Ausstattung'],
       explanation: 'Gegenüber rezessiv. Dominant bedeutet: Setzt sich im Phänotyp durch.',
@@ -7934,7 +7934,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f2',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Rezessiv“?',
+      prompt: 'Was trifft auf „Rezessiv“ zu?',
       answer: 'Nur homozygot sichtbar',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Genetische Ausstattung'],
       explanation: 'Verdeckt von dominant. Rezessiv bedeutet: Nur homozygot sichtbar.',
@@ -7945,7 +7945,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f3',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Genotyp“?',
+      prompt: 'Was trifft auf „Genotyp“ zu?',
       answer: 'Genetische Ausstattung',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Allele. Genotyp bedeutet: Genetische Ausstattung.',
@@ -7956,7 +7956,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f4',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Phänotyp“?',
+      prompt: 'Was trifft auf „Phänotyp“ zu?',
       answer: 'Erscheinungsbild',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Aus Genotyp + Umwelt. Phänotyp bedeutet: Erscheinungsbild.',
@@ -7967,7 +7967,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f5',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Homozygot“?',
+      prompt: 'Was trifft auf „Homozygot“ zu?',
       answer: 'Gleiche Allele',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Reinherbig. Homozygot bedeutet: Gleiche Allele.',
@@ -7978,7 +7978,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f6',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Heterozygot“?',
+      prompt: 'Was trifft auf „Heterozygot“ zu?',
       answer: 'Verschiedene Allele',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Mischerbig. Heterozygot bedeutet: Verschiedene Allele.',
@@ -7989,7 +7989,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f7',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Parentalgeneration“?',
+      prompt: 'Was trifft auf „Parentalgeneration“ zu?',
       answer: 'Elterngeneration',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'P. Parentalgeneration bedeutet: Elterngeneration.',
@@ -8000,7 +8000,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f8',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Filialgeneration“?',
+      prompt: 'Was trifft auf „Filialgeneration“ zu?',
       answer: 'Nachkommengeneration',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'F1, F2. Filialgeneration bedeutet: Nachkommengeneration.',
@@ -8011,7 +8011,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f9',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Spaltungsregel“?',
+      prompt: 'Was trifft auf „Spaltungsregel“ zu?',
       answer: 'Aufspaltung in F2',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Mendel. Spaltungsregel bedeutet: Aufspaltung in F2.',
@@ -8022,7 +8022,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f10',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Uniformitätsregel“?',
+      prompt: 'Was trifft auf „Uniformitätsregel“ zu?',
       answer: 'Einheitliche F1',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Bei Reinzuchtkreuzung. Uniformitätsregel bedeutet: Einheitliche F1.',
@@ -8033,7 +8033,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f11',
-      prompt: '[k10-lb1-mendel] Was bedeutet der Fachbegriff „Unabhängigkeitsregel“?',
+      prompt: 'Was trifft auf „Unabhängigkeitsregel“ zu?',
       answer: 'Freie Kombination',
       wrong: ['Ausprägungsform eines Gens', 'Setzt sich im Phänotyp durch', 'Nur homozygot sichtbar'],
       explanation: 'Verschiedene Merkmale. Unabhängigkeitsregel bedeutet: Freie Kombination.',
@@ -8095,7 +8095,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lb2:selektion:f0',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Selektion“?',
+      prompt: 'Was trifft auf „Selektion“ zu?',
       answer: 'Unterschiedlicher Fortpflanzungserfolg',
       wrong: ['Unterschiede in der Population', 'Neue Allele', 'Relativer Fortpflanzungserfolg'],
       explanation: 'Anpassung. Selektion bedeutet: Unterschiedlicher Fortpflanzungserfolg.',
@@ -8106,7 +8106,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f1',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Variation“?',
+      prompt: 'Was trifft auf „Variation“ zu?',
       answer: 'Unterschiede in der Population',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Neue Allele', 'Relativer Fortpflanzungserfolg'],
       explanation: 'Voraussetzung. Variation bedeutet: Unterschiede in der Population.',
@@ -8117,7 +8117,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f2',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Mutation“?',
+      prompt: 'Was trifft auf „Mutation“ zu?',
       answer: 'Neue Allele',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Relativer Fortpflanzungserfolg'],
       explanation: 'Zufällig. Mutation bedeutet: Neue Allele.',
@@ -8128,7 +8128,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f3',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Fitness“?',
+      prompt: 'Was trifft auf „Fitness“ zu?',
       answer: 'Relativer Fortpflanzungserfolg',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Nicht Sport. Fitness bedeutet: Relativer Fortpflanzungserfolg.',
@@ -8139,7 +8139,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f4',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Anpassung“?',
+      prompt: 'Was trifft auf „Anpassung“ zu?',
       answer: 'Merkmal mit Vorteil',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Durch Selektion häufig. Anpassung bedeutet: Merkmal mit Vorteil.',
@@ -8150,7 +8150,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f5',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Gendrift“?',
+      prompt: 'Was trifft auf „Gendrift“ zu?',
       answer: 'Zufällige Allelfrequenzänderung',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Kleine Populationen. Gendrift bedeutet: Zufällige Allelfrequenzänderung.',
@@ -8161,7 +8161,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f6',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Genfluss“?',
+      prompt: 'Was trifft auf „Genfluss“ zu?',
       answer: 'Austausch zwischen Populationen',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Wanderung. Genfluss bedeutet: Austausch zwischen Populationen.',
@@ -8172,7 +8172,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f7',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Isolation“?',
+      prompt: 'Was trifft auf „Isolation“ zu?',
       answer: 'Kein Genfluss',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Artbildung möglich. Isolation bedeutet: Kein Genfluss.',
@@ -8183,7 +8183,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f8',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Artbildung“?',
+      prompt: 'Was trifft auf „Artbildung“ zu?',
       answer: 'Entstehung neuer Arten',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Oft mit Isolation. Artbildung bedeutet: Entstehung neuer Arten.',
@@ -8194,7 +8194,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f9',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Selektionsdruck“?',
+      prompt: 'Was trifft auf „Selektionsdruck“ zu?',
       answer: 'Umweltfaktor',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Bevorzugt Merkmale. Selektionsdruck bedeutet: Umweltfaktor.',
@@ -8205,7 +8205,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f10',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Population“?',
+      prompt: 'Was trifft auf „Population“ zu?',
       answer: 'Fortpflanzungsgemeinschaft',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Gleiche Art, Ort. Population bedeutet: Fortpflanzungsgemeinschaft.',
@@ -8216,7 +8216,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f11',
-      prompt: '[k10-lb2-selektion] Was bedeutet der Fachbegriff „Evolution“?',
+      prompt: 'Was trifft auf „Evolution“ zu?',
       answer: 'Wandel über Generationen',
       wrong: ['Unterschiedlicher Fortpflanzungserfolg', 'Unterschiede in der Population', 'Neue Allele'],
       explanation: 'Allelfrequenzen. Evolution bedeutet: Wandel über Generationen.',
@@ -8278,7 +8278,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lbw:leben:f0',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Kennzeichen“?',
+      prompt: 'Was trifft auf „Kennzeichen“ zu?',
       answer: 'Stoffwechsel, Reizbarkeit, …',
       wrong: ['Grundeinheit', 'Selbst Ernährung aufbauen', 'Auf organische Nahrung angewiesen'],
       explanation: 'Leben vs. tot. Kennzeichen bedeutet: Stoffwechsel, Reizbarkeit, ….',
@@ -8289,7 +8289,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f1',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Zelle“?',
+      prompt: 'Was trifft auf „Zelle“ zu?',
       answer: 'Grundeinheit',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Selbst Ernährung aufbauen', 'Auf organische Nahrung angewiesen'],
       explanation: 'Schleiden/Schwann. Zelle bedeutet: Grundeinheit.',
@@ -8300,7 +8300,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f2',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Autotroph“?',
+      prompt: 'Was trifft auf „Autotroph“ zu?',
       answer: 'Selbst Ernährung aufbauen',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Auf organische Nahrung angewiesen'],
       explanation: 'Fotosynthese. Autotroph bedeutet: Selbst Ernährung aufbauen.',
@@ -8311,7 +8311,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f3',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Heterotroph“?',
+      prompt: 'Was trifft auf „Heterotroph“ zu?',
       answer: 'Auf organische Nahrung angewiesen',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Tiere. Heterotroph bedeutet: Auf organische Nahrung angewiesen.',
@@ -8322,7 +8322,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f4',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Reproduktion“?',
+      prompt: 'Was trifft auf „Reproduktion“ zu?',
       answer: 'Fortpflanzung',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Art­erhalt. Reproduktion bedeutet: Fortpflanzung.',
@@ -8333,7 +8333,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f5',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Homöostase“?',
+      prompt: 'Was trifft auf „Homöostase“ zu?',
       answer: 'Inneres Gleichgewicht',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Regulation. Homöostase bedeutet: Inneres Gleichgewicht.',
@@ -8344,7 +8344,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f6',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Virus“?',
+      prompt: 'Was trifft auf „Virus“ zu?',
       answer: 'Kein eigener Stoffwechsel',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Grenzfall. Virus bedeutet: Kein eigener Stoffwechsel.',
@@ -8355,7 +8355,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f7',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Einzeller“?',
+      prompt: 'Was trifft auf „Einzeller“ zu?',
       answer: 'Eine Zelle',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Bakterien, Protisten. Einzeller bedeutet: Eine Zelle.',
@@ -8366,7 +8366,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f8',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Vielzeller“?',
+      prompt: 'Was trifft auf „Vielzeller“ zu?',
       answer: 'Zellverband',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Gewebe. Vielzeller bedeutet: Zellverband.',
@@ -8377,7 +8377,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f9',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Energieumsatz“?',
+      prompt: 'Was trifft auf „Energieumsatz“ zu?',
       answer: 'ATP-Haushalt',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Leben braucht Energie. Energieumsatz bedeutet: ATP-Haushalt.',
@@ -8388,7 +8388,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f10',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Information“?',
+      prompt: 'Was trifft auf „Information“ zu?',
       answer: 'DNA/RNA',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Vererbung. Information bedeutet: DNA/RNA.',
@@ -8399,7 +8399,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f11',
-      prompt: '[k10-lbw-leben] Was bedeutet der Fachbegriff „Systemgrenze“?',
+      prompt: 'Was trifft auf „Systemgrenze“ zu?',
       answer: 'Abgrenzung zur Umwelt',
       wrong: ['Stoffwechsel, Reizbarkeit, …', 'Grundeinheit', 'Selbst Ernährung aufbauen'],
       explanation: 'Membran. Systemgrenze bedeutet: Abgrenzung zur Umwelt.',
@@ -8461,7 +8461,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lbw:lernen:f0',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Konditionierung“?',
+      prompt: 'Was trifft auf „Konditionierung“ zu?',
       answer: 'Lernen durch Verknüpfung',
       wrong: ['Irreversibles Lernen in Phase', 'Versuch und Irrtum', 'Problemlösen'],
       explanation: 'Reiz–Reaktion. Konditionierung bedeutet: Lernen durch Verknüpfung.',
@@ -8472,7 +8472,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f1',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Prägung“?',
+      prompt: 'Was trifft auf „Prägung“ zu?',
       answer: 'Irreversibles Lernen in Phase',
       wrong: ['Lernen durch Verknüpfung', 'Versuch und Irrtum', 'Problemlösen'],
       explanation: 'z. B. Nachlaufen. Prägung bedeutet: Irreversibles Lernen in Phase.',
@@ -8483,7 +8483,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f2',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Trial-and-Error“?',
+      prompt: 'Was trifft auf „Trial-and-Error“ zu?',
       answer: 'Versuch und Irrtum',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Problemlösen'],
       explanation: 'Erfolg verstärkt. Trial-and-Error bedeutet: Versuch und Irrtum.',
@@ -8494,7 +8494,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f3',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Einsichtiges Lernen“?',
+      prompt: 'Was trifft auf „Einsichtiges Lernen“ zu?',
       answer: 'Problemlösen',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Höhere Wirbeltiere. Einsichtiges Lernen bedeutet: Problemlösen.',
@@ -8505,7 +8505,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f4',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Imitation“?',
+      prompt: 'Was trifft auf „Imitation“ zu?',
       answer: 'Nachahmen',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Soziales Lernen. Imitation bedeutet: Nachahmen.',
@@ -8516,7 +8516,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f5',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Gedächtnis“?',
+      prompt: 'Was trifft auf „Gedächtnis“ zu?',
       answer: 'Speichern von Information',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Kurz-/Langzeit. Gedächtnis bedeutet: Speichern von Information.',
@@ -8527,7 +8527,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f6',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Motivation“?',
+      prompt: 'Was trifft auf „Motivation“ zu?',
       answer: 'Antrieb zum Lernen',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Belohnung. Motivation bedeutet: Antrieb zum Lernen.',
@@ -8538,7 +8538,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f7',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Habituation“?',
+      prompt: 'Was trifft auf „Habituation“ zu?',
       answer: 'Gewöhnung',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Reiz wird ignoriert. Habituation bedeutet: Gewöhnung.',
@@ -8549,7 +8549,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f8',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Sensitivierung“?',
+      prompt: 'Was trifft auf „Sensitivierung“ zu?',
       answer: 'Gesteigerte Reaktion',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Nach starkem Reiz. Sensitivierung bedeutet: Gesteigerte Reaktion.',
@@ -8560,7 +8560,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f9',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Neuroplastizität“?',
+      prompt: 'Was trifft auf „Neuroplastizität“ zu?',
       answer: 'Umbau von Synapsen',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Lernen biologisch. Neuroplastizität bedeutet: Umbau von Synapsen.',
@@ -8571,7 +8571,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f10',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Verstärkung“?',
+      prompt: 'Was trifft auf „Verstärkung“ zu?',
       answer: 'Erhöht Verhaltensrate',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Belohnung. Verstärkung bedeutet: Erhöht Verhaltensrate.',
@@ -8582,7 +8582,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f11',
-      prompt: '[k10-lbw-lernen] Was bedeutet der Fachbegriff „Bestrafung“?',
+      prompt: 'Was trifft auf „Bestrafung“ zu?',
       answer: 'Verringert Verhaltensrate',
       wrong: ['Lernen durch Verknüpfung', 'Irreversibles Lernen in Phase', 'Versuch und Irrtum'],
       explanation: 'Aversiver Reiz. Bestrafung bedeutet: Verringert Verhaltensrate.',
@@ -8644,7 +8644,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:wueste:f0',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Xerophyt“?',
+      prompt: 'Was trifft auf „Xerophyt“ zu?',
       answer: 'Trockenheitspflanze',
       wrong: ['Nachtliche CO₂-Aufnahme', 'Wasserspeicherung', 'Nährstoffarm oft'],
       explanation: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze.',
@@ -8655,7 +8655,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f1',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „CAM“?',
+      prompt: 'Was trifft auf „CAM“ zu?',
       answer: 'Nachtliche CO₂-Aufnahme',
       wrong: ['Trockenheitspflanze', 'Wasserspeicherung', 'Nährstoffarm oft'],
       explanation: 'Wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme.',
@@ -8666,7 +8666,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f2',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Sukkulenz“?',
+      prompt: 'Was trifft auf „Sukkulenz“ zu?',
       answer: 'Wasserspeicherung',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Nährstoffarm oft'],
       explanation: 'Dickfleischig. Sukkulenz bedeutet: Wasserspeicherung.',
@@ -8677,7 +8677,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f3',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Wüstenboden“?',
+      prompt: 'Was trifft auf „Wüstenboden“ zu?',
       answer: 'Nährstoffarm oft',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Geringer Humus. Wüstenboden bedeutet: Nährstoffarm oft.',
@@ -8688,7 +8688,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f4',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Oase“?',
+      prompt: 'Was trifft auf „Oase“ zu?',
       answer: 'Wasserstelle',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Lokale Vegetation. Oase bedeutet: Wasserstelle.',
@@ -8699,7 +8699,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f5',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Salzboden“?',
+      prompt: 'Was trifft auf „Salzboden“ zu?',
       answer: 'Hoher Salzgehalt',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Spezialisten. Salzboden bedeutet: Hoher Salzgehalt.',
@@ -8710,7 +8710,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f6',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Nachtaktivität“?',
+      prompt: 'Was trifft auf „Nachtaktivität“ zu?',
       answer: 'Vermeidet Hitze',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze.',
@@ -8721,7 +8721,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f7',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Harnkonzentrierung“?',
+      prompt: 'Was trifft auf „Harnkonzentrierung“ zu?',
       answer: 'Wassersparen',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen.',
@@ -8732,7 +8732,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f8',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Sandsturm“?',
+      prompt: 'Was trifft auf „Sandsturm“ zu?',
       answer: 'Abiotischer Faktor',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Erosion. Sandsturm bedeutet: Abiotischer Faktor.',
@@ -8743,7 +8743,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f9',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Temperaturamplitude“?',
+      prompt: 'Was trifft auf „Temperaturamplitude“ zu?',
       answer: 'Tag-Nacht-Unterschied',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Extrem. Temperaturamplitude bedeutet: Tag-Nacht-Unterschied.',
@@ -8754,7 +8754,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f10',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Dornen“?',
+      prompt: 'Was trifft auf „Dornen“ zu?',
       answer: 'Schutz und weniger Fläche',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Angepasstheit. Dornen bedeutet: Schutz und weniger Fläche.',
@@ -8765,7 +8765,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f11',
-      prompt: '[gk-lbw-wueste] Was bedeutet der Fachbegriff „Ephemere“?',
+      prompt: 'Was trifft auf „Ephemere“ zu?',
       answer: 'Kurzlebige Pflanzen nach Regen',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Schneller Zyklus. Ephemere bedeutet: Kurzlebige Pflanzen nach Regen.',
@@ -8827,7 +8827,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:energie:f0',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „ATP“?',
+      prompt: 'Was trifft auf „ATP“ zu?',
       answer: 'Energiewährung der Zelle',
       wrong: ['Licht → chemische Energie', 'Zucker → ATP', 'Energiefluss'],
       explanation: 'Übertragung. ATP bedeutet: Energiewährung der Zelle.',
@@ -8838,7 +8838,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f1',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Fotosynthese“?',
+      prompt: 'Was trifft auf „Fotosynthese“ zu?',
       answer: 'Licht → chemische Energie',
       wrong: ['Energiewährung der Zelle', 'Zucker → ATP', 'Energiefluss'],
       explanation: 'Produzenten. Fotosynthese bedeutet: Licht → chemische Energie.',
@@ -8849,7 +8849,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f2',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Zellatmung“?',
+      prompt: 'Was trifft auf „Zellatmung“ zu?',
       answer: 'Zucker → ATP',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Energiefluss'],
       explanation: 'Mitochondrien. Zellatmung bedeutet: Zucker → ATP.',
@@ -8860,7 +8860,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f3',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Nahrungskette“?',
+      prompt: 'Was trifft auf „Nahrungskette“ zu?',
       answer: 'Energiefluss',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Verluste. Nahrungskette bedeutet: Energiefluss.',
@@ -8871,7 +8871,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f4',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Fossile Energie“?',
+      prompt: 'Was trifft auf „Fossile Energie“ zu?',
       answer: 'Kohle/Öl/Gas',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas.',
@@ -8882,7 +8882,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f5',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Erneuerbar“?',
+      prompt: 'Was trifft auf „Erneuerbar“ zu?',
       answer: 'Nachwachsend/ständig',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig.',
@@ -8893,7 +8893,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f6',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Wirkungsgrad“?',
+      prompt: 'Was trifft auf „Wirkungsgrad“ zu?',
       answer: 'Nutzanteil der Energie',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie.',
@@ -8904,7 +8904,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f7',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Treibhausgas“?',
+      prompt: 'Was trifft auf „Treibhausgas“ zu?',
       answer: 'Klimawirkung',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'CO₂. Treibhausgas bedeutet: Klimawirkung.',
@@ -8915,7 +8915,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f8',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Biomasse“?',
+      prompt: 'Was trifft auf „Biomasse“ zu?',
       answer: 'Energiespeicher organisch',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Holz etc. Biomasse bedeutet: Energiespeicher organisch.',
@@ -8926,7 +8926,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f9',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Dissimilation“?',
+      prompt: 'Was trifft auf „Dissimilation“ zu?',
       answer: 'Abbau energiereicher Stoffe',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Atmung/Gärung. Dissimilation bedeutet: Abbau energiereicher Stoffe.',
@@ -8937,7 +8937,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f10',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Assimilation“?',
+      prompt: 'Was trifft auf „Assimilation“ zu?',
       answer: 'Aufbau',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Fotosynthese. Assimilation bedeutet: Aufbau.',
@@ -8948,7 +8948,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:energie:f11',
-      prompt: '[gk-lbw-energie] Was bedeutet der Fachbegriff „Energiepyramide“?',
+      prompt: 'Was trifft auf „Energiepyramide“ zu?',
       answer: 'Abnahme je Stufe',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Ökologie. Energiepyramide bedeutet: Abnahme je Stufe.',
@@ -9010,7 +9010,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:gaerung:f0',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Alkoholische Gärung“?',
+      prompt: 'Was trifft auf „Alkoholische Gärung“ zu?',
       answer: 'Zucker → Ethanol + CO₂',
       wrong: ['Zucker → Lactat', 'Ohne Sauerstoff', 'Wasserstoffakzeptor'],
       explanation: 'Hefe. Alkoholische Gärung bedeutet: Zucker → Ethanol + CO₂.',
@@ -9021,7 +9021,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f1',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Milchsäuregärung“?',
+      prompt: 'Was trifft auf „Milchsäuregärung“ zu?',
       answer: 'Zucker → Lactat',
       wrong: ['Zucker → Ethanol + CO₂', 'Ohne Sauerstoff', 'Wasserstoffakzeptor'],
       explanation: 'Muskel/Bakterien. Milchsäuregärung bedeutet: Zucker → Lactat.',
@@ -9032,7 +9032,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f2',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Anaerob“?',
+      prompt: 'Was trifft auf „Anaerob“ zu?',
       answer: 'Ohne Sauerstoff',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Wasserstoffakzeptor'],
       explanation: 'Gärung. Anaerob bedeutet: Ohne Sauerstoff.',
@@ -9043,7 +9043,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f3',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „NAD⁺“?',
+      prompt: 'Was trifft auf „NAD⁺“ zu?',
       answer: 'Wasserstoffakzeptor',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Wird regeneriert. NAD⁺ bedeutet: Wasserstoffakzeptor.',
@@ -9054,7 +9054,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f4',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Pyruvat“?',
+      prompt: 'Was trifft auf „Pyruvat“ zu?',
       answer: 'Zwischenprodukt',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Aus Glykolyse. Pyruvat bedeutet: Zwischenprodukt.',
@@ -9065,7 +9065,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f5',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Glykolyse“?',
+      prompt: 'Was trifft auf „Glykolyse“ zu?',
       answer: 'Zuckerspaltung',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Im Zytoplasma. Glykolyse bedeutet: Zuckerspaltung.',
@@ -9076,7 +9076,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f6',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Brotteig“?',
+      prompt: 'Was trifft auf „Brotteig“ zu?',
       answer: 'CO₂ lockert',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Hefe. Brotteig bedeutet: CO₂ lockert.',
@@ -9087,7 +9087,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f7',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Joghurt“?',
+      prompt: 'Was trifft auf „Joghurt“ zu?',
       answer: 'Milchsäurebakterien',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Säuerung. Joghurt bedeutet: Milchsäurebakterien.',
@@ -9098,7 +9098,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f8',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Bier“?',
+      prompt: 'Was trifft auf „Bier“ zu?',
       answer: 'Hefe + Würze',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Alkohol. Bier bedeutet: Hefe + Würze.',
@@ -9109,7 +9109,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f9',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Sauerkraut“?',
+      prompt: 'Was trifft auf „Sauerkraut“ zu?',
       answer: 'Milchsäuregärung',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Konservierung. Sauerkraut bedeutet: Milchsäuregärung.',
@@ -9120,7 +9120,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f10',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Energieausbeute“?',
+      prompt: 'Was trifft auf „Energieausbeute“ zu?',
       answer: 'Weniger als Atmung',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Pro Glucose. Energieausbeute bedeutet: Weniger als Atmung.',
@@ -9131,7 +9131,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f11',
-      prompt: '[gk-lbw-gaerung] Was bedeutet der Fachbegriff „Pasteur-Effekt“?',
+      prompt: 'Was trifft auf „Pasteur-Effekt“ zu?',
       answer: 'O₂ hemmt Gärung',
       wrong: ['Zucker → Ethanol + CO₂', 'Zucker → Lactat', 'Ohne Sauerstoff'],
       explanation: 'Stoffwechselregulation. Pasteur-Effekt bedeutet: O₂ hemmt Gärung.',
@@ -9193,7 +9193,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f0',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Strömung“?',
+      prompt: 'Was trifft auf „Strömung“ zu?',
       answer: 'Abiotischer Faktor',
       wrong: ['Oberlauf', 'Übergang', 'Langsam'],
       explanation: 'Sauerstoffeintrag. Strömung bedeutet: Abiotischer Faktor.',
@@ -9204,7 +9204,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f1',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Quellregion“?',
+      prompt: 'Was trifft auf „Quellregion“ zu?',
       answer: 'Oberlauf',
       wrong: ['Abiotischer Faktor', 'Übergang', 'Langsam'],
       explanation: 'Kühl, sauerstoffreich. Quellregion bedeutet: Oberlauf.',
@@ -9215,7 +9215,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f2',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Mittellauf“?',
+      prompt: 'Was trifft auf „Mittellauf“ zu?',
       answer: 'Übergang',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Langsam'],
       explanation: 'Mehr Sediment. Mittellauf bedeutet: Übergang.',
@@ -9226,7 +9226,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f3',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Unterlauf“?',
+      prompt: 'Was trifft auf „Unterlauf“ zu?',
       answer: 'Langsam',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Mehr Trübung oft. Unterlauf bedeutet: Langsam.',
@@ -9237,7 +9237,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f4',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Rheophil“?',
+      prompt: 'Was trifft auf „Rheophil“ zu?',
       answer: 'Strömungsliebend',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Angepasste Arten. Rheophil bedeutet: Strömungsliebend.',
@@ -9248,7 +9248,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f5',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Saprobie“?',
+      prompt: 'Was trifft auf „Saprobie“ zu?',
       answer: 'Belastungsanzeige',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Bioindikation. Saprobie bedeutet: Belastungsanzeige.',
@@ -9259,7 +9259,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f6',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Ufergehölz“?',
+      prompt: 'Was trifft auf „Ufergehölz“ zu?',
       answer: 'Beschattung/Struktur',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Lebensraum. Ufergehölz bedeutet: Beschattung/Struktur.',
@@ -9270,7 +9270,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f7',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Geschiebe“?',
+      prompt: 'Was trifft auf „Geschiebe“ zu?',
       answer: 'Mitgeführtes Material',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Sohle. Geschiebe bedeutet: Mitgeführtes Material.',
@@ -9281,7 +9281,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f8',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Hochwasser“?',
+      prompt: 'Was trifft auf „Hochwasser“ zu?',
       answer: 'Extremereignis',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Dynamik. Hochwasser bedeutet: Extremereignis.',
@@ -9292,7 +9292,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f9',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Wanderfisch“?',
+      prompt: 'Was trifft auf „Wanderfisch“ zu?',
       answer: 'Wechselt Lebensräume',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Durchgängigkeit. Wanderfisch bedeutet: Wechselt Lebensräume.',
@@ -9303,7 +9303,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f10',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Renaturierung“?',
+      prompt: 'Was trifft auf „Renaturierung“ zu?',
       answer: 'Naturnähe wiederherstellen',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Maßnahmen. Renaturierung bedeutet: Naturnähe wiederherstellen.',
@@ -9314,7 +9314,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f11',
-      prompt: '[gk-lbw-fliesgewaesser] Was bedeutet der Fachbegriff „Sauerstoffsättigung“?',
+      prompt: 'Was trifft auf „Sauerstoffsättigung“ zu?',
       answer: 'Wichtiger Parameter',
       wrong: ['Abiotischer Faktor', 'Oberlauf', 'Übergang'],
       explanation: 'Messung. Sauerstoffsättigung bedeutet: Wichtiger Parameter.',
@@ -9376,7 +9376,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:allergien:f0',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Allergen“?',
+      prompt: 'Was trifft auf „Allergen“ zu?',
       answer: 'Auslöser der Reaktion',
       wrong: ['Antikörpertyp', 'Mediator', 'Erste Kontaktphase'],
       explanation: 'Pollen, Nahrung. Allergen bedeutet: Auslöser der Reaktion.',
@@ -9387,7 +9387,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f1',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „IgE“?',
+      prompt: 'Was trifft auf „IgE“ zu?',
       answer: 'Antikörpertyp',
       wrong: ['Auslöser der Reaktion', 'Mediator', 'Erste Kontaktphase'],
       explanation: 'Bei Allergie oft. IgE bedeutet: Antikörpertyp.',
@@ -9398,7 +9398,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f2',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Histamin“?',
+      prompt: 'Was trifft auf „Histamin“ zu?',
       answer: 'Mediator',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Erste Kontaktphase'],
       explanation: 'Juckreiz/Schwellung. Histamin bedeutet: Mediator.',
@@ -9409,7 +9409,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f3',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Sensibilisierung“?',
+      prompt: 'Was trifft auf „Sensibilisierung“ zu?',
       answer: 'Erste Kontaktphase',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Ohne starke Symptome oft. Sensibilisierung bedeutet: Erste Kontaktphase.',
@@ -9420,7 +9420,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f4',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Anaphylaxie“?',
+      prompt: 'Was trifft auf „Anaphylaxie“ zu?',
       answer: 'Schwere Systemreaktion',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Notfall. Anaphylaxie bedeutet: Schwere Systemreaktion.',
@@ -9431,7 +9431,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f5',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Heuschnupfen“?',
+      prompt: 'Was trifft auf „Heuschnupfen“ zu?',
       answer: 'Pollenallergie',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Schleimhaut. Heuschnupfen bedeutet: Pollenallergie.',
@@ -9442,7 +9442,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f6',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Kreuzallergie“?',
+      prompt: 'Was trifft auf „Kreuzallergie“ zu?',
       answer: 'Ähnliche Allergene',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Verwandte Stoffe. Kreuzallergie bedeutet: Ähnliche Allergene.',
@@ -9453,7 +9453,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f7',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Hyposensibilisierung“?',
+      prompt: 'Was trifft auf „Hyposensibilisierung“ zu?',
       answer: 'Therapie',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Gewöhnung. Hyposensibilisierung bedeutet: Therapie.',
@@ -9464,7 +9464,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f8',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Mastzelle“?',
+      prompt: 'Was trifft auf „Mastzelle“ zu?',
       answer: 'Freisetzt Mediatoren',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren.',
@@ -9475,7 +9475,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f9',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Antihistaminikum“?',
+      prompt: 'Was trifft auf „Antihistaminikum“ zu?',
       answer: 'Blockiert Histaminwirkung',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Symptomlinderung. Antihistaminikum bedeutet: Blockiert Histaminwirkung.',
@@ -9486,7 +9486,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f10',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Nahrungsmittelallergie“?',
+      prompt: 'Was trifft auf „Nahrungsmittelallergie“ zu?',
       answer: 'Reaktion auf Lebensmittel',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Diagnose wichtig. Nahrungsmittelallergie bedeutet: Reaktion auf Lebensmittel.',
@@ -9497,7 +9497,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f11',
-      prompt: '[gk-lbw-allergien] Was bedeutet der Fachbegriff „Vermeidung“?',
+      prompt: 'Was trifft auf „Vermeidung“ zu?',
       answer: 'Allergen meiden',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Wichtigste Maßnahme oft. Vermeidung bedeutet: Allergen meiden.',
@@ -9559,7 +9559,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:krebs:f0',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Tumor“?',
+      prompt: 'Was trifft auf „Tumor“ zu?',
       answer: 'Gewebewucherung',
       wrong: ['Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum', 'Hemmt Wachstum'],
       explanation: 'Gut- oder bösartig. Tumor bedeutet: Gewebewucherung.',
@@ -9570,7 +9570,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f1',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Metastase“?',
+      prompt: 'Was trifft auf „Metastase“ zu?',
       answer: 'Tochtergeschwulst',
       wrong: ['Gewebewucherung', 'Fördert unkontrolliertes Wachstum', 'Hemmt Wachstum'],
       explanation: 'Absiedlung. Metastase bedeutet: Tochtergeschwulst.',
@@ -9581,7 +9581,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f2',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Onkogen“?',
+      prompt: 'Was trifft auf „Onkogen“ zu?',
       answer: 'Fördert unkontrolliertes Wachstum',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Hemmt Wachstum'],
       explanation: 'Mutiert. Onkogen bedeutet: Fördert unkontrolliertes Wachstum.',
@@ -9592,7 +9592,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f3',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Tumorsuppressor“?',
+      prompt: 'Was trifft auf „Tumorsuppressor“ zu?',
       answer: 'Hemmt Wachstum',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Ausfall problematisch. Tumorsuppressor bedeutet: Hemmt Wachstum.',
@@ -9603,7 +9603,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f4',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Mutation“?',
+      prompt: 'Was trifft auf „Mutation“ zu?',
       answer: 'DNA-Veränderung',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Kann Krebs fördern. Mutation bedeutet: DNA-Veränderung.',
@@ -9614,7 +9614,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f5',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Carcinogen“?',
+      prompt: 'Was trifft auf „Carcinogen“ zu?',
       answer: 'Krebsfördernder Stoff/Faktor',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'z. B. UV, Rauch. Carcinogen bedeutet: Krebsfördernder Stoff/Faktor.',
@@ -9625,7 +9625,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f6',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Chemotherapie“?',
+      prompt: 'Was trifft auf „Chemotherapie“ zu?',
       answer: 'Zellgift gegen schnell teilende Zellen',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Therapie. Chemotherapie bedeutet: Zellgift gegen schnell teilende Zellen.',
@@ -9636,7 +9636,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f7',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Bestrahlung“?',
+      prompt: 'Was trifft auf „Bestrahlung“ zu?',
       answer: 'Lokale Therapie',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Gegen Tumor. Bestrahlung bedeutet: Lokale Therapie.',
@@ -9647,7 +9647,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f8',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Immuntherapie“?',
+      prompt: 'Was trifft auf „Immuntherapie“ zu?',
       answer: 'Aktiviert Abwehr',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Moderne Option. Immuntherapie bedeutet: Aktiviert Abwehr.',
@@ -9658,7 +9658,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f9',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Früherkennung“?',
+      prompt: 'Was trifft auf „Früherkennung“ zu?',
       answer: 'Screening',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Verbessert Chancen. Früherkennung bedeutet: Screening.',
@@ -9669,7 +9669,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f10',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Metastaseweg“?',
+      prompt: 'Was trifft auf „Metastaseweg“ zu?',
       answer: 'Blut/Lymphbahn',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Ausbreitung. Metastaseweg bedeutet: Blut/Lymphbahn.',
@@ -9680,7 +9680,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f11',
-      prompt: '[gk-lbw-krebs] Was bedeutet der Fachbegriff „Apoptose“?',
+      prompt: 'Was trifft auf „Apoptose“ zu?',
       answer: 'Programmierter Zelltod',
       wrong: ['Gewebewucherung', 'Tochtergeschwulst', 'Fördert unkontrolliertes Wachstum'],
       explanation: 'Fällt bei Krebs oft aus. Apoptose bedeutet: Programmierter Zelltod.',
@@ -9742,7 +9742,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:wueste:f0',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Xerophyt“?',
+      prompt: 'Was trifft auf „Xerophyt“ zu?',
       answer: 'Trockenheitspflanze',
       wrong: ['Nachtliche CO₂-Aufnahme', 'Wasserspeicherung', 'Nährstoffarm oft'],
       explanation: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze.',
@@ -9753,7 +9753,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f1',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „CAM“?',
+      prompt: 'Was trifft auf „CAM“ zu?',
       answer: 'Nachtliche CO₂-Aufnahme',
       wrong: ['Trockenheitspflanze', 'Wasserspeicherung', 'Nährstoffarm oft'],
       explanation: 'Wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme.',
@@ -9764,7 +9764,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f2',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Sukkulenz“?',
+      prompt: 'Was trifft auf „Sukkulenz“ zu?',
       answer: 'Wasserspeicherung',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Nährstoffarm oft'],
       explanation: 'Dickfleischig. Sukkulenz bedeutet: Wasserspeicherung.',
@@ -9775,7 +9775,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f3',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Wüstenboden“?',
+      prompt: 'Was trifft auf „Wüstenboden“ zu?',
       answer: 'Nährstoffarm oft',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Geringer Humus. Wüstenboden bedeutet: Nährstoffarm oft.',
@@ -9786,7 +9786,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f4',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Oase“?',
+      prompt: 'Was trifft auf „Oase“ zu?',
       answer: 'Wasserstelle',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Lokale Vegetation. Oase bedeutet: Wasserstelle.',
@@ -9797,7 +9797,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f5',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Salzboden“?',
+      prompt: 'Was trifft auf „Salzboden“ zu?',
       answer: 'Hoher Salzgehalt',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Spezialisten. Salzboden bedeutet: Hoher Salzgehalt.',
@@ -9808,7 +9808,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f6',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Nachtaktivität“?',
+      prompt: 'Was trifft auf „Nachtaktivität“ zu?',
       answer: 'Vermeidet Hitze',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze.',
@@ -9819,7 +9819,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f7',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Harnkonzentrierung“?',
+      prompt: 'Was trifft auf „Harnkonzentrierung“ zu?',
       answer: 'Wassersparen',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen.',
@@ -9830,7 +9830,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f8',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Sandsturm“?',
+      prompt: 'Was trifft auf „Sandsturm“ zu?',
       answer: 'Abiotischer Faktor',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Erosion. Sandsturm bedeutet: Abiotischer Faktor.',
@@ -9841,7 +9841,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f9',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Temperaturamplitude“?',
+      prompt: 'Was trifft auf „Temperaturamplitude“ zu?',
       answer: 'Tag-Nacht-Unterschied',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Extrem. Temperaturamplitude bedeutet: Tag-Nacht-Unterschied.',
@@ -9852,7 +9852,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f10',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Dornen“?',
+      prompt: 'Was trifft auf „Dornen“ zu?',
       answer: 'Schutz und weniger Fläche',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Angepasstheit. Dornen bedeutet: Schutz und weniger Fläche.',
@@ -9863,7 +9863,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f11',
-      prompt: '[lk11-lbw-wueste] Was bedeutet der Fachbegriff „Ephemere“?',
+      prompt: 'Was trifft auf „Ephemere“ zu?',
       answer: 'Kurzlebige Pflanzen nach Regen',
       wrong: ['Trockenheitspflanze', 'Nachtliche CO₂-Aufnahme', 'Wasserspeicherung'],
       explanation: 'Schneller Zyklus. Ephemere bedeutet: Kurzlebige Pflanzen nach Regen.',
@@ -9925,7 +9925,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:urban:f0',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Versiegelung“?',
+      prompt: 'Was trifft auf „Versiegelung“ zu?',
       answer: 'Boden wird undurchlässig',
       wrong: ['Stadt wärmer', 'Kühlung und Lebensraum', 'Luftschadstoff'],
       explanation: 'Weniger Versickerung. Versiegelung bedeutet: Boden wird undurchlässig.',
@@ -9936,7 +9936,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f1',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Wärmeinseleffekt“?',
+      prompt: 'Was trifft auf „Wärmeinseleffekt“ zu?',
       answer: 'Stadt wärmer',
       wrong: ['Boden wird undurchlässig', 'Kühlung und Lebensraum', 'Luftschadstoff'],
       explanation: 'Bebauung/Asphalt. Wärmeinseleffekt bedeutet: Stadt wärmer.',
@@ -9947,7 +9947,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f2',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Grünfläche“?',
+      prompt: 'Was trifft auf „Grünfläche“ zu?',
       answer: 'Kühlung und Lebensraum',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Luftschadstoff'],
       explanation: 'Parks. Grünfläche bedeutet: Kühlung und Lebensraum.',
@@ -9958,7 +9958,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f3',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Feinstaub“?',
+      prompt: 'Was trifft auf „Feinstaub“ zu?',
       answer: 'Luftschadstoff',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Gesundheit. Feinstaub bedeutet: Luftschadstoff.',
@@ -9969,7 +9969,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f4',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Lärm“?',
+      prompt: 'Was trifft auf „Lärm“ zu?',
       answer: 'Störfaktor',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Tiere und Menschen. Lärm bedeutet: Störfaktor.',
@@ -9980,7 +9980,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f5',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Stadtbiotop“?',
+      prompt: 'Was trifft auf „Stadtbiotop“ zu?',
       answer: 'Lebensraum in der Stadt',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Brachen, Dächer. Stadtbiotop bedeutet: Lebensraum in der Stadt.',
@@ -9991,7 +9991,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f6',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Lichtverschmutzung“?',
+      prompt: 'Was trifft auf „Lichtverschmutzung“ zu?',
       answer: 'Künstliches Licht',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Beeinflusst Arten. Lichtverschmutzung bedeutet: Künstliches Licht.',
@@ -10002,7 +10002,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f7',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Kanalisation“?',
+      prompt: 'Was trifft auf „Kanalisation“ zu?',
       answer: 'Ableitung von Wasser',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Hochwasserschutz. Kanalisation bedeutet: Ableitung von Wasser.',
@@ -10013,7 +10013,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f8',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Dachbegrünung“?',
+      prompt: 'Was trifft auf „Dachbegrünung“ zu?',
       answer: 'Dämmung und Habitat',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Maßnahme. Dachbegrünung bedeutet: Dämmung und Habitat.',
@@ -10024,7 +10024,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f9',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Verkehr“?',
+      prompt: 'Was trifft auf „Verkehr“ zu?',
       answer: 'Emissionen und Fragmentierung',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Planung. Verkehr bedeutet: Emissionen und Fragmentierung.',
@@ -10035,7 +10035,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f10',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Biodiversität urban“?',
+      prompt: 'Was trifft auf „Biodiversität urban“ zu?',
       answer: 'Angepasste Arten',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Tauben, Füchse. Biodiversität urban bedeutet: Angepasste Arten.',
@@ -10046,7 +10046,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f11',
-      prompt: '[lk11-lbw-urban] Was bedeutet der Fachbegriff „Frischluftschneise“?',
+      prompt: 'Was trifft auf „Frischluftschneise“ zu?',
       answer: 'Luftaustausch',
       wrong: ['Boden wird undurchlässig', 'Stadt wärmer', 'Kühlung und Lebensraum'],
       explanation: 'Stadtklima. Frischluftschneise bedeutet: Luftaustausch.',
@@ -10108,7 +10108,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f0',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Zeigerart“?',
+      prompt: 'Was trifft auf „Zeigerart“ zu?',
       answer: 'Zeigt Umweltzustand',
       wrong: ['Luftgütezeiger', 'Gewässerbelastung', 'Nährstoffüberschuss'],
       explanation: 'Bioindikator. Zeigerart bedeutet: Zeigt Umweltzustand.',
@@ -10119,7 +10119,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f1',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Flechte“?',
+      prompt: 'Was trifft auf „Flechte“ zu?',
       answer: 'Luftgütezeiger',
       wrong: ['Zeigt Umweltzustand', 'Gewässerbelastung', 'Nährstoffüberschuss'],
       explanation: 'Empfindlich. Flechte bedeutet: Luftgütezeiger.',
@@ -10130,7 +10130,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f2',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Saprobie“?',
+      prompt: 'Was trifft auf „Saprobie“ zu?',
       answer: 'Gewässerbelastung',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Nährstoffüberschuss'],
       explanation: 'Index. Saprobie bedeutet: Gewässerbelastung.',
@@ -10141,7 +10141,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f3',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Eutrophierung“?',
+      prompt: 'Was trifft auf „Eutrophierung“ zu?',
       answer: 'Nährstoffüberschuss',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Algen. Eutrophierung bedeutet: Nährstoffüberschuss.',
@@ -10152,7 +10152,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f4',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Monitoring“?',
+      prompt: 'Was trifft auf „Monitoring“ zu?',
       answer: 'Regelmäßige Erfassung',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Datenreihen. Monitoring bedeutet: Regelmäßige Erfassung.',
@@ -10163,7 +10163,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f5',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Referenzgewässer“?',
+      prompt: 'Was trifft auf „Referenzgewässer“ zu?',
       answer: 'Vergleichszustand',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Natürlich. Referenzgewässer bedeutet: Vergleichszustand.',
@@ -10174,7 +10174,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f6',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Empfindlichkeit“?',
+      prompt: 'Was trifft auf „Empfindlichkeit“ zu?',
       answer: 'Reaktionsschwelle',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Artspezifisch. Empfindlichkeit bedeutet: Reaktionsschwelle.',
@@ -10185,7 +10185,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f7',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Akkumulation“?',
+      prompt: 'Was trifft auf „Akkumulation“ zu?',
       answer: 'Anreicherung von Schadstoffen',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Nahrungskette. Akkumulation bedeutet: Anreicherung von Schadstoffen.',
@@ -10196,7 +10196,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f8',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Makrozoobenthos“?',
+      prompt: 'Was trifft auf „Makrozoobenthos“ zu?',
       answer: 'Wirbellose am Gewässergrund',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Bewertung. Makrozoobenthos bedeutet: Wirbellose am Gewässergrund.',
@@ -10207,7 +10207,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f9',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Luftqualität“?',
+      prompt: 'Was trifft auf „Luftqualität“ zu?',
       answer: 'Schadstoffgehalt',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Messung/Zeiger. Luftqualität bedeutet: Schadstoffgehalt.',
@@ -10218,7 +10218,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f10',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Versauerung“?',
+      prompt: 'Was trifft auf „Versauerung“ zu?',
       answer: 'pH-Absenkung',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Belastung. Versauerung bedeutet: pH-Absenkung.',
@@ -10229,7 +10229,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f11',
-      prompt: '[lk11-lbw-bioindikation] Was bedeutet der Fachbegriff „Bewertungsverfahren“?',
+      prompt: 'Was trifft auf „Bewertungsverfahren“ zu?',
       answer: 'Standardisierte Methode',
       wrong: ['Zeigt Umweltzustand', 'Luftgütezeiger', 'Gewässerbelastung'],
       explanation: 'Vergleichbarkeit. Bewertungsverfahren bedeutet: Standardisierte Methode.',
@@ -10291,7 +10291,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f0',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Neozoon“?',
+      prompt: 'Was trifft auf „Neozoon“ zu?',
       answer: 'Eingeschleppte Tierart',
       wrong: ['Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden', 'Verdrängung heimischer Arten'],
       explanation: 'Nach 1492 oft definiert. Neozoon bedeutet: Eingeschleppte Tierart.',
@@ -10302,7 +10302,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f1',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Neophyt“?',
+      prompt: 'Was trifft auf „Neophyt“ zu?',
       answer: 'Eingeschleppte Pflanzenart',
       wrong: ['Eingeschleppte Tierart', 'Stark ausbreitend mit Schaden', 'Verdrängung heimischer Arten'],
       explanation: 'Ausbreitung. Neophyt bedeutet: Eingeschleppte Pflanzenart.',
@@ -10313,7 +10313,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f2',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Invasiv“?',
+      prompt: 'Was trifft auf „Invasiv“ zu?',
       answer: 'Stark ausbreitend mit Schaden',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Verdrängung heimischer Arten'],
       explanation: 'Ökologie/Ökonomie. Invasiv bedeutet: Stark ausbreitend mit Schaden.',
@@ -10324,7 +10324,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f3',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Konkurrenz“?',
+      prompt: 'Was trifft auf „Konkurrenz“ zu?',
       answer: 'Verdrängung heimischer Arten',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Ressourcen. Konkurrenz bedeutet: Verdrängung heimischer Arten.',
@@ -10335,7 +10335,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f4',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Prädation“?',
+      prompt: 'Was trifft auf „Prädation“ zu?',
       answer: 'Zusätzlicher Fraßdruck',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Auf Beute. Prädation bedeutet: Zusätzlicher Fraßdruck.',
@@ -10346,7 +10346,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f5',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Vektor“?',
+      prompt: 'Was trifft auf „Vektor“ zu?',
       answer: 'Überträger von Krankheiten',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Manche Invasiven. Vektor bedeutet: Überträger von Krankheiten.',
@@ -10357,7 +10357,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f6',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Management“?',
+      prompt: 'Was trifft auf „Management“ zu?',
       answer: 'Bekämpfung/Kontrolle',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Maßnahmen. Management bedeutet: Bekämpfung/Kontrolle.',
@@ -10368,7 +10368,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f7',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Prävention“?',
+      prompt: 'Was trifft auf „Prävention“ zu?',
       answer: 'Einschleppung verhindern',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Effizienteste Strategie. Prävention bedeutet: Einschleppung verhindern.',
@@ -10379,7 +10379,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f8',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Ballastwasser“?',
+      prompt: 'Was trifft auf „Ballastwasser“ zu?',
       answer: 'Einschleppungsweg',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Schiffe. Ballastwasser bedeutet: Einschleppungsweg.',
@@ -10390,7 +10390,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f9',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Handel“?',
+      prompt: 'Was trifft auf „Handel“ zu?',
       answer: 'Tier-/Pflanzenhandel',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Freisetzung. Handel bedeutet: Tier-/Pflanzenhandel.',
@@ -10401,7 +10401,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f10',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Ökosystemdienst“?',
+      prompt: 'Was trifft auf „Ökosystemdienst“ zu?',
       answer: 'Kann beeinträchtigt werden',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Durch Invasiven. Ökosystemdienst bedeutet: Kann beeinträchtigt werden.',
@@ -10412,7 +10412,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f11',
-      prompt: '[lk11-lbw-invasiv] Was bedeutet der Fachbegriff „Monitoring“?',
+      prompt: 'Was trifft auf „Monitoring“ zu?',
       answer: 'Früherkennung',
       wrong: ['Eingeschleppte Tierart', 'Eingeschleppte Pflanzenart', 'Stark ausbreitend mit Schaden'],
       explanation: 'Schnelle Reaktion. Monitoring bedeutet: Früherkennung.',
@@ -10474,7 +10474,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f0',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Nachwachsend“?',
+      prompt: 'Was trifft auf „Nachwachsend“ zu?',
       answer: 'Regenerierbarer Rohstoff',
       wrong: ['Endlicher Kohlenstoffspeicher', 'Wiederverwertung', 'Organischer Rohstoff'],
       explanation: 'Holz, Fasern. Nachwachsend bedeutet: Regenerierbarer Rohstoff.',
@@ -10485,7 +10485,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f1',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Fossil“?',
+      prompt: 'Was trifft auf „Fossil“ zu?',
       answer: 'Endlicher Kohlenstoffspeicher',
       wrong: ['Regenerierbarer Rohstoff', 'Wiederverwertung', 'Organischer Rohstoff'],
       explanation: 'Öl, Kohle. Fossil bedeutet: Endlicher Kohlenstoffspeicher.',
@@ -10496,7 +10496,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f2',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Recycling“?',
+      prompt: 'Was trifft auf „Recycling“ zu?',
       answer: 'Wiederverwertung',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Organischer Rohstoff'],
       explanation: 'Kreislauf. Recycling bedeutet: Wiederverwertung.',
@@ -10507,7 +10507,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f3',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Biomasse“?',
+      prompt: 'Was trifft auf „Biomasse“ zu?',
       answer: 'Organischer Rohstoff',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Energie/Material. Biomasse bedeutet: Organischer Rohstoff.',
@@ -10518,7 +10518,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f4',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Nachhaltigkeit“?',
+      prompt: 'Was trifft auf „Nachhaltigkeit“ zu?',
       answer: 'Nutzung ohne Zerstörung',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Zukunft. Nachhaltigkeit bedeutet: Nutzung ohne Zerstörung.',
@@ -10529,7 +10529,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f5',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Ressourcenknappheit“?',
+      prompt: 'Was trifft auf „Ressourcenknappheit“ zu?',
       answer: 'Begrenzte Vorräte',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Effizienz. Ressourcenknappheit bedeutet: Begrenzte Vorräte.',
@@ -10540,7 +10540,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f6',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Landnutzung“?',
+      prompt: 'Was trifft auf „Landnutzung“ zu?',
       answer: 'Fläche für Rohstoffe',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Konfliktpotenzial. Landnutzung bedeutet: Fläche für Rohstoffe.',
@@ -10551,7 +10551,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f7',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Wasserfußabdruck“?',
+      prompt: 'Was trifft auf „Wasserfußabdruck“ zu?',
       answer: 'Wasserverbrauch',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Produktion. Wasserfußabdruck bedeutet: Wasserverbrauch.',
@@ -10562,7 +10562,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f8',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Ökobilanz“?',
+      prompt: 'Was trifft auf „Ökobilanz“ zu?',
       answer: 'Umweltwirkungen',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Lebensweg. Ökobilanz bedeutet: Umweltwirkungen.',
@@ -10573,7 +10573,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f9',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Substitution“?',
+      prompt: 'Was trifft auf „Substitution“ zu?',
       answer: 'Ersatzstoff',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Weniger kritisch. Substitution bedeutet: Ersatzstoff.',
@@ -10584,7 +10584,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f10',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Bergbau“?',
+      prompt: 'Was trifft auf „Bergbau“ zu?',
       answer: 'Gewinnung mineralischer Rohstoffe',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Eingriffe. Bergbau bedeutet: Gewinnung mineralischer Rohstoffe.',
@@ -10595,7 +10595,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f11',
-      prompt: '[lk11-lbw-rohstoffe] Was bedeutet der Fachbegriff „Kreislaufwirtschaft“?',
+      prompt: 'Was trifft auf „Kreislaufwirtschaft“ zu?',
       answer: 'Schließen von Stoffkreisen',
       wrong: ['Regenerierbarer Rohstoff', 'Endlicher Kohlenstoffspeicher', 'Wiederverwertung'],
       explanation: 'Abfallvermeidung. Kreislaufwirtschaft bedeutet: Schließen von Stoffkreisen.',
@@ -10657,7 +10657,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:energie:f0',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „ATP“?',
+      prompt: 'Was trifft auf „ATP“ zu?',
       answer: 'Energiewährung der Zelle',
       wrong: ['Licht → chemische Energie', 'Zucker → ATP', 'Energiefluss'],
       explanation: 'Übertragung. ATP bedeutet: Energiewährung der Zelle.',
@@ -10668,7 +10668,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f1',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Fotosynthese“?',
+      prompt: 'Was trifft auf „Fotosynthese“ zu?',
       answer: 'Licht → chemische Energie',
       wrong: ['Energiewährung der Zelle', 'Zucker → ATP', 'Energiefluss'],
       explanation: 'Produzenten. Fotosynthese bedeutet: Licht → chemische Energie.',
@@ -10679,7 +10679,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f2',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Zellatmung“?',
+      prompt: 'Was trifft auf „Zellatmung“ zu?',
       answer: 'Zucker → ATP',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Energiefluss'],
       explanation: 'Mitochondrien. Zellatmung bedeutet: Zucker → ATP.',
@@ -10690,7 +10690,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f3',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Nahrungskette“?',
+      prompt: 'Was trifft auf „Nahrungskette“ zu?',
       answer: 'Energiefluss',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Verluste. Nahrungskette bedeutet: Energiefluss.',
@@ -10701,7 +10701,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f4',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Fossile Energie“?',
+      prompt: 'Was trifft auf „Fossile Energie“ zu?',
       answer: 'Kohle/Öl/Gas',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas.',
@@ -10712,7 +10712,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f5',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Erneuerbar“?',
+      prompt: 'Was trifft auf „Erneuerbar“ zu?',
       answer: 'Nachwachsend/ständig',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig.',
@@ -10723,7 +10723,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f6',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Wirkungsgrad“?',
+      prompt: 'Was trifft auf „Wirkungsgrad“ zu?',
       answer: 'Nutzanteil der Energie',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie.',
@@ -10734,7 +10734,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f7',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Treibhausgas“?',
+      prompt: 'Was trifft auf „Treibhausgas“ zu?',
       answer: 'Klimawirkung',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'CO₂. Treibhausgas bedeutet: Klimawirkung.',
@@ -10745,7 +10745,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f8',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Biomasse“?',
+      prompt: 'Was trifft auf „Biomasse“ zu?',
       answer: 'Energiespeicher organisch',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Holz etc. Biomasse bedeutet: Energiespeicher organisch.',
@@ -10756,7 +10756,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f9',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Dissimilation“?',
+      prompt: 'Was trifft auf „Dissimilation“ zu?',
       answer: 'Abbau energiereicher Stoffe',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Atmung/Gärung. Dissimilation bedeutet: Abbau energiereicher Stoffe.',
@@ -10767,7 +10767,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f10',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Assimilation“?',
+      prompt: 'Was trifft auf „Assimilation“ zu?',
       answer: 'Aufbau',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Fotosynthese. Assimilation bedeutet: Aufbau.',
@@ -10778,7 +10778,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:energie:f11',
-      prompt: '[lk11-lbw-energie] Was bedeutet der Fachbegriff „Energiepyramide“?',
+      prompt: 'Was trifft auf „Energiepyramide“ zu?',
       answer: 'Abnahme je Stufe',
       wrong: ['Energiewährung der Zelle', 'Licht → chemische Energie', 'Zucker → ATP'],
       explanation: 'Ökologie. Energiepyramide bedeutet: Abnahme je Stufe.',
@@ -10840,7 +10840,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lb5:systematik:f0',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Wirbeltier“?',
+      prompt: 'Was trifft auf „Wirbeltier“ zu?',
       answer: 'Tier mit Wirbelsäule',
       wrong: ['Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule.',
@@ -10851,7 +10851,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f1',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Fisch“?',
+      prompt: 'Was trifft auf „Fisch“ zu?',
       answer: 'Kiemen und Flossen',
       wrong: ['Tier mit Wirbelsäule', 'Oft Metamorphose und feuchte Haut', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Wasserleben. Fisch bedeutet: Kiemen und Flossen.',
@@ -10862,7 +10862,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f2',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Lurch“?',
+      prompt: 'Was trifft auf „Lurch“ zu?',
       answer: 'Oft Metamorphose und feuchte Haut',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Trockene Hornschicht, Schalenei'],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
@@ -10873,7 +10873,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f3',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Kriechtier“?',
+      prompt: 'Was trifft auf „Kriechtier“ zu?',
       answer: 'Trockene Hornschicht, Schalenei',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Reptil. Kriechtier bedeutet: Trockene Hornschicht, Schalenei.',
@@ -10884,7 +10884,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f4',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Vogel“?',
+      prompt: 'Was trifft auf „Vogel“ zu?',
       answer: 'Federn und Schnabel',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Oft Flug. Vogel bedeutet: Federn und Schnabel.',
@@ -10895,7 +10895,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f5',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Säugetier“?',
+      prompt: 'Was trifft auf „Säugetier“ zu?',
       answer: 'Fell und Milchdrüsen',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Säugen. Säugetier bedeutet: Fell und Milchdrüsen.',
@@ -10906,7 +10906,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f6',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Merkmal“?',
+      prompt: 'Was trifft auf „Merkmal“ zu?',
       answer: 'Unterscheidendes Kennzeichen',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen.',
@@ -10917,7 +10917,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f7',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Klasse“?',
+      prompt: 'Was trifft auf „Klasse“ zu?',
       answer: 'Systematische Großgruppe',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'z. B. Vögel. Klasse bedeutet: Systematische Großgruppe.',
@@ -10928,7 +10928,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f8',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Atmungstyp“?',
+      prompt: 'Was trifft auf „Atmungstyp“ zu?',
       answer: 'Kieme, Lunge, Haut',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut.',
@@ -10939,7 +10939,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f9',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Körperbedeckung“?',
+      prompt: 'Was trifft auf „Körperbedeckung“ zu?',
       answer: 'Schuppe, Feder, Fell',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell.',
@@ -10950,7 +10950,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f10',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Fortpflanzungstyp“?',
+      prompt: 'Was trifft auf „Fortpflanzungstyp“ zu?',
       answer: 'Laich, Schalenei, Lebendgeburt',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt.',
@@ -10961,7 +10961,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f11',
-      prompt: '[lk12-lb5-systematik] Was bedeutet der Fachbegriff „Gleichwarm“?',
+      prompt: 'Was trifft auf „Gleichwarm“ zu?',
       answer: 'Stabile Temperatur',
       wrong: ['Tier mit Wirbelsäule', 'Kiemen und Flossen', 'Oft Metamorphose und feuchte Haut'],
       explanation: 'Vögel und Säuger. Gleichwarm bedeutet: Stabile Temperatur.',
@@ -11023,7 +11023,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f0',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Molekülebene“?',
+      prompt: 'Was trifft auf „Molekülebene“ zu?',
       answer: 'DNA, Proteine',
       wrong: ['Organellen', 'Zellverband', 'Funktionseinheit'],
       explanation: 'Unterste Ebene. Molekülebene bedeutet: DNA, Proteine.',
@@ -11034,7 +11034,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f1',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Zellebene“?',
+      prompt: 'Was trifft auf „Zellebene“ zu?',
       answer: 'Organellen',
       wrong: ['DNA, Proteine', 'Zellverband', 'Funktionseinheit'],
       explanation: 'Grundeinheit. Zellebene bedeutet: Organellen.',
@@ -11045,7 +11045,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f2',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Gewebe“?',
+      prompt: 'Was trifft auf „Gewebe“ zu?',
       answer: 'Zellverband',
       wrong: ['DNA, Proteine', 'Organellen', 'Funktionseinheit'],
       explanation: 'Gleichartig. Gewebe bedeutet: Zellverband.',
@@ -11056,7 +11056,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f3',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Organ“?',
+      prompt: 'Was trifft auf „Organ“ zu?',
       answer: 'Funktionseinheit',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Mehrere Gewebe. Organ bedeutet: Funktionseinheit.',
@@ -11067,7 +11067,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f4',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Organismus“?',
+      prompt: 'Was trifft auf „Organismus“ zu?',
       answer: 'Gesamtlebewesen',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Integration. Organismus bedeutet: Gesamtlebewesen.',
@@ -11078,7 +11078,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f5',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Population“?',
+      prompt: 'Was trifft auf „Population“ zu?',
       answer: 'Fortpflanzungsgemeinschaft',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Gleiche Art. Population bedeutet: Fortpflanzungsgemeinschaft.',
@@ -11089,7 +11089,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f6',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Biozönose“?',
+      prompt: 'Was trifft auf „Biozönose“ zu?',
       answer: 'Lebensgemeinschaft',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Viele Arten. Biozönose bedeutet: Lebensgemeinschaft.',
@@ -11100,7 +11100,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f7',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Ökosystem“?',
+      prompt: 'Was trifft auf „Ökosystem“ zu?',
       answer: 'Biozönose + Biotop',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Wechselwirkung. Ökosystem bedeutet: Biozönose + Biotop.',
@@ -11111,7 +11111,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f8',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Biosphäre“?',
+      prompt: 'Was trifft auf „Biosphäre“ zu?',
       answer: 'Gesamtheit der Ökosysteme',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Erde. Biosphäre bedeutet: Gesamtheit der Ökosysteme.',
@@ -11122,7 +11122,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f9',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Emergenz“?',
+      prompt: 'Was trifft auf „Emergenz“ zu?',
       answer: 'Neue Eigenschaften auf höherer Ebene',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Nicht nur Summe. Emergenz bedeutet: Neue Eigenschaften auf höherer Ebene.',
@@ -11133,7 +11133,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f10',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Reduktionismus“?',
+      prompt: 'Was trifft auf „Reduktionismus“ zu?',
       answer: 'Erklärung von unten',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Grenzen beachten. Reduktionismus bedeutet: Erklärung von unten.',
@@ -11144,7 +11144,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f11',
-      prompt: '[lk12-lb5-ebenen] Was bedeutet der Fachbegriff „Vernetzung“?',
+      prompt: 'Was trifft auf „Vernetzung“ zu?',
       answer: 'Beziehungen zwischen Ebenen',
       wrong: ['DNA, Proteine', 'Organellen', 'Zellverband'],
       explanation: 'Systemdenken. Vernetzung bedeutet: Beziehungen zwischen Ebenen.',
@@ -11206,7 +11206,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f0',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Stoffkreislauf“?',
+      prompt: 'Was trifft auf „Stoffkreislauf“ zu?',
       answer: 'Elemente zirkulieren',
       wrong: ['Einbahn', 'Wirkung zurück auf Ursache', 'Verstärkung'],
       explanation: 'C, N. Stoffkreislauf bedeutet: Elemente zirkulieren.',
@@ -11217,7 +11217,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f1',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Energiefluss“?',
+      prompt: 'Was trifft auf „Energiefluss“ zu?',
       answer: 'Einbahn',
       wrong: ['Elemente zirkulieren', 'Wirkung zurück auf Ursache', 'Verstärkung'],
       explanation: 'Verluste. Energiefluss bedeutet: Einbahn.',
@@ -11228,7 +11228,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f2',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Rückkopplung“?',
+      prompt: 'Was trifft auf „Rückkopplung“ zu?',
       answer: 'Wirkung zurück auf Ursache',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Verstärkung'],
       explanation: 'Regulation. Rückkopplung bedeutet: Wirkung zurück auf Ursache.',
@@ -11239,7 +11239,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f3',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Positive Rückkopplung“?',
+      prompt: 'Was trifft auf „Positive Rückkopplung“ zu?',
       answer: 'Verstärkung',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Instabil oft. Positive Rückkopplung bedeutet: Verstärkung.',
@@ -11250,7 +11250,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f4',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Negative Rückkopplung“?',
+      prompt: 'Was trifft auf „Negative Rückkopplung“ zu?',
       answer: 'Dämpfung',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Stabilisierung. Negative Rückkopplung bedeutet: Dämpfung.',
@@ -11261,7 +11261,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f5',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Kausalnetz“?',
+      prompt: 'Was trifft auf „Kausalnetz“ zu?',
       answer: 'Viele Ursachen/Wirkungen',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Komplex. Kausalnetz bedeutet: Viele Ursachen/Wirkungen.',
@@ -11272,7 +11272,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f6',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Systemgrenze“?',
+      prompt: 'Was trifft auf „Systemgrenze“ zu?',
       answer: 'Was gehört dazu',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Modellierung. Systemgrenze bedeutet: Was gehört dazu.',
@@ -11283,7 +11283,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f7',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Störung“?',
+      prompt: 'Was trifft auf „Störung“ zu?',
       answer: 'Eingriff ins System',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Resilienz. Störung bedeutet: Eingriff ins System.',
@@ -11294,7 +11294,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f8',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Resilienz“?',
+      prompt: 'Was trifft auf „Resilienz“ zu?',
       answer: 'Widerstands-/Erholungsfähigkeit',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Ökosysteme. Resilienz bedeutet: Widerstands-/Erholungsfähigkeit.',
@@ -11305,7 +11305,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f9',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Schlüsselart“?',
+      prompt: 'Was trifft auf „Schlüsselart“ zu?',
       answer: 'Überproportionaler Einfluss',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Keystone. Schlüsselart bedeutet: Überproportionaler Einfluss.',
@@ -11316,7 +11316,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f10',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Trophische Kaskade“?',
+      prompt: 'Was trifft auf „Trophische Kaskade“ zu?',
       answer: 'Effekte über Stufen',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Räuber–Beute. Trophische Kaskade bedeutet: Effekte über Stufen.',
@@ -11327,7 +11327,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f11',
-      prompt: '[lk12-lb5-vernetzung] Was bedeutet der Fachbegriff „Modell“?',
+      prompt: 'Was trifft auf „Modell“ zu?',
       answer: 'Vereinfachte Abbildung',
       wrong: ['Elemente zirkulieren', 'Einbahn', 'Wirkung zurück auf Ursache'],
       explanation: 'Hypothesen testen. Modell bedeutet: Vereinfachte Abbildung.',
@@ -11389,7 +11389,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lbw:allergie:f0',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Allergen“?',
+      prompt: 'Was trifft auf „Allergen“ zu?',
       answer: 'Auslöser der Reaktion',
       wrong: ['Antikörpertyp', 'Mediator', 'Erste Kontaktphase'],
       explanation: 'Pollen, Nahrung. Allergen bedeutet: Auslöser der Reaktion.',
@@ -11400,7 +11400,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f1',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „IgE“?',
+      prompt: 'Was trifft auf „IgE“ zu?',
       answer: 'Antikörpertyp',
       wrong: ['Auslöser der Reaktion', 'Mediator', 'Erste Kontaktphase'],
       explanation: 'Bei Allergie oft. IgE bedeutet: Antikörpertyp.',
@@ -11411,7 +11411,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f2',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Histamin“?',
+      prompt: 'Was trifft auf „Histamin“ zu?',
       answer: 'Mediator',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Erste Kontaktphase'],
       explanation: 'Juckreiz/Schwellung. Histamin bedeutet: Mediator.',
@@ -11422,7 +11422,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f3',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Sensibilisierung“?',
+      prompt: 'Was trifft auf „Sensibilisierung“ zu?',
       answer: 'Erste Kontaktphase',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Ohne starke Symptome oft. Sensibilisierung bedeutet: Erste Kontaktphase.',
@@ -11433,7 +11433,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f4',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Anaphylaxie“?',
+      prompt: 'Was trifft auf „Anaphylaxie“ zu?',
       answer: 'Schwere Systemreaktion',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Notfall. Anaphylaxie bedeutet: Schwere Systemreaktion.',
@@ -11444,7 +11444,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f5',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Heuschnupfen“?',
+      prompt: 'Was trifft auf „Heuschnupfen“ zu?',
       answer: 'Pollenallergie',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Schleimhaut. Heuschnupfen bedeutet: Pollenallergie.',
@@ -11455,7 +11455,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f6',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Kreuzallergie“?',
+      prompt: 'Was trifft auf „Kreuzallergie“ zu?',
       answer: 'Ähnliche Allergene',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Verwandte Stoffe. Kreuzallergie bedeutet: Ähnliche Allergene.',
@@ -11466,7 +11466,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f7',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Hyposensibilisierung“?',
+      prompt: 'Was trifft auf „Hyposensibilisierung“ zu?',
       answer: 'Therapie',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Gewöhnung. Hyposensibilisierung bedeutet: Therapie.',
@@ -11477,7 +11477,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f8',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Mastzelle“?',
+      prompt: 'Was trifft auf „Mastzelle“ zu?',
       answer: 'Freisetzt Mediatoren',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren.',
@@ -11488,7 +11488,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f9',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Antihistaminikum“?',
+      prompt: 'Was trifft auf „Antihistaminikum“ zu?',
       answer: 'Blockiert Histaminwirkung',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Symptomlinderung. Antihistaminikum bedeutet: Blockiert Histaminwirkung.',
@@ -11499,7 +11499,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f10',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Nahrungsmittelallergie“?',
+      prompt: 'Was trifft auf „Nahrungsmittelallergie“ zu?',
       answer: 'Reaktion auf Lebensmittel',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Diagnose wichtig. Nahrungsmittelallergie bedeutet: Reaktion auf Lebensmittel.',
@@ -11510,7 +11510,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f11',
-      prompt: '[lk12-lbw-allergie] Was bedeutet der Fachbegriff „Vermeidung“?',
+      prompt: 'Was trifft auf „Vermeidung“ zu?',
       answer: 'Allergen meiden',
       wrong: ['Auslöser der Reaktion', 'Antikörpertyp', 'Mediator'],
       explanation: 'Wichtigste Maßnahme oft. Vermeidung bedeutet: Allergen meiden.',
@@ -11572,7 +11572,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f0',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Arterie“?',
+      prompt: 'Was trifft auf „Arterie“ zu?',
       answer: 'Führt vom Herzen weg',
       wrong: ['Führt zum Herzen hin', 'Stoffaustausch', 'Druck in Arterien'],
       explanation: 'Meist O₂-reich. Arterie bedeutet: Führt vom Herzen weg.',
@@ -11583,7 +11583,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f1',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Vene“?',
+      prompt: 'Was trifft auf „Vene“ zu?',
       answer: 'Führt zum Herzen hin',
       wrong: ['Führt vom Herzen weg', 'Stoffaustausch', 'Druck in Arterien'],
       explanation: 'Klappen oft. Vene bedeutet: Führt zum Herzen hin.',
@@ -11594,7 +11594,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f2',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Kapillare“?',
+      prompt: 'Was trifft auf „Kapillare“ zu?',
       answer: 'Stoffaustausch',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Druck in Arterien'],
       explanation: 'Feinste Gefäße. Kapillare bedeutet: Stoffaustausch.',
@@ -11605,7 +11605,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f3',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Blutdruck“?',
+      prompt: 'Was trifft auf „Blutdruck“ zu?',
       answer: 'Druck in Arterien',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Systole/Diastole. Blutdruck bedeutet: Druck in Arterien.',
@@ -11616,7 +11616,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f4',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Atherosklerose“?',
+      prompt: 'Was trifft auf „Atherosklerose“ zu?',
       answer: 'Gefäßverkalkung',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Risikofaktoren. Atherosklerose bedeutet: Gefäßverkalkung.',
@@ -11627,7 +11627,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f5',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Herzinfarkt“?',
+      prompt: 'Was trifft auf „Herzinfarkt“ zu?',
       answer: 'Verschluss Herzkranzgefäß',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Notfall. Herzinfarkt bedeutet: Verschluss Herzkranzgefäß.',
@@ -11638,7 +11638,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f6',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Schlaganfall“?',
+      prompt: 'Was trifft auf „Schlaganfall“ zu?',
       answer: 'Durchblutungsstörung Gehirn',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Notfall. Schlaganfall bedeutet: Durchblutungsstörung Gehirn.',
@@ -11649,7 +11649,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f7',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Hypertonie“?',
+      prompt: 'Was trifft auf „Hypertonie“ zu?',
       answer: 'Bluthochdruck',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Risiko. Hypertonie bedeutet: Bluthochdruck.',
@@ -11660,7 +11660,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f8',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Endothel“?',
+      prompt: 'Was trifft auf „Endothel“ zu?',
       answer: 'Innenauskleidung',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Gefäßfunktion. Endothel bedeutet: Innenauskleidung.',
@@ -11671,7 +11671,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f9',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Cholesterol“?',
+      prompt: 'Was trifft auf „Cholesterol“ zu?',
       answer: 'Blutfettstoff',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Plaques möglich. Cholesterol bedeutet: Blutfettstoff.',
@@ -11682,7 +11682,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f10',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Rauchen“?',
+      prompt: 'Was trifft auf „Rauchen“ zu?',
       answer: 'Risikofaktor',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Gefäßschädigung. Rauchen bedeutet: Risikofaktor.',
@@ -11693,7 +11693,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f11',
-      prompt: '[lk12-lbw-gefaess] Was bedeutet der Fachbegriff „Bewegung“?',
+      prompt: 'Was trifft auf „Bewegung“ zu?',
       answer: 'Schützt Gefäße',
       wrong: ['Führt vom Herzen weg', 'Führt zum Herzen hin', 'Stoffaustausch'],
       explanation: 'Prävention. Bewegung bedeutet: Schützt Gefäße.',

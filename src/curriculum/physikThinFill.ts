@@ -30,7 +30,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f0",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Lampenposition. Lichtquelle: Körper der selbst Licht aussendet",
@@ -41,7 +41,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f1",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Lampenposition. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -52,7 +52,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f2",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Lampenposition. Schatten: Bereich ohne direktes Licht",
@@ -63,7 +63,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f3",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Lampenposition. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -74,7 +74,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f4",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Lampenposition. Halbschatten: Teilweise beleuchteter Bereich",
@@ -85,7 +85,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f5",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Lampenposition. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -96,7 +96,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f6",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Lampenposition. Brechung: Richtungsänderung an Grenzfläche",
@@ -107,7 +107,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f7",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Lampenposition. Spiegel: Glatte reflektierende Fläche",
@@ -118,7 +118,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f8",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Lampenposition. Transparenz: Licht geht durch",
@@ -129,7 +129,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f9",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Lampenposition. Opak: Lichtundurchlässig",
@@ -140,7 +140,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f10",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Lochkamera (lampenposition)“?",
+      prompt: "Was trifft auf „Lochkamera (lampenposition)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Lampenposition. Lochkamera (lampenposition): Abbildendes Loch ohne Linse",
@@ -151,7 +151,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lampenposition:f11",
-      prompt: "[ph-k6-lb1-lampenposition] Was bedeutet „Spektrum (lampenposition)“?",
+      prompt: "Was trifft auf „Spektrum (lampenposition)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Lampenposition. Spektrum (lampenposition): Zerlegung weißen Lichts",
@@ -215,7 +215,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f0",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Lichtstrahl. Lichtquelle: Körper der selbst Licht aussendet",
@@ -226,7 +226,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f1",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Lichtstrahl. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -237,7 +237,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f2",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Lichtstrahl. Schatten: Bereich ohne direktes Licht",
@@ -248,7 +248,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f3",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Lichtstrahl. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -259,7 +259,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f4",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Lichtstrahl. Halbschatten: Teilweise beleuchteter Bereich",
@@ -270,7 +270,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f5",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Lichtstrahl. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -281,7 +281,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f6",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Lichtstrahl. Brechung: Richtungsänderung an Grenzfläche",
@@ -292,7 +292,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f7",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Lichtstrahl. Spiegel: Glatte reflektierende Fläche",
@@ -303,7 +303,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f8",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Lichtstrahl. Transparenz: Licht geht durch",
@@ -314,7 +314,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f9",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Lichtstrahl. Opak: Lichtundurchlässig",
@@ -325,7 +325,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f10",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Lochkamera (lichtstrahl)“?",
+      prompt: "Was trifft auf „Lochkamera (lichtstrahl)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Lichtstrahl. Lochkamera (lichtstrahl): Abbildendes Loch ohne Linse",
@@ -336,7 +336,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb1-lichtstrahl:f11",
-      prompt: "[ph-k6-lb1-lichtstrahl] Was bedeutet „Spektrum (lichtstrahl)“?",
+      prompt: "Was trifft auf „Spektrum (lichtstrahl)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Lichtstrahl. Spektrum (lichtstrahl): Zerlegung weißen Lichts",
@@ -400,7 +400,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f0",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Geschwindigkeit“?",
+      prompt: "Was trifft auf „Geschwindigkeit“ zu?",
       answer: "Weg pro Zeit",
       wrong: ["Zurückgelegte Strecke", "Dauer eines Vorgangs", "Festgelegtes Maß"],
       explanation: "v = s / t. Bezug: Wegzeit. Geschwindigkeit: Weg pro Zeit",
@@ -411,7 +411,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f1",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Weg“?",
+      prompt: "Was trifft auf „Weg“ zu?",
       answer: "Zurückgelegte Strecke",
       wrong: ["Weg pro Zeit", "Dauer eines Vorgangs", "Festgelegtes Maß"],
       explanation: "Oft in Metern. Bezug: Wegzeit. Weg: Zurückgelegte Strecke",
@@ -422,7 +422,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f2",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Zeit“?",
+      prompt: "Was trifft auf „Zeit“ zu?",
       answer: "Dauer eines Vorgangs",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Festgelegtes Maß"],
       explanation: "SI-Einheit Sekunde. Bezug: Wegzeit. Zeit: Dauer eines Vorgangs",
@@ -433,7 +433,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f3",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Einheit“?",
+      prompt: "Was trifft auf „Einheit“ zu?",
       answer: "Festgelegtes Maß",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Umrechnen nicht vergessen. Bezug: Wegzeit. Einheit: Festgelegtes Maß",
@@ -444,7 +444,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f4",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Diagramm“?",
+      prompt: "Was trifft auf „Diagramm“ zu?",
       answer: "s-t- oder v-t-Graph",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Zusammenhang sichtbar. Bezug: Wegzeit. Diagramm: s-t- oder v-t-Graph",
@@ -455,7 +455,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f5",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Gleichförmig“?",
+      prompt: "Was trifft auf „Gleichförmig“ zu?",
       answer: "Konstante Geschwindigkeit",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Gerade im s-t-Diagramm. Bezug: Wegzeit. Gleichförmig: Konstante Geschwindigkeit",
@@ -466,7 +466,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f6",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Beschleunigung“?",
+      prompt: "Was trifft auf „Beschleunigung“ zu?",
       answer: "Änderung der Geschwindigkeit",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Später genauer. Bezug: Wegzeit. Beschleunigung: Änderung der Geschwindigkeit",
@@ -477,7 +477,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f7",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Messung“?",
+      prompt: "Was trifft auf „Messung“ zu?",
       answer: "Uhr und Maßband",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Wiederholen erhöht Sicherheit. Bezug: Wegzeit. Messung: Uhr und Maßband",
@@ -488,7 +488,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f8",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Mittelwert“?",
+      prompt: "Was trifft auf „Mittelwert“ zu?",
       answer: "Durchschnitt mehrerer Messungen",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Streung beachten. Bezug: Wegzeit. Mittelwert: Durchschnitt mehrerer Messungen",
@@ -499,7 +499,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f9",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Umwandlung“?",
+      prompt: "Was trifft auf „Umwandlung“ zu?",
       answer: "km/h ↔ m/s",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Faktor 3,6. Bezug: Wegzeit. Umwandlung: km/h ↔ m/s",
@@ -510,7 +510,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f10",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Bezugssystem (wegzeit)“?",
+      prompt: "Was trifft auf „Bezugssystem (wegzeit)“ zu?",
       answer: "Standpunkt der Beschreibung",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Relativ zu …. Bezug: Wegzeit. Bezugssystem (wegzeit): Standpunkt der Beschreibung",
@@ -521,7 +521,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f11",
-      prompt: "[ph-k6-lb2-wegzeit] Was bedeutet „Ruhe (wegzeit)“?",
+      prompt: "Was trifft auf „Ruhe (wegzeit)“ zu?",
       answer: "Geschwindigkeit null relativ",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Im gewählten System. Bezug: Wegzeit. Ruhe (wegzeit): Geschwindigkeit null relativ",
@@ -585,7 +585,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f0",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Geschwindigkeit“?",
+      prompt: "Was trifft auf „Geschwindigkeit“ zu?",
       answer: "Weg pro Zeit",
       wrong: ["Zurückgelegte Strecke", "Dauer eines Vorgangs", "Festgelegtes Maß"],
       explanation: "v = s / t. Bezug: Einheiten. Geschwindigkeit: Weg pro Zeit",
@@ -596,7 +596,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f1",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Weg“?",
+      prompt: "Was trifft auf „Weg“ zu?",
       answer: "Zurückgelegte Strecke",
       wrong: ["Weg pro Zeit", "Dauer eines Vorgangs", "Festgelegtes Maß"],
       explanation: "Oft in Metern. Bezug: Einheiten. Weg: Zurückgelegte Strecke",
@@ -607,7 +607,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f2",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Zeit“?",
+      prompt: "Was trifft auf „Zeit“ zu?",
       answer: "Dauer eines Vorgangs",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Festgelegtes Maß"],
       explanation: "SI-Einheit Sekunde. Bezug: Einheiten. Zeit: Dauer eines Vorgangs",
@@ -618,7 +618,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f3",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Einheit“?",
+      prompt: "Was trifft auf „Einheit“ zu?",
       answer: "Festgelegtes Maß",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Umrechnen nicht vergessen. Bezug: Einheiten. Einheit: Festgelegtes Maß",
@@ -629,7 +629,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f4",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Diagramm“?",
+      prompt: "Was trifft auf „Diagramm“ zu?",
       answer: "s-t- oder v-t-Graph",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Zusammenhang sichtbar. Bezug: Einheiten. Diagramm: s-t- oder v-t-Graph",
@@ -640,7 +640,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f5",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Gleichförmig“?",
+      prompt: "Was trifft auf „Gleichförmig“ zu?",
       answer: "Konstante Geschwindigkeit",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Gerade im s-t-Diagramm. Bezug: Einheiten. Gleichförmig: Konstante Geschwindigkeit",
@@ -651,7 +651,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f6",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Beschleunigung“?",
+      prompt: "Was trifft auf „Beschleunigung“ zu?",
       answer: "Änderung der Geschwindigkeit",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Später genauer. Bezug: Einheiten. Beschleunigung: Änderung der Geschwindigkeit",
@@ -662,7 +662,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f7",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Messung“?",
+      prompt: "Was trifft auf „Messung“ zu?",
       answer: "Uhr und Maßband",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Wiederholen erhöht Sicherheit. Bezug: Einheiten. Messung: Uhr und Maßband",
@@ -673,7 +673,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f8",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Mittelwert“?",
+      prompt: "Was trifft auf „Mittelwert“ zu?",
       answer: "Durchschnitt mehrerer Messungen",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Streung beachten. Bezug: Einheiten. Mittelwert: Durchschnitt mehrerer Messungen",
@@ -684,7 +684,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f9",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Umwandlung“?",
+      prompt: "Was trifft auf „Umwandlung“ zu?",
       answer: "km/h ↔ m/s",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Faktor 3,6. Bezug: Einheiten. Umwandlung: km/h ↔ m/s",
@@ -695,7 +695,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f10",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Bezugssystem (einheiten)“?",
+      prompt: "Was trifft auf „Bezugssystem (einheiten)“ zu?",
       answer: "Standpunkt der Beschreibung",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Relativ zu …. Bezug: Einheiten. Bezugssystem (einheiten): Standpunkt der Beschreibung",
@@ -706,7 +706,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f11",
-      prompt: "[ph-k6-lb2-einheiten] Was bedeutet „Ruhe (einheiten)“?",
+      prompt: "Was trifft auf „Ruhe (einheiten)“ zu?",
       answer: "Geschwindigkeit null relativ",
       wrong: ["Weg pro Zeit", "Zurückgelegte Strecke", "Dauer eines Vorgangs"],
       explanation: "Im gewählten System. Bezug: Einheiten. Ruhe (einheiten): Geschwindigkeit null relativ",
@@ -770,7 +770,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f0",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Temperatur“?",
+      prompt: "Was trifft auf „Temperatur“ zu?",
       answer: "Maß für den Wärmezustand",
       wrong: ["Volumen wächst mit Temperatur", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "SI: Kelvin, Alltag: °C. Bezug: Ausdehnung. Temperatur: Maß für den Wärmezustand",
@@ -781,7 +781,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f1",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Ausdehnung“?",
+      prompt: "Was trifft auf „Ausdehnung“ zu?",
       answer: "Volumen wächst mit Temperatur",
       wrong: ["Maß für den Wärmezustand", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "Bei vielen Stoffen. Bezug: Ausdehnung. Ausdehnung: Volumen wächst mit Temperatur",
@@ -792,7 +792,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f2",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Aggregatzustand“?",
+      prompt: "Was trifft auf „Aggregatzustand“ zu?",
       answer: "fest, flüssig, gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "Übergang fest → flüssig"],
       explanation: "Hängt von T und p ab. Bezug: Ausdehnung. Aggregatzustand: fest, flüssig, gasförmig",
@@ -803,7 +803,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f3",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Schmelzen“?",
+      prompt: "Was trifft auf „Schmelzen“ zu?",
       answer: "Übergang fest → flüssig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Schmelztemperatur. Bezug: Ausdehnung. Schmelzen: Übergang fest → flüssig",
@@ -814,7 +814,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f4",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Sieden“?",
+      prompt: "Was trifft auf „Sieden“ zu?",
       answer: "Übergang flüssig → gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Siedetemperatur. Bezug: Ausdehnung. Sieden: Übergang flüssig → gasförmig",
@@ -825,7 +825,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f5",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Wärmeleitung“?",
+      prompt: "Was trifft auf „Wärmeleitung“ zu?",
       answer: "Transport durch Kontakt",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Metalle leiten gut. Bezug: Ausdehnung. Wärmeleitung: Transport durch Kontakt",
@@ -836,7 +836,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f6",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Dämmung“?",
+      prompt: "Was trifft auf „Dämmung“ zu?",
       answer: "Verringert Wärmefluss",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Luftpolster hilfreich. Bezug: Ausdehnung. Dämmung: Verringert Wärmefluss",
@@ -847,7 +847,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f7",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Thermometer“?",
+      prompt: "Was trifft auf „Thermometer“ zu?",
       answer: "Misst Temperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Skalierung und Kalibrierung. Bezug: Ausdehnung. Thermometer: Misst Temperatur",
@@ -858,7 +858,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f8",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Kelvin“?",
+      prompt: "Was trifft auf „Kelvin“ zu?",
       answer: "SI-Temperaturskala",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "0 K = absoluter Nullpunkt. Bezug: Ausdehnung. Kelvin: SI-Temperaturskala",
@@ -869,7 +869,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f9",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Wärme“?",
+      prompt: "Was trifft auf „Wärme“ zu?",
       answer: "Übertragene Energie",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Nicht gleich Temperatur. Bezug: Ausdehnung. Wärme: Übertragene Energie",
@@ -880,7 +880,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f10",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Mischung (ausdehnung)“?",
+      prompt: "Was trifft auf „Mischung (ausdehnung)“ zu?",
       answer: "Gemeinsame Endtemperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Energiebilanz. Bezug: Ausdehnung. Mischung (ausdehnung): Gemeinsame Endtemperatur",
@@ -891,7 +891,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f11",
-      prompt: "[ph-k6-lb3-ausdehnung] Was bedeutet „Spezifische Wärme (ausdehnung)“?",
+      prompt: "Was trifft auf „Spezifische Wärme (ausdehnung)“ zu?",
       answer: "Wärme pro Masse und Kelvin",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Stoffabhängig. Bezug: Ausdehnung. Spezifische Wärme (ausdehnung): Wärme pro Masse und Kelvin",
@@ -955,7 +955,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f0",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Symbole. Stromkreis: Geschlossener Weg für Ladung",
@@ -966,7 +966,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f1",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Symbole. Leiter: Stoff mit freier Ladung",
@@ -977,7 +977,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f2",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Symbole. Isolator: Sehr geringer Strom",
@@ -988,7 +988,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f3",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Symbole. Widerstand: Hemmt den Strom",
@@ -999,7 +999,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f4",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Symbole. Reihenschaltung: Ein Stromweg",
@@ -1010,7 +1010,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f5",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Symbole. Parallelschaltung: Mehrere Stromwege",
@@ -1021,7 +1021,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f6",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Symbole. Symbol: Schaltzeichen",
@@ -1032,7 +1032,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f7",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Symbole. Spannung: Ursache des Stroms",
@@ -1043,7 +1043,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f8",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Symbole. Stromstärke: Ladung pro Zeit",
@@ -1054,7 +1054,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f9",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Symbole. Kurzschluss: Sehr kleiner Widerstand",
@@ -1065,7 +1065,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f10",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Sicherung (symbole)“?",
+      prompt: "Was trifft auf „Sicherung (symbole)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Symbole. Sicherung (symbole): Unterbricht bei Überstrom",
@@ -1076,7 +1076,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-symbole:f11",
-      prompt: "[ph-k6-lb4-symbole] Was bedeutet „Gefahr (symbole)“?",
+      prompt: "Was trifft auf „Gefahr (symbole)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Symbole. Gefahr (symbole): Stromunfall vermeiden",
@@ -1140,7 +1140,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f0",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Reiheparallel. Stromkreis: Geschlossener Weg für Ladung",
@@ -1151,7 +1151,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f1",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Reiheparallel. Leiter: Stoff mit freier Ladung",
@@ -1162,7 +1162,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f2",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Reiheparallel. Isolator: Sehr geringer Strom",
@@ -1173,7 +1173,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f3",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Reiheparallel. Widerstand: Hemmt den Strom",
@@ -1184,7 +1184,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f4",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Reiheparallel. Reihenschaltung: Ein Stromweg",
@@ -1195,7 +1195,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f5",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Reiheparallel. Parallelschaltung: Mehrere Stromwege",
@@ -1206,7 +1206,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f6",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Reiheparallel. Symbol: Schaltzeichen",
@@ -1217,7 +1217,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f7",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Reiheparallel. Spannung: Ursache des Stroms",
@@ -1228,7 +1228,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f8",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Reiheparallel. Stromstärke: Ladung pro Zeit",
@@ -1239,7 +1239,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f9",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Reiheparallel. Kurzschluss: Sehr kleiner Widerstand",
@@ -1250,7 +1250,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f10",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Sicherung (reiheparallel)“?",
+      prompt: "Was trifft auf „Sicherung (reiheparallel)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Reiheparallel. Sicherung (reiheparallel): Unterbricht bei Überstrom",
@@ -1261,7 +1261,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-reiheparallel:f11",
-      prompt: "[ph-k6-lb4-reiheparallel] Was bedeutet „Gefahr (reiheparallel)“?",
+      prompt: "Was trifft auf „Gefahr (reiheparallel)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Reiheparallel. Gefahr (reiheparallel): Stromunfall vermeiden",
@@ -1325,7 +1325,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f0",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Gefahren. Stromkreis: Geschlossener Weg für Ladung",
@@ -1336,7 +1336,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f1",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Gefahren. Leiter: Stoff mit freier Ladung",
@@ -1347,7 +1347,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f2",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Gefahren. Isolator: Sehr geringer Strom",
@@ -1358,7 +1358,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f3",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Gefahren. Widerstand: Hemmt den Strom",
@@ -1369,7 +1369,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f4",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Gefahren. Reihenschaltung: Ein Stromweg",
@@ -1380,7 +1380,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f5",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Gefahren. Parallelschaltung: Mehrere Stromwege",
@@ -1391,7 +1391,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f6",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Gefahren. Symbol: Schaltzeichen",
@@ -1402,7 +1402,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f7",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Gefahren. Spannung: Ursache des Stroms",
@@ -1413,7 +1413,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f8",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Gefahren. Stromstärke: Ladung pro Zeit",
@@ -1424,7 +1424,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f9",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Gefahren. Kurzschluss: Sehr kleiner Widerstand",
@@ -1435,7 +1435,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f10",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Sicherung (gefahren)“?",
+      prompt: "Was trifft auf „Sicherung (gefahren)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Gefahren. Sicherung (gefahren): Unterbricht bei Überstrom",
@@ -1446,7 +1446,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb4-gefahren:f11",
-      prompt: "[ph-k6-lb4-gefahren] Was bedeutet „Gefahr (gefahren)“?",
+      prompt: "Was trifft auf „Gefahr (gefahren)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Gefahren. Gefahr (gefahren): Stromunfall vermeiden",
@@ -1510,7 +1510,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f0",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Sehen. Lichtquelle: Körper der selbst Licht aussendet",
@@ -1521,7 +1521,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f1",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Sehen. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -1532,7 +1532,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f2",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Sehen. Schatten: Bereich ohne direktes Licht",
@@ -1543,7 +1543,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f3",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Sehen. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -1554,7 +1554,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f4",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Sehen. Halbschatten: Teilweise beleuchteter Bereich",
@@ -1565,7 +1565,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f5",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Sehen. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -1576,7 +1576,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f6",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Sehen. Brechung: Richtungsänderung an Grenzfläche",
@@ -1587,7 +1587,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f7",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Sehen. Spiegel: Glatte reflektierende Fläche",
@@ -1598,7 +1598,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f8",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Sehen. Transparenz: Licht geht durch",
@@ -1609,7 +1609,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f9",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Sehen. Opak: Lichtundurchlässig",
@@ -1620,7 +1620,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f10",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Lochkamera (sehen)“?",
+      prompt: "Was trifft auf „Lochkamera (sehen)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Sehen. Lochkamera (sehen): Abbildendes Loch ohne Linse",
@@ -1631,7 +1631,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-sehen:f11",
-      prompt: "[ph-k6-lbw-sehen] Was bedeutet „Spektrum (sehen)“?",
+      prompt: "Was trifft auf „Spektrum (sehen)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Sehen. Spektrum (sehen): Zerlegung weißen Lichts",
@@ -1695,7 +1695,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f0",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Temperatur“?",
+      prompt: "Was trifft auf „Temperatur“ zu?",
       answer: "Maß für den Wärmezustand",
       wrong: ["Volumen wächst mit Temperatur", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "SI: Kelvin, Alltag: °C. Bezug: Daemmung. Temperatur: Maß für den Wärmezustand",
@@ -1706,7 +1706,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f1",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Ausdehnung“?",
+      prompt: "Was trifft auf „Ausdehnung“ zu?",
       answer: "Volumen wächst mit Temperatur",
       wrong: ["Maß für den Wärmezustand", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "Bei vielen Stoffen. Bezug: Daemmung. Ausdehnung: Volumen wächst mit Temperatur",
@@ -1717,7 +1717,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f2",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Aggregatzustand“?",
+      prompt: "Was trifft auf „Aggregatzustand“ zu?",
       answer: "fest, flüssig, gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "Übergang fest → flüssig"],
       explanation: "Hängt von T und p ab. Bezug: Daemmung. Aggregatzustand: fest, flüssig, gasförmig",
@@ -1728,7 +1728,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f3",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Schmelzen“?",
+      prompt: "Was trifft auf „Schmelzen“ zu?",
       answer: "Übergang fest → flüssig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Schmelztemperatur. Bezug: Daemmung. Schmelzen: Übergang fest → flüssig",
@@ -1739,7 +1739,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f4",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Sieden“?",
+      prompt: "Was trifft auf „Sieden“ zu?",
       answer: "Übergang flüssig → gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Siedetemperatur. Bezug: Daemmung. Sieden: Übergang flüssig → gasförmig",
@@ -1750,7 +1750,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f5",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Wärmeleitung“?",
+      prompt: "Was trifft auf „Wärmeleitung“ zu?",
       answer: "Transport durch Kontakt",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Metalle leiten gut. Bezug: Daemmung. Wärmeleitung: Transport durch Kontakt",
@@ -1761,7 +1761,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f6",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Dämmung“?",
+      prompt: "Was trifft auf „Dämmung“ zu?",
       answer: "Verringert Wärmefluss",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Luftpolster hilfreich. Bezug: Daemmung. Dämmung: Verringert Wärmefluss",
@@ -1772,7 +1772,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f7",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Thermometer“?",
+      prompt: "Was trifft auf „Thermometer“ zu?",
       answer: "Misst Temperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Skalierung und Kalibrierung. Bezug: Daemmung. Thermometer: Misst Temperatur",
@@ -1783,7 +1783,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f8",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Kelvin“?",
+      prompt: "Was trifft auf „Kelvin“ zu?",
       answer: "SI-Temperaturskala",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "0 K = absoluter Nullpunkt. Bezug: Daemmung. Kelvin: SI-Temperaturskala",
@@ -1794,7 +1794,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f9",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Wärme“?",
+      prompt: "Was trifft auf „Wärme“ zu?",
       answer: "Übertragene Energie",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmung. Wärme: Übertragene Energie",
@@ -1805,7 +1805,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f10",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Mischung (daemmung)“?",
+      prompt: "Was trifft auf „Mischung (daemmung)“ zu?",
       answer: "Gemeinsame Endtemperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Energiebilanz. Bezug: Daemmung. Mischung (daemmung): Gemeinsame Endtemperatur",
@@ -1816,7 +1816,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f11",
-      prompt: "[ph-k6-lbw-daemmung] Was bedeutet „Spezifische Wärme (daemmung)“?",
+      prompt: "Was trifft auf „Spezifische Wärme (daemmung)“ zu?",
       answer: "Wärme pro Masse und Kelvin",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Stoffabhängig. Bezug: Daemmung. Spezifische Wärme (daemmung): Wärme pro Masse und Kelvin",
@@ -1880,7 +1880,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f0",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Temperatur“?",
+      prompt: "Was trifft auf „Temperatur“ zu?",
       answer: "Maß für den Wärmezustand",
       wrong: ["Volumen wächst mit Temperatur", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "SI: Kelvin, Alltag: °C. Bezug: Daemmstoff. Temperatur: Maß für den Wärmezustand",
@@ -1891,7 +1891,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f1",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Ausdehnung“?",
+      prompt: "Was trifft auf „Ausdehnung“ zu?",
       answer: "Volumen wächst mit Temperatur",
       wrong: ["Maß für den Wärmezustand", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "Bei vielen Stoffen. Bezug: Daemmstoff. Ausdehnung: Volumen wächst mit Temperatur",
@@ -1902,7 +1902,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f2",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Aggregatzustand“?",
+      prompt: "Was trifft auf „Aggregatzustand“ zu?",
       answer: "fest, flüssig, gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "Übergang fest → flüssig"],
       explanation: "Hängt von T und p ab. Bezug: Daemmstoff. Aggregatzustand: fest, flüssig, gasförmig",
@@ -1913,7 +1913,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f3",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Schmelzen“?",
+      prompt: "Was trifft auf „Schmelzen“ zu?",
       answer: "Übergang fest → flüssig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Schmelztemperatur. Bezug: Daemmstoff. Schmelzen: Übergang fest → flüssig",
@@ -1924,7 +1924,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f4",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Sieden“?",
+      prompt: "Was trifft auf „Sieden“ zu?",
       answer: "Übergang flüssig → gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Siedetemperatur. Bezug: Daemmstoff. Sieden: Übergang flüssig → gasförmig",
@@ -1935,7 +1935,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f5",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Wärmeleitung“?",
+      prompt: "Was trifft auf „Wärmeleitung“ zu?",
       answer: "Transport durch Kontakt",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Metalle leiten gut. Bezug: Daemmstoff. Wärmeleitung: Transport durch Kontakt",
@@ -1946,7 +1946,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f6",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Dämmung“?",
+      prompt: "Was trifft auf „Dämmung“ zu?",
       answer: "Verringert Wärmefluss",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Luftpolster hilfreich. Bezug: Daemmstoff. Dämmung: Verringert Wärmefluss",
@@ -1957,7 +1957,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f7",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Thermometer“?",
+      prompt: "Was trifft auf „Thermometer“ zu?",
       answer: "Misst Temperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Skalierung und Kalibrierung. Bezug: Daemmstoff. Thermometer: Misst Temperatur",
@@ -1968,7 +1968,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f8",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Kelvin“?",
+      prompt: "Was trifft auf „Kelvin“ zu?",
       answer: "SI-Temperaturskala",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "0 K = absoluter Nullpunkt. Bezug: Daemmstoff. Kelvin: SI-Temperaturskala",
@@ -1979,7 +1979,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f9",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Wärme“?",
+      prompt: "Was trifft auf „Wärme“ zu?",
       answer: "Übertragene Energie",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmstoff. Wärme: Übertragene Energie",
@@ -1990,7 +1990,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f10",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Mischung (daemmstoff)“?",
+      prompt: "Was trifft auf „Mischung (daemmstoff)“ zu?",
       answer: "Gemeinsame Endtemperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Energiebilanz. Bezug: Daemmstoff. Mischung (daemmstoff): Gemeinsame Endtemperatur",
@@ -2001,7 +2001,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f11",
-      prompt: "[ph-k6-lbw-daemmstoff] Was bedeutet „Spezifische Wärme (daemmstoff)“?",
+      prompt: "Was trifft auf „Spezifische Wärme (daemmstoff)“ zu?",
       answer: "Wärme pro Masse und Kelvin",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Stoffabhängig. Bezug: Daemmstoff. Spezifische Wärme (daemmstoff): Wärme pro Masse und Kelvin",
@@ -2065,7 +2065,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k6-lbw-farben:f0",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Farben. Lichtquelle: Körper der selbst Licht aussendet",
@@ -2076,7 +2076,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f1",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Farben. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -2087,7 +2087,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f2",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Farben. Schatten: Bereich ohne direktes Licht",
@@ -2098,7 +2098,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f3",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Farben. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -2109,7 +2109,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f4",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Farben. Halbschatten: Teilweise beleuchteter Bereich",
@@ -2120,7 +2120,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f5",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Farben. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -2131,7 +2131,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f6",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Farben. Brechung: Richtungsänderung an Grenzfläche",
@@ -2142,7 +2142,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f7",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Farben. Spiegel: Glatte reflektierende Fläche",
@@ -2153,7 +2153,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f8",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Farben. Transparenz: Licht geht durch",
@@ -2164,7 +2164,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f9",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Farben. Opak: Lichtundurchlässig",
@@ -2175,7 +2175,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f10",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Lochkamera (farben)“?",
+      prompt: "Was trifft auf „Lochkamera (farben)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Farben. Lochkamera (farben): Abbildendes Loch ohne Linse",
@@ -2186,7 +2186,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-farben:f11",
-      prompt: "[ph-k6-lbw-farben] Was bedeutet „Spektrum (farben)“?",
+      prompt: "Was trifft auf „Spektrum (farben)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Farben. Spektrum (farben): Zerlegung weißen Lichts",
@@ -2250,7 +2250,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f0",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Kraftbegriff. Kraft: Ursache von Beschleunigung/Verformung",
@@ -2261,7 +2261,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f1",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Kraftbegriff. Gewichtskraft: Anziehung der Erde",
@@ -2272,7 +2272,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f2",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftbegriff. Reibung: Kraft gegen Gleiten",
@@ -2283,7 +2283,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f3",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Kraftbegriff. Federkraft: Rückstellkraft der Feder",
@@ -2294,7 +2294,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f4",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Kraftbegriff. Hebel: Kraftwandler mit Drehpunkt",
@@ -2305,7 +2305,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f5",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Kraftbegriff. Flaschenzug: Umlenkung und Kraftteilung",
@@ -2316,7 +2316,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f6",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Kraftbegriff. Auftrieb: Kraft nach oben im Fluid",
@@ -2327,7 +2327,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f7",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Kraftbegriff. Druck: Kraft pro Fläche",
@@ -2338,7 +2338,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f8",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Kraftbegriff. Magnetkraft: Zwischen Magneten/Eisen",
@@ -2349,7 +2349,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f9",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Kraftbegriff. Elektrostatik: Kräfte ruhender Ladungen",
@@ -2360,7 +2360,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f10",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Kraftwandler (kraftbegriff)“?",
+      prompt: "Was trifft auf „Kraftwandler (kraftbegriff)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Kraftbegriff. Kraftwandler (kraftbegriff): Ändert Kraftgröße/-richtung",
@@ -2371,7 +2371,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-kraftbegriff:f11",
-      prompt: "[ph-k7-lb1-kraftbegriff] Was bedeutet „Gleichgewicht (kraftbegriff)“?",
+      prompt: "Was trifft auf „Gleichgewicht (kraftbegriff)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Kraftbegriff. Gleichgewicht (kraftbegriff): Kräfte heben sich auf",
@@ -2435,7 +2435,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f0",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Reibung. Kraft: Ursache von Beschleunigung/Verformung",
@@ -2446,7 +2446,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f1",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Reibung. Gewichtskraft: Anziehung der Erde",
@@ -2457,7 +2457,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f2",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Reibung. Reibung: Kraft gegen Gleiten",
@@ -2468,7 +2468,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f3",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Reibung. Federkraft: Rückstellkraft der Feder",
@@ -2479,7 +2479,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f4",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Reibung. Hebel: Kraftwandler mit Drehpunkt",
@@ -2490,7 +2490,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f5",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Reibung. Flaschenzug: Umlenkung und Kraftteilung",
@@ -2501,7 +2501,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f6",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Reibung. Auftrieb: Kraft nach oben im Fluid",
@@ -2512,7 +2512,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f7",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Reibung. Druck: Kraft pro Fläche",
@@ -2523,7 +2523,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f8",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Reibung. Magnetkraft: Zwischen Magneten/Eisen",
@@ -2534,7 +2534,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f9",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Reibung. Elektrostatik: Kräfte ruhender Ladungen",
@@ -2545,7 +2545,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f10",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Kraftwandler (reibung)“?",
+      prompt: "Was trifft auf „Kraftwandler (reibung)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Reibung. Kraftwandler (reibung): Ändert Kraftgröße/-richtung",
@@ -2556,7 +2556,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-reibung:f11",
-      prompt: "[ph-k7-lb1-reibung] Was bedeutet „Gleichgewicht (reibung)“?",
+      prompt: "Was trifft auf „Gleichgewicht (reibung)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Reibung. Gleichgewicht (reibung): Kräfte heben sich auf",
@@ -2620,7 +2620,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb2-strom:f0",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Strom. Stromkreis: Geschlossener Weg für Ladung",
@@ -2631,7 +2631,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f1",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Strom. Leiter: Stoff mit freier Ladung",
@@ -2642,7 +2642,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f2",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Strom. Isolator: Sehr geringer Strom",
@@ -2653,7 +2653,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f3",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Strom. Widerstand: Hemmt den Strom",
@@ -2664,7 +2664,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f4",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Strom. Reihenschaltung: Ein Stromweg",
@@ -2675,7 +2675,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f5",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Strom. Parallelschaltung: Mehrere Stromwege",
@@ -2686,7 +2686,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f6",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Strom. Symbol: Schaltzeichen",
@@ -2697,7 +2697,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f7",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Strom. Spannung: Ursache des Stroms",
@@ -2708,7 +2708,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f8",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Strom. Stromstärke: Ladung pro Zeit",
@@ -2719,7 +2719,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f9",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Strom. Kurzschluss: Sehr kleiner Widerstand",
@@ -2730,7 +2730,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f10",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Sicherung (strom)“?",
+      prompt: "Was trifft auf „Sicherung (strom)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Strom. Sicherung (strom): Unterbricht bei Überstrom",
@@ -2741,7 +2741,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-strom:f11",
-      prompt: "[ph-k7-lb2-strom] Was bedeutet „Gefahr (strom)“?",
+      prompt: "Was trifft auf „Gefahr (strom)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Strom. Gefahr (strom): Stromunfall vermeiden",
@@ -2805,7 +2805,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f0",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Parallel. Stromkreis: Geschlossener Weg für Ladung",
@@ -2816,7 +2816,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f1",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Parallel. Leiter: Stoff mit freier Ladung",
@@ -2827,7 +2827,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f2",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Parallel. Isolator: Sehr geringer Strom",
@@ -2838,7 +2838,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f3",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Parallel. Widerstand: Hemmt den Strom",
@@ -2849,7 +2849,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f4",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Parallel. Reihenschaltung: Ein Stromweg",
@@ -2860,7 +2860,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f5",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Parallel. Parallelschaltung: Mehrere Stromwege",
@@ -2871,7 +2871,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f6",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Parallel. Symbol: Schaltzeichen",
@@ -2882,7 +2882,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f7",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Parallel. Spannung: Ursache des Stroms",
@@ -2893,7 +2893,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f8",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Parallel. Stromstärke: Ladung pro Zeit",
@@ -2904,7 +2904,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f9",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Parallel. Kurzschluss: Sehr kleiner Widerstand",
@@ -2915,7 +2915,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f10",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Sicherung (parallel)“?",
+      prompt: "Was trifft auf „Sicherung (parallel)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Parallel. Sicherung (parallel): Unterbricht bei Überstrom",
@@ -2926,7 +2926,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb2-parallel:f11",
-      prompt: "[ph-k7-lb2-parallel] Was bedeutet „Gefahr (parallel)“?",
+      prompt: "Was trifft auf „Gefahr (parallel)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Parallel. Gefahr (parallel): Stromunfall vermeiden",
@@ -2990,7 +2990,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f0",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Energie“?",
+      prompt: "Was trifft auf „Energie“ zu?",
       answer: "Fähigkeit, Arbeit zu verrichten",
       wrong: ["Energieform ändert sich", "Nützlicher Anteil", "Energie pro Zeit"],
       explanation: "Einheit Joule. Bezug: Umwandlung. Energie: Fähigkeit, Arbeit zu verrichten",
@@ -3001,7 +3001,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f1",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Umwandlung“?",
+      prompt: "Was trifft auf „Umwandlung“ zu?",
       answer: "Energieform ändert sich",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Nützlicher Anteil", "Energie pro Zeit"],
       explanation: "Erhaltung der Gesamtenergie. Bezug: Umwandlung. Umwandlung: Energieform ändert sich",
@@ -3012,7 +3012,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f2",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Wirkungsgrad“?",
+      prompt: "Was trifft auf „Wirkungsgrad“ zu?",
       answer: "Nützlicher Anteil",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Energie pro Zeit"],
       explanation: "η = E_nutz / E_zu. Bezug: Umwandlung. Wirkungsgrad: Nützlicher Anteil",
@@ -3023,7 +3023,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f3",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Leistung“?",
+      prompt: "Was trifft auf „Leistung“ zu?",
       answer: "Energie pro Zeit",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "P = E / t. Bezug: Umwandlung. Leistung: Energie pro Zeit",
@@ -3034,7 +3034,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f4",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Kinetische Energie“?",
+      prompt: "Was trifft auf „Kinetische Energie“ zu?",
       answer: "Energie der Bewegung",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Abhängig von m und v. Bezug: Umwandlung. Kinetische Energie: Energie der Bewegung",
@@ -3045,7 +3045,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f5",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Potenzielle Energie“?",
+      prompt: "Was trifft auf „Potenzielle Energie“ zu?",
       answer: "Lageenergie",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Im Schwerefeld. Bezug: Umwandlung. Potenzielle Energie: Lageenergie",
@@ -3056,7 +3056,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f6",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Wärmeenergie“?",
+      prompt: "Was trifft auf „Wärmeenergie“ zu?",
       answer: "Ungeordnete Teilchenbewegung",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Thermisch. Bezug: Umwandlung. Wärmeenergie: Ungeordnete Teilchenbewegung",
@@ -3067,7 +3067,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f7",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Elektrische Energie“?",
+      prompt: "Was trifft auf „Elektrische Energie“ zu?",
       answer: "Über Strom transportiert",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Haushalt. Bezug: Umwandlung. Elektrische Energie: Über Strom transportiert",
@@ -3078,7 +3078,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f8",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Sparen“?",
+      prompt: "Was trifft auf „Sparen“ zu?",
       answer: "Verbrauch senken",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Dämmung, LED. Bezug: Umwandlung. Sparen: Verbrauch senken",
@@ -3089,7 +3089,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f9",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Generator“?",
+      prompt: "Was trifft auf „Generator“ zu?",
       answer: "Wandelt mechanisch → elektrisch",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Kraftwerk. Bezug: Umwandlung. Generator: Wandelt mechanisch → elektrisch",
@@ -3100,7 +3100,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f10",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Kraftwerk (umwandlung)“?",
+      prompt: "Was trifft auf „Kraftwerk (umwandlung)“ zu?",
       answer: "Erzeugt elektrische Energie",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Verschiedene Primärquellen. Bezug: Umwandlung. Kraftwerk (umwandlung): Erzeugt elektrische Energie",
@@ -3111,7 +3111,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb3-umwandlung:f11",
-      prompt: "[ph-k7-lb3-umwandlung] Was bedeutet „Erneuerbar (umwandlung)“?",
+      prompt: "Was trifft auf „Erneuerbar (umwandlung)“ zu?",
       answer: "Nachwachsende/kontinuierliche Quellen",
       wrong: ["Fähigkeit, Arbeit zu verrichten", "Energieform ändert sich", "Nützlicher Anteil"],
       explanation: "Sonne, Wind, Wasser. Bezug: Umwandlung. Erneuerbar (umwandlung): Nachwachsende/kontinuierliche Quellen",
@@ -3175,7 +3175,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f0",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Kraftwandler. Kraft: Ursache von Beschleunigung/Verformung",
@@ -3186,7 +3186,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f1",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Kraftwandler. Gewichtskraft: Anziehung der Erde",
@@ -3197,7 +3197,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f2",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftwandler. Reibung: Kraft gegen Gleiten",
@@ -3208,7 +3208,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f3",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Kraftwandler. Federkraft: Rückstellkraft der Feder",
@@ -3219,7 +3219,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f4",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Kraftwandler. Hebel: Kraftwandler mit Drehpunkt",
@@ -3230,7 +3230,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f5",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Kraftwandler. Flaschenzug: Umlenkung und Kraftteilung",
@@ -3241,7 +3241,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f6",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Kraftwandler. Auftrieb: Kraft nach oben im Fluid",
@@ -3252,7 +3252,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f7",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Kraftwandler. Druck: Kraft pro Fläche",
@@ -3263,7 +3263,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f8",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Kraftwandler. Magnetkraft: Zwischen Magneten/Eisen",
@@ -3274,7 +3274,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f9",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Kraftwandler. Elektrostatik: Kräfte ruhender Ladungen",
@@ -3285,7 +3285,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f10",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Kraftwandler (kraftwandler)“?",
+      prompt: "Was trifft auf „Kraftwandler (kraftwandler)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Kraftwandler. Kraftwandler (kraftwandler): Ändert Kraftgröße/-richtung",
@@ -3296,7 +3296,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-kraftwandler:f11",
-      prompt: "[ph-k7-lbw-kraftwandler] Was bedeutet „Gleichgewicht (kraftwandler)“?",
+      prompt: "Was trifft auf „Gleichgewicht (kraftwandler)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Kraftwandler. Gleichgewicht (kraftwandler): Kräfte heben sich auf",
@@ -3360,7 +3360,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f0",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Hebel. Kraft: Ursache von Beschleunigung/Verformung",
@@ -3371,7 +3371,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f1",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Hebel. Gewichtskraft: Anziehung der Erde",
@@ -3382,7 +3382,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f2",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Hebel. Reibung: Kraft gegen Gleiten",
@@ -3393,7 +3393,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f3",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Hebel. Federkraft: Rückstellkraft der Feder",
@@ -3404,7 +3404,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f4",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Hebel. Hebel: Kraftwandler mit Drehpunkt",
@@ -3415,7 +3415,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f5",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Hebel. Flaschenzug: Umlenkung und Kraftteilung",
@@ -3426,7 +3426,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f6",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Hebel. Auftrieb: Kraft nach oben im Fluid",
@@ -3437,7 +3437,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f7",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Hebel. Druck: Kraft pro Fläche",
@@ -3448,7 +3448,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f8",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Hebel. Magnetkraft: Zwischen Magneten/Eisen",
@@ -3459,7 +3459,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f9",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Hebel. Elektrostatik: Kräfte ruhender Ladungen",
@@ -3470,7 +3470,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f10",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Kraftwandler (hebel)“?",
+      prompt: "Was trifft auf „Kraftwandler (hebel)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Hebel. Kraftwandler (hebel): Ändert Kraftgröße/-richtung",
@@ -3481,7 +3481,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lb1-hebel:f11",
-      prompt: "[ph-k7-lb1-hebel] Was bedeutet „Gleichgewicht (hebel)“?",
+      prompt: "Was trifft auf „Gleichgewicht (hebel)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Hebel. Gleichgewicht (hebel): Kräfte heben sich auf",
@@ -3545,7 +3545,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f0",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Hebel. Kraft: Ursache von Beschleunigung/Verformung",
@@ -3556,7 +3556,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f1",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Hebel. Gewichtskraft: Anziehung der Erde",
@@ -3567,7 +3567,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f2",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Hebel. Reibung: Kraft gegen Gleiten",
@@ -3578,7 +3578,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f3",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Hebel. Federkraft: Rückstellkraft der Feder",
@@ -3589,7 +3589,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f4",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Hebel. Hebel: Kraftwandler mit Drehpunkt",
@@ -3600,7 +3600,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f5",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Hebel. Flaschenzug: Umlenkung und Kraftteilung",
@@ -3611,7 +3611,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f6",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Hebel. Auftrieb: Kraft nach oben im Fluid",
@@ -3622,7 +3622,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f7",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Hebel. Druck: Kraft pro Fläche",
@@ -3633,7 +3633,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f8",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Hebel. Magnetkraft: Zwischen Magneten/Eisen",
@@ -3644,7 +3644,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f9",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Hebel. Elektrostatik: Kräfte ruhender Ladungen",
@@ -3655,7 +3655,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f10",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Kraftwandler (hebel)“?",
+      prompt: "Was trifft auf „Kraftwandler (hebel)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Hebel. Kraftwandler (hebel): Ändert Kraftgröße/-richtung",
@@ -3666,7 +3666,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-hebel:f11",
-      prompt: "[ph-k7-lbw-hebel] Was bedeutet „Gleichgewicht (hebel)“?",
+      prompt: "Was trifft auf „Gleichgewicht (hebel)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Hebel. Gleichgewicht (hebel): Kräfte heben sich auf",
@@ -3730,7 +3730,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f0",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Flasche. Kraft: Ursache von Beschleunigung/Verformung",
@@ -3741,7 +3741,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f1",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Flasche. Gewichtskraft: Anziehung der Erde",
@@ -3752,7 +3752,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f2",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Flasche. Reibung: Kraft gegen Gleiten",
@@ -3763,7 +3763,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f3",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Flasche. Federkraft: Rückstellkraft der Feder",
@@ -3774,7 +3774,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f4",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Flasche. Hebel: Kraftwandler mit Drehpunkt",
@@ -3785,7 +3785,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f5",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Flasche. Flaschenzug: Umlenkung und Kraftteilung",
@@ -3796,7 +3796,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f6",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Flasche. Auftrieb: Kraft nach oben im Fluid",
@@ -3807,7 +3807,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f7",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Flasche. Druck: Kraft pro Fläche",
@@ -3818,7 +3818,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f8",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Flasche. Magnetkraft: Zwischen Magneten/Eisen",
@@ -3829,7 +3829,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f9",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Flasche. Elektrostatik: Kräfte ruhender Ladungen",
@@ -3840,7 +3840,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f10",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Kraftwandler (flasche)“?",
+      prompt: "Was trifft auf „Kraftwandler (flasche)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Flasche. Kraftwandler (flasche): Ändert Kraftgröße/-richtung",
@@ -3851,7 +3851,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-flasche:f11",
-      prompt: "[ph-k7-lbw-flasche] Was bedeutet „Gleichgewicht (flasche)“?",
+      prompt: "Was trifft auf „Gleichgewicht (flasche)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Flasche. Gleichgewicht (flasche): Kräfte heben sich auf",
@@ -3915,7 +3915,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f0",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Schaltungen. Stromkreis: Geschlossener Weg für Ladung",
@@ -3926,7 +3926,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f1",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Schaltungen. Leiter: Stoff mit freier Ladung",
@@ -3937,7 +3937,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f2",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Schaltungen. Isolator: Sehr geringer Strom",
@@ -3948,7 +3948,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f3",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Schaltungen. Widerstand: Hemmt den Strom",
@@ -3959,7 +3959,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f4",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Schaltungen. Reihenschaltung: Ein Stromweg",
@@ -3970,7 +3970,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f5",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Schaltungen. Parallelschaltung: Mehrere Stromwege",
@@ -3981,7 +3981,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f6",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Schaltungen. Symbol: Schaltzeichen",
@@ -3992,7 +3992,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f7",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Schaltungen. Spannung: Ursache des Stroms",
@@ -4003,7 +4003,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f8",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Schaltungen. Stromstärke: Ladung pro Zeit",
@@ -4014,7 +4014,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f9",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Schaltungen. Kurzschluss: Sehr kleiner Widerstand",
@@ -4025,7 +4025,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f10",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Sicherung (schaltungen)“?",
+      prompt: "Was trifft auf „Sicherung (schaltungen)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Schaltungen. Sicherung (schaltungen): Unterbricht bei Überstrom",
@@ -4036,7 +4036,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-schaltungen:f11",
-      prompt: "[ph-k7-lbw-schaltungen] Was bedeutet „Gefahr (schaltungen)“?",
+      prompt: "Was trifft auf „Gefahr (schaltungen)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Schaltungen. Gefahr (schaltungen): Stromunfall vermeiden",
@@ -4100,7 +4100,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f0",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Klingel. Hypothese: Prüfbare Vermutung",
@@ -4111,7 +4111,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f1",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Klingel. Variable: Veränderliche Größe",
@@ -4122,7 +4122,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f2",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Klingel. Konstant halten: Störgrößen kontrollieren",
@@ -4133,7 +4133,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f3",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Klingel. Messreihe: Mehrere Messwerte",
@@ -4144,7 +4144,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f4",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Klingel. Fehler: Abweichung vom wahren Wert",
@@ -4155,7 +4155,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f5",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Klingel. Protokoll: Dokumentation",
@@ -4166,7 +4166,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f6",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Klingel. Auswertung: Diagramm und Schluss",
@@ -4177,7 +4177,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f7",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Klingel. Wiederholung: Erhöht Zuverlässigkeit",
@@ -4188,7 +4188,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f8",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Klingel. Messgerät: Geeignet wählen",
@@ -4199,7 +4199,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f9",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Klingel. Sicherheit: Schutzausrüstung",
@@ -4210,7 +4210,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f10",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Frage (klingel)“?",
+      prompt: "Was trifft auf „Frage (klingel)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Klingel. Frage (klingel): Klare Versuchsfrage",
@@ -4221,7 +4221,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-klingel:f11",
-      prompt: "[ph-k7-lbw-klingel] Was bedeutet „Modell (klingel)“?",
+      prompt: "Was trifft auf „Modell (klingel)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Klingel. Modell (klingel): Vereinfachte Erklärung",
@@ -4285,7 +4285,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f0",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Fliegen. Kraft: Ursache von Beschleunigung/Verformung",
@@ -4296,7 +4296,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f1",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Fliegen. Gewichtskraft: Anziehung der Erde",
@@ -4307,7 +4307,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f2",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Fliegen. Reibung: Kraft gegen Gleiten",
@@ -4318,7 +4318,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f3",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Fliegen. Federkraft: Rückstellkraft der Feder",
@@ -4329,7 +4329,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f4",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Fliegen. Hebel: Kraftwandler mit Drehpunkt",
@@ -4340,7 +4340,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f5",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Fliegen. Flaschenzug: Umlenkung und Kraftteilung",
@@ -4351,7 +4351,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f6",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Fliegen. Auftrieb: Kraft nach oben im Fluid",
@@ -4362,7 +4362,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f7",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Fliegen. Druck: Kraft pro Fläche",
@@ -4373,7 +4373,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f8",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Fliegen. Magnetkraft: Zwischen Magneten/Eisen",
@@ -4384,7 +4384,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f9",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Fliegen. Elektrostatik: Kräfte ruhender Ladungen",
@@ -4395,7 +4395,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f10",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Kraftwandler (fliegen)“?",
+      prompt: "Was trifft auf „Kraftwandler (fliegen)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Fliegen. Kraftwandler (fliegen): Ändert Kraftgröße/-richtung",
@@ -4406,7 +4406,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-fliegen:f11",
-      prompt: "[ph-k7-lbw-fliegen] Was bedeutet „Gleichgewicht (fliegen)“?",
+      prompt: "Was trifft auf „Gleichgewicht (fliegen)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Fliegen. Gleichgewicht (fliegen): Kräfte heben sich auf",
@@ -4470,7 +4470,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f0",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Auftrieb Dyn. Kraft: Ursache von Beschleunigung/Verformung",
@@ -4481,7 +4481,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f1",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Auftrieb Dyn. Gewichtskraft: Anziehung der Erde",
@@ -4492,7 +4492,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f2",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Auftrieb Dyn. Reibung: Kraft gegen Gleiten",
@@ -4503,7 +4503,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f3",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Auftrieb Dyn. Federkraft: Rückstellkraft der Feder",
@@ -4514,7 +4514,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f4",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Auftrieb Dyn. Hebel: Kraftwandler mit Drehpunkt",
@@ -4525,7 +4525,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f5",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Auftrieb Dyn. Flaschenzug: Umlenkung und Kraftteilung",
@@ -4536,7 +4536,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f6",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Auftrieb Dyn. Auftrieb: Kraft nach oben im Fluid",
@@ -4547,7 +4547,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f7",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Auftrieb Dyn. Druck: Kraft pro Fläche",
@@ -4558,7 +4558,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f8",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Auftrieb Dyn. Magnetkraft: Zwischen Magneten/Eisen",
@@ -4569,7 +4569,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f9",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Auftrieb Dyn. Elektrostatik: Kräfte ruhender Ladungen",
@@ -4580,7 +4580,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f10",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Kraftwandler (dyn)“?",
+      prompt: "Was trifft auf „Kraftwandler (dyn)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Auftrieb Dyn. Kraftwandler (dyn): Ändert Kraftgröße/-richtung",
@@ -4591,7 +4591,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k7-lbw-auftrieb-dyn:f11",
-      prompt: "[ph-k7-lbw-auftrieb-dyn] Was bedeutet „Gleichgewicht (dyn)“?",
+      prompt: "Was trifft auf „Gleichgewicht (dyn)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Auftrieb Dyn. Gleichgewicht (dyn): Kräfte heben sich auf",
@@ -4655,7 +4655,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f0",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Bauelemente. Stromkreis: Geschlossener Weg für Ladung",
@@ -4666,7 +4666,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f1",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Bauelemente. Leiter: Stoff mit freier Ladung",
@@ -4677,7 +4677,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f2",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Bauelemente. Isolator: Sehr geringer Strom",
@@ -4688,7 +4688,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f3",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Bauelemente. Widerstand: Hemmt den Strom",
@@ -4699,7 +4699,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f4",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Bauelemente. Reihenschaltung: Ein Stromweg",
@@ -4710,7 +4710,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f5",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Bauelemente. Parallelschaltung: Mehrere Stromwege",
@@ -4721,7 +4721,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f6",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Bauelemente. Symbol: Schaltzeichen",
@@ -4732,7 +4732,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f7",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Bauelemente. Spannung: Ursache des Stroms",
@@ -4743,7 +4743,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f8",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Bauelemente. Stromstärke: Ladung pro Zeit",
@@ -4754,7 +4754,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f9",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Bauelemente. Kurzschluss: Sehr kleiner Widerstand",
@@ -4765,7 +4765,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f10",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Sicherung (bauelemente)“?",
+      prompt: "Was trifft auf „Sicherung (bauelemente)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Bauelemente. Sicherung (bauelemente): Unterbricht bei Überstrom",
@@ -4776,7 +4776,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb3-bauelemente:f11",
-      prompt: "[ph-k8-lb3-bauelemente] Was bedeutet „Gefahr (bauelemente)“?",
+      prompt: "Was trifft auf „Gefahr (bauelemente)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Bauelemente. Gefahr (bauelemente): Stromunfall vermeiden",
@@ -4840,7 +4840,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f0",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Experiment. Hypothese: Prüfbare Vermutung",
@@ -4851,7 +4851,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f1",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Experiment. Variable: Veränderliche Größe",
@@ -4862,7 +4862,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f2",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Experiment. Konstant halten: Störgrößen kontrollieren",
@@ -4873,7 +4873,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f3",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Experiment. Messreihe: Mehrere Messwerte",
@@ -4884,7 +4884,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f4",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Experiment. Fehler: Abweichung vom wahren Wert",
@@ -4895,7 +4895,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f5",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Experiment. Protokoll: Dokumentation",
@@ -4906,7 +4906,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f6",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Experiment. Auswertung: Diagramm und Schluss",
@@ -4917,7 +4917,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f7",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Experiment. Wiederholung: Erhöht Zuverlässigkeit",
@@ -4928,7 +4928,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f8",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Experiment. Messgerät: Geeignet wählen",
@@ -4939,7 +4939,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f9",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Experiment. Sicherheit: Schutzausrüstung",
@@ -4950,7 +4950,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f10",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Frage (experiment)“?",
+      prompt: "Was trifft auf „Frage (experiment)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Experiment. Frage (experiment): Klare Versuchsfrage",
@@ -4961,7 +4961,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lb4-experiment:f11",
-      prompt: "[ph-k8-lb4-experiment] Was bedeutet „Modell (experiment)“?",
+      prompt: "Was trifft auf „Modell (experiment)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Experiment. Modell (experiment): Vereinfachte Erklärung",
@@ -5025,7 +5025,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f0",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Temperatur“?",
+      prompt: "Was trifft auf „Temperatur“ zu?",
       answer: "Maß für den Wärmezustand",
       wrong: ["Volumen wächst mit Temperatur", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "SI: Kelvin, Alltag: °C. Bezug: Ballon. Temperatur: Maß für den Wärmezustand",
@@ -5036,7 +5036,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f1",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Ausdehnung“?",
+      prompt: "Was trifft auf „Ausdehnung“ zu?",
       answer: "Volumen wächst mit Temperatur",
       wrong: ["Maß für den Wärmezustand", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "Bei vielen Stoffen. Bezug: Ballon. Ausdehnung: Volumen wächst mit Temperatur",
@@ -5047,7 +5047,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f2",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Aggregatzustand“?",
+      prompt: "Was trifft auf „Aggregatzustand“ zu?",
       answer: "fest, flüssig, gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "Übergang fest → flüssig"],
       explanation: "Hängt von T und p ab. Bezug: Ballon. Aggregatzustand: fest, flüssig, gasförmig",
@@ -5058,7 +5058,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f3",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Schmelzen“?",
+      prompt: "Was trifft auf „Schmelzen“ zu?",
       answer: "Übergang fest → flüssig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Schmelztemperatur. Bezug: Ballon. Schmelzen: Übergang fest → flüssig",
@@ -5069,7 +5069,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f4",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Sieden“?",
+      prompt: "Was trifft auf „Sieden“ zu?",
       answer: "Übergang flüssig → gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Siedetemperatur. Bezug: Ballon. Sieden: Übergang flüssig → gasförmig",
@@ -5080,7 +5080,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f5",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Wärmeleitung“?",
+      prompt: "Was trifft auf „Wärmeleitung“ zu?",
       answer: "Transport durch Kontakt",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Metalle leiten gut. Bezug: Ballon. Wärmeleitung: Transport durch Kontakt",
@@ -5091,7 +5091,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f6",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Dämmung“?",
+      prompt: "Was trifft auf „Dämmung“ zu?",
       answer: "Verringert Wärmefluss",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Luftpolster hilfreich. Bezug: Ballon. Dämmung: Verringert Wärmefluss",
@@ -5102,7 +5102,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f7",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Thermometer“?",
+      prompt: "Was trifft auf „Thermometer“ zu?",
       answer: "Misst Temperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Skalierung und Kalibrierung. Bezug: Ballon. Thermometer: Misst Temperatur",
@@ -5113,7 +5113,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f8",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Kelvin“?",
+      prompt: "Was trifft auf „Kelvin“ zu?",
       answer: "SI-Temperaturskala",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "0 K = absoluter Nullpunkt. Bezug: Ballon. Kelvin: SI-Temperaturskala",
@@ -5124,7 +5124,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f9",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Wärme“?",
+      prompt: "Was trifft auf „Wärme“ zu?",
       answer: "Übertragene Energie",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Nicht gleich Temperatur. Bezug: Ballon. Wärme: Übertragene Energie",
@@ -5135,7 +5135,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f10",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Mischung (ballon)“?",
+      prompt: "Was trifft auf „Mischung (ballon)“ zu?",
       answer: "Gemeinsame Endtemperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Energiebilanz. Bezug: Ballon. Mischung (ballon): Gemeinsame Endtemperatur",
@@ -5146,7 +5146,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f11",
-      prompt: "[ph-k8-lbw-ballon] Was bedeutet „Spezifische Wärme (ballon)“?",
+      prompt: "Was trifft auf „Spezifische Wärme (ballon)“ zu?",
       answer: "Wärme pro Masse und Kelvin",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Stoffabhängig. Bezug: Ballon. Spezifische Wärme (ballon): Wärme pro Masse und Kelvin",
@@ -5210,7 +5210,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f0",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Temperatur“?",
+      prompt: "Was trifft auf „Temperatur“ zu?",
       answer: "Maß für den Wärmezustand",
       wrong: ["Volumen wächst mit Temperatur", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "SI: Kelvin, Alltag: °C. Bezug: Kuehlschrank. Temperatur: Maß für den Wärmezustand",
@@ -5221,7 +5221,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f1",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Ausdehnung“?",
+      prompt: "Was trifft auf „Ausdehnung“ zu?",
       answer: "Volumen wächst mit Temperatur",
       wrong: ["Maß für den Wärmezustand", "fest, flüssig, gasförmig", "Übergang fest → flüssig"],
       explanation: "Bei vielen Stoffen. Bezug: Kuehlschrank. Ausdehnung: Volumen wächst mit Temperatur",
@@ -5232,7 +5232,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f2",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Aggregatzustand“?",
+      prompt: "Was trifft auf „Aggregatzustand“ zu?",
       answer: "fest, flüssig, gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "Übergang fest → flüssig"],
       explanation: "Hängt von T und p ab. Bezug: Kuehlschrank. Aggregatzustand: fest, flüssig, gasförmig",
@@ -5243,7 +5243,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f3",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Schmelzen“?",
+      prompt: "Was trifft auf „Schmelzen“ zu?",
       answer: "Übergang fest → flüssig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Schmelztemperatur. Bezug: Kuehlschrank. Schmelzen: Übergang fest → flüssig",
@@ -5254,7 +5254,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f4",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Sieden“?",
+      prompt: "Was trifft auf „Sieden“ zu?",
       answer: "Übergang flüssig → gasförmig",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Bei Siedetemperatur. Bezug: Kuehlschrank. Sieden: Übergang flüssig → gasförmig",
@@ -5265,7 +5265,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f5",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Wärmeleitung“?",
+      prompt: "Was trifft auf „Wärmeleitung“ zu?",
       answer: "Transport durch Kontakt",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Metalle leiten gut. Bezug: Kuehlschrank. Wärmeleitung: Transport durch Kontakt",
@@ -5276,7 +5276,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f6",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Dämmung“?",
+      prompt: "Was trifft auf „Dämmung“ zu?",
       answer: "Verringert Wärmefluss",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Luftpolster hilfreich. Bezug: Kuehlschrank. Dämmung: Verringert Wärmefluss",
@@ -5287,7 +5287,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f7",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Thermometer“?",
+      prompt: "Was trifft auf „Thermometer“ zu?",
       answer: "Misst Temperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Skalierung und Kalibrierung. Bezug: Kuehlschrank. Thermometer: Misst Temperatur",
@@ -5298,7 +5298,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f8",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Kelvin“?",
+      prompt: "Was trifft auf „Kelvin“ zu?",
       answer: "SI-Temperaturskala",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "0 K = absoluter Nullpunkt. Bezug: Kuehlschrank. Kelvin: SI-Temperaturskala",
@@ -5309,7 +5309,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f9",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Wärme“?",
+      prompt: "Was trifft auf „Wärme“ zu?",
       answer: "Übertragene Energie",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Nicht gleich Temperatur. Bezug: Kuehlschrank. Wärme: Übertragene Energie",
@@ -5320,7 +5320,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f10",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Mischung (kuehlschrank)“?",
+      prompt: "Was trifft auf „Mischung (kuehlschrank)“ zu?",
       answer: "Gemeinsame Endtemperatur",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Energiebilanz. Bezug: Kuehlschrank. Mischung (kuehlschrank): Gemeinsame Endtemperatur",
@@ -5331,7 +5331,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f11",
-      prompt: "[ph-k8-lbw-kuehlschrank] Was bedeutet „Spezifische Wärme (kuehlschrank)“?",
+      prompt: "Was trifft auf „Spezifische Wärme (kuehlschrank)“ zu?",
       answer: "Wärme pro Masse und Kelvin",
       wrong: ["Maß für den Wärmezustand", "Volumen wächst mit Temperatur", "fest, flüssig, gasförmig"],
       explanation: "Stoffabhängig. Bezug: Kuehlschrank. Spezifische Wärme (kuehlschrank): Wärme pro Masse und Kelvin",
@@ -5395,7 +5395,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k8-lbw-messen:f0",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Messen. Stromkreis: Geschlossener Weg für Ladung",
@@ -5406,7 +5406,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f1",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Messen. Leiter: Stoff mit freier Ladung",
@@ -5417,7 +5417,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f2",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Messen. Isolator: Sehr geringer Strom",
@@ -5428,7 +5428,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f3",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Messen. Widerstand: Hemmt den Strom",
@@ -5439,7 +5439,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f4",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Messen. Reihenschaltung: Ein Stromweg",
@@ -5450,7 +5450,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f5",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Messen. Parallelschaltung: Mehrere Stromwege",
@@ -5461,7 +5461,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f6",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Messen. Symbol: Schaltzeichen",
@@ -5472,7 +5472,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f7",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Messen. Spannung: Ursache des Stroms",
@@ -5483,7 +5483,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f8",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Messen. Stromstärke: Ladung pro Zeit",
@@ -5494,7 +5494,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f9",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Messen. Kurzschluss: Sehr kleiner Widerstand",
@@ -5505,7 +5505,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f10",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Sicherung (messen)“?",
+      prompt: "Was trifft auf „Sicherung (messen)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Messen. Sicherung (messen): Unterbricht bei Überstrom",
@@ -5516,7 +5516,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-messen:f11",
-      prompt: "[ph-k8-lbw-messen] Was bedeutet „Gefahr (messen)“?",
+      prompt: "Was trifft auf „Gefahr (messen)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Messen. Gefahr (messen): Stromunfall vermeiden",
@@ -5580,7 +5580,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f0",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Diode“?",
+      prompt: "Was trifft auf „Diode“ zu?",
       answer: "Lässt Strom vorwiegend einer Richtung",
       wrong: ["Leuchtdiode", "Verstärker/Schalter", "Zustände 0 und 1"],
       explanation: "pn-Übergang. Bezug: Elektronik. Diode: Lässt Strom vorwiegend einer Richtung",
@@ -5591,7 +5591,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f1",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „LED“?",
+      prompt: "Was trifft auf „LED“ zu?",
       answer: "Leuchtdiode",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Verstärker/Schalter", "Zustände 0 und 1"],
       explanation: "Wandelt elektrisch → Licht. Bezug: Elektronik. LED: Leuchtdiode",
@@ -5602,7 +5602,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f2",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Transistor“?",
+      prompt: "Was trifft auf „Transistor“ zu?",
       answer: "Verstärker/Schalter",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Zustände 0 und 1"],
       explanation: "Basis steuert Strom. Bezug: Elektronik. Transistor: Verstärker/Schalter",
@@ -5613,7 +5613,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f3",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Digital“?",
+      prompt: "Was trifft auf „Digital“ zu?",
       answer: "Zustände 0 und 1",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Logikgatter. Bezug: Elektronik. Digital: Zustände 0 und 1",
@@ -5624,7 +5624,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f4",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Kennlinie“?",
+      prompt: "Was trifft auf „Kennlinie“ zu?",
       answer: "U-I-Diagramm",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Bauteilverhalten. Bezug: Elektronik. Kennlinie: U-I-Diagramm",
@@ -5635,7 +5635,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f5",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Bauelement“?",
+      prompt: "Was trifft auf „Bauelement“ zu?",
       answer: "Einzelteil der Schaltung",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "R, C, Diode … Bezug: Elektronik. Bauelement: Einzelteil der Schaltung",
@@ -5646,7 +5646,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f6",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Sensor“?",
+      prompt: "Was trifft auf „Sensor“ zu?",
       answer: "Wandelt Messgröße → Signal",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Temperatur, Licht. Bezug: Elektronik. Sensor: Wandelt Messgröße → Signal",
@@ -5657,7 +5657,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f7",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Vorwiderstand“?",
+      prompt: "Was trifft auf „Vorwiderstand“ zu?",
       answer: "Schützt LED",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Begrenzt Strom. Bezug: Elektronik. Vorwiderstand: Schützt LED",
@@ -5668,7 +5668,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f8",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Gleichrichtung“?",
+      prompt: "Was trifft auf „Gleichrichtung“ zu?",
       answer: "Wechsel → pulsierend gleich",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Mit Diode. Bezug: Elektronik. Gleichrichtung: Wechsel → pulsierend gleich",
@@ -5679,7 +5679,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f9",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Schaltplan“?",
+      prompt: "Was trifft auf „Schaltplan“ zu?",
       answer: "Symbole und Verbindungen",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Lesen üben. Bezug: Elektronik. Schaltplan: Symbole und Verbindungen",
@@ -5690,7 +5690,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f10",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Messung (elektronik)“?",
+      prompt: "Was trifft auf „Messung (elektronik)“ zu?",
       answer: "Multimeter",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Bereiche wählen. Bezug: Elektronik. Messung (elektronik): Multimeter",
@@ -5701,7 +5701,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb1-elektronik:f11",
-      prompt: "[ph-k9-lb1-elektronik] Was bedeutet „Signal (elektronik)“?",
+      prompt: "Was trifft auf „Signal (elektronik)“ zu?",
       answer: "Informationstragende Größe",
       wrong: ["Lässt Strom vorwiegend einer Richtung", "Leuchtdiode", "Verstärker/Schalter"],
       explanation: "Analog/digital. Bezug: Elektronik. Signal (elektronik): Informationstragende Größe",
@@ -5765,7 +5765,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f0",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Kraftwerk. Kraft: Ursache von Beschleunigung/Verformung",
@@ -5776,7 +5776,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f1",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Kraftwerk. Gewichtskraft: Anziehung der Erde",
@@ -5787,7 +5787,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f2",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Kraftwerk. Reibung: Kraft gegen Gleiten",
@@ -5798,7 +5798,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f3",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Kraftwerk. Federkraft: Rückstellkraft der Feder",
@@ -5809,7 +5809,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f4",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Kraftwerk. Hebel: Kraftwandler mit Drehpunkt",
@@ -5820,7 +5820,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f5",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Kraftwerk. Flaschenzug: Umlenkung und Kraftteilung",
@@ -5831,7 +5831,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f6",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Kraftwerk. Auftrieb: Kraft nach oben im Fluid",
@@ -5842,7 +5842,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f7",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Kraftwerk. Druck: Kraft pro Fläche",
@@ -5853,7 +5853,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f8",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Kraftwerk. Magnetkraft: Zwischen Magneten/Eisen",
@@ -5864,7 +5864,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f9",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Kraftwerk. Elektrostatik: Kräfte ruhender Ladungen",
@@ -5875,7 +5875,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f10",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Kraftwandler (kraftwerk)“?",
+      prompt: "Was trifft auf „Kraftwandler (kraftwerk)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Kraftwerk. Kraftwandler (kraftwerk): Ändert Kraftgröße/-richtung",
@@ -5886,7 +5886,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-kraftwerk:f11",
-      prompt: "[ph-k9-lb2-kraftwerk] Was bedeutet „Gleichgewicht (kraftwerk)“?",
+      prompt: "Was trifft auf „Gleichgewicht (kraftwerk)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Kraftwerk. Gleichgewicht (kraftwerk): Kräfte heben sich auf",
@@ -5950,7 +5950,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f0",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Versorgung. Hypothese: Prüfbare Vermutung",
@@ -5961,7 +5961,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f1",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Versorgung. Variable: Veränderliche Größe",
@@ -5972,7 +5972,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f2",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Versorgung. Konstant halten: Störgrößen kontrollieren",
@@ -5983,7 +5983,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f3",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Versorgung. Messreihe: Mehrere Messwerte",
@@ -5994,7 +5994,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f4",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Versorgung. Fehler: Abweichung vom wahren Wert",
@@ -6005,7 +6005,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f5",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Versorgung. Protokoll: Dokumentation",
@@ -6016,7 +6016,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f6",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Versorgung. Auswertung: Diagramm und Schluss",
@@ -6027,7 +6027,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f7",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Versorgung. Wiederholung: Erhöht Zuverlässigkeit",
@@ -6038,7 +6038,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f8",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Versorgung. Messgerät: Geeignet wählen",
@@ -6049,7 +6049,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f9",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Versorgung. Sicherheit: Schutzausrüstung",
@@ -6060,7 +6060,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f10",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Frage (versorgung)“?",
+      prompt: "Was trifft auf „Frage (versorgung)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Versorgung. Frage (versorgung): Klare Versuchsfrage",
@@ -6071,7 +6071,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb2-versorgung:f11",
-      prompt: "[ph-k9-lb2-versorgung] Was bedeutet „Modell (versorgung)“?",
+      prompt: "Was trifft auf „Modell (versorgung)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Versorgung. Modell (versorgung): Vereinfachte Erklärung",
@@ -6135,7 +6135,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f0",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Praktikum. Hypothese: Prüfbare Vermutung",
@@ -6146,7 +6146,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f1",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Praktikum. Variable: Veränderliche Größe",
@@ -6157,7 +6157,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f2",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Praktikum. Konstant halten: Störgrößen kontrollieren",
@@ -6168,7 +6168,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f3",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Praktikum. Messreihe: Mehrere Messwerte",
@@ -6179,7 +6179,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f4",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Praktikum. Fehler: Abweichung vom wahren Wert",
@@ -6190,7 +6190,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f5",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Praktikum. Protokoll: Dokumentation",
@@ -6201,7 +6201,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f6",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Praktikum. Auswertung: Diagramm und Schluss",
@@ -6212,7 +6212,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f7",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Praktikum. Wiederholung: Erhöht Zuverlässigkeit",
@@ -6223,7 +6223,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f8",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Praktikum. Messgerät: Geeignet wählen",
@@ -6234,7 +6234,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f9",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Praktikum. Sicherheit: Schutzausrüstung",
@@ -6245,7 +6245,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f10",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Frage (praktikum)“?",
+      prompt: "Was trifft auf „Frage (praktikum)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Praktikum. Frage (praktikum): Klare Versuchsfrage",
@@ -6256,7 +6256,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lb4-praktikum:f11",
-      prompt: "[ph-k9-lb4-praktikum] Was bedeutet „Modell (praktikum)“?",
+      prompt: "Was trifft auf „Modell (praktikum)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Praktikum. Modell (praktikum): Vereinfachte Erklärung",
@@ -6320,7 +6320,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f0",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Radioaktivitaet. Hypothese: Prüfbare Vermutung",
@@ -6331,7 +6331,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f1",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Radioaktivitaet. Variable: Veränderliche Größe",
@@ -6342,7 +6342,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f2",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Radioaktivitaet. Konstant halten: Störgrößen kontrollieren",
@@ -6353,7 +6353,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f3",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Radioaktivitaet. Messreihe: Mehrere Messwerte",
@@ -6364,7 +6364,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f4",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Radioaktivitaet. Fehler: Abweichung vom wahren Wert",
@@ -6375,7 +6375,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f5",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Radioaktivitaet. Protokoll: Dokumentation",
@@ -6386,7 +6386,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f6",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Radioaktivitaet. Auswertung: Diagramm und Schluss",
@@ -6397,7 +6397,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f7",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Radioaktivitaet. Wiederholung: Erhöht Zuverlässigkeit",
@@ -6408,7 +6408,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f8",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Radioaktivitaet. Messgerät: Geeignet wählen",
@@ -6419,7 +6419,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f9",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Radioaktivitaet. Sicherheit: Schutzausrüstung",
@@ -6430,7 +6430,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f10",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Frage (radioaktivitaet)“?",
+      prompt: "Was trifft auf „Frage (radioaktivitaet)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Radioaktivitaet. Frage (radioaktivitaet): Klare Versuchsfrage",
@@ -6441,7 +6441,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-radioaktivitaet:f11",
-      prompt: "[ph-k9-lbw-radioaktivitaet] Was bedeutet „Modell (radioaktivitaet)“?",
+      prompt: "Was trifft auf „Modell (radioaktivitaet)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Radioaktivitaet. Modell (radioaktivitaet): Vereinfachte Erklärung",
@@ -6505,7 +6505,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f0",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Wind Sonne. Lichtquelle: Körper der selbst Licht aussendet",
@@ -6516,7 +6516,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f1",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Wind Sonne. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -6527,7 +6527,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f2",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Wind Sonne. Schatten: Bereich ohne direktes Licht",
@@ -6538,7 +6538,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f3",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Wind Sonne. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -6549,7 +6549,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f4",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Wind Sonne. Halbschatten: Teilweise beleuchteter Bereich",
@@ -6560,7 +6560,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f5",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Wind Sonne. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -6571,7 +6571,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f6",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Wind Sonne. Brechung: Richtungsänderung an Grenzfläche",
@@ -6582,7 +6582,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f7",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Wind Sonne. Spiegel: Glatte reflektierende Fläche",
@@ -6593,7 +6593,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f8",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Wind Sonne. Transparenz: Licht geht durch",
@@ -6604,7 +6604,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f9",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Wind Sonne. Opak: Lichtundurchlässig",
@@ -6615,7 +6615,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f10",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Lochkamera (sonne)“?",
+      prompt: "Was trifft auf „Lochkamera (sonne)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Wind Sonne. Lochkamera (sonne): Abbildendes Loch ohne Linse",
@@ -6626,7 +6626,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k9-lbw-wind-sonne:f11",
-      prompt: "[ph-k9-lbw-wind-sonne] Was bedeutet „Spektrum (sonne)“?",
+      prompt: "Was trifft auf „Spektrum (sonne)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Wind Sonne. Spektrum (sonne): Zerlegung weißen Lichts",
@@ -6690,7 +6690,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f0",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Kosmos. Hypothese: Prüfbare Vermutung",
@@ -6701,7 +6701,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f1",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Kosmos. Variable: Veränderliche Größe",
@@ -6712,7 +6712,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f2",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Kosmos. Konstant halten: Störgrößen kontrollieren",
@@ -6723,7 +6723,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f3",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Kosmos. Messreihe: Mehrere Messwerte",
@@ -6734,7 +6734,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f4",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Kosmos. Fehler: Abweichung vom wahren Wert",
@@ -6745,7 +6745,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f5",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Kosmos. Protokoll: Dokumentation",
@@ -6756,7 +6756,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f6",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Kosmos. Auswertung: Diagramm und Schluss",
@@ -6767,7 +6767,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f7",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Kosmos. Wiederholung: Erhöht Zuverlässigkeit",
@@ -6778,7 +6778,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f8",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Kosmos. Messgerät: Geeignet wählen",
@@ -6789,7 +6789,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f9",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Kosmos. Sicherheit: Schutzausrüstung",
@@ -6800,7 +6800,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f10",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Frage (kosmos)“?",
+      prompt: "Was trifft auf „Frage (kosmos)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Kosmos. Frage (kosmos): Klare Versuchsfrage",
@@ -6811,7 +6811,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb2-kosmos:f11",
-      prompt: "[ph-k10-lb2-kosmos] Was bedeutet „Modell (kosmos)“?",
+      prompt: "Was trifft auf „Modell (kosmos)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Kosmos. Modell (kosmos): Vereinfachte Erklärung",
@@ -6875,7 +6875,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f0",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Hertz. Hypothese: Prüfbare Vermutung",
@@ -6886,7 +6886,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f1",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Hertz. Variable: Veränderliche Größe",
@@ -6897,7 +6897,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f2",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Hertz. Konstant halten: Störgrößen kontrollieren",
@@ -6908,7 +6908,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f3",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Hertz. Messreihe: Mehrere Messwerte",
@@ -6919,7 +6919,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f4",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Hertz. Fehler: Abweichung vom wahren Wert",
@@ -6930,7 +6930,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f5",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Hertz. Protokoll: Dokumentation",
@@ -6941,7 +6941,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f6",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Hertz. Auswertung: Diagramm und Schluss",
@@ -6952,7 +6952,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f7",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Hertz. Wiederholung: Erhöht Zuverlässigkeit",
@@ -6963,7 +6963,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f8",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Hertz. Messgerät: Geeignet wählen",
@@ -6974,7 +6974,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f9",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Hertz. Sicherheit: Schutzausrüstung",
@@ -6985,7 +6985,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f10",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Frage (hertz)“?",
+      prompt: "Was trifft auf „Frage (hertz)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Hertz. Frage (hertz): Klare Versuchsfrage",
@@ -6996,7 +6996,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb4-hertz:f11",
-      prompt: "[ph-k10-lb4-hertz] Was bedeutet „Modell (hertz)“?",
+      prompt: "Was trifft auf „Modell (hertz)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Hertz. Modell (hertz): Vereinfachte Erklärung",
@@ -7060,7 +7060,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f0",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Praktikum. Hypothese: Prüfbare Vermutung",
@@ -7071,7 +7071,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f1",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Praktikum. Variable: Veränderliche Größe",
@@ -7082,7 +7082,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f2",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Praktikum. Konstant halten: Störgrößen kontrollieren",
@@ -7093,7 +7093,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f3",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Praktikum. Messreihe: Mehrere Messwerte",
@@ -7104,7 +7104,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f4",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Praktikum. Fehler: Abweichung vom wahren Wert",
@@ -7115,7 +7115,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f5",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Praktikum. Protokoll: Dokumentation",
@@ -7126,7 +7126,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f6",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Praktikum. Auswertung: Diagramm und Schluss",
@@ -7137,7 +7137,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f7",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Praktikum. Wiederholung: Erhöht Zuverlässigkeit",
@@ -7148,7 +7148,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f8",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Praktikum. Messgerät: Geeignet wählen",
@@ -7159,7 +7159,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f9",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Praktikum. Sicherheit: Schutzausrüstung",
@@ -7170,7 +7170,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f10",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Frage (praktikum)“?",
+      prompt: "Was trifft auf „Frage (praktikum)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Praktikum. Frage (praktikum): Klare Versuchsfrage",
@@ -7181,7 +7181,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lb5-praktikum:f11",
-      prompt: "[ph-k10-lb5-praktikum] Was bedeutet „Modell (praktikum)“?",
+      prompt: "Was trifft auf „Modell (praktikum)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Praktikum. Modell (praktikum): Vereinfachte Erklärung",
@@ -7245,7 +7245,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f0",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Fernrohr. Hypothese: Prüfbare Vermutung",
@@ -7256,7 +7256,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f1",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Fernrohr. Variable: Veränderliche Größe",
@@ -7267,7 +7267,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f2",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Fernrohr. Konstant halten: Störgrößen kontrollieren",
@@ -7278,7 +7278,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f3",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Fernrohr. Messreihe: Mehrere Messwerte",
@@ -7289,7 +7289,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f4",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Fernrohr. Fehler: Abweichung vom wahren Wert",
@@ -7300,7 +7300,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f5",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Fernrohr. Protokoll: Dokumentation",
@@ -7311,7 +7311,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f6",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Fernrohr. Auswertung: Diagramm und Schluss",
@@ -7322,7 +7322,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f7",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Fernrohr. Wiederholung: Erhöht Zuverlässigkeit",
@@ -7333,7 +7333,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f8",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Fernrohr. Messgerät: Geeignet wählen",
@@ -7344,7 +7344,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f9",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Fernrohr. Sicherheit: Schutzausrüstung",
@@ -7355,7 +7355,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f10",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Frage (fernrohr)“?",
+      prompt: "Was trifft auf „Frage (fernrohr)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Fernrohr. Frage (fernrohr): Klare Versuchsfrage",
@@ -7366,7 +7366,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernrohr:f11",
-      prompt: "[ph-k10-lbw-fernrohr] Was bedeutet „Modell (fernrohr)“?",
+      prompt: "Was trifft auf „Modell (fernrohr)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Fernrohr. Modell (fernrohr): Vereinfachte Erklärung",
@@ -7430,7 +7430,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lbw-medien:f0",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Medien. Hypothese: Prüfbare Vermutung",
@@ -7441,7 +7441,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f1",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Medien. Variable: Veränderliche Größe",
@@ -7452,7 +7452,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f2",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Medien. Konstant halten: Störgrößen kontrollieren",
@@ -7463,7 +7463,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f3",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Medien. Messreihe: Mehrere Messwerte",
@@ -7474,7 +7474,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f4",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Medien. Fehler: Abweichung vom wahren Wert",
@@ -7485,7 +7485,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f5",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Medien. Protokoll: Dokumentation",
@@ -7496,7 +7496,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f6",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Medien. Auswertung: Diagramm und Schluss",
@@ -7507,7 +7507,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f7",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Medien. Wiederholung: Erhöht Zuverlässigkeit",
@@ -7518,7 +7518,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f8",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Medien. Messgerät: Geeignet wählen",
@@ -7529,7 +7529,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f9",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Medien. Sicherheit: Schutzausrüstung",
@@ -7540,7 +7540,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f10",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Frage (medien)“?",
+      prompt: "Was trifft auf „Frage (medien)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Medien. Frage (medien): Klare Versuchsfrage",
@@ -7551,7 +7551,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-medien:f11",
-      prompt: "[ph-k10-lbw-medien] Was bedeutet „Modell (medien)“?",
+      prompt: "Was trifft auf „Modell (medien)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Medien. Modell (medien): Vereinfachte Erklärung",
@@ -7615,7 +7615,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f0",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Fernsehen. Lichtquelle: Körper der selbst Licht aussendet",
@@ -7626,7 +7626,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f1",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Fernsehen. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -7637,7 +7637,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f2",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Fernsehen. Schatten: Bereich ohne direktes Licht",
@@ -7648,7 +7648,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f3",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Fernsehen. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -7659,7 +7659,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f4",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Fernsehen. Halbschatten: Teilweise beleuchteter Bereich",
@@ -7670,7 +7670,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f5",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Fernsehen. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -7681,7 +7681,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f6",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Fernsehen. Brechung: Richtungsänderung an Grenzfläche",
@@ -7692,7 +7692,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f7",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Fernsehen. Spiegel: Glatte reflektierende Fläche",
@@ -7703,7 +7703,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f8",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Fernsehen. Transparenz: Licht geht durch",
@@ -7714,7 +7714,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f9",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Fernsehen. Opak: Lichtundurchlässig",
@@ -7725,7 +7725,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f10",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Lochkamera (fernsehen)“?",
+      prompt: "Was trifft auf „Lochkamera (fernsehen)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Fernsehen. Lochkamera (fernsehen): Abbildendes Loch ohne Linse",
@@ -7736,7 +7736,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k10-lbw-fernsehen:f11",
-      prompt: "[ph-k10-lbw-fernsehen] Was bedeutet „Spektrum (fernsehen)“?",
+      prompt: "Was trifft auf „Spektrum (fernsehen)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Fernsehen. Spektrum (fernsehen): Zerlegung weißen Lichts",
@@ -7800,7 +7800,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f0",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Kondensator. Hypothese: Prüfbare Vermutung",
@@ -7811,7 +7811,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f1",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Kondensator. Variable: Veränderliche Größe",
@@ -7822,7 +7822,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f2",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Kondensator. Konstant halten: Störgrößen kontrollieren",
@@ -7833,7 +7833,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f3",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Kondensator. Messreihe: Mehrere Messwerte",
@@ -7844,7 +7844,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f4",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Kondensator. Fehler: Abweichung vom wahren Wert",
@@ -7855,7 +7855,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f5",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Kondensator. Protokoll: Dokumentation",
@@ -7866,7 +7866,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f6",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Kondensator. Auswertung: Diagramm und Schluss",
@@ -7877,7 +7877,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f7",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Kondensator. Wiederholung: Erhöht Zuverlässigkeit",
@@ -7888,7 +7888,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f8",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Kondensator. Messgerät: Geeignet wählen",
@@ -7899,7 +7899,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f9",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Kondensator. Sicherheit: Schutzausrüstung",
@@ -7910,7 +7910,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f10",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Frage (kondensator)“?",
+      prompt: "Was trifft auf „Frage (kondensator)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Kondensator. Frage (kondensator): Klare Versuchsfrage",
@@ -7921,7 +7921,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-kondensator:f11",
-      prompt: "[ph-j11gk-lb3-kondensator] Was bedeutet „Modell (kondensator)“?",
+      prompt: "Was trifft auf „Modell (kondensator)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Kondensator. Modell (kondensator): Vereinfachte Erklärung",
@@ -7985,7 +7985,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f0",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Praktikum. Hypothese: Prüfbare Vermutung",
@@ -7996,7 +7996,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f1",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Praktikum. Variable: Veränderliche Größe",
@@ -8007,7 +8007,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f2",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Praktikum. Konstant halten: Störgrößen kontrollieren",
@@ -8018,7 +8018,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f3",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Praktikum. Messreihe: Mehrere Messwerte",
@@ -8029,7 +8029,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f4",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Praktikum. Fehler: Abweichung vom wahren Wert",
@@ -8040,7 +8040,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f5",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Praktikum. Protokoll: Dokumentation",
@@ -8051,7 +8051,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f6",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Praktikum. Auswertung: Diagramm und Schluss",
@@ -8062,7 +8062,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f7",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Praktikum. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8073,7 +8073,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f8",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Praktikum. Messgerät: Geeignet wählen",
@@ -8084,7 +8084,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f9",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Praktikum. Sicherheit: Schutzausrüstung",
@@ -8095,7 +8095,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f10",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Frage (praktikum)“?",
+      prompt: "Was trifft auf „Frage (praktikum)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Praktikum. Frage (praktikum): Klare Versuchsfrage",
@@ -8106,7 +8106,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-praktikum:f11",
-      prompt: "[ph-j11gk-lb3-praktikum] Was bedeutet „Modell (praktikum)“?",
+      prompt: "Was trifft auf „Modell (praktikum)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Praktikum. Modell (praktikum): Vereinfachte Erklärung",
@@ -8170,7 +8170,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f0",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Laden. Hypothese: Prüfbare Vermutung",
@@ -8181,7 +8181,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f1",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Laden. Variable: Veränderliche Größe",
@@ -8192,7 +8192,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f2",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Laden. Konstant halten: Störgrößen kontrollieren",
@@ -8203,7 +8203,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f3",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Laden. Messreihe: Mehrere Messwerte",
@@ -8214,7 +8214,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f4",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Laden. Fehler: Abweichung vom wahren Wert",
@@ -8225,7 +8225,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f5",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Laden. Protokoll: Dokumentation",
@@ -8236,7 +8236,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f6",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Laden. Auswertung: Diagramm und Schluss",
@@ -8247,7 +8247,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f7",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Laden. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8258,7 +8258,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f8",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Laden. Messgerät: Geeignet wählen",
@@ -8269,7 +8269,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f9",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Laden. Sicherheit: Schutzausrüstung",
@@ -8280,7 +8280,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f10",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Frage (laden)“?",
+      prompt: "Was trifft auf „Frage (laden)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Laden. Frage (laden): Klare Versuchsfrage",
@@ -8291,7 +8291,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-laden:f11",
-      prompt: "[ph-j11gk-lb3-laden] Was bedeutet „Modell (laden)“?",
+      prompt: "Was trifft auf „Modell (laden)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Laden. Modell (laden): Vereinfachte Erklärung",
@@ -8355,7 +8355,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f0",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Spule. Hypothese: Prüfbare Vermutung",
@@ -8366,7 +8366,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f1",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Spule. Variable: Veränderliche Größe",
@@ -8377,7 +8377,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f2",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Spule. Konstant halten: Störgrößen kontrollieren",
@@ -8388,7 +8388,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f3",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Spule. Messreihe: Mehrere Messwerte",
@@ -8399,7 +8399,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f4",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Spule. Fehler: Abweichung vom wahren Wert",
@@ -8410,7 +8410,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f5",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Spule. Protokoll: Dokumentation",
@@ -8421,7 +8421,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f6",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Spule. Auswertung: Diagramm und Schluss",
@@ -8432,7 +8432,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f7",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Spule. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8443,7 +8443,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f8",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Spule. Messgerät: Geeignet wählen",
@@ -8454,7 +8454,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f9",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Spule. Sicherheit: Schutzausrüstung",
@@ -8465,7 +8465,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f10",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Frage (spule)“?",
+      prompt: "Was trifft auf „Frage (spule)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Spule. Frage (spule): Klare Versuchsfrage",
@@ -8476,7 +8476,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-spule:f11",
-      prompt: "[ph-j11gk-lb3-spule] Was bedeutet „Modell (spule)“?",
+      prompt: "Was trifft auf „Modell (spule)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Spule. Modell (spule): Vereinfachte Erklärung",
@@ -8540,7 +8540,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f0",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Messung. Hypothese: Prüfbare Vermutung",
@@ -8551,7 +8551,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f1",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Messung. Variable: Veränderliche Größe",
@@ -8562,7 +8562,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f2",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Messung. Konstant halten: Störgrößen kontrollieren",
@@ -8573,7 +8573,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f3",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Messung. Messreihe: Mehrere Messwerte",
@@ -8584,7 +8584,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f4",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Messung. Fehler: Abweichung vom wahren Wert",
@@ -8595,7 +8595,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f5",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Messung. Protokoll: Dokumentation",
@@ -8606,7 +8606,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f6",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Messung. Auswertung: Diagramm und Schluss",
@@ -8617,7 +8617,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f7",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Messung. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8628,7 +8628,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f8",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Messung. Messgerät: Geeignet wählen",
@@ -8639,7 +8639,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f9",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Messung. Sicherheit: Schutzausrüstung",
@@ -8650,7 +8650,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f10",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Frage (messung)“?",
+      prompt: "Was trifft auf „Frage (messung)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Messung. Frage (messung): Klare Versuchsfrage",
@@ -8661,7 +8661,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb3-messung:f11",
-      prompt: "[ph-j11gk-lb3-messung] Was bedeutet „Modell (messung)“?",
+      prompt: "Was trifft auf „Modell (messung)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Messung. Modell (messung): Vereinfachte Erklärung",
@@ -8725,7 +8725,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f0",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Efeld. Hypothese: Prüfbare Vermutung",
@@ -8736,7 +8736,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f1",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Efeld. Variable: Veränderliche Größe",
@@ -8747,7 +8747,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f2",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Efeld. Konstant halten: Störgrößen kontrollieren",
@@ -8758,7 +8758,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f3",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Efeld. Messreihe: Mehrere Messwerte",
@@ -8769,7 +8769,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f4",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Efeld. Fehler: Abweichung vom wahren Wert",
@@ -8780,7 +8780,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f5",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Efeld. Protokoll: Dokumentation",
@@ -8791,7 +8791,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f6",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Efeld. Auswertung: Diagramm und Schluss",
@@ -8802,7 +8802,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f7",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Efeld. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8813,7 +8813,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f8",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Efeld. Messgerät: Geeignet wählen",
@@ -8824,7 +8824,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f9",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Efeld. Sicherheit: Schutzausrüstung",
@@ -8835,7 +8835,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f10",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Frage (efeld)“?",
+      prompt: "Was trifft auf „Frage (efeld)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Efeld. Frage (efeld): Klare Versuchsfrage",
@@ -8846,7 +8846,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-efeld:f11",
-      prompt: "[ph-j11gk-lb4-efeld] Was bedeutet „Modell (efeld)“?",
+      prompt: "Was trifft auf „Modell (efeld)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Efeld. Modell (efeld): Vereinfachte Erklärung",
@@ -8910,7 +8910,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f0",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Felder. Hypothese: Prüfbare Vermutung",
@@ -8921,7 +8921,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f1",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Felder. Variable: Veränderliche Größe",
@@ -8932,7 +8932,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f2",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Felder. Konstant halten: Störgrößen kontrollieren",
@@ -8943,7 +8943,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f3",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Felder. Messreihe: Mehrere Messwerte",
@@ -8954,7 +8954,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f4",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Felder. Fehler: Abweichung vom wahren Wert",
@@ -8965,7 +8965,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f5",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Felder. Protokoll: Dokumentation",
@@ -8976,7 +8976,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f6",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Felder. Auswertung: Diagramm und Schluss",
@@ -8987,7 +8987,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f7",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Felder. Wiederholung: Erhöht Zuverlässigkeit",
@@ -8998,7 +8998,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f8",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Felder. Messgerät: Geeignet wählen",
@@ -9009,7 +9009,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f9",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Felder. Sicherheit: Schutzausrüstung",
@@ -9020,7 +9020,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f10",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Frage (felder)“?",
+      prompt: "Was trifft auf „Frage (felder)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Felder. Frage (felder): Klare Versuchsfrage",
@@ -9031,7 +9031,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-felder:f11",
-      prompt: "[ph-j11gk-lb4-felder] Was bedeutet „Modell (felder)“?",
+      prompt: "Was trifft auf „Modell (felder)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Felder. Modell (felder): Vereinfachte Erklärung",
@@ -9095,7 +9095,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f0",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Kraft“?",
+      prompt: "Was trifft auf „Kraft“ zu?",
       answer: "Ursache von Beschleunigung/Verformung",
       wrong: ["Anziehung der Erde", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "Einheit Newton. Bezug: Kraft. Kraft: Ursache von Beschleunigung/Verformung",
@@ -9106,7 +9106,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f1",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Gewichtskraft“?",
+      prompt: "Was trifft auf „Gewichtskraft“ zu?",
       answer: "Anziehung der Erde",
       wrong: ["Ursache von Beschleunigung/Verformung", "Kraft gegen Gleiten", "Rückstellkraft der Feder"],
       explanation: "F_G = m · g. Bezug: Kraft. Gewichtskraft: Anziehung der Erde",
@@ -9117,7 +9117,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f2",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Reibung“?",
+      prompt: "Was trifft auf „Reibung“ zu?",
       answer: "Kraft gegen Gleiten",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Rückstellkraft der Feder"],
       explanation: "Haft- und Gleitreibung. Bezug: Kraft. Reibung: Kraft gegen Gleiten",
@@ -9128,7 +9128,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f3",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Federkraft“?",
+      prompt: "Was trifft auf „Federkraft“ zu?",
       answer: "Rückstellkraft der Feder",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hooke: F = D · s. Bezug: Kraft. Federkraft: Rückstellkraft der Feder",
@@ -9139,7 +9139,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f4",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Hebel“?",
+      prompt: "Was trifft auf „Hebel“ zu?",
       answer: "Kraftwandler mit Drehpunkt",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Hebelgesetz. Bezug: Kraft. Hebel: Kraftwandler mit Drehpunkt",
@@ -9150,7 +9150,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f5",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Flaschenzug“?",
+      prompt: "Was trifft auf „Flaschenzug“ zu?",
       answer: "Umlenkung und Kraftteilung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Seilabschnitte. Bezug: Kraft. Flaschenzug: Umlenkung und Kraftteilung",
@@ -9161,7 +9161,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f6",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Auftrieb“?",
+      prompt: "Was trifft auf „Auftrieb“ zu?",
       answer: "Kraft nach oben im Fluid",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Archimedes. Bezug: Kraft. Auftrieb: Kraft nach oben im Fluid",
@@ -9172,7 +9172,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f7",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Druck“?",
+      prompt: "Was trifft auf „Druck“ zu?",
       answer: "Kraft pro Fläche",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "p = F / A. Bezug: Kraft. Druck: Kraft pro Fläche",
@@ -9183,7 +9183,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f8",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Magnetkraft“?",
+      prompt: "Was trifft auf „Magnetkraft“ zu?",
       answer: "Zwischen Magneten/Eisen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Anziehen und Abstoßen. Bezug: Kraft. Magnetkraft: Zwischen Magneten/Eisen",
@@ -9194,7 +9194,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f9",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Elektrostatik“?",
+      prompt: "Was trifft auf „Elektrostatik“ zu?",
       answer: "Kräfte ruhender Ladungen",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Reiben lädt auf. Bezug: Kraft. Elektrostatik: Kräfte ruhender Ladungen",
@@ -9205,7 +9205,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f10",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Kraftwandler (kraft)“?",
+      prompt: "Was trifft auf „Kraftwandler (kraft)“ zu?",
       answer: "Ändert Kraftgröße/-richtung",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Maschine. Bezug: Kraft. Kraftwandler (kraft): Ändert Kraftgröße/-richtung",
@@ -9216,7 +9216,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-kraft:f11",
-      prompt: "[ph-j11gk-lb4-kraft] Was bedeutet „Gleichgewicht (kraft)“?",
+      prompt: "Was trifft auf „Gleichgewicht (kraft)“ zu?",
       answer: "Kräfte heben sich auf",
       wrong: ["Ursache von Beschleunigung/Verformung", "Anziehung der Erde", "Kraft gegen Gleiten"],
       explanation: "Keine Beschleunigung. Bezug: Kraft. Gleichgewicht (kraft): Kräfte heben sich auf",
@@ -9280,7 +9280,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f0",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Lorentz. Hypothese: Prüfbare Vermutung",
@@ -9291,7 +9291,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f1",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Lorentz. Variable: Veränderliche Größe",
@@ -9302,7 +9302,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f2",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Lorentz. Konstant halten: Störgrößen kontrollieren",
@@ -9313,7 +9313,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f3",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Lorentz. Messreihe: Mehrere Messwerte",
@@ -9324,7 +9324,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f4",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Lorentz. Fehler: Abweichung vom wahren Wert",
@@ -9335,7 +9335,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f5",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Lorentz. Protokoll: Dokumentation",
@@ -9346,7 +9346,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f6",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Lorentz. Auswertung: Diagramm und Schluss",
@@ -9357,7 +9357,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f7",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Lorentz. Wiederholung: Erhöht Zuverlässigkeit",
@@ -9368,7 +9368,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f8",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Lorentz. Messgerät: Geeignet wählen",
@@ -9379,7 +9379,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f9",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Lorentz. Sicherheit: Schutzausrüstung",
@@ -9390,7 +9390,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f10",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Frage (lorentz)“?",
+      prompt: "Was trifft auf „Frage (lorentz)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Lorentz. Frage (lorentz): Klare Versuchsfrage",
@@ -9401,7 +9401,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-lorentz:f11",
-      prompt: "[ph-j11gk-lb4-lorentz] Was bedeutet „Modell (lorentz)“?",
+      prompt: "Was trifft auf „Modell (lorentz)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Lorentz. Modell (lorentz): Vereinfachte Erklärung",
@@ -9465,7 +9465,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f0",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Bahn. Hypothese: Prüfbare Vermutung",
@@ -9476,7 +9476,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f1",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Bahn. Variable: Veränderliche Größe",
@@ -9487,7 +9487,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f2",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Bahn. Konstant halten: Störgrößen kontrollieren",
@@ -9498,7 +9498,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f3",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Bahn. Messreihe: Mehrere Messwerte",
@@ -9509,7 +9509,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f4",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Bahn. Fehler: Abweichung vom wahren Wert",
@@ -9520,7 +9520,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f5",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Bahn. Protokoll: Dokumentation",
@@ -9531,7 +9531,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f6",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Bahn. Auswertung: Diagramm und Schluss",
@@ -9542,7 +9542,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f7",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Bahn. Wiederholung: Erhöht Zuverlässigkeit",
@@ -9553,7 +9553,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f8",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Bahn. Messgerät: Geeignet wählen",
@@ -9564,7 +9564,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f9",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Bahn. Sicherheit: Schutzausrüstung",
@@ -9575,7 +9575,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f10",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Frage (bahn)“?",
+      prompt: "Was trifft auf „Frage (bahn)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Bahn. Frage (bahn): Klare Versuchsfrage",
@@ -9586,7 +9586,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-bahn:f11",
-      prompt: "[ph-j11gk-lb4-bahn] Was bedeutet „Modell (bahn)“?",
+      prompt: "Was trifft auf „Modell (bahn)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Bahn. Modell (bahn): Vereinfachte Erklärung",
@@ -9650,7 +9650,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f0",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Anwendung. Hypothese: Prüfbare Vermutung",
@@ -9661,7 +9661,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f1",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Anwendung. Variable: Veränderliche Größe",
@@ -9672,7 +9672,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f2",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Anwendung. Konstant halten: Störgrößen kontrollieren",
@@ -9683,7 +9683,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f3",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Anwendung. Messreihe: Mehrere Messwerte",
@@ -9694,7 +9694,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f4",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Anwendung. Fehler: Abweichung vom wahren Wert",
@@ -9705,7 +9705,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f5",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Anwendung. Protokoll: Dokumentation",
@@ -9716,7 +9716,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f6",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Anwendung. Auswertung: Diagramm und Schluss",
@@ -9727,7 +9727,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f7",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Anwendung. Wiederholung: Erhöht Zuverlässigkeit",
@@ -9738,7 +9738,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f8",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Anwendung. Messgerät: Geeignet wählen",
@@ -9749,7 +9749,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f9",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Anwendung. Sicherheit: Schutzausrüstung",
@@ -9760,7 +9760,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f10",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Frage (anwendung)“?",
+      prompt: "Was trifft auf „Frage (anwendung)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Anwendung. Frage (anwendung): Klare Versuchsfrage",
@@ -9771,7 +9771,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lb4-anwendung:f11",
-      prompt: "[ph-j11gk-lb4-anwendung] Was bedeutet „Modell (anwendung)“?",
+      prompt: "Was trifft auf „Modell (anwendung)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Anwendung. Modell (anwendung): Vereinfachte Erklärung",
@@ -9835,7 +9835,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f0",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Konstanten. Hypothese: Prüfbare Vermutung",
@@ -9846,7 +9846,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f1",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Konstanten. Variable: Veränderliche Größe",
@@ -9857,7 +9857,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f2",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Konstanten. Konstant halten: Störgrößen kontrollieren",
@@ -9868,7 +9868,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f3",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Konstanten. Messreihe: Mehrere Messwerte",
@@ -9879,7 +9879,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f4",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Konstanten. Fehler: Abweichung vom wahren Wert",
@@ -9890,7 +9890,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f5",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Konstanten. Protokoll: Dokumentation",
@@ -9901,7 +9901,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f6",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Konstanten. Auswertung: Diagramm und Schluss",
@@ -9912,7 +9912,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f7",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Konstanten. Wiederholung: Erhöht Zuverlässigkeit",
@@ -9923,7 +9923,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f8",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Konstanten. Messgerät: Geeignet wählen",
@@ -9934,7 +9934,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f9",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Konstanten. Sicherheit: Schutzausrüstung",
@@ -9945,7 +9945,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f10",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Frage (konstanten)“?",
+      prompt: "Was trifft auf „Frage (konstanten)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Konstanten. Frage (konstanten): Klare Versuchsfrage",
@@ -9956,7 +9956,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-konstanten:f11",
-      prompt: "[ph-j11gk-lbw-konstanten] Was bedeutet „Modell (konstanten)“?",
+      prompt: "Was trifft auf „Modell (konstanten)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Konstanten. Modell (konstanten): Vereinfachte Erklärung",
@@ -10020,7 +10020,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f0",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: E. Hypothese: Prüfbare Vermutung",
@@ -10031,7 +10031,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f1",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: E. Variable: Veränderliche Größe",
@@ -10042,7 +10042,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f2",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: E. Konstant halten: Störgrößen kontrollieren",
@@ -10053,7 +10053,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f3",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: E. Messreihe: Mehrere Messwerte",
@@ -10064,7 +10064,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f4",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: E. Fehler: Abweichung vom wahren Wert",
@@ -10075,7 +10075,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f5",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: E. Protokoll: Dokumentation",
@@ -10086,7 +10086,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f6",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: E. Auswertung: Diagramm und Schluss",
@@ -10097,7 +10097,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f7",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: E. Wiederholung: Erhöht Zuverlässigkeit",
@@ -10108,7 +10108,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f8",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: E. Messgerät: Geeignet wählen",
@@ -10119,7 +10119,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f9",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: E. Sicherheit: Schutzausrüstung",
@@ -10130,7 +10130,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f10",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Frage (e)“?",
+      prompt: "Was trifft auf „Frage (e)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: E. Frage (e): Klare Versuchsfrage",
@@ -10141,7 +10141,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-e:f11",
-      prompt: "[ph-j11gk-lbw-e] Was bedeutet „Modell (e)“?",
+      prompt: "Was trifft auf „Modell (e)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: E. Modell (e): Vereinfachte Erklärung",
@@ -10205,7 +10205,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f0",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Exkursion. Hypothese: Prüfbare Vermutung",
@@ -10216,7 +10216,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f1",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Exkursion. Variable: Veränderliche Größe",
@@ -10227,7 +10227,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f2",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Exkursion. Konstant halten: Störgrößen kontrollieren",
@@ -10238,7 +10238,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f3",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Exkursion. Messreihe: Mehrere Messwerte",
@@ -10249,7 +10249,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f4",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Exkursion. Fehler: Abweichung vom wahren Wert",
@@ -10260,7 +10260,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f5",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Exkursion. Protokoll: Dokumentation",
@@ -10271,7 +10271,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f6",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Exkursion. Auswertung: Diagramm und Schluss",
@@ -10282,7 +10282,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f7",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Exkursion. Wiederholung: Erhöht Zuverlässigkeit",
@@ -10293,7 +10293,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f8",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Exkursion. Messgerät: Geeignet wählen",
@@ -10304,7 +10304,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f9",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Exkursion. Sicherheit: Schutzausrüstung",
@@ -10315,7 +10315,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f10",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Frage (exkursion)“?",
+      prompt: "Was trifft auf „Frage (exkursion)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Exkursion. Frage (exkursion): Klare Versuchsfrage",
@@ -10326,7 +10326,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-exkursion:f11",
-      prompt: "[ph-j11gk-lbw-exkursion] Was bedeutet „Modell (exkursion)“?",
+      prompt: "Was trifft auf „Modell (exkursion)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Exkursion. Modell (exkursion): Vereinfachte Erklärung",
@@ -10390,7 +10390,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f0",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Sicherheit. Hypothese: Prüfbare Vermutung",
@@ -10401,7 +10401,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f1",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Sicherheit. Variable: Veränderliche Größe",
@@ -10412,7 +10412,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f2",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Sicherheit. Konstant halten: Störgrößen kontrollieren",
@@ -10423,7 +10423,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f3",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Sicherheit. Messreihe: Mehrere Messwerte",
@@ -10434,7 +10434,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f4",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Sicherheit. Fehler: Abweichung vom wahren Wert",
@@ -10445,7 +10445,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f5",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Sicherheit. Protokoll: Dokumentation",
@@ -10456,7 +10456,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f6",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Sicherheit. Auswertung: Diagramm und Schluss",
@@ -10467,7 +10467,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f7",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Sicherheit. Wiederholung: Erhöht Zuverlässigkeit",
@@ -10478,7 +10478,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f8",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Sicherheit. Messgerät: Geeignet wählen",
@@ -10489,7 +10489,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f9",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Sicherheit. Sicherheit: Schutzausrüstung",
@@ -10500,7 +10500,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f10",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Frage (sicherheit)“?",
+      prompt: "Was trifft auf „Frage (sicherheit)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Sicherheit. Frage (sicherheit): Klare Versuchsfrage",
@@ -10511,7 +10511,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-sicherheit:f11",
-      prompt: "[ph-j11gk-lbw-sicherheit] Was bedeutet „Modell (sicherheit)“?",
+      prompt: "Was trifft auf „Modell (sicherheit)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Sicherheit. Modell (sicherheit): Vereinfachte Erklärung",
@@ -10575,7 +10575,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f0",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Anwendungen. Hypothese: Prüfbare Vermutung",
@@ -10586,7 +10586,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f1",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Anwendungen. Variable: Veränderliche Größe",
@@ -10597,7 +10597,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f2",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Anwendungen. Konstant halten: Störgrößen kontrollieren",
@@ -10608,7 +10608,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f3",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Anwendungen. Messreihe: Mehrere Messwerte",
@@ -10619,7 +10619,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f4",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Anwendungen. Fehler: Abweichung vom wahren Wert",
@@ -10630,7 +10630,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f5",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Anwendungen. Protokoll: Dokumentation",
@@ -10641,7 +10641,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f6",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Anwendungen. Auswertung: Diagramm und Schluss",
@@ -10652,7 +10652,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f7",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Anwendungen. Wiederholung: Erhöht Zuverlässigkeit",
@@ -10663,7 +10663,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f8",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Anwendungen. Messgerät: Geeignet wählen",
@@ -10674,7 +10674,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f9",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Anwendungen. Sicherheit: Schutzausrüstung",
@@ -10685,7 +10685,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f10",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Frage (anwendungen)“?",
+      prompt: "Was trifft auf „Frage (anwendungen)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Anwendungen. Frage (anwendungen): Klare Versuchsfrage",
@@ -10696,7 +10696,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-anwendungen:f11",
-      prompt: "[ph-j11gk-lbw-anwendungen] Was bedeutet „Modell (anwendungen)“?",
+      prompt: "Was trifft auf „Modell (anwendungen)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Anwendungen. Modell (anwendungen): Vereinfachte Erklärung",
@@ -10760,7 +10760,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f0",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Filter. Lichtquelle: Körper der selbst Licht aussendet",
@@ -10771,7 +10771,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f1",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Filter. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -10782,7 +10782,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f2",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Filter. Schatten: Bereich ohne direktes Licht",
@@ -10793,7 +10793,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f3",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Filter. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -10804,7 +10804,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f4",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Filter. Halbschatten: Teilweise beleuchteter Bereich",
@@ -10815,7 +10815,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f5",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Filter. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -10826,7 +10826,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f6",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Filter. Brechung: Richtungsänderung an Grenzfläche",
@@ -10837,7 +10837,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f7",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Filter. Spiegel: Glatte reflektierende Fläche",
@@ -10848,7 +10848,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f8",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Filter. Transparenz: Licht geht durch",
@@ -10859,7 +10859,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f9",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Filter. Opak: Lichtundurchlässig",
@@ -10870,7 +10870,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f10",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Lochkamera (filter)“?",
+      prompt: "Was trifft auf „Lochkamera (filter)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Filter. Lochkamera (filter): Abbildendes Loch ohne Linse",
@@ -10881,7 +10881,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-filter:f11",
-      prompt: "[ph-j11gk-lbw-filter] Was bedeutet „Spektrum (filter)“?",
+      prompt: "Was trifft auf „Spektrum (filter)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Filter. Spektrum (filter): Zerlegung weißen Lichts",
@@ -10945,7 +10945,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f0",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Relativitaet. Hypothese: Prüfbare Vermutung",
@@ -10956,7 +10956,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f1",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Relativitaet. Variable: Veränderliche Größe",
@@ -10967,7 +10967,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f2",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Relativitaet. Konstant halten: Störgrößen kontrollieren",
@@ -10978,7 +10978,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f3",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Relativitaet. Messreihe: Mehrere Messwerte",
@@ -10989,7 +10989,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f4",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Relativitaet. Fehler: Abweichung vom wahren Wert",
@@ -11000,7 +11000,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f5",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Relativitaet. Protokoll: Dokumentation",
@@ -11011,7 +11011,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f6",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Relativitaet. Auswertung: Diagramm und Schluss",
@@ -11022,7 +11022,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f7",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Relativitaet. Wiederholung: Erhöht Zuverlässigkeit",
@@ -11033,7 +11033,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f8",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Relativitaet. Messgerät: Geeignet wählen",
@@ -11044,7 +11044,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f9",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Relativitaet. Sicherheit: Schutzausrüstung",
@@ -11055,7 +11055,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f10",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Frage (relativitaet)“?",
+      prompt: "Was trifft auf „Frage (relativitaet)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Relativitaet. Frage (relativitaet): Klare Versuchsfrage",
@@ -11066,7 +11066,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-relativitaet:f11",
-      prompt: "[ph-j11gk-lbw-relativitaet] Was bedeutet „Modell (relativitaet)“?",
+      prompt: "Was trifft auf „Modell (relativitaet)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Relativitaet. Modell (relativitaet): Vereinfachte Erklärung",
@@ -11130,7 +11130,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f0",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Lichtquelle“?",
+      prompt: "Was trifft auf „Lichtquelle“ zu?",
       answer: "Körper der selbst Licht aussendet",
       wrong: ["Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Sonne, Lampe, Kerze. Bezug: Lichtgeschwindigkeit. Lichtquelle: Körper der selbst Licht aussendet",
@@ -11141,7 +11141,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f1",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Lichtstrahl“?",
+      prompt: "Was trifft auf „Lichtstrahl“ zu?",
       answer: "Geradliniges Modell der Lichtausbreitung",
       wrong: ["Körper der selbst Licht aussendet", "Bereich ohne direktes Licht", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "In homogener Luft gerade. Bezug: Lichtgeschwindigkeit. Lichtstrahl: Geradliniges Modell der Lichtausbreitung",
@@ -11152,7 +11152,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f2",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Schatten“?",
+      prompt: "Was trifft auf „Schatten“ zu?",
       answer: "Bereich ohne direktes Licht",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Völlig unbeleuchteter Schattenbereich"],
       explanation: "Entsteht hinter undurchsichtigen Körpern. Bezug: Lichtgeschwindigkeit. Schatten: Bereich ohne direktes Licht",
@@ -11163,7 +11163,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f3",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Kernschatten“?",
+      prompt: "Was trifft auf „Kernschatten“ zu?",
       answer: "Völlig unbeleuchteter Schattenbereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bei ausgedehnter Lichtquelle. Bezug: Lichtgeschwindigkeit. Kernschatten: Völlig unbeleuchteter Schattenbereich",
@@ -11174,7 +11174,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f4",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Halbschatten“?",
+      prompt: "Was trifft auf „Halbschatten“ zu?",
       answer: "Teilweise beleuchteter Bereich",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Randzone bei ausgedehnter Quelle. Bezug: Lichtgeschwindigkeit. Halbschatten: Teilweise beleuchteter Bereich",
@@ -11185,7 +11185,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f5",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Reflexion“?",
+      prompt: "Was trifft auf „Reflexion“ zu?",
       answer: "Licht wird an Fläche zurückgeworfen",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Einfallswinkel = Ausfallswinkel. Bezug: Lichtgeschwindigkeit. Reflexion: Licht wird an Fläche zurückgeworfen",
@@ -11196,7 +11196,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f6",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Brechung“?",
+      prompt: "Was trifft auf „Brechung“ zu?",
       answer: "Richtungsänderung an Grenzfläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Beim Übergang in anderes Medium. Bezug: Lichtgeschwindigkeit. Brechung: Richtungsänderung an Grenzfläche",
@@ -11207,7 +11207,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f7",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Spiegel“?",
+      prompt: "Was trifft auf „Spiegel“ zu?",
       answer: "Glatte reflektierende Fläche",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Bildentstehung. Bezug: Lichtgeschwindigkeit. Spiegel: Glatte reflektierende Fläche",
@@ -11218,7 +11218,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f8",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Transparenz“?",
+      prompt: "Was trifft auf „Transparenz“ zu?",
       answer: "Licht geht durch",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Glas, Wasser. Bezug: Lichtgeschwindigkeit. Transparenz: Licht geht durch",
@@ -11229,7 +11229,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f9",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Opak“?",
+      prompt: "Was trifft auf „Opak“ zu?",
       answer: "Lichtundurchlässig",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Schattenbildend. Bezug: Lichtgeschwindigkeit. Opak: Lichtundurchlässig",
@@ -11240,7 +11240,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f10",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Lochkamera (lichtgeschwindigkeit)“?",
+      prompt: "Was trifft auf „Lochkamera (lichtgeschwindigkeit)“ zu?",
       answer: "Abbildendes Loch ohne Linse",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Umgekehrtes Bild. Bezug: Lichtgeschwindigkeit. Lochkamera (lichtgeschwindigkeit): Abbildendes Loch ohne Linse",
@@ -11251,7 +11251,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11gk-lbw-lichtgeschwindigkeit:f11",
-      prompt: "[ph-j11gk-lbw-lichtgeschwindigkeit] Was bedeutet „Spektrum (lichtgeschwindigkeit)“?",
+      prompt: "Was trifft auf „Spektrum (lichtgeschwindigkeit)“ zu?",
       answer: "Zerlegung weißen Lichts",
       wrong: ["Körper der selbst Licht aussendet", "Geradliniges Modell der Lichtausbreitung", "Bereich ohne direktes Licht"],
       explanation: "Farben der Regenbogenreihe. Bezug: Lichtgeschwindigkeit. Spektrum (lichtgeschwindigkeit): Zerlegung weißen Lichts",
@@ -11315,7 +11315,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f0",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Linse. Hypothese: Prüfbare Vermutung",
@@ -11326,7 +11326,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f1",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Linse. Variable: Veränderliche Größe",
@@ -11337,7 +11337,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f2",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Linse. Konstant halten: Störgrößen kontrollieren",
@@ -11348,7 +11348,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f3",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Linse. Messreihe: Mehrere Messwerte",
@@ -11359,7 +11359,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f4",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Linse. Fehler: Abweichung vom wahren Wert",
@@ -11370,7 +11370,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f5",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Linse. Protokoll: Dokumentation",
@@ -11381,7 +11381,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f6",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Linse. Auswertung: Diagramm und Schluss",
@@ -11392,7 +11392,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f7",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Linse. Wiederholung: Erhöht Zuverlässigkeit",
@@ -11403,7 +11403,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f8",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Linse. Messgerät: Geeignet wählen",
@@ -11414,7 +11414,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f9",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Linse. Sicherheit: Schutzausrüstung",
@@ -11425,7 +11425,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f10",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Frage (linse)“?",
+      prompt: "Was trifft auf „Frage (linse)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Linse. Frage (linse): Klare Versuchsfrage",
@@ -11436,7 +11436,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-linse:f11",
-      prompt: "[ph-j12gk-lb2-linse] Was bedeutet „Modell (linse)“?",
+      prompt: "Was trifft auf „Modell (linse)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Linse. Modell (linse): Vereinfachte Erklärung",
@@ -11500,7 +11500,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f0",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Optik. Hypothese: Prüfbare Vermutung",
@@ -11511,7 +11511,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f1",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Optik. Variable: Veränderliche Größe",
@@ -11522,7 +11522,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f2",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Optik. Konstant halten: Störgrößen kontrollieren",
@@ -11533,7 +11533,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f3",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Optik. Messreihe: Mehrere Messwerte",
@@ -11544,7 +11544,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f4",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Optik. Fehler: Abweichung vom wahren Wert",
@@ -11555,7 +11555,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f5",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Optik. Protokoll: Dokumentation",
@@ -11566,7 +11566,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f6",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Optik. Auswertung: Diagramm und Schluss",
@@ -11577,7 +11577,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f7",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Optik. Wiederholung: Erhöht Zuverlässigkeit",
@@ -11588,7 +11588,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f8",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Optik. Messgerät: Geeignet wählen",
@@ -11599,7 +11599,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f9",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Optik. Sicherheit: Schutzausrüstung",
@@ -11610,7 +11610,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f10",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Frage (optik)“?",
+      prompt: "Was trifft auf „Frage (optik)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Optik. Frage (optik): Klare Versuchsfrage",
@@ -11621,7 +11621,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-optik:f11",
-      prompt: "[ph-j12gk-lb2-optik] Was bedeutet „Modell (optik)“?",
+      prompt: "Was trifft auf „Modell (optik)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Optik. Modell (optik): Vereinfachte Erklärung",
@@ -11685,7 +11685,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f0",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Brennweite. Hypothese: Prüfbare Vermutung",
@@ -11696,7 +11696,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f1",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Brennweite. Variable: Veränderliche Größe",
@@ -11707,7 +11707,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f2",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Brennweite. Konstant halten: Störgrößen kontrollieren",
@@ -11718,7 +11718,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f3",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Brennweite. Messreihe: Mehrere Messwerte",
@@ -11729,7 +11729,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f4",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Brennweite. Fehler: Abweichung vom wahren Wert",
@@ -11740,7 +11740,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f5",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Brennweite. Protokoll: Dokumentation",
@@ -11751,7 +11751,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f6",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Brennweite. Auswertung: Diagramm und Schluss",
@@ -11762,7 +11762,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f7",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Brennweite. Wiederholung: Erhöht Zuverlässigkeit",
@@ -11773,7 +11773,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f8",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Brennweite. Messgerät: Geeignet wählen",
@@ -11784,7 +11784,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f9",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Brennweite. Sicherheit: Schutzausrüstung",
@@ -11795,7 +11795,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f10",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Frage (brennweite)“?",
+      prompt: "Was trifft auf „Frage (brennweite)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Brennweite. Frage (brennweite): Klare Versuchsfrage",
@@ -11806,7 +11806,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-brennweite:f11",
-      prompt: "[ph-j12gk-lb2-brennweite] Was bedeutet „Modell (brennweite)“?",
+      prompt: "Was trifft auf „Modell (brennweite)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Brennweite. Modell (brennweite): Vereinfachte Erklärung",
@@ -11870,7 +11870,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f0",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Bild. Hypothese: Prüfbare Vermutung",
@@ -11881,7 +11881,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f1",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Bild. Variable: Veränderliche Größe",
@@ -11892,7 +11892,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f2",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Bild. Konstant halten: Störgrößen kontrollieren",
@@ -11903,7 +11903,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f3",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Bild. Messreihe: Mehrere Messwerte",
@@ -11914,7 +11914,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f4",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Bild. Fehler: Abweichung vom wahren Wert",
@@ -11925,7 +11925,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f5",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Bild. Protokoll: Dokumentation",
@@ -11936,7 +11936,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f6",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Bild. Auswertung: Diagramm und Schluss",
@@ -11947,7 +11947,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f7",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Bild. Wiederholung: Erhöht Zuverlässigkeit",
@@ -11958,7 +11958,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f8",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Bild. Messgerät: Geeignet wählen",
@@ -11969,7 +11969,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f9",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Bild. Sicherheit: Schutzausrüstung",
@@ -11980,7 +11980,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f10",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Frage (bild)“?",
+      prompt: "Was trifft auf „Frage (bild)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Bild. Frage (bild): Klare Versuchsfrage",
@@ -11991,7 +11991,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-bild:f11",
-      prompt: "[ph-j12gk-lb2-bild] Was bedeutet „Modell (bild)“?",
+      prompt: "Was trifft auf „Modell (bild)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Bild. Modell (bild): Vereinfachte Erklärung",
@@ -12055,7 +12055,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f0",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Fehler. Hypothese: Prüfbare Vermutung",
@@ -12066,7 +12066,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f1",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Fehler. Variable: Veränderliche Größe",
@@ -12077,7 +12077,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f2",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Fehler. Konstant halten: Störgrößen kontrollieren",
@@ -12088,7 +12088,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f3",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Fehler. Messreihe: Mehrere Messwerte",
@@ -12099,7 +12099,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f4",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Fehler. Fehler: Abweichung vom wahren Wert",
@@ -12110,7 +12110,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f5",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Fehler. Protokoll: Dokumentation",
@@ -12121,7 +12121,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f6",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Fehler. Auswertung: Diagramm und Schluss",
@@ -12132,7 +12132,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f7",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Fehler. Wiederholung: Erhöht Zuverlässigkeit",
@@ -12143,7 +12143,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f8",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Fehler. Messgerät: Geeignet wählen",
@@ -12154,7 +12154,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f9",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Fehler. Sicherheit: Schutzausrüstung",
@@ -12165,7 +12165,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f10",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Frage (fehler)“?",
+      prompt: "Was trifft auf „Frage (fehler)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Fehler. Frage (fehler): Klare Versuchsfrage",
@@ -12176,7 +12176,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb2-fehler:f11",
-      prompt: "[ph-j12gk-lb2-fehler] Was bedeutet „Modell (fehler)“?",
+      prompt: "Was trifft auf „Modell (fehler)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Fehler. Modell (fehler): Vereinfachte Erklärung",
@@ -12240,7 +12240,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f0",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Photo. Hypothese: Prüfbare Vermutung",
@@ -12251,7 +12251,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f1",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Photo. Variable: Veränderliche Größe",
@@ -12262,7 +12262,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f2",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Photo. Konstant halten: Störgrößen kontrollieren",
@@ -12273,7 +12273,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f3",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Photo. Messreihe: Mehrere Messwerte",
@@ -12284,7 +12284,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f4",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Photo. Fehler: Abweichung vom wahren Wert",
@@ -12295,7 +12295,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f5",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Photo. Protokoll: Dokumentation",
@@ -12306,7 +12306,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f6",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Photo. Auswertung: Diagramm und Schluss",
@@ -12317,7 +12317,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f7",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Photo. Wiederholung: Erhöht Zuverlässigkeit",
@@ -12328,7 +12328,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f8",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Photo. Messgerät: Geeignet wählen",
@@ -12339,7 +12339,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f9",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Photo. Sicherheit: Schutzausrüstung",
@@ -12350,7 +12350,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f10",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Frage (photo)“?",
+      prompt: "Was trifft auf „Frage (photo)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Photo. Frage (photo): Klare Versuchsfrage",
@@ -12361,7 +12361,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photo:f11",
-      prompt: "[ph-j12gk-lb3-photo] Was bedeutet „Modell (photo)“?",
+      prompt: "Was trifft auf „Modell (photo)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Photo. Modell (photo): Vereinfachte Erklärung",
@@ -12425,7 +12425,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f0",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Quanten. Hypothese: Prüfbare Vermutung",
@@ -12436,7 +12436,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f1",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Quanten. Variable: Veränderliche Größe",
@@ -12447,7 +12447,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f2",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Quanten. Konstant halten: Störgrößen kontrollieren",
@@ -12458,7 +12458,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f3",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Quanten. Messreihe: Mehrere Messwerte",
@@ -12469,7 +12469,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f4",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Quanten. Fehler: Abweichung vom wahren Wert",
@@ -12480,7 +12480,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f5",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Quanten. Protokoll: Dokumentation",
@@ -12491,7 +12491,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f6",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Quanten. Auswertung: Diagramm und Schluss",
@@ -12502,7 +12502,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f7",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Quanten. Wiederholung: Erhöht Zuverlässigkeit",
@@ -12513,7 +12513,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f8",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Quanten. Messgerät: Geeignet wählen",
@@ -12524,7 +12524,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f9",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Quanten. Sicherheit: Schutzausrüstung",
@@ -12535,7 +12535,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f10",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Frage (quanten)“?",
+      prompt: "Was trifft auf „Frage (quanten)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Quanten. Frage (quanten): Klare Versuchsfrage",
@@ -12546,7 +12546,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-quanten:f11",
-      prompt: "[ph-j12gk-lb3-quanten] Was bedeutet „Modell (quanten)“?",
+      prompt: "Was trifft auf „Modell (quanten)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Quanten. Modell (quanten): Vereinfachte Erklärung",
@@ -12610,7 +12610,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f0",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Photon. Hypothese: Prüfbare Vermutung",
@@ -12621,7 +12621,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f1",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Photon. Variable: Veränderliche Größe",
@@ -12632,7 +12632,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f2",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Photon. Konstant halten: Störgrößen kontrollieren",
@@ -12643,7 +12643,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f3",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Photon. Messreihe: Mehrere Messwerte",
@@ -12654,7 +12654,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f4",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Photon. Fehler: Abweichung vom wahren Wert",
@@ -12665,7 +12665,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f5",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Photon. Protokoll: Dokumentation",
@@ -12676,7 +12676,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f6",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Photon. Auswertung: Diagramm und Schluss",
@@ -12687,7 +12687,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f7",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Photon. Wiederholung: Erhöht Zuverlässigkeit",
@@ -12698,7 +12698,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f8",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Photon. Messgerät: Geeignet wählen",
@@ -12709,7 +12709,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f9",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Photon. Sicherheit: Schutzausrüstung",
@@ -12720,7 +12720,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f10",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Frage (photon)“?",
+      prompt: "Was trifft auf „Frage (photon)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Photon. Frage (photon): Klare Versuchsfrage",
@@ -12731,7 +12731,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-photon:f11",
-      prompt: "[ph-j12gk-lb3-photon] Was bedeutet „Modell (photon)“?",
+      prompt: "Was trifft auf „Modell (photon)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Photon. Modell (photon): Vereinfachte Erklärung",
@@ -12795,7 +12795,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f0",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Dualismus. Hypothese: Prüfbare Vermutung",
@@ -12806,7 +12806,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f1",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Dualismus. Variable: Veränderliche Größe",
@@ -12817,7 +12817,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f2",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Dualismus. Konstant halten: Störgrößen kontrollieren",
@@ -12828,7 +12828,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f3",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Dualismus. Messreihe: Mehrere Messwerte",
@@ -12839,7 +12839,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f4",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Dualismus. Fehler: Abweichung vom wahren Wert",
@@ -12850,7 +12850,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f5",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Dualismus. Protokoll: Dokumentation",
@@ -12861,7 +12861,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f6",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Dualismus. Auswertung: Diagramm und Schluss",
@@ -12872,7 +12872,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f7",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Dualismus. Wiederholung: Erhöht Zuverlässigkeit",
@@ -12883,7 +12883,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f8",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Dualismus. Messgerät: Geeignet wählen",
@@ -12894,7 +12894,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f9",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Dualismus. Sicherheit: Schutzausrüstung",
@@ -12905,7 +12905,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f10",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Frage (dualismus)“?",
+      prompt: "Was trifft auf „Frage (dualismus)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Dualismus. Frage (dualismus): Klare Versuchsfrage",
@@ -12916,7 +12916,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-dualismus:f11",
-      prompt: "[ph-j12gk-lb3-dualismus] Was bedeutet „Modell (dualismus)“?",
+      prompt: "Was trifft auf „Modell (dualismus)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Dualismus. Modell (dualismus): Vereinfachte Erklärung",
@@ -12980,7 +12980,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f0",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Grenze. Hypothese: Prüfbare Vermutung",
@@ -12991,7 +12991,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f1",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Grenze. Variable: Veränderliche Größe",
@@ -13002,7 +13002,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f2",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Grenze. Konstant halten: Störgrößen kontrollieren",
@@ -13013,7 +13013,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f3",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Grenze. Messreihe: Mehrere Messwerte",
@@ -13024,7 +13024,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f4",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Grenze. Fehler: Abweichung vom wahren Wert",
@@ -13035,7 +13035,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f5",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Grenze. Protokoll: Dokumentation",
@@ -13046,7 +13046,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f6",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Grenze. Auswertung: Diagramm und Schluss",
@@ -13057,7 +13057,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f7",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Grenze. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13068,7 +13068,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f8",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Grenze. Messgerät: Geeignet wählen",
@@ -13079,7 +13079,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f9",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Grenze. Sicherheit: Schutzausrüstung",
@@ -13090,7 +13090,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f10",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Frage (grenze)“?",
+      prompt: "Was trifft auf „Frage (grenze)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Grenze. Frage (grenze): Klare Versuchsfrage",
@@ -13101,7 +13101,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lb3-grenze:f11",
-      prompt: "[ph-j12gk-lb3-grenze] Was bedeutet „Modell (grenze)“?",
+      prompt: "Was trifft auf „Modell (grenze)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Grenze. Modell (grenze): Vereinfachte Erklärung",
@@ -13165,7 +13165,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f0",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Anwendungen. Hypothese: Prüfbare Vermutung",
@@ -13176,7 +13176,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f1",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Anwendungen. Variable: Veränderliche Größe",
@@ -13187,7 +13187,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f2",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Anwendungen. Konstant halten: Störgrößen kontrollieren",
@@ -13198,7 +13198,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f3",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Anwendungen. Messreihe: Mehrere Messwerte",
@@ -13209,7 +13209,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f4",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Anwendungen. Fehler: Abweichung vom wahren Wert",
@@ -13220,7 +13220,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f5",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Anwendungen. Protokoll: Dokumentation",
@@ -13231,7 +13231,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f6",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Anwendungen. Auswertung: Diagramm und Schluss",
@@ -13242,7 +13242,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f7",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Anwendungen. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13253,7 +13253,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f8",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Anwendungen. Messgerät: Geeignet wählen",
@@ -13264,7 +13264,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f9",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Anwendungen. Sicherheit: Schutzausrüstung",
@@ -13275,7 +13275,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f10",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Frage (anwendungen)“?",
+      prompt: "Was trifft auf „Frage (anwendungen)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Anwendungen. Frage (anwendungen): Klare Versuchsfrage",
@@ -13286,7 +13286,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-anwendungen:f11",
-      prompt: "[ph-j12gk-lbw-anwendungen] Was bedeutet „Modell (anwendungen)“?",
+      prompt: "Was trifft auf „Modell (anwendungen)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Anwendungen. Modell (anwendungen): Vereinfachte Erklärung",
@@ -13350,7 +13350,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f0",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Optik. Hypothese: Prüfbare Vermutung",
@@ -13361,7 +13361,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f1",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Optik. Variable: Veränderliche Größe",
@@ -13372,7 +13372,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f2",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Optik. Konstant halten: Störgrößen kontrollieren",
@@ -13383,7 +13383,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f3",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Optik. Messreihe: Mehrere Messwerte",
@@ -13394,7 +13394,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f4",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Optik. Fehler: Abweichung vom wahren Wert",
@@ -13405,7 +13405,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f5",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Optik. Protokoll: Dokumentation",
@@ -13416,7 +13416,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f6",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Optik. Auswertung: Diagramm und Schluss",
@@ -13427,7 +13427,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f7",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Optik. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13438,7 +13438,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f8",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Optik. Messgerät: Geeignet wählen",
@@ -13449,7 +13449,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f9",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Optik. Sicherheit: Schutzausrüstung",
@@ -13460,7 +13460,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f10",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Frage (optik)“?",
+      prompt: "Was trifft auf „Frage (optik)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Optik. Frage (optik): Klare Versuchsfrage",
@@ -13471,7 +13471,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-optik:f11",
-      prompt: "[ph-j12gk-lbw-optik] Was bedeutet „Modell (optik)“?",
+      prompt: "Was trifft auf „Modell (optik)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Optik. Modell (optik): Vereinfachte Erklärung",
@@ -13535,7 +13535,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f0",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Regenbogen. Hypothese: Prüfbare Vermutung",
@@ -13546,7 +13546,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f1",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Regenbogen. Variable: Veränderliche Größe",
@@ -13557,7 +13557,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f2",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Regenbogen. Konstant halten: Störgrößen kontrollieren",
@@ -13568,7 +13568,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f3",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Regenbogen. Messreihe: Mehrere Messwerte",
@@ -13579,7 +13579,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f4",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Regenbogen. Fehler: Abweichung vom wahren Wert",
@@ -13590,7 +13590,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f5",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Regenbogen. Protokoll: Dokumentation",
@@ -13601,7 +13601,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f6",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Regenbogen. Auswertung: Diagramm und Schluss",
@@ -13612,7 +13612,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f7",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Regenbogen. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13623,7 +13623,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f8",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Regenbogen. Messgerät: Geeignet wählen",
@@ -13634,7 +13634,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f9",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Regenbogen. Sicherheit: Schutzausrüstung",
@@ -13645,7 +13645,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f10",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Frage (regenbogen)“?",
+      prompt: "Was trifft auf „Frage (regenbogen)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Regenbogen. Frage (regenbogen): Klare Versuchsfrage",
@@ -13656,7 +13656,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12gk-lbw-regenbogen:f11",
-      prompt: "[ph-j12gk-lbw-regenbogen] Was bedeutet „Modell (regenbogen)“?",
+      prompt: "Was trifft auf „Modell (regenbogen)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Regenbogen. Modell (regenbogen): Vereinfachte Erklärung",
@@ -13720,7 +13720,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f0",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Modell. Hypothese: Prüfbare Vermutung",
@@ -13731,7 +13731,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f1",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Modell. Variable: Veränderliche Größe",
@@ -13742,7 +13742,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f2",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Modell. Konstant halten: Störgrößen kontrollieren",
@@ -13753,7 +13753,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f3",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Modell. Messreihe: Mehrere Messwerte",
@@ -13764,7 +13764,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f4",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Modell. Fehler: Abweichung vom wahren Wert",
@@ -13775,7 +13775,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f5",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Modell. Protokoll: Dokumentation",
@@ -13786,7 +13786,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f6",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Modell. Auswertung: Diagramm und Schluss",
@@ -13797,7 +13797,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f7",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Modell. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13808,7 +13808,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f8",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Modell. Messgerät: Geeignet wählen",
@@ -13819,7 +13819,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f9",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Modell. Sicherheit: Schutzausrüstung",
@@ -13830,7 +13830,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f10",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Frage (modell)“?",
+      prompt: "Was trifft auf „Frage (modell)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Modell. Frage (modell): Klare Versuchsfrage",
@@ -13841,7 +13841,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb4-modell:f11",
-      prompt: "[ph-j11lk-lb4-modell] Was bedeutet „Modell (modell)“?",
+      prompt: "Was trifft auf „Modell (modell)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Modell. Modell (modell): Vereinfachte Erklärung",
@@ -13905,7 +13905,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f0",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Kurven. Hypothese: Prüfbare Vermutung",
@@ -13916,7 +13916,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f1",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Kurven. Variable: Veränderliche Größe",
@@ -13927,7 +13927,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f2",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Kurven. Konstant halten: Störgrößen kontrollieren",
@@ -13938,7 +13938,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f3",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Kurven. Messreihe: Mehrere Messwerte",
@@ -13949,7 +13949,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f4",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Kurven. Fehler: Abweichung vom wahren Wert",
@@ -13960,7 +13960,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f5",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Kurven. Protokoll: Dokumentation",
@@ -13971,7 +13971,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f6",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Kurven. Auswertung: Diagramm und Schluss",
@@ -13982,7 +13982,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f7",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Kurven. Wiederholung: Erhöht Zuverlässigkeit",
@@ -13993,7 +13993,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f8",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Kurven. Messgerät: Geeignet wählen",
@@ -14004,7 +14004,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f9",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Kurven. Sicherheit: Schutzausrüstung",
@@ -14015,7 +14015,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f10",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Frage (kurven)“?",
+      prompt: "Was trifft auf „Frage (kurven)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Kurven. Frage (kurven): Klare Versuchsfrage",
@@ -14026,7 +14026,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-kurven:f11",
-      prompt: "[ph-j11lk-lb5-kurven] Was bedeutet „Modell (kurven)“?",
+      prompt: "Was trifft auf „Modell (kurven)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Kurven. Modell (kurven): Vereinfachte Erklärung",
@@ -14090,7 +14090,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f0",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Zentripetal. Hypothese: Prüfbare Vermutung",
@@ -14101,7 +14101,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f1",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Zentripetal. Variable: Veränderliche Größe",
@@ -14112,7 +14112,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f2",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Zentripetal. Konstant halten: Störgrößen kontrollieren",
@@ -14123,7 +14123,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f3",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Zentripetal. Messreihe: Mehrere Messwerte",
@@ -14134,7 +14134,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f4",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Zentripetal. Fehler: Abweichung vom wahren Wert",
@@ -14145,7 +14145,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f5",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Zentripetal. Protokoll: Dokumentation",
@@ -14156,7 +14156,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f6",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Zentripetal. Auswertung: Diagramm und Schluss",
@@ -14167,7 +14167,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f7",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Zentripetal. Wiederholung: Erhöht Zuverlässigkeit",
@@ -14178,7 +14178,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f8",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Zentripetal. Messgerät: Geeignet wählen",
@@ -14189,7 +14189,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f9",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Zentripetal. Sicherheit: Schutzausrüstung",
@@ -14200,7 +14200,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f10",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Frage (zentripetal)“?",
+      prompt: "Was trifft auf „Frage (zentripetal)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Zentripetal. Frage (zentripetal): Klare Versuchsfrage",
@@ -14211,7 +14211,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb5-zentripetal:f11",
-      prompt: "[ph-j11lk-lb5-zentripetal] Was bedeutet „Modell (zentripetal)“?",
+      prompt: "Was trifft auf „Modell (zentripetal)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Zentripetal. Modell (zentripetal): Vereinfachte Erklärung",
@@ -14275,7 +14275,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f0",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Relativitaet. Hypothese: Prüfbare Vermutung",
@@ -14286,7 +14286,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f1",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Relativitaet. Variable: Veränderliche Größe",
@@ -14297,7 +14297,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f2",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Relativitaet. Konstant halten: Störgrößen kontrollieren",
@@ -14308,7 +14308,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f3",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Relativitaet. Messreihe: Mehrere Messwerte",
@@ -14319,7 +14319,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f4",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Relativitaet. Fehler: Abweichung vom wahren Wert",
@@ -14330,7 +14330,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f5",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Relativitaet. Protokoll: Dokumentation",
@@ -14341,7 +14341,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f6",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Relativitaet. Auswertung: Diagramm und Schluss",
@@ -14352,7 +14352,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f7",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Relativitaet. Wiederholung: Erhöht Zuverlässigkeit",
@@ -14363,7 +14363,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f8",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Relativitaet. Messgerät: Geeignet wählen",
@@ -14374,7 +14374,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f9",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Relativitaet. Sicherheit: Schutzausrüstung",
@@ -14385,7 +14385,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f10",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Frage (relativitaet)“?",
+      prompt: "Was trifft auf „Frage (relativitaet)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Relativitaet. Frage (relativitaet): Klare Versuchsfrage",
@@ -14396,7 +14396,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-relativitaet:f11",
-      prompt: "[ph-j11lk-lb6-relativitaet] Was bedeutet „Modell (relativitaet)“?",
+      prompt: "Was trifft auf „Modell (relativitaet)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Relativitaet. Modell (relativitaet): Vereinfachte Erklärung",
@@ -14460,7 +14460,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f0",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: C. Hypothese: Prüfbare Vermutung",
@@ -14471,7 +14471,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f1",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: C. Variable: Veränderliche Größe",
@@ -14482,7 +14482,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f2",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: C. Konstant halten: Störgrößen kontrollieren",
@@ -14493,7 +14493,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f3",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: C. Messreihe: Mehrere Messwerte",
@@ -14504,7 +14504,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f4",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: C. Fehler: Abweichung vom wahren Wert",
@@ -14515,7 +14515,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f5",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: C. Protokoll: Dokumentation",
@@ -14526,7 +14526,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f6",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: C. Auswertung: Diagramm und Schluss",
@@ -14537,7 +14537,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f7",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: C. Wiederholung: Erhöht Zuverlässigkeit",
@@ -14548,7 +14548,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f8",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: C. Messgerät: Geeignet wählen",
@@ -14559,7 +14559,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f9",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: C. Sicherheit: Schutzausrüstung",
@@ -14570,7 +14570,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f10",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Frage (c)“?",
+      prompt: "Was trifft auf „Frage (c)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: C. Frage (c): Klare Versuchsfrage",
@@ -14581,7 +14581,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb6-c:f11",
-      prompt: "[ph-j11lk-lb6-c] Was bedeutet „Modell (c)“?",
+      prompt: "Was trifft auf „Modell (c)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: C. Modell (c): Vereinfachte Erklärung",
@@ -14645,7 +14645,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f0",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Mfeld. Hypothese: Prüfbare Vermutung",
@@ -14656,7 +14656,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f1",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Mfeld. Variable: Veränderliche Größe",
@@ -14667,7 +14667,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f2",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Mfeld. Konstant halten: Störgrößen kontrollieren",
@@ -14678,7 +14678,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f3",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Mfeld. Messreihe: Mehrere Messwerte",
@@ -14689,7 +14689,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f4",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Mfeld. Fehler: Abweichung vom wahren Wert",
@@ -14700,7 +14700,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f5",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Mfeld. Protokoll: Dokumentation",
@@ -14711,7 +14711,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f6",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Mfeld. Auswertung: Diagramm und Schluss",
@@ -14722,7 +14722,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f7",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Mfeld. Wiederholung: Erhöht Zuverlässigkeit",
@@ -14733,7 +14733,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f8",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Mfeld. Messgerät: Geeignet wählen",
@@ -14744,7 +14744,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f9",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Mfeld. Sicherheit: Schutzausrüstung",
@@ -14755,7 +14755,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f10",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Frage (mfeld)“?",
+      prompt: "Was trifft auf „Frage (mfeld)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Mfeld. Frage (mfeld): Klare Versuchsfrage",
@@ -14766,7 +14766,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb8-mfeld:f11",
-      prompt: "[ph-j11lk-lb8-mfeld] Was bedeutet „Modell (mfeld)“?",
+      prompt: "Was trifft auf „Modell (mfeld)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Mfeld. Modell (mfeld): Vereinfachte Erklärung",
@@ -14830,7 +14830,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f0",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Teilchen. Hypothese: Prüfbare Vermutung",
@@ -14841,7 +14841,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f1",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Teilchen. Variable: Veränderliche Größe",
@@ -14852,7 +14852,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f2",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Teilchen. Konstant halten: Störgrößen kontrollieren",
@@ -14863,7 +14863,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f3",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Teilchen. Messreihe: Mehrere Messwerte",
@@ -14874,7 +14874,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f4",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Teilchen. Fehler: Abweichung vom wahren Wert",
@@ -14885,7 +14885,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f5",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Teilchen. Protokoll: Dokumentation",
@@ -14896,7 +14896,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f6",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Teilchen. Auswertung: Diagramm und Schluss",
@@ -14907,7 +14907,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f7",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Teilchen. Wiederholung: Erhöht Zuverlässigkeit",
@@ -14918,7 +14918,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f8",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Teilchen. Messgerät: Geeignet wählen",
@@ -14929,7 +14929,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f9",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Teilchen. Sicherheit: Schutzausrüstung",
@@ -14940,7 +14940,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f10",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Frage (teilchen)“?",
+      prompt: "Was trifft auf „Frage (teilchen)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Teilchen. Frage (teilchen): Klare Versuchsfrage",
@@ -14951,7 +14951,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb9-teilchen:f11",
-      prompt: "[ph-j11lk-lb9-teilchen] Was bedeutet „Modell (teilchen)“?",
+      prompt: "Was trifft auf „Modell (teilchen)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Teilchen. Modell (teilchen): Vereinfachte Erklärung",
@@ -15015,7 +15015,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f0",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Praktikum. Hypothese: Prüfbare Vermutung",
@@ -15026,7 +15026,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f1",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Praktikum. Variable: Veränderliche Größe",
@@ -15037,7 +15037,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f2",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Praktikum. Konstant halten: Störgrößen kontrollieren",
@@ -15048,7 +15048,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f3",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Praktikum. Messreihe: Mehrere Messwerte",
@@ -15059,7 +15059,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f4",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Praktikum. Fehler: Abweichung vom wahren Wert",
@@ -15070,7 +15070,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f5",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Praktikum. Protokoll: Dokumentation",
@@ -15081,7 +15081,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f6",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Praktikum. Auswertung: Diagramm und Schluss",
@@ -15092,7 +15092,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f7",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Praktikum. Wiederholung: Erhöht Zuverlässigkeit",
@@ -15103,7 +15103,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f8",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Praktikum. Messgerät: Geeignet wählen",
@@ -15114,7 +15114,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f9",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Praktikum. Sicherheit: Schutzausrüstung",
@@ -15125,7 +15125,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f10",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Frage (praktikum)“?",
+      prompt: "Was trifft auf „Frage (praktikum)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Praktikum. Frage (praktikum): Klare Versuchsfrage",
@@ -15136,7 +15136,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lb11-praktikum:f11",
-      prompt: "[ph-j11lk-lb11-praktikum] Was bedeutet „Modell (praktikum)“?",
+      prompt: "Was trifft auf „Modell (praktikum)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Praktikum. Modell (praktikum): Vereinfachte Erklärung",
@@ -15200,7 +15200,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f0",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Fahren. Hypothese: Prüfbare Vermutung",
@@ -15211,7 +15211,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f1",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Fahren. Variable: Veränderliche Größe",
@@ -15222,7 +15222,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f2",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Fahren. Konstant halten: Störgrößen kontrollieren",
@@ -15233,7 +15233,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f3",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Fahren. Messreihe: Mehrere Messwerte",
@@ -15244,7 +15244,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f4",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Fahren. Fehler: Abweichung vom wahren Wert",
@@ -15255,7 +15255,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f5",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Fahren. Protokoll: Dokumentation",
@@ -15266,7 +15266,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f6",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Fahren. Auswertung: Diagramm und Schluss",
@@ -15277,7 +15277,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f7",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Fahren. Wiederholung: Erhöht Zuverlässigkeit",
@@ -15288,7 +15288,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f8",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Fahren. Messgerät: Geeignet wählen",
@@ -15299,7 +15299,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f9",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Fahren. Sicherheit: Schutzausrüstung",
@@ -15310,7 +15310,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f10",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Frage (fahren)“?",
+      prompt: "Was trifft auf „Frage (fahren)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Fahren. Frage (fahren): Klare Versuchsfrage",
@@ -15321,7 +15321,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-fahren:f11",
-      prompt: "[ph-j11lk-lbw-fahren] Was bedeutet „Modell (fahren)“?",
+      prompt: "Was trifft auf „Modell (fahren)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Fahren. Modell (fahren): Vereinfachte Erklärung",
@@ -15385,7 +15385,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f0",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Halbleiter. Stromkreis: Geschlossener Weg für Ladung",
@@ -15396,7 +15396,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f1",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Halbleiter. Leiter: Stoff mit freier Ladung",
@@ -15407,7 +15407,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f2",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Halbleiter. Isolator: Sehr geringer Strom",
@@ -15418,7 +15418,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f3",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Halbleiter. Widerstand: Hemmt den Strom",
@@ -15429,7 +15429,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f4",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Halbleiter. Reihenschaltung: Ein Stromweg",
@@ -15440,7 +15440,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f5",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Halbleiter. Parallelschaltung: Mehrere Stromwege",
@@ -15451,7 +15451,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f6",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Halbleiter. Symbol: Schaltzeichen",
@@ -15462,7 +15462,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f7",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Halbleiter. Spannung: Ursache des Stroms",
@@ -15473,7 +15473,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f8",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Halbleiter. Stromstärke: Ladung pro Zeit",
@@ -15484,7 +15484,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f9",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Halbleiter. Kurzschluss: Sehr kleiner Widerstand",
@@ -15495,7 +15495,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f10",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Sicherung (halbleiter)“?",
+      prompt: "Was trifft auf „Sicherung (halbleiter)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Halbleiter. Sicherung (halbleiter): Unterbricht bei Überstrom",
@@ -15506,7 +15506,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-halbleiter:f11",
-      prompt: "[ph-j11lk-lbw-halbleiter] Was bedeutet „Gefahr (halbleiter)“?",
+      prompt: "Was trifft auf „Gefahr (halbleiter)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Halbleiter. Gefahr (halbleiter): Stromunfall vermeiden",
@@ -15570,7 +15570,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f0",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Stromkreis“?",
+      prompt: "Was trifft auf „Stromkreis“ zu?",
       answer: "Geschlossener Weg für Ladung",
       wrong: ["Stoff mit freier Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Quelle, Leiter, Verbraucher. Bezug: Messen. Stromkreis: Geschlossener Weg für Ladung",
@@ -15581,7 +15581,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f1",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Leiter“?",
+      prompt: "Was trifft auf „Leiter“ zu?",
       answer: "Stoff mit freier Ladung",
       wrong: ["Geschlossener Weg für Ladung", "Sehr geringer Strom", "Hemmt den Strom"],
       explanation: "Metalle. Bezug: Messen. Leiter: Stoff mit freier Ladung",
@@ -15592,7 +15592,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f2",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Isolator“?",
+      prompt: "Was trifft auf „Isolator“ zu?",
       answer: "Sehr geringer Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Hemmt den Strom"],
       explanation: "Kunststoff, Keramik. Bezug: Messen. Isolator: Sehr geringer Strom",
@@ -15603,7 +15603,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f3",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Widerstand“?",
+      prompt: "Was trifft auf „Widerstand“ zu?",
       answer: "Hemmt den Strom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "R = U / I. Bezug: Messen. Widerstand: Hemmt den Strom",
@@ -15614,7 +15614,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f4",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Reihenschaltung“?",
+      prompt: "Was trifft auf „Reihenschaltung“ zu?",
       answer: "Ein Stromweg",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Strom überall gleich. Bezug: Messen. Reihenschaltung: Ein Stromweg",
@@ -15625,7 +15625,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f5",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Parallelschaltung“?",
+      prompt: "Was trifft auf „Parallelschaltung“ zu?",
       answer: "Mehrere Stromwege",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Spannung gleich. Bezug: Messen. Parallelschaltung: Mehrere Stromwege",
@@ -15636,7 +15636,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f6",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Symbol“?",
+      prompt: "Was trifft auf „Symbol“ zu?",
       answer: "Schaltzeichen",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Normierte Darstellung. Bezug: Messen. Symbol: Schaltzeichen",
@@ -15647,7 +15647,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f7",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Spannung“?",
+      prompt: "Was trifft auf „Spannung“ zu?",
       answer: "Ursache des Stroms",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Volt. Bezug: Messen. Spannung: Ursache des Stroms",
@@ -15658,7 +15658,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f8",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Stromstärke“?",
+      prompt: "Was trifft auf „Stromstärke“ zu?",
       answer: "Ladung pro Zeit",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Einheit Ampere. Bezug: Messen. Stromstärke: Ladung pro Zeit",
@@ -15669,7 +15669,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f9",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Kurzschluss“?",
+      prompt: "Was trifft auf „Kurzschluss“ zu?",
       answer: "Sehr kleiner Widerstand",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Gefahr hoher Ströme. Bezug: Messen. Kurzschluss: Sehr kleiner Widerstand",
@@ -15680,7 +15680,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f10",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Sicherung (messen)“?",
+      prompt: "Was trifft auf „Sicherung (messen)“ zu?",
       answer: "Unterbricht bei Überstrom",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Schützt Leitungen. Bezug: Messen. Sicherung (messen): Unterbricht bei Überstrom",
@@ -15691,7 +15691,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j11lk-lbw-messen:f11",
-      prompt: "[ph-j11lk-lbw-messen] Was bedeutet „Gefahr (messen)“?",
+      prompt: "Was trifft auf „Gefahr (messen)“ zu?",
       answer: "Stromunfall vermeiden",
       wrong: ["Geschlossener Weg für Ladung", "Stoff mit freier Ladung", "Sehr geringer Strom"],
       explanation: "Trockene Hände, geprüfte Geräte. Bezug: Messen. Gefahr (messen): Stromunfall vermeiden",
@@ -15755,7 +15755,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f0",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Schwingung. Hypothese: Prüfbare Vermutung",
@@ -15766,7 +15766,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f1",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Schwingung. Variable: Veränderliche Größe",
@@ -15777,7 +15777,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f2",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Schwingung. Konstant halten: Störgrößen kontrollieren",
@@ -15788,7 +15788,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f3",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Schwingung. Messreihe: Mehrere Messwerte",
@@ -15799,7 +15799,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f4",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Schwingung. Fehler: Abweichung vom wahren Wert",
@@ -15810,7 +15810,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f5",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Schwingung. Protokoll: Dokumentation",
@@ -15821,7 +15821,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f6",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Schwingung. Auswertung: Diagramm und Schluss",
@@ -15832,7 +15832,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f7",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Schwingung. Wiederholung: Erhöht Zuverlässigkeit",
@@ -15843,7 +15843,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f8",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Schwingung. Messgerät: Geeignet wählen",
@@ -15854,7 +15854,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f9",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Schwingung. Sicherheit: Schutzausrüstung",
@@ -15865,7 +15865,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f10",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Frage (schwingung)“?",
+      prompt: "Was trifft auf „Frage (schwingung)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Schwingung. Frage (schwingung): Klare Versuchsfrage",
@@ -15876,7 +15876,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb1-schwingung:f11",
-      prompt: "[ph-j12lk-lb1-schwingung] Was bedeutet „Modell (schwingung)“?",
+      prompt: "Was trifft auf „Modell (schwingung)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Schwingung. Modell (schwingung): Vereinfachte Erklärung",
@@ -15940,7 +15940,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f0",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Atom. Hypothese: Prüfbare Vermutung",
@@ -15951,7 +15951,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f1",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Atom. Variable: Veränderliche Größe",
@@ -15962,7 +15962,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f2",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Atom. Konstant halten: Störgrößen kontrollieren",
@@ -15973,7 +15973,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f3",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Atom. Messreihe: Mehrere Messwerte",
@@ -15984,7 +15984,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f4",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Atom. Fehler: Abweichung vom wahren Wert",
@@ -15995,7 +15995,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f5",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Atom. Protokoll: Dokumentation",
@@ -16006,7 +16006,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f6",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Atom. Auswertung: Diagramm und Schluss",
@@ -16017,7 +16017,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f7",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Atom. Wiederholung: Erhöht Zuverlässigkeit",
@@ -16028,7 +16028,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f8",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Atom. Messgerät: Geeignet wählen",
@@ -16039,7 +16039,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f9",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Atom. Sicherheit: Schutzausrüstung",
@@ -16050,7 +16050,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f10",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Frage (atom)“?",
+      prompt: "Was trifft auf „Frage (atom)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Atom. Frage (atom): Klare Versuchsfrage",
@@ -16061,7 +16061,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb5-atom:f11",
-      prompt: "[ph-j12lk-lb5-atom] Was bedeutet „Modell (atom)“?",
+      prompt: "Was trifft auf „Modell (atom)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Atom. Modell (atom): Vereinfachte Erklärung",
@@ -16125,7 +16125,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f0",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Thermo. Hypothese: Prüfbare Vermutung",
@@ -16136,7 +16136,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f1",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Thermo. Variable: Veränderliche Größe",
@@ -16147,7 +16147,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f2",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Thermo. Konstant halten: Störgrößen kontrollieren",
@@ -16158,7 +16158,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f3",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Thermo. Messreihe: Mehrere Messwerte",
@@ -16169,7 +16169,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f4",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Thermo. Fehler: Abweichung vom wahren Wert",
@@ -16180,7 +16180,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f5",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Thermo. Protokoll: Dokumentation",
@@ -16191,7 +16191,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f6",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Thermo. Auswertung: Diagramm und Schluss",
@@ -16202,7 +16202,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f7",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Thermo. Wiederholung: Erhöht Zuverlässigkeit",
@@ -16213,7 +16213,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f8",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Thermo. Messgerät: Geeignet wählen",
@@ -16224,7 +16224,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f9",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Thermo. Sicherheit: Schutzausrüstung",
@@ -16235,7 +16235,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f10",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Frage (thermo)“?",
+      prompt: "Was trifft auf „Frage (thermo)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Thermo. Frage (thermo): Klare Versuchsfrage",
@@ -16246,7 +16246,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lb7-thermo:f11",
-      prompt: "[ph-j12lk-lb7-thermo] Was bedeutet „Modell (thermo)“?",
+      prompt: "Was trifft auf „Modell (thermo)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Thermo. Modell (thermo): Vereinfachte Erklärung",
@@ -16310,7 +16310,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f0",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Chaos. Hypothese: Prüfbare Vermutung",
@@ -16321,7 +16321,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f1",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Chaos. Variable: Veränderliche Größe",
@@ -16332,7 +16332,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f2",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Chaos. Konstant halten: Störgrößen kontrollieren",
@@ -16343,7 +16343,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f3",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Chaos. Messreihe: Mehrere Messwerte",
@@ -16354,7 +16354,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f4",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Chaos. Fehler: Abweichung vom wahren Wert",
@@ -16365,7 +16365,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f5",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Chaos. Protokoll: Dokumentation",
@@ -16376,7 +16376,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f6",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Chaos. Auswertung: Diagramm und Schluss",
@@ -16387,7 +16387,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f7",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Chaos. Wiederholung: Erhöht Zuverlässigkeit",
@@ -16398,7 +16398,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f8",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Chaos. Messgerät: Geeignet wählen",
@@ -16409,7 +16409,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f9",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Chaos. Sicherheit: Schutzausrüstung",
@@ -16420,7 +16420,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f10",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Frage (chaos)“?",
+      prompt: "Was trifft auf „Frage (chaos)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Chaos. Frage (chaos): Klare Versuchsfrage",
@@ -16431,7 +16431,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-chaos:f11",
-      prompt: "[ph-j12lk-lbw-chaos] Was bedeutet „Modell (chaos)“?",
+      prompt: "Was trifft auf „Modell (chaos)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Chaos. Modell (chaos): Vereinfachte Erklärung",
@@ -16495,7 +16495,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f0",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Gas. Hypothese: Prüfbare Vermutung",
@@ -16506,7 +16506,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f1",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Gas. Variable: Veränderliche Größe",
@@ -16517,7 +16517,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f2",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Gas. Konstant halten: Störgrößen kontrollieren",
@@ -16528,7 +16528,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f3",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Gas. Messreihe: Mehrere Messwerte",
@@ -16539,7 +16539,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f4",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Gas. Fehler: Abweichung vom wahren Wert",
@@ -16550,7 +16550,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f5",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Gas. Protokoll: Dokumentation",
@@ -16561,7 +16561,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f6",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Gas. Auswertung: Diagramm und Schluss",
@@ -16572,7 +16572,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f7",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Gas. Wiederholung: Erhöht Zuverlässigkeit",
@@ -16583,7 +16583,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f8",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Gas. Messgerät: Geeignet wählen",
@@ -16594,7 +16594,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f9",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Gas. Sicherheit: Schutzausrüstung",
@@ -16605,7 +16605,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f10",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Frage (gas)“?",
+      prompt: "Was trifft auf „Frage (gas)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Gas. Frage (gas): Klare Versuchsfrage",
@@ -16616,7 +16616,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-gas:f11",
-      prompt: "[ph-j12lk-lbw-gas] Was bedeutet „Modell (gas)“?",
+      prompt: "Was trifft auf „Modell (gas)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Gas. Modell (gas): Vereinfachte Erklärung",
@@ -16680,7 +16680,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f0",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Hypothese“?",
+      prompt: "Was trifft auf „Hypothese“ zu?",
       answer: "Prüfbare Vermutung",
       wrong: ["Veränderliche Größe", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Vor dem Versuch formulieren. Bezug: Anwendungen. Hypothese: Prüfbare Vermutung",
@@ -16691,7 +16691,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f1",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Variable“?",
+      prompt: "Was trifft auf „Variable“ zu?",
       answer: "Veränderliche Größe",
       wrong: ["Prüfbare Vermutung", "Störgrößen kontrollieren", "Mehrere Messwerte"],
       explanation: "Unabhängig/abhängig. Bezug: Anwendungen. Variable: Veränderliche Größe",
@@ -16702,7 +16702,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f2",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Konstant halten“?",
+      prompt: "Was trifft auf „Konstant halten“ zu?",
       answer: "Störgrößen kontrollieren",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Mehrere Messwerte"],
       explanation: "Fairer Vergleich. Bezug: Anwendungen. Konstant halten: Störgrößen kontrollieren",
@@ -16713,7 +16713,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f3",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Messreihe“?",
+      prompt: "Was trifft auf „Messreihe“ zu?",
       answer: "Mehrere Messwerte",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Streung erkennen. Bezug: Anwendungen. Messreihe: Mehrere Messwerte",
@@ -16724,7 +16724,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f4",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Fehler“?",
+      prompt: "Was trifft auf „Fehler“ zu?",
       answer: "Abweichung vom wahren Wert",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zufällig/systematisch. Bezug: Anwendungen. Fehler: Abweichung vom wahren Wert",
@@ -16735,7 +16735,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f5",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Protokoll“?",
+      prompt: "Was trifft auf „Protokoll“ zu?",
       answer: "Dokumentation",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Wiederholbar. Bezug: Anwendungen. Protokoll: Dokumentation",
@@ -16746,7 +16746,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f6",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Auswertung“?",
+      prompt: "Was trifft auf „Auswertung“ zu?",
       answer: "Diagramm und Schluss",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Zur Hypothese. Bezug: Anwendungen. Auswertung: Diagramm und Schluss",
@@ -16757,7 +16757,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f7",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Wiederholung“?",
+      prompt: "Was trifft auf „Wiederholung“ zu?",
       answer: "Erhöht Zuverlässigkeit",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Mittelwert. Bezug: Anwendungen. Wiederholung: Erhöht Zuverlässigkeit",
@@ -16768,7 +16768,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f8",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Messgerät“?",
+      prompt: "Was trifft auf „Messgerät“ zu?",
       answer: "Geeignet wählen",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Genauigkeit. Bezug: Anwendungen. Messgerät: Geeignet wählen",
@@ -16779,7 +16779,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f9",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Sicherheit“?",
+      prompt: "Was trifft auf „Sicherheit“ zu?",
       answer: "Schutzausrüstung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Vorschriften. Bezug: Anwendungen. Sicherheit: Schutzausrüstung",
@@ -16790,7 +16790,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f10",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Frage (anwendungen)“?",
+      prompt: "Was trifft auf „Frage (anwendungen)“ zu?",
       answer: "Klare Versuchsfrage",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Messbar. Bezug: Anwendungen. Frage (anwendungen): Klare Versuchsfrage",
@@ -16801,7 +16801,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-j12lk-lbw-anwendungen:f11",
-      prompt: "[ph-j12lk-lbw-anwendungen] Was bedeutet „Modell (anwendungen)“?",
+      prompt: "Was trifft auf „Modell (anwendungen)“ zu?",
       answer: "Vereinfachte Erklärung",
       wrong: ["Prüfbare Vermutung", "Veränderliche Größe", "Störgrößen kontrollieren"],
       explanation: "Grenzen nennen. Bezug: Anwendungen. Modell (anwendungen): Vereinfachte Erklärung",

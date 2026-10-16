@@ -30,7 +30,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f0",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Quellen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -41,7 +41,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f1",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Quellen. Chronologie: Zeitliche Ordnung",
@@ -52,7 +52,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f2",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Quellen. Epoche: Geschichtlicher Zeitraum",
@@ -63,7 +63,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f3",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Quellen. Herrschaft: Politische Machtordnung",
@@ -74,7 +74,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f4",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Quellen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -85,7 +85,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f5",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Quellen. Wirtschaft: Produktion und Handel",
@@ -96,7 +96,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f6",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Quellen. Religion: Glaubensvorstellungen",
@@ -107,7 +107,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f7",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Quellen. Kultur: Kunst, Wissen, Alltag",
@@ -118,7 +118,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f8",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Quellen. Konflikt: Auseinandersetzung",
@@ -129,7 +129,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f9",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Quellen. Revolution: Umsturz der Ordnung",
@@ -140,7 +140,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f10",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Staat (quellen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (quellen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Quellen. Staat (quellen): Organisierte Herrschaft",
@@ -151,7 +151,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f11",
-      prompt: "[ge-k5-lb1-quellen] Was beschreibt „Migration (quellen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (quellen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Quellen. Migration (quellen): Wanderung von Menschen",
@@ -186,7 +186,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f0",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Zeitrechnung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -197,7 +197,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f1",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Zeitrechnung. Chronologie: Zeitliche Ordnung",
@@ -208,7 +208,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f2",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Zeitrechnung. Epoche: Geschichtlicher Zeitraum",
@@ -219,7 +219,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f3",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Zeitrechnung. Herrschaft: Politische Machtordnung",
@@ -230,7 +230,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f4",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Zeitrechnung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -241,7 +241,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f5",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Zeitrechnung. Wirtschaft: Produktion und Handel",
@@ -252,7 +252,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f6",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Zeitrechnung. Religion: Glaubensvorstellungen",
@@ -263,7 +263,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f7",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Zeitrechnung. Kultur: Kunst, Wissen, Alltag",
@@ -274,7 +274,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f8",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Zeitrechnung. Konflikt: Auseinandersetzung",
@@ -285,7 +285,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f9",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Zeitrechnung. Revolution: Umsturz der Ordnung",
@@ -296,7 +296,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f10",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Staat (zeitrechnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (zeitrechnung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Zeitrechnung. Staat (zeitrechnung): Organisierte Herrschaft",
@@ -307,7 +307,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f11",
-      prompt: "[ge-k5-lb1-zeitrechnung] Was beschreibt „Migration (zeitrechnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (zeitrechnung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Zeitrechnung. Migration (zeitrechnung): Wanderung von Menschen",
@@ -342,7 +342,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f0",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Steinzeit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -353,7 +353,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f1",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Steinzeit. Chronologie: Zeitliche Ordnung",
@@ -364,7 +364,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f2",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Steinzeit. Epoche: Geschichtlicher Zeitraum",
@@ -375,7 +375,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f3",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Steinzeit. Herrschaft: Politische Machtordnung",
@@ -386,7 +386,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f4",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Steinzeit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -397,7 +397,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f5",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Steinzeit. Wirtschaft: Produktion und Handel",
@@ -408,7 +408,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f6",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Steinzeit. Religion: Glaubensvorstellungen",
@@ -419,7 +419,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f7",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Steinzeit. Kultur: Kunst, Wissen, Alltag",
@@ -430,7 +430,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f8",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Steinzeit. Konflikt: Auseinandersetzung",
@@ -441,7 +441,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f9",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Steinzeit. Revolution: Umsturz der Ordnung",
@@ -452,7 +452,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f10",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Staat (steinzeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (steinzeit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Steinzeit. Staat (steinzeit): Organisierte Herrschaft",
@@ -463,7 +463,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f11",
-      prompt: "[ge-k5-lb2-steinzeit] Was beschreibt „Migration (steinzeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (steinzeit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Steinzeit. Migration (steinzeit): Wanderung von Menschen",
@@ -498,7 +498,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f0",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Aegypten. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -509,7 +509,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f1",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Aegypten. Chronologie: Zeitliche Ordnung",
@@ -520,7 +520,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f2",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Aegypten. Epoche: Geschichtlicher Zeitraum",
@@ -531,7 +531,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f3",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Aegypten. Herrschaft: Politische Machtordnung",
@@ -542,7 +542,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f4",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Aegypten. Gesellschaft: Soziale Schichten und Gruppen",
@@ -553,7 +553,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f5",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Aegypten. Wirtschaft: Produktion und Handel",
@@ -564,7 +564,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f6",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Aegypten. Religion: Glaubensvorstellungen",
@@ -575,7 +575,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f7",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Aegypten. Kultur: Kunst, Wissen, Alltag",
@@ -586,7 +586,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f8",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Aegypten. Konflikt: Auseinandersetzung",
@@ -597,7 +597,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f9",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Aegypten. Revolution: Umsturz der Ordnung",
@@ -608,7 +608,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f10",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Staat (aegypten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (aegypten)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Aegypten. Staat (aegypten): Organisierte Herrschaft",
@@ -619,7 +619,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f11",
-      prompt: "[ge-k5-lb2-aegypten] Was beschreibt „Migration (aegypten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (aegypten)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Aegypten. Migration (aegypten): Wanderung von Menschen",
@@ -654,7 +654,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f0",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Metallzeit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -665,7 +665,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f1",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Metallzeit. Chronologie: Zeitliche Ordnung",
@@ -676,7 +676,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f2",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Metallzeit. Epoche: Geschichtlicher Zeitraum",
@@ -687,7 +687,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f3",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Metallzeit. Herrschaft: Politische Machtordnung",
@@ -698,7 +698,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f4",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Metallzeit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -709,7 +709,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f5",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Metallzeit. Wirtschaft: Produktion und Handel",
@@ -720,7 +720,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f6",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Metallzeit. Religion: Glaubensvorstellungen",
@@ -731,7 +731,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f7",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Metallzeit. Kultur: Kunst, Wissen, Alltag",
@@ -742,7 +742,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f8",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Metallzeit. Konflikt: Auseinandersetzung",
@@ -753,7 +753,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f9",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Metallzeit. Revolution: Umsturz der Ordnung",
@@ -764,7 +764,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f10",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Staat (metallzeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (metallzeit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Metallzeit. Staat (metallzeit): Organisierte Herrschaft",
@@ -775,7 +775,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f11",
-      prompt: "[ge-k5-lb2-metallzeit] Was beschreibt „Migration (metallzeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (metallzeit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Metallzeit. Migration (metallzeit): Wanderung von Menschen",
@@ -810,7 +810,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb3-athen:f0",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Athen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -821,7 +821,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f1",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Athen. Chronologie: Zeitliche Ordnung",
@@ -832,7 +832,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f2",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Athen. Epoche: Geschichtlicher Zeitraum",
@@ -843,7 +843,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f3",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Athen. Herrschaft: Politische Machtordnung",
@@ -854,7 +854,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f4",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Athen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -865,7 +865,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f5",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Athen. Wirtschaft: Produktion und Handel",
@@ -876,7 +876,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f6",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Athen. Religion: Glaubensvorstellungen",
@@ -887,7 +887,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f7",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Athen. Kultur: Kunst, Wissen, Alltag",
@@ -898,7 +898,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f8",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Athen. Konflikt: Auseinandersetzung",
@@ -909,7 +909,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f9",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Athen. Revolution: Umsturz der Ordnung",
@@ -920,7 +920,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f10",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Staat (athen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (athen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Athen. Staat (athen): Organisierte Herrschaft",
@@ -931,7 +931,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f11",
-      prompt: "[ge-k5-lb3-athen] Was beschreibt „Migration (athen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (athen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Athen. Migration (athen): Wanderung von Menschen",
@@ -966,7 +966,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f0",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Sparta. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -977,7 +977,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f1",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Sparta. Chronologie: Zeitliche Ordnung",
@@ -988,7 +988,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f2",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Sparta. Epoche: Geschichtlicher Zeitraum",
@@ -999,7 +999,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f3",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Sparta. Herrschaft: Politische Machtordnung",
@@ -1010,7 +1010,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f4",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Sparta. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1021,7 +1021,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f5",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Sparta. Wirtschaft: Produktion und Handel",
@@ -1032,7 +1032,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f6",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Sparta. Religion: Glaubensvorstellungen",
@@ -1043,7 +1043,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f7",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Sparta. Kultur: Kunst, Wissen, Alltag",
@@ -1054,7 +1054,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f8",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Sparta. Konflikt: Auseinandersetzung",
@@ -1065,7 +1065,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f9",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Sparta. Revolution: Umsturz der Ordnung",
@@ -1076,7 +1076,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f10",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Staat (sparta)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (sparta)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Sparta. Staat (sparta): Organisierte Herrschaft",
@@ -1087,7 +1087,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f11",
-      prompt: "[ge-k5-lb3-sparta] Was beschreibt „Migration (sparta)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (sparta)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Sparta. Migration (sparta): Wanderung von Menschen",
@@ -1122,7 +1122,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f0",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kultur. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1133,7 +1133,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f1",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kultur. Chronologie: Zeitliche Ordnung",
@@ -1144,7 +1144,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f2",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kultur. Epoche: Geschichtlicher Zeitraum",
@@ -1155,7 +1155,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f3",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kultur. Herrschaft: Politische Machtordnung",
@@ -1166,7 +1166,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f4",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kultur. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1177,7 +1177,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f5",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kultur. Wirtschaft: Produktion und Handel",
@@ -1188,7 +1188,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f6",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kultur. Religion: Glaubensvorstellungen",
@@ -1199,7 +1199,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f7",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kultur. Kultur: Kunst, Wissen, Alltag",
@@ -1210,7 +1210,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f8",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kultur. Konflikt: Auseinandersetzung",
@@ -1221,7 +1221,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f9",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution: Umsturz der Ordnung",
@@ -1232,7 +1232,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f10",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Staat (kultur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kultur)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur): Organisierte Herrschaft",
@@ -1243,7 +1243,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f11",
-      prompt: "[ge-k5-lb3-kultur] Was beschreibt „Migration (kultur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kultur)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kultur. Migration (kultur): Wanderung von Menschen",
@@ -1278,7 +1278,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f0",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Mensch Natur. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1289,7 +1289,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f1",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Mensch Natur. Chronologie: Zeitliche Ordnung",
@@ -1300,7 +1300,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f2",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Mensch Natur. Epoche: Geschichtlicher Zeitraum",
@@ -1311,7 +1311,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f3",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Mensch Natur. Herrschaft: Politische Machtordnung",
@@ -1322,7 +1322,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f4",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Mensch Natur. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1333,7 +1333,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f5",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Mensch Natur. Wirtschaft: Produktion und Handel",
@@ -1344,7 +1344,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f6",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Mensch Natur. Religion: Glaubensvorstellungen",
@@ -1355,7 +1355,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f7",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Mensch Natur. Kultur: Kunst, Wissen, Alltag",
@@ -1366,7 +1366,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f8",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Mensch Natur. Konflikt: Auseinandersetzung",
@@ -1377,7 +1377,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f9",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Mensch Natur. Revolution: Umsturz der Ordnung",
@@ -1388,7 +1388,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f10",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Staat (natur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (natur)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Mensch Natur. Staat (natur): Organisierte Herrschaft",
@@ -1399,7 +1399,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f11",
-      prompt: "[ge-k5-lb4-mensch-natur] Was beschreibt „Migration (natur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (natur)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Mensch Natur. Migration (natur): Wanderung von Menschen",
@@ -1434,7 +1434,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f0",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ressourcen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1445,7 +1445,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f1",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ressourcen. Chronologie: Zeitliche Ordnung",
@@ -1456,7 +1456,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f2",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ressourcen. Epoche: Geschichtlicher Zeitraum",
@@ -1467,7 +1467,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f3",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ressourcen. Herrschaft: Politische Machtordnung",
@@ -1478,7 +1478,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f4",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ressourcen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1489,7 +1489,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f5",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ressourcen. Wirtschaft: Produktion und Handel",
@@ -1500,7 +1500,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f6",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ressourcen. Religion: Glaubensvorstellungen",
@@ -1511,7 +1511,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f7",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ressourcen. Kultur: Kunst, Wissen, Alltag",
@@ -1522,7 +1522,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f8",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ressourcen. Konflikt: Auseinandersetzung",
@@ -1533,7 +1533,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f9",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ressourcen. Revolution: Umsturz der Ordnung",
@@ -1544,7 +1544,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f10",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Staat (ressourcen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (ressourcen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ressourcen. Staat (ressourcen): Organisierte Herrschaft",
@@ -1555,7 +1555,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f11",
-      prompt: "[ge-k5-lb4-ressourcen] Was beschreibt „Migration (ressourcen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (ressourcen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ressourcen. Migration (ressourcen): Wanderung von Menschen",
@@ -1590,7 +1590,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f0",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Landschaft. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1601,7 +1601,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f1",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Landschaft. Chronologie: Zeitliche Ordnung",
@@ -1612,7 +1612,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f2",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Landschaft. Epoche: Geschichtlicher Zeitraum",
@@ -1623,7 +1623,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f3",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Landschaft. Herrschaft: Politische Machtordnung",
@@ -1634,7 +1634,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f4",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Landschaft. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1645,7 +1645,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f5",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Landschaft. Wirtschaft: Produktion und Handel",
@@ -1656,7 +1656,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f6",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Landschaft. Religion: Glaubensvorstellungen",
@@ -1667,7 +1667,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f7",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Landschaft. Kultur: Kunst, Wissen, Alltag",
@@ -1678,7 +1678,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f8",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Landschaft. Konflikt: Auseinandersetzung",
@@ -1689,7 +1689,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f9",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Landschaft. Revolution: Umsturz der Ordnung",
@@ -1700,7 +1700,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f10",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Staat (landschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (landschaft)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Landschaft. Staat (landschaft): Organisierte Herrschaft",
@@ -1711,7 +1711,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f11",
-      prompt: "[ge-k5-lb4-landschaft] Was beschreibt „Migration (landschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (landschaft)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Landschaft. Migration (landschaft): Wanderung von Menschen",
@@ -1746,7 +1746,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f0",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Hellenismus Alexander. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1757,7 +1757,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f1",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Hellenismus Alexander. Chronologie: Zeitliche Ordnung",
@@ -1768,7 +1768,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f2",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Alexander. Epoche: Geschichtlicher Zeitraum",
@@ -1779,7 +1779,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f3",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Hellenismus Alexander. Herrschaft: Politische Machtordnung",
@@ -1790,7 +1790,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f4",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Hellenismus Alexander. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1801,7 +1801,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f5",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Hellenismus Alexander. Wirtschaft: Produktion und Handel",
@@ -1812,7 +1812,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f6",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Hellenismus Alexander. Religion: Glaubensvorstellungen",
@@ -1823,7 +1823,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f7",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Hellenismus Alexander. Kultur: Kunst, Wissen, Alltag",
@@ -1834,7 +1834,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f8",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Alexander. Konflikt: Auseinandersetzung",
@@ -1845,7 +1845,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f9",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexander. Revolution: Umsturz der Ordnung",
@@ -1856,7 +1856,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f10",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Staat (alexander)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (alexander)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Hellenismus Alexander. Staat (alexander): Organisierte Herrschaft",
@@ -1867,7 +1867,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f11",
-      prompt: "[ge-k5-lbw-hellenismus-alexander] Was beschreibt „Migration (alexander)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (alexander)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Hellenismus Alexander. Migration (alexander): Wanderung von Menschen",
@@ -1902,7 +1902,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f0",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Hellenismus Alexandria. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -1913,7 +1913,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f1",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Hellenismus Alexandria. Chronologie: Zeitliche Ordnung",
@@ -1924,7 +1924,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f2",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Alexandria. Epoche: Geschichtlicher Zeitraum",
@@ -1935,7 +1935,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f3",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Hellenismus Alexandria. Herrschaft: Politische Machtordnung",
@@ -1946,7 +1946,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f4",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Hellenismus Alexandria. Gesellschaft: Soziale Schichten und Gruppen",
@@ -1957,7 +1957,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f5",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Hellenismus Alexandria. Wirtschaft: Produktion und Handel",
@@ -1968,7 +1968,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f6",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Hellenismus Alexandria. Religion: Glaubensvorstellungen",
@@ -1979,7 +1979,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f7",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Hellenismus Alexandria. Kultur: Kunst, Wissen, Alltag",
@@ -1990,7 +1990,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f8",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Alexandria. Konflikt: Auseinandersetzung",
@@ -2001,7 +2001,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f9",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexandria. Revolution: Umsturz der Ordnung",
@@ -2012,7 +2012,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f10",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Staat (alexandria)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (alexandria)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Hellenismus Alexandria. Staat (alexandria): Organisierte Herrschaft",
@@ -2023,7 +2023,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f11",
-      prompt: "[ge-k5-lbw-hellenismus-alexandria] Was beschreibt „Migration (alexandria)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (alexandria)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Hellenismus Alexandria. Migration (alexandria): Wanderung von Menschen",
@@ -2058,7 +2058,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f0",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Hellenismus Geschichten. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2069,7 +2069,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f1",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Hellenismus Geschichten. Chronologie: Zeitliche Ordnung",
@@ -2080,7 +2080,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f2",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Geschichten. Epoche: Geschichtlicher Zeitraum",
@@ -2091,7 +2091,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f3",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Hellenismus Geschichten. Herrschaft: Politische Machtordnung",
@@ -2102,7 +2102,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f4",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Hellenismus Geschichten. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2113,7 +2113,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f5",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Hellenismus Geschichten. Wirtschaft: Produktion und Handel",
@@ -2124,7 +2124,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f6",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Hellenismus Geschichten. Religion: Glaubensvorstellungen",
@@ -2135,7 +2135,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f7",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Hellenismus Geschichten. Kultur: Kunst, Wissen, Alltag",
@@ -2146,7 +2146,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f8",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Geschichten. Konflikt: Auseinandersetzung",
@@ -2157,7 +2157,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f9",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Hellenismus Geschichten. Revolution: Umsturz der Ordnung",
@@ -2168,7 +2168,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f10",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Staat (geschichten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (geschichten)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Hellenismus Geschichten. Staat (geschichten): Organisierte Herrschaft",
@@ -2179,7 +2179,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f11",
-      prompt: "[ge-k5-lbw-hellenismus-geschichten] Was beschreibt „Migration (geschichten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (geschichten)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Hellenismus Geschichten. Migration (geschichten): Wanderung von Menschen",
@@ -2214,7 +2214,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f0",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Chronologie. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2225,7 +2225,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f1",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Chronologie. Chronologie: Zeitliche Ordnung",
@@ -2236,7 +2236,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f2",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Chronologie. Epoche: Geschichtlicher Zeitraum",
@@ -2247,7 +2247,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f3",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Chronologie. Herrschaft: Politische Machtordnung",
@@ -2258,7 +2258,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f4",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Chronologie. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2269,7 +2269,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f5",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Chronologie. Wirtschaft: Produktion und Handel",
@@ -2280,7 +2280,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f6",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Chronologie. Religion: Glaubensvorstellungen",
@@ -2291,7 +2291,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f7",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Chronologie. Kultur: Kunst, Wissen, Alltag",
@@ -2302,7 +2302,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f8",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Chronologie. Konflikt: Auseinandersetzung",
@@ -2313,7 +2313,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f9",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Chronologie. Revolution: Umsturz der Ordnung",
@@ -2324,7 +2324,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f10",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Staat (chronologie)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (chronologie)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Chronologie. Staat (chronologie): Organisierte Herrschaft",
@@ -2335,7 +2335,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f11",
-      prompt: "[ge-k6-lb1-chronologie] Was beschreibt „Migration (chronologie)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (chronologie)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Chronologie. Migration (chronologie): Wanderung von Menschen",
@@ -2370,7 +2370,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f0",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Anfaenge. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2381,7 +2381,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f1",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Anfaenge. Chronologie: Zeitliche Ordnung",
@@ -2392,7 +2392,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f2",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Anfaenge. Epoche: Geschichtlicher Zeitraum",
@@ -2403,7 +2403,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f3",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Anfaenge. Herrschaft: Politische Machtordnung",
@@ -2414,7 +2414,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f4",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Anfaenge. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2425,7 +2425,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f5",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Anfaenge. Wirtschaft: Produktion und Handel",
@@ -2436,7 +2436,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f6",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Anfaenge. Religion: Glaubensvorstellungen",
@@ -2447,7 +2447,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f7",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Anfaenge. Kultur: Kunst, Wissen, Alltag",
@@ -2458,7 +2458,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f8",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Anfaenge. Konflikt: Auseinandersetzung",
@@ -2469,7 +2469,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f9",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Anfaenge. Revolution: Umsturz der Ordnung",
@@ -2480,7 +2480,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f10",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Staat (anfaenge)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (anfaenge)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Anfaenge. Staat (anfaenge): Organisierte Herrschaft",
@@ -2491,7 +2491,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f11",
-      prompt: "[ge-k6-lb1-anfaenge] Was beschreibt „Migration (anfaenge)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (anfaenge)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Anfaenge. Migration (anfaenge): Wanderung von Menschen",
@@ -2526,7 +2526,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f0",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Aemter. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2537,7 +2537,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f1",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Aemter. Chronologie: Zeitliche Ordnung",
@@ -2548,7 +2548,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f2",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Aemter. Epoche: Geschichtlicher Zeitraum",
@@ -2559,7 +2559,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f3",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Aemter. Herrschaft: Politische Machtordnung",
@@ -2570,7 +2570,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f4",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Aemter. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2581,7 +2581,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f5",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Aemter. Wirtschaft: Produktion und Handel",
@@ -2592,7 +2592,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f6",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Aemter. Religion: Glaubensvorstellungen",
@@ -2603,7 +2603,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f7",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Aemter. Kultur: Kunst, Wissen, Alltag",
@@ -2614,7 +2614,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f8",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Aemter. Konflikt: Auseinandersetzung",
@@ -2625,7 +2625,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f9",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Aemter. Revolution: Umsturz der Ordnung",
@@ -2636,7 +2636,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f10",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Staat (aemter)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (aemter)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Aemter. Staat (aemter): Organisierte Herrschaft",
@@ -2647,7 +2647,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f11",
-      prompt: "[ge-k6-lb1-aemter] Was beschreibt „Migration (aemter)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (aemter)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Aemter. Migration (aemter): Wanderung von Menschen",
@@ -2682,7 +2682,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f0",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Buergerrecht. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2693,7 +2693,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f1",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Buergerrecht. Chronologie: Zeitliche Ordnung",
@@ -2704,7 +2704,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f2",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Buergerrecht. Epoche: Geschichtlicher Zeitraum",
@@ -2715,7 +2715,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f3",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Buergerrecht. Herrschaft: Politische Machtordnung",
@@ -2726,7 +2726,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f4",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Buergerrecht. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2737,7 +2737,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f5",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Buergerrecht. Wirtschaft: Produktion und Handel",
@@ -2748,7 +2748,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f6",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Buergerrecht. Religion: Glaubensvorstellungen",
@@ -2759,7 +2759,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f7",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Buergerrecht. Kultur: Kunst, Wissen, Alltag",
@@ -2770,7 +2770,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f8",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Buergerrecht. Konflikt: Auseinandersetzung",
@@ -2781,7 +2781,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f9",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Buergerrecht. Revolution: Umsturz der Ordnung",
@@ -2792,7 +2792,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f10",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Staat (buergerrecht)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (buergerrecht)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Buergerrecht. Staat (buergerrecht): Organisierte Herrschaft",
@@ -2803,7 +2803,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f11",
-      prompt: "[ge-k6-lb1-buergerrecht] Was beschreibt „Migration (buergerrecht)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (buergerrecht)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Buergerrecht. Migration (buergerrecht): Wanderung von Menschen",
@@ -2838,7 +2838,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb1-rom:f0",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Rom. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -2849,7 +2849,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f1",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Rom. Chronologie: Zeitliche Ordnung",
@@ -2860,7 +2860,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f2",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Rom. Epoche: Geschichtlicher Zeitraum",
@@ -2871,7 +2871,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f3",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Rom. Herrschaft: Politische Machtordnung",
@@ -2882,7 +2882,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f4",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Rom. Gesellschaft: Soziale Schichten und Gruppen",
@@ -2893,7 +2893,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f5",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Rom. Wirtschaft: Produktion und Handel",
@@ -2904,7 +2904,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f6",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Rom. Religion: Glaubensvorstellungen",
@@ -2915,7 +2915,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f7",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Rom. Kultur: Kunst, Wissen, Alltag",
@@ -2926,7 +2926,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f8",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Rom. Konflikt: Auseinandersetzung",
@@ -2937,7 +2937,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f9",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Rom. Revolution: Umsturz der Ordnung",
@@ -2948,7 +2948,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f10",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Staat (rom)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (rom)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Rom. Staat (rom): Organisierte Herrschaft",
@@ -2959,7 +2959,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f11",
-      prompt: "[ge-k6-lb1-rom] Was beschreibt „Migration (rom)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (rom)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Rom. Migration (rom): Wanderung von Menschen",
@@ -2994,7 +2994,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f0",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Heiliges Reich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3005,7 +3005,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f1",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Heiliges Reich. Chronologie: Zeitliche Ordnung",
@@ -3016,7 +3016,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f2",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Heiliges Reich. Epoche: Geschichtlicher Zeitraum",
@@ -3027,7 +3027,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f3",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Heiliges Reich. Herrschaft: Politische Machtordnung",
@@ -3038,7 +3038,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f4",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Heiliges Reich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3049,7 +3049,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f5",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Heiliges Reich. Wirtschaft: Produktion und Handel",
@@ -3060,7 +3060,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f6",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Heiliges Reich. Religion: Glaubensvorstellungen",
@@ -3071,7 +3071,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f7",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Heiliges Reich. Kultur: Kunst, Wissen, Alltag",
@@ -3082,7 +3082,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f8",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Heiliges Reich. Konflikt: Auseinandersetzung",
@@ -3093,7 +3093,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f9",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Heiliges Reich. Revolution: Umsturz der Ordnung",
@@ -3104,7 +3104,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f10",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Staat (reich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (reich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Heiliges Reich. Staat (reich): Organisierte Herrschaft",
@@ -3115,7 +3115,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f11",
-      prompt: "[ge-k6-lb2-heiliges-reich] Was beschreibt „Migration (reich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (reich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Heiliges Reich. Migration (reich): Wanderung von Menschen",
@@ -3150,7 +3150,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f0",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Weltlich Geistlich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3161,7 +3161,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f1",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Weltlich Geistlich. Chronologie: Zeitliche Ordnung",
@@ -3172,7 +3172,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f2",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Weltlich Geistlich. Epoche: Geschichtlicher Zeitraum",
@@ -3183,7 +3183,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f3",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Weltlich Geistlich. Herrschaft: Politische Machtordnung",
@@ -3194,7 +3194,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f4",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Weltlich Geistlich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3205,7 +3205,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f5",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Weltlich Geistlich. Wirtschaft: Produktion und Handel",
@@ -3216,7 +3216,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f6",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Weltlich Geistlich. Religion: Glaubensvorstellungen",
@@ -3227,7 +3227,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f7",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Weltlich Geistlich. Kultur: Kunst, Wissen, Alltag",
@@ -3238,7 +3238,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f8",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Weltlich Geistlich. Konflikt: Auseinandersetzung",
@@ -3249,7 +3249,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f9",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Weltlich Geistlich. Revolution: Umsturz der Ordnung",
@@ -3260,7 +3260,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f10",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Staat (geistlich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (geistlich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Weltlich Geistlich. Staat (geistlich): Organisierte Herrschaft",
@@ -3271,7 +3271,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f11",
-      prompt: "[ge-k6-lb2-weltlich-geistlich] Was beschreibt „Migration (geistlich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (geistlich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Weltlich Geistlich. Migration (geistlich): Wanderung von Menschen",
@@ -3306,7 +3306,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f0",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Lehnswesen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3317,7 +3317,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f1",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Lehnswesen. Chronologie: Zeitliche Ordnung",
@@ -3328,7 +3328,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f2",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Lehnswesen. Epoche: Geschichtlicher Zeitraum",
@@ -3339,7 +3339,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f3",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Lehnswesen. Herrschaft: Politische Machtordnung",
@@ -3350,7 +3350,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f4",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Lehnswesen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3361,7 +3361,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f5",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Lehnswesen. Wirtschaft: Produktion und Handel",
@@ -3372,7 +3372,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f6",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Lehnswesen. Religion: Glaubensvorstellungen",
@@ -3383,7 +3383,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f7",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Lehnswesen. Kultur: Kunst, Wissen, Alltag",
@@ -3394,7 +3394,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f8",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Lehnswesen. Konflikt: Auseinandersetzung",
@@ -3405,7 +3405,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f9",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Lehnswesen. Revolution: Umsturz der Ordnung",
@@ -3416,7 +3416,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f10",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Staat (lehnswesen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (lehnswesen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Lehnswesen. Staat (lehnswesen): Organisierte Herrschaft",
@@ -3427,7 +3427,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f11",
-      prompt: "[ge-k6-lb2-lehnswesen] Was beschreibt „Migration (lehnswesen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (lehnswesen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Lehnswesen. Migration (lehnswesen): Wanderung von Menschen",
@@ -3462,7 +3462,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f0",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Alltag Staende. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3473,7 +3473,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f1",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Alltag Staende. Chronologie: Zeitliche Ordnung",
@@ -3484,7 +3484,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f2",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag Staende. Epoche: Geschichtlicher Zeitraum",
@@ -3495,7 +3495,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f3",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Alltag Staende. Herrschaft: Politische Machtordnung",
@@ -3506,7 +3506,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f4",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Alltag Staende. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3517,7 +3517,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f5",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Alltag Staende. Wirtschaft: Produktion und Handel",
@@ -3528,7 +3528,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f6",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Alltag Staende. Religion: Glaubensvorstellungen",
@@ -3539,7 +3539,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f7",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Alltag Staende. Kultur: Kunst, Wissen, Alltag",
@@ -3550,7 +3550,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f8",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Alltag Staende. Konflikt: Auseinandersetzung",
@@ -3561,7 +3561,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f9",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag Staende. Revolution: Umsturz der Ordnung",
@@ -3572,7 +3572,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f10",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Staat (staende)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (staende)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Alltag Staende. Staat (staende): Organisierte Herrschaft",
@@ -3583,7 +3583,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f11",
-      prompt: "[ge-k6-lb2-alltag-staende] Was beschreibt „Migration (staende)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (staende)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Alltag Staende. Migration (staende): Wanderung von Menschen",
@@ -3618,7 +3618,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f0",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Alltag Froemmigkeit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3629,7 +3629,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f1",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Alltag Froemmigkeit. Chronologie: Zeitliche Ordnung",
@@ -3640,7 +3640,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f2",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag Froemmigkeit. Epoche: Geschichtlicher Zeitraum",
@@ -3651,7 +3651,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f3",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Alltag Froemmigkeit. Herrschaft: Politische Machtordnung",
@@ -3662,7 +3662,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f4",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Alltag Froemmigkeit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3673,7 +3673,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f5",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Alltag Froemmigkeit. Wirtschaft: Produktion und Handel",
@@ -3684,7 +3684,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f6",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Alltag Froemmigkeit. Religion: Glaubensvorstellungen",
@@ -3695,7 +3695,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f7",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Alltag Froemmigkeit. Kultur: Kunst, Wissen, Alltag",
@@ -3706,7 +3706,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f8",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Alltag Froemmigkeit. Konflikt: Auseinandersetzung",
@@ -3717,7 +3717,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f9",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag Froemmigkeit. Revolution: Umsturz der Ordnung",
@@ -3728,7 +3728,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f10",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Staat (froemmigkeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (froemmigkeit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Alltag Froemmigkeit. Staat (froemmigkeit): Organisierte Herrschaft",
@@ -3739,7 +3739,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f11",
-      prompt: "[ge-k6-lb2-alltag-froemmigkeit] Was beschreibt „Migration (froemmigkeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (froemmigkeit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Alltag Froemmigkeit. Migration (froemmigkeit): Wanderung von Menschen",
@@ -3774,7 +3774,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f0",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Juden Verfolgung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3785,7 +3785,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f1",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Juden Verfolgung. Chronologie: Zeitliche Ordnung",
@@ -3796,7 +3796,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f2",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Juden Verfolgung. Epoche: Geschichtlicher Zeitraum",
@@ -3807,7 +3807,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f3",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Juden Verfolgung. Herrschaft: Politische Machtordnung",
@@ -3818,7 +3818,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f4",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Juden Verfolgung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3829,7 +3829,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f5",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Juden Verfolgung. Wirtschaft: Produktion und Handel",
@@ -3840,7 +3840,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f6",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Juden Verfolgung. Religion: Glaubensvorstellungen",
@@ -3851,7 +3851,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f7",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Juden Verfolgung. Kultur: Kunst, Wissen, Alltag",
@@ -3862,7 +3862,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f8",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Juden Verfolgung. Konflikt: Auseinandersetzung",
@@ -3873,7 +3873,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f9",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Juden Verfolgung. Revolution: Umsturz der Ordnung",
@@ -3884,7 +3884,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f10",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Staat (verfolgung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (verfolgung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Juden Verfolgung. Staat (verfolgung): Organisierte Herrschaft",
@@ -3895,7 +3895,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f11",
-      prompt: "[ge-k6-lb3-juden-verfolgung] Was beschreibt „Migration (verfolgung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (verfolgung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Juden Verfolgung. Migration (verfolgung): Wanderung von Menschen",
@@ -3930,7 +3930,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb3-islam:f0",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Islam. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -3941,7 +3941,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f1",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Islam. Chronologie: Zeitliche Ordnung",
@@ -3952,7 +3952,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f2",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Islam. Epoche: Geschichtlicher Zeitraum",
@@ -3963,7 +3963,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f3",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Islam. Herrschaft: Politische Machtordnung",
@@ -3974,7 +3974,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f4",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Islam. Gesellschaft: Soziale Schichten und Gruppen",
@@ -3985,7 +3985,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f5",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Islam. Wirtschaft: Produktion und Handel",
@@ -3996,7 +3996,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f6",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Islam. Religion: Glaubensvorstellungen",
@@ -4007,7 +4007,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f7",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Islam. Kultur: Kunst, Wissen, Alltag",
@@ -4018,7 +4018,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f8",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Islam. Konflikt: Auseinandersetzung",
@@ -4029,7 +4029,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f9",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Islam. Revolution: Umsturz der Ordnung",
@@ -4040,7 +4040,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f10",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Staat (islam)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (islam)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Islam. Staat (islam): Organisierte Herrschaft",
@@ -4051,7 +4051,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f11",
-      prompt: "[ge-k6-lb3-islam] Was beschreibt „Migration (islam)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (islam)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Islam. Migration (islam): Wanderung von Menschen",
@@ -4086,7 +4086,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f0",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kreuzzuege. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4097,7 +4097,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f1",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kreuzzuege. Chronologie: Zeitliche Ordnung",
@@ -4108,7 +4108,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f2",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kreuzzuege. Epoche: Geschichtlicher Zeitraum",
@@ -4119,7 +4119,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f3",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kreuzzuege. Herrschaft: Politische Machtordnung",
@@ -4130,7 +4130,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f4",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kreuzzuege. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4141,7 +4141,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f5",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kreuzzuege. Wirtschaft: Produktion und Handel",
@@ -4152,7 +4152,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f6",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kreuzzuege. Religion: Glaubensvorstellungen",
@@ -4163,7 +4163,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f7",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kreuzzuege. Kultur: Kunst, Wissen, Alltag",
@@ -4174,7 +4174,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f8",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kreuzzuege. Konflikt: Auseinandersetzung",
@@ -4185,7 +4185,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f9",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kreuzzuege. Revolution: Umsturz der Ordnung",
@@ -4196,7 +4196,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f10",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Staat (kreuzzuege)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kreuzzuege)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kreuzzuege. Staat (kreuzzuege): Organisierte Herrschaft",
@@ -4207,7 +4207,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f11",
-      prompt: "[ge-k6-lb3-kreuzzuege] Was beschreibt „Migration (kreuzzuege)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kreuzzuege)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kreuzzuege. Migration (kreuzzuege): Wanderung von Menschen",
@@ -4242,7 +4242,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f0",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Begegnung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4253,7 +4253,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f1",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Begegnung. Chronologie: Zeitliche Ordnung",
@@ -4264,7 +4264,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f2",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Begegnung. Epoche: Geschichtlicher Zeitraum",
@@ -4275,7 +4275,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f3",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Begegnung. Herrschaft: Politische Machtordnung",
@@ -4286,7 +4286,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f4",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Begegnung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4297,7 +4297,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f5",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Begegnung. Wirtschaft: Produktion und Handel",
@@ -4308,7 +4308,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f6",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Begegnung. Religion: Glaubensvorstellungen",
@@ -4319,7 +4319,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f7",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Begegnung. Kultur: Kunst, Wissen, Alltag",
@@ -4330,7 +4330,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f8",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Begegnung. Konflikt: Auseinandersetzung",
@@ -4341,7 +4341,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f9",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Begegnung. Revolution: Umsturz der Ordnung",
@@ -4352,7 +4352,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f10",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Staat (begegnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (begegnung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Begegnung. Staat (begegnung): Organisierte Herrschaft",
@@ -4363,7 +4363,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f11",
-      prompt: "[ge-k6-lb3-begegnung] Was beschreibt „Migration (begegnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (begegnung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Begegnung. Migration (begegnung): Wanderung von Menschen",
@@ -4398,7 +4398,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f0",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Toleranz Heute. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4409,7 +4409,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f1",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Toleranz Heute. Chronologie: Zeitliche Ordnung",
@@ -4420,7 +4420,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f2",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Toleranz Heute. Epoche: Geschichtlicher Zeitraum",
@@ -4431,7 +4431,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f3",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Toleranz Heute. Herrschaft: Politische Machtordnung",
@@ -4442,7 +4442,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f4",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Toleranz Heute. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4453,7 +4453,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f5",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Toleranz Heute. Wirtschaft: Produktion und Handel",
@@ -4464,7 +4464,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f6",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Toleranz Heute. Religion: Glaubensvorstellungen",
@@ -4475,7 +4475,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f7",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Toleranz Heute. Kultur: Kunst, Wissen, Alltag",
@@ -4486,7 +4486,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f8",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Toleranz Heute. Konflikt: Auseinandersetzung",
@@ -4497,7 +4497,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f9",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Toleranz Heute. Revolution: Umsturz der Ordnung",
@@ -4508,7 +4508,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f10",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Staat (heute)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (heute)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Toleranz Heute. Staat (heute): Organisierte Herrschaft",
@@ -4519,7 +4519,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f11",
-      prompt: "[ge-k6-lb3-toleranz-heute] Was beschreibt „Migration (heute)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (heute)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Toleranz Heute. Migration (heute): Wanderung von Menschen",
@@ -4554,7 +4554,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f0",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Buerger. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4565,7 +4565,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f1",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Buerger. Chronologie: Zeitliche Ordnung",
@@ -4576,7 +4576,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f2",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Buerger. Epoche: Geschichtlicher Zeitraum",
@@ -4587,7 +4587,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f3",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Buerger. Herrschaft: Politische Machtordnung",
@@ -4598,7 +4598,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f4",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Buerger. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4609,7 +4609,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f5",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Buerger. Wirtschaft: Produktion und Handel",
@@ -4620,7 +4620,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f6",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Buerger. Religion: Glaubensvorstellungen",
@@ -4631,7 +4631,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f7",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Buerger. Kultur: Kunst, Wissen, Alltag",
@@ -4642,7 +4642,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f8",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Buerger. Konflikt: Auseinandersetzung",
@@ -4653,7 +4653,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f9",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Buerger. Revolution: Umsturz der Ordnung",
@@ -4664,7 +4664,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f10",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Staat (buerger)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (buerger)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Buerger. Staat (buerger): Organisierte Herrschaft",
@@ -4675,7 +4675,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f11",
-      prompt: "[ge-k6-lb4-buerger] Was beschreibt „Migration (buerger)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (buerger)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Buerger. Migration (buerger): Wanderung von Menschen",
@@ -4710,7 +4710,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb4-polis:f0",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Polis. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4721,7 +4721,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f1",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Polis. Chronologie: Zeitliche Ordnung",
@@ -4732,7 +4732,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f2",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Polis. Epoche: Geschichtlicher Zeitraum",
@@ -4743,7 +4743,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f3",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Polis. Herrschaft: Politische Machtordnung",
@@ -4754,7 +4754,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f4",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Polis. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4765,7 +4765,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f5",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Polis. Wirtschaft: Produktion und Handel",
@@ -4776,7 +4776,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f6",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Polis. Religion: Glaubensvorstellungen",
@@ -4787,7 +4787,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f7",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Polis. Kultur: Kunst, Wissen, Alltag",
@@ -4798,7 +4798,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f8",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Polis. Konflikt: Auseinandersetzung",
@@ -4809,7 +4809,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f9",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Polis. Revolution: Umsturz der Ordnung",
@@ -4820,7 +4820,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f10",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Staat (polis)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (polis)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Polis. Staat (polis): Organisierte Herrschaft",
@@ -4831,7 +4831,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f11",
-      prompt: "[ge-k6-lb4-polis] Was beschreibt „Migration (polis)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (polis)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Polis. Migration (polis): Wanderung von Menschen",
@@ -4866,7 +4866,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb4-rom:f0",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Rom. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -4877,7 +4877,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f1",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Rom. Chronologie: Zeitliche Ordnung",
@@ -4888,7 +4888,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f2",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Rom. Epoche: Geschichtlicher Zeitraum",
@@ -4899,7 +4899,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f3",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Rom. Herrschaft: Politische Machtordnung",
@@ -4910,7 +4910,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f4",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Rom. Gesellschaft: Soziale Schichten und Gruppen",
@@ -4921,7 +4921,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f5",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Rom. Wirtschaft: Produktion und Handel",
@@ -4932,7 +4932,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f6",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Rom. Religion: Glaubensvorstellungen",
@@ -4943,7 +4943,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f7",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Rom. Kultur: Kunst, Wissen, Alltag",
@@ -4954,7 +4954,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f8",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Rom. Konflikt: Auseinandersetzung",
@@ -4965,7 +4965,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f9",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Rom. Revolution: Umsturz der Ordnung",
@@ -4976,7 +4976,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f10",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Staat (rom)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (rom)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Rom. Staat (rom): Organisierte Herrschaft",
@@ -4987,7 +4987,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f11",
-      prompt: "[ge-k6-lb4-rom] Was beschreibt „Migration (rom)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (rom)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Rom. Migration (rom): Wanderung von Menschen",
@@ -5022,7 +5022,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f0",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Stadt. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5033,7 +5033,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f1",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Stadt. Chronologie: Zeitliche Ordnung",
@@ -5044,7 +5044,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f2",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Stadt. Epoche: Geschichtlicher Zeitraum",
@@ -5055,7 +5055,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f3",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Stadt. Herrschaft: Politische Machtordnung",
@@ -5066,7 +5066,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f4",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Stadt. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5077,7 +5077,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f5",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Stadt. Wirtschaft: Produktion und Handel",
@@ -5088,7 +5088,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f6",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Stadt. Religion: Glaubensvorstellungen",
@@ -5099,7 +5099,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f7",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Stadt. Kultur: Kunst, Wissen, Alltag",
@@ -5110,7 +5110,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f8",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Stadt. Konflikt: Auseinandersetzung",
@@ -5121,7 +5121,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f9",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Stadt. Revolution: Umsturz der Ordnung",
@@ -5132,7 +5132,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f10",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Staat (stadt)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (stadt)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Stadt. Staat (stadt): Organisierte Herrschaft",
@@ -5143,7 +5143,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f11",
-      prompt: "[ge-k6-lb4-stadt] Was beschreibt „Migration (stadt)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (stadt)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Stadt. Migration (stadt): Wanderung von Menschen",
@@ -5178,7 +5178,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f0",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Vergleich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5189,7 +5189,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f1",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Vergleich. Chronologie: Zeitliche Ordnung",
@@ -5200,7 +5200,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f2",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Vergleich. Epoche: Geschichtlicher Zeitraum",
@@ -5211,7 +5211,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f3",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Vergleich. Herrschaft: Politische Machtordnung",
@@ -5222,7 +5222,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f4",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Vergleich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5233,7 +5233,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f5",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Vergleich. Wirtschaft: Produktion und Handel",
@@ -5244,7 +5244,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f6",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Vergleich. Religion: Glaubensvorstellungen",
@@ -5255,7 +5255,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f7",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Vergleich. Kultur: Kunst, Wissen, Alltag",
@@ -5266,7 +5266,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f8",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Vergleich. Konflikt: Auseinandersetzung",
@@ -5277,7 +5277,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f9",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Vergleich. Revolution: Umsturz der Ordnung",
@@ -5288,7 +5288,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f10",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Staat (vergleich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (vergleich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Vergleich. Staat (vergleich): Organisierte Herrschaft",
@@ -5299,7 +5299,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f11",
-      prompt: "[ge-k6-lb4-vergleich] Was beschreibt „Migration (vergleich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (vergleich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Vergleich. Migration (vergleich): Wanderung von Menschen",
@@ -5334,7 +5334,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f0",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Besiedlung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5345,7 +5345,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f1",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Besiedlung. Chronologie: Zeitliche Ordnung",
@@ -5356,7 +5356,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f2",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Besiedlung. Epoche: Geschichtlicher Zeitraum",
@@ -5367,7 +5367,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f3",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Besiedlung. Herrschaft: Politische Machtordnung",
@@ -5378,7 +5378,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f4",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Besiedlung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5389,7 +5389,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f5",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Besiedlung. Wirtschaft: Produktion und Handel",
@@ -5400,7 +5400,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f6",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Besiedlung. Religion: Glaubensvorstellungen",
@@ -5411,7 +5411,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f7",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Besiedlung. Kultur: Kunst, Wissen, Alltag",
@@ -5422,7 +5422,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f8",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Besiedlung. Konflikt: Auseinandersetzung",
@@ -5433,7 +5433,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f9",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Besiedlung. Revolution: Umsturz der Ordnung",
@@ -5444,7 +5444,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f10",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Staat (besiedlung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (besiedlung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Besiedlung. Staat (besiedlung): Organisierte Herrschaft",
@@ -5455,7 +5455,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f11",
-      prompt: "[ge-k6-lbw-besiedlung] Was beschreibt „Migration (besiedlung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (besiedlung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Besiedlung. Migration (besiedlung): Wanderung von Menschen",
@@ -5490,7 +5490,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f0",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kurfuerstentum. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5501,7 +5501,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f1",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kurfuerstentum. Chronologie: Zeitliche Ordnung",
@@ -5512,7 +5512,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f2",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kurfuerstentum. Epoche: Geschichtlicher Zeitraum",
@@ -5523,7 +5523,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f3",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kurfuerstentum. Herrschaft: Politische Machtordnung",
@@ -5534,7 +5534,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f4",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kurfuerstentum. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5545,7 +5545,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f5",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kurfuerstentum. Wirtschaft: Produktion und Handel",
@@ -5556,7 +5556,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f6",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kurfuerstentum. Religion: Glaubensvorstellungen",
@@ -5567,7 +5567,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f7",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kurfuerstentum. Kultur: Kunst, Wissen, Alltag",
@@ -5578,7 +5578,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f8",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kurfuerstentum. Konflikt: Auseinandersetzung",
@@ -5589,7 +5589,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f9",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kurfuerstentum. Revolution: Umsturz der Ordnung",
@@ -5600,7 +5600,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f10",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Staat (kurfuerstentum)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kurfuerstentum)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kurfuerstentum. Staat (kurfuerstentum): Organisierte Herrschaft",
@@ -5611,7 +5611,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f11",
-      prompt: "[ge-k6-lbw-kurfuerstentum] Was beschreibt „Migration (kurfuerstentum)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kurfuerstentum)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kurfuerstentum. Migration (kurfuerstentum): Wanderung von Menschen",
@@ -5646,7 +5646,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f0",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Selbstverstaendnis. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5657,7 +5657,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f1",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Selbstverstaendnis. Chronologie: Zeitliche Ordnung",
@@ -5668,7 +5668,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f2",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Selbstverstaendnis. Epoche: Geschichtlicher Zeitraum",
@@ -5679,7 +5679,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f3",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Selbstverstaendnis. Herrschaft: Politische Machtordnung",
@@ -5690,7 +5690,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f4",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Selbstverstaendnis. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5701,7 +5701,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f5",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Selbstverstaendnis. Wirtschaft: Produktion und Handel",
@@ -5712,7 +5712,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f6",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Selbstverstaendnis. Religion: Glaubensvorstellungen",
@@ -5723,7 +5723,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f7",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Selbstverstaendnis. Kultur: Kunst, Wissen, Alltag",
@@ -5734,7 +5734,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f8",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Selbstverstaendnis. Konflikt: Auseinandersetzung",
@@ -5745,7 +5745,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f9",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Selbstverstaendnis. Revolution: Umsturz der Ordnung",
@@ -5756,7 +5756,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f10",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Staat (selbstverstaendnis)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (selbstverstaendnis)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Selbstverstaendnis. Staat (selbstverstaendnis): Organisierte Herrschaft",
@@ -5767,7 +5767,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f11",
-      prompt: "[ge-k6-lbw-selbstverstaendnis] Was beschreibt „Migration (selbstverstaendnis)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (selbstverstaendnis)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Selbstverstaendnis. Migration (selbstverstaendnis): Wanderung von Menschen",
@@ -5802,7 +5802,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f0",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Renaissance. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5813,7 +5813,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f1",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Renaissance. Chronologie: Zeitliche Ordnung",
@@ -5824,7 +5824,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f2",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Renaissance. Epoche: Geschichtlicher Zeitraum",
@@ -5835,7 +5835,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f3",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Renaissance. Herrschaft: Politische Machtordnung",
@@ -5846,7 +5846,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f4",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Renaissance. Gesellschaft: Soziale Schichten und Gruppen",
@@ -5857,7 +5857,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f5",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Renaissance. Wirtschaft: Produktion und Handel",
@@ -5868,7 +5868,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f6",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Renaissance. Religion: Glaubensvorstellungen",
@@ -5879,7 +5879,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f7",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Renaissance. Kultur: Kunst, Wissen, Alltag",
@@ -5890,7 +5890,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f8",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Renaissance. Konflikt: Auseinandersetzung",
@@ -5901,7 +5901,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f9",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Renaissance. Revolution: Umsturz der Ordnung",
@@ -5912,7 +5912,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f10",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Staat (renaissance)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (renaissance)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Renaissance. Staat (renaissance): Organisierte Herrschaft",
@@ -5923,7 +5923,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f11",
-      prompt: "[ge-k7-lb1-renaissance] Was beschreibt „Migration (renaissance)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (renaissance)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Renaissance. Migration (renaissance): Wanderung von Menschen",
@@ -5958,7 +5958,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f0",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Entdeckungen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -5969,7 +5969,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f1",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Entdeckungen. Chronologie: Zeitliche Ordnung",
@@ -5980,7 +5980,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f2",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Entdeckungen. Epoche: Geschichtlicher Zeitraum",
@@ -5991,7 +5991,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f3",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Entdeckungen. Herrschaft: Politische Machtordnung",
@@ -6002,7 +6002,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f4",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Entdeckungen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6013,7 +6013,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f5",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Entdeckungen. Wirtschaft: Produktion und Handel",
@@ -6024,7 +6024,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f6",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Entdeckungen. Religion: Glaubensvorstellungen",
@@ -6035,7 +6035,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f7",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Entdeckungen. Kultur: Kunst, Wissen, Alltag",
@@ -6046,7 +6046,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f8",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Entdeckungen. Konflikt: Auseinandersetzung",
@@ -6057,7 +6057,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f9",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Entdeckungen. Revolution: Umsturz der Ordnung",
@@ -6068,7 +6068,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f10",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Staat (entdeckungen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (entdeckungen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Entdeckungen. Staat (entdeckungen): Organisierte Herrschaft",
@@ -6079,7 +6079,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f11",
-      prompt: "[ge-k7-lb1-entdeckungen] Was beschreibt „Migration (entdeckungen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (entdeckungen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Entdeckungen. Migration (entdeckungen): Wanderung von Menschen",
@@ -6114,7 +6114,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f0",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Reformation Krieg. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6125,7 +6125,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f1",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Reformation Krieg. Chronologie: Zeitliche Ordnung",
@@ -6136,7 +6136,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f2",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Krieg. Epoche: Geschichtlicher Zeitraum",
@@ -6147,7 +6147,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f3",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Reformation Krieg. Herrschaft: Politische Machtordnung",
@@ -6158,7 +6158,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f4",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Reformation Krieg. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6169,7 +6169,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f5",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Reformation Krieg. Wirtschaft: Produktion und Handel",
@@ -6180,7 +6180,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f6",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Reformation Krieg. Religion: Glaubensvorstellungen",
@@ -6191,7 +6191,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f7",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Reformation Krieg. Kultur: Kunst, Wissen, Alltag",
@@ -6202,7 +6202,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f8",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Reformation Krieg. Konflikt: Auseinandersetzung",
@@ -6213,7 +6213,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f9",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Krieg. Revolution: Umsturz der Ordnung",
@@ -6224,7 +6224,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f10",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Staat (krieg)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (krieg)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Reformation Krieg. Staat (krieg): Organisierte Herrschaft",
@@ -6235,7 +6235,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f11",
-      prompt: "[ge-k7-lb1-reformation-krieg] Was beschreibt „Migration (krieg)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (krieg)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Reformation Krieg. Migration (krieg): Wanderung von Menschen",
@@ -6270,7 +6270,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f0",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Absolutismus Frankreich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6281,7 +6281,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f1",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Absolutismus Frankreich. Chronologie: Zeitliche Ordnung",
@@ -6292,7 +6292,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f2",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Absolutismus Frankreich. Epoche: Geschichtlicher Zeitraum",
@@ -6303,7 +6303,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f3",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Absolutismus Frankreich. Herrschaft: Politische Machtordnung",
@@ -6314,7 +6314,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f4",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Absolutismus Frankreich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6325,7 +6325,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f5",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Absolutismus Frankreich. Wirtschaft: Produktion und Handel",
@@ -6336,7 +6336,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f6",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Absolutismus Frankreich. Religion: Glaubensvorstellungen",
@@ -6347,7 +6347,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f7",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Absolutismus Frankreich. Kultur: Kunst, Wissen, Alltag",
@@ -6358,7 +6358,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f8",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Absolutismus Frankreich. Konflikt: Auseinandersetzung",
@@ -6369,7 +6369,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f9",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Absolutismus Frankreich. Revolution: Umsturz der Ordnung",
@@ -6380,7 +6380,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f10",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Staat (frankreich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (frankreich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Absolutismus Frankreich. Staat (frankreich): Organisierte Herrschaft",
@@ -6391,7 +6391,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f11",
-      prompt: "[ge-k7-lb2-absolutismus-frankreich] Was beschreibt „Migration (frankreich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (frankreich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Absolutismus Frankreich. Migration (frankreich): Wanderung von Menschen",
@@ -6426,7 +6426,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f0",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Aufklaerung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6437,7 +6437,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f1",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Aufklaerung. Chronologie: Zeitliche Ordnung",
@@ -6448,7 +6448,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f2",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Aufklaerung. Epoche: Geschichtlicher Zeitraum",
@@ -6459,7 +6459,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f3",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Aufklaerung. Herrschaft: Politische Machtordnung",
@@ -6470,7 +6470,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f4",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Aufklaerung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6481,7 +6481,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f5",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Aufklaerung. Wirtschaft: Produktion und Handel",
@@ -6492,7 +6492,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f6",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Aufklaerung. Religion: Glaubensvorstellungen",
@@ -6503,7 +6503,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f7",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Aufklaerung. Kultur: Kunst, Wissen, Alltag",
@@ -6514,7 +6514,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f8",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Aufklaerung. Konflikt: Auseinandersetzung",
@@ -6525,7 +6525,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f9",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Aufklaerung. Revolution: Umsturz der Ordnung",
@@ -6536,7 +6536,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f10",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Staat (aufklaerung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (aufklaerung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Aufklaerung. Staat (aufklaerung): Organisierte Herrschaft",
@@ -6547,7 +6547,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f11",
-      prompt: "[ge-k7-lb2-aufklaerung] Was beschreibt „Migration (aufklaerung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (aufklaerung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Aufklaerung. Migration (aufklaerung): Wanderung von Menschen",
@@ -6582,7 +6582,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f0",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Preussen Sachsen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6593,7 +6593,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f1",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Preussen Sachsen. Chronologie: Zeitliche Ordnung",
@@ -6604,7 +6604,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f2",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Preussen Sachsen. Epoche: Geschichtlicher Zeitraum",
@@ -6615,7 +6615,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f3",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Preussen Sachsen. Herrschaft: Politische Machtordnung",
@@ -6626,7 +6626,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f4",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Preussen Sachsen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6637,7 +6637,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f5",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Preussen Sachsen. Wirtschaft: Produktion und Handel",
@@ -6648,7 +6648,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f6",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Preussen Sachsen. Religion: Glaubensvorstellungen",
@@ -6659,7 +6659,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f7",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Preussen Sachsen. Kultur: Kunst, Wissen, Alltag",
@@ -6670,7 +6670,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f8",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Preussen Sachsen. Konflikt: Auseinandersetzung",
@@ -6681,7 +6681,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f9",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Preussen Sachsen. Revolution: Umsturz der Ordnung",
@@ -6692,7 +6692,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f10",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Staat (sachsen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (sachsen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Preussen Sachsen. Staat (sachsen): Organisierte Herrschaft",
@@ -6703,7 +6703,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f11",
-      prompt: "[ge-k7-lb2-preussen-sachsen] Was beschreibt „Migration (sachsen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (sachsen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Preussen Sachsen. Migration (sachsen): Wanderung von Menschen",
@@ -6738,7 +6738,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb3-england:f0",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: England. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6749,7 +6749,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f1",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: England. Chronologie: Zeitliche Ordnung",
@@ -6760,7 +6760,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f2",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: England. Epoche: Geschichtlicher Zeitraum",
@@ -6771,7 +6771,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f3",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: England. Herrschaft: Politische Machtordnung",
@@ -6782,7 +6782,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f4",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: England. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6793,7 +6793,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f5",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: England. Wirtschaft: Produktion und Handel",
@@ -6804,7 +6804,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f6",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: England. Religion: Glaubensvorstellungen",
@@ -6815,7 +6815,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f7",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: England. Kultur: Kunst, Wissen, Alltag",
@@ -6826,7 +6826,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f8",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: England. Konflikt: Auseinandersetzung",
@@ -6837,7 +6837,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f9",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: England. Revolution: Umsturz der Ordnung",
@@ -6848,7 +6848,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f10",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Staat (england)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (england)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: England. Staat (england): Organisierte Herrschaft",
@@ -6859,7 +6859,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f11",
-      prompt: "[ge-k7-lb3-england] Was beschreibt „Migration (england)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (england)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: England. Migration (england): Wanderung von Menschen",
@@ -6894,7 +6894,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb3-usa:f0",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Usa. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -6905,7 +6905,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f1",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Usa. Chronologie: Zeitliche Ordnung",
@@ -6916,7 +6916,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f2",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Usa. Epoche: Geschichtlicher Zeitraum",
@@ -6927,7 +6927,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f3",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Usa. Herrschaft: Politische Machtordnung",
@@ -6938,7 +6938,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f4",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Usa. Gesellschaft: Soziale Schichten und Gruppen",
@@ -6949,7 +6949,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f5",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Usa. Wirtschaft: Produktion und Handel",
@@ -6960,7 +6960,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f6",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Usa. Religion: Glaubensvorstellungen",
@@ -6971,7 +6971,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f7",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Usa. Kultur: Kunst, Wissen, Alltag",
@@ -6982,7 +6982,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f8",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Usa. Konflikt: Auseinandersetzung",
@@ -6993,7 +6993,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f9",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Usa. Revolution: Umsturz der Ordnung",
@@ -7004,7 +7004,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f10",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Staat (usa)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (usa)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Usa. Staat (usa): Organisierte Herrschaft",
@@ -7015,7 +7015,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f11",
-      prompt: "[ge-k7-lb3-usa] Was beschreibt „Migration (usa)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (usa)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Usa. Migration (usa): Wanderung von Menschen",
@@ -7050,7 +7050,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f0",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Franzoesische Revolution. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7061,7 +7061,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f1",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Franzoesische Revolution. Chronologie: Zeitliche Ordnung",
@@ -7072,7 +7072,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f2",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Franzoesische Revolution. Epoche: Geschichtlicher Zeitraum",
@@ -7083,7 +7083,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f3",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Franzoesische Revolution. Herrschaft: Politische Machtordnung",
@@ -7094,7 +7094,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f4",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Franzoesische Revolution. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7105,7 +7105,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f5",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Franzoesische Revolution. Wirtschaft: Produktion und Handel",
@@ -7116,7 +7116,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f6",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Franzoesische Revolution. Religion: Glaubensvorstellungen",
@@ -7127,7 +7127,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f7",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Franzoesische Revolution. Kultur: Kunst, Wissen, Alltag",
@@ -7138,7 +7138,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f8",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Franzoesische Revolution. Konflikt: Auseinandersetzung",
@@ -7149,7 +7149,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f9",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Franzoesische Revolution. Revolution: Umsturz der Ordnung",
@@ -7160,7 +7160,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f10",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Staat (revolution)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (revolution)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Franzoesische Revolution. Staat (revolution): Organisierte Herrschaft",
@@ -7171,7 +7171,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f11",
-      prompt: "[ge-k7-lb3-franzoesische-revolution] Was beschreibt „Migration (revolution)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (revolution)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Franzoesische Revolution. Migration (revolution): Wanderung von Menschen",
@@ -7206,7 +7206,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f0",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Napoleon. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7217,7 +7217,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f1",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Napoleon. Chronologie: Zeitliche Ordnung",
@@ -7228,7 +7228,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f2",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Napoleon. Epoche: Geschichtlicher Zeitraum",
@@ -7239,7 +7239,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f3",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Napoleon. Herrschaft: Politische Machtordnung",
@@ -7250,7 +7250,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f4",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Napoleon. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7261,7 +7261,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f5",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Napoleon. Wirtschaft: Produktion und Handel",
@@ -7272,7 +7272,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f6",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Napoleon. Religion: Glaubensvorstellungen",
@@ -7283,7 +7283,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f7",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Napoleon. Kultur: Kunst, Wissen, Alltag",
@@ -7294,7 +7294,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f8",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Napoleon. Konflikt: Auseinandersetzung",
@@ -7305,7 +7305,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f9",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Napoleon. Revolution: Umsturz der Ordnung",
@@ -7316,7 +7316,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f10",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Staat (napoleon)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (napoleon)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Napoleon. Staat (napoleon): Organisierte Herrschaft",
@@ -7327,7 +7327,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f11",
-      prompt: "[ge-k7-lb3-napoleon] Was beschreibt „Migration (napoleon)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (napoleon)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Napoleon. Migration (napoleon): Wanderung von Menschen",
@@ -7362,7 +7362,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f0",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Legitimation. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7373,7 +7373,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f1",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Legitimation. Chronologie: Zeitliche Ordnung",
@@ -7384,7 +7384,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f2",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Legitimation. Epoche: Geschichtlicher Zeitraum",
@@ -7395,7 +7395,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f3",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Legitimation. Herrschaft: Politische Machtordnung",
@@ -7406,7 +7406,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f4",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Legitimation. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7417,7 +7417,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f5",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Legitimation. Wirtschaft: Produktion und Handel",
@@ -7428,7 +7428,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f6",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Legitimation. Religion: Glaubensvorstellungen",
@@ -7439,7 +7439,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f7",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Legitimation. Kultur: Kunst, Wissen, Alltag",
@@ -7450,7 +7450,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f8",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Legitimation. Konflikt: Auseinandersetzung",
@@ -7461,7 +7461,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f9",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Legitimation. Revolution: Umsturz der Ordnung",
@@ -7472,7 +7472,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f10",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Staat (legitimation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (legitimation)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Legitimation. Staat (legitimation): Organisierte Herrschaft",
@@ -7483,7 +7483,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f11",
-      prompt: "[ge-k7-lb4-legitimation] Was beschreibt „Migration (legitimation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (legitimation)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Legitimation. Migration (legitimation): Wanderung von Menschen",
@@ -7518,7 +7518,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f0",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Gottesgnade. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7529,7 +7529,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f1",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Gottesgnade. Chronologie: Zeitliche Ordnung",
@@ -7540,7 +7540,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f2",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Gottesgnade. Epoche: Geschichtlicher Zeitraum",
@@ -7551,7 +7551,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f3",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Gottesgnade. Herrschaft: Politische Machtordnung",
@@ -7562,7 +7562,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f4",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Gottesgnade. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7573,7 +7573,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f5",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Gottesgnade. Wirtschaft: Produktion und Handel",
@@ -7584,7 +7584,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f6",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Gottesgnade. Religion: Glaubensvorstellungen",
@@ -7595,7 +7595,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f7",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Gottesgnade. Kultur: Kunst, Wissen, Alltag",
@@ -7606,7 +7606,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f8",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Gottesgnade. Konflikt: Auseinandersetzung",
@@ -7617,7 +7617,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f9",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Gottesgnade. Revolution: Umsturz der Ordnung",
@@ -7628,7 +7628,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f10",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Staat (gottesgnade)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (gottesgnade)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Gottesgnade. Staat (gottesgnade): Organisierte Herrschaft",
@@ -7639,7 +7639,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f11",
-      prompt: "[ge-k7-lb4-gottesgnade] Was beschreibt „Migration (gottesgnade)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (gottesgnade)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Gottesgnade. Migration (gottesgnade): Wanderung von Menschen",
@@ -7674,7 +7674,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f0",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Verfassung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7685,7 +7685,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f1",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Verfassung. Chronologie: Zeitliche Ordnung",
@@ -7696,7 +7696,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f2",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Verfassung. Epoche: Geschichtlicher Zeitraum",
@@ -7707,7 +7707,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f3",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Verfassung. Herrschaft: Politische Machtordnung",
@@ -7718,7 +7718,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f4",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Verfassung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7729,7 +7729,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f5",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Verfassung. Wirtschaft: Produktion und Handel",
@@ -7740,7 +7740,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f6",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Verfassung. Religion: Glaubensvorstellungen",
@@ -7751,7 +7751,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f7",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Verfassung. Kultur: Kunst, Wissen, Alltag",
@@ -7762,7 +7762,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f8",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Verfassung. Konflikt: Auseinandersetzung",
@@ -7773,7 +7773,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f9",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Verfassung. Revolution: Umsturz der Ordnung",
@@ -7784,7 +7784,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f10",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Staat (verfassung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (verfassung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Verfassung. Staat (verfassung): Organisierte Herrschaft",
@@ -7795,7 +7795,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f11",
-      prompt: "[ge-k7-lb4-verfassung] Was beschreibt „Migration (verfassung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (verfassung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Verfassung. Migration (verfassung): Wanderung von Menschen",
@@ -7830,7 +7830,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f0",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Reformation Gerechtigkeit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7841,7 +7841,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f1",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Reformation Gerechtigkeit. Chronologie: Zeitliche Ordnung",
@@ -7852,7 +7852,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f2",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Gerechtigkeit. Epoche: Geschichtlicher Zeitraum",
@@ -7863,7 +7863,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f3",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Reformation Gerechtigkeit. Herrschaft: Politische Machtordnung",
@@ -7874,7 +7874,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f4",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Reformation Gerechtigkeit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -7885,7 +7885,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f5",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Reformation Gerechtigkeit. Wirtschaft: Produktion und Handel",
@@ -7896,7 +7896,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f6",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Reformation Gerechtigkeit. Religion: Glaubensvorstellungen",
@@ -7907,7 +7907,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f7",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Reformation Gerechtigkeit. Kultur: Kunst, Wissen, Alltag",
@@ -7918,7 +7918,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f8",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Reformation Gerechtigkeit. Konflikt: Auseinandersetzung",
@@ -7929,7 +7929,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f9",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Gerechtigkeit. Revolution: Umsturz der Ordnung",
@@ -7940,7 +7940,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f10",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Staat (gerechtigkeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (gerechtigkeit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Reformation Gerechtigkeit. Staat (gerechtigkeit): Organisierte Herrschaft",
@@ -7951,7 +7951,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f11",
-      prompt: "[ge-k7-lbw-reformation-gerechtigkeit] Was beschreibt „Migration (gerechtigkeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (gerechtigkeit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Reformation Gerechtigkeit. Migration (gerechtigkeit): Wanderung von Menschen",
@@ -7986,7 +7986,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f0",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Reformation Sachsen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -7997,7 +7997,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f1",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Reformation Sachsen. Chronologie: Zeitliche Ordnung",
@@ -8008,7 +8008,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f2",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Sachsen. Epoche: Geschichtlicher Zeitraum",
@@ -8019,7 +8019,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f3",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Reformation Sachsen. Herrschaft: Politische Machtordnung",
@@ -8030,7 +8030,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f4",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Reformation Sachsen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8041,7 +8041,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f5",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Reformation Sachsen. Wirtschaft: Produktion und Handel",
@@ -8052,7 +8052,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f6",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Reformation Sachsen. Religion: Glaubensvorstellungen",
@@ -8063,7 +8063,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f7",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Reformation Sachsen. Kultur: Kunst, Wissen, Alltag",
@@ -8074,7 +8074,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f8",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Reformation Sachsen. Konflikt: Auseinandersetzung",
@@ -8085,7 +8085,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f9",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Sachsen. Revolution: Umsturz der Ordnung",
@@ -8096,7 +8096,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f10",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Staat (sachsen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (sachsen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Reformation Sachsen. Staat (sachsen): Organisierte Herrschaft",
@@ -8107,7 +8107,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f11",
-      prompt: "[ge-k7-lbw-reformation-sachsen] Was beschreibt „Migration (sachsen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (sachsen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Reformation Sachsen. Migration (sachsen): Wanderung von Menschen",
@@ -8142,7 +8142,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f0",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Reformation Katholisch. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8153,7 +8153,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f1",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Reformation Katholisch. Chronologie: Zeitliche Ordnung",
@@ -8164,7 +8164,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f2",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Katholisch. Epoche: Geschichtlicher Zeitraum",
@@ -8175,7 +8175,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f3",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Reformation Katholisch. Herrschaft: Politische Machtordnung",
@@ -8186,7 +8186,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f4",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Reformation Katholisch. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8197,7 +8197,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f5",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Reformation Katholisch. Wirtschaft: Produktion und Handel",
@@ -8208,7 +8208,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f6",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Reformation Katholisch. Religion: Glaubensvorstellungen",
@@ -8219,7 +8219,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f7",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Reformation Katholisch. Kultur: Kunst, Wissen, Alltag",
@@ -8230,7 +8230,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f8",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Reformation Katholisch. Konflikt: Auseinandersetzung",
@@ -8241,7 +8241,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f9",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Katholisch. Revolution: Umsturz der Ordnung",
@@ -8252,7 +8252,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f10",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Staat (katholisch)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (katholisch)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Reformation Katholisch. Staat (katholisch): Organisierte Herrschaft",
@@ -8263,7 +8263,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f11",
-      prompt: "[ge-k7-lbw-reformation-katholisch] Was beschreibt „Migration (katholisch)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (katholisch)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Reformation Katholisch. Migration (katholisch): Wanderung von Menschen",
@@ -8298,7 +8298,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f0",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Napoleon Wiener. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8309,7 +8309,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f1",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Napoleon Wiener. Chronologie: Zeitliche Ordnung",
@@ -8320,7 +8320,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f2",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Napoleon Wiener. Epoche: Geschichtlicher Zeitraum",
@@ -8331,7 +8331,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f3",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Napoleon Wiener. Herrschaft: Politische Machtordnung",
@@ -8342,7 +8342,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f4",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Napoleon Wiener. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8353,7 +8353,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f5",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Napoleon Wiener. Wirtschaft: Produktion und Handel",
@@ -8364,7 +8364,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f6",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Napoleon Wiener. Religion: Glaubensvorstellungen",
@@ -8375,7 +8375,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f7",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Napoleon Wiener. Kultur: Kunst, Wissen, Alltag",
@@ -8386,7 +8386,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f8",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Napoleon Wiener. Konflikt: Auseinandersetzung",
@@ -8397,7 +8397,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f9",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Napoleon Wiener. Revolution: Umsturz der Ordnung",
@@ -8408,7 +8408,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f10",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Staat (wiener)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (wiener)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Napoleon Wiener. Staat (wiener): Organisierte Herrschaft",
@@ -8419,7 +8419,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f11",
-      prompt: "[ge-k8-lb1-napoleon-wiener] Was beschreibt „Migration (wiener)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (wiener)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Napoleon Wiener. Migration (wiener): Wanderung von Menschen",
@@ -8454,7 +8454,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f0",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Vormaerz 1848. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8465,7 +8465,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f1",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Vormaerz 1848. Chronologie: Zeitliche Ordnung",
@@ -8476,7 +8476,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f2",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Vormaerz 1848. Epoche: Geschichtlicher Zeitraum",
@@ -8487,7 +8487,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f3",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Vormaerz 1848. Herrschaft: Politische Machtordnung",
@@ -8498,7 +8498,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f4",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Vormaerz 1848. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8509,7 +8509,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f5",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Vormaerz 1848. Wirtschaft: Produktion und Handel",
@@ -8520,7 +8520,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f6",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Vormaerz 1848. Religion: Glaubensvorstellungen",
@@ -8531,7 +8531,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f7",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Vormaerz 1848. Kultur: Kunst, Wissen, Alltag",
@@ -8542,7 +8542,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f8",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Vormaerz 1848. Konflikt: Auseinandersetzung",
@@ -8553,7 +8553,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f9",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Vormaerz 1848. Revolution: Umsturz der Ordnung",
@@ -8564,7 +8564,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f10",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Staat (1848)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (1848)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Vormaerz 1848. Staat (1848): Organisierte Herrschaft",
@@ -8575,7 +8575,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f11",
-      prompt: "[ge-k8-lb1-vormaerz-1848] Was beschreibt „Migration (1848)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (1848)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Vormaerz 1848. Migration (1848): Wanderung von Menschen",
@@ -8610,7 +8610,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f0",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kaiserreich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8621,7 +8621,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f1",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kaiserreich. Chronologie: Zeitliche Ordnung",
@@ -8632,7 +8632,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f2",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kaiserreich. Epoche: Geschichtlicher Zeitraum",
@@ -8643,7 +8643,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f3",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kaiserreich. Herrschaft: Politische Machtordnung",
@@ -8654,7 +8654,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f4",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kaiserreich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8665,7 +8665,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f5",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kaiserreich. Wirtschaft: Produktion und Handel",
@@ -8676,7 +8676,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f6",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kaiserreich. Religion: Glaubensvorstellungen",
@@ -8687,7 +8687,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f7",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kaiserreich. Kultur: Kunst, Wissen, Alltag",
@@ -8698,7 +8698,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f8",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kaiserreich. Konflikt: Auseinandersetzung",
@@ -8709,7 +8709,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f9",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaiserreich. Revolution: Umsturz der Ordnung",
@@ -8720,7 +8720,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f10",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Staat (kaiserreich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kaiserreich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kaiserreich. Staat (kaiserreich): Organisierte Herrschaft",
@@ -8731,7 +8731,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f11",
-      prompt: "[ge-k8-lb1-kaiserreich] Was beschreibt „Migration (kaiserreich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kaiserreich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kaiserreich. Migration (kaiserreich): Wanderung von Menschen",
@@ -8766,7 +8766,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb2-england:f0",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: England. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8777,7 +8777,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f1",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: England. Chronologie: Zeitliche Ordnung",
@@ -8788,7 +8788,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f2",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: England. Epoche: Geschichtlicher Zeitraum",
@@ -8799,7 +8799,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f3",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: England. Herrschaft: Politische Machtordnung",
@@ -8810,7 +8810,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f4",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: England. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8821,7 +8821,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f5",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: England. Wirtschaft: Produktion und Handel",
@@ -8832,7 +8832,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f6",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: England. Religion: Glaubensvorstellungen",
@@ -8843,7 +8843,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f7",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: England. Kultur: Kunst, Wissen, Alltag",
@@ -8854,7 +8854,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f8",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: England. Konflikt: Auseinandersetzung",
@@ -8865,7 +8865,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f9",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: England. Revolution: Umsturz der Ordnung",
@@ -8876,7 +8876,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f10",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Staat (england)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (england)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: England. Staat (england): Organisierte Herrschaft",
@@ -8887,7 +8887,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f11",
-      prompt: "[ge-k8-lb2-england] Was beschreibt „Migration (england)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (england)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: England. Migration (england): Wanderung von Menschen",
@@ -8922,7 +8922,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f0",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Deutschland. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -8933,7 +8933,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f1",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Deutschland. Chronologie: Zeitliche Ordnung",
@@ -8944,7 +8944,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f2",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Deutschland. Epoche: Geschichtlicher Zeitraum",
@@ -8955,7 +8955,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f3",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Deutschland. Herrschaft: Politische Machtordnung",
@@ -8966,7 +8966,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f4",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Deutschland. Gesellschaft: Soziale Schichten und Gruppen",
@@ -8977,7 +8977,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f5",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Deutschland. Wirtschaft: Produktion und Handel",
@@ -8988,7 +8988,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f6",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Deutschland. Religion: Glaubensvorstellungen",
@@ -8999,7 +8999,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f7",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Deutschland. Kultur: Kunst, Wissen, Alltag",
@@ -9010,7 +9010,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f8",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Deutschland. Konflikt: Auseinandersetzung",
@@ -9021,7 +9021,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f9",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Deutschland. Revolution: Umsturz der Ordnung",
@@ -9032,7 +9032,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f10",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Staat (deutschland)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (deutschland)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Deutschland. Staat (deutschland): Organisierte Herrschaft",
@@ -9043,7 +9043,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f11",
-      prompt: "[ge-k8-lb2-deutschland] Was beschreibt „Migration (deutschland)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (deutschland)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Deutschland. Migration (deutschland): Wanderung von Menschen",
@@ -9078,7 +9078,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f0",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Folgen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9089,7 +9089,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f1",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Folgen. Chronologie: Zeitliche Ordnung",
@@ -9100,7 +9100,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f2",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Folgen. Epoche: Geschichtlicher Zeitraum",
@@ -9111,7 +9111,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f3",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Folgen. Herrschaft: Politische Machtordnung",
@@ -9122,7 +9122,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f4",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Folgen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9133,7 +9133,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f5",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Folgen. Wirtschaft: Produktion und Handel",
@@ -9144,7 +9144,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f6",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Folgen. Religion: Glaubensvorstellungen",
@@ -9155,7 +9155,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f7",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Folgen. Kultur: Kunst, Wissen, Alltag",
@@ -9166,7 +9166,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f8",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Folgen. Konflikt: Auseinandersetzung",
@@ -9177,7 +9177,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f9",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution: Umsturz der Ordnung",
@@ -9188,7 +9188,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f10",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Staat (folgen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (folgen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen): Organisierte Herrschaft",
@@ -9199,7 +9199,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f11",
-      prompt: "[ge-k8-lb2-folgen] Was beschreibt „Migration (folgen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (folgen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Folgen. Migration (folgen): Wanderung von Menschen",
@@ -9234,7 +9234,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f0",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kinderarbeit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9245,7 +9245,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f1",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kinderarbeit. Chronologie: Zeitliche Ordnung",
@@ -9256,7 +9256,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f2",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kinderarbeit. Epoche: Geschichtlicher Zeitraum",
@@ -9267,7 +9267,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f3",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kinderarbeit. Herrschaft: Politische Machtordnung",
@@ -9278,7 +9278,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f4",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kinderarbeit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9289,7 +9289,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f5",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kinderarbeit. Wirtschaft: Produktion und Handel",
@@ -9300,7 +9300,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f6",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kinderarbeit. Religion: Glaubensvorstellungen",
@@ -9311,7 +9311,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f7",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kinderarbeit. Kultur: Kunst, Wissen, Alltag",
@@ -9322,7 +9322,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f8",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kinderarbeit. Konflikt: Auseinandersetzung",
@@ -9333,7 +9333,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f9",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kinderarbeit. Revolution: Umsturz der Ordnung",
@@ -9344,7 +9344,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f10",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Staat (kinderarbeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kinderarbeit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kinderarbeit. Staat (kinderarbeit): Organisierte Herrschaft",
@@ -9355,7 +9355,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f11",
-      prompt: "[ge-k8-lb3-kinderarbeit] Was beschreibt „Migration (kinderarbeit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kinderarbeit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kinderarbeit. Migration (kinderarbeit): Wanderung von Menschen",
@@ -9390,7 +9390,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f0",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Schutzgesetze. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9401,7 +9401,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f1",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Schutzgesetze. Chronologie: Zeitliche Ordnung",
@@ -9412,7 +9412,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f2",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Schutzgesetze. Epoche: Geschichtlicher Zeitraum",
@@ -9423,7 +9423,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f3",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Schutzgesetze. Herrschaft: Politische Machtordnung",
@@ -9434,7 +9434,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f4",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Schutzgesetze. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9445,7 +9445,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f5",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Schutzgesetze. Wirtschaft: Produktion und Handel",
@@ -9456,7 +9456,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f6",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Schutzgesetze. Religion: Glaubensvorstellungen",
@@ -9467,7 +9467,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f7",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Schutzgesetze. Kultur: Kunst, Wissen, Alltag",
@@ -9478,7 +9478,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f8",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Schutzgesetze. Konflikt: Auseinandersetzung",
@@ -9489,7 +9489,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f9",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Schutzgesetze. Revolution: Umsturz der Ordnung",
@@ -9500,7 +9500,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f10",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Staat (schutzgesetze)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (schutzgesetze)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Schutzgesetze. Staat (schutzgesetze): Organisierte Herrschaft",
@@ -9511,7 +9511,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f11",
-      prompt: "[ge-k8-lb3-schutzgesetze] Was beschreibt „Migration (schutzgesetze)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (schutzgesetze)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Schutzgesetze. Migration (schutzgesetze): Wanderung von Menschen",
@@ -9546,7 +9546,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb3-schule:f0",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Schule. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9557,7 +9557,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f1",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Schule. Chronologie: Zeitliche Ordnung",
@@ -9568,7 +9568,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f2",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Schule. Epoche: Geschichtlicher Zeitraum",
@@ -9579,7 +9579,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f3",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Schule. Herrschaft: Politische Machtordnung",
@@ -9590,7 +9590,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f4",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Schule. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9601,7 +9601,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f5",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Schule. Wirtschaft: Produktion und Handel",
@@ -9612,7 +9612,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f6",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Schule. Religion: Glaubensvorstellungen",
@@ -9623,7 +9623,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f7",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Schule. Kultur: Kunst, Wissen, Alltag",
@@ -9634,7 +9634,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f8",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Schule. Konflikt: Auseinandersetzung",
@@ -9645,7 +9645,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f9",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Schule. Revolution: Umsturz der Ordnung",
@@ -9656,7 +9656,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f10",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Staat (schule)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (schule)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Schule. Staat (schule): Organisierte Herrschaft",
@@ -9667,7 +9667,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f11",
-      prompt: "[ge-k8-lb3-schule] Was beschreibt „Migration (schule)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (schule)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Schule. Migration (schule): Wanderung von Menschen",
@@ -9702,7 +9702,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f0",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Imperialismus. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9713,7 +9713,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f1",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Imperialismus. Chronologie: Zeitliche Ordnung",
@@ -9724,7 +9724,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f2",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Imperialismus. Epoche: Geschichtlicher Zeitraum",
@@ -9735,7 +9735,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f3",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Imperialismus. Herrschaft: Politische Machtordnung",
@@ -9746,7 +9746,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f4",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Imperialismus. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9757,7 +9757,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f5",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Imperialismus. Wirtschaft: Produktion und Handel",
@@ -9768,7 +9768,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f6",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Imperialismus. Religion: Glaubensvorstellungen",
@@ -9779,7 +9779,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f7",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Imperialismus. Kultur: Kunst, Wissen, Alltag",
@@ -9790,7 +9790,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f8",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Imperialismus. Konflikt: Auseinandersetzung",
@@ -9801,7 +9801,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f9",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Imperialismus. Revolution: Umsturz der Ordnung",
@@ -9812,7 +9812,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f10",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Staat (imperialismus)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (imperialismus)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Imperialismus. Staat (imperialismus): Organisierte Herrschaft",
@@ -9823,7 +9823,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f11",
-      prompt: "[ge-k8-lb4-imperialismus] Was beschreibt „Migration (imperialismus)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (imperialismus)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Imperialismus. Migration (imperialismus): Wanderung von Menschen",
@@ -9858,7 +9858,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f0",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Buendnisse. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -9869,7 +9869,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f1",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Buendnisse. Chronologie: Zeitliche Ordnung",
@@ -9880,7 +9880,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f2",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Buendnisse. Epoche: Geschichtlicher Zeitraum",
@@ -9891,7 +9891,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f3",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Buendnisse. Herrschaft: Politische Machtordnung",
@@ -9902,7 +9902,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f4",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Buendnisse. Gesellschaft: Soziale Schichten und Gruppen",
@@ -9913,7 +9913,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f5",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Buendnisse. Wirtschaft: Produktion und Handel",
@@ -9924,7 +9924,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f6",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Buendnisse. Religion: Glaubensvorstellungen",
@@ -9935,7 +9935,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f7",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Buendnisse. Kultur: Kunst, Wissen, Alltag",
@@ -9946,7 +9946,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f8",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Buendnisse. Konflikt: Auseinandersetzung",
@@ -9957,7 +9957,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f9",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Buendnisse. Revolution: Umsturz der Ordnung",
@@ -9968,7 +9968,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f10",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Staat (buendnisse)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (buendnisse)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Buendnisse. Staat (buendnisse): Organisierte Herrschaft",
@@ -9979,7 +9979,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f11",
-      prompt: "[ge-k8-lb4-buendnisse] Was beschreibt „Migration (buendnisse)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (buendnisse)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Buendnisse. Migration (buendnisse): Wanderung von Menschen",
@@ -10014,7 +10014,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f0",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ursachen Wk1. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10025,7 +10025,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f1",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ursachen Wk1. Chronologie: Zeitliche Ordnung",
@@ -10036,7 +10036,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f2",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ursachen Wk1. Epoche: Geschichtlicher Zeitraum",
@@ -10047,7 +10047,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f3",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ursachen Wk1. Herrschaft: Politische Machtordnung",
@@ -10058,7 +10058,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f4",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ursachen Wk1. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10069,7 +10069,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f5",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ursachen Wk1. Wirtschaft: Produktion und Handel",
@@ -10080,7 +10080,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f6",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ursachen Wk1. Religion: Glaubensvorstellungen",
@@ -10091,7 +10091,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f7",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ursachen Wk1. Kultur: Kunst, Wissen, Alltag",
@@ -10102,7 +10102,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f8",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ursachen Wk1. Konflikt: Auseinandersetzung",
@@ -10113,7 +10113,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f9",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ursachen Wk1. Revolution: Umsturz der Ordnung",
@@ -10124,7 +10124,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f10",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Staat (wk1)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (wk1)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ursachen Wk1. Staat (wk1): Organisierte Herrschaft",
@@ -10135,7 +10135,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f11",
-      prompt: "[ge-k8-lb4-ursachen-wk1] Was beschreibt „Migration (wk1)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (wk1)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ursachen Wk1. Migration (wk1): Wanderung von Menschen",
@@ -10170,7 +10170,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f0",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kriegstechnik. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10181,7 +10181,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f1",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kriegstechnik. Chronologie: Zeitliche Ordnung",
@@ -10192,7 +10192,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f2",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kriegstechnik. Epoche: Geschichtlicher Zeitraum",
@@ -10203,7 +10203,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f3",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kriegstechnik. Herrschaft: Politische Machtordnung",
@@ -10214,7 +10214,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f4",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kriegstechnik. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10225,7 +10225,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f5",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kriegstechnik. Wirtschaft: Produktion und Handel",
@@ -10236,7 +10236,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f6",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kriegstechnik. Religion: Glaubensvorstellungen",
@@ -10247,7 +10247,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f7",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kriegstechnik. Kultur: Kunst, Wissen, Alltag",
@@ -10258,7 +10258,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f8",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kriegstechnik. Konflikt: Auseinandersetzung",
@@ -10269,7 +10269,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f9",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kriegstechnik. Revolution: Umsturz der Ordnung",
@@ -10280,7 +10280,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f10",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Staat (kriegstechnik)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kriegstechnik)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kriegstechnik. Staat (kriegstechnik): Organisierte Herrschaft",
@@ -10291,7 +10291,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f11",
-      prompt: "[ge-k8-lbw-kriegstechnik] Was beschreibt „Migration (kriegstechnik)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kriegstechnik)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kriegstechnik. Migration (kriegstechnik): Wanderung von Menschen",
@@ -10326,7 +10326,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f0",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Alltag. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10337,7 +10337,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f1",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Alltag. Chronologie: Zeitliche Ordnung",
@@ -10348,7 +10348,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f2",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag. Epoche: Geschichtlicher Zeitraum",
@@ -10359,7 +10359,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f3",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Alltag. Herrschaft: Politische Machtordnung",
@@ -10370,7 +10370,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f4",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Alltag. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10381,7 +10381,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f5",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Alltag. Wirtschaft: Produktion und Handel",
@@ -10392,7 +10392,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f6",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Alltag. Religion: Glaubensvorstellungen",
@@ -10403,7 +10403,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f7",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Alltag. Kultur: Kunst, Wissen, Alltag",
@@ -10414,7 +10414,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f8",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Alltag. Konflikt: Auseinandersetzung",
@@ -10425,7 +10425,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f9",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag. Revolution: Umsturz der Ordnung",
@@ -10436,7 +10436,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f10",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Staat (alltag)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (alltag)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Alltag. Staat (alltag): Organisierte Herrschaft",
@@ -10447,7 +10447,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f11",
-      prompt: "[ge-k8-lbw-alltag] Was beschreibt „Migration (alltag)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (alltag)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Alltag. Migration (alltag): Wanderung von Menschen",
@@ -10482,7 +10482,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f0",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Massenmedien. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10493,7 +10493,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f1",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Massenmedien. Chronologie: Zeitliche Ordnung",
@@ -10504,7 +10504,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f2",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Massenmedien. Epoche: Geschichtlicher Zeitraum",
@@ -10515,7 +10515,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f3",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Massenmedien. Herrschaft: Politische Machtordnung",
@@ -10526,7 +10526,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f4",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Massenmedien. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10537,7 +10537,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f5",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Massenmedien. Wirtschaft: Produktion und Handel",
@@ -10548,7 +10548,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f6",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Massenmedien. Religion: Glaubensvorstellungen",
@@ -10559,7 +10559,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f7",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Massenmedien. Kultur: Kunst, Wissen, Alltag",
@@ -10570,7 +10570,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f8",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Massenmedien. Konflikt: Auseinandersetzung",
@@ -10581,7 +10581,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f9",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Massenmedien. Revolution: Umsturz der Ordnung",
@@ -10592,7 +10592,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f10",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Staat (massenmedien)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (massenmedien)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Massenmedien. Staat (massenmedien): Organisierte Herrschaft",
@@ -10603,7 +10603,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f11",
-      prompt: "[ge-k8-lbw-massenmedien] Was beschreibt „Migration (massenmedien)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (massenmedien)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Massenmedien. Migration (massenmedien): Wanderung von Menschen",
@@ -10638,7 +10638,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f0",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Versailles. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10649,7 +10649,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f1",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Versailles. Chronologie: Zeitliche Ordnung",
@@ -10660,7 +10660,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f2",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Versailles. Epoche: Geschichtlicher Zeitraum",
@@ -10671,7 +10671,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f3",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Versailles. Herrschaft: Politische Machtordnung",
@@ -10682,7 +10682,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f4",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Versailles. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10693,7 +10693,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f5",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Versailles. Wirtschaft: Produktion und Handel",
@@ -10704,7 +10704,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f6",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Versailles. Religion: Glaubensvorstellungen",
@@ -10715,7 +10715,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f7",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Versailles. Kultur: Kunst, Wissen, Alltag",
@@ -10726,7 +10726,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f8",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Versailles. Konflikt: Auseinandersetzung",
@@ -10737,7 +10737,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f9",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Versailles. Revolution: Umsturz der Ordnung",
@@ -10748,7 +10748,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f10",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Staat (versailles)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (versailles)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Versailles. Staat (versailles): Organisierte Herrschaft",
@@ -10759,7 +10759,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f11",
-      prompt: "[ge-k9-lb1-versailles] Was beschreibt „Migration (versailles)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (versailles)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Versailles. Migration (versailles): Wanderung von Menschen",
@@ -10794,7 +10794,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f0",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Europa Ordnung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10805,7 +10805,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f1",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Europa Ordnung. Chronologie: Zeitliche Ordnung",
@@ -10816,7 +10816,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f2",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Europa Ordnung. Epoche: Geschichtlicher Zeitraum",
@@ -10827,7 +10827,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f3",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Europa Ordnung. Herrschaft: Politische Machtordnung",
@@ -10838,7 +10838,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f4",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Europa Ordnung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -10849,7 +10849,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f5",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Europa Ordnung. Wirtschaft: Produktion und Handel",
@@ -10860,7 +10860,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f6",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Europa Ordnung. Religion: Glaubensvorstellungen",
@@ -10871,7 +10871,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f7",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Europa Ordnung. Kultur: Kunst, Wissen, Alltag",
@@ -10882,7 +10882,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f8",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Europa Ordnung. Konflikt: Auseinandersetzung",
@@ -10893,7 +10893,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f9",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Europa Ordnung. Revolution: Umsturz der Ordnung",
@@ -10904,7 +10904,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f10",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Staat (ordnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (ordnung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Europa Ordnung. Staat (ordnung): Organisierte Herrschaft",
@@ -10915,7 +10915,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f11",
-      prompt: "[ge-k9-lb1-europa-ordnung] Was beschreibt „Migration (ordnung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (ordnung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Europa Ordnung. Migration (ordnung): Wanderung von Menschen",
@@ -10950,7 +10950,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f0",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Weimar. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -10961,7 +10961,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f1",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Weimar. Chronologie: Zeitliche Ordnung",
@@ -10972,7 +10972,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f2",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Weimar. Epoche: Geschichtlicher Zeitraum",
@@ -10983,7 +10983,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f3",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Weimar. Herrschaft: Politische Machtordnung",
@@ -10994,7 +10994,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f4",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Weimar. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11005,7 +11005,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f5",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Weimar. Wirtschaft: Produktion und Handel",
@@ -11016,7 +11016,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f6",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Weimar. Religion: Glaubensvorstellungen",
@@ -11027,7 +11027,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f7",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Weimar. Kultur: Kunst, Wissen, Alltag",
@@ -11038,7 +11038,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f8",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Weimar. Konflikt: Auseinandersetzung",
@@ -11049,7 +11049,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f9",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Weimar. Revolution: Umsturz der Ordnung",
@@ -11060,7 +11060,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f10",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Staat (weimar)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (weimar)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Weimar. Staat (weimar): Organisierte Herrschaft",
@@ -11071,7 +11071,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f11",
-      prompt: "[ge-k9-lb2-weimar] Was beschreibt „Migration (weimar)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (weimar)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Weimar. Migration (weimar): Wanderung von Menschen",
@@ -11106,7 +11106,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f0",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Aufstieg Ns. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11117,7 +11117,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f1",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Aufstieg Ns. Chronologie: Zeitliche Ordnung",
@@ -11128,7 +11128,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f2",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Aufstieg Ns. Epoche: Geschichtlicher Zeitraum",
@@ -11139,7 +11139,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f3",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Aufstieg Ns. Herrschaft: Politische Machtordnung",
@@ -11150,7 +11150,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f4",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Aufstieg Ns. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11161,7 +11161,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f5",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Aufstieg Ns. Wirtschaft: Produktion und Handel",
@@ -11172,7 +11172,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f6",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Aufstieg Ns. Religion: Glaubensvorstellungen",
@@ -11183,7 +11183,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f7",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Aufstieg Ns. Kultur: Kunst, Wissen, Alltag",
@@ -11194,7 +11194,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f8",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Aufstieg Ns. Konflikt: Auseinandersetzung",
@@ -11205,7 +11205,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f9",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Aufstieg Ns. Revolution: Umsturz der Ordnung",
@@ -11216,7 +11216,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f10",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Staat (ns)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (ns)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Aufstieg Ns. Staat (ns): Organisierte Herrschaft",
@@ -11227,7 +11227,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f11",
-      prompt: "[ge-k9-lb2-aufstieg-ns] Was beschreibt „Migration (ns)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (ns)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Aufstieg Ns. Migration (ns): Wanderung von Menschen",
@@ -11262,7 +11262,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb3-terror:f0",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Terror. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11273,7 +11273,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f1",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Terror. Chronologie: Zeitliche Ordnung",
@@ -11284,7 +11284,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f2",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Terror. Epoche: Geschichtlicher Zeitraum",
@@ -11295,7 +11295,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f3",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Terror. Herrschaft: Politische Machtordnung",
@@ -11306,7 +11306,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f4",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Terror. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11317,7 +11317,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f5",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Terror. Wirtschaft: Produktion und Handel",
@@ -11328,7 +11328,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f6",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Terror. Religion: Glaubensvorstellungen",
@@ -11339,7 +11339,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f7",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Terror. Kultur: Kunst, Wissen, Alltag",
@@ -11350,7 +11350,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f8",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Terror. Konflikt: Auseinandersetzung",
@@ -11361,7 +11361,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f9",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Terror. Revolution: Umsturz der Ordnung",
@@ -11372,7 +11372,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f10",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Staat (terror)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (terror)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Terror. Staat (terror): Organisierte Herrschaft",
@@ -11383,7 +11383,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f11",
-      prompt: "[ge-k9-lb3-terror] Was beschreibt „Migration (terror)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (terror)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Terror. Migration (terror): Wanderung von Menschen",
@@ -11418,7 +11418,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f0",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Holocaust. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11429,7 +11429,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f1",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Holocaust. Chronologie: Zeitliche Ordnung",
@@ -11440,7 +11440,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f2",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Holocaust. Epoche: Geschichtlicher Zeitraum",
@@ -11451,7 +11451,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f3",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Holocaust. Herrschaft: Politische Machtordnung",
@@ -11462,7 +11462,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f4",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Holocaust. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11473,7 +11473,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f5",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Holocaust. Wirtschaft: Produktion und Handel",
@@ -11484,7 +11484,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f6",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Holocaust. Religion: Glaubensvorstellungen",
@@ -11495,7 +11495,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f7",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Holocaust. Kultur: Kunst, Wissen, Alltag",
@@ -11506,7 +11506,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f8",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Holocaust. Konflikt: Auseinandersetzung",
@@ -11517,7 +11517,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f9",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Holocaust. Revolution: Umsturz der Ordnung",
@@ -11528,7 +11528,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f10",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Staat (holocaust)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (holocaust)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Holocaust. Staat (holocaust): Organisierte Herrschaft",
@@ -11539,7 +11539,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f11",
-      prompt: "[ge-k9-lb3-holocaust] Was beschreibt „Migration (holocaust)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (holocaust)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Holocaust. Migration (holocaust): Wanderung von Menschen",
@@ -11574,7 +11574,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f0",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Widerstand. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11585,7 +11585,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f1",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Widerstand. Chronologie: Zeitliche Ordnung",
@@ -11596,7 +11596,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f2",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Widerstand. Epoche: Geschichtlicher Zeitraum",
@@ -11607,7 +11607,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f3",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Widerstand. Herrschaft: Politische Machtordnung",
@@ -11618,7 +11618,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f4",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Widerstand. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11629,7 +11629,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f5",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Widerstand. Wirtschaft: Produktion und Handel",
@@ -11640,7 +11640,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f6",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Widerstand. Religion: Glaubensvorstellungen",
@@ -11651,7 +11651,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f7",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Widerstand. Kultur: Kunst, Wissen, Alltag",
@@ -11662,7 +11662,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f8",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Widerstand. Konflikt: Auseinandersetzung",
@@ -11673,7 +11673,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f9",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Widerstand. Revolution: Umsturz der Ordnung",
@@ -11684,7 +11684,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f10",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Staat (widerstand)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (widerstand)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Widerstand. Staat (widerstand): Organisierte Herrschaft",
@@ -11695,7 +11695,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f11",
-      prompt: "[ge-k9-lb3-widerstand] Was beschreibt „Migration (widerstand)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (widerstand)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Widerstand. Migration (widerstand): Wanderung von Menschen",
@@ -11730,7 +11730,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f0",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ausgleich. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11741,7 +11741,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f1",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ausgleich. Chronologie: Zeitliche Ordnung",
@@ -11752,7 +11752,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f2",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ausgleich. Epoche: Geschichtlicher Zeitraum",
@@ -11763,7 +11763,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f3",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ausgleich. Herrschaft: Politische Machtordnung",
@@ -11774,7 +11774,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f4",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ausgleich. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11785,7 +11785,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f5",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ausgleich. Wirtschaft: Produktion und Handel",
@@ -11796,7 +11796,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f6",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ausgleich. Religion: Glaubensvorstellungen",
@@ -11807,7 +11807,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f7",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ausgleich. Kultur: Kunst, Wissen, Alltag",
@@ -11818,7 +11818,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f8",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ausgleich. Konflikt: Auseinandersetzung",
@@ -11829,7 +11829,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f9",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ausgleich. Revolution: Umsturz der Ordnung",
@@ -11840,7 +11840,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f10",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Staat (ausgleich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (ausgleich)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ausgleich. Staat (ausgleich): Organisierte Herrschaft",
@@ -11851,7 +11851,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f11",
-      prompt: "[ge-k9-lb4-ausgleich] Was beschreibt „Migration (ausgleich)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (ausgleich)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ausgleich. Migration (ausgleich): Wanderung von Menschen",
@@ -11886,7 +11886,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f0",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Aggression. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -11897,7 +11897,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f1",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Aggression. Chronologie: Zeitliche Ordnung",
@@ -11908,7 +11908,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f2",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Aggression. Epoche: Geschichtlicher Zeitraum",
@@ -11919,7 +11919,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f3",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Aggression. Herrschaft: Politische Machtordnung",
@@ -11930,7 +11930,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f4",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Aggression. Gesellschaft: Soziale Schichten und Gruppen",
@@ -11941,7 +11941,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f5",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Aggression. Wirtschaft: Produktion und Handel",
@@ -11952,7 +11952,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f6",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Aggression. Religion: Glaubensvorstellungen",
@@ -11963,7 +11963,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f7",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Aggression. Kultur: Kunst, Wissen, Alltag",
@@ -11974,7 +11974,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f8",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Aggression. Konflikt: Auseinandersetzung",
@@ -11985,7 +11985,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f9",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Aggression. Revolution: Umsturz der Ordnung",
@@ -11996,7 +11996,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f10",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Staat (aggression)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (aggression)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Aggression. Staat (aggression): Organisierte Herrschaft",
@@ -12007,7 +12007,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f11",
-      prompt: "[ge-k9-lb4-aggression] Was beschreibt „Migration (aggression)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (aggression)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Aggression. Migration (aggression): Wanderung von Menschen",
@@ -12042,7 +12042,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f0",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Justiz. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12053,7 +12053,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f1",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Justiz. Chronologie: Zeitliche Ordnung",
@@ -12064,7 +12064,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f2",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Justiz. Epoche: Geschichtlicher Zeitraum",
@@ -12075,7 +12075,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f3",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Justiz. Herrschaft: Politische Machtordnung",
@@ -12086,7 +12086,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f4",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Justiz. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12097,7 +12097,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f5",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Justiz. Wirtschaft: Produktion und Handel",
@@ -12108,7 +12108,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f6",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Justiz. Religion: Glaubensvorstellungen",
@@ -12119,7 +12119,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f7",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Justiz. Kultur: Kunst, Wissen, Alltag",
@@ -12130,7 +12130,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f8",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Justiz. Konflikt: Auseinandersetzung",
@@ -12141,7 +12141,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f9",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Justiz. Revolution: Umsturz der Ordnung",
@@ -12152,7 +12152,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f10",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Staat (justiz)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (justiz)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Justiz. Staat (justiz): Organisierte Herrschaft",
@@ -12163,7 +12163,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f11",
-      prompt: "[ge-k9-lbw-justiz] Was beschreibt „Migration (justiz)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (justiz)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Justiz. Migration (justiz): Wanderung von Menschen",
@@ -12198,7 +12198,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f0",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Frauen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12209,7 +12209,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f1",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Frauen. Chronologie: Zeitliche Ordnung",
@@ -12220,7 +12220,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f2",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Frauen. Epoche: Geschichtlicher Zeitraum",
@@ -12231,7 +12231,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f3",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Frauen. Herrschaft: Politische Machtordnung",
@@ -12242,7 +12242,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f4",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Frauen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12253,7 +12253,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f5",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Frauen. Wirtschaft: Produktion und Handel",
@@ -12264,7 +12264,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f6",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Frauen. Religion: Glaubensvorstellungen",
@@ -12275,7 +12275,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f7",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Frauen. Kultur: Kunst, Wissen, Alltag",
@@ -12286,7 +12286,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f8",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Frauen. Konflikt: Auseinandersetzung",
@@ -12297,7 +12297,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f9",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution: Umsturz der Ordnung",
@@ -12308,7 +12308,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f10",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Staat (frauen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (frauen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Frauen. Staat (frauen): Organisierte Herrschaft",
@@ -12319,7 +12319,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f11",
-      prompt: "[ge-k9-lbw-frauen] Was beschreibt „Migration (frauen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (frauen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Frauen. Migration (frauen): Wanderung von Menschen",
@@ -12354,7 +12354,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f0",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kultur. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12365,7 +12365,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f1",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kultur. Chronologie: Zeitliche Ordnung",
@@ -12376,7 +12376,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f2",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kultur. Epoche: Geschichtlicher Zeitraum",
@@ -12387,7 +12387,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f3",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kultur. Herrschaft: Politische Machtordnung",
@@ -12398,7 +12398,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f4",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kultur. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12409,7 +12409,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f5",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kultur. Wirtschaft: Produktion und Handel",
@@ -12420,7 +12420,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f6",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kultur. Religion: Glaubensvorstellungen",
@@ -12431,7 +12431,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f7",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kultur. Kultur: Kunst, Wissen, Alltag",
@@ -12442,7 +12442,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f8",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kultur. Konflikt: Auseinandersetzung",
@@ -12453,7 +12453,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f9",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution: Umsturz der Ordnung",
@@ -12464,7 +12464,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f10",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Staat (kultur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kultur)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur): Organisierte Herrschaft",
@@ -12475,7 +12475,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f11",
-      prompt: "[ge-k9-lbw-kultur] Was beschreibt „Migration (kultur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kultur)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kultur. Migration (kultur): Wanderung von Menschen",
@@ -12510,7 +12510,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f0",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Allianz Bruch. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12521,7 +12521,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f1",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Allianz Bruch. Chronologie: Zeitliche Ordnung",
@@ -12532,7 +12532,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f2",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Allianz Bruch. Epoche: Geschichtlicher Zeitraum",
@@ -12543,7 +12543,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f3",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Allianz Bruch. Herrschaft: Politische Machtordnung",
@@ -12554,7 +12554,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f4",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Allianz Bruch. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12565,7 +12565,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f5",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Allianz Bruch. Wirtschaft: Produktion und Handel",
@@ -12576,7 +12576,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f6",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Allianz Bruch. Religion: Glaubensvorstellungen",
@@ -12587,7 +12587,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f7",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Allianz Bruch. Kultur: Kunst, Wissen, Alltag",
@@ -12598,7 +12598,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f8",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Allianz Bruch. Konflikt: Auseinandersetzung",
@@ -12609,7 +12609,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f9",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Allianz Bruch. Revolution: Umsturz der Ordnung",
@@ -12620,7 +12620,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f10",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Staat (bruch)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (bruch)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Allianz Bruch. Staat (bruch): Organisierte Herrschaft",
@@ -12631,7 +12631,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f11",
-      prompt: "[ge-k10-lb1-allianz-bruch] Was beschreibt „Migration (bruch)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (bruch)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Allianz Bruch. Migration (bruch): Wanderung von Menschen",
@@ -12666,7 +12666,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f0",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kaltkrieg Phasen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12677,7 +12677,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f1",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kaltkrieg Phasen. Chronologie: Zeitliche Ordnung",
@@ -12688,7 +12688,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f2",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kaltkrieg Phasen. Epoche: Geschichtlicher Zeitraum",
@@ -12699,7 +12699,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f3",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kaltkrieg Phasen. Herrschaft: Politische Machtordnung",
@@ -12710,7 +12710,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f4",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kaltkrieg Phasen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12721,7 +12721,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f5",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kaltkrieg Phasen. Wirtschaft: Produktion und Handel",
@@ -12732,7 +12732,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f6",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kaltkrieg Phasen. Religion: Glaubensvorstellungen",
@@ -12743,7 +12743,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f7",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kaltkrieg Phasen. Kultur: Kunst, Wissen, Alltag",
@@ -12754,7 +12754,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f8",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kaltkrieg Phasen. Konflikt: Auseinandersetzung",
@@ -12765,7 +12765,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f9",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Phasen. Revolution: Umsturz der Ordnung",
@@ -12776,7 +12776,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f10",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Staat (phasen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (phasen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kaltkrieg Phasen. Staat (phasen): Organisierte Herrschaft",
@@ -12787,7 +12787,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f11",
-      prompt: "[ge-k10-lb1-kaltkrieg-phasen] Was beschreibt „Migration (phasen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (phasen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kaltkrieg Phasen. Migration (phasen): Wanderung von Menschen",
@@ -12822,7 +12822,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f0",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Teilung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12833,7 +12833,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f1",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Teilung. Chronologie: Zeitliche Ordnung",
@@ -12844,7 +12844,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f2",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Teilung. Epoche: Geschichtlicher Zeitraum",
@@ -12855,7 +12855,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f3",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Teilung. Herrschaft: Politische Machtordnung",
@@ -12866,7 +12866,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f4",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Teilung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -12877,7 +12877,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f5",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Teilung. Wirtschaft: Produktion und Handel",
@@ -12888,7 +12888,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f6",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Teilung. Religion: Glaubensvorstellungen",
@@ -12899,7 +12899,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f7",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Teilung. Kultur: Kunst, Wissen, Alltag",
@@ -12910,7 +12910,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f8",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Teilung. Konflikt: Auseinandersetzung",
@@ -12921,7 +12921,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f9",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Teilung. Revolution: Umsturz der Ordnung",
@@ -12932,7 +12932,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f10",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Staat (teilung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (teilung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Teilung. Staat (teilung): Organisierte Herrschaft",
@@ -12943,7 +12943,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f11",
-      prompt: "[ge-k10-lb2-teilung] Was beschreibt „Migration (teilung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (teilung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Teilung. Migration (teilung): Wanderung von Menschen",
@@ -12978,7 +12978,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f0",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Zwei Staaten. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -12989,7 +12989,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f1",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Zwei Staaten. Chronologie: Zeitliche Ordnung",
@@ -13000,7 +13000,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f2",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Zwei Staaten. Epoche: Geschichtlicher Zeitraum",
@@ -13011,7 +13011,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f3",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Zwei Staaten. Herrschaft: Politische Machtordnung",
@@ -13022,7 +13022,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f4",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Zwei Staaten. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13033,7 +13033,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f5",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Zwei Staaten. Wirtschaft: Produktion und Handel",
@@ -13044,7 +13044,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f6",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Zwei Staaten. Religion: Glaubensvorstellungen",
@@ -13055,7 +13055,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f7",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Zwei Staaten. Kultur: Kunst, Wissen, Alltag",
@@ -13066,7 +13066,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f8",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Zwei Staaten. Konflikt: Auseinandersetzung",
@@ -13077,7 +13077,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f9",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Zwei Staaten. Revolution: Umsturz der Ordnung",
@@ -13088,7 +13088,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f10",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Staat (staaten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (staaten)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Zwei Staaten. Staat (staaten): Organisierte Herrschaft",
@@ -13099,7 +13099,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f11",
-      prompt: "[ge-k10-lb2-zwei-staaten] Was beschreibt „Migration (staaten)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (staaten)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Zwei Staaten. Migration (staaten): Wanderung von Menschen",
@@ -13134,7 +13134,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f0",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Deutsche Frage. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13145,7 +13145,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f1",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Deutsche Frage. Chronologie: Zeitliche Ordnung",
@@ -13156,7 +13156,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f2",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Deutsche Frage. Epoche: Geschichtlicher Zeitraum",
@@ -13167,7 +13167,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f3",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Deutsche Frage. Herrschaft: Politische Machtordnung",
@@ -13178,7 +13178,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f4",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Deutsche Frage. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13189,7 +13189,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f5",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Deutsche Frage. Wirtschaft: Produktion und Handel",
@@ -13200,7 +13200,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f6",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Deutsche Frage. Religion: Glaubensvorstellungen",
@@ -13211,7 +13211,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f7",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Deutsche Frage. Kultur: Kunst, Wissen, Alltag",
@@ -13222,7 +13222,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f8",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Deutsche Frage. Konflikt: Auseinandersetzung",
@@ -13233,7 +13233,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f9",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Deutsche Frage. Revolution: Umsturz der Ordnung",
@@ -13244,7 +13244,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f10",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Staat (frage)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (frage)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Deutsche Frage. Staat (frage): Organisierte Herrschaft",
@@ -13255,7 +13255,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f11",
-      prompt: "[ge-k10-lb2-deutsche-frage] Was beschreibt „Migration (frage)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (frage)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Deutsche Frage. Migration (frage): Wanderung von Menschen",
@@ -13290,7 +13290,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f0",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Osteuropa 1989. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13301,7 +13301,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f1",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Osteuropa 1989. Chronologie: Zeitliche Ordnung",
@@ -13312,7 +13312,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f2",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Osteuropa 1989. Epoche: Geschichtlicher Zeitraum",
@@ -13323,7 +13323,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f3",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Osteuropa 1989. Herrschaft: Politische Machtordnung",
@@ -13334,7 +13334,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f4",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Osteuropa 1989. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13345,7 +13345,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f5",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Osteuropa 1989. Wirtschaft: Produktion und Handel",
@@ -13356,7 +13356,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f6",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Osteuropa 1989. Religion: Glaubensvorstellungen",
@@ -13367,7 +13367,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f7",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Osteuropa 1989. Kultur: Kunst, Wissen, Alltag",
@@ -13378,7 +13378,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f8",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Osteuropa 1989. Konflikt: Auseinandersetzung",
@@ -13389,7 +13389,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f9",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Osteuropa 1989. Revolution: Umsturz der Ordnung",
@@ -13400,7 +13400,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f10",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Staat (1989)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (1989)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Osteuropa 1989. Staat (1989): Organisierte Herrschaft",
@@ -13411,7 +13411,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f11",
-      prompt: "[ge-k10-lb3-osteuropa-1989] Was beschreibt „Migration (1989)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (1989)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Osteuropa 1989. Migration (1989): Wanderung von Menschen",
@@ -13446,7 +13446,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f0",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Einigung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13457,7 +13457,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f1",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Einigung. Chronologie: Zeitliche Ordnung",
@@ -13468,7 +13468,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f2",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Einigung. Epoche: Geschichtlicher Zeitraum",
@@ -13479,7 +13479,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f3",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Einigung. Herrschaft: Politische Machtordnung",
@@ -13490,7 +13490,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f4",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Einigung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13501,7 +13501,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f5",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Einigung. Wirtschaft: Produktion und Handel",
@@ -13512,7 +13512,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f6",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Einigung. Religion: Glaubensvorstellungen",
@@ -13523,7 +13523,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f7",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Einigung. Kultur: Kunst, Wissen, Alltag",
@@ -13534,7 +13534,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f8",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Einigung. Konflikt: Auseinandersetzung",
@@ -13545,7 +13545,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f9",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Einigung. Revolution: Umsturz der Ordnung",
@@ -13556,7 +13556,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f10",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Staat (einigung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (einigung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Einigung. Staat (einigung): Organisierte Herrschaft",
@@ -13567,7 +13567,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f11",
-      prompt: "[ge-k10-lb3-einigung] Was beschreibt „Migration (einigung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (einigung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Einigung. Migration (einigung): Wanderung von Menschen",
@@ -13602,7 +13602,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lbw-50er:f0",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: 50er. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13613,7 +13613,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f1",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: 50er. Chronologie: Zeitliche Ordnung",
@@ -13624,7 +13624,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f2",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: 50er. Epoche: Geschichtlicher Zeitraum",
@@ -13635,7 +13635,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f3",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: 50er. Herrschaft: Politische Machtordnung",
@@ -13646,7 +13646,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f4",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: 50er. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13657,7 +13657,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f5",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: 50er. Wirtschaft: Produktion und Handel",
@@ -13668,7 +13668,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f6",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: 50er. Religion: Glaubensvorstellungen",
@@ -13679,7 +13679,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f7",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: 50er. Kultur: Kunst, Wissen, Alltag",
@@ -13690,7 +13690,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f8",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: 50er. Konflikt: Auseinandersetzung",
@@ -13701,7 +13701,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f9",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: 50er. Revolution: Umsturz der Ordnung",
@@ -13712,7 +13712,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f10",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Staat (50er)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (50er)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: 50er. Staat (50er): Organisierte Herrschaft",
@@ -13723,7 +13723,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f11",
-      prompt: "[ge-k10-lbw-50er] Was beschreibt „Migration (50er)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (50er)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: 50er. Migration (50er): Wanderung von Menschen",
@@ -13758,7 +13758,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lbw-70er:f0",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: 70er. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13769,7 +13769,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f1",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: 70er. Chronologie: Zeitliche Ordnung",
@@ -13780,7 +13780,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f2",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: 70er. Epoche: Geschichtlicher Zeitraum",
@@ -13791,7 +13791,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f3",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: 70er. Herrschaft: Politische Machtordnung",
@@ -13802,7 +13802,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f4",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: 70er. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13813,7 +13813,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f5",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: 70er. Wirtschaft: Produktion und Handel",
@@ -13824,7 +13824,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f6",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: 70er. Religion: Glaubensvorstellungen",
@@ -13835,7 +13835,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f7",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: 70er. Kultur: Kunst, Wissen, Alltag",
@@ -13846,7 +13846,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f8",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: 70er. Konflikt: Auseinandersetzung",
@@ -13857,7 +13857,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f9",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: 70er. Revolution: Umsturz der Ordnung",
@@ -13868,7 +13868,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f10",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Staat (70er)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (70er)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: 70er. Staat (70er): Organisierte Herrschaft",
@@ -13879,7 +13879,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f11",
-      prompt: "[ge-k10-lbw-70er] Was beschreibt „Migration (70er)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (70er)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: 70er. Migration (70er): Wanderung von Menschen",
@@ -13914,7 +13914,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f0",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Friedliche Revolution. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -13925,7 +13925,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f1",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Friedliche Revolution. Chronologie: Zeitliche Ordnung",
@@ -13936,7 +13936,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f2",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Friedliche Revolution. Epoche: Geschichtlicher Zeitraum",
@@ -13947,7 +13947,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f3",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Friedliche Revolution. Herrschaft: Politische Machtordnung",
@@ -13958,7 +13958,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f4",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Friedliche Revolution. Gesellschaft: Soziale Schichten und Gruppen",
@@ -13969,7 +13969,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f5",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Friedliche Revolution. Wirtschaft: Produktion und Handel",
@@ -13980,7 +13980,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f6",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Friedliche Revolution. Religion: Glaubensvorstellungen",
@@ -13991,7 +13991,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f7",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Friedliche Revolution. Kultur: Kunst, Wissen, Alltag",
@@ -14002,7 +14002,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f8",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Friedliche Revolution. Konflikt: Auseinandersetzung",
@@ -14013,7 +14013,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f9",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Friedliche Revolution. Revolution: Umsturz der Ordnung",
@@ -14024,7 +14024,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f10",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Staat (revolution)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (revolution)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Friedliche Revolution. Staat (revolution): Organisierte Herrschaft",
@@ -14035,7 +14035,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f11",
-      prompt: "[ge-k10-lbw-friedliche-revolution] Was beschreibt „Migration (revolution)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (revolution)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Friedliche Revolution. Migration (revolution): Wanderung von Menschen",
@@ -14070,7 +14070,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f0",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Wirtschaft. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14081,7 +14081,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f1",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Wirtschaft. Chronologie: Zeitliche Ordnung",
@@ -14092,7 +14092,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f2",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Wirtschaft. Epoche: Geschichtlicher Zeitraum",
@@ -14103,7 +14103,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f3",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Wirtschaft. Herrschaft: Politische Machtordnung",
@@ -14114,7 +14114,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f4",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Wirtschaft. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14125,7 +14125,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f5",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Wirtschaft. Wirtschaft: Produktion und Handel",
@@ -14136,7 +14136,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f6",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Wirtschaft. Religion: Glaubensvorstellungen",
@@ -14147,7 +14147,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f7",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Wirtschaft. Kultur: Kunst, Wissen, Alltag",
@@ -14158,7 +14158,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f8",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Wirtschaft. Konflikt: Auseinandersetzung",
@@ -14169,7 +14169,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f9",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Wirtschaft. Revolution: Umsturz der Ordnung",
@@ -14180,7 +14180,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f10",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Staat (wirtschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (wirtschaft)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Wirtschaft. Staat (wirtschaft): Organisierte Herrschaft",
@@ -14191,7 +14191,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f11",
-      prompt: "[ge-gk-lb1-wirtschaft] Was beschreibt „Migration (wirtschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (wirtschaft)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Wirtschaft. Migration (wirtschaft): Wanderung von Menschen",
@@ -14226,7 +14226,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f0",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Politik Partizipation. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14237,7 +14237,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f1",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Politik Partizipation. Chronologie: Zeitliche Ordnung",
@@ -14248,7 +14248,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f2",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Politik Partizipation. Epoche: Geschichtlicher Zeitraum",
@@ -14259,7 +14259,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f3",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Politik Partizipation. Herrschaft: Politische Machtordnung",
@@ -14270,7 +14270,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f4",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Politik Partizipation. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14281,7 +14281,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f5",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Politik Partizipation. Wirtschaft: Produktion und Handel",
@@ -14292,7 +14292,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f6",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Politik Partizipation. Religion: Glaubensvorstellungen",
@@ -14303,7 +14303,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f7",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Politik Partizipation. Kultur: Kunst, Wissen, Alltag",
@@ -14314,7 +14314,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f8",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Politik Partizipation. Konflikt: Auseinandersetzung",
@@ -14325,7 +14325,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f9",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Politik Partizipation. Revolution: Umsturz der Ordnung",
@@ -14336,7 +14336,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f10",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Staat (partizipation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (partizipation)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Politik Partizipation. Staat (partizipation): Organisierte Herrschaft",
@@ -14347,7 +14347,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f11",
-      prompt: "[ge-gk-lb1-politik-partizipation] Was beschreibt „Migration (partizipation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (partizipation)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Politik Partizipation. Migration (partizipation): Wanderung von Menschen",
@@ -14382,7 +14382,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f0",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Weimar Versagen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14393,7 +14393,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f1",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Weimar Versagen. Chronologie: Zeitliche Ordnung",
@@ -14404,7 +14404,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f2",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Weimar Versagen. Epoche: Geschichtlicher Zeitraum",
@@ -14415,7 +14415,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f3",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Weimar Versagen. Herrschaft: Politische Machtordnung",
@@ -14426,7 +14426,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f4",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Weimar Versagen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14437,7 +14437,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f5",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Weimar Versagen. Wirtschaft: Produktion und Handel",
@@ -14448,7 +14448,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f6",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Weimar Versagen. Religion: Glaubensvorstellungen",
@@ -14459,7 +14459,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f7",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Weimar Versagen. Kultur: Kunst, Wissen, Alltag",
@@ -14470,7 +14470,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f8",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Weimar Versagen. Konflikt: Auseinandersetzung",
@@ -14481,7 +14481,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f9",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Weimar Versagen. Revolution: Umsturz der Ordnung",
@@ -14492,7 +14492,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f10",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Staat (versagen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (versagen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Weimar Versagen. Staat (versagen): Organisierte Herrschaft",
@@ -14503,7 +14503,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f11",
-      prompt: "[ge-gk-lb2-weimar-versagen] Was beschreibt „Migration (versagen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (versagen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Weimar Versagen. Migration (versagen): Wanderung von Menschen",
@@ -14538,7 +14538,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f0",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ns Herrschaft. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14549,7 +14549,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f1",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ns Herrschaft. Chronologie: Zeitliche Ordnung",
@@ -14560,7 +14560,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f2",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ns Herrschaft. Epoche: Geschichtlicher Zeitraum",
@@ -14571,7 +14571,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f3",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ns Herrschaft. Herrschaft: Politische Machtordnung",
@@ -14582,7 +14582,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f4",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ns Herrschaft. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14593,7 +14593,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f5",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ns Herrschaft. Wirtschaft: Produktion und Handel",
@@ -14604,7 +14604,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f6",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ns Herrschaft. Religion: Glaubensvorstellungen",
@@ -14615,7 +14615,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f7",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ns Herrschaft. Kultur: Kunst, Wissen, Alltag",
@@ -14626,7 +14626,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f8",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ns Herrschaft. Konflikt: Auseinandersetzung",
@@ -14637,7 +14637,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f9",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ns Herrschaft. Revolution: Umsturz der Ordnung",
@@ -14648,7 +14648,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f10",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Staat (herrschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (herrschaft)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ns Herrschaft. Staat (herrschaft): Organisierte Herrschaft",
@@ -14659,7 +14659,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f11",
-      prompt: "[ge-gk-lb2-ns-herrschaft] Was beschreibt „Migration (herrschaft)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (herrschaft)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ns Herrschaft. Migration (herrschaft): Wanderung von Menschen",
@@ -14694,7 +14694,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f0",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Brd Demokratie. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14705,7 +14705,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f1",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Brd Demokratie. Chronologie: Zeitliche Ordnung",
@@ -14716,7 +14716,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f2",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Brd Demokratie. Epoche: Geschichtlicher Zeitraum",
@@ -14727,7 +14727,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f3",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Brd Demokratie. Herrschaft: Politische Machtordnung",
@@ -14738,7 +14738,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f4",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Brd Demokratie. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14749,7 +14749,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f5",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Brd Demokratie. Wirtschaft: Produktion und Handel",
@@ -14760,7 +14760,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f6",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Brd Demokratie. Religion: Glaubensvorstellungen",
@@ -14771,7 +14771,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f7",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Brd Demokratie. Kultur: Kunst, Wissen, Alltag",
@@ -14782,7 +14782,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f8",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Brd Demokratie. Konflikt: Auseinandersetzung",
@@ -14793,7 +14793,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f9",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Brd Demokratie. Revolution: Umsturz der Ordnung",
@@ -14804,7 +14804,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f10",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Staat (demokratie)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (demokratie)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Brd Demokratie. Staat (demokratie): Organisierte Herrschaft",
@@ -14815,7 +14815,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f11",
-      prompt: "[ge-gk-lb3-brd-demokratie] Was beschreibt „Migration (demokratie)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (demokratie)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Brd Demokratie. Migration (demokratie): Wanderung von Menschen",
@@ -14850,7 +14850,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f0",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ddr Diktatur. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -14861,7 +14861,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f1",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ddr Diktatur. Chronologie: Zeitliche Ordnung",
@@ -14872,7 +14872,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f2",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ddr Diktatur. Epoche: Geschichtlicher Zeitraum",
@@ -14883,7 +14883,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f3",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ddr Diktatur. Herrschaft: Politische Machtordnung",
@@ -14894,7 +14894,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f4",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ddr Diktatur. Gesellschaft: Soziale Schichten und Gruppen",
@@ -14905,7 +14905,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f5",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ddr Diktatur. Wirtschaft: Produktion und Handel",
@@ -14916,7 +14916,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f6",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ddr Diktatur. Religion: Glaubensvorstellungen",
@@ -14927,7 +14927,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f7",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ddr Diktatur. Kultur: Kunst, Wissen, Alltag",
@@ -14938,7 +14938,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f8",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ddr Diktatur. Konflikt: Auseinandersetzung",
@@ -14949,7 +14949,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f9",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ddr Diktatur. Revolution: Umsturz der Ordnung",
@@ -14960,7 +14960,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f10",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Staat (diktatur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (diktatur)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ddr Diktatur. Staat (diktatur): Organisierte Herrschaft",
@@ -14971,7 +14971,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f11",
-      prompt: "[ge-gk-lb3-ddr-diktatur] Was beschreibt „Migration (diktatur)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (diktatur)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ddr Diktatur. Migration (diktatur): Wanderung von Menschen",
@@ -15006,7 +15006,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f0",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kollektive Sicherheit. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15017,7 +15017,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f1",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kollektive Sicherheit. Chronologie: Zeitliche Ordnung",
@@ -15028,7 +15028,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f2",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kollektive Sicherheit. Epoche: Geschichtlicher Zeitraum",
@@ -15039,7 +15039,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f3",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kollektive Sicherheit. Herrschaft: Politische Machtordnung",
@@ -15050,7 +15050,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f4",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kollektive Sicherheit. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15061,7 +15061,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f5",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kollektive Sicherheit. Wirtschaft: Produktion und Handel",
@@ -15072,7 +15072,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f6",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kollektive Sicherheit. Religion: Glaubensvorstellungen",
@@ -15083,7 +15083,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f7",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kollektive Sicherheit. Kultur: Kunst, Wissen, Alltag",
@@ -15094,7 +15094,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f8",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kollektive Sicherheit. Konflikt: Auseinandersetzung",
@@ -15105,7 +15105,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f9",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kollektive Sicherheit. Revolution: Umsturz der Ordnung",
@@ -15116,7 +15116,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f10",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Staat (sicherheit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (sicherheit)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kollektive Sicherheit. Staat (sicherheit): Organisierte Herrschaft",
@@ -15127,7 +15127,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f11",
-      prompt: "[ge-gk-lb4-kollektive-sicherheit] Was beschreibt „Migration (sicherheit)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (sicherheit)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kollektive Sicherheit. Migration (sicherheit): Wanderung von Menschen",
@@ -15162,7 +15162,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f0",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kaltkrieg Frieden. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15173,7 +15173,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f1",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kaltkrieg Frieden. Chronologie: Zeitliche Ordnung",
@@ -15184,7 +15184,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f2",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kaltkrieg Frieden. Epoche: Geschichtlicher Zeitraum",
@@ -15195,7 +15195,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f3",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kaltkrieg Frieden. Herrschaft: Politische Machtordnung",
@@ -15206,7 +15206,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f4",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kaltkrieg Frieden. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15217,7 +15217,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f5",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kaltkrieg Frieden. Wirtschaft: Produktion und Handel",
@@ -15228,7 +15228,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f6",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kaltkrieg Frieden. Religion: Glaubensvorstellungen",
@@ -15239,7 +15239,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f7",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kaltkrieg Frieden. Kultur: Kunst, Wissen, Alltag",
@@ -15250,7 +15250,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f8",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kaltkrieg Frieden. Konflikt: Auseinandersetzung",
@@ -15261,7 +15261,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f9",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Frieden. Revolution: Umsturz der Ordnung",
@@ -15272,7 +15272,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f10",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Staat (frieden)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (frieden)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kaltkrieg Frieden. Staat (frieden): Organisierte Herrschaft",
@@ -15283,7 +15283,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f11",
-      prompt: "[ge-gk-lb4-kaltkrieg-frieden] Was beschreibt „Migration (frieden)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (frieden)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kaltkrieg Frieden. Migration (frieden): Wanderung von Menschen",
@@ -15318,7 +15318,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f0",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Person. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15329,7 +15329,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f1",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Rezeptions Person. Chronologie: Zeitliche Ordnung",
@@ -15340,7 +15340,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f2",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Person. Epoche: Geschichtlicher Zeitraum",
@@ -15351,7 +15351,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f3",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Rezeptions Person. Herrschaft: Politische Machtordnung",
@@ -15362,7 +15362,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f4",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Rezeptions Person. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15373,7 +15373,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f5",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Rezeptions Person. Wirtschaft: Produktion und Handel",
@@ -15384,7 +15384,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f6",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Rezeptions Person. Religion: Glaubensvorstellungen",
@@ -15395,7 +15395,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f7",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Rezeptions Person. Kultur: Kunst, Wissen, Alltag",
@@ -15406,7 +15406,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f8",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Person. Konflikt: Auseinandersetzung",
@@ -15417,7 +15417,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f9",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Rezeptions Person. Revolution: Umsturz der Ordnung",
@@ -15428,7 +15428,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f10",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Staat (person)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (person)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Rezeptions Person. Staat (person): Organisierte Herrschaft",
@@ -15439,7 +15439,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f11",
-      prompt: "[ge-gk-lbw-rezeptions-person] Was beschreibt „Migration (person)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (person)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Rezeptions Person. Migration (person): Wanderung von Menschen",
@@ -15474,7 +15474,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f0",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Wk1. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15485,7 +15485,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f1",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Rezeptions Wk1. Chronologie: Zeitliche Ordnung",
@@ -15496,7 +15496,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f2",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Wk1. Epoche: Geschichtlicher Zeitraum",
@@ -15507,7 +15507,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f3",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Rezeptions Wk1. Herrschaft: Politische Machtordnung",
@@ -15518,7 +15518,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f4",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Rezeptions Wk1. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15529,7 +15529,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f5",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Rezeptions Wk1. Wirtschaft: Produktion und Handel",
@@ -15540,7 +15540,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f6",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Rezeptions Wk1. Religion: Glaubensvorstellungen",
@@ -15551,7 +15551,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f7",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Rezeptions Wk1. Kultur: Kunst, Wissen, Alltag",
@@ -15562,7 +15562,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f8",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Wk1. Konflikt: Auseinandersetzung",
@@ -15573,7 +15573,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f9",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Rezeptions Wk1. Revolution: Umsturz der Ordnung",
@@ -15584,7 +15584,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f10",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Staat (wk1)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (wk1)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Rezeptions Wk1. Staat (wk1): Organisierte Herrschaft",
@@ -15595,7 +15595,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f11",
-      prompt: "[ge-gk-lbw-rezeptions-wk1] Was beschreibt „Migration (wk1)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (wk1)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Rezeptions Wk1. Migration (wk1): Wanderung von Menschen",
@@ -15630,7 +15630,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f0",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Wk2. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15641,7 +15641,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f1",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Rezeptions Wk2. Chronologie: Zeitliche Ordnung",
@@ -15652,7 +15652,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f2",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Wk2. Epoche: Geschichtlicher Zeitraum",
@@ -15663,7 +15663,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f3",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Rezeptions Wk2. Herrschaft: Politische Machtordnung",
@@ -15674,7 +15674,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f4",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Rezeptions Wk2. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15685,7 +15685,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f5",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Rezeptions Wk2. Wirtschaft: Produktion und Handel",
@@ -15696,7 +15696,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f6",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Rezeptions Wk2. Religion: Glaubensvorstellungen",
@@ -15707,7 +15707,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f7",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Rezeptions Wk2. Kultur: Kunst, Wissen, Alltag",
@@ -15718,7 +15718,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f8",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Wk2. Konflikt: Auseinandersetzung",
@@ -15729,7 +15729,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f9",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Rezeptions Wk2. Revolution: Umsturz der Ordnung",
@@ -15740,7 +15740,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f10",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Staat (wk2)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (wk2)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Rezeptions Wk2. Staat (wk2): Organisierte Herrschaft",
@@ -15751,7 +15751,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f11",
-      prompt: "[ge-gk-lbw-rezeptions-wk2] Was beschreibt „Migration (wk2)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (wk2)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Rezeptions Wk2. Migration (wk2): Wanderung von Menschen",
@@ -15786,7 +15786,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-nation:f0",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Nation. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15797,7 +15797,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f1",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Nation. Chronologie: Zeitliche Ordnung",
@@ -15808,7 +15808,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f2",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Nation. Epoche: Geschichtlicher Zeitraum",
@@ -15819,7 +15819,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f3",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Nation. Herrschaft: Politische Machtordnung",
@@ -15830,7 +15830,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f4",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Nation. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15841,7 +15841,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f5",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Nation. Wirtschaft: Produktion und Handel",
@@ -15852,7 +15852,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f6",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Nation. Religion: Glaubensvorstellungen",
@@ -15863,7 +15863,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f7",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Nation. Kultur: Kunst, Wissen, Alltag",
@@ -15874,7 +15874,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f8",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Nation. Konflikt: Auseinandersetzung",
@@ -15885,7 +15885,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f9",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Nation. Revolution: Umsturz der Ordnung",
@@ -15896,7 +15896,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f10",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Staat (nation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (nation)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Nation. Staat (nation): Organisierte Herrschaft",
@@ -15907,7 +15907,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f11",
-      prompt: "[ge-gk-lbw-nation] Was beschreibt „Migration (nation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (nation)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Nation. Migration (nation): Wanderung von Menschen",
@@ -15942,7 +15942,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f0",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Mythen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -15953,7 +15953,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f1",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Mythen. Chronologie: Zeitliche Ordnung",
@@ -15964,7 +15964,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f2",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Mythen. Epoche: Geschichtlicher Zeitraum",
@@ -15975,7 +15975,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f3",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Mythen. Herrschaft: Politische Machtordnung",
@@ -15986,7 +15986,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f4",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Mythen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -15997,7 +15997,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f5",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Mythen. Wirtschaft: Produktion und Handel",
@@ -16008,7 +16008,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f6",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Mythen. Religion: Glaubensvorstellungen",
@@ -16019,7 +16019,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f7",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Mythen. Kultur: Kunst, Wissen, Alltag",
@@ -16030,7 +16030,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f8",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Mythen. Konflikt: Auseinandersetzung",
@@ -16041,7 +16041,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f9",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Mythen. Revolution: Umsturz der Ordnung",
@@ -16052,7 +16052,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f10",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Staat (mythen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (mythen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Mythen. Staat (mythen): Organisierte Herrschaft",
@@ -16063,7 +16063,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f11",
-      prompt: "[ge-gk-lbw-mythen] Was beschreibt „Migration (mythen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (mythen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Mythen. Migration (mythen): Wanderung von Menschen",
@@ -16098,7 +16098,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f0",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Feindbilder. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16109,7 +16109,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f1",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Feindbilder. Chronologie: Zeitliche Ordnung",
@@ -16120,7 +16120,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f2",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Feindbilder. Epoche: Geschichtlicher Zeitraum",
@@ -16131,7 +16131,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f3",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Feindbilder. Herrschaft: Politische Machtordnung",
@@ -16142,7 +16142,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f4",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Feindbilder. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16153,7 +16153,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f5",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Feindbilder. Wirtschaft: Produktion und Handel",
@@ -16164,7 +16164,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f6",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Feindbilder. Religion: Glaubensvorstellungen",
@@ -16175,7 +16175,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f7",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Feindbilder. Kultur: Kunst, Wissen, Alltag",
@@ -16186,7 +16186,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f8",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Feindbilder. Konflikt: Auseinandersetzung",
@@ -16197,7 +16197,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f9",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Feindbilder. Revolution: Umsturz der Ordnung",
@@ -16208,7 +16208,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f10",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Staat (feindbilder)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (feindbilder)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Feindbilder. Staat (feindbilder): Organisierte Herrschaft",
@@ -16219,7 +16219,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f11",
-      prompt: "[ge-gk-lbw-feindbilder] Was beschreibt „Migration (feindbilder)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (feindbilder)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Feindbilder. Migration (feindbilder): Wanderung von Menschen",
@@ -16254,7 +16254,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f0",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Ordnungen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16265,7 +16265,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f1",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Ordnungen. Chronologie: Zeitliche Ordnung",
@@ -16276,7 +16276,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f2",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Ordnungen. Epoche: Geschichtlicher Zeitraum",
@@ -16287,7 +16287,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f3",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Ordnungen. Herrschaft: Politische Machtordnung",
@@ -16298,7 +16298,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f4",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Ordnungen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16309,7 +16309,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f5",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Ordnungen. Wirtschaft: Produktion und Handel",
@@ -16320,7 +16320,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f6",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Ordnungen. Religion: Glaubensvorstellungen",
@@ -16331,7 +16331,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f7",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Ordnungen. Kultur: Kunst, Wissen, Alltag",
@@ -16342,7 +16342,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f8",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Ordnungen. Konflikt: Auseinandersetzung",
@@ -16353,7 +16353,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f9",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Ordnungen. Revolution: Umsturz der Ordnung",
@@ -16364,7 +16364,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f10",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Staat (ordnungen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (ordnungen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Ordnungen. Staat (ordnungen): Organisierte Herrschaft",
@@ -16375,7 +16375,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f11",
-      prompt: "[ge-lk11-lb1-ordnungen] Was beschreibt „Migration (ordnungen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (ordnungen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Ordnungen. Migration (ordnungen): Wanderung von Menschen",
@@ -16410,7 +16410,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f0",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Partizipation. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16421,7 +16421,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f1",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Partizipation. Chronologie: Zeitliche Ordnung",
@@ -16432,7 +16432,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f2",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Partizipation. Epoche: Geschichtlicher Zeitraum",
@@ -16443,7 +16443,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f3",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Partizipation. Herrschaft: Politische Machtordnung",
@@ -16454,7 +16454,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f4",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Partizipation. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16465,7 +16465,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f5",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Partizipation. Wirtschaft: Produktion und Handel",
@@ -16476,7 +16476,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f6",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Partizipation. Religion: Glaubensvorstellungen",
@@ -16487,7 +16487,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f7",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Partizipation. Kultur: Kunst, Wissen, Alltag",
@@ -16498,7 +16498,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f8",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Partizipation. Konflikt: Auseinandersetzung",
@@ -16509,7 +16509,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f9",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Partizipation. Revolution: Umsturz der Ordnung",
@@ -16520,7 +16520,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f10",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Staat (partizipation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (partizipation)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Partizipation. Staat (partizipation): Organisierte Herrschaft",
@@ -16531,7 +16531,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f11",
-      prompt: "[ge-lk11-lb1-partizipation] Was beschreibt „Migration (partizipation)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (partizipation)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Partizipation. Migration (partizipation): Wanderung von Menschen",
@@ -16566,7 +16566,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f0",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Industrialisierung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16577,7 +16577,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f1",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Industrialisierung. Chronologie: Zeitliche Ordnung",
@@ -16588,7 +16588,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f2",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Industrialisierung. Epoche: Geschichtlicher Zeitraum",
@@ -16599,7 +16599,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f3",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Industrialisierung. Herrschaft: Politische Machtordnung",
@@ -16610,7 +16610,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f4",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Industrialisierung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16621,7 +16621,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f5",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Industrialisierung. Wirtschaft: Produktion und Handel",
@@ -16632,7 +16632,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f6",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Industrialisierung. Religion: Glaubensvorstellungen",
@@ -16643,7 +16643,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f7",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Industrialisierung. Kultur: Kunst, Wissen, Alltag",
@@ -16654,7 +16654,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f8",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Industrialisierung. Konflikt: Auseinandersetzung",
@@ -16665,7 +16665,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f9",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Industrialisierung. Revolution: Umsturz der Ordnung",
@@ -16676,7 +16676,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f10",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Staat (industrialisierung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (industrialisierung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Industrialisierung. Staat (industrialisierung): Organisierte Herrschaft",
@@ -16687,7 +16687,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f11",
-      prompt: "[ge-lk11-lb2-industrialisierung] Was beschreibt „Migration (industrialisierung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (industrialisierung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Industrialisierung. Migration (industrialisierung): Wanderung von Menschen",
@@ -16722,7 +16722,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f0",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Folgen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16733,7 +16733,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f1",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Folgen. Chronologie: Zeitliche Ordnung",
@@ -16744,7 +16744,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f2",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Folgen. Epoche: Geschichtlicher Zeitraum",
@@ -16755,7 +16755,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f3",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Folgen. Herrschaft: Politische Machtordnung",
@@ -16766,7 +16766,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f4",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Folgen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16777,7 +16777,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f5",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Folgen. Wirtschaft: Produktion und Handel",
@@ -16788,7 +16788,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f6",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Folgen. Religion: Glaubensvorstellungen",
@@ -16799,7 +16799,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f7",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Folgen. Kultur: Kunst, Wissen, Alltag",
@@ -16810,7 +16810,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f8",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Folgen. Konflikt: Auseinandersetzung",
@@ -16821,7 +16821,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f9",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution: Umsturz der Ordnung",
@@ -16832,7 +16832,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f10",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Staat (folgen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (folgen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen): Organisierte Herrschaft",
@@ -16843,7 +16843,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f11",
-      prompt: "[ge-lk11-lb2-folgen] Was beschreibt „Migration (folgen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (folgen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Folgen. Migration (folgen): Wanderung von Menschen",
@@ -16878,7 +16878,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f0",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Frauen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -16889,7 +16889,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f1",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Frauen. Chronologie: Zeitliche Ordnung",
@@ -16900,7 +16900,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f2",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Frauen. Epoche: Geschichtlicher Zeitraum",
@@ -16911,7 +16911,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f3",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Frauen. Herrschaft: Politische Machtordnung",
@@ -16922,7 +16922,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f4",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Frauen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -16933,7 +16933,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f5",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Frauen. Wirtschaft: Produktion und Handel",
@@ -16944,7 +16944,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f6",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Frauen. Religion: Glaubensvorstellungen",
@@ -16955,7 +16955,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f7",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Frauen. Kultur: Kunst, Wissen, Alltag",
@@ -16966,7 +16966,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f8",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Frauen. Konflikt: Auseinandersetzung",
@@ -16977,7 +16977,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f9",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution: Umsturz der Ordnung",
@@ -16988,7 +16988,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f10",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Staat (frauen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (frauen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Frauen. Staat (frauen): Organisierte Herrschaft",
@@ -16999,7 +16999,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f11",
-      prompt: "[ge-lk11-lbw-frauen] Was beschreibt „Migration (frauen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (frauen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Frauen. Migration (frauen): Wanderung von Menschen",
@@ -17034,7 +17034,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f0",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Juden. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17045,7 +17045,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f1",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Juden. Chronologie: Zeitliche Ordnung",
@@ -17056,7 +17056,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f2",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Juden. Epoche: Geschichtlicher Zeitraum",
@@ -17067,7 +17067,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f3",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Juden. Herrschaft: Politische Machtordnung",
@@ -17078,7 +17078,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f4",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Juden. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17089,7 +17089,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f5",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Juden. Wirtschaft: Produktion und Handel",
@@ -17100,7 +17100,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f6",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Juden. Religion: Glaubensvorstellungen",
@@ -17111,7 +17111,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f7",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Juden. Kultur: Kunst, Wissen, Alltag",
@@ -17122,7 +17122,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f8",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Juden. Konflikt: Auseinandersetzung",
@@ -17133,7 +17133,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f9",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Juden. Revolution: Umsturz der Ordnung",
@@ -17144,7 +17144,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f10",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Staat (juden)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (juden)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Juden. Staat (juden): Organisierte Herrschaft",
@@ -17155,7 +17155,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f11",
-      prompt: "[ge-lk11-lbw-juden] Was beschreibt „Migration (juden)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (juden)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Juden. Migration (juden): Wanderung von Menschen",
@@ -17190,7 +17190,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f0",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Kriegsursachen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17201,7 +17201,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f1",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Kriegsursachen. Chronologie: Zeitliche Ordnung",
@@ -17212,7 +17212,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f2",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Kriegsursachen. Epoche: Geschichtlicher Zeitraum",
@@ -17223,7 +17223,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f3",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Kriegsursachen. Herrschaft: Politische Machtordnung",
@@ -17234,7 +17234,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f4",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Kriegsursachen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17245,7 +17245,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f5",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Kriegsursachen. Wirtschaft: Produktion und Handel",
@@ -17256,7 +17256,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f6",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Kriegsursachen. Religion: Glaubensvorstellungen",
@@ -17267,7 +17267,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f7",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Kriegsursachen. Kultur: Kunst, Wissen, Alltag",
@@ -17278,7 +17278,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f8",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Kriegsursachen. Konflikt: Auseinandersetzung",
@@ -17289,7 +17289,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f9",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Kriegsursachen. Revolution: Umsturz der Ordnung",
@@ -17300,7 +17300,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f10",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Staat (kriegsursachen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (kriegsursachen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Kriegsursachen. Staat (kriegsursachen): Organisierte Herrschaft",
@@ -17311,7 +17311,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f11",
-      prompt: "[ge-lk12-lb1-kriegsursachen] Was beschreibt „Migration (kriegsursachen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (kriegsursachen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Kriegsursachen. Migration (kriegsursachen): Wanderung von Menschen",
@@ -17346,7 +17346,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f0",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Institutionen. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17357,7 +17357,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f1",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Institutionen. Chronologie: Zeitliche Ordnung",
@@ -17368,7 +17368,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f2",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Institutionen. Epoche: Geschichtlicher Zeitraum",
@@ -17379,7 +17379,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f3",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Institutionen. Herrschaft: Politische Machtordnung",
@@ -17390,7 +17390,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f4",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Institutionen. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17401,7 +17401,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f5",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Institutionen. Wirtschaft: Produktion und Handel",
@@ -17412,7 +17412,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f6",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Institutionen. Religion: Glaubensvorstellungen",
@@ -17423,7 +17423,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f7",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Institutionen. Kultur: Kunst, Wissen, Alltag",
@@ -17434,7 +17434,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f8",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Institutionen. Konflikt: Auseinandersetzung",
@@ -17445,7 +17445,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f9",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Institutionen. Revolution: Umsturz der Ordnung",
@@ -17456,7 +17456,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f10",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Staat (institutionen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (institutionen)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Institutionen. Staat (institutionen): Organisierte Herrschaft",
@@ -17467,7 +17467,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f11",
-      prompt: "[ge-lk12-lb1-institutionen] Was beschreibt „Migration (institutionen)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (institutionen)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Institutionen. Migration (institutionen): Wanderung von Menschen",
@@ -17502,7 +17502,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f0",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Erinnerung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17513,7 +17513,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f1",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Erinnerung. Chronologie: Zeitliche Ordnung",
@@ -17524,7 +17524,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f2",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Erinnerung. Epoche: Geschichtlicher Zeitraum",
@@ -17535,7 +17535,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f3",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Erinnerung. Herrschaft: Politische Machtordnung",
@@ -17546,7 +17546,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f4",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Erinnerung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17557,7 +17557,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f5",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Erinnerung. Wirtschaft: Produktion und Handel",
@@ -17568,7 +17568,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f6",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Erinnerung. Religion: Glaubensvorstellungen",
@@ -17579,7 +17579,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f7",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Erinnerung. Kultur: Kunst, Wissen, Alltag",
@@ -17590,7 +17590,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f8",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Erinnerung. Konflikt: Auseinandersetzung",
@@ -17601,7 +17601,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f9",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Erinnerung. Revolution: Umsturz der Ordnung",
@@ -17612,7 +17612,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f10",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Staat (erinnerung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (erinnerung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Erinnerung. Staat (erinnerung): Organisierte Herrschaft",
@@ -17623,7 +17623,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f11",
-      prompt: "[ge-lk12-lb2-erinnerung] Was beschreibt „Migration (erinnerung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (erinnerung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Erinnerung. Migration (erinnerung): Wanderung von Menschen",
@@ -17658,7 +17658,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f0",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Identitaet. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17669,7 +17669,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f1",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Identitaet. Chronologie: Zeitliche Ordnung",
@@ -17680,7 +17680,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f2",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Identitaet. Epoche: Geschichtlicher Zeitraum",
@@ -17691,7 +17691,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f3",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Identitaet. Herrschaft: Politische Machtordnung",
@@ -17702,7 +17702,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f4",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Identitaet. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17713,7 +17713,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f5",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Identitaet. Wirtschaft: Produktion und Handel",
@@ -17724,7 +17724,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f6",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Identitaet. Religion: Glaubensvorstellungen",
@@ -17735,7 +17735,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f7",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Identitaet. Kultur: Kunst, Wissen, Alltag",
@@ -17746,7 +17746,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f8",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Identitaet. Konflikt: Auseinandersetzung",
@@ -17757,7 +17757,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f9",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Identitaet. Revolution: Umsturz der Ordnung",
@@ -17768,7 +17768,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f10",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Staat (identitaet)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (identitaet)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Identitaet. Staat (identitaet): Organisierte Herrschaft",
@@ -17779,7 +17779,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f11",
-      prompt: "[ge-lk12-lb2-identitaet] Was beschreibt „Migration (identitaet)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (identitaet)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Identitaet. Migration (identitaet): Wanderung von Menschen",
@@ -17814,7 +17814,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f0",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Voelkerrecht. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17825,7 +17825,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f1",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Voelkerrecht. Chronologie: Zeitliche Ordnung",
@@ -17836,7 +17836,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f2",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Voelkerrecht. Epoche: Geschichtlicher Zeitraum",
@@ -17847,7 +17847,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f3",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Voelkerrecht. Herrschaft: Politische Machtordnung",
@@ -17858,7 +17858,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f4",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Voelkerrecht. Gesellschaft: Soziale Schichten und Gruppen",
@@ -17869,7 +17869,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f5",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Voelkerrecht. Wirtschaft: Produktion und Handel",
@@ -17880,7 +17880,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f6",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Voelkerrecht. Religion: Glaubensvorstellungen",
@@ -17891,7 +17891,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f7",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Voelkerrecht. Kultur: Kunst, Wissen, Alltag",
@@ -17902,7 +17902,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f8",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Voelkerrecht. Konflikt: Auseinandersetzung",
@@ -17913,7 +17913,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f9",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Voelkerrecht. Revolution: Umsturz der Ordnung",
@@ -17924,7 +17924,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f10",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Staat (voelkerrecht)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (voelkerrecht)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Voelkerrecht. Staat (voelkerrecht): Organisierte Herrschaft",
@@ -17935,7 +17935,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f11",
-      prompt: "[ge-lk12-lbw-voelkerrecht] Was beschreibt „Migration (voelkerrecht)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (voelkerrecht)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Voelkerrecht. Migration (voelkerrecht): Wanderung von Menschen",
@@ -17970,7 +17970,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f0",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Entkolonialisierung. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -17981,7 +17981,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f1",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Entkolonialisierung. Chronologie: Zeitliche Ordnung",
@@ -17992,7 +17992,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f2",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Entkolonialisierung. Epoche: Geschichtlicher Zeitraum",
@@ -18003,7 +18003,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f3",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Entkolonialisierung. Herrschaft: Politische Machtordnung",
@@ -18014,7 +18014,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f4",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Entkolonialisierung. Gesellschaft: Soziale Schichten und Gruppen",
@@ -18025,7 +18025,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f5",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Entkolonialisierung. Wirtschaft: Produktion und Handel",
@@ -18036,7 +18036,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f6",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Entkolonialisierung. Religion: Glaubensvorstellungen",
@@ -18047,7 +18047,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f7",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Entkolonialisierung. Kultur: Kunst, Wissen, Alltag",
@@ -18058,7 +18058,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f8",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Entkolonialisierung. Konflikt: Auseinandersetzung",
@@ -18069,7 +18069,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f9",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Entkolonialisierung. Revolution: Umsturz der Ordnung",
@@ -18080,7 +18080,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f10",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Staat (entkolonialisierung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (entkolonialisierung)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Entkolonialisierung. Staat (entkolonialisierung): Organisierte Herrschaft",
@@ -18091,7 +18091,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f11",
-      prompt: "[ge-lk12-lbw-entkolonialisierung] Was beschreibt „Migration (entkolonialisierung)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (entkolonialisierung)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Entkolonialisierung. Migration (entkolonialisierung): Wanderung von Menschen",
@@ -18126,7 +18126,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f0",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Quelle“ fachlich richtig?",
+      prompt: "Was trifft auf „Quelle“ zu?",
       answer: "Überrest oder Tradition zur Vergangenheit",
       wrong: ["Zeitliche Ordnung", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Kritisch auswerten. Bezug: Terror. Quelle: Überrest oder Tradition zur Vergangenheit",
@@ -18137,7 +18137,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f1",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Chronologie“ fachlich richtig?",
+      prompt: "Was trifft auf „Chronologie“ zu?",
       answer: "Zeitliche Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Geschichtlicher Zeitraum", "Politische Machtordnung"],
       explanation: "Vor/nach, Jahrhunderte. Bezug: Terror. Chronologie: Zeitliche Ordnung",
@@ -18148,7 +18148,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f2",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Epoche“ fachlich richtig?",
+      prompt: "Was trifft auf „Epoche“ zu?",
       answer: "Geschichtlicher Zeitraum",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Politische Machtordnung"],
       explanation: "Mit typischen Merkmalen. Bezug: Terror. Epoche: Geschichtlicher Zeitraum",
@@ -18159,7 +18159,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f3",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Herrschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Herrschaft“ zu?",
       answer: "Politische Machtordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Wer entscheidet? Bezug: Terror. Herrschaft: Politische Machtordnung",
@@ -18170,7 +18170,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f4",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Gesellschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Gesellschaft“ zu?",
       answer: "Soziale Schichten und Gruppen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Rechte und Pflichten. Bezug: Terror. Gesellschaft: Soziale Schichten und Gruppen",
@@ -18181,7 +18181,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f5",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Wirtschaft“ fachlich richtig?",
+      prompt: "Was trifft auf „Wirtschaft“ zu?",
       answer: "Produktion und Handel",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ressourcen und Technik. Bezug: Terror. Wirtschaft: Produktion und Handel",
@@ -18192,7 +18192,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f6",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Religion“ fachlich richtig?",
+      prompt: "Was trifft auf „Religion“ zu?",
       answer: "Glaubensvorstellungen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft machtpolitisch relevant. Bezug: Terror. Religion: Glaubensvorstellungen",
@@ -18203,7 +18203,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f7",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Kultur“ fachlich richtig?",
+      prompt: "Was trifft auf „Kultur“ zu?",
       answer: "Kunst, Wissen, Alltag",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Identität und Austausch. Bezug: Terror. Kultur: Kunst, Wissen, Alltag",
@@ -18214,7 +18214,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f8",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Konflikt“ fachlich richtig?",
+      prompt: "Was trifft auf „Konflikt“ zu?",
       answer: "Auseinandersetzung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Ursachen und Folgen. Bezug: Terror. Konflikt: Auseinandersetzung",
@@ -18225,7 +18225,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f9",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Revolution“ fachlich richtig?",
+      prompt: "Was trifft auf „Revolution“ zu?",
       answer: "Umsturz der Ordnung",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Oft gewaltsam und rasch. Bezug: Terror. Revolution: Umsturz der Ordnung",
@@ -18236,7 +18236,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f10",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Staat (terror)“ fachlich richtig?",
+      prompt: "Was trifft auf „Staat (terror)“ zu?",
       answer: "Organisierte Herrschaft",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Gesetze und Grenzen. Bezug: Terror. Staat (terror): Organisierte Herrschaft",
@@ -18247,7 +18247,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f11",
-      prompt: "[ge-lk12-lbw-terror] Was beschreibt „Migration (terror)“ fachlich richtig?",
+      prompt: "Was trifft auf „Migration (terror)“ zu?",
       answer: "Wanderung von Menschen",
       wrong: ["Überrest oder Tradition zur Vergangenheit", "Zeitliche Ordnung", "Geschichtlicher Zeitraum"],
       explanation: "Push- und Pull-Faktoren. Bezug: Terror. Migration (terror): Wanderung von Menschen",

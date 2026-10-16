@@ -106,7 +106,7 @@ export function mathBankGenerate(bank: BioBank): Topic['generate'] {
         bank.pairs!.filter((x) => normOpt(x.meaning) !== normOpt(p.meaning)).map((x) => x.meaning),
       )
       const wrong = uniqueWrongs(p.meaning, pool, (i) => `Andere Aussage (${i + 1})`)
-      const question = `Welche Aussage zu „${p.term}“ ist richtig?`
+      const question = `Was trifft auf „${p.term}“ zu?`
       const fw = bankFachwissen(p.wissen || `${p.term}: ${p.meaning}.`, question, p.meaning)
       return mcTask(rng, {
         question,

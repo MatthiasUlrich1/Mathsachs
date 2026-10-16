@@ -32,6 +32,14 @@ import {
 import { deepenBioBank } from './biologieBankDeepen'
 import { isSloganStatement } from './contentAudit'
 import { enrichGapAccepted, normalizeGapAnswer } from './gapAnswerMatch'
+import {
+  concreteGlossaryStem,
+  expandGlossaryAnswer,
+  expandGlossaryDistractor,
+  isConcreteGlossaryStem,
+  rewriteVagueGlossaryPrompt,
+  stripBankSlugPrefix,
+} from './glossaryMcRewrite'
 
 export type BioFact = {
   /** Stable concept id, e.g. `bio:spinnen:beinzahl`. Auto-derived if omitted. */
@@ -278,12 +286,20 @@ export function rewriteDefinitionStylePrompt(
   prompt: string,
   opts?: { term?: string; prefix?: string },
 ): string {
-  let q = stripBioBankSlug(prompt).replace(/\s+/g, ' ').trim()
+  let q = stripBioBankSlug(stripBankSlugPrefix(prompt)).replace(/\s+/g, ' ').trim()
   q = q
     .replace(/\s+im Themenfeld\s+[a-zäöüß0-9 -]+$/i, '')
     .replace(/\s+\(([a-zäöüß-]{3,24})\)\s*$/i, '')
     .replace(/\?+$/g, '')
     .trim()
+
+  if (isConcreteGlossaryStem(q)) {
+    return fixGermanPromptCapitalization(q.endsWith('?') ? q : `${q}?`)
+  }
+
+  // Vague meta-MC → concrete Schülerfrage (locked gap/thin-fill).
+  const vague = rewriteVagueGlossaryPrompt(q)
+  if (vague) return fixGermanPromptCapitalization(vague)
 
   const quoted = q.match(
     /^(?:([^:?]{1,60}):\s*)?(?:Was bedeutet(?: der Fachbegriff)?|Was versteht man unter)\s*[„""']([^„""']+)[“""']\s*$/i,
@@ -332,7 +348,7 @@ export function rewriteDefinitionStylePrompt(
     if (hint) {
       return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
     }
-    return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ fachlich?`)
+    return fixGermanPromptCapitalization(concreteGlossaryStem(term))
   }
 
   q = q.replace(/^Fachbegriff:\s*/i, '')
@@ -934,12 +950,34 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
         cleaned.match(/[„""']([^„""']+)[“""']/)?.[1] ||
         f.gapAccepted?.[0] ||
         ''
+      const topicHint =
+        cleaned.match(/^(?:Fachbegriff\s*)?\(([^)]+)\):/i)?.[1]?.trim() ||
+        cleaned.match(/^([^:?]{1,60}):\s*(?:Was |Welche )/i)?.[1]?.trim() ||
+        domainHintFromPrefix(bank.conceptPrefix).replace(/^(im|bei|an|als|zum|zur)\s+/i, '') ||
+        undefined
+      const prompt = rewriteDefinitionStylePrompt(cleaned, {
+        term: termHint.trim() || undefined,
+        prefix: bank.conceptPrefix,
+      })
+      // Only expand short glossary fragments — keep curated full answers intact.
+      const ansRaw = String(f.answer ?? '').trim()
+      const expandNeeded = ansRaw.split(/\s+/).length <= 6 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw)
+      const answer = expandNeeded
+        ? expandGlossaryAnswer(ansRaw, {
+            term: termHint.trim() || undefined,
+            topic: topicHint || undefined,
+          })
+        : ansRaw
+      const wrong = f.wrong?.map((w) => {
+        const wr = String(w).trim()
+        if (wr.split(/\s+/).length > 6 || /^(Sie|Er|Es|Man)\s/i.test(wr)) return wr
+        return expandGlossaryDistractor(wr, topicHint || undefined)
+      })
       return {
         ...f,
-        prompt: rewriteDefinitionStylePrompt(cleaned, {
-          term: termHint.trim() || undefined,
-          prefix: bank.conceptPrefix,
-        }),
+        prompt,
+        answer,
+        wrong,
         flashFront,
       }
     })

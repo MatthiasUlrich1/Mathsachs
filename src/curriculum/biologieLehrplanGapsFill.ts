@@ -14,7 +14,7 @@ export const k5KriechtiereSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:krschutz:f0",
-      prompt: "Kriechtierschutz: Was bedeutet „Artenschutz“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Artenschutz“ zu?",
       answer: "Maßnahmen zum Erhalt bedrohter Arten",
       wrong: [
         "Verschwinden geeigneter Habitate",
@@ -30,7 +30,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f1",
-      prompt: "Kriechtierschutz: Was bedeutet „Lebensraumverlust“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Lebensraumverlust“ zu?",
       answer: "Verschwinden geeigneter Habitate",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -46,7 +46,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f2",
-      prompt: "Kriechtierschutz: Was bedeutet „Zauneidechse“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Zauneidechse“ zu?",
       answer: "Heimische Eidechse warmer Standorte",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -62,7 +62,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f3",
-      prompt: "Kriechtierschutz: Was bedeutet „Ringelnatter“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Ringelnatter“ zu?",
       answer: "Heimische Schlange feuchter Lebensräume",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -78,7 +78,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f4",
-      prompt: "Kriechtierschutz: Was bedeutet „Totholz“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Totholz“ zu?",
       answer: "Abgestorbenes Holz als Struktur",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -94,7 +94,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f5",
-      prompt: "Kriechtierschutz: Was bedeutet „Steinhaufen“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Steinhaufen“ zu?",
       answer: "Lesesteine als Versteckstruktur",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -110,7 +110,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f6",
-      prompt: "Kriechtierschutz: Was bedeutet „Wechselwarm“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Wechselwarm“ zu?",
       answer: "Körpertemperatur folgt der Umwelt",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -126,7 +126,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f7",
-      prompt: "Kriechtierschutz: Was bedeutet „Fragmentierung“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Fragmentierung“ zu?",
       answer: "Zerschnittene Lebensräume",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -142,7 +142,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f8",
-      prompt: "Kriechtierschutz: Was bedeutet „Habitatpflege“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Habitatpflege“ zu?",
       answer: "Pflege geeigneter Lebensräume",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -158,7 +158,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f9",
-      prompt: "Kriechtierschutz: Was bedeutet „Naturnaher Garten“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Naturnaher Garten“ zu?",
       answer: "Garten mit Wildnisstrukturen",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -174,7 +174,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f10",
-      prompt: "Kriechtierschutz: Was bedeutet „Schutzgebiet“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Schutzgebiet“ zu?",
       answer: "Fläche mit besonderen Regeln",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -190,7 +190,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f11",
-      prompt: "Kriechtierschutz: Was bedeutet „Brutruhe“?",
+      prompt: "Was trifft im Thema Kriechtierschutz auf „Brutruhe“ zu?",
       answer: "Ungestörte Phasen an Lebensräumen",
       wrong: [
         "Maßnahmen zum Erhalt bedrohter Arten",
@@ -273,7 +273,7 @@ export const k5VoegelSchnabel: BioBank = {
   facts: [
     {
       concept: "bio:k5:schnabel:f0",
-      prompt: "Schnabelformen: Was bedeutet „Körnerschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Körnerschnabel“ zu?",
       answer: "Kurz und kräftig zum Knacken von Samen",
       wrong: [
         "Gebogen zum Zerreißen von Fleisch",
@@ -289,7 +289,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f1",
-      prompt: "Schnabelformen: Was bedeutet „Hakenschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Hakenschnabel“ zu?",
       answer: "Gebogen zum Zerreißen von Fleisch",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -305,7 +305,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f2",
-      prompt: "Schnabelformen: Was bedeutet „Filterschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Filterschnabel“ zu?",
       answer: "Seiht Nahrung aus Wasser",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -321,7 +321,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f3",
-      prompt: "Schnabelformen: Was bedeutet „Nektarschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Nektarschnabel“ zu?",
       answer: "Lang und schlank für Blütennektar",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -337,7 +337,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f4",
-      prompt: "Schnabelformen: Was bedeutet „Watvogelschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Watvogelschnabel“ zu?",
       answer: "Oft lang zum Stochern im Schlamm",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -353,7 +353,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f5",
-      prompt: "Schnabelformen: Was bedeutet „Insektenschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Insektenschnabel“ zu?",
       answer: "Spitz zum präzisen Picken",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -369,7 +369,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f6",
-      prompt: "Schnabelformen: Was bedeutet „Spechtschnabel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Spechtschnabel“ zu?",
       answer: "Meißelförmig für Holz",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -385,7 +385,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f7",
-      prompt: "Schnabelformen: Was bedeutet „Hornscheide“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Hornscheide“ zu?",
       answer: "Äußere leichte Schnabelhaut",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -401,7 +401,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f8",
-      prompt: "Schnabelformen: Was bedeutet „Muskelmagen“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Muskelmagen“ zu?",
       answer: "Zerkleinert Nahrung nach dem Schnabel",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -417,7 +417,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f9",
-      prompt: "Schnabelformen: Was bedeutet „Nahrungsnische“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Nahrungsnische“ zu?",
       answer: "Typische Ressource einer Art",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -433,7 +433,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f10",
-      prompt: "Schnabelformen: Was bedeutet „Angepasstheit“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Angepasstheit“ zu?",
       answer: "Bau passt zur Lebensweise",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -449,7 +449,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f11",
-      prompt: "Schnabelformen: Was bedeutet „Greifvogel“?",
+      prompt: "Was trifft im Thema Schnabelformen auf „Greifvogel“ zu?",
       answer: "Jagt oft Wirbeltiere",
       wrong: [
         "Kurz und kräftig zum Knacken von Samen",
@@ -532,7 +532,7 @@ export const k5VoegelVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgverh:f0",
-      prompt: "Vogelverhalten: Was bedeutet „Balz“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Balz“ zu?",
       answer: "Werbeverhalten vor der Paarung",
       wrong: [
         "Verteidigter Lebensraum",
@@ -548,7 +548,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f1",
-      prompt: "Vogelverhalten: Was bedeutet „Revier“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Revier“ zu?",
       answer: "Verteidigter Lebensraum",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -564,7 +564,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f2",
-      prompt: "Vogelverhalten: Was bedeutet „Vogelzug“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Vogelzug“ zu?",
       answer: "Saisonaler Ortswechsel",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -580,7 +580,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f3",
-      prompt: "Vogelverhalten: Was bedeutet „Nesthocker“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Nesthocker“ zu?",
       answer: "Jungvogel lange nestabhängig",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -596,7 +596,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f4",
-      prompt: "Vogelverhalten: Was bedeutet „Nestflüchter“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Nestflüchter“ zu?",
       answer: "Jungvogel früh mobil",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -612,7 +612,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f5",
-      prompt: "Vogelverhalten: Was bedeutet „Gesang“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Gesang“ zu?",
       answer: "Akustische Kommunikation",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -628,7 +628,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f6",
-      prompt: "Vogelverhalten: Was bedeutet „Alarmruf“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Alarmruf“ zu?",
       answer: "Warnsignal bei Gefahr",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -644,7 +644,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f7",
-      prompt: "Vogelverhalten: Was bedeutet „Gefiederpflege“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Gefiederpflege“ zu?",
       answer: "Putzen und Ordnen der Federn",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -660,7 +660,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f8",
-      prompt: "Vogelverhalten: Was bedeutet „Schwarm“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Schwarm“ zu?",
       answer: "Gruppe gemeinsam fliegender Vögel",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -676,7 +676,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f9",
-      prompt: "Vogelverhalten: Was bedeutet „Imponieren“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Imponieren“ zu?",
       answer: "Zeigen von Stärke oder Status",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -692,7 +692,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f10",
-      prompt: "Vogelverhalten: Was bedeutet „Brutpflege“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Brutpflege“ zu?",
       answer: "Versorgung der Jungen",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -708,7 +708,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f11",
-      prompt: "Vogelverhalten: Was bedeutet „Nachahmung“?",
+      prompt: "Was trifft im Thema Vogelverhalten auf „Nachahmung“ zu?",
       answer: "Lernen durch Beobachten",
       wrong: [
         "Werbeverhalten vor der Paarung",
@@ -791,7 +791,7 @@ export const k5VoegelSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgschutz:f0",
-      prompt: "Vogelschutz: Was bedeutet „Nistkasten“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Nistkasten“ zu?",
       answer: "Künstliche Nisthilfe",
       wrong: [
         "Gehölzstreifen als Lebensraum",
@@ -807,7 +807,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f1",
-      prompt: "Vogelschutz: Was bedeutet „Hecke“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Hecke“ zu?",
       answer: "Gehölzstreifen als Lebensraum",
       wrong: [
         "Künstliche Nisthilfe",
@@ -823,7 +823,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f2",
-      prompt: "Vogelschutz: Was bedeutet „Feuchtgebiet“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Feuchtgebiet“ zu?",
       answer: "Nasses Schlüsselhabitat",
       wrong: [
         "Künstliche Nisthilfe",
@@ -839,7 +839,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f3",
-      prompt: "Vogelschutz: Was bedeutet „Fensteranprall“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Fensteranprall“ zu?",
       answer: "Kollision an Glasflächen",
       wrong: [
         "Künstliche Nisthilfe",
@@ -855,7 +855,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f4",
-      prompt: "Vogelschutz: Was bedeutet „Brutruhe“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Brutruhe“ zu?",
       answer: "Ungestörte Brutzeit",
       wrong: [
         "Künstliche Nisthilfe",
@@ -871,7 +871,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f5",
-      prompt: "Vogelschutz: Was bedeutet „Winterfütterung“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Winterfütterung“ zu?",
       answer: "Zusatzfutter bei Mangel",
       wrong: [
         "Künstliche Nisthilfe",
@@ -887,7 +887,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f6",
-      prompt: "Vogelschutz: Was bedeutet „Insektennahrung“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Insektennahrung“ zu?",
       answer: "Beute für viele Jungvögel",
       wrong: [
         "Künstliche Nisthilfe",
@@ -903,7 +903,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f7",
-      prompt: "Vogelschutz: Was bedeutet „Schutzgebiet“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Schutzgebiet“ zu?",
       answer: "Geschützte Fläche",
       wrong: [
         "Künstliche Nisthilfe",
@@ -919,7 +919,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f8",
-      prompt: "Vogelschutz: Was bedeutet „Habitatverlust“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Habitatverlust“ zu?",
       answer: "Verlust von Lebensraum",
       wrong: [
         "Künstliche Nisthilfe",
@@ -935,7 +935,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f9",
-      prompt: "Vogelschutz: Was bedeutet „Schonzeit“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Schonzeit“ zu?",
       answer: "Zeitlicher Schutz vor Nutzung",
       wrong: [
         "Künstliche Nisthilfe",
@@ -951,7 +951,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f10",
-      prompt: "Vogelschutz: Was bedeutet „Strukturvielfalt“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Strukturvielfalt“ zu?",
       answer: "Viele Habitatstrukturen",
       wrong: [
         "Künstliche Nisthilfe",
@@ -967,7 +967,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f11",
-      prompt: "Vogelschutz: Was bedeutet „Artenschutz“?",
+      prompt: "Was trifft im Thema Vogelschutz auf „Artenschutz“ zu?",
       answer: "Schutz einzelner Arten",
       wrong: [
         "Künstliche Nisthilfe",
@@ -1050,7 +1050,7 @@ export const k5SaeugerVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugverh:f0",
-      prompt: "Säugerverhalten: Was bedeutet „Beobachtung“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Beobachtung“ zu?",
       answer: "Gezieltes Wahrnehmen von Verhalten",
       wrong: [
         "Genetisch vorbereitetes Verhalten",
@@ -1066,7 +1066,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f1",
-      prompt: "Säugerverhalten: Was bedeutet „Angeboren“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Angeboren“ zu?",
       answer: "Genetisch vorbereitetes Verhalten",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1082,7 +1082,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f2",
-      prompt: "Säugerverhalten: Was bedeutet „Erlernt“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Erlernt“ zu?",
       answer: "Durch Erfahrung erworbenes Verhalten",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1098,7 +1098,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f3",
-      prompt: "Säugerverhalten: Was bedeutet „Territorialität“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Territorialität“ zu?",
       answer: "Verteidigen eines Gebiets",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1114,7 +1114,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f4",
-      prompt: "Säugerverhalten: Was bedeutet „Fluchtverhalten“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Fluchtverhalten“ zu?",
       answer: "Reaktion auf Gefahr durch Weglaufen",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1130,7 +1130,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f5",
-      prompt: "Säugerverhalten: Was bedeutet „Nahrungssuche“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Nahrungssuche“ zu?",
       answer: "Suchen und Erlangen von Futter",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1146,7 +1146,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f6",
-      prompt: "Säugerverhalten: Was bedeutet „Komfortverhalten“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Komfortverhalten“ zu?",
       answer: "Putzen, Ruhen, Strecken",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1162,7 +1162,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f7",
-      prompt: "Säugerverhalten: Was bedeutet „Markieren“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Markieren“ zu?",
       answer: "Kennzeichnen mit Duft oder Kratzspuren",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1178,7 +1178,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f8",
-      prompt: "Säugerverhalten: Was bedeutet „Spielverhalten“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Spielverhalten“ zu?",
       answer: "Übungs- und Sozialspiele Junger",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1194,7 +1194,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f9",
-      prompt: "Säugerverhalten: Was bedeutet „Aktivitätszeit“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Aktivitätszeit“ zu?",
       answer: "Tages- oder Nachtaktivität",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1210,7 +1210,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f10",
-      prompt: "Säugerverhalten: Was bedeutet „Prägung“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Prägung“ zu?",
       answer: "Schnelles Lernen in sensiblen Phasen",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1226,7 +1226,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f11",
-      prompt: "Säugerverhalten: Was bedeutet „Motivation“?",
+      prompt: "Was trifft im Thema Säugerverhalten auf „Motivation“ zu?",
       answer: "Innere Bereitschaft zu Verhalten",
       wrong: [
         "Gezieltes Wahrnehmen von Verhalten",
@@ -1309,7 +1309,7 @@ export const k5SaeugerSinne: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugsinn:f0",
-      prompt: "Säugersinne: Was bedeutet „Sender“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Sender“ zu?",
       answer: "Erzeugt ein Signal",
       wrong: [
         "Nimmt das Signal wahr",
@@ -1325,7 +1325,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f1",
-      prompt: "Säugersinne: Was bedeutet „Empfänger“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Empfänger“ zu?",
       answer: "Nimmt das Signal wahr",
       wrong: [
         "Erzeugt ein Signal",
@@ -1341,7 +1341,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f2",
-      prompt: "Säugersinne: Was bedeutet „Signal“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Signal“ zu?",
       answer: "Informationstragendes Zeichen",
       wrong: [
         "Erzeugt ein Signal",
@@ -1357,7 +1357,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f3",
-      prompt: "Säugersinne: Was bedeutet „Geruchssinn“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Geruchssinn“ zu?",
       answer: "Wahrnehmung von Duftstoffen",
       wrong: [
         "Erzeugt ein Signal",
@@ -1373,7 +1373,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f4",
-      prompt: "Säugersinne: Was bedeutet „Gehör“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Gehör“ zu?",
       answer: "Wahrnehmung von Schall",
       wrong: [
         "Erzeugt ein Signal",
@@ -1389,7 +1389,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f5",
-      prompt: "Säugersinne: Was bedeutet „Sehsinn“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Sehsinn“ zu?",
       answer: "Wahrnehmung von Licht und Formen",
       wrong: [
         "Erzeugt ein Signal",
@@ -1405,7 +1405,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f6",
-      prompt: "Säugersinne: Was bedeutet „Tastsinn“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Tastsinn“ zu?",
       answer: "Wahrnehmung von Berührung",
       wrong: [
         "Erzeugt ein Signal",
@@ -1421,7 +1421,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f7",
-      prompt: "Säugersinne: Was bedeutet „Schnurrhaare“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Schnurrhaare“ zu?",
       answer: "Tastorgane am Kopf",
       wrong: [
         "Erzeugt ein Signal",
@@ -1437,7 +1437,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f8",
-      prompt: "Säugersinne: Was bedeutet „Ultraschall“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Ultraschall“ zu?",
       answer: "Sehr hohe Schallfrequenzen",
       wrong: [
         "Erzeugt ein Signal",
@@ -1453,7 +1453,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f9",
-      prompt: "Säugersinne: Was bedeutet „Echoortung“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Echoortung“ zu?",
       answer: "Orientierung über zurückgeworfenen Schall",
       wrong: [
         "Erzeugt ein Signal",
@@ -1469,7 +1469,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f10",
-      prompt: "Säugersinne: Was bedeutet „Kommunikationslaut“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Kommunikationslaut“ zu?",
       answer: "Laut zur Information an Artgenossen",
       wrong: [
         "Erzeugt ein Signal",
@@ -1485,7 +1485,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f11",
-      prompt: "Säugersinne: Was bedeutet „Sinnesleistung“?",
+      prompt: "Was trifft im Thema Säugersinne auf „Sinnesleistung“ zu?",
       answer: "Leistungsfähigkeit eines Sinnes",
       wrong: [
         "Erzeugt ein Signal",
@@ -1568,7 +1568,7 @@ export const k5SaeugerSozial: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugsoc:f0",
-      prompt: "Säugersozial: Was bedeutet „Rudel“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Rudel“ zu?",
       answer: "Soziale Gruppe mancher Säuger",
       wrong: [
         "Zusammenarbeit zum gemeinsamen Vorteil",
@@ -1584,7 +1584,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f1",
-      prompt: "Säugersozial: Was bedeutet „Kooperation“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Kooperation“ zu?",
       answer: "Zusammenarbeit zum gemeinsamen Vorteil",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1600,7 +1600,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f2",
-      prompt: "Säugersozial: Was bedeutet „Rangordnung“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Rangordnung“ zu?",
       answer: "Hierarchie in der Gruppe",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1616,7 +1616,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f3",
-      prompt: "Säugersozial: Was bedeutet „Aggression“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Aggression“ zu?",
       answer: "Angriffs- oder Drohverhalten",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1632,7 +1632,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f4",
-      prompt: "Säugersozial: Was bedeutet „Revier“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Revier“ zu?",
       answer: "Verteidigtes Gebiet",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1648,7 +1648,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f5",
-      prompt: "Säugersozial: Was bedeutet „Sozialbindung“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Sozialbindung“ zu?",
       answer: "Dauerhafte Beziehung zwischen Individuen",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1664,7 +1664,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f6",
-      prompt: "Säugersozial: Was bedeutet „Imponieren“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Imponieren“ zu?",
       answer: "Status zeigen ohne sofortigen Kampf",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1680,7 +1680,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f7",
-      prompt: "Säugersozial: Was bedeutet „Unterwerfung“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Unterwerfung“ zu?",
       answer: "Beschwichtigungsverhalten",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1696,7 +1696,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f8",
-      prompt: "Säugersozial: Was bedeutet „Gruppenjagd“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Gruppenjagd“ zu?",
       answer: "Gemeinsames Beutemachen",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1712,7 +1712,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f9",
-      prompt: "Säugersozial: Was bedeutet „Alarmverhalten“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Alarmverhalten“ zu?",
       answer: "Warnen der Gruppe",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1728,7 +1728,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f10",
-      prompt: "Säugersozial: Was bedeutet „Alleinerziehend“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Alleinerziehend“ zu?",
       answer: "Ein Elterntier versorgt Junge",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1744,7 +1744,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f11",
-      prompt: "Säugersozial: Was bedeutet „Gruppenleben“?",
+      prompt: "Was trifft im Thema Säugersozial auf „Gruppenleben“ zu?",
       answer: "Leben in sozialer Einheit",
       wrong: [
         "Soziale Gruppe mancher Säuger",
@@ -1827,7 +1827,7 @@ export const k6InsektenAtmung: BioBank = {
   facts: [
     {
       concept: "bio:k6:insatm:f0",
-      prompt: "Insektenatmung: Was bedeutet „Trachee“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Trachee“ zu?",
       answer: "Luftröhre im Insektenkörper",
       wrong: [
         "Feinste Endverzweigung der Tracheen",
@@ -1843,7 +1843,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f1",
-      prompt: "Insektenatmung: Was bedeutet „Tracheole“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Tracheole“ zu?",
       answer: "Feinste Endverzweigung der Tracheen",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1859,7 +1859,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f2",
-      prompt: "Insektenatmung: Was bedeutet „Stigma“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Stigma“ zu?",
       answer: "Atemöffnung an der Körperseite",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1875,7 +1875,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f3",
-      prompt: "Insektenatmung: Was bedeutet „Diffusion“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Diffusion“ zu?",
       answer: "Gasbewegung ohne Pumpe wie Lunge",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1891,7 +1891,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f4",
-      prompt: "Insektenatmung: Was bedeutet „Chitinpanzer“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Chitinpanzer“ zu?",
       answer: "Äußere Körperhülle",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1907,7 +1907,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f5",
-      prompt: "Insektenatmung: Was bedeutet „Wasserkäferkieme“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Wasserkäferkieme“ zu?",
       answer: "Anpassung mancher Wasserinsekten",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1923,7 +1923,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f6",
-      prompt: "Insektenatmung: Was bedeutet „Luftvorrat“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Luftvorrat“ zu?",
       answer: "Mitgeführte Luftblase unter Wasser",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1939,7 +1939,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f7",
-      prompt: "Insektenatmung: Was bedeutet „Oberflächenvergrößerung“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Oberflächenvergrößerung“ zu?",
       answer: "Viele feine Röhren vergrößern Fläche",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1955,7 +1955,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f8",
-      prompt: "Insektenatmung: Was bedeutet „Landatmung“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Landatmung“ zu?",
       answer: "Atmung mit Luft über Tracheen",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1971,7 +1971,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f9",
-      prompt: "Insektenatmung: Was bedeutet „Stoffwechselrate“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Stoffwechselrate“ zu?",
       answer: "Geschwindigkeit des Stoffwechsels",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -1987,7 +1987,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f10",
-      prompt: "Insektenatmung: Was bedeutet „Häutung“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Häutung“ zu?",
       answer: "Abstreifen des Panzers",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -2003,7 +2003,7 @@ export const k6InsektenAtmung: BioBank = {
     },
     {
       concept: "bio:k6:insatm:f11",
-      prompt: "Insektenatmung: Was bedeutet „Gasaustausch“?",
+      prompt: "Was trifft im Thema Insektenatmung auf „Gasaustausch“ zu?",
       answer: "Aufnahme O₂, Abgabe CO₂",
       wrong: [
         "Luftröhre im Insektenkörper",
@@ -2086,7 +2086,7 @@ export const k6SkelettVergleich: BioBank = {
   facts: [
     {
       concept: "bio:k6:skverg:f0",
-      prompt: "Skelettvergleich: Was bedeutet „Innenskelett“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Innenskelett“ zu?",
       answer: "Stützgerüst im Körperinneren",
       wrong: [
         "Stütz- und Schutzpanzer außen",
@@ -2102,7 +2102,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f1",
-      prompt: "Skelettvergleich: Was bedeutet „Außenskelett“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Außenskelett“ zu?",
       answer: "Stütz- und Schutzpanzer außen",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2118,7 +2118,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f2",
-      prompt: "Skelettvergleich: Was bedeutet „Wirbelsäule“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Wirbelsäule“ zu?",
       answer: "Zentrale Knochenachse",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2134,7 +2134,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f3",
-      prompt: "Skelettvergleich: Was bedeutet „Chitin“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Chitin“ zu?",
       answer: "Material vieler Außenskelette",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2150,7 +2150,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f4",
-      prompt: "Skelettvergleich: Was bedeutet „Knochen“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Knochen“ zu?",
       answer: "Mineralisiertes Stützgewebe",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2166,7 +2166,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f5",
-      prompt: "Skelettvergleich: Was bedeutet „Häutung“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Häutung“ zu?",
       answer: "Abstreifen des Außenskeletts",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2182,7 +2182,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f6",
-      prompt: "Skelettvergleich: Was bedeutet „Gliedmaßen“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Gliedmaßen“ zu?",
       answer: "Bewegliche Anhänge zur Fortbewegung",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2198,7 +2198,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f7",
-      prompt: "Skelettvergleich: Was bedeutet „Schutzfunktion“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Schutzfunktion“ zu?",
       answer: "Skelett schützt Organe",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2214,7 +2214,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f8",
-      prompt: "Skelettvergleich: Was bedeutet „Hebelmechanik“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Hebelmechanik“ zu?",
       answer: "Knochen/Muskeln als Hebel",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2230,7 +2230,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f9",
-      prompt: "Skelettvergleich: Was bedeutet „Exoskelett“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Exoskelett“ zu?",
       answer: "Anderer Name für Außenskelett",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2246,7 +2246,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f10",
-      prompt: "Skelettvergleich: Was bedeutet „Endoskelett“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Endoskelett“ zu?",
       answer: "Anderer Name für Innenskelett",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2262,7 +2262,7 @@ export const k6SkelettVergleich: BioBank = {
     },
     {
       concept: "bio:k6:skverg:f11",
-      prompt: "Skelettvergleich: Was bedeutet „Segmentierung“?",
+      prompt: "Was trifft im Thema Skelettvergleich auf „Segmentierung“ zu?",
       answer: "Körpergliederung in Abschnitte",
       wrong: [
         "Stützgerüst im Körperinneren",
@@ -2345,7 +2345,7 @@ export const k6AtmungVergleich: BioBank = {
   facts: [
     {
       concept: "bio:k6:atmverg:f0",
-      prompt: "Atmungsvergleich: Was bedeutet „Kieme“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Kieme“ zu?",
       answer: "Atemorgan für Wasser",
       wrong: [
         "Atemorgan für Luft",
@@ -2361,7 +2361,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f1",
-      prompt: "Atmungsvergleich: Was bedeutet „Lunge“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Lunge“ zu?",
       answer: "Atemorgan für Luft",
       wrong: [
         "Atemorgan für Wasser",
@@ -2377,7 +2377,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f2",
-      prompt: "Atmungsvergleich: Was bedeutet „Trachee“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Trachee“ zu?",
       answer: "Luftröhrensystem der Insekten",
       wrong: [
         "Atemorgan für Wasser",
@@ -2393,7 +2393,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f3",
-      prompt: "Atmungsvergleich: Was bedeutet „Hautatmung“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Hautatmung“ zu?",
       answer: "Gasaustausch über die Körperoberfläche",
       wrong: [
         "Atemorgan für Wasser",
@@ -2409,7 +2409,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f4",
-      prompt: "Atmungsvergleich: Was bedeutet „Oberflächenvergrößerung“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Oberflächenvergrößerung“ zu?",
       answer: "Vergrößerung der Austauschfläche",
       wrong: [
         "Atemorgan für Wasser",
@@ -2425,7 +2425,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f5",
-      prompt: "Atmungsvergleich: Was bedeutet „Medium“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Medium“ zu?",
       answer: "Wasser oder Luft als Gasquelle",
       wrong: [
         "Atemorgan für Wasser",
@@ -2441,7 +2441,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f6",
-      prompt: "Atmungsvergleich: Was bedeutet „Diffusion“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Diffusion“ zu?",
       answer: "Grundprinzip des Gasaustauschs",
       wrong: [
         "Atemorgan für Wasser",
@@ -2457,7 +2457,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f7",
-      prompt: "Atmungsvergleich: Was bedeutet „Feuchte Oberfläche“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Feuchte Oberfläche“ zu?",
       answer: "Erleichtert Gasdiffusion",
       wrong: [
         "Atemorgan für Wasser",
@@ -2473,7 +2473,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f8",
-      prompt: "Atmungsvergleich: Was bedeutet „Landleben“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Landleben“ zu?",
       answer: "Leben außerhalb des Wassers",
       wrong: [
         "Atemorgan für Wasser",
@@ -2489,7 +2489,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f9",
-      prompt: "Atmungsvergleich: Was bedeutet „Wasserleben“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Wasserleben“ zu?",
       answer: "Leben im Wasser",
       wrong: [
         "Atemorgan für Wasser",
@@ -2505,7 +2505,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f10",
-      prompt: "Atmungsvergleich: Was bedeutet „Doppelstrategie“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Doppelstrategie“ zu?",
       answer: "Mehrere Atemwege parallel",
       wrong: [
         "Atemorgan für Wasser",
@@ -2521,7 +2521,7 @@ export const k6AtmungVergleich: BioBank = {
     },
     {
       concept: "bio:k6:atmverg:f11",
-      prompt: "Atmungsvergleich: Was bedeutet „Angepasstheit“?",
+      prompt: "Was trifft im Thema Atmungsvergleich auf „Angepasstheit“ zu?",
       answer: "Bau folgt dem Lebensraum",
       wrong: [
         "Atemorgan für Wasser",
@@ -2604,7 +2604,7 @@ export const k6FortpflanzungFormen: BioBank = {
   facts: [
     {
       concept: "bio:k6:fortform:f0",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Äußere Befruchtung“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Äußere Befruchtung“ zu?",
       answer: "Keimzellen treffen sich außerhalb des Körpers",
       wrong: [
         "Befruchtung im Körper",
@@ -2620,7 +2620,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f1",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Innere Befruchtung“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Innere Befruchtung“ zu?",
       answer: "Befruchtung im Körper",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2636,7 +2636,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f2",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Eiablage“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Eiablage“ zu?",
       answer: "Ablage von Eiern",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2652,7 +2652,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f3",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Lebendgeburt“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Lebendgeburt“ zu?",
       answer: "Geburt entwickelter Jungtiere",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2668,7 +2668,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f4",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Metamorphose“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Metamorphose“ zu?",
       answer: "Gestaltwechsel der Entwicklung",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2684,7 +2684,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f5",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Brutpflege“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Brutpflege“ zu?",
       answer: "Versorgung der Nachkommen",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2700,7 +2700,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f6",
-      prompt: "Fortpflanzungsformen: Was bedeutet „ungeschlechtlich“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „ungeschlechtlich“ zu?",
       answer: "Vermehrung ohne Gametenverschmelzung",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2716,7 +2716,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f7",
-      prompt: "Fortpflanzungsformen: Was bedeutet „geschlechtlich“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „geschlechtlich“ zu?",
       answer: "Vermehrung mit Befruchtung",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2732,7 +2732,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f8",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Larve“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Larve“ zu?",
       answer: "Jugendstadium mit anderer Gestalt",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2748,7 +2748,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f9",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Puppe“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Puppe“ zu?",
       answer: "Ruhe-/Umwandlungsstadium",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2764,7 +2764,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f10",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Wasserabhängigkeit“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Wasserabhängigkeit“ zu?",
       answer: "Fortpflanzung an Wasser gebunden",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2780,7 +2780,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f11",
-      prompt: "Fortpflanzungsformen: Was bedeutet „Landunabhängigkeit“?",
+      prompt: "Was trifft im Thema Fortpflanzungsformen auf „Landunabhängigkeit“ zu?",
       answer: "Fortpflanzung ohne freies Wasser",
       wrong: [
         "Keimzellen treffen sich außerhalb des Körpers",
@@ -2863,7 +2863,7 @@ export const k6Zelltheorie: BioBank = {
   facts: [
     {
       concept: "bio:k6:zellth:f0",
-      prompt: "Zelltheorie: Was bedeutet „Zelle“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Zelle“ zu?",
       answer: "Kleinste lebende Einheit",
       wrong: [
         "Lebewesen bestehen aus Zellen",
@@ -2879,7 +2879,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f1",
-      prompt: "Zelltheorie: Was bedeutet „Zelltheorie“?",
+      prompt: "Was trifft auf „Zelltheorie“ zu?",
       answer: "Lebewesen bestehen aus Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2895,7 +2895,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f2",
-      prompt: "Zelltheorie: Was bedeutet „Einzeller“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Einzeller“ zu?",
       answer: "Organismus aus einer Zelle",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2911,7 +2911,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f3",
-      prompt: "Zelltheorie: Was bedeutet „Vielzeller“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Vielzeller“ zu?",
       answer: "Organismus aus vielen Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2927,7 +2927,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f4",
-      prompt: "Zelltheorie: Was bedeutet „Zellkern“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Zellkern“ zu?",
       answer: "Enthält Erbinformation bei Eukaryoten",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2943,7 +2943,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f5",
-      prompt: "Zelltheorie: Was bedeutet „Mikroskop“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Mikroskop“ zu?",
       answer: "Gerät zur Sichtbarmachung von Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2959,7 +2959,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f6",
-      prompt: "Zelltheorie: Was bedeutet „Gewebe“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Gewebe“ zu?",
       answer: "Verband gleichartiger Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2975,7 +2975,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f7",
-      prompt: "Zelltheorie: Was bedeutet „Organ“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Organ“ zu?",
       answer: "Funktionseinheit aus Geweben",
       wrong: [
         "Kleinste lebende Einheit",
@@ -2991,7 +2991,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f8",
-      prompt: "Zelltheorie: Was bedeutet „Schleiden“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Schleiden“ zu?",
       answer: "Mitbegründer der pflanzlichen Zelltheorie",
       wrong: [
         "Kleinste lebende Einheit",
@@ -3007,7 +3007,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f9",
-      prompt: "Zelltheorie: Was bedeutet „Schwann“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Schwann“ zu?",
       answer: "Übertrug Zellgedanken auf Tiere",
       wrong: [
         "Kleinste lebende Einheit",
@@ -3023,7 +3023,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f10",
-      prompt: "Zelltheorie: Was bedeutet „Virchow“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Virchow“ zu?",
       answer: "Zellen entstehen aus Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -3039,7 +3039,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f11",
-      prompt: "Zelltheorie: Was bedeutet „Differenzierung“?",
+      prompt: "Was trifft im Thema Zelltheorie auf „Differenzierung“ zu?",
       answer: "Spezialisierung von Zellen",
       wrong: [
         "Kleinste lebende Einheit",
@@ -3122,7 +3122,7 @@ export const k6OrganellenEnergie: BioBank = {
   facts: [
     {
       concept: "bio:k6:orgene:f0",
-      prompt: "Energieorganellen: Was bedeutet „Mitochondrium“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Mitochondrium“ zu?",
       answer: "Ort der Zellatmung",
       wrong: [
         "Ort der Fotosynthese",
@@ -3138,7 +3138,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f1",
-      prompt: "Energieorganellen: Was bedeutet „Chloroplast“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Chloroplast“ zu?",
       answer: "Ort der Fotosynthese",
       wrong: [
         "Ort der Zellatmung",
@@ -3154,7 +3154,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f2",
-      prompt: "Energieorganellen: Was bedeutet „ATP“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „ATP“ zu?",
       answer: "Energiewährung der Zelle",
       wrong: [
         "Ort der Zellatmung",
@@ -3170,7 +3170,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f3",
-      prompt: "Energieorganellen: Was bedeutet „Zellatmung“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Zellatmung“ zu?",
       answer: "Abbau von Zucker mit Energiegewinn",
       wrong: [
         "Ort der Zellatmung",
@@ -3186,7 +3186,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f4",
-      prompt: "Energieorganellen: Was bedeutet „Fotosynthese“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Fotosynthese“ zu?",
       answer: "Aufbau organischer Stoffe mit Licht",
       wrong: [
         "Ort der Zellatmung",
@@ -3202,7 +3202,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f5",
-      prompt: "Energieorganellen: Was bedeutet „Doppelmembran“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Doppelmembran“ zu?",
       answer: "Zwei Membranen um Organell",
       wrong: [
         "Ort der Zellatmung",
@@ -3218,7 +3218,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f6",
-      prompt: "Energieorganellen: Was bedeutet „Energieumwandlung“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Energieumwandlung“ zu?",
       answer: "Umwandlung von Energieformen",
       wrong: [
         "Ort der Zellatmung",
@@ -3234,7 +3234,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f7",
-      prompt: "Energieorganellen: Was bedeutet „Cytoplasma“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Cytoplasma“ zu?",
       answer: "Zellinnenraum",
       wrong: [
         "Ort der Zellatmung",
@@ -3250,7 +3250,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f8",
-      prompt: "Energieorganellen: Was bedeutet „Glukose“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Glukose“ zu?",
       answer: "Wichtiger Energieträger",
       wrong: [
         "Ort der Zellatmung",
@@ -3266,7 +3266,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f9",
-      prompt: "Energieorganellen: Was bedeutet „Sauerstoff“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Sauerstoff“ zu?",
       answer: "Reaktand der aeroben Atmung",
       wrong: [
         "Ort der Zellatmung",
@@ -3282,7 +3282,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f10",
-      prompt: "Energieorganellen: Was bedeutet „Autotrophie“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Autotrophie“ zu?",
       answer: "Selbsternährung über Assimilation",
       wrong: [
         "Ort der Zellatmung",
@@ -3298,7 +3298,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f11",
-      prompt: "Energieorganellen: Was bedeutet „Heterotrophie“?",
+      prompt: "Was trifft im Thema Energieorganellen auf „Heterotrophie“ zu?",
       answer: "Abhängigkeit von organischer Nahrung",
       wrong: [
         "Ort der Zellatmung",
@@ -3381,7 +3381,7 @@ export const k7PulsBlutdruck: BioBank = {
   facts: [
     {
       concept: "bio:k7:puls:f0",
-      prompt: "Puls/Blutdruck: Was bedeutet „Puls“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Puls“ zu?",
       answer: "Spürbare Druckwelle der Arterien",
       wrong: [
         "Schläge pro Minute",
@@ -3397,7 +3397,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f1",
-      prompt: "Puls/Blutdruck: Was bedeutet „Pulsfrequenz“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Pulsfrequenz“ zu?",
       answer: "Schläge pro Minute",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3413,7 +3413,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f2",
-      prompt: "Puls/Blutdruck: Was bedeutet „Blutdruck“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Blutdruck“ zu?",
       answer: "Druck des Blutes auf Arterienwände",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3429,7 +3429,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f3",
-      prompt: "Puls/Blutdruck: Was bedeutet „Systole“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Systole“ zu?",
       answer: "Auswurfphase des Herzens",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3445,7 +3445,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f4",
-      prompt: "Puls/Blutdruck: Was bedeutet „Diastole“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Diastole“ zu?",
       answer: "Entspannungs-/Füllungsphase",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3461,7 +3461,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f5",
-      prompt: "Puls/Blutdruck: Was bedeutet „Ruhepuls“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Ruhepuls“ zu?",
       answer: "Puls in entspanntem Zustand",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3477,7 +3477,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f6",
-      prompt: "Puls/Blutdruck: Was bedeutet „Belastungspuls“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Belastungspuls“ zu?",
       answer: "Puls unter körperlicher Arbeit",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3493,7 +3493,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f7",
-      prompt: "Puls/Blutdruck: Was bedeutet „mmHg“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „mmHg“ zu?",
       answer: "Einheit des Blutdrucks",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3509,7 +3509,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f8",
-      prompt: "Puls/Blutdruck: Was bedeutet „Arterie“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Arterie“ zu?",
       answer: "Gefäß vom Herzen weg",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3525,7 +3525,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f9",
-      prompt: "Puls/Blutdruck: Was bedeutet „Vitalparameter“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Vitalparameter“ zu?",
       answer: "Grundlegende Körperwerte",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3541,7 +3541,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f10",
-      prompt: "Puls/Blutdruck: Was bedeutet „Bluthochdruck“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Bluthochdruck“ zu?",
       answer: "Dauerhaft zu hoher Blutdruck",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3557,7 +3557,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f11",
-      prompt: "Puls/Blutdruck: Was bedeutet „Messmanschette“?",
+      prompt: "Was trifft im Thema Puls/Blutdruck auf „Messmanschette“ zu?",
       answer: "Hilfsmittel der Blutdruckmessung",
       wrong: [
         "Spürbare Druckwelle der Arterien",
@@ -3640,7 +3640,7 @@ export const k7KreislaufGesundheit: BioBank = {
   facts: [
     {
       concept: "bio:k7:krges:f0",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Bewegung“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Bewegung“ zu?",
       answer: "Regelmäßige körperliche Aktivität",
       wrong: [
         "Nährstoffreiche, abwechslungsreiche Kost",
@@ -3656,7 +3656,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f1",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Ausgewogene Ernährung“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Ausgewogene Ernährung“ zu?",
       answer: "Nährstoffreiche, abwechslungsreiche Kost",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3672,7 +3672,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f2",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Nichtrauchen“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Nichtrauchen“ zu?",
       answer: "Verzicht auf Tabakrauch",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3688,7 +3688,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f3",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Bluthochdruck“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Bluthochdruck“ zu?",
       answer: "Dauerhaft erhöhter Blutdruck",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3704,7 +3704,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f4",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Arteriosklerose“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Arteriosklerose“ zu?",
       answer: "Gefäßverkalkung/-verengung",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3720,7 +3720,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f5",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Cholesterin“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Cholesterin“ zu?",
       answer: "Blutfettstoff mit Risiko bei Überschuss",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3736,7 +3736,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f6",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Stressmanagement“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Stressmanagement“ zu?",
       answer: "Umgang mit Dauerstress",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3752,7 +3752,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f7",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Herzinfarkt“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Herzinfarkt“ zu?",
       answer: "Verschluss eines Herzkranzgefäßes",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3768,7 +3768,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f8",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Schlaganfall“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Schlaganfall“ zu?",
       answer: "Durchblutungsstörung im Gehirn",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3784,7 +3784,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f9",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Ausdauer“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Ausdauer“ zu?",
       answer: "Fähigkeit zu längerer Belastung",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3800,7 +3800,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f10",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Risikofaktor“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Risikofaktor“ zu?",
       answer: "Umstand der Erkrankungswahrscheinlichkeit erhöht",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3816,7 +3816,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f11",
-      prompt: "Kreislaufgesundheit: Was bedeutet „Prävention“?",
+      prompt: "Was trifft im Thema Kreislaufgesundheit auf „Prävention“ zu?",
       answer: "Vorbeugung durch Lebensstil",
       wrong: [
         "Regelmäßige körperliche Aktivität",
@@ -3899,7 +3899,7 @@ export const k7Haltung: BioBank = {
   facts: [
     {
       concept: "bio:k7:haltung:f0",
-      prompt: "Haltungsschäden: Was bedeutet „Körperhaltung“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Körperhaltung“ zu?",
       answer: "Stellung von Rumpf und Wirbelsäule",
       wrong: [
         "Dauerhafte Fehlbelastung der Haltung",
@@ -3915,7 +3915,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f1",
-      prompt: "Haltungsschäden: Was bedeutet „Haltungsschaden“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Haltungsschaden“ zu?",
       answer: "Dauerhafte Fehlbelastung der Haltung",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -3931,7 +3931,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f2",
-      prompt: "Haltungsschäden: Was bedeutet „Rundrücken“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Rundrücken“ zu?",
       answer: "Verstärkte Krümmung der Brustwirbelsäule",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -3947,7 +3947,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f3",
-      prompt: "Haltungsschäden: Was bedeutet „Hohlkreuz“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Hohlkreuz“ zu?",
       answer: "Verstärkte Lendenlordose",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -3963,7 +3963,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f4",
-      prompt: "Haltungsschäden: Was bedeutet „Muskelkorsett“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Muskelkorsett“ zu?",
       answer: "Stabilisierende Rumpfmuskulatur",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -3979,7 +3979,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f5",
-      prompt: "Haltungsschäden: Was bedeutet „Bewegungsmangel“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Bewegungsmangel“ zu?",
       answer: "Zu wenig körperliche Aktivität",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -3995,7 +3995,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f6",
-      prompt: "Haltungsschäden: Was bedeutet „Ergonomie“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Ergonomie“ zu?",
       answer: "Arbeitsplatz an den Körper anpassen",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4011,7 +4011,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f7",
-      prompt: "Haltungsschäden: Was bedeutet „Wirbelsäule“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Wirbelsäule“ zu?",
       answer: "Zentrale Stützachse",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4027,7 +4027,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f8",
-      prompt: "Haltungsschäden: Was bedeutet „Bandscheibe“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Bandscheibe“ zu?",
       answer: "Polster zwischen Wirbeln",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4043,7 +4043,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f9",
-      prompt: "Haltungsschäden: Was bedeutet „Dehnung“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Dehnung“ zu?",
       answer: "Beweglichkeitstraining",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4059,7 +4059,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f10",
-      prompt: "Haltungsschäden: Was bedeutet „Krafttraining“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Krafttraining“ zu?",
       answer: "Stärkung der Muskulatur",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4075,7 +4075,7 @@ export const k7Haltung: BioBank = {
     },
     {
       concept: "bio:k7:haltung:f11",
-      prompt: "Haltungsschäden: Was bedeutet „Prävention“?",
+      prompt: "Was trifft im Thema Haltungsschäden auf „Prävention“ zu?",
       answer: "Vorbeugung durch Bewegung und Haltung",
       wrong: [
         "Stellung von Rumpf und Wirbelsäule",
@@ -4158,7 +4158,7 @@ export const k8Sucht: BioBank = {
   facts: [
     {
       concept: "bio:k8:sucht:f0",
-      prompt: "Suchtgefahren: Was bedeutet „Sucht“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Sucht“ zu?",
       answer: "Krankhafte Abhängigkeit von Stoff oder Verhalten",
       wrong: [
         "Substanz mit Abhängigkeitspotenzial",
@@ -4174,7 +4174,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f1",
-      prompt: "Suchtgefahren: Was bedeutet „Suchtmittel“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Suchtmittel“ zu?",
       answer: "Substanz mit Abhängigkeitspotenzial",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4190,7 +4190,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f2",
-      prompt: "Suchtgefahren: Was bedeutet „Toleranz“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Toleranz“ zu?",
       answer: "Gewöhnung mit Dosissteigerung",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4206,7 +4206,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f3",
-      prompt: "Suchtgefahren: Was bedeutet „Entzug“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Entzug“ zu?",
       answer: "Beschwerden beim Absetzen",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4222,7 +4222,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f4",
-      prompt: "Suchtgefahren: Was bedeutet „psychische Abhängigkeit“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „psychische Abhängigkeit“ zu?",
       answer: "Starkes Verlangen und Kontrollverlust",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4238,7 +4238,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f5",
-      prompt: "Suchtgefahren: Was bedeutet „körperliche Abhängigkeit“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „körperliche Abhängigkeit“ zu?",
       answer: "Körper stellt sich auf Substanz ein",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4254,7 +4254,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f6",
-      prompt: "Suchtgefahren: Was bedeutet „Mediengebrauch“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Mediengebrauch“ zu?",
       answer: "Nutzung digitaler Angebote",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4270,7 +4270,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f7",
-      prompt: "Suchtgefahren: Was bedeutet „soziale Folge“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „soziale Folge“ zu?",
       answer: "Belastung von Beziehungen und Schule",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4286,7 +4286,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f8",
-      prompt: "Suchtgefahren: Was bedeutet „psychische Folge“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „psychische Folge“ zu?",
       answer: "Angst, Reizbarkeit, Konzentrationsprobleme",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4302,7 +4302,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f9",
-      prompt: "Suchtgefahren: Was bedeutet „physische Folge“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „physische Folge“ zu?",
       answer: "Schäden an Organen",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4318,7 +4318,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f10",
-      prompt: "Suchtgefahren: Was bedeutet „Prävention“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Prävention“ zu?",
       answer: "Vorbeugung durch Wissen und Alternativen",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4334,7 +4334,7 @@ export const k8Sucht: BioBank = {
     },
     {
       concept: "bio:k8:sucht:f11",
-      prompt: "Suchtgefahren: Was bedeutet „Hilfesuche“?",
+      prompt: "Was trifft im Thema Suchtgefahren auf „Hilfesuche“ zu?",
       answer: "Professionelle Unterstützung nutzen",
       wrong: [
         "Krankhafte Abhängigkeit von Stoff oder Verhalten",
@@ -4417,7 +4417,7 @@ export const k8AugeAkkommodation: BioBank = {
   facts: [
     {
       concept: "bio:k8:akkom:f0",
-      prompt: "Akkommodation: Was bedeutet „Akkommodation“?",
+      prompt: "Was trifft auf „Akkommodation“ zu?",
       answer: "Scharfstellung auf unterschiedliche Entfernungen",
       wrong: [
         "Anpassung an Helligkeit",
@@ -4433,7 +4433,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f1",
-      prompt: "Akkommodation: Was bedeutet „Adaptation“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Adaptation“ zu?",
       answer: "Anpassung an Helligkeit",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4449,7 +4449,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f2",
-      prompt: "Akkommodation: Was bedeutet „Linse“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Linse“ zu?",
       answer: "Brechendes Element im Auge",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4465,7 +4465,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f3",
-      prompt: "Akkommodation: Was bedeutet „Ziliarmuskel“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Ziliarmuskel“ zu?",
       answer: "Muskel zur Linsenverformung",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4481,7 +4481,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f4",
-      prompt: "Akkommodation: Was bedeutet „Strahlengang“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Strahlengang“ zu?",
       answer: "Weg der Lichtstrahlen im Auge",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4497,7 +4497,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f5",
-      prompt: "Akkommodation: Was bedeutet „Netzhaut“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Netzhaut“ zu?",
       answer: "Ort der Sinneszellen",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4513,7 +4513,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f6",
-      prompt: "Akkommodation: Was bedeutet „Nahpunkt“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Nahpunkt“ zu?",
       answer: "Kürzeste Distanz scharfen Sehens",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4529,7 +4529,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f7",
-      prompt: "Akkommodation: Was bedeutet „Fernpunkt“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Fernpunkt“ zu?",
       answer: "Weitester Punkt scharfen Sehens",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4545,7 +4545,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f8",
-      prompt: "Akkommodation: Was bedeutet „Kurzsichtigkeit“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Kurzsichtigkeit“ zu?",
       answer: "Scharfes Sehen vor allem nah",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4561,7 +4561,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f9",
-      prompt: "Akkommodation: Was bedeutet „Weitsichtigkeit“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Weitsichtigkeit“ zu?",
       answer: "Probleme vor allem in der Nähe",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4577,7 +4577,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f10",
-      prompt: "Akkommodation: Was bedeutet „Leseabstand“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Leseabstand“ zu?",
       answer: "Sinnvoller Abstand beim Lesen",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4593,7 +4593,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f11",
-      prompt: "Akkommodation: Was bedeutet „Arbeitsschutz Auge“?",
+      prompt: "Was trifft im Thema Akkommodation auf „Arbeitsschutz Auge“ zu?",
       answer: "Maßnahmen gegen Überlastung",
       wrong: [
         "Scharfstellung auf unterschiedliche Entfernungen",
@@ -4676,7 +4676,7 @@ export const k8Gehirn: BioBank = {
   facts: [
     {
       concept: "bio:k8:gehirn:f0",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Großhirn“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Großhirn“ zu?",
       answer: "Sitz bewusster Prozesse und Cortex",
       wrong: [
         "Koordination von Bewegungen",
@@ -4692,7 +4692,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f1",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Kleinhirn“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Kleinhirn“ zu?",
       answer: "Koordination von Bewegungen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4708,7 +4708,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f2",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Stammhirn“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Stammhirn“ zu?",
       answer: "Grundlegende Lebensfunktionen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4724,7 +4724,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f3",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Gedächtnis“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Gedächtnis“ zu?",
       answer: "Speicherung von Informationen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4740,7 +4740,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f4",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Informationsspeicherung“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Informationsspeicherung“ zu?",
       answer: "Ablegen von Erfahrungen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4756,7 +4756,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f5",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Synapse“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Synapse“ zu?",
       answer: "Kontaktstelle zwischen Neuronen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4772,7 +4772,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f6",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Neuron“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Neuron“ zu?",
       answer: "Nervenzelle",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4788,7 +4788,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f7",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Hirnrinde“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Hirnrinde“ zu?",
       answer: "Äußere Schicht des Großhirns",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4804,7 +4804,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f8",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Lernprozess“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Lernprozess“ zu?",
       answer: "Veränderung durch Erfahrung",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4820,7 +4820,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f9",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Schlaf“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Schlaf“ zu?",
       answer: "Erholungs- und Konsolidierungsphase",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4836,7 +4836,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f10",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Lokalisation“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Lokalisation“ zu?",
       answer: "Zuordnung von Leistungen zu Regionen",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4852,7 +4852,7 @@ export const k8Gehirn: BioBank = {
     },
     {
       concept: "bio:k8:gehirn:f11",
-      prompt: "Gehirn/Gedächtnis: Was bedeutet „Netzwerk“?",
+      prompt: "Was trifft im Thema Gehirn/Gedächtnis auf „Netzwerk“ zu?",
       answer: "Zusammenarbeit vieler Areale",
       wrong: [
         "Sitz bewusster Prozesse und Cortex",
@@ -4935,7 +4935,7 @@ export const k8NervGesundheit: BioBank = {
   facts: [
     {
       concept: "bio:k8:nervges:f0",
-      prompt: "Nervengesundheit: Was bedeutet „Schlaf“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Schlaf“ zu?",
       answer: "Erholung für Gehirn und Körper",
       wrong: [
         "Zu viele Reize gleichzeitig",
@@ -4951,7 +4951,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f1",
-      prompt: "Nervengesundheit: Was bedeutet „Reizüberflutung“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Reizüberflutung“ zu?",
       answer: "Zu viele Reize gleichzeitig",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -4967,7 +4967,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f2",
-      prompt: "Nervengesundheit: Was bedeutet „Stress“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Stress“ zu?",
       answer: "Belastungsreaktion des Organismus",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -4983,7 +4983,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f3",
-      prompt: "Nervengesundheit: Was bedeutet „Entspannung“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Entspannung“ zu?",
       answer: "Absenken der Anspannung",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -4999,7 +4999,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f4",
-      prompt: "Nervengesundheit: Was bedeutet „Bildschirmzeit“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Bildschirmzeit“ zu?",
       answer: "Dauer der Mediennutzung",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5015,7 +5015,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f5",
-      prompt: "Nervengesundheit: Was bedeutet „Pausen“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Pausen“ zu?",
       answer: "Unterbrechungen der Belastung",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5031,7 +5031,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f6",
-      prompt: "Nervengesundheit: Was bedeutet „Bewegung“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Bewegung“ zu?",
       answer: "Körperliche Aktivität",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5047,7 +5047,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f7",
-      prompt: "Nervengesundheit: Was bedeutet „Suchtgefahr“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Suchtgefahr“ zu?",
       answer: "Risiko problematischer Gewohnheiten",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5063,7 +5063,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f8",
-      prompt: "Nervengesundheit: Was bedeutet „Konzentration“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Konzentration“ zu?",
       answer: "Fokussierte Aufmerksamkeit",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5079,7 +5079,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f9",
-      prompt: "Nervengesundheit: Was bedeutet „Recovery“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Recovery“ zu?",
       answer: "Erholung nach Belastung",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5095,7 +5095,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f10",
-      prompt: "Nervengesundheit: Was bedeutet „Tagesrhythmus“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Tagesrhythmus“ zu?",
       answer: "Wechsel von Aktivität und Ruhe",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5111,7 +5111,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f11",
-      prompt: "Nervengesundheit: Was bedeutet „Selbstregulation“?",
+      prompt: "Was trifft im Thema Nervengesundheit auf „Selbstregulation“ zu?",
       answer: "Steuern von Belastung und Erholung",
       wrong: [
         "Erholung für Gehirn und Körper",
@@ -5194,7 +5194,7 @@ export const k8Zyklus: BioBank = {
   facts: [
     {
       concept: "bio:k8:zyklus:f0",
-      prompt: "Menstruationszyklus: Was bedeutet „Menstruationszyklus“?",
+      prompt: "Was trifft auf „Menstruationszyklus“ zu?",
       answer: "Monatlicher Regelkreis der Gebärmutterschleimhaut",
       wrong: [
         "Freisetzung einer Eizelle",
@@ -5210,7 +5210,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f1",
-      prompt: "Menstruationszyklus: Was bedeutet „Eisprung“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Eisprung“ zu?",
       answer: "Freisetzung einer Eizelle",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5226,7 +5226,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f2",
-      prompt: "Menstruationszyklus: Was bedeutet „Follikelphase“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Follikelphase“ zu?",
       answer: "Reifungsphase vor dem Eisprung",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5242,7 +5242,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f3",
-      prompt: "Menstruationszyklus: Was bedeutet „Lutealphase“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Lutealphase“ zu?",
       answer: "Phase nach dem Eisprung",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5258,7 +5258,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f4",
-      prompt: "Menstruationszyklus: Was bedeutet „Menstruation“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Menstruation“ zu?",
       answer: "Abstoßen der Schleimhaut",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5274,7 +5274,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f5",
-      prompt: "Menstruationszyklus: Was bedeutet „Östrogen“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Östrogen“ zu?",
       answer: "Weibliches Geschlechtshormon",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5290,7 +5290,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f6",
-      prompt: "Menstruationszyklus: Was bedeutet „Progesteron“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Progesteron“ zu?",
       answer: "Gelbkörperhormon",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5306,7 +5306,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f7",
-      prompt: "Menstruationszyklus: Was bedeutet „Gebärmutterschleimhaut“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Gebärmutterschleimhaut“ zu?",
       answer: "Innere Auskleidung der Gebärmutter",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5322,7 +5322,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f8",
-      prompt: "Menstruationszyklus: Was bedeutet „Gelbkörper“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Gelbkörper“ zu?",
       answer: "Restfollikel nach Eisprung",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5338,7 +5338,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f9",
-      prompt: "Menstruationszyklus: Was bedeutet „Regulation“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Regulation“ zu?",
       answer: "Steuerung durch Hypophyse und Eierstöcke",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5354,7 +5354,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f10",
-      prompt: "Menstruationszyklus: Was bedeutet „Zykluslänge“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Zykluslänge“ zu?",
       answer: "Dauer eines Zyklus",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5370,7 +5370,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f11",
-      prompt: "Menstruationszyklus: Was bedeutet „Fruchtbare Tage“?",
+      prompt: "Was trifft im Thema Menstruationszyklus auf „Fruchtbare Tage“ zu?",
       answer: "Zeitraum erhöhter Empfängniswahrscheinlichkeit",
       wrong: [
         "Monatlicher Regelkreis der Gebärmutterschleimhaut",
@@ -5453,7 +5453,7 @@ export const k8Vielfalt: BioBank = {
   facts: [
     {
       concept: "bio:k8:vielfalt:f0",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „sexuelle Vielfalt“?",
+      prompt: "Was trifft auf „sexuelle Vielfalt“ zu?",
       answer: "Unterschiedliche sexuelle Orientierungen",
       wrong: [
         "Unterschiedliche Geschlechtsidentitäten und -merkmale",
@@ -5469,7 +5469,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f1",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „geschlechtliche Vielfalt“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „geschlechtliche Vielfalt“ zu?",
       answer: "Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5485,7 +5485,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f2",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Heterosexualität“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Heterosexualität“ zu?",
       answer: "Anziehung zum anderen Geschlecht",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5501,7 +5501,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f3",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Homosexualität“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Homosexualität“ zu?",
       answer: "Anziehung zum gleichen Geschlecht",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5517,7 +5517,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f4",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Intersexualität“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Intersexualität“ zu?",
       answer: "Varianten der Geschlechtsmerkmale",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5533,7 +5533,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f5",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Transgender“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Transgender“ zu?",
       answer: "Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5549,7 +5549,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f6",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Partnerbeziehung“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Partnerbeziehung“ zu?",
       answer: "Beziehungsform zwischen Menschen",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5565,7 +5565,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f7",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Konsens“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Konsens“ zu?",
       answer: "Freiwillige Zustimmung",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5581,7 +5581,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f8",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Jugendschutz“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Jugendschutz“ zu?",
       answer: "Schutz Minderjähriger",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5597,7 +5597,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f9",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Medieninfluss“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Medieninfluss“ zu?",
       answer: "Wirkung von Internet und Sozialen Medien",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5613,7 +5613,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f10",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Respekt“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Respekt“ zu?",
       answer: "Achtung der Würde anderer",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5629,7 +5629,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f11",
-      prompt: "Sexuelle Vielfalt: Was bedeutet „Aufklärung“?",
+      prompt: "Was trifft im Thema Sexuelle Vielfalt auf „Aufklärung“ zu?",
       answer: "Sachliche Information",
       wrong: [
         "Unterschiedliche sexuelle Orientierungen",
@@ -5712,7 +5712,7 @@ export const k9Gewaesser: BioBank = {
   facts: [
     {
       concept: "bio:k9:gewaesser:f0",
-      prompt: "See/Zonierung: Was bedeutet „Zonierung“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Zonierung“ zu?",
       answer: "Gliederung eines Sees in Lebenszonen",
       wrong: [
         "Uferzone",
@@ -5728,7 +5728,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f1",
-      prompt: "See/Zonierung: Was bedeutet „Litoral“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Litoral“ zu?",
       answer: "Uferzone",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5744,7 +5744,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f2",
-      prompt: "See/Zonierung: Was bedeutet „Pelagial“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Pelagial“ zu?",
       answer: "Freiwasserzone",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5760,7 +5760,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f3",
-      prompt: "See/Zonierung: Was bedeutet „Profundal“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Profundal“ zu?",
       answer: "Bodenzone",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5776,7 +5776,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f4",
-      prompt: "See/Zonierung: Was bedeutet „Phytoplankton“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Phytoplankton“ zu?",
       answer: "Pflanzliches Plankton",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5792,7 +5792,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f5",
-      prompt: "See/Zonierung: Was bedeutet „Zooplankton“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Zooplankton“ zu?",
       answer: "Tierisches Plankton",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5808,7 +5808,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f6",
-      prompt: "See/Zonierung: Was bedeutet „Vollzirkulation“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Vollzirkulation“ zu?",
       answer: "Durchmischung der Wasserschichten",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5824,7 +5824,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f7",
-      prompt: "See/Zonierung: Was bedeutet „Stagnation“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Stagnation“ zu?",
       answer: "Schichtung ohne Durchmischung",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5840,7 +5840,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f8",
-      prompt: "See/Zonierung: Was bedeutet „Sprungschicht“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Sprungschicht“ zu?",
       answer: "Temperaturgrenze im Sommer",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5856,7 +5856,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f9",
-      prompt: "See/Zonierung: Was bedeutet „Ufervegetation“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Ufervegetation“ zu?",
       answer: "Pflanzen am Gewässerrand",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5872,7 +5872,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f10",
-      prompt: "See/Zonierung: Was bedeutet „Trophiestufe“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Trophiestufe“ zu?",
       answer: "Ernährungsstufe im Nahrungsnetz",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5888,7 +5888,7 @@ export const k9Gewaesser: BioBank = {
     },
     {
       concept: "bio:k9:gewaesser:f11",
-      prompt: "See/Zonierung: Was bedeutet „Sauerstoffgehalt“?",
+      prompt: "Was trifft im Thema See/Zonierung auf „Sauerstoffgehalt“ zu?",
       answer: "Gelöster O₂ im Wasser",
       wrong: [
         "Gliederung eines Sees in Lebenszonen",
@@ -5971,7 +5971,7 @@ export const k9Sukzession: BioBank = {
   facts: [
     {
       concept: "bio:k9:suks:f0",
-      prompt: "Sukzession: Was bedeutet „Sukzession“?",
+      prompt: "Was trifft auf „Sukzession“ zu?",
       answer: "Gerichtete Abfolge von Lebensgemeinschaften",
       wrong: [
         "Frühe Besiedler gestörter Flächen",
@@ -5987,7 +5987,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f1",
-      prompt: "Sukzession: Was bedeutet „Pionierart“?",
+      prompt: "Was trifft im Thema Sukzession auf „Pionierart“ zu?",
       answer: "Frühe Besiedler gestörter Flächen",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6003,7 +6003,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f2",
-      prompt: "Sukzession: Was bedeutet „Klimax“?",
+      prompt: "Was trifft im Thema Sukzession auf „Klimax“ zu?",
       answer: "Relativ stabile Endgesellschaft",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6019,7 +6019,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f3",
-      prompt: "Sukzession: Was bedeutet „Primärsukzession“?",
+      prompt: "Was trifft im Thema Sukzession auf „Primärsukzession“ zu?",
       answer: "Neubesiedlung ohne Bodenstart",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6035,7 +6035,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f4",
-      prompt: "Sukzession: Was bedeutet „Sekundärsukzession“?",
+      prompt: "Was trifft im Thema Sukzession auf „Sekundärsukzession“ zu?",
       answer: "Neuentwicklung nach Störung mit Boden",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6051,7 +6051,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f5",
-      prompt: "Sukzession: Was bedeutet „Artwechsel“?",
+      prompt: "Was trifft im Thema Sukzession auf „Artwechsel“ zu?",
       answer: "Austausch dominanter Arten",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6067,7 +6067,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f6",
-      prompt: "Sukzession: Was bedeutet „Bodenbildung“?",
+      prompt: "Was trifft im Thema Sukzession auf „Bodenbildung“ zu?",
       answer: "Entwicklung von Bodenhorizonten",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6083,7 +6083,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f7",
-      prompt: "Sukzession: Was bedeutet „Konkurrenz“?",
+      prompt: "Was trifft im Thema Sukzession auf „Konkurrenz“ zu?",
       answer: "Wettbewerb um Ressourcen",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6099,7 +6099,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f8",
-      prompt: "Sukzession: Was bedeutet „Störung“?",
+      prompt: "Was trifft im Thema Sukzession auf „Störung“ zu?",
       answer: "Ereignis das Gemeinschaften zurücksetzt",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6115,7 +6115,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f9",
-      prompt: "Sukzession: Was bedeutet „Biodiversitätsverlauf“?",
+      prompt: "Was trifft im Thema Sukzession auf „Biodiversitätsverlauf“ zu?",
       answer: "Änderung der Artenzahl über Zeit",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6131,7 +6131,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f10",
-      prompt: "Sukzession: Was bedeutet „Moosstadium“?",
+      prompt: "Was trifft im Thema Sukzession auf „Moosstadium“ zu?",
       answer: "Frühe Phase auf Rohboden",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6147,7 +6147,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f11",
-      prompt: "Sukzession: Was bedeutet „Waldstadium“?",
+      prompt: "Was trifft im Thema Sukzession auf „Waldstadium“ zu?",
       answer: "Späte Phase mit Gehölzen",
       wrong: [
         "Gerichtete Abfolge von Lebensgemeinschaften",
@@ -6230,7 +6230,7 @@ export const k9Faktoren: BioBank = {
   facts: [
     {
       concept: "bio:k9:fakt:f0",
-      prompt: "Umweltfaktoren: Was bedeutet „abiotischer Faktor“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „abiotischer Faktor“ zu?",
       answer: "Unbelebte Umweltgröße",
       wrong: [
         "Wirkung durch Lebewesen",
@@ -6246,7 +6246,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f1",
-      prompt: "Umweltfaktoren: Was bedeutet „biotischer Faktor“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „biotischer Faktor“ zu?",
       answer: "Wirkung durch Lebewesen",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6262,7 +6262,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f2",
-      prompt: "Umweltfaktoren: Was bedeutet „Toleranzbereich“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Toleranzbereich“ zu?",
       answer: "Bereich erträglicher Faktorwerte",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6278,7 +6278,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f3",
-      prompt: "Umweltfaktoren: Was bedeutet „Ökologische Potenz“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Ökologische Potenz“ zu?",
       answer: "Reaktionsbreite einer Art",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6294,7 +6294,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f4",
-      prompt: "Umweltfaktoren: Was bedeutet „Minimumfaktor“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Minimumfaktor“ zu?",
       answer: "Knappster begrenzender Faktor",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6310,7 +6310,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f5",
-      prompt: "Umweltfaktoren: Was bedeutet „Optimum“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Optimum“ zu?",
       answer: "Günstigster Bereich eines Faktors",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6326,7 +6326,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f6",
-      prompt: "Umweltfaktoren: Was bedeutet „Lichtpflanze“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Lichtpflanze“ zu?",
       answer: "Art mit hohem Lichtbedarf",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6342,7 +6342,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f7",
-      prompt: "Umweltfaktoren: Was bedeutet „Schattenpflanze“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Schattenpflanze“ zu?",
       answer: "Art an geringe Lichtstärke angepasst",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6358,7 +6358,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f8",
-      prompt: "Umweltfaktoren: Was bedeutet „Xerophyt“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Xerophyt“ zu?",
       answer: "Trockenangepasste Pflanze",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6374,7 +6374,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f9",
-      prompt: "Umweltfaktoren: Was bedeutet „Hygrophyt“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Hygrophyt“ zu?",
       answer: "Feuchteangepasste Pflanze",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6390,7 +6390,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f10",
-      prompt: "Umweltfaktoren: Was bedeutet „Konkurrenz“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Konkurrenz“ zu?",
       answer: "Wettbewerb um Ressourcen",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6406,7 +6406,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f11",
-      prompt: "Umweltfaktoren: Was bedeutet „Räuber-Beute“?",
+      prompt: "Was trifft im Thema Umweltfaktoren auf „Räuber-Beute“ zu?",
       answer: "Fraßbeziehung",
       wrong: [
         "Unbelebte Umweltgröße",
@@ -6489,7 +6489,7 @@ export const k9Klima: BioBank = {
   facts: [
     {
       concept: "bio:k9:klima:f0",
-      prompt: "Klima/Ökosystem: Was bedeutet „Klima“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Klima“ zu?",
       answer: "Langfristiges Wettergeschehen einer Region",
       wrong: [
         "Erwärmung durch Spurengase",
@@ -6505,7 +6505,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f1",
-      prompt: "Klima/Ökosystem: Was bedeutet „Treibhauseffekt“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Treibhauseffekt“ zu?",
       answer: "Erwärmung durch Spurengase",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6521,7 +6521,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f2",
-      prompt: "Klima/Ökosystem: Was bedeutet „CO₂“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „CO₂“ zu?",
       answer: "Wichtiges Treibhausgas",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6537,7 +6537,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f3",
-      prompt: "Klima/Ökosystem: Was bedeutet „Klimawandel“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Klimawandel“ zu?",
       answer: "Langfristige Klimaänderung",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6553,7 +6553,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f4",
-      prompt: "Klima/Ökosystem: Was bedeutet „Phänologie“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Phänologie“ zu?",
       answer: "Jahreszeitliche Entwicklungszeiten",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6569,7 +6569,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f5",
-      prompt: "Klima/Ökosystem: Was bedeutet „Dürre“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Dürre“ zu?",
       answer: "Längerer Wassermangel",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6585,7 +6585,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f6",
-      prompt: "Klima/Ökosystem: Was bedeutet „Extremwetter“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Extremwetter“ zu?",
       answer: "Seltene starke Wetterereignisse",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6601,7 +6601,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f7",
-      prompt: "Klima/Ökosystem: Was bedeutet „Habitatverschiebung“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Habitatverschiebung“ zu?",
       answer: "Arten wandern mit Klimazonen",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6617,7 +6617,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f8",
-      prompt: "Klima/Ökosystem: Was bedeutet „Kohlenstoffkreislauf“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Kohlenstoffkreislauf“ zu?",
       answer: "Austausch von C zwischen Sphären",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6633,7 +6633,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f9",
-      prompt: "Klima/Ökosystem: Was bedeutet „Mitigation“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Mitigation“ zu?",
       answer: "Minderung von Emissionen",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6649,7 +6649,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f10",
-      prompt: "Klima/Ökosystem: Was bedeutet „Adaptation“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Adaptation“ zu?",
       answer: "Anpassung an Folgen",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6665,7 +6665,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f11",
-      prompt: "Klima/Ökosystem: Was bedeutet „Bioindikator“?",
+      prompt: "Was trifft im Thema Klima/Ökosystem auf „Bioindikator“ zu?",
       answer: "Art die Umweltzustand anzeigt",
       wrong: [
         "Langfristiges Wettergeschehen einer Region",
@@ -6748,7 +6748,7 @@ export const k10Humangenetik: BioBank = {
   facts: [
     {
       concept: "bio:k10:humangen:f0",
-      prompt: "Humangenetik: Was bedeutet „Stammbaumanalyse“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Stammbaumanalyse“ zu?",
       answer: "Vererbungsmuster in Familien rekonstruieren",
       wrong: [
         "Blutgruppen A, B, AB, 0",
@@ -6764,7 +6764,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f1",
-      prompt: "Humangenetik: Was bedeutet „AB0-System“?",
+      prompt: "Was trifft im Thema Humangenetik auf „AB0-System“ zu?",
       answer: "Blutgruppen A, B, AB, 0",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6780,7 +6780,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f2",
-      prompt: "Humangenetik: Was bedeutet „Rhesussystem“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Rhesussystem“ zu?",
       answer: "Rh-Faktor positiv/negativ",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6796,7 +6796,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f3",
-      prompt: "Humangenetik: Was bedeutet „autosomal“?",
+      prompt: "Was trifft im Thema Humangenetik auf „autosomal“ zu?",
       answer: "Gen auf Autosom",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6812,7 +6812,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f4",
-      prompt: "Humangenetik: Was bedeutet „gonosomal“?",
+      prompt: "Was trifft im Thema Humangenetik auf „gonosomal“ zu?",
       answer: "Gen auf Geschlechtschromosom",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6828,7 +6828,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f5",
-      prompt: "Humangenetik: Was bedeutet „Trisomie 21“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Trisomie 21“ zu?",
       answer: "Drei Chromosomen 21",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6844,7 +6844,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f6",
-      prompt: "Humangenetik: Was bedeutet „Hämophilie“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Hämophilie“ zu?",
       answer: "Blutgerinnungsstörung",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6860,7 +6860,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f7",
-      prompt: "Humangenetik: Was bedeutet „Phenylketonurie“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Phenylketonurie“ zu?",
       answer: "Stoffwechselstörung durch Genmutation",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6876,7 +6876,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f8",
-      prompt: "Humangenetik: Was bedeutet „pränatale Diagnostik“?",
+      prompt: "Was trifft im Thema Humangenetik auf „pränatale Diagnostik“ zu?",
       answer: "Untersuchung vor der Geburt",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6892,7 +6892,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f9",
-      prompt: "Humangenetik: Was bedeutet „Erbkrankheit“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Erbkrankheit“ zu?",
       answer: "Genetisch bedingte Erkrankung",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6908,7 +6908,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f10",
-      prompt: "Humangenetik: Was bedeutet „Beratung“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Beratung“ zu?",
       answer: "Humangenetische Aufklärung",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -6924,7 +6924,7 @@ export const k10Humangenetik: BioBank = {
     },
     {
       concept: "bio:k10:humangen:f11",
-      prompt: "Humangenetik: Was bedeutet „Inklusion“?",
+      prompt: "Was trifft im Thema Humangenetik auf „Inklusion“ zu?",
       answer: "Teilhabe betroffener Menschen",
       wrong: [
         "Vererbungsmuster in Familien rekonstruieren",
@@ -7007,7 +7007,7 @@ export const k10Evolutionstheorie: BioBank = {
   facts: [
     {
       concept: "bio:k10:evoth:f0",
-      prompt: "Evolutionstheorie: Was bedeutet „Linné“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Linné“ zu?",
       answer: "Systematiker der binären Nomenklatur",
       wrong: [
         "Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
@@ -7023,7 +7023,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f1",
-      prompt: "Evolutionstheorie: Was bedeutet „Lamarck“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Lamarck“ zu?",
       answer: "Frühe Evolutionstheorie mit Vererbung erworbener Merkmale",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7039,7 +7039,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f2",
-      prompt: "Evolutionstheorie: Was bedeutet „Darwin“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Darwin“ zu?",
       answer: "Begründer der Selektionstheorie",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7055,7 +7055,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f3",
-      prompt: "Evolutionstheorie: Was bedeutet „natürliche Selektion“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „natürliche Selektion“ zu?",
       answer: "Unterschiedlicher Fortpflanzungserfolg",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7071,7 +7071,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f4",
-      prompt: "Evolutionstheorie: Was bedeutet „Artbegriff“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Artbegriff“ zu?",
       answer: "Biologische Art als Fortpflanzungsgemeinschaft",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7087,7 +7087,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f5",
-      prompt: "Evolutionstheorie: Was bedeutet „Population“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Population“ zu?",
       answer: "Individuen einer Art in einem Gebiet",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7103,7 +7103,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f6",
-      prompt: "Evolutionstheorie: Was bedeutet „Mutation“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Mutation“ zu?",
       answer: "Änderung der Erbinformation",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7119,7 +7119,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f7",
-      prompt: "Evolutionstheorie: Was bedeutet „Rekombination“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Rekombination“ zu?",
       answer: "Neukombination von Allelen",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7135,7 +7135,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f8",
-      prompt: "Evolutionstheorie: Was bedeutet „Isolation“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Isolation“ zu?",
       answer: "Unterbrechung des Genflusses",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7151,7 +7151,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f9",
-      prompt: "Evolutionstheorie: Was bedeutet „Synthetische Theorie“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Synthetische Theorie“ zu?",
       answer: "Modernes Zusammenspiel der Evolutionsfaktoren",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7167,7 +7167,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f10",
-      prompt: "Evolutionstheorie: Was bedeutet „Fitness“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Fitness“ zu?",
       answer: "Relativer Fortpflanzungserfolg",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7183,7 +7183,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f11",
-      prompt: "Evolutionstheorie: Was bedeutet „Anpassung“?",
+      prompt: "Was trifft im Thema Evolutionstheorie auf „Anpassung“ zu?",
       answer: "Merkmal mit Selektionsvorteil",
       wrong: [
         "Systematiker der binären Nomenklatur",
@@ -7266,7 +7266,7 @@ export const k10Progression: BioBank = {
   facts: [
     {
       concept: "bio:k10:prog:f0",
-      prompt: "Evolutionsprogression: Was bedeutet „Oberflächenvergrößerung“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Oberflächenvergrößerung“ zu?",
       answer: "Vergrößerung der Austauschfläche",
       wrong: [
         "Innere Fläche der Lunge",
@@ -7282,7 +7282,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f1",
-      prompt: "Evolutionsprogression: Was bedeutet „Lungenoberfläche“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Lungenoberfläche“ zu?",
       answer: "Innere Fläche der Lunge",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7298,7 +7298,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f2",
-      prompt: "Evolutionsprogression: Was bedeutet „Hautatmung“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Hautatmung“ zu?",
       answer: "Gasaustausch über die Haut",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7314,7 +7314,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f3",
-      prompt: "Evolutionsprogression: Was bedeutet „Lungenatmung“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Lungenatmung“ zu?",
       answer: "Gasaustausch über Lungen",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7330,7 +7330,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f4",
-      prompt: "Evolutionsprogression: Was bedeutet „Feuchtlufttier“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Feuchtlufttier“ zu?",
       answer: "Tier mit feuchtigkeitsabhängiger Hautatmung",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7346,7 +7346,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f5",
-      prompt: "Evolutionsprogression: Was bedeutet „Trockenlufttier“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Trockenlufttier“ zu?",
       answer: "Tier mit geschützter Luftatmung",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7362,7 +7362,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f6",
-      prompt: "Evolutionsprogression: Was bedeutet „wechselwarm“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „wechselwarm“ zu?",
       answer: "Körpertemperatur folgt Umwelt",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7378,7 +7378,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f7",
-      prompt: "Evolutionsprogression: Was bedeutet „gleichwarm“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „gleichwarm“ zu?",
       answer: "Körpertemperatur weitgehend konstant",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7394,7 +7394,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f8",
-      prompt: "Evolutionsprogression: Was bedeutet „Leistungssteigerung“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Leistungssteigerung“ zu?",
       answer: "Zunahme physiologischer Kapazität",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7410,7 +7410,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f9",
-      prompt: "Evolutionsprogression: Was bedeutet „Umweltunabhängigkeit“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Umweltunabhängigkeit“ zu?",
       answer: "Geringere Bindung an Umweltfaktoren",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7426,7 +7426,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f10",
-      prompt: "Evolutionsprogression: Was bedeutet „Progression“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Progression“ zu?",
       answer: "Gerichtete Steigerung von Leistungen",
       wrong: [
         "Vergrößerung der Austauschfläche",
@@ -7442,7 +7442,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f11",
-      prompt: "Evolutionsprogression: Was bedeutet „Organveränderung“?",
+      prompt: "Was trifft im Thema Evolutionsprogression auf „Organveränderung“ zu?",
       answer: "Umbau von Organen im Verlauf",
       wrong: [
         "Vergrößerung der Austauschfläche",

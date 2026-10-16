@@ -1,54 +1,41 @@
 /**
  * Physik-Banken: nur MC / Wert — kein TF, keine Zuordnung, keine Lücken.
- * Definitions-Prompts („Was bedeutet …?“) werden in Anwendungskontext umformuliert.
+ * Definitions-Prompts („Was bedeutet …?“) werden in konkrete Anwendungsfragen umformuliert.
  * siehe `.cursor/rules/curriculum-aufgaben-qualitaet.mdc`
  */
 import { redactSolutionSpoilers, stripBioMetaWissen, type BioBank } from './biologieBank'
+import {
+  concreteGlossaryStem,
+  expandGlossaryAnswer,
+  expandGlossaryDistractor,
+  isConcreteGlossaryStem,
+  rewriteVagueGlossaryPrompt,
+  stripBankSlugPrefix,
+} from './glossaryMcRewrite'
 import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 
 export function rewritePhysikPrompt(prompt: string): string {
-  const m = prompt.match(
-    /Fachbegriff\s*\(([^)]+)\):\s*Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i,
-  )
-  if (m) {
-    const term = m[2]!
-    // Klammerhinweis ohne Antwortformel/Spoilers (z. B. „R = ρ·l/A“)
-    let hint = m[1]!.replace(/\s+/g, ' ').trim()
-    if (hint === term || /[ρλΔ=]|·l\/A|h\s*\/\s*p/i.test(hint)) hint = ''
-    return hint
-      ? `Welche Aussage zu „${term}“ (${hint}) ist fachlich richtig?`
-      : `Welche Aussage zu „${term}“ ist fachlich richtig?`
-  }
-  const m2 = prompt.match(/Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i)
+  const raw = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').trim()
+  if (isConcreteGlossaryStem(raw)) return raw
+
+  const rewritten = rewriteVagueGlossaryPrompt(prompt)
+  if (rewritten) return rewritten
+
+  // Legacy Physik-spezifische Reste (Alltag / Modell), ohne „fachlich richtig“.
+  const m2 = raw.match(/Was bedeutet\s*[„"]([^„"”]+)[“"]\s*\?/i)
   if (m2) {
     const term = m2[1]!
     if (/^Alltag\b/i.test(term)) {
       return `Welche Alltagsbedeutung trifft auf „${term}“ zu?`
     }
     if (/^Modell\b/i.test(term)) {
-      return `Welche Modellaussage zu „${term}“ ist im Gültigkeitsbereich richtig?`
+      return `Welche Modellaussage zu „${term}“ gilt im Gültigkeitsbereich?`
     }
-    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
+    return concreteGlossaryStem(term)
   }
-  // ohne Anführungszeichen: „Was bedeutet Schwerelosigkeit …?“
-  const m3 = prompt.match(/^Was bedeutet\s+(.+?)\s*\??\s*$/i)
-  if (m3) {
-    const topic = m3[1]!.replace(/\s+qualitativ$/i, '').trim()
-    return `Welche Aussage zu ${topic} ist fachlich richtig?`
-  }
-  // Begriffsdrill „Was ist der/die/das …?“ → Anwendung
-  const m4 = prompt.match(/^Was ist (ein|eine|der|die|das)\s+(.+?)\s*\??\s*$/i)
-  if (m4) {
-    const term = m4[2]!.replace(/\s+/g, ' ').trim()
-    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
-  }
-  const m5 = prompt.match(/^Was versteht man unter\s+(einem|einer|einem|dem|der|das)?\s*(.+?)\s*\??\s*$/i)
-  if (m5) {
-    const term = m5[2]!.replace(/\s+/g, ' ').trim()
-    return `Welche Aussage zu „${term}“ ist fachlich richtig?`
-  }
-  return prompt
+
+  return raw
 }
 
 function cleanWissen(text: string | undefined): string | undefined {
@@ -68,6 +55,15 @@ function topicHintFromWissen(text: string | undefined): string | undefined {
   return m?.[1]?.trim() || undefined
 }
 
+/** Topic hint from Fachbegriff (Topic): … pattern or Bezug: Topic. */
+function topicFromFact(f: { prompt?: string; wissen?: string; explanation?: string }): string | undefined {
+  const fromPrompt = f.prompt?.match(/Fachbegriff\s*\(([^)]+)\)/i)?.[1]?.trim()
+  if (fromPrompt) return fromPrompt
+  const bezug = (f.wissen || f.explanation || '').match(/Bezug:\s*([^.]+)/i)?.[1]?.trim()
+  if (bezug && bezug.length < 60) return bezug
+  return topicHintFromWissen(f.wissen) || topicHintFromWissen(f.explanation)
+}
+
 function sanitizePhysikBank(bank: BioBank): BioBank {
   const hint =
     bank.pairs?.map((p) => topicHintFromWissen(p.wissen)).find(Boolean) ||
@@ -75,41 +71,88 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
       Boolean,
     )
 
-  // Pairs → Facts mit Themenhinweis (mathBank würde sonst „Welche Aussage zu X?“ ohne Kontext).
-  // Hinweis darf die Antwortformel nicht spoilern (z. B. „Widerstandsgesetz R = ρ·l/A“).
+  /** Never surface machine ids like `ph-k6-lb1-…` in Schüler stems. */
+  const isMachineTopic = (t: string | undefined): boolean =>
+    !!t && (/^(ph|bio|ge|ma)[\s:_-]/i.test(t) || /\bk\d+\b/i.test(t) || /\blb\d+/i.test(t))
+
+  const humanTopic = (...candidates: Array<string | undefined>): string | undefined => {
+    for (const c of candidates) {
+      const t = c?.replace(/\s+/g, ' ').trim()
+      if (t && !isMachineTopic(t) && t.length < 80) return t
+    }
+    return undefined
+  }
+
+  // Pairs → Facts mit konkreter Schülerfrage (kein „fachlich richtig“).
   const safeHint = (term: string, meaning: string) => {
     if (!hint) return undefined
     const h = hint.replace(/\s+/g, ' ').trim()
     if (!h || h === term) return undefined
-    if (h.includes(meaning) || meaning.includes(h)) return term
-    if (/[ρλΔ=·]/.test(h) && /[ρλΔ=·]/.test(meaning)) return term
+    if (h.includes(meaning) || meaning.includes(h)) return undefined
+    if (/[ρλΔ=·]/.test(h) && /[ρλΔ=·]/.test(meaning)) return undefined
     return h
   }
+  const factTerms = new Set(
+    (bank.facts ?? [])
+      .map(
+        (f) =>
+          f.flashFront?.trim().toLowerCase() ||
+          f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim().toLowerCase() ||
+          '',
+      )
+      .filter(Boolean),
+  )
+
   const fromPairs =
-    bank.pairs?.map((p) => {
-      const wissen = cleanWissen(p.wissen) ?? `${p.term}: ${p.meaning}.`
-      const h = safeHint(p.term, p.meaning)
-      return {
-        concept: p.concept,
-        prompt: h
-          ? `Welche Aussage zu „${p.term}“ (${h}) ist fachlich richtig?`
-          : `Welche Aussage zu „${p.term}“ ist fachlich richtig?`,
-        answer: p.meaning,
-        wrong: undefined as string[] | undefined,
-        explanation: wissen,
-        wissen,
-      }
-    }) ?? []
+    bank.pairs
+      ?.filter((p) => !factTerms.has(p.term.trim().toLowerCase()))
+      .map((p) => {
+        const wissen = cleanWissen(p.wissen) ?? `${p.term}: ${p.meaning}.`
+        const topic = humanTopic(
+          safeHint(p.term, p.meaning),
+          p.wissen?.match(/Bezug:\s*([^.]+)/i)?.[1],
+        )
+        const answer = expandGlossaryAnswer(p.meaning, { term: p.term, topic })
+        return {
+          concept: p.concept,
+          prompt: concreteGlossaryStem(p.term, topic),
+          answer,
+          wrong: undefined as string[] | undefined,
+          explanation: wissen,
+          wissen,
+        }
+      }) ?? []
 
   const facts = [
     ...(bank.facts?.map((f) => {
+      const topic = humanTopic(topicFromFact(f))
       let prompt = rewritePhysikPrompt(f.prompt)
-      const ans = String(f.answer ?? '').trim()
-      // Spoiler: Antwortwort steht im Stem — nur an Wortgrenzen
-      prompt = redactSolutionSpoilers(prompt, ans)
+      // Prefer concrete stem from term in flashFront / quoted prompt
+      const term =
+        f.flashFront?.trim() ||
+        f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim() ||
+        ''
+      // Keep hand-authored concrete stems (e.g. Timer/Sensor gold example).
+      if (term && !isConcreteGlossaryStem(prompt)) {
+        prompt = concreteGlossaryStem(term, topic)
+      }
+      const ansRaw = String(f.answer ?? '').trim()
+      const expandNeeded =
+        ansRaw.split(/\s+/).length <= 6 && !/^(Sie|Er|Es|Man)\s/i.test(ansRaw)
+      const answer = expandNeeded
+        ? expandGlossaryAnswer(ansRaw, { term: term || undefined, topic })
+        : ansRaw
+      const wrong = f.wrong?.map((w) => {
+        const wr = String(w).trim()
+        if (wr.split(/\s+/).length > 6 || /^(Sie|Er|Es|Man)\s/i.test(wr)) return wr
+        return expandGlossaryDistractor(wr, topic)
+      })
+      prompt = redactSolutionSpoilers(prompt, answer)
       return {
         ...f,
         prompt,
+        answer,
+        wrong,
         wissen: cleanWissen(f.wissen) ?? f.wissen,
         explanation: cleanWissen(f.explanation) ?? f.explanation,
         gap: undefined,
@@ -121,7 +164,15 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
   ]
   // Gleicher Fakt nicht doppelt (pair+fact) — sonst round-dup „gleicher Fakt“.
   const seenAns = new Set<string>()
+  const seenTerm = new Set<string>()
   const dedupedFacts = facts.filter((f) => {
+    const termKey =
+      f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim().toLowerCase() ||
+      ( /timer oder sensor/i.test(f.prompt) ? 'timer/sensor' : '')
+    if (termKey) {
+      if (seenTerm.has(termKey)) return false
+      seenTerm.add(termKey)
+    }
     const k = String(f.answer ?? '')
       .normalize('NFKC')
       .toLowerCase()
