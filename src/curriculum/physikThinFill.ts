@@ -467,7 +467,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb2-wegzeit:f9",
       prompt: "Was kennzeichnet „Umwandlung“?",
-      answer: "Sie ist km/h ↔ m/s durch faktor 3,6.", wrong: ["Sie ist eine Weg Pro Zeit.", "Die Umwandlung ist die Zurückgelegte Strecke.", "Sie ist eine Dauer Eines Vorgangs."],
+      answer: "Sie rechnet Geschwindigkeiten mit dem Faktor 3,6 zwischen km/h und m/s um.", wrong: ["Die Umwandlung ist die Zurückgelegte Strecke.", "Der Körper hat die Geschwindigkeit null relativ zum gewählten Bezugssystem.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird."],
       explanation: "Faktor 3,6. Bezug: Wegzeit. Umwandlung: km/h ↔ m/s",
       wissen: "Faktor 3,6. Bezug: Wegzeit. Umwandlung bedeutet: km/h ↔ m/s. Merke: Umwandlung — km/h ↔ m/s.",
       gap: "[ph-k6-lb2-wegzeit] ___ — km/h ↔ m/s",
@@ -640,7 +640,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ph:fill:ph-k6-lb2-einheiten:f9",
       prompt: "Was kennzeichnet „Umwandlung“?",
-      answer: "Sie ist km/h ↔ m/s durch faktor 3,6.", wrong: ["Sie ist eine Weg Pro Zeit.", "Die Umwandlung ist die Zurückgelegte Strecke.", "Sie ist eine Dauer Eines Vorgangs."],
+      answer: "Sie rechnet Geschwindigkeiten mit dem Faktor 3,6 zwischen km/h und m/s um.", wrong: ["Die Umwandlung ist die Zurückgelegte Strecke.", "Der Körper hat die Geschwindigkeit null relativ zum gewählten Bezugssystem.", "Sie gibt den zurückgelegten Weg pro Zeit an, oft mit der Formel v = s / t."],
       explanation: "Faktor 3,6. Bezug: Einheiten. Umwandlung: km/h ↔ m/s",
       wissen: "Faktor 3,6. Bezug: Einheiten. Umwandlung bedeutet: km/h ↔ m/s. Merke: Umwandlung — km/h ↔ m/s.",
       gap: "[ph-k6-lb2-einheiten] ___ — km/h ↔ m/s",

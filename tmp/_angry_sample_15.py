@@ -37,9 +37,17 @@ BANNED = re.compile(
     r"\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|"
     r"typische Verwechslung|im prüfbaren Zusammenhang|"
     r"ist hier:|kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|"
-    r"steht im Kern für Folgendes|der Ereignisse|fachlich richtig|Was bedeutet",
+    r"steht im Kern für Folgendes|der Ereignisse|fachlich richtig|Was bedeutet|"
+    r"bei den behandelten Arten|"
+    r"\bNur Haarfarbe\b|\bNur Zahnzahl\b|ohne biologischen Bezug|"
+    r"Nur Fotosynthese ohne biologischen Bezug|"
+    r"\bEs ist eine Nur\b|\bSie ist eine Nur\b|\bEr ist eine Nur\b|"
+    r"Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|"
+    r"Es beschreibt ein Zwei Membranen",
     re.I,
 )
+# Case-sensitive: Title-Case after „ist eine“
+TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ]")
 PAD_WRAPPER = re.compile(
     r"ist hier:|kurz gesagt:|\bHier gilt\b|Es geht um|der Ereignisse",
     re.I,
@@ -51,7 +59,7 @@ META_STEM = re.compile(
 )
 FORMULAIC = re.compile(r"Was kennzeichnet .+ im Thema ", re.I)
 VERB = re.compile(
-    r"\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|"
+    r"\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreib\w*|"
     r"bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|"
     r"misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|"
     r"speichert|transportiert|meint|kennzeichnet|prägt|gewährt|organisiert|"
@@ -79,7 +87,11 @@ VERB = re.compile(
     r"überlastet|beachtet|wählt|liefert|schützt|wandelt|lässt|"
     r"lebt|jagt|trägt|frisst|besteht|bleibt|treibt|erfasst|"
     r"regulier\w*|verringer\w*|bedeutet|signalisiert|befeuchtet|"
-    r"feuchthält|erbeutet|ernährt)\b",
+    r"feuchthält|erbeutet|ernährt|bestimm\w*|spezialisier\w*|spaltet|"
+    r"meint|zeichne\w*|misch\w*|steck\w*|sichtbar|zeig\w*|verlauf\w*|"
+    r"nehm\w*|lass\w*|erhöh\w*|verringer\w*|erkenn\w*|zuordn\w*|"
+    r"erklär\w*|zähl\w*|vergrößer\w*|untersuch\w*|wirk\w*|tasten|"
+    r"stell\w*|besitz\w*|bild\w*)\b",
     re.I,
 )
 
@@ -99,6 +111,8 @@ def judge(prompt: str, answer: str, wrongs: list[str]) -> list[str]:
     blob = " ".join([prompt, answer, *wrongs])
     if BANNED.search(blob) or "???" in blob:
         reasons.append("banned")
+    if TITLE_AFTER_IST_EINE.search(blob):
+        reasons.append("title-after-ist-eine")
     # Hard fail: uniform Term-ist-hier / kurz gesagt / Es geht um pads
     if PAD_WRAPPER.search(blob):
         reasons.append("pad-wrapper")
@@ -108,6 +122,9 @@ def judge(prompt: str, answer: str, wrongs: list[str]) -> list[str]:
         reasons.append("formulaic-im-thema")
     if not prompt.strip().endswith("?"):
         reasons.append("stem-no-?")
+    # Mechanical Title-Case mush after „ist eine/ein“ (not all definition sentences)
+    if re.search(r"\bist eine [A-ZÄÖÜ]", answer) or re.search(r"\bist ein [A-ZÄÖÜ][a-zäöüß]+ [A-ZÄÖÜ]", answer):
+        reasons.append("pronoun-ist-eine-title")
     # double-verb / missing article mash
     if re.search(
         r"\b(bezeichnet|beschreibt|kennzeichnet)\s+(die|das|den)\s+"
@@ -137,7 +154,7 @@ def judge(prompt: str, answer: str, wrongs: list[str]) -> list[str]:
         words = o.split()
         if len(words) < 6 or not VERB.search(o) or not re.search(r"[.!?]$", o.strip()):
             reasons.append(f"weak-opt{i}")
-        if BANNED.search(o) or PAD_WRAPPER.search(o):
+        if BANNED.search(o) or PAD_WRAPPER.search(o) or TITLE_AFTER_IST_EINE.search(o):
             reasons.append(f"banned-opt{i}")
     if len(wrongs) < 3:
         reasons.append("missing-wrongs")

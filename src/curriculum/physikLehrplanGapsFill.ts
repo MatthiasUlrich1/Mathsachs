@@ -36,7 +36,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:intelligentes-licht",
       prompt: "Woran erkennt man das Intelligentes Licht?",
-      answer: "Es beschreibt ein Bedarfs- und richtungsangepasst, weniger Streulicht.", wrong: ["Sie beschreibt natürlicher Wechsel Tag/Nacht bei den behandelten Arten.", "Sie licht nur dorthin lenken, wo nötig, nach unten statt in den Himmel.", "Es beschreibt eine Sichtbarkeit der Sterne, bei Verschmutzung schlechter."],
+      answer: "Es beschreibt ein Bedarfs- und richtungsangepasst, weniger Streulicht.", wrong: ["Sie licht nur dorthin lenken, wo nötig, nach unten statt in den Himmel.", "Es beschreibt eine Sichtbarkeit der Sterne, bei Verschmutzung schlechter.", "Sie beschreibt unerwünschte Nachthimmel-Aufhellung, stört Tiere und Astronomie."],
       explanation: "Weniger Streulicht. Intelligentes Licht bedeutet: Bedarfs- und richtungsangepasst. Bezug: Lichtverschmutzung.",
       wissen: "Weniger Streulicht. Intelligentes Licht bedeutet: Bedarfs- und richtungsangepasst. Bezug: Lichtverschmutzung.",
       flashFront: "Intelligentes Licht",
@@ -68,7 +68,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:energieverschwendung",
       prompt: "Welche Eigenschaft hat die Energieverschwendung?",
-      answer: "Sie beschreibt unnötiges Leuchten, strom und Kosten.", wrong: ["Sie beschreibt natürlicher Wechsel Tag/Nacht bei den behandelten Arten.", "Es beschreibt ein Bedarfs- und richtungsangepasst, weniger Streulicht.", "Sie empfehlungen zur Beleuchtung, kommunen und Schulen."],
+      answer: "Sie beschreibt unnötiges Leuchten, strom und Kosten.", wrong: ["Es beschreibt ein Bedarfs- und richtungsangepasst, weniger Streulicht.", "Sie empfehlungen zur Beleuchtung, kommunen und Schulen.", "Es beschreibt eine Sichtbarkeit der Sterne, bei Verschmutzung schlechter."],
       explanation: "Strom und Kosten. Energieverschwendung bedeutet: Unnötiges Leuchten. Bezug: Lichtverschmutzung.",
       wissen: "Strom und Kosten. Energieverschwendung bedeutet: Unnötiges Leuchten. Bezug: Lichtverschmutzung.",
       flashFront: "Energieverschwendung",
@@ -369,7 +369,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-winkelspiegel:fact:spiegelung",
       prompt: "Welche Eigenschaft hat die Spiegelung?",
-      answer: "Sie beschreibt eine Bild durch Reflexion, scheinbares Bild.", wrong: ["Es beschreibt gerichtete Reflexion, glatte Fläche.", "Es beschreibt eine Verkehrssicherheit bei den behandelten Arten.", "Es beschreibt muster durch Mehrfachspiegelung bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Bild durch Reflexion, scheinbares Bild.", wrong: ["Es beschreibt gerichtete Reflexion, glatte Fläche.", "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", "Es beschreibt eine Konzentration von Licht, spiegel bündeln."],
       explanation: "Scheinbares Bild. Spiegelung bedeutet: Bild durch Reflexion. Bezug: Winkelspiegel und Periskop.",
       wissen: "Scheinbares Bild. Spiegelung bedeutet: Bild durch Reflexion. Bezug: Winkelspiegel und Periskop.",
       flashFront: "Spiegelung",
@@ -377,7 +377,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-winkelspiegel:fact:sonnenofen",
       prompt: "Was beschreibt „Sonnenofen“?",
-      answer: "Es beschreibt eine Konzentration von Licht, spiegel bündeln.", wrong: ["Es beschreibt ein Zwei Spiegel unter Winkel.", "Es beschreibt eine Verkehrssicherheit bei den behandelten Arten.", "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie."],
+      answer: "Es beschreibt eine Konzentration von Licht, spiegel bündeln.", wrong: ["Es beschreibt ein Zwei Spiegel unter Winkel.", "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", "Es beschreibt gerichtete Reflexion, glatte Fläche."],
       explanation: "Spiegel bündeln. Sonnenofen bedeutet: Konzentration von Licht. Bezug: Winkelspiegel und Periskop.",
       wissen: "Spiegel bündeln. Sonnenofen bedeutet: Konzentration von Licht. Bezug: Winkelspiegel und Periskop.",
       flashFront: "Sonnenofen",
@@ -385,7 +385,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-winkelspiegel:fact:rueckspiegel",
       prompt: "Was beschreibt „Rückspiegel“?",
-      answer: "Es beschreibt eine Verkehrssicherheit bei den behandelten Arten.", wrong: ["Es beschreibt muster durch Mehrfachspiegelung bei den behandelten Arten.", "Es ist der Winkel zwischen einfallendem Strahl und dem Lot.", "Sie beschreibt eine Bild durch Reflexion, scheinbares Bild."],
+      answer: "Es beschreibt eine Verkehrssicherheit.", wrong: ["Es beschreibt muster durch Mehrfachspiegelung.", "Es ist der Winkel zwischen einfallendem Strahl und dem Lot.", "Sie beschreibt eine Bild durch Reflexion, scheinbares Bild."],
       explanation: "Alltagsoptik. Rückspiegel bedeutet: Verkehrssicherheit. Bezug: Winkelspiegel und Periskop.",
       wissen: "Alltagsoptik. Rückspiegel bedeutet: Verkehrssicherheit. Bezug: Winkelspiegel und Periskop.",
       flashFront: "Rückspiegel",
@@ -409,7 +409,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-winkelspiegel:fact:sehvorgang",
       prompt: "Was bewirkt der Sehvorgang im Auge?",
-      answer: "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", wrong: ["Es beschreibt eine Verkehrssicherheit bei den behandelten Arten.", "Es ermöglicht den Blick um Ecken oder über Hindernisse mit Spiegeln, zwei Spiegel parallel typisch.", "Es beschreibt viele kleine Reflexionen, unebene Flächen."],
+      answer: "Das Auge nimmt Lichtreize auf der Netzhaut wahr und das Gehirn deutet sie.", wrong: ["Es ermöglicht den Blick um Ecken oder über Hindernisse mit Spiegeln, zwei Spiegel parallel typisch.", "Es beschreibt viele kleine Reflexionen, unebene Flächen.", "Es ist der Winkel zwischen einfallendem Strahl und dem Lot."],
       explanation: "Ohne Licht kein Sehen. Sehvorgang bedeutet: Licht trifft Auge. Bezug: Winkelspiegel und Periskop.",
       wissen: "Ohne Licht kein Sehen. Sehvorgang bedeutet: Licht trifft Auge. Bezug: Winkelspiegel und Periskop.",
       flashFront: "Sehvorgang",
@@ -476,7 +476,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:sammellinse",
       prompt: "Welche Eigenschaft hat die Sammellinse?",
-      answer: "Sie bündelt parallele Strahlen bei den behandelten Arten.", wrong: ["Es beschreibt auffangbar auf Schirm, reelles Bild.", "Sie dient als Abstand Bild–Linse bei den behandelten Arten.", "Es beschreibt ein Durch F → parallel danach."],
+      answer: "Sie bündelt parallele Strahlen.", wrong: ["Es beschreibt auffangbar auf Schirm, reelles Bild.", "Sie dient als Abstand Bild–Linse.", "Es beschreibt ein Durch F → parallel danach."],
       explanation: "Konvexlinse. Sammellinse bedeutet: Bündelt parallele Strahlen. Bezug: Sammellinse und Brennweite.",
       wissen: "Konvexlinse. Sammellinse bedeutet: Bündelt parallele Strahlen. Bezug: Sammellinse und Brennweite.",
       flashFront: "Sammellinse",
@@ -492,7 +492,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:brennweite",
       prompt: "Welche Eigenschaft hat die Brennweite?",
-      answer: "Sie ist der Abstand zwischen Linse und Brennpunkt.", wrong: ["Es beschreibt auffangbar auf Schirm, reelles Bild.", "Es ist der Treffpunkt parallel einfallender Strahlen nach der Linse.", "Sie bündelt parallele Strahlen bei den behandelten Arten."],
+      answer: "Sie ist der Abstand zwischen Linse und Brennpunkt.", wrong: ["Es beschreibt auffangbar auf Schirm, reelles Bild.", "Es ist der Treffpunkt parallel einfallender Strahlen nach der Linse.", "Es dient als Nur hinter Linse sichtbar."],
       explanation: "f. Brennweite bedeutet: Abstand Linse–Brennpunkt. Bezug: Sammellinse und Brennweite.",
       wissen: "f. Brennweite bedeutet: Abstand Linse–Brennpunkt. Bezug: Sammellinse und Brennweite.",
       flashFront: "Brennweite",
@@ -500,7 +500,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:parallelstrahl",
       prompt: "Welche Eigenschaft hat das Parallelstrahl?",
-      answer: "Es läuft nach Brechung durch F.", wrong: ["Sie dient als Abstand Gegenstand–Linse bei den behandelten Arten.", "Es beschreibt ein Durch F → parallel danach.", "Es beschreibt auffangbar auf Schirm, reelles Bild."],
+      answer: "Es läuft nach Brechung durch F.", wrong: ["Es beschreibt ein Durch F → parallel danach.", "Es beschreibt auffangbar auf Schirm, reelles Bild.", "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes."],
       explanation: "Konstruktion. Parallelstrahl bedeutet: Läuft nach Brechung durch F. Bezug: Sammellinse und Brennweite.",
       wissen: "Konstruktion. Parallelstrahl bedeutet: Läuft nach Brechung durch F. Bezug: Sammellinse und Brennweite.",
       flashFront: "Parallelstrahl",
@@ -508,7 +508,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:brennpunktstrahl",
       prompt: "Was kennzeichnet „Brennpunktstrahl“?",
-      answer: "Er ist eine Durch F → Parallel Danach durch Konstruktion.", wrong: ["Er geht ungebrochen durch Zentrum.", "Er ist eine D = 1/F.", "Er ist eine Auffangbar auf Schirm."],
+      answer: "Es beschreibt durch F → parallel danach.", wrong: ["Er geht ungebrochen durch Zentrum.", "Sie ist der Abstand zwischen Linse und Brennpunkt.", "Es geht ungebrochen durch Zentrum, näherung dünne Linse."],
       explanation: "Konstruktion. Brennpunktstrahl bedeutet: Durch F → parallel danach. Bezug: Sammellinse und Brennweite.",
       wissen: "Konstruktion. Brennpunktstrahl bedeutet: Durch F → parallel danach. Bezug: Sammellinse und Brennweite.",
       flashFront: "Brennpunktstrahl",
@@ -516,7 +516,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:mittelpunktstrahl",
       prompt: "Wozu dient das Mittelpunktstrahl?",
-      answer: "Es geht ungebrochen durch Zentrum, näherung dünne Linse.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Es dient als Nur hinter Linse sichtbar.", "Sie dient als Abstand Bild–Linse bei den behandelten Arten."],
+      answer: "Es geht ungebrochen durch Zentrum, näherung dünne Linse.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Es dient als Nur hinter Linse sichtbar.", "Es beschreibt auffangbar auf Schirm, reelles Bild."],
       explanation: "Näherung dünne Linse. Mittelpunktstrahl bedeutet: Geht ungebrochen durch Zentrum. Bezug: Sammellinse und Brennweite.",
       wissen: "Näherung dünne Linse. Mittelpunktstrahl bedeutet: Geht ungebrochen durch Zentrum. Bezug: Sammellinse und Brennweite.",
       flashFront: "Mittelpunktstrahl",
@@ -524,7 +524,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:brechkraft",
       prompt: "Woran erkennt man das Brechkraft?",
-      answer: "Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", wrong: ["Es beschreibt ein Durch F → parallel danach.", "Sie dient als Abstand Bild–Linse bei den behandelten Arten.", "Es ist der Treffpunkt parallel einfallender Strahlen nach der Linse."],
+      answer: "Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", wrong: ["Es beschreibt ein Durch F → parallel danach.", "Es ist der Treffpunkt parallel einfallender Strahlen nach der Linse.", "Es läuft nach Brechung durch F."],
       explanation: "Einheit Dioptrie. Brechkraft bedeutet: D = 1/f. Bezug: Sammellinse und Brennweite.",
       wissen: "Einheit Dioptrie. Brechkraft bedeutet: D = 1/f. Bezug: Sammellinse und Brennweite.",
       flashFront: "Brechkraft",
@@ -532,23 +532,33 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:wirkliches-bild",
       prompt: "Was beschreibt „Wirkliches Bild“?",
-      answer: "Es beschreibt auffangbar auf Schirm, reelles Bild.", wrong: ["Es läuft nach Brechung durch F.", "Sie dient als Abstand Gegenstand–Linse bei den behandelten Arten.", "Es beschreibt ein Durch F → parallel danach."],
+      answer: "Es beschreibt auffangbar auf Schirm, reelles Bild.", wrong: ["Es läuft nach Brechung durch F.", "Es beschreibt ein Durch F → parallel danach.", "Es ist der Treffpunkt parallel einfallender Strahlen nach der Linse."],
       explanation: "Reelles Bild. Wirkliches Bild bedeutet: Auffangbar auf Schirm. Bezug: Sammellinse und Brennweite.",
       wissen: "Reelles Bild. Wirkliches Bild bedeutet: Auffangbar auf Schirm. Bezug: Sammellinse und Brennweite.",
       flashFront: "Wirkliches Bild",
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:scheinbares-bild",
-      prompt: "Was kennzeichnet „Scheinbares Bild“?",
-      answer: "Es ist eine Nur Hinter Linse Sichtbar durch Virtuell.", wrong: ["Es ist eine Zeichnung der Hauptstrahlen.", "Das Scheinbares Bild ist das Abstand Gegenstand–Linse.", "Das Scheinbares Bild ist das Abstand Bild–Linse."],
+      prompt: "Woran erkennt man ein scheinbares Bild an der Sammellinse?",
+      answer: "Es ist virtuell und nur hinter der Linse sichtbar, nicht auf einem Schirm auffangbar.",
+      wrong: [
+        "Es lässt sich als reelles Bild auf einem Schirm auffangen.",
+        "Es entsteht, wenn parallele Strahlen nach der Linse durch den Brennpunkt laufen.",
+        "Es zeichnet die drei Hauptstrahlen zur Vorhersage der Bildlage.",
+      ],
       explanation: "Virtuell. Scheinbares Bild bedeutet: Nur hinter Linse sichtbar. Bezug: Sammellinse und Brennweite.",
       wissen: "Virtuell. Scheinbares Bild bedeutet: Nur hinter Linse sichtbar. Bezug: Sammellinse und Brennweite.",
       flashFront: "Scheinbares Bild",
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:strahlengang",
-      prompt: "Mit welchen Mitteln arbeitet das Strahlengang?",
-      answer: "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes.", wrong: ["Es geht ungebrochen durch Zentrum, näherung dünne Linse.", "Es beschreibt ein Durch F → parallel danach.", "Sie bündelt parallele Strahlen bei den behandelten Arten."],
+      prompt: "Wozu dient der Strahlengang bei der Sammellinse?",
+      answer: "Er zeichnet die Hauptstrahlen und ermöglicht so die Vorhersage des Bildes.",
+      wrong: [
+        "Er geht ungebrochen durch das Linsenzentrum und ändert dort die Richtung nicht.",
+        "Er läuft nach der Brechung durch den Brennpunkt und wird danach parallel.",
+        "Er beschreibt ein virtuelles Bild, das nur hinter der Linse sichtbar ist.",
+      ],
       explanation: "Vorhersage des Bildes. Strahlengang bedeutet: Zeichnung der Hauptstrahlen. Bezug: Sammellinse und Brennweite.",
       wissen: "Vorhersage des Bildes. Strahlengang bedeutet: Zeichnung der Hauptstrahlen. Bezug: Sammellinse und Brennweite.",
       flashFront: "Strahlengang",
@@ -556,7 +566,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:gegenstandweite",
       prompt: "Wozu dient die Gegenstandweite?",
-      answer: "Sie dient als Abstand Gegenstand–Linse bei den behandelten Arten.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Es beschreibt auffangbar auf Schirm, reelles Bild.", "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes."],
+      answer: "Sie dient als Abstand Gegenstand–Linse.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Es beschreibt auffangbar auf Schirm, reelles Bild.", "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes."],
       explanation: "g. Gegenstandweite bedeutet: Abstand Gegenstand–Linse. Bezug: Sammellinse und Brennweite.",
       wissen: "g. Gegenstandweite bedeutet: Abstand Gegenstand–Linse. Bezug: Sammellinse und Brennweite.",
       flashFront: "Gegenstandweite",
@@ -564,7 +574,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:bildweite",
       prompt: "Wozu dient die Bildweite?",
-      answer: "Sie dient als Abstand Bild–Linse bei den behandelten Arten.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Sie dient als Abstand Gegenstand–Linse bei den behandelten Arten.", "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes."],
+      answer: "Sie dient als Abstand Bild–Linse.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Sie dient als Abstand Gegenstand–Linse.", "Es beschreibt eine Zeichnung der Hauptstrahlen, vorhersage des Bildes."],
       explanation: "b. Bildweite bedeutet: Abstand Bild–Linse. Bezug: Sammellinse und Brennweite.",
       wissen: "b. Bildweite bedeutet: Abstand Bild–Linse. Bezug: Sammellinse und Brennweite.",
       flashFront: "Bildweite",
@@ -631,7 +641,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:fotoapparat",
       prompt: "Was kennzeichnet „Fotoapparat“?",
-      answer: "Es ist eine Abbilden auf Sensor/Film durch Linse + Blende.", wrong: ["Es ist eine Bild auf Schirm.", "Es ist ein Ferne Objekte Näher.", "Es ist eine Kleine Objekte Vergrößern."],
+      answer: "Es abbilden auf Sensor/Film, linse + Blende.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Es macht ferne Objekte näher und vergrößert sie optisch.", "Sie beschreibt eine Bild scharf stellen, abstand anpassen."],
       explanation: "Linse + Blende. Fotoapparat bedeutet: Abbilden auf Sensor/Film. Bezug: Einfache optische Geräte.",
       wissen: "Linse + Blende. Fotoapparat bedeutet: Abbilden auf Sensor/Film. Bezug: Einfache optische Geräte.",
       flashFront: "Fotoapparat",
@@ -647,7 +657,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:fernrohr",
       prompt: "Welche Eigenschaft hat das Fernrohr?",
-      answer: "Es macht ferne Objekte näher und vergrößert sie optisch.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Sie vergrößert nahe Gegenstände, indem sie als Sammellinse das Sehwinkelbild vergrößert.", "Sie beschreibt bildgröße / Gegenstandsgröße bei den behandelten Arten."],
+      answer: "Es macht ferne Objekte näher und vergrößert sie optisch.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Sie vergrößert nahe Gegenstände, indem sie als Sammellinse das Sehwinkelbild vergrößert.", "Es beschreibt vordere Abbildungslinse, sammelt Licht."],
       explanation: "Linsensystem. Fernrohr bedeutet: Ferne Objekte näher. Bezug: Einfache optische Geräte.",
       wissen: "Linsensystem. Fernrohr bedeutet: Ferne Objekte näher. Bezug: Einfache optische Geräte.",
       flashFront: "Fernrohr",
@@ -655,7 +665,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:mikroskop",
       prompt: "Welche Eigenschaft hat das Mikroskop?",
-      answer: "Es vergrößert kleine Objekte durch Objektiv und Okular.", wrong: ["Sie regelt Lichtmenge bei den behandelten Arten.", "Es beschreibt vordere Abbildungslinse, sammelt Licht.", "Es beschreibt ein Bei vielen Geräten reell, auf dem Kopf."],
+      answer: "Es vergrößert kleine Objekte durch Objektiv und Okular.", wrong: ["Es beschreibt vordere Abbildungslinse, sammelt Licht.", "Es beschreibt ein Bei vielen Geräten reell, auf dem Kopf.", "Sie beschreibt eine Bild scharf stellen, abstand anpassen."],
       explanation: "Objektive. Mikroskop bedeutet: Kleine Objekte vergrößern. Bezug: Einfache optische Geräte.",
       wissen: "Objektive. Mikroskop bedeutet: Kleine Objekte vergrößern. Bezug: Einfache optische Geräte.",
       flashFront: "Mikroskop",
@@ -663,7 +673,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:objektiv",
       prompt: "Mit welchen Mitteln arbeitet das Objektiv?",
-      answer: "Es beschreibt vordere Abbildungslinse, sammelt Licht.", wrong: ["Es abbilden auf Sensor/Film, linse + Blende.", "Sie beschreibt eine Bild scharf stellen, abstand anpassen.", "Sie regelt Lichtmenge bei den behandelten Arten."],
+      answer: "Es beschreibt vordere Abbildungslinse, sammelt Licht.", wrong: ["Es abbilden auf Sensor/Film, linse + Blende.", "Sie beschreibt eine Bild scharf stellen, abstand anpassen.", "Es beschreibt ein Bei vielen Geräten reell, auf dem Kopf."],
       explanation: "Sammelt Licht. Objektiv bedeutet: Vordere Abbildungslinse. Bezug: Einfache optische Geräte.",
       wissen: "Sammelt Licht. Objektiv bedeutet: Vordere Abbildungslinse. Bezug: Einfache optische Geräte.",
       flashFront: "Objektiv",
@@ -679,7 +689,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:blende",
       prompt: "Welche Eigenschaft hat die Blende?",
-      answer: "Sie regelt Lichtmenge bei den behandelten Arten.", wrong: ["Sie beschreibt bildgröße / Gegenstandsgröße bei den behandelten Arten.", "Es abbilden auf Sensor/Film, linse + Blende.", "Er beschreibt ein Bild auf Schirm, reelles Bild."],
+      answer: "Sie regelt Lichtmenge.", wrong: ["Sie beschreibt bildgröße / Gegenstandsgröße.", "Es abbilden auf Sensor/Film, linse + Blende.", "Er beschreibt ein Bild auf Schirm, reelles Bild."],
       explanation: "Schärfentiefe. Blende bedeutet: Regelt Lichtmenge. Bezug: Einfache optische Geräte.",
       wissen: "Schärfentiefe. Blende bedeutet: Regelt Lichtmenge. Bezug: Einfache optische Geräte.",
       flashFront: "Blende",
@@ -695,7 +705,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:vergroesserung",
       prompt: "Woran erkennt man die Vergrößerung?",
-      answer: "Sie beschreibt bildgröße / Gegenstandsgröße bei den behandelten Arten.", wrong: ["Sie regelt Lichtmenge bei den behandelten Arten.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Er beschreibt ein Bild auf Schirm, reelles Bild."],
+      answer: "Sie beschreibt bildgröße / Gegenstandsgröße.", wrong: ["Sie regelt Lichtmenge.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Er beschreibt ein Bild auf Schirm, reelles Bild."],
       explanation: "Gerätetypisch. Vergrößerung bedeutet: Bildgröße / Gegenstandsgröße. Bezug: Einfache optische Geräte.",
       wissen: "Gerätetypisch. Vergrößerung bedeutet: Bildgröße / Gegenstandsgröße. Bezug: Einfache optische Geräte.",
       flashFront: "Vergrößerung",
@@ -703,7 +713,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:umgekehrtes-bild",
       prompt: "Mit welchen Mitteln arbeitet das Umgekehrtes Bild?",
-      answer: "Es beschreibt ein Bei vielen Geräten reell, auf dem Kopf.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Es beschreibt vordere Abbildungslinse, sammelt Licht.", "Sie regelt Lichtmenge bei den behandelten Arten."],
+      answer: "Es beschreibt ein Bei vielen Geräten reell, auf dem Kopf.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, moderne Optik.", "Es beschreibt vordere Abbildungslinse, sammelt Licht.", "Es macht ferne Objekte näher und vergrößert sie optisch."],
       explanation: "Auf dem Kopf. Umgekehrtes Bild bedeutet: Bei vielen Geräten reell. Bezug: Einfache optische Geräte.",
       wissen: "Auf dem Kopf. Umgekehrtes Bild bedeutet: Bei vielen Geräten reell. Bezug: Einfache optische Geräte.",
       flashFront: "Umgekehrtes Bild",
@@ -769,96 +779,106 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     facts: [
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:pixel",
-      prompt: "Wozu dient der Pixel?",
-      answer: "Es bildpunkt digital bei den behandelten Arten.", wrong: ["Er wandelt eine Messgröße wie Temperatur oder Licht in ein elektrisches Signal um.", "Sie beschreibt lichtmenge auf Sensor, zeit × Blende.", "Sie beschreibt eine Analog → Zahlenwerte."],
+      prompt: "Was beschreibt ein Pixel in einem Digitalbild?",
+      answer: "Es ist der kleinste Bildpunkt eines Rasters, aus dem das digitale Bild aufgebaut ist.",
+      wrong: [
+        "Er wandelt auftreffendes Licht in ein elektrisches Signal um.",
+        "Sie gibt an, wie viele Bildpunkte pro Fläche das Detailreichtum bestimmen.",
+        "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.",
+      ],
       explanation: "Raster. Pixel bedeutet: Bildpunkt digital. Bezug: Digitale Bildentstehung.",
       wissen: "Raster. Pixel bedeutet: Bildpunkt digital. Bezug: Digitale Bildentstehung.",
       flashFront: "Pixel",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:sensor",
-      prompt: "Wozu dient ein Sensor in elektronischen Schaltungen?",
-      answer: "Er wandelt eine Messgröße wie Temperatur oder Licht in ein elektrisches Signal um.", wrong: ["Sie beschreibt smartphone-Fotos bei den behandelten Arten.", "Sie beschreibt eine Analog → Zahlenwerte.", "Es beschreibt chemisch vs. digital, historischer Wandel."],
+      prompt: "Wozu dient der Bildsensor bei der digitalen Bildentstehung?",
+      answer: "Er wandelt auftreffendes Licht in ein elektrisches Signal um, etwa in CCD- oder CMOS-Chips.", wrong: ["Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.", "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.", "Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme."],
       explanation: "CCD/CMOS. Sensor bedeutet: Wandelt Licht in Signal. Bezug: Digitale Bildentstehung.",
       wissen: "CCD/CMOS. Sensor bedeutet: Wandelt Licht in Signal. Bezug: Digitale Bildentstehung.",
       flashFront: "Sensor",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:aufloesung",
-      prompt: "Was bewirkt die Auflösung?",
-      answer: "Sie beschreibt ein Pixel pro Fläche.", wrong: ["Sie beschreibt RGB-Kanäle typisch bei den behandelten Arten.", "Es beschreibt chemisch vs. digital, historischer Wandel.", "Sie beschreibt eine Analog → Zahlenwerte."],
+      prompt: "Was beschreibt die Auflösung eines Digitalbildes?",
+      answer: "Sie gibt an, wie viele Bildpunkte pro Fläche das Detailreichtum bestimmen.", wrong: ["Sie mischt typischerweise Rot-, Grün- und Blaukanäle zu wahrgenommenen Farben.", "Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme.", "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um."],
       explanation: "Detailreichtum. Auflösung bedeutet: Pixel pro Fläche. Bezug: Digitale Bildentstehung.",
       wissen: "Detailreichtum. Auflösung bedeutet: Pixel pro Fläche. Bezug: Digitale Bildentstehung.",
       flashFront: "Auflösung",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:digitalisierung",
-      prompt: "Welche Eigenschaft hat die Digitalisierung?",
-      answer: "Sie beschreibt eine Analog → Zahlenwerte.", wrong: ["Sie beschreibt RGB-Kanäle typisch bei den behandelten Arten.", "Es beschreibt ein Datei speichert Bild.", "Sie beschreibt lichtmenge auf Sensor, zeit × Blende."],
+      prompt: "Was bewirkt die Digitalisierung bei der Bildaufnahme?",
+      answer: "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.", wrong: ["Sie mischt typischerweise Rot-, Grün- und Blaukanäle zu wahrgenommenen Farben.", "Es speichert das fertige Bild dauerhaft als Datei auf dem Speichermedium.", "Sie steuert die Lichtmenge auf dem Sensor über Zeit und Blende."],
       explanation: "Speicherbar. Digitalisierung bedeutet: Analog → Zahlenwerte. Bezug: Digitale Bildentstehung.",
       wissen: "Speicherbar. Digitalisierung bedeutet: Analog → Zahlenwerte. Bezug: Digitale Bildentstehung.",
       flashFront: "Digitalisierung",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:farbe",
-      prompt: "Welche Eigenschaft hat die Farbe?",
-      answer: "Sie beschreibt RGB-Kanäle typisch bei den behandelten Arten.", wrong: ["Es beschreibt ein Datei speichert Bild.", "Sie beschreibt eine Analog → Zahlenwerte.", "Es zeigt Pixel an bei den behandelten Arten."],
+      prompt: "Wie entsteht Farbe in einem typischen Digitalbild?",
+      answer: "Sie mischt typischerweise Rot-, Grün- und Blaukanäle zu wahrgenommenen Farben.", wrong: ["Es speichert das fertige Bild dauerhaft als Datei auf dem Speichermedium.", "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.", "Es zeigt das fertige Pixelraster auf einem Bildschirm an."],
       explanation: "Mischung. Farbe bedeutet: RGB-Kanäle typisch. Bezug: Digitale Bildentstehung.",
       wissen: "Mischung. Farbe bedeutet: RGB-Kanäle typisch. Bezug: Digitale Bildentstehung.",
       flashFront: "Farbe",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:belichtung",
-      prompt: "Wozu dient die Belichtung?",
-      answer: "Sie beschreibt lichtmenge auf Sensor, zeit × Blende.", wrong: ["Sie beschreibt smartphone-Fotos bei den behandelten Arten.", "Er wandelt eine Messgröße wie Temperatur oder Licht in ein elektrisches Signal um.", "Sie beschreibt ein Pixel pro Fläche."],
+      prompt: "Wozu dient die Belichtung bei der Aufnahme?",
+      answer: "Sie steuert die Lichtmenge auf dem Sensor über Zeit und Blende.", wrong: ["Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.", "Er wandelt auftreffendes Licht in ein elektrisches Signal um, etwa in CCD- oder CMOS-Chips.", "Sie gibt an, wie viele Bildpunkte pro Fläche das Detailreichtum bestimmen."],
       explanation: "Zeit × Blende. Belichtung bedeutet: Lichtmenge auf Sensor. Bezug: Digitale Bildentstehung.",
       wissen: "Zeit × Blende. Belichtung bedeutet: Lichtmenge auf Sensor. Bezug: Digitale Bildentstehung.",
       flashFront: "Belichtung",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:speichern",
-      prompt: "Was beschreibt „Speichern“?",
-      answer: "Es beschreibt ein Datei speichert Bild.", wrong: ["Es beschreibt chemisch vs. digital, historischer Wandel.", "Es zeigt Pixel an bei den behandelten Arten.", "Sie beschreibt lichtmenge auf Sensor, zeit × Blende."],
+      prompt: "Was geschieht beim Speichern eines Digitalbildes?",
+      answer: "Es speichert das fertige Bild dauerhaft als Datei auf dem Speichermedium.", wrong: ["Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme.", "Es zeigt das fertige Pixelraster auf einem Bildschirm an.", "Sie steuert die Lichtmenge auf dem Sensor über Zeit und Blende."],
       explanation: "Formate. Speichern bedeutet: Datei speichert Bild. Bezug: Digitale Bildentstehung.",
       wissen: "Formate. Speichern bedeutet: Datei speichert Bild. Bezug: Digitale Bildentstehung.",
       flashFront: "Speichern",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:display",
-      prompt: "Woran erkennt man das Display?",
-      answer: "Es zeigt Pixel an bei den behandelten Arten.", wrong: ["Sie beschreibt smartphone-Fotos bei den behandelten Arten.", "Sie beschreibt eine Analog → Zahlenwerte.", "Sie beschreibt lichtmenge auf Sensor, zeit × Blende."],
+      prompt: "Wozu dient das Display bei digitalen Bildern?",
+      answer: "Es zeigt das fertige Pixelraster auf einem Bildschirm an.", wrong: ["Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.", "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.", "Sie steuert die Lichtmenge auf dem Sensor über Zeit und Blende."],
       explanation: "Bildschirm. Display bedeutet: Zeigt Pixel an. Bezug: Digitale Bildentstehung.",
       wissen: "Bildschirm. Display bedeutet: Zeigt Pixel an. Bezug: Digitale Bildentstehung.",
       flashFront: "Display",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:rauschen",
-      prompt: "Wozu dient das Rauschen?",
-      answer: "Es beschreibt zufällige Störungen, bei wenig Licht.", wrong: ["Es zahlen repräsentieren Helligkeit, pro Kanal.", "Sie beschreibt smartphone-Fotos bei den behandelten Arten.", "Es beschreibt ein Datei speichert Bild."],
+      prompt: "Woran erkennt man Rauschen im Digitalbild?",
+      answer: "Es beschreibt zufällige Störungen im Bild, die besonders bei wenig Licht auffallen.", wrong: ["Es speichert Helligkeitswerte kanalweise als Zahlen für die spätere Darstellung.", "Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.", "Es speichert das fertige Bild dauerhaft als Datei auf dem Speichermedium."],
       explanation: "Bei wenig Licht. Rauschen bedeutet: Zufällige Störungen. Bezug: Digitale Bildentstehung.",
       wissen: "Bei wenig Licht. Rauschen bedeutet: Zufällige Störungen. Bezug: Digitale Bildentstehung.",
       flashFront: "Rauschen",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:vergleich-film",
-      prompt: "Woran erkennt man das Vergleich Film?",
-      answer: "Es beschreibt chemisch vs. digital, historischer Wandel.", wrong: ["Es bildpunkt digital bei den behandelten Arten.", "Es zahlen repräsentieren Helligkeit, pro Kanal.", "Es zeigt Pixel an bei den behandelten Arten."],
+      prompt: "Worin unterscheidet sich der Vergleich von Film und Digitalbild?",
+      answer: "Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme.", wrong: ["Es speichert Helligkeitswerte kanalweise als Zahlen für die spätere Darstellung.", "Es zeigt das fertige Pixelraster auf einem Bildschirm an.", "Er wandelt auftreffendes Licht in ein elektrisches Signal um, etwa in CCD- oder CMOS-Chips."],
       explanation: "Historischer Wandel. Vergleich Film bedeutet: Chemisch vs. digital. Bezug: Digitale Bildentstehung.",
       wissen: "Historischer Wandel. Vergleich Film bedeutet: Chemisch vs. digital. Bezug: Digitale Bildentstehung.",
       flashFront: "Vergleich Film",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:datensatz",
-      prompt: "Was beschreibt „Datensatz“?",
-      answer: "Es zahlen repräsentieren Helligkeit, pro Kanal.", wrong: ["Es beschreibt chemisch vs. digital, historischer Wandel.", "Sie beschreibt ein Pixel pro Fläche.", "Es beschreibt zufällige Störungen, bei wenig Licht."],
+      prompt: "Was beschreibt der Datensatz eines Digitalbildes?",
+      answer: "Es speichert Helligkeitswerte kanalweise als Zahlen für die spätere Darstellung.", wrong: ["Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme.", "Sie gibt an, wie viele Bildpunkte pro Fläche das Detailreichtum bestimmen.", "Es beschreibt zufällige Störungen im Bild, die besonders bei wenig Licht auffallen."],
       explanation: "Pro Kanal. Datensatz bedeutet: Zahlen repräsentieren Helligkeit. Bezug: Digitale Bildentstehung.",
       wissen: "Pro Kanal. Datensatz bedeutet: Zahlen repräsentieren Helligkeit. Bezug: Digitale Bildentstehung.",
       flashFront: "Datensatz",
     },
     {
       concept: "ph:gap:ph-k6-lb1-digitalbild:fact:anwendung",
-      prompt: "Was beschreibt „Anwendung“?",
-      answer: "Sie beschreibt smartphone-Fotos bei den behandelten Arten.", wrong: ["Sie beschreibt eine Analog → Zahlenwerte.", "Es beschreibt zufällige Störungen, bei wenig Licht.", "Sie beschreibt RGB-Kanäle typisch bei den behandelten Arten."],
+      prompt: "Wo begegnet uns digitale Bildentstehung im Alltag?",
+      answer: "Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.",
+      wrong: [
+        "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.",
+        "Es beschreibt zufällige Störungen im Bild, die besonders bei wenig Licht auffallen.",
+        "Sie mischt typischerweise Rot-, Grün- und Blaukanäle zu wahrgenommenen Farben.",
+      ],
       explanation: "Alltag. Anwendung bedeutet: Smartphone-Fotos. Bezug: Digitale Bildentstehung.",
       wissen: "Alltag. Anwendung bedeutet: Smartphone-Fotos. Bezug: Digitale Bildentstehung.",
       flashFront: "Anwendung",
@@ -917,7 +937,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:teilchenmodell",
       prompt: "Was kennzeichnet „Teilchenmodell“?",
-      answer: "Es ist ein Stoff aus Kleinen Teilchen durch Erklärung von Phänomenen.", wrong: ["Es ist eine Baustein der Stoffe.", "Es ist eine Verbund von Atomen.", "Es ist ein Anziehung Gleicher Teilchen."],
+      answer: "Es beschreibt stoff aus kleinen Teilchen.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Es beschreibt teilchen weit, schnell, füllt Raum.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen."],
       explanation: "Erklärung von Phänomenen. Teilchenmodell bedeutet: Stoff aus kleinen Teilchen. Bezug: Teilchenmodell.",
       wissen: "Erklärung von Phänomenen. Teilchenmodell bedeutet: Stoff aus kleinen Teilchen. Bezug: Teilchenmodell.",
       flashFront: "Teilchenmodell",
@@ -933,7 +953,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:molekuel",
       prompt: "Welche Eigenschaft hat das Molekül?",
-      answer: "Es beschreibt ein Verbund von Atomen.", wrong: ["Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Es beschreibt teilchen eng, geordnet bei den behandelten Arten.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen."],
+      answer: "Es beschreibt ein Verbund von Atomen.", wrong: ["Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen.", "Es beschreibt teilchen weit, schnell, füllt Raum."],
       explanation: "z. B. Wasser. Molekül bedeutet: Verbund von Atomen. Bezug: Teilchenmodell.",
       wissen: "z. B. Wasser. Molekül bedeutet: Verbund von Atomen. Bezug: Teilchenmodell.",
       flashFront: "Molekül",
@@ -949,7 +969,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:adhaesion",
       prompt: "Woran erkennt man die Adhäsion?",
-      answer: "Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", wrong: ["Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Es beschreibt ein Stoff aus kleinen Teilchen, erklärung von Phänomenen.", "Es beschreibt zwischen Teilchen bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", wrong: ["Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Es beschreibt ein Stoff aus kleinen Teilchen, erklärung von Phänomenen.", "Es beschreibt ein Verbund von Atomen."],
       explanation: "Wasser an Glas. Adhäsion bedeutet: Anziehung verschiedener Stoffe. Bezug: Teilchenmodell.",
       wissen: "Wasser an Glas. Adhäsion bedeutet: Anziehung verschiedener Stoffe. Bezug: Teilchenmodell.",
       flashFront: "Adhäsion",
@@ -957,7 +977,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:leerer-raum",
       prompt: "Welche Eigenschaft hat der Leerer Raum?",
-      answer: "Es beschreibt zwischen Teilchen bei den behandelten Arten.", wrong: ["Es beschreibt teilchen beweglich, etwa volumen oder keine Form.", "Es beschreibt teilchen eng, geordnet bei den behandelten Arten.", "Es beschreibt teilchen weit, schnell, füllt Raum."],
+      answer: "Es beschreibt zwischen Teilchen.", wrong: ["Es beschreibt teilchen beweglich, etwa volumen oder keine Form.", "Es beschreibt teilchen eng, geordnet.", "Es beschreibt teilchen weit, schnell, füllt Raum."],
       explanation: "Modellannahme. Leerer Raum bedeutet: Zwischen Teilchen. Bezug: Teilchenmodell.",
       wissen: "Modellannahme. Leerer Raum bedeutet: Zwischen Teilchen. Bezug: Teilchenmodell.",
       flashFront: "Leerer Raum",
@@ -965,7 +985,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:bewegung",
       prompt: "Mit welchen Mitteln arbeitet die Bewegung?",
-      answer: "Sie beschreibt teilchen sind in Bewegung.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Es beschreibt zwischen Teilchen bei den behandelten Arten.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell."],
+      answer: "Sie beschreibt teilchen sind in Bewegung.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell.", "Es beschreibt teilchen beweglich, etwa volumen oder keine Form."],
       explanation: "Temperaturbezug. Bewegung bedeutet: Teilchen sind in Bewegung. Bezug: Teilchenmodell.",
       wissen: "Temperaturbezug. Bewegung bedeutet: Teilchen sind in Bewegung. Bezug: Teilchenmodell.",
       flashFront: "Bewegung",
@@ -973,7 +993,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:fest",
       prompt: "Mit welchen Mitteln arbeitet das Fest?",
-      answer: "Es beschreibt teilchen eng, geordnet bei den behandelten Arten.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen."],
+      answer: "Es beschreibt teilchen eng, geordnet.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen."],
       explanation: "Formstabil. Fest bedeutet: Teilchen eng, geordnet. Bezug: Teilchenmodell.",
       wissen: "Formstabil. Fest bedeutet: Teilchen eng, geordnet. Bezug: Teilchenmodell.",
       flashFront: "Fest",
@@ -981,7 +1001,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:fluessig",
       prompt: "Welche Eigenschaft hat das Flüssig?",
-      answer: "Es beschreibt teilchen beweglich, etwa volumen oder keine Form.", wrong: ["Es beschreibt teilchen eng, geordnet bei den behandelten Arten.", "Es beschreibt zwischen Teilchen bei den behandelten Arten.", "Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas."],
+      answer: "Es beschreibt teilchen beweglich, etwa volumen oder keine Form.", wrong: ["Sie beschreibt eine Anziehung verschiedener Stoffe, wasser an Glas.", "Sie beschreibt eine Anziehung gleicher Teilchen, flüssigkeit hält zusammen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell."],
       explanation: "Volumen, keine Form. Flüssig bedeutet: Teilchen beweglich. Bezug: Teilchenmodell.",
       wissen: "Volumen, keine Form. Flüssig bedeutet: Teilchen beweglich. Bezug: Teilchenmodell.",
       flashFront: "Flüssig",
@@ -989,7 +1009,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:gasfoermig",
       prompt: "Mit welchen Mitteln arbeitet das Gasförmig?",
-      answer: "Es beschreibt teilchen weit, schnell, füllt Raum.", wrong: ["Es beschreibt zwischen Teilchen bei den behandelten Arten.", "Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Es beschreibt teilchen beweglich, etwa volumen oder keine Form."],
+      answer: "Es beschreibt teilchen weit, schnell, füllt Raum.", wrong: ["Sie beschreibt eine Vereinfachung der Realität, nicht alles erklärt.", "Es beschreibt teilchen beweglich, etwa volumen oder keine Form.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell."],
       explanation: "Füllt Raum. Gasförmig bedeutet: Teilchen weit, schnell. Bezug: Teilchenmodell.",
       wissen: "Füllt Raum. Gasförmig bedeutet: Teilchen weit, schnell. Bezug: Teilchenmodell.",
       flashFront: "Gasförmig",
@@ -1005,7 +1025,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:beobachtung",
       prompt: "Mit welchen Mitteln arbeitet die Beobachtung?",
-      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell.", wrong: ["Es beschreibt teilchen eng, geordnet bei den behandelten Arten.", "Es beschreibt ein Baustein der Stoffe, nicht sichtbar.", "Es beschreibt ein Stoff aus kleinen Teilchen, erklärung von Phänomenen."],
+      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, deuten mit Modell.", wrong: ["Es beschreibt ein Baustein der Stoffe, nicht sichtbar.", "Es beschreibt ein Stoff aus kleinen Teilchen, erklärung von Phänomenen.", "Es beschreibt teilchen weit, schnell, füllt Raum."],
       explanation: "Deuten mit Modell. Beobachtung bedeutet: Ausdehnung, Mischen. Bezug: Teilchenmodell.",
       wissen: "Deuten mit Modell. Beobachtung bedeutet: Ausdehnung, Mischen. Bezug: Teilchenmodell.",
       flashFront: "Beobachtung",
@@ -1088,7 +1108,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-diffusion:fact:temperatur",
       prompt: "Was beschreibt die Temperatur?",
-      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Sie beschreibt eine Mikroskop/Rauch bei den behandelten Arten.", "Sie beschreibt langsamer als Gas, dichter gepackt.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
+      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Sie beschreibt langsamer als Gas, dichter gepackt.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt teilchen pro Volumen, gefälle treibt Diffusion."],
       explanation: "Mehr Bewegung. Temperatur bedeutet: Höhere T → schnellere Diffusion. Bezug: Diffusion und Brown’sche Bewegung.",
       wissen: "Mehr Bewegung. Temperatur bedeutet: Höhere T → schnellere Diffusion. Bezug: Diffusion und Brown’sche Bewegung.",
       flashFront: "Temperatur",
@@ -1152,7 +1172,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-diffusion:fact:beobachtbarkeit",
       prompt: "Wozu dient die Beobachtbarkeit?",
-      answer: "Sie beschreibt eine Mikroskop/Rauch bei den behandelten Arten.", wrong: ["Sie beschreibt zitternde Teilchenbahn, stoß durch Moleküle.", "Es beschreibt ein In Wasser sichtbar.", "Sie beschreibt langsamer als Gas, dichter gepackt."],
+      answer: "Sie beschreibt eine Mikroskop/Rauch.", wrong: ["Sie beschreibt zitternde Teilchenbahn, stoß durch Moleküle.", "Es beschreibt ein In Wasser sichtbar.", "Sie beschreibt langsamer als Gas, dichter gepackt."],
       explanation: "Experiment. Beobachtbarkeit bedeutet: Mikroskop/Rauch. Bezug: Diffusion und Brown’sche Bewegung.",
       wissen: "Experiment. Beobachtbarkeit bedeutet: Mikroskop/Rauch. Bezug: Diffusion und Brown’sche Bewegung.",
       flashFront: "Beobachtbarkeit",
@@ -1267,7 +1287,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-bewegungsarten:fact:bezugssystem",
       prompt: "Wozu dient ein Bezugssystem?",
-      answer: "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", wrong: ["Der Körper hat die Geschwindigkeit null relativ zum gewählten Bezugssystem.", "Sie beschreibt dauer einer Schwingung bei den behandelten Arten.", "Sie beschreibt eine Bahn ist Gerade, einfachste Bahn."],
+      answer: "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", wrong: ["Der Körper hat die Geschwindigkeit null relativ zum gewählten Bezugssystem.", "Sie beschreibt eine Bahn ist Gerade, einfachste Bahn.", "Sie beschreibt geometrische Form der Bahn."],
       explanation: "Relativ. Bezugssystem bedeutet: Standpunkt der Beschreibung. Bezug: Bewegungsarten.",
       wissen: "Relativ. Bezugssystem bedeutet: Standpunkt der Beschreibung. Bezug: Bewegungsarten.",
       flashFront: "Bezugssystem",
@@ -1291,7 +1311,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-bewegungsarten:fact:periode",
       prompt: "Wozu dient die Periode?",
-      answer: "Sie beschreibt dauer einer Schwingung bei den behandelten Arten.", wrong: ["Sie beschreibt eine Gesamtweg / Gesamtzeit, v̄ = Δs/Δt.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, beispiele zuordnen.", "Es beschreibt eine Geschwindigkeit ändert sich."],
+      answer: "Sie beschreibt dauer einer Schwingung.", wrong: ["Sie beschreibt eine Gesamtweg / Gesamtzeit, v̄ = Δs/Δt.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, beispiele zuordnen.", "Es beschreibt eine Geschwindigkeit ändert sich."],
       explanation: "T. Periode bedeutet: Dauer einer Schwingung. Bezug: Bewegungsarten.",
       wissen: "T. Periode bedeutet: Dauer einer Schwingung. Bezug: Bewegungsarten.",
       flashFront: "Periode",
@@ -1374,7 +1394,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:astronomische-einheit",
       prompt: "Woran erkennt man die Astronomische Einheit?",
-      answer: "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten.", wrong: ["Es licht braucht ca. 1,3 s.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
+      answer: "Sie beschreibt mittlerer Erde–Sonne-Abstand.", wrong: ["Es licht braucht ca. 1,3 s.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
       explanation: "AU. Astronomische Einheit bedeutet: Mittlerer Erde–Sonne-Abstand. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "AU. Astronomische Einheit bedeutet: Mittlerer Erde–Sonne-Abstand. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Astronomische Einheit",
@@ -1382,7 +1402,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:laufzeit",
       prompt: "Welche Eigenschaft hat das Laufzeit?",
-      answer: "Es zeit bis Signal ankommt, t = s/c.", wrong: ["Sie beschreibt c ≈ 300 000 km/s, im Vakuum.", "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen."],
+      answer: "Es zeit bis Signal ankommt, t = s/c.", wrong: ["Sie beschreibt c ≈ 300 000 km/s, im Vakuum.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Sie laufzeit über bekannte Strecke, historisch schwierig."],
       explanation: "t = s/c. Laufzeit bedeutet: Zeit bis Signal ankommt. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "t = s/c. Laufzeit bedeutet: Zeit bis Signal ankommt. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Laufzeit",
@@ -1398,7 +1418,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:sonne",
       prompt: "Mit welchen Mitteln arbeitet die Sonne?",
-      answer: "Sie licht braucht ca. 8 min.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern.", "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten."],
+      answer: "Sie licht braucht ca. 8 min.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern.", "Es licht braucht ca. 1,3 s."],
       explanation: "Beispiel. Sonne bedeutet: Licht braucht ca. 8 min. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Beispiel. Sonne bedeutet: Licht braucht ca. 8 min. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Sonne",
@@ -1414,7 +1434,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:einheitencheck",
       prompt: "Woran erkennt man das Einheitencheck?",
-      answer: "Es beschreibt km/s oder m/s bei den behandelten Arten.", wrong: ["Es licht braucht ca. 1,3 s.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern."],
+      answer: "Es beschreibt km/s oder m/s.", wrong: ["Es licht braucht ca. 1,3 s.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern."],
       explanation: "Umrechnen. Einheitencheck bedeutet: km/s oder m/s. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Umrechnen. Einheitencheck bedeutet: km/s oder m/s. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Einheitencheck",
@@ -1422,7 +1442,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:vergleich",
       prompt: "Wozu dient der Vergleich mit der Erwartung?",
-      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Sie beschreibt c ≈ 300 000 km/s, im Vakuum.", "Sie laufzeit über bekannte Strecke, historisch schwierig.", "Es beschreibt km/s oder m/s bei den behandelten Arten."],
+      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Sie beschreibt c ≈ 300 000 km/s, im Vakuum.", "Sie laufzeit über bekannte Strecke, historisch schwierig.", "Sie beschreibt c ist endlich, keine Sofortwirkung."],
       explanation: "Donner nach Blitz. Vergleich bedeutet: Schall viel langsamer. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Donner nach Blitz. Vergleich bedeutet: Schall viel langsamer. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Vergleich",
@@ -1430,7 +1450,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:beobachtung",
       prompt: "Mit welchen Mitteln arbeitet die Beobachtung?",
-      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten.", "Es licht braucht ca. 1,3 s."],
+      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Es licht braucht ca. 1,3 s.", "Sie beschreibt c ≈ 300 000 km/s, im Vakuum."],
       explanation: "Ferner Stern. Beobachtung bedeutet: Wir sehen Vergangenheit. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Ferner Stern. Beobachtung bedeutet: Wir sehen Vergangenheit. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Beobachtung",
@@ -1438,7 +1458,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:modell",
       prompt: "Wozu dient ein Modell in der Physik?",
-      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Es beschreibt km/s oder m/s bei den behandelten Arten.", "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten.", "Sie beschreibt c ist endlich, keine Sofortwirkung."],
+      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Es zeit bis Signal ankommt, t = s/c.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen."],
       explanation: "Näherung. Modell bedeutet: Geradlinige Ausbreitung. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Näherung. Modell bedeutet: Geradlinige Ausbreitung. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Modell",
@@ -1446,7 +1466,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:messidee",
       prompt: "Was bewirkt die Messidee?",
-      answer: "Sie laufzeit über bekannte Strecke, historisch schwierig.", wrong: ["Es licht braucht ca. 1,3 s.", "Sie licht braucht ca. 8 min.", "Sie beschreibt mittlerer Erde–Sonne-Abstand bei den behandelten Arten."],
+      answer: "Sie laufzeit über bekannte Strecke, historisch schwierig.", wrong: ["Es licht braucht ca. 1,3 s.", "Sie licht braucht ca. 8 min.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern."],
       explanation: "Historisch schwierig. Messidee bedeutet: Laufzeit über bekannte Strecke. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Historisch schwierig. Messidee bedeutet: Laufzeit über bekannte Strecke. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Messidee",
@@ -1521,7 +1541,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb3-teilchenbewegung:fact:waermeausdehnung",
       prompt: "Wozu dient die Wärmeausdehnung?",
-      answer: "Körper wird größer bei Erwärmung bei den behandelten Arten.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Er setzt den Gefrierpunkt von Wasser auf 0 °C und den Siedepunkt auf 100 °C, wasser: 0 °C / 100 °C.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
+      answer: "Körper wird größer bei Erwärmung.", wrong: ["Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung.", "Er setzt den Gefrierpunkt von Wasser auf 0 °C und den Siedepunkt auf 100 °C, wasser: 0 °C / 100 °C.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
       explanation: "Teilchenabstände. Wärmeausdehnung bedeutet: Körper wird größer bei Erwärmung. Bezug: Temperatur und Teilchenbewegung.",
       wissen: "Teilchenabstände. Wärmeausdehnung bedeutet: Körper wird größer bei Erwärmung. Bezug: Temperatur und Teilchenbewegung.",
       flashFront: "Wärmeausdehnung",
@@ -1545,7 +1565,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb3-teilchenbewegung:fact:absolute-null",
       prompt: "Was beschreibt „Absolute Null“?",
-      answer: "Es beschreibt 0 K, keine tiefere Temperatur.", wrong: ["Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Körper wird größer bei Erwärmung bei den behandelten Arten.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab."],
+      answer: "Es beschreibt 0 K, keine tiefere Temperatur.", wrong: ["Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab.", "Es misst die Temperatur und braucht dazu Skalierung und Kalibrierung."],
       explanation: "Keine tiefere Temperatur. Absolute Null bedeutet: 0 K. Bezug: Temperatur und Teilchenbewegung.",
       wissen: "Keine tiefere Temperatur. Absolute Null bedeutet: 0 K. Bezug: Temperatur und Teilchenbewegung.",
       flashFront: "Absolute Null",
@@ -1561,7 +1581,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb3-teilchenbewegung:fact:subjektiv",
       prompt: "Was kennzeichnet „Subjektiv“?",
-      answer: "Es ist eine Empfinden ≠ Messung durch Hände Täuschen.", wrong: ["Es hängt von Stoff und T ab.", "Teilchen haben Bewegungsenergie.", "Das Subjektiv ist das Gleiche Temperatur."],
+      answer: "Es empfinden ≠ Messung, hände täuschen.", wrong: ["Es hängt von Stoff und T ab.", "Teilchen haben Bewegungsenergie.", "Das Subjektiv ist das Gleiche Temperatur."],
       explanation: "Hände täuschen. Subjektiv bedeutet: Empfinden ≠ Messung. Bezug: Temperatur und Teilchenbewegung.",
       wissen: "Hände täuschen. Subjektiv bedeutet: Empfinden ≠ Messung. Bezug: Temperatur und Teilchenbewegung.",
       flashFront: "Subjektiv",
@@ -1585,7 +1605,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb3-teilchenbewegung:fact:gleichgewicht",
       prompt: "Woran erkennt man mechanisches Gleichgewicht?",
-      answer: "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", wrong: ["Sie ist die SI-Temperaturskala; 0 K entspricht dem absoluten Nullpunkt.", "Körper wird größer bei Erwärmung bei den behandelten Arten.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab."],
+      answer: "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", wrong: ["Sie ist die SI-Temperaturskala; 0 K entspricht dem absoluten Nullpunkt.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, bewegung sichtbar."],
       explanation: "Kein Nettofluss. Gleichgewicht bedeutet: Gleiche Temperatur. Bezug: Temperatur und Teilchenbewegung.",
       wissen: "Kein Nettofluss. Gleichgewicht bedeutet: Gleiche Temperatur. Bezug: Temperatur und Teilchenbewegung.",
       flashFront: "Gleichgewicht",
@@ -1593,7 +1613,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb3-teilchenbewegung:fact:versuch",
       prompt: "Was kennzeichnet „Versuch“?",
-      answer: "Es ist eine Farbiges Teeblatt in Heiß/kalt durch Bewegung Sichtbar.", wrong: ["Es ist eine Maß für Wärmezustand.", "Es ist eine Schneller bei Höherer T.", "Körper wird größer bei Erwärmung."],
+      answer: "Es beschreibt farbiges Teeblatt in heiß/kalt.", wrong: ["Körper wird größer bei Erwärmung.", "Er beschreibt fest, flüssig oder gasförmig und hängt von Temperatur und Druck ab.", "Er setzt den Gefrierpunkt von Wasser auf 0 °C und den Siedepunkt auf 100 °C, wasser: 0 °C / 100 °C."],
       explanation: "Bewegung sichtbar. Versuch bedeutet: Farbiges Teeblatt in heiß/kalt. Bezug: Temperatur und Teilchenbewegung.",
       wissen: "Bewegung sichtbar. Versuch bedeutet: Farbiges Teeblatt in heiß/kalt. Bezug: Temperatur und Teilchenbewegung.",
       flashFront: "Versuch",
@@ -1823,7 +1843,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:parallel",
       prompt: "Woran erkennt man den Parallel?",
-      answer: "Es beschreibt mehrere Wege, einer reicht.", wrong: ["Sie beschreibt beide Schalter geschlossen → Strom.", "Er öffnet/schließt Stromkreis bei den behandelten Arten.", "Sie zeigt Stromfluss bei den behandelten Arten."],
+      answer: "Es beschreibt mehrere Wege, einer reicht.", wrong: ["Sie beschreibt beide Schalter geschlossen → Strom.", "Er zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, treppenhaus grob.", "Sie beschreibt eine Verknüpfung von Bedingungen."],
       explanation: "Einer reicht. Parallel bedeutet: Mehrere Wege. Bezug: UND- und ODER-Schaltung.",
       wissen: "Einer reicht. Parallel bedeutet: Mehrere Wege. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Parallel",
@@ -1831,7 +1851,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:schalter",
       prompt: "Was bewirkt der Schalter?",
-      answer: "Er öffnet/schließt Stromkreis bei den behandelten Arten.", wrong: ["Sie beschreibt beide Schalter geschlossen → Strom.", "Er zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, treppenhaus grob.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis."],
+      answer: "Er öffnet/schließt Stromkreis.", wrong: ["Sie beschreibt beide Schalter geschlossen → Strom.", "Er zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, treppenhaus grob.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis."],
       explanation: "Steuerung. Schalter bedeutet: Öffnet/schließt Stromkreis. Bezug: UND- und ODER-Schaltung.",
       wissen: "Steuerung. Schalter bedeutet: Öffnet/schließt Stromkreis. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Schalter",
@@ -1839,7 +1859,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:lampe",
       prompt: "Was beschreibt „Lampe“?",
-      answer: "Sie zeigt Stromfluss bei den behandelten Arten.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.", "Er öffnet/schließt Stromkreis bei den behandelten Arten."],
+      answer: "Sie zeigt Stromfluss.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.", "Er öffnet/schließt Stromkreis."],
       explanation: "Verbraucher. Lampe bedeutet: Zeigt Stromfluss. Bezug: UND- und ODER-Schaltung.",
       wissen: "Verbraucher. Lampe bedeutet: Zeigt Stromfluss. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Lampe",
@@ -1847,7 +1867,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:wahrheitstabelle",
       prompt: "Was beschreibt „Wahrheitstabelle“?",
-      answer: "Sie beschreibt zustände systematisch bei den behandelten Arten.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Sie zeigt Stromfluss bei den behandelten Arten.", "Er öffnet/schließt Stromkreis bei den behandelten Arten."],
+      answer: "Sie beschreibt zustände systematisch.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Sie zeigt Stromfluss.", "Er öffnet/schließt Stromkreis."],
       explanation: "Logik. Wahrheitstabelle bedeutet: Zustände systematisch. Bezug: UND- und ODER-Schaltung.",
       wissen: "Logik. Wahrheitstabelle bedeutet: Zustände systematisch. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Wahrheitstabelle",
@@ -1855,7 +1875,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:alltag-und",
       prompt: "Was beschreibt „Alltag UND“?",
-      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Er öffnet/schließt Stromkreis bei den behandelten Arten.", "Es beschreibt mehrere Wege, einer reicht."],
+      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Es beschreibt mehrere Wege, einer reicht.", "Sie beschreibt beide Schalter geschlossen → Strom."],
       explanation: "Maschine. Alltag UND bedeutet: Zwei Sicherheitskontakte. Bezug: UND- und ODER-Schaltung.",
       wissen: "Maschine. Alltag UND bedeutet: Zwei Sicherheitskontakte. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Alltag UND",
@@ -1863,7 +1883,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:alltag-oder",
       prompt: "Welche Eigenschaft hat das Alltag UND?",
-      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Er öffnet/schließt Stromkreis bei den behandelten Arten.", "Es beschreibt mehrere Wege, einer reicht."],
+      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Es beschreibt mehrere Wege, einer reicht.", "Sie beschreibt beide Schalter geschlossen → Strom."],
       explanation: "Treppenhaus grob. Alltag ODER bedeutet: Zwei Türen zum Licht. Bezug: UND- und ODER-Schaltung.",
       wissen: "Treppenhaus grob. Alltag ODER bedeutet: Zwei Türen zum Licht. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Alltag ODER",
@@ -1871,7 +1891,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:schaltplan",
       prompt: "Was zeigt ein Schaltplan?",
-      answer: "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Sie beschreibt zustände systematisch bei den behandelten Arten.", "Sie beschreibt beide Schalter geschlossen → Strom."],
+      answer: "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Sie beschreibt beide Schalter geschlossen → Strom.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Verständigung. Schaltplan bedeutet: Symbole zeichnen. Bezug: UND- und ODER-Schaltung.",
       wissen: "Verständigung. Schaltplan bedeutet: Symbole zeichnen. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Schaltplan",
@@ -1879,7 +1899,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:logik",
       prompt: "Mit welchen Mitteln arbeitet die Logik?",
-      answer: "Sie beschreibt eine Verknüpfung von Bedingungen.", wrong: ["Sie beschreibt zustände systematisch bei den behandelten Arten.", "Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis."],
+      answer: "Sie beschreibt eine Verknüpfung von Bedingungen.", wrong: ["Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", "Er zeigt Symbole und Verbindungen der Bauteile in einem Stromkreis.", "Es beschreibt mehrere Wege, einer reicht."],
       explanation: "Einführung. Logik bedeutet: Verknüpfung von Bedingungen. Bezug: UND- und ODER-Schaltung.",
       wissen: "Einführung. Logik bedeutet: Verknüpfung von Bedingungen. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Logik",
@@ -1887,7 +1907,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb4-und-oder:fact:fehler",
       prompt: "Was versteht man unter einem Messfehler?",
-      answer: "Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", wrong: ["Sie zeigt Stromfluss bei den behandelten Arten.", "Sie beschreibt zustände systematisch bei den behandelten Arten.", "Es beschreibt mehrere Wege, einer reicht."],
+      answer: "Er beschreibt die Abweichung vom wahren Wert, zufällig oder systematisch.", wrong: ["Es beschreibt mehrere Wege, einer reicht.", "Sie beschreibt beide Schalter geschlossen → Strom.", "Er zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, treppenhaus grob."],
       explanation: "Funktion prüft. Fehler bedeutet: Falsche Verdrahtung. Bezug: UND- und ODER-Schaltung.",
       wissen: "Funktion prüft. Fehler bedeutet: Falsche Verdrahtung. Bezug: UND- und ODER-Schaltung.",
       flashFront: "Fehler",
@@ -1946,7 +1966,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:feldlinie",
       prompt: "Was beschreibt „Feldlinie“?",
-      answer: "Sie zeigt Feldrichtung bei den behandelten Arten.", wrong: ["Es beschreibt ein Außerhalb N→S bei Magneten.", "Es linien dichter = stärker bei den behandelten Arten.", "Es zeigt Ladung bei den behandelten Arten."],
+      answer: "Sie zeigt Feldrichtung.", wrong: ["Es beschreibt ein Außerhalb N→S bei Magneten.", "Es linien dichter = stärker.", "Es zeigt Ladung."],
       explanation: "Modell. Feldlinie bedeutet: Zeigt Feldrichtung. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Modell. Feldlinie bedeutet: Zeigt Feldrichtung. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Feldlinie",
@@ -1954,7 +1974,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:magnetfeld",
       prompt: "Woran erkennt man das Magnetfeld?",
-      answer: "Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln.", wrong: ["Sie zeigt Feldrichtung bei den behandelten Arten.", "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Sie beschreibt ungleiche Pole/Ladungen bei den behandelten Arten."],
+      answer: "Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln.", wrong: ["Sie magnet- und E-Feld ähnlich darstellbar.", "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", "Es beschreibt ein Außerhalb N→S bei Magneten."],
       explanation: "Kraft auf Magnetnadeln. Magnetfeld bedeutet: Raum um Magneten. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Kraft auf Magnetnadeln. Magnetfeld bedeutet: Raum um Magneten. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Magnetfeld",
@@ -1962,15 +1982,20 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:elektrisches-feld",
       prompt: "Wozu dient das Elektrisches Feld?",
-      answer: "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", wrong: ["Sie beschreibt ein Klingel, Relais bei den behandelten Arten.", "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Er beschreibt kleine Nadel/Ladung, feld abtasten."],
+      answer: "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", wrong: ["Er beschreibt kleine Nadel/Ladung, feld abtasten.", "Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln.", "Es beschreibt ein Außerhalb N→S bei Magneten."],
       explanation: "Kraft auf Probeladung. Elektrisches Feld bedeutet: Raum um Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Kraft auf Probeladung. Elektrisches Feld bedeutet: Raum um Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Elektrisches Feld",
     },
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:nord-sued",
-      prompt: "Woran erkennt man das Nord-Süd?",
-      answer: "Es beschreibt ein Außerhalb N→S bei Magneten.", wrong: ["Es zeigt Ladung bei den behandelten Arten.", "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung."],
+      prompt: "In welche Richtung verlaufen magnetische Feldlinien außerhalb eines Magneten?",
+      answer: "Außerhalb eines Magneten verlaufen die Feldlinien von Nord nach Süd.",
+      wrong: [
+        "Sie beschreiben den Raum um Ladungen und die Kraft auf eine Probeladung.",
+        "Sie tasten das Feld nur mit einer kleinen Nadel oder Ladung ab.",
+        "Sie stellen Magnet- und elektrisches Feld immer als identisch dar.",
+      ],
       explanation: "Konvention. Nord-Süd bedeutet: Außerhalb N→S bei Magneten. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Konvention. Nord-Süd bedeutet: Außerhalb N→S bei Magneten. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Nord-Süd",
@@ -1978,7 +2003,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:homogenes-feld",
       prompt: "Was beschreibt „Homogenes Feld“?",
-      answer: "Es beschreibt parallele gleiche Linien bei den behandelten Arten.", wrong: ["Er beschreibt kleine Nadel/Ladung, feld abtasten.", "Sie beschreibt ein Klingel, Relais bei den behandelten Arten.", "Es beschreibt ein Außerhalb N→S bei Magneten."],
+      answer: "Es beschreibt parallele gleiche Linien.", wrong: ["Er beschreibt kleine Nadel/Ladung, feld abtasten.", "Sie beschreibt ein Klingel, Relais.", "Es beschreibt ein Außerhalb N→S bei Magneten."],
       explanation: "Idealisiert. Homogenes Feld bedeutet: Parallele gleiche Linien. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Idealisiert. Homogenes Feld bedeutet: Parallele gleiche Linien. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Homogenes Feld",
@@ -1986,7 +2011,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:inhomogenes-feld",
       prompt: "Woran erkennt man das Inhomogenes Feld?",
-      answer: "Es linien dichter = stärker bei den behandelten Arten.", wrong: ["Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Es beschreibt parallele gleiche Linien bei den behandelten Arten.", "Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln."],
+      answer: "Es linien dichter = stärker.", wrong: ["Sie beschreibt gleiche Pole/Ladungen.", "Es beschreibt parallele gleiche Linien.", "Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln."],
       explanation: "Pole. Inhomogenes Feld bedeutet: Linien dichter = stärker. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Pole. Inhomogenes Feld bedeutet: Linien dichter = stärker. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Inhomogenes Feld",
@@ -1994,7 +2019,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:probekoerper",
       prompt: "Woran erkennt man den Probekörper?",
-      answer: "Er beschreibt kleine Nadel/Ladung, feld abtasten.", wrong: ["Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Sie zeigt Feldrichtung bei den behandelten Arten.", "Sie beschreibt ungleiche Pole/Ladungen bei den behandelten Arten."],
+      answer: "Er beschreibt kleine Nadel/Ladung, feld abtasten.", wrong: ["Es beschreibt ein Raum um Magneten, kraft auf Magnetnadeln.", "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", "Es beschreibt ein Außerhalb N→S bei Magneten."],
       explanation: "Feld abtasten. Probekörper bedeutet: Kleine Nadel/Ladung. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Feld abtasten. Probekörper bedeutet: Kleine Nadel/Ladung. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Probekörper",
@@ -2002,7 +2027,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:anziehung",
       prompt: "Woran erkennt man die Anziehung?",
-      answer: "Sie beschreibt ungleiche Pole/Ladungen bei den behandelten Arten.", wrong: ["Sie magnet- und E-Feld ähnlich darstellbar.", "Sie zeigt Feldrichtung bei den behandelten Arten.", "Es linien dichter = stärker bei den behandelten Arten."],
+      answer: "Sie beschreibt ungleiche Pole/Ladungen.", wrong: ["Sie magnet- und E-Feld ähnlich darstellbar.", "Sie zeigt Feldrichtung.", "Es linien dichter = stärker."],
       explanation: "Kraftwirkung. Anziehung bedeutet: Ungleiche Pole/Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Kraftwirkung. Anziehung bedeutet: Ungleiche Pole/Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Anziehung",
@@ -2010,7 +2035,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:abstossung",
       prompt: "Was beschreibt „Abstoßung“?",
-      answer: "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", wrong: ["Es linien dichter = stärker bei den behandelten Arten.", "Es beschreibt parallele gleiche Linien bei den behandelten Arten.", "Sie zeigt Feldrichtung bei den behandelten Arten."],
+      answer: "Sie beschreibt gleiche Pole/Ladungen.", wrong: ["Es linien dichter = stärker.", "Es beschreibt parallele gleiche Linien.", "Sie zeigt Feldrichtung."],
       explanation: "Kraftwirkung. Abstoßung bedeutet: Gleiche Pole/Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Kraftwirkung. Abstoßung bedeutet: Gleiche Pole/Ladungen. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Abstoßung",
@@ -2018,7 +2043,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:elektroskop",
       prompt: "Welche Eigenschaft hat das Elektroskop?",
-      answer: "Es zeigt Ladung bei den behandelten Arten.", wrong: ["Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", "Sie zeigt Feldrichtung bei den behandelten Arten.", "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten."],
+      answer: "Es zeigt Ladung.", wrong: ["Es beschreibt ein Raum um Ladungen, kraft auf Probeladung.", "Sie zeigt Feldrichtung.", "Sie beschreibt gleiche Pole/Ladungen."],
       explanation: "Blättchen. Elektroskop bedeutet: Zeigt Ladung. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Blättchen. Elektroskop bedeutet: Zeigt Ladung. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Elektroskop",
@@ -2026,7 +2051,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:analogie",
       prompt: "Welche Eigenschaft hat die Analogie?",
-      answer: "Sie magnet- und E-Feld ähnlich darstellbar.", wrong: ["Es beschreibt ein Außerhalb N→S bei Magneten.", "Es linien dichter = stärker bei den behandelten Arten.", "Es beschreibt parallele gleiche Linien bei den behandelten Arten."],
+      answer: "Sie magnet- und E-Feld ähnlich darstellbar.", wrong: ["Es beschreibt ein Außerhalb N→S bei Magneten.", "Er beschreibt kleine Nadel/Ladung, feld abtasten.", "Es beschreibt ein Raum um Ladungen, kraft auf Probeladung."],
       explanation: "Linienbilder. Analogie bedeutet: Magnet- und E-Feld ähnlich darstellbar. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Linienbilder. Analogie bedeutet: Magnet- und E-Feld ähnlich darstellbar. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Analogie",
@@ -2034,7 +2059,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb1-feldlinien:fact:anwendung",
       prompt: "Wozu dient die Anwendung?",
-      answer: "Sie beschreibt ein Klingel, Relais bei den behandelten Arten.", wrong: ["Sie magnet- und E-Feld ähnlich darstellbar.", "Sie beschreibt gleiche Pole/Ladungen bei den behandelten Arten.", "Es zeigt Ladung bei den behandelten Arten."],
+      answer: "Sie beschreibt ein Klingel, Relais.", wrong: ["Sie magnet- und E-Feld ähnlich darstellbar.", "Sie beschreibt gleiche Pole/Ladungen.", "Es zeigt Ladung."],
       explanation: "Elektromagnet. Anwendung bedeutet: Klingel, Relais. Bezug: Feldlinien magnetisch und elektrisch.",
       wissen: "Elektromagnet. Anwendung bedeutet: Klingel, Relais. Bezug: Feldlinien magnetisch und elektrisch.",
       flashFront: "Anwendung",
@@ -2101,7 +2126,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb2-leitung:fact:elektrolyt",
       prompt: "Was kennzeichnet „Elektrolyt“?",
-      answer: "Es ist eine Ionen in Lösung durch Flüssige Leitung.", wrong: ["Es ist eine Ionen/Elektronen im Gas.", "Es ist ein Kaum Freie Ladungsträger.", "Es ist eine Teilchen die Strom Tragen."],
+      answer: "Es ionen in Lösung, flüssige Leitung.", wrong: ["Sie beschreibt positive und negative Ionen.", "Er leitet wegen Ionen, nicht reines H₂O.", "Sie beschreibt ein Modell im Metall, gerichtete Bewegung."],
       explanation: "Flüssige Leitung. Elektrolyt bedeutet: Ionen in Lösung. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       wissen: "Flüssige Leitung. Elektrolyt bedeutet: Ionen in Lösung. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       flashFront: "Elektrolyt",
@@ -2240,7 +2265,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:hydraulik",
       prompt: "Was bewirkt die Hydraulik?",
-      answer: "Sie beschreibt eine Kraftübertragung mit Flüssigkeit.", wrong: ["Sie beschreibt große Fläche → große Kraft, bei gleichem p.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt gleiche Druckhöhe bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Kraftübertragung mit Flüssigkeit.", wrong: ["Sie beschreibt große Fläche → große Kraft, bei gleichem p.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt ein Druck pflanzt sich fort."],
       explanation: "Technik. Hydraulik bedeutet: Kraftübertragung mit Flüssigkeit. Bezug: Hydraulik und Pascal.",
       wissen: "Technik. Hydraulik bedeutet: Kraftübertragung mit Flüssigkeit. Bezug: Hydraulik und Pascal.",
       flashFront: "Hydraulik",
@@ -2248,7 +2273,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:pascal",
       prompt: "Was beschreibt „Pascal“?",
-      answer: "Es beschreibt ein Druck pflanzt sich fort.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie bestimmt Kraft bei gegebenem p, f = p·A.", "Sie beschreibt hydraulische Presse bei den behandelten Arten."],
+      answer: "Es beschreibt ein Druck pflanzt sich fort.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie bestimmt Kraft bei gegebenem p, f = p·A.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p."],
       explanation: "Allseitig. Pascal bedeutet: Druck pflanzt sich fort. Bezug: Hydraulik und Pascal.",
       wissen: "Allseitig. Pascal bedeutet: Druck pflanzt sich fort. Bezug: Hydraulik und Pascal.",
       flashFront: "Pascal",
@@ -2264,7 +2289,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:verbundene-gefaesse",
       prompt: "Wozu dient die Verbundene Gefäße?",
-      answer: "Sie beschreibt gleiche Druckhöhe bei den behandelten Arten.", wrong: ["Sie beschreibt eine Kraftübertragung mit Flüssigkeit.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt ursache von Kraftwirkungen bei den behandelten Arten."],
+      answer: "Sie beschreibt gleiche Druckhöhe.", wrong: ["Sie beschreibt eine Kraftübertragung mit Flüssigkeit.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt ursache von Kraftwirkungen."],
       explanation: "Flüssigkeitsspiegel. Verbundene Gefäße bedeutet: Gleiche Druckhöhe. Bezug: Hydraulik und Pascal.",
       wissen: "Flüssigkeitsspiegel. Verbundene Gefäße bedeutet: Gleiche Druckhöhe. Bezug: Hydraulik und Pascal.",
       flashFront: "Verbundene Gefäße",
@@ -2280,7 +2305,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:bremsanlage",
       prompt: "Woran erkennt man die Bremsanlage?",
-      answer: "Sie beschreibt eine Hydraulik im Auto.", wrong: ["Sie beschreibt gleiche Druckhöhe bei den behandelten Arten.", "Sie beschreibt eine Druck überträgt Energie.", "Sie beschreibt hydraulische Presse bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Hydraulik im Auto.", wrong: ["Sie beschreibt eine Druck überträgt Energie.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p."],
       explanation: "Alltag. Bremsanlage bedeutet: Hydraulik im Auto. Bezug: Hydraulik und Pascal.",
       wissen: "Alltag. Bremsanlage bedeutet: Hydraulik im Auto. Bezug: Hydraulik und Pascal.",
       flashFront: "Bremsanlage",
@@ -2288,7 +2313,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:presse",
       prompt: "Was bewirkt die Presse?",
-      answer: "Sie beschreibt hydraulische Presse bei den behandelten Arten.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt p = F/A bei den behandelten Arten.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p."],
+      answer: "Sie beschreibt hydraulische Presse.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt p = F/A.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p."],
       explanation: "Werkstatt. Presse bedeutet: Hydraulische Presse. Bezug: Hydraulik und Pascal.",
       wissen: "Werkstatt. Presse bedeutet: Hydraulische Presse. Bezug: Hydraulik und Pascal.",
       flashFront: "Presse",
@@ -2304,7 +2329,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:druckunterschied",
       prompt: "Mit welchen Mitteln arbeitet das Druckunterschied?",
-      answer: "Es beschreibt ursache von Kraftwirkungen bei den behandelten Arten.", wrong: ["Es beschreibt eine Flüssigkeit kaum zusammendrückbar.", "Es beschreibt p = F/A bei den behandelten Arten.", "Sie beschreibt hydraulische Presse bei den behandelten Arten."],
+      answer: "Es beschreibt ursache von Kraftwirkungen.", wrong: ["Es beschreibt eine Flüssigkeit kaum zusammendrückbar.", "Es beschreibt p = F/A.", "Sie beschreibt hydraulische Presse."],
       explanation: "Pascal-Ideen. Druckunterschied bedeutet: Ursache von Kraftwirkungen. Bezug: Hydraulik und Pascal.",
       wissen: "Pascal-Ideen. Druckunterschied bedeutet: Ursache von Kraftwirkungen. Bezug: Hydraulik und Pascal.",
       flashFront: "Druckunterschied",
@@ -2320,7 +2345,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:flaeche",
       prompt: "Mit welchen Mitteln arbeitet die Fläche?",
-      answer: "Sie bestimmt Kraft bei gegebenem p, f = p·A.", wrong: ["Es beschreibt ursache von Kraftwirkungen bei den behandelten Arten.", "Sie beschreibt hydraulische Presse bei den behandelten Arten.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p."],
+      answer: "Sie bestimmt Kraft bei gegebenem p, f = p·A.", wrong: ["Sie beschreibt große Fläche → große Kraft, bei gleichem p.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt eine Kraftübertragung mit Flüssigkeit."],
       explanation: "F = p·A. Fläche bedeutet: Bestimmt Kraft bei gegebenem p. Bezug: Hydraulik und Pascal.",
       wissen: "F = p·A. Fläche bedeutet: Bestimmt Kraft bei gegebenem p. Bezug: Hydraulik und Pascal.",
       flashFront: "Fläche",
@@ -2328,7 +2353,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:sicherheit",
       prompt: "Was gehört zur Sicherheit im Physikversuch?",
-      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Sie beschreibt gleiche Druckhöhe bei den behandelten Arten.", "Es beschreibt ein Druck pflanzt sich fort.", "Es beschreibt p = F/A bei den behandelten Arten."],
+      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Es beschreibt ein Druck pflanzt sich fort.", "Sie beschreibt große Fläche → große Kraft, bei gleichem p.", "Sie beschreibt eine Druck überträgt Energie."],
       explanation: "Dichtungen. Sicherheit bedeutet: Hohe Drücke gefährlich. Bezug: Hydraulik und Pascal.",
       wissen: "Dichtungen. Sicherheit bedeutet: Hohe Drücke gefährlich. Bezug: Hydraulik und Pascal.",
       flashFront: "Sicherheit",
@@ -2387,7 +2412,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:gasdruck",
       prompt: "Was kennzeichnet „Gasdruck“?",
-      answer: "Er ist eine Stoß der Teilchen auf Wand durch Teilchenbild.", wrong: ["Verkleinert Volumen → Druck steigt.", "Er ist eine Gewicht der Luftsäule.", "Er ist ein Sehr Geringer Druck."],
+      answer: "Es beschreibt stoß der Teilchen auf Wand.", wrong: ["Verkleinert Volumen → Druck steigt.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", "Es beschreibt ein Sehr geringer Druck."],
       explanation: "Teilchenbild. Gasdruck bedeutet: Stoß der Teilchen auf Wand. Bezug: Druck in Gasen.",
       wissen: "Teilchenbild. Gasdruck bedeutet: Stoß der Teilchen auf Wand. Bezug: Druck in Gasen.",
       flashFront: "Gasdruck",
@@ -2395,7 +2420,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:kolben",
       prompt: "Wozu dient der Kolben?",
-      answer: "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", wrong: ["Es beschreibt ein Überdruck trägt Last.", "Es gewicht der Luftsäule bei den behandelten Arten.", "Es beschreibt dichte heißer Luft kleiner."],
+      answer: "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", wrong: ["Es beschreibt ein Überdruck trägt Last.", "Es beschreibt dichte heißer Luft kleiner.", "Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt."],
       explanation: "Bei konstanter T grob. Kolben bedeutet: Verkleinert Volumen → Druck steigt. Bezug: Druck in Gasen.",
       wissen: "Bei konstanter T grob. Kolben bedeutet: Verkleinert Volumen → Druck steigt. Bezug: Druck in Gasen.",
       flashFront: "Kolben",
@@ -2403,7 +2428,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:luftdruck",
       prompt: "Woran erkennt man das Luftdruck?",
-      answer: "Es gewicht der Luftsäule bei den behandelten Arten.", wrong: ["Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin."],
+      answer: "Es gewicht der Luftsäule.", wrong: ["Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin."],
       explanation: "ca. 10⁵ Pa. Luftdruck bedeutet: Gewicht der Luftsäule. Bezug: Druck in Gasen.",
       wissen: "ca. 10⁵ Pa. Luftdruck bedeutet: Gewicht der Luftsäule. Bezug: Druck in Gasen.",
       flashFront: "Luftdruck",
@@ -2419,7 +2444,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:magdeburger-halbkugeln",
       prompt: "Was beschreibt „Magdeburger Halbkugeln“?",
-      answer: "Es beschreibt ein Luftdruck-Demonstration bei den behandelten Arten.", wrong: ["Es gewicht der Luftsäule bei den behandelten Arten.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", "Sie beschreibt äußerer Luftdruck presst bei den behandelten Arten."],
+      answer: "Es beschreibt ein Luftdruck-Demonstration.", wrong: ["Es gewicht der Luftsäule.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", "Sie beschreibt äußerer Luftdruck presst."],
       explanation: "Historisch. Magdeburger Halbkugeln bedeutet: Luftdruck-Demonstration. Bezug: Druck in Gasen.",
       wissen: "Historisch. Magdeburger Halbkugeln bedeutet: Luftdruck-Demonstration. Bezug: Druck in Gasen.",
       flashFront: "Magdeburger Halbkugeln",
@@ -2427,7 +2452,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:ballon",
       prompt: "Mit welchen Mitteln arbeitet das Ballon?",
-      answer: "Es beschreibt ein Innendruck hält Form, gummi spannt.", wrong: ["Es beschreibt ein Luftdruck-Demonstration bei den behandelten Arten.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Sie beschreibt äußerer Luftdruck presst bei den behandelten Arten."],
+      answer: "Es beschreibt ein Innendruck hält Form, gummi spannt.", wrong: ["Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt."],
       explanation: "Gummi spannt. Ballon bedeutet: Innendruck hält Form. Bezug: Druck in Gasen.",
       wissen: "Gummi spannt. Ballon bedeutet: Innendruck hält Form. Bezug: Druck in Gasen.",
       flashFront: "Ballon",
@@ -2435,7 +2460,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:heissluftballon",
       prompt: "Mit welchen Mitteln arbeitet das Heißluftballon?",
-      answer: "Es beschreibt dichte heißer Luft kleiner.", wrong: ["Es beschreibt ein Überdruck trägt Last.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", "Er misst Druck bei den behandelten Arten."],
+      answer: "Es beschreibt dichte heißer Luft kleiner.", wrong: ["Es beschreibt ein Überdruck trägt Last.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob.", "Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt."],
       explanation: "Auftrieb. Heißluftballon bedeutet: Dichte heißer Luft kleiner. Bezug: Druck in Gasen.",
       wissen: "Auftrieb. Heißluftballon bedeutet: Dichte heißer Luft kleiner. Bezug: Druck in Gasen.",
       flashFront: "Heißluftballon",
@@ -2443,7 +2468,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:manometer",
       prompt: "Mit welchen Mitteln wirkt der Manometer?",
-      answer: "Er misst Druck bei den behandelten Arten.", wrong: ["Es beschreibt ein Innendruck hält Form, gummi spannt.", "Es beschreibt ein Luftdruck-Demonstration bei den behandelten Arten.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob."],
+      answer: "Er misst Druck.", wrong: ["Es beschreibt ein Innendruck hält Form, gummi spannt.", "Es beschreibt ein Luftdruck-Demonstration.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob."],
       explanation: "Gerät. Manometer bedeutet: Misst Druck. Bezug: Druck in Gasen.",
       wissen: "Gerät. Manometer bedeutet: Misst Druck. Bezug: Druck in Gasen.",
       flashFront: "Manometer",
@@ -2451,7 +2476,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:teilchenzahl",
       prompt: "Woran erkennt man das Teilchenzahl?",
-      answer: "Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt.", wrong: ["Es gewicht der Luftsäule bei den behandelten Arten.", "Es beschreibt ein Stoß der Teilchen auf Wand.", "Es beschreibt dichte heißer Luft kleiner."],
+      answer: "Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt.", wrong: ["Es beschreibt ein Stoß der Teilchen auf Wand.", "Es beschreibt dichte heißer Luft kleiner.", "Es verkleinert Volumen → Druck steigt, bei konstanter T grob."],
       explanation: "Druck steigt. Teilchenzahl bedeutet: Mehr Teilchen → mehr Stöße. Bezug: Druck in Gasen.",
       wissen: "Druck steigt. Teilchenzahl bedeutet: Mehr Teilchen → mehr Stöße. Bezug: Druck in Gasen.",
       flashFront: "Teilchenzahl",
@@ -2459,7 +2484,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:temperatur",
       prompt: "Was beschreibt die Temperatur?",
-      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Es beschreibt ein Luftdruck-Demonstration bei den behandelten Arten.", "Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt."],
+      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt.", "Es beschreibt dichte heißer Luft kleiner."],
       explanation: "Bei festem V. Temperatur bedeutet: Schnellere Teilchen → höherer Druck. Bezug: Druck in Gasen.",
       wissen: "Bei festem V. Temperatur bedeutet: Schnellere Teilchen → höherer Druck. Bezug: Druck in Gasen.",
       flashFront: "Temperatur",
@@ -2467,7 +2492,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:fahrradreifen",
       prompt: "Was beschreibt „Fahrradreifen“?",
-      answer: "Es beschreibt ein Überdruck trägt Last.", wrong: ["Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt.", "Sie beschreibt äußerer Luftdruck presst bei den behandelten Arten.", "Es beschreibt ein Stoß der Teilchen auf Wand."],
+      answer: "Es beschreibt ein Überdruck trägt Last.", wrong: ["Es beschreibt ein Mehr Teilchen → mehr Stöße, druck steigt.", "Es beschreibt ein Stoß der Teilchen auf Wand.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin."],
       explanation: "Alltag. Fahrradreifen bedeutet: Überdruck trägt Last. Bezug: Druck in Gasen.",
       wissen: "Alltag. Fahrradreifen bedeutet: Überdruck trägt Last. Bezug: Druck in Gasen.",
       flashFront: "Fahrradreifen",
@@ -2475,7 +2500,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:vakuumverpackung",
       prompt: "Was beschreibt „Vakuumverpackung“?",
-      answer: "Sie beschreibt äußerer Luftdruck presst bei den behandelten Arten.", wrong: ["Es beschreibt ein Stoß der Teilchen auf Wand.", "Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt."],
+      answer: "Sie beschreibt äußerer Luftdruck presst.", wrong: ["Es beschreibt ein Stoß der Teilchen auf Wand.", "Es beschreibt ein Sehr geringer Druck.", "Es beschreibt ein Innendruck hält Form, gummi spannt."],
       explanation: "Lebensmittel. Vakuumverpackung bedeutet: Äußerer Luftdruck presst. Bezug: Druck in Gasen.",
       wissen: "Lebensmittel. Vakuumverpackung bedeutet: Äußerer Luftdruck presst. Bezug: Druck in Gasen.",
       flashFront: "Vakuumverpackung",
@@ -2542,7 +2567,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:schmelzwaerme",
       prompt: "Was beschreibt „Schmelzwärme“?",
-      answer: "Sie fest → flüssig, pro Masse.", wrong: ["Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Es beschreibt energie nötig, getränke kühlen."],
+      answer: "Sie fest → flüssig, pro Masse.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Es beschreibt energie nötig, getränke kühlen.", "Sie beschreibt wärme bei Phasenwechsel, ohne T-Änderung ideal."],
       explanation: "Pro Masse. Schmelzwärme bedeutet: Fest → flüssig. Bezug: Umwandlungswärme.",
       wissen: "Pro Masse. Schmelzwärme bedeutet: Fest → flüssig. Bezug: Umwandlungswärme.",
       flashFront: "Schmelzwärme",
@@ -2550,7 +2575,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:verdampfungs-waerme",
       prompt: "Wozu dient die Verdampfungs Wärme?",
-      answer: "Sie beschreibt flüssig → gasförmig, pro Masse.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten.", "Sie fest → flüssig, pro Masse."],
+      answer: "Sie beschreibt flüssig → gasförmig, pro Masse.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie fest → flüssig, pro Masse.", "Es beschreibt energie nötig, getränke kühlen."],
       explanation: "Pro Masse. Verdampfungs Wärme bedeutet: Flüssig → gasförmig. Bezug: Umwandlungswärme.",
       wissen: "Pro Masse. Verdampfungs Wärme bedeutet: Flüssig → gasförmig. Bezug: Umwandlungswärme.",
       flashFront: "Verdampfungs Wärme",
@@ -2566,7 +2591,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:erstarren",
       prompt: "Mit welchen Mitteln arbeitet der Erstarren?",
-      answer: "Es beschreibt flüssig → fest, wärme wird frei.", wrong: ["Es sieden bei konstantem T bei den behandelten Arten.", "Sie beschreibt flüssig → gasförmig, pro Masse.", "Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten."],
+      answer: "Es beschreibt flüssig → fest, wärme wird frei.", wrong: ["Sie beschreibt flüssig → gasförmig, pro Masse.", "Es beschreibt ein Gas → flüssig, wärme wird frei.", "Es beschreibt energie nötig, getränke kühlen."],
       explanation: "Wärme wird frei. Erstarren bedeutet: Flüssig → fest. Bezug: Umwandlungswärme.",
       wissen: "Wärme wird frei. Erstarren bedeutet: Flüssig → fest. Bezug: Umwandlungswärme.",
       flashFront: "Erstarren",
@@ -2574,7 +2599,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:umwandlungstemperatur",
       prompt: "Welche Eigenschaft hat die Umwandlungstemperatur?",
-      answer: "Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten.", wrong: ["Sie beschreibt wärme bei Phasenwechsel, ohne T-Änderung ideal.", "Sie beschreibt flüssig → gasförmig, pro Masse.", "Sie beschreibt eine Zustandsänderung kostet/gibt Q."],
+      answer: "Sie beschreibt eine Schmelz-/Siedepunkt.", wrong: ["Sie beschreibt wärme bei Phasenwechsel, ohne T-Änderung ideal.", "Sie beschreibt flüssig → gasförmig, pro Masse.", "Sie beschreibt eine Zustandsänderung kostet/gibt Q."],
       explanation: "Stoffabhängig. Umwandlungstemperatur bedeutet: Schmelz-/Siedepunkt. Bezug: Umwandlungswärme.",
       wissen: "Stoffabhängig. Umwandlungstemperatur bedeutet: Schmelz-/Siedepunkt. Bezug: Umwandlungswärme.",
       flashFront: "Umwandlungstemperatur",
@@ -2582,7 +2607,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:q---m-q",
       prompt: "Mit welchen Mitteln arbeitet das Q = m·q?",
-      answer: "Es beschreibt ein Formelansatz, q spezifisch.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt flüssig → gasförmig, pro Masse.", "Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten."],
+      answer: "Es beschreibt ein Formelansatz, q spezifisch.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt flüssig → gasförmig, pro Masse.", "Es beschreibt energie nötig, getränke kühlen."],
       explanation: "q spezifisch. Q = m·q bedeutet: Formelansatz. Bezug: Umwandlungswärme.",
       wissen: "q spezifisch. Q = m·q bedeutet: Formelansatz. Bezug: Umwandlungswärme.",
       flashFront: "Q = m·q",
@@ -2590,7 +2615,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:kochen",
       prompt: "Was kennzeichnet „Kochen“?",
-      answer: "Es ist eine Sieden bei Konstantem T durch Alltag.", wrong: ["Das Kochen ist das Energie Nötig.", "Das Kochen ist das An Oberfläche.", "Zustandsänderung kostet/gibt Q."],
+      answer: "Es beschreibt sieden bei konstantem T.", wrong: ["Das Kochen ist das Energie Nötig.", "Das Kochen ist das An Oberfläche.", "Zustandsänderung kostet/gibt Q."],
       explanation: "Alltag. Kochen bedeutet: Sieden bei konstantem T. Bezug: Umwandlungswärme.",
       wissen: "Alltag. Kochen bedeutet: Sieden bei konstantem T. Bezug: Umwandlungswärme.",
       flashFront: "Kochen",
@@ -2598,7 +2623,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-umwandlungswaerme:fact:eis-schmelzen",
       prompt: "Woran erkennt man das Eis schmelzen?",
-      answer: "Es beschreibt energie nötig, getränke kühlen.", wrong: ["Sie beschreibt wärme bei Phasenwechsel, ohne T-Änderung ideal.", "Sie beschreibt eine Schmelz-/Siedepunkt bei den behandelten Arten.", "Es beschreibt ein An Oberfläche, unter Siedepunkt."],
+      answer: "Es beschreibt energie nötig, getränke kühlen.", wrong: ["Sie beschreibt wärme bei Phasenwechsel, ohne T-Änderung ideal.", "Es beschreibt ein An Oberfläche, unter Siedepunkt.", "Es beschreibt flüssig → fest, wärme wird frei."],
       explanation: "Getränke kühlen. Eis schmelzen bedeutet: Energie nötig. Bezug: Umwandlungswärme.",
       wissen: "Getränke kühlen. Eis schmelzen bedeutet: Energie nötig. Bezug: Umwandlungswärme.",
       flashFront: "Eis schmelzen",
@@ -2681,7 +2706,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:treibhauseffekt",
       prompt: "Welche Eigenschaft hat das Treibhauseffekt?",
-      answer: "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", wrong: ["Es macht Erde bewohnbar, ohne zu kalt.", "Sie beschreibt eine Eis-Albedo bei den behandelten Arten.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert."],
+      answer: "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", wrong: ["Es macht Erde bewohnbar, ohne zu kalt.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Erde wärmer. Treibhauseffekt bedeutet: Atmosphäre hält IR zurück. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Erde wärmer. Treibhauseffekt bedeutet: Atmosphäre hält IR zurück. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Treibhauseffekt",
@@ -2689,7 +2714,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:natuerlich",
       prompt: "Was kennzeichnet „Natürlich“?",
-      answer: "Macht Erde bewohnbar durch ohne zu kalt.", wrong: ["Das Natürlich ist das Zusätzliche Treibhausgase.", "Das Natürlich ist das Rückstrahlvermögen.", "Es ist eine Schwelle mit Großer Folge."],
+      answer: "Es macht Erde bewohnbar, ohne zu kalt.", wrong: ["Das Natürlich ist das Zusätzliche Treibhausgase.", "Das Natürlich ist das Rückstrahlvermögen.", "Es emissionen senken, physik + Gesellschaft."],
       explanation: "Ohne zu kalt. Natürlich bedeutet: Macht Erde bewohnbar. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Ohne zu kalt. Natürlich bedeutet: Macht Erde bewohnbar. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Natürlich",
@@ -2697,7 +2722,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:anthropogen",
       prompt: "Was beschreibt „Anthropogen“?",
-      answer: "Es beschreibt zusätzliche Treibhausgase, menschlicher Einfluss.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt wichtiges Klimagas bei den behandelten Arten.", "Es beschreibt wärmespeicher bei den behandelten Arten."],
+      answer: "Es beschreibt zusätzliche Treibhausgase, menschlicher Einfluss.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Es emissionen senken, physik + Gesellschaft."],
       explanation: "Menschlicher Einfluss. Anthropogen bedeutet: Zusätzliche Treibhausgase. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Menschlicher Einfluss. Anthropogen bedeutet: Zusätzliche Treibhausgase. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Anthropogen",
@@ -2705,7 +2730,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:albedo",
       prompt: "Wozu dient das Albedo?",
-      answer: "Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es macht Erde bewohnbar, ohne zu kalt.", "Es beschreibt wichtiges Klimagas bei den behandelten Arten."],
+      answer: "Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es macht Erde bewohnbar, ohne zu kalt.", "Es beschreibt schwelle mit großer Folge."],
       explanation: "Eis hoch, Asphalt niedrig. Albedo bedeutet: Rückstrahlvermögen. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Eis hoch, Asphalt niedrig. Albedo bedeutet: Rückstrahlvermögen. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Albedo",
@@ -2713,7 +2738,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:kippelement",
       prompt: "Woran erkennt man das Kippelement?",
-      answer: "Es beschreibt schwelle mit großer Folge.", wrong: ["Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Sie beschreibt eine Eis-Albedo bei den behandelten Arten."],
+      answer: "Es beschreibt schwelle mit großer Folge.", wrong: ["Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Es macht Erde bewohnbar, ohne zu kalt."],
       explanation: "Risiko. Kippelement bedeutet: Schwelle mit großer Folge. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Risiko. Kippelement bedeutet: Schwelle mit großer Folge. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Kippelement",
@@ -2745,7 +2770,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:ozean",
       prompt: "Welche Eigenschaft hat das Ozean?",
-      answer: "Es beschreibt wärmespeicher bei den behandelten Arten.", wrong: ["Sie beschreibt eine Eis-Albedo bei den behandelten Arten.", "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig."],
+      answer: "Es beschreibt wärmespeicher.", wrong: ["Sie beschreibt eine Eis-Albedo.", "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig."],
       explanation: "Trägheit. Ozean bedeutet: Wärmespeicher. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Trägheit. Ozean bedeutet: Wärmespeicher. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Ozean",
@@ -2753,7 +2778,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:rueckkopplung",
       prompt: "Wozu dient die Rückkopplung?",
-      answer: "Sie beschreibt eine Eis-Albedo bei den behandelten Arten.", wrong: ["Es beschreibt wärmespeicher bei den behandelten Arten.", "Es beschreibt wichtiges Klimagas bei den behandelten Arten.", "Es emissionen senken, physik + Gesellschaft."],
+      answer: "Sie beschreibt eine Eis-Albedo.", wrong: ["Es beschreibt wärmespeicher.", "Es beschreibt wichtiges Klimagas.", "Es emissionen senken, physik + Gesellschaft."],
       explanation: "Verstärkung. Rückkopplung bedeutet: Eis-Albedo. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Verstärkung. Rückkopplung bedeutet: Eis-Albedo. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Rückkopplung",
@@ -2761,7 +2786,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt schwelle mit großer Folge.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Es beschreibt wichtiges Klimagas bei den behandelten Arten."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt schwelle mit großer Folge.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Es emissionen senken, physik + Gesellschaft."],
       explanation: "Daten. Messung bedeutet: Temperaturreihen. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Daten. Messung bedeutet: Temperaturreihen. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Messung",
@@ -2769,7 +2794,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:handeln",
       prompt: "Welche Eigenschaft hat das Handeln?",
-      answer: "Es emissionen senken, physik + Gesellschaft.", wrong: ["Es beschreibt wichtiges Klimagas bei den behandelten Arten.", "Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig.", "Es beschreibt atmosphäre hält IR zurück, erde wärmer."],
+      answer: "Es emissionen senken, physik + Gesellschaft.", wrong: ["Es rückstrahlvermögen, etwa eis hoch oder Asphalt niedrig.", "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", "Es beschreibt zusätzliche Treibhausgase, menschlicher Einfluss."],
       explanation: "Physik + Gesellschaft. Handeln bedeutet: Emissionen senken. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Physik + Gesellschaft. Handeln bedeutet: Emissionen senken. Bezug: Treibhauseffekt und Klimaphysik.",
       flashFront: "Handeln",
@@ -2836,7 +2861,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:spezifischer-widerstand",
       prompt: "Was bewirkt der Spezifischer Widerstand?",
-      answer: "Es beschreibt stoffkonstante ρ bei den behandelten Arten.", wrong: ["Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Es beschreibt eine Anwendung der Formel.", "Sie beschreibt kupfer vs. Eisen, unterschiedliches ρ."],
+      answer: "Es beschreibt stoffkonstante ρ.", wrong: ["Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Es beschreibt eine Anwendung der Formel.", "Sie beschreibt kupfer vs. Eisen, unterschiedliches ρ."],
       explanation: "Tabelle. Spezifischer Widerstand bedeutet: Stoffkonstante ρ. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Tabelle. Spezifischer Widerstand bedeutet: Stoffkonstante ρ. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Spezifischer Widerstand",
@@ -2852,7 +2877,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:querschnitt",
       prompt: "Was kennzeichnet „Querschnitt“?",
-      answer: "Es ist eine Dicker → Kleiner R durch Umgekehrt.", wrong: ["Das Querschnitt ist Ω·m.", "Es ist eine Anwendung der Formel.", "Das Querschnitt ist das Beeinflusst ρ."],
+      answer: "Es beschreibt dicker → kleiner R.", wrong: ["Das Querschnitt ist Ω·m.", "Das Querschnitt ist das Beeinflusst ρ.", "Sie beschreibt kupfer vs. Eisen, unterschiedliches ρ."],
       explanation: "Umgekehrt. Querschnitt bedeutet: Dicker → kleiner R. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Umgekehrt. Querschnitt bedeutet: Dicker → kleiner R. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Querschnitt",
@@ -2860,7 +2885,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:einheit-ρ",
       prompt: "Mit welchen Mitteln arbeitet die Einheit ρ?",
-      answer: "Es gilt als ein festgelegtes Maß zum Vergleich von Größen.", wrong: ["Es beschreibt dicker → kleiner R.", "Sie beschreibt ρ-Werte nachschlagen bei den behandelten Arten.", "Es beschreibt R = ρ·l/A, gültigkeit beachten."],
+      answer: "Es gilt als ein festgelegtes Maß zum Vergleich von Größen.", wrong: ["Es beschreibt dicker → kleiner R.", "Es beschreibt R = ρ·l/A, gültigkeit beachten.", "Es beschreibt eine Anwendung der Formel."],
       explanation: "SI. Einheit ρ bedeutet: Ω·m. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "SI. Einheit ρ bedeutet: Ω·m. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Einheit ρ",
@@ -2876,7 +2901,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:temperatur",
       prompt: "Was beschreibt die Temperatur?",
-      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Sie beschreibt länger → größer R.", "Es gilt als ein festgelegtes Maß zum Vergleich von Größen.", "Es beschreibt stoffkonstante ρ bei den behandelten Arten."],
+      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Sie beschreibt länger → größer R.", "Es gilt als ein festgelegtes Maß zum Vergleich von Größen.", "Es beschreibt eine Anwendung der Formel."],
       explanation: "Metalle oft steigend. Temperatur bedeutet: Beeinflusst ρ. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Metalle oft steigend. Temperatur bedeutet: Beeinflusst ρ. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Temperatur",
@@ -2884,7 +2909,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt eine Anwendung der Formel.", "Es beschreibt stoffkonstante ρ bei den behandelten Arten.", "Es beschreibt R = ρ·l/A, gültigkeit beachten."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt eine Anwendung der Formel.", "Es beschreibt R = ρ·l/A, gültigkeit beachten.", "Der Strom nimmt einen Weg mit sehr geringem Widerstand und kann gefährlich ansteigen."],
       explanation: "Dann ρ bestimmen. Messung bedeutet: U und I → R. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Dann ρ bestimmen. Messung bedeutet: U und I → R. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Messung",
@@ -2892,7 +2917,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:formelsammlung",
       prompt: "Wozu dient die Formelsammlung?",
-      answer: "Sie beschreibt ρ-Werte nachschlagen bei den behandelten Arten.", wrong: ["Der Strom nimmt einen Weg mit sehr geringem Widerstand und kann gefährlich ansteigen.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Sie beschreibt ρ-Werte nachschlagen.", wrong: ["Der Strom nimmt einen Weg mit sehr geringem Widerstand und kann gefährlich ansteigen.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Arbeitstechnik. Formelsammlung bedeutet: ρ-Werte nachschlagen. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Arbeitstechnik. Formelsammlung bedeutet: ρ-Werte nachschlagen. Bezug: Widerstandsgesetz R = ρ·l/A.",
       flashFront: "Formelsammlung",
@@ -2983,7 +3008,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:ptc",
       prompt: "Woran erkennt man das PTC?",
-      answer: "Es beschreibt ein Widerstand steigt mit T.", wrong: ["Er beschreibt temperaturabhängiger Widerstand bei den behandelten Arten.", "Sie beschreibt eine Temperatur messen bei den behandelten Arten.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
+      answer: "Es beschreibt ein Widerstand steigt mit T.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Kaltleiter. PTC bedeutet: Widerstand steigt mit T. Bezug: NTC und PTC.",
       wissen: "Kaltleiter. PTC bedeutet: Widerstand steigt mit T. Bezug: NTC und PTC.",
       flashFront: "PTC",
@@ -2991,7 +3016,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:thermistor",
       prompt: "Wozu dient der Thermistor?",
-      answer: "Er beschreibt temperaturabhängiger Widerstand bei den behandelten Arten.", wrong: ["Sie beschreibt R ≈ 0 unter Tc.", "Sie beschreibt eine Temperatur messen bei den behandelten Arten.", "Es beschreibt ein Widerstand steigt mit T."],
+      answer: "Er beschreibt temperaturabhängiger Widerstand.", wrong: ["Sie beschreibt R ≈ 0 unter Tc.", "Sie beschreibt eine Temperatur messen.", "Es beschreibt ein Widerstand steigt mit T."],
       explanation: "Sensor. Thermistor bedeutet: Temperaturabhängiger Widerstand. Bezug: NTC und PTC.",
       wissen: "Sensor. Thermistor bedeutet: Temperaturabhängiger Widerstand. Bezug: NTC und PTC.",
       flashFront: "Thermistor",
@@ -3007,7 +3032,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:metall",
       prompt: "Welche Eigenschaft hat das Metall?",
-      answer: "Es beschreibt ein Oft PTC-Verhalten bei den behandelten Arten.", wrong: ["Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", "Es beschreibt ein Widerstand sinkt mit T.", "Sie beschreibt R ≈ 0 unter Tc."],
+      answer: "Es beschreibt ein Oft PTC-Verhalten.", wrong: ["Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", "Es beschreibt ein Widerstand sinkt mit T.", "Sie beschreibt R ≈ 0 unter Tc."],
       explanation: "Leitungsmodell. Metall bedeutet: Oft PTC-Verhalten. Bezug: NTC und PTC.",
       wissen: "Leitungsmodell. Metall bedeutet: Oft PTC-Verhalten. Bezug: NTC und PTC.",
       flashFront: "Metall",
@@ -3015,7 +3040,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:halbleiter",
       prompt: "Wozu dient der Halbleiter?",
-      answer: "Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", wrong: ["Er beschreibt temperaturabhängiger Widerstand bei den behandelten Arten.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
+      answer: "Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", wrong: ["Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Es beschreibt ein Widerstand sinkt mit T."],
       explanation: "Mehr Ladungsträger. Halbleiter bedeutet: Oft NTC-Verhalten. Bezug: NTC und PTC.",
       wissen: "Mehr Ladungsträger. Halbleiter bedeutet: Oft NTC-Verhalten. Bezug: NTC und PTC.",
       flashFront: "Halbleiter",
@@ -3031,7 +3056,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:sensorik",
       prompt: "Woran erkennt man die Sensorik?",
-      answer: "Sie beschreibt eine Temperatur messen bei den behandelten Arten.", wrong: ["Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Es beschreibt ein Widerstand steigt mit T."],
+      answer: "Sie beschreibt eine Temperatur messen.", wrong: ["Er beschreibt ein Oft NTC-Verhalten, mehr Ladungsträger.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Es beschreibt ein Widerstand steigt mit T."],
       explanation: "Spannungsteiler. Sensorik bedeutet: Temperatur messen. Bezug: NTC und PTC.",
       wissen: "Spannungsteiler. Sensorik bedeutet: Temperatur messen. Bezug: NTC und PTC.",
       flashFront: "Sensorik",
@@ -3039,7 +3064,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:schutz",
       prompt: "Welche Eigenschaft hat das Schutz?",
-      answer: "Es beschreibt PTC als Überlastschutz, strom begrenzt.", wrong: ["Es beschreibt ein Widerstand sinkt mit T.", "Er beschreibt temperaturabhängiger Widerstand bei den behandelten Arten.", "Es beschreibt ein Oft PTC-Verhalten bei den behandelten Arten."],
+      answer: "Es beschreibt PTC als Überlastschutz, strom begrenzt.", wrong: ["Es beschreibt ein Widerstand sinkt mit T.", "Es beschreibt ein Widerstand steigt mit T.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm."],
       explanation: "Strom begrenzt. Schutz bedeutet: PTC als Überlastschutz. Bezug: NTC und PTC.",
       wissen: "Strom begrenzt. Schutz bedeutet: PTC als Überlastschutz. Bezug: NTC und PTC.",
       flashFront: "Schutz",
@@ -3055,7 +3080,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:diagramm",
       prompt: "Wozu dient ein s-t- oder v-t-Diagramm?",
-      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Sie beschreibt eine Temperatur messen bei den behandelten Arten.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm."],
+      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Auswertung. Diagramm bedeutet: R gegen T plotten. Bezug: NTC und PTC.",
       wissen: "Auswertung. Diagramm bedeutet: R gegen T plotten. Bezug: NTC und PTC.",
       flashFront: "Diagramm",
@@ -3138,7 +3163,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:n-leitung",
       prompt: "Mit welchen Mitteln arbeitet die n-Leitung?",
-      answer: "Sie elektronen als Mehrheit bei den behandelten Arten.", wrong: ["Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Er beschreibt eine Eigenleitung, wenig Träger.", "Es ressourcen und Recycling bei den behandelten Arten."],
+      answer: "Sie elektronen als Mehrheit.", wrong: ["Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Er beschreibt eine Eigenleitung, wenig Träger.", "Es ressourcen und Recycling."],
       explanation: "Donatoren. n-Leitung bedeutet: Elektronen als Mehrheit. Bezug: Halbleiter Dotierung pn.",
       wissen: "Donatoren. n-Leitung bedeutet: Elektronen als Mehrheit. Bezug: Halbleiter Dotierung pn.",
       flashFront: "n-Leitung",
@@ -3146,7 +3171,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:p-leitung",
       prompt: "Welche Eigenschaft hat die p-Leitung?",
-      answer: "Sie beschreibt löcher als Mehrheit bei den behandelten Arten.", wrong: ["Es beschreibt grenze n/p bei den behandelten Arten.", "Er beschreibt eine Eigenleitung, wenig Träger.", "Als Leuchtdiode wandelt sie elektrische Energie in Licht um."],
+      answer: "Sie beschreibt löcher als Mehrheit.", wrong: ["Es beschreibt grenze n/p.", "Er beschreibt eine Eigenleitung, wenig Träger.", "Als Leuchtdiode wandelt sie elektrische Energie in Licht um."],
       explanation: "Akzeptoren. p-Leitung bedeutet: Löcher als Mehrheit. Bezug: Halbleiter Dotierung pn.",
       wissen: "Akzeptoren. p-Leitung bedeutet: Löcher als Mehrheit. Bezug: Halbleiter Dotierung pn.",
       flashFront: "p-Leitung",
@@ -3154,7 +3179,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:pn-uebergang",
       prompt: "Woran erkennt man das pn-Übergang?",
-      answer: "Es beschreibt grenze n/p bei den behandelten Arten.", wrong: ["Sie elektronen als Mehrheit bei den behandelten Arten.", "Sie beschreibt eine Elektron + Loch vernichten.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm."],
+      answer: "Es beschreibt grenze n/p.", wrong: ["Sie elektronen als Mehrheit.", "Sie beschreibt eine Elektron + Loch vernichten.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm."],
       explanation: "Diode. pn-Übergang bedeutet: Grenze n/p. Bezug: Halbleiter Dotierung pn.",
       wissen: "Diode. pn-Übergang bedeutet: Grenze n/p. Bezug: Halbleiter Dotierung pn.",
       flashFront: "pn-Übergang",
@@ -3162,7 +3187,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:paarbildung",
       prompt: "Was beschreibt „Paarbildung“?",
-      answer: "Sie beschreibt eine Elektron-Loch-Paar bei den behandelten Arten.", wrong: ["Sie beschreibt eine Elektron + Loch vernichten.", "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", "Sie beschreibt löcher als Mehrheit bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Elektron-Loch-Paar.", wrong: ["Sie beschreibt eine Elektron + Loch vernichten.", "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", "Sie beschreibt löcher als Mehrheit."],
       explanation: "Energiezufuhr. Paarbildung bedeutet: Elektron-Loch-Paar. Bezug: Halbleiter Dotierung pn.",
       wissen: "Energiezufuhr. Paarbildung bedeutet: Elektron-Loch-Paar. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Paarbildung",
@@ -3170,7 +3195,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:rekombination",
       prompt: "Was beschreibt „Rekombination“?",
-      answer: "Sie beschreibt eine Elektron + Loch vernichten.", wrong: ["Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", "Sie elektronen als Mehrheit bei den behandelten Arten.", "Sie beschreibt gezielte Fremdatome, n- oder p-Typ."],
+      answer: "Sie beschreibt eine Elektron + Loch vernichten.", wrong: ["Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", "Sie beschreibt gezielte Fremdatome, n- oder p-Typ.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang."],
       explanation: "Licht/Wärme. Rekombination bedeutet: Elektron + Loch vernichten. Bezug: Halbleiter Dotierung pn.",
       wissen: "Licht/Wärme. Rekombination bedeutet: Elektron + Loch vernichten. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Rekombination",
@@ -3178,7 +3203,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:reine-halbleiter",
       prompt: "Welche Eigenschaft hat die Reine Halbleiter?",
-      answer: "Er beschreibt eine Eigenleitung, wenig Träger.", wrong: ["Es ressourcen und Recycling bei den behandelten Arten.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Sie beschreibt eine Elektron-Loch-Paar bei den behandelten Arten."],
+      answer: "Er beschreibt eine Eigenleitung, wenig Träger.", wrong: ["Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Er beschreibt eine Leitfähigkeit zwischen Leiter und Isolator, etwa si oder Ge.", "Sie beschreibt eine Elektron + Loch vernichten."],
       explanation: "Wenig Träger. Reine Halbleiter bedeutet: Eigenleitung. Bezug: Halbleiter Dotierung pn.",
       wissen: "Wenig Träger. Reine Halbleiter bedeutet: Eigenleitung. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Reine Halbleiter",
@@ -3186,7 +3211,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:diode",
       prompt: "Wozu dient eine Diode?",
-      answer: "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", wrong: ["Es ressourcen und Recycling bei den behandelten Arten.", "Sie beschreibt gezielte Fremdatome, n- oder p-Typ.", "Es beschreibt grenze n/p bei den behandelten Arten."],
+      answer: "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", wrong: ["Sie beschreibt gezielte Fremdatome, n- oder p-Typ.", "Er beschreibt eine Eigenleitung, wenig Träger.", "Er beschreibt eine Leitfähigkeit zwischen Leiter und Isolator, etwa si oder Ge."],
       explanation: "pn. Diode bedeutet: Strom vorwiegend eine Richtung. Bezug: Halbleiter Dotierung pn.",
       wissen: "pn. Diode bedeutet: Strom vorwiegend eine Richtung. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Diode",
@@ -3194,7 +3219,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:kennlinie",
       prompt: "Wozu dient eine Kennlinie?",
-      answer: "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", wrong: ["Er beschreibt eine Eigenleitung, wenig Träger.", "Sie elektronen als Mehrheit bei den behandelten Arten.", "Es beschreibt grenze n/p bei den behandelten Arten."],
+      answer: "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", wrong: ["Er beschreibt eine Eigenleitung, wenig Träger.", "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", "Sie beschreibt eine Elektron + Loch vernichten."],
       explanation: "Durchlass/Sperr. Kennlinie bedeutet: U-I der Diode. Bezug: Halbleiter Dotierung pn.",
       wissen: "Durchlass/Sperr. Kennlinie bedeutet: U-I der Diode. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Kennlinie",
@@ -3202,7 +3227,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:led",
       prompt: "Wozu dient eine LED?",
-      answer: "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", wrong: ["Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Es beschreibt grenze n/p bei den behandelten Arten.", "Sie beschreibt eine Elektron-Loch-Paar bei den behandelten Arten."],
+      answer: "Als Leuchtdiode wandelt sie elektrische Energie in Licht um.", wrong: ["Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Sie beschreibt gezielte Fremdatome, n- oder p-Typ.", "Er beschreibt eine Leitfähigkeit zwischen Leiter und Isolator, etwa si oder Ge."],
       explanation: "Rekombination. LED bedeutet: Licht emittierende Diode. Bezug: Halbleiter Dotierung pn.",
       wissen: "Rekombination. LED bedeutet: Licht emittierende Diode. Bezug: Halbleiter Dotierung pn.",
       flashFront: "LED",
@@ -3210,7 +3235,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:elektronikschrott",
       prompt: "Welche Eigenschaft hat das Elektronikschrott?",
-      answer: "Es ressourcen und Recycling bei den behandelten Arten.", wrong: ["Sie beschreibt eine Elektron-Loch-Paar bei den behandelten Arten.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Sie beschreibt löcher als Mehrheit bei den behandelten Arten."],
+      answer: "Es ressourcen und Recycling.", wrong: ["Sie beschreibt eine Elektron-Loch-Paar.", "Sie zeigt das Bauteilverhalten als U-I-Diagramm.", "Sie beschreibt löcher als Mehrheit."],
       explanation: "Nachhaltigkeit. Elektronikschrott bedeutet: Ressourcen und Recycling. Bezug: Halbleiter Dotierung pn.",
       wissen: "Nachhaltigkeit. Elektronikschrott bedeutet: Ressourcen und Recycling. Bezug: Halbleiter Dotierung pn.",
       flashFront: "Elektronikschrott",
@@ -3269,7 +3294,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:induktion",
       prompt: "Welche Eigenschaft hat die Induktion?",
-      answer: "Sie erzeugt Spannung durch zeitliche Änderung des magnetischen Flusses.", wrong: ["Sie beschreibt änderung der wirksamen Fläche.", "Sie beschreibt U_ind hängt von Änderung ab.", "Es beschreibt eine Generatortechnik historisch bei den behandelten Arten."],
+      answer: "Sie erzeugt Spannung durch zeitliche Änderung des magnetischen Flusses.", wrong: ["Sie beschreibt änderung der wirksamen Fläche.", "Sie beschreibt U_ind hängt von Änderung ab.", "Sie beschreibt eine Netz und Kraftwerk."],
       explanation: "Faraday. Induktion bedeutet: Spannung durch Magnetfeldänderung. Bezug: Elektromagnetische Induktion.",
       wissen: "Faraday. Induktion bedeutet: Spannung durch Magnetfeldänderung. Bezug: Elektromagnetische Induktion.",
       flashFront: "Induktion",
@@ -3277,7 +3302,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:induktionsspannung",
       prompt: "Welche Eigenschaft hat die Induktionsspannung?",
-      answer: "Sie beschreibt U_ind hängt von Änderung ab.", wrong: ["Sie beschreibt ΔΦ/Δt treibt U bei den behandelten Arten.", "Sie polarität wechselt bei den behandelten Arten.", "Es beschreibt ein Mehr Windungen → größere U."],
+      answer: "Sie beschreibt U_ind hängt von Änderung ab.", wrong: ["Es beschreibt ein Mehr Windungen → größere U.", "Sie beschreibt eine Netz und Kraftwerk.", "Sie beschreibt änderung der wirksamen Fläche."],
       explanation: "Parameter. Induktionsspannung bedeutet: U_ind hängt von Änderung ab. Bezug: Elektromagnetische Induktion.",
       wissen: "Parameter. Induktionsspannung bedeutet: U_ind hängt von Änderung ab. Bezug: Elektromagnetische Induktion.",
       flashFront: "Induktionsspannung",
@@ -3285,7 +3310,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:flussaenderung",
       prompt: "Woran erkennt man die Flussänderung?",
-      answer: "Sie beschreibt ΔΦ/Δt treibt U bei den behandelten Arten.", wrong: ["Sie beschreibt eine Netz und Kraftwerk.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk."],
+      answer: "Sie beschreibt ΔΦ/Δt treibt U.", wrong: ["Sie beschreibt eine Netz und Kraftwerk.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk."],
       explanation: "Kernidee. Flussänderung bedeutet: ΔΦ/Δt treibt U. Bezug: Elektromagnetische Induktion.",
       wissen: "Kernidee. Flussänderung bedeutet: ΔΦ/Δt treibt U. Bezug: Elektromagnetische Induktion.",
       flashFront: "Flussänderung",
@@ -3301,7 +3326,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:magnetfeldaenderung",
       prompt: "Woran erkennt man die Magnetfeldänderung?",
-      answer: "Sie beschreibt stärker/schwächer → U bei den behandelten Arten.", wrong: ["Sie beschreibt eine Induktion wirkt der Ursache entgegen.", "Es beschreibt eine Generatortechnik historisch bei den behandelten Arten.", "Sie beschreibt änderung der wirksamen Fläche."],
+      answer: "Sie beschreibt stärker/schwächer → U, genauer: stärker/schwächer zu U.", wrong: ["Sie beschreibt eine Induktion wirkt der Ursache entgegen.", "Sie beschreibt änderung der wirksamen Fläche.", "Sie beschreibt eine Netz und Kraftwerk."],
       explanation: "Annähern. Magnetfeldänderung bedeutet: Stärker/schwächer → U. Bezug: Elektromagnetische Induktion.",
       wissen: "Annähern. Magnetfeldänderung bedeutet: Stärker/schwächer → U. Bezug: Elektromagnetische Induktion.",
       flashFront: "Magnetfeldänderung",
@@ -3317,7 +3342,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:wechselspannung",
       prompt: "Welche Eigenschaft hat die Wechselspannung?",
-      answer: "Sie polarität wechselt bei den behandelten Arten.", wrong: ["Sie beschreibt U_ind hängt von Änderung ab.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Sie beschreibt änderung der wirksamen Fläche."],
+      answer: "Sie polarität wechselt.", wrong: ["Sie beschreibt U_ind hängt von Änderung ab.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Sie beschreibt änderung der wirksamen Fläche."],
       explanation: "Generator. Wechselspannung bedeutet: Polarität wechselt. Bezug: Elektromagnetische Induktion.",
       wissen: "Generator. Wechselspannung bedeutet: Polarität wechselt. Bezug: Elektromagnetische Induktion.",
       flashFront: "Wechselspannung",
@@ -3325,7 +3350,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:windungszahl",
       prompt: "Woran erkennt man das Windungszahl?",
-      answer: "Es beschreibt ein Mehr Windungen → größere U.", wrong: ["Sie beschreibt änderung der wirksamen Fläche.", "Sie polarität wechselt bei den behandelten Arten.", "Sie beschreibt stärker/schwächer → U bei den behandelten Arten."],
+      answer: "Es beschreibt ein Mehr Windungen → größere U.", wrong: ["Sie beschreibt änderung der wirksamen Fläche.", "Sie beschreibt stärker/schwächer → U, genauer: stärker/schwächer zu U.", "Sie erzeugt Spannung durch zeitliche Änderung des magnetischen Flusses."],
       explanation: "N. Windungszahl bedeutet: Mehr Windungen → größere U. Bezug: Elektromagnetische Induktion.",
       wissen: "N. Windungszahl bedeutet: Mehr Windungen → größere U. Bezug: Elektromagnetische Induktion.",
       flashFront: "Windungszahl",
@@ -3333,7 +3358,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:lenz",
       prompt: "Woran erkennt man die Lenz?",
-      answer: "Sie beschreibt eine Induktion wirkt der Ursache entgegen.", wrong: ["Sie polarität wechselt bei den behandelten Arten.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk."],
+      answer: "Sie beschreibt eine Induktion wirkt der Ursache entgegen.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", "Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk.", "Sie beschreibt stärker/schwächer → U, genauer: stärker/schwächer zu U."],
       explanation: "Energieerhaltung. Lenz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Elektromagnetische Induktion.",
       wissen: "Energieerhaltung. Lenz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Elektromagnetische Induktion.",
       flashFront: "Lenz",
@@ -3341,7 +3366,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:versuch",
       prompt: "Was kennzeichnet „Versuch“?",
-      answer: "Es ist eine Magnet durch Spule durch Messgerät Zuckt.", wrong: ["Es ist eine Netz und Kraftwerk.", "Das Versuch ist das Generatortechnik Historisch.", "Es ist eine Spannung durch Magnetfeldänderung."],
+      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird, messgerät zuckt.", wrong: ["Das Versuch ist das Generatortechnik Historisch.", "Sie beschreibt stärker/schwächer → U, genauer: stärker/schwächer zu U.", "Sie beschreibt eine Netz und Kraftwerk."],
       explanation: "Messgerät zuckt. Versuch bedeutet: Magnet durch Spule. Bezug: Elektromagnetische Induktion.",
       wissen: "Messgerät zuckt. Versuch bedeutet: Magnet durch Spule. Bezug: Elektromagnetische Induktion.",
       flashFront: "Versuch",
@@ -3349,7 +3374,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:energieuebertragung",
       prompt: "Was beschreibt „Energieübertragung“?",
-      answer: "Sie beschreibt eine Netz und Kraftwerk.", wrong: ["Es beschreibt ein Mehr Windungen → größere U.", "Sie beschreibt eine Induktion wirkt der Ursache entgegen.", "Sie beschreibt ΔΦ/Δt treibt U bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Netz und Kraftwerk.", wrong: ["Es beschreibt ein Mehr Windungen → größere U.", "Sie beschreibt eine Induktion wirkt der Ursache entgegen.", "Sie erzeugt Spannung durch zeitliche Änderung des magnetischen Flusses."],
       explanation: "Anwendung. Energieübertragung bedeutet: Netz und Kraftwerk. Bezug: Elektromagnetische Induktion.",
       wissen: "Anwendung. Energieübertragung bedeutet: Netz und Kraftwerk. Bezug: Elektromagnetische Induktion.",
       flashFront: "Energieübertragung",
@@ -3357,7 +3382,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-induktion:fact:siemens",
       prompt: "Woran erkennt man das Siemens?",
-      answer: "Es beschreibt eine Generatortechnik historisch bei den behandelten Arten.", wrong: ["Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk.", "Sie beschreibt ΔΦ/Δt treibt U bei den behandelten Arten.", "Sie beschreibt eine Induktion wirkt der Ursache entgegen."],
+      answer: "Es beschreibt eine Generatortechnik historisch.", wrong: ["Er wandelt mechanische Energie in elektrische Energie um, etwa im Kraftwerk.", "Sie beschreibt ΔΦ/Δt treibt U.", "Sie beschreibt eine Induktion wirkt der Ursache entgegen."],
       explanation: "Einordnung. Siemens bedeutet: Generatortechnik historisch. Bezug: Elektromagnetische Induktion.",
       wissen: "Einordnung. Siemens bedeutet: Generatortechnik historisch. Bezug: Elektromagnetische Induktion.",
       flashFront: "Siemens",
@@ -3416,7 +3441,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:transformator",
       prompt: "Wozu dient Transformator?",
-      answer: "Er ändert Wechselspannung durch zwei Spulen.", wrong: ["Er ist eine U1/U2 = N1/N2.", "Der Transformator ist der Eingangsseite.", "Der Transformator ist der Ausgangsseite."],
+      answer: "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen.", wrong: ["Der Transformator ist der Eingangsseite.", "Der Transformator ist der Ausgangsseite.", "Es beschreibt ein Strom auf Sekundärseite."],
       explanation: "Zwei Spulen. Transformator bedeutet: Ändert Wechselspannung. Bezug: Transformator.",
       wissen: "Zwei Spulen. Transformator bedeutet: Ändert Wechselspannung. Bezug: Transformator.",
       flashFront: "Transformator",
@@ -3432,7 +3457,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:primaerspule",
       prompt: "Was bewirkt die Primärspule?",
-      answer: "Sie beschreibt eingangsseite bei den behandelten Arten.", wrong: ["Es beschreibt wärme in Leitungen bei den behandelten Arten.", "Es beschreibt ein Trafo + Gleichrichter.", "Sie verringert Übertragungsverlust bei den behandelten Arten."],
+      answer: "Sie beschreibt eingangsseite.", wrong: ["Es beschreibt wärme in Leitungen.", "Es beschreibt ein Trafo + Gleichrichter.", "Sie verringert Übertragungsverlust."],
       explanation: "Netz. Primärspule bedeutet: Eingangsseite. Bezug: Transformator.",
       wissen: "Netz. Primärspule bedeutet: Eingangsseite. Bezug: Transformator.",
       flashFront: "Primärspule",
@@ -3440,7 +3465,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:sekundaerspule",
       prompt: "Mit welchen Mitteln arbeitet die Sekundärspule?",
-      answer: "Sie beschreibt ausgangsseite bei den behandelten Arten.", wrong: ["Es beschreibt ein Trafo + Gleichrichter.", "Sie verringert Übertragungsverlust bei den behandelten Arten.", "Sie beschreibt spule wirkt Änderungen entgegen."],
+      answer: "Sie beschreibt ausgangsseite.", wrong: ["Es beschreibt ein Trafo + Gleichrichter.", "Sie verringert Übertragungsverlust.", "Sie beschreibt spule wirkt Änderungen entgegen."],
       explanation: "Verbraucher. Sekundärspule bedeutet: Ausgangsseite. Bezug: Transformator.",
       wissen: "Verbraucher. Sekundärspule bedeutet: Ausgangsseite. Bezug: Transformator.",
       flashFront: "Sekundärspule",
@@ -3448,7 +3473,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:hochspannung",
       prompt: "Woran erkennt man die Hochspannung?",
-      answer: "Sie verringert Übertragungsverlust bei den behandelten Arten.", wrong: ["Sie beschreibt eingangsseite bei den behandelten Arten.", "Es führt Magnetfluss bei den behandelten Arten.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen."],
+      answer: "Sie verringert Übertragungsverlust.", wrong: ["Sie beschreibt eingangsseite.", "Es führt Magnetfluss.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen."],
       explanation: "Fernleitung. Hochspannung bedeutet: Verringert Übertragungsverlust. Bezug: Transformator.",
       wissen: "Fernleitung. Hochspannung bedeutet: Verringert Übertragungsverlust. Bezug: Transformator.",
       flashFront: "Hochspannung",
@@ -3456,7 +3481,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:energieverlust",
       prompt: "Mit welchen Mitteln arbeitet das Energieverlust?",
-      answer: "Es beschreibt wärme in Leitungen bei den behandelten Arten.", wrong: ["Es beschreibt ein Trafo + Gleichrichter.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen."],
+      answer: "Es beschreibt wärme in Leitungen.", wrong: ["Es beschreibt ein Trafo + Gleichrichter.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen."],
       explanation: "I²R. Energieverlust bedeutet: Wärme in Leitungen. Bezug: Transformator.",
       wissen: "I²R. Energieverlust bedeutet: Wärme in Leitungen. Bezug: Transformator.",
       flashFront: "Energieverlust",
@@ -3464,7 +3489,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:netzteil",
       prompt: "Mit welchen Mitteln arbeitet das Netzteil?",
-      answer: "Es beschreibt ein Trafo + Gleichrichter.", wrong: ["Es beschreibt U1/U2 = N1/N2 bei den behandelten Arten.", "Es beschreibt ein Strom auf Sekundärseite.", "Sie verringert Übertragungsverlust bei den behandelten Arten."],
+      answer: "Es beschreibt ein Trafo + Gleichrichter.", wrong: ["Es beschreibt ein Strom auf Sekundärseite.", "Sie beschreibt spule wirkt Änderungen entgegen.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Geräte. Netzteil bedeutet: Trafo + Gleichrichter. Bezug: Transformator.",
       wissen: "Geräte. Netzteil bedeutet: Trafo + Gleichrichter. Bezug: Transformator.",
       flashFront: "Netzteil",
@@ -3472,7 +3497,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:gleichrichter",
       prompt: "Was bewirkt der Gleichrichter?",
-      answer: "Er beschreibt ein Wechsel → Gleich.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen.", "Es beschreibt U1/U2 = N1/N2 bei den behandelten Arten.", "Es beschreibt ein Trafo + Gleichrichter."],
+      answer: "Er beschreibt ein Wechsel → Gleich.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen.", "Es beschreibt ein Trafo + Gleichrichter.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Diode. Gleichrichter bedeutet: Wechsel → Gleich. Bezug: Transformator.",
       wissen: "Diode. Gleichrichter bedeutet: Wechsel → Gleich. Bezug: Transformator.",
       flashFront: "Gleichrichter",
@@ -3488,7 +3513,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:belasteter-trafo",
       prompt: "Welche Eigenschaft hat der Belasteter Trafo?",
-      answer: "Es beschreibt ein Strom auf Sekundärseite.", wrong: ["Es führt Magnetfluss bei den behandelten Arten.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen.", "Sie beschreibt spule wirkt Änderungen entgegen."],
+      answer: "Es beschreibt ein Strom auf Sekundärseite.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung, zwei Spulen.", "Sie beschreibt spule wirkt Änderungen entgegen.", "Es beschreibt ein Trafo + Gleichrichter."],
       explanation: "Real. Belasteter Trafo bedeutet: Strom auf Sekundärseite. Bezug: Transformator.",
       wissen: "Real. Belasteter Trafo bedeutet: Strom auf Sekundärseite. Bezug: Transformator.",
       flashFront: "Belasteter Trafo",
@@ -3496,7 +3521,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:selbstinduktion",
       prompt: "Woran erkennt man die Selbstinduktion?",
-      answer: "Sie beschreibt spule wirkt Änderungen entgegen.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt U1/U2 = N1/N2 bei den behandelten Arten.", "Sie beschreibt ausgangsseite bei den behandelten Arten."],
+      answer: "Sie beschreibt spule wirkt Änderungen entgegen.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt ein Strom auf Sekundärseite.", "Er beschreibt ein Wechsel → Gleich."],
       explanation: "Einblick. Selbstinduktion bedeutet: Spule wirkt Änderungen entgegen. Bezug: Transformator.",
       wissen: "Einblick. Selbstinduktion bedeutet: Spule wirkt Änderungen entgegen. Bezug: Transformator.",
       flashFront: "Selbstinduktion",
@@ -3504,7 +3529,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:sicherheit",
       prompt: "Was gehört zur Sicherheit im Physikversuch?",
-      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Sie beschreibt eingangsseite bei den behandelten Arten.", "Sie beschreibt ausgangsseite bei den behandelten Arten.", "Es beschreibt ein Trafo + Gleichrichter."],
+      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Es beschreibt ein Trafo + Gleichrichter.", "Es beschreibt ein Strom auf Sekundärseite.", "Er beschreibt ein Wechsel → Gleich."],
       explanation: "Abstand. Sicherheit bedeutet: Hochspannung gefährlich. Bezug: Transformator.",
       wissen: "Abstand. Sicherheit bedeutet: Hochspannung gefährlich. Bezug: Transformator.",
       flashFront: "Sicherheit",
@@ -3556,14 +3581,14 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:vor-nachteile", term: "Vor-Nachteile", meaning: "Wenig CO₂ vs. Risiken", wissen: "Positionieren. Vor-Nachteile bedeutet: Wenig CO₂ vs. Risiken. Bezug: Kernenergie." },
     { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:fossile-reserven", term: "Fossile Reserven", meaning: "Begrenzt", wissen: "Vergleich. Fossile Reserven bedeutet: Begrenzt. Bezug: Kernenergie." },
     { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:energiewende", term: "Energiewende", meaning: "Mix der Quellen", wissen: "Diskussion. Energiewende bedeutet: Mix der Quellen. Bezug: Kernenergie." },
-    { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:geschichte", term: "Geschichte", meaning: "Kernenergie im 20. Jh", wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh.. Bezug: Kernenergie." },
+    { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:geschichte", term: "Geschichte", meaning: "Kernenergie im 20. Jh", wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh. Bezug: Kernenergie." },
     { concept: "ph:gap:ph-k9-lb2-kernenergie:paar:sicherheit", term: "Sicherheit", meaning: "Schutz und Notfall", wissen: "Technik + Politik. Sicherheit bedeutet: Schutz und Notfall. Bezug: Kernenergie." },
     ],
     facts: [
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:kernspaltung",
       prompt: "Mit welchen Mitteln arbeitet die Kernspaltung?",
-      answer: "Sie beschreibt schwerer Kern zerlegt, energie frei.", wrong: ["Es begrenzt bei den behandelten Arten.", "Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Er beschreibt gesteuerte Kettenreaktion bei den behandelten Arten."],
+      answer: "Sie beschreibt schwerer Kern zerlegt, energie frei.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Sie beschreibt wenig CO₂ vs. Risiken.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Energie frei. Kernspaltung bedeutet: Schwerer Kern zerlegt. Bezug: Kernenergie.",
       wissen: "Energie frei. Kernspaltung bedeutet: Schwerer Kern zerlegt. Bezug: Kernenergie.",
       flashFront: "Kernspaltung",
@@ -3571,7 +3596,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:otto-hahn",
       prompt: "Welche Eigenschaft hat das Otto Hahn?",
-      answer: "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner.", wrong: ["Sie hält Kern zusammen bei den behandelten Arten.", "Sie beschreibt schwerer Kern zerlegt, energie frei.", "Sie beschreibt kernbausteine bei den behandelten Arten."],
+      answer: "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner.", wrong: ["Sie beschreibt schwerer Kern zerlegt, energie frei.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt ein Muss sicher lagern."],
       explanation: "Mit Strassmann/Meitner. Otto Hahn bedeutet: Entdeckung Spaltung. Bezug: Kernenergie.",
       wissen: "Mit Strassmann/Meitner. Otto Hahn bedeutet: Entdeckung Spaltung. Bezug: Kernenergie.",
       flashFront: "Otto Hahn",
@@ -3579,7 +3604,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:proton-neutron",
       prompt: "Woran erkennt man die Proton oder Neutron?",
-      answer: "Sie beschreibt kernbausteine bei den behandelten Arten.", wrong: ["Sie beschreibt schwerer Kern zerlegt, energie frei.", "Es begrenzt bei den behandelten Arten.", "Sie beschreibt eine Mix der Quellen."],
+      answer: "Sie beschreibt kernbausteine.", wrong: ["Sie beschreibt schwerer Kern zerlegt, energie frei.", "Es begrenzt.", "Sie beschreibt eine Mix der Quellen."],
       explanation: "Nukleon. Proton/Neutron bedeutet: Kernbausteine. Bezug: Kernenergie.",
       wissen: "Nukleon. Proton/Neutron bedeutet: Kernbausteine. Bezug: Kernenergie.",
       flashFront: "Proton/Neutron",
@@ -3587,7 +3612,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:bindungsenergie",
       prompt: "Was beschreibt „Bindungsenergie“?",
-      answer: "Sie hält Kern zusammen bei den behandelten Arten.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Sie beschreibt eine Mix der Quellen.", "Er beschreibt gesteuerte Kettenreaktion bei den behandelten Arten."],
+      answer: "Sie hält Kern zusammen.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Sie beschreibt eine Mix der Quellen.", "Er beschreibt gesteuerte Kettenreaktion."],
       explanation: "Massendefekt-Idee. Bindungsenergie bedeutet: Hält Kern zusammen. Bezug: Kernenergie.",
       wissen: "Massendefekt-Idee. Bindungsenergie bedeutet: Hält Kern zusammen. Bezug: Kernenergie.",
       flashFront: "Bindungsenergie",
@@ -3595,7 +3620,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:reaktor",
       prompt: "Was beschreibt „Reaktor“?",
-      answer: "Er beschreibt gesteuerte Kettenreaktion bei den behandelten Arten.", wrong: ["Sie hält Kern zusammen bei den behandelten Arten.", "Sie beschreibt eine Mix der Quellen.", "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner."],
+      answer: "Er beschreibt gesteuerte Kettenreaktion.", wrong: ["Sie hält Kern zusammen.", "Sie beschreibt eine Mix der Quellen.", "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner."],
       explanation: "Kraftwerk. Reaktor bedeutet: Gesteuerte Kettenreaktion. Bezug: Kernenergie.",
       wissen: "Kraftwerk. Reaktor bedeutet: Gesteuerte Kettenreaktion. Bezug: Kernenergie.",
       flashFront: "Reaktor",
@@ -3611,7 +3636,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:radioaktiver-abfall",
       prompt: "Mit welchen Mitteln arbeitet der Radioaktiver Abfall?",
-      answer: "Es beschreibt ein Muss sicher lagern.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Er beschreibt gesteuerte Kettenreaktion bei den behandelten Arten.", "Sie beschreibt kernenergie im 20. Jh."],
+      answer: "Es beschreibt ein Muss sicher lagern.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Sie beschreibt kernenergie im 20. Jh.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Risiko. Radioaktiver Abfall bedeutet: Muss sicher lagern. Bezug: Kernenergie.",
       wissen: "Risiko. Radioaktiver Abfall bedeutet: Muss sicher lagern. Bezug: Kernenergie.",
       flashFront: "Radioaktiver Abfall",
@@ -3619,7 +3644,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:vor-nachteile",
       prompt: "Was bewirkt die Vor-Nachteile?",
-      answer: "Sie beschreibt wenig CO₂ vs. Risiken.", wrong: ["Sie beschreibt eine Mix der Quellen.", "Sie hält Kern zusammen bei den behandelten Arten.", "Sie neutronen lösen weitere Spaltungen, steuerung nötig."],
+      answer: "Sie beschreibt wenig CO₂ vs. Risiken.", wrong: ["Sie beschreibt eine Mix der Quellen.", "Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Positionieren. Vor-Nachteile bedeutet: Wenig CO₂ vs. Risiken. Bezug: Kernenergie.",
       wissen: "Positionieren. Vor-Nachteile bedeutet: Wenig CO₂ vs. Risiken. Bezug: Kernenergie.",
       flashFront: "Vor-Nachteile",
@@ -3627,7 +3652,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:fossile-reserven",
       prompt: "Wozu dient die Fossile Reserven?",
-      answer: "Es begrenzt bei den behandelten Arten.", wrong: ["Sie beschreibt wenig CO₂ vs. Risiken.", "Sie hält Kern zusammen bei den behandelten Arten.", "Sie beschreibt kernenergie im 20. Jh."],
+      answer: "Es begrenzt.", wrong: ["Sie beschreibt wenig CO₂ vs. Risiken.", "Sie hält Kern zusammen.", "Sie beschreibt kernenergie im 20. Jh."],
       explanation: "Vergleich. Fossile Reserven bedeutet: Begrenzt. Bezug: Kernenergie.",
       wissen: "Vergleich. Fossile Reserven bedeutet: Begrenzt. Bezug: Kernenergie.",
       flashFront: "Fossile Reserven",
@@ -3635,7 +3660,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:energiewende",
       prompt: "Mit welchen Mitteln arbeitet die Energiewende?",
-      answer: "Sie beschreibt eine Mix der Quellen.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Es begrenzt bei den behandelten Arten.", "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner."],
+      answer: "Sie beschreibt eine Mix der Quellen.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Es beschreibt eine Entdeckung Spaltung, mit Strassmann/Meitner.", "Es beschreibt ein Muss sicher lagern."],
       explanation: "Diskussion. Energiewende bedeutet: Mix der Quellen. Bezug: Kernenergie.",
       wissen: "Diskussion. Energiewende bedeutet: Mix der Quellen. Bezug: Kernenergie.",
       flashFront: "Energiewende",
@@ -3643,15 +3668,15 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:geschichte",
       prompt: "Wozu dient die Geschichte?",
-      answer: "Sie beschreibt kernenergie im 20. Jh.", wrong: ["Sie beschreibt eine Mix der Quellen.", "Er beschreibt gesteuerte Kettenreaktion bei den behandelten Arten.", "Sie beschreibt wenig CO₂ vs. Risiken."],
-      explanation: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh.. Bezug: Kernenergie.",
-      wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh.. Bezug: Kernenergie.",
+      answer: "Sie beschreibt kernenergie im 20. Jh.", wrong: ["Sie beschreibt eine Mix der Quellen.", "Sie beschreibt wenig CO₂ vs. Risiken.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
+      explanation: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh. Bezug: Kernenergie.",
+      wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh. Bezug: Kernenergie.",
       flashFront: "Geschichte",
     },
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:sicherheit",
       prompt: "Was gehört zur Sicherheit im Physikversuch?",
-      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Es beschreibt ein Muss sicher lagern.", "Es begrenzt bei den behandelten Arten."],
+      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Sie neutronen lösen weitere Spaltungen, steuerung nötig.", "Es beschreibt ein Muss sicher lagern.", "Sie beschreibt kernenergie im 20. Jh."],
       explanation: "Technik + Politik. Sicherheit bedeutet: Schutz und Notfall. Bezug: Kernenergie.",
       wissen: "Technik + Politik. Sicherheit bedeutet: Schutz und Notfall. Bezug: Kernenergie.",
       flashFront: "Sicherheit",
@@ -3674,10 +3699,10 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:tf:geschichte",
-      statement: "Geschichte: Kernenergie im 20. Jh..",
+      statement: "Geschichte: Kernenergie im 20. Jh.",
       correct: true,
-      explanation: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh.. Bezug: Kernenergie.",
-      wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh.. Bezug: Kernenergie.",
+      explanation: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh. Bezug: Kernenergie.",
+      wissen: "Kontext. Geschichte bedeutet: Kernenergie im 20. Jh. Bezug: Kernenergie.",
     },
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:tf:sicherheit",
@@ -3710,7 +3735,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:gravitation",
       prompt: "Was bewirkt die Gravitation?",
-      answer: "Sie beschreibt eine Anziehung zwischen Massen.", wrong: ["Sie beschreibt sterne, Galaxien, große Skala.", "Sie beschreibt freier Fall bei den behandelten Arten.", "Es beschreibt größeres r → kleinere F."],
+      answer: "Sie beschreibt eine Anziehung zwischen Massen.", wrong: ["Sie beschreibt sterne, Galaxien, große Skala.", "Es beschreibt größeres r → kleinere F.", "Sie beschreibt eine Gravitation als Feld."],
       explanation: "Newton. Gravitation bedeutet: Anziehung zwischen Massen. Bezug: Gravitationsgesetz.",
       wissen: "Newton. Gravitation bedeutet: Anziehung zwischen Massen. Bezug: Gravitationsgesetz.",
       flashFront: "Gravitation",
@@ -3718,7 +3743,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:gravitationsgesetz",
       prompt: "Mit welchen Mitteln arbeitet das Gravitationsgesetz?",
-      answer: "Es beschreibt F ~ m1·m2 / r².", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s².", "Es planeten durch Gravitation bei den behandelten Arten.", "Sie beschreibt eine Gravitation als Feld."],
+      answer: "Es beschreibt F ~ m1·m2 / r².", wrong: ["Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s².", "Sie beschreibt eine Gravitation als Feld.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
       explanation: "Abstandsquadrat. Gravitationsgesetz bedeutet: F ~ m1·m2 / r². Bezug: Gravitationsgesetz.",
       wissen: "Abstandsquadrat. Gravitationsgesetz bedeutet: F ~ m1·m2 / r². Bezug: Gravitationsgesetz.",
       flashFront: "Gravitationsgesetz",
@@ -3726,7 +3751,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:newton",
       prompt: "Was kennzeichnet „Newton“?",
-      answer: "Es ist eine Beschrieb Universelle Gravitation durch Würdigung.", wrong: ["Es ist eine Spezialfall Nahe Erde.", "Es ist eine Planeten durch Gravitation.", "Das Newton ist das Sterne, Galaxien."],
+      answer: "Es beschreibt ein Beschrieb universelle Gravitation.", wrong: ["Das Newton ist das Sterne, Galaxien.", "Es beschreibt F ~ m1·m2 / r².", "Es beschreibt größeres r → kleinere F."],
       explanation: "Würdigung. Newton bedeutet: Beschrieb universelle Gravitation. Bezug: Gravitationsgesetz.",
       wissen: "Würdigung. Newton bedeutet: Beschrieb universelle Gravitation. Bezug: Gravitationsgesetz.",
       flashFront: "Newton",
@@ -3734,7 +3759,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:gewichtskraft",
       prompt: "Was beschreibt die Gewichtskraft?",
-      answer: "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", wrong: ["Sie beschreibt eine Anziehung zwischen Massen.", "Es beschreibt erde–Mond-Anziehung bei den behandelten Arten.", "Sie beschreibt freier Fall bei den behandelten Arten."],
+      answer: "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", wrong: ["Sie beschreibt eine Anziehung zwischen Massen.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s².", "Es beschreibt F ~ m1·m2 / r²."],
       explanation: "F_G = m·g. Gewichtskraft bedeutet: Spezialfall nahe Erde. Bezug: Gravitationsgesetz.",
       wissen: "F_G = m·g. Gewichtskraft bedeutet: Spezialfall nahe Erde. Bezug: Gravitationsgesetz.",
       flashFront: "Gewichtskraft",
@@ -3742,7 +3767,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:bahnen",
       prompt: "Woran erkennt man den Bahnen?",
-      answer: "Es planeten durch Gravitation bei den behandelten Arten.", wrong: ["Es beschreibt ein Beschrieb universelle Gravitation.", "Sie beschreibt freier Fall bei den behandelten Arten.", "Sie beschreibt sterne, Galaxien, große Skala."],
+      answer: "Es planeten durch Gravitation.", wrong: ["Es beschreibt ein Beschrieb universelle Gravitation.", "Sie beschreibt freier Fall.", "Sie beschreibt sterne, Galaxien, große Skala."],
       explanation: "Ellipsen. Bahnen bedeutet: Planeten durch Gravitation. Bezug: Gravitationsgesetz.",
       wissen: "Ellipsen. Bahnen bedeutet: Planeten durch Gravitation. Bezug: Gravitationsgesetz.",
       flashFront: "Bahnen",
@@ -3750,7 +3775,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:strukturbildung",
       prompt: "Mit welchen Mitteln arbeitet die Strukturbildung?",
-      answer: "Sie beschreibt sterne, Galaxien, große Skala.", wrong: ["Es beschreibt ein Beschrieb universelle Gravitation.", "Es beschreibt erde–Mond-Anziehung bei den behandelten Arten.", "Sie beschreibt freier Fall bei den behandelten Arten."],
+      answer: "Sie beschreibt sterne, Galaxien, große Skala.", wrong: ["Es beschreibt ein Beschrieb universelle Gravitation.", "Es beschreibt F ~ m1·m2 / r².", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s²."],
       explanation: "Große Skala. Strukturbildung bedeutet: Sterne, Galaxien. Bezug: Gravitationsgesetz.",
       wissen: "Große Skala. Strukturbildung bedeutet: Sterne, Galaxien. Bezug: Gravitationsgesetz.",
       flashFront: "Strukturbildung",
@@ -3758,7 +3783,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:abstand",
       prompt: "Wozu dient das Abstand?",
-      answer: "Es beschreibt größeres r → kleinere F.", wrong: ["Es planeten durch Gravitation bei den behandelten Arten.", "Sie beschreibt eine Gravitation als Feld.", "Sie beschreibt eine Anziehung zwischen Massen."],
+      answer: "Es beschreibt größeres r → kleinere F.", wrong: ["Sie beschreibt eine Gravitation als Feld.", "Sie beschreibt eine Anziehung zwischen Massen.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s²."],
       explanation: "Quadratgesetz. Abstand bedeutet: Größeres r → kleinere F. Bezug: Gravitationsgesetz.",
       wissen: "Quadratgesetz. Abstand bedeutet: Größeres r → kleinere F. Bezug: Gravitationsgesetz.",
       flashFront: "Abstand",
@@ -3766,7 +3791,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:masse",
       prompt: "Wozu dient die Masse?",
-      answer: "Sie beschreibt eine Mehr Masse → größere F.", wrong: ["Sie beschreibt freier Fall bei den behandelten Arten.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie beschreibt eine Anziehung zwischen Massen."],
+      answer: "Sie beschreibt eine Mehr Masse → größere F.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie beschreibt eine Anziehung zwischen Massen.", "Es beschreibt größeres r → kleinere F."],
       explanation: "Proportional. Masse bedeutet: Mehr Masse → größere F. Bezug: Gravitationsgesetz.",
       wissen: "Proportional. Masse bedeutet: Mehr Masse → größere F. Bezug: Gravitationsgesetz.",
       flashFront: "Masse",
@@ -3774,7 +3799,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:schwerelosigkeit",
       prompt: "Woran erkennt man die Schwerelosigkeit?",
-      answer: "Sie beschreibt freier Fall bei den behandelten Arten.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie beschreibt eine Mehr Masse → größere F.", "Sie beschreibt eine Anziehung zwischen Massen."],
+      answer: "Sie beschreibt freier Fall.", wrong: ["Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie beschreibt eine Mehr Masse → größere F.", "Sie beschreibt eine Anziehung zwischen Massen."],
       explanation: "Raumschiff. Schwerelosigkeit bedeutet: Freier Fall. Bezug: Gravitationsgesetz.",
       wissen: "Raumschiff. Schwerelosigkeit bedeutet: Freier Fall. Bezug: Gravitationsgesetz.",
       flashFront: "Schwerelosigkeit",
@@ -3782,7 +3807,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:mond",
       prompt: "Wozu dient das Mond?",
-      answer: "Es beschreibt erde–Mond-Anziehung bei den behandelten Arten.", wrong: ["Sie beschreibt sterne, Galaxien, große Skala.", "Es beschreibt F ~ m1·m2 / r².", "Sie beschreibt freier Fall bei den behandelten Arten."],
+      answer: "Es beschreibt erde–Mond-Anziehung.", wrong: ["Sie beschreibt sterne, Galaxien, große Skala.", "Es beschreibt F ~ m1·m2 / r².", "Sie beschreibt freier Fall."],
       explanation: "Gezeiten-Idee. Mond bedeutet: Erde–Mond-Anziehung. Bezug: Gravitationsgesetz.",
       wissen: "Gezeiten-Idee. Mond bedeutet: Erde–Mond-Anziehung. Bezug: Gravitationsgesetz.",
       flashFront: "Mond",
@@ -3798,7 +3823,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:alltag",
       prompt: "Wozu dient das Alltag?",
-      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s².", wrong: ["Es planeten durch Gravitation bei den behandelten Arten.", "Es beschreibt größeres r → kleinere F.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g."],
+      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen, etwa g ≈ 9 oder 8 m/s².", wrong: ["Es beschreibt größeres r → kleinere F.", "Sie beschreibt die Anziehung der Erde auf eine Masse, oft mit F_G = m · g.", "Sie beschreibt eine Anziehung zwischen Massen."],
       explanation: "g ≈ 9,8 m/s². Alltag bedeutet: Fallen von Körpern. Bezug: Gravitationsgesetz.",
       wissen: "g ≈ 9,8 m/s². Alltag bedeutet: Fallen von Körpern. Bezug: Gravitationsgesetz.",
       flashFront: "Alltag",
@@ -3857,7 +3882,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:1-keplergesetz",
       prompt: "Was bewirkt das 1. Keplergesetz?",
-      answer: "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt.", wrong: ["Sie beschreibt a der Ellipse, mittlerer Abstand grob.", "Es beschreibt periode T, jahr bei Erde.", "Sie satellitenbahnen bei den behandelten Arten."],
+      answer: "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt.", wrong: ["Sie beschreibt a der Ellipse, mittlerer Abstand grob.", "Es beschreibt periode T, jahr bei Erde.", "Es beschreibt gleiche Flächen in gleicher Zeit, nah schneller."],
       explanation: "Planeten. 1. Keplergesetz bedeutet: Ellipsenbahn, Sonne im Brennpunkt. Bezug: Kepler’sche Gesetze.",
       wissen: "Planeten. 1. Keplergesetz bedeutet: Ellipsenbahn, Sonne im Brennpunkt. Bezug: Kepler’sche Gesetze.",
       flashFront: "1. Keplergesetz",
@@ -3865,7 +3890,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:2-keplergesetz",
       prompt: "Wozu dient das 2. Keplergesetz?",
-      answer: "Es beschreibt gleiche Flächen in gleicher Zeit, nah schneller.", wrong: ["Es beschreibt T² ~ a³ bei den behandelten Arten.", "Sie beschreibt eine Auch Kepler-ähnlich bei den behandelten Arten.", "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt."],
+      answer: "Es beschreibt gleiche Flächen in gleicher Zeit, nah schneller.", wrong: ["Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt.", "Es beschreibt periode T, jahr bei Erde.", "Sie beschreibt gestreckter Kreis, zwei Brennpunkte."],
       explanation: "Nah schneller. 2. Keplergesetz bedeutet: Gleiche Flächen in gleicher Zeit. Bezug: Kepler’sche Gesetze.",
       wissen: "Nah schneller. 2. Keplergesetz bedeutet: Gleiche Flächen in gleicher Zeit. Bezug: Kepler’sche Gesetze.",
       flashFront: "2. Keplergesetz",
@@ -3873,7 +3898,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:3-keplergesetz",
       prompt: "Woran erkennt man das 3. Keplergesetz?",
-      answer: "Es beschreibt T² ~ a³ bei den behandelten Arten.", wrong: ["Sie beschreibt eine Auch Kepler-ähnlich bei den behandelten Arten.", "Sie beschreibt gestreckter Kreis, zwei Brennpunkte.", "Sie satellitenbahnen bei den behandelten Arten."],
+      answer: "Es beschreibt T² ~ a³.", wrong: ["Sie beschreibt eine Auch Kepler-ähnlich.", "Sie beschreibt gestreckter Kreis, zwei Brennpunkte.", "Sie satellitenbahnen."],
       explanation: "Umlaufzeiten. 3. Keplergesetz bedeutet: T² ~ a³. Bezug: Kepler’sche Gesetze.",
       wissen: "Umlaufzeiten. 3. Keplergesetz bedeutet: T² ~ a³. Bezug: Kepler’sche Gesetze.",
       flashFront: "3. Keplergesetz",
@@ -3905,7 +3930,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:umlaufzeit",
       prompt: "Was kennzeichnet „Umlaufzeit“?",
-      answer: "Es ist eine Periode T durch Jahr bei Erde.", wrong: ["Das Umlaufzeit ist a der Ellipse.", "Das Umlaufzeit ist das Tycho/Kepler Daten.", "Gravitation erklärt Kepler."],
+      answer: "Es beschreibt periode T, jahr bei Erde.", wrong: ["Das Umlaufzeit ist a der Ellipse.", "Das Umlaufzeit ist das Tycho/Kepler Daten.", "Gravitation erklärt Kepler."],
       explanation: "Jahr bei Erde. Umlaufzeit bedeutet: Periode T. Bezug: Kepler’sche Gesetze.",
       wissen: "Jahr bei Erde. Umlaufzeit bedeutet: Periode T. Bezug: Kepler’sche Gesetze.",
       flashFront: "Umlaufzeit",
@@ -3913,7 +3938,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:grosse-halbachse",
       prompt: "Welche Eigenschaft hat die Große Halbachse?",
-      answer: "Sie beschreibt a der Ellipse, mittlerer Abstand grob.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt T² ~ a³ bei den behandelten Arten.", "Sie beschreibt eine Auch Kepler-ähnlich bei den behandelten Arten."],
+      answer: "Sie beschreibt a der Ellipse, mittlerer Abstand grob.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt eine Gravitation erklärt Kepler.", "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt."],
       explanation: "Mittlerer Abstand grob. Große Halbachse bedeutet: a der Ellipse. Bezug: Kepler’sche Gesetze.",
       wissen: "Mittlerer Abstand grob. Große Halbachse bedeutet: a der Ellipse. Bezug: Kepler’sche Gesetze.",
       flashFront: "Große Halbachse",
@@ -3921,7 +3946,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:beobachtung",
       prompt: "Mit welchen Mitteln arbeitet die Beobachtung?",
-      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", wrong: ["Es beschreibt gleiche Flächen in gleicher Zeit, nah schneller.", "Sie satellitenbahnen bei den behandelten Arten.", "Sie beschreibt a der Ellipse, mittlerer Abstand grob."],
+      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", wrong: ["Es beschreibt gleiche Flächen in gleicher Zeit, nah schneller.", "Sie beschreibt a der Ellipse, mittlerer Abstand grob.", "Sie beschreibt gestreckter Kreis, zwei Brennpunkte."],
       explanation: "Empirie. Beobachtung bedeutet: Tycho/Kepler Daten. Bezug: Kepler’sche Gesetze.",
       wissen: "Empirie. Beobachtung bedeutet: Tycho/Kepler Daten. Bezug: Kepler’sche Gesetze.",
       flashFront: "Beobachtung",
@@ -3929,7 +3954,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:newton-link",
       prompt: "Wozu dient das Newton-Link?",
-      answer: "Es beschreibt eine Gravitation erklärt Kepler.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt.", "Sie beschreibt eine Auch Kepler-ähnlich bei den behandelten Arten."],
+      answer: "Es beschreibt eine Gravitation erklärt Kepler.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt ein Ellipsenbahn, Sonne im Brennpunkt.", "Sie beschreibt a der Ellipse, mittlerer Abstand grob."],
       explanation: "Theorie. Newton-Link bedeutet: Gravitation erklärt Kepler. Bezug: Kepler’sche Gesetze.",
       wissen: "Theorie. Newton-Link bedeutet: Gravitation erklärt Kepler. Bezug: Kepler’sche Gesetze.",
       flashFront: "Newton-Link",
@@ -3937,7 +3962,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:monde",
       prompt: "Woran erkennt man die Monde?",
-      answer: "Sie beschreibt eine Auch Kepler-ähnlich bei den behandelten Arten.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt periode T, jahr bei Erde.", "Sie satellitenbahnen bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Auch Kepler-ähnlich.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt periode T, jahr bei Erde.", "Sie satellitenbahnen."],
       explanation: "Systeme. Monde bedeutet: Auch Kepler-ähnlich. Bezug: Kepler’sche Gesetze.",
       wissen: "Systeme. Monde bedeutet: Auch Kepler-ähnlich. Bezug: Kepler’sche Gesetze.",
       flashFront: "Monde",
@@ -3945,7 +3970,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-kepler:fact:anwendung",
       prompt: "Mit welchen Mitteln arbeitet die Anwendung?",
-      answer: "Sie satellitenbahnen bei den behandelten Arten.", wrong: ["Sie beschreibt gestreckter Kreis, zwei Brennpunkte.", "Sie beschreibt a der Ellipse, mittlerer Abstand grob.", "Es beschreibt periode T, jahr bei Erde."],
+      answer: "Sie satellitenbahnen.", wrong: ["Sie beschreibt gestreckter Kreis, zwei Brennpunkte.", "Sie beschreibt a der Ellipse, mittlerer Abstand grob.", "Es beschreibt periode T, jahr bei Erde."],
       explanation: "Technik. Anwendung bedeutet: Satellitenbahnen. Bezug: Kepler’sche Gesetze.",
       wissen: "Technik. Anwendung bedeutet: Satellitenbahnen. Bezug: Kepler’sche Gesetze.",
       flashFront: "Anwendung",
@@ -4004,7 +4029,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:geozentrisch",
       prompt: "Woran erkennt man das Geozentrisch?",
-      answer: "Es beschreibt erde im Zentrum bei den behandelten Arten.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
+      answer: "Es beschreibt erde im Zentrum.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
       explanation: "Ptolemäus. Geozentrisch bedeutet: Erde im Zentrum. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Ptolemäus. Geozentrisch bedeutet: Erde im Zentrum. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Geozentrisch",
@@ -4012,7 +4037,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:heliozentrisch",
       prompt: "Was beschreibt „Heliozentrisch“?",
-      answer: "Es beschreibt sonne im Zentrum bei den behandelten Arten.", wrong: ["Es macht ferne Objekte näher und vergrößert sie optisch.", "Sie beschreibt sonne Stern unter Sternen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
+      answer: "Es beschreibt sonne im Zentrum.", wrong: ["Es macht ferne Objekte näher und vergrößert sie optisch.", "Sie beschreibt sonne Stern unter Sternen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
       explanation: "Kopernikus. Heliozentrisch bedeutet: Sonne im Zentrum. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Kopernikus. Heliozentrisch bedeutet: Sonne im Zentrum. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Heliozentrisch",
@@ -4020,7 +4045,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:ptolemaeus",
       prompt: "Was bewirkt der Ptolemäus?",
-      answer: "Er beschreibt ein Epizykelmodell bei den behandelten Arten.", wrong: ["Es beschreibt erde im Zentrum bei den behandelten Arten.", "Es beschreibt sonne im Zentrum bei den behandelten Arten.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
+      answer: "Er beschreibt ein Epizykelmodell.", wrong: ["Es beschreibt erde im Zentrum.", "Es beschreibt sonne im Zentrum.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
       explanation: "Antike. Ptolemäus bedeutet: Epizykelmodell. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Antike. Ptolemäus bedeutet: Epizykelmodell. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Ptolemäus",
@@ -4028,7 +4053,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:kopernikus",
       prompt: "Woran erkennt man den Kopernikus?",
-      answer: "Er beschreibt heliozentrischer Entwurf bei den behandelten Arten.", wrong: ["Er hemmt den Strom; oft gilt R = U / I.", "Es beschreibt sonne im Zentrum bei den behandelten Arten.", "Es beschreibt ein Vom Altertum zur Moderne."],
+      answer: "Er beschreibt heliozentrischer Entwurf.", wrong: ["Er hemmt den Strom; oft gilt R = U / I.", "Es beschreibt sonne im Zentrum.", "Es beschreibt ein Vom Altertum zur Moderne."],
       explanation: "Neuzeit. Kopernikus bedeutet: Heliozentrischer Entwurf. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Neuzeit. Kopernikus bedeutet: Heliozentrischer Entwurf. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Kopernikus",
@@ -4044,7 +4069,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:weltbildwandel",
       prompt: "Mit welchen Mitteln arbeitet der Weltbildwandel?",
-      answer: "Es beschreibt ein Vom Altertum zur Moderne.", wrong: ["Er beschreibt ein Epizykelmodell bei den behandelten Arten.", "Er beschreibt heliozentrischer Entwurf bei den behandelten Arten.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen."],
+      answer: "Es beschreibt ein Vom Altertum zur Moderne.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Er hemmt den Strom; oft gilt R = U / I.", "Es macht ferne Objekte näher und vergrößert sie optisch."],
       explanation: "Wissenschaft. Weltbildwandel bedeutet: Vom Altertum zur Moderne. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Wissenschaft. Weltbildwandel bedeutet: Vom Altertum zur Moderne. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Weltbildwandel",
@@ -4060,7 +4085,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:widerstand",
       prompt: "Was bewirkt ein Widerstand im Stromkreis?",
-      answer: "Er hemmt den Strom; oft gilt R = U / I.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Er beschreibt heliozentrischer Entwurf bei den behandelten Arten."],
+      answer: "Er hemmt den Strom; oft gilt R = U / I.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie beschreibt sonne Stern unter Sternen."],
       explanation: "Historisch. Widerstand bedeutet: Gesellschaftliche Konflikte. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Historisch. Widerstand bedeutet: Gesellschaftliche Konflikte. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Widerstand",
@@ -4068,7 +4093,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:modell",
       prompt: "Wozu dient ein Modell in der Physik?",
-      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Er beschreibt ein Epizykelmodell bei den behandelten Arten.", "Er hemmt den Strom; oft gilt R = U / I.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen."],
+      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Er hemmt den Strom; oft gilt R = U / I.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es beschreibt ein Vom Altertum zur Moderne."],
       explanation: "Prüfbar. Modell bedeutet: Erklärung der Himmelerscheinungen. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Prüfbar. Modell bedeutet: Erklärung der Himmelerscheinungen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Modell",
@@ -4076,7 +4101,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:fernrohr",
       prompt: "Welche Eigenschaft hat das Fernrohr?",
-      answer: "Es macht ferne Objekte näher und vergrößert sie optisch.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Sie beschreibt sonne Stern unter Sternen.", "Er beschreibt ein Epizykelmodell bei den behandelten Arten."],
+      answer: "Es macht ferne Objekte näher und vergrößert sie optisch.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Sie beschreibt sonne Stern unter Sternen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
       explanation: "Technik. Fernrohr bedeutet: Neue Evidenz. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Technik. Fernrohr bedeutet: Neue Evidenz. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Fernrohr",
@@ -4084,7 +4109,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:heute",
       prompt: "Was beschreibt „Heute“?",
-      answer: "Sie beschreibt sonne Stern unter Sternen.", wrong: ["Er beschreibt ein Epizykelmodell bei den behandelten Arten.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es macht ferne Objekte näher und vergrößert sie optisch."],
+      answer: "Sie beschreibt sonne Stern unter Sternen.", wrong: ["Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Es macht ferne Objekte näher und vergrößert sie optisch.", "Er hemmt den Strom; oft gilt R = U / I."],
       explanation: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Heute",
@@ -4092,7 +4117,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:vergleich",
       prompt: "Wozu dient der Vergleich mit der Erwartung?",
-      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Er beschreibt ein Epizykelmodell bei den behandelten Arten.", "Es beschreibt erde im Zentrum bei den behandelten Arten.", "Es beschreibt sonne im Zentrum bei den behandelten Arten."],
+      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Sie beschreibt sonne Stern unter Sternen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
       explanation: "Einfachheit zählt. Vergleich bedeutet: Beide erklären scheinbare Bahnen. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Einfachheit zählt. Vergleich bedeutet: Beide erklären scheinbare Bahnen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Vergleich",
@@ -4151,7 +4176,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:hrd",
       prompt: "Was beschreibt „HRD“?",
-      answer: "Es beschreibt sterne nach Leuchtkraft und Temperatur.", wrong: ["Sie beschreibt temperaturklasse bei den behandelten Arten.", "Es beschreibt abgestrahlte Leistung bei den behandelten Arten.", "Es beschreibt ein Aus L und T schätzbar."],
+      answer: "Es beschreibt sterne nach Leuchtkraft und Temperatur.", wrong: ["Es beschreibt ein Aus L und T schätzbar.", "Es beschreibt ein Heiß und lichtschwach, endstadium leicht.", "Sie beschreibt eine Pfad im HRD."],
       explanation: "Diagramm. HRD bedeutet: Sterne nach Leuchtkraft und Temperatur. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Diagramm. HRD bedeutet: Sterne nach Leuchtkraft und Temperatur. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "HRD",
@@ -4167,7 +4192,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:roter-riese",
       prompt: "Was bewirkt der Roter Riese?",
-      answer: "Sie beschreibt eine Kühl und leuchtstark, späte Phase.", wrong: ["Es beschreibt ein Heiß und lichtschwach, endstadium leicht.", "Sie beschreibt temperaturklasse bei den behandelten Arten.", "Sie beschreibt chemische Zusammensetzung bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Kühl und leuchtstark, späte Phase.", wrong: ["Es beschreibt ein Heiß und lichtschwach, endstadium leicht.", "Es beschreibt sterne nach Leuchtkraft und Temperatur.", "Sie beschreibt eine Pfad im HRD."],
       explanation: "Späte Phase. Roter Riese bedeutet: Kühl und leuchtstark. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Späte Phase. Roter Riese bedeutet: Kühl und leuchtstark. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Roter Riese",
@@ -4175,7 +4200,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:weisser-zwerg",
       prompt: "Was bewirkt der Weißer Zwerg?",
-      answer: "Es beschreibt ein Heiß und lichtschwach, endstadium leicht.", wrong: ["Sie beschreibt eine Hauptreihenstern bei den behandelten Arten.", "Sie beschreibt eine Pfad im HRD.", "Sie beschreibt temperaturklasse bei den behandelten Arten."],
+      answer: "Es beschreibt ein Heiß und lichtschwach, endstadium leicht.", wrong: ["Sie beschreibt eine Pfad im HRD.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Sie beschreibt eine Kühl und leuchtstark, späte Phase."],
       explanation: "Endstadium leicht. Weißer Zwerg bedeutet: Heiß und lichtschwach. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Endstadium leicht. Weißer Zwerg bedeutet: Heiß und lichtschwach. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Weißer Zwerg",
@@ -4183,7 +4208,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:spektralklasse",
       prompt: "Wozu dient die Spektralklasse?",
-      answer: "Sie beschreibt temperaturklasse bei den behandelten Arten.", wrong: ["Es beschreibt ein Aus L und T schätzbar.", "Sie beschreibt sichtbare Sternschicht bei den behandelten Arten.", "Es beschreibt ein Heiß und lichtschwach, endstadium leicht."],
+      answer: "Sie beschreibt temperaturklasse.", wrong: ["Es beschreibt ein Aus L und T schätzbar.", "Sie beschreibt sichtbare Sternschicht.", "Es beschreibt ein Heiß und lichtschwach, endstadium leicht."],
       explanation: "OBAFGKM. Spektralklasse bedeutet: Temperaturklasse. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "OBAFGKM. Spektralklasse bedeutet: Temperaturklasse. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Spektralklasse",
@@ -4191,7 +4216,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:leuchtkraft",
       prompt: "Wozu dient das Leuchtkraft?",
-      answer: "Es beschreibt abgestrahlte Leistung bei den behandelten Arten.", wrong: ["Sie beschreibt eine Hauptreihenstern bei den behandelten Arten.", "Sie beschreibt chemische Zusammensetzung bei den behandelten Arten.", "Sie beschreibt sichtbare Sternschicht bei den behandelten Arten."],
+      answer: "Es beschreibt abgestrahlte Leistung.", wrong: ["Sie beschreibt eine Hauptreihenstern.", "Sie beschreibt chemische Zusammensetzung.", "Sie beschreibt sichtbare Sternschicht."],
       explanation: "Absolut. Leuchtkraft bedeutet: Abgestrahlte Leistung. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Absolut. Leuchtkraft bedeutet: Abgestrahlte Leistung. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Leuchtkraft",
@@ -4199,7 +4224,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:sonne",
       prompt: "Wozu dient die Sonne?",
-      answer: "Sie beschreibt eine Hauptreihenstern bei den behandelten Arten.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt ein Aus L und T schätzbar.", "Sie beschreibt eine Pfad im HRD."],
+      answer: "Sie beschreibt eine Hauptreihenstern.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt ein Aus L und T schätzbar.", "Sie beschreibt eine Pfad im HRD."],
       explanation: "Vergleich. Sonne bedeutet: Hauptreihenstern. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Vergleich. Sonne bedeutet: Hauptreihenstern. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Sonne",
@@ -4207,7 +4232,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:sternentwicklung",
       prompt: "Was bewirkt die Sternentwicklung?",
-      answer: "Sie beschreibt eine Pfad im HRD.", wrong: ["Sie beschreibt eine Kühl und leuchtstark, späte Phase.", "Sie beschreibt sichtbare Sternschicht bei den behandelten Arten.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten."],
+      answer: "Sie beschreibt eine Pfad im HRD.", wrong: ["Sie beschreibt eine Kühl und leuchtstark, späte Phase.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt sterne nach Leuchtkraft und Temperatur."],
       explanation: "Zeit. Sternentwicklung bedeutet: Pfad im HRD. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Zeit. Sternentwicklung bedeutet: Pfad im HRD. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Sternentwicklung",
@@ -4215,7 +4240,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:radiusvergleich",
       prompt: "Welche Eigenschaft hat das Radiusvergleich?",
-      answer: "Es beschreibt ein Aus L und T schätzbar.", wrong: ["Sie beschreibt chemische Zusammensetzung bei den behandelten Arten.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt sterne nach Leuchtkraft und Temperatur."],
+      answer: "Es beschreibt ein Aus L und T schätzbar.", wrong: ["Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es beschreibt sterne nach Leuchtkraft und Temperatur.", "Es beschreibt ein Heiß und lichtschwach, endstadium leicht."],
       explanation: "Stefan-Boltzmann-Idee. Radiusvergleich bedeutet: Aus L und T schätzbar. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Stefan-Boltzmann-Idee. Radiusvergleich bedeutet: Aus L und T schätzbar. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Radiusvergleich",
@@ -4223,7 +4248,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:photosphaere",
       prompt: "Was beschreibt „Photosphäre“?",
-      answer: "Sie beschreibt sichtbare Sternschicht bei den behandelten Arten.", wrong: ["Sie beschreibt eine Kühl und leuchtstark, späte Phase.", "Sie beschreibt eine Hauptreihenstern bei den behandelten Arten.", "Sie beschreibt temperaturklasse bei den behandelten Arten."],
+      answer: "Sie beschreibt sichtbare Sternschicht.", wrong: ["Sie beschreibt eine Kühl und leuchtstark, späte Phase.", "Sie beschreibt eine Hauptreihenstern.", "Sie beschreibt temperaturklasse."],
       explanation: "Spektrum. Photosphäre bedeutet: Sichtbare Sternschicht. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Spektrum. Photosphäre bedeutet: Sichtbare Sternschicht. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Photosphäre",
@@ -4231,7 +4256,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:spektralanalyse",
       prompt: "Was beschreibt „Spektralanalyse“?",
-      answer: "Sie beschreibt chemische Zusammensetzung bei den behandelten Arten.", wrong: ["Es beschreibt sterne nach Leuchtkraft und Temperatur.", "Sie beschreibt eine Hauptreihenstern bei den behandelten Arten.", "Sie beschreibt eine Kühl und leuchtstark, späte Phase."],
+      answer: "Sie beschreibt chemische Zusammensetzung.", wrong: ["Es beschreibt sterne nach Leuchtkraft und Temperatur.", "Sie beschreibt eine Hauptreihenstern.", "Sie beschreibt eine Kühl und leuchtstark, späte Phase."],
       explanation: "Linien. Spektralanalyse bedeutet: Chemische Zusammensetzung. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Linien. Spektralanalyse bedeutet: Chemische Zusammensetzung. Bezug: Hertzsprung-Russell-Diagramm.",
       flashFront: "Spektralanalyse",
@@ -4298,7 +4323,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:beugung",
       prompt: "Mit welchen Mitteln arbeitet die Beugung?",
-      answer: "Sie beschreibt eine Ablenkung an Kanten/Spalten.", wrong: ["Es beschreibt analogie im Wellenbecken bei den behandelten Arten.", "Sie beschreibt eine Überlagerung bei den behandelten Arten.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl."],
+      answer: "Sie beschreibt eine Ablenkung an Kanten/Spalten.", wrong: ["Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl.", "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b."],
       explanation: "Wellenoptik. Beugung bedeutet: Ablenkung an Kanten/Spalten. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Wellenoptik. Beugung bedeutet: Ablenkung an Kanten/Spalten. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Beugung",
@@ -4306,7 +4331,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:doppelspalt",
       prompt: "Mit welchen Mitteln arbeitet das Doppelspalt?",
-      answer: "Es beschreibt interferenzmuster bei den behandelten Arten.", wrong: ["Sie beschreibt spektrometer bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt eine Überlagerung bei den behandelten Arten."],
+      answer: "Es beschreibt interferenzmuster.", wrong: ["Sie beschreibt spektrometer.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt eine Überlagerung."],
       explanation: "Maxima/Minima. Doppelspalt bedeutet: Interferenzmuster. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Maxima/Minima. Doppelspalt bedeutet: Interferenzmuster. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Doppelspalt",
@@ -4314,7 +4339,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:gitter",
       prompt: "Mit welchen Mitteln arbeitet der Gitter?",
-      answer: "Er beschreibt viele Spalte, scharfe Maxima.", wrong: ["Es beschreibt analogie im Wellenbecken bei den behandelten Arten.", "Sie beschreibt eine Überlagerung bei den behandelten Arten.", "Es beschreibt interferenzmuster bei den behandelten Arten."],
+      answer: "Er beschreibt viele Spalte, scharfe Maxima.", wrong: ["Sie beschreibt verschiedene λ → verschiedene Winkel.", "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl."],
       explanation: "Scharfe Maxima. Gitter bedeutet: Viele Spalte. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Scharfe Maxima. Gitter bedeutet: Viele Spalte. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Gitter",
@@ -4322,7 +4347,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:wellenlaenge",
       prompt: "Was bewirkt die Wellenlänge?",
-      answer: "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b.", wrong: ["Sie beschreibt eine Ablenkung an Kanten/Spalten.", "Sie beschreibt eine Überlagerung bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b.", wrong: ["Sie beschreibt eine Ablenkung an Kanten/Spalten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Er beschreibt viele Spalte, scharfe Maxima."],
       explanation: "sin α ≈ kλ/b. Wellenlänge bedeutet: λ aus Beugung bestimmbar. Bezug: Beugung am Spalt und Gitter.",
       wissen: "sin α ≈ kλ/b. Wellenlänge bedeutet: λ aus Beugung bestimmbar. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Wellenlänge",
@@ -4338,7 +4363,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:ordnung-k",
       prompt: "Was bewirkt die Ordnung k?",
-      answer: "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", wrong: ["Sie beschreibt eine Ablenkung an Kanten/Spalten.", "Sie beschreibt spektrometer bei den behandelten Arten.", "Er beschreibt viele Spalte, scharfe Maxima."],
+      answer: "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", wrong: ["Sie beschreibt eine Ablenkung an Kanten/Spalten.", "Er beschreibt viele Spalte, scharfe Maxima.", "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b."],
       explanation: "k = 0,1,2… Ordnung k bedeutet: Nummer des Maximums. Bezug: Beugung am Spalt und Gitter.",
       wissen: "k = 0,1,2… Ordnung k bedeutet: Nummer des Maximums. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Ordnung k",
@@ -4346,7 +4371,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:interferenz",
       prompt: "Welche Eigenschaft hat die Interferenz?",
-      answer: "Sie beschreibt eine Überlagerung bei den behandelten Arten.", wrong: ["Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl.", "Es beschreibt analogie im Wellenbecken bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Überlagerung.", wrong: ["Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl.", "Es beschreibt analogie im Wellenbecken."],
       explanation: "Konstruktiv/destruktiv. Interferenz bedeutet: Überlagerung. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Konstruktiv/destruktiv. Interferenz bedeutet: Überlagerung. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Interferenz",
@@ -4362,7 +4387,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:wasserwellen",
       prompt: "Was bewirkt der Wasserwellen?",
-      answer: "Es beschreibt analogie im Wellenbecken bei den behandelten Arten.", wrong: ["Er beschreibt viele Spalte, scharfe Maxima.", "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie beschreibt verschiedene λ → verschiedene Winkel."],
+      answer: "Es beschreibt analogie im Wellenbecken.", wrong: ["Er beschreibt viele Spalte, scharfe Maxima.", "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie beschreibt verschiedene λ → verschiedene Winkel."],
       explanation: "Sichtbarkeit. Wasserwellen bedeutet: Analogie im Wellenbecken. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Sichtbarkeit. Wasserwellen bedeutet: Analogie im Wellenbecken. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Wasserwellen",
@@ -4370,7 +4395,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt analogie im Wellenbecken bei den behandelten Arten.", "Er beschreibt viele Spalte, scharfe Maxima.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Er beschreibt viele Spalte, scharfe Maxima.", "Sie beschreibt eine Beugung zeigt Welleneigenschaft, modellgrenze Strahl.", "Sie beschreibt eine Ablenkung an Kanten/Spalten."],
       explanation: "Versuch. Messung bedeutet: Abstand Maxima auf Schirm. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Versuch. Messung bedeutet: Abstand Maxima auf Schirm. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Messung",
@@ -4378,7 +4403,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:farbe",
       prompt: "Was beschreibt „Farbe“?",
-      answer: "Sie beschreibt verschiedene λ → verschiedene Winkel.", wrong: ["Es beschreibt interferenzmuster bei den behandelten Arten.", "Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie beschreibt eine Überlagerung bei den behandelten Arten."],
+      answer: "Sie beschreibt verschiedene λ → verschiedene Winkel.", wrong: ["Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Er beschreibt viele Spalte, scharfe Maxima.", "Sie beschreibt eine Ablenkung an Kanten/Spalten."],
       explanation: "Spektrum. Farbe bedeutet: Verschiedene λ → verschiedene Winkel. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Spektrum. Farbe bedeutet: Verschiedene λ → verschiedene Winkel. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Farbe",
@@ -4386,7 +4411,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-beugung:fact:anwendung",
       prompt: "Woran erkennt man die Anwendung?",
-      answer: "Sie beschreibt spektrometer bei den behandelten Arten.", wrong: ["Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b.", "Sie beschreibt verschiedene λ → verschiedene Winkel."],
+      answer: "Sie beschreibt spektrometer.", wrong: ["Es beschreibt nummer des Maximums, etwa k = 0,1 oder 2… Ordnung k.", "Sie ist der Abstand gleicher Phasen einer Welle, sin α ≈ kλ/b.", "Sie beschreibt verschiedene λ → verschiedene Winkel."],
       explanation: "Analyse. Anwendung bedeutet: Spektrometer. Bezug: Beugung am Spalt und Gitter.",
       wissen: "Analyse. Anwendung bedeutet: Spektrometer. Bezug: Beugung am Spalt und Gitter.",
       flashFront: "Anwendung",
@@ -4445,7 +4470,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:dispersion",
       prompt: "Welche Eigenschaft hat die Dispersion?",
-      answer: "Sie beschreibt eine Farbzerlegung weißen Lichts.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es tropfen + Dispersion bei den behandelten Arten.", "Es beschreibt gemisch vieler λ bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Farbzerlegung weißen Lichts.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es zerlegt und lenkt, versuch Newton.", "Es hängt von λ ab, ursache Dispersion."],
       explanation: "Prisma. Dispersion bedeutet: Farbzerlegung weißen Lichts. Bezug: Dispersion und Spektrum.",
       wissen: "Prisma. Dispersion bedeutet: Farbzerlegung weißen Lichts. Bezug: Dispersion und Spektrum.",
       flashFront: "Dispersion",
@@ -4469,7 +4494,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:weisses-licht",
       prompt: "Wozu dient das Weißes Licht?",
-      answer: "Es beschreibt gemisch vieler λ bei den behandelten Arten.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es tropfen + Dispersion bei den behandelten Arten.", "Er beschreibt ein Auch spektrale Zerlegung."],
+      answer: "Es beschreibt gemisch vieler λ.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es tropfen + Dispersion.", "Er beschreibt ein Auch spektrale Zerlegung."],
       explanation: "Sonne. Weißes Licht bedeutet: Gemisch vieler λ. Bezug: Dispersion und Spektrum.",
       wissen: "Sonne. Weißes Licht bedeutet: Gemisch vieler λ. Bezug: Dispersion und Spektrum.",
       flashFront: "Weißes Licht",
@@ -4485,7 +4510,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:regenbogen",
       prompt: "Woran erkennt man den Regenbogen?",
-      answer: "Es tropfen + Dispersion bei den behandelten Arten.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Sie beschreibt farbe braucht Wellenidee bei den behandelten Arten.", "Es beschreibt gemisch vieler λ bei den behandelten Arten."],
+      answer: "Es tropfen + Dispersion.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Sie beschreibt farbe braucht Wellenidee.", "Es beschreibt gemisch vieler λ."],
       explanation: "Natur. Regenbogen bedeutet: Tropfen + Dispersion. Bezug: Dispersion und Spektrum.",
       wissen: "Natur. Regenbogen bedeutet: Tropfen + Dispersion. Bezug: Dispersion und Spektrum.",
       flashFront: "Regenbogen",
@@ -4501,7 +4526,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:strahloptik-grenze",
       prompt: "Was beschreibt „Strahloptik-Grenze“?",
-      answer: "Sie beschreibt farbe braucht Wellenidee bei den behandelten Arten.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es tropfen + Dispersion bei den behandelten Arten.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
+      answer: "Sie beschreibt farbe braucht Wellenidee.", wrong: ["Er lässt nur bestimmte Farben durch und absorbiert die übrigen.", "Es tropfen + Dispersion.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Modell. Strahloptik-Grenze bedeutet: Farbe braucht Wellenidee. Bezug: Dispersion und Spektrum.",
       wissen: "Modell. Strahloptik-Grenze bedeutet: Farbe braucht Wellenidee. Bezug: Dispersion und Spektrum.",
       flashFront: "Strahloptik-Grenze",
@@ -4525,7 +4550,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es beschreibt gemisch vieler λ bei den behandelten Arten.", "Sie beschreibt farbe braucht Wellenidee bei den behandelten Arten.", "Sie beschreibt eine Farbzerlegung weißen Lichts."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt eine Farbzerlegung weißen Lichts.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Qualitativ. Messung bedeutet: Winkel der Farben. Bezug: Dispersion und Spektrum.",
       wissen: "Qualitativ. Messung bedeutet: Winkel der Farben. Bezug: Dispersion und Spektrum.",
       flashFront: "Messung",
@@ -4592,7 +4617,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:totalreflexion",
       prompt: "Wozu dient die Totalreflexion?",
-      answer: "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", wrong: ["Es biegen der Faser begrenzt bei den behandelten Arten.", "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", wrong: ["Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Optisch dichter → dünner. Totalreflexion bedeutet: Vollständige Reflexion ab Grenzwinkel. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Optisch dichter → dünner. Totalreflexion bedeutet: Vollständige Reflexion ab Grenzwinkel. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Totalreflexion",
@@ -4600,7 +4625,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:grenzwinkel",
       prompt: "Welche Eigenschaft hat der Grenzwinkel?",
-      answer: "Es beschreibt α_g mit sin α_g = n2/n1.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", "Es beschreibt klassisches Beispiel bei den behandelten Arten."],
+      answer: "Es beschreibt α_g mit sin α_g = n2/n1.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall."],
       explanation: "Bedingung. Grenzwinkel bedeutet: α_g mit sin α_g = n2/n1. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Bedingung. Grenzwinkel bedeutet: α_g mit sin α_g = n2/n1. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Grenzwinkel",
@@ -4608,7 +4633,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:lichtleiter",
       prompt: "Mit welchen Mitteln arbeitet der Lichtleiter?",
-      answer: "Er führt Licht durch Totalreflexion bei den behandelten Arten.", wrong: ["Sie daten über Fasern bei den behandelten Arten.", "Er beschreibt größerer n, langsameres Licht.", "Es beschreibt klassisches Beispiel bei den behandelten Arten."],
+      answer: "Er führt Licht durch Totalreflexion.", wrong: ["Sie daten über Fasern.", "Er beschreibt größerer n, langsameres Licht.", "Es beschreibt klassisches Beispiel."],
       explanation: "Glasfaser. Lichtleiter bedeutet: Führt Licht durch Totalreflexion. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Glasfaser. Lichtleiter bedeutet: Führt Licht durch Totalreflexion. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Lichtleiter",
@@ -4616,7 +4641,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:brechung",
       prompt: "Was bewirkt Brechung an einer Grenzfläche?",
-      answer: "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", wrong: ["Es biegen der Faser begrenzt bei den behandelten Arten.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner."],
+      answer: "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", "Es beschreibt α_g mit sin α_g = n2/n1."],
       explanation: "n1 sin α = n2 sin β. Brechung bedeutet: Übergang mit Richtungsänderung. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "n1 sin α = n2 sin β. Brechung bedeutet: Übergang mit Richtungsänderung. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Brechung",
@@ -4624,7 +4649,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:optisch-dichter",
       prompt: "Wozu dient der Optisch dichter?",
-      answer: "Er beschreibt größerer n, langsameres Licht.", wrong: ["Es beschreibt klassisches Beispiel bei den behandelten Arten.", "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", "Es beschreibt medizinische Lichtführung bei den behandelten Arten."],
+      answer: "Er beschreibt größerer n, langsameres Licht.", wrong: ["Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner."],
       explanation: "Langsameres Licht. Optisch dichter bedeutet: Größerer n. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Langsameres Licht. Optisch dichter bedeutet: Größerer n. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Optisch dichter",
@@ -4632,7 +4657,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:glas–luft",
       prompt: "Wozu dient das Glas–Luft?",
-      answer: "Es beschreibt klassisches Beispiel bei den behandelten Arten.", wrong: ["Sie daten über Fasern bei den behandelten Arten.", "Es beschreibt medizinische Lichtführung bei den behandelten Arten.", "Er führt Licht durch Totalreflexion bei den behandelten Arten."],
+      answer: "Es beschreibt klassisches Beispiel.", wrong: ["Sie daten über Fasern.", "Es beschreibt medizinische Lichtführung.", "Er führt Licht durch Totalreflexion."],
       explanation: "Versuch. Glas–Luft bedeutet: Klassisches Beispiel. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Versuch. Glas–Luft bedeutet: Klassisches Beispiel. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Glas–Luft",
@@ -4640,7 +4665,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:kommunikation",
       prompt: "Wozu dient die Kommunikation?",
-      answer: "Sie daten über Fasern bei den behandelten Arten.", wrong: ["Es beschreibt klassisches Beispiel bei den behandelten Arten.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
+      answer: "Sie daten über Fasern.", wrong: ["Es beschreibt klassisches Beispiel.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
       explanation: "Technik. Kommunikation bedeutet: Daten über Fasern. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Technik. Kommunikation bedeutet: Daten über Fasern. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Kommunikation",
@@ -4648,7 +4673,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:endoskop",
       prompt: "Woran erkennt man das Endoskop?",
-      answer: "Es beschreibt medizinische Lichtführung bei den behandelten Arten.", wrong: ["Es beschreibt α_g mit sin α_g = n2/n1.", "Er beschreibt größerer n, langsameres Licht.", "Es biegen der Faser begrenzt bei den behandelten Arten."],
+      answer: "Es beschreibt medizinische Lichtführung.", wrong: ["Es beschreibt α_g mit sin α_g = n2/n1.", "Er beschreibt größerer n, langsameres Licht.", "Es biegen der Faser begrenzt."],
       explanation: "Anwendung. Endoskop bedeutet: Medizinische Lichtführung. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Anwendung. Endoskop bedeutet: Medizinische Lichtführung. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Endoskop",
@@ -4656,7 +4681,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:spiegelung",
       prompt: "Was beschreibt „Spiegelung“?",
-      answer: "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", wrong: ["Es beschreibt klassisches Beispiel bei den behandelten Arten.", "Es beschreibt medizinische Lichtführung bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt α_g mit sin α_g = n2/n1.", "Er beschreibt größerer n, langsameres Licht."],
       explanation: "Ohne Metall. Spiegelung bedeutet: Bei Totalreflexion wie Spiegel. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Ohne Metall. Spiegelung bedeutet: Bei Totalreflexion wie Spiegel. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Spiegelung",
@@ -4664,7 +4689,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:verlust",
       prompt: "Woran erkennt man das Verlust?",
-      answer: "Es biegen der Faser begrenzt bei den behandelten Arten.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt medizinische Lichtführung bei den behandelten Arten.", "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall."],
+      answer: "Es biegen der Faser begrenzt.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt medizinische Lichtführung.", "Sie beschreibt eine Bei Totalreflexion wie Spiegel, ohne Metall."],
       explanation: "Krümmung. Verlust bedeutet: Biegen der Faser begrenzt. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Krümmung. Verlust bedeutet: Biegen der Faser begrenzt. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Verlust",
@@ -4672,7 +4697,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", "Er führt Licht durch Totalreflexion bei den behandelten Arten.", "Es beschreibt medizinische Lichtführung bei den behandelten Arten."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", "Es beschreibt α_g mit sin α_g = n2/n1.", "Sie ändert die Richtung des Lichts beim Übergang in ein anderes Medium."],
       explanation: "Halbkreisoptik. Messung bedeutet: Grenzwinkel bestimmen. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Halbkreisoptik. Messung bedeutet: Grenzwinkel bestimmen. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Messung",
@@ -4680,7 +4705,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:sicherheit",
       prompt: "Was gehört zur Sicherheit im Physikversuch?",
-      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Es biegen der Faser begrenzt bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner."],
+      answer: "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt vollständige Reflexion ab Grenzwinkel, optisch dichter → dünner.", "Es beschreibt α_g mit sin α_g = n2/n1."],
       explanation: "Augen. Sicherheit bedeutet: Laser in Fasern. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Augen. Sicherheit bedeutet: Laser in Fasern. Bezug: Totalreflexion und Lichtleiter.",
       flashFront: "Sicherheit",
@@ -4739,7 +4764,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:em-spektrum",
       prompt: "Woran erkennt man das EM-Spektrum?",
-      answer: "Es beschreibt ein Von Radio bis Gamma, gleiche c.", wrong: ["Es beschreibt schmaler Ausschnitt bei den behandelten Arten.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
+      answer: "Es beschreibt ein Von Radio bis Gamma, gleiche c.", wrong: ["Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Sie ist der Abstand gleicher Phasen einer Welle."],
       explanation: "Gleiche c. EM-Spektrum bedeutet: Von Radio bis Gamma. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Gleiche c. EM-Spektrum bedeutet: Von Radio bis Gamma. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "EM-Spektrum",
@@ -4747,7 +4772,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:mobilfunk",
       prompt: "Woran erkennt man das Mobilfunk?",
-      answer: "Es beschreibt ein Mikrowellenbereich bei den behandelten Arten.", wrong: ["Es erfassen verschiedene Bereiche bei den behandelten Arten.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen."],
+      answer: "Es beschreibt ein Mikrowellenbereich.", wrong: ["Es erfassen verschiedene Bereiche.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen."],
       explanation: "Kommunikation. Mobilfunk bedeutet: Mikrowellenbereich. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Kommunikation. Mobilfunk bedeutet: Mikrowellenbereich. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Mobilfunk",
@@ -4755,7 +4780,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:waermestrahlung",
       prompt: "Woran erkennt man die Wärmestrahlung?",
-      answer: "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", wrong: ["Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", "Es erfassen verschiedene Bereiche bei den behandelten Arten.", "Es beschreibt schmaler Ausschnitt bei den behandelten Arten."],
+      answer: "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", wrong: ["Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", "Sie ist der Abstand gleicher Phasen einer Welle.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Wärmeempfinden. Wärmestrahlung bedeutet: IR. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Wärmeempfinden. Wärmestrahlung bedeutet: IR. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Wärmestrahlung",
@@ -4763,7 +4788,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:sichtbares-licht",
       prompt: "Welche Eigenschaft hat das Sichtbares Licht?",
-      answer: "Es beschreibt schmaler Ausschnitt bei den behandelten Arten.", wrong: ["Sie beschreibt f = c/λ bei den behandelten Arten.", "Sie lebewesen begrenzt, nicht alles sichtbar.", "Es erfassen verschiedene Bereiche bei den behandelten Arten."],
+      answer: "Es beschreibt schmaler Ausschnitt.", wrong: ["Sie beschreibt f = c/λ.", "Sie lebewesen begrenzt, nicht alles sichtbar.", "Es erfassen verschiedene Bereiche."],
       explanation: "Auge. Sichtbares Licht bedeutet: Schmaler Ausschnitt. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Auge. Sichtbares Licht bedeutet: Schmaler Ausschnitt. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Sichtbares Licht",
@@ -4779,7 +4804,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:roentgen",
       prompt: "Woran erkennt man den Röntgen?",
-      answer: "Es durchdringt Gewebe bei den behandelten Arten.", wrong: ["Es beschreibt energiereicher als sichtbar bei den behandelten Arten.", "Es erfassen verschiedene Bereiche bei den behandelten Arten.", "Sie ist der Abstand gleicher Phasen einer Welle."],
+      answer: "Es durchdringt Gewebe.", wrong: ["Es beschreibt energiereicher als sichtbar.", "Es erfassen verschiedene Bereiche.", "Sie ist der Abstand gleicher Phasen einer Welle."],
       explanation: "Medizin. Röntgen bedeutet: Durchdringt Gewebe. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Medizin. Röntgen bedeutet: Durchdringt Gewebe. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Röntgen",
@@ -4787,7 +4812,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:frequenz",
       prompt: "Wozu dient die Frequenz?",
-      answer: "Sie beschreibt f = c/λ bei den behandelten Arten.", wrong: ["Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Es beschreibt schmaler Ausschnitt bei den behandelten Arten.", "Es beschreibt energiereicher als sichtbar bei den behandelten Arten."],
+      answer: "Sie beschreibt f = c/λ.", wrong: ["Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Es beschreibt schmaler Ausschnitt.", "Es beschreibt energiereicher als sichtbar."],
       explanation: "Zusammenhang. Frequenz bedeutet: f = c/λ. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Zusammenhang. Frequenz bedeutet: f = c/λ. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Frequenz",
@@ -4795,7 +4820,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:wellenlaenge",
       prompt: "Wozu dient die Wellenlänge?",
-      answer: "Sie ist der Abstand gleicher Phasen einer Welle.", wrong: ["Es beschreibt ein Von Radio bis Gamma, gleiche c.", "Es durchdringt Gewebe bei den behandelten Arten.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
+      answer: "Sie ist der Abstand gleicher Phasen einer Welle.", wrong: ["Es beschreibt ein Von Radio bis Gamma, gleiche c.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen."],
       explanation: "Skala. Wellenlänge bedeutet: Unterscheidet Bereiche. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Skala. Wellenlänge bedeutet: Unterscheidet Bereiche. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Wellenlänge",
@@ -4803,7 +4828,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:sensoren",
       prompt: "Woran erkennt man den Sensoren?",
-      answer: "Es erfassen verschiedene Bereiche bei den behandelten Arten.", wrong: ["Es beschreibt energiereicher als sichtbar bei den behandelten Arten.", "Sie ist der Abstand gleicher Phasen einer Welle.", "Es durchdringt Gewebe bei den behandelten Arten."],
+      answer: "Es erfassen verschiedene Bereiche.", wrong: ["Es beschreibt energiereicher als sichtbar.", "Sie ist der Abstand gleicher Phasen einer Welle.", "Es durchdringt Gewebe."],
       explanation: "Technik. Sensoren bedeutet: Erfassen verschiedene Bereiche. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Technik. Sensoren bedeutet: Erfassen verschiedene Bereiche. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Sensoren",
@@ -4811,7 +4836,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:wahrnehmung",
       prompt: "Was bewirkt die Wahrnehmung?",
-      answer: "Sie lebewesen begrenzt, nicht alles sichtbar.", wrong: ["Es beschreibt schmaler Ausschnitt bei den behandelten Arten.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen."],
+      answer: "Sie lebewesen begrenzt, nicht alles sichtbar.", wrong: ["Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", "Es beschreibt ein Von Radio bis Gamma, gleiche c."],
       explanation: "Nicht alles sichtbar. Wahrnehmung bedeutet: Lebewesen begrenzt. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Nicht alles sichtbar. Wahrnehmung bedeutet: Lebewesen begrenzt. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Wahrnehmung",
@@ -4819,7 +4844,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:gefahr",
       prompt: "Warum ist Strom gefährlich?",
-      answer: "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", wrong: ["Es beschreibt ein Von Radio bis Gamma, gleiche c.", "Es beschreibt schmaler Ausschnitt bei den behandelten Arten.", "Es erfassen verschiedene Bereiche bei den behandelten Arten."],
+      answer: "Hohe Stromstärke und Spannung können Körper und Geräte schwer schädigen.", wrong: ["Es beschreibt ein Von Radio bis Gamma, gleiche c.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Schutz. Gefahr bedeutet: Hochenergetische Strahlung. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Schutz. Gefahr bedeutet: Hochenergetische Strahlung. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Gefahr",
@@ -4827,7 +4852,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:alltag",
       prompt: "Wozu dient das Alltag?",
-      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Es beschreibt energiereicher als sichtbar bei den behandelten Arten.", "Es erfassen verschiedene Bereiche bei den behandelten Arten.", "Es beschreibt ein Mikrowellenbereich bei den behandelten Arten."],
+      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Sie lebewesen begrenzt, nicht alles sichtbar.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport.", "Sie ist der Abstand gleicher Phasen einer Welle."],
       explanation: "Einordnen. Alltag bedeutet: WLAN, Mikrowelle, Licht. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Einordnen. Alltag bedeutet: WLAN, Mikrowelle, Licht. Bezug: Elektromagnetisches Spektrum.",
       flashFront: "Alltag",
@@ -4894,7 +4919,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:radialkraft",
       prompt: "Welche Eigenschaft hat das Radialkraft?",
-      answer: "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt ein Nein, Zentripetalkraft nötig.", "Sie beschreibt v = ω·r bei den behandelten Arten."],
+      answer: "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt ein Nein, Zentripetalkraft nötig.", "Sie beschreibt konstanter Betrag v, Richtungsänderung."],
       explanation: "F = m v²/r. Radialkraft bedeutet: Zum Zentrum gerichtet. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "F = m v²/r. Radialkraft bedeutet: Zum Zentrum gerichtet. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Radialkraft",
@@ -4902,7 +4927,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:winkelgeschwindigkeit",
       prompt: "Woran erkennt man die Winkelgeschwindigkeit?",
-      answer: "Sie beschreibt ω = 2π/T bei den behandelten Arten.", wrong: ["Es beschreibt ein Nein, Zentripetalkraft nötig.", "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
+      answer: "Sie beschreibt ω = 2π/T.", wrong: ["Es beschreibt ein Nein, Zentripetalkraft nötig.", "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
       explanation: "rad/s. Winkelgeschwindigkeit bedeutet: ω = 2π/T. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "rad/s. Winkelgeschwindigkeit bedeutet: ω = 2π/T. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Winkelgeschwindigkeit",
@@ -4910,7 +4935,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:bahngeschwindigkeit",
       prompt: "Mit welchen Mitteln arbeitet die Bahngeschwindigkeit?",
-      answer: "Sie beschreibt v = ω·r bei den behandelten Arten.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt a = v²/r, richtung innen.", "Es satelliten, Karussell bei den behandelten Arten."],
+      answer: "Sie beschreibt v = ω·r.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt a = v²/r, richtung innen.", "Es satelliten, Karussell."],
       explanation: "Umfang/Zeit. Bahngeschwindigkeit bedeutet: v = ω·r. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Umfang/Zeit. Bahngeschwindigkeit bedeutet: v = ω·r. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Bahngeschwindigkeit",
@@ -4918,7 +4943,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:periode",
       prompt: "Welche Eigenschaft hat die Periode?",
-      answer: "Sie beschreibt umlaufdauer T bei den behandelten Arten.", wrong: ["Sie beschreibt kräfte vektoriell bei den behandelten Arten.", "Sie beschreibt konstanter Betrag v, Richtungsänderung.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird."],
+      answer: "Sie beschreibt umlaufdauer T.", wrong: ["Sie beschreibt kräfte vektoriell.", "Sie beschreibt konstanter Betrag v, Richtungsänderung.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird."],
       explanation: "s. Periode bedeutet: Umlaufdauer T. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "s. Periode bedeutet: Umlaufdauer T. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Periode",
@@ -4926,7 +4951,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:zentripetalbeschleunigung",
       prompt: "Was beschreibt „Zentripetalbeschleunigung“?",
-      answer: "Sie beschreibt a = v²/r, richtung innen.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Sie beschreibt umlaufdauer T bei den behandelten Arten.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
+      answer: "Sie beschreibt a = v²/r, richtung innen.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r.", "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen."],
       explanation: "Richtung innen. Zentripetalbeschleunigung bedeutet: a = v²/r. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Richtung innen. Zentripetalbeschleunigung bedeutet: a = v²/r. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Zentripetalbeschleunigung",
@@ -4934,7 +4959,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:bezugssystem",
       prompt: "Wozu dient ein Bezugssystem?",
-      answer: "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", wrong: ["Sie beschreibt v = ω·r bei den behandelten Arten.", "Sie beschreibt umlaufdauer T bei den behandelten Arten.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
+      answer: "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", wrong: ["Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r.", "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Sie beschreibt a = v²/r, richtung innen."],
       explanation: "Scheinkräfte. Bezugssystem bedeutet: Trägheit vs. mitrotierend. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Scheinkräfte. Bezugssystem bedeutet: Trägheit vs. mitrotierend. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Bezugssystem",
@@ -4942,7 +4967,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:beispiel",
       prompt: "Wozu dient der Beispiel?",
-      answer: "Es satelliten, Karussell bei den behandelten Arten.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Sie beschreibt ω = 2π/T bei den behandelten Arten.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
+      answer: "Es satelliten, Karussell.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Sie beschreibt ω = 2π/T.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
       explanation: "Anwendung. Beispiel bedeutet: Satelliten, Karussell. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Anwendung. Beispiel bedeutet: Satelliten, Karussell. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Beispiel",
@@ -4950,7 +4975,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:kraftfreiheit?",
       prompt: "Wozu dient das Kraftfreiheit??",
-      answer: "Es beschreibt ein Nein, Zentripetalkraft nötig.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Sie beschreibt kräfte vektoriell bei den behandelten Arten.", "Sie beschreibt v = ω·r bei den behandelten Arten."],
+      answer: "Es beschreibt ein Nein, Zentripetalkraft nötig.", wrong: ["Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r.", "Sie beschreibt konstanter Betrag v, Richtungsänderung."],
       explanation: "Newton. Kraftfreiheit? bedeutet: Nein, Zentripetalkraft nötig. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Newton. Kraftfreiheit? bedeutet: Nein, Zentripetalkraft nötig. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Kraftfreiheit?",
@@ -4958,7 +4983,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:energie",
       prompt: "Was beschreibt Energie in der Physik?",
-      answer: "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", wrong: ["Es beschreibt ein Nein, Zentripetalkraft nötig.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Sie beschreibt v = ω·r bei den behandelten Arten."],
+      answer: "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", wrong: ["Es beschreibt ein Nein, Zentripetalkraft nötig.", "Es ist der Standpunkt, von dem aus eine Bewegung beschrieben wird.", "Es beschreibt ein Zum Zentrum gerichtet, f = m v²/r."],
       explanation: "Ideal ohne Reibung. Energie bedeutet: Bei konstanter v kinetisch konstant. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Ideal ohne Reibung. Energie bedeutet: Bei konstanter v kinetisch konstant. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Energie",
@@ -4974,7 +4999,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:superposition",
       prompt: "Woran erkennt man die Superposition?",
-      answer: "Sie beschreibt kräfte vektoriell bei den behandelten Arten.", wrong: ["Sie beschreibt v = ω·r bei den behandelten Arten.", "Sie beschreibt a = v²/r, richtung innen.", "Sie beschreibt konstanter Betrag v, Richtungsänderung."],
+      answer: "Sie beschreibt kräfte vektoriell.", wrong: ["Sie beschreibt v = ω·r.", "Sie beschreibt a = v²/r, richtung innen.", "Sie beschreibt konstanter Betrag v, Richtungsänderung."],
       explanation: "Dynamik. Superposition bedeutet: Kräfte vektoriell. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Dynamik. Superposition bedeutet: Kräfte vektoriell. Bezug: Gleichförmige Kreisbewegung.",
       flashFront: "Superposition",
@@ -5033,7 +5058,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:faraday-kaefig",
       prompt: "Was kennzeichnet „Faraday-Käfig“?",
-      answer: "Es ist eine Feld im Leiterinneren ~0 durch Abschirmung.", wrong: ["Es ist eine Feld Zweier Entgegengesetzter Ladungen.", "Es ist eine Richtung der Kraft auf +Probeladung.", "Es ist eine Auto als Käfig Näherungsweise."],
+      answer: "Es beschreibt feld im Leiterinneren ~0.", wrong: ["Es beschreibt ein Feld zweier entgegengesetzter Ladungen.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt."],
       explanation: "Abschirmung. Faraday-Käfig bedeutet: Feld im Leiterinneren ~0. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Abschirmung. Faraday-Käfig bedeutet: Feld im Leiterinneren ~0. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Faraday-Käfig",
@@ -5041,7 +5066,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:dipolfeld",
       prompt: "Mit welchen Mitteln arbeitet das Dipolfeld?",
-      answer: "Es beschreibt ein Feld zweier entgegengesetzter Ladungen.", wrong: ["Es beschreibt parallele Linien bei den behandelten Arten.", "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
+      answer: "Es beschreibt ein Feld zweier entgegengesetzter Ladungen.", wrong: ["Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie beschreibt eine Ladungsverschiebung im Leiter."],
       explanation: "Linienbild. Dipolfeld bedeutet: Feld zweier entgegengesetzter Ladungen. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Linienbild. Dipolfeld bedeutet: Feld zweier entgegengesetzter Ladungen. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Dipolfeld",
@@ -5049,7 +5074,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:feldlinie",
       prompt: "Woran erkennt man die Feldlinie?",
-      answer: "Sie beschreibt eine Richtung der Kraft auf +Probeladung.", wrong: ["Es beschreibt ein Feld im Leiterinneren ~0.", "Sie beschreibt statisch vs. hochfrequent bei den behandelten Arten.", "Es beschreibt parallele Linien bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Richtung der Kraft auf +Probeladung.", wrong: ["Es beschreibt ein Feld im Leiterinneren ~0.", "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", "Es beschreibt ein Feld zweier entgegengesetzter Ladungen."],
       explanation: "Modell. Feldlinie bedeutet: Richtung der Kraft auf +Probeladung. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Modell. Feldlinie bedeutet: Richtung der Kraft auf +Probeladung. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Feldlinie",
@@ -5065,7 +5090,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:influenz",
       prompt: "Woran erkennt man die Influenz?",
-      answer: "Sie beschreibt eine Ladungsverschiebung im Leiter.", wrong: ["Es beschreibt parallele Linien bei den behandelten Arten.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie beschreibt empfindliche Geräte schützen bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Ladungsverschiebung im Leiter.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Er beschreibt ein Auto als Käfig näherungsweise.", "Es beschreibt ein Feld im Leiterinneren ~0."],
       explanation: "Ursache. Influenz bedeutet: Ladungsverschiebung im Leiter. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Ursache. Influenz bedeutet: Ladungsverschiebung im Leiter. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Influenz",
@@ -5081,7 +5106,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:abschirmung",
       prompt: "Wozu dient die Abschirmung?",
-      answer: "Sie beschreibt empfindliche Geräte schützen bei den behandelten Arten.", wrong: ["Sie beschreibt eine Richtung der Kraft auf +Probeladung.", "Sie beschreibt statisch vs. hochfrequent bei den behandelten Arten.", "Sie beschreibt eine Ladungsverschiebung im Leiter."],
+      answer: "Sie beschreibt empfindliche Geräte schützen.", wrong: ["Sie beschreibt eine Richtung der Kraft auf +Probeladung.", "Sie beschreibt statisch vs. hochfrequent.", "Sie beschreibt eine Ladungsverschiebung im Leiter."],
       explanation: "Technik. Abschirmung bedeutet: Empfindliche Geräte schützen. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Technik. Abschirmung bedeutet: Empfindliche Geräte schützen. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Abschirmung",
@@ -5089,7 +5114,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:homogenes-feld",
       prompt: "Was beschreibt „Homogenes Feld“?",
-      answer: "Es beschreibt parallele Linien bei den behandelten Arten.", wrong: ["Er beschreibt ein Auto als Käfig näherungsweise.", "Es beschreibt ein Feld im Leiterinneren ~0.", "Sie beschreibt empfindliche Geräte schützen bei den behandelten Arten."],
+      answer: "Es beschreibt parallele Linien.", wrong: ["Er beschreibt ein Auto als Käfig näherungsweise.", "Es beschreibt ein Feld im Leiterinneren ~0.", "Sie beschreibt empfindliche Geräte schützen."],
       explanation: "Plattenkondensator. Homogenes Feld bedeutet: Parallele Linien. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Plattenkondensator. Homogenes Feld bedeutet: Parallele Linien. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Homogenes Feld",
@@ -5097,7 +5122,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:quelle-senke",
       prompt: "Was beschreibt „Quelle oder Senke“?",
-      answer: "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", wrong: ["Sie beschreibt statisch vs. hochfrequent bei den behandelten Arten.", "Sie beschreibt eine Ladungsverschiebung im Leiter.", "Es beschreibt leiteroberfläche oft gleich bei den behandelten Arten."],
+      answer: "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", wrong: ["Sie beschreibt eine Ladungsverschiebung im Leiter.", "Er beschreibt ein Auto als Käfig näherungsweise.", "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen."],
       explanation: "Feldstruktur. Quelle/Senke bedeutet: Positive/negative Ladung. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Feldstruktur. Quelle/Senke bedeutet: Positive/negative Ladung. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Quelle/Senke",
@@ -5105,7 +5130,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:versuch",
       prompt: "Mit welchen Mitteln arbeitet das Versuch?",
-      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Es beschreibt leiteroberfläche oft gleich bei den behandelten Arten.", "Sie beschreibt eine Ladungsverschiebung im Leiter.", "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt."],
+      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Sie beschreibt eine Ladungsverschiebung im Leiter.", "Sie gilt als ein Überrest oder eine Tradition, die über die Vergangenheit Auskunft gibt.", "Er beschreibt ein Auto als Käfig näherungsweise."],
       explanation: "Nachweis. Versuch bedeutet: Käfig und Elektroskop. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Nachweis. Versuch bedeutet: Käfig und Elektroskop. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Versuch",
@@ -5113,7 +5138,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:alltag",
       prompt: "Was kennzeichnet „Alltag“?",
-      answer: "Das Alltag ist das Kabelabschirmung.", wrong: ["Es ist eine Statisch vs. hochfrequent.", "Es ist eine Feld im Leiterinneren ~0.", "Es ist eine Feld Zweier Entgegengesetzter Ladungen."],
+      answer: "Es zeigt Weg-Zeit-Zusammenhänge an vertrauten Bewegungsbeispielen.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie beschreibt eine Ladungsverschiebung im Leiter.", "Es beschreibt ein Feld im Leiterinneren ~0."],
       explanation: "EMV. Alltag bedeutet: Kabelabschirmung. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "EMV. Alltag bedeutet: Kabelabschirmung. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Alltag",
@@ -5121,7 +5146,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:grenze",
       prompt: "Woran erkennt man die Grenze?",
-      answer: "Sie beschreibt statisch vs. hochfrequent bei den behandelten Arten.", wrong: ["Sie beschreibt empfindliche Geräte schützen bei den behandelten Arten.", "Es beschreibt leiteroberfläche oft gleich bei den behandelten Arten.", "Es beschreibt ein Feld zweier entgegengesetzter Ladungen."],
+      answer: "Sie beschreibt statisch vs. hochfrequent.", wrong: ["Sie beschreibt empfindliche Geräte schützen.", "Es beschreibt leiteroberfläche oft gleich.", "Es beschreibt ein Feld zweier entgegengesetzter Ladungen."],
       explanation: "Modellgrenzen. Grenze bedeutet: Statisch vs. hochfrequent. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Modellgrenzen. Grenze bedeutet: Statisch vs. hochfrequent. Bezug: Faraday-Käfig und Dipolfeld.",
       flashFront: "Grenze",
@@ -5196,7 +5221,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:beschleunigung",
       prompt: "Was bewirkt eine Beschleunigung?",
-      answer: "Sie ändert die Geschwindigkeit pro Zeit und wird später genauer behandelt.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt ein Parabel im Querfeld.", "Es beschreibt E = U/d bei den behandelten Arten."],
+      answer: "Sie ändert die Geschwindigkeit pro Zeit und wird später genauer behandelt.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt ein Parabel im Querfeld.", "Sie beschreibt E = F/q, kraft pro Ladung."],
       explanation: "Zwischen Elektroden. Beschleunigung bedeutet: q·U = ΔE_kin. Bezug: Energie im elektrischen Feld.",
       wissen: "Zwischen Elektroden. Beschleunigung bedeutet: q·U = ΔE_kin. Bezug: Energie im elektrischen Feld.",
       flashFront: "Beschleunigung",
@@ -5204,7 +5229,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:feldstaerke",
       prompt: "Welche Eigenschaft hat die Feldstärke?",
-      answer: "Sie beschreibt E = F/q, kraft pro Ladung.", wrong: ["Es beschreibt E = U/d bei den behandelten Arten.", "Er speichert elektrische Energie gemäß E_el = ½ C U².", "Es beschreibt ein Parabel im Querfeld."],
+      answer: "Sie beschreibt E = F/q, kraft pro Ladung.", wrong: ["Er speichert elektrische Energie gemäß E_el = ½ C U².", "Es beschreibt ein Parabel im Querfeld.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Kraft pro Ladung. Feldstärke bedeutet: E = F/q. Bezug: Energie im elektrischen Feld.",
       wissen: "Kraft pro Ladung. Feldstärke bedeutet: E = F/q. Bezug: Energie im elektrischen Feld.",
       flashFront: "Feldstärke",
@@ -5220,7 +5245,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:arbeit",
       prompt: "Was beschreibt mechanische Arbeit?",
-      answer: "Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", wrong: ["Es beschreibt E = U/d bei den behandelten Arten.", "Es beschreibt ladungsvorzeichen beachten bei den behandelten Arten.", "Sie elektronenröhren historisch bei den behandelten Arten."],
+      answer: "Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", wrong: ["Sie beschreibt E = F/q, kraft pro Ladung.", "Sie beschreibt E_pot = q·U, im E-Feld.", "Er speichert elektrische Energie gemäß E_el = ½ C U²."],
       explanation: "Entlang Feld. Arbeit bedeutet: W = q·E·s. Bezug: Energie im elektrischen Feld.",
       wissen: "Entlang Feld. Arbeit bedeutet: W = q·E·s. Bezug: Energie im elektrischen Feld.",
       flashFront: "Arbeit",
@@ -5228,7 +5253,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:vorzeichen",
       prompt: "Wozu dient das Vorzeichen?",
-      answer: "Es beschreibt ladungsvorzeichen beachten bei den behandelten Arten.", wrong: ["Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt E = F/q, kraft pro Ladung."],
+      answer: "Es beschreibt ladungsvorzeichen beachten.", wrong: ["Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt E = F/q, kraft pro Ladung."],
       explanation: "Richtung. Vorzeichen bedeutet: Ladungsvorzeichen beachten. Bezug: Energie im elektrischen Feld.",
       wissen: "Richtung. Vorzeichen bedeutet: Ladungsvorzeichen beachten. Bezug: Energie im elektrischen Feld.",
       flashFront: "Vorzeichen",
@@ -5236,7 +5261,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:kondensator",
       prompt: "Wozu dient der Kondensator?",
-      answer: "Er speichert elektrische Energie gemäß E_el = ½ C U².", wrong: ["Es beschreibt E = U/d bei den behandelten Arten.", "Es beschreibt ein Parabel im Querfeld.", "Sie beschreibt E_pot = q·U, im E-Feld."],
+      answer: "Er speichert elektrische Energie gemäß E_el = ½ C U².", wrong: ["Es beschreibt ein Parabel im Querfeld.", "Sie beschreibt E_pot = q·U, im E-Feld.", "Sie beschreibt E = F/q, kraft pro Ladung."],
       explanation: "Energie. Kondensator bedeutet: Speichert E_el = ½ C U². Bezug: Energie im elektrischen Feld.",
       wissen: "Energie. Kondensator bedeutet: Speichert E_el = ½ C U². Bezug: Energie im elektrischen Feld.",
       flashFront: "Kondensator",
@@ -5244,7 +5269,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:teilchenbahn",
       prompt: "Was beschreibt „Teilchenbahn“?",
-      answer: "Es beschreibt ein Parabel im Querfeld.", wrong: ["Es beschreibt E = U/d bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie ändert die Geschwindigkeit pro Zeit und wird später genauer behandelt."],
+      answer: "Es beschreibt ein Parabel im Querfeld.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie ändert die Geschwindigkeit pro Zeit und wird später genauer behandelt.", "Er speichert elektrische Energie gemäß E_el = ½ C U²."],
       explanation: "Ablenkung. Teilchenbahn bedeutet: Parabel im Querfeld. Bezug: Energie im elektrischen Feld.",
       wissen: "Ablenkung. Teilchenbahn bedeutet: Parabel im Querfeld. Bezug: Energie im elektrischen Feld.",
       flashFront: "Teilchenbahn",
@@ -5252,7 +5277,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", "Es beschreibt E = U/d bei den behandelten Arten.", "Es beschreibt 1 eV = e·1 V."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt die Energieübertragung durch Kraft und Weg, oft mit W = F · s.", "Es beschreibt 1 eV = e·1 V.", "Sie beschreibt E = F/q, kraft pro Ladung."],
       explanation: "Versuch. Messung bedeutet: Spannung und Weg. Bezug: Energie im elektrischen Feld.",
       wissen: "Versuch. Messung bedeutet: Spannung und Weg. Bezug: Energie im elektrischen Feld.",
       flashFront: "Messung",
@@ -5260,7 +5285,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ev:fact:anwendung",
       prompt: "Woran erkennt man die Anwendung?",
-      answer: "Sie elektronenröhren historisch bei den behandelten Arten.", wrong: ["Es beschreibt ladungsvorzeichen beachten bei den behandelten Arten.", "Es beschreibt 1 eV = e·1 V.", "Die Energieform ändert sich, während die Gesamtenergie erhalten bleibt."],
+      answer: "Sie elektronenröhren historisch.", wrong: ["Es beschreibt ladungsvorzeichen beachten.", "Es beschreibt 1 eV = e·1 V.", "Die Energieform ändert sich, während die Gesamtenergie erhalten bleibt."],
       explanation: "Technik. Anwendung bedeutet: Elektronenröhren historisch. Bezug: Energie im elektrischen Feld.",
       wissen: "Technik. Anwendung bedeutet: Elektronenröhren historisch. Bezug: Energie im elektrischen Feld.",
       flashFront: "Anwendung",
@@ -5327,7 +5352,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:millikan",
       prompt: "Welche Eigenschaft hat das Millikan?",
-      answer: "Es beschreibt eine Bestimmung der Elementarladung.", wrong: ["Sie beschreibt eine Ladung = n·e.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e genau bekannt bei den behandelten Arten."],
+      answer: "Es beschreibt eine Bestimmung der Elementarladung.", wrong: ["Sie beschreibt eine Ladung = n·e.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C."],
       explanation: "Öltröpfchen. Millikan bedeutet: Bestimmung der Elementarladung. Bezug: Millikan-Versuch.",
       wissen: "Öltröpfchen. Millikan bedeutet: Bestimmung der Elementarladung. Bezug: Millikan-Versuch.",
       flashFront: "Millikan",
@@ -5335,7 +5360,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:elementarladung",
       prompt: "Was beschreibt „Elementarladung“?",
-      answer: "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Es beschreibt grundlage Atomistik bei den behandelten Arten.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
+      answer: "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt eine Ladung = n·e."],
       explanation: "Quantelung. Elementarladung bedeutet: e ≈ 1,6·10⁻¹⁹ C. Bezug: Millikan-Versuch.",
       wissen: "Quantelung. Elementarladung bedeutet: e ≈ 1,6·10⁻¹⁹ C. Bezug: Millikan-Versuch.",
       flashFront: "Elementarladung",
@@ -5343,7 +5368,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:gleichgewicht",
       prompt: "Woran erkennt man mechanisches Gleichgewicht?",
-      answer: "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", wrong: ["Es beschreibt eine Bestimmung der Elementarladung.", "Sie beschreibt mg = qE bei den behandelten Arten.", "Sie beschreibt eine Ladung = n·e."],
+      answer: "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", wrong: ["Es beschreibt eine Bestimmung der Elementarladung.", "Sie beschreibt eine Ladung = n·e.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C."],
       explanation: "Schweben. Gleichgewicht bedeutet: Gewicht = elektrische Kraft. Bezug: Millikan-Versuch.",
       wissen: "Schweben. Gleichgewicht bedeutet: Gewicht = elektrische Kraft. Bezug: Millikan-Versuch.",
       flashFront: "Gleichgewicht",
@@ -5351,7 +5376,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:oeltroepfchen",
       prompt: "Welche Eigenschaft hat das Öltröpfchen?",
-      answer: "Es beschreibt kleine geladene Tropfen bei den behandelten Arten.", wrong: ["Es beschreibt grundlage Atomistik bei den behandelten Arten.", "Es beschreibt eine Bestimmung der Elementarladung.", "Es beschreibt homogenes Plattenfeld bei den behandelten Arten."],
+      answer: "Es beschreibt kleine geladene Tropfen.", wrong: ["Es beschreibt grundlage Atomistik.", "Es beschreibt eine Bestimmung der Elementarladung.", "Es beschreibt homogenes Plattenfeld."],
       explanation: "Versuch. Öltröpfchen bedeutet: Kleine geladene Tropfen. Bezug: Millikan-Versuch.",
       wissen: "Versuch. Öltröpfchen bedeutet: Kleine geladene Tropfen. Bezug: Millikan-Versuch.",
       flashFront: "Öltröpfchen",
@@ -5359,7 +5384,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:quantelung",
       prompt: "Wozu dient die Quantelung?",
-      answer: "Sie beschreibt eine Ladung = n·e.", wrong: ["Es beschreibt q = mg/E bei den behandelten Arten.", "Sie beschreibt eine Radius/Viskosität bei den behandelten Arten.", "Sie beschreibt mg = qE bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Ladung = n·e.", wrong: ["Es beschreibt eine Bestimmung der Elementarladung.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
       explanation: "Ganzzahlig. Quantelung bedeutet: Ladung = n·e. Bezug: Millikan-Versuch.",
       wissen: "Ganzzahlig. Quantelung bedeutet: Ladung = n·e. Bezug: Millikan-Versuch.",
       flashFront: "Quantelung",
@@ -5367,7 +5392,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:feld",
       prompt: "Woran erkennt man das Feld?",
-      answer: "Es beschreibt homogenes Plattenfeld bei den behandelten Arten.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Sie beschreibt mg = qE bei den behandelten Arten."],
+      answer: "Es beschreibt homogenes Plattenfeld.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Sie beschreibt mg = qE."],
       explanation: "Steuerung. Feld bedeutet: Homogenes Plattenfeld. Bezug: Millikan-Versuch.",
       wissen: "Steuerung. Feld bedeutet: Homogenes Plattenfeld. Bezug: Millikan-Versuch.",
       flashFront: "Feld",
@@ -5375,7 +5400,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:messunsicherheit",
       prompt: "Was bewirkt die Messunsicherheit?",
-      answer: "Sie beschreibt eine Radius/Viskosität bei den behandelten Arten.", wrong: ["Es beschreibt grundlage Atomistik bei den behandelten Arten.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Es beschreibt eine Bestimmung der Elementarladung."],
+      answer: "Sie beschreibt eine Radius/Viskosität.", wrong: ["Es beschreibt grundlage Atomistik.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Es beschreibt eine Bestimmung der Elementarladung."],
       explanation: "Fehlerquellen. Messunsicherheit bedeutet: Radius/Viskosität. Bezug: Millikan-Versuch.",
       wissen: "Fehlerquellen. Messunsicherheit bedeutet: Radius/Viskosität. Bezug: Millikan-Versuch.",
       flashFront: "Messunsicherheit",
@@ -5383,7 +5408,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:historisch",
       prompt: "Woran erkennt man das Historisch?",
-      answer: "Es beschreibt grundlage Atomistik bei den behandelten Arten.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Es beschreibt q = mg/E bei den behandelten Arten."],
+      answer: "Es beschreibt grundlage Atomistik.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Es beschreibt q = mg/E."],
       explanation: "Bedeutung. Historisch bedeutet: Grundlage Atomistik. Bezug: Millikan-Versuch.",
       wissen: "Bedeutung. Historisch bedeutet: Grundlage Atomistik. Bezug: Millikan-Versuch.",
       flashFront: "Historisch",
@@ -5391,7 +5416,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:kraftbilanz",
       prompt: "Mit welchen Mitteln arbeitet die Kraftbilanz?",
-      answer: "Sie beschreibt mg = qE bei den behandelten Arten.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Es beschreibt kleine geladene Tropfen bei den behandelten Arten.", "Sie beschreibt e genau bekannt bei den behandelten Arten."],
+      answer: "Sie beschreibt mg = qE.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Es beschreibt kleine geladene Tropfen.", "Sie beschreibt e genau bekannt."],
       explanation: "Idealfall. Kraftbilanz bedeutet: mg = qE. Bezug: Millikan-Versuch.",
       wissen: "Idealfall. Kraftbilanz bedeutet: mg = qE. Bezug: Millikan-Versuch.",
       flashFront: "Kraftbilanz",
@@ -5399,7 +5424,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:ladung-bestimmen",
       prompt: "Was beschreibt „Ladung bestimmen“?",
-      answer: "Es beschreibt q = mg/E bei den behandelten Arten.", wrong: ["Sie beschreibt e genau bekannt bei den behandelten Arten.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Sie beschreibt eine Radius/Viskosität bei den behandelten Arten."],
+      answer: "Es beschreibt q = mg/E.", wrong: ["Sie beschreibt e genau bekannt.", "Sie beschreibt e ≈ 1,6·10⁻¹⁹ C.", "Sie beschreibt eine Radius/Viskosität."],
       explanation: "Auswertung. Ladung bestimmen bedeutet: q = mg/E. Bezug: Millikan-Versuch.",
       wissen: "Auswertung. Ladung bestimmen bedeutet: q = mg/E. Bezug: Millikan-Versuch.",
       flashFront: "Ladung bestimmen",
@@ -5407,7 +5432,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:wiederholung",
       prompt: "Wozu wiederholt man Messungen?",
-      answer: "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", wrong: ["Sie beschreibt eine Ladung = n·e.", "Es beschreibt eine Bestimmung der Elementarladung.", "Sie beschreibt mg = qE bei den behandelten Arten."],
+      answer: "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", wrong: ["Sie beschreibt eine Ladung = n·e.", "Es beschreibt eine Bestimmung der Elementarladung.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt."],
       explanation: "Statistik. Wiederholung bedeutet: Viele Tropfen messen. Bezug: Millikan-Versuch.",
       wissen: "Statistik. Wiederholung bedeutet: Viele Tropfen messen. Bezug: Millikan-Versuch.",
       flashFront: "Wiederholung",
@@ -5415,7 +5440,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:heute",
       prompt: "Woran erkennt man die Heute?",
-      answer: "Sie beschreibt e genau bekannt bei den behandelten Arten.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Es beschreibt homogenes Plattenfeld bei den behandelten Arten.", "Es beschreibt grundlage Atomistik bei den behandelten Arten."],
+      answer: "Sie beschreibt e genau bekannt.", wrong: ["Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", "Es beschreibt homogenes Plattenfeld.", "Es beschreibt grundlage Atomistik."],
       explanation: "Konstante. Heute bedeutet: e genau bekannt. Bezug: Millikan-Versuch.",
       wissen: "Konstante. Heute bedeutet: e genau bekannt. Bezug: Millikan-Versuch.",
       flashFront: "Heute",
@@ -5482,7 +5507,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:parabelbahn",
       prompt: "Mit welchen Mitteln arbeitet das Parabelbahn?",
-      answer: "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", wrong: ["Es beschreibt ein Elektronenstrahl bei den behandelten Arten.", "Er beschreibt teilchen gewinnen Energie bei den behandelten Arten.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
+      answer: "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit.", "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen."],
       explanation: "Superposition. Parabelbahn bedeutet: Überlagerung geradlinig + beschleunigt. Bezug: Ablenkung im Querfeld.",
       wissen: "Superposition. Parabelbahn bedeutet: Überlagerung geradlinig + beschleunigt. Bezug: Ablenkung im Querfeld.",
       flashFront: "Parabelbahn",
@@ -5490,7 +5515,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:beschleuniger",
       prompt: "Welche Eigenschaft hat der Beschleuniger?",
-      answer: "Er beschreibt teilchen gewinnen Energie bei den behandelten Arten.", wrong: ["Es beschreibt ein Lorentz vs qE.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
+      answer: "Er beschreibt teilchen gewinnen Energie.", wrong: ["Es beschreibt ein Lorentz vs qE.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Technik. Beschleuniger bedeutet: Teilchen gewinnen Energie. Bezug: Ablenkung im Querfeld.",
       wissen: "Technik. Beschleuniger bedeutet: Teilchen gewinnen Energie. Bezug: Ablenkung im Querfeld.",
       flashFront: "Beschleuniger",
@@ -5498,7 +5523,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:ablenkung",
       prompt: "Was beschreibt „Ablenkung“?",
-      answer: "Sie beschreibt abhängig von q, E, v.", wrong: ["Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt ein Nuklearmedizin/Therapie-Idee bei den behandelten Arten."],
+      answer: "Sie beschreibt abhängig von q, E, v.", wrong: ["Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit."],
       explanation: "Steuerung. Ablenkung bedeutet: Abhängig von q, E, v. Bezug: Ablenkung im Querfeld.",
       wissen: "Steuerung. Ablenkung bedeutet: Abhängig von q, E, v. Bezug: Ablenkung im Querfeld.",
       flashFront: "Ablenkung",
@@ -5506,7 +5531,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:spezifische-ladung",
       prompt: "Was beschreibt „Spezifische Ladung“?",
-      answer: "Sie beschreibt q/m bei den behandelten Arten.", wrong: ["Es beschreibt ein Lorentz vs qE.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit.", "Er beschreibt teilchen gewinnen Energie bei den behandelten Arten."],
+      answer: "Sie beschreibt q/m.", wrong: ["Es beschreibt ein Lorentz vs qE.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit.", "Er beschreibt teilchen gewinnen Energie."],
       explanation: "Bahnradius/Zeit. Spezifische Ladung bedeutet: q/m. Bezug: Ablenkung im Querfeld.",
       wissen: "Bahnradius/Zeit. Spezifische Ladung bedeutet: q/m. Bezug: Ablenkung im Querfeld.",
       flashFront: "Spezifische Ladung",
@@ -5514,7 +5539,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:kathodenstrahl",
       prompt: "Was beschreibt „Kathodenstrahl“?",
-      answer: "Es beschreibt ein Elektronenstrahl bei den behandelten Arten.", wrong: ["Sie beschreibt abhängig von q, E, v.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
+      answer: "Es beschreibt ein Elektronenstrahl.", wrong: ["Sie beschreibt abhängig von q, E, v.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Historisch. Kathodenstrahl bedeutet: Elektronenstrahl. Bezug: Ablenkung im Querfeld.",
       wissen: "Historisch. Kathodenstrahl bedeutet: Elektronenstrahl. Bezug: Ablenkung im Querfeld.",
       flashFront: "Kathodenstrahl",
@@ -5530,7 +5555,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:medizin",
       prompt: "Mit welchen Mitteln arbeitet das Medizin?",
-      answer: "Es beschreibt ein Nuklearmedizin/Therapie-Idee bei den behandelten Arten.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt abhängig von q, E, v.", "Es beschreibt ein Elektronenstrahl bei den behandelten Arten."],
+      answer: "Es beschreibt ein Nuklearmedizin/Therapie-Idee.", wrong: ["Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein.", "Sie beschreibt abhängig von q, E, v.", "Es beschreibt ein Elektronenstrahl."],
       explanation: "Anwendung. Medizin bedeutet: Nuklearmedizin/Therapie-Idee. Bezug: Ablenkung im Querfeld.",
       wissen: "Anwendung. Medizin bedeutet: Nuklearmedizin/Therapie-Idee. Bezug: Ablenkung im Querfeld.",
       flashFront: "Medizin",
@@ -5538,7 +5563,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt q/m bei den behandelten Arten.", "Er beschreibt teilchen gewinnen Energie bei den behandelten Arten.", "Sie beschreibt abhängig von q, E, v."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt abhängig von q, E, v.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt.", "Es beschreibt ein Lorentz vs qE."],
       explanation: "Versuch. Messung bedeutet: Ablenkweite auf Schirm. Bezug: Ablenkung im Querfeld.",
       wissen: "Versuch. Messung bedeutet: Ablenkweite auf Schirm. Bezug: Ablenkung im Querfeld.",
       flashFront: "Messung",
@@ -5546,7 +5571,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:energie",
       prompt: "Was beschreibt Energie in der Physik?",
-      answer: "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", wrong: ["Er beschreibt teilchen gewinnen Energie bei den behandelten Arten.", "Sie beschreibt abhängig von q, E, v.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit."],
+      answer: "Sie beschreibt die Fähigkeit, Arbeit zu verrichten, und wird in Joule gemessen.", wrong: ["Sie beschreibt abhängig von q, E, v.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit.", "Es beschreibt eine Überlagerung geradlinig + beschleunigt."],
       explanation: "Beschleunigungsstrecke. Energie bedeutet: qU = ΔE_kin längs. Bezug: Ablenkung im Querfeld.",
       wissen: "Beschleunigungsstrecke. Energie bedeutet: qU = ΔE_kin längs. Bezug: Ablenkung im Querfeld.",
       flashFront: "Energie",
@@ -5554,7 +5579,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:magnet-vs-elektrisch",
       prompt: "Was kennzeichnet „Magnet vs elektrisch“?",
-      answer: "Es ist eine Lorentz vs QE durch Vergleich.", wrong: ["Das Magnet vs elektrisch ist das Hochspannung.", "Es ist eine E Senkrecht zur Anfangsgeschwindigkeit.", "Es ist eine Überlagerung Geradlinig + Beschleunigt."],
+      answer: "Es beschreibt ein Lorentz vs qE.", wrong: ["Das Magnet vs elektrisch ist das Hochspannung.", "Es beschreibt E senkrecht zur Anfangsgeschwindigkeit.", "Man nutzt Schutzausrüstung und hält die geltenden Vorschriften ein."],
       explanation: "Vergleich. Magnet vs elektrisch bedeutet: Lorentz vs qE. Bezug: Ablenkung im Querfeld.",
       wissen: "Vergleich. Magnet vs elektrisch bedeutet: Lorentz vs qE. Bezug: Ablenkung im Querfeld.",
       flashFront: "Magnet vs elektrisch",
@@ -5621,7 +5646,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:induktionsgesetz",
       prompt: "Was beschreibt „Induktionsgesetz“?",
-      answer: "Es beschreibt U_ind = −N ΔΦ/Δt.", wrong: ["Es beschreibt N multipliziert U bei den behandelten Arten.", "Es beschreibt Φ = B·A, bei senkrecht.", "Es beschreibt eine Lenz-Richtung bei den behandelten Arten."],
+      answer: "Es beschreibt U_ind = −N ΔΦ/Δt.", wrong: ["Es beschreibt Φ = B·A, bei senkrecht.", "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Kernformel. Induktionsgesetz bedeutet: U_ind = −N ΔΦ/Δt. Bezug: Induktionsgesetz GK.",
       wissen: "Kernformel. Induktionsgesetz bedeutet: U_ind = −N ΔΦ/Δt. Bezug: Induktionsgesetz GK.",
       flashFront: "Induktionsgesetz",
@@ -5637,7 +5662,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:generatorprinzip",
       prompt: "Was beschreibt „Generatorprinzip“?",
-      answer: "Es beschreibt eine Mechanik → elektrisch.", wrong: ["Sie beschreibt eine Induktion kostet Arbeit.", "Es beschreibt Φ = B·A, bei senkrecht.", "Es beschreibt N multipliziert U bei den behandelten Arten."],
+      answer: "Es beschreibt eine Mechanik → elektrisch.", wrong: ["Sie beschreibt eine Induktion kostet Arbeit.", "Es beschreibt Φ = B·A, bei senkrecht.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Kraftwerk. Generatorprinzip bedeutet: Mechanik → elektrisch. Bezug: Induktionsgesetz GK.",
       wissen: "Kraftwerk. Generatorprinzip bedeutet: Mechanik → elektrisch. Bezug: Induktionsgesetz GK.",
       flashFront: "Generatorprinzip",
@@ -5645,7 +5670,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:transformatorprinzip",
       prompt: "Woran erkennt man das Transformatorprinzip?",
-      answer: "Es beschreibt eine Wechselspannung übersetzen bei den behandelten Arten.", wrong: ["Es beschreibt eine Mechanik → elektrisch.", "Es beschreibt Φ = B·A, bei senkrecht.", "Sie beschreibt eine Induktion kostet Arbeit."],
+      answer: "Es beschreibt eine Wechselspannung übersetzen.", wrong: ["Es beschreibt eine Mechanik → elektrisch.", "Es beschreibt Φ = B·A, bei senkrecht.", "Sie beschreibt eine Induktion kostet Arbeit."],
       explanation: "Netz. Transformatorprinzip bedeutet: Wechselspannung übersetzen. Bezug: Induktionsgesetz GK.",
       wissen: "Netz. Transformatorprinzip bedeutet: Wechselspannung übersetzen. Bezug: Induktionsgesetz GK.",
       flashFront: "Transformatorprinzip",
@@ -5653,7 +5678,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:flussaenderung",
       prompt: "Was bewirkt die Flussänderung?",
-      answer: "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege.", wrong: ["Sie beschreibt eine Induktionsherd bei den behandelten Arten.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt eine Wechselspannung übersetzen bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie beschreibt eine Induktion kostet Arbeit.", "Er beschreibt schnellere Änderung → größere U."],
       explanation: "Drei Wege. Flussänderung bedeutet: Durch B oder A oder Winkel. Bezug: Induktionsgesetz GK.",
       wissen: "Drei Wege. Flussänderung bedeutet: Durch B oder A oder Winkel. Bezug: Induktionsgesetz GK.",
       flashFront: "Flussänderung",
@@ -5661,7 +5686,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:windungszahl",
       prompt: "Welche Eigenschaft hat das Windungszahl?",
-      answer: "Es beschreibt N multipliziert U bei den behandelten Arten.", wrong: ["Es beschreibt eine Lenz-Richtung bei den behandelten Arten.", "Sie beschreibt periodische Änderung, sinus grob.", "Er beschreibt schnellere Änderung → größere U."],
+      answer: "Es beschreibt N multipliziert U.", wrong: ["Es beschreibt eine Lenz-Richtung.", "Sie beschreibt periodische Änderung, sinus grob.", "Er beschreibt schnellere Änderung → größere U."],
       explanation: "Spule. Windungszahl bedeutet: N multipliziert U. Bezug: Induktionsgesetz GK.",
       wissen: "Spule. Windungszahl bedeutet: N multipliziert U. Bezug: Induktionsgesetz GK.",
       flashFront: "Windungszahl",
@@ -5669,7 +5694,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:energieerhaltung",
       prompt: "Was beschreibt „Energieerhaltung“?",
-      answer: "Sie beschreibt eine Induktion kostet Arbeit.", wrong: ["Es beschreibt eine Mechanik → elektrisch.", "Es beschreibt N multipliziert U bei den behandelten Arten.", "Es beschreibt eine Lenz-Richtung bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Induktion kostet Arbeit.", wrong: ["Es beschreibt eine Mechanik → elektrisch.", "Er beschreibt schnellere Änderung → größere U.", "Es beschreibt U_ind = −N ΔΦ/Δt."],
       explanation: "Lenz. Energieerhaltung bedeutet: Induktion kostet Arbeit. Bezug: Induktionsgesetz GK.",
       wissen: "Lenz. Energieerhaltung bedeutet: Induktion kostet Arbeit. Bezug: Induktionsgesetz GK.",
       flashFront: "Energieerhaltung",
@@ -5677,7 +5702,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:versuch",
       prompt: "Woran erkennt man das Versuch?",
-      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt Φ = B·A, bei senkrecht.", "Es beschreibt eine Lenz-Richtung bei den behandelten Arten."],
+      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt Φ = B·A, bei senkrecht.", "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege."],
       explanation: "Nachweis. Versuch bedeutet: Spule + Magnet. Bezug: Induktionsgesetz GK.",
       wissen: "Nachweis. Versuch bedeutet: Spule + Magnet. Bezug: Induktionsgesetz GK.",
       flashFront: "Versuch",
@@ -5685,7 +5710,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:wechselspannung",
       prompt: "Was beschreibt „Wechselspannung“?",
-      answer: "Sie beschreibt periodische Änderung, sinus grob.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt eine Wechselspannung übersetzen bei den behandelten Arten.", "Er beschreibt schnellere Änderung → größere U."],
+      answer: "Sie beschreibt periodische Änderung, sinus grob.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Er beschreibt schnellere Änderung → größere U.", "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege."],
       explanation: "Sinus grob. Wechselspannung bedeutet: Periodische Änderung. Bezug: Induktionsgesetz GK.",
       wissen: "Sinus grob. Wechselspannung bedeutet: Periodische Änderung. Bezug: Induktionsgesetz GK.",
       flashFront: "Wechselspannung",
@@ -5693,7 +5718,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:anwendung",
       prompt: "Wozu dient die Anwendung?",
-      answer: "Sie beschreibt eine Induktionsherd bei den behandelten Arten.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt U_ind = −N ΔΦ/Δt.", "Es beschreibt eine Lenz-Richtung bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Induktionsherd.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt U_ind = −N ΔΦ/Δt.", "Es beschreibt eine Lenz-Richtung."],
       explanation: "Wirbelströme. Anwendung bedeutet: Induktionsherd. Bezug: Induktionsgesetz GK.",
       wissen: "Wirbelströme. Anwendung bedeutet: Induktionsherd. Bezug: Induktionsgesetz GK.",
       flashFront: "Anwendung",
@@ -5701,7 +5726,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:parameter",
       prompt: "Wozu dient der Parameter?",
-      answer: "Er beschreibt schnellere Änderung → größere U.", wrong: ["Sie beschreibt eine Induktion kostet Arbeit.", "Sie beschreibt eine Induktionsherd bei den behandelten Arten.", "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege."],
+      answer: "Er beschreibt schnellere Änderung → größere U.", wrong: ["Sie beschreibt eine Induktion kostet Arbeit.", "Sie beschreibt eine Durch B oder A oder Winkel, drei Wege.", "Sie beschreibt periodische Änderung, sinus grob."],
       explanation: "Δt. Parameter bedeutet: Schnellere Änderung → größere U. Bezug: Induktionsgesetz GK.",
       wissen: "Δt. Parameter bedeutet: Schnellere Änderung → größere U. Bezug: Induktionsgesetz GK.",
       flashFront: "Parameter",
@@ -5709,7 +5734,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:vorzeichen",
       prompt: "Was beschreibt „Vorzeichen“?",
-      answer: "Es beschreibt eine Lenz-Richtung bei den behandelten Arten.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt U_ind = −N ΔΦ/Δt.", "Sie beschreibt periodische Änderung, sinus grob."],
+      answer: "Es beschreibt eine Lenz-Richtung.", wrong: ["Er beschreibt schnellere Änderung → größere U.", "Es beschreibt U_ind = −N ΔΦ/Δt.", "Sie beschreibt periodische Änderung, sinus grob."],
       explanation: "Minus. Vorzeichen bedeutet: Lenz-Richtung. Bezug: Induktionsgesetz GK.",
       wissen: "Minus. Vorzeichen bedeutet: Lenz-Richtung. Bezug: Induktionsgesetz GK.",
       flashFront: "Vorzeichen",
@@ -5768,7 +5793,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:lenzsches-gesetz",
       prompt: "Wozu dient das Lenz’sches Gesetz?",
-      answer: "Es beschreibt eine Induktion wirkt der Ursache entgegen.", wrong: ["Sie beschreibt kreisströme in Massivleitern bei den behandelten Arten.", "Sie beschreibt eine In Kupferröhre gebremst.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
+      answer: "Es beschreibt eine Induktion wirkt der Ursache entgegen.", wrong: ["Sie beschreibt eine In Kupferröhre gebremst.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Sie beschreibt keine Energie aus dem Nichts."],
       explanation: "Richtung. Lenz’sches Gesetz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Lenz’sches Gesetz.",
       wissen: "Richtung. Lenz’sches Gesetz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Lenz’sches Gesetz.",
       flashFront: "Lenz’sches Gesetz",
@@ -5776,7 +5801,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:energieerhaltung",
       prompt: "Wozu dient die Energieerhaltung?",
-      answer: "Sie beschreibt keine Energie aus dem Nichts.", wrong: ["Es beschreibt ein Minus im Induktionsgesetz.", "Es beschreibt wärme durch Wirbel bei den behandelten Arten.", "Sie beschreibt eine Selbstinduktion bei den behandelten Arten."],
+      answer: "Sie beschreibt keine Energie aus dem Nichts.", wrong: ["Es beschreibt ein Minus im Induktionsgesetz.", "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Es beschreibt eine Induktion wirkt der Ursache entgegen."],
       explanation: "Begründung. Energieerhaltung bedeutet: Keine Energie aus dem Nichts. Bezug: Lenz’sches Gesetz.",
       wissen: "Begründung. Energieerhaltung bedeutet: Keine Energie aus dem Nichts. Bezug: Lenz’sches Gesetz.",
       flashFront: "Energieerhaltung",
@@ -5784,7 +5809,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:wirbelstroeme",
       prompt: "Woran erkennt man die Wirbelströme?",
-      answer: "Sie beschreibt kreisströme in Massivleitern bei den behandelten Arten.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt wirbelströme erwärmen Topf bei den behandelten Arten.", "Sie beschreibt keine Energie aus dem Nichts."],
+      answer: "Sie beschreibt kreisströme in Massivleitern.", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt wirbelströme erwärmen Topf.", "Sie beschreibt keine Energie aus dem Nichts."],
       explanation: "Bremst. Wirbelströme bedeutet: Kreisströme in Massivleitern. Bezug: Lenz’sches Gesetz.",
       wissen: "Bremst. Wirbelströme bedeutet: Kreisströme in Massivleitern. Bezug: Lenz’sches Gesetz.",
       flashFront: "Wirbelströme",
@@ -5792,7 +5817,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:induktionsherd",
       prompt: "Mit welchen Mitteln arbeitet das Induktionsherd?",
-      answer: "Es beschreibt wirbelströme erwärmen Topf bei den behandelten Arten.", wrong: ["Er beschreibt wirbelstrombremse bei den behandelten Arten.", "Es beschreibt wärme durch Wirbel bei den behandelten Arten.", "Sie beschreibt eine In Kupferröhre gebremst."],
+      answer: "Es beschreibt wirbelströme erwärmen Topf.", wrong: ["Er beschreibt wirbelstrombremse.", "Es beschreibt wärme durch Wirbel.", "Sie beschreibt eine In Kupferröhre gebremst."],
       explanation: "Anwendung. Induktionsherd bedeutet: Wirbelströme erwärmen Topf. Bezug: Lenz’sches Gesetz.",
       wissen: "Anwendung. Induktionsherd bedeutet: Wirbelströme erwärmen Topf. Bezug: Lenz’sches Gesetz.",
       flashFront: "Induktionsherd",
@@ -5800,7 +5825,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:ergometer",
       prompt: "Was beschreibt „Ergometer“?",
-      answer: "Er beschreibt wirbelstrombremse bei den behandelten Arten.", wrong: ["Sie beschreibt eine Selbstinduktion bei den behandelten Arten.", "Es bremsen ohne Reibkontakt bei den behandelten Arten.", "Es beschreibt ein Minus im Induktionsgesetz."],
+      answer: "Er beschreibt wirbelstrombremse.", wrong: ["Sie beschreibt eine Selbstinduktion.", "Es bremsen ohne Reibkontakt.", "Es beschreibt ein Minus im Induktionsgesetz."],
       explanation: "Training. Ergometer bedeutet: Wirbelstrombremse. Bezug: Lenz’sches Gesetz.",
       wissen: "Training. Ergometer bedeutet: Wirbelstrombremse. Bezug: Lenz’sches Gesetz.",
       flashFront: "Ergometer",
@@ -5808,7 +5833,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:fallende-magnete",
       prompt: "Mit welchen Mitteln arbeitet die Fallende Magnete?",
-      answer: "Sie beschreibt eine In Kupferröhre gebremst.", wrong: ["Er beschreibt wirbelstrombremse bei den behandelten Arten.", "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Es bremsen ohne Reibkontakt bei den behandelten Arten."],
+      answer: "Sie beschreibt eine In Kupferröhre gebremst.", wrong: ["Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Sie beschreibt keine Energie aus dem Nichts.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Demo. Fallende Magnete bedeutet: In Kupferröhre gebremst. Bezug: Lenz’sches Gesetz.",
       wissen: "Demo. Fallende Magnete bedeutet: In Kupferröhre gebremst. Bezug: Lenz’sches Gesetz.",
       flashFront: "Fallende Magnete",
@@ -5816,7 +5841,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:richtung",
       prompt: "Warum gehört zur Kraft eine Richtung?",
-      answer: "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", wrong: ["Sie beschreibt eine In Kupferröhre gebremst.", "Es beschreibt ein Minus im Induktionsgesetz.", "Sie beschreibt eine Selbstinduktion bei den behandelten Arten."],
+      answer: "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", wrong: ["Sie beschreibt eine In Kupferröhre gebremst.", "Es beschreibt ein Minus im Induktionsgesetz.", "Sie beschreibt keine Energie aus dem Nichts."],
       explanation: "Bestimmung. Richtung bedeutet: Rechte-Hand / Feldregeln. Bezug: Lenz’sches Gesetz.",
       wissen: "Bestimmung. Richtung bedeutet: Rechte-Hand / Feldregeln. Bezug: Lenz’sches Gesetz.",
       flashFront: "Richtung",
@@ -5824,7 +5849,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:gegenspannung",
       prompt: "Woran erkennt man die Gegenspannung?",
-      answer: "Sie beschreibt eine Selbstinduktion bei den behandelten Arten.", wrong: ["Sie beschreibt keine Energie aus dem Nichts.", "Es beschreibt ein Minus im Induktionsgesetz.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
+      answer: "Sie beschreibt eine Selbstinduktion.", wrong: ["Sie beschreibt keine Energie aus dem Nichts.", "Es beschreibt ein Minus im Induktionsgesetz.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Verwandt. Gegenspannung bedeutet: Selbstinduktion. Bezug: Lenz’sches Gesetz.",
       wissen: "Verwandt. Gegenspannung bedeutet: Selbstinduktion. Bezug: Lenz’sches Gesetz.",
       flashFront: "Gegenspannung",
@@ -5832,7 +5857,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:verlust",
       prompt: "Was beschreibt „Verlust“?",
-      answer: "Es beschreibt wärme durch Wirbel bei den behandelten Arten.", wrong: ["Es bremsen ohne Reibkontakt bei den behandelten Arten.", "Es beschreibt ein Minus im Induktionsgesetz.", "Er beschreibt wirbelstrombremse bei den behandelten Arten."],
+      answer: "Es beschreibt wärme durch Wirbel.", wrong: ["Es bremsen ohne Reibkontakt.", "Es beschreibt ein Minus im Induktionsgesetz.", "Er beschreibt wirbelstrombremse."],
       explanation: "Kernbleche. Verlust bedeutet: Wärme durch Wirbel. Bezug: Lenz’sches Gesetz.",
       wissen: "Kernbleche. Verlust bedeutet: Wärme durch Wirbel. Bezug: Lenz’sches Gesetz.",
       flashFront: "Verlust",
@@ -5840,7 +5865,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:nutzbar",
       prompt: "Mit welchen Mitteln arbeitet das Nutzbar?",
-      answer: "Es bremsen ohne Reibkontakt bei den behandelten Arten.", wrong: ["Er beschreibt wirbelstrombremse bei den behandelten Arten.", "Es beschreibt wärme durch Wirbel bei den behandelten Arten.", "Es beschreibt eine Induktion wirkt der Ursache entgegen."],
+      answer: "Es bremsen ohne Reibkontakt.", wrong: ["Er beschreibt wirbelstrombremse.", "Es beschreibt wärme durch Wirbel.", "Es beschreibt eine Induktion wirkt der Ursache entgegen."],
       explanation: "Technik. Nutzbar bedeutet: Bremsen ohne Reibkontakt. Bezug: Lenz’sches Gesetz.",
       wissen: "Technik. Nutzbar bedeutet: Bremsen ohne Reibkontakt. Bezug: Lenz’sches Gesetz.",
       flashFront: "Nutzbar",
@@ -5848,7 +5873,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:versuch",
       prompt: "Was kennzeichnet „Versuch“?",
-      answer: "Es ist eine Alupleatte Zwischen Magnetpolen durch Dämpfung.", wrong: ["Es ist eine Minus im Induktionsgesetz.", "Induktion wirkt der Ursache entgegen.", "Es ist eine Keine Energie aus dem Nichts."],
+      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Induktion wirkt der Ursache entgegen.", "Sie beschreibt eine In Kupferröhre gebremst.", "Es beschreibt eine Induktion wirkt der Ursache entgegen."],
       explanation: "Dämpfung. Versuch bedeutet: Alupleatte zwischen Magnetpolen. Bezug: Lenz’sches Gesetz.",
       wissen: "Dämpfung. Versuch bedeutet: Alupleatte zwischen Magnetpolen. Bezug: Lenz’sches Gesetz.",
       flashFront: "Versuch",
@@ -5856,7 +5881,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:formelzeichen",
       prompt: "Welche Eigenschaft hat das Formelzeichen?",
-      answer: "Es beschreibt ein Minus im Induktionsgesetz.", wrong: ["Sie beschreibt kreisströme in Massivleitern bei den behandelten Arten.", "Es beschreibt wirbelströme erwärmen Topf bei den behandelten Arten.", "Sie beschreibt eine Selbstinduktion bei den behandelten Arten."],
+      answer: "Es beschreibt ein Minus im Induktionsgesetz.", wrong: ["Sie beschreibt keine Energie aus dem Nichts.", "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Mathematisch. Formelzeichen bedeutet: Minus im Induktionsgesetz. Bezug: Lenz’sches Gesetz.",
       wissen: "Mathematisch. Formelzeichen bedeutet: Minus im Induktionsgesetz. Bezug: Lenz’sches Gesetz.",
       flashFront: "Formelzeichen",
@@ -5915,7 +5940,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:selbstinduktion",
       prompt: "Was beschreibt „Selbstinduktion“?",
-      answer: "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", wrong: ["Es glättet Strom bei den behandelten Arten.", "Es beschreibt ein Strom steigt verzögert.", "Es spannungsspitzen möglich bei den behandelten Arten."],
+      answer: "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", wrong: ["Es beschreibt ein Strom steigt verzögert.", "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "L. Selbstinduktion bedeutet: Spule erzeugt Gegenspannung bei Stromänderung. Bezug: Selbstinduktion.",
       wissen: "L. Selbstinduktion bedeutet: Spule erzeugt Gegenspannung bei Stromänderung. Bezug: Selbstinduktion.",
       flashFront: "Selbstinduktion",
@@ -5923,7 +5948,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:induktivitaet",
       prompt: "Mit welchen Mitteln arbeitet die Induktivität?",
-      answer: "Sie beschreibt ein Maß L bei den behandelten Arten.", wrong: ["Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Es beschreibt E = ½ L I².", "Es glättet Strom bei den behandelten Arten."],
+      answer: "Sie beschreibt ein Maß L.", wrong: ["Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Es beschreibt E = ½ L I².", "Es glättet Strom."],
       explanation: "Henry. Induktivität bedeutet: Maß L. Bezug: Selbstinduktion.",
       wissen: "Henry. Induktivität bedeutet: Maß L. Bezug: Selbstinduktion.",
       flashFront: "Induktivität",
@@ -5931,7 +5956,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:einschaltvorgang",
       prompt: "Wozu dient das Einschaltvorgang?",
-      answer: "Es beschreibt ein Strom steigt verzögert.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt τ = L/R bei den behandelten Arten.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung."],
+      answer: "Es beschreibt ein Strom steigt verzögert.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "LR. Einschaltvorgang bedeutet: Strom steigt verzögert. Bezug: Selbstinduktion.",
       wissen: "LR. Einschaltvorgang bedeutet: Strom steigt verzögert. Bezug: Selbstinduktion.",
       flashFront: "Einschaltvorgang",
@@ -5939,7 +5964,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:ausschaltvorgang",
       prompt: "Welche Eigenschaft hat das Ausschaltvorgang?",
-      answer: "Es spannungsspitzen möglich bei den behandelten Arten.", wrong: ["Es beschreibt E = ½ L I².", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt ein Maß L bei den behandelten Arten."],
+      answer: "Es spannungsspitzen möglich.", wrong: ["Es beschreibt E = ½ L I².", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt ein Maß L."],
       explanation: "Funken. Ausschaltvorgang bedeutet: Spannungsspitzen möglich. Bezug: Selbstinduktion.",
       wissen: "Funken. Ausschaltvorgang bedeutet: Spannungsspitzen möglich. Bezug: Selbstinduktion.",
       flashFront: "Ausschaltvorgang",
@@ -5947,7 +5972,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:energie-im-magnetfeld",
       prompt: "Mit welchen Mitteln arbeitet das Energie im Magnetfeld?",
-      answer: "Es beschreibt E = ½ L I².", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt ein Strom steigt verzögert.", "Sie beschreibt τ = L/R bei den behandelten Arten."],
+      answer: "Es beschreibt E = ½ L I².", wrong: ["Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", "Es beschreibt ein Strom steigt verzögert.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung."],
       explanation: "Speicher. Energie im Magnetfeld bedeutet: E = ½ L I². Bezug: Selbstinduktion.",
       wissen: "Speicher. Energie im Magnetfeld bedeutet: E = ½ L I². Bezug: Selbstinduktion.",
       flashFront: "Energie im Magnetfeld",
@@ -5955,7 +5980,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:drossel",
       prompt: "Was beschreibt „Drossel“?",
-      answer: "Es glättet Strom bei den behandelten Arten.", wrong: ["Sie beschreibt τ = L/R bei den behandelten Arten.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
+      answer: "Es glättet Strom.", wrong: ["Sie beschreibt τ = L/R.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird."],
       explanation: "Elektronik. Drossel bedeutet: Glättet Strom. Bezug: Selbstinduktion.",
       wissen: "Elektronik. Drossel bedeutet: Glättet Strom. Bezug: Selbstinduktion.",
       flashFront: "Drossel",
@@ -5963,7 +5988,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:transformator",
       prompt: "Woran erkennt man den Transformator?",
-      answer: "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", wrong: ["Es beschreibt E = ½ L I².", "Sie beschreibt schaltnetzteile bei den behandelten Arten.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung."],
+      answer: "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", wrong: ["Es beschreibt E = ½ L I².", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Verwandt. Transformator bedeutet: Gegenseitige Induktion. Bezug: Selbstinduktion.",
       wissen: "Verwandt. Transformator bedeutet: Gegenseitige Induktion. Bezug: Selbstinduktion.",
       flashFront: "Transformator",
@@ -5971,7 +5996,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:zeitkonstante",
       prompt: "Welche Eigenschaft hat die Zeitkonstante?",
-      answer: "Sie beschreibt τ = L/R bei den behandelten Arten.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt schaltnetzteile bei den behandelten Arten.", "Sie beschreibt ein Maß L bei den behandelten Arten."],
+      answer: "Sie beschreibt τ = L/R.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Sie beschreibt schaltnetzteile.", "Sie beschreibt ein Maß L."],
       explanation: "LR-Kreis. Zeitkonstante bedeutet: τ = L/R. Bezug: Selbstinduktion.",
       wissen: "LR-Kreis. Zeitkonstante bedeutet: τ = L/R. Bezug: Selbstinduktion.",
       flashFront: "Zeitkonstante",
@@ -5979,7 +6004,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:versuch",
       prompt: "Welche Eigenschaft hat das Versuch?",
-      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Es spannungsspitzen möglich bei den behandelten Arten.", "Sie beschreibt τ = L/R bei den behandelten Arten."],
+      answer: "Es prüft induzierte Spannung, indem ein Magnet durch eine Spule bewegt wird.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Es beschreibt E = ½ L I².", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung."],
       explanation: "Verzögerung. Versuch bedeutet: Spule mit Kern und Lampe. Bezug: Selbstinduktion.",
       wissen: "Verzögerung. Versuch bedeutet: Spule mit Kern und Lampe. Bezug: Selbstinduktion.",
       flashFront: "Versuch",
@@ -5987,7 +6012,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:anwendung",
       prompt: "Welche Eigenschaft hat die Anwendung?",
-      answer: "Sie beschreibt schaltnetzteile bei den behandelten Arten.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Es spannungsspitzen möglich bei den behandelten Arten.", "Es beschreibt ein Strom steigt verzögert."],
+      answer: "Sie beschreibt schaltnetzteile.", wrong: ["Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung.", "Es spannungsspitzen möglich.", "Es beschreibt ein Strom steigt verzögert."],
       explanation: "Technik. Anwendung bedeutet: Schaltnetzteile. Bezug: Selbstinduktion.",
       wissen: "Technik. Anwendung bedeutet: Schaltnetzteile. Bezug: Selbstinduktion.",
       flashFront: "Anwendung",
@@ -5995,7 +6020,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:richtung",
       prompt: "Warum gehört zur Kraft eine Richtung?",
-      answer: "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", wrong: ["Es glättet Strom bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung."],
+      answer: "Kräfte sind Vektoren; ohne Richtung ist die Wirkung nicht vollständig beschrieben.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie beschreibt spule erzeugt Gegenspannung bei Stromänderung.", "Er wandelt Spannungen um und verringert Übertragungsverluste bei Hochspannung."],
       explanation: "Entgegen Änderung. Richtung bedeutet: Lenz auch hier. Bezug: Selbstinduktion.",
       wissen: "Entgegen Änderung. Richtung bedeutet: Lenz auch hier. Bezug: Selbstinduktion.",
       flashFront: "Richtung",
@@ -6062,7 +6087,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:eigenleitung",
       prompt: "Welche Eigenschaft hat die Eigenleitung?",
-      answer: "Sie beschreibt eine Paarbildung durch Wärme/Licht.", wrong: ["Sie beschreibt eine Mikroelektronik bei den behandelten Arten.", "Sie beschreibt eine Energieabstand bei den behandelten Arten.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin."],
+      answer: "Sie beschreibt eine Paarbildung durch Wärme/Licht.", wrong: ["Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang."],
       explanation: "Rein. Eigenleitung bedeutet: Paarbildung durch Wärme/Licht. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Rein. Eigenleitung bedeutet: Paarbildung durch Wärme/Licht. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Eigenleitung",
@@ -6070,7 +6095,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:stoerstellenleitung",
       prompt: "Welche Eigenschaft hat die Störstellenleitung?",
-      answer: "Sie beschreibt eine Durch Dotierung bei den behandelten Arten.", wrong: ["Sie beschreibt seltene Stoffe/Recycling bei den behandelten Arten.", "Sie licht erzeugt Paare bei den behandelten Arten.", "Sie beschreibt eine Energieabstand bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Durch Dotierung.", wrong: ["Sie beschreibt seltene Stoffe/Recycling.", "Sie licht erzeugt Paare.", "Sie beschreibt eine Energieabstand."],
       explanation: "n/p. Störstellenleitung bedeutet: Durch Dotierung. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "n/p. Störstellenleitung bedeutet: Durch Dotierung. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Störstellenleitung",
@@ -6086,7 +6111,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:akzeptor",
       prompt: "Woran erkennt man den Akzeptor?",
-      answer: "Er nimmt Elektron → Loch bei den behandelten Arten.", wrong: ["Er gibt Elektron ab bei den behandelten Arten.", "Sie beschreibt eine Energieabstand bei den behandelten Arten.", "Sie beschreibt seltene Stoffe/Recycling bei den behandelten Arten."],
+      answer: "Er nimmt Elektron → Loch.", wrong: ["Er gibt Elektron ab.", "Sie beschreibt eine Energieabstand.", "Sie beschreibt seltene Stoffe/Recycling."],
       explanation: "p-Typ. Akzeptor bedeutet: Nimmt Elektron → Loch. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "p-Typ. Akzeptor bedeutet: Nimmt Elektron → Loch. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Akzeptor",
@@ -6094,7 +6119,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:bandluecke",
       prompt: "Was bewirkt die Bandlücke?",
-      answer: "Sie beschreibt eine Energieabstand bei den behandelten Arten.", wrong: ["Sie beschreibt eine Durch Dotierung bei den behandelten Arten.", "Er gibt Elektron ab bei den behandelten Arten.", "Es beschreibt andere Trägerdichte bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Energieabstand.", wrong: ["Sie beschreibt eine Durch Dotierung.", "Er gibt Elektron ab.", "Es beschreibt andere Trägerdichte."],
       explanation: "Halbleiterkennzeichen. Bandlücke bedeutet: Energieabstand. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Halbleiterkennzeichen. Bandlücke bedeutet: Energieabstand. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Bandlücke",
@@ -6102,7 +6127,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:diode",
       prompt: "Wozu dient eine Diode?",
-      answer: "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", wrong: ["Er nimmt Elektron → Loch bei den behandelten Arten.", "Sie beschreibt eine Energieabstand bei den behandelten Arten.", "Sie beschreibt seltene Stoffe/Recycling bei den behandelten Arten."],
+      answer: "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin."],
       explanation: "Gleichrichtung. Diode bedeutet: pn-Übergang. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Gleichrichtung. Diode bedeutet: pn-Übergang. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Diode",
@@ -6110,7 +6135,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:transistor",
       prompt: "Wozu dient ein Transistor?",
-      answer: "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", wrong: ["Sie licht erzeugt Paare bei den behandelten Arten.", "Es beschreibt andere Trägerdichte bei den behandelten Arten.", "Sie beschreibt eine Durch Dotierung bei den behandelten Arten."],
+      answer: "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang."],
       explanation: "Verstärker. Transistor bedeutet: Steuerbarer Strom. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Verstärker. Transistor bedeutet: Steuerbarer Strom. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Transistor",
@@ -6118,7 +6143,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:temperatur",
       prompt: "Was beschreibt die Temperatur?",
-      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Er gibt Elektron ab bei den behandelten Arten.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Sie beschreibt eine Mikroelektronik bei den behandelten Arten."],
+      answer: "Sie misst den Wärmezustand; im Alltag in °C, als SI-Einheit in Kelvin.", wrong: ["Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis."],
       explanation: "NTC-Nähe. Temperatur bedeutet: Mehr Träger bei Wärme. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "NTC-Nähe. Temperatur bedeutet: Mehr Träger bei Wärme. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Temperatur",
@@ -6126,7 +6151,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:photoleitung",
       prompt: "Woran erkennt man die Photoleitung?",
-      answer: "Sie licht erzeugt Paare bei den behandelten Arten.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er nimmt Elektron → Loch bei den behandelten Arten.", "Er gibt Elektron ab bei den behandelten Arten."],
+      answer: "Sie licht erzeugt Paare.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er nimmt Elektron → Loch.", "Er gibt Elektron ab."],
       explanation: "Sensor. Photoleitung bedeutet: Licht erzeugt Paare. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Sensor. Photoleitung bedeutet: Licht erzeugt Paare. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Photoleitung",
@@ -6134,7 +6159,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:vergleich-metall",
       prompt: "Wozu dient das Vergleich Metall?",
-      answer: "Es beschreibt andere Trägerdichte bei den behandelten Arten.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Sie beschreibt eine Energieabstand bei den behandelten Arten.", "Er nimmt Elektron → Loch bei den behandelten Arten."],
+      answer: "Es beschreibt andere Trägerdichte.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Sie beschreibt eine Energieabstand.", "Er nimmt Elektron → Loch."],
       explanation: "Modell. Vergleich Metall bedeutet: Andere Trägerdichte. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Modell. Vergleich Metall bedeutet: Andere Trägerdichte. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Vergleich Metall",
@@ -6142,7 +6167,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:anwendung",
       prompt: "Woran erkennt man die Anwendung?",
-      answer: "Sie beschreibt eine Mikroelektronik bei den behandelten Arten.", wrong: ["Er gibt Elektron ab bei den behandelten Arten.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis."],
+      answer: "Sie beschreibt eine Mikroelektronik.", wrong: ["Er gibt Elektron ab.", "Sie lässt Strom vorwiegend in einer Richtung durch den pn-Übergang.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis."],
       explanation: "Chip. Anwendung bedeutet: Mikroelektronik. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Chip. Anwendung bedeutet: Mikroelektronik. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Anwendung",
@@ -6150,7 +6175,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:nachhaltigkeit",
       prompt: "Welche Eigenschaft hat die Nachhaltigkeit?",
-      answer: "Sie beschreibt seltene Stoffe/Recycling bei den behandelten Arten.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", "Sie beschreibt eine Durch Dotierung bei den behandelten Arten."],
+      answer: "Sie beschreibt seltene Stoffe/Recycling.", wrong: ["Sie beschreibt eine Paarbildung durch Wärme/Licht.", "Er verstärkt oder schaltet Strom, gesteuert über die Basis.", "Sie beschreibt eine Durch Dotierung."],
       explanation: "Ressourcen. Nachhaltigkeit bedeutet: Seltene Stoffe/Recycling. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Ressourcen. Nachhaltigkeit bedeutet: Seltene Stoffe/Recycling. Bezug: Leitungsvorgänge in Halbleitern GK.",
       flashFront: "Nachhaltigkeit",
@@ -6209,7 +6234,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt numerisches Modell bei den behandelten Arten.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert."],
       explanation: "Grundlage. Messung bedeutet: Zahlenwert + Einheit. Bezug: Messen und Modellieren.",
       wissen: "Grundlage. Messung bedeutet: Zahlenwert + Einheit. Bezug: Messen und Modellieren.",
       flashFront: "Messung",
@@ -6217,7 +6242,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:messunsicherheit",
       prompt: "Woran erkennt man die Messunsicherheit?",
-      answer: "Sie beschreibt systematisch und zufällig bei den behandelten Arten.", wrong: ["Sie beschreibt eine Protokoll nachvollziehbar bei den behandelten Arten.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt ein Modell an Daten prüfen."],
+      answer: "Sie beschreibt systematisch und zufällig.", wrong: ["Sie beschreibt eine Protokoll nachvollziehbar.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt ein Modell an Daten prüfen."],
       explanation: "Diskussion. Messunsicherheit bedeutet: Systematisch und zufällig. Bezug: Messen und Modellieren.",
       wissen: "Diskussion. Messunsicherheit bedeutet: Systematisch und zufällig. Bezug: Messen und Modellieren.",
       flashFront: "Messunsicherheit",
@@ -6225,7 +6250,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:modell",
       prompt: "Wozu dient ein Modell in der Physik?",
-      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Sie beschreibt eine Protokoll nachvollziehbar bei den behandelten Arten.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
+      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert."],
       explanation: "Vorhersage. Modell bedeutet: Vereinfachte Beschreibung. Bezug: Messen und Modellieren.",
       wissen: "Vorhersage. Modell bedeutet: Vereinfachte Beschreibung. Bezug: Messen und Modellieren.",
       flashFront: "Modell",
@@ -6233,7 +6258,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:validierung",
       prompt: "Welche Eigenschaft hat die Validierung?",
-      answer: "Sie beschreibt ein Modell an Daten prüfen.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie beschreibt numerisches Modell bei den behandelten Arten.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "Sie beschreibt ein Modell an Daten prüfen.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar."],
       explanation: "Wissenschaft. Validierung bedeutet: Modell an Daten prüfen. Bezug: Messen und Modellieren.",
       wissen: "Wissenschaft. Validierung bedeutet: Modell an Daten prüfen. Bezug: Messen und Modellieren.",
       flashFront: "Validierung",
@@ -6241,7 +6266,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:diagramm",
       prompt: "Wozu dient ein s-t- oder v-t-Diagramm?",
-      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie beschreibt systematisch und zufällig bei den behandelten Arten.", "Sie beschreibt ausgleichskurve bei den behandelten Arten."],
+      answer: "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie beschreibt ein Modell an Daten prüfen.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Auswertung. Diagramm bedeutet: Zusammenhänge sichtbar. Bezug: Messen und Modellieren.",
       wissen: "Auswertung. Diagramm bedeutet: Zusammenhänge sichtbar. Bezug: Messen und Modellieren.",
       flashFront: "Diagramm",
@@ -6249,7 +6274,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:regression",
       prompt: "Mit welchen Mitteln arbeitet die Regression?",
-      answer: "Sie beschreibt ausgleichskurve bei den behandelten Arten.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie beschreibt numerisches Modell bei den behandelten Arten.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "Sie beschreibt ausgleichskurve.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie beschreibt numerisches Modell.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
       explanation: "GTR/Software. Regression bedeutet: Ausgleichskurve. Bezug: Messen und Modellieren.",
       wissen: "GTR/Software. Regression bedeutet: Ausgleichskurve. Bezug: Messen und Modellieren.",
       flashFront: "Regression",
@@ -6265,7 +6290,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:variable",
       prompt: "Was ist eine Variable im Versuch?",
-      answer: "Sie ist die veränderliche Größe; man unterscheidet unabhängige und abhängige Variable.", wrong: ["Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Sie beschreibt systematisch und zufällig bei den behandelten Arten.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
+      answer: "Sie ist die veränderliche Größe; man unterscheidet unabhängige und abhängige Variable.", wrong: ["Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Sie beschreibt ein Modell an Daten prüfen."],
       explanation: "Kontrolle. Variable bedeutet: Unabhängig/abhängig. Bezug: Messen und Modellieren.",
       wissen: "Kontrolle. Variable bedeutet: Unabhängig/abhängig. Bezug: Messen und Modellieren.",
       flashFront: "Variable",
@@ -6273,7 +6298,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:wiederholung",
       prompt: "Wozu wiederholt man Messungen?",
-      answer: "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie beschreibt numerisches Modell bei den behandelten Arten.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "Sie erhöht die Zuverlässigkeit und ermöglicht einen belastbaren Mittelwert.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar."],
       explanation: "Statistik. Wiederholung bedeutet: Mehrfach messen. Bezug: Messen und Modellieren.",
       wissen: "Statistik. Wiederholung bedeutet: Mehrfach messen. Bezug: Messen und Modellieren.",
       flashFront: "Wiederholung",
@@ -6281,7 +6306,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:simulation",
       prompt: "Was beschreibt „Simulation“?",
-      answer: "Sie beschreibt numerisches Modell bei den behandelten Arten.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt systematisch und zufällig bei den behandelten Arten.", "Sie beschreibt ein Modell an Daten prüfen."],
+      answer: "Sie beschreibt numerisches Modell.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt systematisch und zufällig.", "Sie beschreibt ein Modell an Daten prüfen."],
       explanation: "Computer. Simulation bedeutet: Numerisches Modell. Bezug: Messen und Modellieren.",
       wissen: "Computer. Simulation bedeutet: Numerisches Modell. Bezug: Messen und Modellieren.",
       flashFront: "Simulation",
@@ -6289,7 +6314,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:grenzen",
       prompt: "Woran erkennt man den Grenzen?",
-      answer: "Es beschreibt ein Modell gilt nur unter Bedingungen.", wrong: ["Sie beschreibt systematisch und zufällig bei den behandelten Arten.", "Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt ein Modell an Daten prüfen."],
+      answer: "Es beschreibt ein Modell gilt nur unter Bedingungen.", wrong: ["Es stellt den Zusammenhang zwischen Weg, Zeit und Geschwindigkeit grafisch dar.", "Sie beschreibt ein Modell an Daten prüfen.", "Sie ist die veränderliche Größe; man unterscheidet unabhängige und abhängige Variable."],
       explanation: "Kritik. Grenzen bedeutet: Modell gilt nur unter Bedingungen. Bezug: Messen und Modellieren.",
       wissen: "Kritik. Grenzen bedeutet: Modell gilt nur unter Bedingungen. Bezug: Messen und Modellieren.",
       flashFront: "Grenzen",
@@ -6297,7 +6322,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j11gk-lbw-messen-modell:fact:dokumentation",
       prompt: "Mit welchen Mitteln arbeitet die Dokumentation?",
-      answer: "Sie beschreibt eine Protokoll nachvollziehbar bei den behandelten Arten.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie beschreibt ein Modell an Daten prüfen.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
+      answer: "Sie beschreibt eine Protokoll nachvollziehbar.", wrong: ["Es beschreibt ein Modell gilt nur unter Bedingungen.", "Sie beschreibt ein Modell an Daten prüfen.", "Sie stellt eine prüfbare Vermutung auf, die der Versuch bestätigen oder widerlegen kann."],
       explanation: "Qualität. Dokumentation bedeutet: Protokoll nachvollziehbar. Bezug: Messen und Modellieren.",
       wissen: "Qualität. Dokumentation bedeutet: Protokoll nachvollziehbar. Bezug: Messen und Modellieren.",
       flashFront: "Dokumentation",
@@ -6356,7 +6381,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:unschaerferelation",
       prompt: "Wozu dient die Unschärferelation?",
-      answer: "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch.", wrong: ["Es beschreibt beide nicht beliebig scharf.", "Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten.", "Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten."],
+      answer: "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch.", wrong: ["Es beschreibt beide nicht beliebig scharf.", "Sie beschreibt wahrscheinlichkeitsamplitude.", "Sie beschreibt welle/Teilchen Aspekte."],
       explanation: "Grenze klassisch. Unschärferelation bedeutet: Δx·Δp ≥ h/(4π) grob. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Grenze klassisch. Unschärferelation bedeutet: Δx·Δp ≥ h/(4π) grob. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Unschärferelation",
@@ -6364,7 +6389,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:ort-impuls",
       prompt: "Was beschreibt „Ort-Impuls“?",
-      answer: "Es beschreibt beide nicht beliebig scharf.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar bei den behandelten Arten.", "Sie grenzen der Messung bei den behandelten Arten.", "Sie realität/Lokalität diskutiert bei den behandelten Arten."],
+      answer: "Es beschreibt beide nicht beliebig scharf.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar.", "Sie grenzen der Messung.", "Sie realität/Lokalität diskutiert."],
       explanation: "Komplementär. Ort-Impuls bedeutet: Beide nicht beliebig scharf. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Komplementär. Ort-Impuls bedeutet: Beide nicht beliebig scharf. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Ort-Impuls",
@@ -6372,7 +6397,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:energie-zeit",
       prompt: "Mit welchen Mitteln arbeitet das Energie-Zeit?",
-      answer: "Es beschreibt weitere Unschärfeform bei den behandelten Arten.", wrong: ["Es beschreibt plancksches Wirkungsquantum bei den behandelten Arten.", "Sie grenzen der Messung bei den behandelten Arten.", "Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten."],
+      answer: "Es beschreibt weitere Unschärfeform.", wrong: ["Es beschreibt plancksches Wirkungsquantum.", "Sie grenzen der Messung.", "Sie beschreibt welle/Teilchen Aspekte."],
       explanation: "Linienbreite. Energie-Zeit bedeutet: Weitere Unschärfeform. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Linienbreite. Energie-Zeit bedeutet: Weitere Unschärfeform. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Energie-Zeit",
@@ -6380,7 +6405,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:h",
       prompt: "Woran erkennt man das h?",
-      answer: "Es beschreibt plancksches Wirkungsquantum bei den behandelten Arten.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar bei den behandelten Arten.", "Es beschreibt weitere Unschärfeform bei den behandelten Arten.", "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch."],
+      answer: "Es beschreibt plancksches Wirkungsquantum.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar.", "Es beschreibt weitere Unschärfeform.", "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch."],
       explanation: "Quantenskala. h bedeutet: Plancksches Wirkungsquantum. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Quantenskala. h bedeutet: Plancksches Wirkungsquantum. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "h",
@@ -6388,7 +6413,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:klassische-grenze",
       prompt: "Was bewirkt die Klassische Grenze?",
-      answer: "Sie beschreibt makroskopisch vernachlässigbar bei den behandelten Arten.", wrong: ["Sie grenzen der Messung bei den behandelten Arten.", "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch.", "Es beschreibt eine Weginformation vs Interferenz."],
+      answer: "Sie beschreibt makroskopisch vernachlässigbar.", wrong: ["Sie grenzen der Messung.", "Sie beschreibt Δx·Δp ≥ h/(4π) grob, grenze klassisch.", "Es beschreibt eine Weginformation vs Interferenz."],
       explanation: "Alltag. Klassische Grenze bedeutet: Makroskopisch vernachlässigbar. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Alltag. Klassische Grenze bedeutet: Makroskopisch vernachlässigbar. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Klassische Grenze",
@@ -6396,7 +6421,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:messprozess",
       prompt: "Woran erkennt man das Messprozess?",
-      answer: "Es beeinflusst Quantenobjekt bei den behandelten Arten.", wrong: ["Sie grenzen der Messung bei den behandelten Arten.", "Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten.", "Es beschreibt beide nicht beliebig scharf."],
+      answer: "Es beeinflusst Quantenobjekt.", wrong: ["Sie grenzen der Messung.", "Sie beschreibt wahrscheinlichkeitsamplitude.", "Es beschreibt beide nicht beliebig scharf."],
       explanation: "Deutung. Messprozess bedeutet: Beeinflusst Quantenobjekt. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Deutung. Messprozess bedeutet: Beeinflusst Quantenobjekt. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Messprozess",
@@ -6404,7 +6429,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:wellenfunktion",
       prompt: "Woran erkennt man die Wellenfunktion?",
-      answer: "Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten.", wrong: ["Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten.", "Es beschreibt beide nicht beliebig scharf.", "Es beeinflusst Quantenobjekt bei den behandelten Arten."],
+      answer: "Sie beschreibt wahrscheinlichkeitsamplitude.", wrong: ["Sie beschreibt welle/Teilchen Aspekte.", "Es beschreibt beide nicht beliebig scharf.", "Es beeinflusst Quantenobjekt."],
       explanation: "Born. Wellenfunktion bedeutet: Wahrscheinlichkeitsamplitude. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Born. Wellenfunktion bedeutet: Wahrscheinlichkeitsamplitude. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Wellenfunktion",
@@ -6412,7 +6437,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:komplementaritaet",
       prompt: "Woran erkennt man die Komplementarität?",
-      answer: "Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten.", wrong: ["Sie realität/Lokalität diskutiert bei den behandelten Arten.", "Es beschreibt eine Weginformation vs Interferenz.", "Es beeinflusst Quantenobjekt bei den behandelten Arten."],
+      answer: "Sie beschreibt welle/Teilchen Aspekte.", wrong: ["Sie realität/Lokalität diskutiert.", "Es beschreibt eine Weginformation vs Interferenz.", "Es beeinflusst Quantenobjekt."],
       explanation: "Bohr. Komplementarität bedeutet: Welle/Teilchen Aspekte. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Bohr. Komplementarität bedeutet: Welle/Teilchen Aspekte. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Komplementarität",
@@ -6420,7 +6445,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:spektrallinie",
       prompt: "Was beschreibt „Spektrallinie“?",
-      answer: "Sie beschreibt eine Verbreiterung möglich bei den behandelten Arten.", wrong: ["Es beschreibt eine Weginformation vs Interferenz.", "Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten.", "Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Verbreiterung möglich.", wrong: ["Es beschreibt eine Weginformation vs Interferenz.", "Sie beschreibt welle/Teilchen Aspekte.", "Sie beschreibt wahrscheinlichkeitsamplitude."],
       explanation: "Beobachtung. Spektrallinie bedeutet: Verbreiterung möglich. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Beobachtung. Spektrallinie bedeutet: Verbreiterung möglich. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Spektrallinie",
@@ -6428,7 +6453,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:doppelspalt",
       prompt: "Woran erkennt man das Doppelspalt?",
-      answer: "Es beschreibt eine Weginformation vs Interferenz.", wrong: ["Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten.", "Sie realität/Lokalität diskutiert bei den behandelten Arten.", "Es beeinflusst Quantenobjekt bei den behandelten Arten."],
+      answer: "Es beschreibt eine Weginformation vs Interferenz.", wrong: ["Sie beschreibt welle/Teilchen Aspekte.", "Sie realität/Lokalität diskutiert.", "Es beeinflusst Quantenobjekt."],
       explanation: "Trade-off. Doppelspalt bedeutet: Weginformation vs Interferenz. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Trade-off. Doppelspalt bedeutet: Weginformation vs Interferenz. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Doppelspalt",
@@ -6436,7 +6461,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:philosophie",
       prompt: "Was bewirkt die Philosophie?",
-      answer: "Sie realität/Lokalität diskutiert bei den behandelten Arten.", wrong: ["Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten.", "Es beeinflusst Quantenobjekt bei den behandelten Arten.", "Es beschreibt plancksches Wirkungsquantum bei den behandelten Arten."],
+      answer: "Sie realität/Lokalität diskutiert.", wrong: ["Sie beschreibt wahrscheinlichkeitsamplitude.", "Es beeinflusst Quantenobjekt.", "Es beschreibt plancksches Wirkungsquantum."],
       explanation: "Deutungen. Philosophie bedeutet: Realität/Lokalität diskutiert. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Deutungen. Philosophie bedeutet: Realität/Lokalität diskutiert. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Philosophie",
@@ -6444,7 +6469,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:anwendung",
       prompt: "Welche Eigenschaft hat die Anwendung?",
-      answer: "Sie grenzen der Messung bei den behandelten Arten.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar bei den behandelten Arten.", "Sie beschreibt wahrscheinlichkeitsamplitude bei den behandelten Arten.", "Sie beschreibt welle/Teilchen Aspekte bei den behandelten Arten."],
+      answer: "Sie grenzen der Messung.", wrong: ["Sie beschreibt makroskopisch vernachlässigbar.", "Sie beschreibt wahrscheinlichkeitsamplitude.", "Sie beschreibt welle/Teilchen Aspekte."],
       explanation: "Technik. Anwendung bedeutet: Grenzen der Messung. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Technik. Anwendung bedeutet: Grenzen der Messung. Bezug: Heisenberg’sche Unschärferelation.",
       flashFront: "Anwendung",
@@ -6503,7 +6528,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:franck-hertz",
       prompt: "Wozu dient das Franck-Hertz?",
-      answer: "Es beschreibt ein Nachweis diskreter Energieniveaus.", wrong: ["Sie beschreibt ein Atommodell gestützt bei den behandelten Arten.", "Es beschreibt ein Bei Anregungsenergien bei den behandelten Arten.", "Er beschreibt klassisches Versuchsmedium bei den behandelten Arten."],
+      answer: "Es beschreibt ein Nachweis diskreter Energieniveaus.", wrong: ["Sie beschreibt eine Elektron hebt Atom an.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich."],
       explanation: "Elektronenstoß. Franck-Hertz bedeutet: Nachweis diskreter Energieniveaus. Bezug: Franck-Hertz-Versuch.",
       wissen: "Elektronenstoß. Franck-Hertz bedeutet: Nachweis diskreter Energieniveaus. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Franck-Hertz",
@@ -6511,7 +6536,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:energieniveau",
       prompt: "Wozu dient das Energieniveau?",
-      answer: "Es beschreibt diskrete Zustände im Atom.", wrong: ["Es beschreibt unelastische Stöße bei den behandelten Arten.", "Es beschreibt ein Nachweis diskreter Energieniveaus.", "Sie beschreibt eine Elektron hebt Atom an."],
+      answer: "Es beschreibt diskrete Zustände im Atom.", wrong: ["Es beschreibt ein Nachweis diskreter Energieniveaus.", "Sie beschreibt eine Elektron hebt Atom an.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Quanten. Energieniveau bedeutet: Diskrete Zustände im Atom. Bezug: Franck-Hertz-Versuch.",
       wissen: "Quanten. Energieniveau bedeutet: Diskrete Zustände im Atom. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Energieniveau",
@@ -6519,7 +6544,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:anregung",
       prompt: "Was beschreibt „Anregung“?",
-      answer: "Sie beschreibt eine Elektron hebt Atom an.", wrong: ["Er beschreibt klassisches Versuchsmedium bei den behandelten Arten.", "Es beschreibt ein Nachweis diskreter Energieniveaus.", "Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Elektron hebt Atom an.", wrong: ["Es beschreibt ein Nachweis diskreter Energieniveaus.", "Es beschreibt diskrete Zustände im Atom.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe."],
       explanation: "Energiepakete. Anregung bedeutet: Elektron hebt Atom an. Bezug: Franck-Hertz-Versuch.",
       wissen: "Energiepakete. Anregung bedeutet: Elektron hebt Atom an. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Anregung",
@@ -6527,7 +6552,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:stromminima",
       prompt: "Wozu dient das Stromminima?",
-      answer: "Es beschreibt ein Bei Anregungsenergien bei den behandelten Arten.", wrong: ["Sie steuert Elektronenenergie bei den behandelten Arten.", "Sie beschreibt ein Atommodell gestützt bei den behandelten Arten.", "Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten."],
+      answer: "Es beschreibt ein Bei Anregungsenergien.", wrong: ["Sie steuert Elektronenenergie.", "Sie beschreibt ein Atommodell gestützt.", "Sie beschreibt eine Lehrversuch Standard."],
       explanation: "Kennlinie. Stromminima bedeutet: Bei Anregungsenergien. Bezug: Franck-Hertz-Versuch.",
       wissen: "Kennlinie. Stromminima bedeutet: Bei Anregungsenergien. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Stromminima",
@@ -6535,7 +6560,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:quecksilber",
       prompt: "Wozu dient der Quecksilber?",
-      answer: "Er beschreibt klassisches Versuchsmedium bei den behandelten Arten.", wrong: ["Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Sie steuert Elektronenenergie bei den behandelten Arten.", "Sie beschreibt ein Atommodell gestützt bei den behandelten Arten."],
+      answer: "Er beschreibt klassisches Versuchsmedium.", wrong: ["Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Sie steuert Elektronenenergie.", "Sie beschreibt ein Atommodell gestützt."],
       explanation: "Historisch. Quecksilber bedeutet: Klassisches Versuchsmedium. Bezug: Franck-Hertz-Versuch.",
       wissen: "Historisch. Quecksilber bedeutet: Klassisches Versuchsmedium. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Quecksilber",
@@ -6543,7 +6568,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:beschleunigungsspannung",
       prompt: "Wozu dient die Beschleunigungsspannung?",
-      answer: "Sie steuert Elektronenenergie bei den behandelten Arten.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe."],
+      answer: "Sie steuert Elektronenenergie.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe."],
       explanation: "U. Beschleunigungsspannung bedeutet: Steuert Elektronenenergie. Bezug: Franck-Hertz-Versuch.",
       wissen: "U. Beschleunigungsspannung bedeutet: Steuert Elektronenenergie. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Beschleunigungsspannung",
@@ -6551,7 +6576,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:quantenhaft",
       prompt: "Wozu dient das Quantenhaft?",
-      answer: "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", wrong: ["Sie beschreibt eine Elektron hebt Atom an.", "Es beschreibt unelastische Stöße bei den behandelten Arten.", "Es beschreibt ein Bei Anregungsenergien bei den behandelten Arten."],
+      answer: "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", wrong: ["Sie beschreibt eine Elektron hebt Atom an.", "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es beschreibt ein Nachweis diskreter Energieniveaus."],
       explanation: "Nicht kontinuierlich. Quantenhaft bedeutet: Energieabgabe in Stufen. Bezug: Franck-Hertz-Versuch.",
       wissen: "Nicht kontinuierlich. Quantenhaft bedeutet: Energieabgabe in Stufen. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Quantenhaft",
@@ -6559,7 +6584,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:spektrum",
       prompt: "Was bewirkt die Zerlegung weißen Lichts?",
-      answer: "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", wrong: ["Es beschreibt diskrete Zustände im Atom.", "Sie steuert Elektronenenergie bei den behandelten Arten.", "Es beschreibt unelastische Stöße bei den behandelten Arten."],
+      answer: "Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", wrong: ["Es beschreibt diskrete Zustände im Atom.", "Sie beschreibt eine Elektron hebt Atom an.", "Es beschreibt energieabgabe in Stufen, nicht kontinuierlich."],
       explanation: "Kopplung. Spektrum bedeutet: Übergänge → Linien. Bezug: Franck-Hertz-Versuch.",
       wissen: "Kopplung. Spektrum bedeutet: Übergänge → Linien. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Spektrum",
@@ -6567,7 +6592,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:bedeutung",
       prompt: "Welche Eigenschaft hat die Bedeutung?",
-      answer: "Sie beschreibt ein Atommodell gestützt bei den behandelten Arten.", wrong: ["Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten.", "Er beschreibt klassisches Versuchsmedium bei den behandelten Arten."],
+      answer: "Sie beschreibt ein Atommodell gestützt.", wrong: ["Es beschreibt energieabgabe in Stufen, nicht kontinuierlich.", "Sie beschreibt eine Lehrversuch Standard.", "Er beschreibt klassisches Versuchsmedium."],
       explanation: "Wissenschaft. Bedeutung bedeutet: Atommodell gestützt. Bezug: Franck-Hertz-Versuch.",
       wissen: "Wissenschaft. Bedeutung bedeutet: Atommodell gestützt. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Bedeutung",
@@ -6575,7 +6600,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:messung",
       prompt: "Mit welchen Mitteln misst man Weg und Zeit?",
-      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten.", "Er beschreibt klassisches Versuchsmedium bei den behandelten Arten.", "Sie steuert Elektronenenergie bei den behandelten Arten."],
+      answer: "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es beschreibt diskrete Zustände im Atom.", "Sie beschreibt eine Elektron hebt Atom an."],
       explanation: "Auswertung. Messung bedeutet: I gegen U plotten. Bezug: Franck-Hertz-Versuch.",
       wissen: "Auswertung. Messung bedeutet: I gegen U plotten. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Messung",
@@ -6583,7 +6608,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:verlust",
       prompt: "Woran erkennt man das Verlust?",
-      answer: "Es beschreibt unelastische Stöße bei den behandelten Arten.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es beschreibt ein Bei Anregungsenergien bei den behandelten Arten.", "Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten."],
+      answer: "Es beschreibt unelastische Stöße.", wrong: ["Es entsteht ein Spektrum mit den Farben der Regenbogenreihe.", "Es beschreibt ein Bei Anregungsenergien.", "Sie beschreibt eine Lehrversuch Standard."],
       explanation: "Energieabgabe. Verlust bedeutet: Unelastische Stöße. Bezug: Franck-Hertz-Versuch.",
       wissen: "Energieabgabe. Verlust bedeutet: Unelastische Stöße. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Verlust",
@@ -6591,7 +6616,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:heute",
       prompt: "Woran erkennt man die Heute?",
-      answer: "Sie beschreibt eine Lehrversuch Standard bei den behandelten Arten.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt ein Bei Anregungsenergien bei den behandelten Arten.", "Es beschreibt ein Nachweis diskreter Energieniveaus."],
+      answer: "Sie beschreibt eine Lehrversuch Standard.", wrong: ["Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten.", "Es beschreibt ein Bei Anregungsenergien.", "Es beschreibt ein Nachweis diskreter Energieniveaus."],
       explanation: "Praktikum. Heute bedeutet: Lehrversuch Standard. Bezug: Franck-Hertz-Versuch.",
       wissen: "Praktikum. Heute bedeutet: Lehrversuch Standard. Bezug: Franck-Hertz-Versuch.",
       flashFront: "Heute",

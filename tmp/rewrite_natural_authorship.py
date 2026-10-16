@@ -115,6 +115,55 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Wozu dient ein Sensor in elektronischen Schaltungen?",
         "answer": "Er wandelt eine Messgröße wie Temperatur oder Licht in ein elektrisches Signal um.",
     },
+    # Digitale Bildentstehung (gold-level, topic-local via __digitalbild)
+    "pixel__digitalbild": {
+        "prompt": "Was beschreibt ein Pixel in einem Digitalbild?",
+        "answer": "Es ist der kleinste Bildpunkt eines Rasters, aus dem das digitale Bild aufgebaut ist.",
+    },
+    "auflösung__digitalbild": {
+        "prompt": "Was beschreibt die Auflösung eines Digitalbildes?",
+        "answer": "Sie gibt an, wie viele Bildpunkte pro Fläche das Detailreichtum bestimmen.",
+    },
+    "digitalisierung__digitalbild": {
+        "prompt": "Was bewirkt die Digitalisierung bei der Bildaufnahme?",
+        "answer": "Sie wandelt analoge Helligkeitswerte in speicherbare Zahlenwerte um.",
+    },
+    "belichtung__digitalbild": {
+        "prompt": "Wozu dient die Belichtung bei der Aufnahme?",
+        "answer": "Sie steuert die Lichtmenge auf dem Sensor über Zeit und Blende.",
+    },
+    "speichern__digitalbild": {
+        "prompt": "Was geschieht beim Speichern eines Digitalbildes?",
+        "answer": "Es speichert das fertige Bild dauerhaft als Datei auf dem Speichermedium.",
+    },
+    "display__digitalbild": {
+        "prompt": "Wozu dient das Display bei digitalen Bildern?",
+        "answer": "Es zeigt das fertige Pixelraster auf einem Bildschirm an.",
+    },
+    "rauschen__digitalbild": {
+        "prompt": "Woran erkennt man Rauschen im Digitalbild?",
+        "answer": "Es beschreibt zufällige Störungen im Bild, die besonders bei wenig Licht auffallen.",
+    },
+    "sensor__digitalbild": {
+        "prompt": "Wozu dient der Bildsensor bei der digitalen Bildentstehung?",
+        "answer": "Er wandelt auftreffendes Licht in ein elektrisches Signal um, etwa in CCD- oder CMOS-Chips.",
+    },
+    "vergleich film__digitalbild": {
+        "prompt": "Worin unterscheidet sich der Vergleich von Film und Digitalbild?",
+        "answer": "Es beschreibt den historischen Vergleich von chemischem Film und digitaler Aufnahme.",
+    },
+    "datensatz__digitalbild": {
+        "prompt": "Was beschreibt der Datensatz eines Digitalbildes?",
+        "answer": "Es speichert Helligkeitswerte kanalweise als Zahlen für die spätere Darstellung.",
+    },
+    "anwendung__digitalbild": {
+        "prompt": "Wo begegnet uns digitale Bildentstehung im Alltag?",
+        "answer": "Sie steckt hinter typischen Smartphone-Fotos und vielen Alltagsaufnahmen.",
+    },
+    "farbe__digitalbild": {
+        "prompt": "Wie entsteht Farbe in einem typischen Digitalbild?",
+        "answer": "Sie mischt typischerweise Rot-, Grün- und Blaukanäle zu wahrgenommenen Farben.",
+    },
     "kieme": {
         "prompt": "Wozu dient die Kieme bei Fischen?",
         "answer": "Sie entzieht dem Wasser Sauerstoff und dient der Atmung.",
@@ -872,9 +921,18 @@ HAND: dict[str, dict[str, object]] = {
 
 BANNED_OUT = re.compile(
     r"ist hier:|kurz gesagt:|\bHier gilt\b|Es geht um|Fachzusammenhang|"
-    r"Nachbarbegriff|prüfbaren Sachverhalt|Was bedeutet\b|Folgendes",
+    r"Nachbarbegriff|prüfbaren Sachverhalt|Was bedeutet\b|Folgendes|"
+    r"bei den behandelten Arten|"
+    r"\bNur Haarfarbe\b|\bNur Zahnzahl\b|"
+    r"ohne biologischen Bezug|"
+    r"Nur Fotosynthese ohne biologischen Bezug|"
+    r"\bEs ist eine Nur\b|\bSie ist eine Nur\b|\bEr ist eine Nur\b|"
+    r"Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|"
+    r"Es beschreibt ein Zwei Membranen",
     re.I,
 )
+# Title-Case noun after „ist eine“ (must stay case-sensitive)
+TITLE_AFTER_IST_EINE = re.compile(r"\bist eine [A-ZÄÖÜ]")
 TITLE_MUSH = re.compile(
     r"\b(der|die|das|ein|eine|einen|einem|einer)\s+"
     r"([A-ZÄÖÜ][a-zäöüß]+)(?:\s+([A-ZÄÖÜ][a-zäöüß]+)){1,}",
@@ -1000,8 +1058,13 @@ def hand_entry(term: str, concept: str = "") -> dict[str, object] | None:
     ):
         if "umwandlung__motion" in HAND:
             return HAND["umwandlung__motion"]
+    # Digitale Bildentstehung topic-local HAND
+    if "digitalbild" in c:
+        for k in (f"{base}__digitalbild", f"{key}__digitalbild"):
+            if k in HAND:
+                return HAND[k]
     for k in (key, base):
-        if k in HAND and not str(k).endswith(("__ge", "__motion", "__elektronik")):
+        if k in HAND and not str(k).endswith(("__ge", "__motion", "__elektronik", "__digitalbild")):
             return HAND[k]
     return None
 
@@ -1122,6 +1185,7 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
         or BAD_ANSWER.search(answer)
         or TITLE_TIP.search(answer)
         or TITLE_AFTER_IST.search(answer)
+        or TITLE_AFTER_IST_EINE.search(answer)
     ):
         return False
     # Reject uniform Sie/Er/Es-ist-ein(e) answers (mechanical thin fill)
@@ -1130,7 +1194,11 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
     if sum(1 for w in wrongs if re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", w, re.I)) >= 2:
         return False
     if any(
-        BAD_ANSWER.search(w) or TITLE_TIP.search(w) or TITLE_AFTER_IST.search(w) or BANNED_OUT.search(w)
+        BAD_ANSWER.search(w)
+        or TITLE_TIP.search(w)
+        or TITLE_AFTER_IST.search(w)
+        or TITLE_AFTER_IST_EINE.search(w)
+        or BANNED_OUT.search(w)
         for w in wrongs
     ):
         return False
@@ -1151,6 +1219,16 @@ def quality_ok(prompt: str, answer: str, wrongs: list[str]) -> bool:
         r"Das trifft auf einen anderen|verwandten Fachbegriff|anderen Vorgang mit anderer|"
         r"Sie schlangen\b|Es ist ein Bei\b|streung beachten|nachvollziehbarkeit\)",
         blob,
+        re.I,
+    ):
+        return False
+    # Fragment mush from short meanings (angry leftovers)
+    if re.search(
+        r"\bbeschreibt ein[e]?\s+[a-zäöü]|"  # beschreibt ein Bedarfs…
+        r"\bbeschreibt eine [A-ZÄÖÜ][a-zäöüß]+ [a-zäöü]|"
+        r",\s*(strom|zeit|linse|spiegel|basis|oft)\b|"
+        r"\bbildpunkt digital\b|\blichtmenge auf\b",
+        answer,
         re.I,
     ):
         return False
@@ -1293,16 +1371,24 @@ def natural_answer(term: str, meaning: str, wissen: str, concept: str = "") -> s
                     sent = f"{p6.strip_period(sent)}, etwa {tip2}"
                 elif len(tip_l.split()) <= 7:
                     sent = f"{p6.strip_period(sent)} — {tip_l}"
-    # Last resort: extend short answers without meta pads
+    # Last resort: extend short answers from meaning — NEVER topic pads
+    if len(sent.split()) < 6 and meaning:
+        mbody = fix_casing(meaning.replace("→", "zu").strip())
+        if mbody and mbody.lower() not in sent.lower():
+            if VERB_LEAD.match(mbody) or VERBISH.match(mbody):
+                sent = f"{pron} {p6.lower_first(mbody)}"
+            else:
+                sent = f"{p6.strip_period(sent)}, genauer: {p6.lower_first(mbody)}"
     if len(sent.split()) < 6:
-        sent = f"{p6.strip_period(sent)} bei den behandelten Arten"
+        # Still short — leave for quality_ok / caller to skip (no pad)
+        sent = ensure_period(sent)
+        return sent
 
     sent = ensure_period(re.sub(r"\s{2,}", " ", fix_casing(sent)).replace(" — ", ", "))
     if BANNED_OUT.search(sent) or "biologischen Zusammenhang" in sent:
         sent = re.sub(r",?\s*im biologischen Zusammenhang\.?", "", sent)
+        sent = re.sub(r",?\s*bei den behandelten Arten\.?", "", sent, flags=re.I)
         sent = ensure_period(sent)
-        if len(sent.split()) < 6:
-            sent = f"{p6.strip_period(sent)} bei den behandelten Arten."
     return sent
 
 
@@ -1440,6 +1526,22 @@ def needs_rewrite(
             return True
     if re.search(r"^Was kennzeichnet ", prompt) and re.search(r"ist eine\b", blob, re.I):
         return True
+    # Angry leftovers that soft gates previously allowed
+    if re.search(r"bei den behandelten Arten", blob, re.I):
+        return True
+    if re.search(
+        r"Nur Haarfarbe|Nur Zahnzahl|ohne biologischen Bezug|\bEs ist eine Nur\b",
+        blob,
+        re.I,
+    ):
+        return True
+    if re.search(
+        r"Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|"
+        r"Es beschreibt ein Zwei Membranen",
+        blob,
+        re.I,
+    ):
+        return True
     return False
 
 
@@ -1478,8 +1580,10 @@ def process_file(
 
         if topic and topic.lower() not in concept.lower():
             continue
-        # Hard-protect optics Timer/Sensor/Transparent only
+        # Hard-protect optics Timer/Sensor/Transparent + hand-gold digitalbild
         if "lichtverschmutzung:fact:timer" in concept or "lichtdurchlaessigkeit:fact:transparent" in concept:
+            continue
+        if "digitalbild:fact:" in concept:
             continue
         if concept in {
             "ph:gap:ph-k6-lb1-lichtverschmutzung:fact:timer-sensor",

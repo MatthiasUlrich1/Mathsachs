@@ -64,7 +64,10 @@ const EFFECT_VERB =
   /^(Ist|Sind|Wird|Werden|Entsteht|Bedeutet|Gilt|Kennzeichnet|Bezeichnet|Beschreibt|Steht|Liegt|Geht|Hat|Haben|Stört)\b/i
 
 const BANNED_OPTION =
-  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|ist hier:|ist kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|steht im Kern für Folgendes|der Ereignisse|Was bedeutet/i
+  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|ist hier:|ist kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|steht im Kern für Folgendes|der Ereignisse|Was bedeutet|bei den behandelten Arten|\bNur Haarfarbe\b|\bNur Zahnzahl\b|ohne biologischen Bezug|Nur Fotosynthese ohne biologischen Bezug|\bEs ist eine Nur\b|\bSie ist eine Nur\b|\bEr ist eine Nur\b|Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|Es beschreibt ein Zwei Membranen/i
+
+/** Title-Case noun after „ist eine“ — case-sensitive mush. */
+const TITLE_AFTER_IST_EINE = /\bist eine [A-ZÄÖÜ]/
 
 /** Gold definition stem that may keep „Was versteht man …“. */
 export function isAllowedVerstehtStem(prompt: string): boolean {
@@ -384,6 +387,7 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
   const o = opt.replace(/\s+/g, ' ').trim()
   if (!o) return false
   if (BANNED_OPTION.test(o)) return true
+  if (TITLE_AFTER_IST_EINE.test(o)) return true
   if (/\bsteht im Kern für Folgendes\b/i.test(o)) return true
   if (/\bist hier:|\bist kurz gesagt:|\bHier gilt\b|\bEs geht um|\bund zwar gilt|\bder Ereignisse\b/i.test(o)) {
     return true

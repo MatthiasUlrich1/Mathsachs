@@ -203,7 +203,12 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f0',
       prompt: "Was bewirkt die Kiemenatmung?",
-      answer: "Sie beschreibt sauerstoffaufnahme aus Wasser, über Kiemenblätter.", wrong: ["Es beschreibt anderer Name der Seitenlinie.", "Es beschreibt eine Zählung der Schuppenreihen.", "Sie vergrößert Austauschfläche, in der Kieme."],
+      answer: "Sie nimmt Sauerstoff aus dem Wasser über die Kiemenblätter auf.",
+      wrong: [
+        "Sie ist ein anderer Name für die Seitenlinie am Fischkörper.",
+        "Sie zählt die Schuppenreihen zur Altersbestimmung des Fisches.",
+        "Sie vergrößert die Austauschfläche in der Kieme ohne Atmungsfunktion.",
+      ],
       explanation: 'Über Kiemenblätter. Kiemenatmung bedeutet: Sauerstoffaufnahme aus Wasser.',
       wissen: 'Über Kiemenblätter. Kiemenatmung bedeutet: Sauerstoffaufnahme aus Wasser. Merke: Kiemenatmung — Sauerstoffaufnahme aus Wasser.',
       gap: '[k5-lb2-fische-merkmale] Fachbegriff: ___ — Sauerstoffaufnahme aus Wasser',
@@ -463,8 +468,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f9',
-      prompt: 'Was kennzeichnet „Landgang“?',
-      answer: 'Erwachsener Lurch lebt oft an Land, atmung und Haut brauchen Feuchtigkeit.', wrong: ['Es ist eine Anderer Name für Lurch.', 'Es ist eine Gasaustausch über Feuchte Haut.', 'Es ist eine Umwandlung Larve zu Adultform.'],
+      prompt: "Was kennzeichnet „Landgang“?",
+      answer: "Erwachsener Lurch lebt oft an Land, atmung und Haut brauchen Feuchtigkeit.", wrong: ["Sie schützen als Hautsekrete vor Fressfeinden.", "Sie ist die wasserlebende Larve der Lurche mit Kiemen und Schwanz.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um."],
       explanation: 'Atmung und Haut brauchen Feuchtigkeit. Landgang bedeutet: Erwachsener Lurch lebt oft an Land.',
       wissen: 'Atmung und Haut brauchen Feuchtigkeit. Landgang bedeutet: Erwachsener Lurch lebt oft an Land. Merke: Landgang — Erwachsener Lurch lebt oft an Land.',
       gap: '[k5-lb3-lurche] Fachbegriff: ___ — Erwachsener Lurch lebt oft an Land',
@@ -574,8 +579,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f3',
-      prompt: 'Was kennzeichnet „Schwimmhaut“?',
-      answer: 'Es ist eine Haut Zwischen Zehen durch Schwimmen im Wasser.', wrong: ['Feuchthält und schützt die Haut.', 'Es ist eine Hörorgan am Kopf Vieler Frösche.', 'Das Schwimmhaut ist das Kraftvolle Hinterbeine.'],
+      prompt: "Was kennzeichnet „Schwimmhaut“?",
+      answer: "Es beschreibt ein Haut zwischen Zehen, schwimmen im Wasser.", wrong: ["Das Schwimmhaut ist das Kraftvolle Hinterbeine.", "Es schützt den Körper und enthält Sinneszellen für Druck, Temperatur und Schmerz, für Hautatmung.", "Sie beschreibt gemeinsame Körperöffnung, verdauung und Fortpflanzung."],
       explanation: 'Schwimmen im Wasser. Schwimmhaut bedeutet: Haut zwischen Zehen.',
       wissen: 'Schwimmen im Wasser. Schwimmhaut bedeutet: Haut zwischen Zehen. Merke: Schwimmhaut — Haut zwischen Zehen.',
       gap: '[k5-lb3-lurche-merkmale] Fachbegriff: ___ — Haut zwischen Zehen',
@@ -614,8 +619,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f7',
-      prompt: 'Was kennzeichnet „Haut Capillarnetz“?',
-      answer: 'Es ist eine Blutgefäße Nah an der Oberfläche durch für Hautatmung.', wrong: ['Feuchthält und schützt die Haut.', 'Es ist eine Hörorgan am Kopf Vieler Frösche.', 'Das Haut Capillarnetz ist das Kraftvolle Hinterbeine.'],
+      prompt: "Was kennzeichnet „Haut Capillarnetz“?",
+      answer: "Es schützt den Körper und enthält Sinneszellen für Druck, Temperatur und Schmerz, für Hautatmung.", wrong: ["Das Haut Capillarnetz ist das Kraftvolle Hinterbeine.", "Sie signalisiert Giftigkeit, bei manchen Arten.", "Es beschreibt ein Hörorgan am Kopf vieler Frösche."],
       explanation: 'Für Hautatmung. Haut Capillarnetz bedeutet: Blutgefäße nah an der Oberfläche.',
       wissen: 'Für Hautatmung. Haut Capillarnetz bedeutet: Blutgefäße nah an der Oberfläche. Merke: Haut Capillarnetz — Blutgefäße nah an der Oberfläche.',
       gap: '[k5-lb3-lurche-merkmale] Fachbegriff: ___ — Blutgefäße nah an der Oberfläche',
@@ -1308,8 +1313,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f8',
-      prompt: 'Was kennzeichnet „Lidlosigkeit“?',
-      answer: 'Sie ist ein Schlangen ohne Bewegliche Lider durch Schutzbrille.', wrong: ['Die Lidlosigkeit ist die Weniger Wasserverlust.', 'Die Lidlosigkeit ist die Äußere Schuppe.', 'Sie ist eine Erwärmung des Körpers.'],
+      prompt: "Was beschreibt „Lidlosigkeit\"?",
+      answer: "Sie meint schutzbrille. Lidlosigkeit bedeutet: Schlangen ohne bewegliche Lider. Merke: Lidlosigkeit — Schlangen ohne bewegliche Lider.", wrong: ["Es meint angepasstheit an Land. Trockene Haut bedeutet: Weniger Wasserverlust. Merke: Trockene Haut — Weniger Wasserverlust.", "Sie meint aus Keratin. Hornschuppe bedeutet: Äußere Schuppe. Merke: Hornschuppe — Äußere Schuppe.", "Es meint aktivitätssteuerung. Sonnenbaden bedeutet: Erwärmung des Körpers. Merke: Sonnenbaden — Erwärmung des Körpers."],
       explanation: 'Schutzbrille. Lidlosigkeit bedeutet: Schlangen ohne bewegliche Lider.',
       wissen: 'Schutzbrille. Lidlosigkeit bedeutet: Schlangen ohne bewegliche Lider. Merke: Lidlosigkeit — Schlangen ohne bewegliche Lider.',
       gap: '[k5-lb4-kriechtiere-merkmale] Fachbegriff: ___ — Schlangen ohne bewegliche Lider',
@@ -1479,8 +1484,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:arten:f8',
-      prompt: 'Was kennzeichnet „Würfelnatter“?',
-      answer: 'Er ist ein Wassernatter durch Gefleckte Zeichnung.', wrong: ['Der Würfelnatter ist der Heimische Eidechse.', 'Er ist eine Kleine Heimische Eidechse.', 'Der Würfelnatter ist der Beinlose Echse.'],
+      prompt: "Was beschreibt „Würfelnatter\"?",
+      answer: "Er meint gefleckte Zeichnung. Würfelnatter bedeutet: Wassernatter. Merke: Würfelnatter — Wassernatter.", wrong: ["Sie meint sonnige Säume. Zauneidechse bedeutet: Heimische Eidechse. Merke: Zauneidechse — Heimische Eidechse.", "Sie meint oft in Wäldern. Waldeidechse bedeutet: Kleine heimische Eidechse. Merke: Waldeidechse — Kleine heimische Eidechse.", "Sie meint kein Gift, kein Schlangenbau. Blindschleiche bedeutet: Beinlose Echse. Merke: Blindschleiche — Beinlose Echse."],
       explanation: 'Gefleckte Zeichnung. Würfelnatter bedeutet: Wassernatter.',
       wissen: 'Gefleckte Zeichnung. Würfelnatter bedeutet: Wassernatter. Merke: Würfelnatter — Wassernatter.',
       gap: '[k5-lb4-kriechtiere-arten] Fachbegriff: ___ — Wassernatter',
@@ -1680,8 +1685,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f11',
-      prompt: 'Was kennzeichnet „Paarungszeit“?',
-      answer: 'Es ist eine Zeit der Fortpflanzung durch Oft Frühjahr/Sommer.', wrong: ['Es ist ein Samenübertragung im Körper.', 'Es ist ein Ablegen der Schaleneier.', 'Es ist eine Nährstoff im Ei.'],
+      prompt: "Was kennzeichnet „Paarungszeit“?",
+      answer: "Es zeit der Fortpflanzung, oft Frühjahr/Sommer.", wrong: ["Sie beschreibt eine Bebrütung durch Wärme.", "Er beschreibt ein Nährstoff im Ei, ernährt den Embryo.", "Er beschreibt frisch geschlüpftes Jungtier, selbstständig oft."],
       explanation: 'Oft Frühjahr/Sommer. Paarungszeit bedeutet: Zeit der Fortpflanzung.',
       wissen: 'Oft Frühjahr/Sommer. Paarungszeit bedeutet: Zeit der Fortpflanzung. Merke: Paarungszeit — Zeit der Fortpflanzung.',
       gap: '[k5-lb4-kriechtiere-fortpflanzung] Fachbegriff: ___ — Zeit der Fortpflanzung',
@@ -1801,8 +1806,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f6',
-      prompt: 'Was kennzeichnet „Kropf“?',
-      answer: 'Es ist eine Vorratsmagen-ähnliche Erweiterung, speichert Nahrung.', wrong: ['Es ist eine Körperbedeckung der Vögel.', 'Es ist eine Mundwerkzeug ohne Zähne.', 'Es ist eine Teil des Atmungssystems.'],
+      prompt: "Was beschreibt „Kropf\"?",
+      answer: "Es meint speichert Nahrung. Kropf bedeutet: Vorratsmagen-ähnliche Erweiterung. Merke: Kropf — Vorratsmagen-ähnliche Erweiterung.", wrong: ["Er meint wärme und Flug. Feder bedeutet: Körperbedeckung der Vögel. Merke: Feder — Körperbedeckung der Vögel.", "Es meint form folgt Ernährung. Schnabel bedeutet: Mundwerkzeug ohne Zähne. Merke: Schnabel — Mundwerkzeug ohne Zähne.", "Es meint effiziente Sauerstoffversorgung. Luftsack bedeutet: Teil des Atmungssystems. Merke: Luftsack — Teil des Atmungssystems."],
       explanation: 'Speichert Nahrung. Kropf bedeutet: Vorratsmagen-ähnliche Erweiterung.',
       wissen: 'Speichert Nahrung. Kropf bedeutet: Vorratsmagen-ähnliche Erweiterung. Merke: Kropf — Vorratsmagen-ähnliche Erweiterung.',
       gap: '[k5-lb5-voegel] Fachbegriff: ___ — Vorratsmagen-ähnliche Erweiterung',
@@ -1972,8 +1977,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f6',
-      prompt: 'Was kennzeichnet „Füttern“?',
-      answer: 'Es ist eine Nahrung für Jungvögel durch Eltern Bringen Beute.', wrong: ['Das Füttern ist das Paarungsverhalten.', 'Es ist eine Eizahl im Nest.', 'Es ist ein Wärmen der Eier.'],
+      prompt: "Was kennzeichnet „Füttern“?",
+      answer: "Es beschreibt eine Nahrung für Jungvögel, eltern bringen Beute.", wrong: ["Sie beschreibt eine Eizahl im Nest.", "Es beschreibt viele Nester nah beieinander.", "Sie beschreibt äußere Eischale, schutz und Calcium."],
       explanation: 'Eltern bringen Beute. Füttern bedeutet: Nahrung für Jungvögel.',
       wissen: 'Eltern bringen Beute. Füttern bedeutet: Nahrung für Jungvögel. Merke: Füttern — Nahrung für Jungvögel.',
       gap: '[k5-lb5-voegel-fortpflanzung] Fachbegriff: ___ — Nahrung für Jungvögel',
@@ -2193,8 +2198,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f11',
-      prompt: 'Was kennzeichnet „Sozialverband“?',
-      answer: 'Es ist eine Gruppe mit Rollen durch Z. B. Wolfsrudel.', wrong: ['Das Sozialverband ist das Haarkleid.', 'Es erzeugt Milch.', 'Das Sozialverband ist das Stabile Körpertemperatur.'],
+      prompt: "Was beschreibt „Sozialverband\"?",
+      answer: "Es meint z. B. Wolfsrudel. Sozialverband bedeutet: Gruppe mit Rollen. Merke: Sozialverband — Gruppe mit Rollen.", wrong: ["Es meint wärmeschutz. Fell bedeutet: Haarkleid. Merke: Fell — Haarkleid.", "Sie meint säugen der Jungen. Milchdrüse bedeutet: Erzeugt Milch. Merke: Milchdrüse — Erzeugt Milch.", "Es meint endotherm. Gleichwarm bedeutet: Stabile Körpertemperatur. Merke: Gleichwarm — Stabile Körpertemperatur."],
       explanation: 'z. B. Wolfsrudel. Sozialverband bedeutet: Gruppe mit Rollen.',
       wissen: 'z. B. Wolfsrudel. Sozialverband bedeutet: Gruppe mit Rollen. Merke: Sozialverband — Gruppe mit Rollen.',
       gap: '[k5-lb6-saeugetiere] Fachbegriff: ___ — Gruppe mit Rollen',
@@ -2255,7 +2260,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f0',
       prompt: "Was bewirkt der Schädel?",
-      answer: "Es beschreibt knöcherne Kopfkapsel, schützt das Gehirn.", wrong: ["Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", "Es beschreibt vorderer Brustkorbknochen bei den behandelten Arten.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein."],
+      answer: "Es beschreibt knöcherne Kopfkapsel, schützt das Gehirn.", wrong: ["Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", "Es beschreibt vorderer Brustkorbknochen.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein."],
       explanation: 'Schützt das Gehirn. Schädel bedeutet: Knöcherne Kopfkapsel.',
       wissen: 'Schützt das Gehirn. Schädel bedeutet: Knöcherne Kopfkapsel. Merke: Schädel — Knöcherne Kopfkapsel.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Knöcherne Kopfkapsel',
@@ -2275,7 +2280,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f2',
       prompt: "Welche Eigenschaft hat die Rippe?",
-      answer: "Sie beschreibt knochen des Brustkorbs, schützt Organe.", wrong: ["Es beschreibt eine Verbindung Bein–Rumpf bei den behandelten Arten.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt längster Beinknochen, trägt Körpergewicht."],
+      answer: "Sie beschreibt knochen des Brustkorbs, schützt Organe.", wrong: ["Es beschreibt eine Verbindung Bein–Rumpf.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt längster Beinknochen, trägt Körpergewicht."],
       explanation: 'Schützt Organe. Rippe bedeutet: Knochen des Brustkorbs.',
       wissen: 'Schützt Organe. Rippe bedeutet: Knochen des Brustkorbs. Merke: Rippe — Knochen des Brustkorbs.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Knochen des Brustkorbs',
@@ -2285,7 +2290,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f3',
       prompt: "Woran erkennt man das Brustbein?",
-      answer: "Es beschreibt vorderer Brustkorbknochen bei den behandelten Arten.", wrong: ["Es beschreibt eine Verbindung Bein–Rumpf bei den behandelten Arten.", "Es beschreibt knochen der oberen Extremität, zwischen Schulter und Ellbogen.", "Sie beschreibt knochen des Brustkorbs, schützt Organe."],
+      answer: "Es beschreibt vorderer Brustkorbknochen.", wrong: ["Es beschreibt eine Verbindung Bein–Rumpf.", "Es beschreibt knochen der oberen Extremität, zwischen Schulter und Ellbogen.", "Sie beschreibt knochen des Brustkorbs, schützt Organe."],
       explanation: 'Rippenansatz. Brustbein bedeutet: Vorderer Brustkorbknochen.',
       wissen: 'Rippenansatz. Brustbein bedeutet: Vorderer Brustkorbknochen. Merke: Brustbein — Vorderer Brustkorbknochen.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Vorderer Brustkorbknochen',
@@ -2315,7 +2320,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f6',
       prompt: "Mit welchen Mitteln arbeitet das Gelenk?",
-      answer: "Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", wrong: ["Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt ein Im Inneren langer Knochen.", "Es beschreibt vorderer Brustkorbknochen bei den behandelten Arten."],
+      answer: "Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", wrong: ["Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt ein Im Inneren langer Knochen.", "Es beschreibt vorderer Brustkorbknochen."],
       explanation: 'Mit Knorpel und Kapsel. Gelenk bedeutet: Bewegliche Knochenverbindung.',
       wissen: 'Mit Knorpel und Kapsel. Gelenk bedeutet: Bewegliche Knochenverbindung. Merke: Gelenk — Bewegliche Knochenverbindung.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Bewegliche Knochenverbindung',
@@ -2335,7 +2340,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f8',
       prompt: "Woran erkennt man den Beckengürtel?",
-      answer: "Es beschreibt eine Verbindung Bein–Rumpf bei den behandelten Arten.", wrong: ["Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt knochen der oberen Extremität, zwischen Schulter und Ellbogen.", "Sie beschreibt zentrale Körperachse, aus Wirbeln."],
+      answer: "Es beschreibt eine Verbindung Bein–Rumpf.", wrong: ["Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt knochen der oberen Extremität, zwischen Schulter und Ellbogen.", "Sie beschreibt zentrale Körperachse, aus Wirbeln."],
       explanation: 'Hüftbein. Beckengürtel bedeutet: Verbindung Bein–Rumpf.',
       wissen: 'Hüftbein. Beckengürtel bedeutet: Verbindung Bein–Rumpf. Merke: Beckengürtel — Verbindung Bein–Rumpf.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Verbindung Bein–Rumpf',
@@ -2355,7 +2360,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f10',
       prompt: "Woran erkennt man den Schwanzwirbel?",
-      answer: "Es beschreibt ein Wirbel im Schwanz, anzahl artspezifisch.", wrong: ["Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt eine Verbindung Bein–Rumpf bei den behandelten Arten."],
+      answer: "Es beschreibt ein Wirbel im Schwanz, anzahl artspezifisch.", wrong: ["Es beschreibt bewegliche Knochenverbindung, mit Knorpel und Kapsel.", "Es beschreibt eine Verbindung Arm–Rumpf, etwa schulterblatt oder Schlüsselbein.", "Es beschreibt eine Verbindung Bein–Rumpf."],
       explanation: 'Anzahl artspezifisch. Schwanzwirbel bedeutet: Wirbel im Schwanz.',
       wissen: 'Anzahl artspezifisch. Schwanzwirbel bedeutet: Wirbel im Schwanz. Merke: Schwanzwirbel — Wirbel im Schwanz.',
       gap: '[k5-lb6-saeuger-skelett] Fachbegriff: ___ — Wirbel im Schwanz',
@@ -2435,8 +2440,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f1',
-      prompt: 'Was kennzeichnet „Laufbein“?',
-      answer: 'Es ist eine Schnelle Fortbewegung durch Z. B. Reh.', wrong: ['Es ist eine Angepasstheit an Graben.', 'Es ist eine Greifen und Klettern.', 'Das Laufbein ist das Gleitflug.'],
+      prompt: "Was beschreibt „Laufbein\"?",
+      answer: "Es meint z. B. Reh. Laufbein bedeutet: Schnelle Fortbewegung. Merke: Laufbein — Schnelle Fortbewegung.", wrong: ["Es meint z. B. Maulwurf. Grabfuß bedeutet: Angepasstheit an Graben. Merke: Grabfuß — Angepasstheit an Graben.", "Sie meint z. B. Eichhörnchen. Klettergliedmaße bedeutet: Greifen und Klettern. Merke: Klettergliedmaße — Greifen und Klettern.", "Es meint z. B. Gleitbeutler, Fledermausflügel. Flughaut bedeutet: Gleitflug. Merke: Flughaut — Gleitflug."],
       explanation: 'z. B. Reh. Laufbein bedeutet: Schnelle Fortbewegung.',
       wissen: 'z. B. Reh. Laufbein bedeutet: Schnelle Fortbewegung. Merke: Laufbein — Schnelle Fortbewegung.',
       gap: '[k5-lb6-saeuger-angepasst] Fachbegriff: ___ — Schnelle Fortbewegung',
@@ -2466,7 +2471,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f4',
       prompt: "Welche Eigenschaft hat das Schwimmhaut?",
-      answer: "Es schwimmen bei den behandelten Arten.", wrong: ["Es beschreibt schnelle Fortbewegung bei den behandelten Arten.", "Sie greifen und Klettern bei den behandelten Arten.", "Sie beschreibt einzelgänger oder Gruppe bei den behandelten Arten."],
+      answer: "Es schwimmen.", wrong: ["Es beschreibt schnelle Fortbewegung.", "Sie greifen und Klettern.", "Sie beschreibt einzelgänger oder Gruppe."],
       explanation: 'z. B. Biber. Schwimmhaut bedeutet: Schwimmen.',
       wissen: 'z. B. Biber. Schwimmhaut bedeutet: Schwimmen. Merke: Schwimmhaut — Schwimmen.',
       gap: '[k5-lb6-saeuger-angepasst] Fachbegriff: ___ — Schwimmen',
@@ -2475,8 +2480,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f5',
-      prompt: 'Was kennzeichnet „Stoßzahn“?',
-      answer: 'Es ist eine Werkzeug/Waffe durch Z. B. Wildschwein.', wrong: ['Es ist eine Angepasstheit an Graben.', 'Das Stoßzahn ist das Schnelle Fortbewegung.', 'Es ist eine Greifen und Klettern.'],
+      prompt: "Was beschreibt „Stoßzahn\"?",
+      answer: "Es meint z. B. Wildschwein. Stoßzahn bedeutet: Werkzeug/Waffe. Merke: Stoßzahn — Werkzeug/Waffe.", wrong: ["Es meint z. B. Maulwurf. Grabfuß bedeutet: Angepasstheit an Graben. Merke: Grabfuß — Angepasstheit an Graben.", "Es meint z. B. Reh. Laufbein bedeutet: Schnelle Fortbewegung. Merke: Laufbein — Schnelle Fortbewegung.", "Sie meint z. B. Eichhörnchen. Klettergliedmaße bedeutet: Greifen und Klettern. Merke: Klettergliedmaße — Greifen und Klettern."],
       explanation: 'z. B. Wildschwein. Stoßzahn bedeutet: Werkzeug/Waffe.',
       wissen: 'z. B. Wildschwein. Stoßzahn bedeutet: Werkzeug/Waffe. Merke: Stoßzahn — Werkzeug/Waffe.',
       gap: '[k5-lb6-saeuger-angepasst] Fachbegriff: ___ — Werkzeug/Waffe',
@@ -2597,7 +2602,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f0',
       prompt: "Welche Eigenschaft hat das Artenschutz?",
-      answer: "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, gesetze und Biotope.", wrong: ["Es beschreibt weniger Störung, für sensible Arten.", "Es beschreibt eingebürgerte Art bei den behandelten Arten.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
+      answer: "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, gesetze und Biotope.", wrong: ["Es beschreibt weniger Störung, für sensible Arten.", "Es beschreibt eingebürgerte Art.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
       explanation: 'Gesetze und Biotope. Artenschutz bedeutet: Schutz bedrohter Arten.',
       wissen: 'Gesetze und Biotope. Artenschutz bedeutet: Schutz bedrohter Arten. Merke: Artenschutz — Schutz bedrohter Arten.',
       gap: '[k5-lb6-saeuger-schutz] Fachbegriff: ___ — Schutz bedrohter Arten',
@@ -2657,7 +2662,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f6',
       prompt: "Mit welchen Mitteln arbeitet das Neozoon?",
-      answer: "Es beschreibt eingebürgerte Art bei den behandelten Arten.", wrong: ["Es beschreibt weniger Störung, für sensible Arten.", "Es beschreibt eine Verbindung von Lebensräumen.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
+      answer: "Es beschreibt eingebürgerte Art.", wrong: ["Es beschreibt weniger Störung, für sensible Arten.", "Es beschreibt eine Verbindung von Lebensräumen.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
       explanation: 'z. B. Waschbär. Neozoon bedeutet: Eingebürgerte Art.',
       wissen: 'z. B. Waschbär. Neozoon bedeutet: Eingebürgerte Art. Merke: Neozoon — Eingebürgerte Art.',
       gap: '[k5-lb6-saeuger-schutz] Fachbegriff: ___ — Eingebürgerte Art',
@@ -2677,7 +2682,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f8',
       prompt: "Woran erkennt man das Lebensraumverlust?",
-      answer: "Es bedeutet das Verschwinden geeigneter Habitate für viele Arten, durch Bebauung/Landwirtschaft.", wrong: ["Sie beschreibt eine Gefährdungseinstufung, für Arten.", "Sie beschreibt querungshilfe über Straßen, verringert Verkehrsopfer.", "Es beschreibt eingebürgerte Art bei den behandelten Arten."],
+      answer: "Es bedeutet das Verschwinden geeigneter Habitate für viele Arten, durch Bebauung/Landwirtschaft.", wrong: ["Sie beschreibt eine Gefährdungseinstufung, für Arten.", "Sie beschreibt querungshilfe über Straßen, verringert Verkehrsopfer.", "Es beschreibt eingebürgerte Art."],
       explanation: 'Durch Bebauung/Landwirtschaft. Lebensraumverlust bedeutet: Hauptgefährdung vieler Arten.',
       wissen: 'Durch Bebauung/Landwirtschaft. Lebensraumverlust bedeutet: Hauptgefährdung vieler Arten. Merke: Lebensraumverlust — Hauptgefährdung vieler Arten.',
       gap: '[k5-lb6-saeuger-schutz] Fachbegriff: ___ — Hauptgefährdung vieler Arten',
@@ -2686,8 +2691,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f9',
-      prompt: 'Wozu dient Lärmschutz?',
-      answer: 'Es ist eine Weniger Störung durch für Sensible Arten.', wrong: ['Es ist eine Schutz Bedrohter Arten.', 'Es ist eine Verbindung von Lebensräumen.', 'Es ist eine Querungshilfe über Straßen.'],
+      prompt: "Wozu dient Lärmschutz?",
+      answer: "Es beschreibt weniger Störung, für sensible Arten.", wrong: ["Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation.", "Sie aussetzen nach lokalem Aussterben, mit Monitoring.", "Sie beschreibt querungshilfe über Straßen, verringert Verkehrsopfer."],
       explanation: 'Für sensible Arten. Lärmschutz bedeutet: Weniger Störung.',
       wissen: 'Für sensible Arten. Lärmschutz bedeutet: Weniger Störung. Merke: Lärmschutz — Weniger Störung.',
       gap: '[k5-lb6-saeuger-schutz] Fachbegriff: ___ — Weniger Störung',
@@ -2707,7 +2712,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f11',
       prompt: "Was beschreibt „Citizen Science“?",
-      answer: "Sie beschreibt mitmachen bei Beobachtungen, daten für Schutz.", wrong: ["Es beschreibt eingebürgerte Art bei den behandelten Arten.", "Sie beschreibt querungshilfe über Straßen, verringert Verkehrsopfer.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
+      answer: "Sie beschreibt mitmachen bei Beobachtungen, daten für Schutz.", wrong: ["Es beschreibt eingebürgerte Art.", "Sie beschreibt querungshilfe über Straßen, verringert Verkehrsopfer.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
       explanation: 'Daten für Schutz. Citizen Science bedeutet: Mitmachen bei Beobachtungen.',
       wissen: 'Daten für Schutz. Citizen Science bedeutet: Mitmachen bei Beobachtungen. Merke: Citizen Science — Mitmachen bei Beobachtungen.',
       gap: '[k5-lb6-saeuger-schutz] Fachbegriff: ___ — Mitmachen bei Beobachtungen',
@@ -2797,8 +2802,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f3',
-      prompt: 'Was kennzeichnet „Hoden“?',
-      answer: 'Es ist eine Erzeugen Samenzellen durch Männliche Keimdrüse.', wrong: ['Es ist eine Beginn der Geschlechtsreife.', 'Es ist eine Abstoßung der Gebärmutterschleimhaut.', 'Das Hoden ist unwillkürlicher Samenerguss.'],
+      prompt: "Was beschreibt „Hoden\"?",
+      answer: "Es meint männliche Keimdrüse. Hoden bedeutet: Erzeugen Samenzellen. Merke: Hoden — Erzeugen Samenzellen.", wrong: ["Sie meint körperliche Veränderungen. Pubertät bedeutet: Beginn der Geschlechtsreife. Merke: Pubertät — Beginn der Geschlechtsreife.", "Sie meint zyklus. Menstruation bedeutet: Abstoßung der Gebärmutterschleimhaut. Merke: Menstruation — Abstoßung der Gebärmutterschleimhaut.", "Sie meint in der Pubertät möglich. Pollution bedeutet: unwillkürlicher Samenerguss. Merke: Pollution — unwillkürlicher Samenerguss."],
       explanation: 'Männliche Keimdrüse. Hoden bedeutet: Erzeugen Samenzellen.',
       wissen: 'Männliche Keimdrüse. Hoden bedeutet: Erzeugen Samenzellen. Merke: Hoden — Erzeugen Samenzellen.',
       gap: '[k5-lb6-saeuger-fortpflanzung] Fachbegriff: ___ — Erzeugen Samenzellen',
@@ -2807,8 +2812,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f4',
-      prompt: 'Wozu dient Eierstock?',
-      answer: 'Es erzeugt Eizellen durch weibliche Keimdrüse.', wrong: ['Es ist eine Beginn der Geschlechtsreife.', 'Es ist eine Abstoßung der Gebärmutterschleimhaut.', 'Das Eierstock ist unwillkürlicher Samenerguss.'],
+      prompt: "Wozu dient Eierstock?",
+      answer: "Es erzeugt Eizellen durch weibliche Keimdrüse.", wrong: ["Sie beschreibt fürsorge und Schutz, wichtig für Entwicklung.", "Es beschreibt ende der Schwangerschaft, kind verlässt den Mutterleib.", "Sie zeit der Entwicklung im Mutterleib, beim Menschen ca."],
       explanation: 'Weibliche Keimdrüse. Eierstock bedeutet: Erzeugt Eizellen.',
       wissen: 'Weibliche Keimdrüse. Eierstock bedeutet: Erzeugt Eizellen. Merke: Eierstock — Erzeugt Eizellen.',
       gap: '[k5-lb6-saeuger-fortpflanzung] Fachbegriff: ___ — Erzeugt Eizellen',
@@ -2827,8 +2832,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f6',
-      prompt: 'Was kennzeichnet „Plazenta“?',
-      answer: 'Es ist ein Versorgung über die Mutter durch Austauschorgan.', wrong: ['Es ist eine Beginn der Geschlechtsreife.', 'Es ist eine Abstoßung der Gebärmutterschleimhaut.', 'Das Plazenta ist unwillkürlicher Samenerguss.'],
+      prompt: "Was kennzeichnet „Plazenta“?",
+      answer: "Es beschreibt eine Versorgung über die Mutter.", wrong: ["Sie zeit der Entwicklung im Mutterleib, beim Menschen ca.", "Sie beschreibt fürsorge und Schutz, wichtig für Entwicklung.", "Es beschreibt eine Ernährung mit Muttermilch."],
       explanation: 'Austauschorgan. Plazenta bedeutet: Versorgung über die Mutter.',
       wissen: 'Austauschorgan. Plazenta bedeutet: Versorgung über die Mutter. Merke: Plazenta — Versorgung über die Mutter.',
       gap: '[k5-lb6-saeuger-fortpflanzung] Fachbegriff: ___ — Versorgung über die Mutter',
@@ -2939,7 +2944,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f0',
       prompt: "Was bewirkt der Wirbeltier?",
-      answer: "Er beschreibt tier mit Wirbelsäule, fünf Schulklassen.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", "Es kiemen und Flossen bei den behandelten Arten."],
+      answer: "Er beschreibt tier mit Wirbelsäule, fünf Schulklassen.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", "Es kiemen und Flossen."],
       explanation: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule.',
       wissen: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule. Merke: Wirbeltier — Tier mit Wirbelsäule.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Tier mit Wirbelsäule',
@@ -2948,8 +2953,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f1',
-      prompt: 'Was kennzeichnet „Fisch“?',
-      answer: 'Es ist eine Kiemen und Flossen durch Wasserleben.', wrong: ['Es ist eine Tier mit Wirbelsäule.', 'Es ist eine Oft Metamorphose und Feuchte Haut.', 'Es ist eine Trockene Hornschicht, Schalenei.'],
+      prompt: "Was beschreibt „Fisch\"?",
+      answer: "Es meint wasserleben. Fisch bedeutet: Kiemen und Flossen. Merke: Fisch — Kiemen und Flossen.", wrong: ["Er meint fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule. Merke: Wirbeltier — Tier mit Wirbelsäule.", "Es meint amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut.", "Er meint reptil. Kriechtier bedeutet: Trockene Hornschicht, Schalenei. Merke: Kriechtier — Trockene Hornschicht, Schalenei."],
       explanation: 'Wasserleben. Fisch bedeutet: Kiemen und Flossen.',
       wissen: 'Wasserleben. Fisch bedeutet: Kiemen und Flossen. Merke: Fisch — Kiemen und Flossen.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Kiemen und Flossen',
@@ -2959,7 +2964,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f2',
       prompt: "Wozu dient das Lurch?",
-      answer: "Es beschreibt ein Oft Metamorphose und feuchte Haut.", wrong: ["Es beschreibt kieme, Lunge, Haut bei den behandelten Arten.", "Sie beschreibt schuppe, Feder, Fell bei den behandelten Arten.", "Er beschreibt trockene Hornschicht, Schalenei bei den behandelten Arten."],
+      answer: "Es beschreibt ein Oft Metamorphose und feuchte Haut.", wrong: ["Es beschreibt kieme, Lunge, Haut.", "Sie beschreibt schuppe, Feder, Fell.", "Er beschreibt trockene Hornschicht, Schalenei."],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
       wissen: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Oft Metamorphose und feuchte Haut',
@@ -2979,7 +2984,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f4',
       prompt: "Mit welchen Mitteln arbeitet der Vogel?",
-      answer: "Es beschreibt ein Federn und Schnabel, oft Flug.", wrong: ["Es kiemen und Flossen bei den behandelten Arten.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut bei den behandelten Arten."],
+      answer: "Es beschreibt ein Federn und Schnabel, oft Flug.", wrong: ["Es kiemen und Flossen.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut."],
       explanation: 'Oft Flug. Vogel bedeutet: Federn und Schnabel.',
       wissen: 'Oft Flug. Vogel bedeutet: Federn und Schnabel. Merke: Vogel — Federn und Schnabel.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Federn und Schnabel',
@@ -2999,7 +3004,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f6',
       prompt: "Wozu dient das Merkmal?",
-      answer: "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", wrong: ["Es kiemen und Flossen bei den behandelten Arten.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut bei den behandelten Arten."],
+      answer: "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", wrong: ["Es kiemen und Flossen.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut."],
       explanation: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen.',
       wissen: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen. Merke: Merkmal — Unterscheidendes Kennzeichen.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Unterscheidendes Kennzeichen',
@@ -3019,7 +3024,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f8',
       prompt: "Was beschreibt „Atmungstyp“?",
-      answer: "Es beschreibt kieme, Lunge, Haut bei den behandelten Arten.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt ein Federn und Schnabel, oft Flug.", "Er beschreibt trockene Hornschicht, Schalenei bei den behandelten Arten."],
+      answer: "Es beschreibt kieme, Lunge, Haut.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt ein Federn und Schnabel, oft Flug.", "Er beschreibt trockene Hornschicht, Schalenei."],
       explanation: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut.',
       wissen: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut. Merke: Atmungstyp — Kieme, Lunge, Haut.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Kieme, Lunge, Haut',
@@ -3029,7 +3034,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k5:lb7:systematik:f9',
       prompt: "Mit welchen Mitteln arbeitet die Körperbedeckung?",
-      answer: "Sie beschreibt schuppe, Feder, Fell bei den behandelten Arten.", wrong: ["Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Er beschreibt trockene Hornschicht, Schalenei bei den behandelten Arten."],
+      answer: "Sie beschreibt schuppe, Feder, Fell.", wrong: ["Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Er beschreibt trockene Hornschicht, Schalenei."],
       explanation: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell.',
       wissen: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell. Merke: Körperbedeckung — Schuppe, Feder, Fell.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Schuppe, Feder, Fell',
@@ -3038,8 +3043,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f10',
-      prompt: 'Was kennzeichnet „Fortpflanzungstyp“?',
-      answer: 'Es ist eine Laich, Schalenei, Lebendgeburt durch vergleich.', wrong: ['Es ist eine Tier mit Wirbelsäule.', 'Es ist eine Kiemen und Flossen.', 'Es ist eine Oft Metamorphose und Feuchte Haut.'],
+      prompt: "Was kennzeichnet „Fortpflanzungstyp“?",
+      answer: "Es beschreibt ein Laich, Schalenei, Lebendgeburt.", wrong: ["Er beschreibt ein Fell und Milchdrüsen.", "Er beschreibt tier mit Wirbelsäule, fünf Schulklassen.", "Es beschreibt ein Oft Metamorphose und feuchte Haut."],
       explanation: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt.',
       wissen: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt. Merke: Fortpflanzungstyp — Laich, Schalenei, Lebendgeburt.',
       gap: '[k5-lb7-systematik] Fachbegriff: ___ — Laich, Schalenei, Lebendgeburt',
@@ -3310,8 +3315,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f3',
-      prompt: 'Was kennzeichnet „Vogelzug“?',
-      answer: 'Es ist eine Saisonale Wanderung durch Zugvögel.', wrong: ['Das Vogelzug ist das Tiefe Stoffwechselabsenkung.', 'Es ist ein Leichtere Absenkung mit Aufwachen.', 'Es ist eine Bewegungslosigkeit bei Kälte.'],
+      prompt: "Was kennzeichnet „Vogelzug“?",
+      answer: "Es ist der saisonale Ortswechsel zwischen Brut- und Überwinterungsgebiet.", wrong: ["Das Vogelzug ist das Tiefe Stoffwechselabsenkung.", "Er beschreibt kurze Aktivitätsphasen, an milden Tagen.", "Er beschreibt geschützter Ort, etwa höhle, Keller oder Schlamm."],
       explanation: 'Zugvögel. Vogelzug bedeutet: Saisonale Wanderung.',
       wissen: 'Zugvögel. Vogelzug bedeutet: Saisonale Wanderung. Merke: Vogelzug — Saisonale Wanderung.',
       gap: '[k5-lbw-winter] Fachbegriff: ___ — Saisonale Wanderung',
@@ -3642,8 +3647,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f2',
-      prompt: 'Was kennzeichnet „Terrarium“?',
-      answer: 'Es ist eine Land-/Feuchtlandhaltung durch für Reptilien/Amphibien.', wrong: ['Es ist eine Haltung nach Bedürfnissen der Art.', 'Es ist eine Wasserlebensraum für Fische.', 'Das Terrarium ist das Ausreichendes Volumen.'],
+      prompt: "Was kennzeichnet „Terrarium“?",
+      answer: "Es beschreibt ein Land-/Feuchtlandhaltung, für Reptilien/Amphibien.", wrong: ["Das Terrarium ist das Ausreichendes Volumen.", "Es beschreibt eine Haltung nach Bedürfnissen der Art, etwa platz, Klima oder Soziales.", "Es beschreibt angepasste Ernährung, nicht einseitig."],
       explanation: 'Für Reptilien/Amphibien. Terrarium bedeutet: Land-/Feuchtlandhaltung.',
       wissen: 'Für Reptilien/Amphibien. Terrarium bedeutet: Land-/Feuchtlandhaltung. Merke: Terrarium — Land-/Feuchtlandhaltung.',
       gap: '[k5-lbw-haltung] Fachbegriff: ___ — Land-/Feuchtlandhaltung',
@@ -3702,8 +3707,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f8',
-      prompt: 'Wozu dient Tierschutzgesetz?',
-      answer: 'Es ist eine Rechtlicher Rahmen durch Pflichten der Halter.', wrong: ['Es ist eine Haltung nach Bedürfnissen der Art.', 'Es ist eine Wasserlebensraum für Fische.', 'Das Tierschutzgesetz ist das Land-/Feuchtlandhaltung.'],
+      prompt: "Wozu dient Tierschutzgesetz?",
+      answer: "Es beschreibt rechtlicher Rahmen, pflichten der Halter.", wrong: ["Es beschreibt ein Allein oder Gruppe.", "Sie beschreibt chemie und Sauberkeit, für Fische kritisch.", "Es beschreibt angepasste Ernährung, nicht einseitig."],
       explanation: 'Pflichten der Halter. Tierschutzgesetz bedeutet: Rechtlicher Rahmen.',
       wissen: 'Pflichten der Halter. Tierschutzgesetz bedeutet: Rechtlicher Rahmen. Merke: Tierschutzgesetz — Rechtlicher Rahmen.',
       gap: '[k5-lbw-haltung] Fachbegriff: ___ — Rechtlicher Rahmen',
@@ -3722,8 +3727,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f10',
-      prompt: 'Was kennzeichnet „Sozialbedarf“?',
-      answer: 'Es ist eine Allein oder Gruppe durch Artspezifisch.', wrong: ['Es ist eine Haltung nach Bedürfnissen der Art.', 'Es ist eine Wasserlebensraum für Fische.', 'Das Sozialbedarf ist das Land-/Feuchtlandhaltung.'],
+      prompt: "Was kennzeichnet „Sozialbedarf“?",
+      answer: "Es beschreibt ein Allein oder Gruppe.", wrong: ["Sie beschreibt eine Isolation neuer Tiere.", "Es beschreibt ein Land-/Feuchtlandhaltung, für Reptilien/Amphibien.", "Es beschreibt ein Wasserlebensraum für Fische, etwa filter oder Temperatur."],
       explanation: 'Artspezifisch. Sozialbedarf bedeutet: Allein oder Gruppe.',
       wissen: 'Artspezifisch. Sozialbedarf bedeutet: Allein oder Gruppe. Merke: Sozialbedarf — Allein oder Gruppe.',
       gap: '[k5-lbw-haltung] Fachbegriff: ___ — Allein oder Gruppe',
@@ -3796,7 +3801,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f0',
       prompt: "Was beschreibt „Hautflügler“?",
-      answer: "Er bienen, Wespen, Ameisen, häutige Flügel.", wrong: ["Es beschreibt ein Schutz der Hinterflügel.", "Er beschreibt ein Deckflügel, artenreichste Ordnung.", "Sie beschreibt eine Im Insektenstaat bei den behandelten Arten."],
+      answer: "Er bienen, Wespen, Ameisen, häutige Flügel.", wrong: ["Es beschreibt ein Schutz der Hinterflügel.", "Er beschreibt ein Deckflügel, artenreichste Ordnung.", "Sie beschreibt eine Im Insektenstaat."],
       explanation: 'Häutige Flügel. Hautflügler bedeutet: Bienen, Wespen, Ameisen.',
       wissen: 'Häutige Flügel. Hautflügler bedeutet: Bienen, Wespen, Ameisen. Merke: Hautflügler — Bienen, Wespen, Ameisen.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Bienen, Wespen, Ameisen',
@@ -3825,8 +3830,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f3',
-      prompt: 'Was kennzeichnet „Zweiflügler“?',
-      answer: 'Es ist ein Flügelpaar durch halteren.', wrong: ['Er ist eine Bienen, Wespen, Ameisen.', 'Der Zweiflügler ist der Deckflügel.', 'Der Zweiflügler ist der Schuppenflügel.'],
+      prompt: "Was beschreibt „Zweiflügler\"?",
+      answer: "Er meint halteren. Zweiflügler bedeutet: Ein Flügelpaar. Merke: Zweiflügler — Ein Flügelpaar.", wrong: ["Er meint häutige Flügel. Hautflügler bedeutet: Bienen, Wespen, Ameisen. Merke: Hautflügler — Bienen, Wespen, Ameisen.", "Er meint artenreichste Ordnung. Käfer bedeutet: Deckflügel. Merke: Käfer — Deckflügel.", "Er meint oft Saugrüssel. Schmetterling bedeutet: Schuppenflügel. Merke: Schmetterling — Schuppenflügel."],
       explanation: 'Halteren. Zweiflügler bedeutet: Ein Flügelpaar.',
       wissen: 'Halteren. Zweiflügler bedeutet: Ein Flügelpaar. Merke: Zweiflügler — Ein Flügelpaar.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Ein Flügelpaar',
@@ -3835,8 +3840,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f4',
-      prompt: 'Was kennzeichnet „Beißwerkzeug“?',
-      answer: 'Es ist eine Zerkleinern Fester Nahrung durch Viele Käfer.', wrong: ['Es ist eine Bienen, Wespen, Ameisen.', 'Das Beißwerkzeug ist das Deckflügel.', 'Das Beißwerkzeug ist das Schuppenflügel.'],
+      prompt: "Was kennzeichnet „Beißwerkzeug“?",
+      answer: "Es beschreibt ein Zerkleinern fester Nahrung, viele Käfer.", wrong: ["Es beschreibt ein Nektar aufnehmen, viele Falter.", "Er beschreibt ein Schuppenflügel, oft Saugrüssel.", "Er bienen, Wespen, Ameisen, häutige Flügel."],
       explanation: 'Viele Käfer. Beißwerkzeug bedeutet: Zerkleinern fester Nahrung.',
       wissen: 'Viele Käfer. Beißwerkzeug bedeutet: Zerkleinern fester Nahrung. Merke: Beißwerkzeug — Zerkleinern fester Nahrung.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Zerkleinern fester Nahrung',
@@ -3876,7 +3881,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f8',
       prompt: "Woran erkennt man den Deckflügel?",
-      answer: "Es beschreibt ein Schutz der Hinterflügel.", wrong: ["Sie beschreibt eine Auf Schmetterlingsflügeln bei den behandelten Arten.", "Es beschreibt stechen und saugen bei den behandelten Arten.", "Es beschreibt schwingkölbchen bei den behandelten Arten."],
+      answer: "Es beschreibt ein Schutz der Hinterflügel.", wrong: ["Sie beschreibt eine Auf Schmetterlingsflügeln.", "Es beschreibt stechen und saugen.", "Es beschreibt schwingkölbchen."],
       explanation: 'Käfer. Deckflügel bedeutet: Schutz der Hinterflügel.',
       wissen: 'Käfer. Deckflügel bedeutet: Schutz der Hinterflügel. Merke: Deckflügel — Schutz der Hinterflügel.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Schutz der Hinterflügel',
@@ -3896,7 +3901,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f10',
       prompt: "Was bewirkt die Metamorphose bei Lurchen?",
-      answer: "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.", wrong: ["Sie beschreibt eine Im Insektenstaat bei den behandelten Arten.", "Sie beschreibt atmungsröhre bei den behandelten Arten.", "Es beschreibt schwingkölbchen bei den behandelten Arten."],
+      answer: "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.", wrong: ["Sie beschreibt eine Im Insektenstaat.", "Sie beschreibt atmungsröhre.", "Es beschreibt schwingkölbchen."],
       explanation: 'Vollständig/unvollständig. Metamorphose bedeutet: Gestaltwechsel.',
       wissen: 'Vollständig/unvollständig. Metamorphose bedeutet: Gestaltwechsel. Merke: Metamorphose — Gestaltwechsel.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Gestaltwechsel',
@@ -3906,7 +3911,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:ordnungen:f11',
       prompt: "Was beschreibt „Flügelschuppe“?",
-      answer: "Sie beschreibt eine Auf Schmetterlingsflügeln bei den behandelten Arten.", wrong: ["Es beschreibt eine Ernährungsanpassung bei den behandelten Arten.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.", "Sie beschreibt atmungsröhre bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Auf Schmetterlingsflügeln.", wrong: ["Es beschreibt eine Ernährungsanpassung.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.", "Sie beschreibt atmungsröhre."],
       explanation: 'Farbe/Muster. Flügelschuppe bedeutet: Auf Schmetterlingsflügeln.',
       wissen: 'Farbe/Muster. Flügelschuppe bedeutet: Auf Schmetterlingsflügeln. Merke: Flügelschuppe — Auf Schmetterlingsflügeln.',
       gap: '[k6-lb2-ordnungen] Fachbegriff: ___ — Auf Schmetterlingsflügeln',
@@ -4058,8 +4063,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f9',
-      prompt: 'Was kennzeichnet „Honig“?',
-      answer: 'Es ist ein Energiespeicher durch aus Nektar.', wrong: ['Das Honig ist das Eierlegendes Weibchen.', 'Das Honig ist das Aufgabenwechsel.', 'Das Honig ist das Männliche Biene.'],
+      prompt: "Was beschreibt „Honig\"?",
+      answer: "Es meint aus Nektar. Honig bedeutet: Energiespeicher. Merke: Honig — Energiespeicher.", wrong: ["Es meint pheromone. Königin bedeutet: Eierlegendes Weibchen. Merke: Königin — Eierlegendes Weibchen.", "Es meint sammeln, Pflegen. Arbeiterin bedeutet: Aufgabenwechsel. Merke: Arbeiterin — Aufgabenwechsel.", "Sie meint paarung. Drohne bedeutet: Männliche Biene. Merke: Drohne — Männliche Biene."],
       explanation: 'Aus Nektar. Honig bedeutet: Energiespeicher.',
       wissen: 'Aus Nektar. Honig bedeutet: Energiespeicher. Merke: Honig — Energiespeicher.',
       gap: '[k6-lb2-honigbiene] Fachbegriff: ___ — Energiespeicher',
@@ -4068,8 +4073,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f10',
-      prompt: 'Was kennzeichnet „Tierstaat“?',
-      answer: 'Es ist eine Sozialer Verband durch Arbeitsteilung.', wrong: ['Das Tierstaat ist das Eierlegendes Weibchen.', 'Das Tierstaat ist das Aufgabenwechsel.', 'Das Tierstaat ist das Männliche Biene.'],
+      prompt: "Was beschreibt „Tierstaat\"?",
+      answer: "Es meint arbeitsteilung. Tierstaat bedeutet: Sozialer Verband. Merke: Tierstaat — Sozialer Verband.", wrong: ["Es meint pheromone. Königin bedeutet: Eierlegendes Weibchen. Merke: Königin — Eierlegendes Weibchen.", "Es meint sammeln, Pflegen. Arbeiterin bedeutet: Aufgabenwechsel. Merke: Arbeiterin — Aufgabenwechsel.", "Sie meint paarung. Drohne bedeutet: Männliche Biene. Merke: Drohne — Männliche Biene."],
       explanation: 'Arbeitsteilung. Tierstaat bedeutet: Sozialer Verband.',
       wissen: 'Arbeitsteilung. Tierstaat bedeutet: Sozialer Verband. Merke: Tierstaat — Sozialer Verband.',
       gap: '[k6-lb2-honigbiene] Fachbegriff: ___ — Sozialer Verband',
@@ -4182,7 +4187,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:parasiten:f4',
       prompt: "Was beschreibt „Spulwurm“?",
-      answer: "Es darmparasit bei den behandelten Arten.", wrong: ["Es beherbergt den Parasiten, wird belastet.", "Sie beschreibt eine Infektionsweg, etwa eier, Stich oder Nahrung.", "Es beschreibt zusätzlicher Wirt im Zyklus, bei manchen Parasiten."],
+      answer: "Es darmparasit.", wrong: ["Es beherbergt den Parasiten, wird belastet.", "Sie beschreibt eine Infektionsweg, etwa eier, Stich oder Nahrung.", "Es beschreibt zusätzlicher Wirt im Zyklus, bei manchen Parasiten."],
       explanation: 'Askaris. Spulwurm bedeutet: Darmparasit.',
       wissen: 'Askaris. Spulwurm bedeutet: Darmparasit. Merke: Spulwurm — Darmparasit.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Darmparasit',
@@ -4191,8 +4196,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f5',
-      prompt: 'Was kennzeichnet „Zecke“?',
-      answer: 'Sie ist ein Blutsauger durch Erregerübertragung Möglich.', wrong: ['Sie nutzt Wirt und schadet.', 'Sie beherbergt den Parasiten.', 'Lebt außen.'],
+      prompt: "Was beschreibt „Zecke\"?",
+      answer: "Sie meint erregerübertragung möglich. Zecke bedeutet: Blutsauger. Merke: Zecke — Blutsauger.", wrong: ["Es meint einseitiger Vorteil. Parasit bedeutet: Nutzt Wirt und schadet. Merke: Parasit — Nutzt Wirt und schadet.", "Es wird belastet. Wirt bedeutet: Beherbergt den Parasiten. Merke: Wirt — Beherbergt den Parasiten.", "Es meint zecke, Floh. Ektoparasit bedeutet: Lebt außen. Merke: Ektoparasit — Lebt außen."],
       explanation: 'Erregerübertragung möglich. Zecke bedeutet: Blutsauger.',
       wissen: 'Erregerübertragung möglich. Zecke bedeutet: Blutsauger. Merke: Zecke — Blutsauger.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Blutsauger',
@@ -4201,8 +4206,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f6',
-      prompt: 'Was kennzeichnet „Bandwurm“?',
-      answer: 'Es ist eine Darmparasit durch Oft über Fleisch.', wrong: ['Es nutzt Wirt und schadet.', 'Es beherbergt den Parasiten.', 'Lebt außen.'],
+      prompt: "Was beschreibt „Bandwurm\"?",
+      answer: "Es meint oft über Fleisch. Bandwurm bedeutet: Darmparasit. Merke: Bandwurm — Darmparasit.", wrong: ["Es meint einseitiger Vorteil. Parasit bedeutet: Nutzt Wirt und schadet. Merke: Parasit — Nutzt Wirt und schadet.", "Es wird belastet. Wirt bedeutet: Beherbergt den Parasiten. Merke: Wirt — Beherbergt den Parasiten.", "Es meint zecke, Floh. Ektoparasit bedeutet: Lebt außen. Merke: Ektoparasit — Lebt außen."],
       explanation: 'Oft über Fleisch. Bandwurm bedeutet: Darmparasit.',
       wissen: 'Oft über Fleisch. Bandwurm bedeutet: Darmparasit. Merke: Bandwurm — Darmparasit.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Darmparasit',
@@ -4212,7 +4217,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:parasiten:f7',
       prompt: "Was beschreibt „Floh“?",
-      answer: "Es beschreibt blutsaugendes Insekt bei den behandelten Arten.", wrong: ["Sie beschreibt eine Infektionsweg, etwa eier, Stich oder Nahrung.", "Es nutzt Wirt und schadet, einseitiger Vorteil.", "Sie beschreibt eine Durch Zecken übertragbar, beispiel Erregerkrankheit."],
+      answer: "Es beschreibt blutsaugendes Insekt.", wrong: ["Sie beschreibt eine Infektionsweg, etwa eier, Stich oder Nahrung.", "Es nutzt Wirt und schadet, einseitiger Vorteil.", "Sie beschreibt eine Durch Zecken übertragbar, beispiel Erregerkrankheit."],
       explanation: 'Ektoparasit. Floh bedeutet: Blutsaugendes Insekt.',
       wissen: 'Ektoparasit. Floh bedeutet: Blutsaugendes Insekt. Merke: Floh — Blutsaugendes Insekt.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Blutsaugendes Insekt',
@@ -4222,7 +4227,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb2:parasiten:f8',
       prompt: "Welche Eigenschaft hat die Prophylaxe?",
-      answer: "Sie beschreibt eine Vorbeugung, etwa hygiene oder Garen.", wrong: ["Sie beschreibt ein Larvenstadium mancher Bandwürmer, im Zwischenwirt.", "Es beschreibt blutsaugendes Insekt bei den behandelten Arten.", "Es darmparasit bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Vorbeugung, etwa hygiene oder Garen.", wrong: ["Sie beschreibt ein Larvenstadium mancher Bandwürmer, im Zwischenwirt.", "Es beschreibt blutsaugendes Insekt.", "Es darmparasit."],
       explanation: 'Hygiene, Garen. Prophylaxe bedeutet: Vorbeugung.',
       wissen: 'Hygiene, Garen. Prophylaxe bedeutet: Vorbeugung. Merke: Prophylaxe — Vorbeugung.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Vorbeugung',
@@ -4251,8 +4256,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:parasiten:f11',
-      prompt: 'Was kennzeichnet „Zwischenwirt“?',
-      answer: 'Es ist ein Zusätzlicher Wirt im Zyklus durch bei Manchen Parasiten.', wrong: ['Es nutzt Wirt und schadet.', 'Es beherbergt den Parasiten.', 'Lebt außen.'],
+      prompt: "Was beschreibt „Zwischenwirt\"?",
+      answer: "Es meint bei manchen Parasiten. Zwischenwirt bedeutet: Zusätzlicher Wirt im Zyklus. Merke: Zwischenwirt — Zusätzlicher Wirt im Zyklus.", wrong: ["Es meint einseitiger Vorteil. Parasit bedeutet: Nutzt Wirt und schadet. Merke: Parasit — Nutzt Wirt und schadet.", "Es wird belastet. Wirt bedeutet: Beherbergt den Parasiten. Merke: Wirt — Beherbergt den Parasiten.", "Es meint zecke, Floh. Ektoparasit bedeutet: Lebt außen. Merke: Ektoparasit — Lebt außen."],
       explanation: 'Bei manchen Parasiten. Zwischenwirt bedeutet: Zusätzlicher Wirt im Zyklus.',
       wissen: 'Bei manchen Parasiten. Zwischenwirt bedeutet: Zusätzlicher Wirt im Zyklus. Merke: Zwischenwirt — Zusätzlicher Wirt im Zyklus.',
       gap: '[k6-lb2-parasiten] Fachbegriff: ___ — Zusätzlicher Wirt im Zyklus',
@@ -4324,8 +4329,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f1',
-      prompt: 'Was kennzeichnet „Konsument“?',
-      answer: 'Es ist eine Frisst Andere Organismen durch Pflanzen-/Fleischfresser.', wrong: ['Es bildet Biomasse.', 'Das Konsument ist das Zersetzt Totes.', 'Das Konsument ist das Lineare Beziehung.'],
+      prompt: "Was beschreibt „Konsument\"?",
+      answer: "Es meint pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen. Merke: Konsument — Frisst andere Organismen.", wrong: ["Es meint fotosynthese. Produzent bedeutet: Bildet Biomasse. Merke: Produzent — Bildet Biomasse.", "Es meint pilze, Bakterien. Destruent bedeutet: Zersetzt Totes. Merke: Destruent — Zersetzt Totes.", "Sie meint energiefluss. Nahrungskette bedeutet: Lineare Beziehung. Merke: Nahrungskette — Lineare Beziehung."],
       explanation: 'Pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen.',
       wissen: 'Pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen. Merke: Konsument — Frisst andere Organismen.',
       gap: '[k6-lb4-nahrung] Fachbegriff: ___ — Frisst andere Organismen',
@@ -4354,8 +4359,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f4',
-      prompt: 'Was kennzeichnet „Nahrungsnetz“?',
-      answer: 'Es ist eine Vernetzte Beziehungen durch Realistisch.', wrong: ['Es bildet Biomasse.', 'Es ist eine Frisst Andere Organismen.', 'Das Nahrungsnetz ist das Zersetzt Totes.'],
+      prompt: "Was beschreibt „Nahrungsnetz\"?",
+      answer: "Es meint realistisch. Nahrungsnetz bedeutet: Vernetzte Beziehungen. Merke: Nahrungsnetz — Vernetzte Beziehungen.", wrong: ["Es meint fotosynthese. Produzent bedeutet: Bildet Biomasse. Merke: Produzent — Bildet Biomasse.", "Es meint pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen. Merke: Konsument — Frisst andere Organismen.", "Es meint pilze, Bakterien. Destruent bedeutet: Zersetzt Totes. Merke: Destruent — Zersetzt Totes."],
       explanation: 'Realistisch. Nahrungsnetz bedeutet: Vernetzte Beziehungen.',
       wissen: 'Realistisch. Nahrungsnetz bedeutet: Vernetzte Beziehungen. Merke: Nahrungsnetz — Vernetzte Beziehungen.',
       gap: '[k6-lb4-nahrung] Fachbegriff: ___ — Vernetzte Beziehungen',
@@ -4414,8 +4419,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f10',
-      prompt: 'Was kennzeichnet „Carnivor“?',
-      answer: 'Er ist ein Fleischfresser durch Höhere Stufe.', wrong: ['Er bildet Biomasse.', 'Er ist eine Frisst Andere Organismen.', 'Der Carnivor ist der Zersetzt Totes.'],
+      prompt: "Was beschreibt „Carnivor\"?",
+      answer: "Er meint höhere Stufe. Carnivor bedeutet: Fleischfresser. Merke: Carnivor — Fleischfresser.", wrong: ["Es meint fotosynthese. Produzent bedeutet: Bildet Biomasse. Merke: Produzent — Bildet Biomasse.", "Es meint pflanzen-/Fleischfresser. Konsument bedeutet: Frisst andere Organismen. Merke: Konsument — Frisst andere Organismen.", "Es meint pilze, Bakterien. Destruent bedeutet: Zersetzt Totes. Merke: Destruent — Zersetzt Totes."],
       explanation: 'Höhere Stufe. Carnivor bedeutet: Fleischfresser.',
       wissen: 'Höhere Stufe. Carnivor bedeutet: Fleischfresser. Merke: Carnivor — Fleischfresser.',
       gap: '[k6-lb4-nahrung] Fachbegriff: ___ — Fleischfresser',
@@ -4487,8 +4492,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f0',
-      prompt: 'Was kennzeichnet „Spore“?',
-      answer: 'Sie ist eine Ausbreitungszelle durch ohne Samenembryo.', wrong: ['Die Spore ist die Kleine Sporenpflanze.', 'Sie ist eine Wedel mit Sori.', 'Die Spore ist die Zersetzer/Symbiont.'],
+      prompt: "Was beschreibt „Spore\"?",
+      answer: "Sie meint ohne Samenembryo. Spore bedeutet: Ausbreitungszelle. Merke: Spore — Ausbreitungszelle.", wrong: ["Es meint feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze. Merke: Moos — Kleine Sporenpflanze.", "Es meint sporen unterseits. Farn bedeutet: Wedel mit Sori. Merke: Farn — Wedel mit Sori.", "Es meint fruchtkörper. Pilz bedeutet: Zersetzer/Symbiont. Merke: Pilz — Zersetzer/Symbiont."],
       explanation: 'Ohne Samenembryo. Spore bedeutet: Ausbreitungszelle.',
       wissen: 'Ohne Samenembryo. Spore bedeutet: Ausbreitungszelle. Merke: Spore — Ausbreitungszelle.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Ausbreitungszelle',
@@ -4498,7 +4503,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f1',
       prompt: "Woran erkennt man das Moos?",
-      answer: "Es beschreibt kleine Sporenpflanze, feuchte Standorte.", wrong: ["Sie beschreibt eine Fortpflanzung über Samen.", "Er beschreibt sichtbarer Pilzteil bei den behandelten Arten.", "Es beschreibt ein Aus Spore wachsend, bei Farnen."],
+      answer: "Es beschreibt kleine Sporenpflanze, feuchte Standorte.", wrong: ["Sie beschreibt eine Fortpflanzung über Samen.", "Er beschreibt sichtbarer Pilzteil.", "Es beschreibt ein Aus Spore wachsend, bei Farnen."],
       explanation: 'Feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze.',
       wissen: 'Feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze. Merke: Moos — Kleine Sporenpflanze.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Kleine Sporenpflanze',
@@ -4507,8 +4512,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f2',
-      prompt: 'Was kennzeichnet „Farn“?',
-      answer: 'Es ist eine Wedel mit Sori durch Sporen Unterseits.', wrong: ['Das Farn ist das Ausbreitungszelle.', 'Das Farn ist das Kleine Sporenpflanze.', 'Das Farn ist das Zersetzer/Symbiont.'],
+      prompt: "Was kennzeichnet „Farn“?",
+      answer: "Es beschreibt ein Wedel mit Sori, sporen unterseits.", wrong: ["Das Farn ist das Kleine Sporenpflanze.", "Er beschreibt ein Abbau von Totholz.", "Sie beschreibt eine Fortpflanzung über Samen."],
       explanation: 'Sporen unterseits. Farn bedeutet: Wedel mit Sori.',
       wissen: 'Sporen unterseits. Farn bedeutet: Wedel mit Sori. Merke: Farn — Wedel mit Sori.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Wedel mit Sori',
@@ -4517,8 +4522,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f3',
-      prompt: 'Was kennzeichnet „Pilz“?',
-      answer: 'Es ist eine Zersetzer/Symbiont durch Fruchtkörper.', wrong: ['Das Pilz ist das Ausbreitungszelle.', 'Das Pilz ist das Kleine Sporenpflanze.', 'Es ist eine Wedel mit Sori.'],
+      prompt: "Was beschreibt „Pilz\"?",
+      answer: "Es meint fruchtkörper. Pilz bedeutet: Zersetzer/Symbiont. Merke: Pilz — Zersetzer/Symbiont.", wrong: ["Sie meint ohne Samenembryo. Spore bedeutet: Ausbreitungszelle. Merke: Spore — Ausbreitungszelle.", "Es meint feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze. Merke: Moos — Kleine Sporenpflanze.", "Es meint sporen unterseits. Farn bedeutet: Wedel mit Sori. Merke: Farn — Wedel mit Sori."],
       explanation: 'Fruchtkörper. Pilz bedeutet: Zersetzer/Symbiont.',
       wissen: 'Fruchtkörper. Pilz bedeutet: Zersetzer/Symbiont. Merke: Pilz — Zersetzer/Symbiont.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Zersetzer/Symbiont',
@@ -4527,8 +4532,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f4',
-      prompt: 'Was kennzeichnet „Sorus“?',
-      answer: 'Er ist ein Sporenbehälterhäufchen durch am Farnwedel.', wrong: ['Der Sorus ist der Ausbreitungszelle.', 'Der Sorus ist der Kleine Sporenpflanze.', 'Er ist eine Wedel mit Sori.'],
+      prompt: "Was beschreibt „Sorus\"?",
+      answer: "Er meint am Farnwedel. Sorus bedeutet: Sporenbehälterhäufchen. Merke: Sorus — Sporenbehälterhäufchen.", wrong: ["Sie meint ohne Samenembryo. Spore bedeutet: Ausbreitungszelle. Merke: Spore — Ausbreitungszelle.", "Es meint feuchte Standorte. Moos bedeutet: Kleine Sporenpflanze. Merke: Moos — Kleine Sporenpflanze.", "Es meint sporen unterseits. Farn bedeutet: Wedel mit Sori. Merke: Farn — Wedel mit Sori."],
       explanation: 'Am Farnwedel. Sorus bedeutet: Sporenbehälterhäufchen.',
       wissen: 'Am Farnwedel. Sorus bedeutet: Sporenbehälterhäufchen. Merke: Sorus — Sporenbehälterhäufchen.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Sporenbehälterhäufchen',
@@ -4538,7 +4543,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f5',
       prompt: "Mit welchen Mitteln arbeitet das Mykorrhiza?",
-      answer: "Es beschreibt pilz-Wurzel-Symbiose bei den behandelten Arten.", wrong: ["Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Er beschreibt sichtbarer Pilzteil bei den behandelten Arten.", "Es beschreibt kleine Sporenpflanze, feuchte Standorte."],
+      answer: "Es beschreibt pilz-Wurzel-Symbiose.", wrong: ["Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Er beschreibt sichtbarer Pilzteil.", "Es beschreibt kleine Sporenpflanze, feuchte Standorte."],
       explanation: 'Nährstofftausch. Mykorrhiza bedeutet: Pilz-Wurzel-Symbiose.',
       wissen: 'Nährstofftausch. Mykorrhiza bedeutet: Pilz-Wurzel-Symbiose. Merke: Mykorrhiza — Pilz-Wurzel-Symbiose.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Pilz-Wurzel-Symbiose',
@@ -4548,7 +4553,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f6',
       prompt: "Mit welchen Mitteln arbeitet der Wedel?",
-      answer: "Es farnblatt, oft gefiedert bei den behandelten Arten.", wrong: ["Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Sie dient als niedrige Schicht bei den behandelten Arten.", "Es beschreibt zersetzer/Symbiont bei den behandelten Arten."],
+      answer: "Es farnblatt, oft gefiedert.", wrong: ["Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Sie dient als niedrige Schicht.", "Es beschreibt zersetzer/Symbiont."],
       explanation: 'Oft gefiedert. Wedel bedeutet: Farnblatt.',
       wissen: 'Oft gefiedert. Wedel bedeutet: Farnblatt. Merke: Wedel — Farnblatt.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Farnblatt',
@@ -4568,7 +4573,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f8',
       prompt: "Welche Eigenschaft hat der Zersetzer?",
-      answer: "Er beschreibt ein Abbau von Totholz.", wrong: ["Es farnblatt, oft gefiedert bei den behandelten Arten.", "Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Er beschreibt sichtbarer Pilzteil bei den behandelten Arten."],
+      answer: "Er beschreibt ein Abbau von Totholz.", wrong: ["Es farnblatt, oft gefiedert.", "Es beschreibt ein Aus Spore wachsend, bei Farnen.", "Er beschreibt sichtbarer Pilzteil."],
       explanation: 'Pilze. Zersetzer bedeutet: Abbau von Totholz.',
       wissen: 'Pilze. Zersetzer bedeutet: Abbau von Totholz. Merke: Zersetzer — Abbau von Totholz.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Abbau von Totholz',
@@ -4578,7 +4583,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f9',
       prompt: "Was beschreibt „Samenpflanze“?",
-      answer: "Sie beschreibt eine Fortpflanzung über Samen.", wrong: ["Er beschreibt ein Abbau von Totholz.", "Es beschreibt pilz-Wurzel-Symbiose bei den behandelten Arten.", "Es beschreibt ein Aus Spore wachsend, bei Farnen."],
+      answer: "Sie beschreibt eine Fortpflanzung über Samen.", wrong: ["Er beschreibt ein Abbau von Totholz.", "Es beschreibt pilz-Wurzel-Symbiose.", "Es beschreibt ein Aus Spore wachsend, bei Farnen."],
       explanation: 'Abgrenzung. Samenpflanze bedeutet: Fortpflanzung über Samen.',
       wissen: 'Abgrenzung. Samenpflanze bedeutet: Fortpflanzung über Samen. Merke: Samenpflanze — Fortpflanzung über Samen.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Fortpflanzung über Samen',
@@ -4587,8 +4592,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f10',
-      prompt: 'Was kennzeichnet „Vorkeim“?',
-      answer: 'Es ist eine Aus Spore Wachsend durch bei Farnen.', wrong: ['Das Vorkeim ist das Ausbreitungszelle.', 'Das Vorkeim ist das Kleine Sporenpflanze.', 'Es ist eine Wedel mit Sori.'],
+      prompt: "Was kennzeichnet „Vorkeim“?",
+      answer: "Es beschreibt ein Aus Spore wachsend, bei Farnen.", wrong: ["Das Vorkeim ist das Kleine Sporenpflanze.", "Es beschreibt kleine Sporenpflanze, feuchte Standorte.", "Sie schützt die Haut vor Austrocknung und ermöglicht die Hautatmung."],
       explanation: 'Bei Farnen. Vorkeim bedeutet: Aus Spore wachsend.',
       wissen: 'Bei Farnen. Vorkeim bedeutet: Aus Spore wachsend. Merke: Vorkeim — Aus Spore wachsend.',
       gap: '[k6-lb4-sporempflanzen] Fachbegriff: ___ — Aus Spore wachsend',
@@ -4760,8 +4765,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f10',
-      prompt: 'Was kennzeichnet „Trockenstress“?',
-      answer: 'Es ist eine Wassermangel der Bäume durch Klimafaktor.', wrong: ['Es ist eine Beeinträchtigung des Bestands.', 'Das Trockenstress ist das Mehrere Baumarten.', 'Es ist eine Nutzung mit Erhalt.'],
+      prompt: "Was kennzeichnet „Trockenstress“?",
+      answer: "Es beschreibt ein Wassermangel der Bäume.", wrong: ["Das Trockenstress ist das Mehrere Baumarten.", "Er beschreibt eine Bindung von CO₂.", "Es ist der Lebensraum einer Lebensgemeinschaft mit seinen abiotischen Faktoren."],
       explanation: 'Klimafaktor. Trockenstress bedeutet: Wassermangel der Bäume.',
       wissen: 'Klimafaktor. Trockenstress bedeutet: Wassermangel der Bäume. Merke: Trockenstress — Wassermangel der Bäume.',
       gap: '[k6-lb4-waldschutz] Fachbegriff: ___ — Wassermangel der Bäume',
@@ -4771,7 +4776,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f11',
       prompt: "Was beschreibt „Biotop“?",
-      answer: "Es ist der Lebensraum einer Lebensgemeinschaft mit seinen abiotischen Faktoren.", wrong: ["Sie dient als obere Schicht bei den behandelten Arten.", "Es beschreibt ein Wassermangel der Bäume.", "Sie beschreibt eine Schadstoffausstoß bei den behandelten Arten."],
+      answer: "Es ist der Lebensraum einer Lebensgemeinschaft mit seinen abiotischen Faktoren.", wrong: ["Sie dient als obere Schicht.", "Es beschreibt ein Wassermangel der Bäume.", "Sie beschreibt eine Schadstoffausstoß."],
       explanation: 'Waldkomplex. Biotop bedeutet: Lebensraum.',
       wissen: 'Waldkomplex. Biotop bedeutet: Lebensraum. Merke: Biotop — Lebensraum.',
       gap: '[k6-lb4-waldschutz] Fachbegriff: ___ — Lebensraum',
@@ -4841,8 +4846,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f1',
-      prompt: 'Was kennzeichnet „Eiweiß“?',
-      answer: 'Es ist ein Baustoff durch Muskeln, Enzyme.', wrong: ['Das Eiweiß ist das Energielieferant.', 'Das Eiweiß ist das Energiespeicher.', 'Es ist eine Wirkstoff in Spuren.'],
+      prompt: "Was kennzeichnet „Eiweiß“?",
+      answer: "Es beschreibt ein Baustoff, etwa muskeln oder Enzyme.", wrong: ["Es beschreibt ein Wirkstoff in Spuren.", "Sie beschreibt eine Zufuhr minus Verbrauch.", "Es energielieferant, etwa brot oder Obst."],
       explanation: 'Muskeln, Enzyme. Eiweiß bedeutet: Baustoff.',
       wissen: 'Muskeln, Enzyme. Eiweiß bedeutet: Baustoff. Merke: Eiweiß — Baustoff.',
       gap: '[k7-lbw-ernaehrung-persoenlichkeit] Fachbegriff: ___ — Baustoff',
@@ -4921,8 +4926,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:ernaehrung:persoenlichkeit:f9',
-      prompt: 'Was kennzeichnet „Vollwertig“?',
-      answer: 'Es ist eine Wenig Verarbeitet durch Nährstoffreich.', wrong: ['Das Vollwertig ist das Energielieferant.', 'Das Vollwertig ist das Baustoff.', 'Das Vollwertig ist das Energiespeicher.'],
+      prompt: "Was beschreibt „Vollwertig\"?",
+      answer: "Es meint nährstoffreich. Vollwertig bedeutet: Wenig verarbeitet. Merke: Vollwertig — Wenig verarbeitet.", wrong: ["Es meint brot, Obst. Kohlenhydrat bedeutet: Energielieferant. Merke: Kohlenhydrat — Energielieferant.", "Es meint muskeln, Enzyme. Eiweiß bedeutet: Baustoff. Merke: Eiweiß — Baustoff.", "Es meint zellmembranen. Fett bedeutet: Energiespeicher. Merke: Fett — Energiespeicher."],
       explanation: 'Nährstoffreich. Vollwertig bedeutet: Wenig verarbeitet.',
       wissen: 'Nährstoffreich. Vollwertig bedeutet: Wenig verarbeitet. Merke: Vollwertig — Wenig verarbeitet.',
       gap: '[k7-lbw-ernaehrung-persoenlichkeit] Fachbegriff: ___ — Wenig verarbeitet',
@@ -5013,7 +5018,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k7:lbw:fitness:f1',
       prompt: "Was bewirkt eine Kraft?",
-      answer: "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", wrong: ["Es beschreibt eine Vorbereitung bei den behandelten Arten.", "Sie beschreibt eine Zu viel Reiz.", "Es ausklingen nach Sport, abbau Belastung."],
+      answer: "Sie ist die Ursache von Beschleunigung oder Verformung und wird in Newton gemessen.", wrong: ["Es beschreibt eine Vorbereitung.", "Sie beschreibt eine Zu viel Reiz.", "Es ausklingen nach Sport, abbau Belastung."],
       explanation: 'Muskeln. Kraft bedeutet: Widerstand überwinden.',
       wissen: 'Muskeln. Kraft bedeutet: Widerstand überwinden. Merke: Kraft — Widerstand überwinden.',
       gap: '[k7-lbw-fitness] Fachbegriff: ___ — Widerstand überwinden',
@@ -5043,7 +5048,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k7:lbw:fitness:f4',
       prompt: "Wozu dient das Puls?",
-      answer: "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.", wrong: ["Sie beschreibt eine Zu viel Reiz.", "Sie dient als Nerv-Muskel-Zusammenspiel bei den behandelten Arten.", "Er beschreibt länger belastbar bei den behandelten Arten."],
+      answer: "Es ist die fühlbare Druckwelle der Herzschläge in den Arterien.", wrong: ["Sie beschreibt eine Zu viel Reiz.", "Sie dient als Nerv-Muskel-Zusammenspiel.", "Er beschreibt länger belastbar."],
       explanation: 'Belastungsanzeige. Puls bedeutet: Herzfrequenz.',
       wissen: 'Belastungsanzeige. Puls bedeutet: Herzfrequenz. Merke: Puls — Herzfrequenz.',
       gap: '[k7-lbw-fitness] Fachbegriff: ___ — Herzfrequenz',
@@ -5092,8 +5097,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f9',
-      prompt: 'Was kennzeichnet „Alltagsbewegung“?',
-      answer: 'Sie ist eine Gehen, Treppen, zählt mit.', wrong: ['Die Alltagsbewegung ist die Länger Belastbar.', 'Die Alltagsbewegung ist die Widerstand Überwinden.', 'Die Alltagsbewegung ist die Vorbereitung.'],
+      prompt: "Was beschreibt „Alltagsbewegung\"?",
+      answer: "Sie meint zählt mit. Alltagsbewegung bedeutet: Gehen, Treppen. Merke: Alltagsbewegung — Gehen, Treppen.", wrong: ["Er meint herz-Kreislauf. Ausdauer bedeutet: Länger belastbar. Merke: Ausdauer — Länger belastbar.", "Es meint muskeln. Kraft bedeutet: Widerstand überwinden. Merke: Kraft — Widerstand überwinden.", "Es meint verletzungsrisiko. Aufwärmen bedeutet: Vorbereitung. Merke: Aufwärmen — Vorbereitung."],
       explanation: 'Zählt mit. Alltagsbewegung bedeutet: Gehen, Treppen.',
       wissen: 'Zählt mit. Alltagsbewegung bedeutet: Gehen, Treppen. Merke: Alltagsbewegung — Gehen, Treppen.',
       gap: '[k7-lbw-fitness] Fachbegriff: ___ — Gehen, Treppen',
@@ -5234,7 +5239,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k7:lbw:mikroben:f6',
       prompt: "Mit welchen Mitteln arbeitet das Milchbakterium?",
-      answer: "Es joghurt/Käse bei den behandelten Arten.", wrong: ["Sie beschreibt eine Unempfindlichkeit, falscher Einsatz.", "Sie liefert ATP ohne Sauerstoff und ist energetisch weniger ergiebig als Atmung.", "Es erhitzen von Milch bei den behandelten Arten."],
+      answer: "Es joghurt/Käse.", wrong: ["Sie beschreibt eine Unempfindlichkeit, falscher Einsatz.", "Sie liefert ATP ohne Sauerstoff und ist energetisch weniger ergiebig als Atmung.", "Es erhitzen von Milch."],
       explanation: 'Nützlich. Milchbakterium bedeutet: Joghurt/Käse.',
       wissen: 'Nützlich. Milchbakterium bedeutet: Joghurt/Käse. Merke: Milchbakterium — Joghurt/Käse.',
       gap: '[k7-lbw-mikroben] Fachbegriff: ___ — Joghurt/Käse',
@@ -5455,7 +5460,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f11',
       prompt: "Mit welchen Mitteln arbeitet das Zentrales Nervensystem?",
-      answer: "Es beschreibt ein Gehirn und Rückenmark.", wrong: ["Es beschreibt nervenzelle bei den behandelten Arten.", "Es beschreibt langer Fortsatz bei den behandelten Arten.", "Es beschreibt auslöser bei den behandelten Arten."],
+      answer: "Es beschreibt ein Gehirn und Rückenmark.", wrong: ["Es beschreibt nervenzelle.", "Es beschreibt langer Fortsatz.", "Es beschreibt auslöser."],
       explanation: 'Steuerung. Zentrales Nervensystem bedeutet: Gehirn und Rückenmark.',
       wissen: 'Steuerung. Zentrales Nervensystem bedeutet: Gehirn und Rückenmark. Merke: Zentrales Nervensystem — Gehirn und Rückenmark.',
       gap: '[k8-lb1-nerv-reflex] Fachbegriff: ___ — Gehirn und Rückenmark',
@@ -5525,8 +5530,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f1',
-      prompt: 'Was kennzeichnet „Dermis“?',
-      answer: 'Es ist eine Lederhaut durch Festigkeit.', wrong: ['Das Dermis ist das Oberhaut.', 'Das Dermis ist das Kühlung.', 'Das Dermis ist das Fettet Haut/Haar.'],
+      prompt: "Was beschreibt „Dermis\"?",
+      answer: "Es meint festigkeit. Dermis bedeutet: Lederhaut. Merke: Dermis — Lederhaut.", wrong: ["Es meint schutzschicht. Epidermis bedeutet: Oberhaut. Merke: Epidermis — Oberhaut.", "Sie meint salzwasser. Schweißdrüse bedeutet: Kühlung. Merke: Schweißdrüse — Kühlung.", "Sie meint schutzfilm. Talgdrüse bedeutet: Fettet Haut/Haar. Merke: Talgdrüse — Fettet Haut/Haar."],
       explanation: 'Festigkeit. Dermis bedeutet: Lederhaut.',
       wissen: 'Festigkeit. Dermis bedeutet: Lederhaut. Merke: Dermis — Lederhaut.',
       gap: '[k8-lb1-haut] Fachbegriff: ___ — Lederhaut',
@@ -5565,8 +5570,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f5',
-      prompt: 'Was kennzeichnet „Sinneszelle“?',
-      answer: 'Sie ist eine Tast/Temperatur/Schmerz durch in der Haut.', wrong: ['Die Sinneszelle ist die Oberhaut.', 'Die Sinneszelle ist die Lederhaut.', 'Die Sinneszelle ist die Kühlung.'],
+      prompt: "Was beschreibt „Sinneszelle\"?",
+      answer: "Sie meint in der Haut. Sinneszelle bedeutet: Tast/Temperatur/Schmerz. Merke: Sinneszelle — Tast/Temperatur/Schmerz.", wrong: ["Es meint schutzschicht. Epidermis bedeutet: Oberhaut. Merke: Epidermis — Oberhaut.", "Es meint festigkeit. Dermis bedeutet: Lederhaut. Merke: Dermis — Lederhaut.", "Sie meint salzwasser. Schweißdrüse bedeutet: Kühlung. Merke: Schweißdrüse — Kühlung."],
       explanation: 'In der Haut. Sinneszelle bedeutet: Tast/Temperatur/Schmerz.',
       wissen: 'In der Haut. Sinneszelle bedeutet: Tast/Temperatur/Schmerz. Merke: Sinneszelle — Tast/Temperatur/Schmerz.',
       gap: '[k8-lb1-haut] Fachbegriff: ___ — Tast/Temperatur/Schmerz',
@@ -5586,7 +5591,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lb1:haut:f7',
       prompt: "Woran erkennt man die Kapillare?",
-      answer: "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", wrong: ["Es beschreibt ein Lederhaut bei den behandelten Arten.", "Er nimmt ein Signal wahr und wandelt es in Erregung um.", "Sie beschreibt eine Kühlung bei den behandelten Arten."],
+      answer: "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet.", wrong: ["Es beschreibt ein Lederhaut.", "Er nimmt ein Signal wahr und wandelt es in Erregung um.", "Sie beschreibt eine Kühlung."],
       explanation: 'Wärmeaustausch. Kapillare bedeutet: Feine Blutgefäße.',
       wissen: 'Wärmeaustausch. Kapillare bedeutet: Feine Blutgefäße. Merke: Kapillare — Feine Blutgefäße.',
       gap: '[k8-lb1-haut] Fachbegriff: ___ — Feine Blutgefäße',
@@ -5736,8 +5741,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f5',
-      prompt: 'Was kennzeichnet „Hormone“?',
-      answer: 'Sie ist eine Botenstoffe durch Steuern Entwicklung.', wrong: ['Die Hormone ist die Frühe Entwicklung.', 'Die Hormone ist die Spätere Phase.', 'Die Hormone ist die Geschlechtsreifung.'],
+      prompt: "Was beschreibt „Hormone\"?",
+      answer: "Sie meint steuern Entwicklung. Hormone bedeutet: Botenstoffe. Merke: Hormone — Botenstoffe.", wrong: ["Es meint im Mutterleib. Embryo bedeutet: Frühe Entwicklung. Merke: Embryo — Frühe Entwicklung.", "Er meint organe ausdifferenziert. Fetus bedeutet: Spätere Phase. Merke: Fetus — Spätere Phase.", "Sie meint hormone. Pubertät bedeutet: Geschlechtsreifung. Merke: Pubertät — Geschlechtsreifung."],
       explanation: 'Steuern Entwicklung. Hormone bedeutet: Botenstoffe.',
       wissen: 'Steuern Entwicklung. Hormone bedeutet: Botenstoffe. Merke: Hormone — Botenstoffe.',
       gap: '[k8-lb2-entwicklung] Fachbegriff: ___ — Botenstoffe',
@@ -5878,7 +5883,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:stress:f2',
       prompt: "Wozu dient das Cortisol?",
-      answer: "Es beschreibt weiteres Stresshormon, länger wirksam.", wrong: ["Sie beschreibt dauerhafte Überlastung bei den behandelten Arten.", "Sie dient als Hilfe durch andere, puffert Stress.", "Es beschreibt ein Bei chronischem Stress, frühzeichen beachten."],
+      answer: "Es beschreibt weiteres Stresshormon, länger wirksam.", wrong: ["Sie beschreibt dauerhafte Überlastung.", "Sie dient als Hilfe durch andere, puffert Stress.", "Es beschreibt ein Bei chronischem Stress, frühzeichen beachten."],
       explanation: 'Länger wirksam. Cortisol bedeutet: Weiteres Stresshormon.',
       wissen: 'Länger wirksam. Cortisol bedeutet: Weiteres Stresshormon. Merke: Cortisol — Weiteres Stresshormon.',
       gap: '[k8-lbw-stress] Fachbegriff: ___ — Weiteres Stresshormon',
@@ -5948,7 +5953,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:stress:f9',
       prompt: "Wozu dient die Soziale Unterstützung?",
-      answer: "Sie dient als Hilfe durch andere, puffert Stress.", wrong: ["Es beschreibt ein Bei chronischem Stress, frühzeichen beachten.", "Sie beschreibt eine Atmung, Bewegung bei den behandelten Arten.", "Sie beschreibt dauerhafte Überlastung bei den behandelten Arten."],
+      answer: "Sie dient als Hilfe durch andere, puffert Stress.", wrong: ["Es beschreibt ein Bei chronischem Stress, frühzeichen beachten.", "Sie beschreibt eine Atmung, Bewegung.", "Sie beschreibt dauerhafte Überlastung."],
       explanation: 'Puffert Stress. Soziale Unterstützung bedeutet: Hilfe durch andere.',
       wissen: 'Puffert Stress. Soziale Unterstützung bedeutet: Hilfe durch andere. Merke: Soziale Unterstützung — Hilfe durch andere.',
       gap: '[k8-lbw-stress] Fachbegriff: ___ — Hilfe durch andere',
@@ -5968,7 +5973,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:stress:f11',
       prompt: "Welche Eigenschaft hat die Resilienz?",
-      answer: "Sie widerstandskraft bei den behandelten Arten.", wrong: ["Sie beschreibt eine Atmung, Bewegung bei den behandelten Arten.", "Es beschreibt häufiger Stressor, planung hilft.", "Es beschreibt ein Bei chronischem Stress, frühzeichen beachten."],
+      answer: "Sie widerstandskraft.", wrong: ["Sie beschreibt eine Atmung, Bewegung.", "Es beschreibt häufiger Stressor, planung hilft.", "Es beschreibt ein Bei chronischem Stress, frühzeichen beachten."],
       explanation: 'Trainierbar. Resilienz bedeutet: Widerstandskraft.',
       wissen: 'Trainierbar. Resilienz bedeutet: Widerstandskraft. Merke: Resilienz — Widerstandskraft.',
       gap: '[k8-lbw-stress] Fachbegriff: ___ — Widerstandskraft',
@@ -6139,7 +6144,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:sinne:f11',
       prompt: "Was beschreibt „Propriozeption“?",
-      answer: "Sie tiefensensibilität bei den behandelten Arten.", wrong: ["Sie beschreibt eine Verarbeitung im Gehirn, nicht nur Reiz.", "Es beschreibt reizaufnehmer bei den behandelten Arten.", "Es erfasst Schallwellen und trägt zugleich zum Gleichgewichtssinn bei."],
+      answer: "Sie tiefensensibilität.", wrong: ["Sie beschreibt eine Verarbeitung im Gehirn, nicht nur Reiz.", "Es beschreibt reizaufnehmer.", "Es erfasst Schallwellen und trägt zugleich zum Gleichgewichtssinn bei."],
       explanation: 'Körperlage. Propriozeption bedeutet: Tiefensensibilität.',
       wissen: 'Körperlage. Propriozeption bedeutet: Tiefensensibilität. Merke: Propriozeption — Tiefensensibilität.',
       gap: '[k8-lbw-sinne] Fachbegriff: ___ — Tiefensensibilität',
@@ -6200,7 +6205,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f0',
       prompt: "Was beschreibt „Notruf“?",
-      answer: "Es beschreibt 112, sofort bei Notfall.", wrong: ["Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", "Es ansprechen/Schütteln, zustand klären bei den behandelten Arten."],
+      answer: "Es beschreibt 112, sofort bei Notfall.", wrong: ["Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Bei Kreislaufstillstand.", "Es ansprechen/Schütteln, zustand klären."],
       explanation: 'Sofort bei Notfall. Notruf bedeutet: 112.',
       wissen: 'Sofort bei Notfall. Notruf bedeutet: 112. Merke: Notruf — 112.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — 112',
@@ -6210,7 +6215,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f1',
       prompt: "Wozu dient eine Sicherung?",
-      answer: "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", wrong: ["Es ansprechen/Schütteln, zustand klären bei den behandelten Arten.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Blutung stillen bei den behandelten Arten."],
+      answer: "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", wrong: ["Es ansprechen/Schütteln, zustand klären.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Blutung stillen."],
       explanation: 'Unfallstelle. Sicherung bedeutet: Eigene Sicherheit zuerst.',
       wissen: 'Unfallstelle. Sicherung bedeutet: Eigene Sicherheit zuerst. Merke: Sicherung — Eigene Sicherheit zuerst.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Eigene Sicherheit zuerst',
@@ -6220,7 +6225,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f2',
       prompt: "Woran erkennt man das Bewusstsein prüfen?",
-      answer: "Es ansprechen/Schütteln, zustand klären bei den behandelten Arten.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt beine hoch, bei Kreislaufschock Verdacht."],
+      answer: "Es ansprechen/Schütteln, zustand klären.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt beine hoch, bei Kreislaufschock Verdacht."],
       explanation: 'Zustand klären. Bewusstsein prüfen bedeutet: Ansprechen/Schütteln.',
       wissen: 'Zustand klären. Bewusstsein prüfen bedeutet: Ansprechen/Schütteln. Merke: Bewusstsein prüfen — Ansprechen/Schütteln.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Ansprechen/Schütteln',
@@ -6229,8 +6234,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f3',
-      prompt: 'Was kennzeichnet „Atemkontrolle“?',
-      answer: 'Sie ist eine Sehen-Hören-Fühlen durch Atmung Vorhanden.', wrong: ['Die Atemkontrolle ist 112.', 'Sie ist eine Eigene Sicherheit Zuerst.', 'Die Atemkontrolle ist die Ansprechen/Schütteln.'],
+      prompt: "Was beschreibt „Atemkontrolle\"?",
+      answer: "Sie meint atmung vorhanden? Atemkontrolle bedeutet: Sehen-Hören-Fühlen. Merke: Atemkontrolle — Sehen-Hören-Fühlen.", wrong: ["Es meint sofort bei Notfall. Notruf bedeutet: 112. Merke: Notruf — 112.", "Sie meint unfallstelle. Sicherung bedeutet: Eigene Sicherheit zuerst. Merke: Sicherung — Eigene Sicherheit zuerst.", "Es meint zustand klären. Bewusstsein prüfen bedeutet: Ansprechen/Schütteln. Merke: Bewusstsein prüfen — Ansprechen/Schütteln."],
       explanation: 'Atmung vorhanden? Atemkontrolle bedeutet: Sehen-Hören-Fühlen.',
       wissen: 'Atmung vorhanden? Atemkontrolle bedeutet: Sehen-Hören-Fühlen. Merke: Atemkontrolle — Sehen-Hören-Fühlen.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Sehen-Hören-Fühlen',
@@ -6240,7 +6245,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f4',
       prompt: "Woran erkennt man die Stabile Seitenlage?",
-      answer: "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", "Sie kühlen mit Wasser, nicht Fett."],
+      answer: "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand.", "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", "Sie kühlen mit Wasser, nicht Fett."],
       explanation: 'Atemwege frei. Stabile Seitenlage bedeutet: Bei Bewusstlosigkeit mit Atmung.',
       wissen: 'Atemwege frei. Stabile Seitenlage bedeutet: Bei Bewusstlosigkeit mit Atmung. Merke: Stabile Seitenlage — Bei Bewusstlosigkeit mit Atmung.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Bei Bewusstlosigkeit mit Atmung',
@@ -6250,7 +6255,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f5',
       prompt: "Welche Eigenschaft hat die Herzdruckmassage?",
-      answer: "Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", wrong: ["Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei."],
+      answer: "Sie beschreibt eine Bei Kreislaufstillstand.", wrong: ["Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät.", "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei."],
       explanation: 'Reanimation. Herzdruckmassage bedeutet: Bei Kreislaufstillstand.',
       wissen: 'Reanimation. Herzdruckmassage bedeutet: Bei Kreislaufstillstand. Merke: Herzdruckmassage — Bei Kreislaufstillstand.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Bei Kreislaufstillstand',
@@ -6270,7 +6275,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f7',
       prompt: "Woran erkennt man die Schocklage?",
-      answer: "Sie beschreibt beine hoch, bei Kreislaufschock Verdacht.", wrong: ["Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", "Es beschreibt 112, sofort bei Notfall.", "Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten."],
+      answer: "Sie beschreibt beine hoch, bei Kreislaufschock Verdacht.", wrong: ["Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", "Es beschreibt 112, sofort bei Notfall.", "Sie beschreibt eine Bei Kreislaufstillstand."],
       explanation: 'Bei Kreislaufschock Verdacht. Schocklage bedeutet: Beine hoch.',
       wissen: 'Bei Kreislaufschock Verdacht. Schocklage bedeutet: Beine hoch. Merke: Schocklage — Beine hoch.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Beine hoch',
@@ -6290,7 +6295,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f9',
       prompt: "Was bewirkt die Allergie?",
-      answer: "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät."],
+      answer: "Sie beschreibt eine Notfallmedikation kennen, bei bekannter Neigung.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand.", "Sie beschreibt eine Bei Bewusstlosigkeit mit Atmung, atemwege frei.", "Sie unterbricht den Strom bei Überlast und schützt so Leitung und Gerät."],
       explanation: 'Bei bekannter Neigung. Allergie bedeutet: Notfallmedikation kennen.',
       wissen: 'Bei bekannter Neigung. Allergie bedeutet: Notfallmedikation kennen. Merke: Allergie — Notfallmedikation kennen.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Notfallmedikation kennen',
@@ -6300,7 +6305,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k8:lbw:erste:hilfe:f10',
       prompt: "Woran erkennt man das AED?",
-      answer: "Es beschreibt ein Defibrillator, wenn verfügbar nutzen.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand bei den behandelten Arten.", "Sie beschreibt eine Eigenschutz bei den behandelten Arten.", "Sie kühlen mit Wasser, nicht Fett."],
+      answer: "Es beschreibt ein Defibrillator, wenn verfügbar nutzen.", wrong: ["Sie beschreibt eine Bei Kreislaufstillstand.", "Sie beschreibt eine Eigenschutz.", "Sie kühlen mit Wasser, nicht Fett."],
       explanation: 'Wenn verfügbar nutzen. AED bedeutet: Defibrillator.',
       wissen: 'Wenn verfügbar nutzen. AED bedeutet: Defibrillator. Merke: AED — Defibrillator.',
       gap: '[k8-lbw-erste-hilfe] Fachbegriff: ___ — Defibrillator',
@@ -6390,8 +6395,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f2',
-      prompt: 'Was kennzeichnet „Biotisch“?',
-      answer: 'Es ist eine Belebte Faktoren durch Konkurrenz, Fraß.', wrong: ['Es ist eine Lebewesen + Umwelt.', 'Das Biotisch ist das Unbelebte Faktoren.', 'Das Biotisch ist das Fluss/Bach.'],
+      prompt: "Was kennzeichnet „Biotisch“?",
+      answer: "Es beschreibt belebte Faktoren, etwa konkurrenz oder Fraß.", wrong: ["Das Biotisch ist das Unbelebte Faktoren.", "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab, verluste als Wärme.", "Es beschreibt schwebende Organismen, im Wasser."],
       explanation: 'Konkurrenz, Fraß. Biotisch bedeutet: Belebte Faktoren.',
       wissen: 'Konkurrenz, Fraß. Biotisch bedeutet: Belebte Faktoren. Merke: Biotisch — Belebte Faktoren.',
       gap: '[k9-lb2-wald-gewaesser] Fachbegriff: ___ — Belebte Faktoren',
@@ -6410,8 +6415,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f4',
-      prompt: 'Was kennzeichnet „Stillgewässer“?',
-      answer: 'Er ist ein See/Weiher durch Schichtung Möglich.', wrong: ['Er ist eine Lebewesen + Umwelt.', 'Der Stillgewässer ist der Unbelebte Faktoren.', 'Der Stillgewässer ist der Belebte Faktoren.'],
+      prompt: "Was beschreibt „Stillgewässer\"?",
+      answer: "Er meint schichtung möglich. Stillgewässer bedeutet: See/Weiher. Merke: Stillgewässer — See/Weiher.", wrong: ["Es meint wechselwirkung. Ökosystem bedeutet: Lebewesen + Umwelt. Merke: Ökosystem — Lebewesen + Umwelt.", "Es meint licht, Temperatur. Abiotisch bedeutet: Unbelebte Faktoren. Merke: Abiotisch — Unbelebte Faktoren.", "Es meint konkurrenz, Fraß. Biotisch bedeutet: Belebte Faktoren. Merke: Biotisch — Belebte Faktoren."],
       explanation: 'Schichtung möglich. Stillgewässer bedeutet: See/Weiher.',
       wissen: 'Schichtung möglich. Stillgewässer bedeutet: See/Weiher. Merke: Stillgewässer — See/Weiher.',
       gap: '[k9-lb2-wald-gewaesser] Fachbegriff: ___ — See/Weiher',
@@ -6481,7 +6486,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f11',
       prompt: "Woran erkennt man den Bioindikator?",
-      answer: "Er zeigerart bei den behandelten Arten.", wrong: ["Es beschreibt belebte Faktoren, etwa konkurrenz oder Fraß.", "Es beschreibt schwebende Organismen, im Wasser.", "Sie beschreibt übergang Land–Wasser bei den behandelten Arten."],
+      answer: "Er zeigerart.", wrong: ["Es beschreibt belebte Faktoren, etwa konkurrenz oder Fraß.", "Es beschreibt schwebende Organismen, im Wasser.", "Sie beschreibt übergang Land–Wasser."],
       explanation: 'Umweltzustand. Bioindikator bedeutet: Zeigerart.',
       wissen: 'Umweltzustand. Bioindikator bedeutet: Zeigerart. Merke: Bioindikator — Zeigerart.',
       gap: '[k9-lb2-wald-gewaesser] Fachbegriff: ___ — Zeigerart',
@@ -6531,7 +6536,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     { concept: 'bio:fill:k9:lb2:stoffkreis:p3', term: 'Destruent', meaning: 'Mineralisiert', wissen: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.' },
     { concept: 'bio:fill:k9:lb2:stoffkreis:p4', term: 'Biomasse', meaning: 'Organische Substanz', wissen: 'Lebewesen. Biomasse bedeutet: Organische Substanz.' },
     { concept: 'bio:fill:k9:lb2:stoffkreis:p5', term: 'Fossiler Kohlenstoff', meaning: 'Kohle/Öl/Gas', wissen: 'Langzeitspeicher. Fossiler Kohlenstoff bedeutet: Kohle/Öl/Gas.' },
-    { concept: 'bio:fill:k9:lb2:stoffkreis:p6', term: 'Treibhausgas', meaning: 'CO₂ u. a', wissen: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a..' },
+    { concept: 'bio:fill:k9:lb2:stoffkreis:p6', term: 'Treibhausgas', meaning: 'CO₂ u. a', wissen: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a.' },
     { concept: 'bio:fill:k9:lb2:stoffkreis:p7', term: 'Senke', meaning: 'Aufnahmeort', wissen: 'Wald, Ozean. Senke bedeutet: Aufnahmeort.' },
     { concept: 'bio:fill:k9:lb2:stoffkreis:p8', term: 'Quelle', meaning: 'Abgabeort', wissen: 'Verbrennung. Quelle bedeutet: Abgabeort.' },
     { concept: 'bio:fill:k9:lb2:stoffkreis:p9', term: 'Humus', meaning: 'Organik im Boden', wissen: 'Speicher. Humus bedeutet: Organik im Boden.' },
@@ -6541,8 +6546,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f0',
-      prompt: 'Was kennzeichnet „Kohlenstoffkreislauf“?',
-      answer: 'Es ist eine CO₂ ↔ Organisch durch Fotosynthese/Atmung.', wrong: ['Das Kohlenstoffkreislauf ist das Bindet CO₂.', 'Setzt CO₂ frei.', 'Das Kohlenstoffkreislauf ist das Mineralisiert.'],
+      prompt: "Was beschreibt „Kohlenstoffkreislauf\"?",
+      answer: "Es meint fotosynthese/Atmung. Kohlenstoffkreislauf bedeutet: CO₂ ↔ organisch. Merke: Kohlenstoffkreislauf — CO₂ ↔ organisch.", wrong: ["Sie meint produzenten. Fotosynthese bedeutet: Bindet CO₂. Merke: Fotosynthese — Bindet CO₂.", "Sie meint konsumenten/Destruenten. Zellatmung bedeutet: Setzt CO₂ frei. Merke: Zellatmung — Setzt CO₂ frei.", "Es meint pilze/Bakterien. Destruent bedeutet: Mineralisiert. Merke: Destruent — Mineralisiert."],
       explanation: 'Fotosynthese/Atmung. Kohlenstoffkreislauf bedeutet: CO₂ ↔ organisch.',
       wissen: 'Fotosynthese/Atmung. Kohlenstoffkreislauf bedeutet: CO₂ ↔ organisch. Merke: Kohlenstoffkreislauf — CO₂ ↔ organisch.',
       gap: '[k9-lb2-stoffkreis] Fachbegriff: ___ — CO₂ ↔ organisch',
@@ -6572,7 +6577,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f3',
       prompt: "Wozu dient das Destruent?",
-      answer: "Es mineralisiert bei den behandelten Arten.", wrong: ["Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", "Sie aufnahmeort, etwa wald oder Ozean.", "Sie beschreibt eine Aufbau organischer Stoffe."],
+      answer: "Es mineralisiert.", wrong: ["Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", "Sie aufnahmeort, etwa wald oder Ozean.", "Sie beschreibt eine Aufbau organischer Stoffe."],
       explanation: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.',
       wissen: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert. Merke: Destruent — Mineralisiert.',
       gap: '[k9-lb2-stoffkreis] Fachbegriff: ___ — Mineralisiert',
@@ -6592,7 +6597,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f5',
       prompt: "Mit welchen Mitteln arbeitet der Fossiler Kohlenstoff?",
-      answer: "Es beschreibt kohle/Öl/Gas bei den behandelten Arten.", wrong: ["Sie setzt CO₂ frei bei den behandelten Arten.", "Es beschreibt CO₂ u. a bei den behandelten Arten.", "Er beschreibt eine Organik im Boden."],
+      answer: "Es beschreibt kohle/Öl/Gas.", wrong: ["Sie setzt CO₂ frei.", "Es beschreibt CO₂ u. a.", "Er beschreibt eine Organik im Boden."],
       explanation: 'Langzeitspeicher. Fossiler Kohlenstoff bedeutet: Kohle/Öl/Gas.',
       wissen: 'Langzeitspeicher. Fossiler Kohlenstoff bedeutet: Kohle/Öl/Gas. Merke: Fossiler Kohlenstoff — Kohle/Öl/Gas.',
       gap: '[k9-lb2-stoffkreis] Fachbegriff: ___ — Kohle/Öl/Gas',
@@ -6603,8 +6608,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
       concept: 'bio:fill:k9:lb2:stoffkreis:f6',
       prompt: "Was beschreibt „Treibhausgas“?",
       answer: "Es beschreibt CO₂ u. a.", wrong: ["Sie beschreibt organische Substanz.", "Es beschreibt CO₂ ↔ organisch.", "Es beschreibt kohle/Öl/Gas."],
-      explanation: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a..',
-      wissen: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a.. Merke: Treibhausgas — CO₂ u. a..',
+      explanation: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a.',
+      wissen: 'Klimawirkung. Treibhausgas bedeutet: CO₂ u. a. Merke: Treibhausgas — CO₂ u. a.',
       gap: '[k9-lb2-stoffkreis] Fachbegriff: ___ — CO₂ u. a.',
       gapAccepted: ['Treibhausgas'],
       flashFront: 'Treibhausgas (k9-lb2-stoffkreis)',
@@ -6622,7 +6627,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f8',
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Es beschreibt CO₂ ↔ organisch bei den behandelten Arten.", "Es mineralisiert bei den behandelten Arten.", "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Es beschreibt CO₂ ↔ organisch.", "Es mineralisiert.", "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um."],
       explanation: 'Verbrennung. Quelle bedeutet: Abgabeort.',
       wissen: 'Verbrennung. Quelle bedeutet: Abgabeort. Merke: Quelle — Abgabeort.',
       gap: '[k9-lb2-stoffkreis] Fachbegriff: ___ — Abgabeort',
@@ -6684,7 +6689,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:tf3',
-      statement: '[k9-lb2-stoffkreis] Destruent bedeutet: CO₂ u. a..',
+      statement: '[k9-lb2-stoffkreis] Destruent bedeutet: CO₂ u. a.',
       correct: false,
       explanation: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.',
       wissen: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.',
@@ -6793,7 +6798,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f8',
       prompt: "Welche Eigenschaft hat die Eutrophierung?",
-      answer: "Sie nährstoffüberangebot bei den behandelten Arten.", wrong: ["Es beschreibt globaler Stoffkreis bei den behandelten Arten.", "Sie beschreibt eine Zu viel Stickstoff.", "Es beschreibt pflanzenverfügbare Form bei den behandelten Arten."],
+      answer: "Sie nährstoffüberangebot.", wrong: ["Es beschreibt globaler Stoffkreis.", "Sie beschreibt eine Zu viel Stickstoff.", "Es beschreibt pflanzenverfügbare Form."],
       explanation: 'Algenblüte. Eutrophierung bedeutet: Nährstoffüberangebot.',
       wissen: 'Algenblüte. Eutrophierung bedeutet: Nährstoffüberangebot. Merke: Eutrophierung — Nährstoffüberangebot.',
       gap: '[k9-lb2-stickstoff] Fachbegriff: ___ — Nährstoffüberangebot',
@@ -6823,7 +6828,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f11',
       prompt: "Woran erkennt man das Harnstoff?",
-      answer: "Es ausscheidungsprodukt bei den behandelten Arten.", wrong: ["Sie beschreibt N₂ zu Ammonium bei den behandelten Arten.", "Sie nitrat zu N₂, zurück in die Luft.", "Sie beschreibt organischer N zu Ammonium."],
+      answer: "Es ausscheidungsprodukt.", wrong: ["Sie beschreibt N₂ zu Ammonium.", "Sie nitrat zu N₂, zurück in die Luft.", "Sie beschreibt organischer N zu Ammonium."],
       explanation: 'Säuger. Harnstoff bedeutet: Ausscheidungsprodukt.',
       wissen: 'Säuger. Harnstoff bedeutet: Ausscheidungsprodukt. Merke: Harnstoff — Ausscheidungsprodukt.',
       gap: '[k9-lb2-stickstoff] Fachbegriff: ___ — Ausscheidungsprodukt',
@@ -6903,8 +6908,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f2',
-      prompt: 'Was kennzeichnet „Mahd“?',
-      answer: 'Es ist eine Schnittnutzung durch Zeitpunkt Wichtig.', wrong: ['Das Mahd ist das Nährstoffarme Wiese.', 'Das Mahd ist das Nährstoffreich.', 'Das Mahd ist das Nutztierfraß.'],
+      prompt: "Was kennzeichnet „Mahd“?",
+      answer: "Es beschreibt eine Schnittnutzung, zeitpunkt wichtig.", wrong: ["Das Mahd ist das Nährstoffarme Wiese.", "Er beschreibt bestäuber, raupen an Pflanzen.", "Sie beschreibt eine Verbuschung ohne Pflege, zur Waldentwicklung."],
       explanation: 'Zeitpunkt wichtig. Mahd bedeutet: Schnittnutzung.',
       wissen: 'Zeitpunkt wichtig. Mahd bedeutet: Schnittnutzung. Merke: Mahd — Schnittnutzung.',
       gap: '[k9-lbw-wiese] Fachbegriff: ___ — Schnittnutzung',
@@ -7094,8 +7099,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f4',
-      prompt: 'Was kennzeichnet „Parasit“?',
-      answer: 'Es ist eine Schädigt Wirt durch Manche Pilze.', wrong: ['Das Parasit ist das Fadengeflecht.', 'Das Parasit ist das Hut/Stiel Oft.', 'Das Parasit ist das Ausbreitungseinheit.'],
+      prompt: "Was beschreibt „Parasit\"?",
+      answer: "Es meint manche Pilze. Parasit bedeutet: Schädigt Wirt. Merke: Parasit — Schädigt Wirt.", wrong: ["Es meint eigentlicher Pilzkörper. Myzel bedeutet: Fadengeflecht. Merke: Myzel — Fadengeflecht.", "Er meint sporenbildung. Fruchtkörper bedeutet: Hut/Stiel oft. Merke: Fruchtkörper — Hut/Stiel oft.", "Sie meint keine Samen. Spore bedeutet: Ausbreitungseinheit. Merke: Spore — Ausbreitungseinheit."],
       explanation: 'Manche Pilze. Parasit bedeutet: Schädigt Wirt.',
       wissen: 'Manche Pilze. Parasit bedeutet: Schädigt Wirt. Merke: Parasit — Schädigt Wirt.',
       gap: '[k9-lbw-pilze] Fachbegriff: ___ — Schädigt Wirt',
@@ -7154,8 +7159,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f10',
-      prompt: 'Was kennzeichnet „Giftpilz“?',
-      answer: 'Es ist eine Toxisch durch Bestimmung Nötig.', wrong: ['Das Giftpilz ist das Fadengeflecht.', 'Das Giftpilz ist das Hut/Stiel Oft.', 'Das Giftpilz ist das Ausbreitungseinheit.'],
+      prompt: "Was beschreibt „Giftpilz\"?",
+      answer: "Es meint bestimmung nötig. Giftpilz bedeutet: Toxisch. Merke: Giftpilz — Toxisch.", wrong: ["Es meint eigentlicher Pilzkörper. Myzel bedeutet: Fadengeflecht. Merke: Myzel — Fadengeflecht.", "Er meint sporenbildung. Fruchtkörper bedeutet: Hut/Stiel oft. Merke: Fruchtkörper — Hut/Stiel oft.", "Sie meint keine Samen. Spore bedeutet: Ausbreitungseinheit. Merke: Spore — Ausbreitungseinheit."],
       explanation: 'Bestimmung nötig. Giftpilz bedeutet: Toxisch.',
       wissen: 'Bestimmung nötig. Giftpilz bedeutet: Toxisch. Merke: Giftpilz — Toxisch.',
       gap: '[k9-lbw-pilze] Fachbegriff: ___ — Toxisch',
@@ -7275,8 +7280,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f5',
-      prompt: 'Was kennzeichnet „Maischen“?',
-      answer: 'Es ist ein Stärke → Zucker durch mit Wasser und Hitze.', wrong: ['Das Maischen ist das Braugetreide.', 'Es ist eine Gekeimte und Gedarrte Gerste.', 'Es ist ein Bitter- und Aromastoff.'],
+      prompt: "Was kennzeichnet „Maischen“?",
+      answer: "Es beschreibt stärke → Zucker, mit Wasser und Hitze.", wrong: ["Es beschreibt gekeimte und gedarrte Gerste.", "Sie beschreibt gärungserreger, alkohol und CO₂.", "Sie beschreibt eine Zuckerlösung vor Gärung, aus Malz."],
       explanation: 'Mit Wasser und Hitze. Maischen bedeutet: Stärke → Zucker.',
       wissen: 'Mit Wasser und Hitze. Maischen bedeutet: Stärke → Zucker. Merke: Maischen — Stärke → Zucker.',
       gap: '[k9-lbw-bier] Fachbegriff: ___ — Stärke → Zucker',
@@ -7306,7 +7311,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k9:lbw:bier:f8',
       prompt: "Woran erkennt man die Filterung?",
-      answer: "Sie klären bei den behandelten Arten.", wrong: ["Es beschreibt gekeimte und gedarrte Gerste.", "Sie beschreibt eine Zuckerlösung vor Gärung, aus Malz.", "Es beschreibt bitter- und Aromastoff bei den behandelten Arten."],
+      answer: "Sie klären.", wrong: ["Es beschreibt gekeimte und gedarrte Gerste.", "Sie beschreibt eine Zuckerlösung vor Gärung, aus Malz.", "Es beschreibt bitter- und Aromastoff."],
       explanation: 'Optional. Filterung bedeutet: Klären.',
       wissen: 'Optional. Filterung bedeutet: Klären. Merke: Filterung — Klären.',
       gap: '[k9-lbw-bier] Fachbegriff: ___ — Klären',
@@ -7738,8 +7743,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lbw:leben:f0',
-      prompt: 'Was kennzeichnet „Kennzeichen“?',
-      answer: 'Es ist eine Stoffwechsel, Reizbarkeit, … durch leben vs. tot.', wrong: ['Das Kennzeichen ist das Grundeinheit.', 'Es ist eine Selbst Ernährung Aufbauen.', 'Es ist eine Auf Organische Nahrung Angewiesen.'],
+      prompt: "Was kennzeichnet „Kennzeichen“?",
+      answer: "Es beschreibt ein Stoffwechsel, Reizbarkeit, …, leben vs.", wrong: ["Es beschreibt ATP-Haushalt, leben braucht Energie.", "Es beschreibt ein Auf organische Nahrung angewiesen.", "Er beschreibt ein Kein eigener Stoffwechsel."],
       explanation: 'Leben vs. tot. Kennzeichen bedeutet: Stoffwechsel, Reizbarkeit, ….',
       wissen: 'Leben vs. tot. Kennzeichen bedeutet: Stoffwechsel, Reizbarkeit, …. Merke: Kennzeichen — Stoffwechsel, Reizbarkeit, ….',
       gap: '[k10-lbw-leben] Fachbegriff: ___ — Stoffwechsel, Reizbarkeit, …',
@@ -7768,8 +7773,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f3',
-      prompt: 'Was kennzeichnet „Heterotroph“?',
-      answer: 'Es ist eine Auf Organische Nahrung Angewiesen durch Tiere.', wrong: ['Es ist eine Stoffwechsel, Reizbarkeit, ….', 'Das Heterotroph ist das Grundeinheit.', 'Es ist eine Selbst Ernährung Aufbauen.'],
+      prompt: "Was kennzeichnet „Heterotroph“?",
+      answer: "Es beschreibt ein Auf organische Nahrung angewiesen.", wrong: ["Es beschreibt ATP-Haushalt, leben braucht Energie.", "Er beschreibt ein Kein eigener Stoffwechsel.", "Sie beschreibt eine Abgrenzung zur Umwelt."],
       explanation: 'Tiere. Heterotroph bedeutet: Auf organische Nahrung angewiesen.',
       wissen: 'Tiere. Heterotroph bedeutet: Auf organische Nahrung angewiesen. Merke: Heterotroph — Auf organische Nahrung angewiesen.',
       gap: '[k10-lbw-leben] Fachbegriff: ___ — Auf organische Nahrung angewiesen',
@@ -7808,8 +7813,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f7',
-      prompt: 'Was kennzeichnet „Einzeller“?',
-      answer: 'Es ist eine Zelle durch bakterien, Protisten.', wrong: ['Er ist eine Stoffwechsel, Reizbarkeit, ….', 'Der Einzeller ist der Grundeinheit.', 'Er ist eine Selbst Ernährung Aufbauen.'],
+      prompt: "Was beschreibt „Einzeller\"?",
+      answer: "Er meint bakterien, Protisten. Einzeller bedeutet: Eine Zelle. Merke: Einzeller — Eine Zelle.", wrong: ["Es meint leben vs. tot. Kennzeichen bedeutet: Stoffwechsel, Reizbarkeit, …. Merke: Kennzeichen — Stoffwechsel, Reizbarkeit, ….", "Sie meint schleiden/Schwann. Zelle bedeutet: Grundeinheit. Merke: Zelle — Grundeinheit.", "Es meint fotosynthese. Autotroph bedeutet: Selbst Ernährung aufbauen. Merke: Autotroph — Selbst Ernährung aufbauen."],
       explanation: 'Bakterien, Protisten. Einzeller bedeutet: Eine Zelle.',
       wissen: 'Bakterien, Protisten. Einzeller bedeutet: Eine Zelle. Merke: Einzeller — Eine Zelle.',
       gap: '[k10-lbw-leben] Fachbegriff: ___ — Eine Zelle',
@@ -7910,7 +7915,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k10:lbw:lernen:f0',
       prompt: "Woran erkennt man die Konditionierung?",
-      answer: "Sie lernen durch Verknüpfung bei den behandelten Arten.", wrong: ["Sie beschreibt gesteigerte Reaktion, nach starkem Reiz.", "Sie beschreibt eine Umbau von Synapsen, lernen biologisch.", "Sie beschreibt eine Gewöhnung, reiz wird ignoriert."],
+      answer: "Sie lernen durch Verknüpfung.", wrong: ["Sie beschreibt gesteigerte Reaktion, nach starkem Reiz.", "Sie beschreibt eine Umbau von Synapsen, lernen biologisch.", "Sie beschreibt eine Gewöhnung, reiz wird ignoriert."],
       explanation: 'Reiz–Reaktion. Konditionierung bedeutet: Lernen durch Verknüpfung.',
       wissen: 'Reiz–Reaktion. Konditionierung bedeutet: Lernen durch Verknüpfung. Merke: Konditionierung — Lernen durch Verknüpfung.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Lernen durch Verknüpfung',
@@ -7940,7 +7945,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k10:lbw:lernen:f3',
       prompt: "Welche Eigenschaft hat das Einsichtiges Lernen?",
-      answer: "Es problemlösen, höhere Wirbeltiere bei den behandelten Arten.", wrong: ["Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", "Sie lernen durch Verknüpfung bei den behandelten Arten.", "Sie nachahmen, soziales Lernen bei den behandelten Arten."],
+      answer: "Es problemlösen, höhere Wirbeltiere.", wrong: ["Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", "Sie lernen durch Verknüpfung.", "Sie nachahmen, soziales Lernen."],
       explanation: 'Höhere Wirbeltiere. Einsichtiges Lernen bedeutet: Problemlösen.',
       wissen: 'Höhere Wirbeltiere. Einsichtiges Lernen bedeutet: Problemlösen. Merke: Einsichtiges Lernen — Problemlösen.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Problemlösen',
@@ -7950,7 +7955,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k10:lbw:lernen:f4',
       prompt: "Welche Eigenschaft hat die Imitation?",
-      answer: "Sie nachahmen, soziales Lernen bei den behandelten Arten.", wrong: ["Sie lernen durch Verknüpfung bei den behandelten Arten.", "Es beschreibt ein Speichern von Information.", "Sie beschreibt eine Antrieb zum Lernen."],
+      answer: "Sie nachahmen, soziales Lernen.", wrong: ["Sie lernen durch Verknüpfung.", "Es beschreibt ein Speichern von Information.", "Sie beschreibt eine Antrieb zum Lernen."],
       explanation: 'Soziales Lernen. Imitation bedeutet: Nachahmen.',
       wissen: 'Soziales Lernen. Imitation bedeutet: Nachahmen. Merke: Imitation — Nachahmen.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Nachahmen',
@@ -7959,8 +7964,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f5',
-      prompt: 'Was kennzeichnet „Gedächtnis“?',
-      answer: 'Es ist eine Speichern von Information durch Kurz-/Langzeit.', wrong: ['Es ist eine Lernen durch Verknüpfung.', 'Es ist eine Irreversibles Lernen in Phase.', 'Es ist ein Versuch und Irrtum.'],
+      prompt: "Was kennzeichnet „Gedächtnis“?",
+      answer: "Es beschreibt ein Speichern von Information.", wrong: ["Er beschreibt ein Versuch und Irrtum, erfolg verstärkt.", "Sie ist schnelles Lernen in sensiblen Phasen, oft unumkehrbar.", "Sie beschreibt eine Antrieb zum Lernen."],
       explanation: 'Kurz-/Langzeit. Gedächtnis bedeutet: Speichern von Information.',
       wissen: 'Kurz-/Langzeit. Gedächtnis bedeutet: Speichern von Information. Merke: Gedächtnis — Speichern von Information.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Speichern von Information',
@@ -7980,7 +7985,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k10:lbw:lernen:f7',
       prompt: "Woran erkennt man die Habituation?",
-      answer: "Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", wrong: ["Es problemlösen, höhere Wirbeltiere bei den behandelten Arten.", "Sie nachahmen, soziales Lernen bei den behandelten Arten.", "Sie lernen durch Verknüpfung bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", wrong: ["Es problemlösen, höhere Wirbeltiere.", "Sie nachahmen, soziales Lernen.", "Sie lernen durch Verknüpfung."],
       explanation: 'Reiz wird ignoriert. Habituation bedeutet: Gewöhnung.',
       wissen: 'Reiz wird ignoriert. Habituation bedeutet: Gewöhnung. Merke: Habituation — Gewöhnung.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Gewöhnung',
@@ -8010,7 +8015,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:k10:lbw:lernen:f10',
       prompt: "Woran erkennt man die Verstärkung?",
-      answer: "Sie erhöht Verhaltensrate bei den behandelten Arten.", wrong: ["Sie lernen durch Verknüpfung bei den behandelten Arten.", "Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", "Sie beschreibt eine Antrieb zum Lernen."],
+      answer: "Sie erhöht Verhaltensrate.", wrong: ["Sie lernen durch Verknüpfung.", "Sie beschreibt eine Gewöhnung, reiz wird ignoriert.", "Sie beschreibt eine Antrieb zum Lernen."],
       explanation: 'Belohnung. Verstärkung bedeutet: Erhöht Verhaltensrate.',
       wissen: 'Belohnung. Verstärkung bedeutet: Erhöht Verhaltensrate. Merke: Verstärkung — Erhöht Verhaltensrate.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Erhöht Verhaltensrate',
@@ -8019,8 +8024,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f11',
-      prompt: 'Wozu dient die Bestrafung?',
-      answer: 'Sie verringert Verhaltensrate durch aversiver Reiz.', wrong: ['Sie ist eine Lernen durch Verknüpfung.', 'Sie ist eine Irreversibles Lernen in Phase.', 'Sie ist ein Versuch und Irrtum.'],
+      prompt: "Wozu dient die Bestrafung?",
+      answer: "Sie verringert Verhaltensrate durch aversiver Reiz.", wrong: ["Er beschreibt ein Versuch und Irrtum, erfolg verstärkt.", "Sie beschreibt eine Umbau von Synapsen, lernen biologisch.", "Sie beschreibt eine Antrieb zum Lernen."],
       explanation: 'Aversiver Reiz. Bestrafung bedeutet: Verringert Verhaltensrate.',
       wissen: 'Aversiver Reiz. Bestrafung bedeutet: Verringert Verhaltensrate. Merke: Bestrafung — Verringert Verhaltensrate.',
       gap: '[k10-lbw-lernen] Fachbegriff: ___ — Verringert Verhaltensrate',
@@ -8120,8 +8125,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f4',
-      prompt: 'Was kennzeichnet „Oase“?',
-      answer: 'Sie ist eine Wasserstelle durch Lokale Vegetation.', wrong: ['Die Oase ist die Trockenheitspflanze.', 'Die Oase ist die Nachtliche CO₂-Aufnahme.', 'Die Oase ist die Wasserspeicherung.'],
+      prompt: "Was beschreibt „Oase\"?",
+      answer: "Sie meint lokale Vegetation. Oase bedeutet: Wasserstelle. Merke: Oase — Wasserstelle.", wrong: ["Es meint wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.", "Es meint wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme. Merke: CAM — Nachtliche CO₂-Aufnahme.", "Sie meint dickfleischig. Sukkulenz bedeutet: Wasserspeicherung. Merke: Sukkulenz — Wasserspeicherung."],
       explanation: 'Lokale Vegetation. Oase bedeutet: Wasserstelle.',
       wissen: 'Lokale Vegetation. Oase bedeutet: Wasserstelle. Merke: Oase — Wasserstelle.',
       gap: '[gk-lbw-wueste] Fachbegriff: ___ — Wasserstelle',
@@ -8140,8 +8145,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:wueste:f6',
-      prompt: 'Wozu dient die Nachtaktivität?',
-      answer: 'Sie ist eine Sie Vermeidet Hitze durch Viele Tiere.', wrong: ['Die Nachtaktivität ist die Trockenheitspflanze.', 'Die Nachtaktivität ist die Nachtliche CO₂-Aufnahme.', 'Die Nachtaktivität ist die Wasserspeicherung.'],
+      prompt: "Wozu dient die Nachtaktivität?",
+      answer: "Sie meint viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze. Merke: Nachtaktivität — Vermeidet Hitze.", wrong: ["Es meint wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.", "Es meint wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme. Merke: CAM — Nachtliche CO₂-Aufnahme.", "Sie meint dickfleischig. Sukkulenz bedeutet: Wasserspeicherung. Merke: Sukkulenz — Wasserspeicherung."],
       explanation: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze.',
       wissen: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze. Merke: Nachtaktivität — Vermeidet Hitze.',
       gap: '[gk-lbw-wueste] Fachbegriff: ___ — Vermeidet Hitze',
@@ -8151,7 +8156,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:wueste:f7',
       prompt: "Wozu dient die Harnkonzentrierung?",
-      answer: "Sie wassersparen bei den behandelten Arten.", wrong: ["Es beschreibt ein Schutz und weniger Fläche.", "Sie beschreibt eine Wasserspeicherung bei den behandelten Arten.", "Es beschreibt hoher Salzgehalt bei den behandelten Arten."],
+      answer: "Sie wassersparen.", wrong: ["Es beschreibt ein Schutz und weniger Fläche.", "Sie beschreibt eine Wasserspeicherung.", "Es beschreibt hoher Salzgehalt."],
       explanation: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen.',
       wissen: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen. Merke: Harnkonzentrierung — Wassersparen.',
       gap: '[gk-lbw-wueste] Fachbegriff: ___ — Wassersparen',
@@ -8292,7 +8297,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:energie:f4',
       prompt: "Mit welchen Mitteln arbeitet die Fossile Energie?",
-      answer: "Sie beschreibt kohle/Öl/Gas bei den behandelten Arten.", wrong: ["Sie beschreibt abnahme je Stufe bei den behandelten Arten.", "Sie beschreibt eine Energiefluss bei den behandelten Arten.", "Es beschreibt eine Klimawirkung bei den behandelten Arten."],
+      answer: "Sie beschreibt kohle/Öl/Gas.", wrong: ["Sie beschreibt abnahme je Stufe.", "Sie beschreibt eine Energiefluss.", "Es beschreibt eine Klimawirkung."],
       explanation: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas.',
       wissen: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas. Merke: Fossile Energie — Kohle/Öl/Gas.',
       gap: '[gk-lbw-energie] Fachbegriff: ___ — Kohle/Öl/Gas',
@@ -8302,7 +8307,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:energie:f5',
       prompt: "Woran erkennt man erneuerbare Energiequellen?",
-      answer: "Sie nutzen nachwachsende oder kontinuierliche Quellen wie Sonne, Wind oder Wasser.", wrong: ["Es beschreibt eine Klimawirkung bei den behandelten Arten.", "Es dient als Energiewährung der Zelle.", "Sie beschreibt energiespeicher organisch, holz etc."],
+      answer: "Sie nutzen nachwachsende oder kontinuierliche Quellen wie Sonne, Wind oder Wasser.", wrong: ["Es beschreibt eine Klimawirkung.", "Es dient als Energiewährung der Zelle.", "Sie beschreibt energiespeicher organisch, holz etc."],
       explanation: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig.',
       wissen: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig. Merke: Erneuerbar — Nachwachsend/ständig.',
       gap: '[gk-lbw-energie] Fachbegriff: ___ — Nachwachsend/ständig',
@@ -8312,7 +8317,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:energie:f6',
       prompt: "Was beschreibt den Wirkungsgrad?",
-      answer: "Er gibt den nützlichen Anteil der zugeführten Energie an, oft als E_nutz geteilt durch E_zu.", wrong: ["Es beschreibt eine Klimawirkung bei den behandelten Arten.", "Sie beschreibt zucker → ATP bei den behandelten Arten.", "Sie beschreibt energiespeicher organisch, holz etc."],
+      answer: "Er gibt den nützlichen Anteil der zugeführten Energie an, oft als E_nutz geteilt durch E_zu.", wrong: ["Es beschreibt eine Klimawirkung.", "Sie beschreibt zucker → ATP.", "Sie beschreibt energiespeicher organisch, holz etc."],
       explanation: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie.',
       wissen: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie. Merke: Wirkungsgrad — Nutzanteil der Energie.',
       gap: '[gk-lbw-energie] Fachbegriff: ___ — Nutzanteil der Energie',
@@ -8423,7 +8428,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:gaerung:f0',
       prompt: "Mit welchen Mitteln arbeitet die Alkoholische Gärung?",
-      answer: "Sie beschreibt zucker → Ethanol + CO₂.", wrong: ["Es beschreibt ohne Sauerstoff bei den behandelten Arten.", "Es zwischenprodukt, aus Glykolyse bei den behandelten Arten.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma, im Zytoplasma."],
+      answer: "Sie beschreibt zucker → Ethanol + CO₂.", wrong: ["Es beschreibt ohne Sauerstoff.", "Es zwischenprodukt, aus Glykolyse.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma, im Zytoplasma."],
       explanation: 'Hefe. Alkoholische Gärung bedeutet: Zucker → Ethanol + CO₂.',
       wissen: 'Hefe. Alkoholische Gärung bedeutet: Zucker → Ethanol + CO₂. Merke: Alkoholische Gärung — Zucker → Ethanol + CO₂.',
       gap: '[gk-lbw-gaerung] Fachbegriff: ___ — Zucker → Ethanol + CO₂',
@@ -8493,7 +8498,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:gaerung:f7',
       prompt: "Welche Eigenschaft hat das Joghurt?",
-      answer: "Es milchsäurebakterien bei den behandelten Arten.", wrong: ["Er beschreibt hefe + Würze bei den behandelten Arten.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma, im Zytoplasma.", "Es beschreibt eine Milchsäuregärung bei den behandelten Arten."],
+      answer: "Es milchsäurebakterien.", wrong: ["Er beschreibt hefe + Würze.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma, im Zytoplasma.", "Es beschreibt eine Milchsäuregärung."],
       explanation: 'Säuerung. Joghurt bedeutet: Milchsäurebakterien.',
       wissen: 'Säuerung. Joghurt bedeutet: Milchsäurebakterien. Merke: Joghurt — Milchsäurebakterien.',
       gap: '[gk-lbw-gaerung] Fachbegriff: ___ — Milchsäurebakterien',
@@ -8613,8 +8618,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f2',
-      prompt: 'Wozu dient Mittellauf?',
-      answer: 'Es ist eine Übergang durch Mehr Sediment.', wrong: ['Das Mittellauf ist das Abiotischer Faktor.', 'Das Mittellauf ist das Oberlauf.', 'Das Mittellauf ist das Langsam.'],
+      prompt: "Was beschreibt „Mittellauf\"?",
+      answer: "Es meint mehr Sediment. Mittellauf bedeutet: Übergang. Merke: Mittellauf — Übergang.", wrong: ["Sie meint sauerstoffeintrag. Strömung bedeutet: Abiotischer Faktor. Merke: Strömung — Abiotischer Faktor.", "Sie meint kühl, sauerstoffreich. Quellregion bedeutet: Oberlauf. Merke: Quellregion — Oberlauf.", "Es meint mehr Trübung oft. Unterlauf bedeutet: Langsam. Merke: Unterlauf — Langsam."],
       explanation: 'Mehr Sediment. Mittellauf bedeutet: Übergang.',
       wissen: 'Mehr Sediment. Mittellauf bedeutet: Übergang. Merke: Mittellauf — Übergang.',
       gap: '[gk-lbw-fliesgewaesser] Fachbegriff: ___ — Übergang',
@@ -8633,8 +8638,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f4',
-      prompt: 'Was kennzeichnet „Rheophil“?',
-      answer: 'Es ist eine Strömungsliebend durch Angepasste Arten.', wrong: ['Das Rheophil ist das Abiotischer Faktor.', 'Das Rheophil ist das Oberlauf.', 'Das Rheophil ist das Übergang.'],
+      prompt: "Was kennzeichnet „Rheophil“?",
+      answer: "Es beschreibt ein Strömungsliebend, angepasste Arten.", wrong: ["Das Rheophil ist das Abiotischer Faktor.", "Sie gilt als ein abiotischer Faktor in Fließgewässern und fördert den Sauerstoffeintrag.", "Es beschreibt langsam, mehr Trübung oft."],
       explanation: 'Angepasste Arten. Rheophil bedeutet: Strömungsliebend.',
       wissen: 'Angepasste Arten. Rheophil bedeutet: Strömungsliebend. Merke: Rheophil — Strömungsliebend.',
       gap: '[gk-lbw-fliesgewaesser] Fachbegriff: ___ — Strömungsliebend',
@@ -8784,8 +8789,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f2',
-      prompt: 'Was kennzeichnet „Histamin“?',
-      answer: 'Es ist ein Mediator durch Juckreiz/Schwellung.', wrong: ['Es ist eine Auslöser der Reaktion.', 'Das Histamin ist das Antikörpertyp.', 'Das Histamin ist das Erste Kontaktphase.'],
+      prompt: "Was beschreibt „Histamin\"?",
+      answer: "Es meint juckreiz/Schwellung. Histamin bedeutet: Mediator. Merke: Histamin — Mediator.", wrong: ["Es meint pollen, Nahrung. Allergen bedeutet: Auslöser der Reaktion. Merke: Allergen — Auslöser der Reaktion.", "Sie meint bei Allergie oft. IgE bedeutet: Antikörpertyp. Merke: IgE — Antikörpertyp.", "Sie meint ohne starke Symptome oft. Sensibilisierung bedeutet: Erste Kontaktphase. Merke: Sensibilisierung — Erste Kontaktphase."],
       explanation: 'Juckreiz/Schwellung. Histamin bedeutet: Mediator.',
       wissen: 'Juckreiz/Schwellung. Histamin bedeutet: Mediator. Merke: Histamin — Mediator.',
       gap: '[gk-lbw-allergien] Fachbegriff: ___ — Mediator',
@@ -8844,8 +8849,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:allergien:f8',
-      prompt: 'Was kennzeichnet „Mastzelle“?',
-      answer: 'Sie ist eine Freisetzt Mediatoren durch bei Bindung.', wrong: ['Sie ist eine Auslöser der Reaktion.', 'Die Mastzelle ist die Antikörpertyp.', 'Die Mastzelle ist die Mediator.'],
+      prompt: "Was beschreibt „Mastzelle\"?",
+      answer: "Sie meint bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren. Merke: Mastzelle — Freisetzt Mediatoren.", wrong: ["Es meint pollen, Nahrung. Allergen bedeutet: Auslöser der Reaktion. Merke: Allergen — Auslöser der Reaktion.", "Sie meint bei Allergie oft. IgE bedeutet: Antikörpertyp. Merke: IgE — Antikörpertyp.", "Es meint juckreiz/Schwellung. Histamin bedeutet: Mediator. Merke: Histamin — Mediator."],
       explanation: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren.',
       wissen: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren. Merke: Mastzelle — Freisetzt Mediatoren.',
       gap: '[gk-lbw-allergien] Fachbegriff: ___ — Freisetzt Mediatoren',
@@ -8946,7 +8951,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:krebs:f1',
       prompt: "Mit welchen Mitteln arbeitet die Metastase?",
-      answer: "Sie tochtergeschwulst bei den behandelten Arten.", wrong: ["Sie beschreibt programmierter Zelltod, fällt bei Krebs oft aus.", "Sie zellgift gegen schnell teilende Zellen.", "Es blut/Lymphbahn bei den behandelten Arten."],
+      answer: "Sie tochtergeschwulst.", wrong: ["Sie beschreibt programmierter Zelltod, fällt bei Krebs oft aus.", "Sie zellgift gegen schnell teilende Zellen.", "Es blut/Lymphbahn."],
       explanation: 'Absiedlung. Metastase bedeutet: Tochtergeschwulst.',
       wissen: 'Absiedlung. Metastase bedeutet: Tochtergeschwulst. Merke: Metastase — Tochtergeschwulst.',
       gap: '[gk-lbw-krebs] Fachbegriff: ___ — Tochtergeschwulst',
@@ -9015,8 +9020,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:krebs:f8',
-      prompt: 'Was kennzeichnet „Immuntherapie“?',
-      answer: 'Sie ist eine Aktiviert Abwehr durch Moderne Option.', wrong: ['Die Immuntherapie ist die Gewebewucherung.', 'Die Immuntherapie ist die Tochtergeschwulst.', 'Sie ist ein Fördert Unkontrolliertes Wachstum.'],
+      prompt: "Was beschreibt „Immuntherapie\"?",
+      answer: "Sie meint moderne Option. Immuntherapie bedeutet: Aktiviert Abwehr. Merke: Immuntherapie — Aktiviert Abwehr.", wrong: ["Er meint gut- oder bösartig. Tumor bedeutet: Gewebewucherung. Merke: Tumor — Gewebewucherung.", "Sie meint absiedlung. Metastase bedeutet: Tochtergeschwulst. Merke: Metastase — Tochtergeschwulst.", "Es meint mutiert. Onkogen bedeutet: Fördert unkontrolliertes Wachstum. Merke: Onkogen — Fördert unkontrolliertes Wachstum."],
       explanation: 'Moderne Option. Immuntherapie bedeutet: Aktiviert Abwehr.',
       wissen: 'Moderne Option. Immuntherapie bedeutet: Aktiviert Abwehr. Merke: Immuntherapie — Aktiviert Abwehr.',
       gap: '[gk-lbw-krebs] Fachbegriff: ___ — Aktiviert Abwehr',
@@ -9036,7 +9041,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:gk:lbw:krebs:f10',
       prompt: "Woran erkennt man das Metastaseweg?",
-      answer: "Es blut/Lymphbahn bei den behandelten Arten.", wrong: ["Sie beschreibt lokale Therapie, gegen Tumor.", "Sie beschreibt programmierter Zelltod, fällt bei Krebs oft aus.", "Sie beschreibt eine Screening, verbessert Chancen."],
+      answer: "Es blut/Lymphbahn.", wrong: ["Sie beschreibt lokale Therapie, gegen Tumor.", "Sie beschreibt programmierter Zelltod, fällt bei Krebs oft aus.", "Sie beschreibt eine Screening, verbessert Chancen."],
       explanation: 'Ausbreitung. Metastaseweg bedeutet: Blut/Lymphbahn.',
       wissen: 'Ausbreitung. Metastaseweg bedeutet: Blut/Lymphbahn. Merke: Metastaseweg — Blut/Lymphbahn.',
       gap: '[gk-lbw-krebs] Fachbegriff: ___ — Blut/Lymphbahn',
@@ -9146,8 +9151,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f4',
-      prompt: 'Was kennzeichnet „Oase“?',
-      answer: 'Sie ist eine Wasserstelle durch Lokale Vegetation.', wrong: ['Die Oase ist die Trockenheitspflanze.', 'Die Oase ist die Nachtliche CO₂-Aufnahme.', 'Die Oase ist die Wasserspeicherung.'],
+      prompt: "Was beschreibt „Oase\"?",
+      answer: "Sie meint lokale Vegetation. Oase bedeutet: Wasserstelle. Merke: Oase — Wasserstelle.", wrong: ["Es meint wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.", "Es meint wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme. Merke: CAM — Nachtliche CO₂-Aufnahme.", "Sie meint dickfleischig. Sukkulenz bedeutet: Wasserspeicherung. Merke: Sukkulenz — Wasserspeicherung."],
       explanation: 'Lokale Vegetation. Oase bedeutet: Wasserstelle.',
       wissen: 'Lokale Vegetation. Oase bedeutet: Wasserstelle. Merke: Oase — Wasserstelle.',
       gap: '[lk11-lbw-wueste] Fachbegriff: ___ — Wasserstelle',
@@ -9166,8 +9171,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f6',
-      prompt: 'Wozu dient die Nachtaktivität?',
-      answer: 'Sie ist eine Sie Vermeidet Hitze durch Viele Tiere.', wrong: ['Die Nachtaktivität ist die Trockenheitspflanze.', 'Die Nachtaktivität ist die Nachtliche CO₂-Aufnahme.', 'Die Nachtaktivität ist die Wasserspeicherung.'],
+      prompt: "Wozu dient die Nachtaktivität?",
+      answer: "Sie meint viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze. Merke: Nachtaktivität — Vermeidet Hitze.", wrong: ["Es meint wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.", "Es meint wassersparen. CAM bedeutet: Nachtliche CO₂-Aufnahme. Merke: CAM — Nachtliche CO₂-Aufnahme.", "Sie meint dickfleischig. Sukkulenz bedeutet: Wasserspeicherung. Merke: Sukkulenz — Wasserspeicherung."],
       explanation: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze.',
       wissen: 'Viele Tiere. Nachtaktivität bedeutet: Vermeidet Hitze. Merke: Nachtaktivität — Vermeidet Hitze.',
       gap: '[lk11-lbw-wueste] Fachbegriff: ___ — Vermeidet Hitze',
@@ -9177,7 +9182,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:wueste:f7',
       prompt: "Wozu dient die Harnkonzentrierung?",
-      answer: "Sie wassersparen bei den behandelten Arten.", wrong: ["Es beschreibt ein Schutz und weniger Fläche.", "Sie beschreibt eine Wasserspeicherung bei den behandelten Arten.", "Es beschreibt hoher Salzgehalt bei den behandelten Arten."],
+      answer: "Sie wassersparen.", wrong: ["Es beschreibt ein Schutz und weniger Fläche.", "Sie beschreibt eine Wasserspeicherung.", "Es beschreibt hoher Salzgehalt."],
       explanation: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen.',
       wissen: 'Nieren. Harnkonzentrierung bedeutet: Wassersparen. Merke: Harnkonzentrierung — Wassersparen.',
       gap: '[lk11-lbw-wueste] Fachbegriff: ___ — Wassersparen',
@@ -9539,7 +9544,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f9',
       prompt: "Was bewirkt die Luftqualität?",
-      answer: "Sie schadstoffgehalt bei den behandelten Arten.", wrong: ["Sie beschreibt eine Gewässerbelastung bei den behandelten Arten.", "Es zeigt Umweltzustand bei den behandelten Arten.", "Sie beschreibt luftgütezeiger bei den behandelten Arten."],
+      answer: "Sie schadstoffgehalt.", wrong: ["Sie beschreibt eine Gewässerbelastung.", "Es zeigt Umweltzustand.", "Sie beschreibt luftgütezeiger."],
       explanation: 'Messung/Zeiger. Luftqualität bedeutet: Schadstoffgehalt.',
       wissen: 'Messung/Zeiger. Luftqualität bedeutet: Schadstoffgehalt. Merke: Luftqualität — Schadstoffgehalt.',
       gap: '[lk11-lbw-bioindikation] Fachbegriff: ___ — Schadstoffgehalt',
@@ -9619,8 +9624,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f0',
-      prompt: 'Was kennzeichnet „Neozoon“?',
-      answer: 'Es ist eine Eingeschleppte Tierart durch nach 1492 Oft Definiert.', wrong: ['Das Neozoon ist das Eingeschleppte Pflanzenart.', 'Es ist eine Stark Ausbreitend mit Schaden.', 'Es ist eine Verdrängung Heimischer Arten.'],
+      prompt: "Was kennzeichnet „Neozoon“?",
+      answer: "Es beschreibt eingeschleppte Tierart, nach 1492 oft definiert.", wrong: ["Das Neozoon ist das Eingeschleppte Pflanzenart.", "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", "Er überträgt Fremd-DNA in Zellen, etwa ein Plasmid oder Virus in der Gentechnik, manche Invasiven."],
       explanation: 'Nach 1492 oft definiert. Neozoon bedeutet: Eingeschleppte Tierart.',
       wissen: 'Nach 1492 oft definiert. Neozoon bedeutet: Eingeschleppte Tierart. Merke: Neozoon — Eingeschleppte Tierart.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Eingeschleppte Tierart',
@@ -9630,7 +9635,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f1',
       prompt: "Mit welchen Mitteln arbeitet das Neophyt?",
-      answer: "Es beschreibt eingeschleppte Pflanzenart bei den behandelten Arten.", wrong: ["Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute.", "Er beschreibt ein Einschleppungsweg bei den behandelten Arten.", "Es beschreibt eingeschleppte Tierart, nach 1492 oft definiert."],
+      answer: "Es beschreibt eingeschleppte Pflanzenart.", wrong: ["Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute.", "Er beschreibt ein Einschleppungsweg.", "Es beschreibt eingeschleppte Tierart, nach 1492 oft definiert."],
       explanation: 'Ausbreitung. Neophyt bedeutet: Eingeschleppte Pflanzenart.',
       wissen: 'Ausbreitung. Neophyt bedeutet: Eingeschleppte Pflanzenart. Merke: Neophyt — Eingeschleppte Pflanzenart.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Eingeschleppte Pflanzenart',
@@ -9660,7 +9665,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f4',
       prompt: "Was bewirkt die Prädation?",
-      answer: "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute.", wrong: ["Es beschreibt tier-/Pflanzenhandel bei den behandelten Arten.", "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", "Er überträgt Fremd-DNA in Zellen, etwa ein Plasmid oder Virus in der Gentechnik, manche Invasiven."],
+      answer: "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute.", wrong: ["Es beschreibt tier-/Pflanzenhandel.", "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", "Er überträgt Fremd-DNA in Zellen, etwa ein Plasmid oder Virus in der Gentechnik, manche Invasiven."],
       explanation: 'Auf Beute. Prädation bedeutet: Zusätzlicher Fraßdruck.',
       wissen: 'Auf Beute. Prädation bedeutet: Zusätzlicher Fraßdruck. Merke: Prädation — Zusätzlicher Fraßdruck.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Zusätzlicher Fraßdruck',
@@ -9700,7 +9705,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f8',
       prompt: "Woran erkennt man den Ballastwasser?",
-      answer: "Er beschreibt ein Einschleppungsweg bei den behandelten Arten.", wrong: ["Sie beschreibt eine Einschleppung verhindern, effizienteste Strategie.", "Es beschreibt eingeschleppte Tierart, nach 1492 oft definiert.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute."],
+      answer: "Er beschreibt ein Einschleppungsweg.", wrong: ["Sie beschreibt eine Einschleppung verhindern, effizienteste Strategie.", "Es beschreibt eingeschleppte Tierart, nach 1492 oft definiert.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, auf Beute."],
       explanation: 'Schiffe. Ballastwasser bedeutet: Einschleppungsweg.',
       wissen: 'Schiffe. Ballastwasser bedeutet: Einschleppungsweg. Merke: Ballastwasser — Einschleppungsweg.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Einschleppungsweg',
@@ -9719,8 +9724,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f10',
-      prompt: 'Was kennzeichnet „Ökosystemdienst“?',
-      answer: 'Kann beeinträchtigt werden durch durch Invasiven.', wrong: ['Das Ökosystemdienst ist das Eingeschleppte Tierart.', 'Das Ökosystemdienst ist das Eingeschleppte Pflanzenart.', 'Es ist eine Stark Ausbreitend mit Schaden.'],
+      prompt: "Was kennzeichnet „Ökosystemdienst“?",
+      answer: "Kann beeinträchtigt werden durch durch Invasiven.", wrong: ["Das Ökosystemdienst ist das Eingeschleppte Tierart.", "Das Ökosystemdienst ist das Eingeschleppte Pflanzenart.", "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen."],
       explanation: 'Durch Invasiven. Ökosystemdienst bedeutet: Kann beeinträchtigt werden.',
       wissen: 'Durch Invasiven. Ökosystemdienst bedeutet: Kann beeinträchtigt werden. Merke: Ökosystemdienst — Kann beeinträchtigt werden.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Kann beeinträchtigt werden',
@@ -9729,8 +9734,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f11',
-      prompt: 'Was kennzeichnet „Monitoring“?',
-      answer: 'Es ist eine Früherkennung durch Schnelle Reaktion.', wrong: ['Das Monitoring ist das Eingeschleppte Tierart.', 'Das Monitoring ist das Eingeschleppte Pflanzenart.', 'Es ist eine Stark Ausbreitend mit Schaden.'],
+      prompt: "Was kennzeichnet „Monitoring“?",
+      answer: "Es beschreibt eine Früherkennung, schnelle Reaktion.", wrong: ["Das Monitoring ist das Eingeschleppte Tierart.", "Das Monitoring ist das Eingeschleppte Pflanzenart.", "Er überträgt Fremd-DNA in Zellen, etwa ein Plasmid oder Virus in der Gentechnik, manche Invasiven."],
       explanation: 'Schnelle Reaktion. Monitoring bedeutet: Früherkennung.',
       wissen: 'Schnelle Reaktion. Monitoring bedeutet: Früherkennung. Merke: Monitoring — Früherkennung.',
       gap: '[lk11-lbw-invasiv] Fachbegriff: ___ — Früherkennung',
@@ -9871,7 +9876,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f8',
       prompt: "Welche Eigenschaft hat die Ökobilanz?",
-      answer: "Sie umweltwirkungen bei den behandelten Arten.", wrong: ["Sie beschreibt fläche für Rohstoffe bei den behandelten Arten.", "Sie beschreibt organischer Rohstoff bei den behandelten Arten.", "Sie beschreibt eine Ersatzstoff, weniger kritisch."],
+      answer: "Sie umweltwirkungen.", wrong: ["Sie beschreibt fläche für Rohstoffe.", "Sie beschreibt organischer Rohstoff.", "Sie beschreibt eine Ersatzstoff, weniger kritisch."],
       explanation: 'Lebensweg. Ökobilanz bedeutet: Umweltwirkungen.',
       wissen: 'Lebensweg. Ökobilanz bedeutet: Umweltwirkungen. Merke: Ökobilanz — Umweltwirkungen.',
       gap: '[lk11-lbw-rohstoffe] Fachbegriff: ___ — Umweltwirkungen',
@@ -10002,7 +10007,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:energie:f4',
       prompt: "Woran erkennt man die Fossile Energie?",
-      answer: "Sie beschreibt kohle/Öl/Gas bei den behandelten Arten.", wrong: ["Sie beschreibt abnahme je Stufe bei den behandelten Arten.", "Sie beschreibt eine Energiefluss bei den behandelten Arten.", "Es beschreibt eine Klimawirkung bei den behandelten Arten."],
+      answer: "Sie beschreibt kohle/Öl/Gas.", wrong: ["Sie beschreibt abnahme je Stufe.", "Sie beschreibt eine Energiefluss.", "Es beschreibt eine Klimawirkung."],
       explanation: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas.',
       wissen: 'Endlich. Fossile Energie bedeutet: Kohle/Öl/Gas. Merke: Fossile Energie — Kohle/Öl/Gas.',
       gap: '[lk11-lbw-energie] Fachbegriff: ___ — Kohle/Öl/Gas',
@@ -10012,7 +10017,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:energie:f5',
       prompt: "Woran erkennt man erneuerbare Energiequellen?",
-      answer: "Sie nutzen nachwachsende oder kontinuierliche Quellen wie Sonne, Wind oder Wasser.", wrong: ["Es beschreibt eine Klimawirkung bei den behandelten Arten.", "Es dient als Energiewährung der Zelle.", "Sie beschreibt energiespeicher organisch, holz etc."],
+      answer: "Sie nutzen nachwachsende oder kontinuierliche Quellen wie Sonne, Wind oder Wasser.", wrong: ["Es beschreibt eine Klimawirkung.", "Es dient als Energiewährung der Zelle.", "Sie beschreibt energiespeicher organisch, holz etc."],
       explanation: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig.',
       wissen: 'Sonne, Wind. Erneuerbar bedeutet: Nachwachsend/ständig. Merke: Erneuerbar — Nachwachsend/ständig.',
       gap: '[lk11-lbw-energie] Fachbegriff: ___ — Nachwachsend/ständig',
@@ -10022,7 +10027,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk11:lbw:energie:f6',
       prompt: "Was beschreibt den Wirkungsgrad?",
-      answer: "Er gibt den nützlichen Anteil der zugeführten Energie an, oft als E_nutz geteilt durch E_zu.", wrong: ["Es beschreibt eine Klimawirkung bei den behandelten Arten.", "Sie beschreibt zucker → ATP bei den behandelten Arten.", "Sie beschreibt energiespeicher organisch, holz etc."],
+      answer: "Er gibt den nützlichen Anteil der zugeführten Energie an, oft als E_nutz geteilt durch E_zu.", wrong: ["Es beschreibt eine Klimawirkung.", "Sie beschreibt zucker → ATP.", "Sie beschreibt energiespeicher organisch, holz etc."],
       explanation: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie.',
       wissen: 'Technik/Biologie. Wirkungsgrad bedeutet: Nutzanteil der Energie. Merke: Wirkungsgrad — Nutzanteil der Energie.',
       gap: '[lk11-lbw-energie] Fachbegriff: ___ — Nutzanteil der Energie',
@@ -10133,7 +10138,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:systematik:f0',
       prompt: "Woran erkennt man den Wirbeltier?",
-      answer: "Er beschreibt tier mit Wirbelsäule, fünf Schulklassen.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", "Es kiemen und Flossen bei den behandelten Arten."],
+      answer: "Er beschreibt tier mit Wirbelsäule, fünf Schulklassen.", wrong: ["Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", "Es kiemen und Flossen."],
       explanation: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule.',
       wissen: 'Fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule. Merke: Wirbeltier — Tier mit Wirbelsäule.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Tier mit Wirbelsäule',
@@ -10153,7 +10158,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:systematik:f2',
       prompt: "Wozu dient das Lurch?",
-      answer: "Es beschreibt ein Oft Metamorphose und feuchte Haut.", wrong: ["Es beschreibt kieme, Lunge, Haut bei den behandelten Arten.", "Sie beschreibt schuppe, Feder, Fell bei den behandelten Arten.", "Er beschreibt trockene Hornschicht, Schalenei bei den behandelten Arten."],
+      answer: "Es beschreibt ein Oft Metamorphose und feuchte Haut.", wrong: ["Es beschreibt kieme, Lunge, Haut.", "Sie beschreibt schuppe, Feder, Fell.", "Er beschreibt trockene Hornschicht, Schalenei."],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
       wissen: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Oft Metamorphose und feuchte Haut',
@@ -10173,7 +10178,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:systematik:f4',
       prompt: "Was bewirkt der Vogel?",
-      answer: "Es beschreibt ein Federn und Schnabel, oft Flug.", wrong: ["Es kiemen und Flossen bei den behandelten Arten.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut bei den behandelten Arten."],
+      answer: "Es beschreibt ein Federn und Schnabel, oft Flug.", wrong: ["Es kiemen und Flossen.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut."],
       explanation: 'Oft Flug. Vogel bedeutet: Federn und Schnabel.',
       wissen: 'Oft Flug. Vogel bedeutet: Federn und Schnabel. Merke: Vogel — Federn und Schnabel.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Federn und Schnabel',
@@ -10193,7 +10198,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:systematik:f6',
       prompt: "Woran erkennt man das Merkmal?",
-      answer: "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", wrong: ["Es kiemen und Flossen bei den behandelten Arten.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut bei den behandelten Arten."],
+      answer: "Es beschreibt unterscheidendes Kennzeichen, basis der Zuordnung.", wrong: ["Es kiemen und Flossen.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Es beschreibt kieme, Lunge, Haut."],
       explanation: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen.',
       wissen: 'Basis der Zuordnung. Merkmal bedeutet: Unterscheidendes Kennzeichen. Merke: Merkmal — Unterscheidendes Kennzeichen.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Unterscheidendes Kennzeichen',
@@ -10212,8 +10217,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f8',
-      prompt: 'Was kennzeichnet „Atmungstyp“?',
-      answer: 'Es ist eine Kieme, Lunge, Haut durch vergleichsmerkmal.', wrong: ['Es ist eine Tier mit Wirbelsäule.', 'Es ist eine Kiemen und Flossen.', 'Es ist eine Oft Metamorphose und Feuchte Haut.'],
+      prompt: "Was beschreibt „Atmungstyp\"?",
+      answer: "Es meint vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut. Merke: Atmungstyp — Kieme, Lunge, Haut.", wrong: ["Er meint fünf Schulklassen. Wirbeltier bedeutet: Tier mit Wirbelsäule. Merke: Wirbeltier — Tier mit Wirbelsäule.", "Es meint wasserleben. Fisch bedeutet: Kiemen und Flossen. Merke: Fisch — Kiemen und Flossen.", "Es meint amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut."],
       explanation: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut.',
       wissen: 'Vergleichsmerkmal. Atmungstyp bedeutet: Kieme, Lunge, Haut. Merke: Atmungstyp — Kieme, Lunge, Haut.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Kieme, Lunge, Haut',
@@ -10223,7 +10228,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:systematik:f9',
       prompt: "Welche Eigenschaft hat die Körperbedeckung?",
-      answer: "Sie beschreibt schuppe, Feder, Fell bei den behandelten Arten.", wrong: ["Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Er beschreibt trockene Hornschicht, Schalenei bei den behandelten Arten."],
+      answer: "Sie beschreibt schuppe, Feder, Fell.", wrong: ["Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.", "Es beschreibt ein Oft Metamorphose und feuchte Haut.", "Er beschreibt trockene Hornschicht, Schalenei."],
       explanation: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell.',
       wissen: 'Vergleichsmerkmal. Körperbedeckung bedeutet: Schuppe, Feder, Fell. Merke: Körperbedeckung — Schuppe, Feder, Fell.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Schuppe, Feder, Fell',
@@ -10242,8 +10247,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f11',
-      prompt: 'Was kennzeichnet „Gleichwarm“?',
-      answer: 'Es ist eine Stabile Temperatur durch Vögel und Säuger.', wrong: ['Es ist eine Tier mit Wirbelsäule.', 'Es ist eine Kiemen und Flossen.', 'Es ist eine Oft Metamorphose und Feuchte Haut.'],
+      prompt: "Was kennzeichnet „Gleichwarm“?",
+      answer: "Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.", wrong: ["Es beschreibt ein Laich, Schalenei, Lebendgeburt.", "Er beschreibt ein Fell und Milchdrüsen.", "Es beschreibt ein Federn und Schnabel, oft Flug."],
       explanation: 'Vögel und Säuger. Gleichwarm bedeutet: Stabile Temperatur.',
       wissen: 'Vögel und Säuger. Gleichwarm bedeutet: Stabile Temperatur. Merke: Gleichwarm — Stabile Temperatur.',
       gap: '[lk12-lb5-systematik] Fachbegriff: ___ — Stabile Temperatur',
@@ -10314,7 +10319,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f1',
       prompt: "Welche Eigenschaft hat die Zellebene?",
-      answer: "Sie organellen bei den behandelten Arten.", wrong: ["Er beschreibt eine Erklärung von unten, grenzen beachten.", "Sie beziehungen zwischen Ebenen bei den behandelten Arten.", "Sie beschreibt eine Gesamtheit der Ökosysteme."],
+      answer: "Sie organellen.", wrong: ["Er beschreibt eine Erklärung von unten, grenzen beachten.", "Sie beziehungen zwischen Ebenen.", "Sie beschreibt eine Gesamtheit der Ökosysteme."],
       explanation: 'Grundeinheit. Zellebene bedeutet: Organellen.',
       wissen: 'Grundeinheit. Zellebene bedeutet: Organellen. Merke: Zellebene — Organellen.',
       gap: '[lk12-lb5-ebenen] Fachbegriff: ___ — Organellen',
@@ -10344,7 +10349,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:ebenen:f4',
       prompt: "Mit welchen Mitteln arbeitet der Organismus?",
-      answer: "Er gesamtlebewesen bei den behandelten Arten.", wrong: ["Sie beschreibt eine Zellverband bei den behandelten Arten.", "Sie beziehungen zwischen Ebenen bei den behandelten Arten.", "Es beschreibt eine Funktionseinheit, mehrere Gewebe."],
+      answer: "Er gesamtlebewesen.", wrong: ["Sie beschreibt eine Zellverband.", "Sie beziehungen zwischen Ebenen.", "Es beschreibt eine Funktionseinheit, mehrere Gewebe."],
       explanation: 'Integration. Organismus bedeutet: Gesamtlebewesen.',
       wissen: 'Integration. Organismus bedeutet: Gesamtlebewesen. Merke: Organismus — Gesamtlebewesen.',
       gap: '[lk12-lb5-ebenen] Fachbegriff: ___ — Gesamtlebewesen',
@@ -10505,7 +10510,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f3',
       prompt: "Woran erkennt man die Positive Rückkopplung?",
-      answer: "Sie beschreibt eine Verstärkung, instabil oft.", wrong: ["Sie beschreibt eine Wirkung zurück auf Ursache.", "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab.", "Es beschreibt viele Ursachen/Wirkungen bei den behandelten Arten."],
+      answer: "Sie beschreibt eine Verstärkung, instabil oft.", wrong: ["Sie beschreibt eine Wirkung zurück auf Ursache.", "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab.", "Es beschreibt viele Ursachen/Wirkungen."],
       explanation: 'Instabil oft. Positive Rückkopplung bedeutet: Verstärkung.',
       wissen: 'Instabil oft. Positive Rückkopplung bedeutet: Verstärkung. Merke: Positive Rückkopplung — Verstärkung.',
       gap: '[lk12-lb5-vernetzung] Fachbegriff: ___ — Verstärkung',
@@ -10515,7 +10520,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f4',
       prompt: "Mit welchen Mitteln arbeitet die Negative Rückkopplung?",
-      answer: "Sie beschreibt eine Dämpfung bei den behandelten Arten.", wrong: ["Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab.", "Sie dient als Eingriff ins System.", "Sie beschreibt eine Verstärkung, instabil oft."],
+      answer: "Sie beschreibt eine Dämpfung.", wrong: ["Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab.", "Sie dient als Eingriff ins System.", "Sie beschreibt eine Verstärkung, instabil oft."],
       explanation: 'Stabilisierung. Negative Rückkopplung bedeutet: Dämpfung.',
       wissen: 'Stabilisierung. Negative Rückkopplung bedeutet: Dämpfung. Merke: Negative Rückkopplung — Dämpfung.',
       gap: '[lk12-lb5-vernetzung] Fachbegriff: ___ — Dämpfung',
@@ -10575,7 +10580,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f10',
       prompt: "Woran erkennt man die Trophische Kaskade?",
-      answer: "Sie beschreibt effekte über Stufen bei den behandelten Arten.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Es beschreibt elemente zirkulieren bei den behandelten Arten.", "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab."],
+      answer: "Sie beschreibt effekte über Stufen.", wrong: ["Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", "Es beschreibt elemente zirkulieren.", "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab."],
       explanation: 'Räuber–Beute. Trophische Kaskade bedeutet: Effekte über Stufen.',
       wissen: 'Räuber–Beute. Trophische Kaskade bedeutet: Effekte über Stufen. Merke: Trophische Kaskade — Effekte über Stufen.',
       gap: '[lk12-lb5-vernetzung] Fachbegriff: ___ — Effekte über Stufen',
@@ -10585,7 +10590,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f11',
       prompt: "Wozu dient ein Modell in der Physik?",
-      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Sie beschreibt eine Widerstands-/Erholungsfähigkeit bei den behandelten Arten.", "Es beschreibt viele Ursachen/Wirkungen bei den behandelten Arten.", "Sie beschreibt eine Wirkung zurück auf Ursache."],
+      answer: "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen.", wrong: ["Sie beschreibt eine Widerstands-/Erholungsfähigkeit.", "Es beschreibt viele Ursachen/Wirkungen.", "Sie beschreibt eine Wirkung zurück auf Ursache."],
       explanation: 'Hypothesen testen. Modell bedeutet: Vereinfachte Abbildung.',
       wissen: 'Hypothesen testen. Modell bedeutet: Vereinfachte Abbildung. Merke: Modell — Vereinfachte Abbildung.',
       gap: '[lk12-lb5-vernetzung] Fachbegriff: ___ — Vereinfachte Abbildung',
@@ -10725,8 +10730,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:allergie:f8',
-      prompt: 'Was kennzeichnet „Mastzelle“?',
-      answer: 'Sie ist eine Freisetzt Mediatoren durch bei Bindung.', wrong: ['Sie ist eine Auslöser der Reaktion.', 'Die Mastzelle ist die Antikörpertyp.', 'Die Mastzelle ist die Mediator.'],
+      prompt: "Was beschreibt „Mastzelle\"?",
+      answer: "Sie meint bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren. Merke: Mastzelle — Freisetzt Mediatoren.", wrong: ["Es meint pollen, Nahrung. Allergen bedeutet: Auslöser der Reaktion. Merke: Allergen — Auslöser der Reaktion.", "Sie meint bei Allergie oft. IgE bedeutet: Antikörpertyp. Merke: IgE — Antikörpertyp.", "Es meint juckreiz/Schwellung. Histamin bedeutet: Mediator. Merke: Histamin — Mediator."],
       explanation: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren.',
       wissen: 'Bei Bindung. Mastzelle bedeutet: Freisetzt Mediatoren. Merke: Mastzelle — Freisetzt Mediatoren.',
       gap: '[lk12-lbw-allergie] Fachbegriff: ___ — Freisetzt Mediatoren',
@@ -10816,8 +10821,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f0',
-      prompt: 'Wozu dient die Arterie?',
-      answer: 'Sie führt vom Herzen weg durch meist O₂-reich.', wrong: ['Sie führt zum Herzen hin.', 'Die Arterie ist die Stoffaustausch.', 'Sie ist eine Druck in Arterien.'],
+      prompt: "Wozu dient die Arterie?",
+      answer: "Sie führt vom Herzen weg durch meist O₂-reich.", wrong: ["Es beschreibt ein Blutfettstoff, plaques möglich.", "Es ist der Druck des Blutes auf die Gefäßwände.", "Sie führt Blut aus den Organen zurück zum Herzen, klappen oft."],
       explanation: 'Meist O₂-reich. Arterie bedeutet: Führt vom Herzen weg.',
       wissen: 'Meist O₂-reich. Arterie bedeutet: Führt vom Herzen weg. Merke: Arterie — Führt vom Herzen weg.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Führt vom Herzen weg',
@@ -10826,8 +10831,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f1',
-      prompt: 'Wozu dient die Vene?',
-      answer: 'Sie führt zum Herzen hin durch klappen oft.', wrong: ['Sie führt vom Herzen weg.', 'Die Vene ist die Stoffaustausch.', 'Sie ist eine Druck in Arterien.'],
+      prompt: "Wozu dient die Vene?",
+      answer: "Sie führt zum Herzen hin durch klappen oft.", wrong: ["Es ist der Druck des Blutes auf die Gefäßwände.", "Es beschreibt ein Blutfettstoff, plaques möglich.", "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, meist O₂-reich."],
       explanation: 'Klappen oft. Vene bedeutet: Führt zum Herzen hin.',
       wissen: 'Klappen oft. Vene bedeutet: Führt zum Herzen hin. Merke: Vene — Führt zum Herzen hin.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Führt zum Herzen hin',
@@ -10837,7 +10842,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f2',
       prompt: "Was beschreibt „Kapillare“?",
-      answer: "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet, feinste Gefäße.", wrong: ["Sie schützt Gefäße bei den behandelten Arten.", "Es beschreibt eine Durchblutungsstörung Gehirn bei den behandelten Arten.", "Es beschreibt ein Verschluss Herzkranzgefäß bei den behandelten Arten."],
+      answer: "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet, feinste Gefäße.", wrong: ["Sie schützt Gefäße.", "Es beschreibt eine Durchblutungsstörung Gehirn.", "Es beschreibt ein Verschluss Herzkranzgefäß."],
       explanation: 'Feinste Gefäße. Kapillare bedeutet: Stoffaustausch.',
       wissen: 'Feinste Gefäße. Kapillare bedeutet: Stoffaustausch. Merke: Kapillare — Stoffaustausch.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Stoffaustausch',
@@ -10846,8 +10851,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f3',
-      prompt: 'Was kennzeichnet „Blutdruck“?',
-      answer: 'Er ist eine Druck in Arterien durch Systole/Diastole.', wrong: ['Er führt vom Herzen weg.', 'Er führt zum Herzen hin.', 'Der Blutdruck ist der Stoffaustausch.'],
+      prompt: "Was kennzeichnet „Blutdruck“?",
+      answer: "Es ist der Druck des Blutes auf die Gefäßwände.", wrong: ["Sie führt Blut aus den Organen zurück zum Herzen, klappen oft.", "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, meist O₂-reich.", "Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet, feinste Gefäße."],
       explanation: 'Systole/Diastole. Blutdruck bedeutet: Druck in Arterien.',
       wissen: 'Systole/Diastole. Blutdruck bedeutet: Druck in Arterien. Merke: Blutdruck — Druck in Arterien.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Druck in Arterien',
@@ -10867,7 +10872,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f5',
       prompt: "Was beschreibt „Herzinfarkt“?",
-      answer: "Es beschreibt ein Verschluss Herzkranzgefäß bei den behandelten Arten.", wrong: ["Sie führt Blut aus den Organen zurück zum Herzen, klappen oft.", "Sie schützt Gefäße bei den behandelten Arten.", "Es ist der Druck des Blutes auf die Gefäßwände."],
+      answer: "Es beschreibt ein Verschluss Herzkranzgefäß.", wrong: ["Sie führt Blut aus den Organen zurück zum Herzen, klappen oft.", "Sie schützt Gefäße.", "Es ist der Druck des Blutes auf die Gefäßwände."],
       explanation: 'Notfall. Herzinfarkt bedeutet: Verschluss Herzkranzgefäß.',
       wissen: 'Notfall. Herzinfarkt bedeutet: Verschluss Herzkranzgefäß. Merke: Herzinfarkt — Verschluss Herzkranzgefäß.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Verschluss Herzkranzgefäß',
@@ -10877,7 +10882,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f6',
       prompt: "Was beschreibt „Schlaganfall“?",
-      answer: "Es beschreibt eine Durchblutungsstörung Gehirn bei den behandelten Arten.", wrong: ["Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet, feinste Gefäße.", "Es beschreibt ein Verschluss Herzkranzgefäß bei den behandelten Arten.", "Sie beschreibt eine Gefäßverkalkung bei den behandelten Arten."],
+      answer: "Es beschreibt eine Durchblutungsstörung Gehirn.", wrong: ["Sie ist das feinste Gefäß, in dem der Stoffaustausch mit dem Gewebe stattfindet, feinste Gefäße.", "Es beschreibt ein Verschluss Herzkranzgefäß.", "Sie beschreibt eine Gefäßverkalkung."],
       explanation: 'Notfall. Schlaganfall bedeutet: Durchblutungsstörung Gehirn.',
       wissen: 'Notfall. Schlaganfall bedeutet: Durchblutungsstörung Gehirn. Merke: Schlaganfall — Durchblutungsstörung Gehirn.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Durchblutungsstörung Gehirn',
@@ -10897,7 +10902,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f8',
       prompt: "Woran erkennt man den Endothel?",
-      answer: "Es beschreibt eine Innenauskleidung bei den behandelten Arten.", wrong: ["Es beschreibt ein Blutfettstoff, plaques möglich.", "Sie beschreibt eine Bluthochdruck bei den behandelten Arten.", "Es beschreibt ein Verschluss Herzkranzgefäß bei den behandelten Arten."],
+      answer: "Es beschreibt eine Innenauskleidung.", wrong: ["Es beschreibt ein Blutfettstoff, plaques möglich.", "Sie beschreibt eine Bluthochdruck.", "Es beschreibt ein Verschluss Herzkranzgefäß."],
       explanation: 'Gefäßfunktion. Endothel bedeutet: Innenauskleidung.',
       wissen: 'Gefäßfunktion. Endothel bedeutet: Innenauskleidung. Merke: Endothel — Innenauskleidung.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Innenauskleidung',
@@ -10907,7 +10912,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f9',
       prompt: "Wozu dient das Cholesterol?",
-      answer: "Es beschreibt ein Blutfettstoff, plaques möglich.", wrong: ["Es beschreibt ein Verschluss Herzkranzgefäß bei den behandelten Arten.", "Es ist der Druck des Blutes auf die Gefäßwände.", "Es beschreibt eine Durchblutungsstörung Gehirn bei den behandelten Arten."],
+      answer: "Es beschreibt ein Blutfettstoff, plaques möglich.", wrong: ["Es beschreibt ein Verschluss Herzkranzgefäß.", "Es ist der Druck des Blutes auf die Gefäßwände.", "Es beschreibt eine Durchblutungsstörung Gehirn."],
       explanation: 'Plaques möglich. Cholesterol bedeutet: Blutfettstoff.',
       wissen: 'Plaques möglich. Cholesterol bedeutet: Blutfettstoff. Merke: Cholesterol — Blutfettstoff.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Blutfettstoff',
@@ -10916,8 +10921,8 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lbw:gefaess:f10',
-      prompt: 'Was kennzeichnet „Rauchen“?',
-      answer: 'Es ist ein Risikofaktor durch Gefäßschädigung.', wrong: ['Es führt vom Herzen weg.', 'Es führt zum Herzen hin.', 'Das Rauchen ist das Stoffaustausch.'],
+      prompt: "Was beschreibt „Rauchen\"?",
+      answer: "Es meint gefäßschädigung. Rauchen bedeutet: Risikofaktor. Merke: Rauchen — Risikofaktor.", wrong: ["Sie meint meist O₂-reich. Arterie bedeutet: Führt vom Herzen weg. Merke: Arterie — Führt vom Herzen weg.", "Sie meint klappen oft. Vene bedeutet: Führt zum Herzen hin. Merke: Vene — Führt zum Herzen hin.", "Sie meint feinste Gefäße. Kapillare bedeutet: Stoffaustausch. Merke: Kapillare — Stoffaustausch."],
       explanation: 'Gefäßschädigung. Rauchen bedeutet: Risikofaktor.',
       wissen: 'Gefäßschädigung. Rauchen bedeutet: Risikofaktor. Merke: Rauchen — Risikofaktor.',
       gap: '[lk12-lbw-gefaess] Fachbegriff: ___ — Risikofaktor',

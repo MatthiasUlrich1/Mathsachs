@@ -14,8 +14,8 @@ export const k5KriechtiereSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:krschutz:f0",
-      prompt: "Wozu dient Artenschutz?",
-      answer: "Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", wrong: ["Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte.", "Es ist eine Heimische Schlange Feuchter Lebensräume."],
+      prompt: "Was beschreibt „Wozu dient Artenschutz\"?",
+      answer: "Es meint maßnahmen zum Erhalt Bedrohter Arten.", wrong: ["Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte.", "Es meint heimische Schlange Feuchter Lebensräume."],
       explanation: "Artenschutz: Maßnahmen zum Erhalt bedrohter Arten",
       wissen: fw(
         "Schützt Bestände und Lebensräume von Kriechtieren. Bezug: Kriechtierschutz.",
@@ -25,8 +25,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f1",
-      prompt: "Was kennzeichnet „Lebensraumverlust“?",
-      answer: "Es ist eine Verschwinden Geeigneter Habitate.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Heimische Eidechse Warmer Standorte.", "Es ist eine Heimische Schlange Feuchter Lebensräume."],
+      prompt: "Was beschreibt „Was kennzeichnet „Lebensraumverlust“\"?",
+      answer: "Es meint verschwinden Geeigneter Habitate.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint heimische Eidechse Warmer Standorte.", "Es meint heimische Schlange Feuchter Lebensräume."],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
         "Hauptgefährdung vieler heimischer Reptilien. Bezug: Kriechtierschutz.",
@@ -36,8 +36,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f2",
-      prompt: "Was kennzeichnet „Zauneidechse“?",
-      answer: "Sie ist eine Heimische Eidechse Warmer Standorte.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Schlange Feuchter Lebensräume."],
+      prompt: "Was beschreibt „Was kennzeichnet „Zauneidechse“\"?",
+      answer: "Es meint heimische Eidechse Warmer Standorte.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Schlange Feuchter Lebensräume."],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
         "Braucht Sonne, Verstecke und strukturreiche Flächen. Bezug: Kriechtierschutz.",
@@ -47,8 +47,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f3",
-      prompt: "Was kennzeichnet „Ringelnatter“?",
-      answer: "Er ist eine Heimische Schlange Feuchter Lebensräume.", wrong: ["Er ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Er ist eine Verschwinden Geeigneter Habitate.", "Er ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Ringelnatter“\"?",
+      answer: "Es meint heimische Schlange Feuchter Lebensräume.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
         "Oft an Gewässern mit Amphibienbeute. Bezug: Kriechtierschutz.",
@@ -58,8 +58,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f4",
-      prompt: "Was kennzeichnet „Totholz“?",
-      answer: "Es ist eine Abgestorbenes Holz als Struktur.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Totholz“\"?",
+      answer: "Es meint abgestorbenes Holz als Struktur.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
         "Bietet Verstecke und Wärmespeicher. Bezug: Kriechtierschutz.",
@@ -69,8 +69,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f5",
-      prompt: "Was kennzeichnet „Steinhaufen“?",
-      answer: "Es ist eine Lesesteine als Versteckstruktur.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Steinhaufen“\"?",
+      answer: "Es meint lesesteine als Versteckstruktur.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Steinhaufen: Lesesteine als Versteckstruktur",
       wissen: fw(
         "Wichtige Mikrohabitate für Eidechsen. Bezug: Kriechtierschutz.",
@@ -80,8 +80,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f6",
-      prompt: "Was kennzeichnet „Wechselwarm“?",
-      answer: "Körpertemperatur folgt der Umwelt.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Wechselwarm“\"?",
+      answer: "Es meint körpertemperatur folgt der Umwelt.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Wechselwarm: Körpertemperatur folgt der Umwelt",
       wissen: fw(
         "Deshalb sind ungestörte Sonnenplätze nötig. Bezug: Kriechtierschutz.",
@@ -91,8 +91,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f7",
-      prompt: "Was kennzeichnet „Fragmentierung“?",
-      answer: "Die Fragmentierung ist die Zerschnittene Lebensräume.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Fragmentierung“\"?",
+      answer: "Die Fragmentierung ist die Zerschnittene Lebensräume.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Fragmentierung: Zerschnittene Lebensräume",
       wissen: fw(
         "Straßen trennen Populationen und verursachen Verluste. Bezug: Kriechtierschutz.",
@@ -102,8 +102,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f8",
-      prompt: "Was kennzeichnet „Habitatpflege“?",
-      answer: "Sie ist eine Pflege Geeigneter Lebensräume.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Habitatpflege“\"?",
+      answer: "Es meint pflege Geeigneter Lebensräume.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Habitatpflege: Pflege geeigneter Lebensräume",
       wissen: fw(
         "Teil wirksamen Kriechtierschutzes. Bezug: Kriechtierschutz.",
@@ -114,7 +114,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:f9",
       prompt: "Was kennzeichnet „Naturnaher Garten“?",
-      answer: "Es ist eine Garten mit Wildnisstrukturen.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
+      answer: "Es meint garten mit Wildnisstrukturen.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Naturnaher Garten: Garten mit Wildnisstrukturen",
       wissen: fw(
         "Kann Ersatzlebensräume schaffen. Bezug: Kriechtierschutz.",
@@ -124,8 +124,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f10",
-      prompt: "Wozu dient Schutzgebiet?",
-      answer: "Man soll fläche mit besonderen regeln.", wrong: ["Es ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Es ist eine Verschwinden Geeigneter Habitate.", "Es ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Wozu dient Schutzgebiet\"?",
+      answer: "Man soll fläche mit besonderen regeln.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Schutzgebiet: Fläche mit besonderen Regeln",
       wissen: fw(
         "Sichert Lebensräume langfristig. Bezug: Kriechtierschutz.",
@@ -135,8 +135,8 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f11",
-      prompt: "Was kennzeichnet „Brutruhe“?",
-      answer: "Sie ist eine Ungestörte Phasen an Lebensräumen.", wrong: ["Sie ist eine Maßnahmen zum Erhalt Bedrohter Arten.", "Sie ist eine Verschwinden Geeigneter Habitate.", "Sie ist eine Heimische Eidechse Warmer Standorte."],
+      prompt: "Was beschreibt „Was kennzeichnet „Brutruhe“\"?",
+      answer: "Es meint ungestörte Phasen an Lebensräumen.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
         "Verringert Stress und Fluchtenergieverlust. Bezug: Kriechtierschutz.",
@@ -147,7 +147,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:x0",
       prompt: "Kriechtierschutz: Warum sind Sonnenplätze für Kriechtiere schützenswert?",
-      answer: "Wechselwarme Tiere brauchen Wärme zur Aktivität, schützt Bestände und Lebensräume von Kriechtieren.", wrong: ["Weil sie gleichwarm wie Säuger sind.", "Es ist eine Weil Wärme Federn erzeugt.", "Es ist eine Weil sie nur nachts jagen."],
+      answer: "Es meint wechselwarme Tiere brauchen Wärme zur Aktivität, schützt Bestände und Lebensräume von Kriechtieren.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Thermoregulation.",
       wissen: fw(
         "Ohne Wärmeplätze sinkt die Aktivität von Eidechsen und Schlangen stark.",
@@ -156,7 +156,7 @@ export const k5KriechtiereSchutz: BioBank = {
     {
       concept: "bio:k5:krschutz:x1",
       prompt: "Kriechtierschutz: Was hilft Zauneidechsen konkret?",
-      answer: "Es ist eine Erhalt von Böschungen.", wrong: ["Es ist eine Alles Versiegeln.", "Es ist ein Nur dunkle Keller.", "Es ist eine Alle Verstecke entfernen."],
+      answer: "Es meint erhalt von Böschungen.", wrong: ["Es meint maßnahmen zum Erhalt Bedrohter Arten.", "Es meint verschwinden Geeigneter Habitate.", "Es meint heimische Eidechse Warmer Standorte."],
       explanation: "Strukturreichtum.",
       wissen: fw(
         "Strukturreiche, sonnige Flächen sichern Verstecke und Eiablage.",
@@ -314,7 +314,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f10",
       prompt: "Was kennzeichnet „Angepasstheit“?",
-      answer: "Sie ist eine Bau Passt zur Lebensweise.", wrong: ["Sie ist eine Kurz und Kräftig zum Knacken von Samen.", "Sie ist eine Gebogen zum Zerreißen von Fleisch.", "Sie ist ein Seiht Nahrung aus Wasser."],
+      answer: "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, schützt Bestände und Lebensräume von Kriechtieren.", wrong: ["Es gilt als eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen, sichert Lebensräume langfristig.", "Sie sichert ungestörte Phasen an Nist- und Lebensräumen während der Fortpflanzung, verringert Stress und Fluchtenergieverlust.", "Es schafft Wildnisstrukturen als Ersatzlebensraum für Tiere im Siedlungsraum, kann Ersatzlebensräume schaffen."],
       explanation: "Angepasstheit: Bau passt zur Lebensweise",
       wissen: fw(
         "Schnabel und Nahrung sind verknüpft. Bezug: Schnabelformen.",
@@ -637,7 +637,7 @@ export const k5VoegelSchutz: BioBank = {
     {
       concept: "bio:k5:vgschutz:f5",
       prompt: "Was kennzeichnet „Winterfütterung“?",
-      answer: "Sie ist eine Zusatzfutter bei Mangel.", wrong: ["Die Winterfütterung ist die Künstliche Nisthilfe.", "Sie ist ein Gehölzstreifen als Lebensraum.", "Die Winterfütterung ist die Nasses Schlüsselhabitat."],
+      answer: "Es ist das Werbeverhalten vor der Paarung zur Partnerwahl, etwa gesang oder Posieren oder Flugmanöver.", wrong: ["Die Winterfütterung ist die Künstliche Nisthilfe.", "Die Winterfütterung ist die Nasses Schlüsselhabitat.", "Er ist als Jungvogel früh mobil und verlässt das Nest rasch, folgt bald den Eltern."],
       explanation: "Winterfütterung: Zusatzfutter bei Mangel",
       wissen: fw(
         "Ergänzt, ersetzt aber keine Habitate. Bezug: Vogelschutz.",
@@ -669,8 +669,8 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f8",
-      prompt: "Was kennzeichnet „Habitatverlust“?",
-      answer: "Es ist ein Verlust von Lebensraum.", wrong: ["Das Habitatverlust ist das Künstliche Nisthilfe.", "Es ist ein Gehölzstreifen als Lebensraum.", "Das Habitatverlust ist das Nasses Schlüsselhabitat."],
+      prompt: "Was beschreibt „Was kennzeichnet „Habitatverlust“\"?",
+      answer: "Es meint verlust von Lebensraum.", wrong: ["Es ist das Werbeverhalten vor der Paarung zur Partnerwahl, etwa gesang oder Posieren oder Flugmanöver.", "Er ist der verteidigte Lebensraum einer Art gegen Rivalen, sichert Nahrung und Nistplatz.", "Es ist der saisonale Ortswechsel zwischen Brut- und Überwinterungsgebiet, anpassung an Nahrung und Klima."],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
         "Zentrale Gefährdung. Bezug: Vogelschutz.",
@@ -793,7 +793,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f2",
       prompt: "Was kennzeichnet „Erlernt“?",
-      answer: "Es ist eine Durch Erfahrung Erworbenes Verhalten.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Verteidigen Eines Gebiets."],
+      answer: "Es beschreibt künstliche Nisthilfe, unterstützt Höhlenbrüter.", wrong: ["Es gilt als eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen, sichert Brut- und Rastplätze.", "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.", "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, wirkt zusammen mit Habitatschutz."],
       explanation: "Erlernt: Durch Erfahrung erworbenes Verhalten",
       wissen: fw(
         "Kann angepasst werden. Bezug: Säugerverhalten.",
@@ -804,7 +804,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f3",
       prompt: "Was kennzeichnet „Territorialität“?",
-      answer: "Sie ist eine Verteidigen Eines Gebiets.", wrong: ["Sie ist eine Gezieltes Wahrnehmen von Verhalten.", "Sie ist eine Genetisch Vorbereitetes Verhalten.", "Sie ist eine Durch Erfahrung Erworbenes Verhalten."],
+      answer: "Es beschreibt künstliche Nisthilfe, unterstützt Höhlenbrüter.", wrong: ["Es gilt als eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen, sichert Brut- und Rastplätze.", "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.", "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, wirkt zusammen mit Habitatschutz."],
       explanation: "Territorialität: Verteidigen eines Gebiets",
       wissen: fw(
         "Sichert Ressourcen. Bezug: Säugerverhalten.",
@@ -859,7 +859,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:f8",
       prompt: "Was kennzeichnet „Spielverhalten“?",
-      answer: "Es ist ein Übungs- und Sozialspiele Junger.", wrong: ["Es ist eine Gezieltes Wahrnehmen von Verhalten.", "Es ist eine Genetisch Vorbereitetes Verhalten.", "Es ist eine Durch Erfahrung Erworbenes Verhalten."],
+      answer: "Es beschreibt künstliche Nisthilfe, unterstützt Höhlenbrüter.", wrong: ["Es gilt als eine Fläche mit besonderen Regeln zum Erhalt von Arten und Lebensräumen, sichert Brut- und Rastplätze.", "Es ist wichtig für Wat- und Wasservögel als Rast- und Brutraum.", "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, wirkt zusammen mit Habitatschutz."],
       explanation: "Spielverhalten: Übungs- und Sozialspiele Junger",
       wissen: fw(
         "Trainiert Fähigkeiten. Bezug: Säugerverhalten.",
@@ -1149,7 +1149,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f0",
       prompt: "Welche Eigenschaft hat der Sender?",
-      answer: "Er erzeugt ein Signal bei den behandelten Arten.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
+      answer: "Er erzeugt ein Signal.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
       explanation: "Rudel: Soziale Gruppe mancher Säuger",
       wissen: fw(
         "Gemeinsame Jagd oder Schutz möglich. Bezug: Säugersozial.",
@@ -1160,7 +1160,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f1",
       prompt: "Mit welchen Mitteln arbeitet der Empfänger?",
-      answer: "Er nimmt das Signal wahr, über Sinnesorgane.", wrong: ["Es beschreibt ein Sehr hohe Schallfrequenzen.", "Sie beschreibt tastorgane am Kopf, erfassen Raumnahe Hindernisse.", "Er erzeugt ein Signal bei den behandelten Arten."],
+      answer: "Er nimmt das Signal wahr, über Sinnesorgane.", wrong: ["Es beschreibt ein Sehr hohe Schallfrequenzen.", "Sie beschreibt tastorgane am Kopf, erfassen Raumnahe Hindernisse.", "Er erzeugt ein Signal."],
       explanation: "Kooperation: Zusammenarbeit zum gemeinsamen Vorteil",
       wissen: fw(
         "z. B. bei der Jagd. Bezug: Säugersozial.",
@@ -1237,7 +1237,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f8",
       prompt: "Was kennzeichnet „Gruppenjagd“?",
-      answer: "Das Gruppenjagd ist das Gemeinsames Beutemachen.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
+      answer: "Das Gruppenjagd ist das Gemeinsames Beutemachen.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
       explanation: "Gruppenjagd: Gemeinsames Beutemachen",
       wissen: fw(
         "Erhöht Erfolg bei großer Beute. Bezug: Säugersozial.",
@@ -1258,8 +1258,8 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f10",
-      prompt: "Was kennzeichnet „Alleinerziehend“?",
-      answer: "Es ist ein Elterntier versorgt Junge.", wrong: ["Es ist ein Soziale Gruppe Mancher Säuger.", "Es ist eine Zusammenarbeit zum Gemeinsamen Vorteil.", "Es ist eine Hierarchie in der Gruppe."],
+      prompt: "Was beschreibt „Was kennzeichnet „Alleinerziehend“\"?",
+      answer: "Es meint elterntier versorgt Junge.", wrong: ["Es meint er erzeugt ein Signal.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Es überträgt Information als elektrische Größe, etwa Spannung oder Strom."],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
         "Je nach Art unterschiedlich. Bezug: Säugersozial.",
@@ -1270,7 +1270,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:f11",
       prompt: "Mit welchen Mitteln arbeitet die Sinnesleistung?",
-      answer: "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst.", wrong: ["Er erzeugt ein Signal bei den behandelten Arten.", "Es ermöglicht die Wahrnehmung von Berührung, Druck und Vibration über die Haut.", "Es ermöglicht die Wahrnehmung von Duftstoffen über die Riechzellen, bei vielen Säugern sehr leistungsfähig."],
+      answer: "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst.", wrong: ["Er erzeugt ein Signal.", "Es ermöglicht die Wahrnehmung von Berührung, Druck und Vibration über die Haut.", "Es ermöglicht die Wahrnehmung von Duftstoffen über die Riechzellen, bei vielen Säugern sehr leistungsfähig."],
       explanation: "Gruppenleben: Leben in sozialer Einheit",
       wissen: fw(
         "Vorteile und Konkurrenz zugleich. Bezug: Säugersozial.",
@@ -1281,7 +1281,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:x0",
       prompt: "Welche Eigenschaft hat der Sender?",
-      answer: "Er erzeugt ein Signal bei den behandelten Arten.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
+      answer: "Er erzeugt ein Signal.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
       explanation: "Sozialvorteil.",
       wissen: fw(
         "Gemeinsames Verhalten kann Feinde abwehren und große Beute erlegen.",
@@ -1290,7 +1290,7 @@ export const k5SaeugerSozial: BioBank = {
     {
       concept: "bio:k5:saeugsoc:x1",
       prompt: "Was bewirkt der Sender?",
-      answer: "Er erzeugt ein Signal bei den behandelten Arten.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
+      answer: "Er erzeugt ein Signal.", wrong: ["Es laut zur Information an Artgenossen, etwa warnung, Lockruf oder Revier.", "Er nimmt das Signal wahr, über Sinnesorgane.", "Sie beschreibt eine Leistungsfähigkeit eines Sinnes, an Lebensweise angepasst."],
       explanation: "Hierarchie.",
       wissen: fw(
         "Klare Ränge reduzieren ständige Kämpfe, können aber Dominanzkosten erzeugen.",
@@ -1349,7 +1349,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f1",
       prompt: "Wozu dient die Kooperation?",
-      answer: "Sie zusammenarbeit zum gemeinsamen Vorteil bei den behandelten Arten.", wrong: ["Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es beschreibt soziale Gruppe mancher Säuger, gemeinsame Jagd oder Schutz möglich.", "Sie beschreibt hierarchie in der Gruppe, regelt Zugang zu Ressourcen."],
+      answer: "Sie zusammenarbeit zum gemeinsamen Vorteil.", wrong: ["Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es beschreibt soziale Gruppe mancher Säuger, gemeinsame Jagd oder Schutz möglich.", "Sie beschreibt hierarchie in der Gruppe, regelt Zugang zu Ressourcen."],
       explanation: "Tracheole: Feinste Endverzweigung der Tracheen",
       wissen: fw(
         "Nahe an den Zellen. Bezug: Insektenatmung.",
@@ -1360,7 +1360,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f2",
       prompt: "Woran erkennt man die Rangordnung?",
-      answer: "Sie beschreibt hierarchie in der Gruppe, regelt Zugang zu Ressourcen.", wrong: ["Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es warnen der Gruppe, schützt Artgenossen.", "Sie zusammenarbeit zum gemeinsamen Vorteil bei den behandelten Arten."],
+      answer: "Sie beschreibt hierarchie in der Gruppe, regelt Zugang zu Ressourcen.", wrong: ["Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es warnen der Gruppe, schützt Artgenossen.", "Sie zusammenarbeit zum gemeinsamen Vorteil."],
       explanation: "Stigma: Atemöffnung an der Körperseite",
       wissen: fw(
         "Eintritt der Luft. Bezug: Insektenatmung.",
@@ -1415,7 +1415,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f7",
       prompt: "Was kennzeichnet „Oberflächenvergrößerung“?",
-      answer: "Sie ist eine Viele Feine Röhren Vergrößern Fläche.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
+      answer: "Es beschreibt soziale Gruppe mancher Säuger, gemeinsame Jagd oder Schutz möglich.", wrong: ["Es leben in sozialer Einheit, vorteile und Konkurrenz zugleich.", "Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt, spart Verletzungsrisiko."],
       explanation: "Oberflächenvergrößerung: Viele feine Röhren vergrößern Fläche",
       wissen: fw(
         "Effizienter Gasaustausch. Bezug: Insektenatmung.",
@@ -1448,7 +1448,7 @@ export const k6InsektenAtmung: BioBank = {
     {
       concept: "bio:k6:insatm:f10",
       prompt: "Was kennzeichnet „Häutung“?",
-      answer: "Sie ist eine Abstreifen des Panzers.", wrong: ["Sie ist ein Luftröhre im Insektenkörper.", "Sie ist eine Feinste Endverzweigung der Tracheen.", "Sie ist eine Atemöffnung an der Körperseite."],
+      answer: "Es beschreibt soziale Gruppe mancher Säuger, gemeinsame Jagd oder Schutz möglich.", wrong: ["Es leben in sozialer Einheit, vorteile und Konkurrenz zugleich.", "Sie beschreibt eine Angriffs- oder Drohverhalten, kann Konflikte klären oder eskalieren.", "Es bedeutet Drohverhalten, das Konflikte oft ohne Kampf klärt, spart Verletzungsrisiko."],
       explanation: "Häutung: Abstreifen des Panzers",
       wissen: fw(
         "Tracheen wachsen mit dem Körper. Bezug: Insektenatmung.",
@@ -1648,7 +1648,7 @@ export const k6SkelettVergleich: BioBank = {
     {
       concept: "bio:k6:skverg:f11",
       prompt: "Was kennzeichnet „Segmentierung“?",
-      answer: "Sie ist eine Körpergliederung in Abschnitte.", wrong: ["Sie ist eine Stützgerüst im Körperinneren.", "Sie ist eine Stütz- und Schutzpanzer Außen.", "Die Segmentierung ist die Zentrale Knochenachse."],
+      answer: "Sie beschreibt luftröhre im Insektenkörper, leitet Luft zu den Geweben.", wrong: ["Die Segmentierung ist die Zentrale Knochenachse.", "Sie beschreibt feinste Endverzweigung der Tracheen, nahe an den Zellen.", "Es beschreibt mitgeführte Luftblase unter Wasser, ermöglicht Tauchen."],
       explanation: "Segmentierung: Körpergliederung in Abschnitte",
       wissen: fw(
         "Bei Ringelwürmern und Arthropoden sichtbar. Bezug: Skelettvergleich.",
@@ -1749,7 +1749,7 @@ export const k6AtmungVergleich: BioBank = {
     {
       concept: "bio:k6:atmverg:f3",
       prompt: "Was kennzeichnet „Hautatmung“?",
-      answer: "Sie ist eine Gasaustausch über die Körperoberfläche.", wrong: ["Sie ist ein Atemorgan für Wasser.", "Sie ist eine Atemorgan für Luft.", "Sie ist eine Luftröhrensystem der Insekten."],
+      answer: "Es stützgerüst im Körperinneren, typisch für Wirbeltiere.", wrong: ["Es beschreibt mineralisiertes Stützgewebe, wächst mit und speichert Mineralstoffe.", "Es beschreibt ein Stütz- und Schutzpanzer außen, typisch für viele Gliederfüßer.", "Es beschreibt material vieler Außenskelette, leicht und fest."],
       explanation: "Hautatmung: Gasaustausch über die Körperoberfläche",
       wissen: fw(
         "z. B. bei manchen Lurchen. Bezug: Atmungsvergleich.",
@@ -1938,7 +1938,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f3",
       prompt: "Wozu dient die Hautatmung bei Lurchen?",
-      answer: "Sie ermöglicht den Gasaustausch über die feuchte Haut zusätzlich zur Lunge.", wrong: ["Es leben außerhalb des Wassers, begünstigt Lungen oder Tracheen.", "Sie beschreibt mehrere Atemwege parallel bei den behandelten Arten.", "Sie beschreibt eine Vergrößerung der Austauschfläche, gemeinsames Prinzip aller Atemorgane."],
+      answer: "Sie ermöglicht den Gasaustausch über die feuchte Haut zusätzlich zur Lunge.", wrong: ["Es leben außerhalb des Wassers, begünstigt Lungen oder Tracheen.", "Sie beschreibt mehrere Atemwege parallel.", "Sie beschreibt eine Vergrößerung der Austauschfläche, gemeinsames Prinzip aller Atemorgane."],
       explanation: "Lebendgeburt: Geburt entwickelter Jungtiere",
       wissen: fw(
         "Bei vielen Säugern. Bezug: Fortpflanzungsformen.",
@@ -1993,7 +1993,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f8",
       prompt: "Was beschreibt „Landleben“?",
-      answer: "Es leben außerhalb des Wassers, begünstigt Lungen oder Tracheen.", wrong: ["Sie beschreibt eine Vergrößerung der Austauschfläche, gemeinsames Prinzip aller Atemorgane.", "Sie beschreibt mehrere Atemwege parallel bei den behandelten Arten.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles, kurze Wege und große Fläche helfen."],
+      answer: "Es leben außerhalb des Wassers, begünstigt Lungen oder Tracheen.", wrong: ["Sie beschreibt eine Vergrößerung der Austauschfläche, gemeinsames Prinzip aller Atemorgane.", "Sie beschreibt mehrere Atemwege parallel.", "Sie ist die Nettobewegung von Teilchen entlang des Konzentrationsgefälles, kurze Wege und große Fläche helfen."],
       explanation: "Larve: Jugendstadium mit anderer Gestalt",
       wissen: fw(
         "Oft andere Lebensweise. Bezug: Fortpflanzungsformen.",
@@ -2015,7 +2015,7 @@ export const k6FortpflanzungFormen: BioBank = {
     {
       concept: "bio:k6:fortform:f10",
       prompt: "Woran erkennt man die Doppelstrategie?",
-      answer: "Sie beschreibt mehrere Atemwege parallel bei den behandelten Arten.", wrong: ["Sie erleichtert Gasdiffusion, typisch für Kiemen und Lungen innen.", "Es beschreibt wasser oder Luft als Gasquelle, bestimmt den Atemorgan-Typ.", "Es leben im Wasser, begünstigt Kiemen."],
+      answer: "Sie beschreibt mehrere Atemwege parallel.", wrong: ["Sie erleichtert Gasdiffusion, typisch für Kiemen und Lungen innen.", "Es beschreibt wasser oder Luft als Gasquelle, bestimmt den Atemorgan-Typ.", "Es leben im Wasser, begünstigt Kiemen."],
       explanation: "Wasserabhängigkeit: Fortpflanzung an Wasser gebunden",
       wissen: fw(
         "z. B. viele Amphibien. Bezug: Fortpflanzungsformen.",
@@ -2127,7 +2127,7 @@ export const k6Zelltheorie: BioBank = {
     {
       concept: "bio:k6:zellth:f3",
       prompt: "Was kennzeichnet „Vielzeller“?",
-      answer: "Er ist eine Organismus aus Vielen Zellen.", wrong: ["Er ist eine Kleinste Lebende Einheit.", "Er ist eine Lebewesen Bestehen aus Zellen.", "Er ist eine Organismus aus einer Zelle."],
+      answer: "Sie keimzellen treffen sich außerhalb des Körpers, häufig im Wasser.", wrong: ["Es beschreibt eine Vermehrung mit Befruchtung, erhöht genetische Vielfalt.", "Sie beschreibt ablage von Eiern, entwicklung oft außerhalb der Mutter.", "Sie beschreibt eine Fortpflanzung ohne freies Wasser, schalenei oder innere Entwicklung."],
       explanation: "Vielzeller: Organismus aus vielen Zellen",
       wissen: fw(
         "Arbeitsteilung möglich. Bezug: Zelltheorie.",
@@ -2472,7 +2472,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f0",
       prompt: "Welche Eigenschaft hat das Mitochondrium?",
-      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff."],
+      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
         "Entspricht grob der Herzfrequenz. Bezug: Puls/Blutdruck.",
@@ -2483,7 +2483,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f1",
       prompt: "Woran erkennt man das Chloroplast?",
-      answer: "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", wrong: ["Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um, in Chloroplasten.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
+      answer: "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", wrong: ["Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um, in Chloroplasten.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff."],
       explanation: "Pulsfrequenz: Schläge pro Minute",
       wissen: fw(
         "Steigt bei Belastung. Bezug: Puls/Blutdruck.",
@@ -2494,7 +2494,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f2",
       prompt: "Wozu dient das ATP?",
-      answer: "Es dient als Energiewährung der Zelle, treibt energiebedürftige Prozesse.", wrong: ["Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂."],
+      answer: "Es dient als Energiewährung der Zelle, treibt energiebedürftige Prozesse.", wrong: ["Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
         "Systolisch und diastolisch. Bezug: Puls/Blutdruck.",
@@ -2505,7 +2505,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f3",
       prompt: "Was beschreibt „Zellatmung“?",
-      answer: "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", wrong: ["Sie beschreibt eine Selbsternährung über Assimilation, pflanzen mit Chloroplasten.", "Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
+      answer: "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", wrong: ["Sie beschreibt eine Selbsternährung über Assimilation, pflanzen mit Chloroplasten.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂."],
       explanation: "Systole: Auswurfphase des Herzens",
       wissen: fw(
         "Höherer Druckwert. Bezug: Puls/Blutdruck.",
@@ -2527,7 +2527,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f5",
       prompt: "Welche Eigenschaft hat das Doppelmembran?",
-      answer: "Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Selbsternährung über Assimilation, pflanzen mit Chloroplasten.", "Es beschreibt ein Reaktand der aeroben Atmung, produkt der Fotosynthese."],
+      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Selbsternährung über Assimilation, pflanzen mit Chloroplasten.", "Es beschreibt ein Reaktand der aeroben Atmung, produkt der Fotosynthese."],
       explanation: "Ruhepuls: Puls in entspanntem Zustand",
       wissen: fw(
         "Vergleichswert zur Belastung. Bezug: Puls/Blutdruck.",
@@ -2571,7 +2571,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f9",
       prompt: "Mit welchen Mitteln arbeitet das Sauerstoff?",
-      answer: "Es beschreibt ein Reaktand der aeroben Atmung, produkt der Fotosynthese.", wrong: ["Sie beschreibt eine Abhängigkeit von organischer Nahrung, tiere ohne Chloroplasten.", "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", "Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast."],
+      answer: "Es beschreibt ein Reaktand der aeroben Atmung, produkt der Fotosynthese.", wrong: ["Sie beschreibt eine Abhängigkeit von organischer Nahrung, tiere ohne Chloroplasten.", "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂."],
       explanation: "Vitalparameter: Grundlegende Körperwerte",
       wissen: fw(
         "u. a. Puls und Blutdruck. Bezug: Puls/Blutdruck.",
@@ -2593,7 +2593,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:f11",
       prompt: "Woran erkennt man die Heterotrophie?",
-      answer: "Sie beschreibt eine Abhängigkeit von organischer Nahrung, tiere ohne Chloroplasten.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Sie beschreibt wichtiger Energieträger, produkt der Fotosynthese."],
+      answer: "Sie beschreibt eine Abhängigkeit von organischer Nahrung, tiere ohne Chloroplasten.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt wichtiger Energieträger, produkt der Fotosynthese.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff."],
       explanation: "Messmanschette: Hilfsmittel der Blutdruckmessung",
       wissen: fw(
         "Ermöglicht standardisierte Messung. Bezug: Puls/Blutdruck.",
@@ -2604,7 +2604,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:x0",
       prompt: "Woran erkennt man das Mitochondrium?",
-      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Zwei Membranen um Organell, bei Mitochondrium und Chloroplast.", "Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff."],
+      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
       explanation: "Druckwelle.",
       wissen: fw(
         "Jeder Herzschlag erzeugt eine Welle in den Arterien, die tastbar ist.",
@@ -2613,7 +2613,7 @@ export const k7PulsBlutdruck: BioBank = {
     {
       concept: "bio:k7:puls:x1",
       prompt: "Puls/Blutdruck: Warum misst man Puls und Blutdruck?",
-      answer: "Es ist eine Als Hinweise auf Belastung und Herz-Kreislauf-Zustand.", wrong: ["Es ist eine Um Zahnschmelz zu zählen.", "Es ist eine Um Federn zu färben.", "Es ist eine Um Jahresringe zu lesen."],
+      answer: "Es beschreibt ein Ort der Zellatmung, liefert viel ATP.", wrong: ["Es beschreibt ein Ort der Fotosynthese, bildet Zucker und O₂.", "Sie beschreibt eine Abbau von Zucker mit Energiegewinn, braucht oft Sauerstoff.", "Es beschreibt ein Zellinnenraum, ort vieler Stoffwechselwege."],
       explanation: "Diagnostik.",
       wissen: fw(
         "Abweichungen können auf Fitness, Stress oder Erkrankungen hinweisen.",
@@ -2716,7 +2716,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f5",
       prompt: "Wozu dient das Ruhepuls?",
-      answer: "Es beschreibt ein Puls in entspanntem Zustand, vergleichswert zur Belastung.", wrong: ["Sie beschreibt eine Entspannungs-/Füllungsphase, niedrigerer Druckwert.", "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, dort ist Puls tastbar.", "Er beschreibt grundlegende Körperwerte bei den behandelten Arten."],
+      answer: "Es beschreibt ein Puls in entspanntem Zustand, vergleichswert zur Belastung.", wrong: ["Sie beschreibt eine Entspannungs-/Füllungsphase, niedrigerer Druckwert.", "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, dort ist Puls tastbar.", "Er beschreibt grundlegende Körperwerte."],
       explanation: "Cholesterin: Blutfettstoff mit Risiko bei Überschuss",
       wissen: fw(
         "Beeinflusst Gefäßgesundheit. Bezug: Kreislaufgesundheit.",
@@ -2749,7 +2749,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f8",
       prompt: "Wozu dient die Arterie?",
-      answer: "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, dort ist Puls tastbar.", wrong: ["Er beschreibt grundlegende Körperwerte bei den behandelten Arten.", "Es dauerhaft zu hoher Blutdruck, belastet Herz und Gefäße.", "Es beschreibt ein Puls unter körperlicher Arbeit, steigt mit Sauerstoffbedarf."],
+      answer: "Sie führt sauerstoffreiches Blut vom Herzen zu den Organen, dort ist Puls tastbar.", wrong: ["Er beschreibt grundlegende Körperwerte.", "Es dauerhaft zu hoher Blutdruck, belastet Herz und Gefäße.", "Es beschreibt ein Puls unter körperlicher Arbeit, steigt mit Sauerstoffbedarf."],
       explanation: "Schlaganfall: Durchblutungsstörung im Gehirn",
       wissen: fw(
         "Kann durch Gefäßrisiken begünstigt sein. Bezug: Kreislaufgesundheit.",
@@ -2760,7 +2760,7 @@ export const k7KreislaufGesundheit: BioBank = {
     {
       concept: "bio:k7:krges:f9",
       prompt: "Was beschreibt „Vitalparameter“?",
-      answer: "Er beschreibt grundlegende Körperwerte bei den behandelten Arten.", wrong: ["Es beschreibt ein Puls unter körperlicher Arbeit, steigt mit Sauerstoffbedarf.", "Es ist der Druck des Blutes auf die Gefäßwände, systolisch und diastolisch.", "Sie beschreibt schläge pro Minute, steigt bei Belastung."],
+      answer: "Er beschreibt grundlegende Körperwerte.", wrong: ["Es beschreibt ein Puls unter körperlicher Arbeit, steigt mit Sauerstoffbedarf.", "Es ist der Druck des Blutes auf die Gefäßwände, systolisch und diastolisch.", "Sie beschreibt schläge pro Minute, steigt bei Belastung."],
       explanation: "Ausdauer: Fähigkeit zu längerer Belastung",
       wissen: fw(
         "Trainierbar durch Sport. Bezug: Kreislaufgesundheit.",
@@ -3072,7 +3072,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f3",
       prompt: "Was kennzeichnet „Entzug“?",
-      answer: "Es ist eine Beschwerden Beim Absetzen.", wrong: ["Es ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Es ist eine Substanz mit Abhängigkeitspotenzial.", "Es ist eine Gewöhnung mit Dosissteigerung."],
+      answer: "Sie beschreibt eine Stellung von Rumpf und Wirbelsäule, beeinflusst Belastung von Gelenken.", wrong: ["Sie beschreibt polster zwischen Wirbeln, empfindlich bei Dauerfehlbelastung.", "Es beschreibt verstärkte Krümmung der Brustwirbelsäule, beispiel einer Haltungsabweichung.", "Sie beschreibt eine Vorbeugung durch Bewegung und Haltung, besser als spätere Beschwerden."],
       explanation: "Entzug: Beschwerden beim Absetzen",
       wissen: fw(
         "Körperliche und psychische Symptome. Bezug: Suchtgefahren.",
@@ -3083,7 +3083,7 @@ export const k8Sucht: BioBank = {
     {
       concept: "bio:k8:sucht:f4",
       prompt: "Was kennzeichnet „psychische Abhängigkeit“?",
-      answer: "Sie ist eine Starkes Verlangen und Kontrollverlust.", wrong: ["Sie ist eine Krankhafte Abhängigkeit von Stoff oder Verhalten.", "Sie ist eine Substanz mit Abhängigkeitspotenzial.", "Sie ist eine Gewöhnung mit Dosissteigerung."],
+      answer: "Sie beschreibt eine Stellung von Rumpf und Wirbelsäule, beeinflusst Belastung von Gelenken.", wrong: ["Sie beschreibt polster zwischen Wirbeln, empfindlich bei Dauerfehlbelastung.", "Es beschreibt verstärkte Krümmung der Brustwirbelsäule, beispiel einer Haltungsabweichung.", "Sie beschreibt eine Vorbeugung durch Bewegung und Haltung, besser als spätere Beschwerden."],
       explanation: "psychische Abhängigkeit: Starkes Verlangen und Kontrollverlust",
       wissen: fw(
         "Auch ohne starke körperliche Entzüge möglich. Bezug: Suchtgefahren.",
@@ -3527,7 +3527,7 @@ export const k8Gehirn: BioBank = {
     {
       concept: "bio:k8:gehirn:f10",
       prompt: "Was kennzeichnet „Lokalisation“?",
-      answer: "Sie ist eine Zuordnung von Leistungen zu Regionen.", wrong: ["Sie ist eine Sitz Bewusster Prozesse und Cortex.", "Sie ist eine Koordination von Bewegungen.", "Die Lokalisation ist die Grundlegende Lebensfunktionen."],
+      answer: "Sie beschreibt eine Scharfstellung auf unterschiedliche Entfernungen, linse ändert Brechkraft.", wrong: ["Die Lokalisation ist die Grundlegende Lebensfunktionen.", "Sie beschreibt scharfes Sehen vor allem nah, bild vor der Netzhaut.", "Sie beschreibt probleme vor allem in der Nähe, bild hinter der Netzhaut."],
       explanation: "Lokalisation: Zuordnung von Leistungen zu Regionen",
       wissen: fw(
         "Nicht alles ist streng getrennt. Bezug: Gehirn/Gedächtnis.",
@@ -3628,7 +3628,7 @@ export const k8NervGesundheit: BioBank = {
     {
       concept: "bio:k8:nervges:f2",
       prompt: "Was kennzeichnet „Stress“?",
-      answer: "Es ist ein Belastungsreaktion des Organismus.", wrong: ["Es ist ein Erholung für Gehirn und Körper.", "Es ist eine Zu Viele Reize Gleichzeitig.", "Es ist eine Absenken der Anspannung."],
+      answer: "Es beschreibt ein Sitz bewusster Prozesse und Cortex, etwa wahrnehmung, Denken oder Willkürmotorik.", wrong: ["Es beschreibt eine Koordination von Bewegungen, feinabstimmung und Gleichgewicht.", "Es beschreibt eine Speicherung von Informationen, kurz- und Langzeitgedächtnis.", "Sie ablegen von Erfahrungen, über synaptische Veränderungen."],
       explanation: "Stress: Belastungsreaktion des Organismus",
       wissen: fw(
         "Kurz hilfreich, dauerhaft schädlich. Bezug: Nervengesundheit.",
@@ -3872,7 +3872,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:f7",
       prompt: "Was kennzeichnet „Gebärmutterschleimhaut“?",
-      answer: "Es ist ein Innere Auskleidung der Gebärmutter.", wrong: ["Es ist eine Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Es ist eine Freisetzung einer Eizelle.", "Es ist eine Reifungsphase vor dem Eisprung."],
+      answer: "Es beschreibt eine Erholung für Gehirn und Körper, mangel beeinträchtigt Leistung.", wrong: ["Sie beschreibt fokussierte Aufmerksamkeit, braucht Erholung und Reizdosierung.", "Es unterbrechungen der Belastung, schützen Konzentration.", "Sie beschreibt körperliche Aktivität, wirkt positiv auf Stressregulation."],
       explanation: "Gebärmutterschleimhaut: Innere Auskleidung der Gebärmutter",
       wissen: fw(
         "Wird zyklisch auf- und abgebaut. Bezug: Menstruationszyklus.",
@@ -3927,7 +3927,7 @@ export const k8Zyklus: BioBank = {
     {
       concept: "bio:k8:zyklus:x0",
       prompt: "Menstruationszyklus: Was steuert den Menstruationszyklus maßgeblich?",
-      answer: "Es ist ein Hormone von Hypophyse und Eierstöcken im Regelkreis.", wrong: ["Es ist eine Nur die Atmung.", "Es ist eine Nur die Hautfarbe.", "Es ist eine Nur die Zahnlänge."],
+      answer: "Es beschreibt eine Erholung für Gehirn und Körper, mangel beeinträchtigt Leistung.", wrong: ["Sie beschreibt fokussierte Aufmerksamkeit, braucht Erholung und Reizdosierung.", "Es unterbrechungen der Belastung, schützen Konzentration.", "Sie beschreibt körperliche Aktivität, wirkt positiv auf Stressregulation."],
       explanation: "Regulation.",
       wissen: fw(
         "Rückkopplungen zwischen Steuerhormonen und Eierstockhormonen takten Aufbau, Eisprung und Abbau.",
@@ -4272,7 +4272,7 @@ export const k9Gewaesser: BioBank = {
     {
       concept: "bio:k9:gewaesser:f9",
       prompt: "Was kennzeichnet „Ufervegetation“?",
-      answer: "Sie ist eine Pflanzen am Gewässerrand.", wrong: ["Sie ist eine Gliederung Eines Sees in Lebenszonen.", "Die Ufervegetation ist die Uferzone.", "Die Ufervegetation ist die Freiwasserzone."],
+      answer: "Es beschreibt unterschiedliche sexuelle Orientierungen, teil menschlicher Vielfalt.", wrong: ["Es beschreibt freiwillige Zustimmung, grundlage respektvoller Sexualität.", "Sie beschreibt eine Anziehung zum anderen Geschlecht, eine Form sexueller Orientierung.", "Sie beschreibt eine Beziehungsform zwischen Menschen, vielfältig gestaltet."],
       explanation: "Ufervegetation: Pflanzen am Gewässerrand",
       wissen: fw(
         "Struktur und Lebensraum. Bezug: See/Zonierung.",
@@ -4417,7 +4417,7 @@ export const k9Sukzession: BioBank = {
     {
       concept: "bio:k9:suks:f5",
       prompt: "Was kennzeichnet „Artwechsel“?",
-      answer: "Es ist eine Austausch Dominanter Arten.", wrong: ["Es ist eine Gerichtete Abfolge von Lebensgemeinschaften.", "Es ist ein Frühe Besiedler Gestörter Flächen.", "Es ist eine Relativ Stabile Endgesellschaft."],
+      answer: "Sie beschreibt eine Gliederung eines Sees in Lebenszonen, etwa ufer, Freiwasser oder Boden.", wrong: ["Es beschreibt tierisches Plankton, konsumenten kleiner Organismen.", "Es beschreibt uferzone, etwa lichtreich oder viele Pflanzen.", "Sie beschreibt ernährungsstufe im Nahrungsnetz, produzent bis Destruent."],
       explanation: "Artwechsel: Austausch dominanter Arten",
       wissen: fw(
         "Im Lauf der Sukzession. Bezug: Sukzession.",
@@ -4650,7 +4650,7 @@ export const k9Faktoren: BioBank = {
     {
       concept: "bio:k9:fakt:f9",
       prompt: "Was kennzeichnet „Hygrophyt“?",
-      answer: "Das Hygrophyt ist das Feuchteangepasste Pflanze.", wrong: ["Das Hygrophyt ist das Unbelebte Umweltgröße.", "Es ist eine Wirkung durch Lebewesen.", "Es ist eine Bereich Erträglicher Faktorwerte."],
+      answer: "Das Hygrophyt ist das Feuchteangepasste Pflanze.", wrong: ["Das Hygrophyt ist das Unbelebte Umweltgröße.", "Es beschreibt ein Austausch dominanter Arten, im Lauf der Sukzession.", "Sie beschreibt eine Entwicklung von Bodenhorizonten, ermöglicht anspruchsvollere Pflanzen."],
       explanation: "Hygrophyt: Feuchteangepasste Pflanze",
       wissen: fw(
         "Braucht viel Wasser. Bezug: Umweltfaktoren.",
@@ -5070,7 +5070,7 @@ export const k10Humangenetik: BioBank = {
     {
       concept: "bio:k10:humangen:x1",
       prompt: "Humangenetik: Warum sind ethische Fragen in der Humangenetik zentral?",
-      answer: "Es ist eine Diagnostik und Beratung berühren Autonomie und Teilhabe.", wrong: ["Es ist eine Weil Ethik unnötig ist.", "Es ist eine Weil Gene keine Folgen haben.", "Es ist eine Weil nur Pflanzen betroffen sind."],
+      answer: "Es beschreibt langfristiges Wettergeschehen einer Region, unterscheidet sich vom Tageswetter.", wrong: ["Es beschreibt ein Austausch von C zwischen Sphären, gekoppelt an Klima.", "Es beschreibt wichtiges Treibhausgas, steigt durch Verbrennung fossilier Energien.", "Es beschreibt langfristige Klimaänderung, beeinflusst Ökosysteme."],
       explanation: "Werteorientierung.",
       wissen: fw(
         "Pränatale Diagnostik und Umgang mit Erbkrankheiten verlangen sorgfältige Abwägung.",
@@ -5417,7 +5417,7 @@ export const k10Progression: BioBank = {
     {
       concept: "bio:k10:prog:f10",
       prompt: "Was kennzeichnet „Progression“?",
-      answer: "Sie ist eine Gerichtete Steigerung von Leistungen.", wrong: ["Sie ist eine Vergrößerung der Austauschfläche.", "Sie ist eine Innere Fläche der Lunge.", "Sie ist eine Gasaustausch über die Haut."],
+      answer: "Es beschreibt systematiker der binären Nomenklatur, etwa ordnete Arten oder ohne moderne Evolutionstheorie.", wrong: ["Sie verringert den Wärmefluss durch Dämmstoffe und schlechte Wärmeleiter, fördert Artbildung.", "Sie individuen einer Art in einem Gebiet.", "Es beschreibt relativer Fortpflanzungserfolg, maß der Angepasstheit."],
       explanation: "Progression: Gerichtete Steigerung von Leistungen",
       wissen: fw(
         "Vergleichender Evolutionsaspekt. Bezug: Evolutionsprogression.",
