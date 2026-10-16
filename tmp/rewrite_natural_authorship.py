@@ -505,6 +505,22 @@ HAND: dict[str, dict[str, object]] = {
         "prompt": "Was bewirkt die Urbanisierung?",
         "answer": "Sie beschreibt das Wachstum der Städte durch Zuzug und Industrie.",
     },
+    "reichseinigung": {
+        "prompt": "Was beschreibt die Reichseinigung?",
+        "answer": "Sie beschreibt die deutsche Nationalstaatsbildung in den Einigungskriegen 1864 bis 1871.",
+    },
+    "soziale frage": {
+        "prompt": "Was meint die Soziale Frage?",
+        "answer": "Sie beschreibt die Lage der Industriearbeiter mit Armut und Reformdebatten.",
+    },
+    "wettrüsten": {
+        "prompt": "Was kennzeichnet das Wettrüsten vor 1914?",
+        "answer": "Es beschreibt die militärische Konkurrenz der Großmächte vor 1914.",
+    },
+    "wettruesten": {
+        "prompt": "Was kennzeichnet das Wettrüsten vor 1914?",
+        "answer": "Es beschreibt die militärische Konkurrenz der Großmächte vor 1914.",
+    },
 }
 
 BANNED_OUT = re.compile(
@@ -518,8 +534,10 @@ TITLE_MUSH = re.compile(
 )
 MECH_ANS = re.compile(
     r"^(Sie|Er|Es) ist (eine|ein)\b|"
-    r"\bdurch (Beim|In|Bei|Mit)\b|"
-    r"\bdurch [A-ZÄÖÜ][a-zäöüß]*(?:/[a-z]+)?(?:,|\.|$)|"  # durch Kritisch / durch Oft
+    r"^(Sie|Er|Es) ist [a-zäöü]"  # Es ist militärische… / Es ist deutsche…
+    r"|\bdurch (Beim|In|Bei|Mit)\b|"
+    r"\bdurch [A-ZÄÖÜ][a-zäöüß]*(?:/[a-z]+)?(?:,|\.|$)|"
+    r"\bdurch (vor \d|Armut|1864)\b|"
     r"\bSelbst Licht Aussendet\b|"
     r"\bGeradliniges Modell\b.*\bdurch in\b|"
     r"\bLicht geht durch durch\b|"
@@ -907,6 +925,7 @@ def sibling_answers(
             or BAD_ANSWER.search(ans)
             or TITLE_AFTER_IST.search(ans)
             or TITLE_TIP.search(ans)
+            or re.match(r"^(Sie|Er|Es) ist (eine|ein)\b", ans, re.I)
             or re.search(r"Pflanzenfressend|terrariumarten|≠", ans)
             or len(ans.split()) < 6
         ):
