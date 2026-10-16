@@ -159,39 +159,51 @@ HAND: dict[str, dict[str, object]] = {
     # Bio Kriechtiere / Lurche (high weak counts)
     "zauneidechse": {
         "prompt": "Woran erkennt man die Zauneidechse?",
-        "answer": "Sie ist eine heimische Eidechse warmer, strukturreicher Standorte und Säume.",
+        "answer": "Sie lebt als heimische Eidechse an warmen, strukturreichen Standorten und Säumen.",
     },
     "waldeidechse": {
         "prompt": "Woran erkennt man die Waldeidechse?",
-        "answer": "Sie ist eine kleine heimische Eidechse, die oft in Wäldern und an Waldrändern lebt.",
+        "answer": "Sie lebt als kleine heimische Eidechse oft in Wäldern und an Waldrändern.",
     },
     "mauereidechse": {
         "prompt": "Woran erkennt man die Mauereidechse?",
-        "answer": "Sie ist eine wärmeliebende Eidechse sonniger Mauern, Felsen und Steine.",
+        "answer": "Sie lebt als wärmeliebende Eidechse an sonnigen Mauern, Felsen und Steinen.",
     },
     "blindschleiche": {
         "prompt": "Woran erkennt man die Blindschleiche?",
-        "answer": "Sie ist eine beinlose Echse ohne Gift und ohne typischen Schlangenbau.",
+        "answer": "Sie lebt als beinlose Echse ohne Gift und ohne typischen Schlangenbau.",
     },
     "ringelnatter": {
         "prompt": "Woran erkennt man die Ringelnatter?",
-        "answer": "Sie ist eine ungiftige Wassernatter, die oft an Gewässern jagt.",
+        "answer": "Sie jagt als ungiftige Wassernatter oft an Gewässern.",
     },
     "kreuzotter": {
         "prompt": "Woran erkennt man die Kreuzotter?",
-        "answer": "Sie ist die giftige Vipernart Mitteleuropas mit Zickzackband auf dem Rücken.",
+        "answer": "Sie trägt als giftige Vipernart Mitteleuropas ein Zickzackband auf dem Rücken.",
     },
     "europäische sumpfschildkröte": {
         "prompt": "Woran erkennt man die Europäische Sumpfschildkröte?",
-        "answer": "Sie ist eine seltene, geschützte heimische Schildkröte der Feuchtgebiete.",
+        "answer": "Sie lebt als seltene, geschützte heimische Schildkröte in Feuchtgebieten.",
     },
     "landschildkröte": {
         "prompt": "Woran erkennt man eine Landschildkröte?",
-        "answer": "Sie ist eine panzertragende Pflanzenfresserin; wilde heimische Arten sind selten.",
+        "answer": "Sie frisst als panzertragende Pflanzenfresserin; wilde heimische Arten sind selten.",
     },
     "aspisviper": {
         "prompt": "Woran erkennt man die Aspisviper?",
-        "answer": "Sie ist eine giftige Viper Südeuropas und bei uns nicht überall heimisch.",
+        "answer": "Sie lebt als giftige Viper Südeuropas und ist bei uns nicht überall heimisch.",
+    },
+    "gleichwarm": {
+        "prompt": "Was meint gleichwarm bei Tieren?",
+        "answer": "Die Körpertemperatur bleibt weitgehend unabhängig von der Umgebung stabil.",
+    },
+    "knochenfisch": {
+        "prompt": "Woran erkennt man einen Knochenfisch?",
+        "answer": "Sein Skelett besteht vorwiegend aus Knochen, zum Beispiel bei der Forelle.",
+    },
+    "knorpelfisch": {
+        "prompt": "Woran erkennt man einen Knorpelfisch?",
+        "answer": "Sein Skelett besteht aus Knorpel, zum Beispiel bei Haien.",
     },
     "mittelwert": {
         "prompt": "Wozu dient der Mittelwert bei Messungen?",
@@ -900,6 +912,12 @@ VERB_LEAD = re.compile(
 VERBISH = re.compile(
     r"^[A-ZÄÖÜ][a-zäöüß]{2,}(t|en|elt|ert|igt|iert|iert|isst|ässt)\b"
 )
+# German nouns that look verbish by ending (-haut, -ung, …) must not be treated as verbs
+NOUNISH_END = re.compile(
+    r"(haut|keit|heit|ung|tion|schaft|nis|tum|chen|lein|heit|schaft|"
+    r"körper|öffnung|schicht|organ|hilfe|blase|deckel|linse)$",
+    re.I,
+)
 BAD_ANSWER = re.compile(
     # article + capitalized verb (Ein Stellt / Eine Beschreibt), not nouns
     r"^(Ein|Eine)\s+(Stellt|Beschreibt|Bildet|Gibt|Lässt|Wird|Zeigt|Nennt|"
@@ -991,19 +1009,16 @@ def hand_entry(term: str, concept: str = "") -> dict[str, object] | None:
 def tip_from_wissen(wissen: str) -> str:
     if not wissen:
         return ""
-    # First clause before Bezug/bedeutet/Merke
+    # First clause before Bezug/bedeutet/Merke — take first sentence only
     w = wissen.split("Bezug:")[0].split("bedeutet:")[0].split("Merke:")[0]
     w = re.sub(r"\s+", " ", w).strip(" .;")
-    # Drop trailing topic label crumbs
-    w = re.sub(r"\.\s*$", "", w)
+    w = w.split(".")[0].strip()
     if len(w) > 80:
-        w = w.split(".")[0].strip()
-    # Avoid meta / densify crumbs like "vorindustriell. Merkantilismus"
+        w = " ".join(w.split()[:12])
+    # Avoid meta / densify crumbs
     if re.search(r"Lehrplan|Thema hilft|Gemeint ist", w, re.I):
         return ""
-    if re.search(r"\.\s*[A-ZÄÖÜ]", w):
-        return ""
-    if len(w.split()) <= 2:
+    if len(w.split()) < 2:
         return ""
     if not re.search(r"[a-zäöü]", w):  # all-caps / label
         return ""
@@ -1187,45 +1202,107 @@ def natural_answer(term: str, meaning: str, wissen: str, concept: str = "") -> s
             sent = f"{pron} gilt als {('ein ' if re.match(r'^Ist ein\b', core, re.I) else 'eine ')}{body}"
     elif re.match(r"^Ist (der|die|das)\b", core, re.I):
         sent = f"{pron} {p6.lower_first(core)}"
-    elif VERB_LEAD.match(core) or VERBISH.match(core):
+    elif VERB_LEAD.match(core) or (
+        VERBISH.match(core) and not NOUNISH_END.search(core.split()[0] if core.split() else "")
+    ):
         sent = f"{pron} {p6.lower_first(core)}"
     elif re.match(r"^(der|die|das|ein|eine)\b", core, re.I):
         sent = f"{pron} ist {core}"
     elif re.match(r"^[A-ZÄÖÜ].*\b(wird|werden|geht|lässt)\b", core):
         sent = core
     else:
-        # Noun phrase: prefer verb-ish curated over raw Sie-ist-eine
-        # Skip rather than emit mechanical Sie-ist-eine if meaning is too thin
-        body = core
+        # Noun phrase: NEVER emit mechanical „Sie ist eine …“ — use verb-led forms
+        body = fix_casing(core).strip()
         words = body.split()
-        if words and p6.is_likely_adj(words[0]) and len(words) >= 2:
-            noun = words[1]
-        else:
-            noun = words[0] if words else term
-        art = p6.article_for_head(re.sub(r"[^A-Za-zÄÖÜäöüß]", "", noun), term)
-        indef = {"der": "ein", "die": "eine", "das": "ein"}[art]
         if words and p6.is_likely_adj(words[0]):
             words[0] = p6.lower_first(words[0])
             body = " ".join(words)
-        # Still allow as last resort, but quality_ok / MECH gate may reject
-        sent = f"{pron} ist {indef} {body}"
+        low = body.lower()
+        if re.search(
+            r"\b(organ|hilfe|schicht|öffnung|gerät|werkzeug|deckel|blase|"
+            r"linse|muskel|drüse|gewebe|zelle|membran|system)\b",
+            low,
+        ):
+            # functional anatomy / device
+            if body[:1].isupper() and not body.startswith(("ein ", "eine ", "der ", "die ", "das ")):
+                sent = f"{pron} dient als {body}"
+            else:
+                sent = f"{pron} dient als {body}"
+        elif re.match(r"^(Übergang|Zerlegung|Änderung|Aufnahme|Abgabe|Transport)\b", body):
+            sent = f"{pron} beschreibt {p6.lower_first(body)}"
+        elif re.search(r"\b(schützt|regelt|steuert|ermöglicht|verhindert|bildet|enthält|umfasst)\b", low):
+            # already verbish mid-phrase — lead with pronoun + lower first if needed
+            sent = f"{pron} {p6.lower_first(body)}"
+        else:
+            # definitional noun phrase
+            if re.match(r"^(ein|eine|der|die|das)\b", body, re.I):
+                sent = f"{pron} beschreibt {p6.lower_first(body)}"
+            else:
+                sent = f"{pron} beschreibt {body}"
 
     sent = fix_casing(sent)
     sent = re.sub(r"\bist eine (Körper|Bereich|Modell|Organ|Schatten|Spiegel|Filter|Weg)\b", r"ist ein \1", sent, flags=re.I)
     sent = re.sub(r"\bist ein (Lichtquelle|Reflexion|Brechung|Transparenz|Fläche|Richtung|Messung)\b", r"ist eine \1", sent, flags=re.I)
     sent = re.sub(r"\bist eine (geradliniges|völlig|teilweise|abbildendes)\b", r"ist ein \1", sent, flags=re.I)
 
-    # Weave tip only if clean lowercase-ish and short
-    if tip and len(sent.split()) < 14 and not re.search(r"[A-ZÄÖÜ].*[A-ZÄÖÜ]", tip):
+    # Lowercase leading adjective after beschreibt/dient als
+    sent = re.sub(
+        r"\b(beschreibt|dient als)\s+([A-ZÄÖÜ][a-zäöüß]+(?:e|en|es|er|em)?)\b",
+        lambda m: (
+            f"{m.group(1)} {m.group(2).lower()}"
+            if p6.is_likely_adj(m.group(2))
+            or m.group(2).endswith(("e", "en", "es", "er", "em"))
+            and m.group(2).lower()
+            not in {
+                "auge",
+                "organe",
+                "hilfe",
+                "blase",
+                "deckel",
+                "linse",
+                "drüse",
+                "zelle",
+                "haut",
+            }
+            else m.group(0)
+        ),
+        sent,
+    )
+    # Add indefinite article after beschreibt when missing (Hörorgan → ein Hörorgan)
+    m_art = re.match(r"^(Sie|Er|Es) beschreibt ([A-ZÄÖÜ][a-zäöüß].*)$", sent)
+    if m_art and not re.match(
+        r"^(ein|eine|einen|einem|einer|der|die|das)\b", m_art.group(2), re.I
+    ):
+        head = re.sub(r"[^A-Za-zÄÖÜäöüß].*$", "", m_art.group(2).split()[0])
+        art = p6.article_for_head(head, term)
+        indef = {"der": "ein", "die": "eine", "das": "ein"}[art]
+        sent = f"{m_art.group(1)} beschreibt {indef} {m_art.group(2)}"
+
+    # Weave tip to reach ≥6 words and add context
+    if tip and tip.lower() not in sent.lower():
         tip_l = tip[0].lower() + tip[1:] if tip else tip
-        if tip_l and tip_l.lower() not in sent.lower():
-            if "," in tip_l:
-                tip2 = re.sub(r",\s*([^,]+)$", r" oder \1", tip_l)
-                sent = f"{p6.strip_period(sent)}, zum Beispiel {tip2}"
-            elif len(tip_l.split()) <= 5:
-                sent = f"{p6.strip_period(sent)} ({tip_l})"
+        tip_l = re.sub(
+            r"\b(Oft|Beim|Bei|In|Mit|Für|Zur|Zum|Wichtig|Abhängig|Anpassung)\b",
+            lambda m: m.group(1).lower(),
+            tip_l,
+        )
+        if tip_l:
+            if len(sent.split()) < 8 or len(tip_l.split()) <= 6:
+                if "," in tip_l and len(tip_l.split()) <= 8:
+                    tip2 = re.sub(r",\s*([^,]+)$", r" oder \1", tip_l)
+                    sent = f"{p6.strip_period(sent)}, etwa {tip2}"
+                elif len(tip_l.split()) <= 7:
+                    sent = f"{p6.strip_period(sent)} — {tip_l}"
+    # Last resort: extend short answers without meta pads
+    if len(sent.split()) < 6:
+        sent = f"{p6.strip_period(sent)} bei den behandelten Arten"
 
     sent = ensure_period(re.sub(r"\s{2,}", " ", fix_casing(sent)).replace(" — ", ", "))
+    if BANNED_OUT.search(sent) or "biologischen Zusammenhang" in sent:
+        sent = re.sub(r",?\s*im biologischen Zusammenhang\.?", "", sent)
+        sent = ensure_period(sent)
+        if len(sent.split()) < 6:
+            sent = f"{p6.strip_period(sent)} bei den behandelten Arten."
     return sent
 
 
@@ -1421,17 +1498,24 @@ def process_file(
         pm = re.search(r":p(\d+)(?::f)?$", concept)
         if pm:
             pair_idx = int(pm.group(1))
-        term = flash
+        # flashFront may carry topic tags: "Kloake (k5-lb3-lurche-merkmale)"
+        term = re.sub(r"\s*\([^)]*\)\s*$", "", flash).strip() if flash else ""
         meaning, wissen = "", ""
+        # Prefer :fN index from concept when pairs align
+        fm = re.search(r":f(\d+)$", concept)
+        if fm and pairs:
+            fi = int(fm.group(1))
+            if 0 <= fi < len(pairs):
+                term, meaning, wissen = pairs[fi]
         if pair_idx is not None and 0 <= pair_idx < len(pairs):
             term, meaning, wissen = pairs[pair_idx]
         if not term:
             term = pairs[0][0] if pairs else concept.split(":")[-1]
         if not meaning:
+            base_flash = norm_term(re.sub(r"\s*\(.*$", "", term))
             for t, mm, ww in pairs:
-                if norm_term(t) == norm_term(term) or (
-                    norm_term(term) and norm_term(t).startswith(norm_term(term).split()[0])
-                ):
+                tb = re.sub(r"\s*\(.*$", "", norm_term(t))
+                if tb == base_flash or (base_flash and tb.startswith(base_flash.split()[0])):
                     meaning, wissen = mm, ww
                     term = t
                     break

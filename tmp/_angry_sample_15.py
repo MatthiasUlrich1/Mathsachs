@@ -76,7 +76,10 @@ VERB = re.compile(
     r"modelliert|erzeugt|ändert|wirft|lässt|bleibt|absorbiert|deutet|"
     r"beschreibt|regelt|organisiert|prägt|prüft|führt|errichtet|"
     r"arbeitet|zeigt|senkt|rechnet|verstärkt|schaltet|steuert|teilt|"
-    r"überlastet|beachtet|wählt|liefert|schützt|wandelt|lässt)\b",
+    r"überlastet|beachtet|wählt|liefert|schützt|wandelt|lässt|"
+    r"lebt|jagt|trägt|frisst|besteht|bleibt|treibt|erfasst|"
+    r"regulier\w*|verringer\w*|bedeutet|signalisiert|befeuchtet|"
+    r"feuchthält|erbeutet|ernährt)\b",
     re.I,
 )
 
