@@ -207,6 +207,8 @@ export function isSloganOrStubClaim(text: string): boolean {
   }
   // Explizite Schrott-Slogans
   if (/Wasser und Strom/i.test(raw)) return true
+  // Meta-Vokabel-TF: „Vogelschutz: Nistkasten bedeutet: …“ / „… bedeutet genau: …“
+  if (/^[^:]{1,48}:\s*.{1,80}\s+bedeutet(\s+genau)?\s*:/i.test(raw)) return true
 
   // „Label: Fragment.“ ohne Verb / nur Schlagworte
   const colon = raw.match(/^([^:?]{1,48}):\s*(.+)$/)
@@ -240,6 +242,157 @@ export function isSloganOrStubClaim(text: string): boolean {
     if (words.length <= 4 && right.length <= 42) return true
   }
   return false
+}
+
+/** Großschreibung für deutsche Aufgabentexte (Satzanfang, nach : . ! ?). */
+export function fixGermanPromptCapitalization(text: string): string {
+  let s = text.replace(/\s+/g, ' ').trim()
+  if (!s) return s
+  s = s.replace(/^[a-zäöü]/u, (c) => c.toLocaleUpperCase('de-DE'))
+  s = s.replace(/([:!?.]\s+)([a-zäöü])/gu, (_, p: string, c: string) => p + c.toLocaleUpperCase('de-DE'))
+  return s
+}
+
+/**
+ * Spoiler-Redaktion nur an Wortgrenzen — nie „Experiment“ ⊂ „Experimentieren“ → „…ieren“.
+ */
+export function redactSolutionSpoilers(text: string, solution: string): string {
+  const sol = solution.trim()
+  if (!sol || sol.length < 6 || sol.split(/\s+/).length > 4) return text
+  if (!text.toLowerCase().includes(sol.toLowerCase())) return text
+  const escaped = sol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  if (/\s/.test(sol)) {
+    return text.replace(new RegExp(escaped, 'gi'), '…')
+  }
+  return text.replace(
+    new RegExp(`(^|[^\\p{L}\\p{N}_])(${escaped})(?=[^\\p{L}\\p{N}_]|$)`, 'giu'),
+    (_m, before: string) => `${before}…`,
+  )
+}
+
+/**
+ * Meta-/Vokabel-Prompts („Was bedeutet … im Themenfeld …?“) → echte Schulstoff-Fragen.
+ * Wirkt für Bio/Geschichte/OS über `bankGenerate` (alle Klassen/LBs).
+ */
+export function rewriteDefinitionStylePrompt(
+  prompt: string,
+  opts?: { term?: string; prefix?: string },
+): string {
+  let q = stripBioBankSlug(prompt).replace(/\s+/g, ' ').trim()
+  q = q
+    .replace(/\s+im Themenfeld\s+[a-zäöüß0-9 -]+$/i, '')
+    .replace(/\s+\(([a-zäöüß-]{3,24})\)\s*$/i, '')
+    .replace(/\?+$/g, '')
+    .trim()
+
+  const quoted = q.match(
+    /^(?:([^:?]{1,60}):\s*)?(?:Was bedeutet(?: der Fachbegriff)?|Was versteht man unter)\s*[„""']([^„""']+)[“""']\s*$/i,
+  )
+  const bare = !quoted
+    ? q.match(/^(?:([^:?]{1,60}):\s*)?Was bedeutet\s+(.+)$/i)
+    : null
+
+  const label = (quoted?.[1] ?? bare?.[1] ?? '').trim()
+  const term = (quoted?.[2] ?? bare?.[2] ?? opts?.term ?? '').replace(/\?+$/g, '').trim()
+  const prefix = opts?.prefix ?? ''
+  const ctx = `${label} ${prefix}`
+
+  if (term && (quoted || bare)) {
+    if (
+      /schutz|artenschutz|naturschutz/i.test(ctx) ||
+      /:(?:vg|kr|fi|amph)?schutz\b|saeug.*schutz/i.test(prefix)
+    ) {
+      const area = /vogel|vgschutz/i.test(ctx)
+        ? 'zum Vogelschutz'
+        : /kriech|krschutz/i.test(ctx)
+          ? 'zum Kriechtierschutz'
+          : /saeug/i.test(ctx)
+            ? 'zum Säugetierschutz'
+            : /fisch|fischschutz/i.test(ctx)
+              ? 'zum Fischschutz'
+              : /lurch|amph/i.test(ctx)
+                ? 'zum Lurchschutz'
+                : 'zum Artenschutz'
+      return fixGermanPromptCapitalization(`Welche Maßnahme ${area} beschreibt „${term}“?`)
+    }
+    if (/schnabel|nahrung|merkmal|körperbau|aufbau|anatom|feder|skelett|gebiss/i.test(ctx)) {
+      return fixGermanPromptCapitalization(`Was ist ein typisches Merkmal von „${term}“?`)
+    }
+    if (/verhalten|sinn|sozial|fortpflanz/i.test(ctx)) {
+      const hint =
+        domainHintFromPrefix(prefix) ||
+        (/fortpflanz/i.test(ctx) ? 'bei der Fortpflanzung' : 'im Verhalten')
+      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
+    }
+    if (/arbeitsweise|methode|experiment|beobachten|nachweis/i.test(ctx)) {
+      return fixGermanPromptCapitalization(`Was beschreibt die Arbeitsweise „${term}“?`)
+    }
+    // Themenhinweis aus Prefix — Cross-Topic-Stems trennen, kein Meta-„Themenfeld“.
+    const hint = domainHintFromPrefix(prefix)
+    if (hint) {
+      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
+    }
+    return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ fachlich?`)
+  }
+
+  q = q.replace(/^Fachbegriff:\s*/i, '')
+  if (
+    !q.endsWith('?') &&
+    (/^(was|welche|welcher|welches|wo|wie|warum|wozu)\b/i.test(q) ||
+      /:\s*(was|welche|welcher|welches|wo|wie|warum|wozu)\b/i.test(q))
+  ) {
+    q = `${q}?`
+  }
+  return fixGermanPromptCapitalization(q)
+}
+
+/** Pair/MC-Stem ohne Meta-„Was bedeutet …?“. */
+export function applicationPromptForTerm(term: string, prefix?: string): string {
+  return rewriteDefinitionStylePrompt(`Was bedeutet „${term.trim()}“?`, { term, prefix })
+}
+
+/** Lesbarer Themenhinweis aus conceptPrefix — nie „im Themenfeld <slug>“. */
+export function domainHintFromPrefix(prefix?: string): string {
+  if (!prefix) return ''
+  const theme = themePhraseFromPrefix(prefix)
+  if (theme) return theme
+  const p = prefix.toLowerCase()
+  const rules: Array<[RegExp, string]> = [
+    [/verhalten|saeugverh/, 'im Verhalten'],
+    [/schnabel/, 'an der Schnabelform'],
+    [/(?:^|:)(?:vg|kr|fi|amph)?schutz\b|saeug.*schutz|artenschutz|naturschutz/, 'im Artenschutz'],
+    [/fortpflanz|saeugfort/, 'bei der Fortpflanzung'],
+    [/:meta\b|metamorph/, 'bei der Metamorphose'],
+    [/merkmal/, 'als Körpermerkmal'],
+    [/zuordnung/, 'bei der Zuordnung'],
+    [/systematik/, 'in der Systematik'],
+    [/vogel|voegel/, 'bei Vögeln'],
+    [/lurch/, 'bei Lurchen'],
+    [/fisch/, 'bei Fischen'],
+    [/saeug/, 'bei Säugetieren'],
+    [/kriech|reptil/, 'bei Kriechtieren'],
+    [/insekt/, 'bei Insekten'],
+    [/wirbellos/, 'bei Wirbellosen'],
+    [/samenpflanze|blüte|bluete|baum|baeume/, 'bei Pflanzen'],
+  ]
+  for (const [re, phrase] of rules) {
+    if (re.test(p)) return phrase
+  }
+  // Letztes sinnvolles Segment → kurze fachliche Einordnung (trennt Geschwister-Topics)
+  const parts = p.split(':').filter(
+    (s) =>
+      s &&
+      !/^(bio|ge|ph|ma|fill|ov|xpaar|lb\w*|k\d+)$/.test(s) &&
+      !/^[fpt]\d+$/.test(s) &&
+      !/^\d+$/.test(s),
+  )
+  const last = parts[parts.length - 1] ?? ''
+  if (!last || last.length < 4 || isInternalTopicAbbrev(last) || /\d/.test(last)) return ''
+  const w = last.replace(/-/g, ' ')
+  const titled = w.charAt(0).toUpperCase() + w.slice(1)
+  if (/ung$|ik$|heit$|keit$|ose$/.test(w)) return `in der ${titled}`
+  if (/en$/.test(w)) return `bei ${titled}`
+  return `bei ${titled}`
 }
 
 /**
@@ -469,10 +622,8 @@ export function stripBioBankSlug(text: string): string {
         ? ' '
         : ` (${slug})`,
     )
-    // Leaked „im Themenfeld krschutz“ / bare abbrev tokens
-    .replace(/\bim Themenfeld\s+([a-z]{4,14})\b/gi, (_, tok: string) =>
-      isInternalTopicAbbrev(tok) ? '' : `im Themenfeld ${tok}`,
-    )
+    // „im Themenfeld …“ ist Meta/Slug — nie in der UI belassen
+    .replace(/\bim Themenfeld\s+[a-zäöüß0-9 -]{2,40}\b/gi, '')
     .replace(/\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b/gi, '')
     .replace(/\s+/g, ' ')
     .trim()
@@ -667,10 +818,7 @@ export function themePhraseFromPrefix(prefix?: string): string {
         const mapped = COMPACT_PREFIX_THEME[tail.replace(/-/g, '')]
         return mapped ?? ''
       }
-      // Nur lesbare, hyphenierte oder klar deutsche Wörter — nie Roh-Kurzformen
-      if (/^[a-zäöüß]+(?:-[a-zäöüß]+)+$/i.test(tail) || /^[a-zäöüß]{5,}$/i.test(tail)) {
-        return `im Themenfeld ${tail.replace(/-/g, ' ')}`
-      }
+      // Kein „im Themenfeld <slug>“ mehr — lieber leer als Meta-/Slug-Leak.
       return ''
     }
   }
@@ -688,21 +836,27 @@ export function themePhraseFromPrefix(prefix?: string): string {
   if (!last || /\d/.test(last) || isInternalTopicAbbrev(last)) return ''
   // Sehr kurze Keys (veg, hyp, …) ohne Mapping nie roh ausgeben
   if (lastKey.length <= 3) return ''
-  // Lesbare Segmente (blut, herz, fische, saeugetiere, …)
-  if (/^[a-zäöüß]+(?:-[a-zäöüß]+)*$/i.test(last) && last.length >= 4) {
-    return `im Themenfeld ${last.replace(/-/g, ' ')}`
-  }
+  // Kein generisches „im Themenfeld …“ — nur explizit gemappte Phrasen oben.
   return ''
 }
 
 function withTheme(question: string, prefix?: string): string {
   const theme = themePhraseFromPrefix(prefix)
-  if (!theme) return question
+  if (!theme || /^im Themenfeld\b/i.test(theme)) return question
   const q = question.replace(/\?+$/, '').trim()
   if (new RegExp(theme.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(q)) return question
-  // Nur bei generischen Bedeutungsfragen — sonst Inhalt nicht verbiegen.
-  if (!/was bedeutet|was beschreibt|fachbegriff/i.test(q)) return question
-  return `${q} ${theme}?`
+  // Umschriebene Schulstoff-Fragen nicht mit „im Artenschutz“ o. Ä. aufblähen.
+  if (
+    /was bedeutet|welche maßnahme|was kennzeichnet|was ist ein typisches merkmal|was beschreibt die arbeitsweise/i.test(
+      q,
+    )
+  ) {
+    return question
+  }
+  if (!/was beschreibt|fachbegriff|welcher fachbegriff/i.test(q)) {
+    return question
+  }
+  return fixGermanPromptCapitalization(`${q} ${theme}?`)
 }
 
 /**
@@ -715,14 +869,18 @@ export function bioFactQuestion(
   prefix?: string,
 ): string {
   const base = stripBioBankSlug(f.prompt)
+  const termHint = stripBioBankSlug(f.flashFront || f.gapAccepted?.[0] || '').trim()
   if (mode === 'mc' || mode === 'flash') {
     const q = (base || f.prompt).trim()
     // Short stems like „Onkogen?“ / „Helicase?“ fail length/quality gates.
     if (q.length <= 10) {
-      const hint = stripBioBankSlug(f.flashFront || q.replace(/[?？]+$/g, '')).trim() || 'Begriff'
-      return withTheme(`Was bedeutet der Fachbegriff „${hint}“`, prefix)
+      const hint = termHint || q.replace(/[?？]+$/g, '').trim() || 'Begriff'
+      return withTheme(applicationPromptForTerm(hint, prefix), prefix)
     }
-    return withTheme(q, prefix)
+    return withTheme(
+      rewriteDefinitionStylePrompt(q, { term: termHint || undefined, prefix }),
+      prefix,
+    )
   }
 
   const accepted = [
@@ -737,7 +895,15 @@ export function bioFactQuestion(
   if (/Fachbegriff\s*:/i.test(gap) && gap.includes('___') && accepted.length > 0) {
     return withTheme('Welcher Fachbegriff passt zur Erklärung', prefix)
   }
-  return withTheme(base || 'Welcher Fachbegriff passt zur Erklärung', prefix)
+  const rewritten = rewriteDefinitionStylePrompt(base || 'Welcher Fachbegriff passt zur Erklärung', {
+    term: termHint || undefined,
+    prefix,
+  })
+  // Gap/cloze: keine Term-Nennung im Stem, wenn der Term die Lücke ist.
+  if (termHint && bioQuestionSpoilsTerm(rewritten, accepted)) {
+    return withTheme('Welcher Fachbegriff passt zur Erklärung', prefix)
+  }
+  return withTheme(rewritten, prefix)
 }
 
 /** Drop later pairs that reuse an earlier term (case-insensitive). */
@@ -760,13 +926,25 @@ export function sanitizeBioBank(bank: BioBank): BioBank {
     (p) => !isSloganOrStubMeaning(p.term, p.meaning),
   )
   const facts = bank.facts
-    ?.map((f) => ({
-      ...f,
-      prompt: stripBioBankSlug(f.prompt),
-      flashFront: f.flashFront ? stripBioBankSlug(f.flashFront) : undefined,
-    }))
+    ?.map((f) => {
+      const cleaned = stripBioBankSlug(f.prompt)
+      const flashFront = f.flashFront ? stripBioBankSlug(f.flashFront) : undefined
+      const termHint =
+        flashFront ||
+        cleaned.match(/[„""']([^„""']+)[“""']/)?.[1] ||
+        f.gapAccepted?.[0] ||
+        ''
+      return {
+        ...f,
+        prompt: rewriteDefinitionStylePrompt(cleaned, {
+          term: termHint.trim() || undefined,
+          prefix: bank.conceptPrefix,
+        }),
+        flashFront,
+      }
+    })
     .filter((f) => {
-      const termHint = f.flashFront || f.prompt.match(/„([^“]+)“/)?.[1] || ''
+      const termHint = f.flashFront || f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1] || ''
       if (termHint && isSloganOrStubMeaning(termHint, f.answer)) return false
       if (isSloganOrStubMeaning(f.answer, f.answer)) return false
       // Thin-Fill-Prompt-Schablonen
@@ -893,8 +1071,12 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             : wrong.slice(0, 3)
         const flashQ = bioFactQuestion(f, 'flash', prefix)
         const frontBase = stripBioBankSlug(f.flashFront ?? flashQ)
-        const theme = themePhraseFromPrefix(prefix)
-        const front = theme && frontBase.length < 40 ? `${frontBase} (${theme})` : frontBase
+        const hint = domainHintFromPrefix(prefix)
+        // Domain-Hinweis auf der Vorderseite — trennt Geschwister-Topics (Stem-Isolation)
+        const front =
+          hint && frontBase.length < 48 && !frontBase.toLowerCase().includes(hint.toLowerCase())
+            ? `${frontBase} (${hint})`
+            : frontBase
         return flashcardBioTask({
           question: flashQ,
           front,
@@ -934,25 +1116,6 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           bank.pairs!.filter((x) => x.meaning !== p.meaning).map((x) => x.meaning),
         ).slice(0, 3)
         while (wrong.length < 3) wrong.push(`Andere Bedeutung (${wrong.length})`)
-        const theme = themePhraseFromPrefix(prefix)
-        let themeBit =
-          theme && !/^im Themenfeld\b/i.test(theme) ? ` ${theme}` : ''
-        if (!themeBit && prefix) {
-          const tip = prefix.split(':').filter(Boolean).pop() ?? ''
-          // Keine Topic-ID-Leaks (bi-gk11-lb2-redox) und keine Rohkürzel.
-          if (
-            tip &&
-            tip.length >= 4 &&
-            tip.length <= 18 &&
-            !isInternalTopicAbbrev(tip) &&
-            !/^\d+$/.test(tip) &&
-            !/^(bi|ge|ph|ma|os|st|sks)-/i.test(tip) &&
-            !/-lb\d/i.test(tip) &&
-            !/\d/.test(tip)
-          ) {
-            themeBit = ` (${tip.replace(/-/g, ' ')})`
-          }
-        }
         const term = p.term.trim()
         const meaning = p.meaning.trim()
         // Schlechte Thin-Fill-Paare (term „lage“, abgeschnittene meanings) überspringen.
@@ -986,7 +1149,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           ).slice(0, 3)
           while (altWrong.length < 3) altWrong.push(`Andere Bedeutung (${altWrong.length})`)
           return mcTask(rng, {
-            question: `Was bedeutet „${alt.term.trim()}“${themeBit}?`,
+            question: applicationPromptForTerm(alt.term.trim(), prefix),
             correct: alt.meaning.trim(),
             wrong: altWrong,
             explanation: `${alt.term}: ${alt.meaning}`,
@@ -1000,7 +1163,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           })
         }
         return mcTask(rng, {
-          question: `Was bedeutet „${term}“${themeBit}?`,
+          question: applicationPromptForTerm(term, prefix),
           correct: meaning,
           wrong,
           explanation: `${term}: ${meaning}`,
@@ -1369,7 +1532,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
         const others = pool.filter((x) => x.meaning !== a.meaning && x.term !== a.term)
         if (!others.length) {
           return mcTask(rng, {
-            question: `Was bedeutet „${a.term}“?`,
+            question: applicationPromptForTerm(a.term, prefix),
             correct: a.meaning,
             wrong: pool.filter((x) => x.meaning !== a.meaning).map((x) => x.meaning).slice(0, 3),
             explanation: `${a.term}: ${a.meaning}`,
@@ -1456,7 +1619,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
               })
             }
             return mcTask(rng, {
-              question: `Was bedeutet „${a.term}“?`,
+              question: applicationPromptForTerm(a.term, prefix),
               correct: a.meaning,
               wrong: pool.filter((x) => x.meaning !== a.meaning).map((x) => x.meaning).slice(0, 3),
               explanation: `${a.term}: ${a.meaning}`,
@@ -1469,9 +1632,9 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
           const donor =
             pool.find((x) => x.term !== bad.term && x.meaning !== bad.meaning) ?? g1
           const wrongMeaning = donor.meaning
-          const faulty = `${bad.term} bedeutet: ${wrongMeaning}.`
-          const good1 = `${g1.term} bedeutet: ${g1.meaning}.`
-          const good2 = `${g2.term} bedeutet: ${g2.meaning}.`
+          const faulty = `${bad.term}: ${wrongMeaning}.`
+          const good1 = `${g1.term}: ${g1.meaning}.`
+          const good2 = `${g2.term}: ${g2.meaning}.`
           const norm = (s: string) =>
             s
               .replace(/\s+/g, '')
@@ -1489,7 +1652,7 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             norm(wrongMeaning) === norm(bad.meaning)
           ) {
             return mcTask(rng, {
-              question: `Was bedeutet „${bad.term}“?`,
+              question: applicationPromptForTerm(bad.term, prefix),
               correct: bad.meaning,
               wrong: [g1.meaning, g2.meaning, donor.meaning]
                 .filter((m) => m !== bad.meaning)

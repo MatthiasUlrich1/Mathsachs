@@ -18,6 +18,11 @@ import { GESCHICHTE_LEHRPLAN_TEILASPEKTE_GENERATORS } from './geschichteLehrplan
 import { GESCHICHTE_DICHTE_FILL_PASS1_GENERATORS } from './geschichteDichteFillPass1'
 import { GESCHICHTE_SCHULSTOFF_DENSE_GENERATORS } from './geschichteSchulstoffDense'
 import type { Topic } from './types'
+import {
+  fixGermanPromptCapitalization,
+  redactSolutionSpoilers,
+  rewriteDefinitionStylePrompt,
+} from './biologieBank'
 
 /**
  * Layer-Reihenfolge: generische Densify zuerst, themenreine Qualitäts-/Schulstoffbanken zuletzt
@@ -118,10 +123,18 @@ function withGeAuditSafe(gen: Topic['generate']): Topic['generate'] {
       }
       task = gen(rng)
     }
-    const q = scrubGeMeta(task.question ?? '')
+    let q = fixGermanPromptCapitalization(
+      rewriteDefinitionStylePrompt(scrubGeMeta(task.question ?? '')),
+    )
+    const ui = task.interactive?.type
+    if (ui !== 'imageHotspot' && ui !== 'iconBelong' && ui !== 'sourceQuote') {
+      q = redactSolutionSpoilers(q, String(task.solution ?? ''))
+    }
     const props = { ...(task.interactive?.props as Record<string, unknown> | undefined) }
     for (const key of ['front', 'instruction', 'statement', 'claim', 'sourceText', 'backHint'] as const) {
-      if (typeof props[key] === 'string') props[key] = scrubGeMeta(String(props[key]))
+      if (typeof props[key] === 'string') {
+        props[key] = fixGermanPromptCapitalization(scrubGeMeta(String(props[key])))
+      }
     }
     let text = (task.fachwissen?.text ?? '').trim()
     text = `${text} Bezug zur Aufgabe: ${q} Lösung: ${task.solution ?? ''}`.replace(/\s+/g, ' ').trim()

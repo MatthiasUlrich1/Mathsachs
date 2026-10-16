@@ -21,6 +21,7 @@ import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
 import { makePhysikTopicGenerate } from './physikTopicFactory'
 import { rewritePhysikPrompt } from './physikBank'
+import { fixGermanPromptCapitalization, redactSolutionSpoilers } from './biologieBank'
 import { mixedVariants } from './taskHelpers'
 import type { Topic, UserInput } from './types'
 
@@ -29,7 +30,7 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
   return (rng) => {
     const task = gen(rng)
     const fixMinus = (s: string) => s.replace(/(^|[^\d.,])-(\d)/g, '$1−$2')
-    let q = rewritePhysikPrompt(task.question || '')
+    let q = fixGermanPromptCapitalization(rewritePhysikPrompt(task.question || ''))
     // Meta-Fragen („Wozu dient …“) → anwendungsnahe Formulierung
     q = q
       .replace(/^Wozu dient\b/i, 'Welche Rolle hat')
@@ -38,6 +39,7 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
     q = q
       .replace(/^Was versteht man unter\s+(einem|einer|einem|dem|der|das)?\s*/i, 'Welche Aussage beschreibt fachlich ')
       .replace(/^Was bedeutet\s+/i, 'Welche Aussage beschreibt ')
+    q = redactSolutionSpoilers(q, String(task.solution ?? ''))
     // Formel nicht als Rechenweg vorgeben (Spoiler)
     q = q.replace(
       /\b(mit|nach|über|gemäß|aus|durch)\s+(der\s+formel\s+)?([A-Za-zρηλΔωφτ][\w_]{0,4}\s*=\s*[A-Za-zρηλΔωφτ½√][\w_]{0,4}\s*[·*/×+−-]\s*[A-Za-zρηλΔωφτ(½√][^\s?]*)/i,

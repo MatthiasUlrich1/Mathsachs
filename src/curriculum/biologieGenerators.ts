@@ -38,7 +38,13 @@ import { BIOLOGIE_OS_GAPS_FILL_GENERATORS } from './biologieOsGapsFill'
 import { BIOLOGIE_OS_DENSITY_FILL_GENERATORS } from './biologieOsDensityFill'
 import { BIOLOGIE_THIN_FILL_BANKS, withThinFill } from './biologieThinFill'
 import { LEHRPLAN_TOPIC_GAP_GENERATORS } from './lehrplanTopicGaps'
-import { bankGenerate, type BioBank } from './biologieBank'
+import {
+  bankGenerate,
+  fixGermanPromptCapitalization,
+  redactSolutionSpoilers,
+  rewriteDefinitionStylePrompt,
+  type BioBank,
+} from './biologieBank'
 import type { Topic } from './types'
 
 const BIOLOGIE_LEHRPLAN_TOPIC_GAPS = Object.fromEntries(
@@ -58,11 +64,14 @@ function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
         .replace(/\s*\((?:k\d+|lk\d+|gk\d+|ge|bi|ph)[-_][^)]+\)\s*/gi, ' ')
         .replace(/\s+/g, ' ')
         .trim()
-    let q = scrubBioMeta(task.question ?? '')
+    let q = fixGermanPromptCapitalization(
+      rewriteDefinitionStylePrompt(scrubBioMeta(task.question ?? '')),
+    )
     const sol = String(task.solution ?? '').trim()
-    // Spoiler: kurze Antwort steht im Stem
-    if (sol.length >= 6 && sol.split(/\s+/).length <= 4 && q.toLowerCase().includes(sol.toLowerCase())) {
-      q = q.replace(new RegExp(sol.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…')
+    const ui = task.interactive?.type
+    // Spoiler nur an Wortgrenzen; Hotspot/Icon nennen die gesuchte Bezeichnung absichtlich.
+    if (ui !== 'imageHotspot' && ui !== 'iconBelong') {
+      q = redactSolutionSpoilers(q, sol)
     }
     // Optionslisten deduplizieren (pairMatch / slots / choices)
     let interactive = task.interactive

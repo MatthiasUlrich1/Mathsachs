@@ -6,13 +6,17 @@ import { buildUniqueTaskRound, taskContentIds } from './uniqueRound'
 import { BIOLOGIE_GENERATORS } from './biologieGenerators'
 import { isRedundantFlashcardInstruction } from '../components/FlashcardFlip'
 import {
+  applicationPromptForTerm,
   bankGenerate,
   bioFactGapModeSafe,
   bioFactQuestion,
   bioGapTemplateSpoils,
   bioQuestionSpoilsTerm,
   bioTextContainsAcceptedTerm,
+  fixGermanPromptCapitalization,
   isInternalTopicAbbrev,
+  redactSolutionSpoilers,
+  rewriteDefinitionStylePrompt,
   stripBioBankSlug,
   themePhraseFromPrefix,
 } from './biologieBank'
@@ -360,10 +364,36 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     ]) {
       const phrase = themePhraseFromPrefix(prefix)
       expect(phrase).not.toMatch(/krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn/i)
+      expect(phrase).not.toMatch(/im Themenfeld/i)
       expect(phrase === '' || /[äöüß ]|Artenschutz|Verhalten|Sinnen|Sozial|Vogel|Kriech/i.test(phrase)).toBe(
         true,
       )
     }
+    expect(themePhraseFromPrefix('bio:k5:schnabel')).not.toMatch(/Themenfeld/i)
+  })
+
+  it('rewrites meta Was-bedeutet / Themenfeld prompts into Schulstoff questions', () => {
+    expect(
+      rewriteDefinitionStylePrompt('Schnabelformen: Was bedeutet „Körnerschnabel“?', {
+        prefix: 'bio:k5:schnabel',
+      }),
+    ).toMatch(/Merkmal von „Körnerschnabel“/i)
+    expect(
+      rewriteDefinitionStylePrompt('Vogelschutz: Was bedeutet „Nistkasten“?', {
+        prefix: 'bio:k5:vgschutz',
+      }),
+    ).toMatch(/Maßnahme zum Vogelschutz.*Nistkasten/i)
+    expect(applicationPromptForTerm('Körnerschnabel', 'bio:k5:schnabel')).not.toMatch(/Was bedeutet/i)
+    expect(fixGermanPromptCapitalization('was ist ein merkmal?')).toBe('Was ist ein merkmal?')
+  })
+
+  it('redactSolutionSpoilers keeps word boundaries (no …ieren)', () => {
+    expect(redactSolutionSpoilers('Welches Symbol steht für das Experimentieren?', 'Experiment')).toBe(
+      'Welches Symbol steht für das Experimentieren?',
+    )
+    expect(redactSolutionSpoilers('Die Antwort Experiment passt.', 'Experiment')).toBe(
+      'Die Antwort … passt.',
+    )
   })
 
   it('gap/cloze meaning→term does not spoil the Fachbegriff in the question', () => {
@@ -383,7 +413,10 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
 
     const mcQ = bioFactQuestion(fact, 'mc')
     expect(mcQ).toContain('Laubbaum')
+    expect(mcQ).not.toMatch(/Was bedeutet/i)
+    expect(mcQ).not.toMatch(/im Themenfeld/i)
     expect(mcQ).not.toMatch(/\(baeume\)/)
+    expect(mcQ).toMatch(/Merkmal|kennzeichnet|Maßnahme/i)
   })
 
   it('detects accepted answers already present in gap template or unquoted stem', () => {

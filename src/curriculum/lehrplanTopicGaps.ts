@@ -764,7 +764,7 @@ const bioK5Arbeitsweisen: BioBank = {
   icons: [
     {
       concept: "bio:k5:arbeitsweisen:ic1",
-      question: "Welches Symbol steht für das Experimentieren?",
+      question: "Welches Symbol steht für die Arbeitsweise Experimentieren?",
       prompt: "Arbeitsweise wählen",
       options: [
         { id: "exp", label: "Experiment", icon: "🔬" },

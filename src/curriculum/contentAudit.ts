@@ -608,7 +608,10 @@ const TRACKING_ID_RE = /(?:^|[\s·•])Nr\d{4,}\b/i
 
 /** Topic-/Bank-Kurzformen, die nie in der UI stehen dürfen (keine echten Wörter wie „Säugetiere“). */
 const TOPIC_ABBREV_RE =
-  /\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b|im Themenfeld\s+(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b/i
+  /\b(krschutz|vgschutz|saeugverh|saeugsoc|saeugsinn|saeugmerk|saeugfort)\b|im Themenfeld\b/i
+
+/** Abgeschnittene Spoiler-Ellipsen mitten im Wort („…ieren“) — verboten. */
+const MID_WORD_ELLIPSIS_RE = /…[\p{L}]/u
 
 /** Sichtbare Felder, in denen keine internen IDs stehen dürfen. */
 export function visibleTaskTexts(task: Task): string[] {
@@ -648,6 +651,9 @@ export function findTopicAbbrevIssues(task: Task): string[] {
   const hits: string[] = []
   for (const t of visibleTaskTexts(task)) {
     if (TOPIC_ABBREV_RE.test(t)) hits.push(`Topic-Abkürzung im Text: „${t.slice(0, 100)}“`)
+    if (MID_WORD_ELLIPSIS_RE.test(t)) {
+      hits.push(`Abgeschnittene Abkürzung/Ellipse im Wort: „${t.slice(0, 100)}“`)
+    }
   }
   return hits
 }

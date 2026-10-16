@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.107] – 2026-10-16
+
+### Behoben
+- **Meta-Fragen raus (alle Lehrpläne):** „Was bedeutet … im Themenfeld …?“ /
+  „Vogelschutz: Was bedeutet „Nistkasten“?“ → echte Schulstoff-Fragen
+  (Merkmal/Maßnahme/Kennzeichnung). Spoiler-Redaktion nur noch an Wortgrenzen
+  (kein „…ieren“ mehr). Großschreibung am Satzanfang; Audit gegen `im Themenfeld`
+  und Ellipsen mitten im Wort.
+
 ## [0.28.106] – 2026-10-16
 
 ### Geändert

@@ -3,7 +3,7 @@
  * Definitions-Prompts („Was bedeutet …?“) werden in Anwendungskontext umformuliert.
  * siehe `.cursor/rules/curriculum-aufgaben-qualitaet.mdc`
  */
-import { stripBioMetaWissen, type BioBank } from './biologieBank'
+import { redactSolutionSpoilers, stripBioMetaWissen, type BioBank } from './biologieBank'
 import { mathBankGenerate } from './mathBank'
 import type { Topic } from './types'
 
@@ -105,10 +105,8 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     ...(bank.facts?.map((f) => {
       let prompt = rewritePhysikPrompt(f.prompt)
       const ans = String(f.answer ?? '').trim()
-      // Spoiler: Antwortwort steht im Stem (z. B. Hinweis „Photonenenergie …“)
-      if (ans.length >= 6 && prompt.toLowerCase().includes(ans.toLowerCase())) {
-        prompt = prompt.replace(new RegExp(ans.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi'), '…')
-      }
+      // Spoiler: Antwortwort steht im Stem — nur an Wortgrenzen
+      prompt = redactSolutionSpoilers(prompt, ans)
       return {
         ...f,
         prompt,
