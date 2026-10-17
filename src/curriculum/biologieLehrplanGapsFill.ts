@@ -392,7 +392,7 @@ export const k5VoegelVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgverh:f0",
-      prompt: "Was bewirkt das Balz?",
+      prompt: "Was bewirkt die Balz?",
       answer: "Werbeverhalten vor der Paarung.", wrong: ["Verteidigter Lebensraum.", "Saisonaler Ortswechsel.", "Jungvogel lange nestabhängig."],
       explanation: "Balz: Werbeverhalten vor der Paarung",
       wissen: fw(
@@ -491,7 +491,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f9",
-      prompt: "Wozu dient das Imponieren?",
+      prompt: "Was kennzeichnet das Imponieren?",
       answer: "Zeigen von Stärke oder Status.", wrong: ["Werbeverhalten vor der Paarung.", "Verteidigter Lebensraum.", "Saisonaler Ortswechsel."],
       explanation: "Imponieren: Zeigen von Stärke oder Status",
       wissen: fw(
@@ -680,7 +680,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f9",
-      prompt: "Was kennzeichnet das Schonzeit?",
+      prompt: "Was kennzeichnet die Schonzeit?",
       answer: "Zeitlicher Schutz vor Nutzung.", wrong: ["Künstliche Nisthilfe.", "Gehölzstreifen als Lebensraum.", "Nasses Schlüsselhabitat."],
       explanation: "Schonzeit: Zeitlicher Schutz vor Nutzung",
       wissen: fw(
@@ -691,7 +691,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f10",
-      prompt: "Welche Eigenschaft hat das Strukturvielfalt?",
+      prompt: "Welche Eigenschaft hat die Strukturvielfalt?",
       answer: "Viele Habitatstrukturen.", wrong: ["Künstliche Nisthilfe.", "Gehölzstreifen als Lebensraum.", "Nasses Schlüsselhabitat."],
       explanation: "Strukturvielfalt: Viele Habitatstrukturen",
       wissen: fw(
@@ -702,7 +702,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f11",
-      prompt: "Was kennzeichnet das Artenschutz?",
+      prompt: "Was kennzeichnet den Artenschutz?",
       answer: "Schutz einzelner Arten.", wrong: ["Künstliche Nisthilfe.", "Gehölzstreifen als Lebensraum.", "Nasses Schlüsselhabitat."],
       explanation: "Artenschutz: Schutz einzelner Arten",
       wissen: fw(

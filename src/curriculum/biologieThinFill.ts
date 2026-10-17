@@ -121,7 +121,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f9',
-      prompt: "Mit welchen Mitteln arbeitet das Milch?",
+      prompt: "Mit welchen Mitteln arbeitet die Milch?",
       answer: "Es sind die Samenzellen der Männchen, die die Eier im Wasser befruchten, männliche Geschlechtsprodukte.", wrong: ["Sie reguliert den Auftrieb vieler Knochenfische, reguliert die Schwebehöhe.", "Sie entzieht dem Wasser Sauerstoff und dient der Atmung.", "Sie verringert den Strömungswiderstand durch eine widerstandsarme Körperform, angepasstheit an Schwimmen."],
       explanation: 'Männliche Geschlechtsprodukte. Milch bedeutet: Samenzellen der Fische.',
       wissen: 'Männliche Geschlechtsprodukte. Milch bedeutet: Samenzellen der Fische. Merke: Milch — Samenzellen der Fische.',
@@ -780,7 +780,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f6',
-      prompt: "Mit welchen Mitteln arbeitet das Froschlurch?",
+      prompt: "Mit welchen Mitteln arbeitet der Froschlurch?",
       answer: "Es beschreibt ohne Schwanz als Adult, etwa frosch oder Kröte.", wrong: ["Es beschreibt larve atmet mit Kiemen, vor der Metamorphose.", "Sie ist die wasserlebende Larve der Lurche mit Kiemen und Schwanz.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um."],
       explanation: 'Frosch, Kröte. Froschlurch bedeutet: Ohne Schwanz als Adult.',
       wissen: 'Frosch, Kröte. Froschlurch bedeutet: Ohne Schwanz als Adult. Merke: Froschlurch — Ohne Schwanz als Adult.',
@@ -790,7 +790,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f7',
-      prompt: "Welche Eigenschaft hat das Schwanzlurch?",
+      prompt: "Welche Eigenschaft hat der Schwanzlurch?",
       answer: "Mit Schwanz als Adult.", wrong: ["Anderer Name für Lurch.", "Gasaustausch über feuchte Haut.", "Umwandlung Larve zu Adultform."],
       explanation: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult.',
       wissen: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult. Merke: Schwanzlurch — Mit Schwanz als Adult.',
@@ -1172,7 +1172,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f11',
-      prompt: "Welche Eigenschaft hat das Dottersack?",
+      prompt: "Welche Eigenschaft hat der Dottersack?",
       answer: "Nährstoffversorgung im Ei.", wrong: ["Anderer Name für Kriechtier.", "Trockene Hautbedeckung.", "Hauptatmung an Land."],
       explanation: 'Beim Embryo. Dottersack bedeutet: Nährstoffversorgung im Ei.',
       wissen: 'Beim Embryo. Dottersack bedeutet: Nährstoffversorgung im Ei. Merke: Dottersack — Nährstoffversorgung im Ei.',
@@ -1283,7 +1283,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f5',
-      prompt: "Mit welchen Mitteln arbeitet das Giftzahn?",
+      prompt: "Mit welchen Mitteln arbeitet der Giftzahn?",
       answer: "Bei manchen Schlangen.", wrong: ["Weniger Wasserverlust.", "Äußere Schuppe.", "Erwärmung des Körpers."],
       explanation: 'Beutefang/Verteidigung. Giftzahn bedeutet: Bei manchen Schlangen.',
       wissen: 'Beutefang/Verteidigung. Giftzahn bedeutet: Bei manchen Schlangen. Merke: Giftzahn — Bei manchen Schlangen.',
@@ -1605,7 +1605,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f3',
-      prompt: "Wozu dient das Embryo?",
+      prompt: "Wozu dient der Embryo?",
       answer: "Sich entwickelnder Organismus.", wrong: ["Samenübertragung im Körper.", "Ablegen der Schaleneier.", "Nährstoff im Ei."],
       explanation: 'Im Ei geschützt. Embryo bedeutet: Sich entwickelnder Organismus.',
       wissen: 'Im Ei geschützt. Embryo bedeutet: Sich entwickelnder Organismus. Merke: Embryo — Sich entwickelnder Organismus.',
@@ -1645,7 +1645,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f7',
-      prompt: "Mit welchen Mitteln arbeitet die Gelege?",
+      prompt: "Mit welchen Mitteln arbeitet das Gelege?",
       answer: "Anzahl abgelegter Eier.", wrong: ["Samenübertragung im Körper.", "Ablegen der Schaleneier.", "Nährstoff im Ei."],
       explanation: 'Artspezifisch. Gelege bedeutet: Anzahl abgelegter Eier.',
       wissen: 'Artspezifisch. Gelege bedeutet: Anzahl abgelegter Eier. Merke: Gelege — Anzahl abgelegter Eier.',
@@ -1655,7 +1655,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f8',
-      prompt: "Wozu dient das Nistplatz?",
+      prompt: "Wozu dient der Nistplatz?",
       answer: "Ort der Eiablage.", wrong: ["Samenübertragung im Körper.", "Ablegen der Schaleneier.", "Nährstoff im Ei."],
       explanation: 'Warm und geschützt. Nistplatz bedeutet: Ort der Eiablage.',
       wissen: 'Warm und geschützt. Nistplatz bedeutet: Ort der Eiablage. Merke: Nistplatz — Ort der Eiablage.',
@@ -1766,7 +1766,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f2',
-      prompt: "Mit welchen Mitteln arbeitet das Luftsack?",
+      prompt: "Mit welchen Mitteln arbeitet der Luftsack?",
       answer: "Teil des Atmungssystems.", wrong: ["Körperbedeckung der Vögel.", "Mundwerkzeug ohne Zähne.", "Leichte Knochenstruktur."],
       explanation: 'Effiziente Sauerstoffversorgung. Luftsack bedeutet: Teil des Atmungssystems.',
       wissen: 'Effiziente Sauerstoffversorgung. Luftsack bedeutet: Teil des Atmungssystems. Merke: Luftsack — Teil des Atmungssystems.',
@@ -1917,7 +1917,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f0',
-      prompt: "Mit welchen Mitteln arbeitet das Balz?",
+      prompt: "Was kennzeichnet die Balz?",
       answer: "Es ist das Werbeverhalten vor der Paarung zur Partnerwahl, etwa gesang oder Posieren.", wrong: ["Er wärmen der Küken unter Federn.", "Es beschreibt viele Nester nah beieinander.", "Sie beschreibt flugfähig geworden, ende der Nestphase."],
       explanation: 'Gesang, Posieren. Balz bedeutet: Paarungsverhalten.',
       wissen: 'Gesang, Posieren. Balz bedeutet: Paarungsverhalten. Merke: Balz — Paarungsverhalten.',
@@ -1927,7 +1927,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f1',
-      prompt: "Wozu dient die Gelege?",
+      prompt: "Wozu dient das Gelege?",
       answer: "Eizahl im Nest.", wrong: ["Paarungsverhalten.", "Wärmen der Eier.", "Nährstoff im Vogelei."],
       explanation: 'Artspezifisch. Gelege bedeutet: Eizahl im Nest.',
       wissen: 'Artspezifisch. Gelege bedeutet: Eizahl im Nest. Merke: Gelege — Eizahl im Nest.',
@@ -2007,7 +2007,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f9',
-      prompt: "Mit welchen Mitteln arbeitet das Koloniebrut?",
+      prompt: "Mit welchen Mitteln arbeitet die Koloniebrut?",
       answer: "Viele Nester nah beieinander.", wrong: ["Paarungsverhalten.", "Eizahl im Nest.", "Wärmen der Eier."],
       explanation: 'z. B. Möwen. Koloniebrut bedeutet: Viele Nester nah beieinander.',
       wissen: 'z. B. Möwen. Koloniebrut bedeutet: Viele Nester nah beieinander. Merke: Koloniebrut — Viele Nester nah beieinander.',
@@ -2138,7 +2138,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f5',
-      prompt: "Mit welchen Mitteln arbeitet das Plazenta?",
+      prompt: "Mit welchen Mitteln arbeitet die Plazenta?",
       answer: "Versorgung im Mutterleib.", wrong: ["Haarkleid.", "Erzeugt Milch.", "Stabile Körpertemperatur."],
       explanation: 'Bei den meisten Säugern. Plazenta bedeutet: Versorgung im Mutterleib.',
       wissen: 'Bei den meisten Säugern. Plazenta bedeutet: Versorgung im Mutterleib. Merke: Plazenta — Versorgung im Mutterleib.',
@@ -2299,7 +2299,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:skelett:f4',
-      prompt: "Welche Eigenschaft hat das Oberarmknochen?",
+      prompt: "Welche Eigenschaft hat der Oberarmknochen?",
       answer: "Knochen der oberen Extremität.", wrong: ["Knöcherne Kopfkapsel.", "Zentrale Körperachse.", "Knochen des Brustkorbs."],
       explanation: 'Zwischen Schulter und Ellbogen. Oberarmknochen bedeutet: Knochen der oberen Extremität.',
       wissen: 'Zwischen Schulter und Ellbogen. Oberarmknochen bedeutet: Knochen der oberen Extremität. Merke: Oberarmknochen — Knochen der oberen Extremität.',
@@ -2460,7 +2460,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f3',
-      prompt: "Mit welchen Mitteln arbeitet das Flughaut?",
+      prompt: "Mit welchen Mitteln arbeitet die Flughaut?",
       answer: "Gleitflug.", wrong: ["Angepasstheit an Graben.", "Schnelle Fortbewegung.", "Greifen und Klettern."],
       explanation: 'z. B. Gleitbeutler, Fledermausflügel. Flughaut bedeutet: Gleitflug.',
       wissen: 'z. B. Gleitbeutler, Fledermausflügel. Flughaut bedeutet: Gleitflug. Merke: Flughaut — Gleitflug.',
@@ -2470,7 +2470,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f4',
-      prompt: "Welche Eigenschaft hat das Schwimmhaut?",
+      prompt: "Welche Eigenschaft hat die Schwimmhaut?",
       answer: "Schwimmen.", wrong: ["Angepasstheit an Graben.", "Schnelle Fortbewegung.", "Greifen und Klettern."],
       explanation: 'z. B. Biber. Schwimmhaut bedeutet: Schwimmen.',
       wissen: 'z. B. Biber. Schwimmhaut bedeutet: Schwimmen. Merke: Schwimmhaut — Schwimmen.',
@@ -2601,7 +2601,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f0',
-      prompt: "Welche Eigenschaft hat das Artenschutz?",
+      prompt: "Welche Eigenschaft hat der Artenschutz?",
       answer: "Es umfasst Maßnahmen zum Erhalt bedrohter Arten und ihrer Lebensräume, gesetze und Biotope.", wrong: ["Es beschreibt weniger Störung, für sensible Arten.", "Es beschreibt eingebürgerte Art.", "Sie ist das Erbeuten und Fressen anderer Tiere durch Räuber, natürliche Regulation."],
       explanation: 'Gesetze und Biotope. Artenschutz bedeutet: Schutz bedrohter Arten.',
       wissen: 'Gesetze und Biotope. Artenschutz bedeutet: Schutz bedrohter Arten. Merke: Artenschutz — Schutz bedrohter Arten.',
@@ -2852,7 +2852,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:fortpflanzung:f8',
-      prompt: "Wozu dient das Geburt?",
+      prompt: "Wozu dient die Geburt?",
       answer: "Ende der Schwangerschaft.", wrong: ["Beginn der Geschlechtsreife.", "Abstoßung der Gebärmutterschleimhaut.", "unwillkürlicher Samenerguss."],
       explanation: 'Kind verlässt den Mutterleib. Geburt bedeutet: Ende der Schwangerschaft.',
       wissen: 'Kind verlässt den Mutterleib. Geburt bedeutet: Ende der Schwangerschaft. Merke: Geburt — Ende der Schwangerschaft.',
@@ -2963,7 +2963,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:systematik:f2',
-      prompt: "Wozu dient das Lurch?",
+      prompt: "Wozu dient der Lurch?",
       answer: "Oft Metamorphose und feuchte Haut.", wrong: ["Tier mit Wirbelsäule.", "Kiemen und Flossen.", "Trockene Hornschicht, Schalenei."],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
       wissen: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut.',
@@ -3194,7 +3194,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f8',
-      prompt: "Welche Eigenschaft hat das Nestbrut?",
+      prompt: "Welche Eigenschaft hat die Nestbrut?",
       answer: "Typisch Vögel.", wrong: ["Passt zu Fischen.", "Passt zu Vögeln.", "Passt zu Säugetieren."],
       explanation: 'Bebrütung. Nestbrut bedeutet: Typisch Vögel.',
       wissen: 'Bebrütung. Nestbrut bedeutet: Typisch Vögel. Merke: Nestbrut — Typisch Vögel.',
@@ -3285,7 +3285,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lbw:winter:f0',
-      prompt: "Welche Eigenschaft hat das Winterschlaf?",
+      prompt: "Welche Eigenschaft hat der Winterschlaf?",
       answer: "Tiefe Stoffwechselabsenkung.", wrong: ["Leichtere Absenkung mit Aufwachen.", "Bewegungslosigkeit bei Kälte.", "Saisonale Wanderung."],
       explanation: 'z. B. Igel, Fledermaus. Winterschlaf bedeutet: Tiefe Stoffwechselabsenkung.',
       wissen: 'z. B. Igel, Fledermaus. Winterschlaf bedeutet: Tiefe Stoffwechselabsenkung. Merke: Winterschlaf — Tiefe Stoffwechselabsenkung.',
@@ -3335,7 +3335,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f5',
-      prompt: "Wozu dient das Fettvorrat?",
+      prompt: "Wozu dient der Fettvorrat?",
       answer: "Es beschreibt energiespeicher für den Winter, vor dem Schlaf.", wrong: ["Es bleibt im Wintergebiet.", "Es ist der saisonale Ortswechsel zwischen Brut- und Überwinterungsgebiet.", "Es beschreibt dichteres Haarkleid."],
       explanation: 'Vor dem Schlaf. Fettvorrat bedeutet: Energiespeicher für den Winter.',
       wissen: 'Vor dem Schlaf. Fettvorrat bedeutet: Energiespeicher für den Winter. Merke: Fettvorrat — Energiespeicher für den Winter.',
@@ -3385,7 +3385,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:winter:f10',
-      prompt: "Mit welchen Mitteln arbeitet das Frostschutz?",
+      prompt: "Mit welchen Mitteln arbeitet der Frostschutz?",
       answer: "Vermeidung von Einfrieren.", wrong: ["Tiefe Stoffwechselabsenkung.", "Leichtere Absenkung mit Aufwachen.", "Bewegungslosigkeit bei Kälte."],
       explanation: 'Verhalten/Standort. Frostschutz bedeutet: Vermeidung von Einfrieren.',
       wissen: 'Verhalten/Standort. Frostschutz bedeutet: Vermeidung von Einfrieren. Merke: Frostschutz — Vermeidung von Einfrieren.',
@@ -3486,7 +3486,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f3',
-      prompt: "Mit welchen Mitteln arbeitet das Trias?",
+      prompt: "Mit welchen Mitteln arbeitet die Trias?",
       answer: "Es beschreibt ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern, frühe Dinosaurier.", wrong: ["Sie beschreibt jüngstes Mesozoikum bis zum großen Sauriersterben, ende vieler Dinosaurier.", "Es beschreibt mittleres Mesozoikum mit vielen Saurierarten, viele Saurierarten.", "Es verschwinden von Arten, massenaussterben K/T."],
       explanation: 'Frühe Dinosaurier. Trias bedeutet: Ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern.',
       wissen: 'Frühe Dinosaurier. Trias bedeutet: Ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern. Merke: Trias — Ältestes Mesozoikum-Zeitalter mit frühen Dinosauriern.',
@@ -3496,7 +3496,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:saurier:f4',
-      prompt: "Mit welchen Mitteln arbeitet das Jura?",
+      prompt: "Mit welchen Mitteln arbeitet den Jura?",
       answer: "Es beschreibt mittleres Mesozoikum mit vielen Saurierarten, viele Saurierarten.", wrong: ["Sie beschreibt jüngstes Mesozoikum bis zum großen Sauriersterben, ende vieler Dinosaurier.", "Sie fährten fossil.", "Es beschreibt z. B. Ichthyosaurier, an Wasser angepasst."],
       explanation: 'Viele Saurierarten. Jura bedeutet: Mittleres Mesozoikum mit vielen Saurierarten.',
       wissen: 'Viele Saurierarten. Jura bedeutet: Mittleres Mesozoikum mit vielen Saurierarten. Merke: Jura — Mittleres Mesozoikum mit vielen Saurierarten.',
@@ -3973,7 +3973,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f0',
-      prompt: "Wozu dient das Königin?",
+      prompt: "Wozu dient die Königin?",
       answer: "Eierlegendes Weibchen.", wrong: ["Aufgabenwechsel.", "Männliche Biene.", "Futterkommunikation."],
       explanation: 'Pheromone. Königin bedeutet: Eierlegendes Weibchen.',
       wissen: 'Pheromone. Königin bedeutet: Eierlegendes Weibchen. Merke: Königin — Eierlegendes Weibchen.',
@@ -3983,7 +3983,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f1',
-      prompt: "Wozu dient das Arbeiterin?",
+      prompt: "Wozu dient die Arbeiterin?",
       answer: "Aufgabenwechsel.", wrong: ["Eierlegendes Weibchen.", "Männliche Biene.", "Futterkommunikation."],
       explanation: 'Sammeln, Pflegen. Arbeiterin bedeutet: Aufgabenwechsel.',
       wissen: 'Sammeln, Pflegen. Arbeiterin bedeutet: Aufgabenwechsel. Merke: Arbeiterin — Aufgabenwechsel.',
@@ -4023,7 +4023,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb2:honigbiene:f5',
-      prompt: "Mit welchen Mitteln arbeitet das Nektar?",
+      prompt: "Mit welchen Mitteln arbeitet der Nektar?",
       answer: "Zuckerquelle.", wrong: ["Eierlegendes Weibchen.", "Aufgabenwechsel.", "Männliche Biene."],
       explanation: 'Wird zu Honig. Nektar bedeutet: Zuckerquelle.',
       wissen: 'Wird zu Honig. Nektar bedeutet: Zuckerquelle. Merke: Nektar — Zuckerquelle.',
@@ -4319,7 +4319,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k6:lb4:nahrung:f0',
-      prompt: "Mit welchen Mitteln wirkt das Produzent?",
+      prompt: "Mit welchen Mitteln wirkt der Produzent?",
       answer: "Bildet Biomasse.", wrong: ["Frisst andere Organismen.", "Zersetzt Totes.", "Lineare Beziehung."],
       explanation: 'Fotosynthese. Produzent bedeutet: Bildet Biomasse.',
       wissen: 'Fotosynthese. Produzent bedeutet: Bildet Biomasse. Merke: Produzent — Bildet Biomasse.',
@@ -4542,7 +4542,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f5',
-      prompt: "Mit welchen Mitteln arbeitet das Mykorrhiza?",
+      prompt: "Mit welchen Mitteln arbeitet die Mykorrhiza?",
       answer: "Pilz-Wurzel-Symbiose.", wrong: ["Ausbreitungszelle.", "Kleine Sporenpflanze.", "Wedel mit Sori."],
       explanation: 'Nährstofftausch. Mykorrhiza bedeutet: Pilz-Wurzel-Symbiose.',
       wissen: 'Nährstofftausch. Mykorrhiza bedeutet: Pilz-Wurzel-Symbiose. Merke: Mykorrhiza — Pilz-Wurzel-Symbiose.',
@@ -4675,7 +4675,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f1',
-      prompt: "Welche Eigenschaft hat das Mischwald?",
+      prompt: "Welche Eigenschaft hat der Mischwald?",
       answer: "Mehrere Baumarten.", wrong: ["Beeinträchtigung des Bestands.", "Nutzung mit Erhalt.", "Besondere Regeln."],
       explanation: 'Stabiler oft. Mischwald bedeutet: Mehrere Baumarten.',
       wissen: 'Stabiler oft. Mischwald bedeutet: Mehrere Baumarten. Merke: Mischwald — Mehrere Baumarten.',
@@ -4725,7 +4725,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:waldschutz:f6',
-      prompt: "Wozu dient das Bodenschutz?",
+      prompt: "Wozu dient der Bodenschutz?",
       answer: "Erosion vermeiden.", wrong: ["Beeinträchtigung des Bestands.", "Mehrere Baumarten.", "Nutzung mit Erhalt."],
       explanation: 'Wurzeln/Streu. Bodenschutz bedeutet: Erosion vermeiden.',
       wissen: 'Wurzeln/Streu. Bodenschutz bedeutet: Erosion vermeiden. Merke: Bodenschutz — Erosion vermeiden.',
@@ -5047,7 +5047,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k7:lbw:fitness:f4',
-      prompt: "Wozu dient das Puls?",
+      prompt: "Wozu dient der Puls?",
       answer: "Herzfrequenz.", wrong: ["Länger belastbar.", "Widerstand überwinden.", "Vorbereitung."],
       explanation: 'Belastungsanzeige. Puls bedeutet: Herzfrequenz.',
       wissen: 'Belastungsanzeige. Puls bedeutet: Herzfrequenz. Merke: Puls — Herzfrequenz.',
@@ -5399,7 +5399,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f5',
-      prompt: "Wozu dient das Dendrit?",
+      prompt: "Wozu dient der Dendrit?",
       answer: "Empfangender Fortsatz.", wrong: ["Nervenzelle.", "Langer Fortsatz.", "Übergang zwischen Zellen."],
       explanation: 'Eingang. Dendrit bedeutet: Empfangender Fortsatz.',
       wissen: 'Eingang. Dendrit bedeutet: Empfangender Fortsatz. Merke: Dendrit — Empfangender Fortsatz.',
@@ -5439,7 +5439,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:nerv:reflex:f9',
-      prompt: "Welche Eigenschaft hat das Reiz?",
+      prompt: "Welche Eigenschaft hat der Reiz?",
       answer: "Auslöser.", wrong: ["Nervenzelle.", "Langer Fortsatz.", "Übergang zwischen Zellen."],
       explanation: 'Physikalisch/chemisch. Reiz bedeutet: Auslöser.',
       wissen: 'Physikalisch/chemisch. Reiz bedeutet: Auslöser. Merke: Reiz — Auslöser.',
@@ -5520,7 +5520,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lb1:haut:f0',
-      prompt: "Welche Eigenschaft hat das Epidermis?",
+      prompt: "Welche Eigenschaft hat die Epidermis?",
       answer: "Oberhaut.", wrong: ["Lederhaut.", "Kühlung.", "Fettet Haut/Haar."],
       explanation: 'Schutzschicht. Epidermis bedeutet: Oberhaut.',
       wissen: 'Schutzschicht. Epidermis bedeutet: Oberhaut. Merke: Epidermis — Oberhaut.',
@@ -5620,7 +5620,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb1:haut:f10',
-      prompt: "Welche Eigenschaft hat das Hautflora?",
+      prompt: "Welche Eigenschaft hat die Hautflora?",
       answer: "Mikroben auf der Haut.", wrong: ["Oberhaut.", "Lederhaut.", "Kühlung."],
       explanation: 'Schutzrolle. Hautflora bedeutet: Mikroben auf der Haut.',
       wissen: 'Schutzrolle. Hautflora bedeutet: Mikroben auf der Haut. Merke: Hautflora — Mikroben auf der Haut.',
@@ -6073,7 +6073,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lbw:sinne:f4',
-      prompt: "Welche Eigenschaft hat das Hautsinn?",
+      prompt: "Welche Eigenschaft hat der Hautsinn?",
       answer: "Tasten, Temperatur, Schmerz.", wrong: ["Sehsinn.", "Hör- und Gleichgewichtssinn.", "Geruchssinn."],
       explanation: 'Rezeptoren. Hautsinn bedeutet: Tasten, Temperatur, Schmerz.',
       wissen: 'Rezeptoren. Hautsinn bedeutet: Tasten, Temperatur, Schmerz. Merke: Hautsinn — Tasten, Temperatur, Schmerz.',
@@ -6455,7 +6455,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f8',
-      prompt: "Welche Eigenschaft hat das Mischwald?",
+      prompt: "Welche Eigenschaft hat der Mischwald?",
       answer: "Mehrere Baumarten.", wrong: ["Lebewesen + Umwelt.", "Unbelebte Faktoren.", "Belebte Faktoren."],
       explanation: 'Strukturreich. Mischwald bedeutet: Mehrere Baumarten.',
       wissen: 'Strukturreich. Mischwald bedeutet: Mehrere Baumarten. Merke: Mischwald — Mehrere Baumarten.',
@@ -6465,7 +6465,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f9',
-      prompt: "Wozu dient das Stoffkreislauf?",
+      prompt: "Wozu dient der Stoffkreislauf?",
       answer: "Elemente zirkulieren.", wrong: ["Lebewesen + Umwelt.", "Unbelebte Faktoren.", "Belebte Faktoren."],
       explanation: 'C, N, H₂O. Stoffkreislauf bedeutet: Elemente zirkulieren.',
       wissen: 'C, N, H₂O. Stoffkreislauf bedeutet: Elemente zirkulieren. Merke: Stoffkreislauf — Elemente zirkulieren.',
@@ -6475,7 +6475,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:wald:gewaesser:f10',
-      prompt: "Wozu dient das Energiefluss?",
+      prompt: "Wozu dient der Energiefluss?",
       answer: "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab, verluste als Wärme.", wrong: ["Es beschreibt mehrere Baumarten.", "Es beschreibt schwebende Organismen, im Wasser.", "Es beschreibt unbelebte Umweltfaktoren wie Licht, Temperatur, Wasser und CO2."],
       explanation: 'Verluste als Wärme. Energiefluss bedeutet: Einbahnstraße.',
       wissen: 'Verluste als Wärme. Energiefluss bedeutet: Einbahnstraße. Merke: Energiefluss — Einbahnstraße.',
@@ -6576,7 +6576,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f3',
-      prompt: "Wozu dient das Destruent?",
+      prompt: "Wozu dient der Destruent?",
       answer: "Mineralisiert.", wrong: ["CO₂ ↔ organisch.", "Bindet CO₂.", "Setzt CO₂ frei."],
       explanation: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert.',
       wissen: 'Pilze/Bakterien. Destruent bedeutet: Mineralisiert. Merke: Destruent — Mineralisiert.',
@@ -6807,7 +6807,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stickstoff:f9',
-      prompt: "Mit welchen Mitteln arbeitet das Stickstoffkreislauf?",
+      prompt: "Mit welchen Mitteln arbeitet der Stickstoffkreislauf?",
       answer: "Globaler Stoffkreis.", wrong: ["N₂ zu Ammonium.", "Ammonium zu Nitrat.", "Nitrat zu N₂."],
       explanation: 'Luft–Boden–Lebewesen. Stickstoffkreislauf bedeutet: Globaler Stoffkreis.',
       wissen: 'Luft–Boden–Lebewesen. Stickstoffkreislauf bedeutet: Globaler Stoffkreis. Merke: Stickstoffkreislauf — Globaler Stoffkreis.',
@@ -6958,7 +6958,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:wiese:f7',
-      prompt: "Welche Eigenschaft hat das Kräuterreichtum?",
+      prompt: "Welche Eigenschaft hat der Kräuterreichtum?",
       answer: "Viele Pflanzenarten.", wrong: ["Nährstoffarme Wiese.", "Nährstoffreich.", "Schnittnutzung."],
       explanation: 'Struktur. Kräuterreichtum bedeutet: Viele Pflanzenarten.',
       wissen: 'Struktur. Kräuterreichtum bedeutet: Viele Pflanzenarten. Merke: Kräuterreichtum — Viele Pflanzenarten.',
@@ -7109,7 +7109,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f5',
-      prompt: "Wozu dient das Mykorrhiza?",
+      prompt: "Wozu dient die Mykorrhiza?",
       answer: "Symbiose mit Wurzeln.", wrong: ["Fadengeflecht.", "Hut/Stiel oft.", "Ausbreitungseinheit."],
       explanation: 'Nährstofftausch. Mykorrhiza bedeutet: Symbiose mit Wurzeln.',
       wissen: 'Nährstofftausch. Mykorrhiza bedeutet: Symbiose mit Wurzeln. Merke: Mykorrhiza — Symbiose mit Wurzeln.',
@@ -7169,7 +7169,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f11',
-      prompt: "Mit welchen Mitteln arbeitet das Speisepilz?",
+      prompt: "Mit welchen Mitteln arbeitet der Speisepilz?",
       answer: "Essbar.", wrong: ["Fadengeflecht.", "Hut/Stiel oft.", "Ausbreitungseinheit."],
       explanation: 'Nur bei sicherer ID. Speisepilz bedeutet: Essbar.',
       wissen: 'Nur bei sicherer ID. Speisepilz bedeutet: Essbar. Merke: Speisepilz — Essbar.',
@@ -7330,7 +7330,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f10',
-      prompt: "Mit welchen Mitteln arbeitet das Alkoholgehalt?",
+      prompt: "Mit welchen Mitteln arbeitet der Alkoholgehalt?",
       answer: "Produkt der Gärung.", wrong: ["Braugetreide.", "Gekeimte und gedarrte Gerste.", "Bitter- und Aromastoff."],
       explanation: 'Vol.-%. Alkoholgehalt bedeutet: Produkt der Gärung.',
       wissen: 'Vol.-%. Alkoholgehalt bedeutet: Produkt der Gärung. Merke: Alkoholgehalt — Produkt der Gärung.',
@@ -7431,7 +7431,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f3',
-      prompt: "Welche Eigenschaft hat das Genotyp?",
+      prompt: "Welche Eigenschaft hat den Genotyp?",
       answer: "Genetische Ausstattung.", wrong: ["Ausprägungsform eines Gens.", "Setzt sich im Phänotyp durch.", "Nur homozygot sichtbar."],
       explanation: 'Allele. Genotyp bedeutet: Genetische Ausstattung.',
       wissen: 'Allele. Genotyp bedeutet: Genetische Ausstattung. Merke: Genotyp — Genetische Ausstattung.',
@@ -7602,7 +7602,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f3',
-      prompt: "Welche Eigenschaft hat das Fitness?",
+      prompt: "Welche Eigenschaft hat die Fitness?",
       answer: "Relativer Fortpflanzungserfolg.", wrong: ["Unterschiedlicher Fortpflanzungserfolg.", "Unterschiede in der Population.", "Neue Allele."],
       explanation: 'Nicht Sport. Fitness bedeutet: Relativer Fortpflanzungserfolg.',
       wissen: 'Nicht Sport. Fitness bedeutet: Relativer Fortpflanzungserfolg. Merke: Fitness — Relativer Fortpflanzungserfolg.',
@@ -7622,7 +7622,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f5',
-      prompt: "Wozu dient das Gendrift?",
+      prompt: "Wozu dient der Gendrift?",
       answer: "Zufällige Allelfrequenzänderung.", wrong: ["Unterschiedlicher Fortpflanzungserfolg.", "Unterschiede in der Population.", "Neue Allele."],
       explanation: 'Kleine Populationen. Gendrift bedeutet: Zufällige Allelfrequenzänderung.',
       wissen: 'Kleine Populationen. Gendrift bedeutet: Zufällige Allelfrequenzänderung. Merke: Gendrift — Zufällige Allelfrequenzänderung.',
@@ -7632,7 +7632,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f6',
-      prompt: "Wozu dient das Genfluss?",
+      prompt: "Wozu dient der Genfluss?",
       answer: "Austausch zwischen Populationen.", wrong: ["Unterschiedlicher Fortpflanzungserfolg.", "Unterschiede in der Population.", "Neue Allele."],
       explanation: 'Wanderung. Genfluss bedeutet: Austausch zwischen Populationen.',
       wissen: 'Wanderung. Genfluss bedeutet: Austausch zwischen Populationen. Merke: Genfluss — Austausch zwischen Populationen.',
@@ -7662,7 +7662,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb2:selektion:f9',
-      prompt: "Welche Eigenschaft hat das Selektionsdruck?",
+      prompt: "Welche Eigenschaft hat der Selektionsdruck?",
       answer: "Umweltfaktor.", wrong: ["Unterschiedlicher Fortpflanzungserfolg.", "Unterschiede in der Population.", "Neue Allele."],
       explanation: 'Bevorzugt Merkmale. Selektionsdruck bedeutet: Umweltfaktor.',
       wissen: 'Bevorzugt Merkmale. Selektionsdruck bedeutet: Umweltfaktor. Merke: Selektionsdruck — Umweltfaktor.',
@@ -7833,7 +7833,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:leben:f9',
-      prompt: "Wozu dient das Energieumsatz?",
+      prompt: "Wozu dient der Energieumsatz?",
       answer: "ATP-Haushalt.", wrong: ["Stoffwechsel, Reizbarkeit, ….", "Grundeinheit.", "Selbst Ernährung aufbauen."],
       explanation: 'Leben braucht Energie. Energieumsatz bedeutet: ATP-Haushalt.',
       wissen: 'Leben braucht Energie. Energieumsatz bedeutet: ATP-Haushalt. Merke: Energieumsatz — ATP-Haushalt.',
@@ -8085,7 +8085,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:gk:lbw:wueste:f0',
-      prompt: "Welche Eigenschaft hat das Xerophyt?",
+      prompt: "Welche Eigenschaft hat der Xerophyt?",
       answer: "Trockenheitspflanze.", wrong: ["Nachtliche CO₂-Aufnahme.", "Wasserspeicherung.", "Nährstoffarm oft."],
       explanation: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze.',
       wissen: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.',
@@ -8487,7 +8487,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f6',
-      prompt: "Welche Eigenschaft hat das Brotteig?",
+      prompt: "Welche Eigenschaft hat den Brotteig?",
       answer: "CO₂ lockert.", wrong: ["Zucker → Ethanol + CO₂.", "Zucker → Lactat.", "Ohne Sauerstoff."],
       explanation: 'Hefe. Brotteig bedeutet: CO₂ lockert.',
       wissen: 'Hefe. Brotteig bedeutet: CO₂ lockert. Merke: Brotteig — CO₂ lockert.',
@@ -8497,7 +8497,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:gaerung:f7',
-      prompt: "Welche Eigenschaft hat das Joghurt?",
+      prompt: "Welche Eigenschaft hat den Joghurt?",
       answer: "Milchsäurebakterien.", wrong: ["Zucker → Ethanol + CO₂.", "Zucker → Lactat.", "Ohne Sauerstoff."],
       explanation: 'Säuerung. Joghurt bedeutet: Milchsäurebakterien.',
       wissen: 'Säuerung. Joghurt bedeutet: Milchsäurebakterien. Merke: Joghurt — Milchsäurebakterien.',
@@ -8628,7 +8628,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f3',
-      prompt: "Mit welchen Mitteln arbeitet das Unterlauf?",
+      prompt: "Mit welchen Mitteln arbeitet der Unterlauf?",
       answer: "Langsam.", wrong: ["Abiotischer Faktor.", "Oberlauf.", "Übergang."],
       explanation: 'Mehr Trübung oft. Unterlauf bedeutet: Langsam.',
       wissen: 'Mehr Trübung oft. Unterlauf bedeutet: Langsam. Merke: Unterlauf — Langsam.',
@@ -8688,7 +8688,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:gk:lbw:fliesgewaesser:f9',
-      prompt: "Mit welchen Mitteln arbeitet das Wanderfisch?",
+      prompt: "Mit welchen Mitteln arbeitet der Wanderfisch?",
       answer: "Wechselt Lebensräume.", wrong: ["Abiotischer Faktor.", "Oberlauf.", "Übergang."],
       explanation: 'Durchgängigkeit. Wanderfisch bedeutet: Wechselt Lebensräume.',
       wissen: 'Durchgängigkeit. Wanderfisch bedeutet: Wechselt Lebensräume. Merke: Wanderfisch — Wechselt Lebensräume.',
@@ -9111,7 +9111,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:wueste:f0',
-      prompt: "Wozu dient das Xerophyt?",
+      prompt: "Wozu dient der Xerophyt?",
       answer: "Trockenheitspflanze.", wrong: ["Nachtliche CO₂-Aufnahme.", "Wasserspeicherung.", "Nährstoffarm oft."],
       explanation: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze.',
       wissen: 'Wassersparend. Xerophyt bedeutet: Trockenheitspflanze. Merke: Xerophyt — Trockenheitspflanze.',
@@ -9191,7 +9191,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:wueste:f8',
-      prompt: "Wozu dient das Sandsturm?",
+      prompt: "Wozu dient der Sandsturm?",
       answer: "Abiotischer Faktor.", wrong: ["Trockenheitspflanze.", "Nachtliche CO₂-Aufnahme.", "Wasserspeicherung."],
       explanation: 'Erosion. Sandsturm bedeutet: Abiotischer Faktor.',
       wissen: 'Erosion. Sandsturm bedeutet: Abiotischer Faktor. Merke: Sandsturm — Abiotischer Faktor.',
@@ -9322,7 +9322,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:urban:f4',
-      prompt: "Wozu dient das Lärm?",
+      prompt: "Wozu dient den Lärm?",
       answer: "Störfaktor.", wrong: ["Boden wird undurchlässig.", "Stadt wärmer.", "Kühlung und Lebensraum."],
       explanation: 'Tiere und Menschen. Lärm bedeutet: Störfaktor.',
       wissen: 'Tiere und Menschen. Lärm bedeutet: Störfaktor. Merke: Lärm — Störfaktor.',
@@ -9453,7 +9453,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f0',
-      prompt: "Welche Eigenschaft hat das Zeigerart?",
+      prompt: "Welche Eigenschaft hat die Zeigerart?",
       answer: "Zeigt Umweltzustand.", wrong: ["Luftgütezeiger.", "Gewässerbelastung.", "Nährstoffüberschuss."],
       explanation: 'Bioindikator. Zeigerart bedeutet: Zeigt Umweltzustand.',
       wissen: 'Bioindikator. Zeigerart bedeutet: Zeigt Umweltzustand. Merke: Zeigerart — Zeigt Umweltzustand.',
@@ -9634,7 +9634,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:invasiv:f1',
-      prompt: "Mit welchen Mitteln arbeitet das Neophyt?",
+      prompt: "Mit welchen Mitteln arbeitet der Neophyt?",
       answer: "Eingeschleppte Pflanzenart.", wrong: ["Eingeschleppte Tierart.", "Stark ausbreitend mit Schaden.", "Verdrängung heimischer Arten."],
       explanation: 'Ausbreitung. Neophyt bedeutet: Eingeschleppte Pflanzenart.',
       wissen: 'Ausbreitung. Neophyt bedeutet: Eingeschleppte Pflanzenart. Merke: Neophyt — Eingeschleppte Pflanzenart.',
@@ -9865,7 +9865,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f7',
-      prompt: "Welche Eigenschaft hat das Wasserfußabdruck?",
+      prompt: "Welche Eigenschaft hat den Wasserfußabdruck?",
       answer: "Wasserverbrauch.", wrong: ["Regenerierbarer Rohstoff.", "Endlicher Kohlenstoffspeicher.", "Wiederverwertung."],
       explanation: 'Produktion. Wasserfußabdruck bedeutet: Wasserverbrauch.',
       wissen: 'Produktion. Wasserfußabdruck bedeutet: Wasserverbrauch. Merke: Wasserfußabdruck — Wasserverbrauch.',
@@ -9895,7 +9895,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:rohstoffe:f10',
-      prompt: "Mit welchen Mitteln arbeitet das Bergbau?",
+      prompt: "Mit welchen Mitteln arbeitet der Bergbau?",
       answer: "Gewinnung mineralischer Rohstoffe.", wrong: ["Regenerierbarer Rohstoff.", "Endlicher Kohlenstoffspeicher.", "Wiederverwertung."],
       explanation: 'Eingriffe. Bergbau bedeutet: Gewinnung mineralischer Rohstoffe.',
       wissen: 'Eingriffe. Bergbau bedeutet: Gewinnung mineralischer Rohstoffe. Merke: Bergbau — Gewinnung mineralischer Rohstoffe.',
@@ -10157,7 +10157,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f2',
-      prompt: "Wozu dient das Lurch?",
+      prompt: "Wozu dient der Lurch?",
       answer: "Oft Metamorphose und feuchte Haut.", wrong: ["Tier mit Wirbelsäule.", "Kiemen und Flossen.", "Trockene Hornschicht, Schalenei."],
       explanation: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut.',
       wissen: 'Amphibie. Lurch bedeutet: Oft Metamorphose und feuchte Haut. Merke: Lurch — Oft Metamorphose und feuchte Haut.',
@@ -10237,7 +10237,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:systematik:f10',
-      prompt: "Mit welchen Mitteln arbeitet das Fortpflanzungstyp?",
+      prompt: "Mit welchen Mitteln arbeitet den Fortpflanzungstyp?",
       answer: "Laich, Schalenei, Lebendgeburt.", wrong: ["Tier mit Wirbelsäule.", "Kiemen und Flossen.", "Oft Metamorphose und feuchte Haut."],
       explanation: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt.',
       wissen: 'Vergleich. Fortpflanzungstyp bedeutet: Laich, Schalenei, Lebendgeburt. Merke: Fortpflanzungstyp — Laich, Schalenei, Lebendgeburt.',
@@ -10479,7 +10479,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f0',
-      prompt: "Wozu dient das Stoffkreislauf?",
+      prompt: "Wozu dient der Stoffkreislauf?",
       answer: "Elemente zirkulieren.", wrong: ["Einbahn.", "Wirkung zurück auf Ursache.", "Verstärkung."],
       explanation: 'C, N. Stoffkreislauf bedeutet: Elemente zirkulieren.',
       wissen: 'C, N. Stoffkreislauf bedeutet: Elemente zirkulieren. Merke: Stoffkreislauf — Elemente zirkulieren.',
@@ -10489,7 +10489,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk12:lb5:vernetzung:f1',
-      prompt: "Welche Eigenschaft hat das Energiefluss?",
+      prompt: "Welche Eigenschaft hat der Energiefluss?",
       answer: "Einbahn.", wrong: ["Elemente zirkulieren.", "Wirkung zurück auf Ursache.", "Verstärkung."],
       explanation: 'Verluste. Energiefluss bedeutet: Einbahn.',
       wissen: 'Verluste. Energiefluss bedeutet: Einbahn. Merke: Energiefluss — Einbahn.',

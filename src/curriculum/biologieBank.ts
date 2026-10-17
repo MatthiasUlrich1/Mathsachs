@@ -33,6 +33,7 @@ import { deepenBioBank } from './biologieBankDeepen'
 import { isSloganStatement } from './contentAudit'
 import { enrichGapAccepted, normalizeGapAnswer } from './gapAnswerMatch'
 import {
+  articleFor,
   classifyGlossaryStyle,
   concreteGlossaryStem,
   expandGlossaryAnswer,
@@ -345,15 +346,23 @@ export function rewriteDefinitionStylePrompt(
               : /lurch|amph/i.test(ctx)
                 ? 'zum Lurchschutz'
                 : 'zum Artenschutz'
-      return fixGermanPromptCapitalization(`Welche Maßnahme ${area} beschreibt „${term}“?`)
+      return fixGermanPromptCapitalization(`Welche Maßnahme ${area} beschreibt ${articleFor(term, 'acc')} ${term}?`)
     }
     if (/schnabel|nahrung|merkmal|körperbau|aufbau|anatom|feder|skelett|gebiss/i.test(ctx)) {
-      return fixGermanPromptCapitalization(`Was ist ein typisches Merkmal von „${term}“?`)
+      return fixGermanPromptCapitalization(
+        articleFor(term, 'nom') === 'die'
+          ? `Was ist ein typisches Merkmal einer ${term}?`
+          : `Was ist ein typisches Merkmal eines ${term}s?`
+      )
     }
     if (/verhalten|sinn|sozial|fortpflanz/i.test(ctx)) {
       const hint =
         domainHintFromPrefix(prefix) ||
         (/fortpflanz/i.test(ctx) ? 'bei der Fortpflanzung' : 'im Verhalten')
+      // Put domain context before the quoted term for natural German word order
+      if (/^im Verhalten$/.test(hint)) {
+        return fixGermanPromptCapitalization(`Was kennzeichnet das Verhalten „${term}“?`)
+      }
       return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
     }
     if (/arbeitsweise|methode|experiment|beobachten|nachweis/i.test(ctx)) {

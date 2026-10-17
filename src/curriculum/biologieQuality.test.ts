@@ -377,7 +377,7 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
       rewriteDefinitionStylePrompt('Schnabelformen: Was bedeutet „Körnerschnabel“?', {
         prefix: 'bio:k5:schnabel',
       }),
-    ).toMatch(/Merkmal von „Körnerschnabel“/i)
+    ).toMatch(/Merkmal eines Körnerschnabels/i)
     expect(
       rewriteDefinitionStylePrompt('Vogelschutz: Was bedeutet „Nistkasten“?', {
         prefix: 'bio:k5:vgschutz',

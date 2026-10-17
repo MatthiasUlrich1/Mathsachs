@@ -96,42 +96,98 @@ export function displayGlossaryTerm(term: string): string {
     .trim()
 }
 
+/**
+ * Comprehensive domain noun gender dictionary.
+ * 'm' = masculine (der), 'f' = feminine (die), 'n' = neuter (das).
+ */
+const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
+  // Bio: Vogelkunde / Vogelschutz
+  balz: 'f', schonzeit: 'f', kollision: 'f', nisthilfe: 'f', brutruhe: 'f',
+  eiablage: 'f', elternfürsorge: 'f', laichschnur: 'f', warnfärbung: 'f',
+  koloniebrut: 'f', nestbrut: 'f', kiemenrückbildung: 'f', schwanzrückbildung: 'f',
+  ovoviviparie: 'f', winterruhe: 'f', gallerte: 'f', laichwanderung: 'f', reviergröße: 'f',
+  fensteranprall: 'm', nistkasten: 'm', brutplatz: 'm', nistplatz: 'm',
+  alarmruf: 'm', schwarm: 'm', luftsack: 'm', dottersack: 'm', giftzahn: 'm', lidschlag: 'm',
+  spechtschnabel: 'm', hakenschnabel: 'm', körnerschnabel: 'm', filterschnabel: 'm',
+  nektarschnabel: 'm', watvogelschnabel: 'm', insektenschnabel: 'm', greifvogel: 'm',
+  gelege: 'n', revier: 'n', kiemenstadium: 'n', nictitans: 'n',
+  // Bio: Amphibien / Reptilien
+  lurch: 'm', froschlurch: 'm', schwanzlurch: 'm', embryo: 'm', unterlauf: 'm',
+  plazenta: 'f', flughaut: 'f', schwimmhaut: 'f', häutung: 'f',
+  oberarmknochen: 'm',
+  meeresreptil: 'n', reptil: 'n',
+  // Bio: Säugetiere / Sozialverhalten
+  milch: 'f', geburt: 'f', königin: 'f', arbeiterin: 'f', sozialbindung: 'f',
+  unterwerfung: 'f', gefiederpflege: 'f', nachahmung: 'f',
+  nektar: 'm', puls: 'm', futterplan: 'm', fettvorrat: 'm', winterschlaf: 'm',
+  frostschutz: 'm', sandsturm: 'm', lärm: 'm', hautsinn: 'm',
+  winterfell: 'n', pheromon: 'n',
+  // Bio: Ökologie / Artenschutz / Stoffkreislauf
+  artenschutz: 'm', naturschutz: 'm', vogelschutz: 'm', umweltschutz: 'm',
+  tierschutz: 'm', kriechtierschutz: 'm', fischschutz: 'm', lurchschutz: 'm',
+  stoffkreislauf: 'm', energiefluss: 'm', stickstoffkreislauf: 'm', mischwald: 'm',
+  bodenschutz: 'm', destruent: 'm', produzent: 'm', xerophyt: 'm', neophyt: 'm',
+  saprobiont: 'm', speisepilz: 'm', wanderfisch: 'm', alkoholgehalt: 'm',
+  wasserfußabdruck: 'm', fortpflanzungstyp: 'm', bergbau: 'm', jura: 'm',
+  strukturvielfalt: 'f', mykorrhiza: 'f', zeigerart: 'f', trias: 'f',
+  epidermis: 'f', hautflora: 'f', fitness: 'f',
+  naturschutzgebiet: 'n', schutzgebiet: 'n', fossil: 'n', aquarium: 'n',
+  kausalnetz: 'n', chitin: 'n', ufergehölz: 'n', benthos: 'n', makrozoobenthos: 'n',
+  treibhausgas: 'n', ammonium: 'n', monitoring: 'n', management: 'n', atp: 'n', sauerkraut: 'n',
+  // Bio: Physiologie / Neurologie / Genetik
+  reiz: 'm', dendrit: 'm', genotyp: 'm', phänotyp: 'm', gendrift: 'm',
+  genfluss: 'm', selektionsdruck: 'm', energieumsatz: 'm', kräuterreichtum: 'm',
+  joghurt: 'm', brotteig: 'm',
+  melanin: 'n', cortisol: 'n', axon: 'n', neuron: 'n', wachstum: 'n', antihistaminikum: 'n',
+  // Physik
+  druck: 'm', strom: 'm', widerstand: 'm', schalter: 'm', hebelarm: 'm',
+  kraftarm: 'm', lasthebel: 'm', sensor: 'm', timer: 'm', lichtstrahl: 'm',
+  spannung: 'f', energie: 'f', kraft: 'f', reibung: 'f', temperatur: 'f',
+  wärme: 'f', geschwindigkeit: 'f', frequenz: 'f',
+  licht: 'n', prisma: 'n', spektrum: 'n', gleichgewicht: 'n',
+  // Geschichte
+  kreuzzug: 'm', lehensvertrag: 'm', klerus: 'm', kaiser: 'm',
+  burg: 'f', gilde: 'f', zunft: 'f', pest: 'f', leibeigenschaft: 'f',
+  reformation: 'f', aufklärung: 'f',
+  lehenswesen: 'n', rittertum: 'n', kaisertum: 'n', bürgertum: 'n',
+}
+
+/**
+ * Look up or infer noun gender for domain terms.
+ */
+function nounGender(word: string): 'm' | 'f' | 'n' {
+  const w = word.toLowerCase().replace(/\s+/g, ' ').trim()
+  if (DOMAIN_NOUN_GENDER[w]) return DOMAIN_NOUN_GENDER[w]!
+  // Longest-suffix match in dictionary (min 4 chars to avoid false matches)
+  const sorted = Object.keys(DOMAIN_NOUN_GENDER).sort((a, b) => b.length - a.length)
+  for (const suffix of sorted) {
+    if (suffix.length >= 4 && w.endsWith(suffix) && w.length > suffix.length) {
+      return DOMAIN_NOUN_GENDER[suffix]!
+    }
+  }
+  // Suffix-based inference (standard German gender rules)
+  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(w) && !/(chen|lein)$/.test(w)) return 'f'
+  if (/(chen|lein|ment|tum|modell|organ|system|gebiss|gewebe)$/i.test(w)) return 'n'
+  if (/(er|or|ismus|us|ling|strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|schutz|sack|platz|schlaf|lauf|fluss|kreislauf|gehalt|stamm|baum|fisch|vogel|pilz|gang|schlag|ruf|zahn|arm|typ|bau)$/i.test(w)) return 'm'
+  if (/um$/i.test(w)) return 'n'
+  return 'n'
+}
+
 function pronounFor(term: string): 'Sie' | 'Er' | 'Es' {
   const t = displayGlossaryTerm(term)
   const low = t.toLowerCase()
   if (/ oder /.test(t)) return 'Sie'
   if (/^(transparent|transluzent|opak)$/i.test(low)) return 'Er'
-  if (/(chen|lein|ment|tum|um)$/i.test(low) || /^(licht|gas|eis|pixel|display)$/i.test(low)) {
-    return 'Es'
-  }
-  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low)) {
-    return 'Sie'
-  }
-  if (/(er|or|ismus|us|ling)$/i.test(low)) return 'Er'
-  // Common masculine compound heads without -er suffix
-  if (/(strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel)$/i.test(low)) return 'Er'
+  const g = nounGender(low)
+  if (g === 'f') return 'Sie'
+  if (g === 'm') return 'Er'
   return 'Es'
 }
 
-function articleFor(term: string, case_: 'nom' | 'dat' | 'acc' = 'nom'): string {
-  const t = displayGlossaryTerm(term).toLowerCase()
-  
-  // Specific masculine nouns
-  const masculine = [
-    'nistkasten', 'greifvogel', 'körnerschnabel', 'hakenschnabel',
-    'filterschnabel', 'nektarschnabel', 'watvogelschnabel', 
-    'insektenschnabel', 'spechtschnabel', 'vogel', 'schnabel',
-    'hund', 'mensch', 'finger', 'baum', 'wald', 'fluss', 'berg'
-  ]
-  
-  if (masculine.some(n => t === n || t.endsWith(n))) {
-    return case_ === 'dat' ? 'dem' : case_ === 'acc' ? 'den' : 'der'
-  }
-  
-  // Use pronounFor logic for other nouns
-  const pron = pronounFor(term)
-  if (pron === 'Sie') return 'die'
-  if (pron === 'Er') return case_ === 'dat' ? 'dem' : case_ === 'acc' ? 'den' : 'der'
+export function articleFor(term: string, case_: 'nom' | 'dat' | 'acc' = 'nom'): string {
+  const g = nounGender(displayGlossaryTerm(term).toLowerCase())
+  if (g === 'f') return 'die'
+  if (g === 'm') return case_ === 'dat' ? 'dem' : case_ === 'acc' ? 'den' : 'der'
   return case_ === 'dat' ? 'dem' : 'das'
 }
 
@@ -302,7 +358,7 @@ function capitalizeNpWords(phrase: string): string {
     .join(' ')
 }
 
-/** Article + NP for a meaning fragment (gender from head noun). */
+/** Article + NP for a meaning fragment (gender from head/first noun). */
 function meaningAsPredicate(body: string): string {
   const t = fixRelativeComma(body.trim())
   if (!t) return t
@@ -314,20 +370,13 @@ function meaningAsPredicate(body: string): string {
   // Verb-led clause kept as-is (caller may attach pronoun separately).
   if (PURPOSE_VERB.test(t) || EFFECT_VERB.test(t)) return lowerFirst(t)
   const capped = capitalizeNpWords(t)
-  const last = (capped.split(/\s+/).pop() ?? capped).toLowerCase()
-  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(last) || /e$/i.test(last)) {
-    return `eine ${capped}`
-  }
-  if (
-    /(er|or|ismus|us|ling)$/i.test(last) ||
-    /(strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|weg|puls)$/i.test(last)
-  ) {
-    return `ein ${capped}`
-  }
-  if (/(chen|lein|ment|tum|um|modell|organ|gebiss)$/i.test(last)) {
-    return `ein ${capped}`
-  }
-  return `eine ${capped}`
+  // Use the FIRST (head) noun's ending to determine article, not the last word.
+  // "Kollision an Glasflächen" → head is "Kollision" (fem) → "eine Kollision an Glasflächen"
+  const headWord = (capped.split(/\s+/)[0] ?? capped).toLowerCase()
+  const g = nounGender(headWord)
+  if (g === 'f') return `eine ${capped}`
+  if (g === 'm') return `ein ${capped}`
+  return `ein ${capped}`
 }
 
 /**
@@ -379,11 +428,16 @@ function naturalFragmentOption(term: string, fragment: string): string {
   }
 
   // Prefer „Die {Term} ist …“ over pads when the pronoun sentence is too short.
+  // Prefer „Die {Term} ist …“ over pads when the pronoun sentence is too short.
   if (out.split(/\s+/).length < 6 && t) {
     const art = pronounFor(t) === 'Sie' ? 'Die' : pronounFor(t) === 'Er' ? 'Der' : 'Das'
     let pred = meaningAsPredicate(body)
-    pred = pred.replace(/^(ein|eine|einen)\s+/i, () =>
-      art === 'Die' ? 'die ' : art === 'Der' ? 'der ' : 'das ',
+    // IMPORTANT: Do NOT replace predicate's article with subject's article.
+    // The predicate has its own gender (e.g. "eine Nisthilfe" stays "eine"
+    // even if subject is "Der Fensteranprall"). Also lowercase Title-Case adjectives.
+    pred = pred.replace(
+      /^(ein|eine|einen|der|die|das)\s+([A-Z\u00c4\u00d6\u00dc][a-z\u00e4\u00f6\u00fc\u00df]+)\s+/,
+      (_m, pArt, adj) => `${pArt} ${adj.charAt(0).toLowerCase() + adj.slice(1)} `,
     )
     out = ensurePeriod(`${art} ${t} ist ${pred}`)
   }
