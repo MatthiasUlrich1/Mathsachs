@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.116] – 2026-10-17
+
+### Behoben
+- **Wiederherstellung der gekürzten Prompts:** PowerShell-Grammatik-Fix aus v0.28.115 hat
+  11 Biologie-Prompts gekürzt („Welche Eigenschaft hat der " ohne Substantiv → Stem-Kollisionen
+  in `biologieUniqueness` und `biologieTopicIsolation` Tests). Alle 11 Prompts
+  wiederhergestellt: Schuppenformel, Dotter, Revieren, Federn+Schnabel, Zersetzer, Fetus,
+  Stressor, Myzel, Hopfen, Trial-and-Error, Bewertungsverfahren. CI grün.
+
 ## [0.28.115] – 2026-10-17
 
 ### Behoben
