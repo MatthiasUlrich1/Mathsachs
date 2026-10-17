@@ -125,26 +125,49 @@ const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
   // Bio: Ökologie / Artenschutz / Stoffkreislauf
   artenschutz: 'm', naturschutz: 'm', vogelschutz: 'm', umweltschutz: 'm',
   tierschutz: 'm', kriechtierschutz: 'm', fischschutz: 'm', lurchschutz: 'm',
+  embryonenschutz: 'm',
   stoffkreislauf: 'm', energiefluss: 'm', stickstoffkreislauf: 'm', mischwald: 'm',
   bodenschutz: 'm', destruent: 'm', produzent: 'm', xerophyt: 'm', neophyt: 'm',
   saprobiont: 'm', speisepilz: 'm', wanderfisch: 'm', alkoholgehalt: 'm',
   wasserfußabdruck: 'm', fortpflanzungstyp: 'm', bergbau: 'm', jura: 'm',
+  // KEY: compound nouns with masculine head noun (for naturalFragmentOption subject)
+  habitatverlust: 'm', ressourcenverbrauch: 'm', lebensraumverlust: 'm',
+  kompensationspunkt: 'm', transpirationssog: 'm', wurzeldruck: 'm',
+  chloroplast: 'm', akzeptor: 'm', phänotyp: 'm', genotyp: 'm', allel: 'n',
   strukturvielfalt: 'f', mykorrhiza: 'f', zeigerart: 'f', trias: 'f',
   epidermis: 'f', hautflora: 'f', fitness: 'f',
+  // Bio: osmose/transport (feminine)
+  kohäsion: 'f', adhäsion: 'f', diffusion: 'f', osmose: 'f', selektivität: 'f',
+  kapillarität: 'f', permeabilität: 'f', plasmolyse: 'f', deplasmolyse: 'f',
+  // Bio: Genetik/Mol
+  genregulation: 'f', methylierung: 'f', auflösung: 'f',
   naturschutzgebiet: 'n', schutzgebiet: 'n', fossil: 'n', aquarium: 'n',
   kausalnetz: 'n', chitin: 'n', ufergehölz: 'n', benthos: 'n', makrozoobenthos: 'n',
   treibhausgas: 'n', ammonium: 'n', monitoring: 'n', management: 'n', atp: 'n', sauerkraut: 'n',
+  gewebe: 'n', risiko: 'n', organ: 'n', dogma: 'n',
   // Bio: Physiologie / Neurologie / Genetik
-  reiz: 'm', dendrit: 'm', genotyp: 'm', phänotyp: 'm', gendrift: 'm',
+  reiz: 'm', dendrit: 'm', gendrift: 'm',
   genfluss: 'm', selektionsdruck: 'm', energieumsatz: 'm', kräuterreichtum: 'm',
-  joghurt: 'm', brotteig: 'm',
+  joghurt: 'm', brotteig: 'm', einfluss: 'm',
   melanin: 'n', cortisol: 'n', axon: 'n', neuron: 'n', wachstum: 'n', antihistaminikum: 'n',
+  // Bio: Humanbiologie
+  sympathikus: 'm', parasympathikus: 'm', hypothalamus: 'm',
+  hypophyse: 'f', schilddrüse: 'f',
   // Physik
   druck: 'm', strom: 'm', widerstand: 'm', schalter: 'm', hebelarm: 'm',
   kraftarm: 'm', lasthebel: 'm', sensor: 'm', timer: 'm', lichtstrahl: 'm',
+  kernschatten: 'm', halbschatten: 'm', brennpunkt: 'm', parallelstrahl: 'm',
+  mittelpunktstrahl: 'm', strahlengang: 'm', aggregatzustand: 'm', mittelwert: 'm',
+  alltag: 'm', impuls: 'm', gesamtimpuls: 'm', energieverlust: 'm',
   spannung: 'f', energie: 'f', kraft: 'f', reibung: 'f', temperatur: 'f',
-  wärme: 'f', geschwindigkeit: 'f', frequenz: 'f',
+  wärme: 'f', geschwindigkeit: 'f', frequenz: 'f', brechkraft: 'f',
+  sammellinse: 'f', brennweite: 'f', bildweite: 'f', gegenstandweite: 'f',
+  blende: 'f', lupe: 'f',
   licht: 'n', prisma: 'n', spektrum: 'n', gleichgewicht: 'n',
+  fernrohr: 'n', mikroskop: 'n', objektiv: 'n', okular: 'n',
+  // Extra domain terms from user examples
+  brustkorb: 'm', sauerstoff: 'm', stickstoff: 'm',
+  schlüsselhabitat: 'n', habitat: 'n',
   // Geschichte
   kreuzzug: 'm', lehensvertrag: 'm', klerus: 'm', kaiser: 'm',
   burg: 'f', gilde: 'f', zunft: 'f', pest: 'f', leibeigenschaft: 'f',
@@ -166,9 +189,10 @@ function nounGender(word: string): 'm' | 'f' | 'n' {
     }
   }
   // Suffix-based inference (standard German gender rules)
-  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(w) && !/(chen|lein)$/.test(w)) return 'f'
+  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur|ase|ose)$/i.test(w) && !/(chen|lein)$/.test(w)) return 'f'
   if (/(chen|lein|ment|tum|modell|organ|system|gebiss|gewebe)$/i.test(w)) return 'n'
-  if (/(er|or|ismus|us|ling|strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|schutz|sack|platz|schlaf|lauf|fluss|kreislauf|gehalt|stamm|baum|fisch|vogel|pilz|gang|schlag|ruf|zahn|arm|typ|bau)$/i.test(w)) return 'm'
+  // Masculine: compounds ending in masculine head nouns
+  if (/(er|or|ismus|us|ling|strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|schutz|sack|platz|schlaf|lauf|fluss|kreislauf|gehalt|stamm|baum|fisch|vogel|pilz|gang|schlag|ruf|zahn|arm|typ|bau|verlust|sog|korb|zug|berg|weg|impuls|einfluss|alltag|kanal|kurs|anteil|grad)$/i.test(w)) return 'm'
   if (/um$/i.test(w)) return 'n'
   return 'n'
 }

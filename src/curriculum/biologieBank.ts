@@ -363,7 +363,7 @@ export function rewriteDefinitionStylePrompt(
       if (/^im Verhalten$/.test(hint)) {
         return fixGermanPromptCapitalization(`Was kennzeichnet das Verhalten „${term}“?`)
       }
-      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
+      return fixGermanPromptCapitalization(`Was kennzeichnet ${articleFor(term, 'acc')} ${term} ${hint}?`)
     }
     if (/arbeitsweise|methode|experiment|beobachten|nachweis/i.test(ctx)) {
       return fixGermanPromptCapitalization(`Was beschreibt die Arbeitsweise „${term}“?`)
@@ -371,7 +371,7 @@ export function rewriteDefinitionStylePrompt(
     // Themenhinweis aus Prefix — Cross-Topic-Stems trennen, kein Meta-„Themenfeld“.
     const hint = domainHintFromPrefix(prefix)
     if (hint) {
-      return fixGermanPromptCapitalization(`Was kennzeichnet „${term}“ ${hint}?`)
+      return fixGermanPromptCapitalization(`Was kennzeichnet ${articleFor(term, 'acc')} ${term} ${hint}?`)
     }
     return fixGermanPromptCapitalization(concreteGlossaryStem(term, undefined, opts?.meaning))
   }

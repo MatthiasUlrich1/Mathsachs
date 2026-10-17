@@ -72,7 +72,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p6:f",
-      prompt: "Welche Eigenschaft hat das Energiefluss?",
+      prompt: "Welche Eigenschaft hat der Energiefluss?",
       answer: "Es verläuft einseitig durch das Ökosystem und nimmt auf jeder Tropfiestufe durch Verluste ab, mit Verlusten.", wrong: ["Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma.", "Sie überträgt Elektronen zwischen Stoffen und treibt Stoffwechselreaktionen an.", "Sie nutzt den Protonenfluss an der Membran zur Bildung von ATP, oxidative Phosphorylierung."],
       explanation: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
       wissen: "mit Verlusten. Bezug: Energiefluss. Energiefluss bedeutet: einseitig durch Ökosystem.",
@@ -96,7 +96,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk11-lb2-redox:p9:f",
-      prompt: "Woran erkennt man das Akzeptor O2?",
+      prompt: "Woran erkennt man den Akzeptor O2?",
       answer: "Es ist der Endakzeptor der Atmungskette und bildet mit Protonen Wasser, bildet Wasser.", wrong: ["Sie nutzt den Protonenfluss an der Membran zur Bildung von ATP, oxidative Phosphorylierung.", "Sie wandelt Lichtenergie in chemische Energie in Form von Glucose um.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma."],
       explanation: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
       wissen: "bildet Wasser. Bezug: Akzeptor O2. Akzeptor O2 bedeutet: Endakzeptor Atmung.",
@@ -189,7 +189,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p6:f",
-      prompt: "Woran erkennt man das Stoffkreislauf?",
+      prompt: "Woran erkennt man den Stoffkreislauf?",
       answer: "Es beschreibt elemente kreisen.", wrong: ["Es reduktionsäquivalent, trägt Elektronen.", "Es beschreibt fotosynthese = Atmung, grenze Ertrag.", "Sie erzeugt ATP und NADPH an den Thylakoiden aus Lichtenergie."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
@@ -197,7 +197,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk11-lb2-energiebilanz:p7:f",
-      prompt: "Wozu dient das Kompensationspunkt?",
+      prompt: "Wozu dient der Kompensationspunkt?",
       answer: "Es beschreibt fotosynthese = Atmung, grenze Ertrag.", wrong: ["Sie bildet ATP direkt am Substrat, etwa in der Glykolyse.", "Sie spaltet Glucose zu Pyruvat und liefert ATP im Cytoplasma.", "Sie liefert ATP ohne Sauerstoff und ist energetisch weniger ergiebig als Atmung."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
@@ -375,7 +375,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p0:f",
-      prompt: "Welche Eigenschaft hat das Dominant?",
+      prompt: "Welche Eigenschaft hat das dominante Allel?",
       answer: "setzt sich im Phänotyp durch.", wrong: ["verschiedene Allele.", "Austausch homologer Abschnitte.", "Vervielfältigung von DNA."],
       explanation: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
       wissen: "Gegenüber rezessiv. Bezug: Dominant. Dominant bedeutet: setzt sich im Phänotyp durch.",
@@ -383,7 +383,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p1:f",
-      prompt: "Welche Eigenschaft hat das Heterozygot?",
+      prompt: "Welche Eigenschaft hat das heterozygote Individuum?",
       answer: "verschiedene Allele.", wrong: ["Austausch homologer Abschnitte.", "Vervielfältigung von DNA.", "Transportvehikel für DNA."],
       explanation: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
       wissen: "Aa. Bezug: Heterozygot. Heterozygot bedeutet: verschiedene Allele.",
@@ -439,7 +439,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p8:f",
-      prompt: "Mit welchen Mitteln arbeitet das Rekombinant?",
+      prompt: "Mit welchen Mitteln arbeitet das rekombinante System?",
       answer: "neu kombinierte DNA.", wrong: ["erscheinendes Merkmal.", "gleiche Allele.", "Kernteilung für Wachstum."],
       explanation: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       wissen: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
@@ -447,7 +447,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p9:f",
-      prompt: "Welche Eigenschaft hat das Phänotyp?",
+      prompt: "Welche Eigenschaft hat der Phänotyp?",
       answer: "erscheinendes Merkmal.", wrong: ["gleiche Allele.", "Kernteilung für Wachstum.", "setzt sich im Phänotyp durch."],
       explanation: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
       wissen: "Genotyp + Umwelt. Bezug: Phänotyp. Phänotyp bedeutet: erscheinendes Merkmal.",
@@ -455,7 +455,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-mendel:p10:f",
-      prompt: "Woran erkennt man das Homozygot?",
+      prompt: "Woran erkennt man das homozygote Individuum?",
       answer: "gleiche Allele.", wrong: ["Kernteilung für Wachstum.", "setzt sich im Phänotyp durch.", "verschiedene Allele."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
@@ -492,7 +492,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p0:f",
-      prompt: "Wozu dient das Rezessiv?",
+      prompt: "Wozu dient das rezessive Allel?",
       answer: "nur homozygot sichtbar.", wrong: ["Reduktionsteilung.", "Gene auf einem Chromosom.", "Basenfolge bestimmen."],
       explanation: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
       wissen: "Träger möglich. Bezug: Rezessiv. Rezessiv bedeutet: nur homozygot sichtbar.",
@@ -556,7 +556,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p8:f",
-      prompt: "Mit welchen Mitteln arbeitet der Allel?",
+      prompt: "Mit welchen Mitteln arbeitet das Allel?",
       answer: "Es beschreibt variante eines Gens, an einem Genort.", wrong: ["Es beschreibt setzt sich im Phänotyp durch, gegenüber rezessiv.", "Es beschreibt präzise Gen-Schere, moderne Editierung.", "Es beschreibt verschiedene Allele."],
       explanation: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       wissen: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
@@ -609,7 +609,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-gk12-lb1-ethik:p0:f",
-      prompt: "Woran erkennt man das Homozygot?",
+      prompt: "Woran erkennt man das homozygote Individuum?",
       answer: "gleiche Allele.", wrong: ["Kernteilung für Wachstum.", "Änderung der DNA.", "gezielter Eingriff in DNA."],
       explanation: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
       wissen: "AA oder aa. Bezug: Homozygot. Homozygot bedeutet: gleiche Allele.",
@@ -766,7 +766,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p5:f",
-      prompt: "Mit welchen Mitteln arbeitet die Gewebe?",
+      prompt: "Mit welchen Mitteln arbeitet das Gewebe?",
       answer: "Sie zellen gleicher Funktion.", wrong: ["Es besitzt einen echten Zellkern mit Chromatin und Kompartimenten.", "Er beschreibt membransystem Synthese/Transport.", "Sie ist die Diffusion von Wasser durch eine semipermeable Membran, richtung zum Hypertonen."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
@@ -811,7 +811,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-kompartimente:p10:f",
-      prompt: "Wozu dient das Chloroplast?",
+      prompt: "Wozu dient der Chloroplast?",
       answer: "Es dient dazu, ort der Fotosynthese.", wrong: ["Es besitzt einen echten Zellkern mit Chromatin und Kompartimenten.", "Es gibt der Zelle Form und ermöglicht Bewegung und Vesikeltransport.", "Er beschreibt interphase + Mitose."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
@@ -965,7 +965,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p0:f",
-      prompt: "Woran erkennt man das Chloroplast?",
+      prompt: "Woran erkennt man den Chloroplast?",
       answer: "Ort der Fotosynthese.", wrong: ["Abbau mit Enzymen.", "ohne echten Zellkern.", "Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
@@ -989,7 +989,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-zyklus-kontrolle:p3:f",
-      prompt: "Mit welchen Mitteln arbeitet der Mitosephasen?",
+      prompt: "Mit welchen Mitteln arbeitet die Mitosephasen?",
       answer: "Pro-/Meta-/Ana-/Telophase.", wrong: ["Spezialisierung von Zellen.", "Triebkraft für Wasser.", "Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
@@ -1497,7 +1497,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p8:f",
-      prompt: "Wozu dient das Chloroplast?",
+      prompt: "Wozu dient der Chloroplast?",
       answer: "Es dient dazu, ort der Fotosynthese.", wrong: ["Es besitzt einen echten Zellkern mit Chromatin und Kompartimenten.", "Es gibt der Zelle Form und ermöglicht Bewegung und Vesikeltransport.", "Er beschreibt interphase + Mitose."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
@@ -1800,7 +1800,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p2:f",
-      prompt: "Mit welchen Mitteln arbeitet die Gewebe?",
+      prompt: "Mit welchen Mitteln arbeitet das Gewebe?",
       answer: "Sie zellen gleicher Funktion.", wrong: ["Es besitzt einen echten Zellkern mit Chromatin und Kompartimenten.", "Sie ist die Diffusion von Wasser durch eine semipermeable Membran, richtung zum Hypertonen.", "Sie spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
@@ -1840,7 +1840,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-ion:p7:f",
-      prompt: "Woran erkennt man das Chloroplast?",
+      prompt: "Woran erkennt man den Chloroplast?",
       answer: "Ort der Fotosynthese.", wrong: ["Abbau mit Enzymen.", "ohne echten Zellkern.", "Pro-/Meta-/Ana-/Telophase."],
       explanation: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
       wissen: "bei Pflanzen. Bezug: Chloroplast. Chloroplast bedeutet: Ort der Fotosynthese.",
@@ -2018,7 +2018,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-lk11-lb1-cytoskelett-bewegung:p0:f",
-      prompt: "Mit welchen Mitteln arbeitet der Mitosephasen?",
+      prompt: "Mit welchen Mitteln arbeitet die Mitosephasen?",
       answer: "Pro-/Meta-/Ana-/Telophase.", wrong: ["Spezialisierung von Zellen.", "Triebkraft für Wasser.", "Energie-Währung."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
@@ -2148,7 +2148,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p1:f",
-      prompt: "Mit welchen Mitteln arbeitet die Gewebe?",
+      prompt: "Mit welchen Mitteln arbeitet das Gewebe?",
       answer: "Sie zellen gleicher Funktion.", wrong: ["Sie ist die Diffusion von Wasser durch eine semipermeable Membran, richtung zum Hypertonen.", "Sie spezialisiert Zellen auf bestimmte Aufgaben bei gleicher DNA.", "Es besitzt keinen echten Zellkern und lagert die DNA frei im Cytoplasma."],
       explanation: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
       wissen: "z. B. Epithel. Bezug: Gewebe. Gewebe bedeutet: Zellen gleicher Funktion.",
@@ -2454,7 +2454,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb2-calvin:p10:f",
-      prompt: "Wozu dient das Kompensationspunkt?",
+      prompt: "Wozu dient der Kompensationspunkt?",
       answer: "Fotosynthese = Atmung.", wrong: ["ATP direkt am Substrat.", "Gesamtfixierung.", "anaerober Abbau."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
@@ -2789,7 +2789,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p8:f",
-      prompt: "Woran erkennt man das Stoffkreislauf?",
+      prompt: "Woran erkennt man den Stoffkreislauf?",
       answer: "Es beschreibt elemente kreisen.", wrong: ["Er gibt e− ab, bei Chemosynthese oft H2S/NH3.", "Es reduktionsäquivalent, trägt Elektronen.", "Es beschreibt fotosynthese = Atmung, grenze Ertrag."],
       explanation: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
       wissen: "C, N, … Bezug: Stoffkreislauf. Stoffkreislauf bedeutet: Elemente kreisen.",
@@ -2797,7 +2797,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb2-gaerung-vergleich:p9:f",
-      prompt: "Wozu dient das Kompensationspunkt?",
+      prompt: "Wozu dient der Kompensationspunkt?",
       answer: "Es beschreibt fotosynthese = Atmung, grenze Ertrag.", wrong: ["Sie bildet ATP direkt am Substrat, etwa in der Glykolyse.", "Sie liefert ATP ohne Sauerstoff und ist energetisch weniger ergiebig als Atmung.", "Es reduktionsäquivalent, trägt Elektronen."],
       explanation: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
       wissen: "Grenze Ertrag. Bezug: Kompensationspunkt. Kompensationspunkt bedeutet: Fotosynthese = Atmung.",
@@ -4754,7 +4754,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb1-genomeditierung:p5:f",
-      prompt: "Mit welchen Mitteln arbeitet das Rekombinant?",
+      prompt: "Mit welchen Mitteln arbeitet das rekombinante System?",
       answer: "neu kombinierte DNA.", wrong: ["erscheinendes Merkmal.", "gleiche Allele.", "Kernteilung für Wachstum."],
       explanation: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",
       wissen: "Produkt der Gentechnik. Bezug: Rekombinant. Rekombinant bedeutet: neu kombinierte DNA.",

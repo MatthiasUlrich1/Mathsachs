@@ -392,7 +392,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-winkelspiegel:fact:glaenzen",
-      prompt: "Mit welchen Mitteln arbeitet der Glänzen?",
+      prompt: "Mit welchen Mitteln arbeitet das Glänzen?",
       answer: "Gerichtete Reflexion.", wrong: ["Viele kleine Reflexionen.", "Licht trifft Auge.", "Strahlen zeichnen."],
       explanation: "Glatte Fläche. Glänzen bedeutet: Gerichtete Reflexion. Bezug: Winkelspiegel und Periskop.",
       wissen: "Glatte Fläche. Glänzen bedeutet: Gerichtete Reflexion. Bezug: Winkelspiegel und Periskop.",
@@ -483,7 +483,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:brennpunkt",
-      prompt: "Welche Eigenschaft hat das Brennpunkt?",
+      prompt: "Welche Eigenschaft hat der Brennpunkt?",
       answer: "Treffpunkt paralleler Strahlen.", wrong: ["Abstand Linse–Brennpunkt.", "Läuft nach Brechung durch F.", "Durch F → parallel danach."],
       explanation: "F. Brennpunkt bedeutet: Treffpunkt paralleler Strahlen. Bezug: Sammellinse und Brennweite.",
       wissen: "F. Brennpunkt bedeutet: Treffpunkt paralleler Strahlen. Bezug: Sammellinse und Brennweite.",
@@ -499,7 +499,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:parallelstrahl",
-      prompt: "Welche Eigenschaft hat das Parallelstrahl?",
+      prompt: "Welche Eigenschaft hat der Parallelstrahl?",
       answer: "Läuft nach Brechung durch F.", wrong: ["Durch F → parallel danach.", "Geht ungebrochen durch Zentrum.", "D = 1/f."],
       explanation: "Konstruktion. Parallelstrahl bedeutet: Läuft nach Brechung durch F. Bezug: Sammellinse und Brennweite.",
       wissen: "Konstruktion. Parallelstrahl bedeutet: Läuft nach Brechung durch F. Bezug: Sammellinse und Brennweite.",
@@ -515,7 +515,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:mittelpunktstrahl",
-      prompt: "Wozu dient das Mittelpunktstrahl?",
+      prompt: "Wozu dient der Mittelpunktstrahl?",
       answer: "Es geht ungebrochen durch Zentrum, näherung dünne Linse.", wrong: ["Es ist D = 1/f und gibt an, wie stark eine Linse bündelt, einheit Dioptrie.", "Es dient als Nur hinter Linse sichtbar.", "Es beschreibt auffangbar auf Schirm, reelles Bild."],
       explanation: "Näherung dünne Linse. Mittelpunktstrahl bedeutet: Geht ungebrochen durch Zentrum. Bezug: Sammellinse und Brennweite.",
       wissen: "Näherung dünne Linse. Mittelpunktstrahl bedeutet: Geht ungebrochen durch Zentrum. Bezug: Sammellinse und Brennweite.",
@@ -523,7 +523,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-sammellinse:fact:brechkraft",
-      prompt: "Woran erkennt man das Brechkraft?",
+      prompt: "Woran erkennt man die Brechkraft?",
       answer: "D = 1/f.", wrong: ["Auffangbar auf Schirm.", "Nur hinter Linse sichtbar.", "Zeichnung der Hauptstrahlen."],
       explanation: "Einheit Dioptrie. Brechkraft bedeutet: D = 1/f. Bezug: Sammellinse und Brennweite.",
       wissen: "Einheit Dioptrie. Brechkraft bedeutet: D = 1/f. Bezug: Sammellinse und Brennweite.",
@@ -712,7 +712,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:umgekehrtes-bild",
-      prompt: "Mit welchen Mitteln arbeitet das Umgekehrtes Bild?",
+      prompt: "Mit welchen Mitteln arbeitet das umgekehrte Bild?",
       answer: "Bei vielen Geräten reell.", wrong: ["Handy-Kamera.", "Vergrößert nahe Gegenstände.", "Abbilden auf Sensor/Film."],
       explanation: "Auf dem Kopf. Umgekehrtes Bild bedeutet: Bei vielen Geräten reell. Bezug: Einfache optische Geräte.",
       wissen: "Auf dem Kopf. Umgekehrtes Bild bedeutet: Bei vielen Geräten reell. Bezug: Einfache optische Geräte.",
@@ -720,7 +720,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb1-optische-geraete:fact:alltag",
-      prompt: "Wozu dient das Alltag?",
+      prompt: "Wozu dient der Alltag?",
       answer: "Handy-Kamera.", wrong: ["Vergrößert nahe Gegenstände.", "Abbilden auf Sensor/Film.", "Bild auf Schirm."],
       explanation: "Moderne Optik. Alltag bedeutet: Handy-Kamera. Bezug: Einfache optische Geräte.",
       wissen: "Moderne Optik. Alltag bedeutet: Handy-Kamera. Bezug: Einfache optische Geräte.",
@@ -3822,7 +3822,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb2-gravitation:fact:alltag",
-      prompt: "Wozu dient das Alltag?",
+      prompt: "Wozu dient der Alltag?",
       answer: "Fallen von Körpern.", wrong: ["Anziehung zwischen Massen.", "F ~ m1·m2 / r².", "Beschrieb universelle Gravitation."],
       explanation: "g ≈ 9,8 m/s². Alltag bedeutet: Fallen von Körpern. Bezug: Gravitationsgesetz.",
       wissen: "g ≈ 9,8 m/s². Alltag bedeutet: Fallen von Körpern. Bezug: Gravitationsgesetz.",
@@ -4851,7 +4851,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:alltag",
-      prompt: "Wozu dient das Alltag?",
+      prompt: "Wozu dient der Alltag?",
       answer: "WLAN, Mikrowelle, Licht.", wrong: ["Von Radio bis Gamma.", "Mikrowellenbereich.", "IR."],
       explanation: "Einordnen. Alltag bedeutet: WLAN, Mikrowelle, Licht. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Einordnen. Alltag bedeutet: WLAN, Mikrowelle, Licht. Bezug: Elektromagnetisches Spektrum.",

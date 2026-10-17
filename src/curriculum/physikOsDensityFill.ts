@@ -160,7 +160,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p2:f",
-      prompt: "Welche Eigenschaft hat das Photon-Impuls?",
+      prompt: "Welche Eigenschaft hat der Photon-Impuls?",
       answer: "p = h/λ.", wrong: ["Energie/Impuls erhalten.", "Ablenkung des Photons.", "m_e in der Formel."],
       explanation: "Licht trägt Impuls. Photon-Impuls bedeutet: p = h/λ.",
       wissen: "Licht trägt Impuls. Photon-Impuls bedeutet: p = h/λ.",
@@ -184,7 +184,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p5:f",
-      prompt: "Wozu dient die Ruhemasse Elektron?",
+      prompt: "Wozu dient die Ruhemasse des Elektrons?",
       answer: "Es ist die Masse m_e eines Teilchens im Ruhesystem, setzt Energieskala.", wrong: ["Es beschreibt p = h/λ, licht trägt Impuls.", "Es beschreibt typische Experimentenergie, messbare Verschiebung.", "Sie beschreibt Δλ abhängig vom Winkel, stoß mit Impulsübertragung."],
       explanation: "Setzt Energieskala. Ruhemasse Elektron bedeutet: m_e in der Formel.",
       wissen: "Setzt Energieskala. Ruhemasse Elektron bedeutet: m_e in der Formel.",
@@ -208,7 +208,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p8:f",
-      prompt: "Mit welchen Mitteln arbeitet das Energieverlust Photon?",
+      prompt: "Mit welchen Mitteln arbeitet der Energieverlust des Photons?",
       answer: "Geht an Elektron.", wrong: ["Photon mit E und p.", "Spektrum vor/nach Streuung.", "Photoeffekt: Absorption."],
       explanation: "Rückstoßelektron. Energieverlust Photon bedeutet: Geht an Elektron.",
       wissen: "Rückstoßelektron. Energieverlust Photon bedeutet: Geht an Elektron.",
@@ -277,7 +277,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p2:f",
-      prompt: "Wozu dient das Gesamtimpuls?",
+      prompt: "Wozu dient der Gesamtimpuls?",
       answer: "Summe m_i·v_i.", wrong: ["Keine äußeren Kräfte.", "Rückstoß durch Massenaustoß.", "Schwerpunkt bleibt Spur."],
       explanation: "Erhalten ohne äußere Kraft. Gesamtimpuls bedeutet: Summe m_i·v_i.",
       wissen: "Erhalten ohne äußere Kraft. Gesamtimpuls bedeutet: Summe m_i·v_i.",
@@ -317,7 +317,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p7:f",
-      prompt: "Wozu dient die Äußere Kraft?",
+      prompt: "Wozu dient die äußere Kraft?",
       answer: "Es beschreibt z. B. Reibung, Gravitation, ändert Gesamtimpuls.", wrong: ["Es beschreibt äußere Kraft ändert Gesamtimpuls, innere Kräfte heben sich auf.", "Es vektoren vor/nach Stoß, bilanz prüfen.", "Es beschreibt summe m_i·v_i, erhalten ohne äußere Kraft."],
       explanation: "Ändert Gesamtimpuls. Äußere Kraft bedeutet: z. B. Reibung, Gravitation.",
       wissen: "Ändert Gesamtimpuls. Äußere Kraft bedeutet: z. B. Reibung, Gravitation.",
@@ -325,7 +325,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-schwerpunkt:p8:f",
-      prompt: "Woran erkennt man die Innere Kraft?",
+      prompt: "Woran erkennt man die innere Kraft?",
       answer: "zwischen Systemteilen.", wrong: ["Inertialsystem wählen.", "Impulsbilanz.", "Absprung/ Impulsübertragung."],
       explanation: "Ändert Gesamtimpuls nicht. Innere Kraft bedeutet: zwischen Systemteilen.",
       wissen: "Ändert Gesamtimpuls nicht. Innere Kraft bedeutet: zwischen Systemteilen.",
@@ -402,7 +402,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p3:f",
-      prompt: "Mit welchen Mitteln arbeitet die Potentielle Energie?",
+      prompt: "Mit welchen Mitteln arbeitet die potentielle Energie?",
       answer: "Sie beschreibt lageenergie im Feld, kann in Ekin übergehen.", wrong: ["Es beschreibt P = W/t bzw. F·v, arbeit pro Zeit.", "Es beschreibt z. B. Reibung, mechanische Energie nicht erhalten.", "Sie beschreibt die Energie der Bewegung und hängt von Masse und Geschwindigkeit ab."],
       explanation: "Kann in Ekin übergehen. Potentielle Energie bedeutet: Lageenergie im Feld.",
       wissen: "Kann in Ekin übergehen. Potentielle Energie bedeutet: Lageenergie im Feld.",
@@ -426,7 +426,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p6:f",
-      prompt: "Wozu dient die Konservative Kraft?",
+      prompt: "Wozu dient die konservative Kraft?",
       answer: "W wegunabhängig.", wrong: ["z. B. Reibung.", "Zu- und Abflüsse.", "1 J = 1 N·m."],
       explanation: "Potentielle Energie definiert. Konservative Kraft bedeutet: W wegunabhängig.",
       wissen: "Potentielle Energie definiert. Konservative Kraft bedeutet: W wegunabhängig.",
@@ -551,7 +551,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p7:f",
-      prompt: "Woran erkennt man das Hebelarm?",
+      prompt: "Woran erkennt man den Hebelarm?",
       answer: "Senkrechter Abstand Kraft–Achse.", wrong: ["Achsenrichtung von L.", "Flächensatz / L.", "exzentrisch."],
       explanation: "Für Moment entscheidend. Hebelarm bedeutet: Senkrechter Abstand Kraft–Achse.",
       wissen: "Für Moment entscheidend. Hebelarm bedeutet: Senkrechter Abstand Kraft–Achse.",
@@ -583,7 +583,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p11:f",
-      prompt: "Was bewirkt das Einheit kg·m²/s?",
+      prompt: "Was beschreibt die Einheit kg·m²/s?",
       answer: "SI für L.", wrong: ["L = I·ω bzw. r×p.", "Massenverteilung zur Achse.", "Drehwinkel pro Zeit."],
       explanation: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
       wissen: "Aus I·ω. Einheit kg·m²/s bedeutet: SI für L.",
@@ -668,7 +668,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p7:f",
-      prompt: "Woran erkennt man die Fehlerquelle Parallaxe?",
+      prompt: "Woran erkennt man die Fehlerquelle der Parallaxe?",
       answer: "Blickwinkel verzerrt.", wrong: ["falscher Maßstab.", "Ablesestreuung.", "Frame-Rate als Δt."],
       explanation: "Kamera senkrecht. Fehlerquelle Parallaxe bedeutet: Blickwinkel verzerrt.",
       wissen: "Kamera senkrecht. Fehlerquelle Parallaxe bedeutet: Blickwinkel verzerrt.",
@@ -769,7 +769,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb3p-kraftmesser:p5:f",
-      prompt: "Welche Eigenschaft hat die Lineare Regression?",
+      prompt: "Welche Eigenschaft hat die lineare Regression?",
       answer: "Geradenanpassung.", wrong: ["G = m·g.", "von Ruhelage.", "Hin- und Rückweg verschieden."],
       explanation: "D aus Steigung. Lineare Regression bedeutet: Geradenanpassung.",
       wissen: "D aus Steigung. Lineare Regression bedeutet: Geradenanpassung.",

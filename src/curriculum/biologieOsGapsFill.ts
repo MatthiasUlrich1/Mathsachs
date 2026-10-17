@@ -79,7 +79,7 @@ const gk11Osmose: BioBank = {
     },
     {
       concept: "bio:gk11:osmose:10",
-      prompt: "Welche Eigenschaft hat das Experimenteller Bezug?",
+      prompt: "Welche Eigenschaft hat der experimentelle Bezug?",
       answer: "Zwiebel/Elodea in Zucker-/Salzlösungen beobachten.", wrong: ["Nur ohne Mikroskop möglich nie.", "Nur am ganzen Organismus ohne Zelle.", "Nur chemische Formeln ohne Beobachtung."],
       explanation: "Experimenteller Bezug.",
       wissen: "Zwiebel/Elodea in Zucker-/Salzlösungen beobachten. Fachlich themenspezifisch einordnen.",
@@ -106,14 +106,14 @@ const gk11Transport: BioBank = {
   facts: [
     {
       concept: "bio:gk11:transport:1",
-      prompt: "Was bewirkt das Passiver Transport?",
+      prompt: "Was bewirkt der passive Transport?",
       answer: "Ohne ATP entlang des Gefälles (Diffusion/erleichterte Diffusion).", wrong: ["Immer gegen das Gefälle mit ATP.", "Nur Exocytose.", "Nur Vesikelbildung."],
       explanation: "Passiver Transport.",
       wissen: "Ohne ATP entlang des Gefälles (Diffusion/erleichterte Diffusion). Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:gk11:transport:2",
-      prompt: "Wozu dient das Aktiver Transport?",
+      prompt: "Wozu dient der aktive Transport?",
       answer: "Gegen das Gefälle unter Energieverbrauch (ATP).", wrong: ["Immer ohne Energie.", "Nur Osmose.", "Nur einfache Diffusion durch Lipid."],
       explanation: "Aktiver Transport.",
       wissen: "Gegen das Gefälle unter Energieverbrauch (ATP). Fachlich themenspezifisch einordnen.",
@@ -157,7 +157,7 @@ const gk11Transport: BioBank = {
     },
     {
       concept: "bio:gk11:transport:8",
-      prompt: "Welche Eigenschaft hat das Selektivität der Membran?",
+      prompt: "Welche Eigenschaft hat die Selektivität der Membran?",
       answer: "Bestimmt, welche Stoffe passieren.", wrong: ["Alles passiert gleich.", "Nichts passiert je.", "Nur Farbe zählt."],
       explanation: "Selektivität der Membran.",
       wissen: "Bestimmt, welche Stoffe passieren. Fachlich themenspezifisch einordnen.",
@@ -200,7 +200,7 @@ const gk11Wasser: BioBank = {
   facts: [
     {
       concept: "bio:gk11:wasser:1",
-      prompt: "Was bewirkt das Transpirationssog?",
+      prompt: "Was bewirkt der Transpirationssog?",
       answer: "Verdunstung an Blättern zieht Wasser nach oben.", wrong: ["Nur Wurzeldruck immer allein.", "Nur Phloemstrom abwärts.", "Nur Guttation."],
       explanation: "Transpirationssog.",
       wissen: "Verdunstung an Blättern zieht Wasser nach oben. Fachlich themenspezifisch einordnen.",
@@ -214,7 +214,7 @@ const gk11Wasser: BioBank = {
     },
     {
       concept: "bio:gk11:wasser:3",
-      prompt: "Was bewirkt das Kohäsion des Wassers?",
+      prompt: "Was bewirkt die Kohäsion des Wassers?",
       answer: "Anziehung zwischen Wassermolekülen.", wrong: ["Abstoßung immer.", "Nur zwischen Luftmolekülen.", "Nur in Öl."],
       explanation: "Kohäsion des Wassers.",
       wissen: "Anziehung zwischen Wassermolekülen. Fachlich themenspezifisch einordnen.",
@@ -230,7 +230,7 @@ const gk11Wasser: BioBank = {
     },
     {
       concept: "bio:gk11:wasser:5",
-      prompt: "Woran erkennt man das Wurzeldruck?",
+      prompt: "Woran erkennt man den Wurzeldruck?",
       answer: "Aktiver Beitrag der Wurzel zum Wasserstrom.", wrong: ["Nur Verdunstung am Blatt.", "Nur Phloem.", "Nur Atmung."],
       explanation: "Wurzeldruck.",
       wissen: "Aktiver Beitrag der Wurzel zum Wasserstrom. Fachlich themenspezifisch einordnen.",
@@ -260,7 +260,7 @@ const gk11Wasser: BioBank = {
     },
     {
       concept: "bio:gk11:wasser:9",
-      prompt: "Wozu dient das Diffusion im Mesophyll?",
+      prompt: "Wozu dient die Diffusion im Mesophyll?",
       answer: "Gase und Wasserdampf im Interzellularraum.", wrong: ["Nur im Xylemholz ohne Luft.", "Nur im Phloemsaft.", "Nur in der Cuticula dicht."],
       explanation: "Diffusion im Mesophyll.",
       wissen: "Gase und Wasserdampf im Interzellularraum. Fachlich themenspezifisch einordnen.",
@@ -308,14 +308,14 @@ const gk11Enzyme: BioBank = {
     },
     {
       concept: "bio:gk11:enzyme:3",
-      prompt: "Was bewirkt die Einfluss Temperatur?",
+      prompt: "Was bewirkt den Einfluss der Temperatur?",
       answer: "Bis Optimum schneller, danach Denaturierung.", wrong: ["Immer linear steigen ohne Limit.", "Kälte denaturiert immer sofort.", "Temperatur egal."],
       explanation: "Einfluss Temperatur.",
       wissen: "Bis Optimum schneller, danach Denaturierung. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:gk11:enzyme:4",
-      prompt: "Was bewirkt das Einfluss pH?",
+      prompt: "Was bewirkt den Einfluss des pH-Werts?",
       answer: "Jedes Enzym hat einen optimalen pH-Bereich.", wrong: ["pH ist immer irrelevant.", "Nur bei 14 optimal für alle.", "Nur bei 0 optimal für alle."],
       explanation: "Einfluss pH.",
       wissen: "Jedes Enzym hat einen optimalen pH-Bereich. Fachlich themenspezifisch einordnen.",
@@ -388,7 +388,7 @@ const gk11Replikation: BioBank = {
   facts: [
     {
       concept: "bio:gk11:repl:1",
-      prompt: "Was kennzeichnet das Semikonservativ bedeutet?",
+      prompt: "Was kennzeichnet das semikonservative Prinzip?",
       answer: "Jeder Tochterstrang behält einen Elternstrang.", wrong: ["Beide Stränge neu ohne Vorlage.", "Nur RNA wird kopiert.", "Nur Proteine verdoppeln sich."],
       explanation: "Semikonservativ bedeutet.",
       wissen: "Jeder Tochterstrang behält einen Elternstrang. Fachlich themenspezifisch einordnen.",
@@ -533,7 +533,7 @@ const gk11Protein: BioBank = {
     },
     {
       concept: "bio:gk11:pbs:8",
-      prompt: "Welche Eigenschaft hat das Genregulation grob?",
+      prompt: "Welche Eigenschaft hat die Genregulation?",
       answer: "Wann/wie stark ein Gen abgelesen wird.", wrong: ["Immer maximale Expression.", "Nur Replikation.", "Nur Osmose."],
       explanation: "Genregulation grob.",
       wissen: "Wann/wie stark ein Gen abgelesen wird. Fachlich themenspezifisch einordnen.",
@@ -549,7 +549,7 @@ const gk11Protein: BioBank = {
     },
     {
       concept: "bio:gk11:pbs:10",
-      prompt: "Was kennzeichnet das Zentrale Dogma grob?",
+      prompt: "Was kennzeichnet das zentrale Dogma?",
       answer: "DNA → RNA → Protein (mit Ausnahmen).", wrong: ["Protein → DNA immer.", "Nur Lipid → Zucker.", "Nur umgekehrt immer."],
       explanation: "Zentrale Dogma grob.",
       wissen: "DNA → RNA → Protein (mit Ausnahmen). Fachlich themenspezifisch einordnen.",
@@ -597,7 +597,7 @@ const gk11Genreg: BioBank = {
     },
     {
       concept: "bio:gk11:genreg:4",
-      prompt: "Welche Eigenschaft hat das Methylierung DNA?",
+      prompt: "Welche Eigenschaft hat die Methylierung der DNA?",
       answer: "Kann Gene epigenetisch stilllegen.", wrong: ["Löscht immer Chromosomen.", "Erhöht immer Expression zwingend.", "Nur bei RNA."],
       explanation: "Methylierung DNA.",
       wissen: "Kann Gene epigenetisch stilllegen. Fachlich themenspezifisch einordnen.",
@@ -677,7 +677,7 @@ const gk11Mikroskop: BioBank = {
     },
     {
       concept: "bio:gk11:mikro:2",
-      prompt: "Wozu dient das Auflösung grob?",
+      prompt: "Wozu dient die Auflösung?",
       answer: "Kleinster noch trennbarer Abstand.", wrong: ["Nur Vergrößerungszahl.", "Nur Kontrast.", "Nur Farbe."],
       explanation: "Auflösung grob.",
       wissen: "Kleinster noch trennbarer Abstand. Fachlich themenspezifisch einordnen.",
@@ -700,7 +700,7 @@ const gk11Mikroskop: BioBank = {
     },
     {
       concept: "bio:gk11:mikro:5",
-      prompt: "Woran erkennt man das Färbung hilft?",
+      prompt: "Woran erkennt man die Färbung?",
       answer: "Kontrast bestimmter Strukturen.", wrong: ["Löscht immer Organellen.", "Ersetzt Objektiv.", "Misst pH genau."],
       explanation: "Färbung hilft.",
       wissen: "Kontrast bestimmter Strukturen. Fachlich themenspezifisch einordnen.",
@@ -714,7 +714,7 @@ const gk11Mikroskop: BioBank = {
     },
     {
       concept: "bio:gk11:mikro:7",
-      prompt: "Wozu dient der Organ aus?",
+      prompt: "Wozu dient das Organ?",
       answer: "Mehreren Geweben mit gemeinsamer Funktion.", wrong: ["Nur einer Zelle immer.", "Nur Interzellularraum.", "Nur Blutplasma."],
       explanation: "Organ aus.",
       wissen: "Mehreren Geweben mit gemeinsamer Funktion. Fachlich themenspezifisch einordnen.",
@@ -778,7 +778,7 @@ const gk11Faktoren: BioBank = {
     },
     {
       concept: "bio:gk11:fak:3",
-      prompt: "Woran erkennt man die Ökologische Nische?",
+      prompt: "Woran erkennt man die ökologische Nische?",
       answer: "Ansprüche und Rolle einer Art.", wrong: ["Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…).", "Einflüsse durch Lebewesen.", "Beziehungen innerhalb einer Art."],
       explanation: "Ökologische Nische.",
       wissen: "Ansprüche und Rolle einer Art. Fachlich themenspezifisch einordnen.",
@@ -794,7 +794,7 @@ const gk11Faktoren: BioBank = {
     },
     {
       concept: "bio:gk11:fak:5",
-      prompt: "Woran erkennt man das Interspezifisch?",
+      prompt: "Woran erkennt man den interspezifischen Wettbewerb?",
       answer: "Beziehungen zwischen Arten.", wrong: ["Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…).", "Einflüsse durch Lebewesen.", "Ansprüche und Rolle einer Art."],
       explanation: "Interspezifisch.",
       wissen: "Beziehungen zwischen Arten. Fachlich themenspezifisch einordnen.",
@@ -858,7 +858,7 @@ const gk11Schaedlinge: BioBank = {
   facts: [
     {
       concept: "bio:gk11:schaed:1",
-      prompt: "Welche Eigenschaft hat die Problem Monokultur?",
+      prompt: "Welche Eigenschaft hat das Problem der Monokultur?",
       answer: "Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten.", wrong: ["Resistenz, Nichtzielorganismen, Rückstände.", "Nützlinge/Antagonisten einsetzen.", "Kombinierte, schwellenorientierte Maßnahmen."],
       explanation: "Problem Monokultur.",
       wissen: "Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten. Fachlich themenspezifisch einordnen.",
@@ -872,14 +872,14 @@ const gk11Schaedlinge: BioBank = {
     },
     {
       concept: "bio:gk11:schaed:3",
-      prompt: "Wozu dient die Biologische Bekämpfung?",
+      prompt: "Wozu dient die biologische Bekämpfung?",
       answer: "Nützlinge/Antagonisten einsetzen.", wrong: ["Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten.", "Resistenz, Nichtzielorganismen, Rückstände.", "Kombinierte, schwellenorientierte Maßnahmen."],
       explanation: "Biologische Bekämpfung.",
       wissen: "Nützlinge/Antagonisten einsetzen. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:gk11:schaed:4",
-      prompt: "Welche Eigenschaft hat das Integrierter Pflanzenschutz?",
+      prompt: "Welche Eigenschaft hat der integrierte Pflanzenschutz?",
       answer: "Kombinierte, schwellenorientierte Maßnahmen.", wrong: ["Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten.", "Resistenz, Nichtzielorganismen, Rückstände.", "Nützlinge/Antagonisten einsetzen."],
       explanation: "Integrierter Pflanzenschutz.",
       wissen: "Kombinierte, schwellenorientierte Maßnahmen. Fachlich themenspezifisch einordnen.",
@@ -996,7 +996,7 @@ const gk11Naturschutz: BioBank = {
     },
     {
       concept: "bio:gk11:naturschutz:7",
-      prompt: "Welche Eigenschaft hat das Gesetzlicher Rahmen grob?",
+      prompt: "Welche Eigenschaft hat der gesetzliche Rahmen?",
       answer: "Regeln zu Schutz und Eingriffen (u. a. landesspezifisch).", wrong: ["Arten, Lebensräume und Prozesse erhalten.", "Mehr Treibhausgase → mehr Wärmerückhaltung.", "Gezielte Steuerung für Erhalt/Nutzung."],
       explanation: "Gesetzlicher Rahmen grob.",
       wissen: "Regeln zu Schutz und Eingriffen (u. a. landesspezifisch). Fachlich themenspezifisch einordnen.",
@@ -1140,7 +1140,7 @@ const gk12Gentherapie: BioBank = {
   facts: [
     {
       concept: "bio:gk12:genther:1",
-      prompt: "Wozu dient die Somatische Gentherapie?",
+      prompt: "Wozu dient die somatische Gentherapie?",
       answer: "Eingriff in Körperzellen, nicht Keimbahn.", wrong: ["Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken.", "Rechtliche/ethische Grenzen früher Embryonen."],
       explanation: "Somatische Gentherapie.",
       wissen: "Eingriff in Körperzellen, nicht Keimbahn. Fachlich themenspezifisch einordnen.",
@@ -1161,7 +1161,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:4",
-      prompt: "Wozu dient das Embryonenschutz?",
+      prompt: "Wozu dient der Embryonenschutz?",
       answer: "Rechtliche/ethische Grenzen früher Embryonen.", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken."],
       explanation: "Embryonenschutz.",
       wissen: "Rechtliche/ethische Grenzen früher Embryonen. Fachlich themenspezifisch einordnen.",
@@ -1184,7 +1184,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:7",
-      prompt: "Welche Eigenschaft hat die Risiko Gentherapie?",
+      prompt: "Welche Eigenschaft hat das Risiko der Gentherapie?",
       answer: "Fehlinsertion, Immunreaktion, Off-Target.", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken."],
       explanation: "Risiko Gentherapie.",
       wissen: "Fehlinsertion, Immunreaktion, Off-Target. Fachlich themenspezifisch einordnen.",
@@ -1207,7 +1207,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:10",
-      prompt: "Was bewirkt die Gesellschaftliche Debatte?",
+      prompt: "Was bewirkt die gesellschaftliche Debatte?",
       answer: "Chancen vs. Diskriminierung/Selektion.", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken."],
       explanation: "Gesellschaftliche Debatte.",
       wissen: "Chancen vs. Diskriminierung/Selektion. Fachlich themenspezifisch einordnen.",

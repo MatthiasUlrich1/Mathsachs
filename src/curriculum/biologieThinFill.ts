@@ -131,7 +131,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f10',
-      prompt: "Woran erkennt man das Raubfisch?",
+      prompt: "Woran erkennt man den Raubfisch?",
       answer: "Es erbeutet andere Fische oder Wassertiere als Nahrung.", wrong: ["Sie bildet die äußere Schutzschicht auf der Haut, oft mit Schleimhaut überzogen.", "Es sind die von Weibchen abgegebenen Fischeier vor oder bei der Befruchtung, weibliche Geschlechtsprodukte.", "Sie verringert den Strömungswiderstand durch eine widerstandsarme Körperform, angepasstheit an Schwimmen."],
       explanation: 'z. B. Hecht. Raubfisch bedeutet: Ernährt sich von anderen Tieren.',
       wissen: 'z. B. Hecht. Raubfisch bedeutet: Ernährt sich von anderen Tieren. Merke: Raubfisch — Ernährt sich von anderen Tieren.',
@@ -141,7 +141,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:f11',
-      prompt: "Woran erkennt man das Friedfisch?",
+      prompt: "Woran erkennt man den Friedfisch?",
       answer: "Es ernährt sich vorwiegend von Pflanzen, Plankton oder Kleintieren.", wrong: ["Es sind die Samenzellen der Männchen, die die Eier im Wasser befruchten, männliche Geschlechtsprodukte.", "Sie erfasst Druckwellen und Bewegungen im Wasser entlang der Körperseite, erfasst Bewegungen im Wasser.", "Er bezeichnet Gewässer mit sehr geringem Salzgehalt wie Flüsse und Seen."],
       explanation: 'z. B. Rotauge. Friedfisch bedeutet: Ernährt sich vor allem pflanzlich/planktisch.',
       wissen: 'z. B. Rotauge. Friedfisch bedeutet: Ernährt sich vor allem pflanzlich/planktisch. Merke: Friedfisch — Ernährt sich vor allem pflanzlich/planktisch.',
