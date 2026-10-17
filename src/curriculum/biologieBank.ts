@@ -299,12 +299,64 @@ export function rewriteDefinitionStylePrompt(
 
   if (isConcreteGlossaryStem(q)) {
     let out = fixGermanPromptCapitalization(q.endsWith('?') ? q : `${q}?`)
+    // Bare adjective/participle stems → natural NPs (all topics, not only Säuger).
+    out = out
+      .replace(
+        /^Was kennzeichnet\s*[„"']?(Angeboren|Erlernt)[“"']?\s*(?:im Verhalten)?\??$/i,
+        (_m, lab: string) =>
+          /^angeboren/i.test(lab)
+            ? 'Was kennzeichnet angeborenes Verhalten?'
+            : 'Was kennzeichnet erlerntes Verhalten?',
+      )
+      .replace(
+        /^Was kennzeichnet das Verhalten\s*[„"'](Angeboren|Erlernt)[“"']\??$/i,
+        (_m, lab: string) =>
+          /^angeboren/i.test(lab)
+            ? 'Was kennzeichnet angeborenes Verhalten?'
+            : 'Was kennzeichnet erlerntes Verhalten?',
+      )
+      .replace(
+        /^Was kennzeichnet\s*[„"']Unspezifisch[“"']\??$/i,
+        'Was kennzeichnet die unspezifische Abwehr?',
+      )
+      .replace(
+        /^Was kennzeichnet\s*[„"']Spezifisch[“"']\??$/i,
+        'Was kennzeichnet die spezifische Abwehr?',
+      )
+      .replace(
+        /^Wozu dient das Wechselwarm\??$/i,
+        'Was kennzeichnet wechselwarme Tiere?',
+      )
+      .replace(
+        /^Wozu dient das Gleichwarm\??$/i,
+        'Was kennzeichnet gleichwarme Tiere?',
+      )
+      .replace(
+        /^Woran erkennt man das Gleichwarm\??$/i,
+        'Woran erkennt man gleichwarme Tiere?',
+      )
+      .replace(
+        /^Welche Eigenschaft hat das Rezessiv\??$/i,
+        'Was kennzeichnet ein rezessives Allel?',
+      )
+      .replace(/\bdas Zellkern\b/g, 'den Zellkern')
+      .replace(/\bdas Akzeptor\b/g, 'den Akzeptor')
+      .replace(/\bdas Habitatverlust\b/g, 'den Habitatverlust')
+      .replace(/\bdas Lebensraumverlust\b/g, 'den Lebensraumverlust')
+      .replace(/\bdas Tastsinn\b/g, 'den Tastsinn')
+      .replace(/\bdas Balz\b/g, 'die Balz')
+      .replace(/\bdas Schonzeit\b/g, 'die Schonzeit')
     // Cross-topic (nur Bio/Geschichte): kurze Einwort-Kennzeichnet-Stems mit Domain-Hinweis
     // trennen. Physik/Mathe nicht anfassen (sonst z. B. Hebel „bei Hebel“ near-dups).
     const hint = domainHintFromPrefix(opts?.prefix)
     const quotedTerm = out.match(/[„"']([^„"']+)[“"']/)?.[1]?.trim() ?? ''
+    const skipHint =
+      /^(angeboren|erlernt)$/i.test(quotedTerm) ||
+      /angeborenes verhalten|erlerntes verhalten/i.test(out) ||
+      (/verhalten/i.test(quotedTerm) && /^im Verhalten$/i.test(hint))
     if (
       hint &&
+      !skipHint &&
       opts?.prefix &&
       /^(bio|ge)[:]/i.test(opts.prefix) &&
       quotedTerm.split(/\s+/).length === 1 &&
@@ -355,15 +407,41 @@ export function rewriteDefinitionStylePrompt(
           : `Was ist ein typisches Merkmal eines ${term}s?`
       )
     }
-    if (/verhalten|sinn|sozial|fortpflanz/i.test(ctx)) {
+    // Include conceptPrefix slugs: saeugverh / vgverh (not only the word „verhalten“).
+    if (/verhalten|saeugverh|vgverh|sinn|saeugsinn|sozial|fortpflanz|saeugfort|vgfort/i.test(ctx)) {
+      // Adjective/participle labels → real German NPs (never „Was kennzeichnet „Erlernt“?“).
+      const behaviorNp = (() => {
+        const t = term.replace(/[„“"']/g, '').trim()
+        if (/^angeboren(es)?(\s+verhalten)?$/i.test(t)) return 'angeborenes Verhalten'
+        if (/^erlernt(es)?(\s+verhalten)?$/i.test(t)) return 'erlerntes Verhalten'
+        if (/^unspezifisch$/i.test(t)) return 'die unspezifische Abwehr'
+        if (/^spezifisch$/i.test(t)) return 'die spezifische Abwehr'
+        return ''
+      })()
+      if (behaviorNp) {
+        return fixGermanPromptCapitalization(`Was kennzeichnet ${behaviorNp}?`)
+      }
       const hint =
         domainHintFromPrefix(prefix) ||
-        (/fortpflanz/i.test(ctx) ? 'bei der Fortpflanzung' : 'im Verhalten')
-      // Put domain context before the quoted term for natural German word order
-      if (/^im Verhalten$/.test(hint)) {
-        return fixGermanPromptCapitalization(`Was kennzeichnet das Verhalten „${term}“?`)
+        (/fortpflanz/i.test(ctx)
+          ? 'bei der Fortpflanzung'
+          : /sinn/i.test(ctx)
+            ? 'bei den Sinnen'
+            : 'im Verhalten')
+      // Avoid redundant „… im Verhalten“ when the term already names a Verhalten.
+      if (/^im Verhalten$/i.test(hint) && /verhalten/i.test(term)) {
+        return fixGermanPromptCapitalization(
+          `Was kennzeichnet ${articleFor(term, 'acc')} ${term}?`,
+        )
       }
-      return fixGermanPromptCapitalization(`Was kennzeichnet ${articleFor(term, 'acc')} ${term} ${hint}?`)
+      if (/^im Verhalten$/i.test(hint)) {
+        return fixGermanPromptCapitalization(
+          `Was kennzeichnet ${articleFor(term, 'acc')} ${term}?`,
+        )
+      }
+      return fixGermanPromptCapitalization(
+        `Was kennzeichnet ${articleFor(term, 'acc')} ${term} ${hint}?`,
+      )
     }
     if (/arbeitsweise|methode|experiment|beobachten|nachweis/i.test(ctx)) {
       return fixGermanPromptCapitalization(`Was beschreibt die Arbeitsweise „${term}“?`)
@@ -1280,10 +1358,15 @@ export function bankGenerate(bank: BioBank): Topic['generate'] {
             contentIds: [altKey],
           })
         }
+        const style = classifyGlossaryStyle(term, meaning)
+        const correct = expandGlossaryAnswer(meaning, { term, style })
+        const wrongExpanded = wrong.map((w) =>
+          expandGlossaryDistractor(w, undefined, { term, style }),
+        )
         return mcTask(rng, {
           question: applicationPromptForTerm(term, prefix),
-          correct: meaning,
-          wrong,
+          correct,
+          wrong: wrongExpanded,
           explanation: `${term}: ${meaning}`,
           fachwissen: fw(bank, p.wissen, {
             term,

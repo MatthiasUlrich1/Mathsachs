@@ -64,7 +64,7 @@ const EFFECT_VERB =
   /^(Ist|Sind|Wird|Werden|Entsteht|Bedeutet|Gilt|Kennzeichnet|Bezeichnet|Beschreibt|Steht|Liegt|Geht|Hat|Haben|Stört)\b/i
 
 const BANNED_OPTION =
-  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|ist hier:|ist kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|steht im Kern für Folgendes|der Ereignisse|Was bedeutet|bei den behandelten Arten|\bNur Haarfarbe\b|\bNur Zahnzahl\b|ohne biologischen Bezug|Nur Fotosynthese ohne biologischen Bezug|\bEs ist eine Nur\b|\bSie ist eine Nur\b|\bEr ist eine Nur\b|Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|Es beschreibt ein Zwei Membranen/i
+  /Bezeichnet die Bezeichnet|zählt inhaltlich|Fachzusammenhang als zentralen|— so bei|\bNachbarbegriff\b|Randdetail ohne|vertauschte Ursache-Wirkung|bezeichnet die Ist |bezeichnet das Ist |Es das Ist|kennzeichnet das Ist|kennzeichnet die Ist|beschreibt die Ist|\?\?\?|zentralen fachlichen Kern|von Nachbarbegriffen|ist hier:|ist kurz gesagt:|\bHier gilt\b|Es geht um|und zwar gilt|steht im Kern für Folgendes|der Ereignisse|Was bedeutet|bei den behandelten Arten|\bNur Haarfarbe\b|\bNur Zahnzahl\b|ohne biologischen Bezug|Nur Fotosynthese ohne biologischen Bezug|\bEs ist eine Nur\b|\bSie ist eine Nur\b|\bEr ist eine Nur\b|Es ist eine Erbgänge|Es ist eine Lebensraum diktiert|Es beschreibt ein Zwei Membranen|\bEs ist ein (?:Ersetzt|Kommuniziert|Putzen|Signalisiert|Markiert|Kennzeichnet|Kopiert|Geöffnet)\b|\bein Gezieltes\b|\bein Genetisch\b|\bdas Künstliche\b|\bGrundmethode der Verhaltensbiologie\b|sonne Stern unter Sternen|Es ist einseitig durch/i
 
 /**
  * Title-Case mush after „ist eine“: two+ Title tokens (e.g. „ist eine Franklins Röntgen…“).
@@ -164,6 +164,20 @@ const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
   beitrag: 'm', nervensystem: 'n', trend: 'm', vergleich: 'm',
   stammzelle: 'f', zellzyklus: 'm', kompartimentierung: 'f', endo: 'f',
   selektion: 'f', mutation: 'f', modifikation: 'f', autosom: 'n',
+  // Bio: anatomie / physiologie / genetik (inventory-expanded)
+  zellkern: 'm', blutdruck: 'm', bluthochdruck: 'm', medieninfluss: 'm',
+  biodiversitätsverlauf: 'm', schwanzlurch: 'm', froschlurch: 'm',
+  schädlingsdruck: 'm', apoptoseverlust: 'm', herdenschutz: 'm',
+  neurotransmitterabbau: 'm', wärmeverlust: 'm', einschaltvorgang: 'm',
+  luftdruck: 'm', gasdruck: 'm',
+  innere befruchtung: 'f', äußere befruchtung: 'f',
+  motorische bahn: 'f', sensorische bahn: 'f',
+  aktiver transport: 'm', passiver transport: 'm',
+  intersexualität: 'f', eugenik: 'f', konvergenz: 'f', leuchtkraft: 'f',
+  gärung: 'f', milchsäuregärung: 'f', photorespiration: 'f',
+  renaturierung: 'f', transplantation: 'f', früherkennung: 'f',
+  verdauung: 'f', bilanz: 'f', messung: 'f', migration: 'f',
+  artbildung: 'f', raumtrennung: 'f', spezifität: 'f', impfung: 'f',
   // Physik
   druck: 'm', strom: 'm', widerstand: 'm', schalter: 'm', hebelarm: 'm',
   kraftarm: 'm', lasthebel: 'm', sensor: 'm', timer: 'm', lichtstrahl: 'm',
@@ -348,6 +362,43 @@ export function concreteGlossaryStem(
 
   if (style === 'process') return `Was bewirkt ${t}?`
 
+  // Bare participles/adjectives are not Schüler questions.
+  if (/^(angeboren|erlernt)$/i.test(t)) {
+    return /^angeboren/i.test(t)
+      ? 'Was kennzeichnet angeborenes Verhalten?'
+      : 'Was kennzeichnet erlerntes Verhalten?'
+  }
+  if (/^(angeborenes|erlerntes)\s+verhalten$/i.test(t)) {
+    return `Was kennzeichnet ${t.charAt(0).toLowerCase()}${t.slice(1)}?`
+  }
+  if (/^(wechselwarm|poikilotherm)$/i.test(t)) {
+    return 'Was kennzeichnet wechselwarme Tiere?'
+  }
+  if (/^(gleichwarm|homoiotherm)$/i.test(t)) {
+    return 'Was kennzeichnet gleichwarme Tiere?'
+  }
+  if (/^rezessiv$/i.test(t)) {
+    return 'Was kennzeichnet ein rezessives Allel?'
+  }
+  if (/^dominant$/i.test(t)) {
+    return 'Was kennzeichnet ein dominantes Allel?'
+  }
+  if (/^innere befruchtung$/i.test(t)) {
+    return 'Was kennzeichnet innere Befruchtung?'
+  }
+  if (/^äußere befruchtung$/i.test(t)) {
+    return 'Was kennzeichnet äußere Befruchtung?'
+  }
+  if (/^aktiver transport$/i.test(t)) {
+    return 'Was kennzeichnet aktiven Transport?'
+  }
+  if (/^motorische bahn$/i.test(t)) {
+    return 'Was kennzeichnet die motorische Bahn?'
+  }
+  // Never emit „Es ist ein [Verb…]“ via purpose-style misclassification of verb fragments.
+  if (PURPOSE_VERB.test(t) || /^(ersetzt|kommuniziert|putzen|signalisiert)$/i.test(t)) {
+    return `Was kennzeichnet „${t}“ in diesem Zusammenhang?`
+  }
   return `Was kennzeichnet „${t}“?`
 }
 
@@ -393,6 +444,36 @@ function capitalizeNpWords(phrase: string): string {
     .join(' ')
 }
 
+/**
+ * German NP casing: adjectives stay lowercase, head nouns capitalize.
+ * Avoids „ein Gezieltes Wahrnehmen“ (wrong) → „ein gezieltes Wahrnehmen“.
+ */
+function fixAdjNounCasing(phrase: string): string {
+  const words = phrase.split(/\s+/).filter(Boolean)
+  if (!words.length) return phrase
+  const adjLike =
+    /^(?:[a-zäöü]|[A-ZÄÖÜ])[a-zäöüß]*(?:ig|lich|isch|bar|sam|haft|iv|al|ell|är|ös|en|es|er|e|em|ene|enes|ener)$/i
+  return words
+    .map((w, i) => {
+      const bare = w.replace(/^[^a-zäöüßA-ZÄÖÜ]+|[^a-zäöüßA-ZÄÖÜ]+$/giu, '')
+      if (!bare) return w
+      const low = bare.toLowerCase()
+      if (PREPS.has(low)) return w.replace(bare, low)
+      // First token after article: adjective → lower; lone noun → upper
+      if (i === 0 && words.length >= 2 && adjLike.test(bare)) {
+        return w.replace(bare, low)
+      }
+      if (/^[a-zäöü]/.test(bare) && !adjLike.test(bare)) {
+        return w.replace(bare, bare.charAt(0).toUpperCase() + bare.slice(1))
+      }
+      if (i > 0 && adjLike.test(bare) && /^[A-ZÄÖÜ]/.test(bare)) {
+        return w.replace(bare, low)
+      }
+      return w
+    })
+    .join(' ')
+}
+
 /** Article + NP for a meaning fragment (gender from head/first noun). */
 function meaningAsPredicate(body: string): string {
   const t = fixRelativeComma(body.trim())
@@ -400,15 +481,24 @@ function meaningAsPredicate(body: string): string {
   if (/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)\s/i.test(t)) {
     const rest = t.replace(/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)\s+/i, '')
     const art = t.match(/^(der|die|das|ein|eine|einen|einem|einer|den|dem|des)/i)![1]!.toLowerCase()
-    return `${art} ${capitalizeNpWords(rest)}`
+    return `${art} ${fixAdjNounCasing(rest)}`
   }
   // Verb-led clause kept as-is (caller may attach pronoun separately).
   if (PURPOSE_VERB.test(t) || EFFECT_VERB.test(t)) return lowerFirst(t)
-  const capped = capitalizeNpWords(t)
+  const capped = fixAdjNounCasing(t)
   // Use the FIRST (head) noun's ending to determine article, not the last word.
   // "Kollision an Glasflächen" → head is "Kollision" (fem) → "eine Kollision an Glasflächen"
-  const headWord = (capped.split(/\s+/)[0] ?? capped).toLowerCase()
-  const g = nounGender(headWord)
+  // Skip article inference when first token is clearly an adjective before a noun.
+  const parts = capped.split(/\s+/)
+  const headWord = (
+    parts.length >= 2 &&
+    /(?:ig|lich|isch|bar|sam|haft|iv|al|ell|är|ös|en|es|er|e|em)$/i.test(parts[0]!)
+      ? parts[1]
+      : parts[0]
+  )!
+    .toLowerCase()
+    .replace(/[^a-zäöüß]/giu, '')
+  const g = nounGender(headWord || parts[0]!.toLowerCase())
   if (g === 'f') return `eine ${capped}`
   if (g === 'm') return `ein ${capped}`
   return `ein ${capped}`
@@ -439,7 +529,14 @@ function naturalFragmentOption(term: string, fragment: string): string {
     .replace(/^(Der|Die|Das)\s+\S+(?:\s+\S+){0,6}\s+ist kurz gesagt:\s*/i, '')
     .replace(/^Es geht um(?: diesen Inhalt)?:\s*/i, '')
     .replace(/,\s*und zwar gilt(?: hier)?:\s*/gi, ', ')
+    // Undo prior bad wraps: „ein Kommuniziert …“ / „eine Ersetzt …“
+    .replace(/^(ein|eine|einen)\s+(?=[A-ZÄÖÜ]?[a-zäöüß]*(?:iert|etzt|eugt|ildet|eistet|ignalisiert)\b)/i, '')
     .trim()
+
+  // Already a complete pronoun sentence — return as-is (never „Es ist ein Es …“).
+  if (/^(Sie|Er|Es|Man)\s+\S+/i.test(body) && hasFiniteGermanVerb(body)) {
+    return ensurePeriod(body.charAt(0).toUpperCase() + body.slice(1))
+  }
 
   const t = displayGlossaryTerm(term)
   const pron = t ? pronounFor(t) : 'Es'
@@ -447,7 +544,7 @@ function naturalFragmentOption(term: string, fragment: string): string {
 
   if (PURPOSE_VERB.test(body) || EFFECT_VERB.test(body)) {
     out = ensurePeriod(`${pron} ${lowerFirst(body)}`)
-  } else if (/\b(ist|sind|hat|haben|wird|werden|lässt|dient|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entsteht|geht|liegt|nimmt|steht)\b/i.test(body)) {
+  } else if (hasFiniteGermanVerb(body)) {
     out = ensurePeriod(body.charAt(0).toUpperCase() + body.slice(1))
   } else {
     let pred = meaningAsPredicate(body)
@@ -456,7 +553,13 @@ function naturalFragmentOption(term: string, fragment: string): string {
       /^(ein|eine|einen|der|die|das)\s+([A-Z\u00c4\u00d6\u00dc][a-z\u00e4\u00f6\u00fc\u00df]+)\s+/,
       (_m, pArt, adj) => `${pArt} ${adj.charAt(0).toLowerCase() + adj.slice(1)} `,
     )
-    out = ensurePeriod(`${pron} ist ${pred}`)
+    // Never „Es ist ein Ersetzt/Kommuniziert …“ — verb fragments get pronoun+verb.
+    if (/^(ein|eine|einen)\s+([A-ZÄÖÜ]?[a-zäöüß]*(?:iert|etzt|eugt|ildet|eistet|ignalisiert)\b)/i.test(pred)) {
+      const verbClause = pred.replace(/^(ein|eine|einen)\s+/i, '')
+      out = ensurePeriod(`${pron} ${lowerFirst(verbClause)}`)
+    } else {
+      out = ensurePeriod(`${pron} ist ${pred}`)
+    }
   }
 
   if (enrich) {
@@ -498,6 +601,18 @@ export function isMechanicalGlossaryOption(opt: string): boolean {
   if (BANNED_OPTION.test(o)) return true
   if (TITLE_AFTER_IST_EINE.test(o)) return true
   if (TITLE_AFTER_BESCHREIBT_EINE.test(o) || TITLE_AFTER_BESCHREIBT_EIN.test(o)) return true
+  // Ban Title-Case adjectives after articles forever (ein Gezieltes / das Künstliche).
+  if (
+    /\b(?:ein|eine|einen|einem|einer|das|die|der)\s+(?:Gezielte[sn]?|Genetisch(?:e[sn]?)?|Künstliche[sn]?|Angeborene[sn]?|Erlernte[sn]?)\b/.test(
+      o,
+    )
+  ) {
+    return true
+  }
+  // Ban verb-as-noun forever.
+  if (/\b(?:Es|Sie|Er) ist ein(?:e)?\s+(?:Ersetzt|Kommuniziert|Putzen|Signalisiert|Markiert|Kopiert|Geöffnet)\b/.test(o)) {
+    return true
+  }
   if (/\bsteht im Kern für Folgendes\b/i.test(o)) return true
   if (/\bist hier:|\bist kurz gesagt:|\bHier gilt\b|\bEs geht um|\bund zwar gilt|\bder Ereignisse\b/i.test(o)) {
     return true
@@ -551,9 +666,28 @@ export function isWeakGlossaryOption(opt: string): boolean {
   return false
 }
 
+/** Finite-verb / purpose-verb check for already-formed Schüler sentences. */
+function hasFiniteGermanVerb(m: string): boolean {
+  if (
+    /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|speichert|transportiert|unterbricht|hemmt|pumpt|wandelt|prägt|gewährt|organisiert|fasst|trennt|leitet|nutzt|dokumentiert|ordnet|wirkt|meint|folgt|braucht|brauchen|kennzeichnet|kommuniziert|ersetzt|signalisiert|reagiert|markiert|verteidigt|erhöht|verringert|ermöglicht|verhindert|unterstützt|begrenzt|reduziert|überträgt|bewegt|reguliert)\b/i.test(
+      m,
+    )
+  ) {
+    return true
+  }
+  // „Es kommuniziert …“ / „Sie ersetzt …“ — verb right after pronoun
+  const afterPron = m.replace(/^(Sie|Er|Es|Man)\s+/i, '').trim()
+  return PURPOSE_VERB.test(afterPron) || EFFECT_VERB.test(afterPron)
+}
+
 function alreadyFullOption(m: string): boolean {
   if (isWeakGlossaryOption(m) || isMechanicalGlossaryOption(m)) return false
   if (BANNED_OPTION.test(m)) return false
+  // Already a pronoun sentence with a real verb — never re-wrap (prevents
+  // „Es kommuniziert …“ → „Es ist ein Kommuniziert …“).
+  if (/^(Sie|Er|Es|Man)\s+\S+/i.test(m) && hasFiniteGermanVerb(m)) {
+    return true
+  }
   const words = m.split(/\s+/).length
   if (words < 6 || !/[.!?]$/.test(m)) return false
   if (
@@ -561,9 +695,7 @@ function alreadyFullOption(m: string): boolean {
   ) {
     return false
   }
-  return /\b(ist|sind|hat|haben|wird|werden|lässt|lassen|dient|dienen|beschreibt|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entzieht|verbindet|erzeugt|entsteht|geht|liegt|nimmt|speichert|transportiert|unterbricht|hemmt|pumpt|wandelt|prägt|gewährt|organisiert|fasst|trennt|leitet|nutzt|dokumentiert|ordnet|wirkt|meint|folgt|braucht|brauchen|kennzeichnet)\b/i.test(
-    m,
-  )
+  return hasFiniteGermanVerb(m)
 }
 
 /**
