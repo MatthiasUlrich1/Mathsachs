@@ -113,18 +113,6 @@ function pronounFor(term: string): 'Sie' | 'Er' | 'Es' {
   return 'Es'
 }
 
-function indefinitePhrase(term: string): string {
-  const low = displayGlossaryTerm(term).toLowerCase()
-  if (low === 'transparent') return 'ein transparenter Körper'
-  if (low === 'transluzent') return 'ein transluzenter Körper'
-  if (low === 'opak') return 'ein opaker Körper'
-  const t = displayGlossaryTerm(term)
-  if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low)) {
-    return `eine ${t}`
-  }
-  return `ein ${t}`
-}
-
 function lowerFirst(s: string): string {
   if (!s) return s
   return s.charAt(0).toLowerCase() + s.slice(1)
@@ -383,10 +371,6 @@ function naturalFragmentOption(term: string, fragment: string): string {
     out = ensurePeriod(`${pron} ist ${pred}`)
   }
   return out
-}
-
-function asNp(m: string): string {
-  return meaningAsPredicate(m)
 }
 
 /** Mechanical glossary wrappers that must be rebuilt. */
