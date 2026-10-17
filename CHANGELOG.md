@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.120] – 2026-10-17
+
+### Behoben
+- **Full-corpus locked-MC quality pass:** Alle 7637 MC-Fakten in gesperrten *Fill*-Dateien
+  inventarisiert und gegen kritische Regeln A–I gescannt (keine Stichproben). Generator
+  (glossaryMcRewrite/iologieBank) mit erweitertem Gender-Dict und Bans gegen Verb-als-Nomen
+  und Title-Case-Adjektive abgesichert. Package-weise Korrekturen (Artikel, Adjektiv-Stems,
+  Cross-Topic-Distraktoren). Full-Scanner: 0 kritische Treffer.
+
+
 ## [0.28.116] – 2026-10-17
 
 ### Behoben
