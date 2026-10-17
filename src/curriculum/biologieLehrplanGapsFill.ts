@@ -1170,7 +1170,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f4",
-      prompt: "Welche Eigenschaft hat das Revier?",
+      prompt: "Wozu dient ein Revier im Sozialverhalten der Säuger?",
       answer: "Ein Revier ist ein verteidigtes Gebiet, in dem ein Tier Nahrung und Fortpflanzung sichert.", wrong: ["Ein Rudel ist nur die soziale Gruppe mancher Säuger ohne festes Gebiet.", "Kooperation ist nur Zusammenarbeit zum gemeinsamen Vorteil ohne Reviergrenzen.", "Rangordnung ist nur die Hierarchie in der Gruppe ohne Territorium."],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(

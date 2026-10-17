@@ -1802,7 +1802,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:transkr",
       prompt: "Was geschieht bei der Transkription?",
-      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "S = Synthese der DNA vor der Mitose."],
+      answer: "DNA wird in mRNA umgeschrieben (Arbeitskopie der Geninformation).", wrong: ["Die DNA verdoppelt sich vor der Mitose (Replikation).", "Aminosäuren werden am Ribosom zur Proteinkette verknüpft.", "Spaltöffnungen öffnen sich für den Gasaustausch."],
       explanation: "Umschreiben von DNA in mRNA.",
       wissen: fw(
         "Im Zellkern (Eukaryoten) entsteht mRNA als Arbeitskopie.",

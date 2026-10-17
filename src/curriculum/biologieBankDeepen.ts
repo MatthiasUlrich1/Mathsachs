@@ -2289,7 +2289,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k9:wald-gewaesser:xfact:humus",
-      prompt: "Wozu dient der Humus?",
+      prompt: "Welche Rolle hat Humus im Waldboden?",
       answer: "Der Humus ist eine Organische Bodensubstanz.",
       wrong: ["Der Abiotisch ist eine Unbelebte Umweltfaktoren.","Der Biotisch ist eine belebte Umweltfaktoren.","Das Ökosystem ist eine Lebensgemeinschaft + Lebensraum."],
       explanation: "Wichtiger Speicher und Nährstoffquelle. Humus bedeutet: Organische Bodensubstanz. Merke: Humus — Organische Bodensubstanz.",
@@ -2478,7 +2478,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     facts: [
     {
       concept: "bio:k10:mendel:xfact:gen",
-      prompt: "Welche Aufgabe hat das Gen?",
+      prompt: "Was ist ein Gen in der Vererbungslehre?",
       answer: "Das Gen ist eine Erbanlage.",
       wrong: ["Das Allel ist eine Ausprägungsform eines Gens.","Der Dominant ist ein setzt sich im Phänotyp durch.","Der Rezessiv ist ein tritt nur homogen sichtbar auf."],
       explanation: "Abschnitt der DNA. Gen bedeutet: Erbanlage. Merke: Gen — Erbanlage.",
@@ -2666,7 +2666,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k10:dna:xfact:gen",
-      prompt: "Welche Aufgabe hat das Gen?",
+      prompt: "Was beschreibt ein Gen als DNA-Einheit?",
       answer: "Das Gen ist eine Funktionale DNA-Einheit.",
       wrong: ["Die Replikation ist eine Verdopplung der DNA.","Die Mutation ist eine Änderung der DNA-Sequenz.","Die Transkription ist ein DNA → RNA."],
       explanation: "Code für Merkmale/Proteine. Gen bedeutet: Funktionale DNA-Einheit. Merke: Gen — Funktionale DNA-Einheit.",
@@ -2699,7 +2699,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k10:dna:xfact:transkription",
-      prompt: "Was geschieht bei der Transkription?",
+      prompt: "Was entsteht bei der Transkription aus DNA?",
       answer: "Die Transkription ist ein DNA → RNA.",
       wrong: ["Die Translation ist ein RNA → Protein.","Das Genom ist eine gesamte Erbinformation.","Der Doppelhelix ist ein Raumstruktur der DNA."],
       explanation: "Im Zellkern (Eukaryoten). Transkription bedeutet: DNA → RNA. Merke: Transkription — DNA → RNA.",
@@ -2710,7 +2710,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k10:dna:xfact:translation",
-      prompt: "Was geschieht bei der Translation?",
+      prompt: "Was entsteht bei der Translation aus RNA?",
       answer: "Die Translation ist ein RNA → Protein.",
       wrong: ["Das Genom ist eine gesamte Erbinformation.","Der Doppelhelix ist ein Raumstruktur der DNA.","Der Komplementär ist eine Passende Basenpaarung."],
       explanation: "An Ribosomen. Translation bedeutet: RNA → Protein. Merke: Translation — RNA → Protein.",
@@ -3220,7 +3220,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:wirbellose:xfact:haeutung",
-      prompt: "Was geschieht bei der Häutung?",
+      prompt: "Was geschieht bei der Häutung bei Gliederfüßern?",
       answer: "Die Häutung ist ein Abstreifen des Panzers.",
       wrong: ["Tentakel sind Fang- oder Tastfortsatz.","Der Offener Blutkreislauf ist eine Hämolymphe in Körperhöhlen.","Die Metamorphose ist ein Gestaltwechsel."],
       explanation: "Wachstum bei Arthropoden. Häutung bedeutet: Abstreifen des Panzers. Merke: Häutung — Abstreifen des Panzers.",
@@ -3375,7 +3375,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:insekten:xfact:fuehler",
-      prompt: "Wozu dienen Fühler?",
+      prompt: "Wozu dienen Fühler bei Insekten?",
       answer: "Fühler sind Tast- und Geruchssinn.",
       wrong: ["Der Tracheen ist ein Atmungssystem.","Die Komplexauge ist eine viele Einzelaugen.","Die Larve ist ein Jugendstadium."],
       explanation: "Am Kopf. Fühler bedeutet: Tast- und Geruchssinn. Merke: Fühler — Tast- und Geruchssinn.",
@@ -3408,7 +3408,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:insekten:xfact:larve",
-      prompt: "Welche Aufgabe hat die Larve?",
+      prompt: "Welche Aufgabe hat die Larve bei Insekten?",
       answer: "Die Larve ist ein Jugendstadium.",
       wrong: ["Die Puppe ist ein Umwandlungsstadium.","Der Imago ist das erwachsene Insekt.","Mundwerkzeuge sind an die Nahrung angepasst."],
       explanation: "Oft andere Lebensweise. Larve bedeutet: Jugendstadium. Merke: Larve — Jugendstadium.",
@@ -4649,7 +4649,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k9:pflanzen:xfact:meristem",
-      prompt: "Welche Aufgabe hat der Meristem?",
+      prompt: "Welche Aufgabe hat Meristemgewebe in Pflanzen?",
       answer: "Der Meristem ist ein Teilungsfähiges Gewebe.",
       wrong: ["Die Differenzierung ist eine Spezialisierung von Zellen.","Der Primärwachstum ist ein Längenwachstum.","Der Sekundärwachstum ist ein Dickenwachstum."],
       explanation: "Wachstumszone. Meristem bedeutet: Teilungsfähiges Gewebe. Merke: Meristem — Teilungsfähiges Gewebe.",
@@ -10200,7 +10200,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:weichtiere:xfact:fuss",
-      prompt: "Wozu dient der Fuß?",
+      prompt: "Wozu dient der Fuß bei Weichtieren?",
       answer: "Der Fuß ist ein muskulöses Kriech- oder Haftorgan.",
       wrong: ["Der Radula ist eine Reibeplatte vieler Weichtiere.","Die Schale ist ein Kalkschutz vieler Arten.","Die Schnecke ist ein Weichtier mit oft gewundener Schale."],
       explanation: "Fortbewegung. Fuß bedeutet: Muskulöses Kriech- oder Haftorgan. Merke: Fuß — Muskulöses Kriech- oder Haftorgan.",
@@ -10277,7 +10277,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:weichtiere:xfact:kiemen",
-      prompt: "Wozu dienen Kiemen?",
+      prompt: "Wozu dienen Kiemen bei Weichtieren?",
       answer: "Kiemen sind Atmungsorgane im Wasser.",
       wrong: ["Die Lunge ist eine Luftatmung bei manchen Schnecken.","Der Perlmutt ist eine Innenschicht mancher Schalen.","Tentakel sind Fühlerartige Fortsätze."],
       explanation: "Bei vielen Wasserweichtieren. Kiemen bedeutet: Atmungsorgane im Wasser. Merke: Kiemen — Atmungsorgane im Wasser.",
@@ -10574,7 +10574,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:muscheln:xfact:fuss",
-      prompt: "Wozu dient der Fuß?",
+      prompt: "Wozu dient der Fuß bei Muscheln?",
       answer: "Der Fuß ist ein Grab- und Bewegungsorgan.",
       wrong: ["Die Perlbildung ist eine Reaktion auf Fremdkörper.","Die Süßwassermuschel lebt in Flüssen und Seen.","Die Meeresmuschel ist ein Salzwasserlebensraum."],
       explanation: "Bei manchen Arten. Fuß bedeutet: Grab- und Bewegungsorgan. Merke: Fuß — Grab- und Bewegungsorgan.",
@@ -10618,7 +10618,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:muscheln:xfact:kiemen",
-      prompt: "Wozu dienen Kiemen?",
+      prompt: "Welche doppelte Aufgabe haben Kiemen bei Muscheln?",
       answer: "Kiemen sind Atmung und Filter.",
       wrong: ["Byssusfäden haften am Substrat.","Der Schalenwachstum ist eine Zuwachsringe.","Die Larve ist ein Jugendstadium im Plankton."],
       explanation: "Doppelfunktion. Kiemen bedeutet: Atmung und Filter. Merke: Kiemen — Atmung und Filter.",
@@ -11421,7 +11421,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:krebstiere:xfact:haeutung",
-      prompt: "Was geschieht bei der Häutung?",
+      prompt: "Warum müssen Krebstiere sich häuten?",
       answer: "Die Häutung ist ein Abstreifen des alten Panzers.",
       wrong: ["Der Scheren ist ein Greif- und Verteidigungsorgane.","Kiemen sind Atmung unter Wasser.","Fühler sind Sinnesträger."],
       explanation: "Wachstumsschritt. Häutung bedeutet: Abstreifen des alten Panzers. Merke: Häutung — Abstreifen des alten Panzers.",
@@ -11454,7 +11454,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:krebstiere:xfact:fuehler",
-      prompt: "Wozu dienen Fühler?",
+      prompt: "Wozu dienen Fühler bei Krebstieren?",
       answer: "Fühler sind Sinnesträger.",
       wrong: ["Die Larve ist ein oft planktonisch.","Der Wasserfloh ist ein kleiner Filtrierer.","Der Assel ist ein auch an Land."],
       explanation: "Tasten und Chemorezeption. Fühler bedeutet: Sinnesträger. Merke: Fühler — Sinnesträger.",
@@ -11465,7 +11465,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k6:krebstiere:xfact:larve",
-      prompt: "Welche Aufgabe hat die Larve?",
+      prompt: "Welche Rolle hat die Larve bei Krebstieren?",
       answer: "Die Larve ist ein oft planktonisch.",
       wrong: ["Der Wasserfloh ist ein kleiner Filtrierer.","Der Assel ist ein auch an Land.","Der Zehnfußkrebs ist ein z. B. Flusskrebs."],
       explanation: "Metamorphose. Larve bedeutet: Oft planktonisch. Merke: Larve — Oft planktonisch.",
@@ -13401,7 +13401,7 @@ export const BIO_BANK_EXTRAS: Record<string, BankExtras> = {
     },
     {
       concept: "bio:k9:spross:xfact:meristem",
-      prompt: "Welche Aufgabe hat der Meristem?",
+      prompt: "Welche Aufgabe hat das Meristem an Wurzel und Spross?",
       answer: "Der Meristem ist eine Teilungsgewebe.",
       wrong: ["Der Xylem ist eine Wasserleitung nach oben.","Der Phloem ist eine Assimilatleitung.","Der Leitbündel ist ein xylem und Phloem."],
       explanation: "Spitzenwachstum. Meristem bedeutet: Teilungsgewebe. Merke: Meristem — Teilungsgewebe.",

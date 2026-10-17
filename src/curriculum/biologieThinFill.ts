@@ -2183,7 +2183,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f10',
-      prompt: "Welche Eigenschaft hat das Revier?",
+      prompt: "Was bedeutet Revieren bei Säugetieren?",
       answer: "Das Tier markiert und verteidigt sein Revier.", wrong: ["Das Fell ist das Haarkleid der Säugetiere und schützt vor Wärmeverlust.", "Die Milchdrüse erzeugt Milch und ernährt damit die Jungtiere.", "Gleichwarme Säuger halten ihre Körpertemperatur aktiv und stabil (endotherm)."],
       explanation: 'Duft, Laute. Revieren bedeutet: Das Tier markiert und verteidigt sein Revier.',
       wissen: 'Duft, Laute. Revieren bedeutet: Das Tier markiert und verteidigt sein Revier. Merke: Revieren — Das Tier markiert und verteidigt sein Revier.',
@@ -6631,7 +6631,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lb2:stoffkreis:f9',
-      prompt: "Wozu dient der Humus?",
+      prompt: "Was speichert Humus im Stoffkreislauf?",
       answer: "Die Humus beschreibt organik im Boden.", wrong: ["CO₂ ↔ organisch.", "Bindet CO₂.", "Setzt CO₂ frei."],
       explanation: 'Speicher. Humus bedeutet: Organik im Boden.',
       wissen: 'Speicher. Humus bedeutet: Organik im Boden. Merke: Humus — Organik im Boden.',
