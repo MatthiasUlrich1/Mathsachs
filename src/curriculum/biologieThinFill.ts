@@ -287,7 +287,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f8',
-      prompt: "Wozu dient das Wechselwarm?",
+      prompt: "Was kennzeichnet wechselwarme Tiere?",
       answer: "Es bedeutet, dass die Körpertemperatur der Umwelt folgt.", wrong: ["Es skelett vorwiegend knöchern.", "Es skelett aus Knorpel.", "Sie beschreibt hauptsächlicher Vortrieb, seitliche Schläge."],
       explanation: 'Poikilotherm. Wechselwarm bedeutet: Körpertemperatur folgt Umgebung.',
       wissen: 'Poikilotherm. Wechselwarm bedeutet: Körpertemperatur folgt Umgebung. Merke: Wechselwarm — Körpertemperatur folgt Umgebung.',
@@ -448,7 +448,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:f7',
-      prompt: "Woran erkennt man das Schwanzlurch?",
+      prompt: "Woran erkennt man den Schwanzlurch?",
       answer: "Mit Schwanz als Adult.", wrong: ["Anderer Name für Lurch.", "Gasaustausch über feuchte Haut.", "Umwandlung Larve zu Adultform."],
       explanation: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult.',
       wissen: 'Molch, Salamander. Schwanzlurch bedeutet: Mit Schwanz als Adult. Merke: Schwanzlurch — Mit Schwanz als Adult.',
@@ -891,7 +891,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:fortpflanzung:f0',
-      prompt: "Wozu dient die Äußere Befruchtung?",
+      prompt: "Wozu dient die äußere Befruchtung?",
       answer: "Samen trifft Eier im Wasser.", wrong: ["Umklammerung bei der Paarung.", "Ort der Eiablage.", "Nährstoffvorrat im Ei."],
       explanation: 'Typisch bei vielen Fröschen. Äußere Befruchtung bedeutet: Samen trifft Eier im Wasser.',
       wissen: 'Typisch bei vielen Fröschen. Äußere Befruchtung bedeutet: Samen trifft Eier im Wasser. Merke: Äußere Befruchtung — Samen trifft Eier im Wasser.',
@@ -1102,7 +1102,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f4',
-      prompt: "Mit welchen Mitteln arbeitet die Innere Befruchtung?",
+      prompt: "Mit welchen Mitteln arbeitet die innere Befruchtung?",
       answer: "Befruchtung im Körper.", wrong: ["Anderer Name für Kriechtier.", "Trockene Hautbedeckung.", "Hauptatmung an Land."],
       explanation: 'Typisch für Reptilien. Innere Befruchtung bedeutet: Befruchtung im Körper.',
       wissen: 'Typisch für Reptilien. Innere Befruchtung bedeutet: Befruchtung im Körper. Merke: Innere Befruchtung — Befruchtung im Körper.',
@@ -1575,7 +1575,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f0',
-      prompt: "Woran erkennt man die Innere Befruchtung?",
+      prompt: "Woran erkennt man die innere Befruchtung?",
       answer: "Samenübertragung im Körper.", wrong: ["Ablegen der Schaleneier.", "Nährstoff im Ei.", "Sich entwickelnder Organismus."],
       explanation: 'Vor der Eiablage. Innere Befruchtung bedeutet: Samenübertragung im Körper.',
       wissen: 'Vor der Eiablage. Innere Befruchtung bedeutet: Samenübertragung im Körper. Merke: Innere Befruchtung — Samenübertragung im Körper.',
@@ -1796,7 +1796,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:f5',
-      prompt: "Woran erkennt man das Gleichwarm?",
+      prompt: "Woran erkennt man gleichwarme Tiere?",
       answer: "Konstante Körpertemperatur.", wrong: ["Körperbedeckung der Vögel.", "Mundwerkzeug ohne Zähne.", "Teil des Atmungssystems."],
       explanation: 'Endotherm. Gleichwarm bedeutet: Konstante Körpertemperatur.',
       wissen: 'Endotherm. Gleichwarm bedeutet: Konstante Körpertemperatur. Merke: Gleichwarm — Konstante Körpertemperatur.',
@@ -2027,7 +2027,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f11',
-      prompt: "Mit welchen Mitteln arbeitet die Innere Befruchtung?",
+      prompt: "Mit welchen Mitteln arbeitet die innere Befruchtung?",
       answer: "Befruchtung vor Eiablage.", wrong: ["Paarungsverhalten.", "Eizahl im Nest.", "Wärmen der Eier."],
       explanation: 'Wie bei Reptilien. Innere Befruchtung bedeutet: Befruchtung vor Eiablage.',
       wissen: 'Wie bei Reptilien. Innere Befruchtung bedeutet: Befruchtung vor Eiablage. Merke: Innere Befruchtung — Befruchtung vor Eiablage.',
@@ -2108,7 +2108,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f2',
-      prompt: "Wozu dient das Gleichwarm?",
+      prompt: "Was kennzeichnet gleichwarme Tiere?",
       answer: "Stabile Körpertemperatur.", wrong: ["Haarkleid.", "Erzeugt Milch.", "Trennt Brust- und Bauchhöhle."],
       explanation: 'Endotherm. Gleichwarm bedeutet: Stabile Körpertemperatur.',
       wissen: 'Endotherm. Gleichwarm bedeutet: Stabile Körpertemperatur. Merke: Gleichwarm — Stabile Körpertemperatur.',
@@ -2168,7 +2168,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f8',
-      prompt: "Woran erkennt man das Winterschlaf?",
+      prompt: "Woran erkennt man den Winterschlaf?",
       answer: "Tiefe Winterruhe mit Stoffwechselabsenkung.", wrong: ["Haarkleid.", "Erzeugt Milch.", "Stabile Körpertemperatur."],
       explanation: 'z. B. Igel. Winterschlaf bedeutet: Tiefe Winterruhe mit Stoffwechselabsenkung.',
       wissen: 'z. B. Igel. Winterschlaf bedeutet: Tiefe Winterruhe mit Stoffwechselabsenkung. Merke: Winterschlaf — Tiefe Winterruhe mit Stoffwechselabsenkung.',
@@ -2681,7 +2681,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:schutz:f8',
-      prompt: "Woran erkennt man das Lebensraumverlust?",
+      prompt: "Woran erkennt man den Lebensraumverlust?",
       answer: "Hauptgefährdung vieler Arten.", wrong: ["Schutz bedrohter Arten.", "Verbindung von Lebensräumen.", "Querungshilfe über Straßen."],
       explanation: 'Durch Bebauung/Landwirtschaft. Lebensraumverlust bedeutet: Hauptgefährdung vieler Arten.',
       wissen: 'Durch Bebauung/Landwirtschaft. Lebensraumverlust bedeutet: Hauptgefährdung vieler Arten. Merke: Lebensraumverlust — Hauptgefährdung vieler Arten.',
@@ -3164,7 +3164,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f5',
-      prompt: "Mit welchen Mitteln arbeitet das Wechselwarm?",
+      prompt: "Woran erkennt man wechselwarme Tiere?",
       answer: "Fische, Lurche, Kriechtiere.", wrong: ["Passt zu Fischen.", "Passt zu Vögeln.", "Passt zu Säugetieren."],
       explanation: 'Umgebungstemperatur. Wechselwarm bedeutet: Fische, Lurche, Kriechtiere.',
       wissen: 'Umgebungstemperatur. Wechselwarm bedeutet: Fische, Lurche, Kriechtiere. Merke: Wechselwarm — Fische, Lurche, Kriechtiere.',
@@ -3204,7 +3204,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f9',
-      prompt: "Woran erkennt man das Plazenta?",
+      prompt: "Woran erkennt man die Plazenta?",
       answer: "Viele Säuger.", wrong: ["Passt zu Fischen.", "Passt zu Vögeln.", "Passt zu Säugetieren."],
       explanation: 'Embryoversorgung. Plazenta bedeutet: Viele Säuger.',
       wissen: 'Embryoversorgung. Plazenta bedeutet: Viele Säuger. Merke: Plazenta — Viele Säuger.',
@@ -4339,7 +4339,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:nahrung:f2',
-      prompt: "Woran erkennt man das Destruent?",
+      prompt: "Woran erkennt man den Destruenten?",
       answer: "Zersetzt Totes.", wrong: ["Bildet Biomasse.", "Frisst andere Organismen.", "Lineare Beziehung."],
       explanation: 'Pilze, Bakterien. Destruent bedeutet: Zersetzt Totes.',
       wissen: 'Pilze, Bakterien. Destruent bedeutet: Zersetzt Totes. Merke: Destruent — Zersetzt Totes.',
@@ -5691,7 +5691,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f0',
-      prompt: "Woran erkennt man das Embryo?",
+      prompt: "Woran erkennt man den Embryo?",
       answer: "Frühe Entwicklung.", wrong: ["Spätere Phase.", "Geschlechtsreifung.", "Größenzunahme."],
       explanation: 'Im Mutterleib. Embryo bedeutet: Frühe Entwicklung.',
       wissen: 'Im Mutterleib. Embryo bedeutet: Frühe Entwicklung. Merke: Embryo — Frühe Entwicklung.',
@@ -5791,7 +5791,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f10',
-      prompt: "Woran erkennt man das Geburt?",
+      prompt: "Woran erkennt man die Geburt?",
       answer: "Ende der Schwangerschaft.", wrong: ["Frühe Entwicklung.", "Spätere Phase.", "Geschlechtsreifung."],
       explanation: 'Kind kommt zur Welt. Geburt bedeutet: Ende der Schwangerschaft.',
       wissen: 'Kind kommt zur Welt. Geburt bedeutet: Ende der Schwangerschaft. Merke: Geburt — Ende der Schwangerschaft.',
@@ -7089,7 +7089,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:pilze:f3',
-      prompt: "Mit welchen Mitteln arbeitet das Saprobiont?",
+      prompt: "Mit welchen Mitteln arbeitet den Saprobionten?",
       answer: "Zersetzer.", wrong: ["Fadengeflecht.", "Hut/Stiel oft.", "Ausbreitungseinheit."],
       explanation: 'Totholz/Laub. Saprobiont bedeutet: Zersetzer.',
       wissen: 'Totholz/Laub. Saprobiont bedeutet: Zersetzer. Merke: Saprobiont — Zersetzer.',
@@ -7401,7 +7401,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k10:lb1:mendel:f0',
-      prompt: "Wozu dient der Allel?",
+      prompt: "Wozu dient das Allel?",
       answer: "Ausprägungsform eines Gens.", wrong: ["Setzt sich im Phänotyp durch.", "Nur homozygot sichtbar.", "Genetische Ausstattung."],
       explanation: 'Auf homologen Chromosomen. Allel bedeutet: Ausprägungsform eines Gens.',
       wissen: 'Auf homologen Chromosomen. Allel bedeutet: Ausprägungsform eines Gens. Merke: Allel — Ausprägungsform eines Gens.',
