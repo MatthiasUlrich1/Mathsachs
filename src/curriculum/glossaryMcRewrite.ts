@@ -448,24 +448,6 @@ function stripWraps(m: string): string {
     .replace(/^[.\s]+|[.\s]+$/g, '')
 }
 
-/** Capitalize German content words in an NP (keep articles/preps lower). */
-function capitalizeNpWords(phrase: string): string {
-  const keep = PREPS
-  return phrase
-    .split(/\s+/)
-    .map((w, i) => {
-      const bare = w.replace(/^[^a-zäöüßA-ZÄÖÜ]+|[^a-zäöüßA-ZÄÖÜ]+$/giu, '')
-      if (!bare) return w
-      const low = bare.toLowerCase()
-      if (i > 0 && keep.has(low)) return w.replace(bare, low)
-      if (/^[a-zäöü]/.test(bare)) {
-        return w.replace(bare, bare.charAt(0).toUpperCase() + bare.slice(1))
-      }
-      return w
-    })
-    .join(' ')
-}
-
 /**
  * German NP casing: adjectives stay lowercase, head nouns capitalize.
  * Avoids „ein Gezieltes Wahrnehmen“ (wrong) → „ein gezieltes Wahrnehmen“.
