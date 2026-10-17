@@ -428,13 +428,10 @@ export function rewriteDefinitionStylePrompt(
           : /sinn/i.test(ctx)
             ? 'bei den Sinnen'
             : 'im Verhalten')
-      // Avoid redundant „… im Verhalten“ when the term already names a Verhalten.
+      // Avoid redundant „… im Verhalten“ only when the term already names a Verhalten.
+      // Never strip the hint for other terms (e.g. Balz) — that collapses sibling topics
+      // (voegel-verhalten vs voegel-fortpflanzung) onto the same bare stem.
       if (/^im Verhalten$/i.test(hint) && /verhalten/i.test(term)) {
-        return fixGermanPromptCapitalization(
-          `Was kennzeichnet ${articleFor(term, 'acc')} ${term}?`,
-        )
-      }
-      if (/^im Verhalten$/i.test(hint)) {
         return fixGermanPromptCapitalization(
           `Was kennzeichnet ${articleFor(term, 'acc')} ${term}?`,
         )
