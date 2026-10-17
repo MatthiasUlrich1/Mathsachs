@@ -786,7 +786,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f1",
-      prompt: "Was kennzeichnet angeborenes Verhalten?es Verhalten?es Verhalten?",
+      prompt: "Was kennzeichnet angeborenes Verhalten?",
       answer: "Es ist genetisch vorbereitet und läuft ohne langes Lernen ab.",
       wrong: [
         "Es wird erst durch Erfahrung und Übung erworben.",
@@ -800,7 +800,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f2",
-      prompt: "Was kennzeichnet erlerntes Verhalten?es Verhalten?es Verhalten?",
+      prompt: "Was kennzeichnet erlerntes Verhalten?",
       answer: "Es wird durch Erfahrung erworben und kann angepasst werden.",
       wrong: [
         "Es ist genetisch fest verdrahtet und unveränderlich.",
