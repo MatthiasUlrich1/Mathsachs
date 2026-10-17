@@ -534,9 +534,9 @@ const gk11Protein: BioBank = {
     {
       concept: "bio:gk11:pbs:8",
       prompt: "Welche Eigenschaft hat die Genregulation?",
-      answer: "Wann/wie stark ein Gen abgelesen wird.", wrong: ["Immer maximale Expression.", "Nur Replikation.", "Nur Osmose."],
+      answer: "Wann/wie stark ein gen abgelesen wird.", wrong: ["Immer maximale Expression.", "Nur Replikation.", "Nur Osmose."],
       explanation: "Genregulation grob.",
-      wissen: "Wann/wie stark ein Gen abgelesen wird. Fachlich themenspezifisch einordnen.",
+      wissen: "Wann/wie stark ein gen abgelesen wird. Fachlich themenspezifisch einordnen.",
       gap: "Fachbegriff/Kern: ___.",
       gapAccepted: ["Wann/wie"],
     },
@@ -802,9 +802,9 @@ const gk11Faktoren: BioBank = {
     {
       concept: "bio:gk11:fak:6",
       prompt: "Was kennzeichnet das Konkurrenzausschluss grob?",
-      answer: "Ähnliche Nischen → eine Art verdrängt oft.", wrong: ["Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…).", "Einflüsse durch Lebewesen.", "Ansprüche und Rolle einer Art."],
+      answer: "Ähnliche Nischen → eine art verdrängt oft.", wrong: ["Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…).", "Einflüsse durch Lebewesen.", "Ansprüche und Rolle einer Art."],
       explanation: "Konkurrenzausschluss grob.",
-      wissen: "Ähnliche Nischen → eine Art verdrängt oft. Fachlich themenspezifisch einordnen.",
+      wissen: "Ähnliche Nischen → eine art verdrängt oft. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:gk11:fak:7",
@@ -865,7 +865,7 @@ const gk11Schaedlinge: BioBank = {
     },
     {
       concept: "bio:gk11:schaed:2",
-      prompt: "Was kennzeichnet das Chemische Bekämpfung Risiko?",
+      prompt: "Was kennzeichnet das Risiko chemischer Bekämpfung?",
       answer: "Resistenz, Nichtzielorganismen, Rückstände.", wrong: ["Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten.", "Nützlinge/Antagonisten einsetzen.", "Kombinierte, schwellenorientierte Maßnahmen."],
       explanation: "Chemische Bekämpfung Risiko.",
       wissen: "Resistenz, Nichtzielorganismen, Rückstände. Fachlich themenspezifisch einordnen.",
@@ -959,7 +959,7 @@ const gk11Naturschutz: BioBank = {
     },
     {
       concept: "bio:gk11:naturschutz:2",
-      prompt: "Was bewirkt das Treibhauseffekt verstärkt?",
+      prompt: "Was bewirkt den Treibhauseffekt verstärkt?",
       answer: "Mehr Treibhausgase → mehr Wärmerückhaltung.", wrong: ["Arten, Lebensräume und Prozesse erhalten.", "Gezielte Steuerung für Erhalt/Nutzung.", "Wiederherstellung naturnäherer Zustände."],
       explanation: "Treibhauseffekt verstärkt.",
       wissen: "Mehr Treibhausgase → mehr Wärmerückhaltung. Fachlich themenspezifisch einordnen.",
@@ -1255,7 +1255,7 @@ const gk12Immun: BioBank = {
     },
     {
       concept: "bio:gk12:immun:4",
-      prompt: "Woran erkennt man das Impfung Prinzip?",
+      prompt: "Woran erkennt man die Impfung Prinzip?",
       answer: "Gedächtnis ohne schwere Erkrankung aufbauen.", wrong: ["Sofort, breit (Barriere, Phagozytose, Entzündung).", "Antigengerichtet mit Gedächtnis.", "Proteine, die Antigene binden."],
       explanation: "Impfung Prinzip.",
       wissen: "Gedächtnis ohne schwere Erkrankung aufbauen. Fachlich themenspezifisch einordnen.",
@@ -1349,7 +1349,7 @@ const gk12Neuro: BioBank = {
     },
     {
       concept: "bio:gk12:neuro:4",
-      prompt: "Was ist eine Synapse in der Neurophysiologie?",
+      prompt: "Was ist eine synapse in der Neurophysiologie?",
       answer: "Übergang mit Transmitter.", wrong: ["Ladungsdifferenz der Membran in Ruhe.", "Kurze Umkehr/Depolarisation als Signal.", "Weitergabe entlang des Axons."],
       explanation: "Synapse.",
       wissen: "Übergang mit Transmitter. Fachlich themenspezifisch einordnen.",
@@ -1358,7 +1358,7 @@ const gk12Neuro: BioBank = {
     },
     {
       concept: "bio:gk12:neuro:5",
-      prompt: "Was bewirkt ein Transmitter an der Synapse?",
+      prompt: "Was bewirkt ein transmitter an der Synapse?",
       answer: "Chemischer Botenstoff.", wrong: ["Ladungsdifferenz der Membran in Ruhe.", "Kurze Umkehr/Depolarisation als Signal.", "Weitergabe entlang des Axons."],
       explanation: "Transmitter.",
       wissen: "Chemischer Botenstoff. Fachlich themenspezifisch einordnen.",
@@ -1443,7 +1443,7 @@ const gk12Verhalten: BioBank = {
     },
     {
       concept: "bio:gk12:verhalten:4",
-      prompt: "Wozu dient das Angeboren vs. gelernt?",
+      prompt: "Worin unterscheiden sich angeborenes und gelerntes Verhalten?",
       answer: "Feste vs. erfahrungsabhängige Anteile.", wrong: ["Wie-Mechanismus vs. Warum-Fitnessnutzen.", "Beitrag zur Fitness.", "Abwägung Aufwand vs. Vorteil."],
       explanation: "Angeboren vs. gelernt.",
       wissen: "Feste vs. erfahrungsabhängige Anteile. Fachlich themenspezifisch einordnen.",
@@ -1459,7 +1459,7 @@ const gk12Verhalten: BioBank = {
     },
     {
       concept: "bio:gk12:verhalten:6",
-      prompt: "Woran erkennt man das Menschliches Verhalten?",
+      prompt: "Woran erkennt man menschliches Verhalten?",
       answer: "Biologie + Kultur/Lernen.", wrong: ["Wie-Mechanismus vs. Warum-Fitnessnutzen.", "Beitrag zur Fitness.", "Abwägung Aufwand vs. Vorteil."],
       explanation: "Menschliches Verhalten.",
       wissen: "Biologie + Kultur/Lernen. Fachlich themenspezifisch einordnen.",
@@ -1617,7 +1617,7 @@ const gk12Molekular: BioBank = {
     },
     {
       concept: "bio:gk12:mol:2",
-      prompt: "Was kennzeichnet einen Stammbaum aus DNA?",
+      prompt: "Was kennzeichnet einen stammbaum aus DNA?",
       answer: "Verwandtschaft aus Sequenzunterschieden schätzen.", wrong: ["Ähnlichkeit durch gemeinsame Abstammung in Sequenzen.", "Externe Vergleichsart zur Wurzelung.", "Abgeleitetes gemeinsames Merkmal."],
       explanation: "Stammbaum aus DNA.",
       wissen: "Verwandtschaft aus Sequenzunterschieden schätzen. Fachlich themenspezifisch einordnen.",
@@ -1640,7 +1640,7 @@ const gk12Molekular: BioBank = {
     },
     {
       concept: "bio:gk12:mol:5",
-      prompt: "Was bewirkt das Konvergenz molekular?",
+      prompt: "Was bewirkt die Konvergenz molekular?",
       answer: "Ähnliche Sequenzen ohne enge Verwandtschaft möglich.", wrong: ["Ähnlichkeit durch gemeinsame Abstammung in Sequenzen.", "Verwandtschaft aus Sequenzunterschieden schätzen.", "Externe Vergleichsart zur Wurzelung."],
       explanation: "Konvergenz molekular.",
       wissen: "Ähnliche Sequenzen ohne enge Verwandtschaft möglich. Fachlich themenspezifisch einordnen.",
@@ -1670,7 +1670,7 @@ const gk12Molekular: BioBank = {
     },
     {
       concept: "bio:gk12:mol:9",
-      prompt: "Wozu dient das Artbildung molekular?",
+      prompt: "Wozu dient die Artbildung molekular?",
       answer: "Genflussabnahme sichtbar in Sequenzen.", wrong: ["Ähnlichkeit durch gemeinsame Abstammung in Sequenzen.", "Verwandtschaft aus Sequenzunterschieden schätzen.", "Externe Vergleichsart zur Wurzelung."],
       explanation: "Artbildung molekular.",
       wissen: "Genflussabnahme sichtbar in Sequenzen. Fachlich themenspezifisch einordnen.",
@@ -2005,7 +2005,7 @@ const lk11Transport: BioBank = {
     },
     {
       concept: "bio:lk11:transport:4",
-      prompt: "Was bewirkt das Aktiver Transport?",
+      prompt: "Was bewirkt aktiver Transport?",
       answer: "ATP gegen Gefälle.", wrong: ["Tendenz des Wasserstroms; Summe von Komponenten.", "Wasserverlust/-aufnahme der Pflanzenzelle.", "Vesikulärer Stoffaustausch."],
       explanation: "Aktiver Transport.",
       wissen: "ATP gegen Gefälle. Fachlich themenspezifisch einordnen.",
@@ -2145,7 +2145,7 @@ const lk11Genreg: BioBank = {
     },
     {
       concept: "bio:lk11:genreg:10",
-      prompt: "Woran erkennt man das Vergleich Pro-/Eukaryot?",
+      prompt: "Woran erkennt man den Vergleich Pro-/Eukaryot?",
       answer: "Operons vs. individuelle Promotoren/Chromatin.", wrong: ["Gemeinsam regulierte prokaryotische Gene.", "Induktion bei Lactosebedarf.", "Hemmt Transkription bei Bindung."],
       explanation: "Vergleich Pro-/Eukaryot.",
       wissen: "Operons vs. individuelle Promotoren/Chromatin. Fachlich themenspezifisch einordnen.",
@@ -2239,7 +2239,7 @@ const lk11Enzyme: BioBank = {
     },
     {
       concept: "bio:lk11:enzyme:10",
-      prompt: "Woran erkennt man das Spezifität evolutionär?",
+      prompt: "Woran erkennt man die Spezifität evolutionär?",
       answer: "Aktives Zentrum passt zum Stoffwechselbedarf.", wrong: ["Nach Reaktionstyp (z. B. Hydrolasen, Oxidasen).", "Überträgt Gruppen/Elektronen.", "Hemmung durch Zentrumskonkurrenz; durch Substrat abschwächbar."],
       explanation: "Spezifität evolutionär.",
       wissen: "Aktives Zentrum passt zum Stoffwechselbedarf. Fachlich themenspezifisch einordnen.",
@@ -2280,7 +2280,7 @@ const lk11C3C4: BioBank = {
     },
     {
       concept: "bio:lk11:c3c4:3",
-      prompt: "Wozu dient das Raumtrennung C4?",
+      prompt: "Wozu dient die Raumtrennung C4?",
       answer: "Mesophyll + Bündelscheidenzellen.", wrong: ["Direktes CO2 in Calvin-Zyklus; Rubisco.", "Bessere Effizienz bei Hitze/Licht; weniger Photorespiration.", "Primäre CO2-Fixierung bei C4."],
       explanation: "Raumtrennung C4.",
       wissen: "Mesophyll + Bündelscheidenzellen. Fachlich themenspezifisch einordnen.",
@@ -2303,7 +2303,7 @@ const lk11C3C4: BioBank = {
     },
     {
       concept: "bio:lk11:c3c4:6",
-      prompt: "Wozu dient das Photorespiration Problem?",
+      prompt: "Wozu dient die Photorespiration Problem?",
       answer: "O2-Reaktion von Rubisco; Verlust.", wrong: ["Direktes CO2 in Calvin-Zyklus; Rubisco.", "Bessere Effizienz bei Hitze/Licht; weniger Photorespiration.", "Mesophyll + Bündelscheidenzellen."],
       explanation: "Photorespiration Problem.",
       wissen: "O2-Reaktion von Rubisco; Verlust. Fachlich themenspezifisch einordnen.",
@@ -2367,7 +2367,7 @@ const lk11Atmung: BioBank = {
     },
     {
       concept: "bio:lk11:atmung:2",
-      prompt: "Wozu dient das Citratzyklus Ort?",
+      prompt: "Wo läuft der Citratzyklus ab?",
       answer: "Mitochondrienmatrix.", wrong: ["Innere Mitochondrienmembran.", "Viel ATP aus oxidativer Phosphorylierung.", "Protonengradient treibt ATP-Synthase."],
       explanation: "Citratzyklus Ort.",
       wissen: "Mitochondrienmatrix. Fachlich themenspezifisch einordnen.",
@@ -2381,7 +2381,7 @@ const lk11Atmung: BioBank = {
     },
     {
       concept: "bio:lk11:atmung:4",
-      prompt: "Was kennzeichnet das Bilanz grob?",
+      prompt: "Was kennzeichnet die Bilanz grob?",
       answer: "Viel ATP aus oxidativer Phosphorylierung.", wrong: ["Innere Mitochondrienmembran.", "Protonengradient treibt ATP-Synthase.", "Terminaler Elektronenakzeptor."],
       explanation: "Bilanz grob.",
       wissen: "Viel ATP aus oxidativer Phosphorylierung. Fachlich themenspezifisch einordnen.",
@@ -2404,7 +2404,7 @@ const lk11Atmung: BioBank = {
     },
     {
       concept: "bio:lk11:atmung:7",
-      prompt: "Woran erkennt man die Sauerstoff Rolle?",
+      prompt: "Woran erkennt man die Rolle von Sauerstoff?",
       answer: "Terminaler Elektronenakzeptor.", wrong: ["Innere Mitochondrienmembran.", "Viel ATP aus oxidativer Phosphorylierung.", "Protonengradient treibt ATP-Synthase."],
       explanation: "Sauerstoff Rolle.",
       wissen: "Terminaler Elektronenakzeptor. Fachlich themenspezifisch einordnen.",
@@ -2427,7 +2427,7 @@ const lk11Atmung: BioBank = {
     },
     {
       concept: "bio:lk11:atmung:10",
-      prompt: "Woran erkennt man die Vergleich Gärung?",
+      prompt: "Woran erkennt man den Vergleich Gärung?",
       answer: "Ohne O2; weniger ATP.", wrong: ["Innere Mitochondrienmembran.", "Viel ATP aus oxidativer Phosphorylierung.", "Protonengradient treibt ATP-Synthase."],
       explanation: "Vergleich Gärung.",
       wissen: "Ohne O2; weniger ATP. Fachlich themenspezifisch einordnen.",
@@ -2505,7 +2505,7 @@ const lk11Chemo: BioBank = {
     },
     {
       concept: "bio:lk11:chemo:8",
-      prompt: "Warum im Lehrplan?",
+      prompt: "Was ist fachlich zentral an diesem Prozess?",
       answer: "Vielfalt der Energiegewinnung.", wrong: ["Energie aus anorganischen Redoxreaktionen für Assimilation.", "Licht vs. chemische Redoxenergie.", "Nitrifikation u. a. im N-Kreislauf."],
       explanation: "Warum im Lehrplan.",
       wissen: "Vielfalt der Energiegewinnung. Fachlich themenspezifisch einordnen.",
@@ -2521,7 +2521,7 @@ const lk11Chemo: BioBank = {
     },
     {
       concept: "bio:lk11:chemo:10",
-      prompt: "Was bewirkt die Vergleich Atmung?",
+      prompt: "Was zeigt der Vergleich von Atmungsformen?",
       answer: "Beide Redox; unterschiedliche Donoren/Akzeptoren.", wrong: ["Energie aus anorganischen Redoxreaktionen für Assimilation.", "Licht vs. chemische Redoxenergie.", "Nitrifikation u. a. im N-Kreislauf."],
       explanation: "Vergleich Atmung.",
       wissen: "Beide Redox; unterschiedliche Donoren/Akzeptoren. Fachlich themenspezifisch einordnen.",
@@ -2548,14 +2548,14 @@ const lk11Gaerung: BioBank = {
   facts: [
     {
       concept: "bio:lk11:gaerung:1",
-      prompt: "Woran erkennt man das Gärung Kennzeichen?",
+      prompt: "Woran erkennt man die Gärung Kennzeichen?",
       answer: "Abbau ohne Sauerstoff; wenig ATP.", wrong: ["Ethanol + CO2.", "NAD+ aus NADH zurückgewinnen.", "Atmung liefert deutlich mehr ATP."],
       explanation: "Gärung Kennzeichen.",
       wissen: "Abbau ohne Sauerstoff; wenig ATP. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk11:gaerung:2",
-      prompt: "Wozu dient das Milchsäuregärung Produkt?",
+      prompt: "Wozu dient die Milchsäuregärung Produkt?",
       answer: "Lactat.", wrong: ["Abbau ohne Sauerstoff; wenig ATP.", "Ethanol + CO2.", "NAD+ aus NADH zurückgewinnen."],
       explanation: "Milchsäuregärung Produkt.",
       wissen: "Lactat. Fachlich themenspezifisch einordnen.",
@@ -2647,7 +2647,7 @@ const lk11Heterotroph: BioBank = {
     },
     {
       concept: "bio:lk11:hetero:2",
-      prompt: "Was bewirkt das Verdauung Zweck?",
+      prompt: "Was bewirkt die Verdauung Zweck?",
       answer: "Makromoleküle in resorbierbare Bausteine.", wrong: ["Aufnahme und Umbau organischer Stoffe.", "Aktivität über Substratumsatz/Indikator.", "Enzyme außerhalb der Zelle."],
       explanation: "Verdauung Zweck.",
       wissen: "Makromoleküle in resorbierbare Bausteine. Fachlich themenspezifisch einordnen.",
@@ -2691,7 +2691,7 @@ const lk11Heterotroph: BioBank = {
     },
     {
       concept: "bio:lk11:hetero:8",
-      prompt: "Wozu dient die Vergleich Autotrophie?",
+      prompt: "Wozu dient den Vergleich Autotrophie?",
       answer: "Selbstaufbau vs. Fremdbezug.", wrong: ["Aufnahme und Umbau organischer Stoffe.", "Makromoleküle in resorbierbare Bausteine.", "Aktivität über Substratumsatz/Indikator."],
       explanation: "Vergleich Autotrophie.",
       wissen: "Selbstaufbau vs. Fremdbezug. Fachlich themenspezifisch einordnen.",
@@ -2865,7 +2865,7 @@ const lk11Kreislauf: BioBank = {
     },
     {
       concept: "bio:lk11:kreislauf:6",
-      prompt: "Wozu dient das Anthropogener Eingriff C?",
+      prompt: "Was bewirkt ein anthropogener Eingriff in den Kohlenstoffkreislauf?",
       answer: "Fossile Emissionen.", wrong: ["CO2 ↔ organischer C über Foto-/Atmung.", "N2 → bioverfügbare Formen.", "Ammonium → Nitrit/Nitrat."],
       explanation: "Anthropogener Eingriff C.",
       wissen: "Fossile Emissionen. Fachlich themenspezifisch einordnen.",
@@ -2936,7 +2936,7 @@ const lk11Landwirtschaft: BioBank = {
     },
     {
       concept: "bio:lk11:land:3",
-      prompt: "Was kennzeichnet das Schädlingsdruck?",
+      prompt: "Was kennzeichnet den Schädlingsdruck?",
       answer: "Steigt oft in homogenen Beständen.", wrong: ["Anfälligkeit und Biodiversitätsverlust.", "Ressourcenverbrauch/Fläche pro Person/Aktivität.", "Vielfalt, Fruchtfolge, IPS."],
       explanation: "Schädlingsdruck.",
       wissen: "Steigt oft in homogenen Beständen. Fachlich themenspezifisch einordnen.",
@@ -3030,7 +3030,7 @@ const lk11Naturschutz: BioBank = {
     },
     {
       concept: "bio:lk11:naturschutz:3",
-      prompt: "Was bewirkt das Renaturierung Beispiel?",
+      prompt: "Was bewirkt die Renaturierung Beispiel?",
       answer: "Flussauen wieder anbinden.", wrong: ["Klimawandel belastet Ökosysteme.", "Rechtlicher Rahmen für Schutz.", "Unterschiedliche Strenge und Ziele."],
       explanation: "Renaturierung Beispiel.",
       wissen: "Flussauen wieder anbinden. Fachlich themenspezifisch einordnen.",
@@ -3342,7 +3342,7 @@ const lk12Krebs: BioBank = {
     },
     {
       concept: "bio:lk12:krebs:7",
-      prompt: "Woran erkennt man das Apoptoseverlust?",
+      prompt: "Woran erkennt man den Apoptoseverlust?",
       answer: "Zellen sterben nicht kontrolliert.", wrong: ["Fördert unkontrolliertes Wachstum wenn aktiviert.", "Hemmt Wachstum; Ausfall begünstigt Krebs.", "Mehrere Mutationen nötig."],
       explanation: "Apoptoseverlust.",
       wissen: "Zellen sterben nicht kontrolliert. Fachlich themenspezifisch einordnen.",
@@ -3358,7 +3358,7 @@ const lk12Krebs: BioBank = {
     },
     {
       concept: "bio:lk12:krebs:9",
-      prompt: "Woran erkennt man das Früherkennung Vorteil?",
+      prompt: "Woran erkennt man die Früherkennung Vorteil?",
       answer: "Bessere Behandlungschancen oft.", wrong: ["Fördert unkontrolliertes Wachstum wenn aktiviert.", "Hemmt Wachstum; Ausfall begünstigt Krebs.", "Mehrere Mutationen nötig."],
       explanation: "Früherkennung Vorteil.",
       wissen: "Bessere Behandlungschancen oft. Fachlich themenspezifisch einordnen.",
@@ -3516,7 +3516,7 @@ const lk12Immun: BioBank = {
     },
     {
       concept: "bio:lk12:immun:5",
-      prompt: "Was bewirkt das Transplantation Problem?",
+      prompt: "Was bewirkt die Transplantation Problem?",
       answer: "Abstoßung durch Immunerkennung.", wrong: ["HIV schwächt spezifische Abwehr (T-Helfer).", "Leberentzündung; Impfung/Hygiene je nach Typ.", "Bakterielle Infektion; lange Therapie."],
       explanation: "Transplantation Problem.",
       wissen: "Abstoßung durch Immunerkennung. Fachlich themenspezifisch einordnen.",
@@ -3530,14 +3530,14 @@ const lk12Immun: BioBank = {
     },
     {
       concept: "bio:lk12:immun:7",
-      prompt: "Wozu dient die Aktive vs. passive Immunisierung?",
+      prompt: "Wozu dient aktive und passive Immunisierung?",
       answer: "Eigenproduktion vs. fertige Antikörper.", wrong: ["HIV schwächt spezifische Abwehr (T-Helfer).", "Leberentzündung; Impfung/Hygiene je nach Typ.", "Bakterielle Infektion; lange Therapie."],
       explanation: "Aktive vs. passive Immunisierung.",
       wissen: "Eigenproduktion vs. fertige Antikörper. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk12:immun:8",
-      prompt: "Wozu dient das Herdenschutz?",
+      prompt: "Wozu dient den Herdenschutz?",
       answer: "Hoher Impfschutz mindert Ausbreitung.", wrong: ["HIV schwächt spezifische Abwehr (T-Helfer).", "Leberentzündung; Impfung/Hygiene je nach Typ.", "Bakterielle Infektion; lange Therapie."],
       explanation: "Herdenschutz.",
       wissen: "Hoher Impfschutz mindert Ausbreitung. Fachlich themenspezifisch einordnen.",
@@ -3647,7 +3647,7 @@ const lk12Neuro: BioBank = {
     },
     {
       concept: "bio:lk12:neuro:10",
-      prompt: "Was bewirkt das Messung Nutzen?",
+      prompt: "Was bewirkt die Messung Nutzen?",
       answer: "Funktion und Störungen objektivieren.", wrong: ["Lokales Sensorpotenzial.", "Addition synaptischer Eingänge.", "Hirnelektrische Aktivität von außen."],
       explanation: "Messung Nutzen.",
       wissen: "Funktion und Störungen objektivieren. Fachlich themenspezifisch einordnen.",
@@ -3674,7 +3674,7 @@ const lk12Gendrift: BioBank = {
   facts: [
     {
       concept: "bio:lk12:drift:1",
-      prompt: "Was kennzeichnet das Gendrift?",
+      prompt: "Was kennzeichnet den Gendrift?",
       answer: "Zufällige Allelfrequenzänderung.", wrong: ["Starke Verkleinerung → Drift.", "Neue Population aus wenigen Individuen.", "Austausch zwischen Populationen."],
       explanation: "Gendrift.",
       wissen: "Zufällige Allelfrequenzänderung. Fachlich themenspezifisch einordnen.",
@@ -3695,7 +3695,7 @@ const lk12Gendrift: BioBank = {
     },
     {
       concept: "bio:lk12:drift:4",
-      prompt: "Was kennzeichnet das Migration/Genfluss?",
+      prompt: "Was kennzeichnet die Migration/Genfluss?",
       answer: "Austausch zwischen Populationen.", wrong: ["Zufällige Allelfrequenzänderung.", "Starke Verkleinerung → Drift.", "Neue Population aus wenigen Individuen."],
       explanation: "Migration/Genfluss.",
       wissen: "Austausch zwischen Populationen. Fachlich themenspezifisch einordnen.",
@@ -3906,14 +3906,14 @@ const lk12Abgrenzung: BioBank = {
     },
     {
       concept: "bio:lk12:abgrenz:7",
-      prompt: "Was kennzeichnet das Eugenik historisch?",
+      prompt: "Was kennzeichnet die Eugenik historisch?",
       answer: "Menschenzüchtungsideologien; verbrecherisch missbraucht.", wrong: ["Missbrauch biologischer Ideen für gesellschaftliche Ungleichheit.", "Kritik an Determinismus/Missbrauch; Kontingenz der Evolution.", "Prüfbarkeit und Methodenkriterien."],
       explanation: "Eugenik historisch.",
       wissen: "Menschenzüchtungsideologien; verbrecherisch missbraucht. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk12:abgrenz:8",
-      prompt: "Warum im Lehrplan?",
+      prompt: "Was ist fachlich zentral an diesem Prozess?",
       answer: "Reflexion von Wissenschaft im gesellschaftlichen Kontext.", wrong: ["Missbrauch biologischer Ideen für gesellschaftliche Ungleichheit.", "Kritik an Determinismus/Missbrauch; Kontingenz der Evolution.", "Prüfbarkeit und Methodenkriterien."],
       explanation: "Warum im Lehrplan.",
       wissen: "Reflexion von Wissenschaft im gesellschaftlichen Kontext. Fachlich themenspezifisch einordnen.",
@@ -4000,14 +4000,14 @@ const lk12Phylogenie: BioBank = {
     },
     {
       concept: "bio:lk12:phylo:7",
-      prompt: "Woran erkennt man das Konvergenz erkennen?",
+      prompt: "Woran erkennt man die Konvergenz erkennen?",
       answer: "Funktion ähnlich, Herkunft verschieden.", wrong: ["Hypothese der Verwandtschaft.", "Sequenzähnlichkeit durch Abstammung.", "Vorfahre + alle Nachfahren."],
       explanation: "Konvergenz erkennen.",
       wissen: "Funktion ähnlich, Herkunft verschieden. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk12:phylo:8",
-      prompt: "Was bewirkt das Fossilkalibrierung grob?",
+      prompt: "Was bewirkt die Fossilkalibrierung grob?",
       answer: "Zeitliche Ankerpunkte.", wrong: ["Hypothese der Verwandtschaft.", "Sequenzähnlichkeit durch Abstammung.", "Vorfahre + alle Nachfahren."],
       explanation: "Fossilkalibrierung grob.",
       wissen: "Zeitliche Ankerpunkte. Fachlich themenspezifisch einordnen.",
@@ -4023,7 +4023,7 @@ const lk12Phylogenie: BioBank = {
     },
     {
       concept: "bio:lk12:phylo:10",
-      prompt: "Wozu dient das Unsicherheit kommunizieren?",
+      prompt: "Wozu dient die Unsicherheit kommunizieren?",
       answer: "Bäume sind Modelle mit Support.", wrong: ["Hypothese der Verwandtschaft.", "Sequenzähnlichkeit durch Abstammung.", "Vorfahre + alle Nachfahren."],
       explanation: "Unsicherheit kommunizieren.",
       wissen: "Bäume sind Modelle mit Support. Fachlich themenspezifisch einordnen.",
@@ -4181,7 +4181,7 @@ const lk12StoffVergleich: BioBank = {
     },
     {
       concept: "bio:lk12:stoffvgl:6",
-      prompt: "Wozu dient das Energiefluss Ökosystem?",
+      prompt: "Wozu dient den Energiefluss Ökosystem?",
       answer: "Einbahnstraße mit Verlusten.", wrong: ["Licht vs. chemische Redoxenergie.", "Mit O2 viel ATP vs. ohne O2 wenig ATP.", "Aufbau von Körpersubstanz."],
       explanation: "Energiefluss Ökosystem.",
       wissen: "Einbahnstraße mit Verlusten. Fachlich themenspezifisch einordnen.",
@@ -4211,7 +4211,7 @@ const lk12StoffVergleich: BioBank = {
     },
     {
       concept: "bio:lk12:stoffvgl:10",
-      prompt: "Wozu dient das Systematisierung Ziel?",
+      prompt: "Wozu dient die Systematisierung Ziel?",
       answer: "Prinzipien statt isolierter Fakten.", wrong: ["Licht vs. chemische Redoxenergie.", "Mit O2 viel ATP vs. ohne O2 wenig ATP.", "Aufbau von Körpersubstanz."],
       explanation: "Systematisierung Ziel.",
       wissen: "Prinzipien statt isolierter Fakten. Fachlich themenspezifisch einordnen.",
