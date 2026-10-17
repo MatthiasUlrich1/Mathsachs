@@ -812,7 +812,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lb3-ausdehnung:f9",
-      prompt: "Wie transportiert Wärmeleitung Energie?",
+      prompt: "Wie transportiert Wärmeleitung Energie — Fokus Übertragene?",
       answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Ausdehnung. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Ausdehnung. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
@@ -1677,7 +1677,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmung:f9",
-      prompt: "Wie transportiert Wärmeleitung Energie?",
+      prompt: "Wie transportiert Wärmeleitung Energie — Fokus Übertragene?",
       answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmung. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Daemmung. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
@@ -1850,7 +1850,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k6-lbw-daemmstoff:f9",
-      prompt: "Wie transportiert Wärmeleitung Energie?",
+      prompt: "Wie transportiert Wärmeleitung Energie — Fokus Übertragene?",
       answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Daemmstoff. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Daemmstoff. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
@@ -4791,7 +4791,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-ballon:f9",
-      prompt: "Wie transportiert Wärmeleitung Energie?",
+      prompt: "Wie transportiert Wärmeleitung Energie — Fokus Übertragene?",
       answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Ballon. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Ballon. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
@@ -4964,7 +4964,7 @@ export const PHYSIK_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ph:fill:ph-k8-lbw-kuehlschrank:f9",
-      prompt: "Wie transportiert Wärmeleitung Energie?",
+      prompt: "Wie transportiert Wärmeleitung Energie — Fokus Übertragene?",
       answer: "Übertragene Energie.", wrong: ["Maß für den Wärmezustand.", "Volumen wächst mit Temperatur.", "fest, flüssig, gasförmig."],
       explanation: "Nicht gleich Temperatur. Bezug: Kuehlschrank. Wärme: Übertragene Energie",
       wissen: "Nicht gleich Temperatur. Bezug: Kuehlschrank. Wärme bedeutet: Übertragene Energie. Merke: Wärme — Übertragene Energie.",
