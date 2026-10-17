@@ -772,7 +772,7 @@ export const k9Bestimmung: BioBank = {
     },
     {
       concept: "bio:k9:best:herbar",
-      prompt: "Was beschreibt „Was kennzeichnet „Herbarisieren“\"?",
+      prompt: "Was kennzeichnet „Herbarisieren“\?",
       answer: "Getrocknete Pflanzenbelege sammeln und dokumentieren.", wrong: ["Nur Fotosynthese messen.", "Nur Tiere fangen.", "Nur Wasser kochen."],
       explanation: "Getrocknete Pflanzenbelege sammeln und dokumentieren.",
       wissen: fw(
@@ -2699,7 +2699,7 @@ export const k10Spezialisierung: BioBank = {
     },
     {
       concept: "bio:k10:spez:struktur",
-      prompt: "Was beschreibt „Was sind Struktur-Funktions-Beziehungen\"?",
+      prompt: "Was sind Struktur-Funktions-Beziehungen?",
       answer: "Bau erklärt Leistung/Angepasstheit.", wrong: ["Bau ist zufällig funktionslos immer.", "Funktion braucht keine Struktur.", "Nur Namen ohne Form."],
       explanation: "Bau erklärt Leistung/Angepasstheit.",
       wissen: fw(

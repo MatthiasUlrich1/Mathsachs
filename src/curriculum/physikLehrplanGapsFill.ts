@@ -976,7 +976,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:leerer-raum",
-      prompt: "Welche Eigenschaft hat der Leerer Raum?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Zwischen Teilchen.", wrong: ["Teilchen sind in Bewegung.", "Teilchen eng, geordnet.", "Teilchen beweglich."],
       explanation: "Modellannahme. Leerer Raum bedeutet: Zwischen Teilchen. Bezug: Teilchenmodell.",
       wissen: "Modellannahme. Leerer Raum bedeutet: Zwischen Teilchen. Bezug: Teilchenmodell.",
@@ -1703,7 +1703,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb3-anomalie:fact:schwimmen-von-eis",
-      prompt: "Welche Eigenschaft hat der Schwimmen von Eis?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "ρ_Eis < ρ_Wasser.", wrong: ["Wasser bleibt unter Eis flüssig.", "Beim Gefrieren Volumen steigt.", "Flüssigkeitstemperatur ändert V."],
       explanation: "Seen nicht durchfrieren. Schwimmen von Eis bedeutet: ρ_Eis < ρ_Wasser. Bezug: Anomalie des Wassers.",
       wissen: "Seen nicht durchfrieren. Schwimmen von Eis bedeutet: ρ_Eis < ρ_Wasser. Bezug: Anomalie des Wassers.",
@@ -2320,7 +2320,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb1-hydraulik:fact:inkompressibel",
-      prompt: "Welche Eigenschaft hat der Inkompressibel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Flüssigkeit kaum zusammendrückbar.", wrong: ["Ursache von Kraftwirkungen.", "Druck überträgt Energie.", "Bestimmt Kraft bei gegebenem p."],
       explanation: "Voraussetzung. Inkompressibel bedeutet: Flüssigkeit kaum zusammendrückbar. Bezug: Hydraulik und Pascal.",
       wissen: "Voraussetzung. Inkompressibel bedeutet: Flüssigkeit kaum zusammendrückbar. Bezug: Hydraulik und Pascal.",
@@ -3512,7 +3512,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:belasteter-trafo",
-      prompt: "Welche Eigenschaft hat der Belasteter Trafo?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Strom auf Sekundärseite.", wrong: ["Spule wirkt Änderungen entgegen.", "Hochspannung gefährlich.", "Ändert Wechselspannung."],
       explanation: "Real. Belasteter Trafo bedeutet: Strom auf Sekundärseite. Bezug: Transformator.",
       wissen: "Real. Belasteter Trafo bedeutet: Strom auf Sekundärseite. Bezug: Transformator.",
@@ -4624,7 +4624,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:grenzwinkel",
-      prompt: "Welche Eigenschaft hat der Grenzwinkel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "α_g mit sin α_g = n2/n1.", wrong: ["Führt Licht durch Totalreflexion.", "Übergang mit Richtungsänderung.", "Größerer n."],
       explanation: "Bedingung. Grenzwinkel bedeutet: α_g mit sin α_g = n2/n1. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Bedingung. Grenzwinkel bedeutet: α_g mit sin α_g = n2/n1. Bezug: Totalreflexion und Lichtleiter.",
@@ -4974,7 +4974,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:kraftfreiheit?",
-      prompt: "Wozu dient das Kraftfreiheit??",
+      prompt: "Wozu dient die Kraftfreiheit?",
       answer: "Nein, Zentripetalkraft nötig.", wrong: ["Bei konstanter v kinetisch konstant.", "T und r → v.", "Kräfte vektoriell."],
       explanation: "Newton. Kraftfreiheit? bedeutet: Nein, Zentripetalkraft nötig. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "Newton. Kraftfreiheit? bedeutet: Nein, Zentripetalkraft nötig. Bezug: Gleichförmige Kreisbewegung.",
@@ -5081,7 +5081,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb2-faraday:fact:gewitter",
-      prompt: "Welche Eigenschaft hat der Gewitter?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Auto als Käfig näherungsweise.", wrong: ["Ladungsverschiebung im Leiter.", "Leiteroberfläche oft gleich.", "Empfindliche Geräte schützen."],
       explanation: "Sicherheit. Gewitter bedeutet: Auto als Käfig näherungsweise. Bezug: Faraday-Käfig und Dipolfeld.",
       wissen: "Sicherheit. Gewitter bedeutet: Auto als Käfig näherungsweise. Bezug: Faraday-Käfig und Dipolfeld.",
@@ -5514,7 +5514,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb4-ablenkung:fact:beschleuniger",
-      prompt: "Welche Eigenschaft hat der Beschleuniger?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Teilchen gewinnen Energie.", wrong: ["Abhängig von q, E, v.", "q/m.", "Elektronenstrahl."],
       explanation: "Technik. Beschleuniger bedeutet: Teilchen gewinnen Energie. Bezug: Ablenkung im Querfeld.",
       wissen: "Technik. Beschleuniger bedeutet: Teilchen gewinnen Energie. Bezug: Ablenkung im Querfeld.",

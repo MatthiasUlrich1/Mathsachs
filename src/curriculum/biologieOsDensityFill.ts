@@ -346,7 +346,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk11-lb2-kompartimente:p11:f",
-      prompt: "Welche Eigenschaft hat der Citratzyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Acetyl-CoA oxidieren.", wrong: ["CO2-Fixierung.", "Nacht-Fixierung.", "Elektronen → O2."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
@@ -580,7 +580,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-gk12-lb1-molekular:p11:f",
-      prompt: "Welche Eigenschaft hat der Crossing-over?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Austausch homologer Abschnitte.", wrong: ["nur homozygot sichtbar.", "Reduktionsteilung.", "Gene auf einem Chromosom."],
       explanation: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
       wissen: "Rekombination. Bezug: Crossing-over. Crossing-over bedeutet: Austausch homologer Abschnitte.",
@@ -1106,7 +1106,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-apoptose:p3:f",
-      prompt: "Welche Eigenschaft hat der Zellzyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Interphase + Mitose.", wrong: ["Zellen gleicher Funktion.", "Transportprotein.", "biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
@@ -1372,7 +1372,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-gewebearten:p7:f",
-      prompt: "Welche Eigenschaft hat der Turgor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Innendruck der Pflanzenzelle.", wrong: ["Ort der Zellatmung.", "Modifikation und Versand.", "enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
@@ -1449,7 +1449,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-organ:p2:f",
-      prompt: "Welche Eigenschaft hat der Zellzyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Interphase + Mitose.", wrong: ["Zellen gleicher Funktion.", "Transportprotein.", "biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
@@ -1715,7 +1715,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-wasser:p6:f",
-      prompt: "Welche Eigenschaft hat der Turgor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Innendruck der Pflanzenzelle.", wrong: ["Ort der Zellatmung.", "Modifikation und Versand.", "enthält Chromatin."],
       explanation: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
       wissen: "Stabilität. Bezug: Turgor. Turgor bedeutet: Innendruck der Pflanzenzelle.",
@@ -2140,7 +2140,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     facts: [
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p0:f",
-      prompt: "Welche Eigenschaft hat der Zellzyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Interphase + Mitose.", wrong: ["Zellen gleicher Funktion.", "Transportprotein.", "biologischer Katalysator."],
       explanation: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
       wissen: "Checkpoints. Bezug: Zellzyklus. Zellzyklus bedeutet: Interphase + Mitose.",
@@ -2212,7 +2212,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb1-vergleich-pro-eu:p9:f",
-      prompt: "Welche Eigenschaft hat der Mitosephasen?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Pro-/Meta-/Ana-/Telophase.", wrong: ["Spezialisierung von Zellen.", "Triebkraft für Wasser.", "Interphase + Mitose."],
       explanation: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
       wissen: "geordnete Teilung. Bezug: Mitosephasen. Mitosephasen bedeutet: Pro-/Meta-/Ana-/Telophase.",
@@ -3100,7 +3100,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb2-redox-bilanz:p3:f",
-      prompt: "Welche Eigenschaft hat der Citratzyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Er läuft in der Mitochondrienmatrix ab und liefert Reduktionsäquivalente, in Matrix.", wrong: ["Sie beschreibt CO2-Pumpe, heiße trockene Standorte.", "Sie bildet ATP direkt am Substrat, etwa in der Glykolyse.", "Sie fixiert CO2 direkt mit Rubisco im Calvin-Zyklus und bildet zuerst eine C3-Verbindung, photorespiration möglich."],
       explanation: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
       wissen: "in Matrix. Bezug: Citratzyklus. Citratzyklus bedeutet: Acetyl-CoA oxidieren.",
@@ -3201,7 +3201,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb2-enzyme-regulation:p1:f",
-      prompt: "Welche Eigenschaft hat der Calvin-Zyklus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "CO2-Fixierung.", wrong: ["Nacht-Fixierung.", "Elektronen → O2.", "Energie aus anorganischen Redox."],
       explanation: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
       wissen: "im Stroma. Bezug: Calvin-Zyklus. Calvin-Zyklus bedeutet: CO2-Fixierung.",
@@ -3459,7 +3459,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb3-konkurrenz-experiment:p4:f",
-      prompt: "Welche Eigenschaft hat der Bioindikator?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Er zeigt Umweltzustand.", wrong: ["Sie zusammenleben zum Vorteil.", "Es beschreibt überproportionaler Einfluss.", "Sie individuen einer Art, am Ort."],
       explanation: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
       wissen: "z. B. Flechten. Bezug: Bioindikator. Bioindikator bedeutet: zeigt Umweltzustand.",
@@ -3749,7 +3749,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk11-lb3-energiefluss-oeko:p11:f",
-      prompt: "Welche Eigenschaft hat der Parasitismus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Er gilt als ein Zusammenleben zum Vorteil des Parasiten, meist ohne sofortigen Tod des Wirts, nicht sofort tödlich.", wrong: ["Sie beschreibt weniger Energie oben, 10%-Regel grob.", "Sie ist der Wettbewerb um begrenzte Ressourcen zwischen Lebewesen.", "Sie gilt als eine trophische Beziehung, in der ein Räuber Beutetiere erlegt, reguliert Dichten."],
       explanation: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
       wissen: "nicht sofort tödlich. Bezug: Parasitismus. Parasitismus bedeutet: Nutzen auf Kosten des Wirts.",
@@ -4528,7 +4528,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p6:f",
-      prompt: "Welche Eigenschaft hat der Allel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Es beschreibt variante eines Gens, an einem Genort.", wrong: ["Es beschreibt setzt sich im Phänotyp durch, gegenüber rezessiv.", "Es beschreibt präzise Gen-Schere, moderne Editierung.", "Es beschreibt verschiedene Allele."],
       explanation: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
       wissen: "An einem Genort. Bezug: Allel. Allel bedeutet: Variante eines Gens.",
@@ -4568,7 +4568,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb1-populationsgenetik:p11:f",
-      prompt: "Welche Eigenschaft hat der Vektor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Er überträgt Fremd-DNA in Zellen, etwa ein Plasmid oder Virus in der Gentechnik.", wrong: ["Es beschreibt ringförmige DNA, bei Bakterien/Gentechnik.", "Es basentriplett.", "Es beschreibt setzt sich im Phänotyp durch, gegenüber rezessiv."],
       explanation: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
       wissen: "z. B. Plasmid. Bezug: Vektor. Vektor bedeutet: Transportvehikel für DNA.",
@@ -5480,7 +5480,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb2-immun-unspezifisch:p8:f",
-      prompt: "Welche Eigenschaft hat der Second Messenger?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "intrazelluläre Weiterleitung.", wrong: ["schützt ZNS.", "zum ZNS.", "präsentiert Peptide."],
       explanation: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
       wissen: "z. B. cAMP. Bezug: Second Messenger. Second Messenger bedeutet: intrazelluläre Weiterleitung.",
@@ -5900,7 +5900,7 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb2-pharmakologie:p2:f",
-      prompt: "Welche Eigenschaft hat der Antigen?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "löst Immunantwort aus.", wrong: ["spezifisch, Gedächtnis.", "erneute Begegnung.", "Angriff auf Körperzellen."],
       explanation: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",
       wissen: "meist Fremdstoff. Bezug: Antigen. Antigen bedeutet: löst Immunantwort aus.",

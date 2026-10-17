@@ -297,7 +297,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f9',
-      prompt: "Welche Eigenschaft hat der Schuppenformel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Zählung der Schuppenreihen.", wrong: ["Sauerstoffaufnahme aus Wasser.", "Verringert Reibung und schützt.", "Hauptsächlicher Vortrieb."],
       explanation: 'Artmerkmal. Schuppenformel bedeutet: Zählung der Schuppenreihen.',
       wissen: 'Artmerkmal. Schuppenformel bedeutet: Zählung der Schuppenreihen. Merke: Schuppenformel — Zählung der Schuppenreihen.',
@@ -1253,7 +1253,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:merkmale:f2',
-      prompt: "Welche Eigenschaft hat der Sonnenbaden?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Erwärmung des Körpers.", wrong: ["Weniger Wasserverlust.", "Äußere Schuppe.", "Riechorgan vieler Schlangen."],
       explanation: 'Aktivitätssteuerung. Sonnenbaden bedeutet: Erwärmung des Körpers.',
       wissen: 'Aktivitätssteuerung. Sonnenbaden bedeutet: Erwärmung des Körpers. Merke: Sonnenbaden — Erwärmung des Körpers.',
@@ -1595,7 +1595,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:fortpflanzung:f2',
-      prompt: "Welche Eigenschaft hat der Dotter?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Nährstoff im Ei.", wrong: ["Samenübertragung im Körper.", "Ablegen der Schaleneier.", "Sich entwickelnder Organismus."],
       explanation: 'Ernährt den Embryo. Dotter bedeutet: Nährstoff im Ei.',
       wissen: 'Ernährt den Embryo. Dotter bedeutet: Nährstoff im Ei. Merke: Dotter — Nährstoff im Ei.',
@@ -1947,7 +1947,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb5:voegel:fortpflanzung:f3',
-      prompt: "Welche Eigenschaft hat der Dotter?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Nährstoff im Vogelei.", wrong: ["Paarungsverhalten.", "Eizahl im Nest.", "Wärmen der Eier."],
       explanation: 'Für den Embryo. Dotter bedeutet: Nährstoff im Vogelei.',
       wissen: 'Für den Embryo. Dotter bedeutet: Nährstoff im Vogelei. Merke: Dotter — Nährstoff im Vogelei.',
@@ -2188,7 +2188,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f10',
-      prompt: "Welche Eigenschaft hat der Revieren?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Markieren und Verteidigen.", wrong: ["Haarkleid.", "Erzeugt Milch.", "Stabile Körpertemperatur."],
       explanation: 'Duft, Laute. Revieren bedeutet: Markieren und Verteidigen.',
       wissen: 'Duft, Laute. Revieren bedeutet: Markieren und Verteidigen. Merke: Revieren — Markieren und Verteidigen.',
@@ -3124,7 +3124,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f1',
-      prompt: "Welche Eigenschaft hat der Federn+Schnabel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Passt zu Vögeln.", wrong: ["Passt zu Fischen.", "Passt zu Säugetieren.", "Passt zu Kriechtieren."],
       explanation: 'Flug/Wärme. Federn+Schnabel bedeutet: Passt zu Vögeln.',
       wissen: 'Flug/Wärme. Federn+Schnabel bedeutet: Passt zu Vögeln. Merke: Federn+Schnabel — Passt zu Vögeln.',
@@ -4572,7 +4572,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k6:lb4:sporempflanzen:f8',
-      prompt: "Welche Eigenschaft hat der Zersetzer?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Abbau von Totholz.", wrong: ["Ausbreitungszelle.", "Kleine Sporenpflanze.", "Wedel mit Sori."],
       explanation: 'Pilze. Zersetzer bedeutet: Abbau von Totholz.',
       wissen: 'Pilze. Zersetzer bedeutet: Abbau von Totholz. Merke: Zersetzer — Abbau von Totholz.',
@@ -5701,7 +5701,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k8:lb2:entwicklung:f1',
-      prompt: "Welche Eigenschaft hat der Fetus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Spätere Phase.", wrong: ["Frühe Entwicklung.", "Geschlechtsreifung.", "Größenzunahme."],
       explanation: 'Organe ausdifferenziert. Fetus bedeutet: Spätere Phase.',
       wissen: 'Organe ausdifferenziert. Fetus bedeutet: Spätere Phase. Merke: Fetus — Spätere Phase.',
@@ -5862,7 +5862,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k8:lbw:stress:f0',
-      prompt: "Welche Eigenschaft hat der Stressor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Belastender Reiz.", wrong: ["Stresshormon.", "Weiteres Stresshormon.", "Akute Stressreaktion."],
       explanation: 'Auslöser. Stressor bedeutet: Belastender Reiz.',
       wissen: 'Auslöser. Stressor bedeutet: Belastender Reiz. Merke: Stressor — Belastender Reiz.',
@@ -7059,7 +7059,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k9:lbw:pilze:f0',
-      prompt: "Welche Eigenschaft hat der Myzel?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Fadengeflecht.", wrong: ["Hut/Stiel oft.", "Ausbreitungseinheit.", "Zersetzer."],
       explanation: 'Eigentlicher Pilzkörper. Myzel bedeutet: Fadengeflecht.',
       wissen: 'Eigentlicher Pilzkörper. Myzel bedeutet: Fadengeflecht. Merke: Myzel — Fadengeflecht.',
@@ -7250,7 +7250,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k9:lbw:bier:f2',
-      prompt: "Welche Eigenschaft hat der Hopfen?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Bitter- und Aromastoff.", wrong: ["Braugetreide.", "Gekeimte und gedarrte Gerste.", "Gärungserreger."],
       explanation: 'Konservierend. Hopfen bedeutet: Bitter- und Aromastoff.',
       wissen: 'Konservierend. Hopfen bedeutet: Bitter- und Aromastoff. Merke: Hopfen — Bitter- und Aromastoff.',
@@ -7934,7 +7934,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f2',
-      prompt: "Welche Eigenschaft hat der Trial-and-Error?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Versuch und Irrtum.", wrong: ["Lernen durch Verknüpfung.", "Irreversibles Lernen in Phase.", "Problemlösen."],
       explanation: 'Erfolg verstärkt. Trial-and-Error bedeutet: Versuch und Irrtum.',
       wissen: 'Erfolg verstärkt. Trial-and-Error bedeutet: Versuch und Irrtum. Merke: Trial-and-Error — Versuch und Irrtum.',
@@ -9563,7 +9563,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:lk11:lbw:bioindikation:f11',
-      prompt: "Welche Eigenschaft hat der Bewertungsverfahren?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Standardisierte Methode.", wrong: ["Zeigt Umweltzustand.", "Luftgütezeiger.", "Gewässerbelastung."],
       explanation: 'Vergleichbarkeit. Bewertungsverfahren bedeutet: Standardisierte Methode.',
       wissen: 'Vergleichbarkeit. Bewertungsverfahren bedeutet: Standardisierte Methode. Merke: Bewertungsverfahren — Standardisierte Methode.',

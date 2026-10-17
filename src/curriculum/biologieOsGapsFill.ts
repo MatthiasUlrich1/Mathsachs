@@ -542,7 +542,7 @@ const gk11Protein: BioBank = {
     },
     {
       concept: "bio:gk11:pbs:9",
-      prompt: "Welche Eigenschaft hat der Transkriptionsfaktor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Protein, das Transkription beeinflusst.", wrong: ["Nur tRNA.", "Nur Lipid.", "Nur Zucker."],
       explanation: "Transkriptionsfaktor.",
       wissen: "Protein, das Transkription beeinflusst. Fachlich themenspezifisch einordnen.",
@@ -613,7 +613,7 @@ const gk11Genreg: BioBank = {
     },
     {
       concept: "bio:gk11:genreg:6",
-      prompt: "Was kennzeichnet der Enhancer?",
+      prompt: "Was kennzeichnet den Enhancer?",
       answer: "DNA-Elemente, die Transkription verstärken können.", wrong: ["Nur Stoppsignale.", "Nur Centromere.", "Nur Telomere allein."],
       explanation: "Enhancer.",
       wissen: "DNA-Elemente, die Transkription verstärken können. Fachlich themenspezifisch einordnen.",
@@ -1106,7 +1106,7 @@ const gk12Human: BioBank = {
     },
     {
       concept: "bio:gk12:human:9",
-      prompt: "Was kennzeichnet der Carrier-Status?",
+      prompt: "Was kennzeichnet den Carrier-Status?",
       answer: "Allelträger ohne eigenen Phänotyp oft.", wrong: ["Vererbungsmuster in Familien rekonstruieren.", "DNA-Abschnitte vervielfältigen.", "DNA-Fragmente nach Größe trennen."],
       explanation: "Carrier-Status.",
       wissen: "Allelträger ohne eigenen Phänotyp oft. Fachlich themenspezifisch einordnen.",
@@ -1177,7 +1177,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:6",
-      prompt: "Welche Eigenschaft hat der Vektor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Träger zum Einschleusen von Genen (Virus/Plasmid).", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken."],
       explanation: "Vektor.",
       wissen: "Träger zum Einschleusen von Genen (Virus/Plasmid). Fachlich themenspezifisch einordnen.",
@@ -2044,7 +2044,7 @@ const lk11Transport: BioBank = {
     },
     {
       concept: "bio:lk11:transport:9",
-      prompt: "Welche Eigenschaft hat der Kanal vs. Carrier?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Pore vs. Konformationszyklus.", wrong: ["Tendenz des Wasserstroms; Summe von Komponenten.", "Wasserverlust/-aufnahme der Pflanzenzelle.", "Vesikulärer Stoffaustausch."],
       explanation: "Kanal vs. Carrier.",
       wissen: "Pore vs. Konformationszyklus. Fachlich themenspezifisch einordnen.",
@@ -2099,7 +2099,7 @@ const lk11Genreg: BioBank = {
     },
     {
       concept: "bio:lk11:genreg:4",
-      prompt: "Was kennzeichnet der Induktor?",
+      prompt: "Was kennzeichnet den Induktor?",
       answer: "Hebt Hemmung auf.", wrong: ["Gemeinsam regulierte prokaryotische Gene.", "Induktion bei Lactosebedarf.", "Hemmt Transkription bei Bindung."],
       explanation: "Induktor.",
       wissen: "Hebt Hemmung auf. Fachlich themenspezifisch einordnen.",
@@ -4101,7 +4101,7 @@ const lk12Mensch: BioBank = {
     },
     {
       concept: "bio:lk12:mensch:8",
-      prompt: "Was kennzeichnet der Antirassismus?",
+      prompt: "Was kennzeichnet den Antirassismus?",
       answer: "Keine biologische Wertpyramide der Menschen.", wrong: ["Aufrechter Gang als Merkmal.", "Zunahme bei Homininen (nicht linear einfach).", "Kulturelle Evolution ergänzt biologisch."],
       explanation: "Antirassismus.",
       wissen: "Keine biologische Wertpyramide der Menschen. Fachlich themenspezifisch einordnen.",

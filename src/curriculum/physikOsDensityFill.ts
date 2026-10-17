@@ -559,7 +559,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-dreh-erhaltung:p8:f",
-      prompt: "Welche Eigenschaft hat der Vektorcharakter?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Achsenrichtung von L.", wrong: ["Flächensatz / L.", "exzentrisch.", "SI für L."],
       explanation: "Rechte-Hand-Regel. Vektorcharakter bedeutet: Achsenrichtung von L.",
       wissen: "Rechte-Hand-Regel. Vektorcharakter bedeutet: Achsenrichtung von L.",
@@ -676,7 +676,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb3p-foto:p8:f",
-      prompt: "Welche Eigenschaft hat der Systematischer Fehler?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "falscher Maßstab.", wrong: ["Ablesestreuung.", "Frame-Rate als Δt.", "Bedingungen dokumentieren."],
       explanation: "Kalibrierung prüfen. Systematischer Fehler bedeutet: falscher Maßstab.",
       wissen: "Kalibrierung prüfen. Systematischer Fehler bedeutet: falscher Maßstab.",
@@ -995,7 +995,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb7-platten:p4:f",
-      prompt: "Welche Eigenschaft hat der Feldlinien?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "parallel, gleich dicht.", wrong: ["Feld am Rand verzerrt.", "C = ε0·A/d.", "Q = C·U."],
       explanation: "Homogenität. Feldlinien bedeutet: parallel, gleich dicht.",
       wissen: "Homogenität. Feldlinien bedeutet: parallel, gleich dicht.",
@@ -1242,7 +1242,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p5:f",
-      prompt: "Welche Eigenschaft hat der Metalldetektor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Induktionsänderung.", wrong: ["Wirbelströme im Topf.", "Wechselfelder dämpfen.", "in Kupferrohr langsam."],
       explanation: "Leitfähigkeit. Metalldetektor bedeutet: Induktionsänderung.",
       wissen: "Leitfähigkeit. Metalldetektor bedeutet: Induktionsänderung.",
@@ -1359,7 +1359,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb11-bericht:p5:f",
-      prompt: "Was bewirkt der systematischer Fehler?",
+      prompt: "Was bewirkt der systematische Fehler?",
       answer: "verschiebt alle Werte.", wrong: ["streut um Mittel.", "zur Messgenauigkeit passen.", "Unsicherheit sichtbar."],
       explanation: "Kalibrierung. systematischer Fehler bedeutet: verschiebt alle Werte.",
       wissen: "Kalibrierung. systematischer Fehler bedeutet: verschiebt alle Werte.",
@@ -1465,7 +1465,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p3:f",
-      prompt: "Wozu dient der aperiodischer Grenzfall?",
+      prompt: "Wozu dient der aperiodische Grenzfall?",
       answer: "schnellste Rückkehr ohne Überschwingen.", wrong: ["überdämpft.", "Ursache der Dämpfung.", "Schwingkreisschärfe."],
       explanation: "kritisch. aperiodischer Grenzfall bedeutet: schnellste Rückkehr ohne Überschwingen.",
       wissen: "kritisch. aperiodischer Grenzfall bedeutet: schnellste Rückkehr ohne Überschwingen.",
@@ -1864,7 +1864,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p9:f",
-      prompt: "Welche Eigenschaft hat der Detektor?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Er beschreibt klickt lokal.", wrong: ["Es beschreibt versagt im Doppelspalt, keine eindeutige Bahn.", "Es beschreibt welle und Teilchen Aspekte, nicht gleichzeitig klassisch.", "Es beschreibt λ = h/p, auch für Elektronen."],
       explanation: "Teilchennachweis. Detektor bedeutet: klickt lokal.",
       wissen: "Teilchennachweis. Detektor bedeutet: klickt lokal.",
@@ -2309,7 +2309,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p5:f",
-      prompt: "Welche Eigenschaft hat der Leuchten?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "bei Rückkehr ins Grundniveau.", wrong: ["steuert Elektronenenergie.", "typische Füllung.", "nicht kontinuierlich."],
       explanation: "Photonen. Leuchten bedeutet: bei Rückkehr ins Grundniveau.",
       wissen: "Photonen. Leuchten bedeutet: bei Rückkehr ins Grundniveau.",
@@ -2325,7 +2325,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p7:f",
-      prompt: "Welche Eigenschaft hat der Quecksilber oder Neon?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "typische Füllung.", wrong: ["nicht kontinuierlich.", "≈ Anregungsspannung.", "Niveaudifferenzen."],
       explanation: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
       wissen: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
@@ -2450,7 +2450,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb5-linienspektrum:p8:f",
-      prompt: "Was bewirkt der angeregter Zustand?",
+      prompt: "Was bewirkt der angeregte Zustand?",
       answer: "höhere Energie.", wrong: ["Prisma/Gitter.", "Linien = Elemente.", "Festkörper oft breit."],
       explanation: "begrenzt lebensdauer. angeregter Zustand bedeutet: höhere Energie.",
       wissen: "begrenzt lebensdauer. angeregter Zustand bedeutet: höhere Energie.",

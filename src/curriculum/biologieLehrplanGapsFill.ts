@@ -14,7 +14,7 @@ export const k5KriechtiereSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:krschutz:f0",
-      prompt: "Was beschreibt „Wozu dient Artenschutz\"?",
+      prompt: "Wozu dient Artenschutz\?",
       answer: "Maßnahmen zum Erhalt bedrohter Arten.", wrong: ["Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte.", "Heimische Schlange feuchter Lebensräume."],
       explanation: "Artenschutz: Maßnahmen zum Erhalt bedrohter Arten",
       wissen: fw(
@@ -25,7 +25,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f1",
-      prompt: "Was beschreibt „Was kennzeichnet „Lebensraumverlust“\"?",
+      prompt: "Was kennzeichnet „Lebensraumverlust“\?",
       answer: "Verschwinden geeigneter Habitate.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Heimische Eidechse warmer Standorte.", "Heimische Schlange feuchter Lebensräume."],
       explanation: "Lebensraumverlust: Verschwinden geeigneter Habitate",
       wissen: fw(
@@ -36,7 +36,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f2",
-      prompt: "Was beschreibt „Was kennzeichnet „Zauneidechse“\"?",
+      prompt: "Was kennzeichnet „Zauneidechse“\?",
       answer: "Heimische Eidechse warmer Standorte.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Schlange feuchter Lebensräume."],
       explanation: "Zauneidechse: Heimische Eidechse warmer Standorte",
       wissen: fw(
@@ -47,7 +47,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f3",
-      prompt: "Was beschreibt „Was kennzeichnet „Ringelnatter“\"?",
+      prompt: "Was kennzeichnet „Ringelnatter“\?",
       answer: "Heimische Schlange feuchter Lebensräume.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Ringelnatter: Heimische Schlange feuchter Lebensräume",
       wissen: fw(
@@ -58,7 +58,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f4",
-      prompt: "Was beschreibt „Was kennzeichnet „Totholz“\"?",
+      prompt: "Was kennzeichnet „Totholz“\?",
       answer: "Abgestorbenes Holz als Struktur.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Totholz: Abgestorbenes Holz als Struktur",
       wissen: fw(
@@ -69,7 +69,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f5",
-      prompt: "Was beschreibt „Was kennzeichnet „Steinhaufen“\"?",
+      prompt: "Was kennzeichnet „Steinhaufen“\?",
       answer: "Lesesteine als Versteckstruktur.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Steinhaufen: Lesesteine als Versteckstruktur",
       wissen: fw(
@@ -80,7 +80,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f6",
-      prompt: "Was beschreibt „Was kennzeichnet „Wechselwarm“\"?",
+      prompt: "Was kennzeichnet „Wechselwarm“\?",
       answer: "Körpertemperatur folgt der Umwelt.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Wechselwarm: Körpertemperatur folgt der Umwelt",
       wissen: fw(
@@ -91,7 +91,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f7",
-      prompt: "Was beschreibt „Was kennzeichnet „Fragmentierung“\"?",
+      prompt: "Was kennzeichnet „Fragmentierung“\?",
       answer: "Zerschnittene Lebensräume.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Fragmentierung: Zerschnittene Lebensräume",
       wissen: fw(
@@ -102,7 +102,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f8",
-      prompt: "Was beschreibt „Was kennzeichnet „Habitatpflege“\"?",
+      prompt: "Was kennzeichnet „Habitatpflege“\?",
       answer: "Pflege geeigneter Lebensräume.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Habitatpflege: Pflege geeigneter Lebensräume",
       wissen: fw(
@@ -124,7 +124,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f10",
-      prompt: "Was beschreibt „Wozu dient Schutzgebiet\"?",
+      prompt: "Wozu dient Schutzgebiet\?",
       answer: "Fläche mit besonderen Regeln.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Schutzgebiet: Fläche mit besonderen Regeln",
       wissen: fw(
@@ -135,7 +135,7 @@ export const k5KriechtiereSchutz: BioBank = {
     },
     {
       concept: "bio:k5:krschutz:f11",
-      prompt: "Was beschreibt „Was kennzeichnet „Brutruhe“\"?",
+      prompt: "Was kennzeichnet „Brutruhe“\?",
       answer: "Ungestörte Phasen an Lebensräumen.", wrong: ["Maßnahmen zum Erhalt bedrohter Arten.", "Verschwinden geeigneter Habitate.", "Heimische Eidechse warmer Standorte."],
       explanation: "Brutruhe: Ungestörte Phasen an Lebensräumen",
       wissen: fw(
@@ -203,8 +203,8 @@ export const k5VoegelSchnabel: BioBank = {
   facts: [
     {
       concept: "bio:k5:schnabel:f0",
-      prompt: "Was kennzeichnet der Körnerschnabel?",
-      answer: "Kurz und kräftig zum Knacken von Samen.", wrong: ["Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser.", "Lang und schlank für Blütennektar."],
+      prompt: "Was kennzeichnet den Körnerschnabel?",
+      answer: "kurz und kräftig zum Knacken von Samen.", wrong: ["Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser.", "Lang und schlank für Blütennektar."],
       explanation: "Körnerschnabel: Kurz und kräftig zum Knacken von Samen",
       wissen: fw(
         "Typisch für viele Finken. Bezug: Schnabelformen.",
@@ -214,8 +214,8 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f1",
-      prompt: "Was kennzeichnet der Hakenschnabel?",
-      answer: "Gebogen zum Zerreißen von Fleisch.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Seiht Nahrung aus Wasser.", "Lang und schlank für Blütennektar."],
+      prompt: "Was kennzeichnet den Hakenschnabel?",
+      answer: "gebogen zum Zerreißen von Fleisch.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Seiht Nahrung aus Wasser.", "Lang und schlank für Blütennektar."],
       explanation: "Hakenschnabel: Gebogen zum Zerreißen von Fleisch",
       wissen: fw(
         "Kennzeichen vieler Greifvögel. Bezug: Schnabelformen.",
@@ -226,7 +226,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f2",
       prompt: "Welche Eigenschaft hat der Filterschnabel?",
-      answer: "Seiht Nahrung aus Wasser.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Lang und schlank für Blütennektar."],
+      answer: "Siebt Nahrung aus Wasser.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Lang und schlank für Blütennektar."],
       explanation: "Filterschnabel: Seiht Nahrung aus Wasser",
       wissen: fw(
         "z. B. bei Enten. Bezug: Schnabelformen.",
@@ -237,7 +237,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f3",
       prompt: "Was bedeutet „Nektarschnabel“?",
-      answer: "Lang und schlank für Blütennektar.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
+      answer: "lang und schlank für Blütennektar.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Nektarschnabel: Lang und schlank für Blütennektar",
       wissen: fw(
         "z. B. Kolibri. Bezug: Schnabelformen.",
@@ -248,7 +248,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f4",
       prompt: "Was bewirkt der Watvogelschnabel?",
-      answer: "Oft lang zum Stochern im Schlamm.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
+      answer: "oft lang zum Stochern im Schlamm.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Watvogelschnabel: Oft lang zum Stochern im Schlamm",
       wissen: fw(
         "Erreicht versteckte Beute. Bezug: Schnabelformen.",
@@ -258,8 +258,8 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f5",
-      prompt: "Was kennzeichnet der Insektenschnabel?",
-      answer: "Spitz zum präzisen Picken.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
+      prompt: "Was kennzeichnet den Insektenschnabel?",
+      answer: "spitz zum präzisen Picken.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Insektenschnabel: Spitz zum präzisen Picken",
       wissen: fw(
         "Viele Singvögel. Bezug: Schnabelformen.",
@@ -270,7 +270,7 @@ export const k5VoegelSchnabel: BioBank = {
     {
       concept: "bio:k5:schnabel:f6",
       prompt: "Wozu dient der Spechtschnabel?",
-      answer: "Meißelförmig für Holz.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
+      answer: "meißelförmig für Holz.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Spechtschnabel: Meißelförmig für Holz",
       wissen: fw(
         "Öffnet Gänge zu Insektenlarven. Bezug: Schnabelformen.",
@@ -291,7 +291,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f8",
-      prompt: "Was bewirkt das Muskelmagen?",
+      prompt: "Was bewirkt der Muskelmagen?",
       answer: "Zerkleinert Nahrung nach dem Schnabel.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Muskelmagen: Zerkleinert Nahrung nach dem Schnabel",
       wissen: fw(
@@ -324,7 +324,7 @@ export const k5VoegelSchnabel: BioBank = {
     },
     {
       concept: "bio:k5:schnabel:f11",
-      prompt: "Wozu dient das Greifvogel?",
+      prompt: "Wozu dient der Greifvogel?",
       answer: "Jagt oft Wirbeltiere.", wrong: ["Kurz und kräftig zum Knacken von Samen.", "Gebogen zum Zerreißen von Fleisch.", "Seiht Nahrung aus Wasser."],
       explanation: "Greifvogel: Jagt oft Wirbeltiere",
       wissen: fw(
@@ -581,7 +581,7 @@ export const k5VoegelSchutz: BioBank = {
   facts: [
     {
       concept: "bio:k5:vgschutz:f0",
-      prompt: "Wozu dient das Nistkasten?",
+      prompt: "Wozu dient der Nistkasten?",
       answer: "Künstliche Nisthilfe.", wrong: ["Gehölzstreifen als Lebensraum.", "Nasses Schlüsselhabitat.", "Kollision an Glasflächen."],
       explanation: "Nistkasten: Künstliche Nisthilfe",
       wissen: fw(
@@ -669,7 +669,7 @@ export const k5VoegelSchutz: BioBank = {
     },
     {
       concept: "bio:k5:vgschutz:f8",
-      prompt: "Was beschreibt „Was kennzeichnet „Habitatverlust“\"?",
+      prompt: "Was kennzeichnet „Habitatverlust“\?",
       answer: "Verlust von Lebensraum.", wrong: ["Künstliche Nisthilfe.", "Gehölzstreifen als Lebensraum.", "Nasses Schlüsselhabitat."],
       explanation: "Habitatverlust: Verlust von Lebensraum",
       wissen: fw(
@@ -959,7 +959,7 @@ export const k5SaeugerSinne: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugsinn:f0",
-      prompt: "Was kennzeichnet der Sender?",
+      prompt: "Was kennzeichnet den Sender?",
       answer: "Erzeugt ein Signal.", wrong: ["Nimmt das Signal wahr.", "Informationstragendes Zeichen.", "Wahrnehmung von Duftstoffen."],
       explanation: "Sender: Erzeugt ein Signal",
       wissen: fw(
@@ -1192,7 +1192,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f4",
-      prompt: "Welche Eigenschaft hat der Revier?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Verteidigtes Gebiet.", wrong: ["Soziale Gruppe mancher Säuger.", "Zusammenarbeit zum gemeinsamen Vorteil.", "Hierarchie in der Gruppe."],
       explanation: "Revier: Verteidigtes Gebiet",
       wissen: fw(
@@ -1258,7 +1258,7 @@ export const k5SaeugerSozial: BioBank = {
     },
     {
       concept: "bio:k5:saeugsoc:f10",
-      prompt: "Was beschreibt „Was kennzeichnet „Alleinerziehend“\"?",
+      prompt: "Was kennzeichnet „Alleinerziehend“\?",
       answer: "Ein Elterntier versorgt Junge.", wrong: ["Soziale Gruppe mancher Säuger.", "Zusammenarbeit zum gemeinsamen Vorteil.", "Hierarchie in der Gruppe."],
       explanation: "Alleinerziehend: Ein Elterntier versorgt Junge",
       wissen: fw(
@@ -3715,7 +3715,7 @@ export const k8NervGesundheit: BioBank = {
     },
     {
       concept: "bio:k8:nervges:f10",
-      prompt: "Welche Eigenschaft hat der Tagesrhythmus?",
+      prompt: "Welche Eigenschaft hat der ",
       answer: "Wechsel von Aktivität und Ruhe.", wrong: ["Erholung für Gehirn und Körper.", "Zu viele Reize gleichzeitig.", "Belastungsreaktion des Organismus."],
       explanation: "Tagesrhythmus: Wechsel von Aktivität und Ruhe",
       wissen: fw(
@@ -3882,7 +3882,7 @@ export const k8Zyklus: BioBank = {
     },
     {
       concept: "bio:k8:zyklus:f8",
-      prompt: "Was kennzeichnet der Gelbkörper?",
+      prompt: "Was kennzeichnet den Gelbkörper?",
       answer: "Restfollikel nach Eisprung.", wrong: ["Monatlicher Regelkreis der Gebärmutterschleimhaut.", "Freisetzung einer Eizelle.", "Reifungsphase vor dem Eisprung."],
       explanation: "Gelbkörper: Restfollikel nach Eisprung",
       wissen: fw(
@@ -3994,7 +3994,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f1",
-      prompt: "Was kennzeichnet das geschlechtliche Vielfalt?",
+      prompt: "Was kennzeichnet die geschlechtliche Vielfalt?",
       answer: "Unterschiedliche Geschlechtsidentitäten und -merkmale.", wrong: ["Unterschiedliche sexuelle Orientierungen.", "Anziehung zum anderen Geschlecht.", "Anziehung zum gleichen Geschlecht."],
       explanation: "geschlechtliche Vielfalt: Unterschiedliche Geschlechtsidentitäten und -merkmale",
       wissen: fw(
@@ -4038,7 +4038,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f5",
-      prompt: "Was kennzeichnet der Transgender?",
+      prompt: "Was kennzeichnet den Transgender?",
       answer: "Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab.", wrong: ["Unterschiedliche sexuelle Orientierungen.", "Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Anziehung zum anderen Geschlecht."],
       explanation: "Transgender: Geschlechtsidentität weicht vom Zuweisungsgeschlecht ab",
       wissen: fw(
@@ -4561,7 +4561,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f1",
-      prompt: "Was kennzeichnet der biotischer Faktor?",
+      prompt: "Was kennzeichnet den biotischen Faktor?",
       answer: "Wirkung durch Lebewesen.", wrong: ["Unbelebte Umweltgröße.", "Bereich erträglicher Faktorwerte.", "Reaktionsbreite einer Art."],
       explanation: "biotischer Faktor: Wirkung durch Lebewesen",
       wissen: fw(

@@ -113,6 +113,29 @@ function pronounFor(term: string): 'Sie' | 'Er' | 'Es' {
   return 'Es'
 }
 
+function articleFor(term: string, case_: 'nom' | 'dat' | 'acc' = 'nom'): string {
+  const t = displayGlossaryTerm(term).toLowerCase()
+  
+  // Specific masculine nouns
+  const masculine = [
+    'nistkasten', 'greifvogel', 'körnerschnabel', 'hakenschnabel',
+    'filterschnabel', 'nektarschnabel', 'watvogelschnabel', 
+    'insektenschnabel', 'spechtschnabel', 'vogel', 'schnabel',
+    'hund', 'mensch', 'finger', 'baum', 'wald', 'fluss', 'berg'
+  ]
+  
+  if (masculine.some(n => t === n || t.endsWith(n))) {
+    return case_ === 'dat' ? 'dem' : case_ === 'acc' ? 'den' : 'der'
+  }
+  
+  // Use pronounFor logic for other nouns
+  const pron = pronounFor(term)
+  if (pron === 'Sie') return 'die'
+  if (pron === 'Er') return case_ === 'dat' ? 'dem' : case_ === 'acc' ? 'den' : 'der'
+  return case_ === 'dat' ? 'dem' : 'das'
+}
+
+
 function lowerFirst(s: string): string {
   if (!s) return s
   return s.charAt(0).toLowerCase() + s.slice(1)
@@ -225,10 +248,11 @@ export function concreteGlossaryStem(
   ) {
     if (/^Kieme$/i.test(t)) return 'Wozu dient die Kieme bei Wassertieren?'
     if (/ oder /.test(t) || /\s/.test(t)) return `Wozu dienen ${t}?`
-    if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low)) {
+    const art = articleFor(t, 'nom')
+    if (art === 'die' || (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur)$/i.test(low) || /e$/i.test(low))) {
       return `Wozu dient die ${t}?`
     }
-    return `Wozu dient ${t}?`
+    return `Wozu dient ${art} ${t}?`
   }
 
   if (style === 'process') return `Was bewirkt ${t}?`
@@ -546,6 +570,20 @@ export function rewriteVagueGlossaryPrompt(
 ): string | null {
   let q = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').trim()
   q = q.replace(/\?+$/g, '').trim()
+  // Never nest question words - if already concrete with "Was kennzeichnet/beschreibt/bewirkt", leave it
+  // BUT check if it's actually vague first (e.g. "Was bewirkt oder beschreibt" is vague)
+  if (!isVagueGlossaryStem(q) && /^(Was kennzeichnet|Was beschreibt|Was bewirkt|Welche Eigenschaft|Wozu dient|Woran erkennt)/i.test(q)) {
+    // Already a concrete application stem - check if it looks nested
+    if (/^Was beschreibt [„"'](?:Was|Wozu|Welche)/i.test(q)) {
+      // Strip outer wrapper, keep inner question
+      const inner = q.match(/^Was beschreibt [„"'](.+?)["""']?\s*\??$/i)
+      if (inner) {
+        return inner[1].replace(/["""']$/, '').trim()
+      }
+    }
+    return null  // Already concrete, don't rewrite
+  }
+
 
   if (isAllowedVerstehtStem(q) || isAllowedVerstehtStem(`${q}?`)) {
     return 'Was versteht man in der Geschichtswissenschaft unter einer Quelle?'
