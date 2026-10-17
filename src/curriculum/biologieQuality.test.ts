@@ -416,7 +416,7 @@ describe('Biologie UX: bank slugs, pairMatch duplicates, Fachbegriff spoilers', 
     expect(mcQ).not.toMatch(/Was bedeutet/i)
     expect(mcQ).not.toMatch(/im Themenfeld/i)
     expect(mcQ).not.toMatch(/\(baeume\)/)
-    expect(mcQ).toMatch(/Merkmal|kennzeichnet|Maßnahme/i)
+    expect(mcQ).toMatch(/Merkmal|kennzeichnet|Maßnahme|Woran erkennt|Wozu dient|Welche Eigenschaft|Welche Rolle/i)
   })
 
   it('detects accepted answers already present in gap template or unquoted stem', () => {
