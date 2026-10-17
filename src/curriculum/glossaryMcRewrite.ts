@@ -166,7 +166,7 @@ const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
   selektion: 'f', mutation: 'f', modifikation: 'f', autosom: 'n',
   // Bio: anatomie / physiologie / genetik (inventory-expanded)
   zellkern: 'm', blutdruck: 'm', bluthochdruck: 'm', medieninfluss: 'm',
-  biodiversitätsverlauf: 'm', schwanzlurch: 'm', froschlurch: 'm',
+  biodiversitätsverlauf: 'm',
   schädlingsdruck: 'm', apoptoseverlust: 'm', herdenschutz: 'm',
   neurotransmitterabbau: 'm', wärmeverlust: 'm', einschaltvorgang: 'm',
   luftdruck: 'm', gasdruck: 'm',
@@ -297,8 +297,7 @@ export function isVagueGlossaryStem(prompt: string): boolean {
     /^Was ist (ein|eine|der|die|das)\s+\S+$/i.test(q) ||
     /^Was versteht man\b/i.test(q) ||
     /^Was bewirkt oder beschreibt\b/i.test(q) ||
-    // Bare glossary wrappers „Was kennzeichnet „Term“?“ (quoted term) — not Schülerfragen.
-    /^Was kennzeichnet\s*[„""']/i.test(q) ||
+    // Mechanical placeholders — not Schülerfragen.
     /^Was kennzeichnet den Sachverhalt\b/i.test(q) ||
     /^Welche Eigenschaft kennzeichnet\b/i.test(q)
   )
@@ -309,7 +308,7 @@ export function isConcreteGlossaryStem(prompt: string): boolean {
   const q = prompt.replace(/\s+/g, ' ').trim()
   if (isVagueGlossaryStem(q)) return false
   if (isAllowedVerstehtStem(q)) return true
-  return /^(Wozu|Welche Rolle|Womit|Mit welchen|Was bewirkt|Was beschreibt|Was passiert|Berechne|Wie|Warum|Weshalb|Woran|Wofür|Welcher Zusammenhang|Welche Maßnahme|Welche Eigenschaft|Was kennzeichnet|Was ist ein typisches)\b/i.test(
+  return /^(Wozu|Welche Rolle|Womit|Mit welchen|Was bewirkt|Was beschreibt|Was passiert|Berechne|Wie|Warum|Weshalb|Woran|Wofür|Welcher Zusammenhang|Welche Maßnahme|Welche Eigenschaft|Welche Beschreibung|Welche Beziehung|Was besagt|Was gilt|Was bleibt|Wohin|Woraus|Worin|Inwiefern|Womit hängt|Was kennzeichnet|Was ist ein typisches)\b/i.test(
     q,
   )
 }
