@@ -1226,7 +1226,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p3:f",
-      prompt: "Wozu dient das Wärmeverlust?",
+      prompt: "Wozu dient den Wärmeverlust?",
       answer: "I²R in Metall.", wrong: ["unterdrücken Wirbelströme.", "Induktionsänderung.", "Wirbelströme im Topf."],
       explanation: "unerwünscht in Trafo. Wärmeverlust bedeutet: I²R in Metall.",
       wissen: "unerwünscht in Trafo. Wärmeverlust bedeutet: I²R in Metall.",
@@ -1739,7 +1739,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p8:f",
-      prompt: "Was bewirkt die Strom i = dq oder dt?",
+      prompt: "Was bewirkt den Strom i = dq oder dt?",
       answer: "Sie beschreibt aus q ableiten, maximum bei q=0.", wrong: ["Sie beschreibt ½LI².", "Sie beschreibt durch Laden von C.", "Sie beschreibt summe beider Anteile, ohne R konstant."],
       explanation: "Maximum bei q=0. Strom i = dq/dt bedeutet: aus q ableiten.",
       wissen: "Maximum bei q=0. Strom i = dq/dt bedeutet: aus q ableiten.",
@@ -1840,7 +1840,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb4-debroglie:p6:f",
-      prompt: "Woran erkennt man das Impuls aus λ?",
+      prompt: "Woran erkennt man den Impuls aus λ?",
       answer: "p = h/λ.", wrong: ["versagt im Doppelspalt.", "nötig für Interferenz.", "klickt lokal."],
       explanation: "aus Beugungsmuster. Impuls aus λ bedeutet: p = h/λ.",
       wissen: "aus Beugungsmuster. Impuls aus λ bedeutet: p = h/λ.",
@@ -2325,7 +2325,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p7:f",
-      prompt: "Welche Eigenschaft hat der ",
+      prompt: "Welche Eigenschaft hat der  — Fokus typische",
       answer: "typische Füllung.", wrong: ["nicht kontinuierlich.", "≈ Anregungsspannung.", "Niveaudifferenzen."],
       explanation: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
       wissen: "bekannte Stufen. Quecksilber/Neon bedeutet: typische Füllung.",
@@ -2349,7 +2349,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb5-franck-hertz:p10:f",
-      prompt: "Wozu dient das Vergleich Bohr?",
+      prompt: "Wozu dient den Vergleich Bohr?",
       answer: "Es niveaudifferenzen.", wrong: ["Sie steuert Elektronenenergie.", "Es beschreibt bei Vielfachen der Stufe.", "Es beschreibt ≈ Anregungsspannung, aus Diagramm."],
       explanation: "konsistent. Vergleich Bohr bedeutet: Niveaudifferenzen.",
       wissen: "konsistent. Vergleich Bohr bedeutet: Niveaudifferenzen.",
