@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.113] – 2026-10-17
+
+### Geändert
+- **Locked Glossar-MCs: konkrete Schülerfragen:** Stems der gesperrten Glossar-MCs
+  (Bio/GE/Physik Thin-Fill / densify) in fachlich greifbare Schülerfragen umgebaut;
+  nachgelagerte Fill-Qualitätsarbeit bis `ef88243` (Prompt↔Antwort-Desync,
+  Mush/Gates, natürliche Distraktoren). Freigegebene Aufgaben unverändert.
+  Kurze Substantiv-Fragment-Optionen bewusst belassen (Nutzer-Freigabe).
+
+
 ## [0.28.112] – 2026-10-16
 
 ### Behoben
