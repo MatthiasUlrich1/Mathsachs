@@ -9,6 +9,16 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.115] – 2026-10-17
+
+### Behoben
+- **Deutsche Grammatik in gesperrten MCs:** Systematische Korrektur von 120+ Grammatikfehlern
+  in Biologie-, Physik- und Geschichte-Aufgaben. Artikelfehler (das→der Nistkasten,
+  das→die Kraftfreiheit), Kasusfehler (Akkusativ/Nominativ nach kennzeichnet/haben),
+  Adjektivendungen (systematischer→systematische Fehler), verschachtelte Fragen entfernt.
+  Pattern "Welche Eigenschaft hat den [Maskulinum]?" → "hat der [Maskulinum]?" (61 Instanzen).
+  Freigegebene Aufgaben unverändert.
+
 ## [0.28.114] – 2026-10-17
 
 ### Behoben
