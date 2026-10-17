@@ -321,7 +321,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:zygote",
       prompt: "Was entsteht direkt nach der Befruchtung?",
-      answer: "Eine Zygote (befruchtete Eizelle).", wrong: ["Ein fertiges Kind.", "Nur eine Hautzelle.", "Nur ein Hormon ohne Zelle."],
+      answer: "Eine Zygote (befruchtete Eizelle).", wrong: ["Ein fertiges Kind.", "Nur eine Hautzelle.", "Nur ein hormon ohne Zelle."],
       explanation: "Eine Zygote (befruchtete Eizelle).",
       wissen: fw(
         "Die Zygote teilt sich und entwickelt sich zum Embryo.",
@@ -528,7 +528,7 @@ export const k8Sti: BioBank = {
       wissen: fw(
         "Manche Pilzinfektionen können im Genitalbereich auftreten und übertragen werden.",
       ),
-      gap: "Auch ___ können sexuell eine Rolle spielen.",
+      gap: "Auch ___ können sexuell eine rolle spielen.",
       gapAccepted: ["Pilze", "Hefepilze"],
     },
     {
@@ -615,7 +615,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:gewebe",
       prompt: "Was ist ein Gewebe?",
-      answer: "Verband gleichartiger Zellen mit gemeinsamer Funktion.", wrong: ["Ein einzelner Zellkern allein.", "Nur ein Hormon.", "Nur ein Knochen ohne Zellen."],
+      answer: "Verband gleichartiger Zellen mit gemeinsamer Funktion.", wrong: ["Ein einzelner Zellkern allein.", "Nur ein Hormon.", "Nur ein knochen ohne Zellen."],
       explanation: "Verband gleichartiger Zellen mit gemeinsamer Funktion.",
       wissen: fw(
         "Viele ähnliche Zellen bilden z. B. Abschlussgewebe oder Leitgewebe.",
@@ -626,7 +626,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:organ",
       prompt: "Was ist ein Organ?",
-      answer: "Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).", wrong: ["Nur eine einzelne Molekülart.", "Nur ein Atom.", "Nur ein Hormon ohne Struktur."],
+      answer: "Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).", wrong: ["Nur eine einzelne Molekülart.", "Nur ein Atom.", "Nur ein hormon ohne Struktur."],
       explanation: "Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).",
       wissen: fw(
         "Organe wie Blatt oder Wurzel bestehen aus mehreren Geweben.",
@@ -648,7 +648,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:organismus",
       prompt: "Was ist der Organismus?",
-      answer: "Das ganze Lebewesen als Einheit.", wrong: ["Nur eine einzelne Spaltöffnung.", "Nur ein Molekül CO₂.", "Nur ein Stein."],
+      answer: "Das ganze Lebewesen als Einheit.", wrong: ["Nur eine einzelne Spaltöffnung.", "Nur ein molekül CO₂.", "Nur ein Stein."],
       explanation: "Das ganze Lebewesen als Einheit.",
       wissen: fw(
         "Der Organismus umfasst alle Organisationsstufen bis zum ganzen Wesen.",
@@ -670,7 +670,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:pflanze",
       prompt: "Beispiel Organ bei Samenpflanzen?",
-      answer: "Blatt, Wurzel oder Sprossachse.", wrong: ["Nur ein einzelnes Wassermolekül.", "Nur Stickstoff in der Luft.", "Nur ein Stein im Boden."],
+      answer: "Blatt, Wurzel oder Sprossachse.", wrong: ["Nur ein einzelnes Wassermolekül.", "Nur Stickstoff in der Luft.", "Nur ein stein im Boden."],
       explanation: "Blatt, Wurzel oder Sprossachse.",
       wissen: fw(
         "Blatt, Wurzel und Spross sind Organe der Samenpflanze.",
@@ -953,7 +953,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:frucht",
       prompt: "Was entsteht nach der Befruchtung aus dem Fruchtknoten oft?",
-      answer: "Eine Frucht mit Samen.", wrong: ["Nur ein Blatt ohne Samen.", "Nur ein Stein.", "Nur ein Insekt."],
+      answer: "Eine Frucht mit Samen.", wrong: ["Nur ein blatt ohne Samen.", "Nur ein Stein.", "Nur ein Insekt."],
       explanation: "Eine Frucht mit Samen.",
       wissen: fw(
         "Fruchtbildung schützt und verbreitet die Samen.",
@@ -1067,7 +1067,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:doppel",
       prompt: "Was haben Chloroplasten und Mitochondrien gemeinsam?",
-      answer: "Eine Doppelmembran.", wrong: ["Keine Membran.", "Nur eine Zellwand aus Holz.", "Nur Kiemen."],
+      answer: "Eine Doppelmembran.", wrong: ["Keine Membran.", "Nur eine zellwand aus Holz.", "Nur Kiemen."],
       explanation: "Eine Doppelmembran.",
       wissen: fw(
         "Beide sind von zwei Membranen umgeben — typisch für diese Organellen.",
@@ -1077,7 +1077,7 @@ export const k9Organellen: BioBank = {
     },
     {
       concept: "bio:k9:orgell:chloro-bau",
-      prompt: "Was enthält ein Chloroplast typischerweise?",
+      prompt: "Was enthält ein chloroplast typischerweise?",
       answer: "Thylakoide/Membranstapeln mit Chlorophyll.", wrong: ["Nur Knochen.", "Nur Nervenzellen.", "Nur Hämoglobin."],
       explanation: "Thylakoide/Membranstapeln mit Chlorophyll.",
       wissen: fw(
@@ -1197,7 +1197,7 @@ export const k9Zellatmung: BioBank = {
       wissen: fw(
         "Zellatmung setzt aus Glucose und O₂ Energie frei und bildet CO₂ und H₂O.",
       ),
-      gap: "Zellatmung ist eine Form der ___.",
+      gap: "Zellatmung ist eine form der ___.",
       gapAccepted: ["Dissimilation"],
     },
     {
@@ -1355,7 +1355,7 @@ export const k9Stoffwechsel: BioBank = {
       wissen: fw(
         "Assimilation baut aus einfachen Stoffen komplexere auf.",
       ),
-      gap: "Fotosynthese ist eine Form der ___.",
+      gap: "Fotosynthese ist eine form der ___.",
       gapAccepted: ["Assimilation"],
     },
     {
@@ -1540,7 +1540,7 @@ export const k9GewaesserMensch: BioBank = {
     },
     {
       concept: "bio:k9:gewm:naturschutz",
-      prompt: "Was ist ein Ziel des Gewässerschutzes?",
+      prompt: "Was ist ein ziel des Gewässerschutzes?",
       answer: "Lebensräume und Artenvielfalt erhalten.", wrong: ["Alle Seen zuschütten.", "Nur Algen unbegrenzt fördern.", "Nur Fische entfernen."],
       explanation: "Lebensräume und Artenvielfalt erhalten.",
       wissen: fw(
@@ -1644,7 +1644,7 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:gabel",
       prompt: "Was ist eine Replikationsgabel?",
-      answer: "Y-förmige Stelle, an der Der Doppelstrang Geöffnet und Kopiert Wird.", wrong: ["Es ist ein Zellorganell.", "Es ist ein Hormon.", "Es ist ein Fossil."],
+      answer: "Y-förmige Stelle, an der der Doppelstrang geöffnet und kopiert wird.", wrong: ["Es ist ein Zellorganell ohne DNA-Bezug.", "Es ist ein Hormon der Schilddrüse.", "Es ist ein Fossil aus dem Jura."],
       explanation: "Y-förmige Stelle, an der der Doppelstrang geöffnet und kopiert wird.",
       wissen: fw(
         "Helikasen öffnen, Polymerasen synthetisieren neue Stränge.",
@@ -1785,7 +1785,7 @@ export const k10Proteinsynthese: BioBank = {
       wissen: fw(
         "Gene tragen die Information für Merkmalsausbildung über Proteine.",
       ),
-      gap: "Ein Gen ist ein Abschnitt der ___.",
+      gap: "Ein Gen ist ein abschnitt der ___.",
       gapAccepted: ["DNA"],
     },
     {
@@ -1813,8 +1813,8 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:transl",
       prompt: "Was ist Translation?",
-      answer: "Übersetzung der mRNA in eine Aminosäurekette am Ribosom.", wrong: ["Kopieren der DNA.", "Öffnen der Spaltöffnungen.", "Bestäubung."],
-      explanation: "Übersetzung der mRNA in eine Aminosäurekette am Ribosom.",
+      answer: "Übersetzung der mRNA in eine aminosäurekette am Ribosom.", wrong: ["Kopieren der DNA.", "Öffnen der Spaltöffnungen.", "Bestäubung."],
+      explanation: "Übersetzung der mRNA in eine aminosäurekette am Ribosom.",
       wissen: fw(
         "tRNA bringt Aminosäuren; Ribosom verknüpft sie.",
       ),
@@ -1868,7 +1868,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:rna",
       prompt: "Wie unterscheidet sich RNA von DNA typischerweise?",
-      answer: "RNA: Ribose, meist einsträngig, U statt T.", wrong: ["RNA hat immer Doppelhelix wie DNA identisch.", "RNA enthält nur Thymin.", "RNA ist ein Zucker im Blut."],
+      answer: "RNA: Ribose, meist einsträngig, U statt T.", wrong: ["RNA hat immer Doppelhelix wie DNA identisch.", "RNA enthält nur Thymin.", "RNA ist ein zucker im Blut."],
       explanation: "RNA: Ribose, meist einsträngig, U statt T.",
       wissen: fw(
         "DNA speichert dauerhaft; RNA ist oft Arbeitskopie/Adapter.",
@@ -2161,7 +2161,7 @@ export const k10Blutgruppen: BioBank = {
     },
     {
       concept: "bio:k10:blut:vererbung",
-      prompt: "Können Eltern mit 0 ein Kind mit A bekommen?",
+      prompt: "Können Eltern mit 0 ein kind mit A bekommen?",
       answer: "Nein (wenn beide wirklich Genotyp 00 sind).", wrong: ["Ja, immer sicher.", "Nur bei Pflanzen.", "Nur bei Fischen."],
       explanation: "Nein (wenn beide wirklich Genotyp 00 sind).",
       wissen: fw(
@@ -2243,7 +2243,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:vielfalt",
       prompt: "Was meint geschlechtliche Vielfalt?",
-      answer: "Biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.", wrong: ["Dass es nur eine Möglichkeit gibt.", "Dass Chromosomen irrelevant sind immer.", "Dass Vererbung aussetzt."],
+      answer: "Biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.", wrong: ["Dass es nur eine möglichkeit gibt.", "Dass Chromosomen irrelevant sind immer.", "Dass Vererbung aussetzt."],
       explanation: "Biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.",
       wissen: fw(
         "Vielfalt anerkennen: Intersexualität, Transgender u. a. gehören zur fachlichen Betrachtung.",
@@ -2253,7 +2253,7 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:inter",
-      prompt: "Was kennzeichnet das Intersexualität grob?",
+      prompt: "Was kennzeichnet die Intersexualität grob?",
       answer: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.", wrong: ["Nur eine Haarfarbe.", "Nur eine Blutgruppe.", "Nur eine Sprache."],
       explanation: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.",
       wissen: fw(
@@ -2368,7 +2368,7 @@ export const k10Erbkrankheiten: BioBank = {
     {
       concept: "bio:k10:erbk:trisomie",
       prompt: "Was ist Trisomie 21?",
-      answer: "Bei Trisomie 21 liegt Chromosom 21 dreifach vor (Down-Syndrom als Genommutation).", wrong: ["Nur ein einzelnes Basepaar in einem Gen ist ausgetauscht.", "Es handelt sich um eine Infektionskrankheit ohne Chromosomenbezug.", "Ursache ist ein reiner Vitaminmangel ohne Erbänderung."],
+      answer: "Bei Trisomie 21 liegt Chromosom 21 dreifach vor (Down-Syndrom als Genommutation).", wrong: ["Nur ein einzelnes Basepaar in einem Gen ist ausgetauscht.", "Es handelt sich um eine infektionskrankheit ohne Chromosomenbezug.", "Ursache ist ein reiner Vitaminmangel ohne Erbänderung."],
       explanation: "Genommutation: Chromosom 21 dreifach vorhanden (Down-Syndrom).",
       wissen: fw(
         "Ursache: Fehlverteilung bei der Meiose — zusätzliches Chromosom 21.",
@@ -2503,7 +2503,7 @@ export const k10Erbkrankheiten: BioBank = {
     },
     {
       concept: "bio:k10:erbk:tf1",
-      statement: "Erbkrankheiten: Nur eine Genmutation in einem Basepaar immer beschreibt denselben Sachverhalt wie die richtige Antwort.",
+      statement: "Erbkrankheiten: Nur eine genmutation in einem Basepaar immer beschreibt denselben Sachverhalt wie die richtige Antwort.",
       correct: false,
       explanation: "Richtig ist: Genommutation: Chromosom 21 dreifach vorhanden (Down-Syndrom).",
       wissen: fw("Ursache: Fehlverteilung bei der Meiose — zusätzliches Chromosom 21."),
@@ -3019,7 +3019,7 @@ export const k10Erdzeit: BioBank = {
       answer: "Sehr spät in der Erdgeschichte.", wrong: ["Gleich zu Beginn des Lebens.", "Vor allen Einzellern.", "Vor den ersten Gesteinen."],
       explanation: "Sehr spät in der Erdgeschichte.",
       wissen: fw(
-        "Menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.",
+        "Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.",
       ),
       gap: "Homo sapiens erscheint ___.",
       gapAccepted: ["spät", "sehr spät"],
@@ -3075,7 +3075,7 @@ export const k10Erdzeit: BioBank = {
     { concept: "bio:k10:erdz:p:neuzeit", term: "neuzeit", meaning: "Känozoikum: nach dem Ende vieler Dinosaurier — Säuger diversifizieren", wissen: "Känozoikum: nach dem Ende vieler Dinosaurier — Säuger diversifizieren." },
     { concept: "bio:k10:erdz:p:fossil", term: "Fossilien und Altersbestimmungen", meaning: "Leitfossilien und Datierung ordnen Schichten zeitlich", wissen: "Leitfossilien und Datierung ordnen Schichten zeitlich." },
     { concept: "bio:k10:erdz:p:ordnung", term: "ordnung", meaning: "Ohne Zeitskala keine sinnvolle Phylogenie", wissen: "Ohne Zeitskala keine sinnvolle Phylogenie." },
-    { concept: "bio:k10:erdz:p:mensch", term: "Sehr spät in der Erdgeschichte", meaning: "Menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte", wissen: "Menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte." },
+    { concept: "bio:k10:erdz:p:mensch", term: "Sehr spät in der Erdgeschichte", meaning: "Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte", wissen: "Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte." },
     { concept: "bio:k10:erdz:p:geo", term: "Geographie/Geologie (Schichten, Zeit)", meaning: "Schichten und Zeitskalen verbinden Biologie mit Geographie/Geologie", wissen: "Schichten und Zeitskalen verbinden Biologie mit Geographie/Geologie." },
     { concept: "bio:k10:erdz:p:wechsel", term: "wechsel", meaning: "Massenaussterben und Radiationen prägen die Abfolge", wissen: "Massenaussterben und Radiationen prägen die Abfolge." },
     { concept: "bio:k10:erdz:p:beleg", term: "beleg", meaning: "Wissenschaftliche Rekonstruktion braucht Befunde", wissen: "Wissenschaftliche Rekonstruktion braucht Befunde." },
@@ -3108,7 +3108,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:stellung",
       prompt: "Wo steht der Mensch im System der Organismen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Als Primat innerhalb der Menschenaffen-Verwandtschaft.",
       wissen: fw(
         "Mensch gehört zu den Primaten; nahe Verwandte sind Menschenaffen.",
@@ -3119,7 +3119,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:vergleich",
       prompt: "Was vergleicht man anatomisch oft?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Schädel, Extremitäten, Wirbelsäule.",
       wissen: fw(
         "Aufrechter Gang verändert Wirbelsäule und Extremitäten.",
@@ -3130,10 +3130,10 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:bipedy",
       prompt: "Was kennzeichnet den Menschen gegenüber vielen Menschenaffen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Das den Menschen gegenüber vielen Menschenaffen ist das Kiemenatmung.", "Das den Menschen gegenüber vielen Menschenaffen ist das Fotosynthese.", "Das den Menschen gegenüber vielen Menschenaffen ist das Fehlendes Gehirn."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Das den Menschen gegenüber vielen Menschenaffen ist das Kiemenatmung.", "Das den Menschen gegenüber vielen Menschenaffen ist die Fotosynthese.", "Das den Menschen gegenüber vielen Menschenaffen ist das Fehlendes Gehirn."],
       explanation: "Dauerhafte Bipedie (aufrechter Gang).",
       wissen: fw(
-        "Aufrechter Gang ist ein Schlüsselmerkmal der Homininen.",
+        "Aufrechter Gang ist ein schlüsselmerkmal der Homininen.",
       ),
       gap: "Mensch: dauerhaft ___.",
       gapAccepted: ["aufrecht", "biped", "bipedal"],
@@ -3141,7 +3141,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:lernen",
       prompt: "Was zeigt der Vergleich beim Lernverhalten?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Hohe Lernfähigkeit bei Menschenaffen und Mensch.",
       wissen: fw(
         "Werkzeuggebrauch und soziales Lernen kommen bei Menschenaffen vor.",
@@ -3152,7 +3152,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:komm",
       prompt: "Was zeigt der Vergleich bei Kommunikation?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Komplexe soziale Signale; Mensch zusätzlich Sprache.",
       wissen: fw(
         "Kommunikation ist sozial zentral — Mensch mit Sprache besonders ausgebaut.",
@@ -3163,7 +3163,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:werkzeug",
       prompt: "Nutzen Menschenaffen Werkzeuge?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Ja, z. B. Stöcke/Steine in manchen Populationen.",
       wissen: fw(
         "Werkzeuggebrauch ist ein gemeinsames Thema im Vergleich.",
@@ -3174,7 +3174,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:jagd",
       prompt: "Was gehört zu Verhaltensvergleichen noch?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Aggressions- und Jagdverhalten, Sozialstruktur.",
       wissen: fw(
         "Zum Vergleich gehören Lernen, Kommunikation, Aggression/Jagd und Werkzeuggebrauch.",
@@ -3185,7 +3185,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:dna",
       prompt: "Warum stützt DNA die Nähe zu Menschenaffen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["DNA ist bei Affen andersartig ohne Ähnlichkeit.", "Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["DNA ist bei Affen andersartig ohne Ähnlichkeit.", "Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie."],
       explanation: "Hohe genetische Übereinstimmung.",
       wissen: fw(
         "Molekulare Ähnlichkeit bestätigt enge Verwandtschaft.",
@@ -3196,7 +3196,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:ethik",
       prompt: "Welcher Wertebezug steckt im Vergleich?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein Wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Respekt vor nahen Verwandten und Verantwortung.",
       wissen: fw(
         "Verwandtschaft begründet keine Hierarchie von Würde — aber Verständnis.",
@@ -3219,7 +3219,7 @@ export const k10Menschenaffen: BioBank = {
   pairs: [
     { concept: "bio:k10:maffen:p:stellung", term: "stellung", meaning: "Mensch gehört zu den Primaten; nahe Verwandte sind Menschenaffen", wissen: "Mensch gehört zu den Primaten; nahe Verwandte sind Menschenaffen." },
     { concept: "bio:k10:maffen:p:vergleich", term: "Schädel, Extremitäten, Wirbelsäule", meaning: "Aufrechter Gang verändert Wirbelsäule und Extremitäten", wissen: "Aufrechter Gang verändert Wirbelsäule und Extremitäten." },
-    { concept: "bio:k10:maffen:p:bipedy", term: "Dauerhafte Bipedie (aufrechter Gang)", meaning: "Aufrechter Gang ist ein Schlüsselmerkmal der Homininen", wissen: "Aufrechter Gang ist ein Schlüsselmerkmal der Homininen." },
+    { concept: "bio:k10:maffen:p:bipedy", term: "Dauerhafte Bipedie (aufrechter Gang)", meaning: "Aufrechter Gang ist ein schlüsselmerkmal der Homininen", wissen: "Aufrechter Gang ist ein schlüsselmerkmal der Homininen." },
     { concept: "bio:k10:maffen:p:lernen", term: "lernen", meaning: "Werkzeuggebrauch und soziales Lernen kommen bei Menschenaffen vor", wissen: "Werkzeuggebrauch und soziales Lernen kommen bei Menschenaffen vor." },
     { concept: "bio:k10:maffen:p:komm", term: "komm", meaning: "Kommunikation ist sozial zentral — Mensch mit Sprache besonders ausgebaut", wissen: "Kommunikation ist sozial zentral — Mensch mit Sprache besonders ausgebaut." },
     { concept: "bio:k10:maffen:p:werkzeug", term: "werkzeug", meaning: "Werkzeuggebrauch ist ein gemeinsames Thema im Vergleich", wissen: "Werkzeuggebrauch ist ein gemeinsames Thema im Vergleich." },
@@ -3495,7 +3495,7 @@ export const k10KulturEvo: BioBank = {
       wissen: fw(
         "Humanismus: gleiche Würde trotz Variation.",
       ),
-      gap: "Antirassismus ist ein Gebot des ___.",
+      gap: "Antirassismus ist ein gebot des ___.",
       gapAccepted: ["Humanismus"],
     },
     {
