@@ -95,14 +95,20 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     if (/[ρλΔ=·]/.test(h) && /[ρλΔ=·]/.test(meaning)) return undefined
     return h
   }
+  /** Term from quotes, flashFront, or „Wozu dient die/der/das X?“ stems. */
+  const termFromPrompt = (prompt: string, flashFront?: string): string => {
+    const quoted = prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim()
+    if (quoted) return quoted
+    if (flashFront?.trim()) return flashFront.trim()
+    const wozu = prompt.match(
+      /^(?:Wozu dient(?:en)?|Welche Rolle spielt|Was bewirkt)\s+(?:der|die|das|ein|eine)\s+(.+?)\s*\??$/i,
+    )?.[1]
+    return wozu?.replace(/[„""']/g, '').trim() || ''
+  }
+
   const factTerms = new Set(
     (bank.facts ?? [])
-      .map(
-        (f) =>
-          f.flashFront?.trim().toLowerCase() ||
-          f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim().toLowerCase() ||
-          '',
-      )
+      .map((f) => termFromPrompt(f.prompt, f.flashFront).toLowerCase())
       .filter(Boolean),
   )
 
@@ -131,11 +137,8 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     ...(bank.facts?.map((f) => {
       const topic = humanTopic(topicFromFact(f))
       const ansRaw = String(f.answer ?? '').trim()
-      // Prefer concrete stem from term in flashFront / quoted prompt
-      const term =
-        f.flashFront?.trim() ||
-        f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim() ||
-        ''
+      // Prefer concrete stem from term in flashFront / quoted / Wozu-dient prompt
+      const term = termFromPrompt(f.prompt, f.flashFront)
       let prompt = rewritePhysikPrompt(f.prompt, ansRaw)
       // Keep hand-authored concrete stems (e.g. Timer/Sensor gold example).
       if (term && !isConcreteGlossaryStem(prompt)) {
@@ -199,23 +202,27 @@ function sanitizePhysikBank(bank: BioBank): BioBank {
     ...fromPairs,
   ]
   // Gleicher Fakt nicht doppelt (pair+fact) — sonst round-dup „gleicher Fakt“.
-  const seenAns = new Set<string>()
-  const seenTerm = new Set<string>()
-  const dedupedFacts = facts.filter((f) => {
-    const termKey =
-      f.prompt.match(/[„""']([^„""']+)[“""']/)?.[1]?.trim().toLowerCase() ||
-      ( /timer oder sensor/i.test(f.prompt) ? 'timer/sensor' : '')
-    if (termKey) {
-      if (seenTerm.has(termKey)) return false
-      seenTerm.add(termKey)
-    }
-    const k = String(f.answer ?? '')
+  // Antworten ohne Pronomen vergleichen (Es/Sie treibt … = gleiche Aussage).
+  const ansKey = (s: string) =>
+    String(s ?? '')
       .normalize('NFKC')
       .toLowerCase()
+      .replace(/^(sie|er|es)\s+/i, '')
       .replace(/\s+/g, '')
       .replace(/[·⋅]/g, '/')
       .replace(/∕/g, '/')
       .trim()
+  const seenAns = new Set<string>()
+  const seenTerm = new Set<string>()
+  const dedupedFacts = facts.filter((f) => {
+    const termKey =
+      termFromPrompt(f.prompt).toLowerCase() ||
+      (/timer oder sensor/i.test(f.prompt) ? 'timer/sensor' : '')
+    if (termKey) {
+      if (seenTerm.has(termKey)) return false
+      seenTerm.add(termKey)
+    }
+    const k = ansKey(String(f.answer ?? ''))
     if (!k || seenAns.has(k)) return false
     seenAns.add(k)
     return true

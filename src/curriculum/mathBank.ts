@@ -18,6 +18,7 @@ const normOpt = (s: string) =>
   s
     .normalize('NFKC')
     .toLowerCase()
+    .replace(/^(sie|er|es)\s+/i, '')
     .replace(/\s+/g, ' ')
     .replace(/[„“”"']/g, '')
     .trim()

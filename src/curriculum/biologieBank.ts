@@ -297,13 +297,21 @@ export function rewriteDefinitionStylePrompt(
     .trim()
 
   if (isConcreteGlossaryStem(q)) {
-    return fixGermanPromptCapitalization(q.endsWith('?') ? q : `${q}?`)
+    let out = fixGermanPromptCapitalization(q.endsWith('?') ? q : `${q}?`)
+    // Cross-topic: bare „Was kennzeichnet „Term“?“ → Domain-Hinweis aus Prefix anhängen.
+    const hint = domainHintFromPrefix(opts?.prefix)
+    if (
+      hint &&
+      /^Was kennzeichnet\s*[„"'][^„"']+[“"']\s*\?$/i.test(out) &&
+      !out.toLowerCase().includes(hint.toLowerCase().slice(0, Math.min(8, hint.length)))
+    ) {
+      out = out.replace(/\?\s*$/, ` ${hint}?`)
+    }
+    return out
   }
 
-  // Vague meta-MC → concrete Schülerfrage (locked gap/thin-fill).
-  const vague = rewriteVagueGlossaryPrompt(q, { meaning: opts?.meaning })
-  if (vague) return fixGermanPromptCapitalization(vague)
-
+  // Domain-aware „Was bedeutet …?“ first — before generic vague→kennzeichnet rewrite
+  // (sonst landet Schnabel/Schutz o. Ä. bei „Was kennzeichnet …?“ statt Merkmal/Maßnahme).
   const quoted = q.match(
     /^(?:([^:?]{1,60}):\s*)?(?:Was bedeutet(?: der Fachbegriff)?|Was versteht man unter)\s*[„""']([^„""']+)[“""']\s*$/i,
   )
@@ -354,6 +362,10 @@ export function rewriteDefinitionStylePrompt(
     return fixGermanPromptCapitalization(concreteGlossaryStem(term, undefined, opts?.meaning))
   }
 
+  // Vague meta-MC → concrete Schülerfrage (locked gap/thin-fill).
+  const vague = rewriteVagueGlossaryPrompt(q, { meaning: opts?.meaning })
+  if (vague) return fixGermanPromptCapitalization(vague)
+
   q = q.replace(/^Fachbegriff:\s*/i, '')
   if (
     !q.endsWith('?') &&
@@ -377,15 +389,22 @@ export function domainHintFromPrefix(prefix?: string): string {
   if (theme) return theme
   const p = prefix.toLowerCase()
   const rules: Array<[RegExp, string]> = [
-    [/verhalten|saeugverh/, 'im Verhalten'],
+    [/verhalten|saeugverh|vgverh/, 'im Verhalten'],
     [/schnabel/, 'an der Schnabelform'],
     [/(?:^|:)(?:vg|kr|fi|amph)?schutz\b|saeug.*schutz|artenschutz|naturschutz/, 'im Artenschutz'],
-    [/fortpflanz|saeugfort/, 'bei der Fortpflanzung'],
+    [/fortpflanz|saeugfort|vgfort/, 'bei der Fortpflanzung'],
     [/:meta\b|metamorph/, 'bei der Metamorphose'],
     [/merkmal/, 'als Körpermerkmal'],
     [/zuordnung/, 'bei der Zuordnung'],
     [/systematik/, 'in der Systematik'],
-    [/vogel|voegel/, 'bei Vögeln'],
+    [/proteinsynthese|protein/, 'bei der Proteinsynthese'],
+    [/replikation/, 'bei der Replikation'],
+    [/:dna\b|(?:^|:)dna(?:$|[:\-])/, 'zur DNA'],
+    [/humangenetik|erbkrank|blutgruppe/, 'in der Humangenetik'],
+    [/mendel|genetik/, 'in der Genetik'],
+    [/selektion|evolution|artenvielfalt|progression|spezialisierung/, 'in der Evolution'],
+    [/zelltheorie|organell|mikroskop|zelle/, 'bei der Zelle'],
+    [/vogel|voegel|vgverh|vgfort|vgschutz/, 'bei Vögeln'],
     [/lurch/, 'bei Lurchen'],
     [/fisch/, 'bei Fischen'],
     [/saeug/, 'bei Säugetieren'],
@@ -393,6 +412,12 @@ export function domainHintFromPrefix(prefix?: string): string {
     [/insekt/, 'bei Insekten'],
     [/wirbellos/, 'bei Wirbellosen'],
     [/samenpflanze|blüte|bluete|baum|baeume/, 'bei Pflanzen'],
+    [/angepasst/, 'als Anpassung'],
+    [/skelett/, 'am Skelett'],
+    [/sinne|sinn/, 'bei den Sinnen'],
+    [/sozial/, 'im Sozialverhalten'],
+    [/atmung|lunge|gasaustausch/, 'bei der Atmung'],
+    [/immun|blut|herz|kreislauf/, 'im Körper'],
   ]
   for (const [re, phrase] of rules) {
     if (re.test(p)) return phrase

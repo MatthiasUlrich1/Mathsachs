@@ -720,7 +720,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     facts: [
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f0',
-      prompt: "Was beschreibt „Amphibie“?",
+      prompt: "Welcher Fachbegriff fasst Lurche mit Wasser- und Landleben zusammen?",
       answer: "Sie beschreibt anderer Name für Lurch, leben oft wasser- und landbezogen.", wrong: ["Sie ist Teil der Metamorphose vom kiemenatmenden Larvenstadium zum landlebenden Adult, teil der Metamorphose zum landlebenden Adult.", "Sie ermöglicht den Gasaustausch über die feuchte Haut zusätzlich zur Lunge.", "Sie führt die Tiere zu geeigneten Laichgewässern zur Fortpflanzung."],
       explanation: 'Leben oft wasser- und landbezogen. Amphibie bedeutet: Anderer Name für Lurch.',
       wissen: 'Leben oft wasser- und landbezogen. Amphibie bedeutet: Anderer Name für Lurch. Merke: Amphibie — Anderer Name für Lurch.',
@@ -730,7 +730,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f1',
-      prompt: "Wozu dient die Hautatmung bei Lurchen?",
+      prompt: "Welche Rolle spielt die Hautatmung nach der Metamorphose der Lurche?",
       answer: "Sie ermöglicht den Gasaustausch über die feuchte Haut zusätzlich zur Lunge.", wrong: ["Sie beschreibt anderer Name für Lurch, leben oft wasser- und landbezogen.", "Es sind gallertig umhüllte Eigelege, die meist im Wasser abgelegt werden.", "Sie nimmt Sauerstoff über die Lungen auf, vor allem an Land."],
       explanation: 'Ergänzt Lungenatmung. Hautatmung bedeutet: Gasaustausch über feuchte Haut.',
       wissen: 'Ergänzt Lungenatmung. Hautatmung bedeutet: Gasaustausch über feuchte Haut. Merke: Hautatmung — Gasaustausch über feuchte Haut.',
@@ -740,7 +740,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f2',
-      prompt: "Was bewirkt die Metamorphose bei Lurchen?",
+      prompt: "Was verändert sich schrittweise bei der Metamorphose vom Larven- zum Adultstadium?",
       answer: "Umwandlung Larve zu Adultform.", wrong: ["Anderer Name für Lurch.", "Gasaustausch über feuchte Haut.", "Wasserlebende Larve."],
       explanation: 'Kaulquappe zum Frosch. Metamorphose bedeutet: Umwandlung Larve zu Adultform.',
       wissen: 'Kaulquappe zum Frosch. Metamorphose bedeutet: Umwandlung Larve zu Adultform. Merke: Metamorphose — Umwandlung Larve zu Adultform.',
@@ -750,7 +750,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f3',
-      prompt: "Woran erkennt man eine Kaulquappe?",
+      prompt: "Welches Stadium steht am Anfang der Metamorphose vieler Froschlurche?",
       answer: "Sie ist die wasserlebende Larve der Lurche mit Kiemen und Schwanz.", wrong: ["Es beschreibt ohne Schwanz als Adult, etwa frosch oder Kröte.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um.", "Es ermöglicht Hautatmung, trocknet leicht aus."],
       explanation: 'Zuerst mit Kiemen. Kaulquappe bedeutet: Wasserlebende Larve.',
       wissen: 'Zuerst mit Kiemen. Kaulquappe bedeutet: Wasserlebende Larve. Merke: Kaulquappe — Wasserlebende Larve.',
@@ -760,7 +760,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f4',
-      prompt: "Was ist Laich bei Lurchen?",
+      prompt: "Womit beginnt der Lebenszyklus vieler Froschlurche im Wasser?",
       answer: "Eigelege im Wasser.", wrong: ["Anderer Name für Lurch.", "Gasaustausch über feuchte Haut.", "Umwandlung Larve zu Adultform."],
       explanation: 'Gallertig umhüllt. Laich bedeutet: Eigelege im Wasser.',
       wissen: 'Gallertig umhüllt. Laich bedeutet: Eigelege im Wasser. Merke: Laich — Eigelege im Wasser.',
@@ -770,7 +770,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f5',
-      prompt: "Wozu dient die Feuchte Haut?",
+      prompt: "Warum bleibt die Haut nach der Metamorphose feucht?",
       answer: "Ermöglicht Hautatmung.", wrong: ["Anderer Name für Lurch.", "Gasaustausch über feuchte Haut.", "Umwandlung Larve zu Adultform."],
       explanation: 'Trocknet leicht aus. Feuchte Haut bedeutet: Ermöglicht Hautatmung.',
       wissen: 'Trocknet leicht aus. Feuchte Haut bedeutet: Ermöglicht Hautatmung. Merke: Feuchte Haut — Ermöglicht Hautatmung.',
@@ -800,7 +800,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f8',
-      prompt: "Wozu dient die Lungenatmung bei Lurchen?",
+      prompt: "Wann wird die Lungenatmung bei der Metamorphose der Lurche wichtig?",
       answer: "Sie nimmt Sauerstoff über die Lungen auf, vor allem an Land.", wrong: ["Sie ist die wasserlebende Larve der Lurche mit Kiemen und Schwanz.", "Es beschreibt larve atmet mit Kiemen, vor der Metamorphose.", "Sie ist Teil der Metamorphose vom kiemenatmenden Larvenstadium zum landlebenden Adult, teil der Metamorphose zum landlebenden Adult."],
       explanation: 'Beim adulten Lurch wichtig. Lungenatmung bedeutet: Atmung über Lungen.',
       wissen: 'Beim adulten Lurch wichtig. Lungenatmung bedeutet: Atmung über Lungen. Merke: Lungenatmung — Atmung über Lungen.',
@@ -820,7 +820,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:meta:f10',
-      prompt: "Was bewirkt die Laichwanderung der Lurche?",
+      prompt: "Warum suchen erwachsene Lurche vor der Eiablage oft Gewässer auf?",
       answer: "Sie führt die Tiere zu geeigneten Laichgewässern zur Fortpflanzung.", wrong: ["Es beschreibt ohne Schwanz als Adult, etwa frosch oder Kröte.", "Sie ist Teil der Metamorphose vom kiemenatmenden Larvenstadium zum landlebenden Adult, teil der Metamorphose zum landlebenden Adult.", "Sie wandelt die Kaulquappe schrittweise in das landlebende erwachsene Tier um."],
       explanation: 'Gefährdung im Verkehr. Wanderung bedeutet: Zug zu Laichgewässern.',
       wissen: 'Gefährdung im Verkehr. Wanderung bedeutet: Zug zu Laichgewässern. Merke: Wanderung — Zug zu Laichgewässern.',
@@ -1082,7 +1082,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f2',
-      prompt: "Wozu dient die Lungenatmung bei Lurchen?",
+      prompt: "Wozu dient die Lungenatmung bei Kriechtieren?",
       answer: "Hauptatmung an Land.", wrong: ["Anderer Name für Kriechtier.", "Trockene Hautbedeckung.", "Ei mit kalkiger/ledriger Schale."],
       explanation: 'Keine Hautatmung wie Lurche. Lungenatmung bedeutet: Hauptatmung an Land.',
       wissen: 'Keine Hautatmung wie Lurche. Lungenatmung bedeutet: Hauptatmung an Land. Merke: Lungenatmung — Hauptatmung an Land.',
@@ -2510,7 +2510,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeuger:angepasst:f8',
-      prompt: "Woran erkennt man das Winterschlaf?",
+      prompt: "Wozu dient der Winterschlaf als Anpassung an die kalte Jahreszeit?",
       answer: "Überdauerung der Kälte.", wrong: ["Angepasstheit an Graben.", "Schnelle Fortbewegung.", "Greifen und Klettern."],
       explanation: 'Stoffwechselabsenkung. Winterschlaf bedeutet: Überdauerung der Kälte.',
       wissen: 'Stoffwechselabsenkung. Winterschlaf bedeutet: Überdauerung der Kälte. Merke: Winterschlaf — Überdauerung der Kälte.',
@@ -3174,7 +3174,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb7:zuordnung:f6',
-      prompt: "Was beschreibt „Gleichwarm“?",
+      prompt: "Welche Wirbeltiergruppen ordnet man als gleichwarm zu?",
       answer: "Es bedeutet, dass die Körpertemperatur aktiv konstant gehalten wird, eigene Wärme.", wrong: ["Es passt zu Säugetieren.", "Es beschreibt viele Säuger.", "Es passt zu Kriechtieren."],
       explanation: 'Eigene Wärme. Gleichwarm bedeutet: Vögel und Säuger.',
       wissen: 'Eigene Wärme. Gleichwarm bedeutet: Vögel und Säuger. Merke: Gleichwarm — Vögel und Säuger.',

@@ -436,7 +436,7 @@ export const k5VoegelVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:vgverh:f4",
-      prompt: "Was bewirkt der Nestflüchter?",
+      prompt: "Was kennzeichnet Nestflüchter im Vogelverhalten?",
       answer: "Jungvogel früh mobil.", wrong: ["Werbeverhalten vor der Paarung.", "Verteidigter Lebensraum.", "Saisonaler Ortswechsel."],
       explanation: "Nestflüchter: Jungvogel früh mobil",
       wissen: fw(

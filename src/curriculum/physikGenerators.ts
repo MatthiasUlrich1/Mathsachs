@@ -28,7 +28,6 @@ import {
   rewriteVagueGlossaryPrompt,
 } from './glossaryMcRewrite'
 import { fixGermanPromptCapitalization, redactSolutionSpoilers } from './biologieBank'
-import { mixedVariants } from './taskHelpers'
 import type { Topic, UserInput } from './types'
 
 /** Audit-sicheres Fachwissen: Länge ≥40 und Bezug zu Frage/Antwort. */
@@ -134,9 +133,15 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
         props.correct = solution
       }
       // Expand short glossary fragments into full comparable options.
-      const termHint =
+      const termHint = (
         q.match(/[„""']([^„""']+)[“""']/)?.[1] ||
-        q.match(/(?:Wozu dienen?|Welche Eigenschaft hat|Was bewirkt oder beschreibt)\s+(.+?)(?:\s+im Thema|\?|$)/i)?.[1]?.trim()
+        q
+          .match(
+            /(?:Wozu dient(?:en)?|Welche Eigenschaft hat|Was bewirkt oder beschreibt)\s+(?:der|die|das|ein|eine)?\s*(.+?)(?:\s+im Thema|\?|$)/i,
+          )?.[1]
+          ?.trim() ||
+        ''
+      ).replace(/^(der|die|das|ein|eine)\s+/i, '')
       choices = choices.map((c) => {
         const s = String(c).trim()
         if (/^[\d.,]+/.test(s) || /[=·ρλΔ]/.test(s)) return s
@@ -150,8 +155,8 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
         }
         const expanded =
           s === solution || s === ansRaw
-            ? expandGlossaryAnswer(s, { term: termHint })
-            : expandGlossaryDistractor(s, undefined, { term: termHint })
+            ? expandGlossaryAnswer(s, { term: termHint || undefined })
+            : expandGlossaryDistractor(s, undefined, { term: termHint || undefined })
         return expanded || s
       })
       {
@@ -166,9 +171,11 @@ function withAuditSafePhysikFw(gen: Topic['generate']): Topic['generate'] {
       const seen = new Set<string>()
       const deduped: string[] = []
       for (const c of choices) {
+        // Pronomen-Varianten (Es/Sie treibt …) als gleiche Aussage behandeln.
         const k = String(c)
           .normalize('NFKC')
           .toLowerCase()
+          .replace(/^(sie|er|es)\s+/i, '')
           .replace(/\s+/g, ' ')
           .replace(/sehr\s+/g, '')
           .trim()
@@ -243,14 +250,8 @@ function buildAllPhysikGenerators(): Record<string, Topic['generate']> {
       }
     }
   }
-  // Volumen: dense Begriffspool + Factory (Formel/Rechnung/Slots) für schulische Breite.
-  const volDense = PHYSIK_DENSE_GENERATORS['ph-k6-lb2-volumen']
-  if (volDense) {
-    out['ph-k6-lb2-volumen'] = mixedVariants(
-      volDense,
-      makePhysikTopicGenerate('ph-k6-lb2-volumen', 'Volumen bestimmen'),
-    )
-  }
+  // Volumen: nur Factory (Formel/Rechnung/Slots) — kein Glossary-Drill („Was kennzeichnet …?“).
+  out['ph-k6-lb2-volumen'] = makePhysikTopicGenerate('ph-k6-lb2-volumen', 'Volumen bestimmen')
   return out
 }
 

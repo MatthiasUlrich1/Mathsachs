@@ -875,7 +875,7 @@ const phJ12Schwingungen: BioBank = {
 
 {
   concept: "ph:j12:schwing:trans",
-  prompt: "Was kennzeichnet Transversalwellen?",
+  prompt: "In welche Richtung schwingt das Medium bei Transversalwellen relativ zur Ausbreitung?",
   answer: "Schwingung senkrecht zur Ausbreitungsrichtung",
   wrong: [
     "Immer nur parallel zur Ausbreitung",
@@ -890,7 +890,7 @@ const phJ12Schwingungen: BioBank = {
 
 {
   concept: "ph:j12:schwing:long",
-  prompt: "Was kennzeichnet Longitudinalwellen?",
+  prompt: "In welche Richtung schwingt das Medium bei Longitudinalwellen relativ zur Ausbreitung?",
   answer: "Schwingung parallel zur Ausbreitungsrichtung",
   wrong: [
     "Immer senkrecht zur Ausbreitung",

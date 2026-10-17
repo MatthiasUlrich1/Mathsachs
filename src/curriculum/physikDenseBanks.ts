@@ -28,7 +28,6 @@ export const PHYSIK_DENSE_GENERATORS: Record<string, Topic['generate']> = {
     { concept: "ph:ph-k6-lb2-volumen:paar:hohlkoerper", term: "Hohlkörper", meaning: "Innenvolumen separat", wissen: "Fassungsvermögen. Hohlkörper bedeutet: Innenvolumen separat. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären." },
     { concept: "ph:ph-k6-lb2-volumen:paar:einheit-umrechnen", term: "Einheit umrechnen", meaning: "m³ ↔ L ↔ mL", wissen: "Zehnerpotenzen. Einheit umrechnen bedeutet: m³ ↔ L ↔ mL. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären." },
     { concept: "ph:ph-k6-lb2-volumen:paar:kalibrierung", term: "Kalibrierung", meaning: "Gerät auf Norm prüfen", wissen: "Vergleichsmessung. Kalibrierung bedeutet: Gerät auf Norm prüfen. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären." },
-    { concept: "ph:ph-k6-lb2-volumen:paar:protokoll", term: "Protokoll", meaning: "Messwerte dokumentieren", wissen: "Wiederholbarkeit. Protokoll bedeutet: Messwerte dokumentieren. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären." },
     ],
     facts: [
     {
@@ -157,13 +156,6 @@ export const PHYSIK_DENSE_GENERATORS: Record<string, Topic['generate']> = {
       correct: true,
       explanation: "Vergleichsmessung. Kalibrierung bedeutet: Gerät auf Norm prüfen. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären.",
       wissen: "Vergleichsmessung. Kalibrierung bedeutet: Gerät auf Norm prüfen. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären.",
-    },
-    {
-      concept: "ph:ph-k6-lb2-volumen:tf:protokoll",
-      statement: "Ein Volumen-Protokoll dokumentiert Messwerte zur Wiederholbarkeit.",
-      correct: true,
-      explanation: "Wiederholbarkeit. Protokoll bedeutet: Messwerte dokumentieren. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären.",
-      wissen: "Wiederholbarkeit. Protokoll bedeutet: Messwerte dokumentieren. Im Unterrichtsthema „Volumen bestimmen“ hilft der Begriff, Zusammenhänge zu erklären.",
     },
     ],
   }),

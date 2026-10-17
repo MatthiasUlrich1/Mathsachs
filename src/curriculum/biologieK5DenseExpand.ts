@@ -629,7 +629,7 @@ function voegelFpExtra(rng: Rng): Task {
       }),
     () =>
       choicePickTask({
-        question: 'Was kennzeichnet Nestflüchter?',
+        question: 'Was kennzeichnet Nestflüchter bei der Vogelbrutpflege?',
         choices: shuffleChoices(
           rng,
           [

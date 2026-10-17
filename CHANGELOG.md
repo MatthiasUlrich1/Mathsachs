@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.114] – 2026-10-17
+
+### Behoben
+- **Installer-CI nach 0.28.113:** Bio-Stem „Körnerschnabel“ (Merkmal-Rewrite vor Vague-Kennzeichnet),
+  Lurche/Meta-Stem-Isolation (Lungen-/Hautatmung u. a.), Physik Turbine Es/Sie-Optionsdublette,
+  Transversalwelle-Rundenduplikate, Volumen-Topic ohne Glossar-„Protokoll“-Stem (nur Factory).
+
+
 ## [0.28.113] – 2026-10-17
 
 ### Geändert
