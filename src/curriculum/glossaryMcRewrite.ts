@@ -170,9 +170,12 @@ const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
   schädlingsdruck: 'm', apoptoseverlust: 'm', herdenschutz: 'm',
   neurotransmitterabbau: 'm', wärmeverlust: 'm', einschaltvorgang: 'm',
   luftdruck: 'm', gasdruck: 'm',
-  innere befruchtung: 'f', äußere befruchtung: 'f',
-  motorische bahn: 'f', sensorische bahn: 'f',
-  aktiver transport: 'm', passiver transport: 'm',
+  'innere befruchtung': 'f',
+  'äußere befruchtung': 'f',
+  'motorische bahn': 'f',
+  'sensorische bahn': 'f',
+  'aktiver transport': 'm',
+  'passiver transport': 'm',
   intersexualität: 'f', eugenik: 'f', konvergenz: 'f', leuchtkraft: 'f',
   gärung: 'f', milchsäuregärung: 'f', photorespiration: 'f',
   renaturierung: 'f', transplantation: 'f', früherkennung: 'f',
@@ -293,7 +296,11 @@ export function isVagueGlossaryStem(prompt: string): boolean {
     /^Was ist fachlich richtig$/i.test(q) ||
     /^Was ist (ein|eine|der|die|das)\s+\S+$/i.test(q) ||
     /^Was versteht man\b/i.test(q) ||
-    /^Was bewirkt oder beschreibt\b/i.test(q)
+    /^Was bewirkt oder beschreibt\b/i.test(q) ||
+    // Bare glossary wrappers „Was kennzeichnet „Term“?“ (quoted term) — not Schülerfragen.
+    /^Was kennzeichnet\s*[„""']/i.test(q) ||
+    /^Was kennzeichnet den Sachverhalt\b/i.test(q) ||
+    /^Welche Eigenschaft kennzeichnet\b/i.test(q)
   )
 }
 
@@ -318,7 +325,7 @@ export function concreteGlossaryStem(
   void topic
   const t = displayGlossaryTerm(term)
   const m = (meaning ?? '').replace(/\s+/g, ' ').trim()
-  if (!t) return 'Was kennzeichnet den Sachverhalt in diesem Zusammenhang?'
+  if (!t) return 'Welche Beschreibung passt zu diesem Fachzusammenhang?'
 
   const style = classifyGlossaryStyle(t, m)
   const low = t.toLowerCase()
@@ -339,7 +346,7 @@ export function concreteGlossaryStem(
     if (low === 'transparent') return 'Welche Eigenschaft hat ein transparenter Körper?'
     if (low === 'transluzent') return 'Welche Eigenschaft hat ein transluzenter Körper?'
     if (low === 'opak') return 'Welche Eigenschaft hat ein opaker Körper?'
-    return `Welche Eigenschaft kennzeichnet ${t}?`
+    return `Welche Eigenschaft hat ${t}?`
   }
 
   if (/^Timer\s*\/\s*Sensor$/i.test(t) || /^Timer oder Sensor/i.test(t)) {
@@ -360,46 +367,62 @@ export function concreteGlossaryStem(
     return `Wozu dient ${art} ${t}?`
   }
 
-  if (style === 'process') return `Was bewirkt ${t}?`
+  if (style === 'process') {
+    if (/\s/.test(t) || /[=·]/.test(t)) return `Was bewirkt „${t}“?`
+    const art = articleFor(t, 'nom')
+    if (art === 'die') return `Was bewirkt die ${t}?`
+    return `Was bewirkt ${art} ${t}?`
+  }
 
-  // Bare participles/adjectives are not Schüler questions.
+  // Bare participles/adjectives → concrete property/process stems (no quoted kennzeichnet).
   if (/^(angeboren|erlernt)$/i.test(t)) {
     return /^angeboren/i.test(t)
-      ? 'Was kennzeichnet angeborenes Verhalten?'
-      : 'Was kennzeichnet erlerntes Verhalten?'
+      ? 'Woran erkennt man angeborenes Verhalten?'
+      : 'Woran erkennt man erlerntes Verhalten?'
   }
   if (/^(angeborenes|erlerntes)\s+verhalten$/i.test(t)) {
-    return `Was kennzeichnet ${t.charAt(0).toLowerCase()}${t.slice(1)}?`
+    return `Woran erkennt man ${t.charAt(0).toLowerCase()}${t.slice(1)}?`
   }
   if (/^(wechselwarm|poikilotherm)$/i.test(t)) {
-    return 'Was kennzeichnet wechselwarme Tiere?'
+    return 'Woran erkennt man wechselwarme Tiere?'
   }
   if (/^(gleichwarm|homoiotherm)$/i.test(t)) {
-    return 'Was kennzeichnet gleichwarme Tiere?'
+    return 'Woran erkennt man gleichwarme Tiere?'
   }
   if (/^rezessiv$/i.test(t)) {
-    return 'Was kennzeichnet ein rezessives Allel?'
+    return 'Woran erkennt man ein rezessives Allel?'
   }
   if (/^dominant$/i.test(t)) {
-    return 'Was kennzeichnet ein dominantes Allel?'
+    return 'Woran erkennt man ein dominantes Allel?'
   }
   if (/^innere befruchtung$/i.test(t)) {
-    return 'Was kennzeichnet innere Befruchtung?'
+    return 'Woran erkennt man innere Befruchtung?'
   }
   if (/^äußere befruchtung$/i.test(t)) {
-    return 'Was kennzeichnet äußere Befruchtung?'
+    return 'Woran erkennt man äußere Befruchtung?'
   }
   if (/^aktiver transport$/i.test(t)) {
-    return 'Was kennzeichnet aktiven Transport?'
+    return 'Woran erkennt man aktiven Transport?'
   }
   if (/^motorische bahn$/i.test(t)) {
-    return 'Was kennzeichnet die motorische Bahn?'
+    return 'Woran erkennt man die motorische Bahn?'
+  }
+  // Formulas / symbols
+  if (/[=·²³×]|kg·|m²\/|Δ|λ|Φ|ω/.test(t) || /^E\s*=/i.test(t)) {
+    return `Welche Beziehung gilt für ${t}?`
   }
   // Never emit „Es ist ein [Verb…]“ via purpose-style misclassification of verb fragments.
   if (PURPOSE_VERB.test(t) || /^(ersetzt|kommuniziert|putzen|signalisiert)$/i.test(t)) {
-    return `Was kennzeichnet „${t}“ in diesem Zusammenhang?`
+    return `Was bewirkt „${t}“ in diesem Zusammenhang?`
   }
-  return `Was kennzeichnet „${t}“?`
+  // Definition default: recognition stem — never bare „Was kennzeichnet „Term“?“
+  if (/\s/.test(t) || t.length > 36) {
+    return `Woran erkennt man „${t}“?`
+  }
+  const artAcc = articleFor(t, 'acc')
+  if (artAcc === 'die') return `Woran erkennt man die ${t}?`
+  if (artAcc === 'den') return `Woran erkennt man den ${t}?`
+  return `Woran erkennt man das ${t}?`
 }
 
 function stripWraps(m: string): string {
@@ -796,8 +819,8 @@ export function rewriteVagueGlossaryPrompt(
 ): string | null {
   let q = stripBankSlugPrefix(prompt).replace(/\s+/g, ' ').trim()
   q = q.replace(/\?+$/g, '').trim()
-  // Never nest question words - if already concrete with "Was kennzeichnet/beschreibt/bewirkt", leave it
-  // BUT check if it's actually vague first (e.g. "Was bewirkt oder beschreibt" is vague)
+  // Never nest question words - if already concrete with beschreibt/bewirkt/Woran/Wozu, leave it.
+  // Quoted „Was kennzeichnet „Term“?“ is vague (see isVagueGlossaryStem) and must be rewritten.
   if (!isVagueGlossaryStem(q) && /^(Was kennzeichnet|Was beschreibt|Was bewirkt|Welche Eigenschaft|Wozu dient|Woran erkennt)/i.test(q)) {
     // Already a concrete application stem - check if it looks nested
     if (/^Was beschreibt [„"'](?:Was|Wozu|Welche)/i.test(q)) {
@@ -817,7 +840,19 @@ export function rewriteVagueGlossaryPrompt(
 
   if (isConcreteGlossaryStem(q) && !isVagueGlossaryStem(q)) return null
 
+  // Glossary wrapper → concrete stem from quoted / article term
   let m = q.match(
+    /^Was kennzeichnet\s*[„""']([^„""']+)[“""'](?:\s+in diesem Zusammenhang)?\s*$/i,
+  )
+  if (m) return concreteGlossaryStem(m[1]!.trim(), undefined, opts?.meaning)
+
+  m = q.match(/^Welche Eigenschaft kennzeichnet\s+(.+)$/i)
+  if (m) {
+    const rest = m[1]!.replace(/[„""']/g, '').trim()
+    return concreteGlossaryStem(rest, undefined, opts?.meaning)
+  }
+
+  m = q.match(
     /^Was trifft im Thema\s+(.+?)\s+auf\s*[„""']?([^„""']+?)[“""']?\s+zu\s*$/i,
   )
   if (m) {
