@@ -298,10 +298,15 @@ export function rewriteDefinitionStylePrompt(
 
   if (isConcreteGlossaryStem(q)) {
     let out = fixGermanPromptCapitalization(q.endsWith('?') ? q : `${q}?`)
-    // Cross-topic: bare „Was kennzeichnet „Term“?“ → Domain-Hinweis aus Prefix anhängen.
+    // Cross-topic (nur Bio/Geschichte): kurze Einwort-Kennzeichnet-Stems mit Domain-Hinweis
+    // trennen. Physik/Mathe nicht anfassen (sonst z. B. Hebel „bei Hebel“ near-dups).
     const hint = domainHintFromPrefix(opts?.prefix)
+    const quotedTerm = out.match(/[„"']([^„"']+)[“"']/)?.[1]?.trim() ?? ''
     if (
       hint &&
+      opts?.prefix &&
+      /^(bio|ge)[:]/i.test(opts.prefix) &&
+      quotedTerm.split(/\s+/).length === 1 &&
       /^Was kennzeichnet\s*[„"'][^„"']+[“"']\s*\?$/i.test(out) &&
       !out.toLowerCase().includes(hint.toLowerCase().slice(0, Math.min(8, hint.length)))
     ) {
