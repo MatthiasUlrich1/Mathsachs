@@ -1450,7 +1450,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:beobachtung",
       prompt: "Mit welchen Mitteln arbeitet die Beobachtung?",
-      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten, ferner Stern.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Es licht braucht ca. 1,3 s.", "Sie beschreibt c ≈ 300 000 km/s, im Vakuum."],
+      answer: "Sie erfasst Lichtlaufzeiten und bestätigt die endliche Lichtgeschwindigkeit.", wrong: ["Sie beschreibt c ist endlich, keine Sofortwirkung.", "Es licht braucht ca. 1,3 s.", "Sie beschreibt c ≈ 300 000 km/s, im Vakuum."],
       explanation: "Ferner Stern. Beobachtung bedeutet: Wir sehen Vergangenheit. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "Ferner Stern. Beobachtung bedeutet: Wir sehen Vergangenheit. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       flashFront: "Beobachtung",
@@ -1735,7 +1735,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb3-anomalie:fact:vergleich-stoffe",
-      prompt: "Wozu dient die Vergleich Stoffe?",
+      prompt: "Wozu dient den Vergleich Stoffe?",
       answer: "Die meisten Stoffe schrumpfen beim Erstarren.", wrong: ["Im See: 4 °C unten.", "Dichte bei verschiedenen T.", "Eiswürfel oben."],
       explanation: "Wasser anders. Vergleich Stoffe bedeutet: Die meisten Stoffe schrumpfen beim Erstarren. Bezug: Anomalie des Wassers.",
       wissen: "Wasser anders. Vergleich Stoffe bedeutet: Die meisten Stoffe schrumpfen beim Erstarren. Bezug: Anomalie des Wassers.",
@@ -2105,7 +2105,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:elektrolyt", term: "Elektrolyt", meaning: "Ionen in Lösung", wissen: "Flüssige Leitung. Elektrolyt bedeutet: Ionen in Lösung. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:gasentladung", term: "Gasentladung", meaning: "Ionen/Elektronen im Gas", wissen: "Bei hoher Spannung. Gasentladung bedeutet: Ionen/Elektronen im Gas. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:isolator", term: "Isolator", meaning: "Kaum freie Ladungsträger", wissen: "Kunststoff. Isolator bedeutet: Kaum freie Ladungsträger. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
-    { concept: "ph:gap:ph-k7-lb2-leitung:paar:ladungstraeger", term: "Ladungsträger", meaning: "Teilchen die Strom tragen", wissen: "Stoffabhängig. Ladungsträger bedeutet: Teilchen die Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
+    { concept: "ph:gap:ph-k7-lb2-leitung:paar:ladungstraeger", term: "Ladungsträger", meaning: "Teilchen den Strom tragen", wissen: "Stoffabhängig. Ladungsträger bedeutet: Teilchen den Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:elektronenleitung", term: "Elektronenleitung", meaning: "Modell im Metall", wissen: "Gerichtete Bewegung. Elektronenleitung bedeutet: Modell im Metall. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:ionenleitung", term: "Ionenleitung", meaning: "Positive und negative Ionen", wissen: "Salzlösung. Ionenleitung bedeutet: Positive und negative Ionen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
     { concept: "ph:gap:ph-k7-lb2-leitung:paar:vergleich", term: "Vergleich", meaning: "Metalle leiten besser als reine Flüssigkeiten", wissen: "Alltag. Vergleich bedeutet: Metalle leiten besser als reine Flüssigkeiten. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen." },
@@ -2126,7 +2126,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb2-leitung:fact:elektrolyt",
       prompt: "Was kennzeichnet „Elektrolyt“?",
-      answer: "Ionen in Lösung.", wrong: ["Ionen/Elektronen im Gas.", "Kaum freie Ladungsträger.", "Teilchen die Strom tragen."],
+      answer: "Ionen in Lösung.", wrong: ["Ionen/Elektronen im Gas.", "Kaum freie Ladungsträger.", "Teilchen den Strom tragen."],
       explanation: "Flüssige Leitung. Elektrolyt bedeutet: Ionen in Lösung. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       wissen: "Flüssige Leitung. Elektrolyt bedeutet: Ionen in Lösung. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       flashFront: "Elektrolyt",
@@ -2134,7 +2134,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb2-leitung:fact:gasentladung",
       prompt: "Mit welchen Mitteln arbeitet die Gasentladung?",
-      answer: "Ionen/Elektronen im Gas.", wrong: ["Kaum freie Ladungsträger.", "Teilchen die Strom tragen.", "Modell im Metall."],
+      answer: "Ionen/Elektronen im Gas.", wrong: ["Kaum freie Ladungsträger.", "Teilchen den Strom tragen.", "Modell im Metall."],
       explanation: "Bei hoher Spannung. Gasentladung bedeutet: Ionen/Elektronen im Gas. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       wissen: "Bei hoher Spannung. Gasentladung bedeutet: Ionen/Elektronen im Gas. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       flashFront: "Gasentladung",
@@ -2150,9 +2150,9 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k7-lb2-leitung:fact:ladungstraeger",
       prompt: "Was beschreibt „Ladungsträger“?",
-      answer: "Teilchen die Strom tragen.", wrong: ["Modell im Metall.", "Positive und negative Ionen.", "Metalle leiten besser als reine Flüssigkeiten."],
-      explanation: "Stoffabhängig. Ladungsträger bedeutet: Teilchen die Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
-      wissen: "Stoffabhängig. Ladungsträger bedeutet: Teilchen die Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
+      answer: "Teilchen den Strom tragen.", wrong: ["Modell im Metall.", "Positive und negative Ionen.", "Metalle leiten besser als reine Flüssigkeiten."],
+      explanation: "Stoffabhängig. Ladungsträger bedeutet: Teilchen den Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
+      wissen: "Stoffabhängig. Ladungsträger bedeutet: Teilchen den Strom tragen. Bezug: Leitung in Metallen, Flüssigkeiten, Gasen.",
       flashFront: "Ladungsträger",
     },
     {
@@ -2427,7 +2427,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb1-gasdruck:fact:luftdruck",
-      prompt: "Woran erkennt man das Luftdruck?",
+      prompt: "Woran erkennt man den Luftdruck?",
       answer: "Gewicht der Luftsäule.", wrong: ["Sehr geringer Druck.", "Luftdruck-Demonstration.", "Innendruck hält Form."],
       explanation: "ca. 10⁵ Pa. Luftdruck bedeutet: Gewicht der Luftsäule. Bezug: Druck in Gasen.",
       wissen: "ca. 10⁵ Pa. Luftdruck bedeutet: Gewicht der Luftsäule. Bezug: Druck in Gasen.",
@@ -2924,7 +2924,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:vergleich-stoffe",
-      prompt: "Mit welchen Mitteln arbeitet die Vergleich Stoffe?",
+      prompt: "Mit welchen Mitteln arbeitet den Vergleich Stoffe?",
       answer: "Kupfer vs. Eisen.", wrong: ["Sehr kleines R.", "Leitung dimensionieren.", "R = ρ·l/A."],
       explanation: "Unterschiedliches ρ. Vergleich Stoffe bedeutet: Kupfer vs. Eisen. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Unterschiedliches ρ. Vergleich Stoffe bedeutet: Kupfer vs. Eisen. Bezug: Widerstandsgesetz R = ρ·l/A.",
@@ -3480,7 +3480,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k9-lb2-transformator:fact:energieverlust",
-      prompt: "Mit welchen Mitteln arbeitet das Energieverlust?",
+      prompt: "Mit welchen Mitteln arbeitet den Energieverlust?",
       answer: "Wärme in Leitungen.", wrong: ["Trafo + Gleichrichter.", "Wechsel → Gleich.", "Führt Magnetfluss."],
       explanation: "I²R. Energieverlust bedeutet: Wärme in Leitungen. Bezug: Transformator.",
       wissen: "I²R. Energieverlust bedeutet: Wärme in Leitungen. Bezug: Transformator.",
@@ -4022,7 +4022,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     { concept: "ph:gap:ph-k10-lb2-weltbild:paar:widerstand", term: "Widerstand", meaning: "Gesellschaftliche Konflikte", wissen: "Historisch. Widerstand bedeutet: Gesellschaftliche Konflikte. Bezug: Geo- und heliozentrisches Weltbild." },
     { concept: "ph:gap:ph-k10-lb2-weltbild:paar:modell", term: "Modell", meaning: "Erklärung der Himmelerscheinungen", wissen: "Prüfbar. Modell bedeutet: Erklärung der Himmelerscheinungen. Bezug: Geo- und heliozentrisches Weltbild." },
     { concept: "ph:gap:ph-k10-lb2-weltbild:paar:fernrohr", term: "Fernrohr", meaning: "Neue Evidenz", wissen: "Technik. Fernrohr bedeutet: Neue Evidenz. Bezug: Geo- und heliozentrisches Weltbild." },
-    { concept: "ph:gap:ph-k10-lb2-weltbild:paar:heute", term: "Heute", meaning: "Sonne Stern unter Sternen", wissen: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild." },
+    { concept: "ph:gap:ph-k10-lb2-weltbild:paar:heute", term: "Heute", meaning: "Sonne Stern unter Sternen", wissen: "Galaxie. Heute bedeutet: Die Sonne ist ein Stern unter vielen. Bezug: Geo- und heliozentrisches Weltbild." },
     { concept: "ph:gap:ph-k10-lb2-weltbild:paar:vergleich", term: "Vergleich", meaning: "Beide erklären scheinbare Bahnen", wissen: "Einfachheit zählt. Vergleich bedeutet: Beide erklären scheinbare Bahnen. Bezug: Geo- und heliozentrisches Weltbild." },
     ],
     facts: [
@@ -4085,7 +4085,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:widerstand",
       prompt: "Was bewirkt ein Widerstand im Stromkreis?",
-      answer: "Gesellschaftliche Konflikte.", wrong: ["Erklärung der Himmelerscheinungen.", "Neue Evidenz.", "Sonne Stern unter Sternen."],
+      answer: "Gesellschaftliche Konflikte.", wrong: ["Erklärung der Himmelerscheinungen.", "Neue Evidenz.", "Die Sonne ist ein Stern unter vielen."],
       explanation: "Historisch. Widerstand bedeutet: Gesellschaftliche Konflikte. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Historisch. Widerstand bedeutet: Gesellschaftliche Konflikte. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Widerstand",
@@ -4093,7 +4093,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:modell",
       prompt: "Wozu dient ein Modell in der Physik?",
-      answer: "Erklärung der Himmelerscheinungen.", wrong: ["Neue Evidenz.", "Sonne Stern unter Sternen.", "Beide erklären scheinbare Bahnen."],
+      answer: "Erklärung der Himmelerscheinungen.", wrong: ["Neue Evidenz.", "Die Sonne ist ein Stern unter vielen.", "Beide erklären scheinbare Bahnen."],
       explanation: "Prüfbar. Modell bedeutet: Erklärung der Himmelerscheinungen. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Prüfbar. Modell bedeutet: Erklärung der Himmelerscheinungen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Modell",
@@ -4101,7 +4101,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:fernrohr",
       prompt: "Welche Eigenschaft hat das Fernrohr?",
-      answer: "Neue Evidenz.", wrong: ["Sonne Stern unter Sternen.", "Beide erklären scheinbare Bahnen.", "Erde im Zentrum."],
+      answer: "Neue Evidenz.", wrong: ["Die Sonne ist ein Stern unter vielen.", "Beide erklären scheinbare Bahnen.", "Erde im Zentrum."],
       explanation: "Technik. Fernrohr bedeutet: Neue Evidenz. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Technik. Fernrohr bedeutet: Neue Evidenz. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Fernrohr",
@@ -4109,15 +4109,15 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:heute",
       prompt: "Was beschreibt „Heute“?",
-      answer: "Sonne Stern unter Sternen.", wrong: ["Beide erklären scheinbare Bahnen.", "Erde im Zentrum.", "Sonne im Zentrum."],
-      explanation: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
-      wissen: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
+      answer: "Die Sonne ist ein Stern unter vielen.", wrong: ["Beide erklären scheinbare Bahnen.", "Erde im Zentrum.", "Sonne im Zentrum."],
+      explanation: "Galaxie. Heute bedeutet: Die Sonne ist ein Stern unter vielen. Bezug: Geo- und heliozentrisches Weltbild.",
+      wissen: "Galaxie. Heute bedeutet: Die Sonne ist ein Stern unter vielen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Heute",
     },
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:fact:vergleich",
       prompt: "Wozu dient der Vergleich mit der Erwartung?",
-      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Sie beschreibt sonne Stern unter Sternen.", "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
+      answer: "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", wrong: ["Sie beschreibt die Sonne als einen Stern unter vielen.", "Sie prüft, ob Messwerte zur Hypothese passen.", "Es liefert eine vereinfachte Erklärung und nennt zugleich seine Grenzen."],
       explanation: "Einfachheit zählt. Vergleich bedeutet: Beide erklären scheinbare Bahnen. Bezug: Geo- und heliozentrisches Weltbild.",
       wissen: "Einfachheit zählt. Vergleich bedeutet: Beide erklären scheinbare Bahnen. Bezug: Geo- und heliozentrisches Weltbild.",
       flashFront: "Vergleich",
@@ -4140,10 +4140,10 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:tf:heute",
-      statement: "Heute: Sonne Stern unter Sternen.",
+      statement: "Heute: Die Sonne ist ein Stern unter vielen.",
       correct: true,
-      explanation: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
-      wissen: "Galaxie. Heute bedeutet: Sonne Stern unter Sternen. Bezug: Geo- und heliozentrisches Weltbild.",
+      explanation: "Galaxie. Heute bedeutet: Die Sonne ist ein Stern unter vielen. Bezug: Geo- und heliozentrisches Weltbild.",
+      wissen: "Galaxie. Heute bedeutet: Die Sonne ist ein Stern unter vielen. Bezug: Geo- und heliozentrisches Weltbild.",
     },
     {
       concept: "ph:gap:ph-k10-lb2-weltbild:tf:vergleich",
@@ -4215,7 +4215,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:leuchtkraft",
-      prompt: "Wozu dient das Leuchtkraft?",
+      prompt: "Wozu dient die Leuchtkraft?",
       answer: "Abgestrahlte Leistung.", wrong: ["Hauptreihenstern.", "Pfad im HRD.", "Aus L und T schätzbar."],
       explanation: "Absolut. Leuchtkraft bedeutet: Abgestrahlte Leistung. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Absolut. Leuchtkraft bedeutet: Abgestrahlte Leistung. Bezug: Hertzsprung-Russell-Diagramm.",
@@ -4557,7 +4557,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb3-dispersion:fact:alltag",
-      prompt: "Woran erkennt man das Alltag?",
+      prompt: "Woran erkennt man den Alltag?",
       answer: "CD-Schillerfarben.", wrong: ["Farbzerlegung weißen Lichts.", "Farbenfolge.", "Hängt von λ ab."],
       explanation: "Beugung/Dispersion-Nähe. Alltag bedeutet: CD-Schillerfarben. Bezug: Dispersion und Spektrum.",
       wissen: "Beugung/Dispersion-Nähe. Alltag bedeutet: CD-Schillerfarben. Bezug: Dispersion und Spektrum.",
@@ -4688,7 +4688,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb3-totalreflexion:fact:verlust",
-      prompt: "Woran erkennt man das Verlust?",
+      prompt: "Woran erkennt man den Verlust?",
       answer: "Biegen der Faser begrenzt.", wrong: ["Grenzwinkel bestimmen.", "Laser in Fasern.", "Vollständige Reflexion ab Grenzwinkel."],
       explanation: "Krümmung. Verlust bedeutet: Biegen der Faser begrenzt. Bezug: Totalreflexion und Lichtleiter.",
       wissen: "Krümmung. Verlust bedeutet: Biegen der Faser begrenzt. Bezug: Totalreflexion und Lichtleiter.",
@@ -5792,7 +5792,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     facts: [
     {
       concept: "ph:gap:ph-j11gk-lb5-lenz:fact:lenzsches-gesetz",
-      prompt: "Wozu dient das Lenz’sches Gesetz?",
+      prompt: "Was besagt das Lenz’sche Gesetz?",
       answer: "Induktion wirkt der Ursache entgegen.", wrong: ["Keine Energie aus dem Nichts.", "Kreisströme in Massivleitern.", "Wirbelströme erwärmen Topf."],
       explanation: "Richtung. Lenz’sches Gesetz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Lenz’sches Gesetz.",
       wissen: "Richtung. Lenz’sches Gesetz bedeutet: Induktion wirkt der Ursache entgegen. Bezug: Lenz’sches Gesetz.",
@@ -5955,7 +5955,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:einschaltvorgang",
-      prompt: "Wozu dient das Einschaltvorgang?",
+      prompt: "Wozu dient den Einschaltvorgang?",
       answer: "Strom steigt verzögert.", wrong: ["Spannungsspitzen möglich.", "E = ½ L I².", "Glättet Strom."],
       explanation: "LR. Einschaltvorgang bedeutet: Strom steigt verzögert. Bezug: Selbstinduktion.",
       wissen: "LR. Einschaltvorgang bedeutet: Strom steigt verzögert. Bezug: Selbstinduktion.",
@@ -5971,7 +5971,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:energie-im-magnetfeld",
-      prompt: "Mit welchen Mitteln arbeitet das Energie im Magnetfeld?",
+      prompt: "Mit welchen Mitteln arbeitet die Energie im Magnetfeld?",
       answer: "E = ½ L I².", wrong: ["Glättet Strom.", "Gegenseitige Induktion.", "τ = L/R."],
       explanation: "Speicher. Energie im Magnetfeld bedeutet: E = ½ L I². Bezug: Selbstinduktion.",
       wissen: "Speicher. Energie im Magnetfeld bedeutet: E = ½ L I². Bezug: Selbstinduktion.",
@@ -6158,7 +6158,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lbw-halbleiter:fact:vergleich-metall",
-      prompt: "Wozu dient das Vergleich Metall?",
+      prompt: "Wozu dient den Vergleich Metall?",
       answer: "Andere Trägerdichte.", wrong: ["Mikroelektronik.", "Seltene Stoffe/Recycling.", "Paarbildung durch Wärme/Licht."],
       explanation: "Modell. Vergleich Metall bedeutet: Andere Trägerdichte. Bezug: Leitungsvorgänge in Halbleitern GK.",
       wissen: "Modell. Vergleich Metall bedeutet: Andere Trägerdichte. Bezug: Leitungsvorgänge in Halbleitern GK.",
@@ -6396,7 +6396,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j12gk-lb3-unschaerfe:fact:energie-zeit",
-      prompt: "Mit welchen Mitteln arbeitet das Energie-Zeit?",
+      prompt: "Mit welchen Mitteln arbeitet die Energie-Zeit?",
       answer: "Es beschreibt weitere Unschärfeform.", wrong: ["Es beschreibt plancksches Wirkungsquantum.", "Sie grenzen der Messung.", "Sie beschreibt welle/Teilchen Aspekte."],
       explanation: "Linienbreite. Energie-Zeit bedeutet: Weitere Unschärfeform. Bezug: Heisenberg’sche Unschärferelation.",
       wissen: "Linienbreite. Energie-Zeit bedeutet: Weitere Unschärfeform. Bezug: Heisenberg’sche Unschärferelation.",
@@ -6607,7 +6607,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j12gk-lb4-franck-hertz:fact:verlust",
-      prompt: "Woran erkennt man das Verlust?",
+      prompt: "Woran erkennt man den Verlust?",
       answer: "Unelastische Stöße.", wrong: ["Lehrversuch Standard.", "Nachweis diskreter Energieniveaus.", "Diskrete Zustände im Atom."],
       explanation: "Energieabgabe. Verlust bedeutet: Unelastische Stöße. Bezug: Franck-Hertz-Versuch.",
       wissen: "Energieabgabe. Verlust bedeutet: Unelastische Stöße. Bezug: Franck-Hertz-Versuch.",
