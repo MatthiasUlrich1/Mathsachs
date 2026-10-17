@@ -153,7 +153,7 @@ const wellen: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'konstruktive Interferenz: Verstärkung; destruktive: Abschwächung/Auslöschung'
     return choicePickTask({
-      question: 'Was bedeutet Interferenz zweier kohärenter Wellen qualitativ?',
+      question: 'Was geschieht bei Interferenz zweier kohärenter Wellen qualitativ?',
       choices: shuffleChoices(
         rng,
         [
@@ -344,7 +344,7 @@ const kerne: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'Energie, die freigesetzt würde, wenn man den Kern aus Nukleonen aufbaut (Maß für Stabilität)'
     return choicePickTask({
-      question: 'Was bedeutet Bindungsenergie eines Atomkerns qualitativ?',
+      question: 'Was meint Bindungsenergie eines Atomkerns qualitativ?',
       choices: shuffleChoices(
         rng,
         [
@@ -394,7 +394,7 @@ const kerne: Topic['generate'] = mixedVariants(
     ] as const
     const k = pick(rng, [...kinds])
     return choicePickTask({
-      question: `Was kennzeichnet den ${k.name} qualitativ?`,
+      question: `Woran erkennt man den ${k.name} qualitativ?`,
       choices: shuffleChoices(rng, [k.correct, ...k.wrong], k.correct),
       correct: k.correct,
       solution: k.correct,

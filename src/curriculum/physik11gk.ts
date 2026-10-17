@@ -81,7 +81,7 @@ const energie: Topic['generate'] = mixedVariants(
           'Beim Fallen wird potenzielle in kinetische Energie umgewandelt; die Summe bleibt näherungsweise gleich.',
       },
       {
-        q: 'Was bedeutet Energieerhaltung in einem abgeschlossenen System ohne Reibung?',
+        q: 'Was gilt für die Energie in einem abgeschlossenen System ohne Reibung?',
         correct: 'Die Gesamtenergie bleibt konstant',
         wrong: [
           'Energie verschwindet am Ende',

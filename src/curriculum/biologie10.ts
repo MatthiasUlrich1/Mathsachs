@@ -151,7 +151,7 @@ const mensch: BioBank = {
   facts: [
     {
       concept: 'bio:k10:was-bedeutet-homininen-grob-im-unterrich',
-      prompt: 'Was bedeutet „Homininen“ grob im Unterricht?',
+      prompt: 'Wen meint man mit „Homininen“ grob im Unterricht?',
       answer: 'Gruppe der Menschenartigen in der Stammesgeschichte',
       wrong: ['Nur heutige Insekten', 'Nur Farne', 'Nur Fische ohne Ausnahme'],
       explanation: 'Fossilbelege zeichnen die Entwicklung des Menschen nach.',

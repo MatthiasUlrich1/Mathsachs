@@ -34,7 +34,7 @@ export const k6Insektenordnungen: BioBank = {
     },
     {
       concept: 'bio:k6:ordnungen:schmetterling',
-      prompt: 'Was kennzeichnet Schmetterlinge äußerlich?',
+      prompt: 'Woran erkennt man Schmetterlinge äußerlich?',
       answer: 'Große Flügel mit Schuppen und oft auffällige Färbung',
       wrong: ['Chitinpanzer ohne Flügel immer', 'Acht Laufbeine', 'Kiemenatmung an Land'],
       explanation: 'Schuppenflügler: Flügel mit winzigen Schuppen.',
@@ -294,7 +294,7 @@ export const k6Parasiten: BioBank = {
   facts: [
     {
       concept: 'bio:k6:parasit:def',
-      prompt: 'Was bedeutet Parasitismus?',
+      prompt: 'Ein Floh lebt vom Blut seines Wirts und schadet ihm — welche Wechselwirkung zwischen Arten liegt vor?',
       answer: 'Ein Lebewesen nutzt ein anderes als Wirt und schadet ihm dabei',
       wrong: [
         'Zwei Arten helfen sich immer gegenseitig',
@@ -656,7 +656,7 @@ export const k6Waldschutz: BioBank = {
     },
     {
       concept: 'bio:k6:waldschutz:nachhaltig',
-      prompt: 'Was meint nachhaltige Waldbewirtschaftung grob?',
+      prompt: 'Im Forst wird nur so viel Holz geschlagen, wie nachwächst — welches Prinzip der Waldbewirtschaftung beschreibt das?',
       answer: 'Nur so viel nutzen, dass der Wald langfristig erhalten bleibt',
       wrong: [
         'Sofort alles abholzen ohne Wiederaufforstung',

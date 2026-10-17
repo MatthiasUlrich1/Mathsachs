@@ -719,7 +719,7 @@ const verdauungsorgane: BioBank = {
     },
     {
       concept: 'bio:k7:verdauung:resorption',
-      prompt: 'Was bedeutet Resorption bei der Verdauung?',
+      prompt: 'Was geschieht bei der Resorption in der Verdauung?',
       answer: 'Aufnahme der Nährstoffbausteine ins Blut bzw. die Lymphe',
       wrong: ['Filterung von Harn in der Niere', 'Gasaustausch in der Lunge', 'Bildung von Antikörpern'],
       explanation: 'Vor allem im Dünndarm.',
@@ -1287,7 +1287,7 @@ const selektion: BioBank = {
   facts: [
     {
       concept: 'bio:k10:selektion:def',
-      prompt: 'Was bedeutet natürliche Selektion?',
+      prompt: 'Wie wirkt natürliche Selektion?',
       answer: 'Individuen mit vorteilhaften Merkmalen hinterlassen im Mittel mehr Nachkommen',
       wrong: ['Alle Individuen überleben immer gleich', 'Merkmale entstehen durch Wunsch allein', 'Evolution stoppt bei Pflanzen'],
       explanation: 'Variation + Selektion → Anpassung über Generationen.',

@@ -51,7 +51,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Quellen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Quellen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -110,8 +110,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Quellen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Quellen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -121,7 +121,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Quellen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Quellen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -141,7 +141,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb1-quellen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Quellen. Migration (quellen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Quellen. Migration (quellen) bedeutet: Wanderung von Menschen. Merke: Migration (quellen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -195,7 +195,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Zeitrechnung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Zeitrechnung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -254,8 +254,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Zeitrechnung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Zeitrechnung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -265,7 +265,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb1-zeitrechnung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Zeitrechnung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Zeitrechnung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -319,7 +319,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Steinzeit. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Steinzeit. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -339,7 +339,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Steinzeit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Steinzeit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -398,8 +398,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Steinzeit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Steinzeit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -409,7 +409,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Steinzeit. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Steinzeit. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -429,7 +429,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-steinzeit:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Steinzeit. Migration (steinzeit): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Steinzeit. Migration (steinzeit) bedeutet: Wanderung von Menschen. Merke: Migration (steinzeit) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -483,7 +483,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Aegypten. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Aegypten. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -542,8 +542,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Aegypten. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Aegypten. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -553,7 +553,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-aegypten:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Aegypten. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Aegypten. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -627,7 +627,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Metallzeit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Metallzeit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -686,8 +686,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Metallzeit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Metallzeit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -697,7 +697,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb2-metallzeit:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Metallzeit. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Metallzeit. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -751,7 +751,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-athen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Athen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Athen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -771,7 +771,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-athen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Athen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Athen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -830,8 +830,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-athen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Athen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Athen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -841,7 +841,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-athen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Athen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Athen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -861,7 +861,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-athen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Athen. Migration (athen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Athen. Migration (athen) bedeutet: Wanderung von Menschen. Merke: Migration (athen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -915,7 +915,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Sparta. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Sparta. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -974,8 +974,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-sparta:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Sparta. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Sparta. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1059,7 +1059,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Kultur. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kultur. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1118,8 +1118,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Kultur. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kultur. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1129,7 +1129,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -1139,7 +1139,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb3-kultur:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur) bedeutet: Organisierte Herrschaft. Merke: Staat (kultur) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -1183,7 +1183,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Mensch Natur. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Mensch Natur. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -1203,7 +1203,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Mensch Natur. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Mensch Natur. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1262,8 +1262,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Mensch Natur. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Mensch Natur. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1273,7 +1273,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Mensch Natur. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Mensch Natur. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -1283,7 +1283,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-mensch-natur:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Mensch Natur. Staat (natur): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Mensch Natur. Staat (natur) bedeutet: Organisierte Herrschaft. Merke: Staat (natur) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -1347,7 +1347,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Ressourcen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ressourcen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1406,8 +1406,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Ressourcen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ressourcen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1417,7 +1417,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Ressourcen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Ressourcen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -1437,7 +1437,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-ressourcen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Ressourcen. Migration (ressourcen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Ressourcen. Migration (ressourcen) bedeutet: Wanderung von Menschen. Merke: Migration (ressourcen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -1471,7 +1471,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Landschaft. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Landschaft. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -1491,7 +1491,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Landschaft. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Landschaft. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1550,8 +1550,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lb4-landschaft:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Landschaft. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Landschaft. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1615,7 +1615,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Hellenismus Alexander. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Hellenismus Alexander. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -1635,7 +1635,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Alexander. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Hellenismus Alexander. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1694,8 +1694,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Alexander. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Hellenismus Alexander. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1705,7 +1705,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexander:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexander. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexander. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -1779,7 +1779,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Alexandria. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Hellenismus Alexandria. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1838,8 +1838,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Alexandria. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Hellenismus Alexandria. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -1849,7 +1849,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexandria. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Hellenismus Alexandria. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -1869,7 +1869,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-alexandria:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Hellenismus Alexandria. Migration (alexandria): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Hellenismus Alexandria. Migration (alexandria) bedeutet: Wanderung von Menschen. Merke: Migration (alexandria) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -1923,7 +1923,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Hellenismus Geschichten. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Hellenismus Geschichten. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -1982,8 +1982,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k5-lbw-hellenismus-geschichten:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Hellenismus Geschichten. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Hellenismus Geschichten. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2067,7 +2067,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Chronologie. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Chronologie. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2126,8 +2126,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Chronologie. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Chronologie. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2137,7 +2137,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-chronologie:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Chronologie. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Chronologie. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -2211,7 +2211,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Anfaenge. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Anfaenge. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2270,8 +2270,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-anfaenge:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Anfaenge. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Anfaenge. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2355,7 +2355,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Aemter. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Aemter. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2414,8 +2414,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-aemter:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Aemter. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Aemter. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2499,7 +2499,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Buergerrecht. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Buergerrecht. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2558,8 +2558,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-buergerrecht:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Buergerrecht. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Buergerrecht. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2643,7 +2643,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-rom:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Rom. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Rom. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2702,8 +2702,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb1-rom:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Rom. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Rom. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2713,7 +2713,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-rom:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Rom. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Rom. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -2723,7 +2723,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb1-rom:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Gesetze und Grenzen. Bezug: Rom. Staat (rom): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Rom. Staat (rom) bedeutet: Organisierte Herrschaft. Merke: Staat (rom) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -2787,7 +2787,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Heiliges Reich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Heiliges Reich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2846,8 +2846,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-heiliges-reich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Heiliges Reich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Heiliges Reich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -2931,7 +2931,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Weltlich Geistlich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Weltlich Geistlich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -2990,8 +2990,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Weltlich Geistlich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Weltlich Geistlich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3001,7 +3001,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Weltlich Geistlich. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Weltlich Geistlich. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3011,7 +3011,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-weltlich-geistlich:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Gesetze und Grenzen. Bezug: Weltlich Geistlich. Staat (geistlich): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Weltlich Geistlich. Staat (geistlich) bedeutet: Organisierte Herrschaft. Merke: Staat (geistlich) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -3075,7 +3075,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Lehnswesen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Lehnswesen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3134,8 +3134,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Lehnswesen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Lehnswesen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3145,7 +3145,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-lehnswesen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Lehnswesen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Lehnswesen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3219,7 +3219,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag Staende. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Alltag Staende. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3278,8 +3278,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Alltag Staende. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Alltag Staende. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3289,7 +3289,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-alltag-staende:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag Staende. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Alltag Staende. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3363,7 +3363,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag Froemmigkeit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Alltag Froemmigkeit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3422,8 +3422,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Alltag Froemmigkeit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Alltag Froemmigkeit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3433,7 +3433,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb2-alltag-froemmigkeit:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag Froemmigkeit. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Alltag Froemmigkeit. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3507,7 +3507,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Juden Verfolgung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Juden Verfolgung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3566,8 +3566,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Juden Verfolgung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Juden Verfolgung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3597,7 +3597,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-juden-verfolgung:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Juden Verfolgung. Migration (verfolgung): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Juden Verfolgung. Migration (verfolgung) bedeutet: Wanderung von Menschen. Merke: Migration (verfolgung) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -3651,7 +3651,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-islam:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Islam. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Islam. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3710,8 +3710,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-islam:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Islam. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Islam. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3721,7 +3721,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-islam:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Islam. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Islam. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3795,7 +3795,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Kreuzzuege. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kreuzzuege. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3854,8 +3854,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Kreuzzuege. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kreuzzuege. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -3865,7 +3865,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-kreuzzuege:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kreuzzuege. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kreuzzuege. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -3939,7 +3939,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Begegnung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Begegnung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -3998,8 +3998,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Begegnung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Begegnung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4009,7 +4009,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-begegnung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Begegnung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Begegnung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4083,7 +4083,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Toleranz Heute. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Toleranz Heute. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4142,8 +4142,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Toleranz Heute. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Toleranz Heute. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4153,7 +4153,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb3-toleranz-heute:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Toleranz Heute. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Toleranz Heute. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4227,7 +4227,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Buerger. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Buerger. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4286,8 +4286,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Buerger. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Buerger. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4297,7 +4297,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-buerger:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Buerger. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Buerger. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4351,7 +4351,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-polis:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Polis. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Polis. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -4371,7 +4371,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-polis:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Polis. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Polis. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4430,8 +4430,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-polis:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Polis. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Polis. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4441,7 +4441,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-polis:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Polis. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Polis. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4515,7 +4515,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-rom:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Rom. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Rom. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4574,8 +4574,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-rom:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Rom. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Rom. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4585,7 +4585,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-rom:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Rom. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Rom. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4595,7 +4595,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-rom:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Gesetze und Grenzen. Bezug: Rom. Staat (rom): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Rom. Staat (rom) bedeutet: Organisierte Herrschaft. Merke: Staat (rom) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -4659,7 +4659,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Stadt. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Stadt. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4718,8 +4718,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-stadt:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Stadt. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Stadt. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4803,7 +4803,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Vergleich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Vergleich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -4862,8 +4862,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Vergleich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Vergleich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -4873,7 +4873,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lb4-vergleich:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Vergleich. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Vergleich. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -4947,7 +4947,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Besiedlung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Besiedlung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5006,8 +5006,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-besiedlung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Besiedlung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Besiedlung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5091,7 +5091,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Kurfuerstentum. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kurfuerstentum. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5150,8 +5150,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Kurfuerstentum. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kurfuerstentum. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5161,7 +5161,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kurfuerstentum. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kurfuerstentum. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -5181,7 +5181,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-kurfuerstentum:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Kurfuerstentum. Migration (kurfuerstentum): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Kurfuerstentum. Migration (kurfuerstentum) bedeutet: Wanderung von Menschen. Merke: Migration (kurfuerstentum) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -5235,7 +5235,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Selbstverstaendnis. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Selbstverstaendnis. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5294,8 +5294,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Selbstverstaendnis. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Selbstverstaendnis. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5305,7 +5305,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k6-lbw-selbstverstaendnis:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Selbstverstaendnis. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Selbstverstaendnis. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -5379,7 +5379,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Renaissance. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Renaissance. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5438,8 +5438,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Renaissance. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Renaissance. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5449,7 +5449,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-renaissance:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Renaissance. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Renaissance. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -5503,7 +5503,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Entdeckungen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Entdeckungen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -5523,7 +5523,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Entdeckungen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Entdeckungen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5582,8 +5582,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Entdeckungen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Entdeckungen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5613,7 +5613,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-entdeckungen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
       explanation: "Push- und Pull-Faktoren. Bezug: Entdeckungen. Migration (entdeckungen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Entdeckungen. Migration (entdeckungen) bedeutet: Wanderung von Menschen. Merke: Migration (entdeckungen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -5647,7 +5647,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Reformation Krieg. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Reformation Krieg. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -5667,7 +5667,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Krieg. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Reformation Krieg. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5726,8 +5726,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Reformation Krieg. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Reformation Krieg. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5737,7 +5737,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Krieg. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Reformation Krieg. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -5757,7 +5757,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb1-reformation-krieg:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Push- und Pull-Faktoren. Bezug: Reformation Krieg. Migration (krieg): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Reformation Krieg. Migration (krieg) bedeutet: Wanderung von Menschen. Merke: Migration (krieg) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -5791,7 +5791,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Absolutismus Frankreich. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Absolutismus Frankreich. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -5811,7 +5811,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Absolutismus Frankreich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Absolutismus Frankreich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -5870,8 +5870,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Absolutismus Frankreich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Absolutismus Frankreich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -5881,7 +5881,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-absolutismus-frankreich:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Absolutismus Frankreich. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Absolutismus Frankreich. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -5935,7 +5935,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Aufklaerung. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Aufklaerung. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -5955,7 +5955,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Aufklaerung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Aufklaerung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6014,8 +6014,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Aufklaerung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Aufklaerung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6025,7 +6025,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-aufklaerung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Aufklaerung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Aufklaerung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -6099,7 +6099,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Preussen Sachsen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Preussen Sachsen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6158,8 +6158,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Preussen Sachsen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Preussen Sachsen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6169,7 +6169,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb2-preussen-sachsen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Preussen Sachsen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Preussen Sachsen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -6243,7 +6243,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-england:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: England. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: England. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6302,8 +6302,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-england:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: England. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: England. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6333,7 +6333,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-england:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
       explanation: "Push- und Pull-Faktoren. Bezug: England. Migration (england): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: England. Migration (england) bedeutet: Wanderung von Menschen. Merke: Migration (england) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -6387,7 +6387,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-usa:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Usa. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Usa. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6446,8 +6446,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-usa:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Usa. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Usa. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6457,7 +6457,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-usa:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Usa. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Usa. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -6531,7 +6531,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Franzoesische Revolution. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Franzoesische Revolution. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6590,8 +6590,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-franzoesische-revolution:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Franzoesische Revolution. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Franzoesische Revolution. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6675,7 +6675,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Napoleon. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Napoleon. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6734,8 +6734,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Napoleon. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Napoleon. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6745,7 +6745,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb3-napoleon:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Oft gewaltsam und rasch. Bezug: Napoleon. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Napoleon. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -6799,7 +6799,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Legitimation. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Legitimation. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -6819,7 +6819,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Legitimation. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Legitimation. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -6878,8 +6878,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Legitimation. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Legitimation. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -6889,7 +6889,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-legitimation:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Legitimation. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Legitimation. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -6963,7 +6963,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Gottesgnade. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Gottesgnade. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7022,8 +7022,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Gottesgnade. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Gottesgnade. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7033,7 +7033,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Gottesgnade. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Gottesgnade. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7053,7 +7053,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-gottesgnade:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Gottesgnade. Migration (gottesgnade): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Gottesgnade. Migration (gottesgnade) bedeutet: Wanderung von Menschen. Merke: Migration (gottesgnade) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -7107,7 +7107,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Verfassung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Verfassung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7166,8 +7166,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Verfassung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Verfassung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7177,7 +7177,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Verfassung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Verfassung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7197,7 +7197,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lb4-verfassung:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
       explanation: "Push- und Pull-Faktoren. Bezug: Verfassung. Migration (verfassung): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Verfassung. Migration (verfassung) bedeutet: Wanderung von Menschen. Merke: Migration (verfassung) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -7251,7 +7251,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Gerechtigkeit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Reformation Gerechtigkeit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7310,8 +7310,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Reformation Gerechtigkeit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Reformation Gerechtigkeit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7321,7 +7321,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lbw-reformation-gerechtigkeit:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Gerechtigkeit. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Reformation Gerechtigkeit. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7395,7 +7395,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Sachsen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Reformation Sachsen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7454,8 +7454,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Reformation Sachsen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Reformation Sachsen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7465,7 +7465,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lbw-reformation-sachsen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Reformation Sachsen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Reformation Sachsen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7539,7 +7539,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Reformation Katholisch. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Reformation Katholisch. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7598,8 +7598,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k7-lbw-reformation-katholisch:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Reformation Katholisch. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Reformation Katholisch. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7683,7 +7683,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Napoleon Wiener. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Napoleon Wiener. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7742,8 +7742,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Napoleon Wiener. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Napoleon Wiener. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7753,7 +7753,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-napoleon-wiener:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Napoleon Wiener. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Napoleon Wiener. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7827,7 +7827,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Vormaerz 1848. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Vormaerz 1848. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -7886,8 +7886,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Vormaerz 1848. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Vormaerz 1848. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -7897,7 +7897,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Vormaerz 1848. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Vormaerz 1848. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -7907,7 +7907,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-vormaerz-1848:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
       explanation: "Gesetze und Grenzen. Bezug: Vormaerz 1848. Staat (1848): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Vormaerz 1848. Staat (1848) bedeutet: Organisierte Herrschaft. Merke: Staat (1848) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -7971,7 +7971,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Kaiserreich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kaiserreich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8030,8 +8030,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Kaiserreich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kaiserreich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8041,7 +8041,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaiserreich. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kaiserreich. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8061,7 +8061,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb1-kaiserreich:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Kaiserreich. Migration (kaiserreich): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Kaiserreich. Migration (kaiserreich) bedeutet: Wanderung von Menschen. Merke: Migration (kaiserreich) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -8115,7 +8115,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-england:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: England. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: England. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8174,8 +8174,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-england:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: England. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: England. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8205,7 +8205,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-england:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
       explanation: "Push- und Pull-Faktoren. Bezug: England. Migration (england): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: England. Migration (england) bedeutet: Wanderung von Menschen. Merke: Migration (england) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -8239,7 +8239,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Deutschland. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Deutschland. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -8259,7 +8259,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Deutschland. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Deutschland. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8318,8 +8318,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Deutschland. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Deutschland. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8329,7 +8329,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-deutschland:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Deutschland. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Deutschland. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8383,7 +8383,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Folgen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Folgen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -8403,7 +8403,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Folgen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Folgen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8462,8 +8462,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Folgen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Folgen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8473,7 +8473,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8483,7 +8483,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb2-folgen:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen) bedeutet: Organisierte Herrschaft. Merke: Staat (folgen) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -8527,7 +8527,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Kinderarbeit. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Kinderarbeit. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -8547,7 +8547,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Kinderarbeit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kinderarbeit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8606,8 +8606,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Kinderarbeit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kinderarbeit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8617,7 +8617,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kinderarbeit. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kinderarbeit. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8627,7 +8627,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-kinderarbeit:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Gesetze und Grenzen. Bezug: Kinderarbeit. Staat (kinderarbeit): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Kinderarbeit. Staat (kinderarbeit) bedeutet: Organisierte Herrschaft. Merke: Staat (kinderarbeit) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -8691,7 +8691,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Schutzgesetze. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Schutzgesetze. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8750,8 +8750,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Schutzgesetze. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Schutzgesetze. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8761,7 +8761,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Schutzgesetze. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Schutzgesetze. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8781,7 +8781,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schutzgesetze:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Schutzgesetze. Migration (schutzgesetze): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Schutzgesetze. Migration (schutzgesetze) bedeutet: Wanderung von Menschen. Merke: Migration (schutzgesetze) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -8835,7 +8835,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schule:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Schule. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Schule. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -8894,8 +8894,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb3-schule:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Schule. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Schule. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -8905,7 +8905,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schule:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Schule. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Schule. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -8925,7 +8925,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb3-schule:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Schule. Migration (schule): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Schule. Migration (schule) bedeutet: Wanderung von Menschen. Merke: Migration (schule) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -8979,7 +8979,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Imperialismus. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Imperialismus. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9038,8 +9038,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Imperialismus. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Imperialismus. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9049,7 +9049,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Imperialismus. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Imperialismus. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -9069,7 +9069,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-imperialismus:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Imperialismus. Migration (imperialismus): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Imperialismus. Migration (imperialismus) bedeutet: Wanderung von Menschen. Merke: Migration (imperialismus) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -9103,7 +9103,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Buendnisse. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Buendnisse. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -9123,7 +9123,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Buendnisse. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Buendnisse. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9182,8 +9182,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Buendnisse. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Buendnisse. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9203,7 +9203,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-buendnisse:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Gesetze und Grenzen. Bezug: Buendnisse. Staat (buendnisse): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Buendnisse. Staat (buendnisse) bedeutet: Organisierte Herrschaft. Merke: Staat (buendnisse) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -9247,7 +9247,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Ursachen Wk1. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Ursachen Wk1. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -9267,7 +9267,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Ursachen Wk1. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ursachen Wk1. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9326,8 +9326,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Ursachen Wk1. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ursachen Wk1. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9357,7 +9357,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lb4-ursachen-wk1:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Ursachen Wk1. Migration (wk1): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Ursachen Wk1. Migration (wk1) bedeutet: Wanderung von Menschen. Merke: Migration (wk1) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -9411,7 +9411,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Kriegstechnik. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kriegstechnik. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9470,8 +9470,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Kriegstechnik. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kriegstechnik. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9481,7 +9481,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-kriegstechnik:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kriegstechnik. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kriegstechnik. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -9535,7 +9535,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Alltag. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Alltag. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -9555,7 +9555,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Alltag. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Alltag. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9614,8 +9614,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Alltag. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Alltag. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9625,7 +9625,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-alltag:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Alltag. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Alltag. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -9699,7 +9699,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Massenmedien. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Massenmedien. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9758,8 +9758,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Massenmedien. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Massenmedien. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9769,7 +9769,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k8-lbw-massenmedien:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Massenmedien. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Massenmedien. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -9843,7 +9843,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Versailles. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Versailles. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -9902,8 +9902,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Versailles. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Versailles. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -9913,7 +9913,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb1-versailles:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Versailles. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Versailles. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -9967,7 +9967,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Europa Ordnung. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Europa Ordnung. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -9987,7 +9987,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Europa Ordnung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Europa Ordnung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10046,8 +10046,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Europa Ordnung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Europa Ordnung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10057,7 +10057,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb1-europa-ordnung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Europa Ordnung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Europa Ordnung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10131,7 +10131,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Weimar. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Weimar. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10190,8 +10190,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Weimar. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Weimar. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10201,7 +10201,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb2-weimar:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Weimar. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Weimar. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10255,7 +10255,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Aufstieg Ns. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Aufstieg Ns. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -10334,8 +10334,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Aufstieg Ns. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Aufstieg Ns. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10345,7 +10345,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb2-aufstieg-ns:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Aufstieg Ns. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Aufstieg Ns. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10419,7 +10419,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb3-terror:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Terror. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Terror. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10478,8 +10478,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-terror:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Terror. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Terror. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10489,7 +10489,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb3-terror:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Terror. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Terror. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10563,7 +10563,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Holocaust. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Holocaust. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10622,8 +10622,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-holocaust:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Holocaust. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Holocaust. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10707,7 +10707,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Widerstand. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Widerstand. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10766,8 +10766,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Widerstand. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Widerstand. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10777,7 +10777,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb3-widerstand:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Widerstand. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Widerstand. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10831,7 +10831,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Ausgleich. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Ausgleich. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -10851,7 +10851,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Ausgleich. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ausgleich. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -10910,8 +10910,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Ausgleich. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ausgleich. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -10921,7 +10921,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-ausgleich:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Ausgleich. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Ausgleich. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -10995,7 +10995,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Mit typischen Merkmalen. Bezug: Aggression. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Aggression. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11054,8 +11054,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Aggression. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Aggression. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11065,7 +11065,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Aggression. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Aggression. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11075,7 +11075,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lb4-aggression:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Gesetze und Grenzen. Bezug: Aggression. Staat (aggression): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Aggression. Staat (aggression) bedeutet: Organisierte Herrschaft. Merke: Staat (aggression) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -11139,7 +11139,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Justiz. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Justiz. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11198,8 +11198,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-justiz:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Justiz. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Justiz. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11283,7 +11283,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Frauen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Frauen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11342,8 +11342,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Frauen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Frauen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11353,7 +11353,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-frauen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11427,7 +11427,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Kultur. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kultur. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11486,8 +11486,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Kultur. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kultur. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11497,7 +11497,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kultur. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11507,7 +11507,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k9-lbw-kultur:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Kultur. Staat (kultur) bedeutet: Organisierte Herrschaft. Merke: Staat (kultur) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -11551,7 +11551,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Allianz Bruch. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Allianz Bruch. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -11571,7 +11571,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Allianz Bruch. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Allianz Bruch. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11630,8 +11630,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Allianz Bruch. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Allianz Bruch. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11641,7 +11641,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-allianz-bruch:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Allianz Bruch. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Allianz Bruch. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11695,7 +11695,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Kaltkrieg Phasen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Kaltkrieg Phasen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -11715,7 +11715,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Kaltkrieg Phasen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kaltkrieg Phasen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11774,8 +11774,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Kaltkrieg Phasen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kaltkrieg Phasen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11785,7 +11785,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Phasen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Phasen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11805,7 +11805,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb1-kaltkrieg-phasen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Kaltkrieg Phasen. Migration (phasen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Kaltkrieg Phasen. Migration (phasen) bedeutet: Wanderung von Menschen. Merke: Migration (phasen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -11839,7 +11839,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Teilung. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Teilung. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -11859,7 +11859,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Teilung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Teilung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -11918,8 +11918,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Teilung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Teilung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -11929,7 +11929,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Teilung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Teilung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -11939,7 +11939,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-teilung:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
       explanation: "Gesetze und Grenzen. Bezug: Teilung. Staat (teilung): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Teilung. Staat (teilung) bedeutet: Organisierte Herrschaft. Merke: Staat (teilung) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -11983,7 +11983,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Zwei Staaten. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Zwei Staaten. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -12003,7 +12003,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Zwei Staaten. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Zwei Staaten. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12062,8 +12062,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Zwei Staaten. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Zwei Staaten. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12073,7 +12073,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-zwei-staaten:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Zwei Staaten. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Zwei Staaten. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -12147,7 +12147,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Deutsche Frage. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Deutsche Frage. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12206,8 +12206,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb2-deutsche-frage:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Deutsche Frage. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Deutsche Frage. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12271,7 +12271,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Osteuropa 1989. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Osteuropa 1989. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -12291,7 +12291,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Osteuropa 1989. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Osteuropa 1989. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12350,8 +12350,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Osteuropa 1989. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Osteuropa 1989. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12371,7 +12371,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-osteuropa-1989:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Gesetze und Grenzen. Bezug: Osteuropa 1989. Staat (1989): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Osteuropa 1989. Staat (1989) bedeutet: Organisierte Herrschaft. Merke: Staat (1989) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -12435,7 +12435,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Einigung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Einigung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12494,8 +12494,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Einigung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Einigung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12505,7 +12505,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Einigung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Einigung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -12515,7 +12515,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lb3-einigung:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Einigung. Staat (einigung): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Einigung. Staat (einigung) bedeutet: Organisierte Herrschaft. Merke: Staat (einigung) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -12579,7 +12579,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lbw-50er:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: 50er. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: 50er. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12638,8 +12638,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-50er:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: 50er. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: 50er. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12723,7 +12723,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lbw-70er:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: 70er. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: 70er. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12782,8 +12782,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-70er:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: 70er. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: 70er. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12867,7 +12867,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Friedliche Revolution. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Friedliche Revolution. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -12926,8 +12926,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-k10-lbw-friedliche-revolution:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Friedliche Revolution. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Friedliche Revolution. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -12991,7 +12991,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Wirtschaft. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Wirtschaft. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -13011,7 +13011,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Wirtschaft. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Wirtschaft. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13070,8 +13070,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Wirtschaft. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Wirtschaft. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13091,7 +13091,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-wirtschaft:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Gesetze und Grenzen. Bezug: Wirtschaft. Staat (wirtschaft): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Wirtschaft. Staat (wirtschaft) bedeutet: Organisierte Herrschaft. Merke: Staat (wirtschaft) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -13135,7 +13135,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Politik Partizipation. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Politik Partizipation. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -13155,7 +13155,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Politik Partizipation. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Politik Partizipation. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13214,8 +13214,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Politik Partizipation. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Politik Partizipation. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13235,7 +13235,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
       explanation: "Gesetze und Grenzen. Bezug: Politik Partizipation. Staat (partizipation): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Politik Partizipation. Staat (partizipation) bedeutet: Organisierte Herrschaft. Merke: Staat (partizipation) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -13245,7 +13245,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb1-politik-partizipation:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Politik Partizipation. Migration (partizipation): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Politik Partizipation. Migration (partizipation) bedeutet: Wanderung von Menschen. Merke: Migration (partizipation) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -13279,7 +13279,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Weimar Versagen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Weimar Versagen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -13299,7 +13299,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Weimar Versagen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Weimar Versagen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13358,8 +13358,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Weimar Versagen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Weimar Versagen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13369,7 +13369,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Weimar Versagen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Weimar Versagen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -13389,7 +13389,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-weimar-versagen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Push- und Pull-Faktoren. Bezug: Weimar Versagen. Migration (versagen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Weimar Versagen. Migration (versagen) bedeutet: Wanderung von Menschen. Merke: Migration (versagen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -13443,7 +13443,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Ns Herrschaft. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ns Herrschaft. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13502,8 +13502,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Ns Herrschaft. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ns Herrschaft. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13513,7 +13513,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb2-ns-herrschaft:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Ns Herrschaft. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Ns Herrschaft. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -13567,7 +13567,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Brd Demokratie. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Brd Demokratie. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -13587,7 +13587,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Brd Demokratie. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Brd Demokratie. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13646,8 +13646,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Brd Demokratie. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Brd Demokratie. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13657,7 +13657,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-brd-demokratie:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Brd Demokratie. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Brd Demokratie. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -13731,7 +13731,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Ddr Diktatur. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ddr Diktatur. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13790,8 +13790,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Ddr Diktatur. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ddr Diktatur. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -13801,7 +13801,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Ddr Diktatur. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Ddr Diktatur. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -13811,7 +13811,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb3-ddr-diktatur:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Gesetze und Grenzen. Bezug: Ddr Diktatur. Staat (diktatur): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Ddr Diktatur. Staat (diktatur) bedeutet: Organisierte Herrschaft. Merke: Staat (diktatur) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -13875,7 +13875,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Kollektive Sicherheit. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kollektive Sicherheit. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -13934,8 +13934,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kollektive-sicherheit:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Kollektive Sicherheit. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kollektive Sicherheit. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14019,7 +14019,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Kaltkrieg Frieden. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kaltkrieg Frieden. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14078,8 +14078,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Kaltkrieg Frieden. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kaltkrieg Frieden. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14089,7 +14089,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lb4-kaltkrieg-frieden:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Frieden. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Kaltkrieg Frieden. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -14143,7 +14143,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Person. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Rezeptions Person. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -14163,7 +14163,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Person. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Rezeptions Person. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14222,8 +14222,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Person. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Rezeptions Person. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14243,7 +14243,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-person:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit."],
       explanation: "Gesetze und Grenzen. Bezug: Rezeptions Person. Staat (person): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Rezeptions Person. Staat (person) bedeutet: Organisierte Herrschaft. Merke: Staat (person) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -14287,7 +14287,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Wk1. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Rezeptions Wk1. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -14307,7 +14307,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Wk1. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Rezeptions Wk1. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14366,8 +14366,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Wk1. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Rezeptions Wk1. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14397,7 +14397,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk1:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Rezeptions Wk1. Migration (wk1): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Rezeptions Wk1. Migration (wk1) bedeutet: Wanderung von Menschen. Merke: Migration (wk1) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -14431,7 +14431,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Rezeptions Wk2. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Rezeptions Wk2. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -14451,7 +14451,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Rezeptions Wk2. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Rezeptions Wk2. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14510,8 +14510,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-rezeptions-wk2:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Rezeptions Wk2. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Rezeptions Wk2. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14595,7 +14595,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-nation:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Nation. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Nation. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14654,8 +14654,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-nation:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Nation. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Nation. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14665,7 +14665,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-nation:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Nation. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Nation. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -14739,7 +14739,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Mit typischen Merkmalen. Bezug: Mythen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Mythen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14798,8 +14798,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Ursachen und Folgen. Bezug: Mythen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Mythen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14809,7 +14809,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Mythen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Mythen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -14829,7 +14829,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-mythen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Mythen. Migration (mythen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Mythen. Migration (mythen) bedeutet: Wanderung von Menschen. Merke: Migration (mythen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -14883,7 +14883,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Feindbilder. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Feindbilder. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -14942,8 +14942,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Feindbilder. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Feindbilder. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -14953,7 +14953,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-gk-lbw-feindbilder:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Feindbilder. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Feindbilder. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -15027,7 +15027,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Ordnungen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Ordnungen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15086,8 +15086,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Ordnungen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Ordnungen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15097,7 +15097,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Ordnungen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Ordnungen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -15117,7 +15117,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-ordnungen:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
       explanation: "Push- und Pull-Faktoren. Bezug: Ordnungen. Migration (ordnungen): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Ordnungen. Migration (ordnungen) bedeutet: Wanderung von Menschen. Merke: Migration (ordnungen) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -15151,7 +15151,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Partizipation. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Partizipation. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -15171,7 +15171,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Partizipation. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Partizipation. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15230,8 +15230,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Ursachen und Folgen. Bezug: Partizipation. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Partizipation. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15251,7 +15251,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken."],
       explanation: "Gesetze und Grenzen. Bezug: Partizipation. Staat (partizipation): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Partizipation. Staat (partizipation) bedeutet: Organisierte Herrschaft. Merke: Staat (partizipation) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -15261,7 +15261,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb1-partizipation:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Partizipation. Migration (partizipation): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Partizipation. Migration (partizipation) bedeutet: Wanderung von Menschen. Merke: Migration (partizipation) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -15315,7 +15315,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Industrialisierung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Industrialisierung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15374,8 +15374,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Industrialisierung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Industrialisierung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15395,7 +15395,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-industrialisierung:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Industrialisierung. Staat (industrialisierung): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Industrialisierung. Staat (industrialisierung) bedeutet: Organisierte Herrschaft. Merke: Staat (industrialisierung) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -15439,7 +15439,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Folgen. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Folgen. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -15459,7 +15459,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Mit typischen Merkmalen. Bezug: Folgen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Folgen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15518,8 +15518,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen."],
       explanation: "Ursachen und Folgen. Bezug: Folgen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Folgen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15529,7 +15529,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Folgen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -15539,7 +15539,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lb2-folgen:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Folgen. Staat (folgen) bedeutet: Organisierte Herrschaft. Merke: Staat (folgen) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -15603,7 +15603,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Mit typischen Merkmalen. Bezug: Frauen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Frauen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15662,8 +15662,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Frauen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Frauen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15673,7 +15673,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lbw-frauen:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Frauen. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -15727,7 +15727,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Juden. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Juden. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -15747,7 +15747,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Juden. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Juden. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15806,8 +15806,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Juden. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Juden. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15837,7 +15837,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk11-lbw-juden:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Push- und Pull-Faktoren. Bezug: Juden. Migration (juden): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Juden. Migration (juden) bedeutet: Wanderung von Menschen. Merke: Migration (juden) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -15891,7 +15891,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Kriegsursachen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Kriegsursachen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -15950,8 +15950,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Kriegsursachen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Kriegsursachen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -15971,7 +15971,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb1-kriegsursachen:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft."],
       explanation: "Gesetze und Grenzen. Bezug: Kriegsursachen. Staat (kriegsursachen): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Kriegsursachen. Staat (kriegsursachen) bedeutet: Organisierte Herrschaft. Merke: Staat (kriegsursachen) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -16035,7 +16035,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Institutionen. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Institutionen. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16094,8 +16094,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Ursachen und Folgen. Bezug: Institutionen. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Institutionen. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16115,7 +16115,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb1-institutionen:f10",
       prompt: "Wozu dient ein Staat historisch?",
-      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
+      answer: "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen."],
       explanation: "Gesetze und Grenzen. Bezug: Institutionen. Staat (institutionen): Organisierte Herrschaft",
       wissen: "Gesetze und Grenzen. Bezug: Institutionen. Staat (institutionen) bedeutet: Organisierte Herrschaft. Merke: Staat (institutionen) — Organisierte Herrschaft.",
       gap: "Fachbegriff: ___ — Organisierte Herrschaft",
@@ -16179,7 +16179,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Erinnerung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Erinnerung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16238,8 +16238,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Erinnerung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Erinnerung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16249,7 +16249,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb2-erinnerung:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Oft gewaltsam und rasch. Bezug: Erinnerung. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Erinnerung. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -16303,7 +16303,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f0",
       prompt: "Was versteht man in der Geschichtswissenschaft unter einer Quelle?",
-      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
+      answer: "Sie gibt als Überrest oder Tradition Auskunft über die Vergangenheit.", wrong: ["Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie prägt Werte, Herrschaft und Alltag und kann machtpolitisch wirken.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen."],
       explanation: "Kritisch auswerten. Bezug: Identitaet. Quelle: Überrest oder Tradition zur Vergangenheit",
       wissen: "Kritisch auswerten. Bezug: Identitaet. Quelle bedeutet: Überrest oder Tradition zur Vergangenheit. Merke: Quelle — Überrest oder Tradition zur Vergangenheit.",
       gap: "Fachbegriff: ___ — Überrest oder Tradition zur Vergangenheit",
@@ -16323,7 +16323,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen."],
       explanation: "Mit typischen Merkmalen. Bezug: Identitaet. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Identitaet. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16382,8 +16382,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Er organisiert Herrschaft durch Gesetze, Institutionen und Grenzen."],
       explanation: "Ursachen und Folgen. Bezug: Identitaet. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Identitaet. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16413,7 +16413,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lb2-identitaet:f11",
       prompt: "Was beschreibt Migration in der Geschichte?",
-      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
+      answer: "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", wrong: ["Sie beschreibt, wer politische Macht ausübt und Entscheidungen trifft.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt."],
       explanation: "Push- und Pull-Faktoren. Bezug: Identitaet. Migration (identitaet): Wanderung von Menschen",
       wissen: "Push- und Pull-Faktoren. Bezug: Identitaet. Migration (identitaet) bedeutet: Wanderung von Menschen. Merke: Migration (identitaet) — Wanderung von Menschen.",
       gap: "Fachbegriff: ___ — Wanderung von Menschen",
@@ -16467,7 +16467,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt, was trotz Wandel bestehen bleibt, im Gegensatz zum Bruch."],
       explanation: "Mit typischen Merkmalen. Bezug: Voelkerrecht. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Voelkerrecht. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16526,8 +16526,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern."],
       explanation: "Ursachen und Folgen. Bezug: Voelkerrecht. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Voelkerrecht. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16537,7 +16537,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lbw-voelkerrecht:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Voelkerrecht. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Voelkerrecht. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",
@@ -16611,7 +16611,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Entkolonialisierung. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Entkolonialisierung. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16670,8 +16670,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-entkolonialisierung:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Entkolonialisierung. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Entkolonialisierung. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16755,7 +16755,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f2",
       prompt: "Woran erkennt man eine Epoche?",
-      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
+      answer: "Sie fasst einen geschichtlichen Zeitraum mit typischen gemeinsamen Merkmalen zusammen.", wrong: ["An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie beschreibt die Wanderung von Menschen zwischen Regionen oder Ländern.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein."],
       explanation: "Mit typischen Merkmalen. Bezug: Terror. Epoche: Geschichtlicher Zeitraum",
       wissen: "Mit typischen Merkmalen. Bezug: Terror. Epoche bedeutet: Geschichtlicher Zeitraum. Merke: Epoche — Geschichtlicher Zeitraum.",
       gap: "Fachbegriff: ___ — Geschichtlicher Zeitraum",
@@ -16814,8 +16814,8 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     },
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f8",
-      prompt: "Was kennzeichnet einen historischen Konflikt?",
-      answer: "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
+      prompt: "Woran erkennt man einen historischen Konflikt?",
+      answer: "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", wrong: ["Sie beschreibt den öffentlichen und privaten Umgang mit der Vergangenheit, etwa in Denkmalen und Narrativen.", "Sie ordnet Ereignisse in ihre zeitliche Reihenfolge ein.", "Sie regelt Produktion, Handel und Verteilung von Gütern und Ressourcen."],
       explanation: "Ursachen und Folgen. Bezug: Terror. Konflikt: Auseinandersetzung",
       wissen: "Ursachen und Folgen. Bezug: Terror. Konflikt bedeutet: Auseinandersetzung. Merke: Konflikt — Auseinandersetzung.",
       gap: "Fachbegriff: ___ — Auseinandersetzung",
@@ -16825,7 +16825,7 @@ export const GESCHICHTE_THIN_FILL: Record<string, Topic['generate']> = {
     {
       concept: "ge:fill:ge-lk12-lbw-terror:f9",
       prompt: "Woran erkennt man eine Revolution?",
-      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "Er beschreibt Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
+      answer: "Sie ersetzt eine bestehende Ordnung oft rasch und mit Gewalt.", wrong: ["Sie umfasst Sprache, Kunst, Brauchtum und den Austausch zwischen Gruppen.", "An Auseinandersetzungen mit Ursachen, Verlauf und Folgen.", "Sie umfasst soziale Schichten, Gruppen und ihre Rechte und Pflichten."],
       explanation: "Oft gewaltsam und rasch. Bezug: Terror. Revolution: Umsturz der Ordnung",
       wissen: "Oft gewaltsam und rasch. Bezug: Terror. Revolution bedeutet: Umsturz der Ordnung. Merke: Revolution — Umsturz der Ordnung.",
       gap: "Fachbegriff: ___ — Umsturz der Ordnung",

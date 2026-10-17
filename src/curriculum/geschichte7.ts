@@ -168,7 +168,7 @@ const absolutismus: BioBank = {
   facts: [
     fact(
       'absolutismus',
-      'Was versteht man unter Absolutismus?',
+      'Woran erkennt man Absolutismus?',
       'Eine Herrschaftsform, in der der Monarch seine Macht stark zentralisiert',
       ['Eine direkte Demokratie aller Bürger', 'Die Herrschaft einer mittelalterlichen Zunft', 'Ein Bündnis unabhängiger Stadtstaaten'],
       'Im Absolutismus bündelt der König Macht am Hof und im Staat.',
@@ -470,7 +470,7 @@ const legitimation: BioBank = {
   facts: [
     fact(
       'gottesgnadentum',
-      'Was bedeutet Gottesgnadentum?',
+      'Worauf stützt sich Gottesgnadentum?',
       'Die Vorstellung, dass Herrscher ihre Macht von Gott erhalten',
       ['Die Idee, dass Macht nur aus Wahlen stammt', 'Die Lehre vom Gewaltenteilungsstaat', 'Das Bürgerrecht der römischen Republik'],
       'Gottesgnadentum legitimiert Herrschaft religiös.',
@@ -1015,7 +1015,7 @@ const napoleonBank: BioBank = {
   url: 'https://de.wikipedia.org/wiki/Napoleon_Bonaparte',
   conceptPrefix: 'ge:k7:napoleon',
   facts: [
-    fact('kaisertum', 'Was kennzeichnete Napoleons Kaisertum?', 'Persönliche Herrschaft nach der Revolution mit militärischer Machtbasis', ['Eine reine attische Demokratie', 'Ein mittelalterliches Lehnswesen ohne Heer', 'Eine Ablehnung jeder Ordnung'], 'Napoleon beendete und formte die Revolutionszeit neu.', 'Aus der Revolution ging eine starke Führungsfigur hervor. Napoleon krönte sich zum Kaiser und führte Kriege in Europa. Freiheitspathos und Herrschaftsanspruch traten in Spannung.', 'Napoleon errichtete ein ___ nach der Revolution.', ['Kaisertum']),
+    fact('kaisertum', 'Woran erkennt man Napoleons Kaisertum?', 'Persönliche Herrschaft nach der Revolution mit militärischer Machtbasis', ['Eine reine attische Demokratie', 'Ein mittelalterliches Lehnswesen ohne Heer', 'Eine Ablehnung jeder Ordnung'], 'Napoleon beendete und formte die Revolutionszeit neu.', 'Aus der Revolution ging eine starke Führungsfigur hervor. Napoleon krönte sich zum Kaiser und führte Kriege in Europa. Freiheitspathos und Herrschaftsanspruch traten in Spannung.', 'Napoleon errichtete ein ___ nach der Revolution.', ['Kaisertum']),
     fact('ende', 'Warum gehört Napoleon zum Thema Begrenzung persönlicher Macht?', 'Weil nach revolutionärer Begrenzung wieder persönliche Herrschaft entstand', ['Weil er die Magna Carta erfand', 'Weil er nur Steinzeitforschung betrieb', 'Weil er den Absolutismus Ludwigs XIV. unverändert fortsetzte'], 'Die Revolution begrenzte Macht, Napoleon verdichtete sie neu.', 'Das zeigt, dass Alleinherrschaft in neuer Form zurückkehren kann. Bewertung muss Revolution und Kaiserreich zusammensehen. Herrschaftsformen sind wandelbar.', 'Nach der Revolution verdichtete Napoleon die Macht wieder in einer ___.', ['Person', 'Hand']),
     fact('code', 'Wofür steht der Code civil grob?', 'Für eine einheitliche Rechtsordnung unter Napoleon', ['Für ein mittelalterliches Zunftstatut allein', 'Für den Versailler Vertrag', 'Für attische Ostraka'], 'Recht wurde vereinheitlicht und exportiert.', 'Der Code civil ordnete Zivilrecht neu. Er wirkte in besetzten und verbündeten Gebieten. Rechtsgleichheit und patriarchale Grenzen gehörten dazu.', 'Der Code civil war eine einheitliche ___.', ['Rechtsordnung']),
     fact('europa', 'Wie veränderte Napoleon Europa?', 'Durch Kriege, Neuordnung von Staaten und Verbreitung von Reformideen', ['Durch Gründung des Völkerbunds 1919', 'Durch Abschaffung aller Heere', 'Durch Rückkehr zur Steinzeit'], 'Militärische Expansion und Reformen gingen zusammen.', 'Viele Territorien wurden umgeordnet. Manche Reformen blieben, andere stießen auf Widerstand. Europa nach 1815 reagierte darauf.', 'Napoleon veränderte Europa durch Kriege und ___.', ['Neuordnung', 'Reformen']),

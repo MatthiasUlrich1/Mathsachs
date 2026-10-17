@@ -16,7 +16,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:was",
       prompt: "Was steuert das vegetative Nervensystem vor allem?",
-      answer: "Unwillkürliche Funktionen von Organen.", wrong: ["Willkürliche Skelettmuskeln allein.", "Nur das Sehen.", "Nur das Gedächtnis."],
+      answer: "Es steuert unwillkürliche Funktionen von Organen.", wrong: ["Es steuert nicht nur willkürliche Skelettmuskeln allein.", "Es steuert nicht nur das Sehen, sondern viele Organfunktionen.", "Es steuert nicht nur das Gedächtnis, sondern unwillkürliche Organe."],
       explanation: "Unwillkürliche Funktionen von Organen.",
       wissen: fw(
         "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Steuerung — z. B. Herzschlag, Verdauung, Atemfrequenz.",
@@ -49,7 +49,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:antagonismus",
       prompt: "Warum nennt man Sympathikus und Parasympathikus oft antagonistisch?",
-      answer: "Sie wirken oft gegensätzlich auf dieselben Organe.", wrong: ["Sie sind dasselbe System.", "Sie steuern nur die Haut.", "Sie ersetzen das Gehirn."],
+      answer: "Sie wirken oft gegensätzlich auf dieselben Organe.", wrong: ["Sie sind dasselbe System ohne Gegenspiel.", "Sie steuern nur die Haut und keine inneren Organe.", "Sie ersetzen das Gehirn vollständig."],
       explanation: "Sie wirken oft gegensätzlich auf dieselben Organe.",
       wissen: fw(
         "Beide Äste beeinflussen z. B. Herz und Verdauung oft gegensätzlich und halten so ein Gleichgewicht.",
@@ -60,7 +60,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:herz",
       prompt: "Wie wirkt der Sympathikus typischerweise auf das Herz?",
-      answer: "Erhöht die Herzfrequenz.", wrong: ["Stoppt das Herz dauerhaft.", "Ersetzt die Herzklappen.", "Bildet rote Blutkörperchen."],
+      answer: "Es erhöht die Herzfrequenz bei Belastung.", wrong: ["Er stoppt das Herz dauerhaft.", "Er ersetzt die Herzklappen.", "Er bildet rote Blutkörperchen."],
       explanation: "Erhöht die Herzfrequenz.",
       wissen: fw(
         "Unter Stress steigt die Herzfrequenz — typische Sympathikus-Wirkung.",
@@ -82,7 +82,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:willkuer",
       prompt: "Was unterscheidet vegetatives und somatisches Nervensystem?",
-      answer: "Vegetativ: unwillkürlich; somatisch: willkürliche Skelettmuskeln.", wrong: ["Beide steuern nur Hormone.", "Beide sind nur im Ohr.", "Es gibt keinen Unterschied."],
+      answer: "Gemeint ist vegetativ: unwillkürlich; somatisch: willkürliche Skelettmuskeln.", wrong: ["Beide steuern nur Hormone.", "Beide sind nur im Ohr.", "Es gibt keinen Unterschied."],
       explanation: "Vegetativ: unwillkürlich; somatisch: willkürliche Skelettmuskeln.",
       wissen: fw(
         "Somatisch steuert bewusste Bewegungen; vegetativ die Organe ohne Willkür.",
@@ -103,8 +103,8 @@ export const k8Vegetativ: BioBank = {
     },
     {
       concept: "bio:k8:veg:gleichgewicht",
-      prompt: "Was kennzeichnet „vegetatives Gleichgewicht“?",
-      answer: "Ausgewogenes Zusammenspiel von Sympathikus und Parasympathikus.", wrong: ["Nur dauerhafte maximale Anspannung.", "Nur Ausfall aller Reflexe.", "Nur Steuerung der Hautfarbe."],
+      prompt: "Wann spricht man vom vegetativen Gleichgewicht?",
+      answer: "Gemeint ist ausgewogenes Zusammenspiel von Sympathikus und Parasympathikus.", wrong: ["Dauerhafte maximale Anspannung wäre das vegetative Gleichgewicht.", "Ausfall aller Reflexe wäre das vegetative Gleichgewicht.", "Steuerung der Hautfarbe wäre die vegetative Hauptaufgabe."],
       explanation: "Ausgewogenes Zusammenspiel von Sympathikus und Parasympathikus.",
       wissen: fw(
         "Gesundheit braucht Wechsel und Balance beider Äste, nicht Dauer-Stress.",
@@ -115,7 +115,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:organe",
       prompt: "Welche Organe werden vegetativ mitgesteuert?",
-      answer: "Herz, Lunge, Verdauungstrakt u. a.", wrong: ["Nur die Fußnägel.", "Nur die Haarfarbe.", "Nur die Zahnform."],
+      answer: "Es steuert u. a. Herz, Lunge und Verdauungstrakt.", wrong: ["Die Fußnägel werden vegetativ mitgesteuert.", "Die Haarfarbe wird vegetativ mitgesteuert.", "Die Zahnform wird vegetativ mitgesteuert."],
       explanation: "Herz, Lunge, Verdauungstrakt u. a.",
       wissen: fw(
         "Viele innere Organe erhalten vegetative Nervenfasern.",
@@ -163,7 +163,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:lage",
       prompt: "Wo liegt die Hypophyse?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Sie liegt unterhalb des Zwischenhirns an der Schädelbasis.", wrong: ["Sie liegt ausschließlich im Fußgelenk.", "Sie sitzt nur in der Leber ohne Hirnbezug.", "Sie befindet sich nur in der Hautschicht."],
       explanation: "Unterhalb des Zwischenhirns (an der Schädelbasis).",
       wissen: fw(
         "Die Hypophyse (Hirnanhangsdrüse) sitzt unter dem Zwischenhirn und steuert viele Hormondrüsen.",
@@ -174,7 +174,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:steuer",
       prompt: "Warum heißt die Hypophyse oft „übergeordnete Hormondrüse“?",
-      answer: "Sie steuert viele andere Hormondrüsen über Botenstoffe.", wrong: ["Die übergeordnete Hormondrüse ist nur Magensäure.", "Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung."],
+      answer: "Sie steuert viele andere Hormondrüsen über Botenstoffe.", wrong: ["Sie bildet nur Magensäure im Magen.", "Sie steuert nur willkürliche Skelettmuskeln.", "Sie ersetzt vollständig das Nervensystem."],
       explanation: "Sie steuert viele andere Hormondrüsen über Botenstoffe.",
       wissen: fw(
         "Steuerhormone der Hypophyse regeln z. B. Schilddrüse, Nebenniere und Keimdrüsen.",
@@ -185,7 +185,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:nerv-hormon",
       prompt: "Wie wirken Nerven- und Hormonsystem zusammen?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Nerven wirken schnell und kurz, Hormone langsamer und länger — gemeinsam regulieren sie den Körper.", wrong: ["Hormone wirken, Nerven haben keine Regulationsaufgabe.", "Nerven wirken, Hormone sind wirkungslos.", "Beide Systeme ersetzen einander vollständig und gleichzeitig."],
       explanation: "Nerven: schnell/kurz; Hormone: langsamer/länger — gemeinsam regulieren sie den Körper.",
       wissen: fw(
         "Beide Systeme ergänzen sich bei der Regulation von Organen und Verhalten.",
@@ -196,7 +196,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:hypothalamus",
       prompt: "Welche Hirnregion steuert die Hypophyse eng mit?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Der Hypothalamus steuert die Hypophyse eng mit.", wrong: ["Das Kleinhirn steuert die Hypophyse.", "Der Rückenmarkskanal steuert die Hypophyse.", "Die Haut steuert die Hypophyse hormonell."],
       explanation: "Hypothalamus.",
       wissen: fw(
         "Hypothalamus und Hypophyse bilden eine zentrale Schnittstelle zwischen Nerven- und Hormonsystem.",
@@ -206,8 +206,8 @@ export const k8Hypophyse: BioBank = {
     },
     {
       concept: "bio:k8:hyp:regelkreis",
-      prompt: "Was ist ein biologischer Regelkreis?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      prompt: "Wie arbeitet ein biologischer Regelkreis?",
+      answer: "Er misst einen Istwert, vergleicht ihn mit dem Sollwert und löst eine Gegenreaktion aus.", wrong: ["Er erhöht Werte immer unbegrenzt ohne Vergleich.", "Er arbeitet nur mit willkürlicher Muskelkraft.", "Er ersetzt Hormone vollständig durch Knochenwachstum."],
       explanation: "Messung, Vergleich mit Sollwert und Gegenreaktion.",
       wissen: fw(
         "Regelkreise halten Größen wie Temperatur oder Blutzucker im Sollbereich.",
@@ -217,8 +217,8 @@ export const k8Hypophyse: BioBank = {
     },
     {
       concept: "bio:k8:hyp:negativ",
-      prompt: "Welche Eigenschaft hat das dämpft?",
-      answer: "Ein hoher Hormonspiegel dämpft die eigene Freisetzung.", wrong: ["Hormone verstärken sich immer ungebremst.", "Nur Reflexe im Fuß.", "Nur Fotosynthese."],
+      prompt: "Was bewirkt negative Rückkopplung bei Hormonen?",
+      answer: "Ein hoher Hormonspiegel dämpft die eigene Freisetzung.", wrong: ["Hormone verstärken sich immer ungebremst ohne Hemmung.", "Reflexe im Fuß steuern die Hormonfreisetzung.", "Fotosynthese dämpft die Hormonfreisetzung im Körper."],
       explanation: "Ein hoher Hormonspiegel dämpft die eigene Freisetzung.",
       wissen: fw(
         "Negative Rückkopplung verhindert Übersteuerung — typisch in Hormonsystemen.",
@@ -229,7 +229,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:wachstum",
       prompt: "Welches Hormon der Hypophyse beeinflusst Wachstum stark?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Das Wachstumshormon (STH/GH) aus der Hypophyse beeinflusst das Körperwachstum stark.", wrong: ["Insulin aus der Bauchspeicheldrüse steuert jedes Längenwachstum.", "Adrenalin aus dem Knochenmark steuert das Längenwachstum.", "Speichelenzyme steuern das Körperwachstum."],
       explanation: "Wachstumshormon (STH/GH).",
       wissen: fw(
         "Die Hypophyse setzt Wachstumshormon frei — wichtig für Körperwachstum.",
@@ -240,7 +240,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:schild",
       prompt: "Wie beeinflusst die Hypophyse die Schilddrüse?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Über das Steuerhormon TSH regt sie die Schilddrüse zur Hormonbildung an.", wrong: ["Sie steuert die Schilddrüse nur über Magensäure.", "Sie hemmt die Schilddrüse ausschließlich durch Hautreflexe.", "Sie ersetzt die Schilddrüse vollständig durch Knochengewebe."],
       explanation: "Über TSH (Steuerhormon).",
       wissen: fw(
         "TSH aus der Hypophyse regt die Schilddrüse zur Hormonbildung an.",
@@ -251,7 +251,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:stresshormone",
       prompt: "Wie ist Stress mit Hypophyse und Nebenniere verbunden?",
-      answer: "Hypophyse steuert über ACTH die Nebennierenrinde (Cortisol).", wrong: ["Stress läuft ohne Hormone ab.", "Nur die Haare reagieren.", "Nur die Nägel bilden Cortisol."],
+      answer: "Die Hypophyse steuert über ACTH die Nebennierenrinde und damit Cortisol.", wrong: ["Stress läuft ohne jede hormonelle Beteiligung.", "Haare reagieren auf Stresshormone der Hypophyse.", "Die Nägel bilden Cortisol statt der Nebenniere."],
       explanation: "Hypophyse steuert über ACTH die Nebennierenrinde (Cortisol).",
       wissen: fw(
         "Die Hypothalamus-Hypophysen-Nebennieren-Achse ist zentral bei Stress.",
@@ -262,7 +262,7 @@ export const k8Hypophyse: BioBank = {
     {
       concept: "bio:k8:hyp:zusammen",
       prompt: "Warum braucht der Körper beides: Nerven und Hormone?",
-      answer: "Das vegetative (autonome) Nervensystem steuert Organfunktionen ohne bewusste Ste.", wrong: ["Die Kräfte und Drehmomente heben sich auf, sodass sich nichts beschleunigt.", "Sie beschreibt unter Stress steigt die Herzfrequenz, typische Sympathikus-Wirkung.", "Er beschreibt beide Äste beeinflussen z."],
+      answer: "Der Körper braucht Nerven und Hormone für schnelle Impulse und längerfristige Abstimmung.", wrong: ["Nerven reichen für jede längerfristige Regulation.", "Hormone reichen für jede blitzschnelle Reaktion.", "Knochen ersetzen Nerven und Hormone vollständig."],
       explanation: "Für schnelle und längerfristige Abstimmung der Organe.",
       wissen: fw(
         "Schnelle Impulse und langsamere Hormonwirkungen ergänzen sich zur Regulation.",
@@ -310,7 +310,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:befruchtung",
       prompt: "Wann beginnt die Entwicklung eines neuen Menschen biologisch?",
-      answer: "Mit der Befruchtung (Verschmelzung von Ei- und Samenzelle).", wrong: ["Erst bei der Geburt.", "Erst in der Pubertät.", "Erst mit dem ersten Zahn."],
+      answer: "Gemeint ist die Mit der Befruchtung (Verschmelzung von Ei- und Samenzelle).", wrong: ["Erst bei der Geburt.", "Erst in der Pubertät.", "Erst mit dem ersten Zahn."],
       explanation: "Mit der Befruchtung (Verschmelzung von Ei- und Samenzelle).",
       wissen: fw(
         "Befruchtung: haploide Keimzellen bilden eine diploide Zygote — Start der vorgeburtlichen Entwicklung.",
@@ -321,7 +321,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:zygote",
       prompt: "Was entsteht direkt nach der Befruchtung?",
-      answer: "Eine Zygote (befruchtete Eizelle).", wrong: ["Ein fertiges Kind.", "Nur eine Hautzelle.", "Nur ein hormon ohne Zelle."],
+      answer: "Es entsteht eine Zygote (befruchtete Eizelle).", wrong: ["Es entsteht sofort ein fertiges Kind.", "Hautzelle dient nur der Schallübertragung in Luft.", "Ein hormon ohne Zelle."],
       explanation: "Eine Zygote (befruchtete Eizelle).",
       wissen: fw(
         "Die Zygote teilt sich und entwickelt sich zum Embryo.",
@@ -331,8 +331,8 @@ export const k8Schwangerschaft: BioBank = {
     },
     {
       concept: "bio:k8:schw:nidation",
-      prompt: "Was ist die Einnistung (Nidation)?",
-      answer: "Einbettung des Keims in die Gebärmutterschleimhaut.", wrong: ["Geburt des Kindes.", "Bildung der Spermien im Hoden.", "Ausfall der Menstruation ohne Ursache."],
+      prompt: "Was geschieht bei der Einnistung (Nidation)?",
+      answer: "Dabei geht es um die Einbettung des Keims in die Gebärmutterschleimhaut.", wrong: ["Die Geburt des Kindes.", "Die Bildung der Spermien im Hoden.", "Ausfall aller Reflexe wäre das vegetative Gleichgewicht."],
       explanation: "Einbettung des Keims in die Gebärmutterschleimhaut.",
       wissen: fw(
         "Ohne Einnistung kann keine Schwangerschaft fortgesetzt werden.",
@@ -343,7 +343,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:plazenta",
       prompt: "Welche Aufgabe hat die Plazenta?",
-      answer: "Stoffaustausch zwischen Mutter und Kind.", wrong: ["Nur Knochenbildung beim Vater.", "Nur Speichelproduktion.", "Nur Hautfarbe festlegen."],
+      answer: "Dort findet Stoffaustausch zwischen Mutter und Kind statt.", wrong: ["Die Plazenta bildet nur Knochen beim Vater.", "Die Plazenta produziert nur Speichel der Mutter.", "Die Plazenta legt nur die Hautfarbe des Kindes fest."],
       explanation: "Stoffaustausch zwischen Mutter und Kind.",
       wissen: fw(
         "Über die Plazenta gelangen Sauerstoff und Nährstoffe zum Kind; Abfallstoffe zurück.",
@@ -354,7 +354,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:embryo",
       prompt: "Wie nennt man das ungeborene Kind in frühen Wochen oft?",
-      answer: "Embryo.", wrong: ["Nur Fötus von Tag 1 an immer.", "Säugling.", "Jugendlicher."],
+      answer: "In dieser Phase spricht man vom Embryo.", wrong: ["Man spricht vom Fötus schon ab dem ersten Tag.", "Nach der Geburt spricht man vom Embryo.", "In der Pubertät spricht man vom Embryo."],
       explanation: "Embryo.",
       wissen: fw(
         "Früh: Embryo; später: Fötus — Bezeichnungen der Entwicklungsphasen.",
@@ -387,7 +387,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:geburt",
       prompt: "Was geschieht bei der Geburt?",
-      answer: "Es ist das Kind verlässt den Körper der Mutter durch die Geburtswege.", wrong: ["Es ist die Befruchtung findet statt.", "Es negative Rückkopplung verhindert Übersteuerung, typisch in Hormonsystemen.", "Es beschreibt TSH aus der Hypophyse regt die Schilddrüse zur Hormonbildung an."],
+      answer: "Man bezeichnet das als das Kind verlässt den Körper der Mutter durch die Geburtswege.", wrong: ["Die Befruchtung findet statt.", "Es negative Rückkopplung verhindert Übersteuerung, typisch in Hormonsystemen.", "Es beschreibt TSH aus der Hypophyse regt die Schilddrüse zur Hormonbildung an."],
       explanation: "Das Kind verlässt den Körper der Mutter durch die Geburtswege.",
       wissen: fw(
         "Geburt beendet die vorgeburtliche Phase; danach Individualentwicklung als Säugling.",
@@ -409,7 +409,7 @@ export const k8Schwangerschaft: BioBank = {
     {
       concept: "bio:k8:schw:dauer",
       prompt: "Wie lange dauert eine menschliche Schwangerschaft ungefähr?",
-      answer: "Etwa 40 Wochen (rund 9 Monate).", wrong: ["Genau 2 Wochen immer.", "Genau 2 Jahre immer.", "Nur 3 Tage."],
+      answer: "Die Schwangerschaft dauert etwa 40 Wochen (rund 9 Monate).", wrong: ["Eine Schwangerschaft dauert immer genau 2 Wochen.", "Schwangerschaft dauert immer genau 2 Jahre.", "Eine Schwangerschaft dauert nur 3 Tage."],
       explanation: "Etwa 40 Wochen (rund 9 Monate).",
       wissen: fw(
         "Die Tragzeit beträgt etwa 40 Wochen — Richtwert, individuell variabel.",
@@ -457,7 +457,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:was",
       prompt: "Was sind sexuell übertragbare Krankheiten (STI)?",
-      answer: "Infektionen, die Vor Allem durch Sexualkontakt Übertragen Werden.", wrong: ["Die Zygote teilt sich und entwickelt sich zum Embryo.", "Sie beschreibt nähe, Pflege und Zuwendung unterstützen die Entwicklung des Kindes.", "Das ungeborene Kind ist empfindlich — gesunde Lebensweise schützt."],
+      answer: "Infektionen, die Vor Allem durch Sexualkontakt Übertragen Werden.", wrong: ["Die Zygote teilt sich und entwickelt sich zum Embryo.", "Nähe, Pflege und Zuwendung unterstützen die Entwicklung des Kindes.", "Das ungeborene Kind ist empfindlich — gesunde Lebensweise schützt."],
       explanation: "Infektionen, die vor allem durch Sexualkontakt übertragen werden.",
       wissen: fw(
         "STI (sexually transmitted infections) werden typischerweise über Schleimhautkontakt beim Sex übertragen.",
@@ -479,7 +479,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:schutz",
       prompt: "Welcher Schutz mindert das Übertragungsrisiko vieler STI?",
-      answer: "Kondom (Barriere).", wrong: ["Nur Parfüm.", "Nur Zahnbürste teilen.", "Nur kaltes Duschen."],
+      answer: "Das Kondom wirkt als mechanische Barriere.", wrong: ["Parfüm wirkt als mechanische Barriere gegen STI.", "Das Teilen einer Zahnbürste wirkt als Barriere gegen STI.", "Kaltes Duschen wirkt als Barriere gegen STI."],
       explanation: "Kondom (Barriere).",
       wissen: fw(
         "Kondome reduzieren den Kontakt mit Körperflüssigkeiten und Schleimhaut — wichtiger Schutz.",
@@ -489,8 +489,8 @@ export const k8Sti: BioBank = {
     },
     {
       concept: "bio:k8:sti:hepatitis",
-      prompt: "Was ist Hepatitis B?",
-      answer: "Eine entzündliche Lebererkrankung, die auch sexuell übertragbar sein kann.", wrong: ["Nur eine Hautfarbe.", "Nur eine Zahnform.", "Nur eine Knochenkrankheit."],
+      prompt: "Woran erkennt man Hepatitis B als Erkrankung?",
+      answer: "Hepatitis B ist eine entzündliche Lebererkrankung, die auch sexuell übertragbar sein kann.", wrong: ["Hepatitis B ist nur eine Hautfarbe.", "Hepatitis B ist nur eine Zahnform.", "Hepatitis B ist nur eine Knochenkrankheit."],
       explanation: "Eine entzündliche Lebererkrankung, die auch sexuell übertragbar sein kann.",
       wissen: fw(
         "Hepatitis B betrifft die Leber; Impfung und Schutzmaßnahmen sind wichtig.",
@@ -500,8 +500,8 @@ export const k8Sti: BioBank = {
     },
     {
       concept: "bio:k8:sti:gonorrhoe",
-      prompt: "Was ist Gonorrhöe (Tripper)?",
-      answer: "Eine bakterielle STI.", wrong: ["Eine Virusgrippe der Lunge allein.", "Ein Knochenbruch.", "Eine reine Allergie."],
+      prompt: "Woran erkennt man Gonorrhöe (Tripper)?",
+      answer: "Es ist eine bakterielle sexuell übertragbare Infektion.", wrong: ["Eine Virusgrippe der Lunge allein.", "Knochenbruch ist ein rein geologischer Vorgang ohne Zellbezug.", "Eine reine Allergie."],
       explanation: "Eine bakterielle STI.",
       wissen: fw(
         "Gonorrhöe wird durch Bakterien verursacht und gehört zu den klassischen STI.",
@@ -511,8 +511,8 @@ export const k8Sti: BioBank = {
     },
     {
       concept: "bio:k8:sti:syphilis",
-      prompt: "Was ist Syphilis?",
-      answer: "Eine bakterielle STI mit möglichen schweren Spätfolgen.", wrong: ["Nur eine Erkältung.", "Nur eine Zahnfehlstellung.", "Nur eine Augenfarbe."],
+      prompt: "Woran erkennt man Syphilis als STI?",
+      answer: "Syphilis bezeichnet eine bakterielle STI mit möglichen schweren Spätfolgen.", wrong: ["Eine Erkältung ist ein rein geologischer Vorgang ohne Zellbezug.", "Zahnfehlstellung ersetzt DNA durch reine Zellulose.", "Eine Augenfarbe ist ein rein geologischer Vorgang ohne Zellbezug."],
       explanation: "Eine bakterielle STI mit möglichen schweren Spätfolgen.",
       wissen: fw(
         "Unbehandelt kann Syphilis schwere Organschäden verursachen — frühe Behandlung ist wichtig.",
@@ -523,7 +523,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:pilz",
       prompt: "Können auch Pilze sexuell übertragen werden?",
-      answer: "Ja, z. B. bestimmte Hefepilz-Infektionen.", wrong: ["Nein, nie.", "Nur Viren existieren.", "Nur Knochenpilze."],
+      answer: "Ja, auch bestimmte Hefepilz-Infektionen können sexuell übertragen werden.", wrong: ["Nein, sexuell übertragbare Erkrankungen gibt es nie durch Pilze.", "Bei STI kommen nur Viren vor, nie Pilze.", "Sexuell übertragen werden nur Knochenpilze."],
       explanation: "Ja, z. B. bestimmte Hefepilz-Infektionen.",
       wissen: fw(
         "Manche Pilzinfektionen können im Genitalbereich auftreten und übertragen werden.",
@@ -534,7 +534,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:testen",
       prompt: "Warum sind Tests und ärztliche Beratung wichtig?",
-      answer: "Viele STI verlaufen anfangs unauffällig, sind aber behandelbar.", wrong: ["Die Zygote teilt sich und entwickelt sich zum Embryo.", "Sie beschreibt nähe, Pflege und Zuwendung unterstützen die Entwicklung des Kindes.", "Das ungeborene Kind ist empfindlich — gesunde Lebensweise schützt."],
+      answer: "Viele STI verlaufen anfangs unauffällig, sind aber behandelbar.", wrong: ["Die Zygote teilt sich und entwickelt sich zum Embryo.", "Nähe, Pflege und Zuwendung unterstützen die Entwicklung des Kindes.", "Das ungeborene Kind ist empfindlich — gesunde Lebensweise schützt."],
       explanation: "Viele STI verlaufen anfangs unauffällig, sind aber behandelbar.",
       wissen: fw(
         "Frühe Diagnose schützt die eigene Gesundheit und Partnerinnen/Partner.",
@@ -545,7 +545,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:respekt",
       prompt: "Was gehört zu verantwortlichem Sexualverhalten?",
-      answer: "Konsens, Schutz und offene Kommunikation.", wrong: ["Druck und Geheimhaltung von Risiken.", "Ignorieren aller Symptome.", "Verzicht auf jede Information."],
+      answer: "Wichtig sind Konsens, Schutz und offene Kommunikation.", wrong: ["Druck und Geheimhaltung von Risiken.", "Ignorieren aller Symptome.", "Verzicht auf jede Information."],
       explanation: "Konsens, Schutz und offene Kommunikation.",
       wissen: fw(
         "Einverständnis, Schutzmittel und ehrliche Information schützen alle Beteiligten.",
@@ -556,7 +556,7 @@ export const k8Sti: BioBank = {
     {
       concept: "bio:k8:sti:impfung",
       prompt: "Welche STI lässt sich u. a. durch Impfung vorbeugen?",
-      answer: "Hepatitis B (und HPV gegen bestimmte Viren).", wrong: ["Alle bakteriellen STI gleichzeitig mit einer Impfung.", "Nur Knochenbrüche.", "Nur Erkältung durch Zugluft."],
+      answer: "Gegen Hepatitis B und HPV gibt es Impfungen gegen bestimmte Viren.", wrong: ["Eine Impfung schützt gleichzeitig vor allen bakteriellen STI.", "Eine Impfung schützt vor Knochenbrüchen.", "Eine Impfung schützt vor Erkältung durch Zugluft."],
       explanation: "Hepatitis B (und HPV gegen bestimmte Viren).",
       wissen: fw(
         "Gegen Hepatitis B und bestimmte HPV-Typen gibt es Impfungen — nicht gegen alle STI.",
@@ -603,8 +603,8 @@ export const k9Organisation: BioBank = {
   facts: [
     {
       concept: "bio:k9:org:zelle",
-      prompt: "Was ist die kleinste selbstständige Einheit des Lebendigen?",
-      answer: "Die Zelle.", wrong: ["Das Organ allein ohne Zellen.", "Nur das Gewebe ohne Zellen.", "Nur der Organismus ohne Zellen."],
+      prompt: "Was gilt als kleinste selbstständige Einheit des Lebendigen?",
+      answer: "Die Zelle ist die grundlegende Einheit des Lebens.", wrong: ["Das Organ allein ohne Zellen.", "Gewebe ohne Zellen.", "Der Organismus ohne Zellen."],
       explanation: "Die Zelle.",
       wissen: fw(
         "Zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.",
@@ -614,8 +614,8 @@ export const k9Organisation: BioBank = {
     },
     {
       concept: "bio:k9:org:gewebe",
-      prompt: "Was ist ein Gewebe?",
-      answer: "Verband gleichartiger Zellen mit gemeinsamer Funktion.", wrong: ["Ein einzelner Zellkern allein.", "Nur ein Hormon.", "Nur ein knochen ohne Zellen."],
+      prompt: "Woraus besteht ein Gewebe?",
+      answer: "Es ist verband gleichartiger Zellen mit gemeinsamer Funktion.", wrong: ["Ein einzelner Zellkern allein.", "Hormon bildet das gesamte Erbgut aus Glucose.", "Ein knochen ohne Zellen."],
       explanation: "Verband gleichartiger Zellen mit gemeinsamer Funktion.",
       wissen: fw(
         "Viele ähnliche Zellen bilden z. B. Abschlussgewebe oder Leitgewebe.",
@@ -625,8 +625,8 @@ export const k9Organisation: BioBank = {
     },
     {
       concept: "bio:k9:org:organ",
-      prompt: "Was ist ein Organ?",
-      answer: "Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).", wrong: ["Nur eine einzelne Molekülart.", "Nur ein Atom.", "Nur ein hormon ohne Struktur."],
+      prompt: "Woraus besteht ein Organ?",
+      answer: "Dabei geht es um die Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).", wrong: ["Eine einzelne Molekülart.", "Atom bildet das gesamte Erbgut aus Glucose.", "Ein hormon ohne Struktur."],
       explanation: "Einheit aus Geweben mit bestimmter Funktion (z. B. Blatt, Wurzel).",
       wissen: fw(
         "Organe wie Blatt oder Wurzel bestehen aus mehreren Geweben.",
@@ -636,8 +636,8 @@ export const k9Organisation: BioBank = {
     },
     {
       concept: "bio:k9:org:system",
-      prompt: "Was ist ein Organsystem?",
-      answer: "Zusammenarbeit mehrerer Organe (z. B. Leitungsbahnen).", wrong: ["Nur eine Zelle.", "Nur ein Chloroplast.", "Nur ein Samenkorn ohne Pflanze."],
+      prompt: "Woraus besteht ein Organsystem?",
+      answer: "Es ist die Zusammenarbeit mehrerer Organe (z. B. Leitungsbahnen).", wrong: ["Es ist nur eine einzelne Zelle ohne Organbezug.", "Es ist nur der Chloroplast allein.", "Es ist nur ein Samenkorn ohne Pflanze."],
       explanation: "Zusammenarbeit mehrerer Organe (z. B. Leitungsbahnen).",
       wissen: fw(
         "Organsysteme verknüpfen Organe zu Funktionskreisen.",
@@ -647,8 +647,8 @@ export const k9Organisation: BioBank = {
     },
     {
       concept: "bio:k9:org:organismus",
-      prompt: "Was ist der Organismus?",
-      answer: "Das ganze Lebewesen als Einheit.", wrong: ["Nur eine einzelne Spaltöffnung.", "Nur ein molekül CO₂.", "Nur ein Stein."],
+      prompt: "Was bildet den Organismus als Einheit?",
+      answer: "Der Organismus ist das ganze Lebewesen als zusammengehörige Einheit.", wrong: ["Der Organismus ist nur eine einzelne Spaltöffnung.", "Der Organismus ist nur ein CO₂-Molekül.", "Der Organismus ist nur ein Stein."],
       explanation: "Das ganze Lebewesen als Einheit.",
       wissen: fw(
         "Der Organismus umfasst alle Organisationsstufen bis zum ganzen Wesen.",
@@ -659,7 +659,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:reihe",
       prompt: "Welche Reihenfolge der Organisationsstufen ist richtig?",
-      answer: "Zelle → Gewebe → Organ → Organsystem → Organismus.", wrong: ["Organismus → Atom → Stern → Zelle.", "Gewebe → Atom → Planet.", "Organ → Molekül → Sonne."],
+      answer: "Die Stufenfolge lautet Zelle → Gewebe → Organ → Organsystem → Organismus.", wrong: ["Organismus → Atom → Stern → Zelle.", "Gewebe → Atom → Planet.", "Organ → Molekül → Sonne."],
       explanation: "Zelle → Gewebe → Organ → Organsystem → Organismus.",
       wissen: fw(
         "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.",
@@ -670,7 +670,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:pflanze",
       prompt: "Beispiel Organ bei Samenpflanzen?",
-      answer: "Blatt, Wurzel oder Sprossachse.", wrong: ["Nur ein einzelnes Wassermolekül.", "Nur Stickstoff in der Luft.", "Nur ein stein im Boden."],
+      answer: "Ein Pflanzenorgan ist zum Beispiel Blatt, Wurzel oder Sprossachse.", wrong: ["Ein Organ ist nur ein einzelnes Wassermolekül.", "Ein Organ ist nur Stickstoff in der Luft.", "Ein Organ ist nur ein Stein im Boden."],
       explanation: "Blatt, Wurzel oder Sprossachse.",
       wissen: fw(
         "Blatt, Wurzel und Spross sind Organe der Samenpflanze.",
@@ -681,7 +681,7 @@ export const k9Organisation: BioBank = {
     {
       concept: "bio:k9:org:leit",
       prompt: "Beispiel Organsystem bei Pflanzen?",
-      answer: "Leitungssystem aus Xylem und Phloem.", wrong: ["Nur eine Cuticula-Schuppe.", "Nur ein Sandkorn.", "Nur ein Insekt."],
+      answer: "Ein Leitbündel ist ein Leitungssystem aus Xylem und Phloem.", wrong: ["Ein Leitbündel besteht nur aus einer Cuticula-Schuppe.", "Ein Leitbündel besteht nur aus einem Sandkorn.", "Ein Leitbündel besteht nur aus einem Insekt."],
       explanation: "Leitungssystem aus Xylem und Phloem.",
       wissen: fw(
         "Leitgewebe verbinden Organe zum Stofftransport.",
@@ -702,8 +702,8 @@ export const k9Organisation: BioBank = {
     },
     {
       concept: "bio:k9:org:eben",
-      prompt: "Was kennzeichnet „Ebene“?",
-      answer: "Betrachtung auf unterschiedlichen Organisationsstufen.", wrong: ["Nur die Höhe eines Berges.", "Nur die Farbe der Blüte.", "Nur die Uhrzeit."],
+      prompt: "Warum wechselt man die Betrachtungsebene in der Biologie?",
+      answer: "Biologie betrachtet Lebewesen auf unterschiedlichen Organisationsstufen.", wrong: ["Die Höhe eines Berges.", "Farbe der Blüte.", "Die Uhrzeit."],
       explanation: "Betrachtung auf unterschiedlichen Organisationsstufen.",
       wissen: fw(
         "Ebene: vom Zellulären bis zum Organismus — verschiedene Betrachtungsebenen.",
@@ -750,8 +750,8 @@ export const k9Bestimmung: BioBank = {
   facts: [
     {
       concept: "bio:k9:best:dichotom",
-      prompt: "Was ist ein dichotomer Bestimmungsschlüssel?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      prompt: "Wie arbeitet ein dichotomer Bestimmungsschlüssel?",
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Weg mit jeweils zwei Alternativen zum Bestimmen.",
       wissen: fw(
         "Dichotom: an jedem Schritt zwei gegensätzliche Merkmale — bis zur Art/Familie.",
@@ -762,7 +762,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:merkmale",
       prompt: "Worauf achten Bestimmungsschlüssel bei Pflanzen oft?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Blütenmerkmale, Blattstellung, Früchte u. a.",
       wissen: fw(
         "Morphologische Merkmale führen systematisch zur Bestimmung.",
@@ -772,8 +772,8 @@ export const k9Bestimmung: BioBank = {
     },
     {
       concept: "bio:k9:best:herbar",
-      prompt: "Was kennzeichnet „Herbarisieren“\?",
-      answer: "Getrocknete Pflanzenbelege sammeln und dokumentieren.", wrong: ["Nur Fotosynthese messen.", "Nur Tiere fangen.", "Nur Wasser kochen."],
+      prompt: "Wozu herbariisiert man Pflanzen?",
+      answer: "Im Herbarium sammelt und dokumentiert man getrocknete Pflanzenbelege.", wrong: ["Fotosynthese messen dient nur der Schallübertragung in Luft.", "Tiere fangen ersetzt die Fotosynthese in den Blattzellen.", "Wasser kochen ersetzt die Fotosynthese in den Blattzellen."],
       explanation: "Getrocknete Pflanzenbelege sammeln und dokumentieren.",
       wissen: fw(
         "Herbarien sind Sammlungen getrockneter, beschrifteter Pflanzen.",
@@ -784,7 +784,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:familie",
       prompt: "Warum sind Pflanzenfamilien hilfreich?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Ähnliche Blütenmerkmale erleichtern das Einordnen.",
       wissen: fw(
         "Verwandte Arten teilen typische Merkmale — z. B. Kreuzblütler.",
@@ -806,7 +806,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:weg",
       prompt: "Was soll man beim Bestimmen angeben können?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Den Bestimmungsweg (getroffene Entscheidungen).",
       wissen: fw(
         "Nachvollziehbarkeit: welche Merkmalsentscheidungen führten zum Ergebnis.",
@@ -817,7 +817,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:digital",
       prompt: "Dürfen digitale Medien/Apps helfen?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Ja, zusätzlich zu Merkmalskenntnis und kritischer Prüfung.",
       wissen: fw(
         "Apps unterstützen, ersetzen aber nicht sorgfältiges Betrachten und Prüfen.",
@@ -828,7 +828,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:vielfalt",
       prompt: "Welches Erschließungsfeld steckt hinter Bestimmen?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Vielfalt (Arten- und Formenkenntnis).",
       wissen: fw(
         "Bestimmen schult den Blick für biologische Vielfalt.",
@@ -839,7 +839,7 @@ export const k9Bestimmung: BioBank = {
     {
       concept: "bio:k9:best:mikro",
       prompt: "Welche Arbeitstechnik kommt parallel oft dazu?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Mikroskopisches Zeichnen.",
       wissen: fw(
         "Mikroskopieren und Zeichnen erschließen den zellulären Bau.",
@@ -849,8 +849,8 @@ export const k9Bestimmung: BioBank = {
     },
     {
       concept: "bio:k9:best:arten",
-      prompt: "Was ist das Ziel der Artenkenntnis?",
-      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Die Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Sie beschreibt viele ähnliche Zellen bilden z."],
+      prompt: "Wozu dient Artenkenntnis im Unterricht?",
+      answer: "Sie zellen sind die Grundbausteine; Gewebe und Organe bestehen aus Zellen.", wrong: ["Es beschreibt leitgewebe verbinden Organe zum Stofftransport.", "Stufen bauen aufeinander auf — von Zelle zum Organismus.", "Viele ähnliche Zellen bilden z."],
       explanation: "Pflanzen sicher erkennen und benennen können.",
       wissen: fw(
         "Artenkenntnis verbindet Beobachtung, Merkmale und Namen.",
@@ -898,7 +898,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:bau",
       prompt: "Welche Teile gehören zum makroskopischen Bau einer Blüte?",
-      answer: "Kelch, Krone, Staubblätter, Fruchtblätter.", wrong: ["Nur Wurzeln und Xylem.", "Nur Mitochondrien.", "Nur Knochen."],
+      answer: "Es geht um Zum makroskopischen Bau gehören Kelch, Krone, Staubblätter und Fruchtblätter.", wrong: ["Es geht um Zum Blütenbau gehören nur Wurzeln und Xylem.", "Es geht um Zum Blütenbau gehören nur Mitochondrien.", "Es geht um Zum Blütenbau gehören nur Knochen."],
       explanation: "Kelch, Krone, Staubblätter, Fruchtblätter.",
       wissen: fw(
         "Typische Blüte: Blütenhülle plus männliche und weibliche Fortpflanzungsorgane.",
@@ -909,7 +909,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:staub",
       prompt: "Was erzeugen die Staubblätter?",
-      answer: "Pollen (Blütenstaub).", wrong: ["Nur Nektar ohne Pollen.", "Nur Holz.", "Nur Chlorophyll im Stamm."],
+      answer: "Die Staubblätter erzeugen Pollen, also Blütenstaub mit männlichen Keimzellen.", wrong: ["Staubblätter erzeugen nur Nektar ohne Pollen.", "Staubblätter bilden nur Holz im Stamm.", "Staubblätter produzieren nur Chlorophyll im Stamm."],
       explanation: "Pollen (Blütenstaub).",
       wissen: fw(
         "In den Staubbeuteln entsteht Pollen mit den männlichen Keimzellen.",
@@ -920,7 +920,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:fruchtblatt",
       prompt: "Was enthält das Fruchtblatt typischerweise?",
-      answer: "Samenanlagen (später Samen).", wrong: ["Nur Spaltöffnungen.", "Nur Wurzelhaare.", "Nur Kiemen."],
+      answer: "Dort liegen die Samenanlagen, aus denen später Samen werden.", wrong: ["Im Fruchtblatt liegen nur Spaltöffnungen der Blätter.", "Im Fruchtblatt wachsen nur Wurzelhaare.", "Im Fruchtblatt sitzen nur Kiemen wie bei Fischen."],
       explanation: "Samenanlagen (später Samen).",
       wissen: fw(
         "Aus bestäubten/befruchteten Samenanlagen werden Samen; Fruchtblatt wird zur Frucht.",
@@ -930,8 +930,8 @@ export const k9Bluete: BioBank = {
     },
     {
       concept: "bio:k9:blu:bestaeubung",
-      prompt: "Was ist Bestäubung?",
-      answer: "Übertragung von Pollen auf die Narbe.", wrong: ["Verschmelzung der Keimzellen.", "Wasseraufnahme der Wurzel.", "Öffnen der Spaltöffnungen."],
+      prompt: "Was geschieht bei der Bestäubung?",
+      answer: "Bei der Bestäubung wird Pollen auf die Narbe einer Blüte übertragen.", wrong: ["Bestäubung ist die Verschmelzung der Keimzellen in der Narbe.", "Bestäubung ist die Wasseraufnahme der Wurzel.", "Bestäubung ist nur das Öffnen der Spaltöffnungen."],
       explanation: "Übertragung von Pollen auf die Narbe.",
       wissen: fw(
         "Bestäubung ≠ Befruchtung: zuerst Pollenübertragung, dann Keimung/Befruchtung.",
@@ -941,8 +941,8 @@ export const k9Bluete: BioBank = {
     },
     {
       concept: "bio:k9:blu:befruchtung",
-      prompt: "Was ist Befruchtung bei Blütenpflanzen?",
-      answer: "Verschmelzung männlicher und weiblicher Keimzellen.", wrong: ["Nur Wind ohne Pollen.", "Nur Transpiration.", "Nur Zellatmung."],
+      prompt: "Was geschieht bei der Befruchtung von Blütenpflanzen?",
+      answer: "Befruchtung ist die Verschmelzung männlicher und weiblicher Keimzellen.", wrong: ["Befruchtung ist nur Wind ohne Pollen.", "Befruchtung ist nur Transpiration der Blätter.", "Befruchtung ist nur Zellatmung in Mitochondrien."],
       explanation: "Verschmelzung männlicher und weiblicher Keimzellen.",
       wissen: fw(
         "Nach der Bestäubung wächst der Pollenschlauch; Keimzellen verschmelzen.",
@@ -953,7 +953,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:frucht",
       prompt: "Was entsteht nach der Befruchtung aus dem Fruchtknoten oft?",
-      answer: "Eine Frucht mit Samen.", wrong: ["Nur ein blatt ohne Samen.", "Nur ein Stein.", "Nur ein Insekt."],
+      answer: "Nach der Befruchtung entsteht oft eine Frucht mit Samen.", wrong: ["Es entsteht nur ein Blatt ohne Samen.", "Es entsteht nur ein Stein.", "Es entsteht nur ein Insekt."],
       explanation: "Eine Frucht mit Samen.",
       wissen: fw(
         "Fruchtbildung schützt und verbreitet die Samen.",
@@ -964,7 +964,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:verbreitung",
       prompt: "Wozu dient Samenverbreitung?",
-      answer: "Neue Standorte besiedeln, Konkurrenz am Mutterort mindern.", wrong: ["Nur Fotosynthese steigern.", "Nur Osmose in der Wurzel.", "Nur DNA reparieren."],
+      answer: "Ausbreitung hilft, neue Standorte zu besiedeln und Konkurrenz am Mutterort zu mindern.", wrong: ["Fotosynthese steigern.", "Osmose in der Wurzel.", "DNA reparieren kommt nur in abgestorbenem Gewebe vor."],
       explanation: "Neue Standorte besiedeln, Konkurrenz am Mutterort mindern.",
       wissen: fw(
         "Wind, Tiere, Wasser oder Selbstausbreitung transportieren Samen.",
@@ -975,7 +975,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:insekt",
       prompt: "Wie hängen Insekten und Blüten oft zusammen?",
-      answer: "Insekten bestäuben; Blüten bieten Nektar/Pollen.", wrong: ["Insekten ersetzen Wurzeln.", "Blüten verdauen Insekten immer.", "Kein Zusammenhang."],
+      answer: "Insekten bestäuben; Blüten bieten Nektar/Pollen.", wrong: ["Insekten ersetzen Wurzeln.", "Blüten verdauen Insekten immer.", "Kein Zusammenhang kommt nur in abgestorbenem Gewebe vor."],
       explanation: "Insekten bestäuben; Blüten bieten Nektar/Pollen.",
       wissen: fw(
         "Koevolution: Farbe, Duft und Form locken Bestäuber.",
@@ -985,8 +985,8 @@ export const k9Bluete: BioBank = {
     },
     {
       concept: "bio:k9:blu:geschlecht",
-      prompt: "Was meint Geschlechtsverhältnisse bei Blüten?",
-      answer: "Verteilung männlicher/weiblicher Organe (zwittrig, einhäusig, zweihäusig).", wrong: ["Nur die Blattfarbe.", "Nur die Wurzelänge.", "Nur den pH des Bodens."],
+      prompt: "Worauf achten Geschlechtsverhältnisse bei Blüten?",
+      answer: "Die Sexualverteilung beschreibt zwittrige, einhäusige oder zweihäusige Organisationsformen.", wrong: ["Die Blattfarbe.", "Wurzelänge kommt nur in abgestorbenem Gewebe vor.", "Den pH des Bodens."],
       explanation: "Verteilung männlicher/weiblicher Organe (zwittrig, einhäusig, zweihäusig).",
       wissen: fw(
         "Familien unterscheiden sich in Blütenmerkmalen und Geschlechtsverteilung.",
@@ -997,7 +997,7 @@ export const k9Bluete: BioBank = {
     {
       concept: "bio:k9:blu:familie",
       prompt: "Warum helfen Blütenmerkmale bei Pflanzenfamilien?",
-      answer: "Verwandte teilen typische Blütenbaupläne.", wrong: ["Familien haben keine Blüten.", "Merkmale sind zufällig nutzlos.", "Nur die Wurzel zählt."],
+      answer: "Verwandte teilen typische Blütenbaupläne.", wrong: ["Familien haben keine Blüten.", "Merkmale sind zufällig nutzlos.", "Die Wurzel zählt."],
       explanation: "Verwandte teilen typische Blütenbaupläne.",
       wissen: fw(
         "Kreuzblütler, Schmetterlingsblütler usw. haben charakteristische Blüten.",
@@ -1045,7 +1045,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:chloro",
       prompt: "Wozu dienen Chloroplasten?",
-      answer: "Ort der Fotosynthese.", wrong: ["Ort der Zellatmung allein.", "Nur Proteinabbau im Magen.", "Nur Wasserleitung im Xylem."],
+      answer: "In Chloroplasten findet die Fotosynthese statt.", wrong: ["Chloroplasten sind nur der Ort der Zellatmung.", "Chloroplasten bauen nur Proteine im Magen.", "Chloroplasten leiten nur Wasser im Xylem."],
       explanation: "Ort der Fotosynthese.",
       wissen: fw(
         "Chloroplasten enthalten Chlorophyll und betreiben Fotosynthese.",
@@ -1056,7 +1056,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:mito",
       prompt: "Wozu dienen Mitochondrien?",
-      answer: "Ort der Zellatmung (Energiegewinnung).", wrong: ["Ort der Fotosynthese allein.", "Nur Speichern von Stärke in der Wurzelhaut.", "Nur Bildung von Cuticula."],
+      answer: "Dort findet die Zellatmung zur Energiegewinnung statt.", wrong: ["Ort der Fotosynthese allein.", "Speichern von Stärke in der Wurzelhaut.", "Bildung von Cuticula."],
       explanation: "Ort der Zellatmung (Energiegewinnung).",
       wissen: fw(
         "Mitochondrien gewinnen ATP aus der Oxidation organischer Stoffe.",
@@ -1067,7 +1067,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:doppel",
       prompt: "Was haben Chloroplasten und Mitochondrien gemeinsam?",
-      answer: "Eine Doppelmembran.", wrong: ["Keine Membran.", "Nur eine zellwand aus Holz.", "Nur Kiemen."],
+      answer: "Chloroplasten und Mitochondrien besitzen eine Doppelmembran.", wrong: ["Sie besitzen überhaupt keine Membran.", "Sie besitzen nur eine Zellwand aus Holz.", "Sie besitzen nur Kiemen wie bei Fischen."],
       explanation: "Eine Doppelmembran.",
       wissen: fw(
         "Beide sind von zwei Membranen umgeben — typisch für diese Organellen.",
@@ -1078,8 +1078,8 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:chloro-bau",
       prompt: "Was enthält ein chloroplast typischerweise?",
-      answer: "Thylakoide/Membranstapeln mit Chlorophyll.", wrong: ["Nur Knochen.", "Nur Nervenzellen.", "Nur Hämoglobin."],
-      explanation: "Thylakoide/Membranstapeln mit Chlorophyll.",
+      answer: "Er enthält Thylakoide und Membranstapel mit Chlorophyll für die Fotosynthese.", wrong: ["Ein Chloroplast enthält nur Knochen.", "Ein Chloroplast enthält nur Nervenzellen.", "Ein Chloroplast enthält nur Hämoglobin."],
+      explanation: "Thylakoide/Membranstapeln mit Chlorophyll fängt Licht für die Fotosynthese und repliziert keine DNA.",
       wissen: fw(
         "Innere Membransysteme tragen die lichtabhängigen Reaktionen.",
       ),
@@ -1089,7 +1089,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:mito-bau",
       prompt: "Was vergrößert die innere Oberfläche im Mitochondrium?",
-      answer: "Christae (Einfaltungen der Innenmembran).", wrong: ["Spaltöffnungen.", "Wurzelhaare.", "Federn."],
+      answer: "Christae sind Einfaltungen der inneren Membran und vergrößern die Oberfläche.", wrong: ["Spaltöffnungen sind Einfaltungen der Mitochondrienmembran.", "Wurzelhaare sind Einfaltungen der Mitochondrienmembran.", "Federn sind Einfaltungen der Mitochondrienmembran."],
       explanation: "Christae (Einfaltungen der Innenmembran).",
       wissen: fw(
         "Christae vergrößern die Fläche für Atmungsketten-Enzyme.",
@@ -1100,7 +1100,7 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:energie",
       prompt: "Welche Organelle liefert den meisten ATP in der Zelle?",
-      answer: "Mitochondrium.", wrong: ["Nur die Vakuole allein.", "Nur der Zellsaft ohne Enzyme.", "Nur die Zellwand."],
+      answer: "In den Mitochondrien wird bei der Zellatmung der meiste ATP geliefert.", wrong: ["Die Vakuole allein liefert den meisten ATP der Zelle.", "Der Zellsaft ohne Enzyme liefert den meisten ATP.", "Die Zellwand liefert den meisten ATP der Zelle."],
       explanation: "Mitochondrium.",
       wissen: fw(
         "Zellatmung in Mitochondrien ist zentral für die Energieversorgung.",
@@ -1133,8 +1133,8 @@ export const k9Organellen: BioBank = {
     {
       concept: "bio:k9:orgell:nachweis",
       prompt: "Welches Pigment macht Chloroplasten grün?",
-      answer: "Chlorophyll.", wrong: ["Hämoglobin.", "Melanin der Haut allein.", "Keratin."],
-      explanation: "Chlorophyll.",
+      answer: "An der Lichtabsorption der Fotosynthese ist vor allem Chlorophyll beteiligt.", wrong: ["Dort ist vor allem Hämoglobin beteiligt.", "Dort ist nur Melanin der Haut beteiligt.", "Dort ist nur Keratin beteiligt."],
+      explanation: "Chlorophyll fängt Licht für die Fotosynthese und repliziert keine DNA.",
       wissen: fw(
         "Chlorophyll absorbiert Licht für die Fotosynthese.",
       ),
@@ -1143,8 +1143,8 @@ export const k9Organellen: BioBank = {
     },
     {
       concept: "bio:k9:orgell:endomembr",
-      prompt: "Was bedeutet „Endosymbionten“?",
-      answer: "Hinweis auf endosymbiontischen Ursprung.", wrong: ["Beweis für fehlende DNA.", "Beweis gegen Membranen.", "Nur Zufall ohne Struktur."],
+      prompt: "Worauf deuten Endosymbionten hin?",
+      answer: "Sie deuten auf einen endosymbiontischen Ursprung von Organellen hin.", wrong: ["Sie beweisen fehlende DNA in Organellen.", "Sie widerlegen Membranen als Strukturmerkmal.", "Sie erklären Organellen als bloßen Zufall ohne Struktur."],
       explanation: "Hinweis auf endosymbiontischen Ursprung.",
       wissen: fw(
         "Endosymbiontentheorie: Vorfahren waren einst eigenständige Organismen.",
@@ -1191,8 +1191,8 @@ export const k9Zellatmung: BioBank = {
   facts: [
     {
       concept: "bio:k9:zellat:was",
-      prompt: "Was ist Zellatmung?",
-      answer: "Dissimilation: Abbau organischer Stoffe unter Energiegewinnung.", wrong: ["Nur Fotosynthese.", "Nur Wasseraufnahme.", "Nur Bestäubung."],
+      prompt: "Was leistet die Zellatmung energetisch?",
+      answer: "Gemeint ist dissimilation: Abbau organischer Stoffe unter Energiegewinnung.", wrong: ["Fotosynthese findet nur außerhalb lebender Zellen statt.", "Wasseraufnahme ist mit Osmose in der Wurzelhaut identisch.", "Bestäubung betrifft allein die Planetenbewegung."],
       explanation: "Dissimilation: Abbau organischer Stoffe unter Energiegewinnung.",
       wissen: fw(
         "Zellatmung setzt aus Glucose und O₂ Energie frei und bildet CO₂ und H₂O.",
@@ -1203,8 +1203,8 @@ export const k9Zellatmung: BioBank = {
     {
       concept: "bio:k9:zellat:gleichung",
       prompt: "Wie lautet die Bruttogleichung der Zellatmung vereinfacht?",
-      answer: "Glucose + O₂ → CO₂ + H₂O + Energie.", wrong: ["CO₂ + H₂O → Glucose + O₂.", "Nur N₂ → O₂.", "Nur H₂O → H₂."],
-      explanation: "Glucose + O₂ → CO₂ + H₂O + Energie.",
+      answer: "Bei der Zellatmung wird Glucose mit O₂ zu CO₂, H₂O und nutzbarer Energie umgesetzt.", wrong: ["CO₂ + H₂O → Glucose + O₂.", "N₂ → O₂.", "H₂O → H₂."],
+      explanation: "Bei der Zellatmung wird Glucose mit O₂ zu CO₂, H₂O und nutzbarer Energie umgesetzt.",
       wissen: fw(
         "Gegensatz zur Fotosynthese-Bruttogleichung.",
       ),
@@ -1213,8 +1213,8 @@ export const k9Zellatmung: BioBank = {
     },
     {
       concept: "bio:k9:zellat:energie",
-      prompt: "Was bedeutet „ATP“?",
-      answer: "Für Lebensfunktionen (ATP).", wrong: ["Nur zum Färben der Blätter.", "Nur zum Bilden von Steinen.", "Nur zum Löschen von Licht."],
+      prompt: "Wozu dient ATP in der Zelle?",
+      answer: "ATP dient als Energiewährung für nahezu alle Lebensfunktionen der Zelle.", wrong: ["Es geht um Zum Färben der Blätter.", "Zum Bilden von Steinen.", "Es geht um Zum Löschen von Licht."],
       explanation: "Für Lebensfunktionen (ATP).",
       wissen: fw(
         "ATP treibt aktive Transporte, Bewegung, Synthesen.",
@@ -1225,8 +1225,8 @@ export const k9Zellatmung: BioBank = {
     {
       concept: "bio:k9:zellat:bedingungen",
       prompt: "Welche Bedingungen braucht aerobe Zellatmung?",
-      answer: "Organische Stoffe und Sauerstoff.", wrong: ["Nur Dunkelheit und Stickstoff.", "Nur Vakuum ohne Substrate.", "Nur Licht ohne Enzyme."],
-      explanation: "Organische Stoffe und Sauerstoff.",
+      answer: "Fotosynthese liefert organische Stoffe und Sauerstoff als Produkte.", wrong: ["Dunkelheit und Stickstoff.", "Vakuum ohne Substrate.", "Licht ohne Enzyme."],
+      explanation: "Fotosynthese liefert organische Stoffe und Sauerstoff als Produkte.",
       wissen: fw(
         "Ohne O₂ greifen viele Zellen auf Gärung zurück — weniger effizient.",
       ),
@@ -1236,7 +1236,7 @@ export const k9Zellatmung: BioBank = {
     {
       concept: "bio:k9:zellat:ort",
       prompt: "Wo findet die oxidative Zellatmung vor allem statt?",
-      answer: "In den Mitochondrien.", wrong: ["Nur in Chloroplasten allein.", "Nur in der Zellwand.", "Nur im Xylem-Rohr."],
+      answer: "Die Zellatmung läuft vor allem in den Mitochondrien.", wrong: ["Die Zellatmung läuft nur in Chloroplasten.", "Die Zellatmung läuft nur in der Zellwand.", "Die Zellatmung läuft nur im Xylem-Rohr."],
       explanation: "In den Mitochondrien.",
       wissen: fw(
         "Glykolyse im Cytoplasma, Reste in Mitochondrien.",
@@ -1247,7 +1247,7 @@ export const k9Zellatmung: BioBank = {
     {
       concept: "bio:k9:zellat:co2",
       prompt: "Welches Gas wird bei der Zellatmung abgegeben?",
-      answer: "Kohlenstoffdioxid (CO₂).", wrong: ["Nur Sauerstoff.", "Nur Stickstoff als Nährstoff.", "Nur Ozon."],
+      answer: "Bei der Zellatmung entsteht unter anderem Kohlenstoffdioxid (CO₂).", wrong: ["Bei der Zellatmung entsteht nur Sauerstoff als Endprodukt.", "Bei der Zellatmung entsteht nur Stickstoff als Nährstoff.", "Bei der Zellatmung entsteht nur Ozon."],
       explanation: "Kohlenstoffdioxid (CO₂).",
       wissen: fw(
         "CO₂-Nachweis (z. B. Kalkwasser) zeigt Atmung experimentell.",
@@ -1279,8 +1279,8 @@ export const k9Zellatmung: BioBank = {
     },
     {
       concept: "bio:k9:zellat:prox",
-      prompt: "Was meint proximate Betrachtung der Zellatmung?",
-      answer: "Wie der Prozess molekular/physiologisch abläuft.", wrong: ["Warum er evolutionär entstand allein.", "Nur den Artnamen.", "Nur den Fundort."],
+      prompt: "Welche Frage stellt die proximate Betrachtung der Zellatmung?",
+      answer: "Es ist wie der Prozess molekular/physiologisch abläuft.", wrong: ["Warum er evolutionär entstand allein.", "Den Artnamen ersetzt die Fotosynthese in den Blattzellen.", "Den Fundort dient nur der Schallübertragung in Luft."],
       explanation: "Wie der Prozess molekular/physiologisch abläuft.",
       wissen: fw(
         "Proximate: Mechanismus; ultimate: evolutiver Nutzen.",
@@ -1339,7 +1339,7 @@ export const k9Stoffwechsel: BioBank = {
     {
       concept: "bio:k9:stoffw:aufnahme",
       prompt: "Welche Eigenschaft hat das abgegeben?",
-      answer: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.", wrong: ["Aufbau körpereigener Stoffe (z. B. Fotosynthese).", "Abbau organischer Stoffe unter Energiegewinnung.", "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese)."],
+      answer: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.", wrong: ["Assimilation ist der Aufbau körpereigener Stoffe, z. B. Fotosynthese.", "Dissimilation ist der Abbau organischer Stoffe unter Energiegewinnung.", "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese)."],
       explanation: "Stoffe werden aufgenommen, im Organismus verteilt und abgegeben.",
       wissen: fw(
         "Bei Pflanzen: Wasser/Mineralstoffe aufnehmen, leiten, transpirieren; Gase tauschen.",
@@ -1349,8 +1349,8 @@ export const k9Stoffwechsel: BioBank = {
     },
     {
       concept: "bio:k9:stoffw:assim",
-      prompt: "Was ist Assimilation?",
-      answer: "Aufbau körpereigener Stoffe (z. B. Fotosynthese).", wrong: ["Nur Abbau von Glucose.", "Nur Verdunstung.", "Nur Mutation."],
+      prompt: "Was leistet die Assimilation im Stoffwechsel?",
+      answer: "Es ist der Aufbau körpereigener Stoffe (z. B. Fotosynthese).", wrong: ["Es ist nur der Abbau von Glucose.", "Es ist nur Verdunstung ohne Stoffwechsel.", "Es ist nur eine Mutation ohne Synthese."],
       explanation: "Aufbau körpereigener Stoffe (z. B. Fotosynthese).",
       wissen: fw(
         "Assimilation baut aus einfachen Stoffen komplexere auf.",
@@ -1360,8 +1360,8 @@ export const k9Stoffwechsel: BioBank = {
     },
     {
       concept: "bio:k9:stoffw:dissim",
-      prompt: "Was ist Dissimilation?",
-      answer: "Abbau organischer Stoffe unter Energiegewinnung.", wrong: ["Nur Aufbau von Stärke.", "Nur Wurzelwachstum.", "Nur Blütenfarbe."],
+      prompt: "Was leistet die Dissimilation im Stoffwechsel?",
+      answer: "Es ist abbau organischer Stoffe unter Energiegewinnung.", wrong: ["Aufbau von Stärke.", "Wurzelwachstum ist mit Osmose in der Wurzelhaut identisch.", "Blütenfarbe läuft ausschließlich bei Säugetieren ab."],
       explanation: "Abbau organischer Stoffe unter Energiegewinnung.",
       wissen: fw(
         "Zellatmung ist Dissimilation.",
@@ -1371,8 +1371,8 @@ export const k9Stoffwechsel: BioBank = {
     },
     {
       concept: "bio:k9:stoffw:auto",
-      prompt: "Was kennzeichnet „Autotrophie“?",
-      answer: "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese).", wrong: ["Organismen fressen nur fertige organische Stoffe.", "Nur Tiere ohne Pflanzen.", "Nur Steine ernähren sich."],
+      prompt: "Woraus gewinnen Autotrophe ihre organischen Stoffe?",
+      answer: "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese).", wrong: ["Organismen fressen nur fertige organische Stoffe.", "Tiere ohne Pflanzen.", "Steine ernähren sich."],
       explanation: "Organismen erzeugen organische Stoffe selbst (z. B. Fotosynthese).",
       wissen: fw(
         "Pflanzen sind typische Produzenten — autotroph.",
@@ -1382,8 +1382,8 @@ export const k9Stoffwechsel: BioBank = {
     },
     {
       concept: "bio:k9:stoffw:hetero",
-      prompt: "Was kennzeichnet „Heterotrophie“?",
-      answer: "Organismen sind auf fertige organische Stoffe angewiesen.", wrong: ["Organismen betreiben nur Fotosynthese.", "Nur Chloroplasten ernähren.", "Nur Luftstickstoff reicht immer."],
+      prompt: "Woraus gewinnen Heterotrophe ihre organischen Stoffe?",
+      answer: "Organismen sind auf fertige organische Stoffe angewiesen.", wrong: ["Organismen betreiben nur Fotosynthese.", "Chloroplasten ernähren.", "Luftstickstoff reicht immer."],
       explanation: "Organismen sind auf fertige organische Stoffe angewiesen.",
       wissen: fw(
         "Tiere, Pilze und viele Mikroorganismen sind heterotroph.",
@@ -1438,7 +1438,7 @@ export const k9Stoffwechsel: BioBank = {
     {
       concept: "bio:k9:stoffw:bedeutung",
       prompt: "Warum sind Pflanzen in der Natur so bedeutend?",
-      answer: "Als Produzenten und O₂-Lieferanten.", wrong: ["Weil sie nie atmen.", "Weil sie keine Zellen haben.", "Weil sie nur Steine sind."],
+      answer: "Man bezeichnet das als als Produzenten und O₂-Lieferanten.", wrong: ["Weil sie nie atmen.", "Weil sie keine Zellen haben.", "Weil sie nur Steine sind."],
       explanation: "Als Produzenten und O₂-Lieferanten.",
       wissen: fw(
         "Fotosynthese liefert organische Stoffe und Sauerstoff — Grundlage vieler Ökosysteme.",
@@ -1485,8 +1485,8 @@ export const k9GewaesserMensch: BioBank = {
   facts: [
     {
       concept: "bio:k9:gewm:eutroph",
-      prompt: "Was ist Eutrophierung?",
-      answer: "Übermäßige Nährstoffanreicherung im Gewässer.", wrong: ["Vollständige Salzwüste.", "Nur Abkühlung des Wassers.", "Nur Zunahme von Steinen."],
+      prompt: "Woran erkennt man Eutrophierung eines Gewässers?",
+      answer: "Man bezeichnet das als übermäßige Nährstoffanreicherung im Gewässer.", wrong: ["Es entsteht eine vollständige Salzwüste.", "Abkühlung des Wassers.", "Zunahme von Steinen."],
       explanation: "Übermäßige Nährstoffanreicherung im Gewässer.",
       wissen: fw(
         "Zu viel Phosphat/Nitrat → Algenblüten, Sauerstoffprobleme.",
@@ -1497,7 +1497,7 @@ export const k9GewaesserMensch: BioBank = {
     {
       concept: "bio:k9:gewm:algen",
       prompt: "Was folgt oft auf starke Nährstoffzufuhr?",
-      answer: "Algen- oder Cyanobakterien-Massenentwicklung.", wrong: ["Sofortiger Fischreichtum dauerhaft ohne Risiko.", "Sofortiges Trinkwasser ohne Aufbereitung immer.", "Verschwinden allen Wassers."],
+      answer: "Es ist eine Algen- oder Cyanobakterien-Massenentwicklung.", wrong: ["Sofortiger Fischreichtum ohne Risiko.", "Sofortiges Trinkwasser ohne Aufbereitung.", "Das vollständige Verschwinden allen Wassers."],
       explanation: "Algen- oder Cyanobakterien-Massenentwicklung.",
       wissen: fw(
         "Massenentwicklungen trüben das Wasser und belasten den Sauerstoffhaushalt.",
@@ -1508,7 +1508,7 @@ export const k9GewaesserMensch: BioBank = {
     {
       concept: "bio:k9:gewm:o2",
       prompt: "Warum kann Sauerstoff im Gewässer knapp werden?",
-      answer: "Abbau abgestorbener Biomasse verbraucht O₂.", wrong: ["Weil Fische Sauerstoff erzeugen.", "Weil Steine atmen.", "Weil Wind O₂ löscht immer."],
+      answer: "Es ist abbau abgestorbener Biomasse verbraucht O₂.", wrong: ["Weil Fische Sauerstoff erzeugen.", "Weil Steine atmen.", "Weil Wind O₂ löscht immer."],
       explanation: "Abbau abgestorbener Biomasse verbraucht O₂.",
       wissen: fw(
         "Destruenten verbrauchen beim Abbau viel Sauerstoff — Gefahr für Fische.",
@@ -1530,7 +1530,7 @@ export const k9GewaesserMensch: BioBank = {
     {
       concept: "bio:k9:gewm:quellen",
       prompt: "Woher kommen viele Nährstoffe anthropogen?",
-      answer: "Landwirtschaft, Abwasser, Erosion.", wrong: ["Nur aus dem Weltall.", "Nur aus Vulkangestein im See selbst immer.", "Nur aus reinem Regen ohne Stoffe."],
+      answer: "Gemeint ist landwirtschaft, Abwasser, Erosion.", wrong: ["Aus dem Weltall.", "Aus Vulkangestein im See selbst immer.", "Aus reinem Regen ohne Stoffe."],
       explanation: "Landwirtschaft, Abwasser, Erosion.",
       wissen: fw(
         "Düngerauswaschung und ungeklärte Einleitungen sind typische Quellen.",
@@ -1540,8 +1540,8 @@ export const k9GewaesserMensch: BioBank = {
     },
     {
       concept: "bio:k9:gewm:naturschutz",
-      prompt: "Was ist ein ziel des Gewässerschutzes?",
-      answer: "Lebensräume und Artenvielfalt erhalten.", wrong: ["Alle Seen zuschütten.", "Nur Algen unbegrenzt fördern.", "Nur Fische entfernen."],
+      prompt: "Welches Ziel verfolgt der Gewässerschutz?",
+      answer: "Ziel des Gewässerschutzes bezeichnet lebensräume und Artenvielfalt erhalten.", wrong: ["Ziel wäre, alle Seen zuzuschütten.", "Algen unbegrenzt fördern.", "Fische entfernen verhindert jede Zellteilung dauerhaft."],
       explanation: "Lebensräume und Artenvielfalt erhalten.",
       wissen: fw(
         "Naturschutz und nachhaltige Nutzung sichern Ökosystemleistungen.",
@@ -1563,7 +1563,7 @@ export const k9GewaesserMensch: BioBank = {
     {
       concept: "bio:k9:gewm:indikator",
       prompt: "Was können Zeigerarten/Indikatoren zeigen?",
-      answer: "Belastung oder Zustand eines Gewässers.", wrong: ["Nur die Uhrzeit.", "Nur den Aktienkurs.", "Nur die Schuhgröße."],
+      answer: "Typisch ist belastung oder Zustand eines Gewässers.", wrong: ["Die Uhrzeit.", "Den Aktienkurs ersetzt die Fotosynthese in den Blattzellen.", "Die Schuhgröße."],
       explanation: "Belastung oder Zustand eines Gewässers.",
       wissen: fw(
         "Manche Arten reagieren empfindlich auf Nährstoffe oder Sauerstoff.",
@@ -1573,8 +1573,8 @@ export const k9GewaesserMensch: BioBank = {
     },
     {
       concept: "bio:k9:gewm:nachhaltig",
-      prompt: "Was meint nachhaltige Nutzung von Gewässern?",
-      answer: "Nutzen ohne langfristige Zerstörung der Lebensgrundlagen.", wrong: ["Maximale Einleitung ohne Grenze.", "Trockenlegen aller Feuchtgebiete.", "Nur Freizeit ohne Regeln."],
+      prompt: "Wann gilt Nutzung von Gewässern als nachhaltig?",
+      answer: "Typisch ist nutzen ohne langfristige Zerstörung der Lebensgrundlagen.", wrong: ["Maximale Einleitung ohne Grenze.", "Trockenlegen aller Feuchtgebiete.", "Freizeit ohne Regeln."],
       explanation: "Nutzen ohne langfristige Zerstörung der Lebensgrundlagen.",
       wissen: fw(
         "Bildung für nachhaltige Entwicklung: Verantwortung für kommende Generationen.",
@@ -1632,8 +1632,8 @@ export const k10Replikation: BioBank = {
   facts: [
     {
       concept: "bio:k10:repl:was",
-      prompt: "Was kennzeichnet „identische Replikation“?",
-      answer: "Verdoppelung der DNA vor der Zellteilung.", wrong: ["Übersetzung in Protein.", "Transkription zu mRNA allein.", "Mutation aller Basen."],
+      prompt: "Was leistet die identische Replikation?",
+      answer: "Die identische Replikation bezeichnet verdoppelung der DNA vor der Zellteilung.", wrong: ["Übersetzung in Protein.", "Transkription zu mRNA allein.", "Mutation aller Basen."],
       explanation: "Verdoppelung der DNA vor der Zellteilung.",
       wissen: fw(
         "Vor Mitose/Meiose wird die DNA verdoppelt — twin chromatids.",
@@ -1643,7 +1643,7 @@ export const k10Replikation: BioBank = {
     },
     {
       concept: "bio:k10:repl:gabel",
-      prompt: "Was ist eine Replikationsgabel?",
+      prompt: "Woran erkennt man eine Replikationsgabel?",
       answer: "Y-förmige Stelle, an der der Doppelstrang geöffnet und kopiert wird.", wrong: ["Es ist ein Zellorganell ohne DNA-Bezug.", "Es ist ein Hormon der Schilddrüse.", "Es ist ein Fossil aus dem Jura."],
       explanation: "Y-förmige Stelle, an der der Doppelstrang geöffnet und kopiert wird.",
       wissen: fw(
@@ -1655,7 +1655,7 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:komplement",
       prompt: "Wonach richtet sich der neue DNA-Strang?",
-      answer: "Nach der Basenpaarung (A-T, G-C).", wrong: ["Nach Zufall ohne Regeln.", "Nach der Blattfarbe.", "Nach der Körpergröße allein."],
+      answer: "Nach der Basenpaarung (A–T, G–C).", wrong: ["Nach Zufall ohne Regeln.", "Nach der Blattfarbe.", "Nach der Körpergröße allein."],
       explanation: "Nach der Basenpaarung (A-T, G-C).",
       wissen: fw(
         "Komplementarität sichert (nahezu) identische Kopien.",
@@ -1665,8 +1665,8 @@ export const k10Replikation: BioBank = {
     },
     {
       concept: "bio:k10:repl:semi",
-      prompt: "Was bedeutet „neuer“?",
-      answer: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang", wrong: ["Beide Stränge sind komplett neu ohne Altanteil.", "DNA wird zu RNA.", "Chromosomen verschwinden."],
+      prompt: "Was entsteht bei semikonservativer Replikation am neuen Strang?",
+      answer: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang.", wrong: ["Beide Stränge sind komplett neu ohne Altanteil.", "DNA wird zu RNA.", "Chromosomen verschwinden."],
       explanation: "Jeder Tochter-Doppelstrang enthält einen alten und einen neuen Strang.",
       wissen: fw(
         "Klassisches Ergebnis der Meselson-Stahl-Logik.",
@@ -1677,8 +1677,8 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:enzym",
       prompt: "Welches Enzym verknüpft Nukleotide am neuen Strang?",
-      answer: "DNA-Polymerase.", wrong: ["Amylase.", "Pepsin.", "Chlorophyll."],
-      explanation: "DNA-Polymerase.",
+      answer: "Die DNA-Polymerase verknüpft Nukleotide beim Kopieren der DNA.", wrong: ["Amylase spaltet Stärke und ist kein DNA-Enzym.", "Pepsin spaltet Proteine im Magen und kopiert keine DNA.", "Chlorophyll fängt Licht für die Fotosynthese und repliziert keine DNA."],
+      explanation: "Die DNA-Polymerase verknüpft Nukleotide beim Kopieren der DNA.",
       wissen: fw(
         "Polymerasen lesen die Vorlage und setzen komplementäre Nukleotide.",
       ),
@@ -1687,8 +1687,8 @@ export const k10Replikation: BioBank = {
     },
     {
       concept: "bio:k10:repl:kontinuierlich",
-      prompt: "Was meint kontinuierlicher Mechanismus (vereinfacht)?",
-      answer: "An einem Strang wächst die Kette fortlaufend in Syntheserichtung.", wrong: ["DNA wird nie kopiert.", "Nur Proteine replizieren sich.", "Nur Lipide verdoppeln sich."],
+      prompt: "Wie läuft der kontinuierliche Strang bei der Replikation?",
+      answer: "An einem Strang wächst die Kette fortlaufend in Syntheserichtung.", wrong: ["DNA wird nie kopiert.", "Proteine replizieren sich.", "Lipide verdoppeln sich."],
       explanation: "An einem Strang wächst die Kette fortlaufend in Syntheserichtung.",
       wissen: fw(
         "Schulisch vereinfacht: kontinuierlicher Mechanismus an der Replikationsgabel.",
@@ -1710,7 +1710,7 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:fehler",
       prompt: "Was kann bei der Replikation passieren?",
-      answer: "Kopierfehler → mögliche Mutation.", wrong: ["Immer perfekte Unsterblichkeit.", "Sofortige Fotosynthese.", "Sofortige Bestäubung."],
+      answer: "Die Stufenfolge lautet kopierfehler → mögliche Mutation.", wrong: ["Perfekte Unsterblichkeit.", "Sofortige Fotosynthese.", "Sofortige Bestäubung."],
       explanation: "Kopierfehler → mögliche Mutation.",
       wissen: fw(
         "Reparatursysteme korrigieren vieles — nicht alles.",
@@ -1721,7 +1721,7 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:chromatin",
       prompt: "In welcher Form liegt DNA in Eukaryoten vor der Teilung vor?",
-      answer: "Als Chromatin/Chromosomen.", wrong: ["Als freie Glucose.", "Als reine Zellwand.", "Als nur RNA ohne DNA."],
+      answer: "Gemeint ist als Chromatin/Chromosomen.", wrong: ["Als freie Glucose.", "Als reine Zellwand.", "Als nur RNA ohne DNA."],
       explanation: "Als Chromatin/Chromosomen.",
       wissen: fw(
         "Kondensation macht Chromosomen unter dem Mikroskop sichtbar.",
@@ -1732,7 +1732,7 @@ export const k10Replikation: BioBank = {
     {
       concept: "bio:k10:repl:timing",
       prompt: "Wann findet Replikation im Zellzyklus statt?",
-      answer: "In der S-Phase (Interphase).", wrong: ["Nur in der Telophase allein.", "Nur nach dem Tod der Zelle.", "Nur während der Fotosynthese."],
+      answer: "Es ist in der S-Phase (Interphase).", wrong: ["In der Telophase allein.", "Nach dem Tod der Zelle.", "Während der Fotosynthese."],
       explanation: "In der S-Phase (Interphase).",
       wissen: fw(
         "S = Synthese der DNA vor der Mitose.",
@@ -1779,8 +1779,8 @@ export const k10Proteinsynthese: BioBank = {
   facts: [
     {
       concept: "bio:k10:prot:gen",
-      prompt: "Was ist ein Gen (schulisch)?",
-      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "Sie beschreibt S = Synthese der DNA vor der Mitose."],
+      prompt: "Welchen Abschnitt der DNA meint man schulisch mit Gen?",
+      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "S = Synthese der DNA vor der Mitose."],
       explanation: "Abschnitt der DNA, der oft für ein Protein/Polypeptid codiert.",
       wissen: fw(
         "Gene tragen die Information für Merkmalsausbildung über Proteine.",
@@ -1790,8 +1790,8 @@ export const k10Proteinsynthese: BioBank = {
     },
     {
       concept: "bio:k10:prot:code",
-      prompt: "Was ist der genetische Code?",
-      answer: "Zuordnung von Basentripletts zu Aminosäuren.", wrong: ["Die Form der Mitochondrien.", "Die Farbe der Blüte allein.", "Die Anzahl der Knochen."],
+      prompt: "Was ordnet der genetische Code zu?",
+      answer: "Genetische Code bezeichnet zuordnung von Basentripletts zu Aminosäuren.", wrong: ["Die Form der Mitochondrien.", "Farbe der Blüte allein.", "Die Anzahl der Knochen."],
       explanation: "Zuordnung von Basentripletts zu Aminosäuren.",
       wissen: fw(
         "Tripletts (Codons) legen die Aminosäuresequenz fest.",
@@ -1801,8 +1801,8 @@ export const k10Proteinsynthese: BioBank = {
     },
     {
       concept: "bio:k10:prot:transkr",
-      prompt: "Was ist Transkription?",
-      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "Sie beschreibt S = Synthese der DNA vor der Mitose."],
+      prompt: "Was geschieht bei der Transkription?",
+      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "S = Synthese der DNA vor der Mitose."],
       explanation: "Umschreiben von DNA in mRNA.",
       wissen: fw(
         "Im Zellkern (Eukaryoten) entsteht mRNA als Arbeitskopie.",
@@ -1812,8 +1812,8 @@ export const k10Proteinsynthese: BioBank = {
     },
     {
       concept: "bio:k10:prot:transl",
-      prompt: "Was ist Translation?",
-      answer: "Übersetzung der mRNA in eine aminosäurekette am Ribosom.", wrong: ["Kopieren der DNA.", "Öffnen der Spaltöffnungen.", "Bestäubung."],
+      prompt: "Was geschieht bei der Translation?",
+      answer: "Translation bezeichnet übersetzung der mRNA in eine aminosäurekette am Ribosom.", wrong: ["Kopieren der DNA.", "Öffnen der Spaltöffnungen.", "Bestäubung steuert nur die Blattstellung bei Bäumen."],
       explanation: "Übersetzung der mRNA in eine aminosäurekette am Ribosom.",
       wissen: fw(
         "tRNA bringt Aminosäuren; Ribosom verknüpft sie.",
@@ -1824,7 +1824,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:mrna",
       prompt: "Welche Rolle hat mRNA?",
-      answer: "Überträgt die Geninformation zum Ribosom.", wrong: ["Speichert Erbgut dauerhaft wie Chromosomen allein.", "Bildet die Zellwand.", "Transportiert nur Wasser im Xylem."],
+      answer: "Sie überträgt die Geninformation zum Ribosom.", wrong: ["Sie speichert Erbgut dauerhaft wie Chromosomen allein.", "Sie bildet die Zellwand.", "Sie transportiert nur Wasser im Xylem."],
       explanation: "Überträgt die Geninformation zum Ribosom.",
       wissen: fw(
         "mRNA ist die Boten-RNA.",
@@ -1835,7 +1835,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:trna",
       prompt: "Welche Rolle hat tRNA?",
-      answer: "Bringt Aminosäuren passend zum Codon.", wrong: ["Kopiert die ganze DNA.", "Spaltet nur Fette.", "Bildet Chlorophyll."],
+      answer: "Sie bringt Aminosäuren passend zum Codon.", wrong: ["Sie kopiert die ganze DNA.", "Sie spaltet nur Fette.", "Sie bildet Chlorophyll und fängt Licht für die Fotosynthese."],
       explanation: "Bringt Aminosäuren passend zum Codon.",
       wissen: fw(
         "Anticodon der tRNA passt zum Codon der mRNA.",
@@ -1846,7 +1846,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:ribosom",
       prompt: "Wo findet die Translation statt?",
-      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "Sie beschreibt S = Synthese der DNA vor der Mitose."],
+      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "S = Synthese der DNA vor der Mitose."],
       explanation: "Am Ribosom.",
       wissen: fw(
         "Ribosomen sind die Proteinfabriken der Zelle.",
@@ -1857,7 +1857,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:merkmal",
       prompt: "Warum ist Proteinsynthese für Merkmale wichtig?",
-      answer: "Proteine (Enzyme, Strukturen) prägen den Phänotyp.", wrong: ["Merkmale entstehen ohne Moleküle.", "Nur Wasser formt Merkmale.", "Nur Licht formt DNA um."],
+      answer: "Proteine (Enzyme, Strukturen) prägen den Phänotyp.", wrong: ["Merkmale entstehen ohne Moleküle.", "Wasser formt Merkmale.", "Licht formt DNA um."],
       explanation: "Proteine (Enzyme, Strukturen) prägen den Phänotyp.",
       wissen: fw(
         "Genotyp → Proteine → Phänotyp.",
@@ -1868,7 +1868,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:rna",
       prompt: "Wie unterscheidet sich RNA von DNA typischerweise?",
-      answer: "RNA: Ribose, meist einsträngig, U statt T.", wrong: ["RNA hat immer Doppelhelix wie DNA identisch.", "RNA enthält nur Thymin.", "RNA ist ein zucker im Blut."],
+      answer: "Gemeint ist rNA: Ribose, meist einsträngig, U statt T.", wrong: ["RNA hat immer Doppelhelix wie DNA identisch.", "RNA enthält nur Thymin.", "RNA ist ein zucker im Blut."],
       explanation: "RNA: Ribose, meist einsträngig, U statt T.",
       wissen: fw(
         "DNA speichert dauerhaft; RNA ist oft Arbeitskopie/Adapter.",
@@ -1879,7 +1879,7 @@ export const k10Proteinsynthese: BioBank = {
     {
       concept: "bio:k10:prot:ablauf",
       prompt: "Welche Reihenfolge ist richtig?",
-      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "Sie beschreibt S = Synthese der DNA vor der Mitose."],
+      answer: "Vor Mitose/Meiose wird die DNA verdoppelt, twin chromatids.", wrong: ["Es beschreibt ohne Verdopplung fehlte Information nach der Teilung.", "Es helikasen öffnen, Polymerasen synthetisieren neue Stränge.", "S = Synthese der DNA vor der Mitose."],
       explanation: "Gen (DNA) → Transkription → Translation → Protein.",
       wissen: fw(
         "Informationsfluss: DNA → RNA → Protein (zentrales Dogma, schulisch).",
@@ -1927,7 +1927,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:franklin",
       prompt: "Wofür ist Rosalind Franklin in der DNA-Forschung bekannt?",
-      answer: "Röntgendaten (Foto 51) zur DNA-Struktur.", wrong: ["Entdeckung der Fotosynthese.", "Erste Impfung gegen Pocken allein.", "Erfindung des Mikroskops."],
+      answer: "Es sind Röntgendaten (Foto 51) zur DNA-Struktur.", wrong: ["Es ist die Entdeckung der Fotosynthese.", "Es ist die erste Impfung gegen Pocken.", "Es ist die Erfindung des Mikroskops."],
       explanation: "Röntgendaten (Foto 51) zur DNA-Struktur.",
       wissen: fw(
         "Franklins Röntgenbeugungsbilder waren entscheidend für das Doppelhelix-Modell.",
@@ -1938,7 +1938,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:wilkins",
       prompt: "Welche Rolle spielte Maurice Wilkins?",
-      answer: "Mitarbeit an der Strukturaufklärung der DNA.", wrong: ["Nur Botanik der Moose.", "Nur Sternkarten.", "Nur Knochenchirurgie."],
+      answer: "Es ist rosalind Franklin lieferte mit Röntgendaten wichtige Beiträge zur DNA-Struktur.", wrong: ["Sie erforschte nur die Botanik der Moose.", "Sie erstellte nur Sternkarten der Astronomie.", "Sie betrieb nur Knochenchirurgie."],
       explanation: "Mitarbeit an der Strukturaufklärung der DNA.",
       wissen: fw(
         "Wilkins arbeitete an DNA-Röntgenuntersuchungen und teilte Daten im wissenschaftlichen Umfeld.",
@@ -1949,7 +1949,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:watson",
       prompt: "Was schlugen Watson und Crick 1953 vor?",
-      answer: "Das Doppelhelix-Modell der DNA.", wrong: ["Das Periodensystem.", "Die Evolutionstheorie Darwins.", "Die Zelltheorie allein."],
+      answer: "Man bezeichnet das als das Doppelhelix-Modell der DNA.", wrong: ["Das Periodensystem.", "Evolutionstheorie Darwins.", "Die Zelltheorie allein."],
       explanation: "Das Doppelhelix-Modell der DNA.",
       wissen: fw(
         "Komplementäre Basenpaarung erklärt Replikation.",
@@ -1960,7 +1960,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:crick",
       prompt: "Womit ist Francis Crick verbunden?",
-      answer: "Mit dem Doppelhelix-Modell und Ideen zum genetischen Code.", wrong: ["Nur mit der Dampfmaschine.", "Nur mit der Relativitätstheorie.", "Nur mit der Impfung."],
+      answer: "Es geschieht Mit dem Doppelhelix-Modell und Ideen zum genetischen Code.", wrong: ["Es geschieht Mit der Dampfmaschine.", "Es geschieht Mit der Relativitätstheorie.", "Es geschieht Mit der Impfung."],
       explanation: "Mit dem Doppelhelix-Modell und Ideen zum genetischen Code.",
       wissen: fw(
         "Crick arbeitete an Struktur und Informationsfluss der Gene.",
@@ -1971,7 +1971,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:basen",
       prompt: "Welche Basenpaarung trägt das Modell?",
-      answer: "A–T und G–C.", wrong: ["A–G und T–C immer.", "Nur A–A.", "Nur G–G."],
+      answer: "In der DNA paaren sich Adenin mit Thymin und Guanin mit Cytosin (A–T und G–C).", wrong: ["In der DNA paaren sich immer A mit G und T mit C.", "In der DNA paaren sich nur A mit A.", "In der DNA paaren sich nur G mit G."],
       explanation: "A–T und G–C.",
       wissen: fw(
         "Komplementarität erklärt stabile Doppelhelix und Kopie.",
@@ -1981,8 +1981,8 @@ export const k10DnaEntdeckung: BioBank = {
     },
     {
       concept: "bio:k10:dnaent:helix",
-      prompt: "Was kennzeichnet „Doppelhelix“?",
-      answer: "Zwei umeinander gewundene DNA-Stränge.", wrong: ["Eine einzelne RNA ohne Paarung immer.", "Ein Protein ohne Faltung.", "Ein Lipidtröpfchen."],
+      prompt: "Was beschreibt die Doppelhelix der DNA?",
+      answer: "Die Doppelhelix der DNA bezeichnet zwei umeinander gewundene DNA-Stränge.", wrong: ["Eine einzelne RNA ohne Paarung immer.", "Protein ohne Faltung.", "Ein Lipidtröpfchen dient nur der Schallübertragung in Luft."],
       explanation: "Zwei umeinander gewundene DNA-Stränge.",
       wissen: fw(
         "Stränge verlaufen gegenläufig (antiparallel).",
@@ -1993,7 +1993,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:daten",
       prompt: "Warum waren experimentelle Daten wichtig?",
-      answer: "Modelle müssen zu Messungen (z. B. Röntgen) passen.", wrong: ["Modelle brauchen keine Daten.", "Nur Meinungen zählen.", "Nur Zeichnungen ohne Messung."],
+      answer: "Modelle müssen zu Messungen (z. B. Röntgen) passen.", wrong: ["Modelle brauchen keine Daten.", "Meinungen zählen ist ein rein geologischer Vorgang ohne Zellbezug.", "Zeichnungen ohne Messung."],
       explanation: "Modelle müssen zu Messungen (z. B. Röntgen) passen.",
       wissen: fw(
         "Wissenschaft: Hypothese + empirische Evidenz.",
@@ -2026,7 +2026,7 @@ export const k10DnaEntdeckung: BioBank = {
     {
       concept: "bio:k10:dnaent:jahr",
       prompt: "In welchem Jahrzehnt wurde das Doppelhelix-Modell bekannt?",
-      answer: "In den 1950er Jahren.", wrong: ["Im 18. Jahrhundert durch Mendel allein.", "Im Mittelalter.", "Im Jahr 2000 erstmals."],
+      answer: "Das Doppelhelix-Modell wurde in den 1950er Jahren bekannt.", wrong: ["Im 18. Jahrhundert durch Mendel allein.", "Im Mittelalter.", "Im Jahr 2000 erstmals."],
       explanation: "In den 1950er Jahren.",
       wissen: fw(
         "1953 Veröffentlichung — Meilenstein der Molekularbiologie.",
@@ -2074,7 +2074,7 @@ export const k10Blutgruppen: BioBank = {
     {
       concept: "bio:k10:blut:ab0",
       prompt: "Was unterscheidet die Blutgruppen A, B, AB und 0?",
-      answer: "Unterschiedliche Antigene auf den roten Blutkörperchen.", wrong: ["Unterschiedliche Knochenzahlen.", "Unterschiedliche Haarfarben allein.", "Unterschiedliche Zahnformen."],
+      answer: "Es ist unterschiedliche Antigene auf den roten Blutkörperchen.", wrong: ["Unterschiedliche Knochenzahlen.", "Unterschiedliche Haarfarben allein.", "Unterschiedliche Zahnformen."],
       explanation: "Unterschiedliche Antigene auf den roten Blutkörperchen.",
       wissen: fw(
         "Antigene A/B bestimmen die AB0-Gruppe; Plasma kann Antikörper enthalten.",
@@ -2085,7 +2085,7 @@ export const k10Blutgruppen: BioBank = {
     {
       concept: "bio:k10:blut:allel",
       prompt: "Wie wird die AB0-Blutgruppe vererbt?",
-      answer: "Über multiple Allele (A, B, 0) mit Dominanzmustern.", wrong: ["Nur über Mitochondrien der Mutter allein immer.", "Nur über die Umwelt.", "Gar nicht erblich."],
+      answer: "Über multiple Allele (A, B, 0) mit Dominanzmustern.", wrong: ["Über Mitochondrien der Mutter allein immer.", "Über die Umwelt.", "Gar nicht erblich."],
       explanation: "Über multiple Allele (A, B, 0) mit Dominanzmustern.",
       wissen: fw(
         "A und B dominant gegenüber 0; AB kodominant.",
@@ -2096,7 +2096,7 @@ export const k10Blutgruppen: BioBank = {
     {
       concept: "bio:k10:blut:0",
       prompt: "Warum gilt 0 oft als Universalspender (Erythrozyten, vereinfacht)?",
-      answer: "Keine A/B-Antigene auf den Zellen.", wrong: ["Immer die meisten Antigene.", "Nur weil Plasma fehlt.", "Weil 0 kein Blut ist."],
+      answer: "Gemeint ist keine A/B-Antigene auf den Zellen.", wrong: ["Die meisten Antigene.", "Weil Plasma fehlt.", "Weil 0 kein Blut ist."],
       explanation: "Keine A/B-Antigene auf den Zellen.",
       wissen: fw(
         "Schulisch vereinfacht: fehlende A/B-Antigene verringern Unverträglichkeit.",
@@ -2106,7 +2106,7 @@ export const k10Blutgruppen: BioBank = {
     },
     {
       concept: "bio:k10:blut:ab",
-      prompt: "Was kennzeichnet Blutgruppe AB?",
+      prompt: "Welche Antigene hat Blutgruppe AB?",
       answer: "Sie trägt Antigene A und B kodominant auf den Erythrozyten.", wrong: ["Sie trägt keine A/B-Antigene und gilt vereinfacht als Universalspender.", "Sie trägt nur Antigen A, aber kein Antigen B.", "Sie trägt nur den Rhesusfaktor ohne AB0-Antigene."],
       explanation: "Antigene A und B (kodominant).",
       wissen: fw(
@@ -2117,8 +2117,8 @@ export const k10Blutgruppen: BioBank = {
     },
     {
       concept: "bio:k10:blut:rhesus",
-      prompt: "Was ist der Rhesus-Faktor?",
-      answer: "Weiteres Blutgruppenmerkmal (z. B. D-Antigen, +/-).", wrong: ["Ein Hormon der Hypophyse.", "Ein Blattmerkmal.", "Ein Fossil."],
+      prompt: "Woran erkennt man den Rhesus-Faktor?",
+      answer: "Gemeint ist weiteres Blutgruppenmerkmal (z. B. D-Antigen, +/-).", wrong: ["Ein Hormon der Hypophyse.", "Blattmerkmal kommt nur in abgestorbenem Gewebe vor.", "Ein Fossil läuft ausschließlich bei Säugetieren ab."],
       explanation: "Weiteres Blutgruppenmerkmal (z. B. D-Antigen, +/-).",
       wissen: fw(
         "Rh-positiv/-negativ ist klinisch wichtig (z. B. Schwangerschaft).",
@@ -2139,8 +2139,8 @@ export const k10Blutgruppen: BioBank = {
     },
     {
       concept: "bio:k10:blut:pheno",
-      prompt: "Was ist der Phänotyp bei Blutgruppen?",
-      answer: "Die sichtbare/testbare Blutgruppe (A, B, AB, 0).", wrong: ["Nur die DNA-Sequenz ohne Test.", "Nur der Name.", "Nur das Geburtsjahr."],
+      prompt: "Woran erkennt man den Phänotyp bei Blutgruppen?",
+      answer: "Phänotyp bei Blutgruppen bezeichnet die sichtbare/testbare Blutgruppe (A, B, AB, 0).", wrong: ["Die DNA-Sequenz ohne Test.", "Name betrifft allein die Planetenbewegung.", "Das Geburtsjahr."],
       explanation: "Die sichtbare/testbare Blutgruppe (A, B, AB, 0).",
       wissen: fw(
         "Genotyp (Allele) bestimmt den Phänotyp der Gruppe.",
@@ -2150,8 +2150,8 @@ export const k10Blutgruppen: BioBank = {
     },
     {
       concept: "bio:k10:blut:kodominanz",
-      prompt: "Was kennzeichnet „Kodominanz bei AB“?",
-      answer: "Beide Allele A und B werden ausgeprägt.", wrong: ["Nur A zählt.", "Nur B zählt.", "Keines wird ausgeprägt."],
+      prompt: "Warum zeigt Blutgruppe AB Kodominanz?",
+      answer: "Beide Allele A und B werden ausgeprägt.", wrong: ["A zählt.", "B zählt.", "Keines wird ausgeprägt."],
       explanation: "Beide Allele A und B werden ausgeprägt.",
       wissen: fw(
         "Kodominanz: beide Merkmale gleichzeitig sichtbar.",
@@ -2162,7 +2162,7 @@ export const k10Blutgruppen: BioBank = {
     {
       concept: "bio:k10:blut:vererbung",
       prompt: "Können Eltern mit 0 ein kind mit A bekommen?",
-      answer: "Nein (wenn beide wirklich Genotyp 00 sind).", wrong: ["Ja, immer sicher.", "Nur bei Pflanzen.", "Nur bei Fischen."],
+      answer: "Nein (wenn beide wirklich Genotyp 00 sind).", wrong: ["Ja, immer sicher.", "Es geschieht bei Pflanzen.", "Es geschieht bei Fischen."],
       explanation: "Nein (wenn beide wirklich Genotyp 00 sind).",
       wissen: fw(
         "Kind bekommt Allele der Eltern — 0×0 ergibt 0.",
@@ -2221,7 +2221,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:xy",
       prompt: "Wie ist das typische Chromosomenpaar beim Menschen?",
-      answer: "XX weiblich, XY männlich (vereinfacht).", wrong: ["YY immer weiblich.", "Nur Autosomen ohne Geschlecht.", "OO ohne Chromosomen."],
+      answer: "Es ist xX weiblich, XY männlich (vereinfacht).", wrong: ["YY immer weiblich.", "Autosomen ohne Geschlecht.", "OO ohne Chromosomen."],
       explanation: "XX weiblich, XY männlich (vereinfacht).",
       wissen: fw(
         "Geschlechtschromosomen X und Y bestimmen das chromosomale Geschlecht (schulisch).",
@@ -2232,7 +2232,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:sperm",
       prompt: "Wer bestimmt bei XY-System oft das kindliche Geschlecht?",
-      answer: "Es ist das Spermium (X oder Y).", wrong: ["Er beschreibt rh-positiv/-negativ ist klinisch wichtig (z.", "Es beschreibt A und B dominant gegenüber 0; AB kodominant.", "Sie beschreibt kreuzprobe und Gruppentest verhindern gefährliche Reaktionen."],
+      answer: "Dabei geht es um das Spermium (X oder Y).", wrong: ["Rh-positiv/-negativ ist klinisch wichtig.", "Es beschreibt A und B dominant gegenüber 0; AB kodominant.", "Kreuzprobe und Gruppentest verhindern gefährliche Reaktionen."],
       explanation: "Das Spermium (X oder Y).",
       wissen: fw(
         "Eizellen tragen X; Spermien X oder Y.",
@@ -2242,8 +2242,8 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:vielfalt",
-      prompt: "Was meint geschlechtliche Vielfalt?",
-      answer: "Biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.", wrong: ["Dass es nur eine möglichkeit gibt.", "Dass Chromosomen irrelevant sind immer.", "Dass Vererbung aussetzt."],
+      prompt: "Worauf bezieht sich geschlechtliche Vielfalt?",
+      answer: "Gemeint ist biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.", wrong: ["Dass es nur eine möglichkeit gibt.", "Dass Chromosomen irrelevant sind immer.", "Dass Vererbung aussetzt."],
       explanation: "Biologische und identitätsbezogene Vielfalt jenseits starrer Zweiteilung.",
       wissen: fw(
         "Vielfalt anerkennen: Intersexualität, Transgender u. a. gehören zur fachlichen Betrachtung.",
@@ -2253,8 +2253,8 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:inter",
-      prompt: "Was kennzeichnet die Intersexualität grob?",
-      answer: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.", wrong: ["Nur eine Haarfarbe.", "Nur eine Blutgruppe.", "Nur eine Sprache."],
+      prompt: "Woran erkennt man Intersexualität grob?",
+      answer: "Intersexualität grob bezeichnet varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.", wrong: ["Eine Haarfarbe ist mit Osmose in der Wurzelhaut identisch.", "Blutgruppe kommt nur in abgestorbenem Gewebe vor.", "Eine Sprache ersetzt die Fotosynthese in den Blattzellen."],
       explanation: "Varianten der Geschlechtsentwicklung mit nicht eindeutigem XX/XY-Phänotyp.",
       wissen: fw(
         "Körperliche Merkmale können von typischen XX/XY-Mustern abweichen.",
@@ -2264,8 +2264,8 @@ export const k10Geschlecht: BioBank = {
     },
     {
       concept: "bio:k10:gesch:vererbung",
-      prompt: "Was bedeutet „Vererbung des Geschlechts“?",
-      answer: "Weitergabe der Geschlechtschromosomen nach Meiose.", wrong: ["Nur die Vererbung der Körpergröße.", "Nur die Blattform.", "Nur die Blutgruppe 0."],
+      prompt: "Wie wird das Geschlecht vererbt?",
+      answer: "Es geschieht Durch Weitergabe der Geschlechtschromosomen nach der Meiose.", wrong: ["Es geschieht Durch Vererbung der Körpergröße.", "Es geschieht Durch die Blattform.", "Es geschieht Durch die Blutgruppe 0."],
       explanation: "Weitergabe der Geschlechtschromosomen nach Meiose.",
       wissen: fw(
         "Meiose und Zufall der Gameten erklären Geschlechterverhältnisse näherungsweise 1:1.",
@@ -2276,7 +2276,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:autosom",
       prompt: "Was sind Autosomen?",
-      answer: "Chromosomen, die nicht Geschlechtschromosomen sind.", wrong: ["Nur Y-Chromosomen.", "Nur RNA.", "Nur Proteine."],
+      answer: "Chromosomen, die nicht Geschlechtschromosomen sind.", wrong: ["Y-Chromosomen bildet das gesamte Erbgut aus Glucose.", "RNA ersetzt die Fotosynthese in den Blattzellen.", "Proteine betrifft allein die Planetenbewegung."],
       explanation: "Chromosomen, die nicht Geschlechtschromosomen sind.",
       wissen: fw(
         "Mensch: 22 Autosomenpaare + 1 Geschlechtschromosomenpaar.",
@@ -2287,7 +2287,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:merkmal",
       prompt: "Können Merkmale geschlechtsgebunden vererbt werden?",
-      answer: "Ja, z. B. manche X-chromosomalen Merkmale.", wrong: ["Nein, nie.", "Nur bei Pflanzen unmöglich.", "Nur über die Hautfarbe der Umwelt."],
+      answer: "Ja, auch bestimmte Hefepilz-Infektionen können sexuell übertragen werden.", wrong: ["Nein, das ist in diesem biologischen Zusammenhang nicht möglich.", "Es geschieht bei Pflanzen unmöglich.", "Über die Hautfarbe der Umwelt."],
       explanation: "Ja, z. B. manche X-chromosomalen Merkmale.",
       wissen: fw(
         "X-chromosomale Erbgänge erklären z. B. bestimmte Formen der Hämophilie.",
@@ -2298,7 +2298,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:respekt",
       prompt: "Welcher Umgang ist mit Vielfalt gefordert?",
-      answer: "Respekt, Sachlichkeit und Schutz vor Diskriminierung.", wrong: ["Ausgrenzung.", "Ignorieren medizinischer Fakten absichtlich.", "Zwang zu Stereotypen."],
+      answer: "Respekt, Sachlichkeit und Schutz vor Diskriminierung.", wrong: ["Ausgrenzung kommt nur in abgestorbenem Gewebe vor.", "Ignorieren medizinischer Fakten absichtlich.", "Zwang zu Stereotypen."],
       explanation: "Respekt, Sachlichkeit und Schutz vor Diskriminierung.",
       wissen: fw(
         "Fachwissen und Werteorientierung gehören zusammen.",
@@ -2320,7 +2320,7 @@ export const k10Geschlecht: BioBank = {
     {
       concept: "bio:k10:gesch:zusammen",
       prompt: "Warum gehören Geschlechtschromosomen und Vielfalt zusammen?",
-      answer: "Vererbung des Geschlechts und biologische Vielfalt sind verknüpft durch geschlechtschromosomen X und Y bestimmen das Chromosomale Geschlecht.", wrong: ["Weil es kein biologisches Thema ist.", "Er beschreibt rh-positiv/-negativ ist klinisch wichtig (z.", "Es beschreibt A und B dominant gegenüber 0; AB kodominant."],
+      answer: "Vererbung des Geschlechts und biologische Vielfalt sind verknüpft durch geschlechtschromosomen X und Y bestimmen das Chromosomale Geschlecht.", wrong: ["Weil es kein biologisches Thema ist.", "Rh-positiv/-negativ ist klinisch wichtig.", "Es beschreibt A und B dominant gegenüber 0; AB kodominant."],
       explanation: "Vererbung des Geschlechts und biologische Vielfalt sind verknüpft.",
       wissen: fw(
         "Humangenetik umfasst Chromosomen, Erbgänge und Vielfalt der Geschlechtsentwicklung.",
@@ -2367,8 +2367,8 @@ export const k10Erbkrankheiten: BioBank = {
   facts: [
     {
       concept: "bio:k10:erbk:trisomie",
-      prompt: "Was ist Trisomie 21?",
-      answer: "Bei Trisomie 21 liegt Chromosom 21 dreifach vor (Down-Syndrom als Genommutation).", wrong: ["Nur ein einzelnes Basepaar in einem Gen ist ausgetauscht.", "Es handelt sich um eine infektionskrankheit ohne Chromosomenbezug.", "Ursache ist ein reiner Vitaminmangel ohne Erbänderung."],
+      prompt: "Woran erkennt man Trisomie 21 genetisch?",
+      answer: "Bei Trisomie 21 liegt Chromosom 21 dreifach vor (Down-Syndrom als Genommutation).", wrong: ["Ein einzelnes Basepaar in einem Gen ist ausgetauscht.", "Infektionskrankheit ohne Chromosomenbezug.", "Ursache ist ein reiner Vitaminmangel ohne Erbänderung."],
       explanation: "Genommutation: Chromosom 21 dreifach vorhanden (Down-Syndrom).",
       wissen: fw(
         "Ursache: Fehlverteilung bei der Meiose — zusätzliches Chromosom 21.",
@@ -2378,8 +2378,8 @@ export const k10Erbkrankheiten: BioBank = {
     },
     {
       concept: "bio:k10:erbk:katz",
-      prompt: "Was ist das Katzenschreisyndrom?",
-      answer: "Chromosomenmutation (Verlust eines Abschnitts an Chromosom 5).", wrong: ["Eine Virusgrippe.", "Eine reine Allergie.", "Ein Knochenbruch."],
+      prompt: "Woran erkennt man das Katzenschreisyndrom genetisch?",
+      answer: "Typisch ist chromosomenmutation (Verlust eines Abschnitts an Chromosom 5).", wrong: ["Eine Virusgrippe ersetzt die Fotosynthese in den Blattzellen.", "Reine Allergie dient nur der Schallübertragung in Luft.", "Ein Knochenbruch dient nur der Schallübertragung in Luft."],
       explanation: "Chromosomenmutation (Verlust eines Abschnitts an Chromosom 5).",
       wissen: fw(
         "Strukturelle Chromosomenveränderung — typisches Schreimuster beim Säugling historisch namensgebend.",
@@ -2389,8 +2389,8 @@ export const k10Erbkrankheiten: BioBank = {
     },
     {
       concept: "bio:k10:erbk:pku",
-      prompt: "Was ist Phenylketonurie (PKU)?",
-      answer: "Genmutation mit Störung des Phenylalanin-Stoffwechsels.", wrong: ["Trisomie 21.", "Nur Rhesus-Unverträglichkeit.", "Nur eine Hautfarbe."],
+      prompt: "Woran erkennt man Phenylketonurie (PKU)?",
+      answer: "Es ist genmutation mit Störung des Phenylalanin-Stoffwechsels.", wrong: ["Trisomie 21 dient nur der Schallübertragung in Luft.", "Rhesus-Unverträglichkeit.", "Eine Hautfarbe ist ein rein geologischer Vorgang ohne Zellbezug."],
       explanation: "Genmutation mit Störung des Phenylalanin-Stoffwechsels.",
       wissen: fw(
         "Früherkennung und Diät können schwere Folgen verhindern.",
@@ -2400,8 +2400,8 @@ export const k10Erbkrankheiten: BioBank = {
     },
     {
       concept: "bio:k10:erbk:haemo",
-      prompt: "Was ist Hämophilie?",
-      answer: "Bluterkrankheit — oft X-chromosomal vererbt.", wrong: ["Immer Trisomie.", "Immer Chromosomenverlust an 5.", "Immer rein umweltbedingt ohne Gene."],
+      prompt: "Woran erkennt man Hämophilie genetisch?",
+      answer: "Es ist die Bluterkrankheit — oft X-chromosomal vererbt.", wrong: ["Trisomie.", "Chromosomenverlust an 5.", "Rein umweltbedingt ohne Gene."],
       explanation: "Bluterkrankheit — oft X-chromosomal vererbt.",
       wissen: fw(
         "Gerinnungsfaktor fehlt/funktioniert schlecht — Blutungen länger.",
@@ -2412,7 +2412,7 @@ export const k10Erbkrankheiten: BioBank = {
     {
       concept: "bio:k10:erbk:typen",
       prompt: "Welche Mutationstypen unterscheidet man in der Genetik?",
-      answer: "Gen-, Chromosomen- und Genommutation.", wrong: ["Nur Punktmutation ohne Rest.", "Nur Infektionen.", "Nur Modifikationen."],
+      answer: "Man bezeichnet das als gen-, Chromosomen- und Genommutation.", wrong: ["Punktmutation ohne Rest.", "Infektionen findet nur außerhalb lebender Zellen statt.", "Modifikationen bildet das gesamte Erbgut aus Glucose."],
       explanation: "Gen-, Chromosomen- und Genommutation.",
       wissen: fw(
         "Gen: Genabschnitt; Chromosom: Struktur; Genom: Anzahl.",
@@ -2423,12 +2423,7 @@ export const k10Erbkrankheiten: BioBank = {
     {
       concept: "bio:k10:erbk:stammbaum",
       prompt: "Wozu dienen Stammbaumanalysen?",
-      answer: "Sie lassen Erbgänge in Familien erkennen und Merkmalsträger zuordnen.",
-      wrong: [
-        "Sie bestimmen allein über X und Y das chromosomale Geschlecht.",
-        "Sie erklären nur x-chromosomale Erbgänge ohne Familienzusammenhang.",
-        "Sie beschreiben körperliche Merkmale, die von XX/XY-Mustern abweichen.",
-      ],
+      answer: "Sie lassen Erbgänge in Familien erkennen und Merkmalsträger zuordnen.", wrong: ["Sie bestimmen allein über X und Y das chromosomale Geschlecht.", "Sie erklären nur x-chromosomale Erbgänge ohne Familienzusammenhang.", "Sie beschreiben körperliche Merkmale, die von XX/XY-Mustern abweichen."],
       explanation: "Erbgänge in Familien erkennen.",
       wissen: fw(
         "Symbole zeigen Merkmalsträger und Verwandtschaft.",
@@ -2439,7 +2434,7 @@ export const k10Erbkrankheiten: BioBank = {
     {
       concept: "bio:k10:erbk:diag",
       prompt: "Was gehört zur Diagnostik/Prophylaxe?",
-      answer: "Tests, Beratung, ggf. Therapie/Diät.", wrong: ["Nur Abwarten ohne Wissen.", "Nur Ignorieren.", "Nur Bestrafen."],
+      answer: "Typisch ist tests, Beratung, ggf. Therapie/Diät.", wrong: ["Abwarten ohne Wissen.", "Ignorieren steuert nur die Blattstellung bei Bäumen.", "Bestrafen verhindert jede Zellteilung dauerhaft."],
       explanation: "Tests, Beratung, ggf. Therapie/Diät.",
       wissen: fw(
         "Humangenetik verbindet Ursachen, Symptome und Handlungsmöglichkeiten.",
@@ -2460,8 +2455,8 @@ export const k10Erbkrankheiten: BioBank = {
     },
     {
       concept: "bio:k10:erbk:inklusion",
-      prompt: "Was meint Integration/Inklusion Erbkranker?",
-      answer: "Teilhabe und Gleichberechtigung in der Gesellschaft.", wrong: ["Ausgrenzung.", "Nur Labortests ohne Menschen.", "Nur Statistik."],
+      prompt: "Wozu dient Integration/Inklusion Erbkranker?",
+      answer: "Integration/Inklusion Erbkranker bezeichnet teilhabe und Gleichberechtigung in der Gesellschaft.", wrong: ["Ausgrenzung ersetzt DNA durch reine Zellulose.", "Labortests ohne Menschen.", "Statistik betrifft allein die Planetenbewegung."],
       explanation: "Teilhabe und Gleichberechtigung in der Gesellschaft.",
       wissen: fw(
         "Werteorientierung: Menschenwürde unabhängig vom Genotyp.",
@@ -2472,7 +2467,7 @@ export const k10Erbkrankheiten: BioBank = {
     {
       concept: "bio:k10:erbk:ursache",
       prompt: "Was sind Mutagene?",
-      answer: "Faktoren, die Mutationsraten erhöhen können.", wrong: ["Nur Vitamine.", "Nur Wasser.", "Nur Licht für Fotosynthese."],
+      answer: "Faktoren, die Mutationsraten erhöhen können.", wrong: ["Vitamine ist ein rein geologischer Vorgang ohne Zellbezug.", "Wasser kommt nur in abgestorbenem Gewebe vor.", "Licht für Fotosynthese."],
       explanation: "Faktoren, die Mutationsraten erhöhen können.",
       wissen: fw(
         "Strahlung, bestimmte Chemikalien u. a. können mutagene wirken.",
@@ -2519,8 +2514,8 @@ export const k10Zuechtung: BioBank = {
   facts: [
     {
       concept: "bio:k10:zuecht:klassisch",
-      prompt: "Was ist klassische Züchtung?",
-      answer: "Auswahl und Kreuzung von Organismen mit gewünschten Merkmalen.", wrong: ["Sofortige DNA-Sequenzierung allein.", "Nur Impfung.", "Nur Fotosynthese messen."],
+      prompt: "Wie arbeitet klassische Züchtung?",
+      answer: "Es ist die Auswahl und Kreuzung von Organismen mit gewünschten Merkmalen.", wrong: ["Es ist nur sofortige DNA-Sequenzierung ohne Züchtung.", "Es ist nur Impfung ohne Merkmalsauswahl.", "Es ist nur das Messen der Fotosynthese."],
       explanation: "Auswahl und Kreuzung von Organismen mit gewünschten Merkmalen.",
       wissen: fw(
         "Kreuzungs-, Auslese- und Mutationszüchtung nutzen Variation und Selektion.",
@@ -2531,7 +2526,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:kreuzung",
       prompt: "Was bewirkt Kreuzungszüchtung?",
-      answer: "Kombiniert Erbanlagen verschiedener Elternlinien.", wrong: ["Löscht alle Gene.", "Ersetzt Meiose.", "Stoppt Mutation immer."],
+      answer: "Kreuzungszüchtung bezeichnet kombiniert Erbanlagen verschiedener Elternlinien.", wrong: ["Löscht alle Gene.", "Ersetzt Meiose.", "Stoppt Mutation immer."],
       explanation: "Kombiniert Erbanlagen verschiedener Elternlinien.",
       wissen: fw(
         "Nachkommen erhalten Allelkombinationen beider Eltern.",
@@ -2541,8 +2536,8 @@ export const k10Zuechtung: BioBank = {
     },
     {
       concept: "bio:k10:zuecht:auslese",
-      prompt: "Was ist Auslesezüchtung?",
-      answer: "Wiederholte Auswahl der besten Individuen als Eltern.", wrong: ["Zufällige Vernichtung aller Samen.", "Nur Gentechnik.", "Nur Klonen ohne Auswahl."],
+      prompt: "Wie arbeitet Auslesezüchtung?",
+      answer: "Es ist wiederholte Auswahl der besten Individuen als Eltern.", wrong: ["Zufällige Vernichtung aller Samen.", "Gentechnik bildet das gesamte Erbgut aus Glucose.", "Klonen ohne Auswahl."],
       explanation: "Wiederholte Auswahl der besten Individuen als Eltern.",
       wissen: fw(
         "Über Generationen reichern sich gewünschte Merkmale an.",
@@ -2553,7 +2548,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:mutationsz",
       prompt: "Was nutzt Mutationszüchtung?",
-      answer: "Erhöhte Mutationsrate (z. B. Strahlung/Chemikalien) plus Auswahl.", wrong: ["Nur natürliche Partnerwahl ohne Variation.", "Nur Impfungen.", "Nur Ökologie."],
+      answer: "Erhöhte Mutationsrate (z. B. Strahlung/Chemikalien) plus Auswahl.", wrong: ["Natürliche Partnerwahl ohne Variation.", "Impfungen dient nur der Schallübertragung in Luft.", "Ökologie kommt nur in abgestorbenem Gewebe vor."],
       explanation: "Erhöhte Mutationsrate (z. B. Strahlung/Chemikalien) plus Auswahl.",
       wissen: fw(
         "Mehr Variation → Chance auf nützliche Merkmale, dann Auslese.",
@@ -2563,8 +2558,8 @@ export const k10Zuechtung: BioBank = {
     },
     {
       concept: "bio:k10:zuecht:gentech",
-      prompt: "Was ist das Prinzip gentechnischer Veränderung?",
-      answer: "Gezieltes Einbringen/Verändern von Genen.", wrong: ["Nur Kreuzung im Feld ohne Moleküle.", "Nur Düngen.", "Nur Gießen."],
+      prompt: "Worauf zielt das Prinzip gentechnischer Veränderung?",
+      answer: "Typisch ist gezieltes Einbringen/Verändern von Genen.", wrong: ["Kreuzung im Feld ohne Moleküle.", "Düngen findet nur außerhalb lebender Zellen statt.", "Gießen ersetzt DNA durch reine Zellulose."],
       explanation: "Gezieltes Einbringen/Verändern von Genen.",
       wissen: fw(
         "Transgene Organismen tragen gezielt veränderte Erbinformation.",
@@ -2575,7 +2570,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:nutzen",
       prompt: "Welcher Nutzen wird bei Gentechnik diskutiert?",
-      answer: "z. B. Resistenz, Medikamente, Erträge.", wrong: ["Auswahl und Kreuzung von Organismen mit gewünschten Merkmalen.", "Kombiniert Erbanlagen verschiedener Elternlinien.", "Wiederholte Auswahl der besten Individuen als Eltern."],
+      answer: "Beispiele sind Resistenz, Medikamente und Erträge.", wrong: ["Klassische Züchtung arbeitet mit Auswahl und Kreuzung von Organismen mit gewünschten Merkmalen.", "Sie kombiniert Erbanlagen verschiedener Elternlinien.", "Auslesezüchtung bedeutet wiederholte Auswahl der besten Individuen als Eltern."],
       explanation: "z. B. Resistenz, Medikamente, Erträge.",
       wissen: fw(
         "Nutzen und Risiken müssen abgewogen werden.",
@@ -2586,7 +2581,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:risiko",
       prompt: "Welche Risiken werden diskutiert?",
-      answer: "Ökologie, Gesundheit, Macht/Abhängigkeit, Ethik.", wrong: ["Keine Risiken existieren je.", "Nur zu viel Regen.", "Nur zu wenig Schlaf."],
+      answer: "Ökologie, Gesundheit, Macht/Abhängigkeit, Ethik.", wrong: ["Keine Risiken existieren je.", "Zu viel Regen.", "Zu wenig Schlaf."],
       explanation: "Ökologie, Gesundheit, Macht/Abhängigkeit, Ethik.",
       wissen: fw(
         "Rollenspiel/Diskurs: Positionen begründet abwägen.",
@@ -2597,7 +2592,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:diskurs",
       prompt: "Warum Rollenspiel zu Nutzen und Risiken?",
-      answer: "Unterschiedliche Perspektiven begründet diskutieren.", wrong: ["Um Fakten zu verbieten.", "Um Genetik zu löschen.", "Um nur zu raten."],
+      answer: "Man soll unterschiedliche Perspektiven begründet diskutieren.", wrong: ["Um Fakten zu verbieten.", "Um Genetik zu löschen.", "Um nur zu raten."],
       explanation: "Unterschiedliche Perspektiven begründet diskutieren.",
       wissen: fw(
         "Reflexions- und Diskursfähigkeit werden beim Abwägen geübt.",
@@ -2608,7 +2603,7 @@ export const k10Zuechtung: BioBank = {
     {
       concept: "bio:k10:zuecht:vs",
       prompt: "Unterschied klassische Züchtung vs. Gentechnik?",
-      answer: "Klassisch oft über Kreuzung/Auslese; Gentechnik molekular gezielter.", wrong: ["Kein Unterschied.", "Gentechnik ist immer Kreuzung im Feld.", "Klassisch braucht immer Labor-DNA-Schere."],
+      answer: "Man bezeichnet das als klassisch oft über Kreuzung/Auslese; Gentechnik molekular gezielter.", wrong: ["Kein Unterschied dient nur der Schallübertragung in Luft.", "Gentechnik ist immer Kreuzung im Feld.", "Klassisch braucht immer Labor-DNA-Schere."],
       explanation: "Klassisch oft über Kreuzung/Auslese; Gentechnik molekular gezielter.",
       wissen: fw(
         "Beide nutzen genetische Variation — Methoden unterscheiden sich.",
@@ -2666,8 +2661,8 @@ export const k10Spezialisierung: BioBank = {
   facts: [
     {
       concept: "bio:k10:spez:was",
-      prompt: "Was meint evolutionäre Spezialisierung?",
-      answer: "Starke Angepasstheit von Struktur/Funktion an eine Aufgabe/Niche.", wrong: ["Verlust aller Merkmale.", "Zufällige Nutzlosigkeit immer.", "Nur Modifikation ohne Gene."],
+      prompt: "Woran erkennt man evolutionäre Spezialisierung?",
+      answer: "Evolutionäre Spezialisierung bezeichnet starke Angepasstheit von Struktur/Funktion an eine Aufgabe/Niche.", wrong: ["Verlust aller Merkmale.", "Zufällige Nutzlosigkeit immer.", "Modifikation ohne Gene."],
       explanation: "Starke Angepasstheit von Struktur/Funktion an eine Aufgabe/Niche.",
       wissen: fw(
         "Spezialisierung erhöht Effizienz in einer Nische, kann Flexibilität mindern.",
@@ -2678,7 +2673,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:schnabel",
       prompt: "Warum haben Vögel unterschiedlich geformte Schnäbel?",
-      answer: "Angepasstheit an unterschiedliche Nahrung.", wrong: ["Zufall ohne Funktion immer.", "Nur Mode.", "Nur Fluglärm."],
+      answer: "Gemeint ist angepasstheit an unterschiedliche Nahrung.", wrong: ["Zufall ohne Funktion immer.", "Mode dient nur der Schallübertragung in Luft.", "Fluglärm ersetzt die Fotosynthese in den Blattzellen."],
       explanation: "Angepasstheit an unterschiedliche Nahrung.",
       wissen: fw(
         "Darwin-Finken u. a.: Schnabelform korreliert mit Nahrung.",
@@ -2689,7 +2684,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:insekt",
       prompt: "Was zeigt die Wechselwirkung Insekt–Blüte?",
-      answer: "Koevolution von Bestäuber und Blütenmerkmalen.", wrong: ["Dass Blüten keine Funktion haben.", "Dass Insekten Wurzeln ersetzen.", "Dass Evolution stoppt."],
+      answer: "Es ist die Koevolution von Bestäuber und Blütenmerkmalen.", wrong: ["Dass Blüten keine Funktion haben.", "Dass Insekten Wurzeln ersetzen.", "Dass Evolution vollständig stoppt."],
       explanation: "Koevolution von Bestäuber und Blütenmerkmalen.",
       wissen: fw(
         "Form, Farbe, Duft und Mundwerkzeuge passen oft zusammen.",
@@ -2700,7 +2695,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:struktur",
       prompt: "Was sind Struktur-Funktions-Beziehungen?",
-      answer: "Bau erklärt Leistung/Angepasstheit.", wrong: ["Bau ist zufällig funktionslos immer.", "Funktion braucht keine Struktur.", "Nur Namen ohne Form."],
+      answer: "Es ist bau erklärt Leistung/Angepasstheit.", wrong: ["Bau ist zufällig funktionslos immer.", "Funktion braucht keine Struktur.", "Namen ohne Form."],
       explanation: "Bau erklärt Leistung/Angepasstheit.",
       wissen: fw(
         "Erschließungsfeld Angepasstheit: Form folgt Aufgabe.",
@@ -2711,7 +2706,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:prox",
       prompt: "Was sind proximate Ursachen von Verhalten/Merkmalen?",
-      answer: "Unmittelbare physiologische/entwicklungsbedingte Mechanismen.", wrong: ["Nur der evolutive Vorteil.", "Nur der Artname.", "Nur das Fossilalter."],
+      answer: "Es sind unmittelbare physiologische bzw. entwicklungsbedingte Mechanismen.", wrong: ["Der evolutive Vorteil allein.", "Nur der Artname ohne Mechanismus.", "Nur das Fossilalter."],
       explanation: "Unmittelbare physiologische/entwicklungsbedingte Mechanismen.",
       wissen: fw(
         "Proximate: Wie entsteht es jetzt? Ultimate: Warum evolutionär?",
@@ -2722,7 +2717,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:ult",
       prompt: "Was sind ultimate Ursachen?",
-      answer: "Evolutiver Nutzen / Reproduktionserfolg.", wrong: ["Nur die aktuelle Enzymkinetik.", "Nur die Farbe heute.", "Nur die Uhrzeit."],
+      answer: "Es ist evolutiver Nutzen / Reproduktionserfolg.", wrong: ["Die aktuelle Enzymkinetik.", "Farbe heute bildet das gesamte Erbgut aus Glucose.", "Die Uhrzeit."],
       explanation: "Evolutiver Nutzen / Reproduktionserfolg.",
       wissen: fw(
         "Ultimate: Beitrag zu Überleben und Fortpflanzung.",
@@ -2733,7 +2728,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:tradeoff",
       prompt: "Welcher Nachteil kann starke Spezialisierung haben?",
-      answer: "Geringere Flexibilität bei Umweltänderung.", wrong: ["Immer höhere Allgemeintauglichkeit.", "Sofortige Unsterblichkeit.", "Wegfall der Selektion."],
+      answer: "Gemeint ist geringere Flexibilität bei Umweltänderung.", wrong: ["Höhere Allgemeintauglichkeit.", "Sofortige Unsterblichkeit.", "Wegfall der Selektion."],
       explanation: "Geringere Flexibilität bei Umweltänderung.",
       wissen: fw(
         "Spezialisten leiden oft stärker bei Nahrungs-/Klimawandel.",
@@ -2744,7 +2739,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:nische",
       prompt: "Wie hängt Spezialisierung mit der ökologischen Nische zusammen?",
-      answer: "Engere Nische durch spezielle Ressourcen-/Verhaltensanpassung.", wrong: ["Nischen existieren nicht.", "Nur Breite ohne Struktur.", "Nur Zufall."],
+      answer: "Spezialisierung führt zu einer engeren Nische durch spezielle Ressourcen- oder Verhaltensanpassung.", wrong: ["Nischen existieren nicht.", "Es gibt nur Breite ohne Struktur.", "Es ist nur Zufall ohne Anpassung."],
       explanation: "Engere Nische durch spezielle Ressourcen-/Verhaltensanpassung.",
       wissen: fw(
         "Je spezialisierter, desto klarer oft die Nische.",
@@ -2755,7 +2750,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:beispiel",
       prompt: "Beispiel Spezialisierung außer Schnäbeln?",
-      answer: "Lange Zungen bei Schmetterlingen/Kolibris zum Nektartrinken.", wrong: ["Steine ohne Leben.", "Luft ohne Organismen.", "Reine Abstraktion ohne Organe."],
+      answer: "Gemeint ist lange Zungen bei Schmetterlingen/Kolibris zum Nektartrinken.", wrong: ["Steine ohne Leben.", "Luft ohne Organismen.", "Reine Abstraktion ohne Organe."],
       explanation: "Lange Zungen bei Schmetterlingen/Kolibris zum Nektartrinken.",
       wissen: fw(
         "Mundwerkzeuge, Beine, Blütenröhren — viele Beispiele.",
@@ -2766,7 +2761,7 @@ export const k10Spezialisierung: BioBank = {
     {
       concept: "bio:k10:spez:erschliess",
       prompt: "Welches Erschließungsfeld steht bei Spezialisierung im Vordergrund?",
-      answer: "Angepasstheit und Wechselwirkung.", wrong: ["Nur Magnetismus.", "Nur reine Mathematik.", "Nur Zeit ohne Form."],
+      answer: "Gemeint ist angepasstheit und Wechselwirkung.", wrong: ["Magnetismus steuert nur die Blattstellung bei Bäumen.", "Reine Mathematik bildet das gesamte Erbgut aus Glucose.", "Zeit ohne Form."],
       explanation: "Angepasstheit und Wechselwirkung.",
       wissen: fw(
         "Spezialisierung ist eine evolutionäre Entwicklungstendenz mit Struktur-Funktions-Bezug.",
@@ -2813,8 +2808,8 @@ export const k10VerhaltenEvo: BioBank = {
   facts: [
     {
       concept: "bio:k10:vevo:praegung",
-      prompt: "Was ist Prägung?",
-      answer: "Schnelles, oft irreversibles Lernen in sensiblen Phasen.", wrong: ["Nur Instinkt ohne Lernen.", "Nur Mutation.", "Nur Fotosynthese."],
+      prompt: "Woran erkennt man Prägung als Lernen?",
+      answer: "Es ist schnelles, oft irreversibles Lernen in sensiblen Phasen.", wrong: ["Instinkt ohne Lernen.", "Mutation ist ein rein geologischer Vorgang ohne Zellbezug.", "Fotosynthese verhindert jede Zellteilung dauerhaft."],
       explanation: "Schnelles, oft irreversibles Lernen in sensiblen Phasen.",
       wissen: fw(
         "Klassisch: Jungtiere prägen Bezugspersonen/Objekte.",
@@ -2824,8 +2819,8 @@ export const k10VerhaltenEvo: BioBank = {
     },
     {
       concept: "bio:k10:vevo:nachahmung",
-      prompt: "Was ist Nachahmung?",
-      answer: "Übernehmen von Verhalten durch Beobachtung.", wrong: ["Nur angeborene Reflexe ohne Vorbild.", "Nur DNA-Kopieren.", "Nur Zufallsbewegung."],
+      prompt: "Woran erkennt man Nachahmung als Lernen?",
+      answer: "Es ist die Übernehmen von Verhalten durch Beobachtung.", wrong: ["Angeborene Reflexe ohne Vorbild.", "DNA-Kopieren kommt nur in abgestorbenem Gewebe vor.", "Zufallsbewegung ist ein rein geologischer Vorgang ohne Zellbezug."],
       explanation: "Übernehmen von Verhalten durch Beobachtung.",
       wissen: fw(
         "Soziales Lernen über Nachahmung verbreitet Verhaltensweisen.",
@@ -2835,8 +2830,8 @@ export const k10VerhaltenEvo: BioBank = {
     },
     {
       concept: "bio:k10:vevo:tradition",
-      prompt: "Was meint Tradition im Verhaltenskontext?",
-      answer: "Weitergabe erlernter Verhaltensweisen über Generationen.", wrong: ["Nur angeborene Reflexe ohne Kultur.", "Nur eine Mutation.", "Nur ein Fossil."],
+      prompt: "Wie wird Tradition im Verhalten weitergegeben?",
+      answer: "Es ist die Weitergabe erlernter Verhaltensweisen über Generationen.", wrong: ["Nur angeborene Reflexe ohne Kultur.", "Nur Mutation ohne Lernen.", "Nur ein Fossil ohne Verhalten."],
       explanation: "Weitergabe erlernter Verhaltensweisen über Generationen.",
       wissen: fw(
         "Tradition: sozial weitergegebenes Verhalten in Gruppen.",
@@ -2846,8 +2841,8 @@ export const k10VerhaltenEvo: BioBank = {
     },
     {
       concept: "bio:k10:vevo:einsicht",
-      prompt: "Was meint Einsichtlernen grob?",
-      answer: "Problemlösen durch Erfassen von Zusammenhängen.", wrong: ["Nur reines Auswendigraten ohne Verständnis.", "Nur Reflex ohne Hirn.", "Nur Instinktstarre."],
+      prompt: "Woran erkennt man Einsichtlernen grob?",
+      answer: "Problemlösen durch Erfassen von Zusammenhängen.", wrong: ["Reines Auswendigraten ohne Verständnis.", "Reflex ohne Hirn.", "Instinktstarre läuft ausschließlich bei Säugetieren ab."],
       explanation: "Problemlösen durch Erfassen von Zusammenhängen.",
       wissen: fw(
         "Einsicht: plötzliches Erfassen einer Lösung (schulisch vereinfacht).",
@@ -2858,7 +2853,7 @@ export const k10VerhaltenEvo: BioBank = {
     {
       concept: "bio:k10:vevo:repro",
       prompt: "Woran misst Evolution Verhalten letztlich?",
-      answer: "Am Reproduktionserfolg.", wrong: ["Nur an der Lautstärke.", "Nur an der Fellfarbe ohne Fitness.", "Nur am Fossilalter allein."],
+      answer: "Am Reproduktionserfolg.", wrong: ["An der Lautstärke allein.", "An der Fellfarbe ohne Fitness.", "Am Fossilalter allein."],
       explanation: "Am Reproduktionserfolg.",
       wissen: fw(
         "Verhalten, das Fortpflanzung fördert, kann sich ausbreiten.",
@@ -2869,7 +2864,7 @@ export const k10VerhaltenEvo: BioBank = {
     {
       concept: "bio:k10:vevo:aufzucht",
       prompt: "Warum ist Aufzucht der Jungen evolutiv relevant?",
-      answer: "Erhöht Überlebenschancen der Nachkommen.", wrong: ["Senkt immer die Fitness auf null.", "Ersetzt Mutation.", "Löscht Selektion."],
+      answer: "Erhöht Überlebenschancen der Nachkommen.", wrong: ["Senkt immer die Fitness auf null.", "Ersetzt Mutation.", "Löscht Selektion ist mit Osmose in der Wurzelhaut identisch."],
       explanation: "Erhöht Überlebenschancen der Nachkommen.",
       wissen: fw(
         "Brutpflege und Lernen steigern oft den Fortpflanzungserfolg.",
@@ -2879,8 +2874,8 @@ export const k10VerhaltenEvo: BioBank = {
     },
     {
       concept: "bio:k10:vevo:genet",
-      prompt: "Was meint genetisch bedingtes Verhalten?",
-      answer: "Angeborene Anteile, die durch Gene mitbestimmt sind.", wrong: ["Nur reines Lernen ohne Anlage.", "Nur Kultur ohne Biologie.", "Nur Zufall."],
+      prompt: "Woran erkennt man genetisch bedingtes Verhalten?",
+      answer: "Angeborene Anteile, die durch Gene mitbestimmt sind.", wrong: ["Reines Lernen ohne Anlage.", "Kultur ohne Biologie.", "Zufall steuert nur die Blattstellung bei Bäumen."],
       explanation: "Angeborene Anteile, die durch Gene mitbestimmt sind.",
       wissen: fw(
         "Verhalten und Lernfähigkeit haben genetisch mitbestimmte Anteile.",
@@ -2891,7 +2886,7 @@ export const k10VerhaltenEvo: BioBank = {
     {
       concept: "bio:k10:vevo:lernen",
       prompt: "Wie erhöht Lernfähigkeit die Umweltunabhängigkeit?",
-      answer: "Flexible Anpassung an wechselnde Bedingungen.", wrong: ["Starre Festlegung ohne Änderung.", "Verlust aller Sinne.", "Stopp der Evolution."],
+      answer: "Typisch ist flexible Anpassung an wechselnde Bedingungen.", wrong: ["Starre Festlegung ohne Änderung.", "Verlust aller Sinne.", "Stopp der Evolution."],
       explanation: "Flexible Anpassung an wechselnde Bedingungen.",
       wissen: fw(
         "Lernen erlaubt Reaktion jenseits reiner Instinktprogramme.",
@@ -2902,7 +2897,7 @@ export const k10VerhaltenEvo: BioBank = {
     {
       concept: "bio:k10:vevo:prox-ult",
       prompt: "Proximate vs. ultimate bei Verhalten?",
-      answer: "Wie ausgelöst/gelernt vs. warum fitnessrelevant.", wrong: ["Beide meinen dasselbe immer.", "Nur Lautstärke zählt.", "Nur Farbe zählt."],
+      answer: "Wie ausgelöst/gelernt vs. warum fitnessrelevant.", wrong: ["Beide meinen dasselbe immer.", "Lautstärke zählt.", "Farbe zählt."],
       explanation: "Wie ausgelöst/gelernt vs. warum fitnessrelevant.",
       wissen: fw(
         "Beide Betrachtungsebenen gehören zur Evolutionsbiologie des Verhaltens.",
@@ -2913,7 +2908,7 @@ export const k10VerhaltenEvo: BioBank = {
     {
       concept: "bio:k10:vevo:wirbelt",
       prompt: "Beispiel Verhaltenslernen bei Wirbeltieren?",
-      answer: "Prägung bei Jungvögeln an Eltern/Objekte.", wrong: ["Nur bei Einzellern unmöglich immer.", "Nur bei Pflanzenblüten.", "Nur bei Steinen."],
+      answer: "Typisch ist man versteht darunter prägung bei Jungvögeln an Eltern/Objekte.", wrong: ["Es geschieht bei Einzellern unmöglich immer.", "Es geschieht bei Pflanzenblüten.", "Es geschieht bei Steinen."],
       explanation: "Prägung bei Jungvögeln an Eltern/Objekte.",
       wissen: fw(
         "Klassische Ethologie-Beispiele: Prägung, Nachahmung, Tradition.",
@@ -2961,7 +2956,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:ef",
       prompt: "Welches Erschließungsfeld steht bei Erdfrühzeit–Erdneuzeit im Vordergrund?",
-      answer: "Zeit.", wrong: ["Nur Magnetismus.", "Nur reine Chemie ohne Zeit.", "Nur Optik."],
+      answer: "Fossilien liefern Hinweise auf das Alter von Leben und die zeitliche Abfolge.", wrong: ["Fossilien zeigen nur Magnetismus der Erde.", "Fossilien zeigen nur reine Chemie ohne zeitliche Einordnung.", "Fossilien zeigen nur optische Erscheinungen ohne Alter."],
       explanation: "Zeit.",
       wissen: fw(
         "Entwicklung der Organismen über geologische Zeiträume — EF Zeit.",
@@ -2971,8 +2966,8 @@ export const k10Erdzeit: BioBank = {
     },
     {
       concept: "bio:k10:erdz:frueh",
-      prompt: "Was bedeutet „einfache“?",
-      answer: "Frühe Lebensformen, lange vor komplexen Landwirbeltieren.", wrong: ["Sofort Homo sapiens überall.", "Keine Lebewesen je.", "Nur moderne Städte."],
+      prompt: "Warum nennt man frühe Lebensformen oft „einfach“?",
+      answer: "Frühe Lebensformen, lange vor komplexen Landwirbeltieren.", wrong: ["Sofort Homo sapiens überall.", "Keine Lebewesen je.", "Moderne Städte steuert nur die Blattstellung bei Bäumen."],
       explanation: "Frühe Lebensformen, lange vor komplexen Landwirbeltieren.",
       wissen: fw(
         "Leben beginnt einfach und diversifiziert über Äonen.",
@@ -2983,7 +2978,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:neuzeit",
       prompt: "Was gehört zur Erdneuzeit (Känozoikum) grob?",
-      answer: "Aufstieg der Säugetiere und jüngere Erdgeschichte.", wrong: ["Nur das Präkambrium allein.", "Nur die Entstehung der Erde ohne Leben.", "Nur Dinosaurier-Hochphase allein."],
+      answer: "Es ist der Aufstieg der Säugetiere und die jüngere Erdgeschichte.", wrong: ["Das Präkambrium allein.", "Die Entstehung der Erde ohne Leben.", "Die Dinosaurier-Hochphase allein."],
       explanation: "Aufstieg der Säugetiere und jüngere Erdgeschichte.",
       wissen: fw(
         "Känozoikum: nach dem Ende vieler Dinosaurier — Säuger diversifizieren.",
@@ -2994,7 +2989,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:fossil",
       prompt: "Womit rekonstruiert man die Abfolge?",
-      answer: "Fossilien und Altersbestimmungen.", wrong: ["Frühe Lebensformen, lange vor komplexen Landwirbeltieren.", "Aufstieg der Säugetiere und jüngere Erdgeschichte.", "Sie ordnet Stammesgeschichte und Übergänge."],
+      answer: "Es sind Fossilien und Altersbestimmungen.", wrong: ["Frühe Lebensformen, lange vor komplexen Landwirbeltieren.", "Aufstieg der Säugetiere und jüngere Erdgeschichte.", "Nur die Ordnungslehre ohne Funde."],
       explanation: "Fossilien und Altersbestimmungen.",
       wissen: fw(
         "Leitfossilien und Datierung ordnen Schichten zeitlich.",
@@ -3005,7 +3000,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:ordnung",
       prompt: "Warum ist die zeitliche Einordnung wichtig?",
-      answer: "Sie ordnet Stammesgeschichte und Übergänge.", wrong: ["Sie ersetzt Anatomie.", "Sie löscht Evolution.", "Sie macht DNA unnötig."],
+      answer: "Man bezeichnet das als sie ordnet Stammesgeschichte und Übergänge.", wrong: ["Sie ersetzt Anatomie.", "Sie löscht Evolution.", "Sie macht DNA unnötig."],
       explanation: "Sie ordnet Stammesgeschichte und Übergänge.",
       wissen: fw(
         "Ohne Zeitskala keine sinnvolle Phylogenie.",
@@ -3016,7 +3011,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:mensch",
       prompt: "Wann erscheint der moderne Mensch geologisch?",
-      answer: "Sehr spät in der Erdgeschichte.", wrong: ["Gleich zu Beginn des Lebens.", "Vor allen Einzellern.", "Vor den ersten Gesteinen."],
+      answer: "Die Menschheitsgeschichte liegt sehr spät in der Erdgeschichte.", wrong: ["Gleich zu Beginn des Lebens.", "Vor allen Einzellern.", "Vor den ersten Gesteinen."],
       explanation: "Sehr spät in der Erdgeschichte.",
       wissen: fw(
         "Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.",
@@ -3027,7 +3022,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:geo",
       prompt: "Welcher Fachbezug hilft bei Erdzeitaltern?",
-      answer: "Geographie/Geologie (Schichten, Zeit).", wrong: ["Nur Musik.", "Nur Sport.", "Nur Latein ohne Befunde."],
+      answer: "Man bezeichnet das als geographie/Geologie (Schichten, Zeit).", wrong: ["Musik ist mit Osmose in der Wurzelhaut identisch.", "Sport ist ein rein geologischer Vorgang ohne Zellbezug.", "Latein ohne Befunde."],
       explanation: "Geographie/Geologie (Schichten, Zeit).",
       wissen: fw(
         "Schichten und Zeitskalen verbinden Biologie mit Geographie/Geologie.",
@@ -3038,7 +3033,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:wechsel",
       prompt: "Was verändert sich über Erdzeitalter?",
-      answer: "Klima, Lebensräume und vorherrschende Organismengruppen.", wrong: ["Nur die Schwerkraft aus.", "Nur die Lichtgeschwindigkeit.", "Nichts."],
+      answer: "Klima, Lebensräume und vorherrschende Organismengruppen.", wrong: ["Die Schwerkraft aus.", "Lichtgeschwindigkeit.", "Nichts bildet das gesamte Erbgut aus Glucose."],
       explanation: "Klima, Lebensräume und vorherrschende Organismengruppen.",
       wissen: fw(
         "Massenaussterben und Radiationen prägen die Abfolge.",
@@ -3049,7 +3044,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:beleg",
       prompt: "Welche Belege stützen die Abfolge?",
-      answer: "Fossilbericht und radiometrische/relative Datierung.", wrong: ["Nur Meinungen.", "Nur Zeichnungen ohne Funde.", "Nur Zufall."],
+      answer: "Es sind Fossilbericht und radiometrische bzw. relative Datierung.", wrong: ["Nur Meinungen ohne Funde.", "Nur Zeichnungen ohne Funde.", "Nur Zufall ohne Datierung."],
       explanation: "Fossilbericht und radiometrische/relative Datierung.",
       wissen: fw(
         "Wissenschaftliche Rekonstruktion braucht Befunde.",
@@ -3060,7 +3055,7 @@ export const k10Erdzeit: BioBank = {
     {
       concept: "bio:k10:erdz:einblick",
       prompt: "Was soll man zu Erdfrühzeit bis Erdneuzeit können?",
-      answer: "Einen Überblick über die Entwicklung der Organismen gewinnen.", wrong: ["Vollständige Artliste auswendig.", "Nur Chemie der Atmosphäre 2020.", "Nur Politik."],
+      answer: "Einen Überblick über die Entwicklung der Organismen gewinnen.", wrong: ["Vollständige Artliste auswendig.", "Chemie der Atmosphäre 2020.", "Politik findet nur außerhalb lebender Zellen statt."],
       explanation: "Einen Überblick über die Entwicklung der Organismen gewinnen.",
       wissen: fw(
         "Überblick über lange Zeiträume, nicht um jede Art.",
@@ -3108,7 +3103,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:stellung",
       prompt: "Wo steht der Mensch im System der Organismen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Als Primat innerhalb der Menschenaffen-Verwandtschaft.",
       wissen: fw(
         "Mensch gehört zu den Primaten; nahe Verwandte sind Menschenaffen.",
@@ -3119,7 +3114,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:vergleich",
       prompt: "Was vergleicht man anatomisch oft?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Schädel, Extremitäten, Wirbelsäule.",
       wissen: fw(
         "Aufrechter Gang verändert Wirbelsäule und Extremitäten.",
@@ -3129,8 +3124,8 @@ export const k10Menschenaffen: BioBank = {
     },
     {
       concept: "bio:k10:maffen:bipedy",
-      prompt: "Was kennzeichnet den Menschen gegenüber vielen Menschenaffen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Das den Menschen gegenüber vielen Menschenaffen ist das Kiemenatmung.", "Das den Menschen gegenüber vielen Menschenaffen ist die Fotosynthese.", "Das den Menschen gegenüber vielen Menschenaffen ist das Fehlendes Gehirn."],
+      prompt: "Was unterscheidet den Menschen gegenüber vielen Menschenaffen?",
+      answer: "Es ist dauerhafte Bipedie (aufrechter Gang).", wrong: ["Kiemenatmung wie bei Fischen.", "Fotosynthese wie bei Pflanzen.", "Fehlendes Gehirn findet nur außerhalb lebender Zellen statt."],
       explanation: "Dauerhafte Bipedie (aufrechter Gang).",
       wissen: fw(
         "Aufrechter Gang ist ein schlüsselmerkmal der Homininen.",
@@ -3141,7 +3136,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:lernen",
       prompt: "Was zeigt der Vergleich beim Lernverhalten?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Hohe Lernfähigkeit bei Menschenaffen und Mensch.",
       wissen: fw(
         "Werkzeuggebrauch und soziales Lernen kommen bei Menschenaffen vor.",
@@ -3152,7 +3147,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:komm",
       prompt: "Was zeigt der Vergleich bei Kommunikation?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Komplexe soziale Signale; Mensch zusätzlich Sprache.",
       wissen: fw(
         "Kommunikation ist sozial zentral — Mensch mit Sprache besonders ausgebaut.",
@@ -3163,7 +3158,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:werkzeug",
       prompt: "Nutzen Menschenaffen Werkzeuge?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Ja, z. B. Stöcke/Steine in manchen Populationen.",
       wissen: fw(
         "Werkzeuggebrauch ist ein gemeinsames Thema im Vergleich.",
@@ -3174,7 +3169,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:jagd",
       prompt: "Was gehört zu Verhaltensvergleichen noch?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Aggressions- und Jagdverhalten, Sozialstruktur.",
       wissen: fw(
         "Zum Vergleich gehören Lernen, Kommunikation, Aggression/Jagd und Werkzeuggebrauch.",
@@ -3185,7 +3180,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:dna",
       prompt: "Warum stützt DNA die Nähe zu Menschenaffen?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["DNA ist bei Affen andersartig ohne Ähnlichkeit.", "Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["DNA ist bei Affen andersartig ohne Ähnlichkeit.", "Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie."],
       explanation: "Hohe genetische Übereinstimmung.",
       wissen: fw(
         "Molekulare Ähnlichkeit bestätigt enge Verwandtschaft.",
@@ -3196,7 +3191,7 @@ export const k10Menschenaffen: BioBank = {
     {
       concept: "bio:k10:maffen:ethik",
       prompt: "Welcher Wertebezug steckt im Vergleich?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Sie beschreibt menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Sie beschreibt ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
+      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Menschheitsgeschichte ist ein wimpernschlag der Erdgeschichte.", "Es geschieht Ohne Zeitskala keine sinnvolle Phylogenie.", "Es massenaussterben und Radiationen prägen die Abfolge."],
       explanation: "Respekt vor nahen Verwandten und Verantwortung.",
       wissen: fw(
         "Verwandtschaft begründet keine Hierarchie von Würde — aber Verständnis.",
@@ -3206,8 +3201,8 @@ export const k10Menschenaffen: BioBank = {
     },
     {
       concept: "bio:k10:maffen:system",
-      prompt: "Was kennzeichnet „Stellung im System“?",
-      answer: "Sie misst die Dauer eines Vorgangs und steckt in der Formel für die Geschwindigkeit.", wrong: ["Das Stellung im System ist das Nur Wohnort.", "Das Stellung im System ist das Nur Beruf.", "Das Stellung im System ist das Nur Lieblingsessen."],
+      prompt: "Wonach bestimmt man die Stellung im System?",
+      answer: "Es ist die Einordnung in die biologische Systematik.", wrong: ["Der Wohnort.", "Beruf ersetzt DNA durch reine Zellulose.", "Das Lieblingsessen."],
       explanation: "Einordnung in die biologische Systematik.",
       wissen: fw(
         "Taxonomie: Ordnung Primaten, Familie Hominidae usw.",
@@ -3255,7 +3250,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:australo",
       prompt: "Wer waren Australopithecinen grob?",
-      answer: "Frühe zweibeinige Homininen vor der Gattung Homo.", wrong: ["Moderne Europäer allein.", "Nur Menschenaffen ohne Bipedie je.", "Nur Dinosaurier."],
+      answer: "Es sind frühe zweibeinige Homininen vor der Gattung Homo.", wrong: ["Nur moderne Europäer allein.", "Nur Menschenaffen ohne Bipedie.", "Nur Dinosaurier ohne Homininen."],
       explanation: "Frühe zweibeinige Homininen vor der Gattung Homo.",
       wissen: fw(
         "Australopithecus: wichtige Station vor Homo.",
@@ -3266,7 +3261,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:habilis",
       prompt: "Wofür steht Homo habilis grob?",
-      answer: "Frühe Homo-Form, oft mit einfachem Werkzeuggebrauch verknüpft.", wrong: ["Nur Neandertaler in Europa.", "Nur Homo sapiens heute.", "Nur ein Fischfossil."],
+      answer: "Frühe Homo-Form, oft mit einfachem Werkzeuggebrauch verknüpft.", wrong: ["Neandertaler in Europa.", "Homo sapiens heute.", "Ein Fischfossil ist ein rein geologischer Vorgang ohne Zellbezug."],
       explanation: "Frühe Homo-Form, oft mit einfachem Werkzeuggebrauch verknüpft.",
       wissen: fw(
         "„habilis“ = geschickt — Werkzeugkontext.",
@@ -3277,7 +3272,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:erectus",
       prompt: "Wofür steht Homo erectus grob?",
-      answer: "Frühe Ausbreitung, längerer aufrechter Gang, Kulturtechnik-Anfänge.", wrong: ["Nur sesshafte Bauern in Europa 1800.", "Nur Affen ohne Werkzeug.", "Nur Meeresreptilien."],
+      answer: "Frühe Ausbreitung, längerer aufrechter Gang, Kulturtechnik-Anfänge.", wrong: ["Sesshafte Bauern in Europa 1800.", "Affen ohne Werkzeug.", "Meeresreptilien bildet das gesamte Erbgut aus Glucose."],
       explanation: "Frühe Ausbreitung, längerer aufrechter Gang, Kulturtechnik-Anfänge.",
       wissen: fw(
         "Erectus: wichtige Phase der Menschwerdung und Wanderung.",
@@ -3288,7 +3283,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:neandertal",
       prompt: "Wer war Homo neanderthalensis?",
-      answer: "Nahe verwandte Menschenform Eurasiens, ausgestorben.", wrong: ["Ein Dinosaurier.", "Ein heutiger Menschenaffe.", "Ein Fisch."],
+      answer: "Nahe verwandte Menschenform Eurasiens, ausgestorben.", wrong: ["Ein Dinosaurier läuft ausschließlich bei Säugetieren ab.", "Heutiger Menschenaffe.", "Ein Fisch ersetzt die Fotosynthese in den Blattzellen."],
       explanation: "Nahe verwandte Menschenform Eurasiens, ausgestorben.",
       wissen: fw(
         "Neandertaler: robust, angepasst an Kaltzeiten, kulturelle Fähigkeiten.",
@@ -3298,8 +3293,8 @@ export const k10Homininen: BioBank = {
     },
     {
       concept: "bio:k10:homin:sapiens",
-      prompt: "Was kennzeichnet Homo sapiens?",
-      answer: "Anatomisch moderner Mensch mit komplexer Kultur.", wrong: ["Nur Australopithecus.", "Nur erectus ohne Kultur.", "Nur Neandertaler."],
+      prompt: "Was beschreibt Homo sapiens?",
+      answer: "Homo sapiens bezeichnet anatomisch moderner Mensch mit komplexer Kultur.", wrong: ["Australopithecus steuert nur die Blattstellung bei Bäumen.", "Erectus ohne Kultur.", "Neandertaler ersetzt DNA durch reine Zellulose."],
       explanation: "Anatomisch moderner Mensch mit komplexer Kultur.",
       wissen: fw(
         "Sapiens: heutige Menschen und ihre unmittelbaren Vorfahrenformen.",
@@ -3321,7 +3316,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:stammbaum",
       prompt: "Wozu dient die Verwandtschaft?",
-      answer: "Verwandtschaft und Abfolgen visualisieren.", wrong: ["Blutgruppen messen.", "pH im See messen.", "Blüten bestimmen."],
+      answer: "Die Verwandtschaft bezeichnet verwandtschaft und Abfolgen visualisieren.", wrong: ["Blutgruppen messen bildet das gesamte Erbgut aus Glucose.", "PH im See messen.", "Blüten bestimmen steuert nur die Blattstellung bei Bäumen."],
       explanation: "Verwandtschaft und Abfolgen visualisieren.",
       wissen: fw(
         "Modelle vereinfachen — Verzweigungen, keine geraden Leitern allein.",
@@ -3332,7 +3327,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:hirn",
       prompt: "Welche Tendenz zeigt sich beim Gehirnvolumen grob?",
-      answer: "Zunahme im Verlauf vieler Homininen-Linien.", wrong: ["Stetige Abnahme auf Insektenniveau.", "Konstanz wie bei Bakterien.", "Verschwinden des Gehirns."],
+      answer: "Man bezeichnet das als man versteht darunter zunahme im Verlauf vieler Homininen-Linien.", wrong: ["Stetige Abnahme auf Insektenniveau.", "Konstanz wie bei Bakterien.", "Verschwinden des Gehirns."],
       explanation: "Zunahme im Verlauf vieler Homininen-Linien.",
       wissen: fw(
         "Hirnleistung und Kulturentwicklung hängen zusammen (nicht linear-einfach).",
@@ -3343,7 +3338,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:kultur",
       prompt: "Was zählt zur kulturellen Entwicklung?",
-      answer: "Werkzeuge, Feuer, später Feldbau u. a.", wrong: ["Nur Instinkte ohne Artefakte.", "Nur DNA ohne Verhalten.", "Nur Klima ohne Menschen."],
+      answer: "Man bezeichnet das als werkzeuge, Feuer, später Feldbau u. a.", wrong: ["Instinkte ohne Artefakte.", "DNA ohne Verhalten.", "Klima ohne Menschen."],
       explanation: "Werkzeuge, Feuer, später Feldbau u. a.",
       wissen: fw(
         "Kulturtechnik unterscheidet Phasen der Menschwerdung.",
@@ -3354,7 +3349,7 @@ export const k10Homininen: BioBank = {
     {
       concept: "bio:k10:homin:faktoren",
       prompt: "Was beeinflusst die Stammesentwicklung?",
-      answer: "Klima, Vegetation, Ernährung, Sozialität, Technik.", wrong: ["Nur Zufall ohne Umwelt.", "Nur eine einzige Mutation erklärt alles immer.", "Nur moderne Medien."],
+      answer: "Klima, Vegetation, Ernährung, Sozialität, Technik.", wrong: ["Zufall ohne Umwelt.", "Eine einzige Mutation erklärt alles immer.", "Moderne Medien läuft ausschließlich bei Säugetieren ab."],
       explanation: "Klima, Vegetation, Ernährung, Sozialität, Technik.",
       wissen: fw(
         "Wechselwirkung von Umwelt und biologisch-kultureller Evolution.",
@@ -3402,7 +3397,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:bio-kultur",
       prompt: "Was unterscheidet biologische und kulturelle Evolution?",
-      answer: "Gene vs. gelernte/tradierte Informationen.", wrong: ["Beide sind identisch.", "Kultur ersetzt DNA komplett immer.", "Biologie kennt kein Lernen."],
+      answer: "Es ist der Gegensatz von Genen und gelernten bzw. tradierten Informationen.", wrong: ["Beide sind identisch.", "Kultur ersetzt DNA komplett immer.", "Biologie kennt kein Lernen."],
       explanation: "Gene vs. gelernte/tradierte Informationen.",
       wissen: fw(
         "Beide wirken zusammen auf die Menschheitsgeschichte.",
@@ -3413,7 +3408,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:feuer",
       prompt: "Warum war Feuergebrauch ein Einschnitt?",
-      answer: "Wärme, Schutz, Nahrungszubereitung.", wrong: ["Nur Schmuck ohne Nutzen.", "Nur Kunst ohne Energie.", "Nur Lärm."],
+      answer: "Gemeint ist wärme, Schutz, Nahrungszubereitung.", wrong: ["Schmuck ohne Nutzen.", "Kunst ohne Energie.", "Lärm läuft ausschließlich bei Säugetieren ab."],
       explanation: "Wärme, Schutz, Nahrungszubereitung.",
       wissen: fw(
         "Gekochte Nahrung und Wärme erweitern Lebensräume.",
@@ -3423,8 +3418,8 @@ export const k10KulturEvo: BioBank = {
     },
     {
       concept: "bio:k10:kultur:feldbau",
-      prompt: "Was bedeutet „der Übergang zu Feldbau“?",
-      answer: "Von Jagd/Sammeln zu Nahrungsmittelproduktion.", wrong: ["Rückkehr zu rein mariner Lebensweise.", "Ende jeder Technik.", "Verlust der Sprache."],
+      prompt: "Welche Folge hatte der Übergang zu Feldbau?",
+      answer: "Es ist den Wechsel von Jagd/Sammeln zu Nahrungsmittelproduktion.", wrong: ["Rückkehr zu rein mariner Lebensweise.", "Ende jeder Technik.", "Verlust der Sprache."],
       explanation: "Von Jagd/Sammeln zu Nahrungsmittelproduktion.",
       wissen: fw(
         "Neolithischer Wandel verändert Sozialstruktur und Umwelt.",
@@ -3435,7 +3430,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:werkzeug",
       prompt: "Welche Rolle spielen Werkzeuge und Waffen?",
-      answer: "Erweitern Jagd, Verarbeitung und Schutz.", wrong: ["Ersetzen Atmung.", "Löschen Sozialverhalten.", "Machen Gene überflüssig."],
+      answer: "Typisch ist erweitern Jagd, Verarbeitung und Schutz.", wrong: ["Ersetzen Atmung ist ein rein geologischer Vorgang ohne Zellbezug.", "Löschen Sozialverhalten.", "Machen Gene überflüssig."],
       explanation: "Erweitern Jagd, Verarbeitung und Schutz.",
       wissen: fw(
         "Technik ist Teil kultureller Evolution.",
@@ -3446,7 +3441,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:klima",
       prompt: "Wie hängen Klima/Vegetation und Fortbewegung zusammen?",
-      answer: "Umweltwechsel begünstigt Anpassungen wie Bipedie/Wanderung.", wrong: ["Gene vs. gelernte/tradierte Informationen.", "Wärme, Schutz, Nahrungszubereitung.", "Von Jagd/Sammeln zu Nahrungsmittelproduktion."],
+      answer: "Umweltwechsel begünstigt Anpassungen wie Bipedie und Wanderung.", wrong: ["Nur der Gegensatz von Genen und Kultur.", "Nur Wärme, Schutz und Nahrungszubereitung ohne Umweltwechsel.", "Nur der Wechsel von Jagd/Sammeln zu Nahrungsmittelproduktion."],
       explanation: "Umweltwechsel begünstigt Anpassungen wie Bipedie/Wanderung.",
       wissen: fw(
         "Klima- und Vegetationsveränderungen wirken auf Fortbewegung und Lebensweise.",
@@ -3457,7 +3452,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:sozial",
       prompt: "Was gehört zum Sozialverhalten des Menschen?",
-      answer: "Kommunikation, Rollen, Sexualität, Medien/Mode.", wrong: ["Nur Verdauung.", "Nur Osmose.", "Nur Zellatmung."],
+      answer: "Kommunikation, Rollen, Sexualität, Medien/Mode.", wrong: ["Verdauung verhindert jede Zellteilung dauerhaft.", "Osmose ersetzt DNA durch reine Zellulose.", "Zellatmung ersetzt die Fotosynthese in den Blattzellen."],
       explanation: "Kommunikation, Rollen, Sexualität, Medien/Mode.",
       wissen: fw(
         "Kulturelle Normen prägen Rollen und Kommunikation stark.",
@@ -3468,7 +3463,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:medien",
       prompt: "Warum sind Medien, Werbung und Mode biologisch-sozial relevant?",
-      answer: "Sie formen soziales Verhalten und Selbstbilder.", wrong: ["Weil sie biologische Mutation sind.", "Weil sie Fossile ersetzen.", "Weil sie DNA sequenzieren."],
+      answer: "Typisch ist sie formen soziales Verhalten und Selbstbilder.", wrong: ["Weil sie biologische Mutation sind.", "Weil sie Fossile ersetzen.", "Weil sie DNA sequenzieren."],
       explanation: "Sie formen soziales Verhalten und Selbstbilder.",
       wissen: fw(
         "Kulturelle Einflüsse prägen Kommunikation, Rollen und Sexualität mit.",
@@ -3490,7 +3485,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:antirassismus",
       prompt: "Was fordert Antirassismus hier fachlich?",
-      answer: "Keine Wertung von Menschengruppen als höher/minderwertig.", wrong: ["Biologische Hierarchien von Würde.", "Ablehnung jeder Genetik.", "Verbot von Fossilforschung."],
+      answer: "Dabei geht es um keine Wertung von Menschengruppen als höher/minderwertig.", wrong: ["Biologische Hierarchien von Würde.", "Ablehnung jeder Genetik.", "Verbot von Fossilforschung."],
       explanation: "Keine Wertung von Menschengruppen als höher/minderwertig.",
       wissen: fw(
         "Humanismus: gleiche Würde trotz Variation.",
@@ -3501,7 +3496,7 @@ export const k10KulturEvo: BioBank = {
     {
       concept: "bio:k10:kultur:wechselwirkung",
       prompt: "Welches Erschließungsfeld trägt die Stammesentwicklung?",
-      answer: "Wechselwirkung (Umwelt–Biologie–Kultur).", wrong: ["Nur Optik.", "Nur reine Algebra.", "Nur Musiktheorie."],
+      answer: "Man bezeichnet das als wechselwirkung (Umwelt–Biologie–Kultur).", wrong: ["Optik verhindert jede Zellteilung dauerhaft.", "Reine Algebra findet nur außerhalb lebender Zellen statt.", "Musiktheorie ersetzt DNA durch reine Zellulose."],
       explanation: "Wechselwirkung (Umwelt–Biologie–Kultur).",
       wissen: fw(
         "Biologische und kulturelle Evolution greifen ineinander.",

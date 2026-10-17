@@ -80,7 +80,7 @@ const erhaltung: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'mechanische Energie bleibt erhalten (kein Energieverlust)'
     return choicePickTask({
-      question: 'Was bedeutet Energieerhaltung in einem abgeschlossenen System ohne Reibung?',
+      question: 'Was gilt für die Energie in einem abgeschlossenen System ohne Reibung?',
       choices: shuffleChoices(
         rng,
         [
@@ -522,7 +522,7 @@ const mfeld: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'die Feldlinien treten dort aus dem Magneten aus'
     return choicePickTask({
-      question: 'Was kennzeichnet den magnetischen Nordpol eines Stabmagneten (außerhalb)?',
+      question: 'Wohin zeigen Feldlinien am magnetischen Nordpol eines Stabmagneten (außerhalb)?',
       choices: shuffleChoices(
         rng,
         [
@@ -805,7 +805,7 @@ const halbleiter: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'Elektronen (negative Ladungsträger) sind Majorität'
     return choicePickTask({
-      question: 'Was kennzeichnet n-Halbleiter qualitativ?',
+      question: 'Welche Ladungsträger dominieren in n-Halbleitern qualitativ?',
       choices: shuffleChoices(
         rng,
         [
@@ -826,7 +826,7 @@ const halbleiter: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'Löcher (Defektelektronen) sind Majorität'
     return choicePickTask({
-      question: 'Was kennzeichnet p-Halbleiter qualitativ?',
+      question: 'Welche Ladungsträger dominieren in p-Halbleitern qualitativ?',
       choices: shuffleChoices(
         rng,
         [
@@ -871,7 +871,7 @@ const messen: Topic['generate'] = mixedVariants(
   (rng) => {
     const correct = 'Abgleich mit bekanntem Normal / Referenz'
     return choicePickTask({
-      question: 'Was bedeutet Kalibrierung eines Messgeräts?',
+      question: 'Wozu kalibriert man ein Messgerät?',
       choices: shuffleChoices(
         rng,
         [

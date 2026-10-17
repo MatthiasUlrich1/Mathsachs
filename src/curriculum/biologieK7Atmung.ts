@@ -345,7 +345,7 @@ const lungeBau: BioBank = {
     },
     {
       concept: 'bio:k7:lunge:tote-raum',
-      prompt: 'Was bedeutet „Totraum“ der Atmung grob?',
+      prompt: 'Was meint „Totraum“ der Atmung grob?',
       answer: 'Luftwege, in denen kein Gasaustausch stattfindet',
       wrong: [
         'Nur der Dünndarm ohne Zotten',
@@ -648,7 +648,7 @@ const atemmechanik: BioBank = {
     },
     {
       concept: 'bio:k7:atemmech:bauch',
-      prompt: 'Was kennzeichnet Bauchatmung?',
+      prompt: 'Woran erkennt man Bauchatmung?',
       answer: 'Vor allem Zwerchfellbewegung; Bauchdecke hebt und senkt sich',
       wrong: [
         'Nur Bewegung der Fingerknochen',
@@ -664,7 +664,7 @@ const atemmechanik: BioBank = {
     },
     {
       concept: 'bio:k7:atemmech:brust',
-      prompt: 'Was kennzeichnet Brustatmung?',
+      prompt: 'Woran erkennt man Brustatmung?',
       answer: 'Vor allem Heben und Senken des Brustkorbs durch Rippenmuskeln',
       wrong: [
         'Nur Schwitzen über die Haut',
@@ -678,7 +678,7 @@ const atemmechanik: BioBank = {
     },
     {
       concept: 'bio:k7:atemmech:frequenz',
-      prompt: 'Was bedeutet Atemfrequenz?',
+      prompt: 'Was misst die Atemfrequenz?',
       answer: 'Anzahl der Atemzüge pro Zeiteinheit',
       wrong: [
         'Nur die Anzahl der Zähne',

@@ -37,7 +37,7 @@ const geBank0: BioBank = {
   },
   {
     concept: "ge:k5:archaeo:f3",
-    prompt: "Was bedeutet Datierung von Funden?",
+    prompt: "Wozu datiert man Funde?",
     answer: "Zeitliche Einordnung eines Objekts oder Befunds",
     wrong: [
       "Nur Farbwahl",
@@ -173,7 +173,7 @@ const geBank1: BioBank = {
   },
   {
     concept: "ge:k5:jetztmensch:f4",
-    prompt: "Was bedeutet „Entwicklung“ hier nicht?",
+    prompt: "Was schließt „Entwicklung“ hier ausdrücklich aus?",
     answer: "Eine einfache Leiter mit „besser“ als einzigem Maß",
     wrong: [
       "Vergleich von Merkmalen",
@@ -304,7 +304,7 @@ const geBank2: BioBank = {
   },
   {
     concept: "ge:k5:aegypt-ges:f5",
-    prompt: "Was bedeutet Schriftlichkeit für eine Hochkultur?",
+    prompt: "Welche Rolle spielt Schriftlichkeit für eine Hochkultur?",
     answer: "Dauerhafte Speicherung von Wissen und Herrschaft",
     wrong: [
       "Nur mündliche Witze",
@@ -427,7 +427,7 @@ const geBank3: BioBank = {
   },
   {
     concept: "ge:k5:ohne-recht:f5",
-    prompt: "Was bedeutet „Demokratie“ in Athen wörtlich bezogen?",
+    prompt: "Worauf bezieht sich „Demokratie“ in Athen wörtlich?",
     answer: "Herrschaft des (Bürger-)Volkes der Polis",
     wrong: [
       "Herrschaft aller Menschen weltweit",
@@ -494,7 +494,7 @@ const geBank4: BioBank = {
   facts: [
   {
     concept: "ge:k6:caes-aug:f1",
-    prompt: "Was kennzeichnete die römische Republik politisch grob?",
+    prompt: "Woran erkennt man die römische Republik politisch grob?",
     answer: "Machtteilung mit Senat und Ämtern statt dauernder Alleinherrschaft",
     wrong: [
       "Nur moderne Demokratie mit Parteien",
@@ -542,7 +542,7 @@ const geBank4: BioBank = {
   },
   {
     concept: "ge:k6:caes-aug:f5",
-    prompt: "Was bedeutet „Herrschaft eines Mannes statt Mitsprache des Volkes“ hier?",
+    prompt: "Welche Herrschaftsform meint „Herrschaft eines Mannes statt Mitsprache des Volkes“ hier?",
     answer: "Übergang von republikanischer Teilhabe zu monarchischer Konzentration",
     wrong: [
       "Mehr Volksabstimmung",
@@ -645,7 +645,7 @@ const geBank5: BioBank = {
   },
   {
     concept: "ge:k6:kais-ges:f4",
-    prompt: "Was bedeutet Geldwirtschaft hier?",
+    prompt: "Was beschreibt Geldwirtschaft hier praktisch?",
     answer: "Handel und Zahlungen mit Münzen statt nur Naturaltausch",
     wrong: [
       "Abschaffung aller Preise",
@@ -695,7 +695,7 @@ const geBank5: BioBank = {
   },
   {
     concept: "ge:k6:kais-ges:f8",
-    prompt: "Was kennzeichnet soziale Verhältnisse der Kaiserzeit?",
+    prompt: "Woran erkennt man soziale Verhältnisse der Kaiserzeit?",
     answer: "Starke Hierarchie von Elite, Freien und Unfreien",
     wrong: [
       "Vollständige Gleichheit",
@@ -762,7 +762,7 @@ const geBank6: BioBank = {
   },
   {
     concept: "ge:k6:germanen:f4",
-    prompt: "Was bedeutet Kulturkontakt hier?",
+    prompt: "Was beschreibt Kulturkontakt hier?",
     answer: "Begegnung mit Konflikt, Handel und Übernahme",
     wrong: [
       "Nur totale Isolation",
@@ -841,7 +841,7 @@ const geBank7: BioBank = {
   facts: [
   {
     concept: "ge:k7:amerika:f1",
-    prompt: "Was bedeutet Konquista in der Geschichte Amerikas?",
+    prompt: "Was beschreibt die Konquista in der Geschichte Amerikas?",
     answer: "Eroberung amerikanischer Reiche durch europäische Mächte",
     wrong: [
       "Nur friedlicher Handel ohne Gewalt",
@@ -865,7 +865,7 @@ const geBank7: BioBank = {
   },
   {
     concept: "ge:k7:amerika:f3",
-    prompt: "Was meint Europäisierung Mittel- und Südamerikas?",
+    prompt: "Was beschreibt die Europäisierung Mittel- und Südamerikas?",
     answer: "Übertragung europäischer Herrschaft, Religion und Wirtschaft",
     wrong: [
       "Nur Klimawandel",
@@ -927,7 +927,7 @@ const geBank7: BioBank = {
   },
   {
     concept: "ge:k7:amerika:f8",
-    prompt: "Was bedeutet globale Verflechtung hier?",
+    prompt: "Was beschreibt globale Verflechtung hier?",
     answer: "Amerika, Europa und später Afrika wurden wirtschaftlich verknüpft",
     wrong: [
       "Nur lokale Märkte",
@@ -998,7 +998,7 @@ const geBank8: BioBank = {
   },
   {
     concept: "ge:k7:erfind:f4",
-    prompt: "Was meint Veränderung des Weltbildes?",
+    prompt: "Was beschreibt die Veränderung des Weltbildes?",
     answer: "Neue Vorstellungen von Erde, Kosmos und Menschenbild",
     wrong: [
       "Nur Mode",
@@ -1120,7 +1120,7 @@ const geBank9: BioBank = {
   },
   {
     concept: "ge:k7:august:f4",
-    prompt: "Was meint verdichtete Herrschaft?",
+    prompt: "Was kennzeichnet verdichtete Herrschaft?",
     answer: "Wachsende Staatsgewalt und Verwaltung",
     wrong: [
       "Weniger Staat",
@@ -1267,7 +1267,7 @@ const geBank10: BioBank = {
   },
   {
     concept: "ge:k7:karikatur:f6",
-    prompt: "Was bedeutet Symbol in der Karikatur?",
+    prompt: "Wozu dient ein Symbol in der Karikatur?",
     answer: "Zeichen mit vereinbarter Bedeutung",
     wrong: [
       "Zufälliger Klecks",
@@ -1376,7 +1376,7 @@ const geBank11: BioBank = {
   },
   {
     concept: "ge:k7:konst-mon:f5",
-    prompt: "Was bedeutet Bill of Rights (1689) grob?",
+    prompt: "Welche Rechte sicherte die Bill of Rights (1689) grob?",
     answer: "Grundrechte und Parlamentsrechte gegenüber der Krone",
     wrong: [
       "Abschaffung des Parlaments",
@@ -1467,7 +1467,7 @@ const geBank12: BioBank = {
   },
   {
     concept: "ge:k8:ideolog:f3",
-    prompt: "Was kennzeichnet Konservatismus damals oft?",
+    prompt: "Woran erkennt man Konservatismus damals oft?",
     answer: "Bewahrung traditioneller Ordnung und Obrigkeit",
     wrong: [
       "Sofortige Republik überall",
@@ -1529,7 +1529,7 @@ const geBank12: BioBank = {
   },
   {
     concept: "ge:k8:ideolog:f8",
-    prompt: "Was bedeutet Obrigkeitsstaat kritisch?",
+    prompt: "Was kritisiert der Begriff Obrigkeitsstaat?",
     answer: "Starke Herrschaftsgewalt gegenüber Bürgerfreiheit",
     wrong: [
       "Reine Selbstverwaltung",
@@ -1598,7 +1598,7 @@ const geBank13: BioBank = {
   },
   {
     concept: "ge:k8:quellen-lied:f4",
-    prompt: "Was kennzeichnet politische Lyrik im Vormärz?",
+    prompt: "Woran erkennt man politische Lyrik im Vormärz?",
     answer: "Kritik an Zensur und Forderung nach Freiheit",
     wrong: [
       "Nur Naturlyrik ohne Politik",
@@ -1737,7 +1737,7 @@ const geBank14: BioBank = {
   },
   {
     concept: "ge:k8:vorind:f6",
-    prompt: "Was kennzeichnet vorindustrielle Produktion oft?",
+    prompt: "Woran erkennt man vorindustrielle Produktion oft?",
     answer: "Handwerkliche Fertigung und begrenzte Energiemengen",
     wrong: [
       "Sofortige Massenproduktion elektrisch",
@@ -1794,7 +1794,7 @@ const geBank15: BioBank = {
   facts: [
   {
     concept: "ge:k8:wk1-verlauf:f1",
-    prompt: "Was kennzeichnete den Kriegsverlauf an der Westfront bald?",
+    prompt: "Wie verlief der Krieg an der Westfront bald?",
     answer: "Stellungskrieg und Materialschlachten",
     wrong: [
       "Schneller Bewegungskrieg bis 1918 durchgehend",
@@ -1808,8 +1808,8 @@ const geBank15: BioBank = {
   },
   {
     concept: "ge:k8:wk1-verlauf:f2",
-    prompt: "Was bedeutet Materialschlacht?",
-    answer: "Massenhafter Einsatz von Waffen und Munition",
+      prompt: "Was kennzeichnet die Materialschlacht im Ersten Weltkrieg?",
+      answer: "Massenhafter Einsatz von Waffen und Munition",
     wrong: [
       "Nur Duell einzelner Ritter",
       "Nur Propaganda ohne Waffen",
@@ -1937,7 +1937,7 @@ const geBank16: BioBank = {
   },
   {
     concept: "ge:k9:okt-stalin:f3",
-    prompt: "Was kennzeichnet Stalinismus strukturell?",
+    prompt: "Woran erkennt man Stalinismus strukturell?",
     answer: "Terror, Personenkult und zentralisierte Diktatur",
     wrong: [
       "Gewaltenteilung",
@@ -2092,7 +2092,7 @@ const geBank17: BioBank = {
   },
   {
     concept: "ge:k9:november:f6",
-    prompt: "Was bedeutet Ausrufung der Republik?",
+    prompt: "Was folgt aus der Ausrufung der Republik?",
     answer: "Ende der Monarchie als Staatsform",
     wrong: [
       "Nur Namensänderung",
@@ -2209,7 +2209,7 @@ const geBank18: BioBank = {
   },
   {
     concept: "ge:k9:putsche:f6",
-    prompt: "Was bedeutet „Republik ohne Republikaner“ als Diagnose?",
+    prompt: "Was kritisiert die Diagnose „Republik ohne Republikaner“?",
     answer: "Viele Eliten akzeptieren die Demokratie nicht wirklich",
     wrong: [
       "Alle lieben die Republik",
@@ -2342,7 +2342,7 @@ const geBank19: BioBank = {
   },
   {
     concept: "ge:k10:1945:f7",
-    prompt: "Was bedeutet Neubeginn ambivalent?",
+    prompt: "Warum wirkt der Neubeginn ambivalent?",
     answer: "Demokratischer Aufbau und fortwirkende NS-Belastung",
     wrong: [
       "Totaler Schlussstrich ohne Probleme",
@@ -2385,8 +2385,8 @@ const geBank20: BioBank = {
   facts: [
   {
     concept: "ge:k10:glasnost:f1",
-    prompt: "Was bedeutet Glasnost?",
-    answer: "Mehr Offenheit und öffentliche Kritik in der UdSSR",
+      prompt: "Was beschreibt Glasnost unter Gorbatschow?",
+      answer: "Mehr Offenheit und öffentliche Kritik in der UdSSR",
     wrong: [
       "Strengere Zensur",
       "Nur Militärreform",
@@ -2397,7 +2397,7 @@ const geBank20: BioBank = {
   },
   {
     concept: "ge:k10:glasnost:f2",
-    prompt: "Was bedeutet Perestroika?",
+    prompt: "Was beschreibt Perestroika unter Gorbatschow?",
     answer: "Umbau von Wirtschaft und System",
     wrong: [
       "Einfrieren des Status quo",
@@ -2463,7 +2463,7 @@ const geBank20: BioBank = {
   },
   {
     concept: "ge:k10:glasnost:f7",
-    prompt: "Was bedeutet Verlust der Brezhnev-Doktrin praktisch?",
+    prompt: "Welche Folge hatte der Verlust der Brezhnev-Doktrin praktisch?",
     answer: "Moskau intervenierte nicht mehr gegen Reformen in Satelliten",
     wrong: [
       "Mehr Invasionen",
@@ -2554,7 +2554,7 @@ const geBank21: BioBank = {
   },
   {
     concept: "ge:k10:europa-ein:f5",
-    prompt: "Was bedeutet positive und negative Freiheit im Diskurs?",
+    prompt: "Worin unterscheiden sich positive und negative Freiheit im Diskurs?",
     answer: "Chancen der Freizügigkeit vs. Risiken/Ungleichheiten",
     wrong: [
       "Nur Wortspiel ohne Politik",
@@ -2621,7 +2621,7 @@ const geBank22: BioBank = {
   facts: [
   {
     concept: "ge:gk:parteien:f1",
-    prompt: "Was meint „Republik ohne Republikaner“?",
+    prompt: "Worauf zielt die Formel „Republik ohne Republikaner“?",
     answer: "Viele Eliten und Wähler standen der Demokratie distanziert gegenüber",
     wrong: [
       "Alle Parteien waren loyal",
@@ -2669,7 +2669,7 @@ const geBank22: BioBank = {
   },
   {
     concept: "ge:gk:parteien:f5",
-    prompt: "Was bedeutet Funktionsweise des Parlamentarismus hier?",
+    prompt: "Wie funktioniert Parlamentarismus hier?",
     answer: "Regierungsbildung, Verantwortung und Kompromiss",
     wrong: [
       "Nur Reden ohne Folgen",
@@ -2790,7 +2790,7 @@ const geBank23: BioBank = {
   },
   {
     concept: "ge:lk11:aufkl:f5",
-    prompt: "Was bedeutet Umsetzung „in Phasen“?",
+    prompt: "Was beschreibt eine Umsetzung „in Phasen“?",
     answer: "Anspruch und Gewaltpraxis divergieren je nach Phase",
     wrong: [
       "Immer identische Politik",
@@ -2857,7 +2857,7 @@ const geBank24: BioBank = {
   facts: [
   {
     concept: "ge:lk11:vorind:f1",
-    prompt: "Was kennzeichnet vorindustrielle Gesellschaft grob?",
+    prompt: "Woran erkennt man vorindustrielle Gesellschaft grob?",
     answer: "Agrarische Prägung, Stände und handwerkliche Produktion",
     wrong: [
       "Sofortige Industriegesellschaft",
@@ -2974,7 +2974,7 @@ const geBank25: BioBank = {
   facts: [
   {
     concept: "ge:lk12:instr:f1",
-    prompt: "Was bedeutet Instrumentalisierung von Geschichte?",
+    prompt: "Was beschreibt die Instrumentalisierung von Geschichte?",
     answer: "Vergangenheit wird für aktuelle politische Zwecke genutzt",
     wrong: [
       "Neutrale Abbildung ohne Interesse",
@@ -3036,7 +3036,7 @@ const geBank25: BioBank = {
   },
   {
     concept: "ge:lk12:instr:f6",
-    prompt: "Was bedeutet Rezeptionsgeschichte?",
+    prompt: "Wozu fragt Rezeptionsgeschichte?",
     answer: "Nachleben und Umdeutung historischer Ereignisse/Personen",
     wrong: [
       "Nur Ereignis selbst",

@@ -119,7 +119,7 @@ export const k7Gefaesse: BioBank = bank(
   [
     {
       concept: 'bio:k7:gefaesse:arterie',
-      prompt: 'Was kennzeichnet Arterien grob?',
+      prompt: 'Woran erkennt man Arterien grob?',
       answer: 'Führen Blut vom Herzen weg; oft dickwandig und elastisch',
       wrong: ['Führen immer nur Lymphflüssigkeit', 'Haben nie Muskelschicht', 'Sind nur in Pflanzen'],
       explanation: 'Arterien = vom Herzen fort.',
@@ -359,7 +359,7 @@ export const k8Geschlechtsorgane: BioBank = bank(
     },
     {
       concept: 'bio:k8:gonaden:pubertaet',
-      prompt: 'Was kennzeichnet die Pubertät biologisch?',
+      prompt: 'Woran erkennt man die Pubertät biologisch?',
       answer: 'Hormone steuern die Entwicklung der Geschlechtsmerkmale und Fruchtbarkeit',
       wrong: ['Es gibt keine Hormoneschwankungen', 'Nur Zahnwechsel ohne Hormone', 'Nur Wachstum der Haare ohne Keimdrüsen'],
       explanation: 'Hypothalamus–Hypophyse–Keimdrüsen-Achse.',
@@ -730,7 +730,7 @@ export const k10Artbildung: BioBank = bank(
     },
     {
       concept: 'bio:k10:art:anpassung',
-      prompt: 'Was bedeutet Anpassung evolutionär?',
+      prompt: 'Was meint Anpassung evolutionär?',
       answer: 'Merkmale, die den Fortpflanzungserfolg in einer Umwelt erhöhen',
       wrong: ['Bewusste Planung der Art in einer Generation', 'Nur Lernziel der Schule', 'Nur Fellpflege'],
       explanation: 'Resultat von Variation + Selektion.',
@@ -805,7 +805,7 @@ export const k10MethodenMensch: BioBank = bank(
     },
     {
       concept: 'bio:k10:menschmeth:bipedie',
-      prompt: 'Was bedeutet Bipedie?',
+      prompt: 'Was meint Bipedie?',
       answer: 'Aufrechter Gang auf zwei Beinen',
       wrong: ['Nur Fliegen', 'Nur Schwimmen mit Kiemen', 'Nur Nachtaktivität'],
       explanation: 'Wichtiges Merkmal der Homininen.',
@@ -908,7 +908,7 @@ export const osPopulationenOS: BioBank = bank(
     },
     {
       concept: 'bio:os:pop:nachhaltigkeit',
-      prompt: 'Was bedeutet nachhaltige Nutzung einer Population grob?',
+      prompt: 'Was meint nachhaltige Nutzung einer Population grob?',
       answer: 'Entnahme so begrenzen, dass die Population langfristig erhalten bleibt',
       wrong: ['Maximale Ausbeutung bis zum Zusammenbruch', 'Ignorieren von Reproduktionsraten', 'Nur kurzfristiger Profit ohne Daten'],
       explanation: 'Bezug Tragfähigkeit / Reproduktion.',

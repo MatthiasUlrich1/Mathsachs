@@ -61,7 +61,7 @@ const phK10Newton: BioBank = {
 
 {
   concept: "ph:k10:newton:2",
-  prompt: "Was bedeutet Schwerelosigkeit im Raumschiff qualitativ?",
+  prompt: "Warum schweben Astronauten in der ISS, obwohl die Erde sie anzieht?",
   answer: "Astronaut und Raumschiff fallen gemeinsam (gleiche Beschleunigung)",
   wrong: [
     "Es gibt im Orbit keine Gravitation der Erde",
@@ -121,7 +121,7 @@ const phK10Newton: BioBank = {
 
 {
   concept: "ph:k10:newton:super",
-  prompt: "Was bedeutet Superposition von Kräften?",
+  prompt: "An einem Kasten ziehen zwei Seile gleichzeitig — wie bestimmt man die resultierende Kraft?",
   answer: "Mehrere Kräfte an einem Punkt werden zu einer Resultierenden zusammengesetzt",
   wrong: [
     "Kräfte heben Masse immer auf",
@@ -292,7 +292,7 @@ const bioK7Viren: BioBank = {
 
 {
   concept: "bio:k7:viren:6",
-  prompt: "Was bedeutet „Wirt“ bei Viren?",
+  prompt: "Wen meint man mit „Wirt“ bei Viren?",
   answer: "Der Organismus, in dessen Zellen sich das Virus vermehrt",
   wrong: [
     "Nur der Arzt",
@@ -439,7 +439,7 @@ const bioK5Arbeitsweisen: BioBank = {
     },
     {
       concept: "bio:k5:arbeitsweisen:exp1",
-      prompt: "Was kennzeichnet ein Experiment gegenüber dem zufälligen Ausprobieren?",
+      prompt: "Woran unterscheidet sich ein Experiment vom zufälligen Ausprobieren?",
       answer: "Eine klare Frage, geplante Durchführung und auswertbare Beobachtung",
       wrong: [
         "Beliebiges Tun ohne Frage",

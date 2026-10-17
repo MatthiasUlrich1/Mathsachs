@@ -47,10 +47,10 @@ const osNull: BioBank = {
   },
   {
     concept: "os:k5:null:5",
-    prompt: "Was bedeutet „natürliche Zahlen“ hier?",
+    prompt: "Welche Zahlen meint man mit „natürliche Zahlen“ hier?",
     answer: "0, 1, 2, 3, …",
     wrong: ["Nur Primzahlen", "Nur Brüche", "Nur Negative"],
-    explanation: "Was bedeutet „natürliche Zahlen“ hier.",
+    explanation: "Natürliche Zahlen sind die Zählzahlen.",
     wissen: "0, 1, 2, 3, ….",
   },
   {
@@ -423,10 +423,10 @@ const osNegAusblick: BioBank = {
   },
   {
     concept: "os:k6:neg:2",
-    prompt: "Was bedeutet −3 °C?",
+    prompt: "Was meint die Angabe −3 °C?",
     answer: "3 Grad unter dem Gefrierpunkt",
     wrong: ["3 Grad über 0", "genau 0", "unendlich"],
-    explanation: "Was bedeutet −3 °C.",
+    explanation: "−3 °C liegt unter dem Gefrierpunkt.",
     wissen: "3 Grad unter dem Gefrierpunkt.",
   },
   {

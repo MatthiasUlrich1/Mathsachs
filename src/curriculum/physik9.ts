@@ -95,7 +95,7 @@ const elektronik: Topic['generate'] = mixedVariants(
         ],
       },
       {
-        q: 'Was bedeutet LED?',
+        q: 'Wofür steht die Abkürzung LED?',
         correct: 'lichtemittierende Diode',
         wrong: ['lange elektrische Dose', 'luftempfindlicher Draht', 'leistungsfreie Einheit'],
       },
@@ -275,7 +275,7 @@ const praktikum: Topic['generate'] = mixedVariants(
   (rng) => {
     const cases = [
       {
-        q: 'Was versteht man unter einem Messfehler?',
+        q: 'Wann spricht man von einem Messfehler im Experiment?',
         correct: 'Abweichung des Messwerts vom wahren Wert',
         wrong: [
           'immer absichtliches Fälschen',
@@ -351,7 +351,7 @@ const praktikum: Topic['generate'] = mixedVariants(
         wrong: ['eingestellte Zeit t', 'die Farbe des Wagens', 'der Name der Gruppe'],
       },
       {
-        q: 'Was kennzeichnet die abhängige Variable in einem Experiment?',
+        q: 'Welche Rolle hat die abhängige Variable in einem Experiment?',
         correct: 'Sie ändert sich als Folge der eingestellten Größe',
         wrong: [
           'Sie wird immer festgehalten und nie gemessen',

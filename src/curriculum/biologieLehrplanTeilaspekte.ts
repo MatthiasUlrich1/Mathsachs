@@ -61,7 +61,7 @@ const k5SaeugerLunge: BioBank = {
     },
     {
       concept: 'bio:k5:saeuger:lunge:gas',
-      prompt: 'Was bedeutet Gasaustausch in der Säugetierlunge?',
+      prompt: 'Was geschieht beim Gasaustausch in der Säugetierlunge?',
       answer: 'O₂ geht ins Blut, CO₂ geht in die Atemluft',
       wrong: [
         'Nur Wasser wird aufgenommen',
@@ -203,7 +203,7 @@ const k7Ernaehrungsformen: BioBank = {
   facts: [
     {
       concept: 'bio:k7:ernform:heterotroph',
-      prompt: 'Was bedeutet heterotrophe Ernährungsweise beim Menschen?',
+      prompt: 'Was meint heterotrophe Ernährungsweise beim Menschen?',
       answer: 'Nahrung aus organischen Stoffen anderer Lebewesen (keine Fotosynthese)',
       wrong: [
         'Selbst Zucker aus Licht wie grüne Pflanzen',
@@ -233,7 +233,7 @@ const k7Ernaehrungsformen: BioBank = {
     },
     {
       concept: 'bio:k7:ernform:mischkost',
-      prompt: 'Was kennzeichnet eine ausgewogene Mischkost grob?',
+      prompt: 'Woran erkennt man eine ausgewogene Mischkost grob?',
       answer: 'Vielfalt aus pflanzlichen und ggf. tierischen Lebensmitteln in passenden Mengen',
       wrong: [
         'Nur Süßigkeiten den ganzen Tag',

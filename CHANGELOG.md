@@ -9,12 +9,23 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.121] – 2026-10-17
+
+### Behoben
+- **Locked-MC Stem-/Options-Qualität:** Vage „Was meint …?“-Stems in gesperrten Bio-/GE-/Physik-
+  Banken (Thin-Fill, Density/Gaps-Fill, Overview-Dense u. a.) in konkrete Schülerfragen
+  umgeschrieben; Fragment-Antworten und Distraktoren zu vollständigen Sätzen ausgebaut.
+  `geschichteOverviewDense`: 260 → 0 „Was meint“-Stems. Corpus-weit „Was meint“: 358 → 41.
+  Syntax-Fix in `geschichteLehrplanTeilaspekte` (fehlende Kommas). Freigegebene Pack-JSON unter
+  `curricula/` unverändert. Quality-Suite grün (u. a. biologie/geschichte/gap/contentQualityAllPacks,
+  physikAll/Gym/TopicFactory, glossaryMcRewrite).
+
 ## [0.28.120] – 2026-10-17
 
 ### Behoben
 - **Full-corpus locked-MC quality pass:** Alle 7637 MC-Fakten in gesperrten *Fill*-Dateien
   inventarisiert und gegen kritische Regeln A–I gescannt (keine Stichproben). Generator
-  (glossaryMcRewrite/iologieBank) mit erweitertem Gender-Dict und Bans gegen Verb-als-Nomen
+  (glossaryMcRewrite/biologieBank) mit erweitertem Gender-Dict und Bans gegen Verb-als-Nomen
   und Title-Case-Adjektive abgesichert. Package-weise Korrekturen (Artikel, Adjektiv-Stems,
   Cross-Topic-Distraktoren). Full-Scanner: 0 kritische Treffer.
 

@@ -386,7 +386,7 @@ export const weichtiereOverview: BioBank = {
   facts: [
     {
       concept: 'bio:k6:weichtiere:gruppe',
-      prompt: 'Was kennzeichnet Weichtiere als Gruppe grob?',
+      prompt: 'Woran erkennt man Weichtiere als Gruppe grob?',
       answer: 'Weicher Körper, oft mit Mantel und Kalkgehäuse/Schale',
       wrong: ['Chitinpanzer mit sechs Beinen', 'Innere Wirbelsäule', 'Nur Federn und Flügel'],
       explanation: 'Mollusken: Fuß, Mantel, Eingeweidesack — viele mit Schale.',
@@ -1080,7 +1080,7 @@ export const ringelwuermer: BioBank = {
   facts: [
     {
       concept: 'bio:k6:ringelwuermer:segmente',
-      prompt: 'Was kennzeichnet Ringelwürmer äußerlich besonders?',
+      prompt: 'Woran erkennt man Ringelwürmer äußerlich besonders?',
       answer: 'Ein in viele Segmente (Ringel) gegliederter Körper',
       wrong: ['Chitinpanzer mit sechs Beinen', 'Zwei Muschelklappen', 'Federkleid'],
       explanation: 'Metamerie: gleichartige Körperabschnitte hintereinander.',
@@ -1118,7 +1118,7 @@ export const ringelwuermer: BioBank = {
     },
     {
       concept: 'bio:k6:ringelwuermer:blutegel',
-      prompt: 'Was kennzeichnet Blutegel im Vergleich zum Regenwurm oft?',
+      prompt: 'Woran unterscheidet sich der Blutegel oft vom Regenwurm?',
       answer: 'Saugnäpfe und oft parasitische oder räuberische Ernährung',
       wrong: ['Sechs Beine und Flügel', 'Zwei Antennenpaare wie Krebse', 'Kalkgehäuse'],
       explanation: 'Egel: Saugnäpfe, keine Borsten, abgeflachter Körper.',
@@ -1661,7 +1661,7 @@ export const rundwuermer: BioBank = {
   facts: [
     {
       concept: 'bio:k6:rundwuermer:kennzeichen',
-      prompt: 'Was kennzeichnet Rundwürmer (Nematoden) äußerlich grob?',
+      prompt: 'Woran erkennt man Rundwürmer (Nematoden) äußerlich grob?',
       answer: 'Unsegmentierter, fadenförmiger Körper',
       wrong: ['Gegliederter Chitinpanzer mit Flügeln', 'Federkleid', 'Zwei Schalenklappen'],
       explanation: 'Rundwürmer haben einen glatten, rundlichen Querschnitt ohne echte Segmente.',

@@ -62,7 +62,7 @@ const mittelalter: BioBank = {
     ),
     fact(
       'grundherrschaft',
-      'Was bedeutet Grundherrschaft?',
+      'Worauf stützt sich Grundherrschaft?',
       'Herrschaft eines Grundherrn über Land und die darauf lebenden abhängigen Bauern',
       ['Gleichberechtigte Selbstverwaltung aller Städter', 'Nur die Herrschaft eines Bischofs über Klöster', 'Eine antike Volksversammlung in Athen'],
       'Grundherrschaft prägte das ländliche Leben vieler Menschen.',
@@ -333,7 +333,7 @@ const buerger: BioBank = {
   facts: [
     fact(
       'polis',
-      'Was bedeutete Bürgersein in einer griechischen Polis?',
+      'Welche Rechte und Pflichten hatte ein Bürger in einer griechischen Polis?',
       'Politische Zugehörigkeit zu einem Stadtstaat mit Rechten und Pflichten',
       ['Nur Besitz einer Ritterrüstung', 'Abhängigkeit als Höriger eines Grundherrn', 'Mitgliedschaft in einer Klosterregel'],
       'In der Polis war Bürgersein eng mit Politik verbunden.',
@@ -480,7 +480,7 @@ const besiedlung: BioBank = {
     ),
     fact(
       'waldhufe',
-      'Was kennzeichnete viele neue Dörfer der Ostsiedlung?',
+      'Woran erkennt man viele neue Dörfer der Ostsiedlung?',
       'Planmäßige Anlage mit langgestreckten Flurstücken wie bei Waldhufendörfern',
       ['Nur Rundburgen aus der Römerzeit', 'Ausschließlich schwimmende Häuser', 'Dörfer ohne Felder und Wege'],
       'Siedlungsformen zeigen bewusste Planung.',
@@ -754,7 +754,7 @@ const selbstverstaendnis: BioBank = {
     ),
     fact(
       'landesidentitaet',
-      'Was bedeutet "sächsisches Selbstverständnis" in der Geschichte?',
+      'Was meint "sächsisches Selbstverständnis" in der Geschichte?',
       'Vorstellungen darüber, was Sachsen ausmacht und worauf sich das Land beruft',
       ['Nur eine Liste moderner Autokennzeichen', 'Eine mittelalterliche Maßeinheit', 'Ausschließlich die Militärstärke eines Fürsten'],
       'Selbstverständnis entsteht aus Geschichte, Erinnerung und Deutung.',

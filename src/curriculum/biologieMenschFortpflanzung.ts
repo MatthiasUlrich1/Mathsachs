@@ -227,7 +227,7 @@ function organMatch(rng: Rng) {
 function pubertyMc(rng: Rng) {
   const items = [
     {
-      q: 'Was bedeutet Pubertät?',
+      q: 'Was prägt die Pubertät biologisch?',
       correct: 'Übergang zur Geschlechtsreife mit körperlichen und hormonalen Veränderungen',
       wrong: [
         'Nur der Winterschlaf der Säuger',

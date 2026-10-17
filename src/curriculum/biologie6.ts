@@ -37,7 +37,7 @@ const samenpflanzen: BioBank = {
   facts: [
     {
       concept: 'bio:k6:samenpflanzen:was-sind',
-      prompt: 'Was kennzeichnet Samenpflanzen besonders?',
+      prompt: 'Woran erkennt man Samenpflanzen besonders?',
       answer: 'Sie bilden Samen (oft in Früchten oder Zapfen)',
       wrong: ['Sie haben nie Wurzeln', 'Sie atmen nur über Kiemen', 'Sie sind immer wirbellos'],
       explanation: 'Samenpflanzen vermehren sich über Samen.',
@@ -128,7 +128,7 @@ const wirbelloseOverview: BioBank = {
   facts: [
     {
       concept: 'bio:k6:was-bedeutet-wirbellos',
-      prompt: 'Was bedeutet „wirbellos“?',
+      prompt: 'Was meint „wirbellos“?',
       answer: 'Ohne Wirbelsäule',
       wrong: ['Mit Federkleid', 'Immer mit sechs Beinen', 'Nur im Meer lebend'],
       explanation: 'Wirbellose Tiere haben keine Wirbelsäule — z. B. Insekten, Spinnen, Würmer, Weichtiere.',
@@ -1216,7 +1216,7 @@ const pfuetze: BioBank = {
     },
     {
       concept: 'bio:k6:pfuetze:augentier',
-      prompt: 'Was kennzeichnet das Augentierchen (Euglena)?',
+      prompt: 'Woran erkennt man das Augentierchen (Euglena)?',
       answer: 'Einzeller mit Geißel; kann Photosynthese betreiben',
       wrong: ['Nur Knochenfisch', 'Nur Federfahne', 'Nur Säugetierherz'],
       explanation: 'Euglena hat Chloroplasten und eine Geißel.',
@@ -1270,9 +1270,9 @@ const pfuetze: BioBank = {
     },
     {
       concept: 'bio:k6:pfuetze:einzeller',
-      prompt: 'Was bedeutet „Einzeller“?',
-      answer: 'Lebewesen aus nur einer Zelle',
-      wrong: ['Tier mit genau einem Bein', 'Pflanze ohne Chlorophyll', 'Nur Säugetiere'],
+      prompt: 'Was meint ein Einzeller?',
+      answer: 'Ein Lebewesen aus nur einer Zelle',
+      wrong: ['Ein Tier mit genau einem Bein', 'Eine Pflanze ohne Chlorophyll', 'Nur Säugetiere'],
       explanation: 'Einzeller bestehen aus einer Zelle — z. B. Pantoffeltierchen.',
       wissen:
         'Einzeller sind vollständige Lebewesen aus einer Zelle. Unter dem Mikroskop werden Bau und Bewegung sichtbar.',
@@ -1281,7 +1281,7 @@ const pfuetze: BioBank = {
     },
     {
       concept: 'bio:k6:pfuetze:plankton',
-      prompt: 'Was versteht man unter Plankton?',
+      prompt: 'Was meint Plankton?',
       answer: 'Im Wasser schwebende Kleinlebewesen',
       wrong: ['Nur große Haie', 'Nur Baumstämme', 'Nur Wolken'],
       explanation: 'Plankton schwebt und treibt mit der Strömung.',
