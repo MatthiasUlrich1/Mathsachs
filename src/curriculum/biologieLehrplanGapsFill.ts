@@ -781,7 +781,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f1",
-      prompt: "Welche Eigenschaft hat das Angeboren?",
+      prompt: "Was kennzeichnet angeborenes Verhalten?",
       answer: "Genetisch vorbereitetes Verhalten.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Durch Erfahrung erworbenes Verhalten.", "Verteidigen eines Gebiets."],
       explanation: "Angeboren: Genetisch vorbereitetes Verhalten",
       wissen: fw(
@@ -869,7 +869,7 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:f9",
-      prompt: "Welche Eigenschaft hat das Aktivitätszeit?",
+      prompt: "Welche Eigenschaft hat die Aktivitätszeit?",
       answer: "Tages- oder Nachtaktivität.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
       explanation: "Aktivitätszeit: Tages- oder Nachtaktivität",
       wissen: fw(
@@ -902,9 +902,9 @@ export const k5SaeugerVerhalten: BioBank = {
     },
     {
       concept: "bio:k5:saeugverh:x0",
-      prompt: "Säugerverhalten: Warum beobachtet man Haus- und Wildtiere vergleichend?",
-      answer: "Unterschiede und Gemeinsamkeiten im Verhalten werden sichtbar.", wrong: ["Weil Verhalten bedeutungslos ist.", "Weil nur Pflanzen Verhalten zeigen.", "Weil Beobachtung Knochen ersetzt."],
-      explanation: "Vergleich.",
+      prompt: "Säugerverhalten: Was zeigt ein Vergleich von Haus- und Wildtierverhalten?",
+      answer: "Unterschiede und Gemeinsamkeiten im Verhalten werden sichtbar.", wrong: ["Wildtiere zeigen kein erlerntes Verhalten.", "Haustiere zeigen kein angeborenes Verhalten.", "Verhalten ist bei Haus- und Wildtieren immer identisch."],
+      explanation: "Vergleich zeigt angeborene und erlernte Anteile.",
       wissen: fw(
         "Haustiere und Wildtiere zeigen angeborene und erlernte Anteile unterschiedlich stark.",
       ),
@@ -912,7 +912,7 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:x1",
       prompt: "Säugerverhalten: Was leistet Markierverhalten?",
-      answer: "Kommuniziert Revier, Status oder Fortpflanzungsbereitschaft.", wrong: ["Ersetzt die Atmung.", "Bildet Antikörper.", "Erzeugt Federn."],
+      answer: "Es kommuniziert Revier, Status oder Fortpflanzungsbereitschaft.", wrong: ["Es ersetzt die Atmung.", "Es bildet Antikörper.", "Es erzeugt Federn."],
       explanation: "Duftkommunikation.",
       wissen: fw(
         "Duftmarken und Kratzspuren sind chemische oder visuelle Signale.",
@@ -1100,11 +1100,11 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:x1",
-      prompt: "Säugersinne: Warum sind Hund und Katze gute Beispiele für Sinnesleistungen?",
-      answer: "Sie ist die Grundmethode der Verhaltensbiologie ohne Eingriff in das Verhalten.", wrong: ["Es ist an Beute und Feinde angepasst, etwa tag- oder nachtaktiv, angepasst an Beute und Feinde.", "Es ist die Reaktion auf Gefahr durch Weglaufen oder Wegfliegen, erhöht Überlebenschancen.", "Sie beschreibt innere Bereitschaft zu Verhalten."],
-      explanation: "Vergleich.",
+      prompt: "Säugersinne: Welche Sinnesleistung ist bei Hund und Katze besonders ausgeprägt?",
+      answer: "Geruchs- und Gehörsinn sind schärfer als beim Menschen.", wrong: ["Ihr Sehsinn ist deutlich schlechter als der aller anderen Säugetiere.", "Sie besitzen keinen Tastsinn und kommunizieren nur optisch.", "Sie orientieren sich ausschließlich über Echoortung wie Fledermäuse."],
+      explanation: "Hunde riechen ca. 1000-mal besser als Menschen; Katzen hören Ultraschall.",
       wissen: fw(
-        "Hunde sind oft geruchsstark, Katzen nachtakzentuiert — beide kommunizieren mit Lauten und Körpersprache.",
+        "Hunde sind über Geruch auf Nahrungssuche und Reviermarkierung spezialisiert; Katzen hören Ultraschall und sehen bei wenig Licht besser als Menschen.",
       ),
     },
   ],

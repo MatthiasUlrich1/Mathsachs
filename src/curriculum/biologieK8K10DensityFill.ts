@@ -27,7 +27,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:sympathikus",
       prompt: "Welche Wirkung hat der Sympathikus typischerweise?",
-      answer: "Sie meint leistungsbereitschaft erhöhen (Kampf-oder-Flucht).", wrong: ["Sie meint unwillkürliche Funktionen von Organen.", "Sie meint erholung und Verdauung fördern (Ruhe-und-Verdauung).", "Sie wirken oft gegensätzlich auf dieselben Organe."],
+      answer: "Er erhöht die Leistungsbereitschaft (Kampf-oder-Flucht).", wrong: ["Es steuert unwillkürliche Funktionen von Organen.", "Er fördert Erholung und Verdauung (Ruhe-und-Verdauung).", "Sie wirken oft gegensätzlich auf dieselben Organe."],
       explanation: "Leistungsbereitschaft erhöhen (Kampf-oder-Flucht).",
       wissen: fw(
         "Der Sympathikus mobilisiert den Körper: Herzschlag steigt, Blutdruck kann steigen, Verdauung tritt zurück.",
@@ -38,7 +38,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:parasympathikus",
       prompt: "Welche Wirkung hat der Parasympathikus typischerweise?",
-      answer: "Sie meint erholung und Verdauung fördern (Ruhe-und-Verdauung).", wrong: ["Sie meint unwillkürliche Funktionen von Organen.", "Sie meint leistungsbereitschaft erhöhen (Kampf-oder-Flucht).", "Sie wirken oft gegensätzlich auf dieselben Organe."],
+      answer: "Er fördert Erholung und Verdauung (Ruhe-und-Verdauung).", wrong: ["Es steuert unwillkürliche Funktionen von Organen.", "Er erhöht die Leistungsbereitschaft (Kampf-oder-Flucht).", "Sie wirken oft gegensätzlich auf dieselben Organe."],
       explanation: "Erholung und Verdauung fördern (Ruhe-und-Verdauung).",
       wissen: fw(
         "Der Parasympathikus fördert Ruhe, Verdauung und Erholung — Gegenpol zum Sympathikus.",
@@ -71,7 +71,7 @@ export const k8Vegetativ: BioBank = {
     {
       concept: "bio:k8:veg:darm",
       prompt: "Wie wirkt der Parasympathikus typischerweise auf die Verdauung?",
-      answer: "Sie meint fördert die Verdauungstätigkeit.", wrong: ["Sie meint unwillkürliche Funktionen von Organen.", "Sie meint leistungsbereitschaft erhöhen (Kampf-oder-Flucht).", "Sie meint erholung und Verdauung fördern (Ruhe-und-Verdauung)."],
+      answer: "Er fördert die Verdauungstätigkeit.", wrong: ["Es steuert unwillkürliche Funktionen von Organen.", "Er erhöht die Leistungsbereitschaft (Kampf-oder-Flucht).", "Er fördert Erholung und Verdauung (Ruhe-und-Verdauung)."],
       explanation: "Fördert die Verdauungstätigkeit.",
       wissen: fw(
         "In Ruhe kann der Darm besser arbeiten — Parasympathikus-Wirkung.",

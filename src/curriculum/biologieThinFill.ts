@@ -297,7 +297,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb2:fische:merkmale:f9',
-      prompt: "Welche Eigenschaft hat der Schuppenformel?",
+      prompt: "Welche Eigenschaft hat die Schuppenformel?",
       answer: "Zählung der Schuppenreihen.", wrong: ["Sauerstoffaufnahme aus Wasser.", "Verringert Reibung und schützt.", "Hauptsächlicher Vortrieb."],
       explanation: 'Artmerkmal. Schuppenformel bedeutet: Zählung der Schuppenreihen.',
       wissen: 'Artmerkmal. Schuppenformel bedeutet: Zählung der Schuppenreihen. Merke: Schuppenformel — Zählung der Schuppenreihen.',
@@ -589,7 +589,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb3:lurche:merkmale:f4',
-      prompt: "Welche Eigenschaft hat das Lidschlag?",
+      prompt: "Welche Eigenschaft hat der Lidschlag?",
       answer: "Befeuchtet und schützt Augen.", wrong: ["Feuchthält und schützt die Haut.", "Hörorgan am Kopf vieler Frösche.", "Kraftvolle Hinterbeine."],
       explanation: 'Anpassung an Landleben. Lidschlag bedeutet: Befeuchtet und schützt Augen.',
       wissen: 'Anpassung an Landleben. Lidschlag bedeutet: Befeuchtet und schützt Augen. Merke: Lidschlag — Befeuchtet und schützt Augen.',
@@ -1112,7 +1112,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb4:kriechtiere:f5',
-      prompt: "Welche Eigenschaft hat das Poikilotherm?",
+      prompt: "Was kennzeichnet poikilotherme Tiere?",
       answer: "Wechselwarm.", wrong: ["Anderer Name für Kriechtier.", "Trockene Hautbedeckung.", "Hauptatmung an Land."],
       explanation: 'Sonnenbaden zur Erwärmung. Poikilotherm bedeutet: Wechselwarm.',
       wissen: 'Sonnenbaden zur Erwärmung. Poikilotherm bedeutet: Wechselwarm. Merke: Poikilotherm — Wechselwarm.',
@@ -2188,7 +2188,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lb6:saeugetiere:f10',
-      prompt: "Welche Eigenschaft hat der Revieren?",
+      prompt: "Welche Eigenschaft hat das Revier?",
       answer: "Markieren und Verteidigen.", wrong: ["Haarkleid.", "Erzeugt Milch.", "Stabile Körpertemperatur."],
       explanation: 'Duft, Laute. Revieren bedeutet: Markieren und Verteidigen.',
       wissen: 'Duft, Laute. Revieren bedeutet: Markieren und Verteidigen. Merke: Revieren — Markieren und Verteidigen.',
@@ -3687,7 +3687,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k5:lbw:haltung:f6',
-      prompt: "Welche Eigenschaft hat das Futterplan?",
+      prompt: "Welche Eigenschaft hat der Futterplan?",
       answer: "Angepasste Ernährung.", wrong: ["Haltung nach Bedürfnissen der Art.", "Wasserlebensraum für Fische.", "Land-/Feuchtlandhaltung."],
       explanation: 'Nicht einseitig. Futterplan bedeutet: Angepasste Ernährung.',
       wissen: 'Nicht einseitig. Futterplan bedeutet: Angepasste Ernährung. Merke: Futterplan — Angepasste Ernährung.',
@@ -7421,7 +7421,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lb1:mendel:f2',
-      prompt: "Welche Eigenschaft hat das Rezessiv?",
+      prompt: "Was kennzeichnet rezessive Vererbung?",
       answer: "Nur homozygot sichtbar.", wrong: ["Ausprägungsform eines Gens.", "Setzt sich im Phänotyp durch.", "Genetische Ausstattung."],
       explanation: 'Verdeckt von dominant. Rezessiv bedeutet: Nur homozygot sichtbar.',
       wissen: 'Verdeckt von dominant. Rezessiv bedeutet: Nur homozygot sichtbar. Merke: Rezessiv — Nur homozygot sichtbar.',
@@ -7944,7 +7944,7 @@ export const BIOLOGIE_THIN_FILL_BANKS: Record<string, Topic['generate']> = {
     },
     {
       concept: 'bio:fill:k10:lbw:lernen:f3',
-      prompt: "Welche Eigenschaft hat das Einsichtiges Lernen?",
+      prompt: "Was kennzeichnet einsichtiges Lernen?",
       answer: "Problemlösen.", wrong: ["Lernen durch Verknüpfung.", "Irreversibles Lernen in Phase.", "Versuch und Irrtum."],
       explanation: 'Höhere Wirbeltiere. Einsichtiges Lernen bedeutet: Problemlösen.',
       wissen: 'Höhere Wirbeltiere. Einsichtiges Lernen bedeutet: Problemlösen. Merke: Einsichtiges Lernen — Problemlösen.',

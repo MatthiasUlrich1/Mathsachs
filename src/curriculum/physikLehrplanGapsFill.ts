@@ -1000,7 +1000,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb2-teilchenmodell:fact:fluessig",
-      prompt: "Welche Eigenschaft hat das Flüssig?",
+      prompt: "Was kennzeichnet flüssige Stoffe?",
       answer: "Teilchen beweglich.", wrong: ["Teilchen weit, schnell.", "Vereinfachung der Realität.", "Ausdehnung, Mischen."],
       explanation: "Volumen, keine Form. Flüssig bedeutet: Teilchen beweglich. Bezug: Teilchenmodell.",
       wissen: "Volumen, keine Form. Flüssig bedeutet: Teilchen beweglich. Bezug: Teilchenmodell.",
@@ -1401,7 +1401,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k6-lb2-lichtgeschwindigkeit:fact:laufzeit",
-      prompt: "Welche Eigenschaft hat das Laufzeit?",
+      prompt: "Welche Eigenschaft hat die Laufzeit?",
       answer: "Es zeit bis Signal ankommt, t = s/c.", wrong: ["Sie beschreibt c ≈ 300 000 km/s, im Vakuum.", "Er prüft das Ergebnis an der Hypothese und diskutiert Abweichungen.", "Sie laufzeit über bekannte Strecke, historisch schwierig."],
       explanation: "t = s/c. Laufzeit bedeutet: Zeit bis Signal ankommt. Bezug: Lichtgeschwindigkeit und Entfernungen.",
       wissen: "t = s/c. Laufzeit bedeutet: Zeit bis Signal ankommt. Bezug: Lichtgeschwindigkeit und Entfernungen.",
@@ -2705,7 +2705,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     facts: [
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:treibhauseffekt",
-      prompt: "Welche Eigenschaft hat das Treibhauseffekt?",
+      prompt: "Welche Eigenschaft hat der Treibhauseffekt?",
       answer: "Es beschreibt atmosphäre hält IR zurück, erde wärmer.", wrong: ["Es macht Erde bewohnbar, ohne zu kalt.", "Sie transportiert Wärme als elektromagnetische Strahlung ohne Stofftransport, zum Teil absorbiert.", "Man misst mit Uhr und Maßband oder vergleichbaren Messgeräten."],
       explanation: "Erde wärmer. Treibhauseffekt bedeutet: Atmosphäre hält IR zurück. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Erde wärmer. Treibhauseffekt bedeutet: Atmosphäre hält IR zurück. Bezug: Treibhauseffekt und Klimaphysik.",
@@ -2769,7 +2769,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb2-treibhaus:fact:ozean",
-      prompt: "Welche Eigenschaft hat das Ozean?",
+      prompt: "Welche Eigenschaft hat der Ozean?",
       answer: "Wärmespeicher.", wrong: ["Eis-Albedo.", "Temperaturreihen.", "Emissionen senken."],
       explanation: "Trägheit. Ozean bedeutet: Wärmespeicher. Bezug: Treibhauseffekt und Klimaphysik.",
       wissen: "Trägheit. Ozean bedeutet: Wärmespeicher. Bezug: Treibhauseffekt und Klimaphysik.",
@@ -2892,7 +2892,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb3-widerstandgesetz:fact:draht",
-      prompt: "Welche Eigenschaft hat das Draht?",
+      prompt: "Welche Eigenschaft hat der Draht?",
       answer: "Anwendung der Formel.", wrong: ["Beeinflusst ρ.", "U und I → R.", "ρ-Werte nachschlagen."],
       explanation: "Berechnen. Draht bedeutet: Anwendung der Formel. Bezug: Widerstandsgesetz R = ρ·l/A.",
       wissen: "Berechnen. Draht bedeutet: Anwendung der Formel. Bezug: Widerstandsgesetz R = ρ·l/A.",
@@ -3063,7 +3063,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k8-lb3-ntc-ptc:fact:schutz",
-      prompt: "Welche Eigenschaft hat das Schutz?",
+      prompt: "Welche Eigenschaft hat der Schutz?",
       answer: "PTC als Überlastschutz.", wrong: ["R bei verschiedenen T.", "R gegen T plotten.", "Temperaturfühler."],
       explanation: "Strom begrenzt. Schutz bedeutet: PTC als Überlastschutz. Bezug: NTC und PTC.",
       wissen: "Strom begrenzt. Schutz bedeutet: PTC als Überlastschutz. Bezug: NTC und PTC.",
@@ -3234,7 +3234,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k9-lb1-halbleiter:fact:elektronikschrott",
-      prompt: "Welche Eigenschaft hat das Elektronikschrott?",
+      prompt: "Welche Eigenschaft hat der Elektronikschrott?",
       answer: "Ressourcen und Recycling.", wrong: ["Leitfähigkeit zwischen Leiter und Isolator.", "Gezielte Fremdatome.", "Elektronen als Mehrheit."],
       explanation: "Nachhaltigkeit. Elektronikschrott bedeutet: Ressourcen und Recycling. Bezug: Halbleiter Dotierung pn.",
       wissen: "Nachhaltigkeit. Elektronikschrott bedeutet: Ressourcen und Recycling. Bezug: Halbleiter Dotierung pn.",
@@ -3595,7 +3595,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k9-lb2-kernenergie:fact:otto-hahn",
-      prompt: "Welche Eigenschaft hat das Otto Hahn?",
+      prompt: "Was kennzeichnet Otto Hahns Entdeckung der Kernspaltung?",
       answer: "Entdeckung Spaltung.", wrong: ["Kernbausteine.", "Hält Kern zusammen.", "Gesteuerte Kettenreaktion."],
       explanation: "Mit Strassmann/Meitner. Otto Hahn bedeutet: Entdeckung Spaltung. Bezug: Kernenergie.",
       wissen: "Mit Strassmann/Meitner. Otto Hahn bedeutet: Entdeckung Spaltung. Bezug: Kernenergie.",
@@ -4239,7 +4239,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb2-hrd:fact:radiusvergleich",
-      prompt: "Welche Eigenschaft hat das Radiusvergleich?",
+      prompt: "Was zeigt der Radiusvergleich?",
       answer: "Aus L und T schätzbar.", wrong: ["Sichtbare Sternschicht.", "Chemische Zusammensetzung.", "Sternwarte/Teleskop."],
       explanation: "Stefan-Boltzmann-Idee. Radiusvergleich bedeutet: Aus L und T schätzbar. Bezug: Hertzsprung-Russell-Diagramm.",
       wissen: "Stefan-Boltzmann-Idee. Radiusvergleich bedeutet: Aus L und T schätzbar. Bezug: Hertzsprung-Russell-Diagramm.",
@@ -4787,7 +4787,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-k10-lb3-em-spektrum:fact:sichtbares-licht",
-      prompt: "Welche Eigenschaft hat das Sichtbares Licht?",
+      prompt: "Was kennzeichnet sichtbares Licht?",
       answer: "Schmaler Ausschnitt.", wrong: ["Energiereicher als sichtbar.", "Durchdringt Gewebe.", "f = c/λ."],
       explanation: "Auge. Sichtbares Licht bedeutet: Schmaler Ausschnitt. Bezug: Elektromagnetisches Spektrum.",
       wissen: "Auge. Sichtbares Licht bedeutet: Schmaler Ausschnitt. Bezug: Elektromagnetisches Spektrum.",
@@ -4918,7 +4918,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb1-kreis:fact:radialkraft",
-      prompt: "Welche Eigenschaft hat das Radialkraft?",
+      prompt: "Welche Eigenschaft hat die Radialkraft?",
       answer: "Zum Zentrum gerichtet.", wrong: ["ω = 2π/T.", "v = ω·r.", "Umlaufdauer T."],
       explanation: "F = m v²/r. Radialkraft bedeutet: Zum Zentrum gerichtet. Bezug: Gleichförmige Kreisbewegung.",
       wissen: "F = m v²/r. Radialkraft bedeutet: Zum Zentrum gerichtet. Bezug: Gleichförmige Kreisbewegung.",
@@ -5351,7 +5351,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     facts: [
     {
       concept: "ph:gap:ph-j11gk-lb4-millikan:fact:millikan",
-      prompt: "Welche Eigenschaft hat das Millikan?",
+      prompt: "Was kennzeichnet den Millikan-Versuch?",
       answer: "Bestimmung der Elementarladung.", wrong: ["e ≈ 1,6·10⁻¹⁹ C.", "Gewicht = elektrische Kraft.", "Kleine geladene Tropfen."],
       explanation: "Öltröpfchen. Millikan bedeutet: Bestimmung der Elementarladung. Bezug: Millikan-Versuch.",
       wissen: "Öltröpfchen. Millikan bedeutet: Bestimmung der Elementarladung. Bezug: Millikan-Versuch.",
@@ -5685,7 +5685,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb5-induktion:fact:windungszahl",
-      prompt: "Welche Eigenschaft hat das Windungszahl?",
+      prompt: "Welche Eigenschaft hat die Windungszahl?",
       answer: "N multipliziert U.", wrong: ["Induktion kostet Arbeit.", "Spule + Magnet.", "Periodische Änderung."],
       explanation: "Spule. Windungszahl bedeutet: N multipliziert U. Bezug: Induktionsgesetz GK.",
       wissen: "Spule. Windungszahl bedeutet: N multipliziert U. Bezug: Induktionsgesetz GK.",
@@ -5963,7 +5963,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:ausschaltvorgang",
-      prompt: "Welche Eigenschaft hat das Ausschaltvorgang?",
+      prompt: "Welche Eigenschaft hat der Ausschaltvorgang?",
       answer: "Spannungsspitzen möglich.", wrong: ["E = ½ L I².", "Glättet Strom.", "Gegenseitige Induktion."],
       explanation: "Funken. Ausschaltvorgang bedeutet: Spannungsspitzen möglich. Bezug: Selbstinduktion.",
       wissen: "Funken. Ausschaltvorgang bedeutet: Spannungsspitzen möglich. Bezug: Selbstinduktion.",
@@ -6003,7 +6003,7 @@ export const PHYSIK_LEHRPLAN_GAPS_FILL_GENERATORS: Record<string, Topic['generat
     },
     {
       concept: "ph:gap:ph-j11gk-lb5-selbstinduktion:fact:versuch",
-      prompt: "Welche Eigenschaft hat das Versuch?",
+      prompt: "Welche Eigenschaft hat der Versuch?",
       answer: "Spule mit Kern und Lampe.", wrong: ["Schaltnetzteile.", "Lenz auch hier.", "Strom-Zeit-Kurve."],
       explanation: "Verzögerung. Versuch bedeutet: Spule mit Kern und Lampe. Bezug: Selbstinduktion.",
       wissen: "Verzögerung. Versuch bedeutet: Spule mit Kern und Lampe. Bezug: Selbstinduktion.",

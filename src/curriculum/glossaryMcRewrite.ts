@@ -58,7 +58,7 @@ const PREPS = new Set([
 ])
 
 const PURPOSE_VERB =
-  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt|Entzieht|Nimmt|Bewegt|Reguliert|Verbindet|Gewährt|Organisiert|Stellt|Meint|Vergleicht|Erzeugt|Lässt|Lassen|Wirft|Sendet|Bildet|Zeigt|Enthält|Umfasst|Ändert|Hängt|Folgt|Treibt|Wandelt|Gibt|Tritt|Prägt|Unterbricht|Transportiert|Hemmt|Pumpt|Katalysiert|Trennt|Isoliert|Leitet|Bereitet|Erfasst|Wertet|Wirkt|Fängt|Beherbergt|Ergänzt|Nutzt|Dokumentiert|Ordnet|Fasst|Spaltet|Läuft|Unterwirft|Fixiert|Schreibt)\b/i
+  /^(Schaltet|Dient|Dienen|Vermeidet|Ermöglicht|Regelt|Steuert|Misst|Schützt|Hilft|Unterstützt|Begrenzt|Verhindert|Reduziert|Erhöht|Verringert|Speichert|Überträgt|Entzieht|Nimmt|Bewegt|Reguliert|Verbindet|Gewährt|Organisiert|Stellt|Meint|Vergleicht|Erzeugt|Lässt|Lassen|Wirft|Sendet|Bildet|Zeigt|Enthält|Umfasst|Ändert|Hängt|Folgt|Treibt|Wandelt|Gibt|Tritt|Prägt|Unterbricht|Transportiert|Hemmt|Pumpt|Katalysiert|Trennt|Isoliert|Leitet|Bereitet|Erfasst|Wertet|Wirkt|Fängt|Beherbergt|Ergänzt|Nutzt|Dokumentiert|Ordnet|Fasst|Spaltet|Läuft|Unterwirft|Fixiert|Schreibt|Ersetzt|Kommuniziert|Signalisiert|Reagiert|Verteilt|Markiert|Kennzeichnet|Überwindet|Beeinflusst|Verursacht|Ermittelt|Berechnet|Analysiert|Beschleunigt|Verlangsamt|Verstärkt|Schwächt|Absorbiert|Reflektiert|Bricht|Polarisiert|Diffundiert|Osmosiert|Aktiviert|Inhibiert|Produziert|Konsumiert|Dekomponiert|Fixiert|Synthetisiert|Hydrolysiert|Oxidiert|Reduziert|Phosphoryliert|Depolarisiert|Repolarisiert|Bindet|Löst|Spaltet|Verbindet|Überträgt|Wandert|Migriert|Proliferiert|Differenziert|Apoptosiert|Mutiert|Rekombiniert)\b/i
 
 const EFFECT_VERB =
   /^(Ist|Sind|Wird|Werden|Entsteht|Bedeutet|Gilt|Kennzeichnet|Bezeichnet|Beschreibt|Steht|Liegt|Geht|Hat|Haben|Stört)\b/i
@@ -153,6 +153,17 @@ const DOMAIN_NOUN_GENDER: Record<string, 'm' | 'f' | 'n'> = {
   // Bio: Humanbiologie
   sympathikus: 'm', parasympathikus: 'm', hypothalamus: 'm',
   hypophyse: 'f', schilddrüse: 'f',
+  // Bio: Sinne (all "-sinn" compounds are masculine: der Tastsinn, der Geruchssinn, …)
+  tastsinn: 'm', geruchssinn: 'm', gehörsinn: 'm', sehsinn: 'm', gleichgewichtssinn: 'm',
+  temperatursinn: 'm', schmerzsinn: 'm', tiefensinn: 'm',
+  // Bio: Lernen/Verhalten/Anatomie (extra entries not in original block above)
+  artenschutzplan: 'm', stammbaum: 'm',
+  frequenzgang: 'm', wirbelstrom: 'm', schwingfall: 'm', federarbeit: 'f',
+  wirbelstrombremse: 'f', amplitudengang: 'm', resonanzfrequenz: 'f',
+  flaschenhalseffekt: 'm', vegetationskegel: 'm', artbegriff: 'm',
+  beitrag: 'm', nervensystem: 'n', trend: 'm', vergleich: 'm',
+  stammzelle: 'f', zellzyklus: 'm', kompartimentierung: 'f', endo: 'f',
+  selektion: 'f', mutation: 'f', modifikation: 'f', autosom: 'n',
   // Physik
   druck: 'm', strom: 'm', widerstand: 'm', schalter: 'm', hebelarm: 'm',
   kraftarm: 'm', lasthebel: 'm', sensor: 'm', timer: 'm', lichtstrahl: 'm',
@@ -192,7 +203,7 @@ function nounGender(word: string): 'm' | 'f' | 'n' {
   if (/(ung|heit|keit|schaft|ion|tät|ik|enz|anz|ur|ase|ose)$/i.test(w) && !/(chen|lein)$/.test(w)) return 'f'
   if (/(chen|lein|ment|tum|modell|organ|system|gebiss|gewebe)$/i.test(w)) return 'n'
   // Masculine: compounds ending in masculine head nouns
-  if (/(er|or|ismus|us|ling|strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|schutz|sack|platz|schlaf|lauf|fluss|kreislauf|gehalt|stamm|baum|fisch|vogel|pilz|gang|schlag|ruf|zahn|arm|typ|bau|verlust|sog|korb|zug|berg|weg|impuls|einfluss|alltag|kanal|kurs|anteil|grad)$/i.test(w)) return 'm'
+  if (/(er|or|ismus|us|ling|strahl|stoff|kreis|punkt|wert|druck|strom|schatten|spiegel|schutz|sack|platz|schlaf|lauf|fluss|kreislauf|gehalt|stamm|baum|fisch|vogel|pilz|gang|schlag|ruf|zahn|arm|typ|bau|verlust|sog|korb|zug|berg|weg|impuls|einfluss|alltag|kanal|kurs|anteil|grad|sinn|plan|effekt|kegel|fall|schlag|trend|vergleich|beitrag|stammbaum|artbegriff)$/i.test(w)) return 'm'
   if (/um$/i.test(w)) return 'n'
   return 'n'
 }
@@ -439,7 +450,12 @@ function naturalFragmentOption(term: string, fragment: string): string {
   } else if (/\b(ist|sind|hat|haben|wird|werden|lässt|dient|bedeutet|gilt|bildet|zeigt|enthält|umfasst|sendet|wirft|regelt|steuert|misst|schützt|entsteht|geht|liegt|nimmt|steht)\b/i.test(body)) {
     out = ensurePeriod(body.charAt(0).toUpperCase() + body.slice(1))
   } else {
-    const pred = meaningAsPredicate(body)
+    let pred = meaningAsPredicate(body)
+    // Always lowercase Title-Case adjective after article (e.g. "ein Gezieltes" → "ein gezieltes")
+    pred = pred.replace(
+      /^(ein|eine|einen|der|die|das)\s+([A-Z\u00c4\u00d6\u00dc][a-z\u00e4\u00f6\u00fc\u00df]+)\s+/,
+      (_m, pArt, adj) => `${pArt} ${adj.charAt(0).toLowerCase() + adj.slice(1)} `,
+    )
     out = ensurePeriod(`${pron} ist ${pred}`)
   }
 

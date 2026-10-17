@@ -26,7 +26,7 @@ const gk11Osmose: BioBank = {
     },
     {
       concept: "bio:gk11:osmose:3",
-      prompt: "Welche Eigenschaft hat die Hypoton bedeutet für die Zelle?",
+      prompt: "Was bedeutet hypoton für die Zelle?",
       answer: "Außen niedrigere Osmolarität; Wasser strömt oft hinein.", wrong: ["Immer Wasserverlust.", "Immer keine Wasserbewegung.", "Nur bei Knochen."],
       explanation: "Hypoton bedeutet für die Zelle.",
       wissen: "Außen niedrigere Osmolarität; Wasser strömt oft hinein. Fachlich themenspezifisch einordnen.",
@@ -166,7 +166,7 @@ const gk11Transport: BioBank = {
     },
     {
       concept: "bio:gk11:transport:9",
-      prompt: "Welche Eigenschaft hat das Carrier-Protein?",
+      prompt: "Welche Eigenschaft hat ein Carrier-Protein?",
       answer: "Bindet Stoff und erleichtert/aktiviert Transport.", wrong: ["Nur strukturelles Skelett.", "Nur Antikörper.", "Nur Chlorophyll."],
       explanation: "Carrier-Protein.",
       wissen: "Bindet Stoff und erleichtert/aktiviert Transport. Fachlich themenspezifisch einordnen.",
@@ -707,7 +707,7 @@ const gk11Mikroskop: BioBank = {
     },
     {
       concept: "bio:gk11:mikro:6",
-      prompt: "Welche Eigenschaft hat die Zelle vs. Gewebe?",
+      prompt: "Was unterscheidet Zelle und Gewebe?",
       answer: "Gewebe = Verband gleicher/ähnlicher Zellen.", wrong: ["Gewebe = einzelnes Organell.", "Zelle = Organismus immer.", "Gewebe ohne Zellen."],
       explanation: "Zelle vs. Gewebe.",
       wissen: "Gewebe = Verband gleicher/ähnlicher Zellen. Fachlich themenspezifisch einordnen.",
@@ -764,7 +764,7 @@ const gk11Faktoren: BioBank = {
   facts: [
     {
       concept: "bio:gk11:fak:1",
-      prompt: "Welche Eigenschaft hat das Abiotische Faktoren?",
+      prompt: "Welche Eigenschaft haben abiotische Faktoren?",
       answer: "Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…).", wrong: ["Einflüsse durch Lebewesen.", "Ansprüche und Rolle einer Art.", "Beziehungen innerhalb einer Art."],
       explanation: "Abiotische Faktoren.",
       wissen: "Unbelebte Umwelteinflüsse (Licht, T, Wasser, pH…). Fachlich themenspezifisch einordnen.",
@@ -858,7 +858,7 @@ const gk11Schaedlinge: BioBank = {
   facts: [
     {
       concept: "bio:gk11:schaed:1",
-      prompt: "Welche Eigenschaft hat das Problem der Monokultur?",
+      prompt: "Was kennzeichnet das Problem der Monokultur?",
       answer: "Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten.", wrong: ["Resistenz, Nichtzielorganismen, Rückstände.", "Nützlinge/Antagonisten einsetzen.", "Kombinierte, schwellenorientierte Maßnahmen."],
       explanation: "Problem Monokultur.",
       wissen: "Geringe Vielfalt; anfälliger für Schädlinge/Krankheiten. Fachlich themenspezifisch einordnen.",
@@ -1147,7 +1147,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:2",
-      prompt: "Welche Eigenschaft hat das Keimbahntherapie Problem?",
+      prompt: "Was kennzeichnet das Problem der Keimbahntherapie?",
       answer: "Vererbbare Änderungen; ethisch hochproblematisch.", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Können sich differenzieren; therapeutisches Potenzial/Risiken.", "Rechtliche/ethische Grenzen früher Embryonen."],
       explanation: "Keimbahntherapie Problem.",
       wissen: "Vererbbare Änderungen; ethisch hochproblematisch. Fachlich themenspezifisch einordnen.",
@@ -1184,7 +1184,7 @@ const gk12Gentherapie: BioBank = {
     },
     {
       concept: "bio:gk12:genther:7",
-      prompt: "Welche Eigenschaft hat das Risiko der Gentherapie?",
+      prompt: "Was kennzeichnet das Risiko der Gentherapie?",
       answer: "Fehlinsertion, Immunreaktion, Off-Target.", wrong: ["Eingriff in Körperzellen, nicht Keimbahn.", "Vererbbare Änderungen; ethisch hochproblematisch.", "Können sich differenzieren; therapeutisches Potenzial/Risiken."],
       explanation: "Risiko Gentherapie.",
       wissen: "Fehlinsertion, Immunreaktion, Off-Target. Fachlich themenspezifisch einordnen.",
@@ -1482,7 +1482,7 @@ const gk12Verhalten: BioBank = {
     },
     {
       concept: "bio:gk12:verhalten:9",
-      prompt: "Welche Eigenschaft hat das Selektion auf Verhalten?",
+      prompt: "Was kennzeichnet Selektion auf Verhalten?",
       answer: "Verhaltensvarianten mit Fitnessunterschieden.", wrong: ["Wie-Mechanismus vs. Warum-Fitnessnutzen.", "Beitrag zur Fitness.", "Abwägung Aufwand vs. Vorteil."],
       explanation: "Selektion auf Verhalten.",
       wissen: "Verhaltensvarianten mit Fitnessunterschieden. Fachlich themenspezifisch einordnen.",
@@ -1617,7 +1617,7 @@ const gk12Molekular: BioBank = {
     },
     {
       concept: "bio:gk12:mol:2",
-      prompt: "Welche Eigenschaft hat das Stammbaum aus DNA?",
+      prompt: "Was kennzeichnet einen Stammbaum aus DNA?",
       answer: "Verwandtschaft aus Sequenzunterschieden schätzen.", wrong: ["Ähnlichkeit durch gemeinsame Abstammung in Sequenzen.", "Externe Vergleichsart zur Wurzelung.", "Abgeleitetes gemeinsames Merkmal."],
       explanation: "Stammbaum aus DNA.",
       wissen: "Verwandtschaft aus Sequenzunterschieden schätzen. Fachlich themenspezifisch einordnen.",
@@ -1725,7 +1725,7 @@ const lk11Procyte: BioBank = {
     },
     {
       concept: "bio:lk11:procyte:4",
-      prompt: "Welche Eigenschaft hat das Zellwand Bakterien?",
+      prompt: "Welche Eigenschaft hat die Zellwand bei Bakterien?",
       answer: "Oft Peptidoglycan; Form/Schutz.", wrong: ["Kein kernmembranumschlossener Kern.", "Echter Zellkern und oft Organellen.", "Cyanobacteria photosynthetisch; beide prokaryotisch."],
       explanation: "Zellwand Bakterien.",
       wissen: "Oft Peptidoglycan; Form/Schutz. Fachlich themenspezifisch einordnen.",
@@ -1810,14 +1810,14 @@ const lk11GewebeZyklus: BioBank = {
     },
     {
       concept: "bio:lk11:gewebe:3",
-      prompt: "Welche Eigenschaft hat das Vegetationskegel?",
+      prompt: "Welche Eigenschaft hat der Vegetationskegel?",
       answer: "Spross-/Wurzelmeristemspitze.", wrong: ["Teilungsfähig (Meristem).", "Differenziert, wenig Teilung.", "G1, S, G2, M."],
       explanation: "Vegetationskegel.",
       wissen: "Spross-/Wurzelmeristemspitze. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk11:gewebe:4",
-      prompt: "Welche Eigenschaft hat das Zellzyklus Phasen grob?",
+      prompt: "Welche Phasen hat der Zellzyklus?",
       answer: "G1, S, G2, M.", wrong: ["Teilungsfähig (Meristem).", "Differenziert, wenig Teilung.", "Identische Tochterkerne."],
       explanation: "Zellzyklus Phasen grob.",
       wissen: "G1, S, G2, M. Fachlich themenspezifisch einordnen.",
@@ -1927,7 +1927,7 @@ const lk11Membran: BioBank = {
     },
     {
       concept: "bio:lk11:membran:6",
-      prompt: "Welche Eigenschaft hat das Kompartimentierung Vorteil?",
+      prompt: "Welchen Vorteil bietet Kompartimentierung?",
       answer: "Getrennte Reaktionsbedingungen.", wrong: ["Lipide fluid, Proteine eingelagert (Singer/Nicholson).", "Amphiphil; Doppelschicht.", "Synthese/Transport von Proteinen/Lipiden."],
       explanation: "Kompartimentierung Vorteil.",
       wissen: "Getrennte Reaktionsbedingungen. Fachlich themenspezifisch einordnen.",
@@ -1998,7 +1998,7 @@ const lk11Transport: BioBank = {
     },
     {
       concept: "bio:lk11:transport:3",
-      prompt: "Welche Eigenschaft hat das Endo-/Exocytose?",
+      prompt: "Was kennzeichnet Endo- und Exocytose?",
       answer: "Vesikulärer Stoffaustausch.", wrong: ["Tendenz des Wasserstroms; Summe von Komponenten.", "Wasserverlust/-aufnahme der Pflanzenzelle.", "ATP gegen Gefälle."],
       explanation: "Endo-/Exocytose.",
       wissen: "Vesikulärer Stoffaustausch. Fachlich themenspezifisch einordnen.",
@@ -2461,7 +2461,7 @@ const lk11Chemo: BioBank = {
     },
     {
       concept: "bio:lk11:chemo:2",
-      prompt: "Welche Eigenschaft hat die Unterschied Fotosynthese?",
+      prompt: "Was kennzeichnet den Unterschied bei der Fotosynthese?",
       answer: "Licht vs. chemische Redoxenergie.", wrong: ["Energie aus anorganischen Redoxreaktionen für Assimilation.", "Nitrifikation u. a. im N-Kreislauf.", "Chemoautotrophe in speziellen Habitaten."],
       explanation: "Unterschied Fotosynthese.",
       wissen: "Licht vs. chemische Redoxenergie. Fachlich themenspezifisch einordnen.",
@@ -2578,7 +2578,7 @@ const lk11Gaerung: BioBank = {
     },
     {
       concept: "bio:lk11:gaerung:5",
-      prompt: "Welche Eigenschaft hat das Vergleich Atmung ATP?",
+      prompt: "Was kennzeichnet den Vergleich von Atmung und ATP-Gewinn?",
       answer: "Atmung liefert deutlich mehr ATP.", wrong: ["Abbau ohne Sauerstoff; wenig ATP.", "Ethanol + CO2.", "NAD+ aus NADH zurückgewinnen."],
       explanation: "Vergleich Atmung ATP.",
       wissen: "Atmung liefert deutlich mehr ATP. Fachlich themenspezifisch einordnen.",
@@ -2592,7 +2592,7 @@ const lk11Gaerung: BioBank = {
     },
     {
       concept: "bio:lk11:gaerung:7",
-      prompt: "Welche Eigenschaft hat das Hefe technisch?",
+      prompt: "Was kennzeichnet den technischen Einsatz von Hefe?",
       answer: "Brot (CO2), alkoholische Getränke.", wrong: ["Abbau ohne Sauerstoff; wenig ATP.", "Ethanol + CO2.", "NAD+ aus NADH zurückgewinnen."],
       explanation: "Hefe technisch.",
       wissen: "Brot (CO2), alkoholische Getränke. Fachlich themenspezifisch einordnen.",
@@ -2734,14 +2734,14 @@ const lk11PopModelle: BioBank = {
   facts: [
     {
       concept: "bio:lk11:pop:1",
-      prompt: "Welche Eigenschaft hat das Exponentielles Wachstum?",
+      prompt: "Was kennzeichnet exponentielles Wachstum?",
       answer: "Konstante Rate ohne Begrenzung.", wrong: ["Annäherung an Tragfähigkeit K.", "Viele Nachkommen, wenig Investition.", "Wenige Nachkommen, hohe Investition."],
       explanation: "Exponentielles Wachstum.",
       wissen: "Konstante Rate ohne Begrenzung. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk11:pop:2",
-      prompt: "Welche Eigenschaft hat das Logistisch?",
+      prompt: "Was kennzeichnet logistisches Wachstum?",
       answer: "Annäherung an Tragfähigkeit K.", wrong: ["Konstante Rate ohne Begrenzung.", "Viele Nachkommen, wenig Investition.", "Wenige Nachkommen, hohe Investition."],
       explanation: "Logistisch.",
       wissen: "Annäherung an Tragfähigkeit K. Fachlich themenspezifisch einordnen.",
@@ -2879,7 +2879,7 @@ const lk11Kreislauf: BioBank = {
     },
     {
       concept: "bio:lk11:kreislauf:8",
-      prompt: "Welche Eigenschaft hat das Energiefluss vs. Stoffkreislauf?",
+      prompt: "Was unterscheidet Energiefluss und Stoffkreislauf?",
       answer: "Energie einseitig, Stoffe zyklisch.", wrong: ["CO2 ↔ organischer C über Foto-/Atmung.", "N2 → bioverfügbare Formen.", "Ammonium → Nitrit/Nitrat."],
       explanation: "Energiefluss vs. Stoffkreislauf.",
       wissen: "Energie einseitig, Stoffe zyklisch. Fachlich themenspezifisch einordnen.",
@@ -2982,7 +2982,7 @@ const lk11Landwirtschaft: BioBank = {
     },
     {
       concept: "bio:lk11:land:9",
-      prompt: "Welche Eigenschaft hat die Indikatoren Nachhaltigkeit?",
+      prompt: "Was kennzeichnet Indikatoren der Nachhaltigkeit?",
       answer: "Boden, Wasser, Arten, Emissionen.", wrong: ["Anfälligkeit und Biodiversitätsverlust.", "Ressourcenverbrauch/Fläche pro Person/Aktivität.", "Steigt oft in homogenen Beständen."],
       explanation: "Indikatoren Nachhaltigkeit.",
       wissen: "Boden, Wasser, Arten, Emissionen. Fachlich themenspezifisch einordnen.",
@@ -3060,7 +3060,7 @@ const lk11Naturschutz: BioBank = {
     },
     {
       concept: "bio:lk11:naturschutz:7",
-      prompt: "Welche Eigenschaft hat die Konflikt Infrastruktur?",
+      prompt: "Was kennzeichnet den Konflikt Natur vs. Infrastruktur?",
       answer: "Zerschnittenheit und Verlust.", wrong: ["Klimawandel belastet Ökosysteme.", "Rechtlicher Rahmen für Schutz.", "Flussauen wieder anbinden."],
       explanation: "Konflikt Infrastruktur.",
       wissen: "Zerschnittenheit und Verlust. Fachlich themenspezifisch einordnen.",
@@ -3131,7 +3131,7 @@ const lk12Vererbung: BioBank = {
     },
     {
       concept: "bio:lk12:vererb:4",
-      prompt: "Welche Eigenschaft hat die Mutation vs. Modifikation?",
+      prompt: "Was unterscheidet Mutation und Modifikation?",
       answer: "Erbgutänderung vs. Umweltphänotyp.", wrong: ["Liegen auf demselben Chromosom; selten unabhängig.", "Unabhängige Kombination (verschiedene Chromosomen).", "Multiples Allelsystem; Codominanz A/B."],
       explanation: "Mutation vs. Modifikation.",
       wissen: "Erbgutänderung vs. Umweltphänotyp. Fachlich themenspezifisch einordnen.",
@@ -3218,7 +3218,7 @@ const lk12Human: BioBank = {
     },
     {
       concept: "bio:lk12:human:3",
-      prompt: "Welche Eigenschaft hat das Autosomale Erbkrankheit Beispielprinzip?",
+      prompt: "Was kennzeichnet das Prinzip autosomaler Erbkrankheiten?",
       answer: "Gen auf Autosom; Vererbung nach Dominanz/Rezessivität.", wrong: ["Muster und Chromosomenstatus.", "Molekulare Analysewerkzeuge.", "Oft X-gebunden; geschlechtsunterschiedlich."],
       explanation: "Autosomale Erbkrankheit Beispielprinzip.",
       wissen: "Gen auf Autosom; Vererbung nach Dominanz/Rezessivität. Fachlich themenspezifisch einordnen.",
@@ -3264,14 +3264,14 @@ const lk12Human: BioBank = {
     },
     {
       concept: "bio:lk12:human:9",
-      prompt: "Welche Eigenschaft hat das Beratung Ziel?",
+      prompt: "Was ist das Ziel genetischer Beratung?",
       answer: "Verstehen und Entscheiden ermöglichen.", wrong: ["Muster und Chromosomenstatus.", "Molekulare Analysewerkzeuge.", "Gen auf Autosom; Vererbung nach Dominanz/Rezessivität."],
       explanation: "Beratung Ziel.",
       wissen: "Verstehen und Entscheiden ermöglichen. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk12:human:10",
-      prompt: "Welche Eigenschaft hat das Limitationen?",
+      prompt: "Was kennzeichnet die Limitationen der Gentechnik?",
       answer: "Penetranz, Polygenie, Umwelt.", wrong: ["Muster und Chromosomenstatus.", "Molekulare Analysewerkzeuge.", "Gen auf Autosom; Vererbung nach Dominanz/Rezessivität."],
       explanation: "Limitationen.",
       wissen: "Penetranz, Polygenie, Umwelt. Fachlich themenspezifisch einordnen.",
@@ -3319,7 +3319,7 @@ const lk12Krebs: BioBank = {
     },
     {
       concept: "bio:lk12:krebs:4",
-      prompt: "Welche Eigenschaft hat das Personalisierte Medizin?",
+      prompt: "Was kennzeichnet personalisierte Medizin?",
       answer: "Therapie nach molekularen Markern.", wrong: ["Fördert unkontrolliertes Wachstum wenn aktiviert.", "Hemmt Wachstum; Ausfall begünstigt Krebs.", "Mehrere Mutationen nötig."],
       explanation: "Personalisierte Medizin.",
       wissen: "Therapie nach molekularen Markern. Fachlich themenspezifisch einordnen.",
@@ -3349,7 +3349,7 @@ const lk12Krebs: BioBank = {
     },
     {
       concept: "bio:lk12:krebs:8",
-      prompt: "Welche Eigenschaft hat das Risikofaktoren?",
+      prompt: "Was kennzeichnet genetische Risikofaktoren?",
       answer: "Mutagene, Viren, Entzündung, Lifestyle je nach Typ.", wrong: ["Fördert unkontrolliertes Wachstum wenn aktiviert.", "Hemmt Wachstum; Ausfall begünstigt Krebs.", "Mehrere Mutationen nötig."],
       explanation: "Risikofaktoren.",
       wissen: "Mutagene, Viren, Entzündung, Lifestyle je nach Typ. Fachlich themenspezifisch einordnen.",
@@ -3601,7 +3601,7 @@ const lk12Neuro: BioBank = {
     },
     {
       concept: "bio:lk12:neuro:4",
-      prompt: "Welche Eigenschaft hat das EMG grob?",
+      prompt: "Was misst ein EMG grob?",
       answer: "Muskelelektrik.", wrong: ["Lokales Sensorpotenzial.", "Addition synaptischer Eingänge.", "Hirnelektrische Aktivität von außen."],
       explanation: "EMG grob.",
       wissen: "Muskelelektrik. Fachlich themenspezifisch einordnen.",
@@ -3681,7 +3681,7 @@ const lk12Gendrift: BioBank = {
     },
     {
       concept: "bio:lk12:drift:2",
-      prompt: "Welche Eigenschaft hat das Flaschenhalseffekt?",
+      prompt: "Welche Eigenschaft hat der Flaschenhalseffekt?",
       answer: "Starke Verkleinerung → Drift.", wrong: ["Zufällige Allelfrequenzänderung.", "Neue Population aus wenigen Individuen.", "Austausch zwischen Populationen."],
       explanation: "Flaschenhalseffekt.",
       wissen: "Starke Verkleinerung → Drift. Fachlich themenspezifisch einordnen.",
@@ -3711,7 +3711,7 @@ const lk12Gendrift: BioBank = {
     },
     {
       concept: "bio:lk12:drift:6",
-      prompt: "Welche Eigenschaft hat das Populationsgenetischer Artbegriff?",
+      prompt: "Was kennzeichnet den populationsgenetischen Artbegriff?",
       answer: "Genflussgemeinschaft.", wrong: ["Zufällige Allelfrequenzänderung.", "Starke Verkleinerung → Drift.", "Neue Population aus wenigen Individuen."],
       explanation: "Populationsgenetischer Artbegriff.",
       wissen: "Genflussgemeinschaft. Fachlich themenspezifisch einordnen.",
@@ -3725,7 +3725,7 @@ const lk12Gendrift: BioBank = {
     },
     {
       concept: "bio:lk12:drift:8",
-      prompt: "Welche Eigenschaft hat das Kleine Population Risiko?",
+      prompt: "Welches Risiko hat eine kleine Population genetisch?",
       answer: "Stärkere Drift, Inzucht.", wrong: ["Zufällige Allelfrequenzänderung.", "Starke Verkleinerung → Drift.", "Neue Population aus wenigen Individuen."],
       explanation: "Kleine Population Risiko.",
       wissen: "Stärkere Drift, Inzucht. Fachlich themenspezifisch einordnen.",
@@ -3798,7 +3798,7 @@ const lk12Progression: BioBank = {
     },
     {
       concept: "bio:lk12:prog:5",
-      prompt: "Welche Eigenschaft hat das Nervensysteme Trend?",
+      prompt: "Was kennzeichnet den evolutionären Trend von Nervensystemen?",
       answer: "Zentralisierung/Komplexität.", wrong: ["Vergleichende Merkmalsentwicklung.", "Landgänge: Haut, Atmung, Fortpflanzung.", "Zunehmende Differenzierung."],
       explanation: "Nervensysteme Trend.",
       wissen: "Zentralisierung/Komplexität. Fachlich themenspezifisch einordnen.",
@@ -3869,7 +3869,7 @@ const lk12Abgrenzung: BioBank = {
     },
     {
       concept: "bio:lk12:abgrenz:2",
-      prompt: "Welche Eigenschaft hat das Gould Beitrag grob?",
+      prompt: "Was kennzeichnet Goulds Beitrag zur Evolutionstheorie?",
       answer: "Kritik an Determinismus/Missbrauch; Kontingenz der Evolution.", wrong: ["Missbrauch biologischer Ideen für gesellschaftliche Ungleichheit.", "Prüfbarkeit und Methodenkriterien.", "Menschliche Vielfalt keine Rangordnung biologisch gerechtfertigt."],
       explanation: "Gould Beitrag grob.",
       wissen: "Kritik an Determinismus/Missbrauch; Kontingenz der Evolution. Fachlich themenspezifisch einordnen.",
@@ -3899,7 +3899,7 @@ const lk12Abgrenzung: BioBank = {
     },
     {
       concept: "bio:lk12:abgrenz:6",
-      prompt: "Welche Eigenschaft hat das Selektion ≠ moralisches Sollen?",
+      prompt: "Was zeigt, dass Selektion kein moralisches Sollen ist?",
       answer: "Sein-Sollen-Fehlschluss vermeiden.", wrong: ["Missbrauch biologischer Ideen für gesellschaftliche Ungleichheit.", "Kritik an Determinismus/Missbrauch; Kontingenz der Evolution.", "Prüfbarkeit und Methodenkriterien."],
       explanation: "Selektion ≠ moralisches Sollen.",
       wissen: "Sein-Sollen-Fehlschluss vermeiden. Fachlich themenspezifisch einordnen.",
@@ -4151,14 +4151,14 @@ const lk12StoffVergleich: BioBank = {
     },
     {
       concept: "bio:lk12:stoffvgl:2",
-      prompt: "Welche Eigenschaft hat die Atmung vs. Gärung?",
+      prompt: "Was unterscheidet Atmung und Gärung?",
       answer: "Mit O2 viel ATP vs. ohne O2 wenig ATP", wrong: ["Licht vs. chemische Redoxenergie.", "Aufbau von Körpersubstanz.", "Abbau zur Energiegewinnung."],
       explanation: "Atmung vs. Gärung.",
       wissen: "Mit O2 viel ATP vs. ohne O2 wenig ATP. Fachlich themenspezifisch einordnen.",
     },
     {
       concept: "bio:lk12:stoffvgl:3",
-      prompt: "Welche Eigenschaft hat die Assimilation?",
+      prompt: "Was kennzeichnet die Assimilation?",
       answer: "Aufbau von Körpersubstanz.", wrong: ["Licht vs. chemische Redoxenergie.", "Mit O2 viel ATP vs. ohne O2 wenig ATP.", "Abbau zur Energiegewinnung."],
       explanation: "Assimilation.",
       wissen: "Aufbau von Körpersubstanz. Fachlich themenspezifisch einordnen.",
@@ -4188,7 +4188,7 @@ const lk12StoffVergleich: BioBank = {
     },
     {
       concept: "bio:lk12:stoffvgl:7",
-      prompt: "Welche Eigenschaft hat die Redoxgemeinsamkeit?",
+      prompt: "Was ist die Gemeinsamkeit bei Redoxreaktionen in der Zelle?",
       answer: "Elektronenübergänge zentral.", wrong: ["Licht vs. chemische Redoxenergie.", "Mit O2 viel ATP vs. ohne O2 wenig ATP.", "Aufbau von Körpersubstanz."],
       explanation: "Redoxgemeinsamkeit.",
       wissen: "Elektronenübergänge zentral. Fachlich themenspezifisch einordnen.",

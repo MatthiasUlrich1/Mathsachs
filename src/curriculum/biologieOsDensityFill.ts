@@ -6323,8 +6323,8 @@ export const BIOLOGIE_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate
     },
     {
       concept: "bi:dens:bi-lk12-lb5-systembiologie:p11:f",
-      prompt: "Welche Eigenschaft hat das Angeborenes Verhalten?",
-      answer: "ohne Lernen.", wrong: ["Kosten für Helfer.", "unmittelbarer Mechanismus.", "feste Reiz-Reaktions-Kette."],
+      prompt: "Was kennzeichnet angeborenes Verhalten?",
+      answer: "Es läuft ohne vorheriges Lernen ab (Instinkt).", wrong: ["Kosten für Helfer.", "unmittelbarer Mechanismus.", "feste Reiz-Reaktions-Kette."],
       explanation: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       wissen: "Instinkt/Erbkoordination. Bezug: Angeborenes Verhalten. Angeborenes Verhalten bedeutet: ohne Lernen.",
       flashFront: "Angeborenes Verhalten",

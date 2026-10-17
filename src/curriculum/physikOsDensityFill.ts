@@ -168,7 +168,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12gk-lb3-compton:p3:f",
-      prompt: "Welche Eigenschaft hat der Elastischer Stoß?",
+      prompt: "Was kennzeichnet einen elastischen Stoß?",
       answer: "Energie/Impuls erhalten.", wrong: ["Ablenkung des Photons.", "m_e in der Formel.", "Reicht nicht für Compton."],
       explanation: "Modell für Compton. Elastischer Stoß bedeutet: Energie/Impuls erhalten.",
       wissen: "Modell für Compton. Elastischer Stoß bedeutet: Energie/Impuls erhalten.",
@@ -458,7 +458,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb1-arbeit-energie:p10:f",
-      prompt: "Welche Eigenschaft hat das Federarbeit?",
+      prompt: "Welche Eigenschaft hat die Federarbeit?",
       answer: "½kx² gespeichert.", wrong: ["Epot → Ekin.", "W = F·s·cosα.", "Ekin = ½mv²."],
       explanation: "Elastische Energie. Federarbeit bedeutet: ½kx² gespeichert.",
       wissen: "Elastische Energie. Federarbeit bedeutet: ½kx² gespeichert.",
@@ -902,7 +902,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb3p-luftreibung:p7:f",
-      prompt: "Welche Eigenschaft hat das Modell F_R ~ v²?",
+      prompt: "Was besagt das Modell F_R ~ v²?",
       answer: "Es beschreibt oft bei schneller Bewegung, annahme prüfen.", wrong: ["Es beschreibt größer → mehr Widerstand, form entscheidend.", "Sie beschreibt F_G = F_R, keine Nettobeschleunigung.", "Es beschreibt mit/ohne Widerstand."],
       explanation: "Annahme prüfen. Modell F_R ~ v² bedeutet: oft bei schneller Bewegung.",
       wissen: "Annahme prüfen. Modell F_R ~ v² bedeutet: oft bei schneller Bewegung.",
@@ -1096,7 +1096,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p2:f",
-      prompt: "Welche Eigenschaft hat das Vorzeichen Lenz?",
+      prompt: "Was besagt das Vorzeichen nach Lenz?",
       answer: "entgegengesetzt der Ursache.", wrong: ["Φ(t) = Φ0 cos(ωt).", "U0 = N·Φ0·ω.", "verstärkt U_ind."],
       explanation: "Energiesatz. Vorzeichen Lenz bedeutet: entgegengesetzt der Ursache.",
       wissen: "Energiesatz. Vorzeichen Lenz bedeutet: entgegengesetzt der Ursache.",
@@ -1104,7 +1104,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j11lk-lb10-induktionsspannung:p3:f",
-      prompt: "Welche Eigenschaft hat die Drehende Leiterschleife?",
+      prompt: "Welche Eigenschaft hat eine drehende Leiterschleife?",
       answer: "Φ(t) = Φ0 cos(ωt).", wrong: ["U0 = N·Φ0·ω.", "verstärkt U_ind.", "B variieren."],
       explanation: "Wechselspannung. Drehende Leiterschleife bedeutet: Φ(t) = Φ0 cos(ωt).",
       wissen: "Wechselspannung. Drehende Leiterschleife bedeutet: Φ(t) = Φ0 cos(ωt).",
@@ -1202,7 +1202,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     facts: [
     {
       concept: "ph:osdens:ph-j11lk-lb10-wirbelstrom:p0:f",
-      prompt: "Welche Eigenschaft hat das Wirbelstrom?",
+      prompt: "Welche Eigenschaft hat der Wirbelstrom?",
       answer: "geschlossene Strombahn in Metall.", wrong: ["wirkt der Ursache entgegen.", "ohne Verschleiß reiben.", "I²R in Metall."],
       explanation: "durch Induktion. Wirbelstrom bedeutet: geschlossene Strombahn in Metall.",
       wissen: "durch Induktion. Wirbelstrom bedeutet: geschlossene Strombahn in Metall.",
@@ -1457,7 +1457,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb1-daempfung:p2:f",
-      prompt: "Welche Eigenschaft hat das Schwingfall?",
+      prompt: "Welche Eigenschaft hat der Schwingfall?",
       answer: "noch Überschwingen.", wrong: ["schnellste Rückkehr ohne Überschwingen.", "überdämpft.", "Ursache der Dämpfung."],
       explanation: "unterkritisch. Schwingfall bedeutet: noch Überschwingen.",
       wissen: "unterkritisch. Schwingfall bedeutet: noch Überschwingen.",
@@ -1638,7 +1638,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb1-erzwungene:p10:f",
-      prompt: "Welche Eigenschaft hat das Frequenzgang?",
+      prompt: "Welche Eigenschaft hat der Frequenzgang?",
       answer: "A(f) Diagramm.", wrong: ["f_err wählen.", "periodisch von außen.", "folgt Erregerfrequenz."],
       explanation: "messen. Frequenzgang bedeutet: A(f) Diagramm.",
       wissen: "messen. Frequenzgang bedeutet: A(f) Diagramm.",
@@ -1691,7 +1691,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb1-energieumsatz:p2:f",
-      prompt: "Welche Eigenschaft hat das Energiependeln?",
+      prompt: "Was kennzeichnet das Energiependeln zwischen Feldarten?",
       answer: "C ↔ L.", wrong: ["Summe beider Anteile.", "wandelt in Wärme.", "U und I um π/2."],
       explanation: "idealer LC-Kreis. Energiependeln bedeutet: C ↔ L.",
       wissen: "idealer LC-Kreis. Energiependeln bedeutet: C ↔ L.",
@@ -1966,7 +1966,7 @@ export const PHYSIK_OS_DENSITY_FILL_GENERATORS: Record<string, Topic['generate']
     },
     {
       concept: "ph:osdens:ph-j12lk-lb4-heisenberg:p7:f",
-      prompt: "Welche Eigenschaft hat das Energie-Zeit?",
+      prompt: "Was kennzeichnet die Energie-Zeit-Unschärferelation?",
       answer: "Es beschreibt verwandte Unschärfe.", wrong: ["Sie legt das Maß fest, in dem die Größe angegeben wird; SI-Einheiten sind bevorzugt.", "Es beschreibt ℏ = h/(2π), in Formeln.", "Es beschreibt impulsunschärfe, breite in p."],
       explanation: "Lebensdauer/Linienbreite. Energie-Zeit bedeutet: verwandte Unschärfe.",
       wissen: "Lebensdauer/Linienbreite. Energie-Zeit bedeutet: verwandte Unschärfe.",
