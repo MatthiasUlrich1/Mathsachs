@@ -770,140 +770,183 @@ export const k5SaeugerVerhalten: BioBank = {
   facts: [
     {
       concept: "bio:k5:saeugverh:f0",
-      prompt: "Wozu dient die Beobachtung?",
-      answer: "Gezieltes Wahrnehmen von Verhalten.", wrong: ["Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten.", "Verteidigen eines Gebiets."],
-      explanation: "Beobachtung: Gezieltes Wahrnehmen von Verhalten",
+      prompt: "Was leistet die Beobachtung beim Untersuchen von Säugerverhalten?",
+      answer: "Man nimmt Verhalten gezielt wahr, ohne in das Geschehen einzugreifen.",
+      wrong: [
+        "Man verändert das Verhalten durch Dressur und Belohnung.",
+        "Man misst ausschließlich den Blutdruck der Tiere.",
+        "Man zählt nur die Antikörper im Blutserum.",
+      ],
+      explanation: "Beobachtung: gezieltes Wahrnehmen ohne Eingriff.",
       wissen: fw(
-        "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten.",
+        "Wichtige Methode der Verhaltensbiologie. Bezug: Säugerverhalten.",
       ),
-      gap: "Säugerverhalten: ___ — Gezieltes Wahrnehmen von Verhalten",
+      gap: "Säugerverhalten: ___ — gezieltes Wahrnehmen von Verhalten",
       gapAccepted: ["Beobachtung"],
     },
     {
       concept: "bio:k5:saeugverh:f1",
-      prompt: "Was kennzeichnet angeborenes Verhalten?",
-      answer: "Genetisch vorbereitetes Verhalten.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Durch Erfahrung erworbenes Verhalten.", "Verteidigen eines Gebiets."],
-      explanation: "Angeboren: Genetisch vorbereitetes Verhalten",
-      wissen: fw(
-        "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten.",
-      ),
-      gap: "Säugerverhalten: ___ — Genetisch vorbereitetes Verhalten",
-      gapAccepted: ["Angeboren"],
+      prompt: "Was kennzeichnet angeborenes Verhalten?es Verhalten?es Verhalten?",
+      answer: "Es ist genetisch vorbereitet und läuft ohne langes Lernen ab.",
+      wrong: [
+        "Es wird erst durch Erfahrung und Übung erworben.",
+        "Es dient nur der Verteidigung eines festen Gebiets.",
+        "Es besteht ausschließlich aus Putzen, Ruhen und Strecken.",
+      ],
+      explanation: "Angeborenes Verhalten ist genetisch vorbereitet.",
+      wissen: fw("Läuft ohne langes Lernen ab. Bezug: Säugerverhalten."),
+      gap: "Säugerverhalten: ___ — genetisch vorbereitetes Verhalten",
+      gapAccepted: ["Angeboren", "angeborenes Verhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f2",
-      prompt: "Was kennzeichnet „Erlernt“?",
-      answer: "Durch Erfahrung erworbenes Verhalten.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Verteidigen eines Gebiets."],
-      explanation: "Erlernt: Durch Erfahrung erworbenes Verhalten",
-      wissen: fw(
-        "Kann angepasst werden. Bezug: Säugerverhalten.",
-      ),
-      gap: "Säugerverhalten: ___ — Durch Erfahrung erworbenes Verhalten",
-      gapAccepted: ["Erlernt"],
+      prompt: "Was kennzeichnet erlerntes Verhalten?es Verhalten?es Verhalten?",
+      answer: "Es wird durch Erfahrung erworben und kann angepasst werden.",
+      wrong: [
+        "Es ist genetisch fest verdrahtet und unveränderlich.",
+        "Es dient nur der Verteidigung eines festen Gebiets.",
+        "Es besteht ausschließlich aus Putzen, Ruhen und Strecken.",
+      ],
+      explanation: "Erlerntes Verhalten entsteht durch Erfahrung.",
+      wissen: fw("Kann angepasst werden. Bezug: Säugerverhalten."),
+      gap: "Säugerverhalten: ___ — durch Erfahrung erworbenes Verhalten",
+      gapAccepted: ["Erlernt", "erlerntes Verhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f3",
-      prompt: "Was kennzeichnet „Territorialität“?",
-      answer: "Verteidigen eines Gebiets.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Territorialität: Verteidigen eines Gebiets",
-      wissen: fw(
-        "Sichert Ressourcen. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Was versteht man unter Territorialität?",
+      answer: "Tiere verteidigen ein gebiet und sichern so Ressourcen.",
+      wrong: [
+        "Tiere putzen und strecken sich zur Körperpflege.",
+        "Tiere lernen nur in einer kurzen sensiblen Phase.",
+        "Tiere suchen und erlangen ausschließlich Futter.",
+      ],
+      explanation: "Territorialität sichert Ressourcen durch Gebietsverteidigung.",
+      wissen: fw("Sichert Ressourcen. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Verteidigen eines Gebiets",
       gapAccepted: ["Territorialität"],
     },
     {
       concept: "bio:k5:saeugverh:f4",
-      prompt: "Wozu dient das Fluchtverhalten?",
-      answer: "Reaktion auf Gefahr durch Weglaufen.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Fluchtverhalten: Reaktion auf Gefahr durch Weglaufen",
-      wissen: fw(
-        "Erhöht Überlebenschancen. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Wozu dient Fluchtverhalten?",
+      answer: "Es erhöht die Überlebenschancen durch Weglaufen oder Wegfliegen vor Gefahr.",
+      wrong: [
+        "Es kennzeichnet ein revier mit Duft oder Kratzspuren.",
+        "Es trainiert junge Tiere in Sozialspielen.",
+        "Es steuert die innere Bereitschaft zu Hunger oder Fortpflanzung.",
+      ],
+      explanation: "Fluchtverhalten ist die Reaktion auf Gefahr.",
+      wissen: fw("Erhöht Überlebenschancen. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Reaktion auf Gefahr durch Weglaufen",
       gapAccepted: ["Fluchtverhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f5",
-      prompt: "Was bedeutet „Nahrungssuche“?",
-      answer: "Suchen und Erlangen von Futter.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Nahrungssuche: Suchen und Erlangen von Futter",
-      wissen: fw(
-        "Zentraler Tagesablauf. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Was leistet die Nahrungssuche im Tagesablauf von Säugetieren?",
+      answer: "Tiere suchen und erlangen Futter als zentralen Teil ihres Tagesablaufs.",
+      wrong: [
+        "Tiere markieren nur Reviere mit Duftstoffen.",
+        "Tiere üben ausschließlich Sozialspiele.",
+        "Tiere reagieren nur auf Gefahr durch Weglaufen.",
+      ],
+      explanation: "Nahrungssuche ist zentraler Tagesablauf.",
+      wissen: fw("Zentraler Tagesablauf. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Suchen und Erlangen von Futter",
       gapAccepted: ["Nahrungssuche"],
     },
     {
       concept: "bio:k5:saeugverh:f6",
-      prompt: "Welche Eigenschaft hat das Komfortverhalten?",
-      answer: "Putzen, Ruhen, Strecken.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Komfortverhalten: Putzen, Ruhen, Strecken",
-      wissen: fw(
-        "Erhält Körperfunktionen. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Welche Handlungen gehören zum Komfortverhalten?",
+      answer: "Dazu gehören Putzen, Ruhen und Strecken zur Erhaltung der Körperfunktionen.",
+      wrong: [
+        "Dazu gehören nur Revierkämpfe und Dominanzgesten.",
+        "Dazu gehören nur Echoortung und Ultraschalllaute.",
+        "Dazu gehören nur die Bildung von Antikörpern.",
+      ],
+      explanation: "Komfortverhalten umfasst Putzen, Ruhen und Strecken.",
+      wissen: fw("Erhält Körperfunktionen. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Putzen, Ruhen, Strecken",
       gapAccepted: ["Komfortverhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f7",
-      prompt: "Was kennzeichnet das Markieren?",
-      answer: "Kennzeichnen mit Duft oder Kratzspuren.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Markieren: Kennzeichnen mit Duft oder Kratzspuren",
-      wissen: fw(
-        "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Wozu dient das Markieren bei Säugetieren?",
+      answer: "Es kennzeichnet Besitz oder Status mit Duft oder Kratzspuren.",
+      wrong: [
+        "Es ersetzt die Lungenatmung bei Gefahr.",
+        "Es bildet Antikörper gegen Krankheitserreger.",
+        "Es erzeugt Federn für den Wärmeschutz.",
+      ],
+      explanation: "Markieren kommuniziert Besitz oder Status.",
+      wissen: fw("Kommuniziert Besitz oder Status. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Kennzeichnen mit Duft oder Kratzspuren",
-      gapAccepted: ["Markieren"],
+      gapAccepted: ["Markieren", "Markierverhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f8",
-      prompt: "Was kennzeichnet „Spielverhalten“?",
-      answer: "Übungs- und Sozialspiele Junger.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Spielverhalten: Übungs- und Sozialspiele Junger",
-      wissen: fw(
-        "Trainiert Fähigkeiten. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Was kennzeichnet Spielverhalten bei Jungtieren?",
+      answer: "Es sind Übungs- und Sozialspiele, die Fähigkeiten trainieren.",
+      wrong: [
+        "Es ist ausschließlich die Verteidigung eines festen Reviers.",
+        "Es ist nur die innere Bereitschaft zu Hunger.",
+        "Es ist nur das schnelle Lernen der Elternbindung.",
+      ],
+      explanation: "Spielverhalten trainiert Fähigkeiten.",
+      wissen: fw("Trainiert Fähigkeiten. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Übungs- und Sozialspiele Junger",
       gapAccepted: ["Spielverhalten"],
     },
     {
       concept: "bio:k5:saeugverh:f9",
-      prompt: "Welche Eigenschaft hat die Aktivitätszeit?",
-      answer: "Tages- oder Nachtaktivität.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Aktivitätszeit: Tages- oder Nachtaktivität",
-      wissen: fw(
-        "Angepasst an Beute und Feinde. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Was bedeutet die Aktivitätszeit eines Säugetiers?",
+      answer: "Sie gibt an, ob das Tier vor allem tag- oder nachtaktiv ist.",
+      wrong: [
+        "Sie beschreibt nur die Körperpflege durch Putzen.",
+        "Sie beschreibt nur die Bildung von Duftmarken.",
+        "Sie beschreibt nur Sozialspiele junger Tiere.",
+      ],
+      explanation: "Aktivitätszeit: Tag- oder Nachtaktivität, angepasst an Beute und Feinde.",
+      wissen: fw("Angepasst an Beute und Feinde. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Tages- oder Nachtaktivität",
       gapAccepted: ["Aktivitätszeit"],
     },
     {
       concept: "bio:k5:saeugverh:f10",
-      prompt: "Woran erkennt man die Prägung?",
-      answer: "Schnelles Lernen in sensiblen Phasen.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Prägung: Schnelles Lernen in sensiblen Phasen",
-      wissen: fw(
-        "z. B. Elternbindung. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Woran erkennt man eine Prägung?",
+      answer: "An schnellem Lernen in einer kurzen sensiblen Phase, etwa der Elternbindung.",
+      wrong: [
+        "An der ausschließlichen Verteidigung eines Reviers.",
+        "An Putzen, Ruhen und Strecken zur Körperpflege.",
+        "An der Bildung von Antikörpern im Blut.",
+      ],
+      explanation: "Prägung ist schnelles Lernen in sensiblen Phasen.",
+      wissen: fw("Zum Beispiel Elternbindung. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Schnelles Lernen in sensiblen Phasen",
       gapAccepted: ["Prägung"],
     },
     {
       concept: "bio:k5:saeugverh:f11",
-      prompt: "Welche Eigenschaft hat die Motivation?",
-      answer: "Innere Bereitschaft zu Verhalten.", wrong: ["Gezieltes Wahrnehmen von Verhalten.", "Genetisch vorbereitetes Verhalten.", "Durch Erfahrung erworbenes Verhalten."],
-      explanation: "Motivation: Innere Bereitschaft zu Verhalten",
-      wissen: fw(
-        "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten.",
-      ),
+      prompt: "Was versteht man unter Motivation im Verhalten?",
+      answer: "Die innere Bereitschaft zu einem Verhalten, etwa durch Hunger oder Fortpflanzung.",
+      wrong: [
+        "Die äußere Kennzeichnung eines Reviers mit Duft.",
+        "Die Körperpflege durch Putzen und Strecken.",
+        "Die Orientierung über zurückgeworfenen Schall.",
+      ],
+      explanation: "Motivation ist innere Bereitschaft zu Verhalten.",
+      wissen: fw("Zum Beispiel Hunger oder Fortpflanzung. Bezug: Säugerverhalten."),
       gap: "Säugerverhalten: ___ — Innere Bereitschaft zu Verhalten",
       gapAccepted: ["Motivation"],
     },
     {
       concept: "bio:k5:saeugverh:x0",
-      prompt: "Säugerverhalten: Was zeigt ein Vergleich von Haus- und Wildtierverhalten?",
-      answer: "Unterschiede und Gemeinsamkeiten im Verhalten werden sichtbar.", wrong: ["Wildtiere zeigen kein erlerntes Verhalten.", "Haustiere zeigen kein angeborenes Verhalten.", "Verhalten ist bei Haus- und Wildtieren immer identisch."],
+      prompt: "Säugerverhalten: Was zeigt ein vergleich von Haus- und Wildtierverhalten?",
+      answer: "Unterschiede und Gemeinsamkeiten bei angeborenen und erlernten Anteilen werden sichtbar.",
+      wrong: [
+        "Wildtiere zeigen keinerlei erlerntes Verhalten.",
+        "Haustiere zeigen keinerlei angeborenes Verhalten.",
+        "Haus- und Wildtiere verhalten sich immer völlig gleich.",
+      ],
       explanation: "Vergleich zeigt angeborene und erlernte Anteile.",
       wissen: fw(
         "Haustiere und Wildtiere zeigen angeborene und erlernte Anteile unterschiedlich stark.",
@@ -912,41 +955,46 @@ export const k5SaeugerVerhalten: BioBank = {
     {
       concept: "bio:k5:saeugverh:x1",
       prompt: "Säugerverhalten: Was leistet Markierverhalten?",
-      answer: "Es kommuniziert Revier, Status oder Fortpflanzungsbereitschaft.", wrong: ["Es ersetzt die Atmung.", "Es bildet Antikörper.", "Es erzeugt Federn."],
-      explanation: "Duftkommunikation.",
+      answer: "Es kommuniziert Revier, Status oder Fortpflanzungsbereitschaft.",
+      wrong: [
+        "Es ersetzt die Atmung bei Sauerstoffmangel.",
+        "Es bildet Antikörper gegen Krankheitserreger.",
+        "Es erzeugt Federn für den Wärmeschutz.",
+      ],
+      explanation: "Duftmarken und Kratzspuren sind Signale.",
       wissen: fw(
         "Duftmarken und Kratzspuren sind chemische oder visuelle Signale.",
       ),
     },
   ],
   pairs: [
-    { concept: "bio:k5:saeugverh:p0", term: "Beobachtung", meaning: "Gezieltes Wahrnehmen von Verhalten", wissen: "Grundmethode der Verhaltensbiologie. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p1", term: "Angeboren", meaning: "Genetisch vorbereitetes Verhalten", wissen: "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p2", term: "Erlernt", meaning: "Durch Erfahrung erworbenes Verhalten", wissen: "Kann angepasst werden. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p3", term: "Territorialität", meaning: "Verteidigen eines Gebiets", wissen: "Sichert Ressourcen. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p4", term: "Fluchtverhalten", meaning: "Reaktion auf Gefahr durch Weglaufen", wissen: "Erhöht Überlebenschancen. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p5", term: "Nahrungssuche", meaning: "Suchen und Erlangen von Futter", wissen: "Zentraler Tagesablauf. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p6", term: "Komfortverhalten", meaning: "Putzen, Ruhen, Strecken", wissen: "Erhält Körperfunktionen. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p7", term: "Markieren", meaning: "Kennzeichnen mit Duft oder Kratzspuren", wissen: "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p8", term: "Spielverhalten", meaning: "Übungs- und Sozialspiele Junger", wissen: "Trainiert Fähigkeiten. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p9", term: "Aktivitätszeit", meaning: "Tages- oder Nachtaktivität", wissen: "Angepasst an Beute und Feinde. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p10", term: "Prägung", meaning: "Schnelles Lernen in sensiblen Phasen", wissen: "z. B. Elternbindung. Bezug: Säugerverhalten." },
-    { concept: "bio:k5:saeugverh:p11", term: "Motivation", meaning: "Innere Bereitschaft zu Verhalten", wissen: "z. B. Hunger oder Fortpflanzung. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p0", term: "Beobachtung", meaning: "gezieltes Wahrnehmen von Verhalten ohne Eingriff", wissen: "Wichtige Methode der Verhaltensbiologie. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p1", term: "Angeborenes Verhalten", meaning: "genetisch vorbereitetes Verhalten ohne langes Lernen", wissen: "Läuft ohne langes Lernen ab. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p2", term: "Erlerntes Verhalten", meaning: "durch Erfahrung erworbenes und anpassbares Verhalten", wissen: "Kann angepasst werden. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p3", term: "Territorialität", meaning: "Verteidigen eines Gebiets zur Sicherung von Ressourcen", wissen: "Sichert Ressourcen. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p4", term: "Fluchtverhalten", meaning: "Reaktion auf Gefahr durch Weglaufen oder Wegfliegen", wissen: "Erhöht Überlebenschancen. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p5", term: "Nahrungssuche", meaning: "Suchen und Erlangen von Futter im Tagesablauf", wissen: "Zentraler Tagesablauf. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p6", term: "Komfortverhalten", meaning: "Putzen, Ruhen und Strecken zur Körperpflege", wissen: "Erhält Körperfunktionen. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p7", term: "Markieren", meaning: "Kennzeichnen von Besitz oder Status mit Duft oder Kratzspuren", wissen: "Kommuniziert Besitz oder Status. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p8", term: "Spielverhalten", meaning: "Übungs- und Sozialspiele, die Fähigkeiten trainieren", wissen: "Trainiert Fähigkeiten. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p9", term: "Aktivitätszeit", meaning: "vorwiegende Tag- oder Nachtaktivität", wissen: "Angepasst an Beute und Feinde. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p10", term: "Prägung", meaning: "schnelles Lernen in einer kurzen sensiblen Phase", wissen: "Zum Beispiel Elternbindung. Bezug: Säugerverhalten." },
+    { concept: "bio:k5:saeugverh:p11", term: "Motivation", meaning: "innere Bereitschaft zu einem Verhalten", wissen: "Zum Beispiel Hunger oder Fortpflanzung. Bezug: Säugerverhalten." },
   ],
   trueFalse: [
     {
       concept: "bio:k5:saeugverh:tf0",
-      statement: "Säugerverhalten: Beobachtung bedeutet: Gezieltes Wahrnehmen von Verhalten.",
+      statement: "Bei der Beobachtung von Säugerverhalten nimmt man Verhalten gezielt wahr, ohne einzugreifen.",
       correct: true,
-      explanation: "Gezieltes Wahrnehmen von Verhalten.",
-      wissen: fw("Grundmethode der Verhaltensbiologie."),
+      explanation: "Beobachtung ist gezieltes Wahrnehmen ohne Eingriff.",
+      wissen: fw("Wichtige Methode der Verhaltensbiologie."),
     },
     {
       concept: "bio:k5:saeugverh:tf1",
-      statement: "Säugerverhalten: Beobachtung bedeutet genau: Genetisch vorbereitetes Verhalten.",
+      statement: "Angeborenes Verhalten entsteht ausschließlich durch Übung und Erfahrung.",
       correct: false,
-      explanation: "Richtig ist: Gezieltes Wahrnehmen von Verhalten.",
-      wissen: fw("Grundmethode der Verhaltensbiologie."),
+      explanation: "Angeborenes Verhalten ist genetisch vorbereitet; erlerntes entsteht durch Erfahrung.",
+      wissen: fw("Unterschied angeboren versus erlernt."),
     },
   ],
 }
@@ -1014,7 +1062,7 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f5",
-      prompt: "Wozu dient das Sehsinn?",
+      prompt: "Wozu dient den Sehsinn?",
       answer: "Wahrnehmung von Licht und Formen.", wrong: ["Erzeugt ein Signal.", "Nimmt das Signal wahr.", "Informationstragendes Zeichen."],
       explanation: "Sehsinn: Wahrnehmung von Licht und Formen",
       wissen: fw(
@@ -1025,33 +1073,48 @@ export const k5SaeugerSinne: BioBank = {
     },
     {
       concept: "bio:k5:saeugsinn:f6",
-      prompt: "Was bedeutet „Tastsinn“?",
-      answer: "Wahrnehmung von Berührung.", wrong: ["Erzeugt ein Signal.", "Nimmt das Signal wahr.", "Informationstragendes Zeichen."],
-      explanation: "Tastsinn: Wahrnehmung von Berührung",
+      prompt: "Was leistet der Tastsinn?",
+      answer: "Er ermöglicht die Wahrnehmung von Berührung, etwa über die Haut oder Schnurrhaare.",
+      wrong: [
+        "Er erzeugt selbst Laut- oder Duftsignale für Artgenossen.",
+        "Er dient ausschließlich der Orientierung über Echos.",
+        "Er misst nur den Sauerstoffgehalt in der Luft.",
+      ],
+      explanation: "Tastsinn: Wahrnehmung von Berührung.",
       wissen: fw(
-        "z. B. über Schnurrhaare. Bezug: Säugersinne.",
+        "Zum Beispiel über Schnurrhaare. Bezug: Säugersinne.",
       ),
       gap: "Säugersinne: ___ — Wahrnehmung von Berührung",
       gapAccepted: ["Tastsinn"],
     },
     {
       concept: "bio:k5:saeugsinn:f7",
-      prompt: "Welche Eigenschaft hat die Schnurrhaare?",
-      answer: "Tastorgane am Kopf.", wrong: ["Erzeugt ein Signal.", "Nimmt das Signal wahr.", "Informationstragendes Zeichen."],
-      explanation: "Schnurrhaare: Tastorgane am Kopf",
+      prompt: "Wozu dienen die Schnurrhaare?",
+      answer: "Sie sind Tastorgane am Kopf und erfassen nahe Hindernisse.",
+      wrong: [
+        "Sie erzeugen Ultraschall zur Echoortung.",
+        "Sie bilden Antikörper im Blut.",
+        "Sie ersetzen den Geruchssinn vollständig.",
+      ],
+      explanation: "Schnurrhaare: Tastorgane am Kopf.",
       wissen: fw(
-        "Erfassen Raumnahe Hindernisse. Bezug: Säugersinne.",
+        "Erfassen raumnahe Hindernisse. Bezug: Säugersinne.",
       ),
       gap: "Säugersinne: ___ — Tastorgane am Kopf",
       gapAccepted: ["Schnurrhaare"],
     },
     {
       concept: "bio:k5:saeugsinn:f8",
-      prompt: "Wozu dient das Ultraschall?",
-      answer: "Sehr hohe Schallfrequenzen.", wrong: ["Erzeugt ein Signal.", "Nimmt das Signal wahr.", "Informationstragendes Zeichen."],
-      explanation: "Ultraschall: Sehr hohe Schallfrequenzen",
+      prompt: "Was versteht man unter Ultraschall?",
+      answer: "Sehr hohe Schallfrequenzen, die der Mensch nicht hören kann.",
+      wrong: [
+        "Nur der Geruch von Duftstoffen in der Luft.",
+        "Nur die Wahrnehmung von Licht und Formen.",
+        "Nur die Bildung von Duftmarken am Revier.",
+      ],
+      explanation: "Ultraschall: sehr hohe Schallfrequenzen.",
       wissen: fw(
-        "z. B. bei Fledermaus-Echoortung. Bezug: Säugersinne.",
+        "Zum Beispiel bei der Echoortung von Fledermäusen. Bezug: Säugersinne.",
       ),
       gap: "Säugersinne: ___ — Sehr hohe Schallfrequenzen",
       gapAccepted: ["Ultraschall"],
@@ -1092,7 +1155,7 @@ export const k5SaeugerSinne: BioBank = {
     {
       concept: "bio:k5:saeugsinn:x0",
       prompt: "Säugersinne: Was beschreibt das Sender-Empfänger-Modell?",
-      answer: "Ein Sender sendet ein Signal, das ein Empfänger deutet", wrong: ["Dass Sinne bedeutungslos sind.", "Dass nur Pflanzen Signale nutzen.", "Dass Blut Signale ersetzt."],
+      answer: "Ein Sender sendet ein Signal, das ein empfänger deutet", wrong: ["Dass Sinne bedeutungslos sind.", "Dass nur Pflanzen Signale nutzen.", "Dass Blut Signale ersetzt."],
       explanation: "Informationsaustausch.",
       wissen: fw(
         "Verhalten und Sinne koppeln Information zwischen Individuen.",
@@ -1473,7 +1536,7 @@ export const k6InsektenAtmung: BioBank = {
       answer: "Über Tracheen mit Stigmen.", wrong: ["Nur mit Säugerlungen.", "Nur mit Fischkiemen lebenslang.", "Durch Fotosynthese."],
       explanation: "Tracheensystem.",
       wissen: fw(
-        "Luft gelangt durch Stigmen in ein Röhrensystem bis nahe an die Zellen.",
+        "Luft gelangt durch Stigmen in ein röhrensystem bis nahe an die Zellen.",
       ),
     },
     {
@@ -1904,7 +1967,7 @@ export const k6FortpflanzungFormen: BioBank = {
   facts: [
     {
       concept: "bio:k6:fortform:f0",
-      prompt: "Was bewirkt die Äußere Befruchtung?",
+      prompt: "Was bewirkt die äußere Befruchtung?",
       answer: "Keimzellen treffen sich außerhalb des Körpers.", wrong: ["Befruchtung im Körper.", "Ablage von Eiern.", "Geburt entwickelter Jungtiere."],
       explanation: "Äußere Befruchtung: Keimzellen treffen sich außerhalb des Körpers",
       wissen: fw(
@@ -1915,7 +1978,7 @@ export const k6FortpflanzungFormen: BioBank = {
     },
     {
       concept: "bio:k6:fortform:f1",
-      prompt: "Was bewirkt die Innere Befruchtung?",
+      prompt: "Was bewirkt die innere Befruchtung?",
       answer: "Befruchtung im Körper.", wrong: ["Keimzellen treffen sich außerhalb des Körpers.", "Ablage von Eiern.", "Geburt entwickelter Jungtiere."],
       explanation: "Innere Befruchtung: Befruchtung im Körper",
       wissen: fw(
@@ -2137,7 +2200,7 @@ export const k6Zelltheorie: BioBank = {
     },
     {
       concept: "bio:k6:zellth:f4",
-      prompt: "Was kennzeichnet das Zellkern?",
+      prompt: "Was kennzeichnet den Zellkern?",
       answer: "Enthält Erbinformation bei Eukaryoten.", wrong: ["Kleinste lebende Einheit.", "Lebewesen bestehen aus Zellen.", "Organismus aus einer Zelle."],
       explanation: "Zellkern: Enthält Erbinformation bei Eukaryoten",
       wissen: fw(
@@ -2293,7 +2356,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f1",
-      prompt: "Woran erkennt man das Chloroplast?",
+      prompt: "Woran erkennt man den Chloroplast?",
       answer: "Ort der Fotosynthese.", wrong: ["Ort der Zellatmung.", "Energiewährung der Zelle.", "Abbau von Zucker mit Energiegewinn."],
       explanation: "Chloroplast: Ort der Fotosynthese",
       wissen: fw(
@@ -2381,7 +2444,7 @@ export const k6OrganellenEnergie: BioBank = {
     },
     {
       concept: "bio:k6:orgene:f9",
-      prompt: "Woran erkennt man das Sauerstoff?",
+      prompt: "Woran erkennt man den Sauerstoff?",
       answer: "Reaktand der aeroben Atmung.", wrong: ["Ort der Zellatmung.", "Ort der Fotosynthese.", "Energiewährung der Zelle."],
       explanation: "Sauerstoff: Reaktand der aeroben Atmung",
       wissen: fw(
@@ -2471,7 +2534,7 @@ export const k7PulsBlutdruck: BioBank = {
   facts: [
     {
       concept: "bio:k7:puls:f0",
-      prompt: "Welche Eigenschaft hat das Puls?",
+      prompt: "Welche Eigenschaft hat den Puls?",
       answer: "Spürbare Druckwelle der Arterien.", wrong: ["Schläge pro Minute.", "Druck des Blutes auf Arterienwände.", "Auswurfphase des Herzens."],
       explanation: "Puls: Spürbare Druckwelle der Arterien",
       wissen: fw(
@@ -2493,7 +2556,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f2",
-      prompt: "Wozu dient das Blutdruck?",
+      prompt: "Wozu dient den Blutdruck?",
       answer: "Druck des Blutes auf Arterienwände.", wrong: ["Spürbare Druckwelle der Arterien.", "Schläge pro Minute.", "Auswurfphase des Herzens."],
       explanation: "Blutdruck: Druck des Blutes auf Arterienwände",
       wissen: fw(
@@ -2581,7 +2644,7 @@ export const k7PulsBlutdruck: BioBank = {
     },
     {
       concept: "bio:k7:puls:f10",
-      prompt: "Was bewirkt das Bluthochdruck?",
+      prompt: "Was bewirkt den Bluthochdruck?",
       answer: "Dauerhaft zu hoher Blutdruck.", wrong: ["Spürbare Druckwelle der Arterien.", "Schläge pro Minute.", "Druck des Blutes auf Arterienwände."],
       explanation: "Bluthochdruck: Dauerhaft zu hoher Blutdruck",
       wissen: fw(
@@ -2607,7 +2670,7 @@ export const k7PulsBlutdruck: BioBank = {
       answer: "Die Herzschlagfrequenz über die arterielle Druckwelle.", wrong: ["Die Leukozytenzahl exakt.", "Die Knochenlänge.", "Den Blutzucker ohne Gerät."],
       explanation: "Druckwelle.",
       wissen: fw(
-        "Jeder Herzschlag erzeugt eine Welle in den Arterien, die tastbar ist.",
+        "Jeder Herzschlag erzeugt eine welle in den Arterien, die tastbar ist.",
       ),
     },
     {
@@ -2693,7 +2756,7 @@ export const k7KreislaufGesundheit: BioBank = {
     },
     {
       concept: "bio:k7:krges:f3",
-      prompt: "Woran erkennt man das Bluthochdruck?",
+      prompt: "Woran erkennt man den Bluthochdruck?",
       answer: "Dauerhaft erhöhter Blutdruck.", wrong: ["Regelmäßige körperliche Aktivität.", "Nährstoffreiche, abwechslungsreiche Kost.", "Verzicht auf Tabakrauch."],
       explanation: "Bluthochdruck: Dauerhaft erhöhter Blutdruck",
       wissen: fw(
@@ -3271,7 +3334,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f4",
-      prompt: "Was kennzeichnet das Strahlengang?",
+      prompt: "Was kennzeichnet den Strahlengang?",
       answer: "Weg der Lichtstrahlen im Auge.", wrong: ["Scharfstellung auf unterschiedliche Entfernungen.", "Anpassung an Helligkeit.", "Brechendes Element im Auge."],
       explanation: "Strahlengang: Weg der Lichtstrahlen im Auge",
       wissen: fw(
@@ -3348,7 +3411,7 @@ export const k8AugeAkkommodation: BioBank = {
     },
     {
       concept: "bio:k8:akkom:f11",
-      prompt: "Welche Eigenschaft hat die Arbeitsschutz Auge?",
+      prompt: "Welche Maßnahme beschreibt den Arbeitsschutz für das Auge?",
       answer: "Maßnahmen gegen Überlastung.", wrong: ["Scharfstellung auf unterschiedliche Entfernungen.", "Anpassung an Helligkeit.", "Brechendes Element im Auge."],
       explanation: "Arbeitsschutz Auge: Maßnahmen gegen Überlastung",
       wissen: fw(
@@ -4082,7 +4145,7 @@ export const k8Vielfalt: BioBank = {
     },
     {
       concept: "bio:k8:vielfalt:f9",
-      prompt: "Wozu dient das Medieninfluss?",
+      prompt: "Wozu dient den Medieneinfluss?",
       answer: "Wirkung von Internet und Sozialen Medien.", wrong: ["Unterschiedliche sexuelle Orientierungen.", "Unterschiedliche Geschlechtsidentitäten und -merkmale.", "Anziehung zum anderen Geschlecht."],
       explanation: "Medieninfluss: Wirkung von Internet und Sozialen Medien",
       wissen: fw(
@@ -4116,7 +4179,7 @@ export const k8Vielfalt: BioBank = {
     {
       concept: "bio:k8:vielfalt:x0",
       prompt: "Sexuelle Vielfalt: Warum gehört Vielfalt zur Sexualität des Menschen?",
-      answer: "Orientierung, Identität und Beziehungen sind nicht einheitlich.", wrong: ["Weil alle Menschen identisch sind.", "Weil Biologie Vielfalt verbietet.", "Weil nur eine Form existiert."],
+      answer: "Orientierung, Identität und Beziehungen sind nicht einheitlich.", wrong: ["Weil alle Menschen identisch sind.", "Weil Biologie Vielfalt verbietet.", "Weil nur eine form existiert."],
       explanation: "Vielfalt.",
       wissen: fw(
         "Menschen unterscheiden sich in Orientierung und Identität; Respekt und Sachlichkeit sind zentral.",
@@ -4460,7 +4523,7 @@ export const k9Sukzession: BioBank = {
     },
     {
       concept: "bio:k9:suks:f9",
-      prompt: "Welche Eigenschaft hat das Biodiversitätsverlauf?",
+      prompt: "Welche Eigenschaft hat den Biodiversitätsverlauf?",
       answer: "Änderung der Artenzahl über Zeit.", wrong: ["Gerichtete Abfolge von Lebensgemeinschaften.", "Frühe Besiedler gestörter Flächen.", "Relativ stabile Endgesellschaft."],
       explanation: "Biodiversitätsverlauf: Änderung der Artenzahl über Zeit",
       wissen: fw(
@@ -4638,7 +4701,7 @@ export const k9Faktoren: BioBank = {
     },
     {
       concept: "bio:k9:fakt:f8",
-      prompt: "Woran erkennt man das Xerophyt?",
+      prompt: "Woran erkennt man den Xerophyten?",
       answer: "Trockenangepasste Pflanze.", wrong: ["Unbelebte Umweltgröße.", "Wirkung durch Lebewesen.", "Bereich erträglicher Faktorwerte."],
       explanation: "Xerophyt: Trockenangepasste Pflanze",
       wissen: fw(
@@ -4750,7 +4813,7 @@ export const k9Klima: BioBank = {
     },
     {
       concept: "bio:k9:klima:f1",
-      prompt: "Woran erkennt man das Treibhauseffekt?",
+      prompt: "Woran erkennt man den Treibhauseffekt?",
       answer: "Erwärmung durch Spurengase.", wrong: ["Langfristiges Wettergeschehen einer Region.", "Wichtiges Treibhausgas.", "Langfristige Klimaänderung."],
       explanation: "Treibhauseffekt: Erwärmung durch Spurengase",
       wissen: fw(
@@ -5161,7 +5224,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f4",
-      prompt: "Was bewirkt das Artbegriff?",
+      prompt: "Was bewirkt den Artbegriff?",
       answer: "Biologische Art als Fortpflanzungsgemeinschaft.", wrong: ["Systematiker der binären Nomenklatur.", "Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Begründer der Selektionstheorie."],
       explanation: "Artbegriff: Biologische Art als Fortpflanzungsgemeinschaft",
       wissen: fw(
@@ -5227,7 +5290,7 @@ export const k10Evolutionstheorie: BioBank = {
     },
     {
       concept: "bio:k10:evoth:f10",
-      prompt: "Was kennzeichnet das Fitness?",
+      prompt: "Was kennzeichnet die Fitness?",
       answer: "Relativer Fortpflanzungserfolg.", wrong: ["Systematiker der binären Nomenklatur.", "Frühe Evolutionstheorie mit Vererbung erworbener Merkmale.", "Begründer der Selektionstheorie."],
       explanation: "Fitness: Relativer Fortpflanzungserfolg",
       wissen: fw(
@@ -5383,7 +5446,7 @@ export const k10Progression: BioBank = {
     },
     {
       concept: "bio:k10:prog:f7",
-      prompt: "Wozu dient das gleichwarm?",
+      prompt: "Was kennzeichnet gleichwarme Tiere?",
       answer: "Körpertemperatur weitgehend konstant.", wrong: ["Vergrößerung der Austauschfläche.", "Innere Fläche der Lunge.", "Gasaustausch über die Haut."],
       explanation: "gleichwarm: Körpertemperatur weitgehend konstant",
       wissen: fw(
