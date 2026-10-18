@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.137] – 2026-10-18
+
+### Behoben
+- **Schnabel-/Lungen-Schema Fachwissen:** Keine Form–Funktion- oder Weg-Liste mehr,
+  die die Beschriftungs-Lösung vorwegnimmt (nur allgemeines Sachwissen).
+
 ## [0.28.136] – 2026-10-18
 
 ### Behoben

@@ -280,7 +280,7 @@ function schnabelLabel(rng: Rng) {
     explanation:
       'Haken gebogen (reißen); Kegel kurz/kräftig (knacken); Pfriem spitz (picken); Meißel gerade/kräftig (Holz).',
     fachwissen: bioFw(
-      'Vier typische Schnabelformen: Haken gebogen zum Reißen von Beute, Kegel kurz und kräftig zum Knacken von Samen, Pfriem spitz zum Picken von Insekten, Meißel gerade und kräftig zum Öffnen von Holz.',
+      'Der Vogelschnabel besteht aus Knochen mit einer Hornscheide. Länge, Krümmung und Stärke sind an die typische Nahrung angepasst — ein klares Beispiel für Angepasstheit von Bau und Funktion.',
       'Wikipedia: Vogelschnabel',
       'https://de.wikipedia.org/wiki/Vogelschnabel',
     ),
@@ -1504,7 +1504,7 @@ function lungeLabel(rng: Rng) {
     solution: '1 Nase/Mund; 2 Luftröhre; 3 Bronchien; 4 Lungenbläschen',
     explanation: 'Luftweg: Einlass → Leitung → Verzweigung → Gasaustausch in den Bläschen.',
     fachwissen: bioFw(
-      'Atemluft gelangt über Nase oder Mund in die Luftröhre, verzweigt sich in den Bronchien und erreicht die Lungenbläschen. Dort findet der Gasaustausch mit dem Blut statt.',
+      'In der Säugerlunge findet der Gasaustausch statt: Sauerstoff geht ins Blut, Kohlenstoffdioxid wird abgegeben. Dafür braucht es eine große, dünne Austauschfläche und eine gute Belüftung der Atemwege.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),
@@ -1529,7 +1529,7 @@ function lungePartSlots(rng: Rng) {
     solution: 'Einlass → Leitung → Verzweigung → Austausch',
     explanation: 'Jeder Abschnitt hat eine andere Aufgabe auf dem Luftweg.',
     fachwissen: bioFw(
-      'Nase und Mund nehmen Luft auf, die Luftröhre leitet sie weiter, Bronchien verteilen sie in die Lunge, Lungenbläschen ermöglichen den Gasaustausch.',
+      'Die Atemwege leiten die Luft; erst an den Lungenbläschen ist die Wand dünn genug für den Stoffaustausch mit den Blutkapillaren.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),
