@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.131] – 2026-10-18
+
+### Behoben
+- **Alle Schema-Bilder:** Anatomie-Grafiken werden als Vite-Assets gebündelt
+  (nicht mehr nur `/anatomy/…` unter file://). Betrifft Schnabel, Atemweg und
+  alle übrigen Beschriftungs-Schemas. Pack Biologie **1.12.3**.
+
 ## [0.28.130] – 2026-10-18
 
 ### Behoben

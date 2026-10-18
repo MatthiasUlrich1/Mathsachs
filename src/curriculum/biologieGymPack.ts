@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.12.2',
-    changelog: `Schema-Bilder in Electron: Pfad-Fix (BASE_URL), verständliche Aufgabenstellung ohne „Silhouette“-Spoiler-Alttext. ${topics} Themen.`,
+    version: '1.12.3',
+    changelog: `Schema-Bilder: Vite-Bundle (Electron file://), alle Anatomie-Schemas sichtbar. ${topics} Themen.`,
     official,
     extras: [],
   }

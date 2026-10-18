@@ -1,17 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { resolveAnatomySrc } from '../lib/resolveAnatomySrc'
 import type { BlockDragFrom } from './blockSlotPointer'
 import { useBlockSlotPointer } from './useBlockSlotPointer'
 import './ImageLabelSlots.css'
-
-/** Vite `base: './'` — absolute `/anatomy/…` bricht in Electron (file://). */
-function resolvePublicSrc(src: string): string {
-  if (!src) return src
-  if (/^(https?:|data:|blob:)/i.test(src)) return src
-  const base = import.meta.env.BASE_URL || '/'
-  if (src.startsWith('/')) return `${base}${src.slice(1)}`
-  return src
-}
 
 export type ImageLabelSlot = {
   id: string
@@ -57,7 +49,7 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
   disabled = false,
   partResults,
 }) => {
-  const resolvedSrc = resolvePublicSrc(imageSrc)
+  const resolvedSrc = resolveAnatomySrc(imageSrc)
   const [imgFailed, setImgFailed] = useState(false)
   useEffect(() => {
     setImgFailed(false)
