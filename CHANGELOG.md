@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.138] – 2026-10-18
+
+### Behoben
+- **K5 Neu-Themen Fachwissen:** Alle 9 Themen nutzen themenbezogenes Sachwissen
+  ohne Lösungs-/Erklärungs-Echo; Anreicherung hängt die Antwort nicht mehr an.
+
+
 ## [0.28.137] – 2026-10-18
 
 ### Behoben

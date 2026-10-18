@@ -173,9 +173,13 @@ export function expandBioWissen(
   }
 
   if (raw && !PLACEHOLDER_WISSEN.test(raw)) push(raw)
-  if (ctx.explanation && !/\bLB:\s|Wahl:\s/i.test(ctx.explanation)) push(ctx.explanation)
+  const expl = ctx.explanation?.trim() ?? ''
+  const ans = (ctx.answer ?? '').trim()
+  const explSpoils =
+    ans.length >= 12 && expl.toLowerCase().includes(ans.toLowerCase())
+  // Prefer explanation for thin banks, but never the raw task solution.
+  if (expl && !/\bLB:\s|Wahl:\s/i.test(expl) && !explSpoils) push(expl)
   if (ctx.term && ctx.meaning) push(`${ctx.term} bedeutet: ${ctx.meaning}`)
-  if (ctx.answer && ctx.answer.length > 12) push(ctx.answer)
   if (parts.length < 2 && ctx.meaning) push(ctx.meaning)
 
   let out = parts.join(' ').replace(/\s+/g, ' ').trim()
@@ -183,14 +187,18 @@ export function expandBioWissen(
     const extra = `Kurzfassung: ${ctx.meaning}.`
     if (!out.includes(ctx.meaning.slice(0, 20))) out = `${out} ${extra}`.replace(/\s+/g, ' ').trim()
   }
-  if (out.length < 80 && ctx.explanation && !/\bLB:\s|Wahl:\s/i.test(ctx.explanation)) {
-    const e = ctx.explanation.trim()
-    if (e && !out.includes(e.slice(0, Math.min(30, e.length)))) {
-      out = `${out} ${e.endsWith('.') ? e : `${e}.`}`.replace(/\s+/g, ' ').trim()
+  if (out.length < 80 && expl && !/\bLB:\s|Wahl:\s/i.test(expl) && !explSpoils) {
+    if (!out.includes(expl.slice(0, Math.min(30, expl.length)))) {
+      out = `${out} ${expl.endsWith('.') ? expl : `${expl}.`}`.replace(/\s+/g, ' ').trim()
     }
   }
-  if (out.length < 80 && ctx.answer && ctx.answer.length > 20) {
-    out = `${out} ${ctx.answer.endsWith('.') ? ctx.answer : `${ctx.answer}.`}`.replace(/\s+/g, ' ').trim()
+  // Neutral subject pad — never the solution string.
+  if (isThinBioWissen(out)) {
+    const pad =
+      'Biologische Merkmale lassen sich am Bau und an der Lebensweise einer Art erkennen.'
+    if (!out.includes(pad.slice(0, 28))) {
+      out = `${out} ${pad}`.replace(/\s+/g, ' ').trim()
+    }
   }
   return out || raw
 }

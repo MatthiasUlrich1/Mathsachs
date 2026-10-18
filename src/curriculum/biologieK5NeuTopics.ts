@@ -68,10 +68,60 @@ const ATEM_DIAGRAM = {
   ],
 } as const
 
+/** Topic-level Fachwissen — general subject knowledge, never the task answer. */
+const TOPIC_FW = {
+  schnabel: bioFw(
+    'Der Vogelschnabel besteht aus Knochen mit einer Hornscheide. Form und Stärke spiegeln die typische Nahrung wider. Das nennt man Angepasstheit von Bau und Funktion.',
+    'Wikipedia: Vogelschnabel',
+    'https://de.wikipedia.org/wiki/Vogelschnabel',
+  ),
+  verhalten: bioFw(
+    'Zur Fortpflanzungszeit zeigen viele Vogelarten auffällige Verhaltensweisen. Biologisch unterscheidet man dabei verschiedene Funktionen. Nicht jedes Verhalten erfüllt denselben Zweck.',
+    'Wikipedia: Vogelgesang',
+    'https://de.wikipedia.org/wiki/Vogelgesang',
+  ),
+  vogelSchutz: bioFw(
+    'Heimische Vögel brauchen geeignete Lebensräume und sichere Brutplätze. Im Siedlungsraum zählen auch weniger Gefahren — etwa gut sichtbare Glasscheiben. Artenschutz beginnt beim Habitat.',
+    'NABU: Vogelschutz',
+    'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
+  ),
+  kriechSchutz: bioFw(
+    'Wechselwarme Kriechtiere wie die Zauneidechse brauchen Sonne, Verstecke und grabbaren Boden. Artenschutz heißt vor allem Lebensraumschutz. Ohne passende Struktur verschwinden Bestände schnell.',
+    'Wikipedia: Zauneidechse',
+    'https://de.wikipedia.org/wiki/Zauneidechse',
+  ),
+  arbeit: bioFw(
+    'Biologisches Arbeiten trennt Wahrnehmung, gezielte Untersuchung und Dokumentation. Beobachtungen sollen beschreibend und nachvollziehbar sein. Deutungen gehören getrennt dazu.',
+    'Wikipedia: Wissenschaftliche Methode',
+    'https://de.wikipedia.org/wiki/Wissenschaftliche_Methode',
+  ),
+  lunge: bioFw(
+    'In der Säugerlunge findet der Gasaustausch statt. Sauerstoff geht ins Blut, Kohlenstoffdioxid wird abgegeben. Dafür braucht es eine große, dünne Austauschfläche und gute Belüftung.',
+    'Wikipedia: Lunge',
+    'https://de.wikipedia.org/wiki/Lunge',
+  ),
+  beob: bioFw(
+    'Ethologie erfasst Verhalten mit klaren Kategorien und fester Beobachtungszeit. Zählungen machen Muster vergleichbar. So bleiben Protokolle nachvollziehbar und auswertbar.',
+    'Wikipedia: Ethologie',
+    'https://de.wikipedia.org/wiki/Ethologie',
+  ),
+  sinne: bioFw(
+    'Säugetiere nehmen ihre Umwelt über verschiedene Sinne wahr. Tierliche Kommunikation braucht Erzeugung, Übertragung und Wahrnehmung eines Reizes. Fehlt ein Schritt, bleibt der Reiz wirkungslos.',
+    'Wikipedia: Tierkommunikation',
+    'https://de.wikipedia.org/wiki/Tierkommunikation',
+  ),
+  sozial: bioFw(
+    'Viele Säugetiere leben nicht dauerhaft allein. Soziales Zusammenleben kann Zusammenhalt, Konflikte und gemeinsame Aufgaben betreffen. Welche Muster vorkommen, hängt von Art und Situation ab.',
+    'Wikipedia: Sozialverhalten',
+    'https://de.wikipedia.org/wiki/Sozialverhalten',
+  ),
+} as const
+
 function knowledgeMc(
   rng: Rng,
   items: Array<{ q: string; correct: string; wrong: string[]; w: string; quelle: string; url: string }>,
   keyPrefix: string,
+  topicFw: ReturnType<typeof bioFw>,
 ) {
   const it = items[Math.floor(rng() * items.length)]!
   return choicePickTask({
@@ -80,7 +130,7 @@ function knowledgeMc(
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(it.w, it.quelle, it.url),
+    fachwissen: topicFw,
     dedupeKey: `${keyPrefix}:${it.q.slice(0, 48)}`,
     contentIds: [`${keyPrefix}:${it.q.slice(0, 48)}`],
   })
@@ -146,11 +196,7 @@ function schnabelClassify(rng: Rng) {
     solution: three.map((p) => `${p.form} → ${p.food}`).join('; '),
     explanation:
       'Die Schnabelform spiegelt die Nahrung wider — Erschließungsfeld Angepasstheit.',
-    fachwissen: bioFw(
-      'Schnabelform und Nahrung gehören zusammen: Ein gebogener Hakenschnabel zerreißt Beute, ein kurzer Kegelschnabel knackt Samen, ein spitzer Pfriemschnabel pickt Insekten und Weichtiere, ein Meißelschnabel öffnet Holz.',
-      'Wikipedia: Vogelschnabel',
-      'https://de.wikipedia.org/wiki/Vogelschnabel',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
   })
 }
 
@@ -166,11 +212,7 @@ function schnabelMatch(rng: Rng) {
     distractor: 'Kieme zum Filtern von Sauerstoff aus Wasser',
     solution: 'Haken→Zange; Kegel→Nussknacker; Pfriem→Pinzette',
     explanation: 'Der Werkzeugvergleich macht Angepasstheit anschaulich.',
-    fachwissen: bioFw(
-      'Angepasstheit heißt: Körperbau und Lebensweise passen zusammen. Beim Vogel zeigt sich das besonders am Schnabel — Form und typische Nahrung gehören fachlich zusammen.',
-      'Wikipedia: Angepasstheit',
-      'https://de.wikipedia.org/wiki/Angepasstheit',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
     dedupeKey: 'bio:k5:vogel:schnabel:werkzeug',
     contentIds: ['bio:k5:vogel:schnabel:werkzeug'],
   })
@@ -216,11 +258,7 @@ function schnabelMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Angepasstheit heißt: Körperbau und Lebensweise passen zusammen — hier Schnabel und Nahrung.`,
-      'Wikipedia: Vogelschnabel',
-      'https://de.wikipedia.org/wiki/Vogelschnabel',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
     dedupeKey: `bio:k5:vogel:schnabel:mc:${it.q.slice(0, 40)}`,
     contentIds: [`bio:k5:vogel:schnabel:mc:${it.q.slice(0, 40)}`],
   })
@@ -246,11 +284,7 @@ function schnabelCause(rng: Rng) {
     distractorEffects: ['Kiemenatmung im Süßwasser wird möglich'],
     solution: 'Schnabelform → passende Nahrungsaufnahme',
     explanation: 'Ursache (Form) und Wirkung (Nahrung) gehören zusammen.',
-    fachwissen: bioFw(
-      'Passt die Schnabelform nicht zur Nahrung, stimmt die Zuordnung nicht. Ein Körnerfresser braucht einen kräftigen Kegel — kein Hakenschnabel wie bei Greifvögeln.',
-      'Wikipedia: Angepasstheit',
-      'https://de.wikipedia.org/wiki/Angepasstheit',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
     dedupeKey: 'bio:k5:vogel:schnabel:cause',
   })
 }
@@ -279,11 +313,7 @@ function schnabelLabel(rng: Rng) {
     solution: '1 Hakenschnabel; 2 Kegelschnabel; 3 Pfriemschnabel; 4 Meißelschnabel',
     explanation:
       'Haken gebogen (reißen); Kegel kurz/kräftig (knacken); Pfriem spitz (picken); Meißel gerade/kräftig (Holz).',
-    fachwissen: bioFw(
-      'Der Vogelschnabel besteht aus Knochen mit einer Hornscheide. Länge, Krümmung und Stärke sind an die typische Nahrung angepasst — ein klares Beispiel für Angepasstheit von Bau und Funktion.',
-      'Wikipedia: Vogelschnabel',
-      'https://de.wikipedia.org/wiki/Vogelschnabel',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
     dedupeKey: 'bio:k5:vogel:schnabel:label',
     contentIds: ['bio:k5:vogel:schnabel:label'],
     rng,
@@ -308,11 +338,7 @@ function schnabelFoodSlots(rng: Rng) {
     distractors: ['Mit Kiemen Plankton unter Wasser filtrieren'],
     solution: three.map((p) => `${p.form} → ${p.food}`).join('; '),
     explanation: 'Artenbeispiel + Handlung macht Angepasstheit konkret.',
-    fachwissen: bioFw(
-      'Dieselbe Form–Funktions-Logik gilt bei vielen Arten: Habicht (Haken), Buchfink (Kegel), Rotkehlchen (Pfriem), Buntspecht (Meißel), Löffelente (Sieb).',
-      'Wikipedia: Angepasstheit',
-      'https://de.wikipedia.org/wiki/Angepasstheit',
-    ),
+    fachwissen: TOPIC_FW.schnabel,
   })
 }
 
@@ -370,6 +396,7 @@ function schnabelKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:vogel:schnabel:know',
+    TOPIC_FW.schnabel,
   )
 }
 
@@ -400,11 +427,7 @@ function verhaltenMatch(rng: Rng) {
     distractor: 'Laichen mit äußerer Befruchtung im Teich',
     solution: 'Gesang→Revier; Balz→Partner; Nestbau→Brutplatz',
     explanation: 'Revier, Balz und Nest gehören zur Fortpflanzungszeit, sind aber unterschiedliche Funktionen.',
-    fachwissen: bioFw(
-      'Gesang kann Revier und Paarbildung signalisieren. Balz umfasst oft Bewegungen und Gefiederzeigen. Nestbau bereitet die Brutpflege vor — alles Funktionen in der Fortpflanzungszeit, aber nicht dasselbe Verhalten.',
-      'Wikipedia: Vogelgesang',
-      'https://de.wikipedia.org/wiki/Vogelgesang',
-    ),
+    fachwissen: TOPIC_FW.verhalten,
     dedupeKey: 'bio:k5:vogel:verhalten:match',
     contentIds: ['bio:k5:vogel:verhalten:match'],
   })
@@ -416,11 +439,7 @@ function verhaltenSort(rng: Rng) {
     labels: ['Revier besetzen / Gesang', 'Balz und Paarbildung', 'Nestbau', 'Eiablage'],
     solution: 'Revier → Balz → Nest → Gelege',
     explanation: 'Oft zuerst Revier, dann Partner, Nest und Gelege — artabhängig mit Überschneidungen.',
-    fachwissen: bioFw(
-      'Viele Singvögel besetzen im Frühjahr ein Revier und singen; nach der Paarbildung folgen Nest und Gelege. Die genaue Reihenfolge kann artabhängig variieren, das Muster hilft aber beim Einordnen von Beobachtungen.',
-      'Wikipedia: Brutpflege',
-      'https://de.wikipedia.org/wiki/Brutpflege',
-    ),
+    fachwissen: TOPIC_FW.verhalten,
     dedupeKey: 'bio:k5:vogel:verhalten:sort',
     contentIds: ['bio:k5:vogel:verhalten:sort'],
   })
@@ -496,11 +515,7 @@ function verhaltenMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Laute und Bewegungen übertragen Botschaften zwischen Tieren — Sender, Signal und Empfänger gehören zusammen.`,
-      'Wikipedia: Balz',
-      'https://de.wikipedia.org/wiki/Balz',
-    ),
+    fachwissen: TOPIC_FW.verhalten,
     dedupeKey: `bio:k5:vogel:verhalten:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:vogel:verhalten:mc:${it.q.slice(0, 36)}`],
   })
@@ -526,11 +541,7 @@ function verhaltenCause(rng: Rng) {
     distractorEffects: ['Kiemenatmung der Larve beginnt im Nest'],
     solution: 'Verhalten → Fortpflanzungserfolg / Revierhaltung',
     explanation: 'Verhaltensweisen dienen oft dem Fortpflanzungserfolg.',
-    fachwissen: bioFw(
-      'Revierverhalten reduziert Konkurrenz um Nahrung und Nistplatz. Balz sichert Partnerwahl. Nest schützt Gelege — alles Teil der Fortpflanzungsstrategie.',
-      'Wikipedia: Revier (Tierverhalten)',
-      'https://de.wikipedia.org/wiki/Revier_(Biologie)',
-    ),
+    fachwissen: TOPIC_FW.verhalten,
     dedupeKey: 'bio:k5:vogel:verhalten:cause',
   })
 }
@@ -548,11 +559,7 @@ function verhaltenSlots(rng: Rng) {
     distractors: ['Kiemen unter Wasser belüften'],
     solution: 'Gesang→Revier; Balz→Partner; Material→Nest',
     explanation: 'Drei Funktionen in der Fortpflanzungszeit — klar trennen.',
-    fachwissen: bioFw(
-      'Revier, Balz und Nest haben unterschiedliche Funktionen: Gebiet sichern, Partner werben, Gelege schützen. So lassen sich Beobachtungen fachlich einordnen.',
-      'Wikipedia: Balz',
-      'https://de.wikipedia.org/wiki/Balz',
-    ),
+    fachwissen: TOPIC_FW.verhalten,
   })
 }
 
@@ -646,6 +653,7 @@ function verhaltenKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:vogel:verhalten:know',
+    TOPIC_FW.verhalten,
   )
 }
 
@@ -675,11 +683,7 @@ function vogelSchutzMatch(rng: Rng) {
     distractor: 'Laichgewässer ausschließlich für Frösche anlegen',
     solution: 'Nistkasten→Brutplatz; Markierung→weniger Anprall; Hecke→Habitat',
     explanation: 'Schutz wirkt über Lebensraum, Brutplätze und Gefahrenminderung.',
-    fachwissen: bioFw(
-      'Nistkästen ersetzen fehlende Baumhöhlen; Hecken liefern Insekten und Deckung; Glasflächen sind eine häufige Todesursache — Markierungen machen Scheiben für Vögel sichtbar.',
-      'NABU: Vogelschutz',
-      'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
-    ),
+    fachwissen: TOPIC_FW.vogelSchutz,
     dedupeKey: 'bio:k5:vogel:schutz:match',
     contentIds: ['bio:k5:vogel:schutz:match'],
   })
@@ -725,11 +729,7 @@ function vogelSchutzMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Alltagshandeln in Garten, an Gebäuden und an Glasflächen wirkt direkt auf heimische Vogelarten.`,
-      'NABU Sachsen: Vogelkollisionen',
-      'https://sachsen.nabu.de/',
-    ),
+    fachwissen: TOPIC_FW.vogelSchutz,
     dedupeKey: `bio:k5:vogel:schutz:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:vogel:schutz:mc:${it.q.slice(0, 36)}`],
   })
@@ -752,11 +752,7 @@ function vogelSchutzMulti(rng: Rng) {
     ],
     solution: 'Habitat + Nistplatz + Anprallschutz',
     explanation: 'Mehrere Maßnahmen greifen zusammen — Lebensraum hat Vorrang.',
-    fachwissen: bioFw(
-      'Wirksamer Vogelschutz kombiniert Habitat, Brutplätze und Gefahrenreduktion. Einzelne Futterstellen ersetzen keinen Lebensraum.',
-      'Wikipedia: Vogelschutz',
-      'https://de.wikipedia.org/wiki/Vogelschutz',
-    ),
+    fachwissen: TOPIC_FW.vogelSchutz,
     dedupeKey: 'bio:k5:vogel:schutz:multi',
     contentIds: ['bio:k5:vogel:schutz:multi'],
   })
@@ -782,11 +778,7 @@ function vogelSchutzCause(rng: Rng) {
     distractorEffects: ['Kiemen der Vögel regelmäßig reinigen'],
     solution: 'Problem → passende Schutzmaßnahme',
     explanation: 'Gute Schutzfragen verknüpfen Ursache und konkrete Abhilfe.',
-    fachwissen: bioFw(
-      'In Sachsen und deutschlandweit zählen Lebensraumverlust und Gebäudefallen zu zentralen Themen. Maßnahmen müssen zur Gefährdung passen — sonst bleibt Schutz wirkungslos.',
-      'NABU: Vogelschutz',
-      'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
-    ),
+    fachwissen: TOPIC_FW.vogelSchutz,
     dedupeKey: 'bio:k5:vogel:schutz:cause',
   })
 }
@@ -804,11 +796,7 @@ function vogelSchutzSlots(rng: Rng) {
     distractors: ['Alle Altgrasflächen flächig abbrennen'],
     solution: 'Nistkasten / Markierung / Hecke',
     explanation: 'Drei Wirkwege: Brutplatz, Gefahr, Habitat.',
-    fachwissen: bioFw(
-      'Wirksamer Vogelschutz greift auf mehreren Ebenen: Lebensraum erhalten, Brutplätze schaffen und Gefahren (z. B. Glas) verringern.',
-      'NABU: Vogelschutz',
-      'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
-    ),
+    fachwissen: TOPIC_FW.vogelSchutz,
   })
 }
 
@@ -866,6 +854,7 @@ function vogelSchutzKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:vogel:schutz:know',
+    TOPIC_FW.vogelSchutz,
   )
 }
 
@@ -895,11 +884,7 @@ function kriechSchutzMatch(rng: Rng) {
     distractor: 'Nur Nistkasten für Meisen in 5 m Höhe',
     solution: 'Sonne / Versteck / Eiablage — Habitatmosaik',
     explanation: 'Zauneidechse & Co. brauchen ein Mosaik aus Wärme, Deckung und Eiablage.',
-    fachwissen: bioFw(
-      'Wechselwarme Kriechtiere regulieren die Temperatur über Verhalten und Mikrohabitate. Die Zauneidechse (in Sachsen gefährdet) braucht besonnte Plätze, Verstecke und grabbaren Boden für Eier — Lebensraumverlust ist die Hauptgefahr.',
-      'NABU Sachsen: Zauneidechse',
-      'https://sachsen.nabu.de/',
-    ),
+    fachwissen: TOPIC_FW.kriechSchutz,
     dedupeKey: 'bio:k5:kriechtier:schutz:match',
     contentIds: ['bio:k5:kriechtier:schutz:match'],
   })
@@ -945,11 +930,7 @@ function kriechSchutzMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Die Zauneidechse braucht Sonne, Verstecke und grabbaren Boden — Lebensraumschutz ist der wichtigste Artenschutz.`,
-      'Wikipedia: Zauneidechse',
-      'https://de.wikipedia.org/wiki/Zauneidechse',
-    ),
+    fachwissen: TOPIC_FW.kriechSchutz,
     dedupeKey: `bio:k5:kriechtier:schutz:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:kriechtier:schutz:mc:${it.q.slice(0, 36)}`],
   })
@@ -968,11 +949,7 @@ function kriechSchutzClassify(rng: Rng) {
     correctSlots: [0, 0, 1, 1],
     solution: 'Strukturen erhalten vs. versiegeln/räumen',
     explanation: 'Schutz = Habitatstrukturen lassen; Versiegeln zerstört Lebensraum.',
-    fachwissen: bioFw(
-      'Artenschutz bei Kriechtieren ist vor allem Habitatschutz: Sonne, Deckung, Vernetzung. Umsiedlungen sind Spezialfälle bei Bauprojekten — Alltagsschutz beginnt im Lebensraum.',
-      'Wikipedia: Artenschutz',
-      'https://de.wikipedia.org/wiki/Artenschutz',
-    ),
+    fachwissen: TOPIC_FW.kriechSchutz,
   })
 }
 
@@ -996,11 +973,7 @@ function kriechSchutzCause(rng: Rng) {
     distractorEffects: ['Mehr Kiemenatmung bei erwachsenen Eidechsen'],
     solution: 'Habitatverlust → Populationsrisiko',
     explanation: 'Ursachen wirken über Lebensraum und Fortpflanzung.',
-    fachwissen: bioFw(
-      'Kleine, isolierte Populationen können Verluste schlechter ausgleichen. Deshalb zählen Vernetzung und Erhalt von Saumstrukturen.',
-      'Wikipedia: Zauneidechse',
-      'https://de.wikipedia.org/wiki/Zauneidechse',
-    ),
+    fachwissen: TOPIC_FW.kriechSchutz,
     dedupeKey: 'bio:k5:kriechtier:schutz:cause',
   })
 }
@@ -1018,11 +991,7 @@ function kriechSchutzHabitatSlots(rng: Rng) {
     distractors: ['Nur ein Meisenkasten in 5 m Höhe'],
     solution: 'Sonne / Versteck / grabbarer Boden',
     explanation: 'Zauneidechsen brauchen ein Mosaik — nicht nur ein Element.',
-    fachwissen: bioFw(
-      'Wechselwarme Kriechtiere brauchen besonnte Plätze zur Thermoregulation und sichere, grabbare Gelegeplätze — oft ein Mosaik aus offenen und deckungsreichen Stellen.',
-      'Wikipedia: Zauneidechse',
-      'https://de.wikipedia.org/wiki/Zauneidechse',
-    ),
+    fachwissen: TOPIC_FW.kriechSchutz,
   })
 }
 
@@ -1080,6 +1049,7 @@ function kriechSchutzKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:kriechtier:schutz:know',
+    TOPIC_FW.kriechSchutz,
   )
 }
 
@@ -1110,11 +1080,7 @@ function arbeitMatch(rng: Rng) {
     distractor: 'Nur raten ohne Wahrnehmung',
     solution: 'Beobachten / Untersuchen / Vergleichen / Protokoll',
     explanation: 'Naturwissenschaftliches Arbeiten trennt Wahrnehmung, Methode und Dokumentation.',
-    fachwissen: bioFw(
-      'Beobachten, Untersuchen, Vergleichen: Ein gutes Protokoll enthält Ort/Zeit, Objekt und beschreibende (nicht wertende) Beobachtungen — Deutungen gehören getrennt dazu.',
-      'Wikipedia: Wissenschaftliche Methode',
-      'https://de.wikipedia.org/wiki/Wissenschaftliche_Methode',
-    ),
+    fachwissen: TOPIC_FW.arbeit,
     dedupeKey: 'bio:k5:arbeit:match',
     contentIds: ['bio:k5:arbeit:match'],
   })
@@ -1131,11 +1097,7 @@ function arbeitSort(rng: Rng) {
     ],
     solution: 'Frage → Plan → Daten → Deutung',
     explanation: 'Zuerst Frage, dann Methode, dann Daten, dann Erklärung.',
-    fachwissen: bioFw(
-      'Auch in Klasse 5 gilt: Ohne klare Frage und Dokumentation wird aus „Schauen“ kein nachvollziehbares Ergebnis. Deutungen dürfen die Rohbeobachtung nicht ersetzen.',
-      'Wikipedia: Experiment',
-      'https://de.wikipedia.org/wiki/Experiment',
-    ),
+    fachwissen: TOPIC_FW.arbeit,
     dedupeKey: 'bio:k5:arbeit:sort',
     contentIds: ['bio:k5:arbeit:sort'],
   })
@@ -1211,11 +1173,7 @@ function arbeitMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Arbeitsweisen sind Werkzeuge: Sie helfen, Lebewesen und Lebenserscheinungen zuverlässig zu erschließen.`,
-      'Wikipedia: Beobachtung',
-      'https://de.wikipedia.org/wiki/Beobachtung',
-    ),
+    fachwissen: TOPIC_FW.arbeit,
     dedupeKey: `bio:k5:arbeit:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:arbeit:mc:${it.q.slice(0, 36)}`],
   })
@@ -1239,11 +1197,7 @@ function arbeitClassify(rng: Rng) {
     correctSlots: four.map((b) => b.slot),
     solution: 'Sicht-/Messbares vs. vermutete Absicht/Gefühl',
     explanation: 'Nur Wahrnehmbares gehört zur Beobachtung; Motive sind Deutung.',
-    fachwissen: bioFw(
-      'Arbeitsweisen-Kern: erst beschreiben, dann vorsichtig deuten — überprüfbar und vergleichbar.',
-      'Wikipedia: Beobachtung',
-      'https://de.wikipedia.org/wiki/Beobachtung',
-    ),
+    fachwissen: TOPIC_FW.arbeit,
   })
 }
 
@@ -1261,11 +1215,7 @@ function arbeitMethodSlots(rng: Rng) {
     distractors: ['Nur raten ohne Wahrnehmung'],
     solution: 'Wahrnehmen / Hilfsmittel / Gegenüberstellen / Dokumentieren',
     explanation: 'Vier Kernmethoden — klar trennen und zuordnen.',
-    fachwissen: bioFw(
-      'Vier Kernmethoden der Biologie: Wahrnehmen, mit Hilfsmitteln untersuchen, gegenüberstellen und dokumentieren — klar trennen und zuordnen.',
-      'Wikipedia: Wissenschaftliche Methode',
-      'https://de.wikipedia.org/wiki/Wissenschaftliche_Methode',
-    ),
+    fachwissen: TOPIC_FW.arbeit,
   })
 }
 
@@ -1323,6 +1273,7 @@ function arbeitKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:arbeit:know',
+    TOPIC_FW.arbeit,
   )
 }
 
@@ -1354,11 +1305,7 @@ function lungeMatch(rng: Rng) {
     distractor: 'Kiemendeckelbewegung wie bei Knochenfischen',
     solution: 'Zwerchfell / Kapillaren / Einatmen / Ausatmen',
     explanation: 'Neben den Alveolen gehören Mechanik und Blutanschluss zur Lungenatmung.',
-    fachwissen: bioFw(
-      'Das Zwerchfell steuert die Belüftung der Lunge. In den Lungenbläschen nehmen Kapillaren Sauerstoff auf und geben Kohlenstoffdioxid ab.',
-      'Wikipedia: Zwerchfell',
-      'https://de.wikipedia.org/wiki/Zwerchfell',
-    ),
+    fachwissen: TOPIC_FW.lunge,
     dedupeKey: 'bio:k5:saeuger:lunge:match-bau',
     contentIds: ['bio:k5:saeuger:lunge:match-bau'],
   })
@@ -1370,11 +1317,7 @@ function lungeSort(rng: Rng) {
     labels: ['Nase / Mund', 'Luftröhre', 'Bronchien', 'Lungenbläschen'],
     solution: 'Nase → Luftröhre → Bronchien → Alveolen',
     explanation: 'Die Luft wird verzweigt bis in die Bläschen geführt.',
-    fachwissen: bioFw(
-      'Die Atemwege verzweigen sich baumartig. Erst in den Lungenbläschen ist die Wand dünn genug für effizienten Gasaustausch mit den Blutkapillaren.',
-      'Wikipedia: Lunge',
-      'https://de.wikipedia.org/wiki/Lunge',
-    ),
+    fachwissen: TOPIC_FW.lunge,
     dedupeKey: 'bio:k5:saeuger:lunge:sort',
     contentIds: ['bio:k5:saeuger:lunge:sort'],
   })
@@ -1440,11 +1383,7 @@ function lungeMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Säuger sind lungatmende Landwirbeltiere (auch Wale atmen Luft). Die Lunge ist an den Sauerstoffbedarf angepasst.`,
-      'Wikipedia: Atmung',
-      'https://de.wikipedia.org/wiki/Atmung',
-    ),
+    fachwissen: TOPIC_FW.lunge,
     dedupeKey: `bio:k5:saeuger:lunge:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:saeuger:lunge:mc:${it.q.slice(0, 36)}`],
   })
@@ -1470,11 +1409,7 @@ function lungeCause(rng: Rng) {
     distractorEffects: ['Federn wachsen direkt in den Alveolen'],
     solution: 'Bau → Funktion der Lunge',
     explanation: 'Struktur ermöglicht Funktion.',
-    fachwissen: bioFw(
-      'Diffusionswege müssen kurz und Flächen groß sein — deshalb Alveolen mit Kapillarnetz. Ventilation (Ein-/Ausatmen) erneuert die Luft.',
-      'Wikipedia: Diffusion',
-      'https://de.wikipedia.org/wiki/Diffusion',
-    ),
+    fachwissen: TOPIC_FW.lunge,
     dedupeKey: 'bio:k5:saeuger:lunge:cause',
   })
 }
@@ -1503,11 +1438,7 @@ function lungeLabel(rng: Rng) {
     correctSlots: [0, 1, 2, 3],
     solution: '1 Nase/Mund; 2 Luftröhre; 3 Bronchien; 4 Lungenbläschen',
     explanation: 'Luftweg: Einlass → Leitung → Verzweigung → Gasaustausch in den Bläschen.',
-    fachwissen: bioFw(
-      'In der Säugerlunge findet der Gasaustausch statt: Sauerstoff geht ins Blut, Kohlenstoffdioxid wird abgegeben. Dafür braucht es eine große, dünne Austauschfläche und eine gute Belüftung der Atemwege.',
-      'Wikipedia: Lunge',
-      'https://de.wikipedia.org/wiki/Lunge',
-    ),
+    fachwissen: TOPIC_FW.lunge,
     dedupeKey: 'bio:k5:saeuger:lunge:label',
     contentIds: ['bio:k5:saeuger:lunge:label'],
     rng,
@@ -1528,11 +1459,7 @@ function lungePartSlots(rng: Rng) {
     distractors: ['Kiemenblatt für erwachsene Hunde'],
     solution: 'Einlass → Leitung → Verzweigung → Austausch',
     explanation: 'Jeder Abschnitt hat eine andere Aufgabe auf dem Luftweg.',
-    fachwissen: bioFw(
-      'Die Atemwege leiten die Luft; erst an den Lungenbläschen ist die Wand dünn genug für den Stoffaustausch mit den Blutkapillaren.',
-      'Wikipedia: Lunge',
-      'https://de.wikipedia.org/wiki/Lunge',
-    ),
+    fachwissen: TOPIC_FW.lunge,
   })
 }
 
@@ -1614,6 +1541,7 @@ function lungeKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:saeuger:lunge:know',
+    TOPIC_FW.lunge,
   )
 }
 
@@ -1646,11 +1574,7 @@ function beobMatch(rng: Rng) {
     distractor: 'Schnabelform eines Finken als Ethogramm-Eintrag',
     solution: 'Ethogramm / Verhaltensweise / Zählung / Dauer',
     explanation: 'Säuger beobachten heißt: klare Kategorien und messbare Notizen.',
-    fachwissen: bioFw(
-      'Verhaltensbeobachtungen bei Säugetieren: Ethogramme und Zählungen machen Verhalten vergleichbar und nachvollziehbar.',
-      'Wikipedia: Ethogramm',
-      'https://de.wikipedia.org/wiki/Ethogramm',
-    ),
+    fachwissen: TOPIC_FW.beob,
     dedupeKey: 'bio:k5:saeuger:beob:match',
     contentIds: ['bio:k5:saeuger:beob:match'],
   })
@@ -1670,11 +1594,7 @@ function beobEthogramSlots(rng: Rng) {
     distractors: ['Amsel trägt Moos ins Nest'],
     solution: 'Putzen / Fressen / Laufen / Spielkontakt',
     explanation: 'Ethogramm-Kategorien helfen, Säugerverhalten zu ordnen.',
-    fachwissen: bioFw(
-      'Ethogramme listen arttypische Verhaltensweisen (z. B. Putzen, Fressen, Ruhen). Mit klaren Kategorien und Zeitfenstern wird Verhalten vergleichbar.',
-      'Wikipedia: Ethologie',
-      'https://de.wikipedia.org/wiki/Ethologie',
-    ),
+    fachwissen: TOPIC_FW.beob,
   })
 }
 
@@ -1738,11 +1658,7 @@ function beobMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Ethologie erfasst Verhalten mit klaren Kategorien und messbaren Notizen — nicht nur mit Eindrücken.`,
-      'Wikipedia: Ethologie',
-      'https://de.wikipedia.org/wiki/Ethologie',
-    ),
+    fachwissen: TOPIC_FW.beob,
     dedupeKey: `bio:k5:saeuger:beob:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:saeuger:beob:mc:${it.q.slice(0, 36)}`],
   })
@@ -1759,11 +1675,7 @@ function beobSort(rng: Rng) {
     ],
     solution: 'Ethogramm → Zählen → Auswerten → Erklären',
     explanation: 'Zuerst Kategorien und Daten, dann Erklärung.',
-    fachwissen: bioFw(
-      'Zuerst legt man ein Ethogramm und eine Frage fest, dann beobachtet und zählt man in einem festen Zeitfenster — erst danach deutet man vorsichtig.',
-      'Wikipedia: Ethologie',
-      'https://de.wikipedia.org/wiki/Ethologie',
-    ),
+    fachwissen: TOPIC_FW.beob,
     dedupeKey: 'bio:k5:saeuger:beob:sort',
     contentIds: ['bio:k5:saeuger:beob:sort'],
   })
@@ -1783,11 +1695,7 @@ function beobSpeciesSlots(rng: Rng) {
     distractors: ['Baut ein FederNest in der Astgabel'],
     solution: 'Hund / Katze / Reh / Hase',
     explanation: 'Arttypische Verhaltensweisen sind Beobachtungsgegenstand.',
-    fachwissen: bioFw(
-      'Ethogramme mit heimischen Säugern (z. B. Katze, Hund, Reh) listen arttypische Verhaltensweisen und machen Beobachtungen vergleichbar.',
-      'Wikipedia: Ethologie',
-      'https://de.wikipedia.org/wiki/Ethologie',
-    ),
+    fachwissen: TOPIC_FW.beob,
   })
 }
 
@@ -1857,6 +1765,7 @@ function beobKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:saeuger:beob:know',
+    TOPIC_FW.beob,
   )
 }
 
@@ -1887,11 +1796,7 @@ function sinneMatch(rng: Rng) {
     distractor: 'Nur Photosynthese in Blättern',
     solution: 'Geruch / Gehör / Sehen / Tasten',
     explanation: 'Sinne liefern Informationen — Grundlage von Kommunikation.',
-    fachwissen: bioFw(
-      'Hunde nutzen Geruch besonders stark; Katzen kombinieren Gehör, Sehen und Schnurrhaare. Tierkommunikation braucht Sender, Signal und Empfänger.',
-      'Wikipedia: Sinnesorgan',
-      'https://de.wikipedia.org/wiki/Sinnesorgan',
-    ),
+    fachwissen: TOPIC_FW.sinne,
     dedupeKey: 'bio:k5:saeuger:sinne:match',
     contentIds: ['bio:k5:saeuger:sinne:match'],
   })
@@ -1910,11 +1815,7 @@ function sinneClassify(rng: Rng) {
     distractors: ['Kiemenschlag als Atemsignal unter Wasser bei erwachsenen Hunden'],
     solution: 'Laut / Duft / Haltung',
     explanation: 'Kommunikation nutzt verschiedene Kanäle.',
-    fachwissen: bioFw(
-      'Tiere senden Signale (Laut, Duft, Haltung); Artgenossen empfangen sie über passende Sinne. Ohne Sender, Signal und Empfänger kommt keine Botschaft an.',
-      'Wikipedia: Tierkommunikation',
-      'https://de.wikipedia.org/wiki/Tierkommunikation',
-    ),
+    fachwissen: TOPIC_FW.sinne,
   })
 }
 
@@ -1958,11 +1859,7 @@ function sinneMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Sinne und Kommunikation hängen zusammen: Ohne Wahrnehmung keine Reaktion auf Artgenossen oder Umwelt.`,
-      'Wikipedia: Kommunikation (Biologie)',
-      'https://de.wikipedia.org/wiki/Kommunikation_(Biologie)',
-    ),
+    fachwissen: TOPIC_FW.sinne,
     dedupeKey: `bio:k5:saeuger:sinne:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:saeuger:sinne:mc:${it.q.slice(0, 36)}`],
   })
@@ -1988,11 +1885,7 @@ function sinneCause(rng: Rng) {
     distractorEffects: ['Alveolen verdoppeln sich sofort'],
     solution: 'Signal → Verhaltensänderung beim Empfänger',
     explanation: 'Kommunikation verändert Verhalten.',
-    fachwissen: bioFw(
-      'Ob Laut, Duft oder Haltung: Erfolgreiche Signale lösen beim Empfänger eine Reaktion aus — sonst kommt keine Botschaft an.',
-      'Wikipedia: Tierkommunikation',
-      'https://de.wikipedia.org/wiki/Tierkommunikation',
-    ),
+    fachwissen: TOPIC_FW.sinne,
     dedupeKey: 'bio:k5:saeuger:sinne:cause',
   })
 }
@@ -2010,11 +1903,7 @@ function sinneSenderSlots(rng: Rng) {
     distractors: ['Photosynthese im Blatt als „Bellsignal“'],
     solution: 'Sender → Signal → Empfänger',
     explanation: 'Das Modell strukturiert Kommunikation.',
-    fachwissen: bioFw(
-      'Ohne passenden Sinn beim Empfänger bleibt das Signal wirkungslos.',
-      'Wikipedia: Tierkommunikation',
-      'https://de.wikipedia.org/wiki/Tierkommunikation',
-    ),
+    fachwissen: TOPIC_FW.sinne,
   })
 }
 
@@ -2072,6 +1961,7 @@ function sinneKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:saeuger:sinne:know',
+    TOPIC_FW.sinne,
   )
 }
 
@@ -2102,11 +1992,7 @@ function sozialMatch(rng: Rng) {
     distractor: 'Einzelzelle ohne Nervensystem als Rudel',
     solution: 'Gruppe / Rang / Revier / Kooperation',
     explanation: 'Sozialverhalten organisiert Zusammenleben und Konkurrenz.',
-    fachwissen: bioFw(
-      'Wölfe oder Primaten zeigen Rang und Kooperation; viele Arten markieren Reviere. Sozialverhalten ist art- und situationsabhängig — nicht jede Art lebt im Rudel.',
-      'Wikipedia: Sozialverhalten',
-      'https://de.wikipedia.org/wiki/Sozialverhalten',
-    ),
+    fachwissen: TOPIC_FW.sozial,
     dedupeKey: 'bio:k5:saeuger:sozial:match',
     contentIds: ['bio:k5:saeuger:sozial:match'],
   })
@@ -2152,11 +2038,7 @@ function sozialMc(rng: Rng) {
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Sozialverhalten umfasst auch Pflege, Spiel und Aggression — immer im Kontext der Art.`,
-      'Wikipedia: Rudel',
-      'https://de.wikipedia.org/wiki/Rudel',
-    ),
+    fachwissen: TOPIC_FW.sozial,
     dedupeKey: `bio:k5:saeuger:sozial:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:saeuger:sozial:mc:${it.q.slice(0, 36)}`],
   })
@@ -2175,11 +2057,7 @@ function sozialClassify(rng: Rng) {
     distractors: ['Einzelne Alveole speichert die Rangliste'],
     solution: 'Jagd / Imponieren / Duftmarke',
     explanation: 'Verschiedene Formen sozialen Handelns.',
-    fachwissen: bioFw(
-      'Konkrete Beispiele (Wolf, Hund, Affe, Reh) machen abstrakte Begriffe greifbar. Wichtig: nicht jedes Tier lebt in festen Rudeln — Solitärleben ist ebenfalls Sozialstrategie.',
-      'Wikipedia: Sozialverhalten',
-      'https://de.wikipedia.org/wiki/Sozialverhalten',
-    ),
+    fachwissen: TOPIC_FW.sozial,
   })
 }
 
@@ -2200,11 +2078,7 @@ function sozialMulti(rng: Rng) {
     ],
     solution: 'Rang, Revier, Kooperation — nicht „immer riesiges Rudel“',
     explanation: 'Sozialformen sind vielfältig.',
-    fachwissen: bioFw(
-      'Sozialverhalten und Kommunikation greifen ineinander: Signale steuern Rang, Zusammenhalt und Revier. Einzelgänger nutzen andere Strategien.',
-      'Wikipedia: Sozialverhalten',
-      'https://de.wikipedia.org/wiki/Sozialverhalten',
-    ),
+    fachwissen: TOPIC_FW.sozial,
     dedupeKey: 'bio:k5:saeuger:sozial:multi',
     contentIds: ['bio:k5:saeuger:sozial:multi'],
   })
@@ -2224,11 +2098,7 @@ function sozialSlots(rng: Rng) {
     distractors: ['Einzelne Alveole speichert die Rangliste'],
     solution: 'Kooperation / Rang / Revier / Gruppe',
     explanation: 'Vier Grundbegriffe des Sozialverhaltens zuordnen.',
-    fachwissen: bioFw(
-      'Rudel, Rangordnung, Revier und Einzelgänger beschreiben unterschiedliche Sozialstrategien — z. B. bei Wolf, Hund oder Reh.',
-      'Wikipedia: Sozialverhalten',
-      'https://de.wikipedia.org/wiki/Sozialverhalten',
-    ),
+    fachwissen: TOPIC_FW.sozial,
   })
 }
 
@@ -2286,6 +2156,7 @@ function sozialKnowledgeMc(rng: Rng) {
       },
     ],
     'bio:k5:saeuger:sozial:know',
+    TOPIC_FW.sozial,
   )
 }
 

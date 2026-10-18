@@ -32,14 +32,20 @@ function withRichFachwissen(generate: Topic['generate']): Topic['generate'] {
         answer: String(task.solution ?? ''),
       })
     }
-    // Final length floor — never ship placeholder-short Fachwissen.
-    if (enriched.trim().length < 80 && task.explanation?.trim()) {
-      const e = task.explanation.trim()
-      enriched = `${enriched} ${e.endsWith('.') ? e : `${e}.`}`.replace(/\s+/g, ' ').trim()
+    // Final length floor — never append the solution (that would spoil Fachwissen).
+    const expl = task.explanation?.trim() ?? ''
+    const sol = String(task.solution ?? '').trim()
+    const explSpoils =
+      sol.length >= 12 && expl.toLowerCase().includes(sol.toLowerCase())
+    if (enriched.trim().length < 80 && expl && !explSpoils) {
+      enriched = `${enriched} ${expl.endsWith('.') ? expl : `${expl}.`}`.replace(/\s+/g, ' ').trim()
     }
-    if (enriched.trim().length < 80) {
-      enriched =
-        `${enriched} Fachlich: ${String(task.solution ?? '').slice(0, 120)}.`.replace(/\s+/g, ' ').trim()
+    if (isThinBioWissen(enriched)) {
+      const pad =
+        'Biologische Merkmale lassen sich am Bau und an der Lebensweise einer Art erkennen.'
+      if (!enriched.includes(pad.slice(0, 28))) {
+        enriched = `${enriched} ${pad}`.replace(/\s+/g, ' ').trim()
+      }
     }
     if (enriched === prev && !isThinBioWissen(prev)) return task
     return {
