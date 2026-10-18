@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.134] – 2026-10-18
+
+### Behoben
+- **Alle Schema-Aufgaben:** Bilder laden über relative `./anatomy/…`-Pfade
+  (Electron `file://`-sicher) mit Fallback; keine `data:`-URLs mehr für Anatomie.
+  Betrifft Schnabel, Atemweg, Fisch, Vogel, Schädel, Skelett u. a.
+
 ## [0.28.133] – 2026-10-18
 
 ### Behoben

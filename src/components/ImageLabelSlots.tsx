@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { resolveAnatomySrc } from '../lib/resolveAnatomySrc'
+import { anatomySrcCandidates } from '../lib/resolveAnatomySrc'
 import type { BlockDragFrom } from './blockSlotPointer'
 import { useBlockSlotPointer } from './useBlockSlotPointer'
 import './ImageLabelSlots.css'
@@ -49,11 +49,26 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
   disabled = false,
   partResults,
 }) => {
-  const resolvedSrc = resolveAnatomySrc(imageSrc)
+  const srcCandidates = useMemo(
+    () => anatomySrcCandidates(imageSrc),
+    [imageSrc],
+  )
+  const [srcIndex, setSrcIndex] = useState(0)
   const [imgFailed, setImgFailed] = useState(false)
+  const resolvedSrc = srcCandidates[srcIndex] ?? ''
+
   useEffect(() => {
+    setSrcIndex(0)
     setImgFailed(false)
-  }, [resolvedSrc])
+  }, [imageSrc, srcCandidates])
+
+  const onImgError = useCallback(() => {
+    setSrcIndex((i) => {
+      if (i + 1 < srcCandidates.length) return i + 1
+      setImgFailed(true)
+      return i
+    })
+  }, [srcCandidates.length])
   const used = new Set(value.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
 
@@ -157,9 +172,8 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
               src={resolvedSrc}
               alt={imageAlt || 'Schema zum Beschriften'}
               draggable={false}
-              loading="lazy"
               decoding="async"
-              onError={() => setImgFailed(true)}
+              onError={onImgError}
               onLoad={() => setImgFailed(false)}
             />
           )}
