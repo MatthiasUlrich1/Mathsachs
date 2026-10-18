@@ -9,10 +9,21 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.127] – 2026-10-18
+
+### Behoben
+- **K5 Bio Prüfungs-Feedback:** Drag-and-Drop zeigte bei Mehrfach-Zuordnung
+  fälschlich „Gruppe 3/4“ — Layout korrigiert (Aussagen links, Kategorien als Chips).
+- **Themenüberschneidung:** „Verhalten beobachten“ enthält keine Beobachtung/Deutung-
+  Aufgaben mehr aus Arbeitsweisen; eigener Ethogramm-/Säuger-Fokus.
+- **Vielfalt:** Lunge, Schnabel, Revier/Balz und Arbeitsweisen mit mehr
+  unterschiedlichen Abfragen. Pack Biologie **1.11.2**. Themen bleiben gesperrt.
+
 ## [0.28.126] – 2026-10-18
 
 ### Geändert
-- **K5 Bio Prüfungssperre:** Die 9 neuen Themenbanken wieder eleased: false  (nur Prüfer/Entwickler). Pack Biologie **1.11.1**.
+- **K5 Bio Prüfungssperre:** Die 9 neuen Themenbanken wieder `released: false`
+  (nur Prüfer/Entwickler). Pack Biologie **1.11.1**.
 
 
 ## [0.28.125] – 2026-10-18

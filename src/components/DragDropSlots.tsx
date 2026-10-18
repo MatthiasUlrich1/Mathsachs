@@ -256,7 +256,7 @@ export const DragDropSlots: React.FC<DragDropSlotsProps> = ({
           {slots.map((_, slotIdx) => (
             <div key={`match-${slotIdx}`} className="drag-drop-slots__match-row">
               <div className="drag-drop-slots__match-term">
-                {slotLabels[slotIdx]?.trim() || `Gruppe ${slotIdx + 1}`}
+                {slotLabels[slotIdx]?.trim() || `Feld ${slotIdx + 1}`}
               </div>
               {renderSlot(slotIdx, '→')}
             </div>

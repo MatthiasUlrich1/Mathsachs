@@ -94,6 +94,43 @@ export function classifySlotsTask(
   },
 ): Task {
   const distractors = opts.distractors ?? []
+  const n = opts.correctSlots.length
+  /**
+   * Many-to-few (z. B. 4 Aussagen → 2 Kategorien): dragDropSlots braucht
+   * eine Zeile pro Eintrag. Sonst fehlen slotLabels und die UI zeigt „Gruppe 3/4“.
+   * Layout: links die Aussagen, Chips = Kategorienamen.
+   */
+  const manyToFew =
+    opts.itemLabels.length === n &&
+    opts.slotLabels.length > 0 &&
+    opts.slotLabels.length < n
+
+  if (manyToFew) {
+    const categoryChips = opts.correctSlots.map((si) => opts.slotLabels[si]!)
+    const items = [
+      ...categoryChips.map((label, value) => ({ label, value })),
+      ...distractors.map((label, i) => ({
+        label,
+        value: categoryChips.length + i,
+      })),
+    ]
+    return dragDropSlotsTask({
+      question: opts.question,
+      items,
+      correctSlots: categoryChips.map((_, i) => i),
+      slotLabels: opts.itemLabels,
+      solution: opts.solution,
+      explanation: opts.explanation,
+      instruction:
+        opts.instruction ??
+        (distractors.length
+          ? 'Ordne jeder Aussage die passende Kategorie zu. Einen Block brauchst du ggf. nicht.'
+          : 'Ordne jeder Aussage die passende Kategorie zu.'),
+      rng,
+      fachwissen: opts.fachwissen,
+    })
+  }
+
   const items = [
     ...opts.itemLabels.map((label, value) => ({ label, value })),
     ...distractors.map((label, i) => ({

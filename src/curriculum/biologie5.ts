@@ -90,18 +90,34 @@ function classifySlotsTask(
   },
 ) {
   const distractors = opts.distractors ?? []
-  const items = [
-    ...opts.itemLabels.map((label, value) => ({ label, value })),
-    ...distractors.map((label, i) => ({
-      label,
-      value: opts.itemLabels.length + i,
-    })),
-  ]
+  const n = opts.correctSlots.length
+  const manyToFew =
+    opts.itemLabels.length === n &&
+    opts.slotLabels.length > 0 &&
+    opts.slotLabels.length < n
+  const items = manyToFew
+    ? [
+        ...opts.correctSlots.map((si, value) => ({
+          label: opts.slotLabels[si]!,
+          value,
+        })),
+        ...distractors.map((label, i) => ({
+          label,
+          value: n + i,
+        })),
+      ]
+    : [
+        ...opts.itemLabels.map((label, value) => ({ label, value })),
+        ...distractors.map((label, i) => ({
+          label,
+          value: opts.itemLabels.length + i,
+        })),
+      ]
   const task = dragDropSlotsTask({
     question: opts.question,
     items,
-    correctSlots: opts.correctSlots,
-    slotLabels: opts.slotLabels,
+    correctSlots: manyToFew ? opts.itemLabels.map((_, i) => i) : opts.correctSlots,
+    slotLabels: manyToFew ? opts.itemLabels : opts.slotLabels,
     solution: opts.solution,
     explanation: opts.explanation,
     instruction:

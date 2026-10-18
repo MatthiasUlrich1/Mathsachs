@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.11.1',
-    changelog: `K5: 9 neue Banken gesperrt zur Prüfung (Arbeitsweisen, Kriechtierschutz, Schnabel/Revier/Vogelschutz, Lunge/Verhalten/Sinne/Sozial). Inhalt bleibt für Prüfer spielbar. ${topics} Themen.`,
+    version: '1.11.2',
+    changelog: `K5-Prüfungsfix: DnD ohne „Gruppe N“, keine Überschneidung Arbeitsweisen↔Verhalten beobachten, mehr Vielfalt Lunge/Schnabel/Revier. 9 Banken weiter gesperrt. ${topics} Themen.`,
     official,
     extras: [],
   }

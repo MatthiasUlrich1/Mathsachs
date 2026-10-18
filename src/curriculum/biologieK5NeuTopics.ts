@@ -269,21 +269,25 @@ function schnabelLabel(rng: Rng) {
 }
 
 function schnabelFoodSlots(rng: Rng) {
+  /** Andere Beispiele/Wording als schnabelClassify — weniger Rundenduplikate. */
+  const bank = [
+    { form: 'Habicht: Hakenschnabel', food: 'Beute mit gebogenem Schnabel zerlegen' },
+    { form: 'Buchfink: Kegelschnabel', food: 'Samenschalen unter Druck knacken' },
+    { form: 'Rotkehlchen: Pfriemschnabel', food: 'Kleine Insekten vom Boden aufnehmen' },
+    { form: 'Buntspecht: Meißelschnabel', food: 'Holz öffnen, Larven erreichen' },
+    { form: 'Löffelente: Siebschnabel', food: 'Wasser durchseihen, Kleinstnahrung behalten' },
+  ]
+  const three = shuffle(rng, bank).slice(0, 3)
   return classifySlotsTask(rng, {
-    question: 'Welche Nahrung passt zu welcher Schnabelform? Ziehe in die Felder.',
-    slotLabels: ['Hakenschnabel', 'Kegelschnabel', 'Pfriemschnabel', 'Meißelschnabel'],
-    itemLabels: [
-      'Fleisch / Beute zerreißen',
-      'Samen knacken',
-      'Insekten picken',
-      'Larven unter Rinde meißeln',
-    ],
-    correctSlots: [0, 1, 2, 3],
-    distractors: ['Plankton wie ein Bartenwal sieben'],
-    solution: 'Haken→Fleisch; Kegel→Samen; Pfriem→Insekten; Meißel→Larven',
-    explanation: 'Jede Form erfüllt eine andere Nahrungsfunktion.',
+    question: 'Welches Fressverhalten passt zu welchem Schnabel-Beispiel?',
+    slotLabels: three.map((p) => p.form),
+    itemLabels: three.map((p) => p.food),
+    correctSlots: [0, 1, 2],
+    distractors: ['Mit Kiemen Plankton unter Wasser filtrieren'],
+    solution: three.map((p) => `${p.form} → ${p.food}`).join('; '),
+    explanation: 'Artenbeispiel + Handlung macht Angepasstheit konkret.',
     fachwissen: bioFw(
-      'Vier Formen decken typische Angepasstheiten ab. Ablenkungen aus anderen Tiergruppen helfen, Fehlvorstellungen zu prüfen.',
+      'Statt immer derselben drei Paare: wechselnde Artenbeispiele mit derselben Form–Funktions-Logik.',
       'Wikipedia: Angepasstheit',
       'https://de.wikipedia.org/wiki/Angepasstheit',
     ),
@@ -348,17 +352,16 @@ function schnabelKnowledgeMc(rng: Rng) {
 }
 
 export const biVoegelSchnabelNahrung: Topic['generate'] = mixedVariants(
-  schnabelClassify,
-  schnabelFoodSlots,
   schnabelLabel,
-  schnabelMatch,
+  schnabelFoodSlots,
   schnabelMc,
+  schnabelMatch,
   schnabelKnowledgeMc,
   schnabelCause,
-  schnabelKnowledgeMc,
+  schnabelClassify,
   schnabelMc,
   schnabelLabel,
-  schnabelFoodSlots,
+  schnabelKnowledgeMc,
 )
 
 // ─── Vögel – Revier, Balz und Gesang ────────────────────────────────────────
@@ -431,7 +434,37 @@ function verhaltenMc(rng: Rng) {
         'Es legt gerade Eier ohne Nest',
         'Es filtert Plankton aus der Luft',
       ],
-      w: 'Beobachtung und Deutung trennen: Singen ist beobachtbar; Revier/Werbung ist die fachliche Einordnung.',
+      w: 'Singen ist beobachtbar; Revier/Werbung ist die fachliche Einordnung.',
+    },
+    {
+      q: 'Zwei Kohlmeisen-Männchen singen dicht beieinander. Was ist eine sinnvolle Deutung?',
+      correct: 'Reviergrenzen werden ausgehandelt / Rivalen werden abgewiesen',
+      wrong: [
+        'Sie bauen gemeinsam Kiemen',
+        'Sie legen Eier ohne Nestmaterial',
+        'Sie atmen nur über die Haut',
+      ],
+      w: 'Gesang dient oft der Revierverteidigung gegen Rivalen.',
+    },
+    {
+      q: 'Warum gehört Nestbau zur Fortpflanzungszeit, ist aber keine Balz?',
+      correct: 'Nestbau bereitet den Brutplatz vor — Balz wirbt um den Partner',
+      wrong: [
+        'Nestbau und Balz sind immer dasselbe Wort',
+        'Nestbau ersetzt den Gesang vollständig',
+        'Balz bedeutet nur das Tragen von Zweigen',
+      ],
+      w: 'Funktionen trennen: Partnerwahl ≠ Brutplatz herrichten.',
+    },
+    {
+      q: 'Ein Buchfink trägt Moos in eine Astgabel. Welche Verhaltensweise passt?',
+      correct: 'Nestbau / Vorbereitung des Brutplatzes',
+      wrong: [
+        'Nur Reviergesang ohne Material',
+        'Nur Kiemenatmung im Bach',
+        'Nur Planktonfiltern in der Luft',
+      ],
+      w: 'Materialtransport ist typisch für Nestbau.',
     },
   ]
   const it = pick(rng, items)
@@ -552,6 +585,42 @@ function verhaltenKnowledgeMc(rng: Rng) {
         w: 'Reviere sichern Ressourcen für die Fortpflanzung.',
         quelle: 'Wikipedia: Revier (Biologie)',
         url: 'https://de.wikipedia.org/wiki/Revier_(Biologie)',
+      },
+      {
+        q: 'Was kann zur Balz gehören — außer Gesang?',
+        correct: 'Imponierflug, Gefiederzeigen oder Futterübergabe',
+        wrong: [
+          'Nur das Atmen mit Kiemen',
+          'Nur das Knacken von Samenschalen',
+          'Nur das Filtern von Plankton',
+        ],
+        w: 'Balz ist multimodal: Laut, Bewegung, Optik, manchmal Futter.',
+        quelle: 'Wikipedia: Balz',
+        url: 'https://de.wikipedia.org/wiki/Balz',
+      },
+      {
+        q: 'Warum verteidigen viele Vögel ein Revier?',
+        correct: 'Um Nahrung und Nistplatz für die eigene Brut zu sichern',
+        wrong: [
+          'Um die Lungen durch Federn zu ersetzen',
+          'Um unter Wasser zu laichen',
+          'Um Schnäbel überflüssig zu machen',
+        ],
+        w: 'Revierverhalten ist eine Fortpflanzungsstrategie.',
+        quelle: 'Wikipedia: Revier (Biologie)',
+        url: 'https://de.wikipedia.org/wiki/Revier_(Biologie)',
+      },
+      {
+        q: 'Was folgt oft nach erfolgreicher Paarbildung?',
+        correct: 'Nestbau und später Eiablage / Brutpflege',
+        wrong: [
+          'Sofort Kiemenatmung im Nest',
+          'Sofort Federverlust ohne Nest',
+          'Sofort Planktonfang ohne Partner',
+        ],
+        w: 'Typische Abfolge in der Brutzeit — artabhängig mit Überschneidungen.',
+        quelle: 'Wikipedia: Brutpflege',
+        url: 'https://de.wikipedia.org/wiki/Brutpflege',
       },
     ],
     'bio:k5:vogel:verhalten:know',
@@ -1082,6 +1151,36 @@ function arbeitMc(rng: Rng) {
       ],
       w: 'Vergleichen ist eine Kernmethode der Biologie.',
     },
+    {
+      q: 'Welches Gerät hilft beim Untersuchen kleiner Blattadern?',
+      correct: 'Eine Lupe oder ein Mikroskop',
+      wrong: [
+        'Ein Thermometer allein ohne Blick',
+        'Nur ein Lineal ohne Optik',
+        'Ein Lautsprecher für Gesang',
+      ],
+      w: 'Hilfsmittel erweitern die Wahrnehmung gezielt.',
+    },
+    {
+      q: 'Was bedeutet „Protokollieren“ im Biologieunterricht?',
+      correct: 'Beobachtungen und Daten so notieren, dass andere sie nachvollziehen können',
+      wrong: [
+        'Nur raten ohne aufzuschreiben',
+        'Nur Gefühle ohne sichtbare Hinweise notieren',
+        'Hilfsmittel absichtlich weglassen',
+      ],
+      w: 'Nachvollziehbarkeit ist das Ziel der Dokumentation.',
+    },
+    {
+      q: 'Wann ist eine Vermutung sinnvoll?',
+      correct: 'Vor dem Versuch — als prüfbare Erwartung',
+      wrong: [
+        'Erst nachdem man alle Daten erfunden hat',
+        'Niemals, weil Biologie keine Fragen stellt',
+        'Nur als Ersatz für jede Messung',
+      ],
+      w: 'Vermutung → Plan → Daten → Prüfung.',
+    },
   ]
   const it = pick(rng, items)
   return choicePickTask({
@@ -1101,22 +1200,27 @@ function arbeitMc(rng: Rng) {
 }
 
 function arbeitClassify(rng: Rng) {
+  /** Methoden-Thema: Beispiele aus Alltag/Pflanzen — nicht Säuger-Ethologie. */
+  const bank = [
+    { text: 'Das Blatt hat fünf Blattadern', slot: 0 },
+    { text: 'Die Pflanze ist traurig', slot: 1 },
+    { text: 'Unter der Lupe sind Härchen sichtbar', slot: 0 },
+    { text: 'Die Feder mag den Wind', slot: 1 },
+    { text: 'Der Regenwurm kriecht in 10 s 8 cm', slot: 0 },
+    { text: 'Der Regenwurm hasst den Boden', slot: 1 },
+  ]
+  const four = shuffle(rng, bank).slice(0, 4)
   return classifySlotsTask(rng, {
     question: 'Ist das eine Beobachtung oder schon eine Deutung?',
     slotLabels: ['Beobachtung', 'Deutung'],
-    itemLabels: [
-      'Die Amsel pickt einen Regenwurm',
-      'Die Amsel ist hungrig und wütend',
-      'Der Hund legt die Ohren an',
-      'Der Hund fühlt sich beleidigt',
-    ],
-    correctSlots: [0, 1, 0, 1],
-    solution: 'Sichtbares vs. vermutete Gefühle',
-    explanation: 'Nur Sicht-/Hörbares gehört zur Beobachtung; Motive sind Deutung.',
+    itemLabels: four.map((b) => b.text),
+    correctSlots: four.map((b) => b.slot),
+    solution: 'Sicht-/Messbares vs. vermutete Absicht/Gefühl',
+    explanation: 'Nur Wahrnehmbares gehört zur Beobachtung; Motive sind Deutung.',
     fachwissen: bioFw(
-      'In Verhaltensprotokollen gilt: erst beschreiben, dann vorsichtig deuten. So bleiben Ergebnisse überprüfbar und vergleichbar.',
-      'Wikipedia: Ethologie',
-      'https://de.wikipedia.org/wiki/Verhaltensbiologie',
+      'Arbeitsweisen-Kern: erst beschreiben, dann vorsichtig deuten — überprüfbar und vergleichbar.',
+      'Wikipedia: Beobachtung',
+      'https://de.wikipedia.org/wiki/Beobachtung',
     ),
   })
 }
@@ -1215,25 +1319,26 @@ export const biArbeitsweisen: Topic['generate'] = mixedVariants(
 // ─── Säugetiere – Lunge und Gasaustausch ────────────────────────────────────
 
 function lungeMatch(rng: Rng) {
+  /** Andere Begriffspaare als Gas-Slots / Knowledge-MC — weniger Wiederholung. */
   return matchTermsTask(rng, {
-    question: 'Ordne Begriffe zum Gasaustausch der Säuger-Lunge zu.',
-    terms: ['Lungenbläschen', 'Sauerstoff', 'Kohlenstoffdioxid', 'Oberflächenvergrößerung'],
+    question: 'Ordne Bau und Atmungsvorgang der Säuger-Lunge zu.',
+    terms: ['Zwerchfell', 'Kapillarnetz', 'Einatmen', 'Ausatmen'],
     meanings: [
-      'Ort des Gasaustauschs mit dem Blut',
-      'Gelangt aus der Atemluft ins Blut',
-      'Wird vom Blut an die Atemluft abgegeben',
-      'Viele kleine Bläschen statt eines großen Hohlraums',
+      'Muskelplatte, die den Brustkorbraum vergrößert/verkleinert',
+      'Feine Blutgefäße um die Lungenbläschen',
+      'Brustkorb weitet sich, Luft strömt hinein',
+      'Brustkorb verengt sich, Luft strömt hinaus',
     ],
-    distractor: 'Kiemenblatt als einziges Atemorgan erwachsener Säuger',
-    solution: 'Alveolen / O₂ rein / CO₂ raus / große Fläche',
-    explanation: 'Gasaustausch braucht dünne Wände und große Oberfläche.',
+    distractor: 'Kiemendeckelbewegung wie bei Knochenfischen',
+    solution: 'Zwerchfell / Kapillaren / Einatmen / Ausatmen',
+    explanation: 'Neben den Alveolen gehören Mechanik und Blutanschluss zur Lungenatmung.',
     fachwissen: bioFw(
-      'Lehrplan K5: Lunge, Lungenbläschen, Oberflächenvergrößerung, Gasaustausch. In den Alveolen tritt O₂ ins Blut über, CO₂ hinaus. Viele kleine Bläschen vergrößern die Fläche enorm gegenüber einem einzelnen Ballon.',
-      'Wikipedia: Lungenbläschen',
-      'https://de.wikipedia.org/wiki/Lungenbl%C3%A4schen',
+      'Lehrplan K5: Lunge und Gasaustausch. Zwerchfell steuert die Belüftung; Kapillaren nehmen O₂ auf und geben CO₂ ab.',
+      'Wikipedia: Zwerchfell',
+      'https://de.wikipedia.org/wiki/Zwerchfell',
     ),
-    dedupeKey: 'bio:k5:saeuger:lunge:match',
-    contentIds: ['bio:k5:saeuger:lunge:match'],
+    dedupeKey: 'bio:k5:saeuger:lunge:match-bau',
+    contentIds: ['bio:k5:saeuger:lunge:match-bau'],
   })
 }
 
@@ -1266,14 +1371,14 @@ function lungeMc(rng: Rng) {
       w: 'Oberflächenvergrößerung ist ein zentrales Funktionsprinzip.',
     },
     {
-      q: 'Was geschieht in den Lungenbläschen?',
-      correct: 'Sauerstoff geht ins Blut, Kohlenstoffdioxid hinaus',
+      q: 'Welche Rolle spielt das Zwerchfell beim Atmen?',
+      correct: 'Es verändert den Brustraum und treibt Ein- und Ausatmen an',
       wrong: [
-        'Nur Nahrung wird mechanisch zerrieben',
-        'Nur Laich wird befruchtet',
-        'Nur Hornschicht wird gebildet',
+        'Es filtert Plankton aus der Luft',
+        'Es bildet die Federn',
+        'Es ersetzt die Blutgefäße vollständig',
       ],
-      w: 'Das ist der eigentliche Gasaustausch der äußeren Atmung.',
+      w: 'Mechanik der Belüftung — ohne Luftwechsel kein frischer Sauerstoff.',
     },
     {
       q: 'Wozu brauchen Säugetiere überhaupt Lungenatmung?',
@@ -1284,6 +1389,26 @@ function lungeMc(rng: Rng) {
         'Nur um Laich im Wasser zu kühlen',
       ],
       w: 'Ohne O₂-Nachschub stockt der Zellstoffwechsel.',
+    },
+    {
+      q: 'Warum umgeben Blutkapillaren die Lungenbläschen?',
+      correct: 'Damit Gase auf kurzem Weg zwischen Luft und Blut wechseln können',
+      wrong: [
+        'Damit Federn in den Alveolen wachsen',
+        'Damit Nahrung dort verdaut wird',
+        'Damit Eier dort befruchtet werden',
+      ],
+      w: 'Kurze Diffusionswege sind entscheidend für effizienten Austausch.',
+    },
+    {
+      q: 'Was passiert beim Einatmen grob gesagt?',
+      correct: 'Der Brustraum wird größer — Luft strömt in die Lunge',
+      wrong: [
+        'Die Lunge wird zu Kiemen',
+        'Nur CO₂ wird produziert ohne Luftbewegung',
+        'Federn füllen die Bronchien',
+      ],
+      w: 'Volumenänderung → Druckänderung → Luftstrom.',
     },
   ]
   const it = pick(rng, items)
@@ -1360,24 +1485,24 @@ function lungeLabel(rng: Rng) {
   })
 }
 
-function lungeGasSlots(rng: Rng) {
+function lungePartSlots(rng: Rng) {
   return classifySlotsTask(rng, {
-    question: 'Wohin gehört was beim Gasaustausch? Ziehe in die Felder.',
-    slotLabels: ['Ins Blut', 'Aus dem Blut', 'Ort des Austauschs', 'Flächenprinzip'],
+    question: 'Welche Aufgabe hat welcher Atemwegsabschnitt?',
+    slotLabels: ['Nase / Mund', 'Luftröhre', 'Bronchien', 'Lungenbläschen'],
     itemLabels: [
-      'Sauerstoff aus der Atemluft',
-      'Kohlenstoffdioxid',
-      'Lungenbläschen (Alveolen)',
-      'Viele kleine Bläschen statt eines Hohlraums',
+      'Luft einlassen und grob reinigen / anwärmen',
+      'Luft in den Brustkorb leiten',
+      'Luft in die Lungenflügel verzweigen',
+      'Gasaustausch mit dem Blut',
     ],
     correctSlots: [0, 1, 2, 3],
-    distractors: ['Kiemenblatt als einziges Organ erwachsener Säuger'],
-    solution: 'O₂ rein / CO₂ raus / Alveolen / Oberflächenvergrößerung',
-    explanation: 'Vier Kernideen zum Gasaustausch der Säuger-Lunge.',
+    distractors: ['Kiemenblatt für erwachsene Hunde'],
+    solution: 'Einlass → Leitung → Verzweigung → Austausch',
+    explanation: 'Jeder Abschnitt hat eine andere Aufgabe auf dem Luftweg.',
     fachwissen: bioFw(
-      'Drag-and-drop verknüpft Richtung der Gase mit Bau und Funktionsprinzip.',
-      'Wikipedia: Lungenbläschen',
-      'https://de.wikipedia.org/wiki/Lungenbl%C3%A4schen',
+      'Schema + Funktionszuordnung vertieft den Aufbau, ohne dieselbe Alveolen-Definition zu wiederholen.',
+      'Wikipedia: Lunge',
+      'https://de.wikipedia.org/wiki/Lunge',
     ),
   })
 }
@@ -1387,14 +1512,14 @@ function lungeKnowledgeMc(rng: Rng) {
     rng,
     [
       {
-        q: 'Wo findet der eigentliche Gasaustausch statt?',
-        correct: 'In den Lungenbläschen (Alveolen)',
+        q: 'Warum liegen die Lungenbläschen am Ende des Atemwegs?',
+        correct: 'Dort ist die Wand dünn genug für den Gasaustausch mit dem Blut',
         wrong: [
-          'Nur in der Hornhaut des Auges',
-          'Nur im Federkiel',
-          'Nur im Kiemendeckel erwachsener Hunde',
+          'Weil dort Federn wachsen',
+          'Weil dort Nahrung zerkleinert wird',
+          'Weil dort Kiemen sitzen',
         ],
-        w: 'Atemwege führen die Luft hin — Austausch in den Alveolen.',
+        w: 'Atemwege transportieren; Alveolen tauschen.',
         quelle: 'Wikipedia: Lungenbläschen',
         url: 'https://de.wikipedia.org/wiki/Lungenbl%C3%A4schen',
       },
@@ -1411,12 +1536,12 @@ function lungeKnowledgeMc(rng: Rng) {
         url: 'https://de.wikipedia.org/wiki/Lunge',
       },
       {
-        q: 'In welche Richtung wandert Sauerstoff in den Alveolen?',
-        correct: 'Aus der Atemluft ins Blut',
+        q: 'Welches Gas wird in den Alveolen typischerweise abgegeben?',
+        correct: 'Kohlenstoffdioxid aus dem Blut in die Atemluft',
         wrong: [
-          'Nur vom Blut in die Knochen ohne Luft',
-          'Nur in die Federn',
-          'Nur in den Laich',
+          'Nur Stickstoff aus Federn',
+          'Nur Dotter in die Luft',
+          'Nur Hornsubstanz',
         ],
         w: 'O₂ rein, CO₂ raus — Grundmuster der äußeren Atmung.',
         quelle: 'Wikipedia: Atmung',
@@ -1434,41 +1559,66 @@ function lungeKnowledgeMc(rng: Rng) {
         quelle: 'Wikipedia: Atmung',
         url: 'https://de.wikipedia.org/wiki/Atmung',
       },
+      {
+        q: 'Was transportiert der Sauerstoff nach dem Übertritt ins Blut vor allem?',
+        correct: 'Er wird zu den Körperzellen weitergeführt',
+        wrong: [
+          'Er bleibt für immer in der Luftröhre',
+          'Er wird zu Federn umgebaut',
+          'Er ersetzt das Zwerchfell',
+        ],
+        w: 'Blutkreislauf verbindet Lunge und Gewebe.',
+        quelle: 'Wikipedia: Atmung',
+        url: 'https://de.wikipedia.org/wiki/Atmung',
+      },
+      {
+        q: 'Wale atmen mit Lungen. Was folgt daraus?',
+        correct: 'Sie müssen zum Atmen an die Wasseroberfläche',
+        wrong: [
+          'Sie haben Kiemen wie erwachsene Fische',
+          'Sie brauchen keine Luft',
+          'Sie atmen nur über Federn',
+        ],
+        w: 'Auch Wasser lebende Säuger sind lungatmend.',
+        quelle: 'Wikipedia: Lunge',
+        url: 'https://de.wikipedia.org/wiki/Lunge',
+      },
     ],
     'bio:k5:saeuger:lunge:know',
   )
 }
 
 export const biSaeugerLunge: Topic['generate'] = mixedVariants(
-  lungeMatch,
   lungeLabel,
-  lungeGasSlots,
+  lungePartSlots,
+  lungeMatch,
   lungeSort,
   lungeMc,
   lungeKnowledgeMc,
   lungeCause,
   lungeLabel,
   lungeKnowledgeMc,
-  lungeGasSlots,
+  lungeMc,
 )
 
 // ─── Säugetiere – Verhalten beobachten ──────────────────────────────────────
+// Keine Überschneidung mit LB1 Arbeitsweisen (Beobachtung/Deutung-Klassifikation).
 
 function beobMatch(rng: Rng) {
   return matchTermsTask(rng, {
-    question: 'Ordne Begriffe der Verhaltensbeobachtung zu.',
-    terms: ['Ethogramm', 'Protokoll', 'Beobachtung', 'Deutung'],
+    question: 'Ordne Begriffe zur Säuger-Verhaltensbeobachtung zu.',
+    terms: ['Ethogramm', 'Verhaltensweise', 'Häufigkeitszählung', 'Beobachtungsdauer'],
     meanings: [
-      'Liste typischer Verhaltensweisen einer Art',
-      'Schriftliche Aufzeichnung von Ort, Zeit, Verhalten',
-      'Beschreibung dessen, was man sieht/hört',
-      'Vermutung über Ursache oder Absicht',
+      'Liste arttypischer Verhaltensweisen (z. B. Putzen, Fressen)',
+      'Ein einzelnes, klar benanntes Verhalten im Ethogramm',
+      'Wie oft ein Verhalten in einer Zeitspanne vorkommt',
+      'Festgelegte Zeit, in der man systematisch schaut',
     ],
-    distractor: 'Nur Schnabelmeißeln bei Spechten ohne Notiz',
-    solution: 'Ethogramm / Protokoll / Beobachtung / Deutung',
-    explanation: 'Saubere Beobachtung braucht Begriffe und Trennung von Deutung.',
+    distractor: 'Schnabelform eines Finken als Ethogramm-Eintrag',
+    solution: 'Ethogramm / Verhaltensweise / Zählung / Dauer',
+    explanation: 'Säuger beobachten heißt: klare Kategorien und messbare Notizen.',
     fachwissen: bioFw(
-      'Lehrplan: Verhaltensbeobachtungen protokollieren. Ein Ethogramm listet arttypische Verhaltensweisen. Protokolle machen Beobachtungen vergleichbar — wichtig für Schule und Forschung.',
+      'Lehrplan: Verhaltensbeobachtungen bei Säugetieren. Ethogramme und Zählungen machen Verhalten vergleichbar — ohne Methodenstoff aus LB1 zu wiederholen.',
       'Wikipedia: Ethogramm',
       'https://de.wikipedia.org/wiki/Ethogramm',
     ),
@@ -1477,23 +1627,24 @@ function beobMatch(rng: Rng) {
   })
 }
 
-function beobClassify(rng: Rng) {
+function beobEthogramSlots(rng: Rng) {
   return classifySlotsTask(rng, {
-    question: 'Beobachtung oder Deutung? Ordne zu.',
-    slotLabels: ['Beobachtung', 'Deutung'],
+    question: 'Welches Säuger-Verhalten passt zu welcher Ethogramm-Kategorie?',
+    slotLabels: ['Komfortverhalten', 'Nahrungsaufnahme', 'Fortbewegung', 'Sozialkontakt'],
     itemLabels: [
-      'Die Katze legt die Ohren flach an',
-      'Die Katze ist beleidigt',
-      'Der Hund wedelt mit dem Schwanz',
-      'Der Hund denkt an den Spaziergang',
+      'Katze putzt das Fell mit der Zunge',
+      'Hund kaut an einem Kauknochen',
+      'Reh wechselt trabend die Wiese',
+      'Welpen raufen spielerisch miteinander',
     ],
-    correctSlots: [0, 1, 0, 1],
-    solution: 'Sichtbares vs. innere Zustände',
-    explanation: 'Nur äußeres Verhalten ist direkt beobachtbar.',
+    correctSlots: [0, 1, 2, 3],
+    distractors: ['Amsel trägt Moos ins Nest'],
+    solution: 'Putzen / Fressen / Laufen / Spielkontakt',
+    explanation: 'Ethogramm-Kategorien helfen, Säugerverhalten zu ordnen.',
     fachwissen: bioFw(
-      'Klassischer Unterrichtssatz: „Die Katze legt die Ohren an“ ist Beobachtung; „sie ist beleidigt“ ist Deutung. Beides kann nützlich sein — aber getrennt notieren.',
-      'Wikipedia: Verhaltensbiologie',
-      'https://de.wikipedia.org/wiki/Verhaltensbiologie',
+      'Konkrete Säugerbeispiele statt Methoden-Doppelung mit „Arbeitsweisen“.',
+      'Wikipedia: Ethologie',
+      'https://de.wikipedia.org/wiki/Ethologie',
     ),
   })
 }
@@ -1501,34 +1652,54 @@ function beobClassify(rng: Rng) {
 function beobMc(rng: Rng) {
   const items = [
     {
-      q: 'Was sollte ein kurzes Verhaltensprotokoll mindestens enthalten?',
-      correct: 'Datum/Zeit, Tier, beobachtetes Verhalten (beschreibend)',
+      q: 'Du zählst 5 Minuten lang, wie oft sich eine Katze putzt. Was misst du?',
+      correct: 'Die Häufigkeit eines Verhaltens in einer festen Zeit',
       wrong: [
-        'Nur eine Note ohne Inhalt',
-        'Nur die Lieblingsfarbe der Beobachterin',
-        'Nur eine erfundene Gefühlslage ohne Sichtbares',
+        'Die Temperatur der Lungenbläschen',
+        'Die Schnabelform der Katze',
+        'Die Rangordnung ohne Hinschauen',
       ],
-      w: 'Ohne Metadaten und Beschreibung ist das Protokoll nicht nachvollziehbar.',
+      w: 'Zählprotokolle machen Verhalten auswertbar.',
     },
     {
-      q: 'Warum beobachtet man Tiere oft mehrere Minuten lang?',
-      correct: 'Um Verhaltenssequenzen und Wiederholungen zu erkennen',
+      q: 'Warum legt man vor der Zoo-Beobachtung ein Ethogramm fest?',
+      correct: 'Damit alle dasselbe Verhalten gleich benennen und zählen',
       wrong: [
-        'Weil eine Sekunde immer ausreicht',
-        'Weil Protokolle verboten sind',
-        'Weil Säuger keine Sinne haben',
+        'Damit Tiere gestresst werden',
+        'Damit Protokolle überflüssig werden',
+        'Damit Säuger zu Vögeln werden',
       ],
-      w: 'Kurze Blicke erfassen oft nur Ausschnitte.',
+      w: 'Gemeinsame Kategorien → vergleichbare Daten.',
     },
     {
-      q: 'Was ist beim Beobachten im Zoo/Schulhof besonders wichtig?',
-      correct: 'Tiere nicht stressen und Abstand halten',
+      q: 'Was ist beim Beobachten von Säugern im Zoo besonders wichtig?',
+      correct: 'Abstand halten und Tiere nicht unnötig stören',
       wrong: [
-        'Tiere unbedingt anfassen',
-        'Laut rufen, um „echte“ Reaktionen zu erzwingen',
-        'Futter werfen ohne Erlaubnis',
+        'Tiere anfassen und füttern ohne Erlaubnis',
+        'Laut schreien, um Reaktionen zu erzwingen',
+        'Ins Gehege steigen',
       ],
-      w: 'Ethik und Tierschutz gehören zur Methode.',
+      w: 'Tierschutz gehört zur Beobachtungsmethode.',
+    },
+    {
+      q: 'Ein Hund wedelt und läuft zur Tür. Was ist eine sinnvolle Ethogramm-Notiz?',
+      correct: '„Wedeln + Laufen zur Tür“ (beschreibend notieren)',
+      wrong: [
+        'Nur „Hund ist genial“ ohne Verhalten',
+        'Nur die Lieblingsfarbe notieren',
+        'Lungenvolumen schätzen ohne Blick',
+      ],
+      w: 'Sichtbare Verhaltensweisen eintragen — klar und knapp.',
+    },
+    {
+      q: 'Warum reicht oft ein kurzer Blick nicht für eine Verhaltensbeobachtung?',
+      correct: 'Viele Verhaltensweisen wiederholen sich erst über Minuten',
+      wrong: [
+        'Weil Säuger keine Verhaltensweisen haben',
+        'Weil Ethogramme verboten sind',
+        'Weil Zählen sinnlos ist',
+      ],
+      w: 'Dauer und Wiederholung zeigen Muster.',
     },
   ]
   const it = pick(rng, items)
@@ -1539,9 +1710,9 @@ function beobMc(rng: Rng) {
     solution: it.correct,
     explanation: it.w,
     fachwissen: bioFw(
-      `${it.w} Gute Beobachtung verbindet Geduld, klare Begriffe und Rücksicht auf das Tier.`,
-      'Wikipedia: Beobachtung',
-      'https://de.wikipedia.org/wiki/Beobachtung',
+      `${it.w} Fokus: Säugerverhalten systematisch erfassen.`,
+      'Wikipedia: Ethologie',
+      'https://de.wikipedia.org/wiki/Ethologie',
     ),
     dedupeKey: `bio:k5:saeuger:beob:mc:${it.q.slice(0, 36)}`,
     contentIds: [`bio:k5:saeuger:beob:mc:${it.q.slice(0, 36)}`],
@@ -1550,17 +1721,17 @@ function beobMc(rng: Rng) {
 
 function beobSort(rng: Rng) {
   return sortChronologyTask(rng, {
-    question: 'Ordne Schritte einer Unterrichtsbeobachtung.',
+    question: 'Ordne Schritte einer Säuger-Verhaltensbeobachtung.',
     labels: [
-      'Frage festlegen (z. B. Fressverhalten)',
-      'Beobachten und notieren',
-      'Häufigkeiten auszählen / ordnen',
-      'Ergebnis vorsichtig deuten',
+      'Ethogramm / Frage festlegen (z. B. Putzen)',
+      'Feste Zeit beobachten und Striche setzen',
+      'Häufigkeiten auszählen',
+      'Muster vorsichtig erklären',
     ],
-    solution: 'Frage → Beobachten → Auswerten → Deuten',
-    explanation: 'Methode vor Deutung.',
+    solution: 'Ethogramm → Zählen → Auswerten → Erklären',
+    explanation: 'Zuerst Kategorien und Daten, dann Erklärung.',
     fachwissen: bioFw(
-      'Auch einfache Zählprotokolle („Wie oft putzt sich die Katze in 5 Minuten?“) trainieren wissenschaftliches Arbeiten.',
+      'Beispiel: „Wie oft putzt sich die Hauskatze in 5 Minuten?“',
       'Wikipedia: Ethologie',
       'https://de.wikipedia.org/wiki/Ethologie',
     ),
@@ -1569,23 +1740,24 @@ function beobSort(rng: Rng) {
   })
 }
 
-function beobProtocolSlots(rng: Rng) {
+function beobSpeciesSlots(rng: Rng) {
   return classifySlotsTask(rng, {
-    question: 'Was gehört wohin im Protokoll? Ziehe zu.',
-    slotLabels: ['Ins Protokoll', 'Eher nicht / unklar'],
+    question: 'Welches Verhalten typischerweise zu welchem Säuger?',
+    slotLabels: ['Haushund', 'Hauskatze', 'Reh', 'Feldhase'],
     itemLabels: [
-      'Datum, Uhrzeit, Tierart',
-      '„Ohren flach angelegt“ (beschreibend)',
-      '„Ist beleidigt und denkt an gestern“',
-      'Nur eine Fantasiegeschichte ohne Tierbezug',
+      'Wedelt oft bei Begrüßung mit dem Schwanz',
+      'Putzt Fell ausgiebig mit der Zunge',
+      'Äst auf der Wiese und sichert mit erhobenem Kopf',
+      'Macht große Sätze und legt Ohren flach an beim Flüchten',
     ],
-    correctSlots: [0, 0, 1, 1],
-    solution: 'Metadaten + Beschreibung vs. reine Spekulation',
-    explanation: 'Gute Protokolle sind nachvollziehbar und beschreibend.',
+    correctSlots: [0, 1, 2, 3],
+    distractors: ['Baut ein FederNest in der Astgabel'],
+    solution: 'Hund / Katze / Reh / Hase',
+    explanation: 'Arttypische Verhaltensweisen sind Beobachtungsgegenstand.',
     fachwissen: bioFw(
-      'Drag-and-drop übt die Trennung: was dokumentieren, was weglassen.',
-      'Wikipedia: Ethogramm',
-      'https://de.wikipedia.org/wiki/Ethogramm',
+      'Heimische Säugerbeispiele machen Ethogramme greifbar.',
+      'Wikipedia: Ethologie',
+      'https://de.wikipedia.org/wiki/Ethologie',
     ),
   })
 }
@@ -1595,8 +1767,8 @@ function beobKnowledgeMc(rng: Rng) {
     rng,
     [
       {
-        q: 'Was ist ein Ethogramm?',
-        correct: 'Eine Liste typischer Verhaltensweisen einer Art',
+        q: 'Was ist ein Ethogramm bei der Säugerbeobachtung?',
+        correct: 'Eine Liste typischer Verhaltensweisen der beobachteten Art',
         wrong: [
           'Ein Organ in der Lunge',
           'Ein Schnabeltyp bei Finken',
@@ -1607,40 +1779,52 @@ function beobKnowledgeMc(rng: Rng) {
         url: 'https://de.wikipedia.org/wiki/Ethogramm',
       },
       {
-        q: 'Welche Notiz ist eine Beobachtung?',
-        correct: '„Der Hund wedelt mit dem Schwanz“',
+        q: 'Was gehört in eine Häufigkeitszählung?',
+        correct: 'Festgelegte Zeit + klar benanntes Verhalten + Strichliste',
         wrong: [
-          '„Der Hund träumt von Urlaub“',
-          '„Der Hund hasst Mathematik“',
-          '„Der Hund plant den nächsten Tag“',
+          'Nur Fantasie ohne Tier',
+          'Nur die Lieblingsfarbe',
+          'Nur eine Note ohne Verhalten',
         ],
-        w: 'Nur äußerlich Wahrnehmbares ist direkte Beobachtung.',
-        quelle: 'Wikipedia: Verhaltensbiologie',
-        url: 'https://de.wikipedia.org/wiki/Verhaltensbiologie',
-      },
-      {
-        q: 'Warum zählt man Verhaltensweisen manchmal aus?',
-        correct: 'Um Häufigkeiten und Muster zu erkennen',
-        wrong: [
-          'Um Protokolle unnötig zu machen',
-          'Um Tiere zu stressen',
-          'Um Sinne auszuschalten',
-        ],
-        w: 'Zählen macht Vergleiche möglich.',
+        w: 'Zeit, Kategorie, Zählung — sonst kein Muster.',
         quelle: 'Wikipedia: Ethologie',
         url: 'https://de.wikipedia.org/wiki/Ethologie',
       },
       {
-        q: 'Was gilt ethisch bei der Beobachtung?',
+        q: 'Warum beobachtet man Säuger oft mehrere Minuten?',
+        correct: 'Um Sequenzen und Wiederholungen zu erkennen',
+        wrong: [
+          'Weil eine Sekunde immer reicht',
+          'Weil Ethogramme verboten sind',
+          'Weil Säuger keine Sinne haben',
+        ],
+        w: 'Kurzblicke erfassen oft nur Ausschnitte.',
+        quelle: 'Wikipedia: Verhaltensbiologie',
+        url: 'https://de.wikipedia.org/wiki/Verhaltensbiologie',
+      },
+      {
+        q: 'Welches Verhalten passt typischerweise zur Hauskatze?',
+        correct: 'Ausgiebiges Fellputzen mit der Zunge',
+        wrong: [
+          'Hakenschnabel zum Zerreißen',
+          'Nestbau mit Moos in der Astgabel',
+          'Laichen im Teich',
+        ],
+        w: 'Komfortverhalten ist bei Katzen gut beobachtbar.',
+        quelle: 'Wikipedia: Hauskatze',
+        url: 'https://de.wikipedia.org/wiki/Hauskatze',
+      },
+      {
+        q: 'Was gilt ethisch bei der Beobachtung im Zoo?',
         correct: 'Tiere nicht unnötig stressen, Abstand halten',
         wrong: [
           'Immer anfassen und Futter werfen',
-          'Laut schreien, um Reaktionen zu erzwingen',
-          'Tiere ohne Erlaubnis mitnehmen',
+          'Laut schreien für „echte“ Reaktionen',
+          'Ohne Erlaubnis ins Gehege',
         ],
         w: 'Methode und Tierschutz gehören zusammen.',
-        quelle: 'Wikipedia: Beobachtung',
-        url: 'https://de.wikipedia.org/wiki/Beobachtung',
+        quelle: 'Wikipedia: Zoo',
+        url: 'https://de.wikipedia.org/wiki/Zoo',
       },
     ],
     'bio:k5:saeuger:beob:know',
@@ -1648,14 +1832,14 @@ function beobKnowledgeMc(rng: Rng) {
 }
 
 export const biSaeugerVerhaltenBeobachten: Topic['generate'] = mixedVariants(
+  beobEthogramSlots,
   beobMatch,
-  beobClassify,
-  beobProtocolSlots,
+  beobSpeciesSlots,
   beobMc,
   beobKnowledgeMc,
   beobSort,
   beobKnowledgeMc,
-  beobProtocolSlots,
+  beobEthogramSlots,
   beobMc,
 )
 
