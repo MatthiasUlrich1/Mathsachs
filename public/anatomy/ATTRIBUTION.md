@@ -159,15 +159,15 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
   - Right: „Cyclops.jpg“, Public Domain — https://commons.wikimedia.org/wiki/File:Cyclops.jpg
 - **Note:** Drop fields are UI overlays only.
 
-## Geschichte K5 — Polis / Athen-Karte
+## Geschichte K5 — Polis / Athen-Ansicht
 
-- **File:** `polis-athen-karte.png`
-- **Title:** Atenas clásica (Plano de Atenas en época clásica, alrededor del 430 a. C.)
-- **Author:** Enrique Íñiguez Rodríguez (Qoan); based on Map ancient athens.png / Meyers Konversationslexikon 1888
-- **License:** CC BY-SA 3.0
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Atenas_cl%C3%A1sica.png
-- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
-- **Note:** Spanische Spoiler-Beschriftungen an den Zielfeldern (Ágora, Acrópolis, Pnix, Teatro de Dionisio) abgedeckt. Drop-Felder + Leader nur UI-Overlay. 1 Akropolis · 2 Agora · 3 Pnyx · 4 Theater des Dionysos. Keine Eigen-SVG-Schemas.
+- **File:** `polis-athen-uebersicht.jpg`
+- **Title:** Ideale Ansicht der Akropolis und des Areopag in Athen (1846)
+- **Author:** Leo von Klenze (1784–1864)
+- **License:** Public Domain (PD-Art / life+100; US pre-1930)
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Klenze,_Leo_von_-_Ideale_Ansicht_der_Akropolis_und_des_Areopag_in_Athen,_1846.jpg
+- **Collection:** Neue Pinakothek, München
+- **Note:** Gemälde ohne Textbeschriftung — keine Spoiler-Abdeckung nötig. Drop-Felder + Leader nur UI-Overlay. 1 Akropolis · 2 Parthenon · 3 Propyläen · 4 Unterstadt. Keine Eigen-SVG-Schemas.
 
 ## Insect (optional / future)
 

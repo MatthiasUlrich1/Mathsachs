@@ -68,23 +68,23 @@ const TOPIC_FW = {
 } as const
 
 /**
- * Polis-Karte: Wikimedia Commons „Atenas clásica.png“ (CC BY-SA 3.0).
- * Farbige Übersicht ca. 430 v. Chr.; spanische Spoiler an den Zielfeldern abgedeckt.
- * 1 Akropolis · 2 Agora · 3 Pnyx · 4 Theater des Dionysos
+ * Polis-Ansicht: Leo von Klenze, Ideale Ansicht der Akropolis (1846), Public Domain.
+ * Gemälde ohne Textbeschriftung — keine Spoiler-Abdeckung nötig.
+ * 1 Akropolis · 2 Parthenon · 3 Propyläen · 4 Unterstadt
  */
 const POLIS_DIAGRAM = {
-  imageSrc: '/anatomy/polis-athen-karte.png',
-  imageAlt: 'Übersichtskarte des antiken Athens mit Orten der Polis',
+  imageSrc: '/anatomy/polis-athen-uebersicht.jpg',
+  imageAlt: 'Ideale Ansicht der Akropolis und des Areopags in Athen (Leo von Klenze, 1846)',
   attribution:
-    'Enrique Íñiguez Rodríguez (Qoan): Atenas clásica, Wikimedia Commons, CC BY-SA 3.0 — ' +
-    'https://commons.wikimedia.org/wiki/File:Atenas_cl%C3%A1sica.png — ' +
-    'https://creativecommons.org/licenses/by-sa/3.0/ ' +
-    '(Spanische Spoiler-Beschriftungen an den Zielfeldern abgedeckt; Drop-Felder/Leader als UI-Overlay).',
+    'Leo von Klenze: Ideale Ansicht der Akropolis und des Areopag in Athen (1846), ' +
+    'Neue Pinakothek / Wikimedia Commons, Public Domain — ' +
+    'https://commons.wikimedia.org/wiki/File:Klenze,_Leo_von_-_Ideale_Ansicht_der_Akropolis_und_des_Areopag_in_Athen,_1846.jpg ' +
+    '(Drop-Felder/Leader nur UI-Overlay; Bild unverändert).',
   slots: [
-    { id: 'akropolis', x: 8, y: 18, targetX: 49.0, targetY: 55.0, label: 'Akropolis' },
-    { id: 'agora', x: 8, y: 36, targetX: 34.3, targetY: 36.3, label: 'Agora' },
-    { id: 'pnyx', x: 8, y: 54, targetX: 20.2, targetY: 59.8, label: 'Pnyx' },
-    { id: 'theater', x: 8, y: 72, targetX: 46.0, targetY: 62.5, label: 'Theater des Dionysos' },
+    { id: 'akropolis', x: 8, y: 18, targetX: 58.0, targetY: 40.0, label: 'Akropolis' },
+    { id: 'parthenon', x: 8, y: 36, targetX: 74.0, targetY: 32.0, label: 'Parthenon' },
+    { id: 'propylaen', x: 8, y: 54, targetX: 50.0, targetY: 48.0, label: 'Propyläen' },
+    { id: 'unterstadt', x: 8, y: 72, targetX: 20.0, targetY: 58.0, label: 'Unterstadt' },
   ],
 } as const
 
@@ -520,18 +520,18 @@ function polisLabel(rng: Rng) {
   ]).slice(0, 2)
   return imageLabelSlotsTask({
     question:
-      'Übersichtskarte von Athen: Ziehe zu den Feldern 1–4 die passenden Orte der Polis.',
+      'Ansicht von Athen: Ziehe zu den Feldern 1–4 die passenden Orte der Polis.',
     imageSrc: POLIS_DIAGRAM.imageSrc,
     imageAlt: POLIS_DIAGRAM.imageAlt,
     attribution: POLIS_DIAGRAM.attribution,
     drawLeaders: true,
     instruction:
-      '1 Burgberg mit Heiligtümern · 2 Markt und Versammlung · 3 Versammlungshügel · 4 Theater am Südhang.',
+      '1 Burgberg mit Heiligtümern · 2 großer Tempel der Athena · 3 Torbau zur Akropolis · 4 Wohnstadt unterhalb.',
     items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],
     solution: slots.map((s, i) => `${i + 1} ${s.label}`).join('; '),
-    explanation: 'Typische Orte einer Polis: Heiligtum, Markt, Politik, Kultur.',
+    explanation: 'Akropolis, Tempel und Unterstadt bilden die sichtbare Struktur der Polis.',
     fachwissen: TOPIC_FW.polis,
     dedupeKey: 'ge:k5:polis:label',
     contentIds: ['ge:k5:polis:label'],

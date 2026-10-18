@@ -26,7 +26,7 @@ const SCHEMA_FILES = [
   'female-reproductive-frontal.png',
   'male-reproductive-frontal.png',
   'bug-parts.svg',
-  'polis-athen-karte.png',
+  'polis-athen-uebersicht.jpg',
 ]
 
 describe('resolveAnatomySrc', () => {

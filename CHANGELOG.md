@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.142] – 2026-10-18
+
+### Geändert
+- **Polis-Bildbeschriftung:** Statt beschrifteter Karte mit Spoiler-Abdeckung jetzt
+  Leo von Klenzes PD-Gemälde (Akropolis-Ansicht ohne Text im Bild); Drop-Felder neu
+  gesetzt (Akropolis, Parthenon, Propyläen, Unterstadt).
+
+
 ## [0.28.141] – 2026-10-18
 
 ### Behoben
