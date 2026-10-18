@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.11.0',
-    changelog: `K5: 9 Themenbanken mit mehr Wissens-MC, Drag-and-Drop (Antworten in Felder) und Schemata (Schnabeltypen, Atemweg). ${topics} Themen.`,
+    version: '1.11.1',
+    changelog: `K5: 9 neue Banken gesperrt zur Prüfung (Arbeitsweisen, Kriechtierschutz, Schnabel/Revier/Vogelschutz, Lunge/Verhalten/Sinne/Sozial). Inhalt bleibt für Prüfer spielbar. ${topics} Themen.`,
     official,
     extras: [],
   }

@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.126] – 2026-10-18
+
+### Geändert
+- **K5 Bio Prüfungssperre:** Die 9 neuen Themenbanken wieder eleased: false  (nur Prüfer/Entwickler). Pack Biologie **1.11.1**.
+
+
 ## [0.28.125] – 2026-10-18
 
 ### Hinzugefügt
