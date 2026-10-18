@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T15:30:13.686Z",
+  "updatedAt": "2026-10-18T15:52:07.960Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.11.2",
+      "version": "1.12.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 162099,
-      "changelog": "K5-Prüfungsfix: DnD ohne „Gruppe N“, keine Überschneidung Arbeitsweisen↔Verhalten beobachten, mehr Vielfalt Lunge/Schnabel/Revier. 9 Banken weiter gesperrt. 340 Themen."
+      "size": 162016,
+      "changelog": "K5: 9 Themen freigegeben. Schema-Beschriftung ohne Namensspoiler; Lunge mit Bild+Vielfalt. 340 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

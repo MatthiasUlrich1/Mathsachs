@@ -243,11 +243,14 @@ function schnabelCause(rng: Rng) {
 function schnabelLabel(rng: Rng) {
   const slots = [...SCHNABEL_DIAGRAM.slots]
   return imageLabelSlotsTask({
-    question: 'Beschrifte die drei Schnabelformen im Schema.',
+    question:
+      'Ziehe die passenden Schnabelnamen in die Felder 1–3 am Schema (Form erkennen — nicht die Reihenfolge der Chips).',
     imageSrc: SCHNABEL_DIAGRAM.imageSrc,
     imageAlt: SCHNABEL_DIAGRAM.imageAlt,
     attribution: SCHNABEL_DIAGRAM.attribution,
     drawLeaders: false,
+    instruction:
+      'Jedes nummerierte Feld (1, 2, 3) bekommt genau einen Namen. Zwei Ablenkungen bleiben übrig.',
     items: [
       ...slots.map((s) => ({ label: s.label })),
       { label: 'Kiemendeckel' },
@@ -256,9 +259,10 @@ function schnabelLabel(rng: Rng) {
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2],
     solution: '1 Hakenschnabel; 2 Kegelschnabel; 3 Pfriemschnabel',
-    explanation: 'Drei typische Formen für den Unterricht: Haken, Kegel, Pfriem.',
+    explanation:
+      'Haken = gebogen zum Reißen; Kegel = kurz/kräftig zum Knacken; Pfriem = spitz zum Picken.',
     fachwissen: bioFw(
-      'Das Schema zeigt stark vereinfachte Silhouetten. Im Unterricht verknüpft man jede Form mit einer Nahrung: Reißen, Knacken, Picken.',
+      'Das Schema zeigt nur Silhouetten und Nummern — ohne Namensspoiler. Form und typische Nahrung gehören zusammen.',
       'Wikipedia: Vogelschnabel',
       'https://de.wikipedia.org/wiki/Vogelschnabel',
     ),
@@ -1460,11 +1464,14 @@ function lungeCause(rng: Rng) {
 function lungeLabel(rng: Rng) {
   const slots = [...ATEM_DIAGRAM.slots]
   return imageLabelSlotsTask({
-    question: 'Beschrifte den Atemweg im Schema (1–4).',
+    question:
+      'Ziehe die passenden Bezeichnungen in die Felder 1–4 am Atemweg-Schema (von außen nach innen).',
     imageSrc: ATEM_DIAGRAM.imageSrc,
     imageAlt: ATEM_DIAGRAM.imageAlt,
     attribution: ATEM_DIAGRAM.attribution,
     drawLeaders: false,
+    instruction:
+      'Jedes nummerierte Feld bekommt genau einen Begriff. Zwei Ablenkungen bleiben übrig.',
     items: [
       ...slots.map((s) => ({ label: s.label })),
       { label: 'Kiemendeckel' },
@@ -1475,7 +1482,7 @@ function lungeLabel(rng: Rng) {
     solution: '1 Nase/Mund; 2 Luftröhre; 3 Bronchien; 4 Lungenbläschen',
     explanation: 'Luftweg von außen bis zum Ort des Gasaustauschs.',
     fachwissen: bioFw(
-      'Das Schema vereinfacht den Weg der Atemluft. Erst in den Lungenbläschen findet der eigentliche Gasaustausch statt.',
+      'Schema ohne Namensspoiler: Nummern markieren die Stationen; die Namen werden zugeordnet.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),

@@ -1,14 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
   <title id="title">Drei Schnabelformen (Schema)</title>
-  <desc id="desc">Haken-, Kegel- und Pfriemschnabel zum Zuordnen</desc>
+  <desc id="desc">Drei nummerierte Vogelschnabel-Silhouetten zum Beschriften</desc>
   <rect width="900" height="420" fill="#faf8f4"/>
-  <!-- 1 Hook beak -->
+  <!-- 1 Hook beak (no name label — students assign) -->
   <g transform="translate(80,80)">
     <ellipse cx="90" cy="90" rx="70" ry="55" fill="#f0e6d8" stroke="#5a4632" stroke-width="3"/>
     <path d="M150 70 Q210 55 230 95 Q200 120 155 105 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">1</text>
-    <text x="90" y="190" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#333">Hakenschnabel</text>
   </g>
   <!-- 2 Cone beak -->
   <g transform="translate(340,80)">
@@ -16,7 +15,6 @@
     <path d="M150 75 L235 95 L150 115 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">2</text>
-    <text x="90" y="190" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#333">Kegelschnabel</text>
   </g>
   <!-- 3 Awl beak -->
   <g transform="translate(600,80)">
@@ -24,7 +22,6 @@
     <path d="M150 88 L250 95 L150 102 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">3</text>
-    <text x="90" y="190" text-anchor="middle" font-size="18" font-family="Segoe UI, Arial" fill="#333">Pfriemschnabel</text>
   </g>
   <text x="450" y="390" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#666">
     Schema · Unterricht (vereinfacht) · TaskTrophy

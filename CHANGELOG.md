@@ -9,6 +9,18 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.128] – 2026-10-18
+
+### Behoben
+- **Schnabel-Schema:** Namensspoiler unter den Zeichnungen entfernt; klare
+  Anweisung zum Beschriften der Felder 1–3.
+- **Atemweg-Schema:** ohne Hinweistexte; klare Beschriftungsanweisung.
+
+### Hinzugefügt
+- **K5 Bio Freigabe:** 9 geprüfte Themenbanken freigegeben (Arbeitsweisen,
+  Kriechtierschutz, Schnabel/Revier/Vogelschutz, Lunge/Verhalten/Sinne/Sozial).
+  Pack Biologie **1.12.0**.
+
 ## [0.28.127] – 2026-10-18
 
 ### Behoben

@@ -1,10 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
-  <title id="title">Atemwege der S‰ugetier-Lunge (Schema)</title>
-  <desc id="desc">Vereinfachtes Schema: Nase/Mund, Luftrˆhre, Bronchien, Lungenbl‰schen</desc>
+  <title id="title">Atemwege der Sùugetier-Lunge (Schema)</title>
+  <desc id="desc">Vereinfachtes nummeriertes Schema der Atemwege zum Beschriften</desc>
   <rect width="800" height="520" fill="#f7faf8"/>
   <!-- head / nose -->
   <ellipse cx="120" cy="160" rx="70" ry="55" fill="#e8f0ea" stroke="#2d5a3d" stroke-width="3"/>
-  <text x="120" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#1a3d28">Kopf</text>
   <!-- trachea -->
   <rect x="190" y="140" width="160" height="40" rx="12" fill="#d4e8dc" stroke="#2d5a3d" stroke-width="3"/>
   <!-- bronchi split -->
@@ -28,6 +27,6 @@
     <circle cx="700" cy="160" r="22" fill="#2d5a3d"/><text x="700" y="168" text-anchor="middle">4</text>
   </g>
   <text x="400" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#456">
-    Schema ∑ Unterricht (vereinfacht) ∑ TaskTrophy
+    Schema ù Unterricht (vereinfacht) ù TaskTrophy
   </text>
 </svg>

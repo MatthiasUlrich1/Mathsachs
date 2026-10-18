@@ -78,7 +78,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Beobachten',
             'Untersuchen',
             'Vergleichen',
-          ]),
+          ], { released: true }),
         ]),
         area('lb2', 'Fische in ihren Lebensräumen', 8, [
           topic('bi-k5-lb2-fische', 'Fische – Überblick', [
@@ -162,7 +162,7 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
           topic('bi-k5-lb4-kriechtiere-schutz', 'Kriechtiere – Schutz und Artenschutz', [
             'Artenschutz',
             'Lebensraum',
-          ]),
+          ], { released: true }),
         ]),
         area('lb5', 'Vögel in ihren Lebensräumen', 9, [
           topic('bi-k5-lb5-voegel', 'Vögel – Überblick', [
@@ -192,16 +192,16 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Schnabel',
             'Nahrung',
             'Angepasstheit',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb5-voegel-verhalten', 'Vögel – Revier, Balz und Gesang', [
             'Revier',
             'Balz',
             'Vogelgesang',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb5-voegel-schutz', 'Vögel – Schutz und Artenschutz', [
             'Vogelschutz',
             'Artenschutz',
-          ]),
+          ], { released: true }),
         ]),
         area('lb6', 'Säugetiere in ihren Lebensräumen', 13, [
           topic('bi-k5-lb6-saeugetiere', 'Säugetiere – Überblick', [
@@ -229,20 +229,20 @@ export function buildBiologieGymOfficialGrades(): PackGrade[] {
             'Lungenbläschen',
             'Oberflächenvergrößerung',
             'Gasaustausch',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-verhalten', 'Säugetiere – Verhalten beobachten', [
             'Verhalten',
             'Beobachtung',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-sinne', 'Säugetiere – Sinne und Kommunikation', [
             'Sinne',
             'Sender-Empfänger',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-sozial', 'Säugetiere – Sozialverhalten', [
             'Rudel',
             'Rangordnung',
             'Revier',
-          ]),
+          ], { released: true }),
           topic('bi-k5-lb6-saeuger-schutz', 'Säugetiere – Schutz und Vielfalt', [
             'Artenschutz',
             'Vielfalt',
@@ -1380,10 +1380,10 @@ export const BIOLOGIE_K6_WAHL_RELEASED_IDS = [
 ] as const
 
 /** K5 Themen laut Freigabeliste — vollständig freigegeben nach Verdichtung. */
-/** K5 Freigabe — ohne die 9 Banken, die noch in der Prüfung sind. */
 export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb1-merkmale',
   'bi-k5-lb1-kennzeichen',
+  'bi-k5-lb1-arbeitsweisen',
   'bi-k5-lb2-fische',
   'bi-k5-lb2-fische-aufbau',
   'bi-k5-lb2-fische-merkmale',
@@ -1398,14 +1398,22 @@ export const BIOLOGIE_K5_RELEASED_IDS = [
   'bi-k5-lb4-kriechtiere-merkmale',
   'bi-k5-lb4-kriechtiere-arten',
   'bi-k5-lb4-kriechtiere-fortpflanzung',
+  'bi-k5-lb4-kriechtiere-schutz',
   'bi-k5-lb5-voegel',
   'bi-k5-lb5-voegel-aufbau',
   'bi-k5-lb5-voegel-flug',
   'bi-k5-lb5-voegel-fortpflanzung',
+  'bi-k5-lb5-voegel-schnabel',
+  'bi-k5-lb5-voegel-verhalten',
+  'bi-k5-lb5-voegel-schutz',
   'bi-k5-lb6-saeugetiere',
   'bi-k5-lb6-saeuger-merkmale',
   'bi-k5-lb6-saeuger-skelett',
   'bi-k5-lb6-saeuger-angepasst',
+  'bi-k5-lb6-saeuger-lunge',
+  'bi-k5-lb6-saeuger-verhalten',
+  'bi-k5-lb6-saeuger-sinne',
+  'bi-k5-lb6-saeuger-sozial',
   'bi-k5-lb6-saeuger-schutz',
   'bi-k5-lb6-saeuger-fortpflanzung',
   'bi-k5-lb7-systematik',

@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.11.2',
-    changelog: `K5-Prüfungsfix: DnD ohne „Gruppe N“, keine Überschneidung Arbeitsweisen↔Verhalten beobachten, mehr Vielfalt Lunge/Schnabel/Revier. 9 Banken weiter gesperrt. ${topics} Themen.`,
+    version: '1.12.0',
+    changelog: `K5: 9 Themen freigegeben. Schema-Beschriftung ohne Namensspoiler; Lunge mit Bild+Vielfalt. ${topics} Themen.`,
     official,
     extras: [],
   }
