@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T16:28:52.934Z",
+  "updatedAt": "2026-10-18T17:43:54.980Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.10.0",
+      "version": "1.11.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 163120,
-      "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. 332 Themen."
+      "size": 163393,
+      "changelog": "K5 Neu-Themen mit hand-authored Aufgabenbanken (Archäologie, Jetztmensch, Gesellschaftspyramide, Polis, Mitbestimmung, Ressourcen, Landschaft); neu+gesperrt bis Freigabe. Polis-Bildbeschriftung mit Commons-Karte. 332 Themen."
     },
     {
       "id": "gym-sachsen-biologie",

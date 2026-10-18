@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.10.0",
-  "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. 332 Themen.",
+  "version": "1.11.0",
+  "changelog": "K5 Neu-Themen mit hand-authored Aufgabenbanken (Archäologie, Jetztmensch, Gesellschaftspyramide, Polis, Mitbestimmung, Ressourcen, Landschaft); neu+gesperrt bis Freigabe. Polis-Bildbeschriftung mit Commons-Karte. 332 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -70,6 +70,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Archäologie",
                 "Sachsen",
@@ -143,6 +144,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Evolution",
                 "Jetztmensch",
@@ -157,6 +159,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Gesellschaftspyramide",
                 "Pharao",
@@ -192,6 +195,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Polis",
                 "Stadtstaat",
@@ -246,6 +250,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Sklaven",
                 "Frauen",
@@ -280,6 +285,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Wasser",
                 "Boden",
@@ -293,6 +299,7 @@
               "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
               "released": false,
               "tasksPerRound": 10,
+              "neu": true,
               "keywords": [
                 "Rodung",
                 "Erosion",
@@ -4587,5 +4594,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "c6085db9"
+  "contentHash": "fff2fa99"
 }

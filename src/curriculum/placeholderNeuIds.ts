@@ -251,13 +251,8 @@ export const PLACEHOLDER_NEU_TOPIC_IDS: ReadonlySet<string> = new Set([
   'ge-k10-lbw-alltag-ddr',
   'ge-k10-lbw-erinnerung-teilung',
   'ge-k10-lbw-opposition',
-  'ge-k5-lb1-archaologie-sachsen',
-  'ge-k5-lb2-gesellschaftspyramide',
-  'ge-k5-lb2-jetztmensch',
-  'ge-k5-lb3-ohne-mitbestimmung',
-  'ge-k5-lb3-polis',
-  'ge-k5-lb4-landschaft',
-  'ge-k5-lb4-ressourcen',
+  // K5 Neu-Themen mit hand-authored Banken: nicht mehr outline-only,
+  // aber Pack setzt neu:true + released:false bis Freigabe.
   'ge-k6-lb1-caesar-augustus',
   'ge-k6-lb1-germanen',
   'ge-k6-lb1-kaiserzeit-gesellschaft',
@@ -605,7 +600,7 @@ export function isPlaceholderNeuTopic(id: string): boolean {
 /** Counts by subject at generation time (for docs / sanity checks). */
 export const PLACEHOLDER_NEU_COUNTS = {
   "Biologie": 209,
-  "Geschichte": 184,
+  "Geschichte": 177,
   "Physik": 88,
   "Oberschule": 74,
   "Sekundarschule": 28,

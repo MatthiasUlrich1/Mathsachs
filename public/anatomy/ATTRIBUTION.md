@@ -159,6 +159,15 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
   - Right: „Cyclops.jpg“, Public Domain — https://commons.wikimedia.org/wiki/File:Cyclops.jpg
 - **Note:** Drop fields are UI overlays only.
 
+## Geschichte K5 — Polis / Athen-Karte
+
+- **File:** `polis-athen-karte.png`
+- **Title:** Map of Ancient Athens c. 430 BC
+- **Author:** Singinglemon (based on Meyers Konversationslexikon 1888)
+- **License:** Public Domain
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Map_ancient_athens.png
+- **Note:** Spoiler-Beschriftungen an den Zielfeldern abgedeckt; Nummern 1–4 als Overlay für Bildbeschriftung (Akropolis, Agora, Pnyx, Theater des Dionysos). Keine Eigen-SVG-Schemas.
+
 ## Insect (optional / future)
 
 - **File:** `bug-parts.svg`

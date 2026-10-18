@@ -19,7 +19,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.10.0')
+    expect(pack.version).toBe('1.11.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -65,10 +65,14 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const k5 = grades.find((g) => g.id === 'geschichte-klasse-5')!
     const topics = k5.areas.flatMap((a) => a.topics)
     const filled = topics.filter((t) => !t.neu)
+    const filledNeu = topics.filter((t) => t.neu && !t.outlineOnly)
     expect(topics.every((t) => t.released === false)).toBe(true)
     expect(filled.every((t) => !t.outlineOnly)).toBe(true)
-    expect(topics.some((t) => t.neu && t.outlineOnly)).toBe(true)
-    const task = filled[0]!.generate(() => 0.5)
+    // Gefüllte Neu-Themen: spielbar für Entwickler, Badge bleibt, Freigabe ausstehend
+    expect(filledNeu.length).toBeGreaterThanOrEqual(7)
+    expect(filledNeu.every((t) => t.released === false)).toBe(true)
+    expect(filledNeu.every((t) => isPlayableGeschichteTopic(t.id))).toBe(true)
+    const task = filledNeu[0]!.generate(() => 0.5)
     expect(task.question.length).toBeGreaterThan(10)
     expect(task.fachwissen?.text?.trim().length ?? 0).toBeGreaterThanOrEqual(80)
     expect(task.check(task.sampleAnswer)).toBe(true)

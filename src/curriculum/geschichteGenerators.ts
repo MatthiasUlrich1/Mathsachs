@@ -1,6 +1,7 @@
 import { textTask } from './taskHelpers'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { GESCHICHTE_K5_GENERATORS } from './geschichte5'
+import { GESCHICHTE_K5_NEU_TOPIC_GENERATORS } from './geschichteK5NeuTopics'
 import { GESCHICHTE_K6_GENERATORS } from './geschichte6'
 import { GESCHICHTE_K6_REST_GENERATORS } from './geschichte6Rest'
 import { GESCHICHTE_K7_GENERATORS } from './geschichte7'
@@ -16,6 +17,7 @@ import type { Topic } from './types'
 /** Alle spielbaren Geschichte-Generatoren (K5–12; K6 freigegeben, Rest Entwickler). */
 const GESCHICHTE_ALL_GENERATORS: Record<string, Topic['generate']> = {
   ...GESCHICHTE_K5_GENERATORS,
+  ...GESCHICHTE_K5_NEU_TOPIC_GENERATORS,
   ...GESCHICHTE_K6_GENERATORS,
   ...GESCHICHTE_K6_REST_GENERATORS,
   ...GESCHICHTE_K7_GENERATORS,

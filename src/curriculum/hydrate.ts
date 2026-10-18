@@ -124,12 +124,16 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
       topics: area.topics.map((topic) => {
         const meta = byId.get(topic.id)
         if (!meta) return topic
-        const isNeu = meta.neu === true || isPlaceholderNeuTopic(meta.id)
+        const isPlaceholder = isPlaceholderNeuTopic(meta.id)
+        const isNeu = meta.neu === true || isPlaceholder
         return {
           ...topic,
           // Pack is source of truth: omit released ⇒ freigegeben
+          // Neu / Platzhalter bleiben gesperrt bis expliziter Freigabe.
           released: isNeu ? false : meta.released === false ? false : true,
-          ...(isNeu ? { neu: true, outlineOnly: true } : {}),
+          ...(isNeu ? { neu: true } : {}),
+          // outlineOnly nur für echte Struktur-Platzhalter ohne Aufgabenbank.
+          ...(isPlaceholder ? { outlineOnly: true } : {}),
           ...(typeof meta.tasksPerRound === 'number'
             ? { tasksPerRound: meta.tasksPerRound }
             : {}),

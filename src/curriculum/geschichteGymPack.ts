@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.10.0',
-    changelog: `Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. ${topics} Themen.`,
+    version: '1.11.0',
+    changelog: `K5 Neu-Themen mit hand-authored Aufgabenbanken (Archäologie, Jetztmensch, Gesellschaftspyramide, Polis, Mitbestimmung, Ressourcen, Landschaft); neu+gesperrt bis Freigabe. Polis-Bildbeschriftung mit Commons-Karte. ${topics} Themen.`,
     official,
     extras: [],
   }

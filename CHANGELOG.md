@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.139] – 2026-10-18
+
+### Hinzugefügt
+- **Geschichte K5 Neu-Themen:** Sieben Platzhalter mit hand-authored Aufgaben
+  (Archäologie Sachsen, Jetztmensch, Gesellschaftspyramide, Polis, Mitbestimmung,
+  Ressourcen, Landschaft); Neu-Badge + gesperrt bis Freigabe. Polis-Bildbeschriftung
+  mit Commons-Karte. Pack Geschichte **1.11.0**.
+
+
 ## [0.28.138] – 2026-10-18
 
 ### Behoben

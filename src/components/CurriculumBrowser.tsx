@@ -57,7 +57,11 @@ function TopicRow({
           {topic.neu && (
             <span
               className="topic__release-badge topic__release-badge--neu"
-              title="Struktur-Platzhalter — Aufgaben folgen"
+              title={
+                topic.outlineOnly
+                  ? 'Struktur-Platzhalter — Aufgaben folgen'
+                  : 'Neu — Aufgaben vorhanden, Freigabe ausstehend'
+              }
             >
               Neu
             </span>

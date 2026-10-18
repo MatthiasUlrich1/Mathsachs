@@ -12,7 +12,7 @@ const topic = (
   id: string,
   title: string,
   keywords?: string[],
-  opts?: { tasksPerRound?: number; released?: boolean },
+  opts?: { tasksPerRound?: number; released?: boolean; neu?: boolean },
 ): PackTopic => ({
   id,
   title,
@@ -20,6 +20,7 @@ const topic = (
   hint: 'Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.',
   released: opts?.released ?? false,
   tasksPerRound: opts?.tasksPerRound ?? DEFAULT_TASKS_PER_ROUND,
+  ...(opts?.neu ? { neu: true } : {}),
   ...(keywords?.length ? { keywords } : {}),
 })
 
@@ -71,12 +72,12 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Epoche',
             'v. Chr.',
           ]),
-          topic("ge-k5-lb1-archaologie-sachsen", "Regionalgeschichte: Archäologische Funde in Sachsen", [
-            "Archäologie",
-            "Sachsen",
-            "Funde",
-            "Regionalgeschichte",
-          ]),
+          topic(
+            'ge-k5-lb1-archaologie-sachsen',
+            'Regionalgeschichte: Archäologische Funde in Sachsen',
+            ['Archäologie', 'Sachsen', 'Funde', 'Regionalgeschichte'],
+            { neu: true, released: false },
+          ),
         ]),
         area('lb2', 'Von der Steinzeit zur Hochkultur – Menschen organisieren ihr Zusammenleben', 12, [
           topic('ge-k5-lb2-steinzeit-hochkultur', 'Steinzeit zur Hochkultur – Überblick', [
@@ -99,19 +100,18 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Mesopotamien',
             'Keilschrift',
           ]),
-          topic("ge-k5-lb2-jetztmensch", "Entwicklungsstufen zum Jetztmenschen", [
-            "Evolution",
-            "Jetztmensch",
-            "Homo sapiens",
-            "Steinzeit",
-          ]),
-          topic("ge-k5-lb2-gesellschaftspyramide", "Ägypten: Gesellschaftspyramide und Schriftlichkeit", [
-            "Gesellschaftspyramide",
-            "Pharao",
-            "Beamte",
-            "Hieroglyphen",
-            "Pyramiden",
-          ]),
+          topic(
+            'ge-k5-lb2-jetztmensch',
+            'Entwicklungsstufen zum Jetztmenschen',
+            ['Evolution', 'Jetztmensch', 'Homo sapiens', 'Steinzeit'],
+            { neu: true, released: false },
+          ),
+          topic(
+            'ge-k5-lb2-gesellschaftspyramide',
+            'Ägypten: Gesellschaftspyramide und Schriftlichkeit',
+            ['Gesellschaftspyramide', 'Pharao', 'Beamte', 'Hieroglyphen', 'Pyramiden'],
+            { neu: true, released: false },
+          ),
         ]),
         area('lb3', 'Zusammenleben im antiken Griechenland', 8, [
           topic('ge-k5-lb3-griechenland', 'Antikes Griechenland – Überblick', [
@@ -119,14 +119,13 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Antike',
             'Götterwelt',
           ]),
-          // Lehrplan K5 LB3: „Polis, Volksversammlung, Scherbengericht“ — eigenes Thema (released:false)
-          topic('ge-k5-lb3-polis', 'Die griechische Polis', [
-            'Polis',
-            'Stadtstaat',
-            'Bürger',
-            'Agora',
-            'Autonomie',
-          ]),
+          // Lehrplan K5 LB3: „Polis, Volksversammlung, Scherbengericht“ — Neu bis Freigabe
+          topic(
+            'ge-k5-lb3-polis',
+            'Die griechische Polis',
+            ['Polis', 'Stadtstaat', 'Bürger', 'Agora', 'Autonomie'],
+            { neu: true, released: false },
+          ),
           topic('ge-k5-lb3-athen', 'Athen und attische Demokratie', [
             'Volksversammlung',
             'Scherbengericht',
@@ -142,26 +141,27 @@ export function buildGeschichteGymOfficialGrades(): PackGrade[] {
             'Olympia',
             'Tempel',
           ]),
-          topic("ge-k5-lb3-ohne-mitbestimmung", "Attische Demokratie: Gruppen ohne Mitbestimmung", [
-            "Sklaven",
-            "Frauen",
-            "Metöken",
-            "Bürgerrecht",
-            "Demokratie",
-          ]),
+          topic(
+            'ge-k5-lb3-ohne-mitbestimmung',
+            'Attische Demokratie: Gruppen ohne Mitbestimmung',
+            ['Sklaven', 'Frauen', 'Metöken', 'Bürgerrecht', 'Demokratie'],
+            { neu: true, released: false },
+          ),
         ]),
         area('lb4', 'Längsschnitt: Mensch und Natur', 2, [
           topic('ge-k5-lb4-mensch-natur', 'Längsschnitt: Mensch und Natur', ['Mensch', 'Natur']),
-          topic('ge-k5-lb4-ressourcen', 'Ressourcen: Wasser, Boden, Ernährung', [
-            'Wasser',
-            'Boden',
-            'Ressource',
-          ]),
-          topic('ge-k5-lb4-landschaft', 'Landschaftswandel: Rodung und Nutzung', [
-            'Rodung',
-            'Erosion',
-            'Technik',
-          ]),
+          topic(
+            'ge-k5-lb4-ressourcen',
+            'Ressourcen: Wasser, Boden, Ernährung',
+            ['Wasser', 'Boden', 'Ressource'],
+            { neu: true, released: false },
+          ),
+          topic(
+            'ge-k5-lb4-landschaft',
+            'Landschaftswandel: Rodung und Nutzung',
+            ['Rodung', 'Erosion', 'Technik'],
+            { neu: true, released: false },
+          ),
         ]),
         area('lbw', 'Wahlbereiche', undefined, [
           topic('ge-k5-lbw-hellenismus-alexander', 'Hellenismus – Alexander „der Große“?', [

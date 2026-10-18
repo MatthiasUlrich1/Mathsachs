@@ -1,0 +1,28 @@
+---
+description: Curriculum-Aufgaben händisch erstellen — keine Bulk-Skripte; Neu bleibt bis Freigabe
+alwaysApply: true
+---
+
+# Curriculum-Aufgaben: händisch, Portfolio-Interaktionen, Neu/Sperre
+
+## Händische Erstellung
+- Aufgaben und Banken **immer händisch** durch den Agenten formulieren.
+- **Keine Bulk-Generator-Skripte** (besonders kein Python) zum Massenfüllen von Themen, Distraktoren oder Umformulierungen.
+- Recherche (Schulstoff, Internet, Bildersuche) und bewusste Formulierung sind Teil der Arbeit.
+
+## Interaktionen
+- Alle Interaktionen aus **allen Lehrplänen** dürfen für neue Aufgaben genutzt werden.
+- Neue Interaktionen gehören zum **Gesamtportfolio** und dürfen später wiederverwendet werden.
+- Interaktion muss zur Aufgabe passen und didaktisch Sinn machen.
+
+## Grafiken
+- Grafische Elemente einbauen, wo sinnvoll (z. B. Polis-Aufbau, Gesellschaftspyramide).
+- Nur **lizenzfreie Bilder aus dem Internet** (Wikimedia Commons u. ä.) mit Attribution.
+- **Keine eigenentworfenen SVGs/Schemas** für Beschriftungsaufgaben.
+- Bei Bildbeschriftung: Drop-Felder / Leader **korrekt positionieren**; Spoiler-Beschriftungen im Quellbild abdecken.
+- Wenn Commons/Download gerade blockiert (z. B. 429): später erneut versuchen — nicht durch Eigenzeichnung ersetzen.
+
+## Freigabe
+- Markierung **„Neu“** bleibt bis zur **expliziten Freigabe** durch den User.
+- Aufgaben bleiben **`released: false` / gesperrt**, bis der User freigibt.
+- Gefüllte Neu-Themen: spielbar für Entwickler (`outlineOnly` nur für echte Struktur-Platzhalter ohne Bank).

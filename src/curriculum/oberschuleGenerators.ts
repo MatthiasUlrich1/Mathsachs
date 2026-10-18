@@ -659,8 +659,10 @@ export function topicFromPack(
   generate: Topic['generate'] | undefined,
   opts?: { subject?: string },
 ): Topic {
-  const isNeu = topic.neu === true || isPlaceholderNeuTopic(topic.id)
-  const playable = Boolean(generate) && !isNeu
+  const isPlaceholder = isPlaceholderNeuTopic(topic.id)
+  const isNeu = topic.neu === true || isPlaceholder
+  // Neu-Badge kann bei gefüllten Banken bleiben; outlineOnly nur ohne echte Bank.
+  const playable = Boolean(generate) && !isPlaceholder
   return ensureTopicFachwissen(
     {
       id: topic.id,
