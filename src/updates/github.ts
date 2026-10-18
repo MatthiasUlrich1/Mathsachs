@@ -148,7 +148,7 @@ export async function probeFromUpdaterYaml(options: {
   const yamlName = updaterYamlName(options.platform)
   try {
     const response = await fetchImpl(githubLatestYamlUrl(yamlName), {
-      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'Mathsachs' },
+      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'TaskTrophy' },
       redirect: 'follow',
     })
     if (!response.ok) return null
@@ -161,10 +161,10 @@ export async function probeFromUpdaterYaml(options: {
     const fileName =
       parsed.path ||
       (options.platform === 'win32'
-        ? `Mathsachs-Setup-${parsed.version}.exe`
+        ? `TaskTrophy-Setup-${parsed.version}.exe`
         : options.platform === 'darwin'
-          ? `Mathsachs-${parsed.version}-arm64.dmg`
-          : `Mathsachs-${parsed.version}.AppImage`)
+          ? `TaskTrophy-${parsed.version}-arm64.dmg`
+          : `TaskTrophy-${parsed.version}.AppImage`)
     const downloadUrl = installerDownloadUrl(parsed.version, fileName)
     return {
       status: 'update',

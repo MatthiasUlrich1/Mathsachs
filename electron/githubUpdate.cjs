@@ -106,7 +106,7 @@ async function probeFromUpdaterYaml(currentVersion, platform, options) {
   const fetchFn = opts.fetchImpl || fetch
   try {
     const response = await fetchFn(latestYamlUrl(platform), {
-      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'Mathsachs' },
+      headers: { Accept: 'text/yaml,*/*', 'User-Agent': 'TaskTrophy' },
       redirect: 'follow',
     })
     if (!response.ok) return null
@@ -119,10 +119,10 @@ async function probeFromUpdaterYaml(currentVersion, platform, options) {
     const fileName =
       parsed.path ||
       (platform === 'win32'
-        ? `Mathsachs-Setup-${parsed.version}.exe`
+        ? `TaskTrophy-Setup-${parsed.version}.exe`
         : platform === 'darwin'
-          ? `Mathsachs-${parsed.version}-arm64.dmg`
-          : `Mathsachs-${parsed.version}.AppImage`)
+          ? `TaskTrophy-${parsed.version}-arm64.dmg`
+          : `TaskTrophy-${parsed.version}.AppImage`)
     return {
       status: 'update',
       yamlReady: true,
@@ -148,7 +148,7 @@ async function fetchLatestRelease(fetchImpl) {
     headers: {
       Accept: 'application/vnd.github+json',
       'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'Mathsachs',
+      'User-Agent': 'TaskTrophy',
     },
   })
   if (!response.ok) return null

@@ -1,5 +1,5 @@
 /** Contact address shown in the in-app Impressum and used by the Ideenmelder. */
-export const CONTACT_EMAIL = 'info@my-smart-home-support.de'
+export const CONTACT_EMAIL = 'mail@tasktrophy.de'
 
 export const IMPRESSUM_LINES = [
   'Linus und Matthias Ulrich',

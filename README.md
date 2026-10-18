@@ -182,7 +182,7 @@ Unter **Einstellungen â†’ Klasse**:
 
 Ãœber **Idee / Feedback** in der App oder per Mail:
 
-[Idee / Feedback zum TaskTrophy Ãœbungsprogramm.](mailto:info@my-smart-home-support.de?subject=Idee%20%2F%20Feedback%20zum%20TaskTrophy%20%C3%9Cbungsprogramm.)
+[Idee / Feedback zum TaskTrophy Ãœbungsprogramm.](mailto:mail@tasktrophy.de?subject=Idee%20%2F%20Feedback%20zum%20TaskTrophy%20%C3%9Cbungsprogramm.)
 
 ## Lizenz
 
@@ -194,6 +194,6 @@ Copyright Â© 2026 Linus und Matthias Ulrich.
 Linus und Matthias Ulrich  
 GroÃŸe WallstraÃŸe 42  
 04509 Delitzsch  
-[info@my-smart-home-support.de](mailto:info@my-smart-home-support.de)
+[mail@tasktrophy.de](mailto:mail@tasktrophy.de)
 
 In der App ebenfalls unter **Impressum** und **Datenschutz**.

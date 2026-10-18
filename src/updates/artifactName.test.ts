@@ -5,21 +5,28 @@ import { describe, expect, it } from 'vitest'
 const yml = readFileSync(resolve(process.cwd(), 'electron-builder.yml'), 'utf8')
 
 describe('electron-builder artifact names', () => {
+  it('brands the installer as TaskTrophy', () => {
+    expect(yml).toMatch(/^productName:\s*TaskTrophy\s*$/m)
+  })
+
   it('pins a space-free Windows NSIS name that matches latest.yml', () => {
     expect(yml).toMatch(
-      /nsis:[\s\S]*?artifactName:\s*Mathsachs-Setup-\$\{version\}\.\$\{ext\}/,
+      /nsis:[\s\S]*?artifactName:\s*TaskTrophy-Setup-\$\{version\}\.\$\{ext\}/,
     )
   })
 
-  it('pins macOS and AppImage names without changing the Debian package', () => {
+  it('pins macOS, AppImage and deb names with TaskTrophy branding', () => {
     expect(yml).toMatch(
-      /dmg:[\s\S]*?artifactName:\s*Mathsachs-\$\{version\}-\$\{arch\}\.\$\{ext\}/,
+      /dmg:[\s\S]*?artifactName:\s*TaskTrophy-\$\{version\}-\$\{arch\}\.\$\{ext\}/,
     )
     expect(yml).toMatch(
-      /appImage:[\s\S]*?artifactName:\s*Mathsachs-\$\{version\}\.\$\{ext\}/,
+      /appImage:[\s\S]*?artifactName:\s*TaskTrophy-\$\{version\}\.\$\{ext\}/,
+    )
+    expect(yml).toMatch(
+      /deb:[\s\S]*?artifactName:\s*tasktrophy_\$\{version\}_\$\{arch\}\.\$\{ext\}/,
     )
     const linuxBlock = yml.match(/^linux:\n((?:[ \t].*\n)*)/m)?.[1] ?? ''
-    expect(linuxBlock).not.toMatch(/artifactName:/)
+    expect(linuxBlock).not.toMatch(/^\s*artifactName:/m)
   })
 
   it('does not use spaces in any artifactName', () => {

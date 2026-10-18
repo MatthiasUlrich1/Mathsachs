@@ -24,7 +24,7 @@ describe('Impressum', () => {
       'Linus und Matthias Ulrich',
       'Große Wallstraße 42',
       '04509 Delitzsch',
-      'info@my-smart-home-support.de',
+      'mail@tasktrophy.de',
     ])
   })
 })
@@ -61,13 +61,13 @@ describe('buildIdeenmelderMailto', () => {
       `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(IDEENMELDER_SUBJECT)}`,
     )
     expect(href).toBe(
-      `mailto:info@my-smart-home-support.de?subject=${encodeURIComponent('Idee / Feedback zum TaskTrophy Übungsprogramm.')}`,
+      `mailto:mail@tasktrophy.de?subject=${encodeURIComponent('Idee / Feedback zum TaskTrophy Übungsprogramm.')}`,
     )
   })
 
   it('percent-encodes spaces, slash and Ü in the query', () => {
     const href = buildIdeenmelderMailto()
-    expect(href.startsWith('mailto:info@my-smart-home-support.de?subject=')).toBe(
+    expect(href.startsWith('mailto:mail@tasktrophy.de?subject=')).toBe(
       true,
     )
     const encoded = href.slice(href.indexOf('subject=') + 'subject='.length)

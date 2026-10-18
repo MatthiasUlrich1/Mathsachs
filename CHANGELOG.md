@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.124] – 2026-10-18
+
+### Geändert
+- **Kontakt-E-Mail:** Impressum, Idee/Feedback und sonstige App-Mailto-Links
+  nutzen jetzt `mail@tasktrophy.de` (statt info@my-smart-home-support.de).
+- **Installer-Branding:** electron-builder `productName` und Artefaktnamen
+  heißen TaskTrophy (`TaskTrophy-Setup-…`, DMG/AppImage; Deb `tasktrophy_…`).
+  Interne `appId` bleibt `com.mathsachs.app` (Update-Kompatibilität).
+
 ## [0.28.123] – 2026-10-18
 
 ### Behoben
@@ -2502,11 +2511,11 @@ Fixes #11
 
 - **Impressum** in der App (Fußzeile) und in der README: Linus und Matthias
   Ulrich, Große Wallstraße 42, 04509 Delitzsch,
-  info@my-smart-home-support.de.
+  mail@tasktrophy.de.
 - **MIT-Lizenz**: Datei [`LICENSE`](LICENSE) (Copyright 2026 Linus und Matthias
   Ulrich), Abschnitt in der README und vollständiger Lizenztext in der App.
 - **Ideenmelder**: Schaltfläche „Idee / Feedback“ öffnet das Standard-Mailprogramm
-  (`mailto:`) an info@my-smart-home-support.de mit dem Betreff
+  (`mailto:`) an mail@tasktrophy.de mit dem Betreff
   *Idee / Feedback zum Mathsachs Übeungsprogramm.*
 
 ## [0.1.4] – 2026-09-04
