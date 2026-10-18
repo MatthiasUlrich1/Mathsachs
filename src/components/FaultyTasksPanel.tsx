@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ClassApiError } from '../classCode/api'
 import {
   deleteTaskReport,
   fetchTaskReports,
+  formatTaskReportsExport,
+  isCompletedTaskReport,
   markTaskReportDone,
   markTaskReportFixed,
   MAX_REPORT_REPLY,
@@ -44,6 +46,9 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
   const [actionError, setActionError] = useState<string | null>(null)
   const [fixDraftId, setFixDraftId] = useState<string | null>(null)
   const [fixMessage, setFixMessage] = useState('')
+  const [hideCompleted, setHideCompleted] = useState(true)
+  const [exportOpen, setExportOpen] = useState(false)
+  const [copyState, setCopyState] = useState<'idle' | 'ok' | 'fail'>('idle')
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -68,6 +73,17 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
   useEffect(() => {
     void load()
   }, [load])
+
+  const visibleReports = useMemo(() => {
+    if (!reports) return []
+    if (!hideCompleted) return reports
+    return reports.filter((row) => !isCompletedTaskReport(row))
+  }, [reports, hideCompleted])
+
+  const exportText = useMemo(
+    () => formatTaskReportsExport(visibleReports),
+    [visibleReports],
+  )
 
   const applyUpdated = (id: string, updated: TaskReport) => {
     setReports((prev) => {
@@ -143,6 +159,17 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
     }
   }
 
+  const copyExport = async () => {
+    try {
+      await navigator.clipboard?.writeText(exportText)
+      setCopyState('ok')
+      setTimeout(() => setCopyState('idle'), 1600)
+    } catch {
+      setCopyState('fail')
+      setTimeout(() => setCopyState('idle'), 2000)
+    }
+  }
+
   return (
     <section className="card" aria-label="Fehlerhafte Aufgaben">
       <div className="faulty-tasks__toolbar">
@@ -157,15 +184,68 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
         <strong> Als korrigiert melden</strong> benachrichtigt den Melder anonym
         (optional mit kurzer Nachricht). Einträge bleiben bis zum Löschen in der Liste.
       </p>
+      <div className="faulty-tasks__filters">
+        <label className="faulty-tasks__filter">
+          <input
+            type="checkbox"
+            checked={hideCompleted}
+            onChange={(e) => setHideCompleted(e.target.checked)}
+          />
+          <span>Erledigte ausblenden</span>
+        </label>
+        <button
+          type="button"
+          className="chip-btn"
+          disabled={!reports || visibleReports.length === 0}
+          onClick={() => {
+            setExportOpen((open) => !open)
+            setCopyState('idle')
+          }}
+        >
+          {exportOpen ? 'Export ausblenden' : 'Meldungen exportieren'}
+        </button>
+      </div>
+      {exportOpen && (
+        <div className="faulty-tasks__export" aria-label="Export gemeldeter Aufgaben">
+          <p className="muted small">
+            Kopierbarer Fixer-Export
+            {hideCompleted ? ' (ohne erledigte/korrigierte)' : ' (alle sichtbaren)'}
+            : IDs, Prompt, Optionen/Lösung, Thema/Pack, Kommentar, Status, Zeitstempel.
+            Reporter bleiben anonym.
+          </p>
+          <textarea
+            className="faulty-tasks__export-text"
+            rows={12}
+            readOnly
+            value={exportText}
+            onFocus={(e) => e.currentTarget.select()}
+          />
+          <div className="faulty-tasks__actions">
+            <button type="button" className="chip-btn chip-btn--primary" onClick={() => void copyExport()}>
+              {copyState === 'ok'
+                ? 'Kopiert'
+                : copyState === 'fail'
+                  ? 'Kopieren fehlgeschlagen'
+                  : 'In Zwischenablage kopieren'}
+            </button>
+          </div>
+        </div>
+      )}
       {error && <p className="task-report__error">{error}</p>}
       {actionError && <p className="task-report__error">{actionError}</p>}
       {!error && !loading && reports && reports.length === 0 && (
         <p className="muted">Noch keine Meldungen.</p>
       )}
-      {reports && reports.length > 0 && (
+      {!error && !loading && reports && reports.length > 0 && visibleReports.length === 0 && (
+        <p className="muted">
+          Alle Meldungen sind erledigt oder korrigiert. Filter „Erledigte ausblenden“
+          deaktivieren, um sie zu sehen.
+        </p>
+      )}
+      {visibleReports.length > 0 && (
         <ul className="faulty-tasks">
-          {reports.map((row) => {
-            const closed = row.status === 'done' || row.status === 'fixed'
+          {visibleReports.map((row) => {
+            const closed = isCompletedTaskReport(row)
             const rowBusy = busyId === row.id
             const drafting = fixDraftId === row.id
             const label = statusLabel(row.status)
@@ -193,6 +273,8 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
                   {[
                     row.topicTitle,
                     row.areaTitle,
+                    row.subject,
+                    row.packId ? `Pack ${row.packId}` : null,
                     row.topicId ? `Thema ${row.topicId}` : null,
                     typeof row.seed === 'number' ? `Seed ${row.seed}` : null,
                     row.appVersion ? `v${row.appVersion}` : null,
@@ -202,6 +284,9 @@ export function FaultyTasksPanel({ onShowTask, onReportsChanged }: Props) {
                 </p>
                 {row.question && (
                   <p className="muted small faulty-tasks__question">„{row.question}“</p>
+                )}
+                {row.solution && (
+                  <p className="muted small faulty-tasks__question">Lösung: {row.solution}</p>
                 )}
                 {drafting && (
                   <div className="faulty-tasks__fix-form">

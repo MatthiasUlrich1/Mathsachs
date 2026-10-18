@@ -24,7 +24,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const pack = buildGymSachsenBiologiePack()
     expect(pack.id).toBe(GYM_SACHSEN_BIOLOGIE_PACK_ID)
     expect(pack.subject).toBe('Biologie')
-    expect(pack.version).toBe('1.8.7')
+    expect(pack.version).toBe('1.9.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'biologie-klasse-5',
       'biologie-klasse-6',
@@ -43,8 +43,19 @@ describe('Gymnasium Sachsen Biologie pack', () => {
       .find((g) => g.id === 'biologie-klasse-6')!
       .areas.find((a) => a.id === 'lb2')!
       .topics
-    expect(k6Lb2.map((t) => t.id)).toEqual([...BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS])
-    expect(k6Lb2.every((t) => t.released === true)).toBe(true)
+    expect(
+      BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS.every((id) => k6Lb2.some((t) => t.id === id)),
+    ).toBe(true)
+    expect(
+      k6Lb2
+        .filter((t) => (BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS as readonly string[]).includes(t.id))
+        .every((t) => t.released === true),
+    ).toBe(true)
+    expect(
+      k6Lb2
+        .filter((t) => !(BIOLOGIE_K6_WIRBELLOSE_RELEASED_IDS as readonly string[]).includes(t.id))
+        .every((t) => t.released === false),
+    ).toBe(true)
     const released = topics.filter((t) => t.released === true).map((t) => t.id).sort()
     expect(released).toEqual([...BIOLOGIE_RELEASED_IDS].sort())
     const lockedElsewhere = topics.filter(
@@ -78,11 +89,15 @@ describe('Gymnasium Sachsen Biologie pack', () => {
   it('hydrates all outline topics with playable (non-stub) generators', async () => {
     const grades = await hydratePackGrades(buildGymSachsenBiologiePack())
     const topics = grades.flatMap((g) => g.areas.flatMap((a) => a.topics))
-    const released = topics.filter((t) => t.released !== false)
+    const placeholders = topics.filter((t) => t.neu)
+    const filled = topics.filter((t) => !t.neu)
+    const released = filled.filter((t) => t.released !== false)
     expect(released.map((t) => t.id).sort()).toEqual([...BIOLOGIE_RELEASED_IDS].sort())
-    expect(topics.every((t) => !t.outlineOnly)).toBe(true)
-    expect(topics.every((t) => isPlayableBiologieTopic(t.id))).toBe(true)
-    for (const topic of topics) {
+    expect(placeholders.length).toBeGreaterThan(0)
+    expect(placeholders.every((t) => t.outlineOnly && t.released === false)).toBe(true)
+    expect(filled.every((t) => !t.outlineOnly)).toBe(true)
+    expect(filled.every((t) => isPlayableBiologieTopic(t.id))).toBe(true)
+    for (const topic of filled) {
       const task = topic.generate(() => 0.42)
       expect(task.question.trim().length, topic.id).toBeGreaterThan(10)
       expect(task.solution.trim().length, topic.id).toBeGreaterThan(0)
@@ -94,7 +109,7 @@ describe('Gymnasium Sachsen Biologie pack', () => {
     const grades = await hydratePackGrades(buildGymSachsenBiologiePack())
     const k5 = grades.find((g) => g.id === 'biologie-klasse-5')!
     const topics = k5.areas.flatMap((a) => a.topics)
-    expect(topics.every((t) => !t.outlineOnly)).toBe(true)
+    expect(topics.filter((t) => !t.neu).every((t) => !t.outlineOnly)).toBe(true)
     const playable = topics.filter((t) =>
       (BIOLOGIE_K5_WIRBELTIERE_TOPIC_IDS as readonly string[]).includes(t.id),
     )

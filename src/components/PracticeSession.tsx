@@ -15,6 +15,7 @@ import {
   type BerichtigungTopicRef,
 } from '../curriculum/uniqueRound'
 import { AnswerInput } from './AnswerInput'
+import { taskReportChoices, taskReportSolution } from '../lib/taskReportSnapshot'
 import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
 
@@ -405,6 +406,21 @@ export function PracticeSession({
         areaTitle={activeArea}
         contentId={activeTopic.contentId}
         question={task.question}
+        solution={taskReportSolution(task)}
+        choices={taskReportChoices(task)}
+        subject={
+          activeTopic.id.startsWith('bi-')
+            ? 'Biologie'
+            : activeTopic.id.startsWith('ge-')
+              ? 'Geschichte'
+              : activeTopic.id.startsWith('ph-')
+                ? 'Physik'
+                : activeTopic.id.startsWith('os-')
+                  ? 'Oberschule'
+                  : activeTopic.id.startsWith('sks-')
+                    ? 'Sekundarschule'
+                    : undefined
+        }
         seed={activeSeed}
       />
     </div>

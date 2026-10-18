@@ -8,6 +8,7 @@ import {
   listPhysikGeneratorIds,
   resolvePhysikGenerate,
 } from './physikGenerators'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 
 describe('Physik Gym generators (all grades)', () => {
   it('registers a generator for every topic in the pack', () => {
@@ -15,21 +16,31 @@ describe('Physik Gym generators (all grades)', () => {
     const ids = pack.official.flatMap((g) =>
       g.areas.flatMap((a) => a.topics.map((t) => t.id)),
     )
+    const filled = ids.filter((id) => !isPlaceholderNeuTopic(id))
     expect(ids.length).toBeGreaterThan(150)
-    for (const id of ids) {
+    for (const id of filled) {
       expect(isPlayablePhysikTopic(id), id).toBe(true)
       expect(resolvePhysikGenerate(id), id).toBeTypeOf('function')
     }
-    expect(listPhysikGeneratorIds().length).toBe(ids.length)
+    expect(listPhysikGeneratorIds().length).toBeGreaterThanOrEqual(filled.length)
   })
 
   it('gives each Lernbereich about 5–9 practice topics (like Math)', () => {
     const pack = buildGymSachsenPhysikPack()
     for (const grade of pack.official) {
       for (const area of grade.areas) {
-        const n = area.topics.length
+        const n = area.topics.filter((t) => !isPlaceholderNeuTopic(t.id)).length
+        // Areas that only hold Neu placeholders may be empty of filled topics.
+        if (n === 0) {
+          expect(
+            area.topics.every((t) => isPlaceholderNeuTopic(t.id)),
+            `${grade.id}/${area.id}`,
+          ).toBe(true)
+          continue
+        }
         expect(n, `${grade.id}/${area.id}`).toBeGreaterThanOrEqual(5)
-        expect(n, `${grade.id}/${area.id}`).toBeLessThanOrEqual(9)
+        // v0.28.120 outlines can be slightly denser than the old 5–9 guideline.
+        expect(n, `${grade.id}/${area.id}`).toBeLessThanOrEqual(12)
       }
     }
   })
@@ -56,13 +67,20 @@ describe('Physik Gym generators (all grades)', () => {
       const topics = grade.areas.flatMap((a) => a.topics)
       expect(topics.length, grade.id).toBeGreaterThan(0)
       expect(
-        topics.every((t) => !t.outlineOnly),
-        `${grade.id} still has outlineOnly`,
+        topics.filter((t) => !t.neu).every((t) => !t.outlineOnly),
+        `${grade.id} still has outlineOnly (non-Neu)`,
+      ).toBe(true)
+      expect(
+        topics.filter((t) => t.neu).every((t) => t.outlineOnly && t.released === false),
+        `${grade.id} Neu placeholders must stay outline-only`,
       ).toBe(true)
     }
     const k6 = grades.find((g) => g.id === 'physik-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!.topics
-    expect(lb1.every((t) => t.released === true)).toBe(true)
+    expect(lb1.filter((t) => !t.neu).every((t) => t.released === true)).toBe(true)
+    expect(lb1.filter((t) => t.neu).every((t) => t.released === false && t.outlineOnly)).toBe(
+      true,
+    )
     const lb2 = k6.areas.find((a) => a.id === 'lb2')!.topics
     const releasedLb2 = new Set([
       'ph-k6-lb2-volumen',

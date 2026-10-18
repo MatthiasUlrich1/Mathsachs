@@ -196,6 +196,11 @@ export interface Topic {
   /** Official Lerninhalt without a practice generator yet. */
   outlineOnly?: boolean
   /**
+   * Structure placeholder imported from a newer outline (no task content yet).
+   * Shown with a „Neu“ badge in the curriculum browser.
+   */
+  neu?: boolean
+  /**
    * Freigabe für Schüler/Eltern. false = vorbereitet, aber gesperrt
    * („Noch keine Aufgaben enthalten“), außer bei stiller Pack-Vorschau.
    */

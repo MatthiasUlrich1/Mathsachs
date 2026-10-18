@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-27T11:06:00.130Z",
+  "updatedAt": "2026-10-18T07:51:37.753Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -18,10 +18,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Physik",
-      "version": "2.5.32",
+      "version": "2.6.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-physik.json",
-      "size": 134691,
-      "changelog": "K7 Vom Fliegen: Flugzeug-Silhouette nach Vorlage (Seitenansicht mit Fenstern/Triebwerk)."
+      "size": 174451,
+      "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“."
     },
     {
       "id": "gym-sachsen-geschichte",
@@ -29,10 +29,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Geschichte",
-      "version": "1.9.0",
+      "version": "1.10.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-geschichte.json",
-      "size": 79556,
-      "changelog": "K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. 148 Themen."
+      "size": 163120,
+      "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. 332 Themen."
     },
     {
       "id": "gym-sachsen-biologie",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.8.7",
+      "version": "1.9.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 67845,
-      "changelog": "Fleischfresser-Gebiss: klares Commons-Schema Hundeschädel (CC BY-SA 3.0) statt Brockhaus-Löwe; Slots neu kalibriert. 131 Themen."
+      "size": 162014,
+      "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. 340 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",
@@ -51,10 +51,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-anhalt.json",
-      "size": 42641,
-      "changelog": "Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
+      "size": 46301,
+      "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-hs",
@@ -62,10 +62,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-hs.json",
-      "size": 29790,
-      "changelog": "Klassen 5–9 (HSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
+      "size": 33338,
+      "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Daten, Winkel, LGS, Wachstum). Alias Gym-Sachsen."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-rs",
@@ -73,10 +73,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-rs.json",
-      "size": 34368,
-      "changelog": "Klassen 5–10 (RSA) nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung."
+      "size": 38679,
+      "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Trig, LGS, Wachstum, Zins). Alias Gym-Sachsen."
     },
     {
       "id": "oberschule-sachsen-hs",
@@ -84,9 +84,9 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 52362,
+      "size": 61700,
       "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     },
     {
@@ -95,9 +95,9 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 62639,
+      "size": 74565,
       "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
     }
   ]

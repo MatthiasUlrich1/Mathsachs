@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.8.7',
-    changelog: `Fleischfresser-Gebiss: klares Commons-Schema Hundeschädel (CC BY-SA 3.0) statt Brockhaus-Löwe; Slots neu kalibriert. ${topics} Themen.`,
+    version: '1.9.0',
+    changelog: `Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. ${topics} Themen.`,
     official,
     extras: [],
   }

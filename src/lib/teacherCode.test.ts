@@ -78,6 +78,19 @@ describe('Lehrercode', () => {
     expect(roleForTeacherAccess('klassenlehrer', 'extended')).toBe('entwickler')
   })
 
+  it('maps Prüfer-Code access to Prüfer', () => {
+    expect(roleForTeacherAccess('lehrer', 'pruefer')).toBe('pruefer')
+    expect(roleForTeacherAccess('klassenlehrer', 'pruefer')).toBe('pruefer')
+    expect(applyRoleChange('schueler', 'lehrer', '88prf875')).toEqual({
+      ok: true,
+      role: 'pruefer',
+    })
+    expect(applyRoleChange('schueler', 'lehrer', '88PRF-875')).toEqual({
+      ok: true,
+      role: 'pruefer',
+    })
+  })
+
   it('builds a mailto without person data or the secret code', () => {
     const href = buildTeacherCodeRequestMailto()
     expect(href.startsWith(`mailto:${CONTACT_EMAIL}?`)).toBe(true)

@@ -320,10 +320,14 @@ function officialGrades(): PackGrade[] {
         area('zg-gleichung', 'Gleichungen und Ungleichungen', [
           topic('st-k6-gleichung-add', 'Gleichung umstellen: x + a = b'),
           topic('st-k6-gleichung-mul', 'Gleichung umstellen: a · x = b'),
+          topic('st-k6-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('st-k6-gleichung-probe', 'Lineare Gleichung und Probe'),
         ]),
         area('rf-winkel', 'Winkelbeziehungen', [
           topic('st-k6-nebenwinkel', 'Nebenwinkel berechnen'),
           topic('st-k6-scheitelwinkel', 'Scheitel- und Stufenwinkel'),
+          topic('st-k6-wechselwinkel', 'Wechselwinkel an Parallelen'),
+          topic('st-k6-gestreckter', 'Winkel am gestreckten Winkel'),
         ]),
         area('rf-dreieck', 'Dreiecke und Vierecke', [
           topic('st-k6-winkel-dreieck', 'Innenwinkelsatz im Dreieck'),
@@ -342,6 +346,8 @@ function officialGrades(): PackGrade[] {
         ]),
         area('dz-kenngroessen', 'Erfassen, Darstellen und Auswerten von Daten', [
           topic('st-k6-haeufigkeit', 'Relative Häufigkeit in Prozent'),
+          topic('st-k6-mittelwert', 'Arithmetisches Mittel'),
+          topic('st-k6-median', 'Median (Zentralwert)'),
         ]),
       ],
     ),
@@ -375,6 +381,8 @@ function officialGrades(): PackGrade[] {
         area('zg-gleichung', 'Gleichungen und Ungleichungen', [
           topic('st-k7-gleichung', 'Lineare Gleichung a·x + b = c'),
           topic('st-k7-gleichung-beid', 'Gleichung mit x auf beiden Seiten'),
+          topic('st-k7-gleichung-klammer', 'Gleichung mit Klammern vorbereiten'),
+          topic('st-k7-ungleichung', 'Einfache lineare Ungleichung (Idee)'),
         ]),
         area('zg-variablen', 'Arbeiten mit Variablen', [
           topic('st-k7-term', 'Term mit Rechengesetzen auswerten'),
@@ -442,6 +450,9 @@ function officialGrades(): PackGrade[] {
         ]),
         area('vernetzung', 'Vernetzung', [
           topic('st-k8-zahlenraetsel', 'Zahlenrätsel (Gleichung aufstellen)'),
+          topic('st-k8-rueckwaerts', 'Rückwärtsrechnen'),
+          topic('st-k8-probieren', 'Systematisches Probieren'),
+          topic('st-k8-skizze', 'Skizze und Hilfsfigur'),
         ]),
       ],
     ),
@@ -462,6 +473,8 @@ function officialGrades(): PackGrade[] {
         ]),
         area('rf-trig', 'Trigonometrie', [
           topic('st-k9-trig', 'Werte von Sinus, Kosinus, Tangens'),
+          topic('st-k9-pythagoras-hyp', 'Satz des Pythagoras: Hypotenuse'),
+          topic('st-k9-pythagoras-kat', 'Satz des Pythagoras: fehlende Kathete'),
         ]),
         area('zf-quadrat', 'Quadratische Gleichungen und quadratische Funktionen', [
           topic('st-k9-quadrat-wert', 'Wert einer quadratischen Funktion'),
@@ -509,10 +522,14 @@ function officialGrades(): PackGrade[] {
         area('dz-zufall', 'Zufallsgrößen', [
           topic('st-k10-erwartung', 'Erwartungswert eines Glücksrads'),
           topic('st-k10-erwartung-wuerfel', 'Erwartungswert beim Würfel'),
+          topic('st-k10-varianz', 'Varianz einer Zufallsgröße'),
+          topic('st-k10-laplace', 'Laplace-Wahrscheinlichkeit als Bruch'),
         ]),
         area('geo-algebra', 'Algebraisches Lösen geometrischer Probleme', [
           topic('st-k10-rechteck', 'Rechteck: Breite aus Fläche'),
           topic('st-k10-quadrat-seite', 'Quadrat: Seitenlänge aus Fläche'),
+          topic('st-k10-rechteck-umfang', 'Rechteck: Breite aus Umfang'),
+          topic('st-k10-sinussatz', 'Sinussatz: Seite berechnen'),
         ]),
       ],
     ),
@@ -528,6 +545,11 @@ function officialGrades(): PackGrade[] {
       [
         area('an-analysis', 'Grundlagen der Infinitesimalrechnung / Differential- und Integralrechnung', [
           topic('st-k1112-ableitung', 'Ableitung eines Polynoms an einer Stelle'),
+          topic('st-k1112-differential', 'Differentialrechnung: Änderungsrate und Tangente', [
+            'Ableitung',
+            'Tangente',
+            'Differenzenquotient',
+          ]),
           topic('st-k1112-nullstelle', 'Nullstelle einer linearen Funktion'),
           topic('st-k1112-integral', 'Bestimmtes Integral eines Polynoms'),
         ]),
@@ -560,9 +582,9 @@ export function buildGymSachsenAnhaltPack(): CurriculumPack {
     region: 'Sachsen-Anhalt',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.0.1',
+    version: '1.1.0',
     changelog:
-      'Klassen 5–10 und 11/12 gA nach ST-Fachlehrplan. tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+      'Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.',
     official,
     extras: [],
   }

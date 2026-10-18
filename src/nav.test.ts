@@ -58,6 +58,13 @@ describe('top-bar navigation', () => {
     )
   })
 
+  it('hides both Klausur tabs for Prüfer (QA-only)', () => {
+    const labels = topTabsForRole('pruefer').map((tab) => tab.label)
+    expect(labels).toEqual(['Themen', 'Challenge', 'Punkteprotokoll', 'Einstellungen'])
+    expect(labels).not.toContain('Klausur erstellen')
+    expect(labels).not.toContain('Klausur schreiben')
+  })
+
   it('hides Klausur erstellen for Schüler, including a missing role', () => {
     const labels = topTabsForRole('schueler').map((tab) => tab.label)
     expect(labels).toEqual([
@@ -167,11 +174,29 @@ describe('top-bar navigation', () => {
   it('shows Fehlerhafte Aufgaben only for Entwickler', () => {
     expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toContain('faulty')
     expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('faulty')
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).not.toContain('faulty')
   })
 
   it('shows Info only for Entwickler', () => {
     expect(settingsSectionsForRole('entwickler').map((item) => item.id)).toContain('info')
     expect(settingsSectionsForRole('lehrer').map((item) => item.id)).not.toContain('info')
     expect(settingsSectionsForRole('schueler').map((item) => item.id)).not.toContain('info')
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).not.toContain('info')
+  })
+
+  it('gives Prüfer QA settings without Klasse / classroom tools', () => {
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).toEqual([
+      'curricula',
+      'myReports',
+      'lan',
+      'profile',
+      'supporters',
+      'about',
+    ])
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).not.toContain('class')
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).not.toContain('tasks')
+    expect(settingsSectionsForRole('pruefer').map((item) => item.id)).not.toContain(
+      'taskAuthoring',
+    )
   })
 })

@@ -19,29 +19,35 @@ export const isUserRole = (value: unknown): value is UserRole =>
   value === 'eltern' ||
   value === 'klassenlehrer' ||
   value === 'lehrer' ||
-  value === 'entwickler'
+  value === 'entwickler' ||
+  value === 'pruefer'
 
 /** Missing or unknown roles default to Schüler (most restricted). */
 export const normalizeRole = (role?: unknown): UserRole =>
   isUserRole(role) ? role : 'schueler'
 
-/** Lehrer, Klassenlehrer und Entwickler — Lehrercode-fähig. */
+/**
+ * Classroom teacher roles (Lehrercode-fähig for Lehrer/Klassenlehrer unlock).
+ * Prüfer unlocks via Prüfer-Code but is QA-only — not a teacher role.
+ */
 export const isTeacherRole = (role?: unknown): boolean => {
   const id = normalizeRole(role)
   return id === 'lehrer' || id === 'klassenlehrer' || id === 'entwickler'
 }
 
 /** Unreleased curriculum topics visible (IDs / status). */
-export const isCurriculumPreviewRole = (role?: unknown): boolean =>
-  normalizeRole(role) === 'entwickler'
+export const isCurriculumPreviewRole = (role?: unknown): boolean => {
+  const id = normalizeRole(role)
+  return id === 'entwickler' || id === 'pruefer'
+}
 
-/** Fehlerhafte-Aufgaben-Liste in den Einstellungen. */
+/** Fehlerhafte-Aufgaben-Liste (Admin) — nur Entwickler. */
 export const canViewFaultyReports = (role?: unknown): boolean =>
-  isCurriculumPreviewRole(role)
+  normalizeRole(role) === 'entwickler'
 
 /** Anonymous telemetry panel (Schüler-Antwortzähler). */
 export const canViewDeveloperInfo = (role?: unknown): boolean =>
-  isCurriculumPreviewRole(role)
+  normalizeRole(role) === 'entwickler'
 
 /** Klausur erstellen — Eltern, Lehrer und Entwickler. */
 export const canCreateExam = (role?: unknown): boolean => {
@@ -55,14 +61,20 @@ export const canAssignClassExam = (role?: unknown): boolean => {
   return id === 'lehrer' || id === 'entwickler'
 }
 
-/** Klausur schreiben — everyone except Klassenlehrer. */
-export const canWriteExam = (role?: unknown): boolean =>
-  normalizeRole(role) !== 'klassenlehrer'
+/** Klausur schreiben — not Klassenlehrer, not Prüfer (QA-only). */
+export const canWriteExam = (role?: unknown): boolean => {
+  const id = normalizeRole(role)
+  return id !== 'klassenlehrer' && id !== 'pruefer'
+}
 
 export const canCreateClassCodes = (role?: unknown): boolean => {
   const id = normalizeRole(role)
   return id === 'eltern' || id === 'lehrer' || id === 'entwickler'
 }
+
+/** Einstellungen → Klasse (Klassencode eintragen/anlegen). Prüfer: nein. */
+export const canAccessClassSettings = (role?: unknown): boolean =>
+  normalizeRole(role) !== 'pruefer'
 
 /** Klassenstufencode anlegen — Lehrer und Entwickler. */
 export const canManageGradeCodes = (role?: unknown): boolean => {
@@ -111,9 +123,11 @@ export const canSeeTaskAuthoringUI = (role?: unknown): boolean => {
 export const canSeeTaskAuthoringReviewUI = (role?: unknown): boolean =>
   TASK_AUTHORING_ENABLED && canReviewAuthoredTasks(role)
 
-/** Punkte an die aktive Klasse senden — nicht Klassenlehrer. */
-export const canSendClassPoints = (role?: unknown): boolean =>
-  normalizeRole(role) !== 'klassenlehrer'
+/** Punkte an die aktive Klasse senden — nicht Klassenlehrer, nicht Prüfer. */
+export const canSendClassPoints = (role?: unknown): boolean => {
+  const id = normalizeRole(role)
+  return id !== 'klassenlehrer' && id !== 'pruefer'
+}
 
 /** Challenge anlegen — Lehrer/Entwickler (Klasse + Stufe) und Klassenlehrer (nur Klasse). */
 export const canCreateChallenge = (role?: unknown): boolean => {
@@ -143,8 +157,18 @@ export const canCreateChallengeLater = canCreateChallenge
 export const roleLabel = (role?: unknown): string => {
   const id = normalizeRole(role)
   if (id === 'entwickler') return 'Entwickler'
+  if (id === 'pruefer') return 'Prüfer'
   return USER_ROLES.find((entry) => entry.id === id)?.label ?? 'Schüler'
 }
+
+/** Prüfkriterien for the Prüfer profile (content QA checklist). */
+export const PRUEFER_CRITERIA: readonly string[] = [
+  'Prüfung auf Rechtschreibung und Grammatik',
+  'Ergibt die Aufgabe Sinn?',
+  'Ist die Aufgabe wirklich mit Schulstoff verbunden oder eher Meta-Frage?',
+  'Könnte man den Aufgabentyp mit besseren grafischen Elementen oder anderer Interaktion interessanter machen?',
+  'Verbesserungsvorschläge',
+]
 
 /**
  * Stored role if valid. Legacy profiles without `role` become Eltern when

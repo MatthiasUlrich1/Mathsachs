@@ -54,6 +54,14 @@ function TopicRow({
         <span className="topic__title">
           {topic.title}
           <TeacherExtraBadge source={topic.source} />
+          {topic.neu && (
+            <span
+              className="topic__release-badge topic__release-badge--neu"
+              title="Struktur-Platzhalter — Aufgaben folgen"
+            >
+              Neu
+            </span>
+          )}
           {topic.difficulty != null && <DifficultyBadge level={topic.difficulty} />}
           {curriculumDevPreview && (
             <>

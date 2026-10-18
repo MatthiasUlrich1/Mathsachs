@@ -19,6 +19,8 @@ import {
   rememberMyReportId,
   REPORTS_READ_TOKEN,
   submitTaskReport,
+  formatTaskReportsExport,
+  isCompletedTaskReport,
   trimReportComment,
   trimReportReply,
   unseenFixedUpdates,
@@ -49,6 +51,32 @@ function memoryStorage(initial: Record<string, string> = {}): Storage {
 }
 
 describe('taskReports helpers', () => {
+  it('formats a fixer export with status and JSON appendix', () => {
+    const text = formatTaskReportsExport([
+      {
+        id: 'ABCD1234',
+        at: 1_700_000_000_000,
+        contentId: 6453,
+        comment: 'Distraktor falsch',
+        status: 'open',
+        topicId: 'ph-k6-lb1-licht',
+        topicTitle: 'Licht',
+        question: 'Was ist Licht?',
+        solution: 'elektromagnetische Welle',
+        choices: '- A\n- B',
+        seed: 42,
+        appVersion: '0.28.76',
+      },
+    ])
+    expect(text).toContain('Meldung-ID: ABCD1234')
+    expect(text).toContain('Status: offen')
+    expect(text).toContain('Distraktor falsch')
+    expect(text).toContain('Seed: 42')
+    expect(text).toContain('----- JSON -----')
+    expect(isCompletedTaskReport({ status: 'done' })).toBe(true)
+    expect(isCompletedTaskReport({ status: 'open' })).toBe(false)
+  })
+
   it('trims and caps comments and replies', () => {
     expect(trimReportComment('  hallo  ')).toBe('hallo')
     expect(isReportCommentValid('   ')).toBe(false)

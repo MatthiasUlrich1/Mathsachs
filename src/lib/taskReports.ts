@@ -22,6 +22,13 @@ export interface TaskReportPayload {
   topicTitle?: string
   areaTitle?: string
   question?: string
+  /** Canonical solution / Musterlösung (for fixer export). */
+  solution?: string
+  /** MC choices / interactive options as plain text lines. */
+  choices?: string
+  /** Pack / subject labels when known. */
+  packId?: string
+  subject?: string
   /** Deterministic generator seed for the exact task instance. */
   seed?: number
   appVersion?: string
@@ -265,6 +272,54 @@ export function myReportStatusLabel(status: TaskReportStatus): string {
   return 'offen'
 }
 
+export function isCompletedTaskReport(report: Pick<TaskReport, 'status'>): boolean {
+  return report.status === 'done' || report.status === 'fixed'
+}
+
+/** Structured plain text for clipboard / fixer handoff. */
+export function formatTaskReportExport(report: TaskReport): string {
+  const lines = [
+    `Meldung-ID: ${report.id}`,
+    `Status: ${myReportStatusLabel(report.status)}`,
+    `Gemeldet: ${new Date(report.at).toISOString()} (${report.at})`,
+    ...(report.fixedAt !== undefined
+      ? [`Korrigiert/erledigt: ${new Date(report.fixedAt).toISOString()} (${report.fixedAt})`]
+      : []),
+    `Content-ID: ${report.contentId}`,
+    ...(report.topicId ? [`Topic-ID: ${report.topicId}`] : []),
+    ...(report.topicTitle ? [`Thema: ${report.topicTitle}`] : []),
+    ...(report.areaTitle ? [`Lernbereich: ${report.areaTitle}`] : []),
+    ...(report.packId ? [`Pack-ID: ${report.packId}`] : []),
+    ...(report.subject ? [`Fach: ${report.subject}`] : []),
+    ...(typeof report.seed === 'number' ? [`Seed: ${report.seed}`] : []),
+    ...(report.appVersion ? [`App-Version: ${report.appVersion}`] : []),
+    `Kommentar: ${report.comment}`,
+    ...(report.replyMessage ? [`Antwort an Melder: ${report.replyMessage}`] : []),
+    ...(report.question ? [`Frage: ${report.question}`] : []),
+    ...(report.solution ? [`Lösung: ${report.solution}`] : []),
+    ...(report.choices ? [`Optionen:\n${report.choices}`] : []),
+    'Hinweis: Reporter ist anonym (keine Personendaten).',
+  ]
+  return lines.join('\n')
+}
+
+export function formatTaskReportsExport(reports: TaskReport[]): string {
+  if (reports.length === 0) return 'Keine Meldungen.'
+  const blocks = reports.map((row, i) => {
+    const n = String(i + 1).padStart(2, '0')
+    return `===== Meldung ${n}/${reports.length} =====\n${formatTaskReportExport(row)}`
+  })
+  return [
+    `TaskTrophy — gemeldete Aufgaben (${reports.length})`,
+    `Export: ${new Date().toISOString()}`,
+    '',
+    blocks.join('\n\n'),
+    '',
+    '----- JSON -----',
+    JSON.stringify(reports, null, 2),
+  ].join('\n')
+}
+
 export function markMyReportFixedSeen(id: string, storage?: Storage): void {
   const trimmed = id.trim()
   if (!trimmed) return
@@ -335,6 +390,18 @@ function parseReportRow(row: unknown): TaskReport | null {
       : {}),
     ...(typeof r.question === 'string' && r.question.trim()
       ? { question: r.question.trim() }
+      : {}),
+    ...(typeof r.solution === 'string' && r.solution.trim()
+      ? { solution: r.solution.trim().slice(0, 500) }
+      : {}),
+    ...(typeof r.choices === 'string' && r.choices.trim()
+      ? { choices: r.choices.trim().slice(0, 1200) }
+      : {}),
+    ...(typeof r.packId === 'string' && r.packId.trim()
+      ? { packId: r.packId.trim().slice(0, 80) }
+      : {}),
+    ...(typeof r.subject === 'string' && r.subject.trim()
+      ? { subject: r.subject.trim().slice(0, 80) }
       : {}),
     ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
     ...(typeof r.appVersion === 'string' && r.appVersion.trim()
@@ -460,6 +527,16 @@ export async function submitTaskReport(
         ...(payload.areaTitle?.trim() ? { areaTitle: payload.areaTitle.trim() } : {}),
         ...(payload.question?.trim()
           ? { question: payload.question.trim().slice(0, 280) }
+          : {}),
+        ...(payload.solution?.trim()
+          ? { solution: payload.solution.trim().slice(0, 500) }
+          : {}),
+        ...(payload.choices?.trim()
+          ? { choices: payload.choices.trim().slice(0, 1200) }
+          : {}),
+        ...(payload.packId?.trim() ? { packId: payload.packId.trim().slice(0, 80) } : {}),
+        ...(payload.subject?.trim()
+          ? { subject: payload.subject.trim().slice(0, 80) }
           : {}),
         ...(typeof payload.seed === 'number' && Number.isFinite(payload.seed)
           ? { seed: Math.floor(payload.seed) }

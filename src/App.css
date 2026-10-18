@@ -1014,6 +1014,25 @@ a.task-request__send {
   color: #fcd34d;
 }
 
+.topic__release-badge--neu {
+  background: rgba(56, 189, 248, 0.22);
+  color: #7dd3fc;
+}
+
+.pruefer-criteria {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.pruefer-criteria__list {
+  margin: 8px 0 10px;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 /* Difficulty badges */
 .difficulty-badge {
   display: inline-block;
@@ -1336,6 +1355,38 @@ a.task-request__send {
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
+}
+
+.faulty-tasks__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.faulty-tasks__filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.faulty-tasks__export {
+  margin: 8px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faulty-tasks__export-text {
+  width: 100%;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  resize: vertical;
+  white-space: pre;
 }
 
 .faulty-tasks {

@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest'
 import { bundledPackById, installPack, resetCurriculumMemory } from './install'
 import { GYM_SACHSEN_PHYSIK_PACK_ID, parseCurriculumPack, parseManifest } from './pack'
 import { buildGymSachsenPhysikPack } from './physikGymPack'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 import { listVisibleGradeModules } from './registry'
 
 const curriculaDir = join(dirname(fileURLToPath(import.meta.url)), '../../curricula')
@@ -55,14 +56,21 @@ describe('Gymnasium Sachsen Physik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(pack.version).toBe('2.5.32')
-    expect(file?.version).toBe('2.5.32')
+    expect(pack.version).toBe('2.6.0')
+    expect(file?.version).toBe('2.6.0')
     expect(file?.contentHash).toBe(pack.contentHash)
     const lb3 = file?.official
       .find((g) => g.id === 'physik-klasse-6')
       ?.areas.find((a) => a.id === 'lb3')
       ?.topics
-    expect(lb3?.every((t) => t.released)).toBe(true)
+    expect(
+      lb3
+        ?.filter((t) => !isPlaceholderNeuTopic(t.id))
+        .every((t) => t.released !== false),
+    ).toBe(true)
+    expect(
+      lb3?.filter((t) => isPlaceholderNeuTopic(t.id)).every((t) => t.released === false),
+    ).toBe(true)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_PHYSIK_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_PHYSIK_PACK_ID)?.subject).toBe(
       'Physik',

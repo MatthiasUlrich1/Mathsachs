@@ -31,6 +31,7 @@ import {
   canSendClassPoints,
   canViewFaultyReports,
   isTeacherRole,
+  PRUEFER_CRITERIA,
   roleLabel,
   type UserRole,
 } from '../lib/roles'
@@ -404,9 +405,27 @@ export function Settings({
                 confirmLabel="Mit Lehrercode übernehmen"
                 onConfirm={confirmTeacherRole}
               />
-            ) : role === 'entwickler' ? null : isTeacherRole(role) ? (
+            ) : isTeacherRole(role) && role !== 'entwickler' ? (
               <TeacherCodeReveal />
             ) : null}
+            {role === 'pruefer' && (
+              <section className="pruefer-criteria" aria-label="Prüfkriterien">
+                <h3 className="section-title">Prüfkriterien</h3>
+                <p className="muted small">
+                  Beim Prüfen gesperrter Aufgaben bitte systematisch
+                  durchgehen:
+                </p>
+                <ol className="pruefer-criteria__list">
+                  {PRUEFER_CRITERIA.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ol>
+                <p className="muted small">
+                  Auffälligkeiten über „Aufgabe als fehlerhaft melden“ in der
+                  Übungsansicht melden.
+                </p>
+              </section>
+            )}
             <button type="button" className="ghost" onClick={onSwitchUser}>
               Benutzer wechseln
             </button>

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   USER_ROLES,
+  canAccessClassSettings,
   canAuthorTasks,
   canCreateChallenge,
   canCreateChallengeLater,
@@ -18,9 +19,11 @@ import {
   canSendClassPoints,
   canViewFaultyReports,
   canWriteExam,
+  isCurriculumPreviewRole,
   isTeacherRole,
   normalizeRole,
   pickMergedRole,
+  PRUEFER_CRITERIA,
   roleForUser,
   roleLabel,
 } from './roles'
@@ -49,6 +52,33 @@ describe('user roles', () => {
     expect(canReviewAuthoredTasks('lehrer')).toBe(false)
     expect(roleLabel('entwickler')).toBe('Entwickler')
     expect(USER_ROLES.map((e) => e.id)).not.toContain('entwickler')
+  })
+
+  it('gives Prüfer QA-only rights: preview + report path, no classroom tools', () => {
+    expect(isTeacherRole('pruefer')).toBe(false)
+    expect(isCurriculumPreviewRole('pruefer')).toBe(true)
+    expect(isCurriculumPreviewRole('entwickler')).toBe(true)
+    expect(isCurriculumPreviewRole('lehrer')).toBe(false)
+    expect(canCreateExam('pruefer')).toBe(false)
+    expect(canWriteExam('pruefer')).toBe(false)
+    expect(canCreateClassCodes('pruefer')).toBe(false)
+    expect(canAccessClassSettings('pruefer')).toBe(false)
+    expect(canAccessClassSettings('schueler')).toBe(true)
+    expect(canSendClassPoints('pruefer')).toBe(false)
+    expect(canCreateChallenge('pruefer')).toBe(false)
+    expect(canPracticeFromChallenge('pruefer')).toBe(true)
+    expect(canViewFaultyReports('pruefer')).toBe(false)
+    expect(canAuthorTasks('pruefer')).toBe(false)
+    expect(canReviewAuthoredTasks('pruefer')).toBe(false)
+    expect(canSeeTaskAuthoringUI('pruefer')).toBe(false)
+    expect(canManageGradeCodes('pruefer')).toBe(false)
+    expect(canEnterGradeCodes('pruefer')).toBe(false)
+    expect(canRequestTasks('pruefer')).toBe(false)
+    expect(canAssignClassExam('pruefer')).toBe(false)
+    expect(roleLabel('pruefer')).toBe('Prüfer')
+    expect(USER_ROLES.map((e) => e.id)).not.toContain('pruefer')
+    expect(PRUEFER_CRITERIA).toHaveLength(5)
+    expect(PRUEFER_CRITERIA[0]).toMatch(/Rechtschreibung/)
   })
 
   it('treats Lehrer and Klassenlehrer as teacher roles', () => {

@@ -12,6 +12,7 @@ import { resolveBiologieGenerate } from './biologieGenerators'
 import { resolveGeschichteGenerate } from './geschichteGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
 import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
 import type { Grade, Task, Topic, TopicArea } from './types'
 
@@ -123,10 +124,12 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
       topics: area.topics.map((topic) => {
         const meta = byId.get(topic.id)
         if (!meta) return topic
+        const isNeu = meta.neu === true || isPlaceholderNeuTopic(meta.id)
         return {
           ...topic,
           // Pack is source of truth: omit released ⇒ freigegeben
-          released: meta.released === false ? false : true,
+          released: isNeu ? false : meta.released === false ? false : true,
+          ...(isNeu ? { neu: true, outlineOnly: true } : {}),
           ...(typeof meta.tasksPerRound === 'number'
             ? { tasksPerRound: meta.tasksPerRound }
             : {}),

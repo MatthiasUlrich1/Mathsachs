@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Geschichte",
-  "version": "1.9.0",
-  "changelog": "K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. 148 Themen.",
+  "version": "1.10.0",
+  "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. 332 Themen.",
   "official": [
     {
       "id": "geschichte-klasse-5",
@@ -61,6 +61,20 @@
                 "Zeitstrahl",
                 "Epoche",
                 "v. Chr."
+              ]
+            },
+            {
+              "id": "ge-k5-lb1-archaologie-sachsen",
+              "title": "Regionalgeschichte: Archäologische Funde in Sachsen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Archäologie",
+                "Sachsen",
+                "Funde",
+                "Regionalgeschichte"
               ]
             }
           ]
@@ -121,6 +135,35 @@
                 "Mesopotamien",
                 "Keilschrift"
               ]
+            },
+            {
+              "id": "ge-k5-lb2-jetztmensch",
+              "title": "Entwicklungsstufen zum Jetztmenschen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Evolution",
+                "Jetztmensch",
+                "Homo sapiens",
+                "Steinzeit"
+              ]
+            },
+            {
+              "id": "ge-k5-lb2-gesellschaftspyramide",
+              "title": "Ägypten: Gesellschaftspyramide und Schriftlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gesellschaftspyramide",
+                "Pharao",
+                "Beamte",
+                "Hieroglyphen",
+                "Pyramiden"
+              ]
             }
           ]
         },
@@ -138,8 +181,23 @@
               "tasksPerRound": 10,
               "keywords": [
                 "Griechenland",
+                "Antike",
+                "Götterwelt"
+              ]
+            },
+            {
+              "id": "ge-k5-lb3-polis",
+              "title": "Die griechische Polis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
                 "Polis",
-                "Antike"
+                "Stadtstaat",
+                "Bürger",
+                "Agora",
+                "Autonomie"
               ]
             },
             {
@@ -180,6 +238,21 @@
                 "Olympia",
                 "Tempel"
               ]
+            },
+            {
+              "id": "ge-k5-lb3-ohne-mitbestimmung",
+              "title": "Attische Demokratie: Gruppen ohne Mitbestimmung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sklaven",
+                "Frauen",
+                "Metöken",
+                "Bürgerrecht",
+                "Demokratie"
+              ]
             }
           ]
         },
@@ -198,6 +271,32 @@
               "keywords": [
                 "Mensch",
                 "Natur"
+              ]
+            },
+            {
+              "id": "ge-k5-lb4-ressourcen",
+              "title": "Ressourcen: Wasser, Boden, Ernährung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wasser",
+                "Boden",
+                "Ressource"
+              ]
+            },
+            {
+              "id": "ge-k5-lb4-landschaft",
+              "title": "Landschaftswandel: Rodung und Nutzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rodung",
+                "Erosion",
+                "Technik"
               ]
             }
           ]
@@ -379,6 +478,51 @@
                 "Latein",
                 "Recht",
                 "Straßen"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-caesar-augustus",
+              "title": "Vom Volk und Senat zur Alleinherrschaft: Caesar und Augustus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Caesar",
+                "Augustus",
+                "Republik",
+                "Prinzipat",
+                "Senat"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-kaiserzeit-gesellschaft",
+              "title": "Römische Gesellschaft in der Kaiserzeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sklaven",
+                "Insula",
+                "Alltag",
+                "Wohlstand",
+                "Gesellschaft"
+              ]
+            },
+            {
+              "id": "ge-k6-lb1-germanen",
+              "title": "Römer und Germanen: Konflikt und Prägung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Germanen",
+                "Teutoburger Wald",
+                "Limes",
+                "Lehnwörter",
+                "Kulturkontakt"
               ]
             }
           ]
@@ -714,6 +858,58 @@
                 "Bürger",
                 "Erziehung"
               ]
+            },
+            {
+              "id": "ge-k6-lb4-polis",
+              "title": "Bürger in der griechischen Polis",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Polis",
+                "Bürgerrecht",
+                "Pflichten"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-rom",
+              "title": "Römisches Bürgerrecht",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rom",
+                "Bürgerrecht",
+                "Rechtsstatus"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-stadt",
+              "title": "Bürger in der mittelalterlichen Stadt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Stadt",
+                "Stadtluft",
+                "Zunft"
+              ]
+            },
+            {
+              "id": "ge-k6-lb4-vergleich",
+              "title": "Bürgerrechte im Epochenvergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vergleich",
+                "Wandel",
+                "Ausschluss"
+              ]
             }
           ]
         },
@@ -755,6 +951,18 @@
               "keywords": [
                 "Sachsen",
                 "Identität"
+              ]
+            },
+            {
+              "id": "ge-k6-lbw-regional",
+              "title": "Regionalgeschichte Mittelalter in Sachsen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "regional",
+                "lbw"
               ]
             }
           ]
@@ -830,6 +1038,48 @@
                 "Glaubensspaltung",
                 "Dreißigjähriger Krieg"
               ]
+            },
+            {
+              "id": "ge-k7-lb1-amerika-hochkultur",
+              "title": "Kulturbegegnung in Amerika: Eroberung und Folgen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Konquista",
+                "Hochkultur",
+                "Indigene",
+                "Europäisierung",
+                "Kolonialismus"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-erfindungen-weltbild",
+              "title": "Erfindungen und neues Weltbild in der Frühen Neuzeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Buchdruck",
+                "Kompass",
+                "Feuerwaffen",
+                "Weltbild",
+                "Entdeckungen"
+              ]
+            },
+            {
+              "id": "ge-k7-lb1-humanismus",
+              "title": "Humanismus und Bildung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "humanismus",
+                "lb1"
+              ]
             }
           ]
         },
@@ -887,6 +1137,33 @@
                 "Friedrich II.",
                 "August der Starke",
                 "Barock"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-august-barock",
+              "title": "Sachsen unter August dem Starken: Barock und Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "August der Starke",
+                "Barock",
+                "Dresden",
+                "Repräsentation",
+                "Sachsen"
+              ]
+            },
+            {
+              "id": "ge-k7-lb2-machtstuetzzen",
+              "title": "Machtstützen absolutistischer Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "machtstuetzzen",
+                "lb2"
               ]
             }
           ]
@@ -959,6 +1236,48 @@
                 "Kaisertum",
                 "Europa"
               ]
+            },
+            {
+              "id": "ge-k7-lb3-karikatur",
+              "title": "Quellenart Karikatur",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Karikatur",
+                "Satire",
+                "Quellenkritik",
+                "Bildquelle",
+                "Meinung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-konstitutionelle-monarchie",
+              "title": "Konstitutionelle Monarchie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Konstitution",
+                "Monarchie",
+                "Verfassung",
+                "Parlament",
+                "Gewaltenteilung"
+              ]
+            },
+            {
+              "id": "ge-k7-lb3-usa-mitwirkung",
+              "title": "Mitwirkung des Volkes in der USA-Gründung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "usa mitwirkung",
+                "lb3"
+              ]
             }
           ]
         },
@@ -977,6 +1296,30 @@
               "keywords": [
                 "Herrschaft",
                 "Legitimation"
+              ]
+            },
+            {
+              "id": "ge-k7-lb4-gottesgnade",
+              "title": "Gottesgnadentum und religiöse Begründung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gottesgnadentum",
+                "Absolutismus"
+              ]
+            },
+            {
+              "id": "ge-k7-lb4-verfassung",
+              "title": "Verfassung und Volkssouveränität",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verfassung",
+                "Volkssouveränität"
               ]
             }
           ]
@@ -1094,6 +1437,60 @@
                 "1871",
                 "Verfassung"
               ]
+            },
+            {
+              "id": "ge-k8-lb1-ideologien",
+              "title": "Nationalismus, Liberalismus, Konservatismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nationalismus",
+                "Liberalismus",
+                "Konservatismus",
+                "Ideologie",
+                "Vormärz"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-quellen-lied-denkmal",
+              "title": "Quellen: politisches Lied, Lyrik und Denkmal",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "politisches Lied",
+                "Lyrik",
+                "Denkmal",
+                "Geschichtskultur",
+                "Erinnerung"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-reichseinigung",
+              "title": "Reichseinigungskriege und Nationalstaat",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "reichseinigung",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-k8-lb1-reichsfeinde",
+              "title": "Umgang mit „Reichsfeinden“",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "reichsfeinde",
+                "lb1"
+              ]
             }
           ]
         },
@@ -1152,6 +1549,33 @@
                 "Migration",
                 "Soziale Frage"
               ]
+            },
+            {
+              "id": "ge-k8-lb2-vorindustrie",
+              "title": "Vorindustrieller Wandel: Handwerk und Merkantilismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Handwerk",
+                "Merkantilismus",
+                "Zünfte",
+                "Wirtschaft",
+                "Industrialisierung"
+              ]
+            },
+            {
+              "id": "ge-k8-lb2-soziale-frage",
+              "title": "Soziale Frage und Lösungsansätze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "soziale frage",
+                "lb2"
+              ]
             }
           ]
         },
@@ -1170,6 +1594,30 @@
               "keywords": [
                 "Kinderarbeit",
                 "Industrialisierung"
+              ]
+            },
+            {
+              "id": "ge-k8-lb3-schutzgesetze",
+              "title": "Kinderschutz und Fabrikgesetze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fabrikgesetz",
+                "Arbeitsschutz"
+              ]
+            },
+            {
+              "id": "ge-k8-lb3-schule",
+              "title": "Schulpflicht und Ende der Kinderarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Schulpflicht",
+                "Bildung"
               ]
             }
           ]
@@ -1229,6 +1677,33 @@
                 "Kriegsschuld",
                 "1914"
               ]
+            },
+            {
+              "id": "ge-k8-lb4-kriegsverlauf-wk1",
+              "title": "Erster Weltkrieg: Verlauf 1914–1918",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Weltkrieg",
+                "Stellungskrieg",
+                "Materialschlacht",
+                "Heimatfront",
+                "1918"
+              ]
+            },
+            {
+              "id": "ge-k8-lb4-wettruesten",
+              "title": "Wettrüsten und Militarismus vor 1914",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wettruesten",
+                "lb4"
+              ]
             }
           ]
         },
@@ -1272,6 +1747,42 @@
                 "Erster Weltkrieg",
                 "Medien",
                 "Propaganda"
+              ]
+            },
+            {
+              "id": "ge-k8-lbw-alltag-industrie",
+              "title": "Alltag in der Industriegesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag industrie",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k8-lbw-migration",
+              "title": "Migration im 19. Jahrhundert",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "migration",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k8-lbw-technikfolgen",
+              "title": "Technikfolgen und Fortschrittsdebatte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "technikfolgen",
+                "lbw"
               ]
             }
           ]
@@ -1334,6 +1845,36 @@
                 "Sowjetrussland",
                 "Nachkriegsordnung"
               ]
+            },
+            {
+              "id": "ge-k9-lb1-oktober-stalin",
+              "title": "Oktoberrevolution und Stalinismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Oktoberrevolution",
+                "Lenin",
+                "Stalinismus",
+                "Sowjetunion",
+                "Diktatur"
+              ]
+            },
+            {
+              "id": "ge-k9-lb1-novemberrevolution",
+              "title": "Novemberrevolution und Weimarer Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Novemberrevolution",
+                "Weimarer Verfassung",
+                "Republik",
+                "1918",
+                "Räte"
+              ]
             }
           ]
         },
@@ -1378,6 +1919,81 @@
                 "NSDAP",
                 "Weltwirtschaftskrise",
                 "Machtübertragung"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-putsche-krisen",
+              "title": "Weimar: Putschversuche und Selbstbehauptung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kapp-Putsch",
+                "Hitler-Putsch",
+                "Krise",
+                "Republikschutz",
+                "Weimar"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-wahlverhalten",
+              "title": "Wahlverhalten und Statistik in der Weimarer Zeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wahlverhalten",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-praesidial",
+              "title": "Präsidialkabinette und Machtverlagerung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "praesidial",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-ernennung",
+              "title": "Ernennung Hitlers und Ermächtigung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ernennung",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-gleichschaltung",
+              "title": "Gleichschaltung der Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gleichschaltung",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k9-lb2-terror-beginn",
+              "title": "Beginn von Terror und Ausgrenzung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "terror beginn",
+                "lb2"
               ]
             }
           ]
@@ -1437,6 +2053,18 @@
                 "Opposition",
                 "Zivilcourage"
               ]
+            },
+            {
+              "id": "ge-k9-lb3-volksgemeinschaft",
+              "title": "Ideologie der „Volksgemeinschaft“",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "volksgemeinschaft",
+                "lb3"
+              ]
             }
           ]
         },
@@ -1482,6 +2110,18 @@
                 "Expansion",
                 "Kriegsbeginn"
               ]
+            },
+            {
+              "id": "ge-k9-lb4-aussen-phasen",
+              "title": "Phasen deutscher Außenpolitik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "aussen phasen",
+                "lb4"
+              ]
             }
           ]
         },
@@ -1526,6 +2166,42 @@
                 "Kultur",
                 "Weimar",
                 "NS"
+              ]
+            },
+            {
+              "id": "ge-k9-lbw-gedenkstaette",
+              "title": "Gedenkstättenarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gedenkstaette",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k9-lbw-widerstand-formen",
+              "title": "Formen des Widerstands",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "widerstand formen",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k9-lbw-alltag-ns",
+              "title": "Alltag im Nationalsozialismus",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag ns",
+                "lbw"
               ]
             }
           ]
@@ -1589,6 +2265,54 @@
                 "Kubakrise",
                 "Entspannung"
               ]
+            },
+            {
+              "id": "ge-k10-lb1-feindbilder",
+              "title": "Ideologische Feindbilder USA–UdSSR",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "feindbilder",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-k10-lb1-potsdam",
+              "title": "Potsdamer Konferenz und Nachkriegsordnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "potsdam",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-k10-lb1-blockbildung",
+              "title": "Blockbildung und Bündnisse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "blockbildung",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-k10-lb1-stellvertreter",
+              "title": "Stellvertreterkonflikte im Kalten Krieg",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "stellvertreter",
+                "lb1"
+              ]
             }
           ]
         },
@@ -1647,6 +2371,69 @@
                 "Grundlagenvertrag",
                 "Entspannung"
               ]
+            },
+            {
+              "id": "ge-k10-lb2-nachkriegs-1945",
+              "title": "Nachkriegsordnung 1945–55: Entnazifizierung und Neubeginn",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Entnazifizierung",
+                "Bodenreform",
+                "Speziallager",
+                "Besatzung",
+                "Neubeginn"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-sachsen-sbz",
+              "title": "Sachsen in der SBZ",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "sachsen sbz",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-doppelstaat",
+              "title": "Gründung der beiden deutschen Staaten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "doppelstaat",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-integration-west-ost",
+              "title": "West- und Ostintegration",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "integration west ost",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-k10-lb2-mauer",
+              "title": "Mauerbau und deutsch-deutsche Grenze",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "mauer",
+                "lb2"
+              ]
             }
           ]
         },
@@ -1692,6 +2479,48 @@
                 "EU",
                 "Zwei-plus-Vier"
               ]
+            },
+            {
+              "id": "ge-k10-lb3-glasnost-perestroika",
+              "title": "Glasnost und Perestroika",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Glasnost",
+                "Perestroika",
+                "Gorbatschow",
+                "Reform",
+                "1989"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-europarat-einigung",
+              "title": "Europäische Einigung: Motive und Institutionen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Europarat",
+                "EG",
+                "EU",
+                "Einigung",
+                "Integration"
+              ]
+            },
+            {
+              "id": "ge-k10-lb3-transformation",
+              "title": "Transformation nach 1989/90",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "transformation",
+                "lb3"
+              ]
             }
           ]
         },
@@ -1733,6 +2562,42 @@
               "keywords": [
                 "Friedliche Revolution",
                 "Wiedervereinigung"
+              ]
+            },
+            {
+              "id": "ge-k10-lbw-alltag-ddr",
+              "title": "Alltag in der DDR",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag ddr",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k10-lbw-opposition",
+              "title": "Opposition und Bürgerrecht",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "opposition",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-k10-lbw-erinnerung-teilung",
+              "title": "Erinnerung an die Teilung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "erinnerung teilung",
+                "lbw"
               ]
             }
           ]
@@ -1796,6 +2661,102 @@
                 "Partizipation",
                 "Rechtsstaat"
               ]
+            },
+            {
+              "id": "ge-gk-lb1-aufklaerung-staat",
+              "title": "Staatsideen der Aufklärung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "aufklaerung staat",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-revolutionen",
+              "title": "Atlantische Revolutionen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "revolutionen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-buergertum",
+              "title": "Bürgertum und Öffentlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "buergertum",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-verfassungsstaat",
+              "title": "Verfassungsstaatliche Ordnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "verfassungsstaat",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-wirtschaft-wandel",
+              "title": "Wirtschaftlicher Wandel um 1800",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft wandel",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-sozialstruktur",
+              "title": "Sozialstruktur im Umbau",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "sozialstruktur",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-geschlecht-recht",
+              "title": "Rechte und Geschlechterordnungen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "geschlecht recht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-gk-lb1-quellen-aufklaerung",
+              "title": "Quellen der Aufklärungsepoche",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen aufklaerung",
+                "lb1"
+              ]
             }
           ]
         },
@@ -1840,6 +2801,106 @@
                 "Nationalsozialismus",
                 "Ideologie",
                 "Terror"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-parteien-weimar",
+              "title": "Weimar: Parteien, Wählerschaft und antidemokratische Gesinnung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Parteien",
+                "Wählerschaft",
+                "Antidemokratisch",
+                "Weimar",
+                "Polarisierung"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-demokratie-modelle",
+              "title": "Demokratiemodelle im Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "demokratie modelle",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-diktatur-merkmale",
+              "title": "Merkmale moderner Diktaturen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "diktatur merkmale",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-weimar-krisen",
+              "title": "Krisen der Weimarer Demokratie",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "weimar krisen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-widerstand-ethik",
+              "title": "Widerstand und ethische Urteile",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "widerstand ethik",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-propaganda-medien",
+              "title": "Propaganda und Medien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "propaganda medien",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-opfergruppen",
+              "title": "Verfolgte Gruppen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "opfergruppen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-gk-lb2-justiz-unrecht",
+              "title": "Justiz und Unrecht in Diktaturen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Justiz",
+                "Unrecht",
+                "Diktatur"
               ]
             }
           ]
@@ -1886,6 +2947,102 @@
                 "SED",
                 "Stasi"
               ]
+            },
+            {
+              "id": "ge-gk-lb3-sowjet-system",
+              "title": "Sowjetisches Herrschaftssystem",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "sowjet system",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-ddr-staat",
+              "title": "Herrschaft in der DDR",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ddr staat",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-vergleich-diktaturen",
+              "title": "Demokratie und Diktatur im Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleich diktaturen",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-alltag-unfreiheit",
+              "title": "Alltag unter Unfreiheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag unfreiheit",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-sicherheitsorgane",
+              "title": "Sicherheitsorgane und Überwachung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "sicherheitsorgane",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-wirtschaft-plan",
+              "title": "Planwirtschaft und Mangel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft plan",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-opposition-ost",
+              "title": "Opposition im Osten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "opposition ost",
+                "lb3"
+              ]
+            },
+            {
+              "id": "ge-gk-lb3-quellen-diktatur",
+              "title": "Quellen zu Diktaturerfahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen diktatur",
+                "lb3"
+              ]
             }
           ]
         },
@@ -1929,6 +3086,66 @@
                 "Abschreckung",
                 "Entspannung",
                 "Abrüstung"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-kriegsursachen",
+              "title": "Kriegsursachen analysieren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "kriegsursachen",
+                "lb4"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-friedensordnungen",
+              "title": "Friedensordnungen nach Kriegen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "friedensordnungen",
+                "lb4"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-uno-system",
+              "title": "UNO und kollektive Sicherheit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "uno system",
+                "lb4"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-abrüstung",
+              "title": "Abrüstung und Rüstungskontrolle",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "abrüstung",
+                "lb4"
+              ]
+            },
+            {
+              "id": "ge-gk-lb4-aktuelle-konflikte",
+              "title": "Aktuelle Konfliktfelder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "aktuelle konflikte",
+                "lb4"
               ]
             }
           ]
@@ -2008,6 +3225,42 @@
                 "Feindbild",
                 "Nation"
               ]
+            },
+            {
+              "id": "ge-gk-lbw-regional-os",
+              "title": "Regionalgeschichte Sachsen OS",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "regional os",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-biografie",
+              "title": "Biografisches Arbeiten",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "biografie",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-gk-lbw-medienprojekt",
+              "title": "Geschichtsprojekt Medien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "medienprojekt",
+                "lbw"
+              ]
             }
           ]
         }
@@ -2068,6 +3321,357 @@
                 "Protest",
                 "Zivilgesellschaft"
               ]
+            },
+            {
+              "id": "ge-lk11-lb1-aufklaerung-ideen",
+              "title": "Aufklärungsphilosophie: Staatsideen und Revolution",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Montesquieu",
+                "Rousseau",
+                "Menschenrechte",
+                "Gewaltenteilung",
+                "Aufklärung"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-theorie",
+              "title": "Politische Ordnung/Partizipation: Theorien und Begriffe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "theorie",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-fallstudie-1",
+              "title": "Politische Ordnung/Partizipation: Fallstudie I",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 1",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-fallstudie-2",
+              "title": "Politische Ordnung/Partizipation: Fallstudie II",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 2",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-vergleich",
+              "title": "Politische Ordnung/Partizipation: Historischer Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleich",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-quellen",
+              "title": "Politische Ordnung/Partizipation: Quellenarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-akteure",
+              "title": "Politische Ordnung/Partizipation: Akteure und Interessen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "akteure",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-strukturen",
+              "title": "Politische Ordnung/Partizipation: Strukturen und Prozesse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "strukturen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-alltag",
+              "title": "Politische Ordnung/Partizipation: Alltag und Erfahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-ideen",
+              "title": "Politische Ordnung/Partizipation: Ideen und Ideologien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ideen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-gewalt",
+              "title": "Politische Ordnung/Partizipation: Gewalt und Konflikt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gewalt",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-recht",
+              "title": "Politische Ordnung/Partizipation: Recht und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "recht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-wirtschaft",
+              "title": "Politische Ordnung/Partizipation: Wirtschaft und Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-geschlecht",
+              "title": "Politische Ordnung/Partizipation: Geschlecht und Teilhabe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "geschlecht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-religion",
+              "title": "Politische Ordnung/Partizipation: Religion und Weltbilder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "religion",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-medien",
+              "title": "Politische Ordnung/Partizipation: Medien und Öffentlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "medien",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-erinnerung",
+              "title": "Politische Ordnung/Partizipation: Erinnerung und Deutung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "erinnerung",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-international",
+              "title": "Politische Ordnung/Partizipation: Internationale Bezüge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "international",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-regional",
+              "title": "Politische Ordnung/Partizipation: Regionalgeschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "regional",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-methoden",
+              "title": "Politische Ordnung/Partizipation: Methoden historischen Arbeitens",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "methoden",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-urteil",
+              "title": "Politische Ordnung/Partizipation: Historisches Urteilen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "urteil",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-kontinuitaet",
+              "title": "Politische Ordnung/Partizipation: Kontinuität und Wandel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "kontinuitaet",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-zaesur",
+              "title": "Politische Ordnung/Partizipation: Zäsuren und Periodisierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "zaesur",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-macht",
+              "title": "Politische Ordnung/Partizipation: Macht und Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "macht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-widerstand",
+              "title": "Politische Ordnung/Partizipation: Widerstand und Anpassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "widerstand",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-migration",
+              "title": "Politische Ordnung/Partizipation: Migration und Mobilität",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "migration",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-kultur",
+              "title": "Politische Ordnung/Partizipation: Kultur und Symbolik",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "kultur",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-technik",
+              "title": "Politische Ordnung/Partizipation: Technik und Umwelt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "technik",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb1-bildung",
+              "title": "Politische Ordnung/Partizipation: Bildung und Sozialisation",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "bildung",
+                "lb1"
+              ]
             }
           ]
         },
@@ -2113,6 +3717,213 @@
                 "Migration",
                 "Imperialismus"
               ]
+            },
+            {
+              "id": "ge-lk11-lb2-vorindustriell-merkmale",
+              "title": "Vorindustrielle Gesellschaft: Merkmale und Umbau",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gutswirtschaft",
+                "Zünfte",
+                "Feudallasten",
+                "Vorindustriell",
+                "Sozialstruktur"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-theorie",
+              "title": "Industrialisierung international: Theorien und Begriffe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "theorie",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-fallstudie-1",
+              "title": "Industrialisierung international: Fallstudie I",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 1",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-fallstudie-2",
+              "title": "Industrialisierung international: Fallstudie II",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 2",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-vergleich",
+              "title": "Industrialisierung international: Historischer Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleich",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-quellen",
+              "title": "Industrialisierung international: Quellenarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-akteure",
+              "title": "Industrialisierung international: Akteure und Interessen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "akteure",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-strukturen",
+              "title": "Industrialisierung international: Strukturen und Prozesse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "strukturen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-alltag",
+              "title": "Industrialisierung international: Alltag und Erfahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-ideen",
+              "title": "Industrialisierung international: Ideen und Ideologien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ideen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-gewalt",
+              "title": "Industrialisierung international: Gewalt und Konflikt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gewalt",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-recht",
+              "title": "Industrialisierung international: Recht und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "recht",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-wirtschaft",
+              "title": "Industrialisierung international: Wirtschaft und Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-geschlecht",
+              "title": "Industrialisierung international: Geschlecht und Teilhabe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "geschlecht",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-religion",
+              "title": "Industrialisierung international: Religion und Weltbilder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "religion",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-medien",
+              "title": "Industrialisierung international: Medien und Öffentlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "medien",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk11-lb2-erinnerung",
+              "title": "Industrialisierung international: Erinnerung und Deutung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "erinnerung",
+                "lb2"
+              ]
             }
           ]
         },
@@ -2142,6 +3953,30 @@
               "keywords": [
                 "Juden",
                 "Partizipation"
+              ]
+            },
+            {
+              "id": "ge-lk11-lbw-projekt-partizipation",
+              "title": "Projekt: Partizipation vor Ort",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "projekt partizipation",
+                "lbw"
+              ]
+            },
+            {
+              "id": "ge-lk11-lbw-debatte",
+              "title": "Historische Debatte moderieren",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "debatte",
+                "lbw"
               ]
             }
           ]
@@ -2201,6 +4036,282 @@
                 "Diplomatie",
                 "Abrüstung"
               ]
+            },
+            {
+              "id": "ge-lk12-lb1-theorie",
+              "title": "Herausforderung Frieden: Theorien und Begriffe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "theorie",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-fallstudie-1",
+              "title": "Herausforderung Frieden: Fallstudie I",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 1",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-fallstudie-2",
+              "title": "Herausforderung Frieden: Fallstudie II",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 2",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-vergleich",
+              "title": "Herausforderung Frieden: Historischer Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleich",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-quellen",
+              "title": "Herausforderung Frieden: Quellenarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-akteure",
+              "title": "Herausforderung Frieden: Akteure und Interessen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "akteure",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-strukturen",
+              "title": "Herausforderung Frieden: Strukturen und Prozesse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "strukturen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-alltag",
+              "title": "Herausforderung Frieden: Alltag und Erfahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-ideen",
+              "title": "Herausforderung Frieden: Ideen und Ideologien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ideen",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-gewalt",
+              "title": "Herausforderung Frieden: Gewalt und Konflikt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gewalt",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-recht",
+              "title": "Herausforderung Frieden: Recht und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "recht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-wirtschaft",
+              "title": "Herausforderung Frieden: Wirtschaft und Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-geschlecht",
+              "title": "Herausforderung Frieden: Geschlecht und Teilhabe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "geschlecht",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-religion",
+              "title": "Herausforderung Frieden: Religion und Weltbilder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "religion",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-medien",
+              "title": "Herausforderung Frieden: Medien und Öffentlichkeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "medien",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-erinnerung",
+              "title": "Herausforderung Frieden: Erinnerung und Deutung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "erinnerung",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-international",
+              "title": "Herausforderung Frieden: Internationale Bezüge",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "international",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-regional",
+              "title": "Herausforderung Frieden: Regionalgeschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "regional",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-methoden",
+              "title": "Herausforderung Frieden: Methoden historischen Arbeitens",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "methoden",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-urteil",
+              "title": "Herausforderung Frieden: Historisches Urteilen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "urteil",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-kontinuitaet",
+              "title": "Herausforderung Frieden: Kontinuität und Wandel",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "kontinuitaet",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-zaesur",
+              "title": "Herausforderung Frieden: Zäsuren und Periodisierung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "zaesur",
+                "lb1"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb1-macht",
+              "title": "Herausforderung Frieden: Macht und Herrschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "macht",
+                "lb1"
+              ]
             }
           ]
         },
@@ -2245,6 +4356,189 @@
                 "Identität",
                 "Narrative",
                 "Geschichtspolitik"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-instrumentalisierung",
+              "title": "Instrumentalisierung von Geschichte",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Instrumentalisierung",
+                "Geschichtspolitik",
+                "Deutung",
+                "Mythos",
+                "Rezeption"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-theorie",
+              "title": "Geschichtskultur/Identität: Theorien und Begriffe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "theorie",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-fallstudie-1",
+              "title": "Geschichtskultur/Identität: Fallstudie I",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 1",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-fallstudie-2",
+              "title": "Geschichtskultur/Identität: Fallstudie II",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "fallstudie 2",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-vergleich",
+              "title": "Geschichtskultur/Identität: Historischer Vergleich",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "vergleich",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-quellen",
+              "title": "Geschichtskultur/Identität: Quellenarbeit",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quellen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-akteure",
+              "title": "Geschichtskultur/Identität: Akteure und Interessen",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "akteure",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-strukturen",
+              "title": "Geschichtskultur/Identität: Strukturen und Prozesse",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "strukturen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-alltag",
+              "title": "Geschichtskultur/Identität: Alltag und Erfahrung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "alltag",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-ideen",
+              "title": "Geschichtskultur/Identität: Ideen und Ideologien",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ideen",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-gewalt",
+              "title": "Geschichtskultur/Identität: Gewalt und Konflikt",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "gewalt",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-recht",
+              "title": "Geschichtskultur/Identität: Recht und Verfassung",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "recht",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-wirtschaft",
+              "title": "Geschichtskultur/Identität: Wirtschaft und Gesellschaft",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "wirtschaft",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-geschlecht",
+              "title": "Geschichtskultur/Identität: Geschlecht und Teilhabe",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "geschlecht",
+                "lb2"
+              ]
+            },
+            {
+              "id": "ge-lk12-lb2-religion",
+              "title": "Geschichtskultur/Identität: Religion und Weltbilder",
+              "pointsPerTask": 10,
+              "hint": "Tippe oder gib die Antwort ein. Erklärung erscheint nach dem Prüfen.",
+              "released": false,
+              "tasksPerRound": 10,
+              "keywords": [
+                "religion",
+                "lb2"
               ]
             }
           ]
@@ -2293,5 +4587,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "173a4cab"
+  "contentHash": "c6085db9"
 }

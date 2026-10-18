@@ -19,9 +19,9 @@ export function buildGymSachsenPhysikPack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Physik',
-    version: '2.5.32',
+    version: '2.6.0',
     changelog:
-      'K7 Vom Fliegen: Flugzeug-Silhouette nach Vorlage (Seitenansicht mit Fenstern/Triebwerk).',
+      'Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“.',
     official,
     extras: [],
   }

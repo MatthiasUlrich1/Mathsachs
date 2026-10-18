@@ -519,11 +519,27 @@ const MAX_REPORT_QUESTION = 280
 const MAX_REPORT_TITLE = 120
 const MAX_REPORT_TOPIC_ID = 80
 const MAX_REPORT_VERSION = 32
+const MAX_REPORT_SOLUTION = 500
+const MAX_REPORT_CHOICES = 1200
+const MAX_REPORT_PACK = 80
 const MAX_REPORT_STATUS_LOOKUP = 40
 
 function trimReportText(value, max) {
   if (typeof value !== 'string') return ''
   const trimmed = value.trim().replace(/\s+/g, ' ')
+  if (!trimmed) return ''
+  return trimmed.length > max ? trimmed.slice(0, max) : trimmed
+}
+
+/** Keep newlines (MC options), collapse runs of spaces. */
+function trimReportMultiline(value, max) {
+  if (typeof value !== 'string') return ''
+  const trimmed = value
+    .replace(/\r\n/g, '\n')
+    .split('\n')
+    .map((line) => line.replace(/[ \t]+/g, ' ').trim())
+    .join('\n')
+    .trim()
   if (!trimmed) return ''
   return trimmed.length > max ? trimmed.slice(0, max) : trimmed
 }
@@ -563,6 +579,10 @@ function parseTaskReports(raw) {
     const topicTitle = trimReportText(item.topicTitle, MAX_REPORT_TITLE)
     const areaTitle = trimReportText(item.areaTitle, MAX_REPORT_TITLE)
     const question = trimReportText(item.question, MAX_REPORT_QUESTION)
+    const solution = trimReportText(item.solution, MAX_REPORT_SOLUTION)
+    const choices = trimReportMultiline(item.choices, MAX_REPORT_CHOICES)
+    const packId = trimReportText(item.packId, MAX_REPORT_PACK)
+    const subject = trimReportText(item.subject, MAX_REPORT_PACK)
     const appVersion = trimReportText(item.appVersion, MAX_REPORT_VERSION)
     const status = normalizeReportStatus(item.status)
     const replyMessage = sanitizeReportReplyMessage(item.replyMessage)
@@ -586,6 +606,10 @@ function parseTaskReports(raw) {
       ...(topicTitle ? { topicTitle } : {}),
       ...(areaTitle ? { areaTitle } : {}),
       ...(question ? { question } : {}),
+      ...(solution ? { solution } : {}),
+      ...(choices ? { choices } : {}),
+      ...(packId ? { packId } : {}),
+      ...(subject ? { subject } : {}),
       ...(appVersion ? { appVersion } : {}),
       ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
       ...(replyMessage ? { replyMessage } : {}),
@@ -2367,6 +2391,10 @@ async function handleCreateTaskReport(request, env) {
   const topicTitle = trimReportText(body.topicTitle, MAX_REPORT_TITLE)
   const areaTitle = trimReportText(body.areaTitle, MAX_REPORT_TITLE)
   const question = trimReportText(body.question, MAX_REPORT_QUESTION)
+  const solution = trimReportText(body.solution, MAX_REPORT_SOLUTION)
+  const choices = trimReportMultiline(body.choices, MAX_REPORT_CHOICES)
+  const packId = trimReportText(body.packId, MAX_REPORT_PACK)
+  const subject = trimReportText(body.subject, MAX_REPORT_PACK)
   const appVersion = trimReportText(body.appVersion, MAX_REPORT_VERSION)
   const seed =
     typeof body.seed === 'number' && Number.isFinite(body.seed)
@@ -2385,6 +2413,10 @@ async function handleCreateTaskReport(request, env) {
     ...(topicTitle ? { topicTitle } : {}),
     ...(areaTitle ? { areaTitle } : {}),
     ...(question ? { question } : {}),
+    ...(solution ? { solution } : {}),
+    ...(choices ? { choices } : {}),
+    ...(packId ? { packId } : {}),
+    ...(subject ? { subject } : {}),
     ...(appVersion ? { appVersion } : {}),
     ...(seed !== undefined && Number.isFinite(seed) ? { seed } : {}),
   }

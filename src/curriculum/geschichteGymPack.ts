@@ -18,8 +18,8 @@ export function buildGymSachsenGeschichtePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Geschichte',
-    version: '1.9.0',
-    changelog: `K6 freigegeben: LB2 Mittelalter (14), LB3 Religionen/Kulturen (9), LB4 Bürger „Durch die Zeiten“, Wahl Regionalgeschichte. Karl/Verdun erweitert; Toleranz-heute ohne Meta-Übungsbeispiel; Lückentoleranz fuzzy. ${topics} Themen.`,
+    version: '1.10.0',
+    changelog: `Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. Zuvor: K6 LB2–LB4 + Wahl Regional freigegeben. ${topics} Themen.`,
     official,
     extras: [],
   }

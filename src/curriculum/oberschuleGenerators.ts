@@ -20,6 +20,7 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { PackTopic } from './pack'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 import type { Topic } from './types'
 
 /** Flexible accepted formats for a coordinate pair (a; b). */
@@ -658,7 +659,8 @@ export function topicFromPack(
   generate: Topic['generate'] | undefined,
   opts?: { subject?: string },
 ): Topic {
-  const playable = Boolean(generate)
+  const isNeu = topic.neu === true || isPlaceholderNeuTopic(topic.id)
+  const playable = Boolean(generate) && !isNeu
   return ensureTopicFachwissen(
     {
       id: topic.id,
@@ -668,7 +670,8 @@ export function topicFromPack(
       keywords: topic.keywords,
       source: 'official',
       outlineOnly: playable ? undefined : true,
-      released: topic.released ?? true,
+      released: isNeu ? false : (topic.released ?? true),
+      ...(isNeu ? { neu: true } : {}),
       contentId: topicContentId(topic.id),
       ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
       ...(topic.excludeFachwissen ? { excludeFachwissen: true } : {}),

@@ -4,9 +4,9 @@
   "region": "Sachsen",
   "school": "Oberschule",
   "subject": "Mathematik",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.",
-  "contentHash": "60e7be89",
+  "contentHash": "d220ec06",
   "official": [
     {
       "id": "os-hs-klasse-5",
@@ -141,6 +141,26 @@
               "keywords": [
                 "Primzahl",
                 "Sieb des Eratosthenes"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-null",
+              "title": "Null als kleinste natürliche Zahl",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Null",
+                "natürliche Zahlen"
+              ]
+            },
+            {
+              "id": "os-k5-lb1-rechengesetze",
+              "title": "Rechenstrategien, Rechenvorteile und Rechengesetze",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kommutativgesetz",
+                "Vorrangregeln"
               ]
             }
           ]
@@ -401,6 +421,28 @@
               "title": "Zeichnen und Analysieren symmetrischer sowie deckungsgleicher Figuren",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lb4-drehung",
+              "title": "Drehungen und Symmetrie in Mustern",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lb4-achsen",
+              "title": "Achsen- und Punktsymmetrie erkennen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lb4-verschiebungsweite",
+              "title": "Verschiebungsrichtung und Verschiebungsweite",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verschiebung",
+                "Vektor"
+              ]
             }
           ]
         },
@@ -417,6 +459,12 @@
             {
               "id": "os-k5-lbw1-abakus",
               "title": "Darstellung und Rechnen mit Abakus oder Rechenpfennigen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lbw1-stellenwert",
+              "title": "Stellenwertsysteme im Vergleich",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -437,6 +485,12 @@
               "title": "Einfache kombinatorische Zählstrategien",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lbw2-mittel",
+              "title": "Mittelwert aus Klassendaten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -447,6 +501,18 @@
             {
               "id": "os-k5-lbw3-angebote",
               "title": "Angebote vergleichen, Zeitpläne und Fahrtkosten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lbw3-budget",
+              "title": "Budget und Stückkosten berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k5-lbw3-zeit",
+              "title": "Fahrzeiten und Zeitpläne",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -486,6 +552,26 @@
               "title": "Notwendigkeit einer Zahlenbereichserweiterung, Mengenbegriff",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lb1-zahlenstrahl",
+              "title": "Gebrochene Zahlen am Zahlenstrahl veranschaulichen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenstrahl",
+                "Bruch"
+              ]
+            },
+            {
+              "id": "os-k6-lb1-negative-ausblick",
+              "title": "Ausblick: negative Zahlen in Sachproblemen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Temperatur",
+                "negative Zahlen"
+              ]
             },
             {
               "id": "os-k6-lb1-kuerzen",
@@ -812,6 +898,18 @@
               "title": "Geometrische Objekte mit dynamischer Geometriesoftware",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lbw1-konstruktion",
+              "title": "Grundkonstruktionen am Computer",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lbw1-messen",
+              "title": "Längen und Winkel dynamisch messen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -822,6 +920,18 @@
             {
               "id": "os-k6-lbw2-spiele",
               "title": "Spiele zur Problemlösefähigkeit, Raumanschauung und Stochastik",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lbw2-strategie",
+              "title": "Strategiespiele und Gewinnzüge",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-k6-lbw2-wuerfel",
+              "title": "Würfelspiele und relative Häufigkeit",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -848,6 +958,12 @@
               "keywords": [
                 "Modalwert"
               ]
+            },
+            {
+              "id": "os-k6-lbw3-diagramm",
+              "title": "Säulen- und Kreisdiagramme lesen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         }
@@ -977,6 +1093,16 @@
               "keywords": [
                 "Häufigkeit"
               ]
+            },
+            {
+              "id": "os-hs-k7-lb2-chancen",
+              "title": "Gleichwahrscheinliche Ergebnisse und Chancen abschätzen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Chance",
+                "gleichwahrscheinlich"
+              ]
             }
           ]
         },
@@ -985,6 +1111,16 @@
           "title": "Rationale Zahlen",
           "ustd": 20,
           "topics": [
+            {
+              "id": "os-hs-k7-lb3-zahlerweiterung",
+              "title": "Notwendigkeit der Zahlenbereichserweiterung",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlbereich",
+                "Erweiterung"
+              ]
+            },
             {
               "id": "os-hs-k7-lb3-zahlengerade",
               "title": "Veranschaulichen auf der Zahlengeraden, Vergleichen und Ordnen",
@@ -1121,6 +1257,16 @@
               "keywords": [
                 "Oberfläche"
               ]
+            },
+            {
+              "id": "os-hs-k7-lb4-verpackung",
+              "title": "Materialverbrauch und Verpackungen beurteilen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verpackung",
+                "Materialeinsparung"
+              ]
             }
           ]
         },
@@ -1131,6 +1277,18 @@
             {
               "id": "os-hs-k7-lbw1-parkett",
               "title": "Bandornamente und Parkettierungen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw1-spiegel",
+              "title": "Spiegelungen in Ornamenten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw1-verschieb",
+              "title": "Verschiebungen und Rapport",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1145,6 +1303,18 @@
               "title": "Räumliche Illusionen und optische Täuschungen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw2-perspektive",
+              "title": "Perspektive und Scheinraum",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw2-messen",
+              "title": "Messen trotz Täuschung",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1155,6 +1325,18 @@
             {
               "id": "os-hs-k7-lbw3-knobel",
               "title": "Probleme der Unterhaltungsmathematik",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw3-zahlen",
+              "title": "Zahlenrätsel und magische Quadrate",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k7-lbw3-logik",
+              "title": "Logikspiele und Schlussfolgern",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1234,6 +1416,17 @@
               "title": "Erstellen und Deuten von Säulen-, Linien- und Kreisdiagrammen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lb1-kredit",
+              "title": "Sparformen, Kredit und Ratenzahlung beurteilen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kredit",
+                "Ratenzahlung",
+                "Sparen"
+              ]
             }
           ]
         },
@@ -1407,6 +1600,18 @@
               "title": "Kenndaten, Wegstrecken und Geschwindigkeiten am Fahrrad",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw1-umfang",
+              "title": "Radumfang und zurückgelegte Strecke",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw1-tempo",
+              "title": "Durchschnittsgeschwindigkeit berechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1419,6 +1624,18 @@
               "title": "Kredit, Tilgung und Kreditangebote",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw2-zinsen",
+              "title": "Zinsen und Gesamtkosten vergleichen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw2-raten",
+              "title": "Ratenkauf und effektive Belastung",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1429,6 +1646,18 @@
             {
               "id": "os-hs-k8-lbw3-modell",
               "title": "Maßstäbliches Vergrößern und Verkleinern im Modellbau",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw3-massstab",
+              "title": "Maßstab umrechnen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k8-lbw3-volumen",
+              "title": "Volumenveränderung bei Maßstab",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -1549,6 +1778,16 @@
               "title": "Zusammengesetzte Körper",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lb2-formel-umstellen",
+              "title": "Formeln umstellen und anwenden",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Formel",
+                "Umstellen"
+              ]
             }
           ]
         },
@@ -1604,6 +1843,16 @@
               "keywords": [
                 "Parabel"
               ]
+            },
+            {
+              "id": "os-hs-k9-lb3-tarif",
+              "title": "Tarifvergleiche mit linearen Funktionen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Tarif",
+                "Kostenfunktion"
+              ]
             }
           ]
         },
@@ -1626,6 +1875,18 @@
               "keywords": [
                 "Mittelwert"
               ]
+            },
+            {
+              "id": "os-hs-k9-lb4-prozent",
+              "title": "Prozentuale Aufschläge und Rabatte",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lb4-vergleich",
+              "title": "Angebote und Tarife vergleichen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1671,6 +1932,18 @@
               "title": "Optimierungsprobleme aus Alltag und Wirtschaft",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lbw2-flaeche",
+              "title": "Maximale Fläche bei gegebenem Umfang",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lbw2-kosten",
+              "title": "Kostenminimum abschätzen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -1681,6 +1954,18 @@
             {
               "id": "os-hs-k9-lbw3-zeichnen",
               "title": "Technische Zeichnungen und mehrere Ansichten",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lbw3-mass",
+              "title": "Bemaßung und Maßstab",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "os-hs-k9-lbw3-schnitt",
+              "title": "Schnittdarstellungen lesen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }

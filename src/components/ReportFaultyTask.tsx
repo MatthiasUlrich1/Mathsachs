@@ -15,6 +15,10 @@ interface Props {
   areaTitle?: string
   contentId?: number
   question?: string
+  solution?: string
+  choices?: string
+  packId?: string
+  subject?: string
   /** Generator seed so Entwickler can reproduce the exact task. */
   seed?: number
 }
@@ -27,6 +31,10 @@ export function ReportFaultyTask({
   areaTitle,
   contentId,
   question,
+  solution,
+  choices,
+  packId,
+  subject,
   seed,
 }: Props) {
   const [status, setStatus] = useState<Status>('idle')
@@ -58,6 +66,10 @@ export function ReportFaultyTask({
         topicTitle,
         ...(areaTitle?.trim() ? { areaTitle: areaTitle.trim() } : {}),
         ...(question?.trim() ? { question: question.trim() } : {}),
+        ...(solution?.trim() ? { solution: solution.trim() } : {}),
+        ...(choices?.trim() ? { choices: choices.trim() } : {}),
+        ...(packId?.trim() ? { packId: packId.trim() } : {}),
+        ...(subject?.trim() ? { subject: subject.trim() } : {}),
         ...(resolvedSeed !== undefined ? { seed: resolvedSeed } : {}),
         appVersion: APP_VERSION,
       })

@@ -144,6 +144,18 @@ export function RoleOptions({
             Entwickler
           </label>
         )}
+        {value === 'pruefer' && (
+          <label className="role-option role-option--active">
+            <input
+              type="radio"
+              name={name}
+              value="pruefer"
+              checked
+              onChange={() => onSelect('pruefer')}
+            />
+            Prüfer
+          </label>
+        )}
       </div>
     </fieldset>
   )

@@ -12,13 +12,14 @@ import { listVisibleGradeModules } from './registry'
 import { buildGymSachsenGeschichtePack } from './geschichteGymPack'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { isPlayableGeschichteTopic, resolveGeschichteGenerate } from './geschichteGenerators'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 
 describe('Gymnasium Sachsen Geschichte pack', () => {
   it('builds Klassen 5–10 and Oberstufe Gk/Lk with K6 fully released', () => {
     const pack = buildGymSachsenGeschichtePack()
     expect(pack.id).toBe(GYM_SACHSEN_GESCHICHTE_PACK_ID)
     expect(pack.subject).toBe('Geschichte')
-    expect(pack.version).toBe('1.9.0')
+    expect(pack.version).toBe('1.10.0')
     expect(pack.official.map((g) => g.id)).toEqual([
       'geschichte-klasse-5',
       'geschichte-klasse-6',
@@ -33,7 +34,15 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const topics = pack.official.flatMap((g) => g.areas.flatMap((a) => a.topics))
     expect(topics.length).toBeGreaterThan(30)
     const k6 = pack.official.find((g) => g.id === 'geschichte-klasse-6')!
-    expect(k6.areas.flatMap((a) => a.topics).every((t) => t.released === true)).toBe(true)
+    const k6Topics = k6.areas.flatMap((a) => a.topics)
+    expect(
+      k6Topics
+        .filter((t) => !isPlaceholderNeuTopic(t.id))
+        .every((t) => t.released === true),
+    ).toBe(true)
+    expect(
+      k6Topics.filter((t) => isPlaceholderNeuTopic(t.id)).every((t) => t.released === false),
+    ).toBe(true)
     const lb4 = k6.areas.find((a) => a.id === 'lb4')!
     expect(lb4.title).toMatch(/Durch die Zeiten/)
     expect(lb4.topics[0]!.title).toMatch(/Durch die Zeiten/)
@@ -46,6 +55,7 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
   it('registers playable generators for all Lehrplan topics', () => {
     for (const id of allGeschichteTopicIds()) {
       expect(resolveGeschichteGenerate(id, 'Test'), id).toBeTypeOf('function')
+      if (isPlaceholderNeuTopic(id)) continue
       expect(isPlayableGeschichteTopic(id), id).toBe(true)
     }
   })
@@ -54,9 +64,11 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const k5 = grades.find((g) => g.id === 'geschichte-klasse-5')!
     const topics = k5.areas.flatMap((a) => a.topics)
+    const filled = topics.filter((t) => !t.neu)
     expect(topics.every((t) => t.released === false)).toBe(true)
-    expect(topics.every((t) => !t.outlineOnly)).toBe(true)
-    const task = topics[0]!.generate(() => 0.5)
+    expect(filled.every((t) => !t.outlineOnly)).toBe(true)
+    expect(topics.some((t) => t.neu && t.outlineOnly)).toBe(true)
+    const task = filled[0]!.generate(() => 0.5)
     expect(task.question.length).toBeGreaterThan(10)
     expect(task.fachwissen?.text?.trim().length ?? 0).toBeGreaterThanOrEqual(80)
     expect(task.check(task.sampleAnswer)).toBe(true)

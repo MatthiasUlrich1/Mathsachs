@@ -76,6 +76,7 @@ export type UserRole =
   | 'klassenlehrer'
   | 'lehrer'
   | 'entwickler'
+  | 'pruefer'
 
 export interface UserData {
   name: string
@@ -235,7 +236,8 @@ const isUserRole = (value: unknown): value is UserRole =>
   value === 'eltern' ||
   value === 'klassenlehrer' ||
   value === 'lehrer' ||
-  value === 'entwickler'
+  value === 'entwickler' ||
+  value === 'pruefer'
 
 const isCreatedCode = (value: unknown): value is CreatedClassCode => {
   if (!isRecord(value)) return false

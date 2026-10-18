@@ -1,4 +1,5 @@
 import {
+  canAccessClassSettings,
   canCreateExam,
   canRequestTasks,
   canSeeTaskAuthoringReviewUI,
@@ -67,9 +68,11 @@ export type SettingsSectionId = (typeof SETTINGS_SECTIONS)[number]['id']
  * Aufgaben-Prüfung: nur Entwickler (+ feature enabled).
  * Meine Meldungen: alle Rollen.
  * Fehlerhafte Aufgaben: nur Entwickleransicht.
+ * Klasse: nicht für Prüfer (QA-only).
  */
 export function settingsSectionsForRole(role?: UserRole | null) {
   return SETTINGS_SECTIONS.filter((item) => {
+    if (item.id === 'class') return canAccessClassSettings(role)
     if (item.id === 'tasks') return canRequestTasks(role)
     if (item.id === 'taskAuthoring') return canSeeTaskAuthoringUI(role)
     if (item.id === 'taskAuthoringReview') return canSeeTaskAuthoringReviewUI(role)

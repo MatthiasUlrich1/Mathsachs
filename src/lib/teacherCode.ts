@@ -11,6 +11,12 @@ export const TEACHER_CODE = '88MXDZ92'
 /** FNV-1a of an alternate accepted Lehrercode (not stored in plaintext). */
 const TEACHER_CODE_GATE = '62b34d22'
 
+/**
+ * FNV-1a of the Prüfer-Code (not stored in plaintext).
+ * Plaintext for maintainers: 88PRF875 (Klassencode-Alphabet, ohne I/O/U/L).
+ */
+const PRUEFER_CODE_GATE = '13de625d'
+
 export const TEACHER_CODE_REQUEST_LABEL = 'Lehrercode anfordern'
 
 export const TEACHER_CODE_REQUEST_SUBJECT =
@@ -41,15 +47,19 @@ function codeDigest(normalized: string): string {
 }
 
 /**
- * Valid Lehrercode access. `extended` unlocks unreleased curriculum topics in the UI.
+ * Valid Lehrercode access.
+ * - `standard` — Lehrer / Klassenlehrer
+ * - `extended` — Entwickler (unreleased topics + admin tools)
+ * - `pruefer` — Prüfer (QA: locked topics + report; no Lehrer/Entwickler classroom tools)
  */
 export function resolveTeacherCodeAccess(
   raw: string,
-): 'standard' | 'extended' | null {
+): 'standard' | 'extended' | 'pruefer' | null {
   const normalized = normalizeTeacherCode(raw)
   if (!normalized) return null
   if (normalized === TEACHER_CODE) return 'standard'
   if (codeDigest(normalized) === TEACHER_CODE_GATE) return 'extended'
+  if (codeDigest(normalized) === PRUEFER_CODE_GATE) return 'pruefer'
   return null
 }
 
@@ -89,12 +99,17 @@ export function applyRoleChange(
   return { ok: true, role: roleForTeacherAccess(to, access) }
 }
 
-/** Extended Lehrercode unlocks the hidden Entwickler role (preview + Lehrer rights). */
+/**
+ * Extended Lehrercode → Entwickler; Prüfer-Code → Prüfer.
+ * Standard keeps the requested Lehrer/Klassenlehrer role.
+ */
 export function roleForTeacherAccess(
   requested: UserRole,
-  access: 'standard' | 'extended',
+  access: 'standard' | 'extended' | 'pruefer',
 ): UserRole {
-  return access === 'extended' ? 'entwickler' : requested
+  if (access === 'extended') return 'entwickler'
+  if (access === 'pruefer') return 'pruefer'
+  return requested
 }
 
 /** mailto to the Impressum address — nothing is stored on the Worker. */

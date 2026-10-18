@@ -61,7 +61,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(parsedHs?.region).toBe('Sachsen')
     expect(parsedHs?.school).toBe('Oberschule')
     expect(parsedHs?.subject).toBe('Mathematik')
-    expect(parsedHs?.version).toBe('1.0.1')
+    expect(parsedHs?.version).toBe('1.1.0')
     expect(parsedRs?.school).toBe('Oberschule')
   })
 
@@ -213,7 +213,14 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(task.check(task.sampleAnswer)).toBe(true)
     expect(outline[0].generate(createRng(1)).question).toMatch(/noch keine Übungsaufgaben/)
     expect(topics.every((t) => t.source === 'official')).toBe(true)
-    expect(topics.every((t) => isPlayableOfficialTopic(t.id) === !t.outlineOnly)).toBe(true)
+    expect(
+      topics
+        .filter((t) => !t.neu)
+        .every((t) => isPlayableOfficialTopic(t.id) === !t.outlineOnly),
+    ).toBe(true)
+    expect(topics.filter((t) => t.neu).every((t) => t.outlineOnly && t.released === false)).toBe(
+      true,
+    )
   })
 
   it('installs a pack so Klassenstufen appear without the Gymnasium modules', async () => {

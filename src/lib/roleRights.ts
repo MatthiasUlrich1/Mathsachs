@@ -3,7 +3,7 @@ import { USER_ROLES, type UserRole } from './roles'
 export type RightMark = 'yes' | 'no' | 'optin' | 'viaClass' | 'viaClassOrGrade' | 'planned'
 
 /** Columns in the rights matrix (no hidden roles). */
-export type MatrixRole = Exclude<UserRole, 'entwickler'>
+export type MatrixRole = Exclude<UserRole, 'entwickler' | 'pruefer'>
 
 export interface RightRow {
   id: string

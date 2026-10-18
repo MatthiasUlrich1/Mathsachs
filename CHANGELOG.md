@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.76] – 2026-10-18
+
+### Hinzugefügt
+- **Prüfer-Rolle:** Code `88PRF875` schaltet QA-only-Zugang frei (gesperrte Themen
+  sichtbar, Übung + Fehler melden). Keine Lehrer-/Entwickler-Klassenfunktionen;
+  Prüfkriterien im Profil unter Einstellungen.
+- **Entwickler-Report-Export:** Fehlerhafte-Aufgaben-Liste mit Filter
+  „Erledigte ausblenden“ und kopierbarem Fixer-Export (IDs, Prompt, Optionen/
+  Lösung, Thema/Pack, Kommentar, Status; Reporter anonym). Worker speichert
+  zusätzlich Solution/Choices/Pack/Subject am Report.
+- **Lehrplan-Struktur „Neu“:** 601 Outline-Themen-Platzhalter aus v0.28.120
+  (ohne Aufgabenbanken) in Bio/Geschichte/Physik/Oberschule u. a. Packs —
+  nur Struktur für Prüfer/Entwickler.
+
+### Geändert
+- Pack-Manifest/Versionen für die Platzhalter-Exports (u. a. Bio 1.9.0,
+  Geschichte 1.10.0, Physik 2.6.0).
+
 ## [0.28.75] – 2026-09-27
 
 ### Behoben
