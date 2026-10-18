@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.125] – 2026-10-18
+
+### Hinzugefügt
+- **K5 Biologie (9 Themen):** Mehr Wissens-MC, Drag-and-Drop (Antworten in Felder einsortieren)
+  und grafische Beschriftung (Schnabeltypen-, Atemweg-Schema). Pack Biologie **1.11.0**.
+
+
 ## [0.28.124] – 2026-10-18
 
 ### Geändert

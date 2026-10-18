@@ -1726,25 +1726,23 @@ function kriechMatch(rng: Rng) {
   })
 }
 
-function voegelSchnabel(rng: Rng) {
-  const pairs = [
-    { form: 'Spitzer, schlanker Schnabel', food: 'Insekten / Weichteile (z. B. Singvogel)' },
-    { form: 'Kurzer, kräftiger Körner-Schnabel', food: 'Samen und Körner' },
-    { form: 'Hakiger Greifvogel-Schnabel', food: 'Fleisch / Beute zerreißen' },
-  ]
-  const three = shuffle(rng, pairs).slice(0, 3)
-  return classifySlotsTask(rng, {
-    question: 'Ordne Schnabelform und typische Nahrung zu (Angepasstheit).',
-    slotLabels: three.map((p) => p.form),
-    itemLabels: three.map((p) => p.food),
-    correctSlots: [0, 1, 2],
-    distractors: ['Ausschließlich Filterplankton wie Bartenwale'],
-    solution: three.map((p) => `${p.form} → ${p.food}`).join('; '),
-    explanation: 'Schnabelform spiegelt die Nahrung wider — Erschließungsfeld Angepasstheit.',
+/** Fortpflanzung-Kern (Schnabel gehört in bi-k5-lb5-voegel-schnabel). */
+function voegelFortpflanzungMatch(rng: Rng) {
+  return matchTermsTask(rng, {
+    question: 'Ordne Fortpflanzung und Brutpflege der Vögel zu.',
+    terms: ['Innere Befruchtung', 'Nesthocker', 'Nestflüchter'],
+    meanings: [
+      'Befruchtung im Körper des Weibchens',
+      'Jungvogel braucht längere Nestpflege und Fütterung',
+      'Jungvogel ist nach dem Schlupf relativ selbstständig',
+    ],
+    distractor: 'Nur äußere Befruchtung im offenen Meerwasser',
+    solution: 'Innere Befruchtung / Nesthocker / Nestflüchter',
+    explanation: 'Kernmerkmale der Vogel-Fortpflanzung und Aufzucht.',
     fachwissen: fw(
-      'Angepasstheit der Vögel: Körperform/Skelett zum Fliegen, Schnabel zur Nahrung, Luftsäcke zur Atmung.',
+      'Vögel: innere Befruchtung, Schalenei, Bebrüten; Nesthocker und Nestflüchter unterscheiden die Brutpflege.',
     ),
-    concept: `bio:k5:vogel:fortpflanzung:schnabel:${three.map((p) => p.form.slice(0, 12)).join('+')}`,
+    concept: 'bio:k5:vogel:fp:base-match',
   })
 }
 
@@ -1975,7 +1973,7 @@ export const biLurcheSchutz = makeSchutzTopic('lurch')
 export const biKriechtiereMerkmale = makeMerkmaleTopic('kriechtier', kriechMatch)
 export const biKriechtiereArten = makeArtenTopic('kriechtier')
 export const biVoegelFlug = makeMerkmaleTopic('vogel', voegelFlugMatch)
-export const biVoegelFortpflanzung = makeLebensraumTopic('vogel', voegelSchnabel)
+export const biVoegelFortpflanzung = makeLebensraumTopic('vogel', voegelFortpflanzungMatch)
 export const biSaeugerMerkmale = makeMerkmaleTopic('saeuger', saeugerGebiss)
 export const biSaeugerAngepasst = makeLebensraumTopic('saeuger', saeugerGliedmass)
 export const biSaeugerSchutz = makeSchutzTopic('saeuger')

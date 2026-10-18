@@ -15,6 +15,7 @@ import {
 import { mixedVariants } from './taskHelpers'
 import type { Topic } from './types'
 import { BIOLOGIE_K5_GENERATORS as BASE_K5 } from './biologie5'
+import { BIOLOGIE_K5_NEU_TOPIC_GENERATORS } from './biologieK5NeuTopics'
 import { BIOLOGIE_K6_GENERATORS as BASE_K6 } from './biologie6'
 import { BIOLOGIE_K7_GENERATORS as BASE_K7 } from './biologie7'
 import { BIOLOGIE_K8_GENERATORS as BASE_K8 } from './biologie8'
@@ -423,6 +424,8 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   ),
   'bi-k5-lb4-kriechtiere-arten': BASE_K5['bi-k5-lb4-kriechtiere-arten']!,
   'bi-k5-lb4-kriechtiere-fortpflanzung': biKriechtiereFortpflanzung,
+  'bi-k5-lb4-kriechtiere-schutz': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb4-kriechtiere-schutz']!,
+  'bi-k5-lb1-arbeitsweisen': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb1-arbeitsweisen']!,
   'bi-k5-lb5-voegel': withTopicUx(BASE_K5['bi-k5-lb5-voegel'], iconsForGroup('vogel')),
   'bi-k5-lb5-voegel-aufbau': BIOLOGIE_ANATOMY_GENERATORS['bi-k5-lb5-voegel-aufbau']!,
   'bi-k5-lb5-voegel-flug': buildVoegelFlugDense(
@@ -432,6 +435,9 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb5-voegel-fortpflanzung': buildVoegelFortpflanzungDense(
     BASE_K5['bi-k5-lb5-voegel-fortpflanzung']!,
   ),
+  'bi-k5-lb5-voegel-schnabel': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb5-voegel-schnabel']!,
+  'bi-k5-lb5-voegel-verhalten': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb5-voegel-verhalten']!,
+  'bi-k5-lb5-voegel-schutz': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb5-voegel-schutz']!,
   'bi-k5-lb6-saeugetiere': buildSaeugerUeberblickDense(
     withTopicUx(BASE_K5['bi-k5-lb6-saeugetiere'], iconsForGroup('saeuger')),
   ),
@@ -443,6 +449,10 @@ export const BIOLOGIE_K5_EXPANDED: Record<string, Topic['generate']> = {
   'bi-k5-lb6-saeuger-angepasst': buildSaeugerAngepasstDense(
     BASE_K5['bi-k5-lb6-saeuger-angepasst']!,
   ),
+  'bi-k5-lb6-saeuger-lunge': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb6-saeuger-lunge']!,
+  'bi-k5-lb6-saeuger-verhalten': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb6-saeuger-verhalten']!,
+  'bi-k5-lb6-saeuger-sinne': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb6-saeuger-sinne']!,
+  'bi-k5-lb6-saeuger-sozial': BIOLOGIE_K5_NEU_TOPIC_GENERATORS['bi-k5-lb6-saeuger-sozial']!,
   'bi-k5-lb6-saeuger-schutz': buildSaeugerSchutzDense(BASE_K5['bi-k5-lb6-saeuger-schutz']!),
   'bi-k5-lb6-saeuger-fortpflanzung': biSaeugerFortpflanzungMensch,
   // Systematik = Lehrplan-Klassifikation; Zuordnung = Merkmalsvergleich UX — disjoint.

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Atemwege der Säugetier-Lunge (Schema)</title>
+  <desc id="desc">Vereinfachtes Schema: Nase/Mund, Luftröhre, Bronchien, Lungenbläschen</desc>
+  <rect width="800" height="520" fill="#f7faf8"/>
+  <!-- head / nose -->
+  <ellipse cx="120" cy="160" rx="70" ry="55" fill="#e8f0ea" stroke="#2d5a3d" stroke-width="3"/>
+  <text x="120" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#1a3d28">Kopf</text>
+  <!-- trachea -->
+  <rect x="190" y="140" width="160" height="40" rx="12" fill="#d4e8dc" stroke="#2d5a3d" stroke-width="3"/>
+  <!-- bronchi split -->
+  <path d="M350 160 L430 110 L520 90" fill="none" stroke="#2d5a3d" stroke-width="10" stroke-linecap="round"/>
+  <path d="M350 160 L430 210 L520 230" fill="none" stroke="#2d5a3d" stroke-width="10" stroke-linecap="round"/>
+  <!-- lungs -->
+  <ellipse cx="600" cy="100" rx="110" ry="70" fill="#c5dfd0" stroke="#2d5a3d" stroke-width="3"/>
+  <ellipse cx="600" cy="240" rx="110" ry="70" fill="#c5dfd0" stroke="#2d5a3d" stroke-width="3"/>
+  <!-- alveoli clusters -->
+  <circle cx="640" cy="85" r="14" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <circle cx="665" cy="105" r="12" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <circle cx="630" cy="115" r="11" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <circle cx="640" cy="225" r="14" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <circle cx="665" cy="245" r="12" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <circle cx="630" cy="255" r="11" fill="#9ec9b0" stroke="#2d5a3d" stroke-width="2"/>
+  <!-- numbered markers for drop fields (percent coords measured for slots) -->
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">
+    <circle cx="90" cy="100" r="22" fill="#2d5a3d"/><text x="90" y="108" text-anchor="middle">1</text>
+    <circle cx="270" cy="100" r="22" fill="#2d5a3d"/><text x="270" y="108" text-anchor="middle">2</text>
+    <circle cx="450" cy="140" r="22" fill="#2d5a3d"/><text x="450" y="148" text-anchor="middle">3</text>
+    <circle cx="700" cy="160" r="22" fill="#2d5a3d"/><text x="700" y="168" text-anchor="middle">4</text>
+  </g>
+  <text x="400" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#456">
+    Schema · Unterricht (vereinfacht) · TaskTrophy
+  </text>
+</svg>

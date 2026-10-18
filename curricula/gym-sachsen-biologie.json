@@ -4,8 +4,8 @@
   "region": "Sachsen",
   "school": "Gymnasium",
   "subject": "Biologie",
-  "version": "1.9.0",
-  "changelog": "Lehrplan-Struktur-Platzhalter aus v0.28.120 (ohne Aufgabenbanken) als „Neu“. 340 Themen.",
+  "version": "1.11.0",
+  "changelog": "K5: 9 Themenbanken mit mehr Wissens-MC, Drag-and-Drop (Antworten in Felder) und Schemata (Schnabeltypen, Atemweg). 340 Themen.",
   "official": [
     {
       "id": "biologie-klasse-5",
@@ -60,7 +60,7 @@
               "title": "Arbeitsweisen der Biologen",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Beobachten",
@@ -280,7 +280,7 @@
               "title": "Kriechtiere – Schutz und Artenschutz",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Artenschutz",
@@ -354,7 +354,7 @@
               "title": "Vögel – Schnabelformen und Nahrung",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Schnabel",
@@ -367,7 +367,7 @@
               "title": "Vögel – Revier, Balz und Gesang",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Revier",
@@ -380,7 +380,7 @@
               "title": "Vögel – Schutz und Artenschutz",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Vogelschutz",
@@ -451,7 +451,7 @@
               "title": "Säugetiere – Lunge und Gasaustausch",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Lunge",
@@ -465,7 +465,7 @@
               "title": "Säugetiere – Verhalten beobachten",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Verhalten",
@@ -477,7 +477,7 @@
               "title": "Säugetiere – Sinne und Kommunikation",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Sinne",
@@ -489,7 +489,7 @@
               "title": "Säugetiere – Sozialverhalten",
               "pointsPerTask": 10,
               "hint": "Tippe oder wähle die Antwort. Erklärung erscheint nach dem Prüfen.",
-              "released": false,
+              "released": true,
               "tasksPerRound": 10,
               "keywords": [
                 "Rudel",
@@ -4716,5 +4716,5 @@
     }
   ],
   "extras": [],
-  "contentHash": "664e6316"
+  "contentHash": "6e7ccf4d"
 }
