@@ -162,11 +162,12 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 ## Geschichte K5 — Polis / Athen-Karte
 
 - **File:** `polis-athen-karte.png`
-- **Title:** Map of Ancient Athens c. 430 BC
-- **Author:** Singinglemon (based on Meyers Konversationslexikon 1888)
-- **License:** Public Domain
-- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Map_ancient_athens.png
-- **Note:** Spoiler-Beschriftungen an den Zielfeldern abgedeckt; Nummern 1–4 als Overlay für Bildbeschriftung (Akropolis, Agora, Pnyx, Theater des Dionysos). Keine Eigen-SVG-Schemas.
+- **Title:** Atenas clásica (Plano de Atenas en época clásica, alrededor del 430 a. C.)
+- **Author:** Enrique Íñiguez Rodríguez (Qoan); based on Map ancient athens.png / Meyers Konversationslexikon 1888
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Atenas_cl%C3%A1sica.png
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **Note:** Spanische Spoiler-Beschriftungen an den Zielfeldern (Ágora, Acrópolis, Pnix, Teatro de Dionisio) abgedeckt. Drop-Felder + Leader nur UI-Overlay. 1 Akropolis · 2 Agora · 3 Pnyx · 4 Theater des Dionysos. Keine Eigen-SVG-Schemas.
 
 ## Insect (optional / future)
 

@@ -68,22 +68,23 @@ const TOPIC_FW = {
 } as const
 
 /**
- * Polis-Karte: Wikimedia Commons „Map ancient athens.png“ (Public Domain).
- * Englische Spoiler-Namen am Zielort abgedeckt; Nummern 1–4 als Overlay.
+ * Polis-Karte: Wikimedia Commons „Atenas clásica.png“ (CC BY-SA 3.0).
+ * Farbige Übersicht ca. 430 v. Chr.; spanische Spoiler an den Zielfeldern abgedeckt.
  * 1 Akropolis · 2 Agora · 3 Pnyx · 4 Theater des Dionysos
  */
 const POLIS_DIAGRAM = {
   imageSrc: '/anatomy/polis-athen-karte.png',
-  imageAlt: 'Karte des antiken Athens mit Nummern 1 bis 4',
+  imageAlt: 'Übersichtskarte des antiken Athens mit Orten der Polis',
   attribution:
-    'Singinglemon: Map of Ancient Athens c. 430 BC, Wikimedia Commons, Public Domain — ' +
-    'https://commons.wikimedia.org/wiki/File:Map_ancient_athens.png ' +
-    '(Spoiler-Beschriftungen an den Zielfeldern abgedeckt; Nummern 1–4 als UI-/Unterrichts-Overlay).',
+    'Enrique Íñiguez Rodríguez (Qoan): Atenas clásica, Wikimedia Commons, CC BY-SA 3.0 — ' +
+    'https://commons.wikimedia.org/wiki/File:Atenas_cl%C3%A1sica.png — ' +
+    'https://creativecommons.org/licenses/by-sa/3.0/ ' +
+    '(Spanische Spoiler-Beschriftungen an den Zielfeldern abgedeckt; Drop-Felder/Leader als UI-Overlay).',
   slots: [
-    { id: 'akropolis', x: 12, y: 22, targetX: 45, targetY: 54, label: 'Akropolis' },
-    { id: 'agora', x: 12, y: 42, targetX: 33, targetY: 36, label: 'Agora' },
-    { id: 'pnyx', x: 12, y: 62, targetX: 21, targetY: 57, label: 'Pnyx' },
-    { id: 'theater', x: 12, y: 82, targetX: 47, targetY: 68, label: 'Theater des Dionysos' },
+    { id: 'akropolis', x: 8, y: 18, targetX: 49.0, targetY: 55.0, label: 'Akropolis' },
+    { id: 'agora', x: 8, y: 36, targetX: 34.3, targetY: 36.3, label: 'Agora' },
+    { id: 'pnyx', x: 8, y: 54, targetX: 20.2, targetY: 59.8, label: 'Pnyx' },
+    { id: 'theater', x: 8, y: 72, targetX: 46.0, targetY: 62.5, label: 'Theater des Dionysos' },
   ],
 } as const
 
@@ -112,7 +113,6 @@ function causePairs(
     question: string
     pairs: Array<{ cause: string; effect: string }>
     distractorEffects: string[]
-    solution: string
     explanation: string
     fachwissen: ReturnType<typeof geFw>
     dedupeKey: string
@@ -126,12 +126,14 @@ function causePairs(
   opts.pairs.forEach((_, i) => {
     correctLinks[`c${i}`] = `e${i}`
   })
+  // Lösung = echte Zuordnungen (nicht nur ein Merksatz).
+  const solution = opts.pairs.map((p) => `${p.cause} → ${p.effect}`).join('; ')
   return causeEffectTask({
     question: opts.question,
     left,
     right,
     correctLinks,
-    solution: opts.solution,
+    solution,
     explanation: opts.explanation,
     fachwissen: opts.fachwissen,
     dedupeKey: opts.dedupeKey,
@@ -188,16 +190,18 @@ function archaeoMc(rng: Rng) {
 }
 
 function archaeoMatch(rng: Rng) {
+  const terms = ['Grabung', 'Fundkontext', 'Steinzeitfund']
+  const meanings = [
+    'Systematisches Freilegen von Schichten',
+    'Lage und Begleitfunde eines Objekts',
+    'Werkzeug aus vorgeschichtlicher Zeit',
+  ]
   return matchTermsTask(rng, {
     question: 'Was gehört zusammen?',
-    terms: ['Grabung', 'Fundkontext', 'Steinzeitfund'],
-    meanings: [
-      'Systematisches Freilegen von Schichten',
-      'Lage und Begleitfunde eines Objekts',
-      'Werkzeug aus vorgeschichtlicher Zeit',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur eine heutige Werbeanzeige',
-    solution: 'Grabung→Schichten; Kontext→Lage; Fund→Werkzeug',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Begriffe der archäologischen Arbeit sauber trennen.',
     fachwissen: TOPIC_FW.archaeo,
     dedupeKey: 'ge:k5:archaeo:match',
@@ -232,7 +236,6 @@ function archaeoCause(rng: Rng) {
       { cause: 'Regionale Funde verglichen', effect: 'Verbindungen zu Epochen werden sichtbar' },
     ],
     distractorEffects: ['Wettervorhersage wird genauer'],
-    solution: 'Sorgfalt und Kontext verbessern historische Aussagen',
     explanation: 'Methode und Dokumentation bestimmen die Aussagekraft.',
     fachwissen: TOPIC_FW.archaeo,
     dedupeKey: 'ge:k5:archaeo:cause',
@@ -329,14 +332,15 @@ function jetztMc(rng: Rng) {
 }
 
 function jetztSort(rng: Rng) {
+  const labels = [
+    'Frühe Menschenformen mit einfachen Steinwerkzeugen',
+    'Ausbreitung von Homo sapiens',
+    'Übergang zu Ackerbau und Viehzucht (Jungsteinzeit)',
+  ]
   return sortChronologyTask(rng, {
     question: 'Ordne grob von früher nach später (Schulüberblick).',
-    labels: [
-      'Frühe Menschenformen mit einfachen Steinwerkzeugen',
-      'Ausbreitung von Homo sapiens',
-      'Übergang zu Ackerbau und Viehzucht (Jungsteinzeit)',
-    ],
-    solution: 'Frühe Formen → Homo sapiens → Jungsteinzeit',
+    labels,
+    solution: labels.join(' → '),
     explanation: 'Grobe Abfolge für die Orientierung — ohne Detailstreit.',
     fachwissen: TOPIC_FW.jetztmensch,
     dedupeKey: 'ge:k5:jetzt:sort',
@@ -344,16 +348,18 @@ function jetztSort(rng: Rng) {
 }
 
 function jetztMatch(rng: Rng) {
+  const terms = ['Homo sapiens', 'Altsteinzeit', 'Jungsteinzeit']
+  const meanings = [
+    'Art des heutigen Menschen',
+    'Lange Phase mit Jagd/Sammeln und Steinwerkzeugen',
+    'Phase mit Ackerbau und Sesshaftigkeit',
+  ]
   return matchTermsTask(rng, {
     question: 'Begriff und Bedeutung.',
-    terms: ['Homo sapiens', 'Altsteinzeit', 'Jungsteinzeit'],
-    meanings: [
-      'Art des heutigen Menschen',
-      'Lange Phase mit Jagd/Sammeln und Steinwerkzeugen',
-      'Phase mit Ackerbau und Sesshaftigkeit',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur ein modernes Smartphone-Modell',
-    solution: 'sapiens→heutige Art; Alt→Jagd; Jung→Ackerbau',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Fachbegriffe der Menschheitsgeschichte in K5.',
     fachwissen: TOPIC_FW.jetztmensch,
     dedupeKey: 'ge:k5:jetzt:match',
@@ -370,7 +376,6 @@ function jetztCause(rng: Rng) {
       { cause: 'Polierte Steinbeile', effect: 'Rodung und Holzbearbeitung erleichtern' },
     ],
     distractorEffects: ['Sofortige Industrialisierung mit Fabriken'],
-    solution: 'Neue Wirtschaftsweise verändert Siedlung und Technik',
     explanation: 'Jungsteinzeitliche Veränderungen greifen ineinander.',
     fachwissen: TOPIC_FW.jetztmensch,
     dedupeKey: 'ge:k5:jetzt:cause',
@@ -378,16 +383,12 @@ function jetztCause(rng: Rng) {
 }
 
 function jetztMulti(rng: Rng) {
+  const correct = ['Ackerbau', 'Viehzucht', 'Sesshafteres Dorfleben']
   return multiSelectTask({
     question: 'Was gehört typisch zur Jungsteinzeit? (mehrere richtig)',
-    choices: shuffle(rng, [
-      'Ackerbau',
-      'Viehzucht',
-      'Sesshafteres Dorfleben',
-      'Raumflug zum Mond',
-    ]),
-    correct: ['Ackerbau', 'Viehzucht', 'Sesshafteres Dorfleben'],
-    solution: 'Ackerbau; Viehzucht; sesshafteres Dorfleben',
+    choices: shuffle(rng, [...correct, 'Raumflug zum Mond']),
+    correct,
+    solution: correct.join('; '),
     explanation: 'Technik und Wirtschaft der Jungsteinzeit — ohne Moderne.',
     fachwissen: TOPIC_FW.jetztmensch,
     dedupeKey: 'ge:k5:jetzt:multi',
@@ -449,16 +450,18 @@ function pyramideMc(rng: Rng) {
 }
 
 function pyramideMatch(rng: Rng) {
+  const terms = ['Pharao', 'Schreiber', 'Bauer']
+  const meanings = [
+    'Oberste Herrschaft und Kult',
+    'Schrift und Verwaltung',
+    'Felder bestellen, Abgaben liefern',
+  ]
   return matchTermsTask(rng, {
     question: 'Stand und typische Aufgabe.',
-    terms: ['Pharao', 'Schreiber', 'Bauer'],
-    meanings: [
-      'Oberste Herrschaft und Kult',
-      'Schrift und Verwaltung',
-      'Felder bestellen, Abgaben liefern',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur ein heutiger Pilot ohne Bezug',
-    solution: 'Pharao→Herrschaft; Schreiber→Schrift; Bauer→Felder',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Rollen in der Gesellschaftspyramide.',
     fachwissen: TOPIC_FW.pyramide,
     dedupeKey: 'ge:k5:pyramide:match',
@@ -475,7 +478,6 @@ function pyramideCause(rng: Rng) {
       { cause: 'Viele Bauern an der Basis', effect: 'Versorgung der oberen Stände möglich' },
     ],
     distractorEffects: ['Sofortige Demokratie wie im 21. Jahrhundert'],
-    solution: 'Wirtschaft, Schrift und Herrschaft stützen einander',
     explanation: 'Hochkultur braucht Ressourcen und Organisation.',
     fachwissen: TOPIC_FW.pyramide,
     dedupeKey: 'ge:k5:pyramide:cause',
@@ -518,7 +520,7 @@ function polisLabel(rng: Rng) {
   ]).slice(0, 2)
   return imageLabelSlotsTask({
     question:
-      'Karte von Athen: Ziehe zu den Nummern 1–4 die passenden Orte der Polis.',
+      'Übersichtskarte von Athen: Ziehe zu den Feldern 1–4 die passenden Orte der Polis.',
     imageSrc: POLIS_DIAGRAM.imageSrc,
     imageAlt: POLIS_DIAGRAM.imageAlt,
     attribution: POLIS_DIAGRAM.attribution,
@@ -528,7 +530,7 @@ function polisLabel(rng: Rng) {
     items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],
-    solution: '1 Akropolis; 2 Agora; 3 Pnyx; 4 Theater des Dionysos',
+    solution: slots.map((s, i) => `${i + 1} ${s.label}`).join('; '),
     explanation: 'Typische Orte einer Polis: Heiligtum, Markt, Politik, Kultur.',
     fachwissen: TOPIC_FW.polis,
     dedupeKey: 'ge:k5:polis:label',
@@ -581,16 +583,18 @@ function polisMc(rng: Rng) {
 }
 
 function polisMatch(rng: Rng) {
+  const terms = ['Agora', 'Akropolis', 'Umland']
+  const meanings = [
+    'Markt und politische Versammlung',
+    'Burgberg mit Tempeln / Schutz',
+    'Felder und Dörfer zur Versorgung',
+  ]
   return matchTermsTask(rng, {
     question: 'Ort und Funktion in der Polis.',
-    terms: ['Agora', 'Akropolis', 'Umland'],
-    meanings: [
-      'Markt und politische Versammlung',
-      'Burgberg mit Tempeln / Schutz',
-      'Felder und Dörfer zur Versorgung',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur ein mittelalterlicher Domplatz in Köln',
-    solution: 'Agora→Markt; Akropolis→Burgberg; Umland→Versorgung',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Typische Elemente des Polis-Aufbaus.',
     fachwissen: TOPIC_FW.polis,
     dedupeKey: 'ge:k5:polis:match',
@@ -607,7 +611,6 @@ function polisCause(rng: Rng) {
       { cause: 'Hafen und Handel', effect: 'Kontakt und Austausch mit anderen Orten' },
     ],
     distractorEffects: ['Sofortige Einigung zu einem modernen Nationalstaat'],
-    solution: 'Geografie und Selbstverwaltung prägen die Polis-Welt',
     explanation: 'Warum Griechenland viele Poleis kannte.',
     fachwissen: TOPIC_FW.polis,
     dedupeKey: 'ge:k5:polis:cause',
@@ -728,16 +731,18 @@ function ohneClassify(rng: Rng) {
 }
 
 function ohneMatch(rng: Rng) {
+  const terms = ['Bürger', 'Metöken', 'Sklaven']
+  const meanings = [
+    'Politisch berechtigte Vollmitglieder',
+    'Zugewanderte ohne Bürgerrecht',
+    'Unfreie ohne politische Rechte',
+  ]
   return matchTermsTask(rng, {
     question: 'Gruppe und Kurzbeschreibung.',
-    terms: ['Bürger', 'Metöken', 'Sklaven'],
-    meanings: [
-      'Politisch berechtigte Vollmitglieder',
-      'Zugewanderte ohne Bürgerrecht',
-      'Unfreie ohne politische Rechte',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur moderne Parteivorsitzende',
-    solution: 'Bürger→berechtigt; Metöken→ohne Bürgerrecht; Sklaven→unfrei',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Zentrale Gruppen der attischen Gesellschaft.',
     fachwissen: TOPIC_FW.ohne,
     dedupeKey: 'ge:k5:ohne:match',
@@ -746,11 +751,12 @@ function ohneMatch(rng: Rng) {
 }
 
 function ohneMulti(rng: Rng) {
+  const correct = ['Frauen', 'Metöken', 'Sklaven']
   return multiSelectTask({
     question: 'Welche Gruppen hatten in Athen typisch keine politische Mitbestimmung?',
-    choices: shuffle(rng, ['Frauen', 'Metöken', 'Sklaven', 'Männliche Vollbürger']),
-    correct: ['Frauen', 'Metöken', 'Sklaven'],
-    solution: 'Frauen; Metöken; Sklaven',
+    choices: shuffle(rng, [...correct, 'Männliche Vollbürger']),
+    correct,
+    solution: correct.join('; '),
     explanation: 'Nur männliche Bürger mit Bürgerrecht bestimmten mit.',
     fachwissen: TOPIC_FW.ohne,
     dedupeKey: 'ge:k5:ohne:multi',
@@ -767,7 +773,6 @@ function ohneCause(rng: Rng) {
       { cause: 'Bürgerrecht männlicher Athener', effect: 'Teilnahme an Abstimmungen möglich' },
     ],
     distractorEffects: ['Automatisches Wahlrecht für alle Kinder weltweit'],
-    solution: 'Rechte hängen am Status in der Polis',
     explanation: 'Attische Demokratie war begrenzt.',
     fachwissen: TOPIC_FW.ohne,
     dedupeKey: 'ge:k5:ohne:cause',
@@ -828,16 +833,18 @@ function resMc(rng: Rng) {
 }
 
 function resMatch(rng: Rng) {
+  const terms = ['Wasser', 'Fruchtbarer Boden', 'Getreidevorrat']
+  const meanings = [
+    'Trinken, Bewässern, Transport',
+    'Anbau von Nahrungspflanzen',
+    'Ernährung und Absicherung bei Knappheit',
+  ]
   return matchTermsTask(rng, {
     question: 'Ressource und Nutzen.',
-    terms: ['Wasser', 'Fruchtbarer Boden', 'Getreidevorrat'],
-    meanings: [
-      'Trinken, Bewässern, Transport',
-      'Anbau von Nahrungspflanzen',
-      'Ernährung und Absicherung bei Knappheit',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur ein modernes Videospiel',
-    solution: 'Wasser→Leben/Bewässerung; Boden→Anbau; Vorrat→Absicherung',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Grundressourcen früher Kulturen.',
     fachwissen: TOPIC_FW.ressourcen,
     dedupeKey: 'ge:k5:res:match',
@@ -854,7 +861,6 @@ function resCause(rng: Rng) {
       { cause: 'Vorratshaltung', effect: 'Gruppen überstehen knappe Zeiten besser' },
     ],
     distractorEffects: ['Sofortige Abschaffung jeder Landwirtschaft'],
-    solution: 'Wasser und Boden steuern Ernährungssicherheit',
     explanation: 'Ressourcenkrisen und Technik gehören zum Längsschnitt.',
     fachwissen: TOPIC_FW.ressourcen,
     dedupeKey: 'ge:k5:res:cause',
@@ -944,10 +950,15 @@ function landMc(rng: Rng) {
 }
 
 function landSort(rng: Rng) {
+  const labels = [
+    'Waldfläche wird gerodet',
+    'Acker oder Weide entsteht',
+    'Bei Hanglage droht Erosion',
+  ]
   return sortChronologyTask(rng, {
     question: 'Ordne einen typischen Ablauf (Ursachekette).',
-    labels: ['Waldfläche wird gerodet', 'Acker oder Weide entsteht', 'Bei Hanglage droht Erosion'],
-    solution: 'Rodung → Nutzung → Erosionsrisiko',
+    labels,
+    solution: labels.join(' → '),
     explanation: 'Nutzungsschritte und mögliche Folgen.',
     fachwissen: TOPIC_FW.landschaft,
     dedupeKey: 'ge:k5:land:sort',
@@ -963,7 +974,6 @@ function landCause(rng: Rng) {
       { cause: 'Bessere Werkzeuge', effect: 'Größere Flächen lassen sich erschließen' },
     ],
     distractorEffects: ['Sofortige Rückkehr aller Dinosaurier'],
-    solution: 'Nutzung und Technik verändern Landschaft und Boden',
     explanation: 'Längsschnitt Mensch–Natur.',
     fachwissen: TOPIC_FW.landschaft,
     dedupeKey: 'ge:k5:land:cause',
@@ -971,16 +981,18 @@ function landCause(rng: Rng) {
 }
 
 function landMatch(rng: Rng) {
+  const terms = ['Rodung', 'Erosion', 'Nutzung']
+  const meanings = [
+    'Wald entfernen',
+    'Abtrag von Boden',
+    'Fläche für Ackerbau, Weide oder Siedlung',
+  ]
   return matchTermsTask(rng, {
     question: 'Begriff und Bedeutung.',
-    terms: ['Rodung', 'Erosion', 'Nutzung'],
-    meanings: [
-      'Wald entfernen',
-      'Abtrag von Boden',
-      'Fläche für Ackerbau, Weide oder Siedlung',
-    ],
+    terms,
+    meanings,
     distractor: 'Nur ein modernes Verkehrszeichen',
-    solution: 'Rodung→Wald weg; Erosion→Abtrag; Nutzung→Zweck',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
     explanation: 'Grundbegriffe des Landschaftswandels.',
     fachwissen: TOPIC_FW.landschaft,
     dedupeKey: 'ge:k5:land:match',
@@ -989,16 +1001,16 @@ function landMatch(rng: Rng) {
 }
 
 function landMulti(rng: Rng) {
+  const correct = [
+    'Mehr offene Ackerfläche',
+    'Höheres Erosionsrisiko am Hang',
+    'Verlust von Waldlebensraum',
+  ]
   return multiSelectTask({
     question: 'Welche Folgen kann Rodung haben?',
-    choices: shuffle(rng, [
-      'Mehr offene Ackerfläche',
-      'Höheres Erosionsrisiko am Hang',
-      'Verlust von Waldlebensraum',
-      'Sofortige Mondlandung',
-    ]),
-    correct: ['Mehr offene Ackerfläche', 'Höheres Erosionsrisiko am Hang', 'Verlust von Waldlebensraum'],
-    solution: 'Ackerfläche; Erosionsrisiko; Waldverlust',
+    choices: shuffle(rng, [...correct, 'Sofortige Mondlandung']),
+    correct,
+    solution: correct.join('; '),
     explanation: 'Chancen der Nutzung und Risiken für den Boden.',
     fachwissen: TOPIC_FW.landschaft,
     dedupeKey: 'ge:k5:land:multi',

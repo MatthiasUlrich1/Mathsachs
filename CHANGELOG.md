@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.141] – 2026-10-18
+
+### Behoben
+- **Geschichte K5 Neu — Lösungen:** „Vollständige Lösung“ zeigt bei Zuordnen,
+  Ursache–Folge, Sortieren und Multi die echten Antworttexte (nicht nur Merksätze).
+
+### Geändert
+- **Polis-Karte:** Klarere farbige Commons-Übersicht (Atenas clásica, CC BY-SA 3.0);
+  Drop-Felder und Spoiler-Abdeckung neu gesetzt.
+
+
 ## [0.28.140] – 2026-10-18
 
 ### Behoben
