@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.12.0',
-    changelog: `K5: 9 Themen freigegeben. Schema-Beschriftung ohne Namensspoiler; Lunge mit Bild+Vielfalt. ${topics} Themen.`,
+    version: '1.12.1',
+    changelog: `Schema-Beschriftung: klare Feld-Anweisung (1…n), mehr plausible Ablenkungen (Schnabel 4 Formen, Atemweg). ${topics} Themen.`,
     official,
     extras: [],
   }

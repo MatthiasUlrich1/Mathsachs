@@ -24,22 +24,23 @@ import {
 } from './biologieHelpers'
 import type { Topic } from './types'
 
-/** Einfaches Unterrichtsschema: 3 Schnabeltypen (nummeriert). */
+/** Unterrichtsschema: 4 Schnabeltypen (nummeriert, ohne Namensspoiler). */
 const SCHNABEL_DIAGRAM = {
   imageSrc: '/anatomy/vogel-schnabel-typen.svg',
-  imageAlt: 'Drei Schnabelformen: Haken, Kegel, Pfriem (Schema)',
+  imageAlt: 'Vier Schnabelformen (Schema, nummeriert 1–4)',
   attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
   slots: [
-    { id: 'haken', x: 13, y: 9, targetX: 18, targetY: 28, label: 'Hakenschnabel' },
-    { id: 'kegel', x: 42, y: 9, targetX: 48, targetY: 28, label: 'Kegelschnabel' },
-    { id: 'pfriem', x: 71, y: 9, targetX: 77, targetY: 28, label: 'Pfriemschnabel' },
+    { id: 'haken', x: 10, y: 10, targetX: 14, targetY: 32, label: 'Hakenschnabel' },
+    { id: 'kegel', x: 34, y: 10, targetX: 38, targetY: 32, label: 'Kegelschnabel' },
+    { id: 'pfriem', x: 58, y: 10, targetX: 62, targetY: 32, label: 'Pfriemschnabel' },
+    { id: 'meissel', x: 82, y: 10, targetX: 86, targetY: 32, label: 'Meißelschnabel' },
   ],
 } as const
 
-/** Einfaches Schema Atemweg Säuger (nummeriert 1–4). */
+/** Schema Atemweg Säuger (nummeriert 1–4, Luftweg außen → innen). */
 const ATEM_DIAGRAM = {
   imageSrc: '/anatomy/saeuger-atemweg-schema.svg',
-  imageAlt: 'Atemweg Schema: Nase, Luftröhre, Bronchien, Lungenbläschen',
+  imageAlt: 'Atemweg Schema nummeriert 1–4',
   attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
   slots: [
     { id: 'nase', x: 8, y: 14, targetX: 15, targetY: 30, label: 'Nase / Mund' },
@@ -242,27 +243,30 @@ function schnabelCause(rng: Rng) {
 
 function schnabelLabel(rng: Rng) {
   const slots = [...SCHNABEL_DIAGRAM.slots]
+  /** Plausible Vogelschnäbel als Ablenkung — nicht offensichtliche Nicht-Schnäbel. */
+  const distractors = shuffle(rng, [
+    'Siebschnabel',
+    'Röhrenschnabel',
+    'Kreuzschnabel',
+    'Säbelschnabel',
+  ]).slice(0, 3)
   return imageLabelSlotsTask({
     question:
-      'Ziehe die passenden Schnabelnamen in die Felder 1–3 am Schema (Form erkennen — nicht die Reihenfolge der Chips).',
+      'Ordne jedem nummerierten Feld (1–4) den passenden Schnabelnamen zu. Die Form der Silhouette entscheidet — die Reihenfolge der Chips im Vorrat ist egal.',
     imageSrc: SCHNABEL_DIAGRAM.imageSrc,
     imageAlt: SCHNABEL_DIAGRAM.imageAlt,
     attribution: SCHNABEL_DIAGRAM.attribution,
     drawLeaders: false,
     instruction:
-      'Jedes nummerierte Feld (1, 2, 3) bekommt genau einen Namen. Zwei Ablenkungen bleiben übrig.',
-    items: [
-      ...slots.map((s) => ({ label: s.label })),
-      { label: 'Kiemendeckel' },
-      { label: 'Flughaut' },
-    ],
+      'Feld 1 = linke Silhouette, Feld 2 = zweite von links, usw. Jedes Feld braucht genau einen Namen; drei Ablenkungen bleiben übrig.',
+    items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
-    correctSlots: [0, 1, 2],
-    solution: '1 Hakenschnabel; 2 Kegelschnabel; 3 Pfriemschnabel',
+    correctSlots: [0, 1, 2, 3],
+    solution: '1 Hakenschnabel; 2 Kegelschnabel; 3 Pfriemschnabel; 4 Meißelschnabel',
     explanation:
-      'Haken = gebogen zum Reißen; Kegel = kurz/kräftig zum Knacken; Pfriem = spitz zum Picken.',
+      'Haken gebogen (reißen); Kegel kurz/kräftig (knacken); Pfriem spitz (picken); Meißel gerade/kräftig (Holz).',
     fachwissen: bioFw(
-      'Das Schema zeigt nur Silhouetten und Nummern — ohne Namensspoiler. Form und typische Nahrung gehören zusammen.',
+      'Vier typische Formen im Schema — Ablenkungen sind ebenfalls echte Schnabeltypen, damit man die Form wirklich lesen muss.',
       'Wikipedia: Vogelschnabel',
       'https://de.wikipedia.org/wiki/Vogelschnabel',
     ),
@@ -1463,26 +1467,30 @@ function lungeCause(rng: Rng) {
 
 function lungeLabel(rng: Rng) {
   const slots = [...ATEM_DIAGRAM.slots]
+  /** Naheliegende Organe/Strukturen — nicht „Federfahne“. */
+  const distractors = shuffle(rng, [
+    'Speiseröhre',
+    'Kehlkopf',
+    'Zwerchfell',
+    'Herzvorhof',
+    'Mageneingang',
+  ]).slice(0, 3)
   return imageLabelSlotsTask({
     question:
-      'Ziehe die passenden Bezeichnungen in die Felder 1–4 am Atemweg-Schema (von außen nach innen).',
+      'Ordne jedem nummerierten Feld (1–4) den passenden Atemwegsabschnitt zu. Folge dem Luftweg von außen nach innen — die Chip-Reihenfolge im Vorrat ist egal.',
     imageSrc: ATEM_DIAGRAM.imageSrc,
     imageAlt: ATEM_DIAGRAM.imageAlt,
     attribution: ATEM_DIAGRAM.attribution,
     drawLeaders: false,
     instruction:
-      'Jedes nummerierte Feld bekommt genau einen Begriff. Zwei Ablenkungen bleiben übrig.',
-    items: [
-      ...slots.map((s) => ({ label: s.label })),
-      { label: 'Kiemendeckel' },
-      { label: 'Federfahne' },
-    ],
+      'Feld 1 liegt am Anfang des Luftwegs, Feld 4 am Ort des Gasaustauschs. Jedes Feld braucht genau einen Begriff; drei Ablenkungen bleiben übrig.',
+    items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],
     solution: '1 Nase/Mund; 2 Luftröhre; 3 Bronchien; 4 Lungenbläschen',
-    explanation: 'Luftweg von außen bis zum Ort des Gasaustauschs.',
+    explanation: 'Luftweg: Einlass → Leitung → Verzweigung → Gasaustausch in den Bläschen.',
     fachwissen: bioFw(
-      'Schema ohne Namensspoiler: Nummern markieren die Stationen; die Namen werden zugeordnet.',
+      'Nummern folgen dem Weg der Atemluft. Ablenkungen (z. B. Speiseröhre, Zwerchfell) liegen nah am Thema, gehören aber nicht in diese Stationen.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),

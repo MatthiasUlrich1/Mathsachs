@@ -9,6 +9,15 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.129] – 2026-10-18
+
+### Behoben
+- **Schema-Beschriftung:** Klare Anweisung (Feld 1…n = Markierung auf dem Bild;
+  Chip-Reihenfolge egal). Schnabel-Schema mit 4 Formen + 3 plausiblen
+  Schnabel-Ablenkungen; Atemweg mit Organ-Ablenkungen statt offensichtlicher
+  Nicht-Begriffe. Auch andere nummerierte Anatomie-Schemas mit mehr Ablenkungen.
+  Pack Biologie **1.12.1**.
+
 ## [0.28.128] – 2026-10-18
 
 ### Behoben

@@ -1,29 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" role="img" aria-labelledby="title desc">
-  <title id="title">Drei Schnabelformen (Schema)</title>
-  <desc id="desc">Drei nummerierte Vogelschnabel-Silhouetten zum Beschriften</desc>
-  <rect width="900" height="420" fill="#faf8f4"/>
-  <!-- 1 Hook beak (no name label — students assign) -->
-  <g transform="translate(80,80)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+  <title id="title">Vier Schnabelformen (Schema)</title>
+  <desc id="desc">Vier nummerierte Vogelschnabel-Silhouetten zum Beschriften — ohne Namen</desc>
+  <rect width="960" height="400" fill="#faf8f4"/>
+  <!-- 1 Hook -->
+  <g transform="translate(20,70) scale(0.92)">
     <ellipse cx="90" cy="90" rx="70" ry="55" fill="#f0e6d8" stroke="#5a4632" stroke-width="3"/>
     <path d="M150 70 Q210 55 230 95 Q200 120 155 105 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">1</text>
   </g>
-  <!-- 2 Cone beak -->
-  <g transform="translate(340,80)">
+  <!-- 2 Cone -->
+  <g transform="translate(250,70) scale(0.92)">
     <ellipse cx="90" cy="90" rx="70" ry="55" fill="#f0e6d8" stroke="#5a4632" stroke-width="3"/>
     <path d="M150 75 L235 95 L150 115 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">2</text>
   </g>
-  <!-- 3 Awl beak -->
-  <g transform="translate(600,80)">
+  <!-- 3 Awl / pfriem -->
+  <g transform="translate(480,70) scale(0.92)">
     <ellipse cx="90" cy="90" rx="70" ry="55" fill="#f0e6d8" stroke="#5a4632" stroke-width="3"/>
     <path d="M150 88 L250 95 L150 102 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
     <circle cx="70" cy="75" r="8" fill="#222"/>
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">3</text>
   </g>
-  <text x="450" y="390" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#666">
-    Schema · Unterricht (vereinfacht) · TaskTrophy
+  <!-- 4 Chisel / meissel (strong straight tip) -->
+  <g transform="translate(710,70) scale(0.92)">
+    <ellipse cx="90" cy="90" rx="70" ry="55" fill="#f0e6d8" stroke="#5a4632" stroke-width="3"/>
+    <path d="M148 78 L232 78 L232 112 L148 112 Z" fill="#c4a574" stroke="#5a4632" stroke-width="3"/>
+    <circle cx="70" cy="75" r="8" fill="#222"/>
+    <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">4</text>
+  </g>
+  <text x="480" y="370" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#666">
+    Schema · Unterricht (vereinfacht) · TaskTrophy — nur Nummern, keine Namen
   </text>
 </svg>

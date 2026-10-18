@@ -44,7 +44,10 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
         0,
         Math.min(asset.slots.length, rng() < 0.45 ? 5 : Math.min(asset.slots.length, 6)),
       )
-  const distractorCount = Math.min(2, asset.distractors.length)
+  // Feste Nummernfelder: genug plausible Ablenkungen (nicht nur 2 offensichtliche).
+  const distractorCount = useFixedNumbered
+    ? Math.min(Math.max(3, Math.ceil(subset.length * 0.6)), asset.distractors.length)
+    : Math.min(2, asset.distractors.length)
   const distractors = shufflePool(rng, asset.distractors).slice(0, distractorCount)
   const labels = [...subset.map((s) => s.label), ...distractors]
   const items = labels.map((label) => ({ label }))
@@ -54,8 +57,11 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
   // individual parts can still fill a 10er-Runde (label ≠ Funktions-MC).
   // Subset labels keep per-organ contentIds for within-round fact uniqueness.
   const contentIds = useFixedNumbered ? [`${asset.id}:diagram`] : concepts
+  const n = subset.length
   return imageLabelSlotsTask({
-    question,
+    question: useFixedNumbered
+      ? `${question} Ordne jedem nummerierten Feld (1–${n}) genau einen Begriff zu — die Chip-Reihenfolge im Vorrat ist egal.`
+      : question,
     imageSrc: asset.imageSrc,
     imageAlt: asset.imageAlt,
     attribution: asset.attribution,
@@ -72,7 +78,7 @@ function buildLabelTask(rng: Rng, asset: AnatomyAsset, question: string) {
     solution: subset.map((s, i) => `${i + 1}:${s.label}`).join('; '),
     explanation: subset.map((s) => `${s.label}: ${s.wissen}`).join(' '),
     instruction: useFixedNumbered
-      ? 'Ziehe die Bezeichnungen in die nummerierten Felder auf dem Bild.'
+      ? `Feld 1 gehört zur Markierung „1“ auf dem Bild, Feld 2 zu „2“, usw. ${distractors.length} Ablenkung${distractors.length === 1 ? '' : 'en'} bleiben übrig.`
       : 'Ziehe die Bezeichnungen in die Felder. Die Linien zeigen auf die Körperregion.',
     fachwissen: bioFw(
       subset.map((s) => `${s.label} — ${s.functionDe}. ${s.wissen}`).join(' '),
