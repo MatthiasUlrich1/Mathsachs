@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
   <title id="title">Vier Schnabelformen (Schema)</title>
-  <desc id="desc">Vier nummerierte Vogelschnabel-Silhouetten zum Beschriften — ohne Namen</desc>
+  <desc id="desc">Vier nummerierte Vogelschnabel-Silhouetten zum Beschriften - ohne Namen</desc>
   <rect width="960" height="400" fill="#faf8f4"/>
   <!-- 1 Hook -->
   <g transform="translate(20,70) scale(0.92)">
@@ -31,6 +31,6 @@
     <circle cx="120" cy="40" r="22" fill="#2d5a3d"/><text x="120" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" font-family="Segoe UI, Arial">4</text>
   </g>
   <text x="480" y="370" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#666">
-    Schema · Unterricht (vereinfacht) · TaskTrophy — nur Nummern, keine Namen
+    Schema - Unterricht (vereinfacht) - TaskTrophy - nur Nummern, keine Namen
   </text>
 </svg>

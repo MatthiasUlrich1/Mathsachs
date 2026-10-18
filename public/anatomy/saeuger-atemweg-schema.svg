@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
-  <title id="title">Atemwege der Sùugetier-Lunge (Schema)</title>
+  <title id="title">Atemwege der Saeugetier-Lunge (Schema)</title>
   <desc id="desc">Vereinfachtes nummeriertes Schema der Atemwege zum Beschriften</desc>
   <rect width="800" height="520" fill="#f7faf8"/>
   <!-- head / nose -->
@@ -27,6 +27,6 @@
     <circle cx="700" cy="160" r="22" fill="#2d5a3d"/><text x="700" y="168" text-anchor="middle">4</text>
   </g>
   <text x="400" y="480" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#456">
-    Schema ù Unterricht (vereinfacht) ù TaskTrophy
+    Schema - Unterricht (vereinfacht) - TaskTrophy
   </text>
 </svg>

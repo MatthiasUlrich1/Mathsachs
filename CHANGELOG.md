@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.133] – 2026-10-18
+
+### Behoben
+- **Schema-Bilder:** Schnabel- und Atemweg-SVGs waren ungültig kodiert (Encoding
+  error) und luden deshalb nicht — Dateien als gültiges UTF-8 neu geschrieben.
+
 ## [0.28.132] – 2026-10-18
 
 ### Behoben
