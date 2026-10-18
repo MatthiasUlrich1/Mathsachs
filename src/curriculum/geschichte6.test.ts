@@ -141,9 +141,13 @@ describe('Geschichte K6 Römische Zivilisation', () => {
     const grades = await hydratePackGrades(buildGymSachsenGeschichtePack())
     const k6 = grades.find((g) => g.id === 'geschichte-klasse-6')!
     const lb1 = k6.areas.find((a) => a.id === 'lb1')!
-    expect(lb1.topics.length).toBeGreaterThanOrEqual(8)
-    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
-    expect(lb1.topics.every((t) => !t.outlineOnly)).toBe(true)
+    const filled = lb1.topics.filter((t) => !t.neu)
+    expect(filled.length).toBeGreaterThanOrEqual(8)
+    expect(filled.every((t) => t.released !== false)).toBe(true)
+    expect(filled.every((t) => !t.outlineOnly)).toBe(true)
+    expect(lb1.topics.filter((t) => t.neu).every((t) => t.outlineOnly && t.released === false)).toBe(
+      true,
+    )
     expect(lb1.topics.some((t) => t.id === 'ge-k6-lb1-jahreszahlen')).toBe(true)
     const punisch = lb1.topics.find((t) => t.id === 'ge-k6-lb1-punische-kriege')!
     const task = punisch.generate(createRng(5))
@@ -212,7 +216,7 @@ describe('Geschichte K6 Römische Zivilisation', () => {
       .areas.find((a) => a.id === 'lb1')!
     const weltreich = lb1.topics.find((t) => t.id === 'ge-k6-lb1-weltreich')!
     expect(weltreich.released).toBe(true)
-    expect(lb1.topics.every((t) => t.released !== false)).toBe(true)
+    expect(lb1.topics.filter((t) => !t.neu).every((t) => t.released !== false)).toBe(true)
   })
 })
 

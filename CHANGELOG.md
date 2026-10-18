@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.123] – 2026-10-18
+
+### Behoben
+- **Installer-CI:** Qualitäts-/Hydrate-Tests ignorieren Outline-„Neu“-Platzhalter
+  (Bio/Geschichte/Physik), damit Stub-Themen nicht als volle Banken geprüft werden.
+
 ## [0.28.122] – 2026-10-18
 
 ### Hinzugefügt

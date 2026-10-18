@@ -14,6 +14,7 @@ import { join } from 'node:path'
 import { bioTextContainsAcceptedTerm, isLehrplanMetaWissen } from './biologieBank'
 import { gapQualityIssues } from './gapQuality'
 import { GESCHICHTE_DENSE_K6_LB23_GENERATORS } from './geschichteDenseK6Lb23'
+import { isPlaceholderNeuTopic } from './placeholderNeuIds'
 
 const HARD_META =
   /Prüfung:|Antwort prüfen|Teilpunkte|Groß-\/Kleinschreibung|Karte umdrehen|Tippe „ok“|Übungsaufgaben folgen/i
@@ -27,17 +28,19 @@ const CHRONOLOGY_SPOILER =
 
 describe('Geschichte generators quality', () => {
   const allIds = allGeschichteTopicIds()
+  /** Outline „Neu“ placeholders are structure-only stubs — skip bank quality. */
+  const filledIds = allIds.filter((id) => !isPlaceholderNeuTopic(id))
 
-  it('covers every Lehrplan topic with a real generator', () => {
-    expect(allIds.length).toBeGreaterThan(50)
-    for (const id of allIds) {
+  it('covers every filled Lehrplan topic with a real generator', () => {
+    expect(filledIds.length).toBeGreaterThan(50)
+    for (const id of filledIds) {
       expect(isPlayableGeschichteTopic(id), id).toBe(true)
       expect(resolveGeschichteGenerate(id), id).toBeTypeOf('function')
     }
   })
 
   it('emits checkable tasks with question-specific Fachwissen (≥80 chars, 2+ sentences)', () => {
-    for (const id of allIds) {
+    for (const id of filledIds) {
       const gen = resolveGeschichteGenerate(id)!
       for (let seed = 0; seed < 4; seed++) {
         const task = gen(createRng(seed * 97 + 3))
@@ -58,7 +61,7 @@ describe('Geschichte generators quality', () => {
   })
 
   it('non-Rom topics stay conceptually distinct from stub placeholder text', () => {
-    const locked = allIds.filter((id) => !id.startsWith('ge-k6-lb1-'))
+    const locked = filledIds.filter((id) => !id.startsWith('ge-k6-lb1-'))
     for (const id of locked.slice(0, 20)) {
       const task = resolveGeschichteGenerate(id)!(createRng(11))
       expect(task.question).not.toMatch(/Übungsaufgaben folgen|Tippe „ok“/)
@@ -87,7 +90,7 @@ describe('Geschichte generators quality', () => {
   it('cloze/gap answers never appear in gap text or question stem', () => {
     let sawCloze = 0
     // Gaps are intentionally rare in bankGenerate; sample more seeds.
-    for (const id of allIds) {
+    for (const id of filledIds) {
       const gen = resolveGeschichteGenerate(id)
       if (!gen) continue
       for (let seed = 0; seed < 40; seed++) {
