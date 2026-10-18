@@ -24,31 +24,47 @@ import {
 } from './biologieHelpers'
 import type { Topic } from './types'
 
-/** Unterrichtsschema: 4 Schnabeltypen (nummeriert, ohne Namensspoiler). */
+/**
+ * 4 Schnabeltypen — Collage aus Commons-Fotos (nummeriert, ohne Namensspoiler).
+ * Panel-Mitten ca. 13 / 38 / 62 / 87 %; Drop-Felder darunter.
+ */
 const SCHNABEL_DIAGRAM = {
-  imageSrc: '/anatomy/vogel-schnabel-typen.svg',
-  /** Kurz — kein Spoiler, falls Bild kurzzeitig fehlt. */
-  imageAlt: 'Schema mit vier nummerierten Schnabelformen',
-  attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
+  imageSrc: '/anatomy/vogel-schnabel-typen.jpg',
+  imageAlt: 'Vier nummerierte Vogelfotos mit unterschiedlichen Schnabelformen',
+  attribution:
+    'Collage (unveränderte Fotos): 1 Marek Szczepanek, Common Buzzard, CC BY-SA 3.0 — ' +
+    'https://commons.wikimedia.org/wiki/File:Buteo_buteo_2_(Marek_Szczepanek).jpg · ' +
+    '2 birdsaspoetry.com, European Goldfinch, CC BY 2.0 — ' +
+    'https://commons.wikimedia.org/wiki/File:European_Goldfinch_Glowing_(50257614467).jpg · ' +
+    '3 Andy Morffew, Grey Heron Portrait, CC BY 2.0 — ' +
+    'https://commons.wikimedia.org/wiki/File:Grey_Heron_Portrait_(15760878075).jpg · ' +
+    '4 Andy Morffew, Great Spotted Woodpecker Portrait, CC BY 2.0 — ' +
+    'https://commons.wikimedia.org/wiki/File:Great_Spotted_Woodpecker_Portrait_(7142225643).jpg',
   slots: [
-    // Drop-Felder unter den Silhouetten, damit die Schnabelform sichtbar bleibt
-    { id: 'haken', x: 12, y: 78, targetX: 12, targetY: 42, label: 'Hakenschnabel' },
-    { id: 'kegel', x: 37, y: 78, targetX: 37, targetY: 42, label: 'Kegelschnabel' },
-    { id: 'pfriem', x: 62, y: 78, targetX: 62, targetY: 42, label: 'Pfriemschnabel' },
-    { id: 'meissel', x: 87, y: 78, targetX: 87, targetY: 42, label: 'Meißelschnabel' },
+    { id: 'haken', x: 13, y: 88, targetX: 13, targetY: 42, label: 'Hakenschnabel' },
+    { id: 'kegel', x: 38, y: 88, targetX: 38, targetY: 42, label: 'Kegelschnabel' },
+    { id: 'pfriem', x: 62, y: 88, targetX: 62, targetY: 42, label: 'Pfriemschnabel' },
+    { id: 'meissel', x: 87, y: 88, targetX: 87, targetY: 42, label: 'Meißelschnabel' },
   ],
 } as const
 
-/** Schema Atemweg Säuger (nummeriert 1–4, Luftweg außen → innen). */
+/**
+ * Atemweg Säuger — Commons-Unterrichtstafel ohne Text, Nummern 1–4 als Overlay.
+ * 1 Nase · 2 Luftröhre · 3 Bronchien · 4 Lungenbläschen (Inset).
+ */
 const ATEM_DIAGRAM = {
-  imageSrc: '/anatomy/saeuger-atemweg-schema.svg',
-  imageAlt: 'Schema der Atemwege mit Nummern 1 bis 4',
-  attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
+  imageSrc: '/anatomy/saeuger-atemweg-schema.jpg',
+  imageAlt: 'Atemwege mit Nummern 1 bis 4 (Nase bis Lungenbläschen)',
+  attribution:
+    'LadyofHats / Jmarchn: Respiratory system complete (no labels), Wikimedia Commons, ' +
+    'CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Respiratory_system_complete_no_labels.svg ' +
+    '(Nummern 1–4 als App-Overlay, keine inhaltliche Bildbearbeitung)',
   slots: [
-    { id: 'nase', x: 8, y: 14, targetX: 15, targetY: 30, label: 'Nase / Mund' },
-    { id: 'luftröhre', x: 30, y: 14, targetX: 34, targetY: 30, label: 'Luftröhre' },
-    { id: 'bronchien', x: 52, y: 21, targetX: 56, targetY: 31, label: 'Bronchien' },
-    { id: 'alveolen', x: 84, y: 25, targetX: 75, targetY: 35, label: 'Lungenbläschen' },
+    // Drop-Felder am Rand, Leader-Spitze auf die Nummer im Bild
+    { id: 'nase', x: 8, y: 10, targetX: 18, targetY: 10, label: 'Nase / Mund' },
+    { id: 'luftröhre', x: 8, y: 38, targetX: 48, targetY: 38, label: 'Luftröhre' },
+    { id: 'bronchien', x: 8, y: 54, targetX: 36, targetY: 54, label: 'Bronchien' },
+    { id: 'alveolen', x: 92, y: 18, targetX: 84, targetY: 18, label: 'Lungenbläschen' },
   ],
 } as const
 

@@ -6,7 +6,7 @@ wählen Themen aus dem Lehrplan, üben am Bildschirm oder drucken Übungsblätte
 Lehrkräfte stellen **Übungsklausuren** zusammen und verteilen sie per Code oder
 Link.
 
-Aktuelle Version: **0.28.134** · [Changelog](CHANGELOG.md) ·
+Aktuelle Version: **0.28.135** · [Changelog](CHANGELOG.md) ·
 Web: [app.tasktrophy.de](https://app.tasktrophy.de/) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 
@@ -24,13 +24,13 @@ JSON **exportieren** und auf einem anderen Gerät **importieren**.
 Installer der aktuellen Version:
 
 - **Windows-Installer:**
-  [TaskTrophy-Setup-0.28.134.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.134/TaskTrophy-Setup-0.28.134.exe)
+  [TaskTrophy-Setup-0.28.135.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.135/TaskTrophy-Setup-0.28.135.exe)
 - **macOS-Installer (Apple Silicon):**
-  [TaskTrophy-0.28.134-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.134/TaskTrophy-0.28.134-arm64.dmg)
+  [TaskTrophy-0.28.135-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.135/TaskTrophy-0.28.135-arm64.dmg)
 - **Linux (AppImage):**
-  [TaskTrophy-0.28.134.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.134/TaskTrophy-0.28.134.AppImage)
+  [TaskTrophy-0.28.135.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.135/TaskTrophy-0.28.135.AppImage)
 - **Linux (Debian/Ubuntu):**
-  [tasktrophy_0.28.134_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.134/tasktrophy_0.28.134_amd64.deb)
+  [tasktrophy_0.28.135_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.135/tasktrophy_0.28.135_amd64.deb)
 
 **Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
 nicht mit einem Code-Signing-Zertifikat signiert ist, warnt Windows oft mit

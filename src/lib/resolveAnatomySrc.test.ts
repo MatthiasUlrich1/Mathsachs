@@ -10,8 +10,8 @@ import {
 const PUBLIC_ANATOMY = path.resolve(__dirname, '../../public/anatomy')
 
 const SCHEMA_FILES = [
-  'vogel-schnabel-typen.svg',
-  'saeuger-atemweg-schema.svg',
+  'vogel-schnabel-typen.jpg',
+  'saeuger-atemweg-schema.jpg',
   'oncorhynchus-mykiss-raver.jpg',
   'fish-internal-teleost-gille.svg',
   'pond-organisms-daphnia-cyclops.png',

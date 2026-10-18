@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.135] – 2026-10-18
+
+### Geändert
+- **Schema Schnabel & Atemweg:** TaskTrophy-Eigenzeichnungen ersetzt durch
+  lizenzfreie Commons-Fotos (Schnabel-Collage) bzw. die LadyofHats-Atemwegs-Tafel;
+  Drop-Felder neu positioniert. Pack Biologie **1.12.4**.
+
 ## [0.28.134] – 2026-10-18
 
 ### Behoben

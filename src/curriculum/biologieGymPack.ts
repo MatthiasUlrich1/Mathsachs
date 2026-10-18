@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.12.3',
-    changelog: `Schema-Bilder: Vite-Bundle (Electron file://), alle Anatomie-Schemas sichtbar. ${topics} Themen.`,
+    version: '1.12.4',
+    changelog: `Schema Schnabel/Atemweg: Commons-Fotos bzw. Unterrichtstafel statt Eigenzeichnung. ${topics} Themen.`,
     official,
     extras: [],
   }

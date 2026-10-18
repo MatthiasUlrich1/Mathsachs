@@ -8,6 +8,27 @@ Assets bundled for offline practice (educational app + desktop installers). Pref
 
 **Policy:** Keine selbst gezeichneten Mathsachs-/TaskTrophy-Unterrichtsschemata für Anatomie-Beschriftung. Nur reale Fotos oder veröffentlichte Bildungstafeln mit freier Lizenz (Wikimedia Commons o. ä.).
 
+## Bird — Schnabelformen (Foto-Collage, K5)
+
+- **File:** `vogel-schnabel-typen.jpg`
+- **Contents:** Side-by-side collage of four unaltered Commons photos + number badges 1–4 (UI overlay style)
+  1. Marek Szczepanek — „Buteo buteo 2“, CC BY-SA 3.0 — https://commons.wikimedia.org/wiki/File:Buteo_buteo_2_(Marek_Szczepanek).jpg
+  2. birdsaspoetry.com — „European Goldfinch Glowing“, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:European_Goldfinch_Glowing_(50257614467).jpg
+  3. Andy Morffew — „Grey Heron Portrait“, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Grey_Heron_Portrait_(15760878075).jpg
+  4. Andy Morffew — „Great Spotted Woodpecker Portrait“, CC BY 2.0 — https://commons.wikimedia.org/wiki/File:Great_Spotted_Woodpecker_Portrait_(7142225643).jpg
+- **Note:** Ersetzt früheres TaskTrophy-Eigen-Schema. Drop-Felder + Leader nur UI-Overlay. Reihenfolge = Hakenschnabel / Kegelschnabel / Pfriemschnabel / Meißelschnabel.
+
+## Säugetier — Atemwege (Commons-Tafel, K5)
+
+- **File:** `saeuger-atemweg-schema.jpg`
+- **Title:** Respiratory system complete no labels (PNG-Render + Nummern-Overlay 1–4)
+- **Author:** LadyofHats, Jmarchn
+- **License:** CC BY-SA 3.0
+- **Source:** Wikimedia Commons — https://commons.wikimedia.org/wiki/File:Respiratory_system_complete_no_labels.svg
+- **License deed:** https://creativecommons.org/licenses/by-sa/3.0/
+- **ShareAlike:** Nummern-Badges und Drop-Felder sind UI-Overlays / minimale Kennzeichnung, keine inhaltliche Bearbeitung der Tafel.
+- **Note:** Ersetzt früheres TaskTrophy-Eigen-Schema. 1 Nase/Mund · 2 Luftröhre · 3 Bronchien · 4 Lungenbläschen (Inset).
+
 ## Fish — Regenbogenforelle (external anatomy)
 
 - **File:** `oncorhynchus-mykiss-raver.jpg`
