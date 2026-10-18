@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T15:55:17.132Z",
+  "updatedAt": "2026-10-18T16:00:36.550Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -40,10 +40,10 @@
       "region": "Sachsen",
       "school": "Gymnasium",
       "subject": "Biologie",
-      "version": "1.12.1",
+      "version": "1.12.2",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-biologie.json",
-      "size": 162033,
-      "changelog": "Schema-Beschriftung: klare Feld-Anweisung (1…n), mehr plausible Ablenkungen (Schnabel 4 Formen, Atemweg). 340 Themen."
+      "size": 162044,
+      "changelog": "Schema-Bilder in Electron: Pfad-Fix (BASE_URL), verständliche Aufgabenstellung ohne „Silhouette“-Spoiler-Alttext. 340 Themen."
     },
     {
       "id": "gym-sachsen-anhalt",

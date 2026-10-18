@@ -18,8 +18,8 @@ export function buildGymSachsenBiologiePack(): CurriculumPack {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Biologie',
-    version: '1.12.1',
-    changelog: `Schema-Beschriftung: klare Feld-Anweisung (1…n), mehr plausible Ablenkungen (Schnabel 4 Formen, Atemweg). ${topics} Themen.`,
+    version: '1.12.2',
+    changelog: `Schema-Bilder in Electron: Pfad-Fix (BASE_URL), verständliche Aufgabenstellung ohne „Silhouette“-Spoiler-Alttext. ${topics} Themen.`,
     official,
     extras: [],
   }

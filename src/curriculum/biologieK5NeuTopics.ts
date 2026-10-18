@@ -27,20 +27,22 @@ import type { Topic } from './types'
 /** Unterrichtsschema: 4 Schnabeltypen (nummeriert, ohne Namensspoiler). */
 const SCHNABEL_DIAGRAM = {
   imageSrc: '/anatomy/vogel-schnabel-typen.svg',
-  imageAlt: 'Vier Schnabelformen (Schema, nummeriert 1–4)',
+  /** Kurz — kein Spoiler, falls Bild kurzzeitig fehlt. */
+  imageAlt: 'Schema mit vier nummerierten Schnabelformen',
   attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
   slots: [
-    { id: 'haken', x: 10, y: 10, targetX: 14, targetY: 32, label: 'Hakenschnabel' },
-    { id: 'kegel', x: 34, y: 10, targetX: 38, targetY: 32, label: 'Kegelschnabel' },
-    { id: 'pfriem', x: 58, y: 10, targetX: 62, targetY: 32, label: 'Pfriemschnabel' },
-    { id: 'meissel', x: 82, y: 10, targetX: 86, targetY: 32, label: 'Meißelschnabel' },
+    // Drop-Felder unter den Silhouetten, damit die Schnabelform sichtbar bleibt
+    { id: 'haken', x: 12, y: 78, targetX: 12, targetY: 42, label: 'Hakenschnabel' },
+    { id: 'kegel', x: 37, y: 78, targetX: 37, targetY: 42, label: 'Kegelschnabel' },
+    { id: 'pfriem', x: 62, y: 78, targetX: 62, targetY: 42, label: 'Pfriemschnabel' },
+    { id: 'meissel', x: 87, y: 78, targetX: 87, targetY: 42, label: 'Meißelschnabel' },
   ],
 } as const
 
 /** Schema Atemweg Säuger (nummeriert 1–4, Luftweg außen → innen). */
 const ATEM_DIAGRAM = {
   imageSrc: '/anatomy/saeuger-atemweg-schema.svg',
-  imageAlt: 'Atemweg Schema nummeriert 1–4',
+  imageAlt: 'Schema der Atemwege mit Nummern 1 bis 4',
   attribution: 'TaskTrophy-Unterrichtsschema (eigene Vereinfachung für die App)',
   slots: [
     { id: 'nase', x: 8, y: 14, targetX: 15, targetY: 30, label: 'Nase / Mund' },
@@ -252,13 +254,13 @@ function schnabelLabel(rng: Rng) {
   ]).slice(0, 3)
   return imageLabelSlotsTask({
     question:
-      'Ordne jedem nummerierten Feld (1–4) den passenden Schnabelnamen zu. Die Form der Silhouette entscheidet — die Reihenfolge der Chips im Vorrat ist egal.',
+      'Auf dem Bild siehst du vier nummerierte Schnäbel. Ziehe zu jedem Feld (1–4) den passenden Namen.',
     imageSrc: SCHNABEL_DIAGRAM.imageSrc,
     imageAlt: SCHNABEL_DIAGRAM.imageAlt,
     attribution: SCHNABEL_DIAGRAM.attribution,
-    drawLeaders: false,
+    drawLeaders: true,
     instruction:
-      'Feld 1 = linke Silhouette, Feld 2 = zweite von links, usw. Jedes Feld braucht genau einen Namen; drei Ablenkungen bleiben übrig.',
+      'Schau die Schnabelform bei Nummer 1–4 auf dem Bild an. Ziehe den Namen in das Feld unter der jeweiligen Nummer. Drei Namen brauchst du nicht.',
     items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],
@@ -1477,13 +1479,13 @@ function lungeLabel(rng: Rng) {
   ]).slice(0, 3)
   return imageLabelSlotsTask({
     question:
-      'Ordne jedem nummerierten Feld (1–4) den passenden Atemwegsabschnitt zu. Folge dem Luftweg von außen nach innen — die Chip-Reihenfolge im Vorrat ist egal.',
+      'Auf dem Bild siehst du den Atemweg mit Nummern 1–4. Ziehe zu jedem Feld den passenden Abschnitt (von außen nach innen).',
     imageSrc: ATEM_DIAGRAM.imageSrc,
     imageAlt: ATEM_DIAGRAM.imageAlt,
     attribution: ATEM_DIAGRAM.attribution,
     drawLeaders: false,
     instruction:
-      'Feld 1 liegt am Anfang des Luftwegs, Feld 4 am Ort des Gasaustauschs. Jedes Feld braucht genau einen Begriff; drei Ablenkungen bleiben übrig.',
+      'Feld 1 = Bild-Nummer 1 (Anfang des Luftwegs), Feld 4 = Bild-Nummer 4 (Gasaustausch). Drei Begriffe brauchst du nicht.',
     items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],

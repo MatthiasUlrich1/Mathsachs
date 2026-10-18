@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.130] – 2026-10-18
+
+### Behoben
+- **Schema-Beschriftung (Electron):** Bilder unter `/anatomy/…` luden nicht
+  (`base: './'`), nur blasser Alt-Text im Streifen — Pfad über `BASE_URL`
+  aufgelöst. Aufgabenstellung klarer („auf dem Bild“ / Bild-Nummer 1–4).
+  Pack Biologie **1.12.2**.
+
 ## [0.28.129] – 2026-10-18
 
 ### Behoben

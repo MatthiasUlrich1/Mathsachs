@@ -21,6 +21,7 @@
 .image-label-slots__stage {
   position: relative;
   width: 100%;
+  min-height: 12rem;
   border-radius: 8px;
   overflow: visible;
   background: #f8fafc;
@@ -31,8 +32,24 @@
   display: block;
   width: 100%;
   height: auto;
+  min-height: 12rem;
+  object-fit: contain;
+  background: #faf8f4;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+.image-label-slots__missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  padding: 1rem;
+  text-align: center;
+  color: #b91c1c;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #fef2f2;
 }
 
 .image-label-slots__leaders {

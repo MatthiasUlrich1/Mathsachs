@@ -1,8 +1,17 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import type { BlockDragFrom } from './blockSlotPointer'
 import { useBlockSlotPointer } from './useBlockSlotPointer'
 import './ImageLabelSlots.css'
+
+/** Vite `base: './'` — absolute `/anatomy/…` bricht in Electron (file://). */
+function resolvePublicSrc(src: string): string {
+  if (!src) return src
+  if (/^(https?:|data:|blob:)/i.test(src)) return src
+  const base = import.meta.env.BASE_URL || '/'
+  if (src.startsWith('/')) return `${base}${src.slice(1)}`
+  return src
+}
 
 export type ImageLabelSlot = {
   id: string
@@ -48,6 +57,11 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
   disabled = false,
   partResults,
 }) => {
+  const resolvedSrc = resolvePublicSrc(imageSrc)
+  const [imgFailed, setImgFailed] = useState(false)
+  useEffect(() => {
+    setImgFailed(false)
+  }, [resolvedSrc])
   const used = new Set(value.filter((s): s is number => s !== null))
   const poolIndices = items.map((_, i) => i).filter((i) => !used.has(i))
 
@@ -140,14 +154,23 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
 
       <figure className="image-label-slots__figure">
         <div className="image-label-slots__stage">
-          <img
-            className="image-label-slots__img"
-            src={imageSrc}
-            alt={imageAlt}
-            draggable={false}
-            loading="lazy"
-            decoding="async"
-          />
+          {imgFailed ? (
+            <div className="image-label-slots__missing" role="alert">
+              Schema-Bild konnte nicht geladen werden. Bitte App aktualisieren
+              oder Aufgabe melden.
+            </div>
+          ) : (
+            <img
+              className="image-label-slots__img"
+              src={resolvedSrc}
+              alt={imageAlt || 'Schema zum Beschriften'}
+              draggable={false}
+              loading="lazy"
+              decoding="async"
+              onError={() => setImgFailed(true)}
+              onLoad={() => setImgFailed(false)}
+            />
+          )}
 
           {drawLeaders && (
             <svg
