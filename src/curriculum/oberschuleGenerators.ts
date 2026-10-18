@@ -20,7 +20,7 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { PackTopic } from './pack'
-import { isPlaceholderNeuTopic } from './placeholderNeuIds'
+import { isNeuTopic, isPlaceholderNeuTopic } from './placeholderNeuIds'
 import type { Topic } from './types'
 
 /** Flexible accepted formats for a coordinate pair (a; b). */
@@ -660,8 +660,8 @@ export function topicFromPack(
   opts?: { subject?: string },
 ): Topic {
   const isPlaceholder = isPlaceholderNeuTopic(topic.id)
-  const isNeu = topic.neu === true || isPlaceholder
-  // Neu-Badge kann bei gefüllten Banken bleiben; outlineOnly nur ohne echte Bank.
+  const isNeu = topic.neu === true || isNeuTopic(topic.id)
+  // Neu-Badge bleibt bei gefüllten Banken; outlineOnly nur ohne echte Bank.
   const playable = Boolean(generate) && !isPlaceholder
   return ensureTopicFachwissen(
     {

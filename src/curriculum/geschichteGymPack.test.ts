@@ -12,7 +12,7 @@ import { listVisibleGradeModules } from './registry'
 import { buildGymSachsenGeschichtePack } from './geschichteGymPack'
 import { allGeschichteTopicIds } from './geschichteGymTopics'
 import { isPlayableGeschichteTopic, resolveGeschichteGenerate } from './geschichteGenerators'
-import { isPlaceholderNeuTopic } from './placeholderNeuIds'
+import { FILLED_NEU_TOPIC_IDS, isPlaceholderNeuTopic } from './placeholderNeuIds'
 
 describe('Gymnasium Sachsen Geschichte pack', () => {
   it('builds Klassen 5–10 and Oberstufe Gk/Lk with K6 fully released', () => {
@@ -69,8 +69,11 @@ describe('Gymnasium Sachsen Geschichte pack', () => {
     expect(topics.every((t) => t.released === false)).toBe(true)
     expect(filled.every((t) => !t.outlineOnly)).toBe(true)
     // Gefüllte Neu-Themen: spielbar für Entwickler, Badge bleibt, Freigabe ausstehend
-    expect(filledNeu.length).toBeGreaterThanOrEqual(7)
+    expect(filledNeu.length).toBe(FILLED_NEU_TOPIC_IDS.size)
+    expect(filledNeu.map((t) => t.id).sort()).toEqual([...FILLED_NEU_TOPIC_IDS].sort())
+    expect(filledNeu.every((t) => t.neu === true)).toBe(true)
     expect(filledNeu.every((t) => t.released === false)).toBe(true)
+    expect(filledNeu.every((t) => !t.outlineOnly)).toBe(true)
     expect(filledNeu.every((t) => isPlayableGeschichteTopic(t.id))).toBe(true)
     const task = filledNeu[0]!.generate(() => 0.5)
     expect(task.question.length).toBeGreaterThan(10)

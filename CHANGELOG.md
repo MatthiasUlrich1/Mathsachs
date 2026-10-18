@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.140] – 2026-10-18
+
+### Behoben
+- **Neu-Badge Geschichte K5:** Gefüllte Neu-Themen behalten die Markierung „Neu“
+  (unterscheidbar, weiterhin gesperrt bis Freigabe); Badge kontrastreicher.
+
+
 ## [0.28.139] – 2026-10-18
 
 ### Hinzugefügt

@@ -12,7 +12,7 @@ import { resolveBiologieGenerate } from './biologieGenerators'
 import { resolveGeschichteGenerate } from './geschichteGenerators'
 import { resolvePhysikGenerate } from './physikGenerators'
 import type { CurriculumPack, PackExtra, PackGrade, PackTask, PackTopic } from './pack'
-import { isPlaceholderNeuTopic } from './placeholderNeuIds'
+import { isNeuTopic, isPlaceholderNeuTopic } from './placeholderNeuIds'
 import { fractionTask, textTask, valueTask } from './taskHelpers'
 import type { Grade, Task, Topic, TopicArea } from './types'
 
@@ -96,12 +96,18 @@ const markOfficial = (grade: Grade, subject?: string): Grade =>
       ...grade,
       areas: grade.areas.map((area) => ({
         ...area,
-        topics: area.topics.map((topic) => ({
-          ...(topic.source ? topic : { ...topic, source: 'official' as const }),
-          contentId: topic.contentId ?? topicContentId(topic.id),
-          released: topic.released ?? true,
-          ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
-        })),
+        topics: area.topics.map((topic) => {
+          const isNeu = topic.neu === true || isNeuTopic(topic.id)
+          return {
+            ...(topic.source ? topic : { ...topic, source: 'official' as const }),
+            contentId: topic.contentId ?? topicContentId(topic.id),
+            // Neu-Themen bleiben gesperrt; Badge darf nicht verloren gehen.
+            released: isNeu ? false : (topic.released ?? true),
+            ...(isNeu ? { neu: true as const } : {}),
+            ...(topic.outlineOnly ? { outlineOnly: true as const } : {}),
+            ...(topic.tasksPerRound ? { tasksPerRound: topic.tasksPerRound } : {}),
+          }
+        }),
       })),
     },
     { subject },
@@ -125,15 +131,16 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
         const meta = byId.get(topic.id)
         if (!meta) return topic
         const isPlaceholder = isPlaceholderNeuTopic(meta.id)
-        const isNeu = meta.neu === true || isPlaceholder
+        const isNeu = meta.neu === true || isNeuTopic(meta.id)
+        const { outlineOnly: _dropOutline, neu: _dropNeu, ...base } = topic
         return {
-          ...topic,
+          ...base,
           // Pack is source of truth: omit released ⇒ freigegeben
           // Neu / Platzhalter bleiben gesperrt bis expliziter Freigabe.
           released: isNeu ? false : meta.released === false ? false : true,
-          ...(isNeu ? { neu: true } : {}),
+          ...(isNeu ? { neu: true as const } : {}),
           // outlineOnly nur für echte Struktur-Platzhalter ohne Aufgabenbank.
-          ...(isPlaceholder ? { outlineOnly: true } : {}),
+          ...(isPlaceholder ? { outlineOnly: true as const } : {}),
           ...(typeof meta.tasksPerRound === 'number'
             ? { tasksPerRound: meta.tasksPerRound }
             : {}),
