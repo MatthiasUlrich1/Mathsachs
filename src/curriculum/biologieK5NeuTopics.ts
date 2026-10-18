@@ -80,11 +80,7 @@ function knowledgeMc(
     correct: it.correct,
     solution: it.correct,
     explanation: it.w,
-    fachwissen: bioFw(
-      `${it.w} Merke den Fachzusammenhang und prüfe Ablenkungen aus demselben Themenfeld.`,
-      it.quelle,
-      it.url,
-    ),
+    fachwissen: bioFw(it.w, it.quelle, it.url),
     dedupeKey: `${keyPrefix}:${it.q.slice(0, 48)}`,
     contentIds: [`${keyPrefix}:${it.q.slice(0, 48)}`],
   })
@@ -151,7 +147,7 @@ function schnabelClassify(rng: Rng) {
     explanation:
       'Die Schnabelform spiegelt die Nahrung wider — Erschließungsfeld Angepasstheit.',
     fachwissen: bioFw(
-      'Im Biologieunterricht vergleicht man Schnäbel oft mit Werkzeugen: Haken wie eine Zange zum Reißen, Kegel wie eine Nussknacker-Zange, Pfriem wie eine Pinzette. Drei typische Formen reichen für Klasse 5; Artenbeispiele machen den Zusammenhang Schnabel–Nahrung greifbar.',
+      'Schnabelform und Nahrung gehören zusammen: Ein gebogener Hakenschnabel zerreißt Beute, ein kurzer Kegelschnabel knackt Samen, ein spitzer Pfriemschnabel pickt Insekten und Weichtiere, ein Meißelschnabel öffnet Holz.',
       'Wikipedia: Vogelschnabel',
       'https://de.wikipedia.org/wiki/Vogelschnabel',
     ),
@@ -171,7 +167,7 @@ function schnabelMatch(rng: Rng) {
     solution: 'Haken→Zange; Kegel→Nussknacker; Pfriem→Pinzette',
     explanation: 'Der Werkzeugvergleich macht Angepasstheit anschaulich.',
     fachwissen: bioFw(
-      'Lehrplan K5: Schnabelform–Nahrung mit mehreren Formen. Der Vergleich mit Alltagswerkzeugen hilft, Struktur und Funktion zu verknüpfen, ohne den Fachbegriff Angepasstheit zu verlieren.',
+      'Angepasstheit heißt: Körperbau und Lebensweise passen zusammen. Beim Vogel zeigt sich das besonders am Schnabel — Form und typische Nahrung gehören fachlich zusammen.',
       'Wikipedia: Angepasstheit',
       'https://de.wikipedia.org/wiki/Angepasstheit',
     ),
@@ -251,7 +247,7 @@ function schnabelCause(rng: Rng) {
     solution: 'Schnabelform → passende Nahrungsaufnahme',
     explanation: 'Ursache (Form) und Wirkung (Nahrung) gehören zusammen.',
     fachwissen: bioFw(
-      'Wer Form und Funktion trennt, versteht Angepasstheit nicht. Im Unterricht prüft man: Passt die Schnabelform zur behaupteten Nahrung — oder widerspricht sie?',
+      'Passt die Schnabelform nicht zur Nahrung, stimmt die Zuordnung nicht. Ein Körnerfresser braucht einen kräftigen Kegel — kein Hakenschnabel wie bei Greifvögeln.',
       'Wikipedia: Angepasstheit',
       'https://de.wikipedia.org/wiki/Angepasstheit',
     ),
@@ -284,7 +280,7 @@ function schnabelLabel(rng: Rng) {
     explanation:
       'Haken gebogen (reißen); Kegel kurz/kräftig (knacken); Pfriem spitz (picken); Meißel gerade/kräftig (Holz).',
     fachwissen: bioFw(
-      'Vier typische Formen im Schema — Ablenkungen sind ebenfalls echte Schnabeltypen, damit man die Form wirklich lesen muss.',
+      'Vier typische Schnabelformen: Haken gebogen zum Reißen von Beute, Kegel kurz und kräftig zum Knacken von Samen, Pfriem spitz zum Picken von Insekten, Meißel gerade und kräftig zum Öffnen von Holz.',
       'Wikipedia: Vogelschnabel',
       'https://de.wikipedia.org/wiki/Vogelschnabel',
     ),
@@ -313,7 +309,7 @@ function schnabelFoodSlots(rng: Rng) {
     solution: three.map((p) => `${p.form} → ${p.food}`).join('; '),
     explanation: 'Artenbeispiel + Handlung macht Angepasstheit konkret.',
     fachwissen: bioFw(
-      'Statt immer derselben drei Paare: wechselnde Artenbeispiele mit derselben Form–Funktions-Logik.',
+      'Dieselbe Form–Funktions-Logik gilt bei vielen Arten: Habicht (Haken), Buchfink (Kegel), Rotkehlchen (Pfriem), Buntspecht (Meißel), Löffelente (Sieb).',
       'Wikipedia: Angepasstheit',
       'https://de.wikipedia.org/wiki/Angepasstheit',
     ),
@@ -405,7 +401,7 @@ function verhaltenMatch(rng: Rng) {
     solution: 'Gesang→Revier; Balz→Partner; Nestbau→Brutplatz',
     explanation: 'Revier, Balz und Nest gehören zur Fortpflanzungszeit, sind aber unterschiedliche Funktionen.',
     fachwissen: bioFw(
-      'Lehrplan K5: Revier- und Balzverhalten, Vogelgesang. Gesang kann Revier und Paarbildung signalisieren; Balz umfasst auch Bewegungen und Gefiederzeigen. Nestbau ist Brutpflege-Vorbereitung.',
+      'Gesang kann Revier und Paarbildung signalisieren. Balz umfasst oft Bewegungen und Gefiederzeigen. Nestbau bereitet die Brutpflege vor — alles Funktionen in der Fortpflanzungszeit, aber nicht dasselbe Verhalten.',
       'Wikipedia: Vogelgesang',
       'https://de.wikipedia.org/wiki/Vogelgesang',
     ),
@@ -501,7 +497,7 @@ function verhaltenMc(rng: Rng) {
     solution: it.correct,
     explanation: it.w,
     fachwissen: bioFw(
-      `${it.w} Erschließungsfeld Information: Laute und Bewegungen übertragen Botschaften zwischen Tieren.`,
+      `${it.w} Laute und Bewegungen übertragen Botschaften zwischen Tieren — Sender, Signal und Empfänger gehören zusammen.`,
       'Wikipedia: Balz',
       'https://de.wikipedia.org/wiki/Balz',
     ),
@@ -553,7 +549,7 @@ function verhaltenSlots(rng: Rng) {
     solution: 'Gesang→Revier; Balz→Partner; Material→Nest',
     explanation: 'Drei Funktionen in der Fortpflanzungszeit — klar trennen.',
     fachwissen: bioFw(
-      'Im Unterricht hilft die Zuordnung Funktion ↔ Verhalten, Beobachtungen zu nicht nur zu beschreiben, sondern fachlich einzuordnen.',
+      'Revier, Balz und Nest haben unterschiedliche Funktionen: Gebiet sichern, Partner werben, Gelege schützen. So lassen sich Beobachtungen fachlich einordnen.',
       'Wikipedia: Balz',
       'https://de.wikipedia.org/wiki/Balz',
     ),
@@ -680,7 +676,7 @@ function vogelSchutzMatch(rng: Rng) {
     solution: 'Nistkasten→Brutplatz; Markierung→weniger Anprall; Hecke→Habitat',
     explanation: 'Schutz wirkt über Lebensraum, Brutplätze und Gefahrenminderung.',
     fachwissen: bioFw(
-      'Lehrplan: Schutz der Lebensräume, Artenschutz, Beispiele aus Sachsen. Nistkästen ersetzen Baumhöhlen; Hecken liefern Insekten und Deckung; Glasflächen sind eine häufige Todesursache — Markierungen machen Scheiben sichtbar.',
+      'Nistkästen ersetzen fehlende Baumhöhlen; Hecken liefern Insekten und Deckung; Glasflächen sind eine häufige Todesursache — Markierungen machen Scheiben für Vögel sichtbar.',
       'NABU: Vogelschutz',
       'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
     ),
@@ -730,7 +726,7 @@ function vogelSchutzMc(rng: Rng) {
     solution: it.correct,
     explanation: it.w,
     fachwissen: bioFw(
-      `${it.w} Bildung für nachhaltige Entwicklung: Alltagshandeln (Garten, Gebäude, Glas) wirkt auf heimische Arten.`,
+      `${it.w} Alltagshandeln in Garten, an Gebäuden und an Glasflächen wirkt direkt auf heimische Vogelarten.`,
       'NABU Sachsen: Vogelkollisionen',
       'https://sachsen.nabu.de/',
     ),
@@ -809,7 +805,7 @@ function vogelSchutzSlots(rng: Rng) {
     solution: 'Nistkasten / Markierung / Hecke',
     explanation: 'Drei Wirkwege: Brutplatz, Gefahr, Habitat.',
     fachwissen: bioFw(
-      'Schutzmaßnahmen greifen auf unterschiedlichen Ebenen. Drag-and-drop trainiert die Zuordnung Problem ↔ Maßnahme.',
+      'Wirksamer Vogelschutz greift auf mehreren Ebenen: Lebensraum erhalten, Brutplätze schaffen und Gefahren (z. B. Glas) verringern.',
       'NABU: Vogelschutz',
       'https://www.nabu.de/tiere-und-pflanzen/voegel/vogelschutz/',
     ),
@@ -950,7 +946,7 @@ function kriechSchutzMc(rng: Rng) {
     solution: it.correct,
     explanation: it.w,
     fachwissen: bioFw(
-      `${it.w} Lehrplan K5: Beurteilen von Maßnahmen zum Schutz der Kriechtiere — mit Beispielen aus Sachsen.`,
+      `${it.w} Die Zauneidechse braucht Sonne, Verstecke und grabbaren Boden — Lebensraumschutz ist der wichtigste Artenschutz.`,
       'Wikipedia: Zauneidechse',
       'https://de.wikipedia.org/wiki/Zauneidechse',
     ),
@@ -1023,7 +1019,7 @@ function kriechSchutzHabitatSlots(rng: Rng) {
     solution: 'Sonne / Versteck / grabbarer Boden',
     explanation: 'Zauneidechsen brauchen ein Mosaik — nicht nur ein Element.',
     fachwissen: bioFw(
-      'Wechselwarme Tiere brauchen Thermoregulation und sichere Gelegeplätze. Drag-and-drop festigt das Habitatmosaik.',
+      'Wechselwarme Kriechtiere brauchen besonnte Plätze zur Thermoregulation und sichere, grabbare Gelegeplätze — oft ein Mosaik aus offenen und deckungsreichen Stellen.',
       'Wikipedia: Zauneidechse',
       'https://de.wikipedia.org/wiki/Zauneidechse',
     ),
@@ -1359,7 +1355,7 @@ function lungeMatch(rng: Rng) {
     solution: 'Zwerchfell / Kapillaren / Einatmen / Ausatmen',
     explanation: 'Neben den Alveolen gehören Mechanik und Blutanschluss zur Lungenatmung.',
     fachwissen: bioFw(
-      'Lehrplan K5: Lunge und Gasaustausch. Zwerchfell steuert die Belüftung; Kapillaren nehmen O₂ auf und geben CO₂ ab.',
+      'Das Zwerchfell steuert die Belüftung der Lunge. In den Lungenbläschen nehmen Kapillaren Sauerstoff auf und geben Kohlenstoffdioxid ab.',
       'Wikipedia: Zwerchfell',
       'https://de.wikipedia.org/wiki/Zwerchfell',
     ),
@@ -1508,7 +1504,7 @@ function lungeLabel(rng: Rng) {
     solution: '1 Nase/Mund; 2 Luftröhre; 3 Bronchien; 4 Lungenbläschen',
     explanation: 'Luftweg: Einlass → Leitung → Verzweigung → Gasaustausch in den Bläschen.',
     fachwissen: bioFw(
-      'Nummern folgen dem Weg der Atemluft. Ablenkungen (z. B. Speiseröhre, Zwerchfell) liegen nah am Thema, gehören aber nicht in diese Stationen.',
+      'Atemluft gelangt über Nase oder Mund in die Luftröhre, verzweigt sich in den Bronchien und erreicht die Lungenbläschen. Dort findet der Gasaustausch mit dem Blut statt.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),
@@ -1533,7 +1529,7 @@ function lungePartSlots(rng: Rng) {
     solution: 'Einlass → Leitung → Verzweigung → Austausch',
     explanation: 'Jeder Abschnitt hat eine andere Aufgabe auf dem Luftweg.',
     fachwissen: bioFw(
-      'Schema + Funktionszuordnung vertieft den Aufbau, ohne dieselbe Alveolen-Definition zu wiederholen.',
+      'Nase und Mund nehmen Luft auf, die Luftröhre leitet sie weiter, Bronchien verteilen sie in die Lunge, Lungenbläschen ermöglichen den Gasaustausch.',
       'Wikipedia: Lunge',
       'https://de.wikipedia.org/wiki/Lunge',
     ),
@@ -1675,7 +1671,7 @@ function beobEthogramSlots(rng: Rng) {
     solution: 'Putzen / Fressen / Laufen / Spielkontakt',
     explanation: 'Ethogramm-Kategorien helfen, Säugerverhalten zu ordnen.',
     fachwissen: bioFw(
-      'Konkrete Säugerbeispiele statt Methoden-Doppelung mit „Arbeitsweisen“.',
+      'Ethogramme listen arttypische Verhaltensweisen (z. B. Putzen, Fressen, Ruhen). Mit klaren Kategorien und Zeitfenstern wird Verhalten vergleichbar.',
       'Wikipedia: Ethologie',
       'https://de.wikipedia.org/wiki/Ethologie',
     ),
@@ -1743,7 +1739,7 @@ function beobMc(rng: Rng) {
     solution: it.correct,
     explanation: it.w,
     fachwissen: bioFw(
-      `${it.w} Fokus: Säugerverhalten systematisch erfassen.`,
+      `${it.w} Ethologie erfasst Verhalten mit klaren Kategorien und messbaren Notizen — nicht nur mit Eindrücken.`,
       'Wikipedia: Ethologie',
       'https://de.wikipedia.org/wiki/Ethologie',
     ),
@@ -1764,7 +1760,7 @@ function beobSort(rng: Rng) {
     solution: 'Ethogramm → Zählen → Auswerten → Erklären',
     explanation: 'Zuerst Kategorien und Daten, dann Erklärung.',
     fachwissen: bioFw(
-      'Beispiel: „Wie oft putzt sich die Hauskatze in 5 Minuten?“',
+      'Zuerst legt man ein Ethogramm und eine Frage fest, dann beobachtet und zählt man in einem festen Zeitfenster — erst danach deutet man vorsichtig.',
       'Wikipedia: Ethologie',
       'https://de.wikipedia.org/wiki/Ethologie',
     ),
@@ -1788,7 +1784,7 @@ function beobSpeciesSlots(rng: Rng) {
     solution: 'Hund / Katze / Reh / Hase',
     explanation: 'Arttypische Verhaltensweisen sind Beobachtungsgegenstand.',
     fachwissen: bioFw(
-      'Heimische Säugerbeispiele machen Ethogramme greifbar.',
+      'Ethogramme mit heimischen Säugern (z. B. Katze, Hund, Reh) listen arttypische Verhaltensweisen und machen Beobachtungen vergleichbar.',
       'Wikipedia: Ethologie',
       'https://de.wikipedia.org/wiki/Ethologie',
     ),
@@ -1892,7 +1888,7 @@ function sinneMatch(rng: Rng) {
     solution: 'Geruch / Gehör / Sehen / Tasten',
     explanation: 'Sinne liefern Informationen — Grundlage von Kommunikation.',
     fachwissen: bioFw(
-      'Lehrplan: Sinne und Sender–Empfänger. Hunde nutzen Geruch stark; Katzen kombinieren Gehör, Sehen und Schnurrhaare. Kommunikation braucht Sender, Signal und Empfänger.',
+      'Hunde nutzen Geruch besonders stark; Katzen kombinieren Gehör, Sehen und Schnurrhaare. Tierkommunikation braucht Sender, Signal und Empfänger.',
       'Wikipedia: Sinnesorgan',
       'https://de.wikipedia.org/wiki/Sinnesorgan',
     ),
@@ -1915,7 +1911,7 @@ function sinneClassify(rng: Rng) {
     solution: 'Laut / Duft / Haltung',
     explanation: 'Kommunikation nutzt verschiedene Kanäle.',
     fachwissen: bioFw(
-      'Tiere senden Signale (Laut, Duft, Haltung); Artgenossen empfangen sie über passende Sinne. Das Sender–Empfänger-Modell strukturiert den Unterricht.',
+      'Tiere senden Signale (Laut, Duft, Haltung); Artgenossen empfangen sie über passende Sinne. Ohne Sender, Signal und Empfänger kommt keine Botschaft an.',
       'Wikipedia: Tierkommunikation',
       'https://de.wikipedia.org/wiki/Tierkommunikation',
     ),
@@ -1993,7 +1989,7 @@ function sinneCause(rng: Rng) {
     solution: 'Signal → Verhaltensänderung beim Empfänger',
     explanation: 'Kommunikation verändert Verhalten.',
     fachwissen: bioFw(
-      'Ob Laut, Duft oder Haltung: Erfolgreiche Signale lösen beim Empfänger eine Reaktion aus — das ist der Kern von Information im Erschließungsfeld.',
+      'Ob Laut, Duft oder Haltung: Erfolgreiche Signale lösen beim Empfänger eine Reaktion aus — sonst kommt keine Botschaft an.',
       'Wikipedia: Tierkommunikation',
       'https://de.wikipedia.org/wiki/Tierkommunikation',
     ),
@@ -2107,7 +2103,7 @@ function sozialMatch(rng: Rng) {
     solution: 'Gruppe / Rang / Revier / Kooperation',
     explanation: 'Sozialverhalten organisiert Zusammenleben und Konkurrenz.',
     fachwissen: bioFw(
-      'Lehrplan: Rudel, Rangordnung, Revier. Wölfe oder Primaten zeigen Rang und Kooperation; viele Arten markieren Reviere. Sozialverhalten ist art- und situationsabhängig.',
+      'Wölfe oder Primaten zeigen Rang und Kooperation; viele Arten markieren Reviere. Sozialverhalten ist art- und situationsabhängig — nicht jede Art lebt im Rudel.',
       'Wikipedia: Sozialverhalten',
       'https://de.wikipedia.org/wiki/Sozialverhalten',
     ),
@@ -2229,7 +2225,7 @@ function sozialSlots(rng: Rng) {
     solution: 'Kooperation / Rang / Revier / Gruppe',
     explanation: 'Vier Grundbegriffe des Sozialverhaltens zuordnen.',
     fachwissen: bioFw(
-      'Drag-and-drop festigt Begriffe, bevor Beispiele aus dem Alltag (Hund, Wolf) diskutiert werden.',
+      'Rudel, Rangordnung, Revier und Einzelgänger beschreiben unterschiedliche Sozialstrategien — z. B. bei Wolf, Hund oder Reh.',
       'Wikipedia: Sozialverhalten',
       'https://de.wikipedia.org/wiki/Sozialverhalten',
     ),

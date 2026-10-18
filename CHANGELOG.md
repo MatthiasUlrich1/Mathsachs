@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.136] – 2026-10-18
+
+### Behoben
+- **K5 Neu-Themen Fachwissen:** Kein Aufgaben-Meta und keine Lösungen mehr im
+  Fachwissen (bes. Schnabel-/Lungen-Schema); nur Sachwissen.
+
 ## [0.28.135] – 2026-10-18
 
 ### Geändert

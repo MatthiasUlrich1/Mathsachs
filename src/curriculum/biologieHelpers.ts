@@ -37,7 +37,7 @@ export const shuffleChoices = (rng: Rng, choices: string[], correct: string): st
 
 /** Patterns that belong in UI/explanation — never in Fachwissen. */
 const META_FACHWISSEN =
-  /Prüfung:|Antwort prüfen|gewertet|Teilpunkte|Karte umdrehen|Vorderseite lesen|Groß-\/Kleinschreibung|Synonyme aus der Lösung|Karteikarte:|Zur Frage\s*[„"][^„"]*[“"]\s*:?\s*|Die gesuchte Antwort ist\s*[„"][^„"]*[“"]\.?\s*|Auch akzeptiert:[^.]*\.?\s*|Ordne das Merkmal[^.]*\.?\s*|Klassiker in Klassenarbeiten\.?\s*|im Unterricht\.?\s*|Häufige Verwechslung in Quizzes\.?\s*|Gesucht war:[^.]*\.?\s*/gi
+  /Prüfung:|Antwort prüfen|gewertet|Teilpunkte|Karte umdrehen|Vorderseite lesen|Groß-\/Kleinschreibung|Synonyme aus der Lösung|Karteikarte:|Zur Frage\s*[„"][^„"]*[“"]\s*:?\s*|Die gesuchte Antwort ist\s*[„"][^„"]*[“"]\.?\s*|Auch akzeptiert:[^.]*\.?\s*|Ordne das Merkmal[^.]*\.?\s*|Klassiker in Klassenarbeiten\.?\s*|im Unterricht\.?\s*|Häufige Verwechslung in Quizzes\.?\s*|Gesucht war:[^.]*\.?\s*|Drag-and-drop[^.]*\.?\s*|Ablenkungen sind[^.]*\.?\s*|Nummern folgen dem Weg[^.]*\.?\s*/gi
 
 /** Build Fachwissen: subject knowledge only (strips accidental meta phrasing). */
 export const bioFw = (
