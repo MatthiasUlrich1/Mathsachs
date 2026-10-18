@@ -1,12 +1,13 @@
 # TaskTrophy
 
-**Das Klassen-Duell** â€” lehrplanorientiertes Ãœbungsprogramm fÃ¼r Mathematik und
-Physik an sÃ¤chsischen Schulen. SchÃ¼lerinnen und SchÃ¼ler wÃ¤hlen Themen aus dem
-Lehrplan, Ã¼ben am Bildschirm oder drucken ÃœbungsblÃ¤tter. LehrkrÃ¤fte stellen
-**Ãœbungsklausuren** zusammen und verteilen sie per Code oder Link.
+**Das Klassen-Duell** — lehrplanorientiertes Übungsprogramm für Mathematik,
+Physik, Biologie und Geschichte an sächsischen Schulen. Schülerinnen und Schüler
+wählen Themen aus dem Lehrplan, üben am Bildschirm oder drucken Übungsblätter.
+Lehrkräfte stellen **Übungsklausuren** zusammen und verteilen sie per Code oder
+Link.
 
-Aktuelle Version: **0.28.43** Â· [Changelog](CHANGELOG.md) Â·
-Web: [app.tasktrophy.de](https://app.tasktrophy.de/) Â·
+Aktuelle Version: **0.28.132** · [Changelog](CHANGELOG.md) ·
+Web: [app.tasktrophy.de](https://app.tasktrophy.de/) ·
 [Alle Releases](https://github.com/MatthiasUlrich1/Mathsachs/releases)
 
 ## Web-App (Browser)
@@ -15,184 +16,186 @@ Ohne Installation im Browser:
 **https://app.tasktrophy.de/**
 
 Benutzer, Punkte und Einstellungen liegen im **Browser-localStorage** dieses
-GerÃ¤ts (pro Domain getrennt). Unter **Einstellungen â†’ Benutzerverwaltung** kannst du Daten als
-JSON **exportieren** und auf einem anderen GerÃ¤t **importieren**.
+Geräts (pro Domain getrennt). Unter **Einstellungen → Benutzerverwaltung** kannst du Daten als
+JSON **exportieren** und auf einem anderen Gerät **importieren**.
 
 ## Download
 
 Installer der aktuellen Version:
 
 - **Windows-Installer:**
-  [Mathsachs-Setup-0.27.28.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.28/Mathsachs-Setup-0.27.28.exe)
+  [TaskTrophy-Setup-0.28.132.exe](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.132/TaskTrophy-Setup-0.28.132.exe)
 - **macOS-Installer (Apple Silicon):**
-  [Mathsachs-0.27.28-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.28/Mathsachs-0.27.28-arm64.dmg)
+  [TaskTrophy-0.28.132-arm64.dmg](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.132/TaskTrophy-0.28.132-arm64.dmg)
 - **Linux (AppImage):**
-  [Mathsachs-0.27.28.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.28/Mathsachs-0.27.28.AppImage)
+  [TaskTrophy-0.28.132.AppImage](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.132/TaskTrophy-0.28.132.AppImage)
 - **Linux (Debian/Ubuntu):**
-  [mathsachs_0.27.28_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.27.28/mathsachs_0.27.28_amd64.deb)
+  [tasktrophy_0.28.132_amd64.deb](https://github.com/MatthiasUlrich1/Mathsachs/releases/download/v0.28.132/tasktrophy_0.28.132_amd64.deb)
 
 **Windows-Hinweis (SmartScreen):** Weil die App von einer Privatperson kommt und
 nicht mit einem Code-Signing-Zertifikat signiert ist, warnt Windows oft mit
-â€žWindows hat den PC geschÃ¼tztâ€œ. Das ist erwartbar und kein Virenfund.
+„Windows hat den PC geschützt“. Das ist erwartbar und kein Virenfund.
 
 1. Den Installer **nur** von den offiziellen GitHub-Releases laden.
-2. Bei der Warnung **â€žWeitere Informationenâ€œ** wÃ¤hlen.
-3. Dann **â€žTrotzdem ausfÃ¼hrenâ€œ** (manchmal **â€žTrotzdem installierenâ€œ**).
+2. Bei der Warnung **„Weitere Informationen“** wählen.
+3. Dann **„Trotzdem ausführen“** (manchmal **„Trotzdem installieren“**).
 
-Unter **Einstellungen â†’ Auf Updates prÃ¼fen** meldet die App, wenn eine neuere
+Unter **Einstellungen → Auf Updates prüfen** meldet die App, wenn eine neuere
 Version bereitsteht.
 
-## LehrplÃ¤ne
+## Lehrpläne
 
-Unter **Einstellungen â†’ LehrplÃ¤ne** installierst, aktualisierst oder entfernst
-du Pakete. Danach blendest du die gewÃ¼nschten Klassenstufen ein.
+Unter **Einstellungen → Lehrpläne** installierst, aktualisierst oder entfernst
+du Pakete. Danach blendest du die gewünschten Klassenstufen ein.
 
-Aktuell verfÃ¼gbar:
+Aktuell verfügbar:
 
 | Paket | Inhalt |
 | --- | --- |
-| **Gymnasium Sachsen Â· Mathematik** | Klasse 5â€“10 und Jahrgangsstufe 11/12 (Grundkurs) |
-| **Gymnasium Sachsen Â· Physik** | Klasse 6â€“10 und Jahrgangsstufe 11/12 (Grundkurs und Leistungskurs) |
-| **Oberschule Sachsen Â· Mathematik Â· Hauptschulbildungsgang** | Klassen 5â€“9 |
-| **Oberschule Sachsen Â· Mathematik Â· Realschulbildungsgang** | Klassen 5â€“10 |
+| **Gymnasium Sachsen · Mathematik** | Klasse 5–10 und Jahrgangsstufe 11/12 (Grundkurs) |
+| **Gymnasium Sachsen · Physik** | Klasse 6–10 und Jahrgangsstufe 11/12 (Grundkurs und Leistungskurs) |
+| **Gymnasium Sachsen · Biologie** | Klasse 5–10 und Oberstufe (Themen schrittweise freigegeben) |
+| **Gymnasium Sachsen · Geschichte** | Klasse 6 und weitere Stufen (Themen schrittweise freigegeben) |
+| **Oberschule Sachsen · Mathematik · Hauptschulbildungsgang** | Klassen 5–9 |
+| **Oberschule Sachsen · Mathematik · Realschulbildungsgang** | Klassen 5–10 |
 
-Die Lernbereiche und Themen folgen den sÃ¤chsischen LehrplÃ¤nen. Aufgaben werden
-zufÃ¤llig erzeugt und haben stets eindeutige, Ã¼berprÃ¼fbare LÃ¶sungen. ErgÃ¤nzungen
-von LehrkrÃ¤ften erscheinen mit dem Badge **Lehrer-ErgÃ¤nzung**.
+Die Lernbereiche und Themen folgen den sächsischen Lehrplänen. Aufgaben werden
+zufällig erzeugt und haben stets eindeutige, überprüfbare Lösungen. Ergänzungen
+von Lehrkräften erscheinen mit dem Badge **Lehrer-Ergänzung**.
 
 ## Funktionen
 
-### Ãœben und ErklÃ¤ren
+### Üben und Erklären
 
-- **Themen auswÃ¤hlen** und **direkt Ã¼ben** â€” Auswertung sofort nach der Antwort.
-- **ErklÃ¤rung anzeigen** bei falschen Aufgaben: Schritt-fÃ¼r-Schritt-LÃ¶sungsweg.
-- **Themen-Suche** Ã¼ber die geladenen Klassen (auch umlaut-tolerant, z. B.
-  â€žFlÃ¤cheâ€œ â†” â€žflaecheâ€œ).
-- **Einheiten umrechnen** (LÃ¤nge, FlÃ¤cheninhalt, Volumen, Masse, Zeit) mit
-  eindeutiger LÃ¶sung und ErklÃ¤rung des Umrechnungsfaktors.
-- **ÃœbungsblÃ¤tter drucken** (oder als PDF speichern) inklusive LÃ¶sungsteil.
+- **Themen auswählen** und **direkt üben** — Auswertung sofort nach der Antwort.
+- **Erklärung anzeigen** bei falschen Aufgaben: Schritt-für-Schritt-Lösungsweg.
+- **Themen-Suche** über die geladenen Klassen (auch umlaut-tolerant, z. B.
+  „Fläche“ ↔ „flaeche“).
+- **Einheiten umrechnen** (Länge, Flächeninhalt, Volumen, Masse, Zeit) mit
+  eindeutiger Lösung und Erklärung des Umrechnungsfaktors.
+- **Übungsblätter drucken** (oder als PDF speichern) inklusive Lösungsteil.
 - In Physik und Mathematik gibt es je nach Thema auch **interaktive Aufgaben**
   (z. B. Schieberegler, Sortieren, Anklicken in einer Abbildung).
 
 ### Mehrere Benutzer und Rollen
 
-Punkte werden **pro Name** gespeichert. Unter **Einstellungen â†’ Profil** kannst
-du Benutzer wechseln und die Rolle wÃ¤hlen: **SchÃ¼ler**, **Eltern**,
+Punkte werden **pro Name** gespeichert. Unter **Einstellungen → Profil** kannst
+du Benutzer wechseln und die Rolle wählen: **Schüler**, **Eltern**,
 **Klassenlehrer** oder **Lehrer**.
 
 Wechsel in **Lehrer** oder **Klassenlehrer** nur mit dem gemeinsamen
-**Lehrercode** (ein Code fÃ¼r die Schule). Fehlt der Code, kannst du ihn in der
-App anfordern â€” die Anfrage geht per E-Mail an uns.
+**Lehrercode** (ein Code für die Schule). Fehlt der Code, kannst du ihn in der
+App anfordern — die Anfrage geht per E-Mail an uns.
 
-KurzÃ¼berblick der Rechte:
+Kurzüberblick der Rechte:
 
-| | SchÃ¼ler | Eltern | Klassenlehrer | Lehrer |
+| | Schüler | Eltern | Klassenlehrer | Lehrer |
 | --- | --- | --- | --- | --- |
-| Themen Ã¼ben | âœ“ | âœ“ | âœ“ | âœ“ |
-| Klausur schreiben | âœ“ | âœ“ | â€” | âœ“ |
-| Klausur erstellen | â€” | âœ“ | â€” | âœ“ |
-| Klassencode erstellen | â€” | âœ“ | â€” | âœ“ |
-| Klassencode eintragen | âœ“ | âœ“ | âœ“ | âœ“ |
-| Stufencode / Stufenchallenge | â€” | â€” | â€” | âœ“ |
-| Klassenchallenge anlegen | â€” | â€” | âœ“ | âœ“ |
-| Aufgaben ergÃ¤nzen | â€” | â€” | â€” | âœ“ |
+| Themen üben | ✓ | ✓ | ✓ | ✓ |
+| Klausur schreiben | ✓ | ✓ | — | ✓ |
+| Klausur erstellen | — | ✓ | — | ✓ |
+| Klassencode erstellen | — | ✓ | — | ✓ |
+| Klassencode eintragen | ✓ | ✓ | ✓ | ✓ |
+| Stufencode / Stufenchallenge | — | — | — | ✓ |
+| Klassenchallenge anlegen | — | — | ✓ | ✓ |
+| Aufgaben ergänzen | — | — | — | ✓ |
 
-Die vollstÃ¤ndige Rechte-Matrix steht in der App unter **Einstellungen â†’ Profil**.
+Die vollständige Rechte-Matrix steht in der App unter **Einstellungen → Profil**.
 
 ### Challenge
 
 Lehrer legen eine **Klassen-** oder **Stufenchallenge** an (Themen, Zeitraum,
-optionaler Gewinn). Klassenlehrer nur Klassenchallenge. SchÃ¼ler Ã¼ben die
-Challenge-Themen; Punkte zÃ¤hlen fÃ¼r Klasse/Stufe **und** extra fÃ¼r die
-Challenge. Online liegen nur anonyme Summen â€” keine SchÃ¼lernamen.
+optionaler Gewinn). Klassenlehrer nur Klassenchallenge. Schüler üben die
+Challenge-Themen; Punkte zählen für Klasse/Stufe **und** extra für die
+Challenge. Online liegen nur anonyme Summen — keine Schülernamen.
 
 ### Punkteprotokoll
 
 Auswertung je Thema in Prozent und Gesamtpunktzahl, plus Tag / Woche / Monat /
-Schuljahr â€” aus lokalen Ãœbungen und an die Klasse gesendeten Punkten; ebenfalls
+Schuljahr — aus lokalen Übungen und an die Klasse gesendeten Punkten; ebenfalls
 druckbar.
 
-### Aufgaben ergÃ¤nzen
+### Aufgaben ergänzen
 
-Nur **Lehrer** kÃ¶nnen unter **Einstellungen â†’ Aufgaben ergÃ¤nzen** Vorgaben fÃ¼r
-neue Ãœbungsaufgaben senden (Klassenstufe, Themengebiet, Titel, Beispiel). Die
+Nur **Lehrer** können unter **Einstellungen → Aufgaben ergänzen** Vorgaben für
+neue Übungsaufgaben senden (Klassenstufe, Themengebiet, Titel, Beispiel). Die
 Angaben gehen per E-Mail an uns.
 
-## Ãœbungsklausur per Code
+## Übungsklausur per Code
 
-LehrkrÃ¤fte stellen eine Ãœbungsklausur aus konkreten Aufgaben des Lehrplans
+Lehrkräfte stellen eine Übungsklausur aus konkreten Aufgaben des Lehrplans
 zusammen. Die App erzeugt einen **Klausurcode** (beginnt mit `MSX1:`). Den Code
 kannst du kopieren oder per E-Mail bzw. WhatsApp versenden. Es wird kein Server
-benÃ¶tigt: Der Code enthÃ¤lt Verweise auf Thema und Zufalls-Seed â€” auf jedem GerÃ¤t
+benötigt: Der Code enthält Verweise auf Thema und Zufalls-Seed — auf jedem Gerät
 entstehen dieselben Aufgaben.
 
 ### Als Lehrkraft: Klausur erstellen
 
-1. Unter **Einstellungen â†’ LehrplÃ¤ne** den Lehrplan installieren und die
-   gewÃ¼nschten Klassen einblenden.
-2. Reiter **Klausur erstellen** Ã¶ffnen.
-3. Themen vorauswÃ¤hlen, konkrete Aufgaben auswÃ¤hlen (fÃ¼nf VorschlÃ¤ge je Thema,
+1. Unter **Einstellungen → Lehrpläne** den Lehrplan installieren und die
+   gewünschten Klassen einblenden.
+2. Reiter **Klausur erstellen** öffnen.
+3. Themen vorauswählen, konkrete Aufgaben auswählen (fünf Vorschläge je Thema,
    Punkte anpassbar), Titel vergeben.
 4. Optional einer **Klasse zuordnen** (eigener Klassencode oder Klasse einer
-   eingetragenen **Stufe** â€” nur Codes/IDs, keine Personendaten).
+   eingetragenen **Stufe** — nur Codes/IDs, keine Personendaten).
 5. Klausurcode kopieren oder per WhatsApp / Mail teilen.
 
-### Als SchÃ¼lerin oder SchÃ¼ler: Klausur schreiben
+### Als Schülerin oder Schüler: Klausur schreiben
 
 1. Mit dem eigenen Namen anmelden.
-2. Reiter **Klausur schreiben** wÃ¤hlen und den Code einfÃ¼gen.
+2. Reiter **Klausur schreiben** wählen und den Code einfügen.
 3. Aufgaben bearbeiten und abgeben.
-4. Auswertung zeigt Antwort, richtige LÃ¶sung und ErklÃ¤rung. Ãœber **Ã„hnliche
-   Aufgabe Ã¼ben** geht es mit neuen Zahlen weiter.
+4. Auswertung zeigt Antwort, richtige Lösung und Erklärung. Über **Ähnliche
+   Aufgabe üben** geht es mit neuen Zahlen weiter.
 
-> Der Code ist fÃ¼r **Ãœbungsklausuren** gedacht, nicht fÃ¼r benotete PrÃ¼fungen:
-> Aufgaben und LÃ¶sungen werden lokal erzeugt und sind nicht manipulationssicher.
+> Der Code ist für **Übungsklausuren** gedacht, nicht für benotete Prüfungen:
+> Aufgaben und Lösungen werden lokal erzeugt und sind nicht manipulationssicher.
 
 ## WLAN-Zugang (Desktop-App)
 
-LÃ¤uft TaskTrophy auf einem Rechner, kÃ¶nnen Tablets im **selben WLAN** die App im
-Browser Ã¶ffnen â€” ohne eigene Installation.
+Läuft TaskTrophy auf einem Rechner, können Tablets im **selben WLAN** die App im
+Browser öffnen — ohne eigene Installation.
 
-1. TaskTrophy auf dem Windows-, macOS- oder Linux-Rechner starten und geÃ¶ffnet
+1. TaskTrophy auf dem Windows-, macOS- oder Linux-Rechner starten und geöffnet
    lassen.
-2. Unter **Einstellungen â†’ WLAN-Zugang** Adresse und QR-Code ansehen.
-3. Auf dem Tablet die Adresse Ã¶ffnen oder den QR-Code scannen.
+2. Unter **Einstellungen → WLAN-Zugang** Adresse und QR-Code ansehen.
+3. Auf dem Tablet die Adresse öffnen oder den QR-Code scannen.
 
 Benutzer und Punkte liegen auf dem PC: Tablets sehen dieselbe Benutzerliste und
 denselben Stand. In vielen Schul- oder Gast-WLANs trennt Client-Isolation die
-GerÃ¤te â€” dann funktioniert der Zugang nicht.
+Geräte — dann funktioniert der Zugang nicht.
 
 ## Klassencode (online)
 
 Ohne Nutzerkonten: Zugang zur Klassenstatistik ist der **Besitz des Codes**.
-Online liegen nur **Klassenname** und **aggregierte Punkte** â€” keine Vornamen,
-keine GerÃ¤te-IDs. **Behandle den Code wie ein Passwort.**
+Online liegen nur **Klassenname** und **aggregierte Punkte** — keine Vornamen,
+keine Geräte-IDs. **Behandle den Code wie ein Passwort.**
 
-Unter **Einstellungen â†’ Klasse**:
+Unter **Einstellungen → Klasse**:
 
 1. **Code erstellen** (Eltern oder Lehrer) oder bestehenden Code **eintragen**
    und aktivieren.
 2. Optional **Punkte an Klasse senden** (Opt-in).
 3. **Klassenstufe** (nur Lehrer): Stufencode erzeugen oder eintragen, Klassen
    zuordnen und den **Stufen-Wettbewerb** sehen (Klassennamen und Summen, keine
-   Personendaten). Mit eingetragenem Stufencode kannst du Ãœbungsklausuren auch
+   Personendaten). Mit eingetragenem Stufencode kannst du Übungsklausuren auch
    den Klassen dieser Stufe zuordnen.
 
 ## Idee / Feedback
 
-Ãœber **Idee / Feedback** in der App oder per Mail:
+Über **Idee / Feedback** in der App oder per Mail:
 
-[Idee / Feedback zum TaskTrophy Ãœbungsprogramm.](mailto:mail@tasktrophy.de?subject=Idee%20%2F%20Feedback%20zum%20TaskTrophy%20%C3%9Cbungsprogramm.)
+[Idee / Feedback zum TaskTrophy Übungsprogramm.](mailto:mail@tasktrophy.de?subject=Idee%20%2F%20Feedback%20zum%20TaskTrophy%20%C3%9Cbungsprogramm.)
 
 ## Lizenz
 
 TaskTrophy steht unter der [MIT-Lizenz](LICENSE).
-Copyright Â© 2026 Linus und Matthias Ulrich.
+Copyright © 2026 Linus und Matthias Ulrich.
 
 ## Impressum
 
 Linus und Matthias Ulrich  
-GroÃŸe WallstraÃŸe 42  
+Große Wallstraße 42  
 04509 Delitzsch  
 [mail@tasktrophy.de](mailto:mail@tasktrophy.de)
 

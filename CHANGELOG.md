@@ -9,6 +9,14 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.132] – 2026-10-18
+
+### Behoben
+- **Release-CI:** Bio-Fachwissen ohne Lehrplan-Meta (`LB1`), damit Desktop-Installer
+  wieder gebaut werden.
+- **README:** Umlaute und Download-Links auf aktuelle TaskTrophy-Installer
+  (`TaskTrophy-Setup-…`, `.dmg`, `.AppImage`, `.deb`).
+
 ## [0.28.131] – 2026-10-18
 
 ### Behoben

@@ -1099,7 +1099,7 @@ function arbeitMatch(rng: Rng) {
     solution: 'Beobachten / Untersuchen / Vergleichen / Protokoll',
     explanation: 'Naturwissenschaftliches Arbeiten trennt Wahrnehmung, Methode und Dokumentation.',
     fachwissen: bioFw(
-      'Lehrplan K5 LB1: Beobachten, Untersuchen, Vergleichen. Ein gutes Protokoll enthält Ort/Zeit, Objekt und beschreibende (nicht wertende) Beobachtungen — Deutungen gehören getrennt dazu.',
+      'Beobachten, Untersuchen, Vergleichen: Ein gutes Protokoll enthält Ort/Zeit, Objekt und beschreibende (nicht wertende) Beobachtungen — Deutungen gehören getrennt dazu.',
       'Wikipedia: Wissenschaftliche Methode',
       'https://de.wikipedia.org/wiki/Wissenschaftliche_Methode',
     ),
@@ -1250,7 +1250,7 @@ function arbeitMethodSlots(rng: Rng) {
     solution: 'Wahrnehmen / Hilfsmittel / Gegenüberstellen / Dokumentieren',
     explanation: 'Vier Kernmethoden — klar trennen und zuordnen.',
     fachwissen: bioFw(
-      'Drag-and-drop festigt die Methodenbegriffe aus dem Lehrplan LB1.',
+      'Vier Kernmethoden der Biologie: Wahrnehmen, mit Hilfsmitteln untersuchen, gegenüberstellen und dokumentieren — klar trennen und zuordnen.',
       'Wikipedia: Wissenschaftliche Methode',
       'https://de.wikipedia.org/wiki/Wissenschaftliche_Methode',
     ),
@@ -1635,7 +1635,7 @@ function beobMatch(rng: Rng) {
     solution: 'Ethogramm / Verhaltensweise / Zählung / Dauer',
     explanation: 'Säuger beobachten heißt: klare Kategorien und messbare Notizen.',
     fachwissen: bioFw(
-      'Lehrplan: Verhaltensbeobachtungen bei Säugetieren. Ethogramme und Zählungen machen Verhalten vergleichbar — ohne Methodenstoff aus LB1 zu wiederholen.',
+      'Verhaltensbeobachtungen bei Säugetieren: Ethogramme und Zählungen machen Verhalten vergleichbar und nachvollziehbar.',
       'Wikipedia: Ethogramm',
       'https://de.wikipedia.org/wiki/Ethogramm',
     ),
