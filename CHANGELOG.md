@@ -9,7 +9,7 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
-## [0.28.76] – 2026-10-18
+## [0.28.122] – 2026-10-18
 
 ### Hinzugefügt
 - **Prüfer-Rolle:** Code `88PRF875` schaltet QA-only-Zugang frei (gesperrte Themen
@@ -26,6 +26,11 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 ### Geändert
 - Pack-Manifest/Versionen für die Platzhalter-Exports (u. a. Bio 1.9.0,
   Geschichte 1.10.0, Physik 2.6.0).
+
+### Hinweis
+- Version springt von restored `0.28.75` auf `0.28.122`, weil die Tags
+  `v0.28.76`–`v0.28.121` bereits an die vor dem Rollback verworfene Linie
+  vergeben waren.
 
 ## [0.28.75] – 2026-09-27
 

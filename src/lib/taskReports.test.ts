@@ -65,7 +65,7 @@ describe('taskReports helpers', () => {
         solution: 'elektromagnetische Welle',
         choices: '- A\n- B',
         seed: 42,
-        appVersion: '0.28.76',
+        appVersion: '0.28.122',
       },
     ])
     expect(text).toContain('Meldung-ID: ABCD1234')
