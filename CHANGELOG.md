@@ -9,6 +9,13 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.144] – 2026-10-26
+
+### Behoben
+- **Polis-Beschriftung:** Unterstadt-Tipp lag auf der Propyläen-Leader-Linie → nach
+  unten links verschoben; Spoiler-Zeile über dem Bild entfernt; Leader mit
+  Hell-/Dunkel-Doppelstrich und größerem Punkt besser lesbar.
+
 ## [0.28.143] – 2026-10-26
 
 ### Behoben

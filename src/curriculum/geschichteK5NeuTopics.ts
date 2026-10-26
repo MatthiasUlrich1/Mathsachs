@@ -84,7 +84,8 @@ const POLIS_DIAGRAM = {
     { id: 'akropolis', x: 8, y: 18, targetX: 62.0, targetY: 42.0, label: 'Akropolis' },
     { id: 'parthenon', x: 8, y: 36, targetX: 67.0, targetY: 34.0, label: 'Parthenon' },
     { id: 'propylaen', x: 8, y: 54, targetX: 52.0, targetY: 44.0, label: 'Propyläen' },
-    { id: 'unterstadt', x: 8, y: 72, targetX: 16.0, targetY: 52.0, label: 'Unterstadt' },
+    // Tip must not sit on the Propyläen leader (old 16/52 lay on that segment).
+    { id: 'unterstadt', x: 8, y: 72, targetX: 22.0, targetY: 70.0, label: 'Unterstadt' },
   ],
 } as const
 
@@ -521,8 +522,6 @@ function polisLabel(rng: Rng) {
     imageAlt: POLIS_DIAGRAM.imageAlt,
     attribution: POLIS_DIAGRAM.attribution,
     drawLeaders: true,
-    instruction:
-      '1 Burgberg mit Heiligtümern · 2 großer Tempel der Athena · 3 Torbau zur Akropolis · 4 Wohnstadt unterhalb.',
     items: [...slots.map((s) => ({ label: s.label })), ...distractors.map((label) => ({ label }))],
     slots: slots.map(({ id, x, y, targetX, targetY }) => ({ id, x, y, targetX, targetY })),
     correctSlots: [0, 1, 2, 3],

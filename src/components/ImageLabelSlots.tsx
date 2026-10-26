@@ -192,12 +192,19 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
                     y1={s.y}
                     x2={s.targetX}
                     y2={s.targetY}
+                    className="image-label-slots__leader-halo"
+                  />
+                  <line
+                    x1={s.x}
+                    y1={s.y}
+                    x2={s.targetX}
+                    y2={s.targetY}
                     className="image-label-slots__leader-line"
                   />
                   <circle
                     cx={s.targetX}
                     cy={s.targetY}
-                    r={0.9}
+                    r={1.35}
                     className="image-label-slots__leader-dot"
                   />
                 </g>
