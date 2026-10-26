@@ -1261,6 +1261,23 @@ describe('geometrySvg', () => {
       expect(svg).toContain('>C</text>')
     })
 
+    it('keeps Nebenwinkel labels A and C in distinct sectors', () => {
+      const pos = (svg: string, lab: string) => {
+        const m = svg.match(
+          new RegExp(`<text x="([^"]+)" y="([^"]+)"[^>]*>${lab}</text>`),
+        )
+        expect(m).toBeTruthy()
+        return { x: Number(m![1]), y: Number(m![2]) }
+      }
+      for (const angleDeg of [32, 55, 83, 87, 128, 140]) {
+        const svg = generateAnglePickSvg({ angleDeg })
+        const a = pos(svg, 'A')
+        const c = pos(svg, 'C')
+        const dist = Math.hypot(a.x - c.x, a.y - c.y)
+        expect(dist).toBeGreaterThan(40)
+      }
+    })
+
     it('draws labeled prism net for mantel multi-select', () => {
       const svg = generateLabeledPrismNetSvg({})
       expect(svg).toContain('>A</text>')

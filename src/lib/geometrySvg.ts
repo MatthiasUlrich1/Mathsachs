@@ -4474,11 +4474,12 @@ export function generateAnglePickSvg({
     { radius: 44, stroke: '#1565c0', fill: '#e3f2fd', interior: scheitelInterior },
   )
 
+  // C: other adjacent (π+a → 2π); mid-angle 3π/2 + a/2 — not a/2+π (that is Scheitel B).
+  const cMid = (3 * Math.PI) / 2 + a / 2
   const otherNebenInterior: [number, number] = [
-    cx + Math.cos(a / 2 + Math.PI) * 48,
-    cy - Math.sin(a / 2 + Math.PI) * 48,
+    cx + Math.cos(cMid) * 48,
+    cy - Math.sin(cMid) * 48,
   ]
-  // C: the other adjacent on the straight line (from -line2 to +x)
   const markC = angleMarkSvg(
     [cx, cy],
     [-Math.cos(a), Math.sin(a)],

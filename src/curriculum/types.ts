@@ -271,6 +271,11 @@ export function isFormulaLikeHint(hint: string): boolean {
       t,
     ) ||
     /\b[VAUOGPZKmnabcfhρ]\s*=\s/.test(t) ||
-    /aᵐ|π\s*·|√\(/.test(t)
+    /aᵐ|π\s*·|√\(/.test(t) ||
+    // Sum / equality rules belong in Fachwissen, not sticky under-task text
+    /ergänzen sich zu\s*\d/i.test(t) ||
+    /ergeben zusammen\s+\d/i.test(t) ||
+    /zusammen\s+\d+\s*°/.test(t) ||
+    /sind gleich groß\.?$/i.test(t)
   )
 }

@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.143] – 2026-10-26
+
+### Behoben
+- **Nebenwinkel:** Themenhinweis „ergänzen sich zu 180°“ und Instruction „… A“
+  spoilen nicht mehr; Winkelbuchstaben A/C liegen in getrennten Sektoren; Pick-Aufgabe
+  akzeptiert beide Nebenwinkel (A und C), nicht nur A.
+- **Formel-Hints:** Summen-/Gleichheitsregeln (`ergänzen sich zu`, `ergeben zusammen`,
+  `sind gleich groß`) werden während des Lösens ausgeblendet (Fachwissen bleibt).
+- **Polis-Beschriftung:** Leader-Tips auf der Klenze-Ansicht nachgezogen; Ablenker
+  aus dem Polis-Themenfeld (Agora, Areopag, Pnyx) statt fachfremder Orte.
+
 ## [0.28.142] – 2026-10-18
 
 ### Geändert

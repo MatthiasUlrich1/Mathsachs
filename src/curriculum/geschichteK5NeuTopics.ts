@@ -81,10 +81,10 @@ const POLIS_DIAGRAM = {
     'https://commons.wikimedia.org/wiki/File:Klenze,_Leo_von_-_Ideale_Ansicht_der_Akropolis_und_des_Areopag_in_Athen,_1846.jpg ' +
     '(Drop-Felder/Leader nur UI-Overlay; Bild unverändert).',
   slots: [
-    { id: 'akropolis', x: 8, y: 18, targetX: 58.0, targetY: 40.0, label: 'Akropolis' },
-    { id: 'parthenon', x: 8, y: 36, targetX: 74.0, targetY: 32.0, label: 'Parthenon' },
-    { id: 'propylaen', x: 8, y: 54, targetX: 50.0, targetY: 48.0, label: 'Propyläen' },
-    { id: 'unterstadt', x: 8, y: 72, targetX: 20.0, targetY: 58.0, label: 'Unterstadt' },
+    { id: 'akropolis', x: 8, y: 18, targetX: 62.0, targetY: 42.0, label: 'Akropolis' },
+    { id: 'parthenon', x: 8, y: 36, targetX: 67.0, targetY: 34.0, label: 'Parthenon' },
+    { id: 'propylaen', x: 8, y: 54, targetX: 52.0, targetY: 44.0, label: 'Propyläen' },
+    { id: 'unterstadt', x: 8, y: 72, targetX: 16.0, targetY: 52.0, label: 'Unterstadt' },
   ],
 } as const
 
@@ -513,11 +513,7 @@ export const geGesellschaftspyramide: Topic['generate'] = mixedVariants(
 
 function polisLabel(rng: Rng) {
   const slots = [...POLIS_DIAGRAM.slots]
-  const distractors = shuffle(rng, [
-    'Forum Romanum',
-    'Pyramide von Gizeh',
-    'Mittelalterliche Burg',
-  ]).slice(0, 2)
+  const distractors = shuffle(rng, ['Agora', 'Areopag', 'Pnyx']).slice(0, 2)
   return imageLabelSlotsTask({
     question:
       'Ansicht von Athen: Ziehe zu den Feldern 1–4 die passenden Orte der Polis.',

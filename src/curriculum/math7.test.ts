@@ -30,4 +30,21 @@ describe('Klasse 7 curriculum', () => {
       expect(saw, `${id} should produce SVG`).toBe(true)
     }
   })
+
+  it('Nebenwinkel-Pick akzeptiert beide Nebenwinkel A und C', () => {
+    const topic = klasse7.areas.flatMap((a) => a.topics).find((t) => t.id === 'k7-lb1-nebenwinkel')
+    expect(topic).toBeTruthy()
+    let found = false
+    for (let seed = 1; seed <= 120; seed++) {
+      const task = topic!.generate(createRng(seed))
+      if (task.interactive?.type !== 'multiSelect') continue
+      found = true
+      expect(task.sampleAnswer).toEqual({ kind: 'multiSelect', selected: ['A', 'C'] })
+      expect(task.check({ kind: 'multiSelect', selected: ['A', 'C'] })).toBe(true)
+      expect(task.check({ kind: 'multiSelect', selected: ['A'] })).toBe(false)
+      expect(task.check({ kind: 'multiSelect', selected: ['B'] })).toBe(false)
+      break
+    }
+    expect(found).toBe(true)
+  })
 })

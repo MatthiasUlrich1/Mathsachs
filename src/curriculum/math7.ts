@@ -84,15 +84,15 @@ const nebenwinkel: Topic = {
     },
     (rng: Rng) => {
       const a = randInt(rng, 30, 140)
-      return choicePickTask({
-        question: `Der orangefarbene Winkel misst ${a}°. Welcher Winkel ist ein Nebenwinkel dazu?`,
+      return multiSelectTask({
+        question: `Der orangefarbene Winkel misst ${a}°. Welche Winkel sind Nebenwinkel dazu?`,
         choices: ['A', 'B', 'C'],
-        correct: 'A',
-        solution: 'A',
+        correct: ['A', 'C'],
+        solution: 'A und C',
         explanation:
-          'Nebenwinkel liegen nebeneinander an einer Geraden. Winkel A grenzt direkt an den orangefarbenen Winkel. B ist der Scheitelwinkel; C ist der andere Nebenwinkel auf der gegenüberliegenden Geradenseite.',
+          'Nebenwinkel liegen nebeneinander an einer Geraden und ergänzen sich zu 180°. A und C grenzen beide an den orangefarbenen Winkel; B ist der Scheitelwinkel (gegenüber, gleich groß).',
         visualContent: generateAnglePickSvg({ angleDeg: a }),
-        instruction: 'Tippe den Nebenwinkel A (neben dem orangefarbenen Winkel):',
+        instruction: 'Tippe alle Nebenwinkel (nicht den Scheitelwinkel):',
       })
     },
   ),
