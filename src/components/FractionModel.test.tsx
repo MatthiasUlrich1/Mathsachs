@@ -27,7 +27,7 @@ const tree = (value: Extract<UserInput, { kind: 'fractionModel' }>, onChange: (v
 const down = (el: El) => (el.props.onPointerDown as (e: { preventDefault: () => void }) => void)({ preventDefault() {} })
 
 describe('FractionModel', () => {
-  it('renders an img svg with one part per den, shaded state and the stepper (bar)', () => {
+  it('renders a group svg with one part per den, shaded state and the stepper (bar)', () => {
     const html = renderToStaticMarkup(
       createElement(FractionModel, {
         shape: 'bar',
@@ -36,7 +36,7 @@ describe('FractionModel', () => {
         instruction: 'Färbe.',
       }),
     )
-    expect(html).toContain('role="img"')
+    expect(html).toContain('role="group"')
     expect(html).toContain('viewBox="0 0 320 90"')
     expect(html.match(/data-testid="fraction-part"/g)).toHaveLength(6)
     expect(html.match(/data-shaded="true"/g)).toHaveLength(2)

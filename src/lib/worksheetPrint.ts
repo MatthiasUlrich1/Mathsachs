@@ -300,17 +300,20 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       const target = (props.target ?? {}) as { num?: number; den?: number }
       const den = Number(target.den)
       const circle = props.shape === 'circle'
-      const visualHtml =
-        fromVisual.visualHtml ??
-        (Number.isInteger(den) && den >= 1
+      const emptyModel =
+        Number.isInteger(den) && den >= 1
           ? circle
             ? generateFractionCircleSvg({ numerator: 0, denominator: den })
             : generateFractionBarSvg({ numerator: 0, denominator: den })
-          : undefined)
+          : ''
+      // A reference figure (e.g. the bar to expand/reduce) comes first, then the empty model to shade.
+      const visualHtml = [fromVisual.visualHtml, emptyModel].filter(Boolean).join('') || undefined
       return {
         visualHtml,
         // The on-screen instruction mentions the stepper, which does not exist on paper.
-        paperHint: 'Färbe im Modell die passenden Teile.',
+        paperHint: fromVisual.visualHtml
+          ? 'Färbe im leeren Modell darunter die passenden Teile (siehe Aufgabe).'
+          : 'Färbe im Modell die passenden Teile.',
         answerBlank: '',
       }
     }

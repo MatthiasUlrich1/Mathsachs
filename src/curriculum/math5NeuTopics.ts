@@ -1109,7 +1109,7 @@ export const math5NeuLb2: Topic[] = [
           question: `Färbe ${word} des Kreises. Du darfst die Anzahl der Teile selbst wählen.`,
           shape: 'circle',
           target: { num: n, den: d },
-          explanation: `${word.charAt(0).toUpperCase()}${word.slice(1)} ist der Bruch ${n}/${d}. Du kannst ihn auch mit mehr Teilen zeigen, zum Beispiel als ${n * 2}/${d * 2} oder ${n * 3}/${d * 3}. Wichtig ist nur, dass die gefärbten Teile im gleichen Verhältnis zur Gesamtzahl der Teile stehen.`,
+          explanation: `${word.charAt(0).toUpperCase()}${word.slice(1)} ${n > 1 ? 'sind' : 'ist'} der Bruch ${n}/${d}. Du kannst ihn auch mit mehr Teilen zeigen, zum Beispiel als ${n * 2}/${d * 2} oder ${n * 3}/${d * 3}. Wichtig ist nur, dass die gefärbten Teile im gleichen Verhältnis zur Gesamtzahl der Teile stehen.`,
           solution: `${n}/${d}`,
           dedupeKey: `anteil-modell-frei:${n}:${d}`,
         })

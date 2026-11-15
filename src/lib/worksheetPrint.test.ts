@@ -223,3 +223,16 @@ describe('worksheetPrintExtras fractionModel', () => {
     expect(bar.visualHtml).not.toContain('#2ecc71')
   })
 })
+
+describe('worksheetPrintExtras fractionModel with reference figure', () => {
+  it('prints the reference figure and the empty model to shade', () => {
+    const t = {
+      ...fractionModelTask({ question: 'q', shape: 'bar', target: { num: 6, den: 8 }, allowEquivalent: false, solution: 's', explanation: 'e' }),
+      visualContent: '<svg id="ref"></svg>',
+    }
+    const extras = worksheetPrintExtras(t)
+    expect(extras.visualHtml).toContain('<svg id="ref">')
+    expect(extras.visualHtml!.match(/<rect/g)).toHaveLength(8)
+    expect(extras.paperHint).toContain('leeren Modell')
+  })
+})

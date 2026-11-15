@@ -47,8 +47,8 @@
   display: block;
   width: 100%;
   height: auto;
-  /* Taps must not scroll or zoom the page (touch / stylus). */
-  touch-action: none;
+  /* Tap-only widget: page scroll keeps working, double-tap zoom is off. */
+  touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -71,6 +71,10 @@
 
 .fraction-model__part--on {
   fill: #3b82f6;
+}
+
+.fraction-model__svg[aria-disabled="true"] .fraction-model__part {
+  cursor: default;
 }
 
 .fraction-model__part:focus-visible {

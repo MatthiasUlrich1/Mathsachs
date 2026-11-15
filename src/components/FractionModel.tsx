@@ -72,7 +72,8 @@ export function FractionModel({ shape, value, onChange, instruction, disabled }:
       <svg
         className={`fraction-model__svg fraction-model__svg--${shape}`}
         viewBox={`0 0 ${vb.w} ${vb.h}`}
-        role="img"
+        role="group"
+        aria-disabled={disabled ? true : undefined}
         aria-label={`Bruchmodell mit ${den} Teilen, ${shaded.length} gefärbt`}
       >
         {parts.map((part) => {
