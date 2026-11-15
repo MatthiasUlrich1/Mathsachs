@@ -710,6 +710,8 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
 }
 
 export { digitGridMultiplyTask, digitGridDivideTask } from './digitGridTasks'
+export { angleProtractorTask } from './measureTaskHelpers'
+export type { AngleProtractorTaskInput } from './measureTaskHelpers'
 
 interface ChoicePickTaskInput {
   question: string

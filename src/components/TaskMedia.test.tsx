@@ -2,7 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import { digitGridMultiplyTask, visualTask } from '../curriculum/taskHelpers'
+import { angleProtractorTask, digitGridMultiplyTask, visualTask } from '../curriculum/taskHelpers'
 import { TaskVisual, initTaskInput } from './TaskMedia'
 
 describe('TaskMedia', () => {
@@ -80,5 +80,25 @@ describe('graphical tasks stay attached after generate', () => {
       }
     }
     expect(found).toBe(true)
+  })
+
+  it('initTaskInput: angleProtractor starts untouched (measure empty, draw away from target)', () => {
+    const measure = angleProtractorTask({
+      question: 'q',
+      mode: 'measure',
+      angle: 47,
+      solution: 's',
+      explanation: 'e',
+    })
+    expect(initTaskInput(measure)).toEqual({ kind: 'angleProtractor', degrees: null, touched: false })
+    const draw = angleProtractorTask({ question: 'q', mode: 'draw', angle: 47, solution: 's', explanation: 'e' })
+    const start = initTaskInput(draw)
+    expect(start.kind).toBe('angleProtractor')
+    if (start.kind === 'angleProtractor') {
+      expect(start.touched).toBe(false)
+      expect(start.degrees).not.toBeNull()
+      expect(start.degrees).not.toBe(47)
+      expect(draw.check(start)).toBe(false)
+    }
   })
 })

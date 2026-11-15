@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createRng } from './rng'
 import {
+  angleProtractorTask,
   choicePickTask,
   coordinateClickTask,
   coordinateDrawTask,
@@ -143,5 +144,20 @@ describe('worksheetPrintExtras', () => {
       }
       expect(sawSvg, id).toBe(true)
     }
+  })
+
+  it('prints a typed degree field and no degree label for angleProtractor', () => {
+    for (const mode of ['measure', 'draw'] as const) {
+      const extras = worksheetPrintExtras(
+        angleProtractorTask({ question: 'q', mode, angle: 47, solution: 's', explanation: 'e' }),
+      )
+      expect(extras.answerBlank).toContain('°')
+      expect(extras.answerBlank).toContain('___')
+      expect(extras.visualHtml ?? '').not.toContain('47°')
+    }
+    const measure = worksheetPrintExtras(
+      angleProtractorTask({ question: 'q', mode: 'measure', angle: 47, solution: 's', explanation: 'e' }),
+    )
+    expect(measure.visualHtml).toContain('<svg')
   })
 })

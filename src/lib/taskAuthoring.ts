@@ -12,6 +12,7 @@ import {
   fractionTask,
   multiSelectTask,
   numberLineTask,
+  angleProtractorTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -77,6 +78,7 @@ export type AuthoringElementType =
   | 'coordinateClick'
   | 'coordinateDraw'
   | 'paramSlider'
+  | 'angleProtractor'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -103,6 +105,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'coordinateClick', label: 'Koordinaten klicken' },
   { id: 'coordinateDraw', label: 'Zeichnen im Koordinatensystem' },
   { id: 'paramSlider', label: 'Parameter-Slider (Funktionsgraph)' },
+  { id: 'angleProtractor', label: 'Winkelmesser (Geodreieck)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -411,6 +414,18 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'angleProtractor': {
+      const angle = Number(p.angle)
+      if (!Number.isInteger(angle) || angle < 1 || angle > 179) {
+        errors.push('Winkelmesser: Winkel muss eine ganze Zahl von 1 bis 179 sein.')
+      }
+      if (p.mode !== 'measure' && p.mode !== 'draw') {
+        errors.push('Winkelmesser: Modus „messen“ oder „zeichnen“ wählen.')
+      }
+      const tol = Number(p.tolerance ?? 1)
+      if (!Number.isFinite(tol) || tol < 0) errors.push('Winkelmesser: Toleranz ungültig.')
+      break
+    }
     case 'pairMatch':
     case 'clozeMulti':
     case 'iconBelong':
@@ -645,6 +660,18 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
         }),
       )
     }
+    case 'angleProtractor':
+      return withVisual(
+        angleProtractorTask({
+          question,
+          mode: p.mode === 'draw' ? 'draw' : 'measure',
+          angle: Number(p.angle),
+          startAngle: Number(p.startAngle) || 0,
+          tolerance: Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 1,
+          solution,
+          explanation,
+        }),
+      )
     default: {
       // Exhaustiveness fallback
       return withVisual(
@@ -821,6 +848,17 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
 })`
       break
     }
+    case 'angleProtractor':
+      call = `angleProtractorTask({
+  question: ${q},
+  mode: ${JSON.stringify(p.mode === 'draw' ? 'draw' : 'measure')},
+  angle: ${Number(p.angle)},
+  startAngle: ${Number(p.startAngle) || 0},
+  tolerance: ${Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 1},
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
     case 'paramSlider': {
       const sliders = readAuthoringSliders(p)
       const previewRaw = String(p.preview ?? '')

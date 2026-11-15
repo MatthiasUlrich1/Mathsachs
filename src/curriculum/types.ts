@@ -42,6 +42,8 @@ export type UserInput =
   | { kind: 'coordinateClick'; x: number; y: number; points?: Array<{ x: number; y: number }> }
   | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
   | { kind: 'paramSlider'; values: Record<string, number> }
+  /** Virtual Geodreieck: degrees measured/drawn; untouched = not attempted. */
+  | { kind: 'angleProtractor'; degrees: number | null; touched: boolean }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -74,6 +76,7 @@ export const emptyInput = (
       scene: { xRange: [-5, 5], yRange: [-5, 5], snap: 'half', objects: [] },
     }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
+  if (kind === 'angleProtractor') return { kind: 'angleProtractor', degrees: null, touched: false }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -97,6 +100,7 @@ export interface InteractiveConfig {
     | 'coordinateClick'
     | 'coordinateDraw'
     | 'paramSlider'
+    | 'angleProtractor'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

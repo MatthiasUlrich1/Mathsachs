@@ -40,6 +40,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       return input.choice.trim().length > 0
     case 'flashcardFlip':
       return input.flipped && input.answer.trim().length > 0
+    case 'angleProtractor':
+      // Start position must not score: only a moved/typed instrument counts.
+      return input.touched && input.degrees !== null
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

@@ -11,7 +11,7 @@ import {
   type CoordinateScene,
   type GraphObject,
 } from './coordinateScene'
-import { generateCoordinateGridSvg } from './geometrySvg'
+import { generateAngleSvg, generateCoordinateGridSvg } from './geometrySvg'
 import { lightShadowFromLampParam } from './physikSvg'
 
 export type WorksheetPrintExtras = {
@@ -210,6 +210,27 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
         answerBlank: params.length
           ? paramAnswerBlank(params)
           : defaultBlank(task),
+      }
+    }
+
+    case 'angleProtractor': {
+      const measure = props.mode !== 'draw'
+      const startAngle = Number(props.startAngle ?? 0)
+      const angle = Number(props.angle)
+      // Measure: the angle without any degree label. Draw: only the first leg.
+      const visualHtml =
+        fromVisual.visualHtml ??
+        (measure && Number.isFinite(angle)
+          ? generateAngleSvg({ angle, label: '', startAngle })
+          : undefined)
+      return {
+        visualHtml,
+        paperHint:
+          instruction ??
+          (measure
+            ? 'Miss den Winkel mit dem Geodreieck und trage die Gradzahl ein.'
+            : 'Zeichne den Winkel mit dem Geodreieck und trage die Gradzahl ein.'),
+        answerBlank: '__________ °',
       }
     }
 

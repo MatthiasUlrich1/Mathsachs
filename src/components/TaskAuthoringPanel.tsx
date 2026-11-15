@@ -103,6 +103,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
           ],
         },
       }
+    case 'angleProtractor':
+      return { mode: 'measure', angle: 47, startAngle: 0, tolerance: 1 }
     case 'paramSlider':
       return {
         preview: 'linear',
@@ -917,6 +919,27 @@ function ElementPropsForm({
         </>
       )
     }
+    case 'angleProtractor':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-mode">
+              Modus
+            </label>
+            <select
+              id="prop-mode"
+              value={propStr(draft, 'mode', 'measure')}
+              onChange={(e) => setDraft(setProp(draft, 'mode', e.target.value))}
+            >
+              <option value="measure">Winkel messen und eintragen</option>
+              <option value="draw">Winkel einstellen (Schenkel drehen)</option>
+            </select>
+          </div>
+          {field('angle', 'Winkel in ° (ganzzahlig, 1–179)')}
+          {field('startAngle', 'Drehung des ersten Schenkels in °')}
+          {field('tolerance', 'Toleranz in °')}
+        </>
+      )
     case 'paramSlider':
       return (
         <ParamSliderAuthorForm draft={draft} setDraft={setDraft} />

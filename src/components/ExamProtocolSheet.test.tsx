@@ -80,5 +80,8 @@ describe('ExamProtocolSheet', () => {
     expect(formatExamAnswer({ kind: 'numberLine', value: 3.5 })).toBe('3.5')
     expect(formatExamAnswer({ kind: 'digitGrid', digits: ['', '1', '2'] })).toBe('12')
     expect(formatExamAnswer({ kind: 'value', value: '  ' })).toBe('—')
+    expect(formatExamAnswer({ kind: 'angleProtractor', degrees: 47, touched: true })).toBe('47°')
+    expect(formatExamAnswer({ kind: 'angleProtractor', degrees: 47, touched: false })).toBe('—')
+    expect(formatExamAnswer({ kind: 'angleProtractor', degrees: null, touched: true })).toBe('—')
   })
 })

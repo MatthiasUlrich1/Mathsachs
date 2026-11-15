@@ -11,6 +11,7 @@ import { MultiSelect } from './MultiSelect'
 import { CoordinateClick } from './CoordinateClick'
 import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ParamSlider } from './ParamSlider'
+import { AngleProtractor } from './AngleProtractor'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
 import { ClozeMulti } from './ClozeMulti'
@@ -91,6 +92,15 @@ export const initTaskInput = (task: Task): UserInput => {
       values[p.id] = p.start ?? p.min
     }
     return { kind: 'paramSlider', values }
+  }
+  if (task.interactive?.type === 'angleProtractor') {
+    // Draw mode starts with the leg away from the target (untouched = not attempted).
+    const start = task.interactive.props.initialDegrees
+    return {
+      kind: 'angleProtractor',
+      degrees: typeof start === 'number' ? start : null,
+      touched: false,
+    }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -387,6 +397,22 @@ export function TaskInteractive({
           instruction={interactive.props.instruction}
           preview={interactive.props.preview}
           fixedShadowSide={interactive.props.fixedShadowSide}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'angleProtractor' && (
+        <AngleProtractor
+          mode={interactive.props.mode}
+          angle={interactive.props.angle}
+          startAngle={interactive.props.startAngle}
+          initialDegrees={interactive.props.initialDegrees ?? undefined}
+          value={
+            value.kind === 'angleProtractor'
+              ? value
+              : { kind: 'angleProtractor', degrees: null, touched: false }
+          }
+          onChange={onChange}
+          instruction={interactive.props.instruction}
           disabled={disabled}
         />
       )}

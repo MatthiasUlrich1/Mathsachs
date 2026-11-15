@@ -139,6 +139,33 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     expect(task.check(task.sampleAnswer)).toBe(true)
   })
 
+  it('builds angleProtractor task and validates the angle', () => {
+    const draft = baseDraft({
+      element: {
+        type: 'angleProtractor',
+        props: { mode: 'draw', angle: 62, startAngle: 0, tolerance: 2 },
+      },
+      task: {
+        question: 'Stelle den Winkel ein.',
+        unit: '',
+        solution: '62°',
+        explanation: 'Skala ablesen.',
+        hint: '',
+      },
+    })
+    expect(validateDraft(draft)).toEqual([])
+    const task = draftToTask(draft)
+    expect(task.interactive?.type).toBe('angleProtractor')
+    expect(task.interactive?.props).toMatchObject({ mode: 'draw', angle: 62, tolerance: 2 })
+    expect(task.check(task.sampleAnswer)).toBe(true)
+    expect(exportGeneratorSnippet(draft)).toContain('angleProtractorTask({')
+    const bad = baseDraft({
+      element: { type: 'angleProtractor', props: { mode: 'measure', angle: 200 } },
+      task: { question: 'q', unit: '', solution: 's', explanation: 'e', hint: '' },
+    })
+    expect(validateDraft(bad).join(' ')).toContain('Winkelmesser')
+  })
+
   it('builds coordinateDraw task from solution scene', () => {
     const draft = baseDraft({
       element: {
