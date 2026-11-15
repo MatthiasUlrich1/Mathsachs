@@ -8,6 +8,7 @@ import { formatDe, roundTo } from '../lib/num'
 import { gcd, makeFraction } from '../lib/fraction'
 import { shuffleChoices } from './biologieHelpers'
 import {
+  angleProtractorTask,
   choicePickTask,
   coordinateClickTask,
   digitGridMultiplyTask,
@@ -16,7 +17,6 @@ import {
   fractionTask,
   mixedVariants,
   numberLineTask,
-  angleProtractorTask,
   rulerMeasureTask,
   textTask,
   valueTask,
@@ -1865,18 +1865,19 @@ export const math5NeuLb3: Topic[] = [
       },
       // Variant 3: Portfolio — Winkel mit dem Geodreieck messen (Figur ohne Gradzahl)
       (rng: Rng) => {
-        const deg = pick(rng, [15, 25, 35, 40, 55, 65, 75, 105, 115, 125, 135, 145, 155, 165])
         const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
-        const szene = pick(rng, [
-          'die beiden Arme einer geöffneten Schere',
-          'die aufgeklappten Schenkel eines Zirkels',
-          'die beiden Zeiger einer Uhr',
-          'einen Türflügel und den Türrahmen',
-          'das aufgeklappte Display eines Laptops',
-          'eine Leiter und die Wand, an der sie lehnt',
-          'einen Fensterflügel und den Fensterrahmen',
-          'die beiden Seiten eines aufgeschlagenen Buches',
+        // Jede Szene nur mit Winkeln, die dort realistisch vorkommen.
+        const { szene, winkel } = pick(rng, [
+          { szene: 'die beiden Arme einer geöffneten Schere', winkel: [15, 25, 35, 40, 55, 65, 75, 105] },
+          { szene: 'die aufgeklappten Schenkel eines Zirkels', winkel: [25, 35, 40, 55, 65, 75] },
+          { szene: 'die beiden Zeiger einer Uhr', winkel: [35, 55, 65, 105, 125, 145, 155, 165] },
+          { szene: 'einen Türflügel und den Türrahmen', winkel: [40, 55, 65, 75, 105, 115, 125, 135] },
+          { szene: 'das aufgeklappte Display eines Laptops', winkel: [105, 115, 125, 135] },
+          { szene: 'eine Leiter und die Wand, an der sie lehnt', winkel: [15, 25, 35] },
+          { szene: 'einen Fensterflügel und den Fensterrahmen', winkel: [40, 55, 65, 75, 105, 115, 125, 135] },
+          { szene: 'die beiden Seiten eines aufgeschlagenen Buches', winkel: [105, 115, 125, 135, 145, 155] },
         ])
+        const deg = pick(rng, winkel)
         return angleProtractorTask({
           question: `Die beiden Schenkel stehen für ${szene}. Miss den Winkel zwischen ihnen mit dem Geodreieck.`,
           mode: 'measure',
@@ -1894,17 +1895,17 @@ export const math5NeuLb3: Topic[] = [
       },
       // Variant 4: Portfolio — Winkel einer bestimmten Art mit dem Geodreieck zeichnen
       (rng: Rng) => {
-        const art = pick(rng, ['spitzen', 'stumpfen'] as const)
-        const deg = art === 'spitzen' ? pick(rng, [20, 30, 40, 50, 65, 70, 80]) : pick(rng, [100, 110, 120, 130, 140, 150, 160])
+        const art = pick(rng, ['spitz', 'stumpf'] as const)
+        const deg = art === 'spitz' ? pick(rng, [20, 30, 40, 50, 65, 70, 80]) : pick(rng, [100, 110, 120, 130, 140, 150, 160])
         const startAngle = pick(rng, [0, 30, 60, 90, 120, 150, 180, 210])
         return angleProtractorTask({
-          question: `Zeichne mit dem Geodreieck einen ${art} Winkel mit ${deg}°.`,
+          question: `Zeichne mit dem Geodreieck einen ${art}en Winkel mit ${deg}°.`,
           mode: 'draw',
           angle: deg,
           startAngle,
           solution: `${deg}°`,
-          explanation: `Ein ${art} Winkel ${
-            art === 'spitzen' ? 'ist kleiner als 90°' : 'liegt zwischen 90° und 180°'
+          explanation: `Ein ${art}er Winkel ${
+            art === 'spitz' ? 'ist kleiner als 90°' : 'liegt zwischen 90° und 180°'
           }, ${deg}° passt dazu. Der Scheitel liegt auf dem Nullpunkt des Geodreiecks, ein Schenkel auf der 0-Linie; den zweiten Schenkel stellst du auf ${deg}° ein.`,
           instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
           dedupeKey: `winkelarten-zeichnen:${deg}`,

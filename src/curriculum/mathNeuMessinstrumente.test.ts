@@ -94,19 +94,26 @@ describe('Neu-Themen Messinstrumente', () => {
     }
   })
 
-  it('Mess-Aufgaben verraten den Zielwert nicht in Figur oder Frage', () => {
+  it('Mess-Aufgaben verraten den Zielwert nicht in Frage, Figur oder Props', () => {
     let measured = 0
     for (const { id } of SWITCHED) {
       for (const t of tasksOf(topicOf(id))) {
         const props = t.interactive?.props as { mode?: string; angle?: number; lengthCm?: number } | undefined
         if (!props || props.mode !== 'measure') continue
         measured++
+        // Alles, was die Lernenden sehen: Frage, Figur und die Props ohne Zielfeld.
+        const { angle, lengthCm, ...visibleProps } = props
+        const visible = [t.question, t.visualContent ?? '', JSON.stringify(visibleProps)].join(' | ')
         if (t.interactive?.type === 'angleProtractor') {
-          expect(t.visualContent ?? '', id).not.toContain(`${props.angle}°`)
+          // Die Frage darf die Gradzahl nur nennen, wenn sie zufällig einer Angabe entspricht (alpha/beta).
+          expect(t.visualContent ?? '', id).not.toMatch(new RegExp(`(^|\D)${angle}\s*°`))
+          expect(JSON.stringify(visibleProps), id).not.toMatch(new RegExp(`(^|\D)${angle}\s*°`))
+          expect(t.question, id).not.toMatch(new RegExp(`[γδ]\s*=\s*${angle}\s*°`))
         }
         if (t.interactive?.type === 'rulerMeasure') {
-          expect(t.visualContent ?? '', id).not.toContain(`${props.lengthCm} cm`)
-          expect(t.question, id).not.toContain(`${formatDe(props.lengthCm!)} cm`)
+          for (const form of [formatDe(lengthCm!), String(lengthCm)]) {
+            expect(visible, `${id}: ${form}`).not.toMatch(new RegExp(`(^|[^\d.,])${form.replace('.', '\.')}\s*cm`))
+          }
         }
       }
     }

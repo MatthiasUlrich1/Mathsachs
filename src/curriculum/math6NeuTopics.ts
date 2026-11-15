@@ -1589,7 +1589,7 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
       const c = 180 - a - b
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
       return angleProtractorTask({
-        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist abgebildet (ohne Gradangabe). Miss γ mit dem Geodreieck.`,
+        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist abgebildet (ohne Gradangabe). Miss γ mit dem Geodreieck und kontrolliere dein Ergebnis mit der Winkelsumme.`,
         mode: 'measure',
         angle: c,
         startAngle,
@@ -1676,7 +1676,7 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
       const d = 360 - a - b - c
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
       return angleProtractorTask({
-        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist abgebildet (ohne Gradangabe). Miss δ mit dem Geodreieck.`,
+        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist abgebildet (ohne Gradangabe). Miss δ mit dem Geodreieck und kontrolliere dein Ergebnis mit der Winkelsumme.`,
         mode: 'measure',
         angle: d,
         startAngle,
