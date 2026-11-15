@@ -86,3 +86,18 @@ export function resolveEditThemeKeys(
 ): { keys: string[]; unresolved: string[] } {
   return { keys: [...hydratedKeys], unresolved: hydratedKeys.filter((k) => !knownKeys.has(k)) }
 }
+
+/**
+ * Ist eine zu bearbeitende Klausur bereit? Entweder liegen alle benoetigten Module in `loaded`,
+ * oder das Nachladen wurde fuer genau diese Klausur bestaetigt (`ensuredId === pendingId`).
+ * Der zweite Fall deckt Module ab, die fuer die Rolle ausgeblendet sind (nur gesperrte Themen)
+ * und deshalb nie in `loaded` erscheinen.
+ */
+export function isEditReady(
+  needed: readonly string[],
+  loadedModuleIds: readonly string[],
+  ensuredId: string | null,
+  pendingId: string,
+): boolean {
+  return needed.every((id) => loadedModuleIds.includes(id)) || ensuredId === pendingId
+}

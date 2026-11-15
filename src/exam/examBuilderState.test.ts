@@ -6,6 +6,7 @@ import {
   buildExamPoolSeeds,
   hydrateExamBuilderFromSpec,
   resolveEditThemeKeys,
+  isEditReady,
   examSelKey,
   examThemeKey,
 } from './examBuilderState'
@@ -67,5 +68,20 @@ describe('resolveEditThemeKeys', () => {
 
   it('reports nothing when all keys resolve', () => {
     expect(resolveEditThemeKeys(['k'], new Set(['k'])).unresolved).toEqual([])
+  })
+})
+
+describe('isEditReady', () => {
+  it('is ready when all needed modules are loaded', () => {
+    expect(isEditReady(['a', 'b'], ['a', 'b', 'c'], null, 'e1')).toBe(true)
+  })
+
+  it('waits while a module is missing and not yet ensured', () => {
+    expect(isEditReady(['a', 'locked'], ['a'], null, 'e1')).toBe(false)
+    expect(isEditReady(['a', 'locked'], ['a'], 'other', 'e1')).toBe(false)
+  })
+
+  it('is ready for an all-locked module once ensuring finished for this exam', () => {
+    expect(isEditReady(['a', 'locked'], ['a'], 'e1', 'e1')).toBe(true)
   })
 })

@@ -9,6 +9,7 @@ import {
   examThemeKey,
   hydrateExamBuilderFromSpec,
   resolveEditThemeKeys,
+  isEditReady,
 } from '../exam/examBuilderState'
 import {
   mergeExamAssignableClasses,
@@ -92,6 +93,8 @@ export function ExamBuilder({
   const [listRefresh, setListRefresh] = useState(0)
   const [editing, setEditing] = useState<EditingExam | null>(null)
   const [pendingEdit, setPendingEdit] = useState<StoredClassExam | null>(null)
+  // Nachladen fuer diese Klausur bestaetigt (auch wenn das Modul fuer die Rolle ausgeblendet bleibt).
+  const [ensuredId, setEnsuredId] = useState<string | null>(null)
   const [editError, setEditError] = useState<string | null>(null)
 
   const themeLoaded = useMemo(() => {
@@ -156,6 +159,7 @@ export function ExamBuilder({
       examCode: exam.examCode,
     })
     setPendingEdit(null)
+    setEnsuredId(null)
     setEditError(null)
     setStep(2)
   }
@@ -174,12 +178,14 @@ export function ExamBuilder({
           return
         }
         setPendingEdit(exam)
-        void onEnsureModules(missing).catch(() => {
-          setPendingEdit(null)
-          setEditError(
-            'Lehrpläne dieser Klausur konnten nicht geladen werden. Bitte unter Einstellungen prüfen.',
-          )
-        })
+        void onEnsureModules(missing)
+          .then(() => setEnsuredId(exam.id))
+          .catch(() => {
+            setPendingEdit(null)
+            setEditError(
+              'Lehrpläne dieser Klausur konnten nicht geladen werden. Bitte unter Einstellungen prüfen.',
+            )
+          })
         return
       }
       applyExamEdit(exam)
@@ -194,7 +200,14 @@ export function ExamBuilder({
     try {
       const spec = decodeExam(pendingEdit.examCode)
       const needed = [...new Set(spec.aufgaben.map((a) => a.modul))]
-      if (needed.every((id) => loaded.some((row) => row.moduleId === id))) {
+      if (
+        isEditReady(
+          needed,
+          loaded.map((row) => row.moduleId),
+          ensuredId,
+          pendingEdit.id,
+        )
+      ) {
         if (!cancelled) applyExamEdit(pendingEdit)
       }
     } catch {
@@ -208,7 +221,7 @@ export function ExamBuilder({
     }
     // Apply once required modules appear in `loaded`.
     // eslint-disable-next-line react-hooks/exhaustive-deps -- keyed on loaded + pendingEdit
-  }, [loaded, pendingEdit])
+  }, [loaded, pendingEdit, ensuredId])
 
   const clearEditing = () => setEditing(null)
 
@@ -378,7 +391,19 @@ export function ExamBuilder({
       )}
 
       {pendingEdit && (
-        <p className="muted small">Klausur wird geladen …</p>
+        <p className="muted small">
+          Klausur wird geladen …{' '}
+          <button
+            type="button"
+            className="link"
+            onClick={() => {
+              setPendingEdit(null)
+              setEnsuredId(null)
+            }}
+          >
+            Abbrechen
+          </button>
+        </p>
       )}
       {editError && <p className="notice notice--error">{editError}</p>}
 
