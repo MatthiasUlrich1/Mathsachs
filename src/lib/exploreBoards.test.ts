@@ -3,6 +3,7 @@ import {
   EXPLORE_BOARDS,
   EXPLORE_VIEW_H,
   EXPLORE_VIEW_W,
+  canShowExploreBoard,
   clampExploreState,
   exploreStartState,
   getExploreBoard,
@@ -31,6 +32,19 @@ function allStates(def: ExploreBoardDef): Record<string, number>[] {
   for (const t of toggles) acc = acc.flatMap((s) => [0, 1].map((v) => ({ ...s, [t.id]: v })))
   return acc.map((s) => clampExploreState(def.controls, s))
 }
+
+describe('canShowExploreBoard (Sichtbarkeit)', () => {
+  it('gesperrte Themen nur fuer Pruefer/Entwickler', () => {
+    for (const role of ['schueler', 'lehrer', 'teacher', undefined, null])
+      expect(canShowExploreBoard({ released: false }, role)).toBe(false)
+    for (const role of ['pruefer', 'entwickler'])
+      expect(canShowExploreBoard({ released: false }, role)).toBe(true)
+    for (const role of ['schueler', 'lehrer', undefined]) {
+      expect(canShowExploreBoard({ released: true }, role)).toBe(true)
+      expect(canShowExploreBoard({}, role)).toBe(true)
+    }
+  })
+})
 
 describe('Registry', () => {
   it('kennt die drei Boards, unbekannte IDs liefern undefined statt Absturz', () => {

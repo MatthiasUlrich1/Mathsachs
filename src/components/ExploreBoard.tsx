@@ -14,7 +14,7 @@ import './ExploreBoard.css'
 export function ExploreBoard({ boardId, params }: ExploreRef) {
   const def = getExploreBoard(boardId)
   if (!def) return null
-  return <ExploreBoardView key={boardId} def={def} params={params} />
+  return <ExploreBoardView key={`${boardId}|${JSON.stringify(params ?? {})}`} def={def} params={params} />
 }
 
 function ExploreBoardView({
@@ -35,7 +35,7 @@ function ExploreBoardView({
       <div
         className="explore-board__figure"
         role="img"
-        aria-label={caption}
+        aria-label={`Erkundungstafel: ${def.title}`}
         dangerouslySetInnerHTML={{ __html: def.render(state) }}
       />
       <p className="explore-board__caption" aria-live="polite">

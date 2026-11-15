@@ -170,6 +170,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
   const keywords = Array.isArray(raw.keywords)
     ? raw.keywords.filter((item): item is string => typeof item === 'string' && item.trim() !== '')
     : undefined
+  const explore = parseExplore(raw.explore)
   return {
     id,
     title,
@@ -187,7 +188,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
       ? { tasksPerRound: Math.min(MAX_TASKS_PER_ROUND, Math.trunc(raw.tasksPerRound)) }
       : {}),
     ...(raw.excludeFachwissen === true ? { excludeFachwissen: true } : {}),
-    ...(parseExplore(raw.explore) ? { explore: parseExplore(raw.explore) } : {}),
+    ...(explore ? { explore } : {}),
   }
 }
 

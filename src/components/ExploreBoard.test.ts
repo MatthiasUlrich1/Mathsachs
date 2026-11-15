@@ -15,7 +15,8 @@ describe('ExploreBoard', () => {
   it('winkelarten: Bild mit Beschriftung, Live-Caption, Regler und Schalter mit Label', () => {
     const m = html('winkelarten', { winkel: 135 })
     expect(m).toContain('role="img"')
-    expect(m).toContain('aria-label="Der Winkel ist 135° groß, das ist ein stumpfer Winkel')
+    expect(m).toContain('aria-label="Erkundungstafel: Winkelarten erkunden"')
+    expect(m).toContain('Der Winkel ist 135° groß, das ist ein stumpfer Winkel')
     expect(m).toContain('aria-live="polite"')
     expect(m).toContain('viewBox="0 0 400 260"')
     expect(m).toContain('type="range"')

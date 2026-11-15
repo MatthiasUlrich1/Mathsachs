@@ -44,6 +44,13 @@ export interface ExploreRef {
   params?: Record<string, number>
 }
 
+import { isCurriculumPreviewRole } from './roles'
+
+/** Boards gehoeren zum Fachwissen: bei gesperrten (released:false) Themen nur fuer Pruefer/Entwickler. */
+export function canShowExploreBoard(topic: { released?: boolean }, role?: unknown): boolean {
+  return topic.released !== false || isCurriculumPreviewRole(role)
+}
+
 /* ----------------------------- Helfer ----------------------------- */
 
 const round10 = (n: number) => Math.round(n * 1e10) / 1e10

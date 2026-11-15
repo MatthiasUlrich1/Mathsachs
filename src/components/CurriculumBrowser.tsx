@@ -126,7 +126,7 @@ function TopicRow({
       {fwOpen && topic.fachwissen && (
         <div className="fachwissen-card">
           <p className="fachwissen-card__text">{topic.fachwissen.text}</p>
-          {topic.fachwissen.explore && (
+          {topic.fachwissen.explore && (curriculumDevPreview || topic.released !== false) && (
             <ExploreBoard
               boardId={topic.fachwissen.explore.boardId}
               params={topic.fachwissen.explore.params}

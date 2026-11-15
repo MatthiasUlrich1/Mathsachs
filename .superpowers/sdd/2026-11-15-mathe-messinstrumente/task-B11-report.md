@@ -17,3 +17,9 @@ Not a task type: no UserInput/check/exam/worksheet wiring.
 Tests: exploreBoards.test.ts (boundaries, toggles, text-fit over all states, purity, no NaN), ExploreBoard.test.ts (markup, unknown id), pack.test.ts (round-trip incl. seed pack). Full vitest 1733 passed, tsc clean.
 
 Notes: k min 2 (k=1 is not Erweitern). Pack JSONs in /curricula not regenerated (script not run).
+
+## Fix round 1
+- Gate: `canShowExploreBoard(topic, role)` in exploreBoards.ts (released !== false or Pruefer/Entwickler); used in PracticeSession; CurriculumBrowser uses the equivalent with its `curriculumDevPreview` flag. Test added. Fachwissen text visibility untouched.
+- ExploreBoard keyed by boardId + params JSON; img wrapper has static aria-label "Erkundungstafel: <title>", live caption keeps the dynamic text.
+- parseExplore called once in parseTopic.
+- Full vitest 1734 passed, tsc clean.
