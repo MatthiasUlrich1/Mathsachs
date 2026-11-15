@@ -1,0 +1,120 @@
+import type { UserInput } from '../curriculum/types'
+import {
+  SYM_AXIS_STROKE,
+  SYM_CENTRE_R,
+  SYM_DRAWN_FILL,
+  SYM_GIVEN_FILL,
+  SYM_GRID_STROKE,
+  cellKey,
+  sortCells,
+  symIsToggleable,
+  symLayout,
+  symToggle,
+  type SymAxis,
+  type SymPoint,
+} from '../lib/symmetryDrawLogic'
+import './SymmetryDraw.css'
+
+type SymmetryValue = Extract<UserInput, { kind: 'symmetryDraw' }>
+
+export interface SymmetryDrawProps {
+  cols: number
+  rows: number
+  given: readonly string[]
+  axis?: SymAxis
+  point?: SymPoint
+  value: SymmetryValue
+  onChange: (value: UserInput) => void
+  instruction?: string
+  disabled?: boolean
+}
+
+const keyActivate = (run: () => void) => (e: { key: string; preventDefault: () => void }) => {
+  if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault()
+    run()
+  }
+}
+
+/** Symmetry drawing: tap the cells of the free side to colour them. Tap-only, no state of its own. */
+export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, instruction, disabled }: SymmetryDrawProps) {
+  const config = { cols, rows, given, axis, point }
+  const layout = symLayout(config)
+  const givenSet = new Set(given)
+  const cells = new Set(Array.isArray(value.cells) ? value.cells : [])
+
+  const tap = (x: number, y: number) => {
+    if (disabled) return
+    onChange({ kind: 'symmetryDraw', cells: symToggle(config, sortCells([...cells]), x, y) })
+  }
+
+  const grid = []
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      const key = cellKey(x, y)
+      const r = layout.cellRect(x, y)
+      const isGiven = givenSet.has(key)
+      const on = cells.has(key)
+      const free = !isGiven && symIsToggleable(config, x, y)
+      const where = `Spalte ${x + 1}, Zeile ${y + 1}`
+      grid.push(
+        <rect
+          key={key}
+          x={r.x}
+          y={r.y}
+          width={r.w}
+          height={r.h}
+          data-testid="sym-cell"
+          data-cell={key}
+          data-state={isGiven ? 'given' : on ? 'on' : 'off'}
+          className={`sym-draw__cell${free ? ' sym-draw__cell--free' : ''}`}
+          fill={isGiven ? SYM_GIVEN_FILL : on ? SYM_DRAWN_FILL : '#ffffff'}
+          stroke={SYM_GRID_STROKE}
+          strokeWidth={1}
+          role={free ? 'button' : undefined}
+          aria-label={isGiven ? `${where}, vorgegeben` : free ? `${where}, ${on ? 'gefärbt' : 'nicht gefärbt'}` : undefined}
+          aria-pressed={free ? on : undefined}
+          aria-disabled={free && disabled ? true : undefined}
+          tabIndex={free && !disabled ? 0 : undefined}
+          onClick={free ? () => tap(x, y) : undefined}
+          onKeyDown={free ? keyActivate(() => tap(x, y)) : undefined}
+        />,
+      )
+    }
+  }
+
+  const a = layout.axisLine
+  const c = layout.centre
+  return (
+    <div className="sym-draw">
+      {instruction && <p className="sym-draw__instruction">{instruction}</p>}
+      <svg
+        className="sym-draw__svg"
+        viewBox={`0 0 ${layout.viewBoxW} ${layout.viewBoxH}`}
+        role="group"
+        aria-disabled={disabled ? true : undefined}
+        aria-label={
+          point
+            ? `Gitter mit ${cols} Spalten und ${rows} Zeilen, Symmetriepunkt markiert, ${cells.size} Felder gefärbt`
+            : `Gitter mit ${cols} Spalten und ${rows} Zeilen, Spiegelachse gestrichelt, ${cells.size} Felder gefärbt`
+        }
+      >
+        {grid}
+        {a && (
+          <line
+            data-testid="sym-axis"
+            x1={a.x1}
+            y1={a.y1}
+            x2={a.x2}
+            y2={a.y2}
+            stroke={SYM_AXIS_STROKE}
+            strokeWidth={2.5}
+            strokeDasharray="8 5"
+            pointerEvents="none"
+          />
+        )}
+        {c && <circle data-testid="sym-centre" cx={c.cx} cy={c.cy} r={SYM_CENTRE_R} fill={SYM_AXIS_STROKE} pointerEvents="none" />}
+      </svg>
+    </div>
+  )
+}

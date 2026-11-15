@@ -70,6 +70,7 @@ import {
   ckValidateTime,
   type ClockTime,
 } from '../lib/clockLogic'
+import { symMatches, symTarget, type SymAxis, type SymPoint } from '../lib/symmetryDrawLogic'
 import { hashStringSeed } from '../lib/seed'
 import {
   buildTreeModel,
@@ -771,5 +772,59 @@ export const clockTask = (input: ClockTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'clock' && ckTouched(answer) && matches({ h: answer.h, m: answer.m }),
+  }
+}
+
+export interface SymmetryDrawTaskInput {
+  /** The task text. Screen-only hints (tapping) belong in `instruction`. */
+  question: string
+  /** Grid size in cells, each 4 to 12. */
+  cols: number
+  rows: number
+  /** The given figure as "x,y" cells (column, row, counted from 0 at the top left). */
+  given: string[]
+  /**
+   * Line symmetry: the axis runs along grid line `at` (between column at-1 and column at, or row at-1 and row at), so no cell sits on it.
+   * `diagonal`: the main diagonal of a square grid, (x, y) -> (y, x).
+   */
+  axis?: SymAxis
+  /** Point symmetry: the centre is the grid intersection `{ x, y }`; (x, y) -> (2x - 1 - cx, 2y - 1 - cy) in cell coordinates. */
+  point?: SymPoint
+  /** Data the question refers to (optional). */
+  visualContent?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/**
+ * The learner completes a symmetric figure on a grid by tapping cells. UserInput `{ kind: 'symmetryDraw', cells }`.
+ * Correct = the tapped cells are exactly the mirror image of `given` (an extra or missing cell is wrong). The start is an
+ * empty drawing (the same for every target). The helper throws when the mirror image leaves the grid, overlaps the given
+ * figure, the figure lies on both sides of (or on) the axis, or the grid size is out of range.
+ */
+export const symmetryDrawTask = (input: SymmetryDrawTaskInput): Task => {
+  const target = symTarget(input) // validates
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    ...(input.visualContent?.trim() ? { visualContent: input.visualContent } : {}),
+    sampleAnswer: { kind: 'symmetryDraw', cells: target },
+    interactive: {
+      type: 'symmetryDraw',
+      props: {
+        cols: input.cols,
+        rows: input.rows,
+        given: [...input.given],
+        ...(input.axis ? { axis: { ...input.axis } } : {}),
+        ...(input.point ? { point: { ...input.point } } : {}),
+        instruction: input.instruction ?? 'Tippe auf die Felder, die du färben willst. Tippe ein gefärbtes Feld noch einmal an, um die Farbe zu entfernen.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'symmetryDraw' && Array.isArray(answer.cells) && symMatches(target, answer.cells),
   }
 }

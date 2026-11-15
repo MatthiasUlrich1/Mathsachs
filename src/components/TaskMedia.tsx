@@ -22,6 +22,8 @@ import { NumberLineMulti } from './NumberLineMulti'
 import { BarChart } from './BarChart'
 import { PieChart } from './PieChart'
 import { Clock } from './Clock'
+import { SymmetryDraw } from './SymmetryDraw'
+import type { SymAxis, SymPoint } from '../lib/symmetryDrawLogic'
 import { TreeDiagram } from './TreeDiagram'
 import type { TreeLevel } from '../lib/treeDiagramLogic'
 import { RulerMeasure } from './RulerMeasure'
@@ -160,6 +162,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'pieChart') {
     // Untouched: the equal start shares are shown but not stored as an answer.
     return { kind: 'pieChart', percents: null }
+  }
+  if (task.interactive?.type === 'symmetryDraw') {
+    // Nothing coloured: the start state does not show a solution.
+    return { kind: 'symmetryDraw', cells: [] }
   }
   if (task.interactive?.type === 'clock') {
     // Untouched: 12:00 is shown but not stored as an answer.
@@ -632,6 +638,19 @@ export function TaskInteractive({
           categories={interactive.props.categories as string[]}
           snapPercent={interactive.props.snapPercent === undefined ? undefined : Number(interactive.props.snapPercent)}
           value={value.kind === 'pieChart' ? value : { kind: 'pieChart', percents: null }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'symmetryDraw' && (
+        <SymmetryDraw
+          cols={Number(interactive.props.cols)}
+          rows={Number(interactive.props.rows)}
+          given={interactive.props.given as string[]}
+          axis={interactive.props.axis as SymAxis | undefined}
+          point={interactive.props.point as SymPoint | undefined}
+          value={value.kind === 'symmetryDraw' ? value : { kind: 'symmetryDraw', cells: [] }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

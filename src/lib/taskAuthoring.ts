@@ -23,12 +23,14 @@ import {
   barChartTask,
   pieChartTask,
   clockTask,
+  symmetryDrawTask,
   paramSliderTask,
   textTask,
   valueTask,
   visualTask,
 } from '../curriculum/taskHelpers'
-import type { ClockTaskInput } from '../curriculum/taskHelpers'
+import type { ClockTaskInput, SymmetryDrawTaskInput } from '../curriculum/taskHelpers'
+import { symParseCells } from './symmetryDrawLogic'
 import type { Task } from '../curriculum/types'
 import { bundledPackById } from '../curriculum/install'
 import {
@@ -100,6 +102,7 @@ export type AuthoringElementType =
   | 'barChart'
   | 'pieChart'
   | 'clock'
+  | 'symmetryDraw'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -137,6 +140,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'barChart', label: 'Säulendiagramm zeichnen (Balkenhöhen ziehen)' },
   { id: 'pieChart', label: 'Kreisdiagramm zeichnen (Sektorgrenzen ziehen)' },
   { id: 'clock', label: 'Uhr (Zeiger verschieben)' },
+  { id: 'symmetryDraw', label: 'Symmetrische Figur ergänzen (Felder färben)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -547,6 +551,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'symmetryDraw': {
+      try {
+        symmetryDrawTask({ question: 'q', solution: 's', explanation: 'e', ...symmetryInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Symmetrie: Gitter 4 bis 12 Spalten und Zeilen, vorgegebene Felder als „Spalte,Zeile“ (ab 0) auf einer Seite der Achse, Spiegelbild im Gitter und ohne Überschneidung. Die Achse liegt auf einer Gitterlinie (1 bis Größe − 1), die Diagonale braucht ein quadratisches Gitter. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -845,6 +859,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(pieChartTask({ question, solution, explanation, ...pieChartInputFromProps(p) }))
     case 'clock':
       return withVisual(clockTask({ question, solution, explanation, ...clockInputFromProps(p) }))
+    case 'symmetryDraw':
+      return withVisual(symmetryDrawTask({ question, solution, explanation, ...symmetryInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -1128,6 +1144,20 @@ ${b.yLabel ? `  yLabel: ${JSON.stringify(b.yLabel)},\n` : ''}  solution: ${sol},
 })`
       break
     }
+    case 'symmetryDraw': {
+      const s = symmetryInputFromProps(p)
+      call = `symmetryDrawTask({
+  question: ${q},
+  cols: ${s.cols},
+  rows: ${s.rows},
+  given: ${JSON.stringify(s.given)},
+${s.axis ? `  axis: ${JSON.stringify(s.axis)},
+` : ''}${s.point ? `  point: ${JSON.stringify(s.point)},
+` : ''}  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'ratioBar': {
       const r = ratioInputFromProps(p)
       const amountLines = r.mode === 'split' ? `total: ${r.total},\n  unit: ${JSON.stringify(r.unit)},` : `segments: ${r.segments},`
@@ -1285,6 +1315,22 @@ const divideInputFromProps = (p: Record<string, unknown>) => ({
   persons: Number(p.persons),
   objectName: String(p.objectName ?? '').trim() || (p.shape === 'circle' ? 'Pizza' : 'Schokoriegel'),
 })
+
+/** Builds the symmetryDrawTask input of an authoring draft (validated beforehand). axisKind: vertical, horizontal, diagonal or point. */
+const symmetryInputFromProps = (p: Record<string, unknown>): Pick<SymmetryDrawTaskInput, 'cols' | 'rows' | 'given' | 'axis' | 'point'> => {
+  const kind = String(p.axisKind ?? 'vertical')
+  const int = (v: unknown): number => Number(String(v ?? '').trim())
+  return {
+    cols: int(p.cols),
+    rows: int(p.rows),
+    given: symParseCells(p.given),
+    ...(kind === 'point'
+      ? { point: { x: int(p.pointX), y: int(p.pointY) } }
+      : kind === 'diagonal'
+        ? { axis: { kind: 'diagonal' as const } }
+        : { axis: { kind: kind === 'horizontal' ? ('horizontal' as const) : ('vertical' as const), at: int(p.at) } }),
+  }
+}
 
 /** Builds the ratioBarTask input of an authoring draft (validated beforehand). */
 const ratioInputFromProps = (p: Record<string, unknown>) => ({

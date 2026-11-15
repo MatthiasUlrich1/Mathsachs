@@ -2,6 +2,7 @@ import type { Task, UserInput } from '../curriculum/types'
 import type { ResolvedExamTask } from '../exam/examCode'
 import { bcFormatNumber, bcTouched } from '../lib/barChartLogic'
 import { ckFormatTime, ckTouched } from '../lib/clockLogic'
+import { symCountText, symTouched } from '../lib/symmetryDrawLogic'
 import { pcTouched } from '../lib/pieChartLogic'
 import { treePathLabel, type TreeLevel } from '../lib/treeDiagramLogic'
 
@@ -111,6 +112,9 @@ export const formatExamAnswer = (input: UserInput, task?: Task): string => {
     const cats = task?.interactive?.type === 'barChart' ? (task.interactive.props.categories as string[] | undefined) : undefined
     // Untouched bars of a chart that was started count as 0.
     return bcTouched(input.values) ? input.values.map((v, i) => `${cats?.[i] ?? `Balken ${i + 1}`}: ${bcFormatNumber(v ?? 0)}`).join('; ') : '—'
+  }
+  if (input.kind === 'symmetryDraw') {
+    return symTouched(input.cells) ? symCountText(input.cells.length) : '—'
   }
   if (input.kind === 'clock') {
     return ckTouched(input) ? `${ckFormatTime(input)} Uhr` : '—'

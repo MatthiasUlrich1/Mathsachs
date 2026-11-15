@@ -1,6 +1,7 @@
 import type { Task, UserInput } from '../curriculum/types'
 import { bcTouched } from '../lib/barChartLogic'
 import { ckTouched } from '../lib/clockLogic'
+import { symTouched } from '../lib/symmetryDrawLogic'
 import { pcTouched } from '../lib/pieChartLogic'
 import { treeAnyInput } from '../lib/treeDiagramLogic'
 
@@ -68,6 +69,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'treeDiagram':
       // Untouched = every field empty.
       return treeAnyInput(input.branches, input.leaves)
+    case 'symmetryDraw':
+      // Untouched = no cell coloured.
+      return symTouched(input.cells)
     case 'clock':
       // Untouched = no hand moved (12:00 at the start is not an answer).
       return ckTouched(input)

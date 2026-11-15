@@ -117,6 +117,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { level1: 'Rot, Blau', level2: 'Rot, Blau', probabilities: '0 = 3/5\n1 = 2/5\n0.0 = 1/2\n0.1 = 1/2\n1.0 = 3/4\n1.1 = 1/4', blankBranches: '0.0, 0.1', blankLeaves: '0.0', rootLabel: '' }
     case 'barChart':
       return { yMax: 12, step: 1, yLabel: 'Anzahl Kinder', items: 'Fußball = 8\nSchwimmen = 5\nTanzen = 3' }
+    case 'symmetryDraw':
+      return { cols: 8, rows: 6, axisKind: 'vertical', at: 4, pointX: 4, pointY: 3, given: '3,1; 2,2; 3,2; 1,3; 2,3; 3,3' }
     case 'clock':
       return { mode: 'setTime', time: '7:25', angle: 90, minuteSnap: 5 }
     case 'pieChart':
@@ -1052,6 +1054,37 @@ function ElementPropsForm({
           {field('blankBranches', 'Zweige, die die Lernenden ausfüllen (Nummern, durch Komma getrennt)')}
           {field('blankLeaves', 'Pfade (Enden), die die Lernenden ausfüllen: Produkt entlang des Pfads (nur bei zwei Stufen)')}
           {field('rootLabel', 'Beschriftung am Start (optional)')}
+        </>
+      )
+    case 'symmetryDraw':
+      return (
+        <>
+          {field('cols', 'Spalten des Gitters (4 bis 12)')}
+          {field('rows', 'Zeilen des Gitters (4 bis 12)')}
+          <div className="field">
+            <label className="field__label" htmlFor="prop-axisKind">
+              Symmetrie
+            </label>
+            <select
+              id="prop-axisKind"
+              value={propStr(draft, 'axisKind', 'vertical')}
+              onChange={(e) => setDraft(setProp(draft, 'axisKind', e.target.value))}
+            >
+              <option value="vertical">Senkrechte Spiegelachse</option>
+              <option value="horizontal">Waagerechte Spiegelachse</option>
+              <option value="diagonal">Diagonale Spiegelachse (quadratisches Gitter)</option>
+              <option value="point">Punktsymmetrie (Symmetriezentrum)</option>
+            </select>
+          </div>
+          {propStr(draft, 'axisKind', 'vertical') === 'point' ? (
+            <>
+              {field('pointX', 'Symmetriezentrum: Gitterlinie von links (1 bis Spalten − 1)')}
+              {field('pointY', 'Symmetriezentrum: Gitterlinie von oben (1 bis Zeilen − 1)')}
+            </>
+          ) : propStr(draft, 'axisKind', 'vertical') === 'diagonal' ? null : (
+            field('at', 'Achse auf der Gitterlinie Nr. (1 = zwischen Spalte/Zeile 0 und 1; die Achse liegt zwischen den Feldern)')
+          )}
+          {field('given', 'Vorgegebene Felder als „Spalte,Zeile“ (ab 0 gezählt), getrennt durch Semikolon oder Zeilenumbruch. Alle auf einer Seite der Achse.', true)}
         </>
       )
     case 'clock':

@@ -1,0 +1,43 @@
+.sym-draw {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.sym-draw__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.sym-draw__svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  /* Tap-only widget: page scroll keeps working, double-tap zoom is off. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.sym-draw__cell {
+  cursor: default;
+}
+
+.sym-draw__cell--free {
+  cursor: pointer;
+}
+
+.sym-draw__svg[aria-disabled="true"] .sym-draw__cell--free {
+  cursor: default;
+}
+
+.sym-draw__cell:focus-visible {
+  outline: 3px solid #dc2626;
+  outline-offset: -2px;
+}

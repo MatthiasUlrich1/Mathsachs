@@ -70,6 +70,8 @@ export type UserInput =
   | { kind: 'pieChart'; percents: number[] | null }
   /** Clock: hour 0..11 (0 = 12 o'clock) and minute 0..59 of the hands; `touched` is false until a hand was moved (the start shows 12:00). */
   | { kind: 'clock'; h: number; m: number; touched: boolean }
+  /** Symmetry drawing: the coloured grid cells as "x,y" (column, row from 0); empty until a cell was tapped. */
+  | { kind: 'symmetryDraw'; cells: string[] }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -119,6 +121,7 @@ export const emptyInput = (
   if (kind === 'barChart') return { kind: 'barChart', values: [] }
   if (kind === 'pieChart') return { kind: 'pieChart', percents: null }
   if (kind === 'clock') return { kind: 'clock', h: 0, m: 0, touched: false }
+  if (kind === 'symmetryDraw') return { kind: 'symmetryDraw', cells: [] }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -154,6 +157,7 @@ export interface InteractiveConfig {
     | 'barChart'
     | 'pieChart'
     | 'clock'
+    | 'symmetryDraw'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

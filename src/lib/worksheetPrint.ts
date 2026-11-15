@@ -23,6 +23,7 @@ import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
 import { barChartPrintSvg, bcValidateAxis } from './barChartLogic'
 import { clockPrintSvg } from './clockLogic'
+import { symmetryPrintSvg, symValidate, type SymAxis, type SymConfig, type SymPoint } from './symmetryDrawLogic'
 import { pieChartPrintSvg, pcValidateAxis, PC_DEFAULT_SNAP } from './pieChartLogic'
 import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
@@ -475,6 +476,31 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       return {
         visualHtml,
         paperHint: 'Zeichne die Sektoren mit dem Geodreieck in den Kreis. Der Kreis hat 100 Teile; markiert sind 5er-Schritte (1 % entspricht 3,6 Grad). Male jeden Sektor in der Farbe seines Kästchens aus.',
+        answerBlank: '',
+      }
+    }
+
+    case 'symmetryDraw': {
+      // Paper: the given data (visualContent) first, then the grid with the given cells shaded and the axis or centre drawn.
+      const config: SymConfig = {
+        cols: Number(props.cols),
+        rows: Number(props.rows),
+        given: Array.isArray(props.given) ? props.given.map(String) : [],
+        axis: props.axis as SymAxis | undefined,
+        point: props.point as SymPoint | undefined,
+      }
+      let drawing = ''
+      try {
+        symValidate(config)
+        drawing = symmetryPrintSvg(config)
+      } catch {
+        drawing = ''
+      }
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        // The on-screen instruction mentions tapping, which does not exist on paper.
+        paperHint: 'Färbe die Felder, die das Spiegelbild der grauen Figur bilden.',
         answerBlank: '',
       }
     }

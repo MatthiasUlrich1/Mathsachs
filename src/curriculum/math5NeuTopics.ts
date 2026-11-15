@@ -27,6 +27,7 @@ import {
   numberLineMultiTask,
 } from './taskHelpers'
 import { ckFormatTime } from '../lib/clockLogic'
+import { symmetryHorizontalVariant, symmetryPointVariantA, symmetryPointVariantB, symmetryVerticalVariant } from './symmetryDrawContent'
 import { digitGridDivideTask, longDivisionSteps } from './digitGridTasks'
 import {
   generateCompositeCuboidSvg,
@@ -2617,6 +2618,9 @@ export const math5NeuLb3: Topic[] = [
           instruction: "Tippe auf die Gitterstelle für A':",
         })
       },
+      // Variant 4/5: Figur an einer Achse ergänzen (Felder färben)
+      symmetryVerticalVariant,
+      symmetryHorizontalVariant,
     ),
   }),
 
@@ -2707,6 +2711,9 @@ export const math5NeuLb3: Topic[] = [
           instruction: "Tippe auf die Gitterstelle für A':",
         })
       },
+      // Variant 4/5: Figur punktsymmetrisch ergänzen (Felder färben)
+      symmetryPointVariantA,
+      symmetryPointVariantB,
     ),
   }),
 
