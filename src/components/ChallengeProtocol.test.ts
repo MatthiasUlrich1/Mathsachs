@@ -151,16 +151,15 @@ describe('ChallengeProtocol', () => {
     expect(html).not.toContain('An die Klasse übertragen')
   })
 
-  it('keeps high-contrast Klassenziel colors on the white protocol sheet', () => {
+  it('keeps high-contrast Klassenziel colors on the protocol sheet (tokens)', () => {
     const css = readFileSync(
       resolve(dirname(fileURLToPath(import.meta.url)), '../App.css'),
       'utf8',
     )
-    expect(css).toContain('.sheet .challenge-class-goal__label')
-    expect(css).toContain('.sheet .challenge-class-goal__remaining')
-    expect(css).toContain('color: #0f3d4c')
-    expect(css).toContain('background: #a5f3fc')
-    expect(css).toContain('color: #1e3a5f')
+    expect(css).toContain('article.sheet .challenge-class-goal__label')
+    expect(css).toContain('article.sheet .challenge-class-goal__remaining')
+    expect(css).toContain('color: var(--graphite)')
+    expect(css).toContain('background: var(--marker)')
   })
 
   it('hides Klassenziel when the challenge has no threshold', async () => {

@@ -874,278 +874,285 @@ export default function App() {
         </nav>
       </header>
 
-      {view.name === 'browse' && (
-        <section className="card">
-          {!ready ? (
-            <p className="muted">Lehrpläne werden geladen …</p>
-          ) : loaded.length === 0 ? (
-            <div className="course-head">
-              <h2 className="section-title no-margin">Kein Lehrplan installiert</h2>
-              <p className="muted small">
-                Installiere unter Einstellungen → Lehrpläne zuerst
-                „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“
-                oder einen anderen Lehrplan.
-              </p>
-              <button
-                type="button"
-                className="primary setup-cta"
-                onClick={() =>
-                  setView({ name: 'settings', section: 'curricula' })
-                }
-              >
-                Zu den Lehrplänen
-              </button>
-            </div>
-          ) : !activeLoaded ? (
-            <div className="course-head">
-              <h2 className="section-title no-margin">
-                Keine Klassenstufe für {activeBrowseSubject}
-              </h2>
-              <p className="muted small">
-                Blende unter Einstellungen → Lehrpläne eine Klassenstufe für
-                dieses Fach ein, oder wähle ein anderes Fach.
-              </p>
-              {browseSubjects.length > 1 && (
-                <div className="grade-tabs" role="tablist" aria-label="Fach">
-                  {browseSubjects.map((subject) => (
-                    <button
-                      key={subject}
-                      type="button"
-                      role="tab"
-                      aria-selected={subject === activeBrowseSubject}
-                      className={`grade-tab ${
-                        subject === activeBrowseSubject ? 'grade-tab--active' : ''
-                      }`}
-                      onClick={() => setBrowseSubject(subject)}
-                    >
-                      {subject}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <>
-              <div className="course-head">
-                <h2 className="section-title no-margin">
-                  {activeModule?.subjectTitle ?? activeBrowseSubject} ·{' '}
-                  {activeLoaded.grade.title}
-                </h2>
-                <p className="muted small">
-                  {listInstalledPacks().find((pack) => pack.id === activeLoaded.grade.packId)
-                    ?.title ?? `Lehrplan ${activeBrowseSubject} (Sachsen)`}
-                  . Klappe einen Lernbereich auf, wähle ein Thema und übe direkt
-                  oder erstelle ein Übungsblatt.
-                </p>
-              </div>
-
-              {browseSubjects.length > 1 && (
-                <div className="grade-tabs" role="tablist" aria-label="Fach">
-                  {browseSubjects.map((subject) => (
-                    <button
-                      key={subject}
-                      type="button"
-                      role="tab"
-                      aria-selected={subject === activeBrowseSubject}
-                      className={`grade-tab ${
-                        subject === activeBrowseSubject ? 'grade-tab--active' : ''
-                      }`}
-                      onClick={() => {
-                        setBrowseSubject(subject)
-                        const first = loaded.find(
-                          (row) =>
-                            subjectOf(row.moduleId).toLowerCase() ===
-                            subject.toLowerCase(),
-                        )
-                        if (first) setActiveId(first.moduleId)
-                      }}
-                    >
-                      {subject}
-                    </button>
-                  ))}
-                </div>
-              )}
-
-              <div className="topic-search">
-                <input
-                  className="topic-search__field"
-                  type="search"
-                  placeholder="Themen durchsuchen, z. B. „Fläche umrechnen“, „Pythagoras“, „Bruch“ …"
-                  aria-label="Themen durchsuchen"
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                />
-                {trimmedQuery && (
+      <div className="sheet">
+        <div className="sheet__margin" aria-hidden="true">
+          <span className="sheet__margin-slot" />
+        </div>
+        <div className="sheet__body">
+          {view.name === 'browse' && (
+            <section className="card">
+              {!ready ? (
+                <p className="muted">Lehrpläne werden geladen …</p>
+              ) : loaded.length === 0 ? (
+                <div className="course-head">
+                  <h2 className="section-title no-margin">Kein Lehrplan installiert</h2>
+                  <p className="muted small">
+                    Installiere unter Einstellungen → Lehrpläne zuerst
+                    „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“
+                    oder einen anderen Lehrplan.
+                  </p>
                   <button
                     type="button"
-                    className="link topic-search__clear"
-                    onClick={() => setQuery('')}
+                    className="primary setup-cta"
+                    onClick={() =>
+                      setView({ name: 'settings', section: 'curricula' })
+                    }
                   >
-                    Suche zurücksetzen
+                    Zu den Lehrplänen
                   </button>
-                )}
-              </div>
-
-              {trimmedQuery ? (
-                <SearchResults
-                  query={query}
-                  results={searchResults}
-                  hints={searchHints}
-                  onPractice={openPractice}
-                  onWorksheet={openWorksheet}
-                  onGoToSetup={() =>
-                    setView({ name: 'settings', section: 'curricula' })
-                  }
-                />
-              ) : (
-                <>
-                  {browseLoaded.length > 1 && (
-                    <div className="grade-tabs" role="tablist" aria-label="Klassenstufe">
-                      {browseLoaded.map((l) => (
+                </div>
+              ) : !activeLoaded ? (
+                <div className="course-head">
+                  <h2 className="section-title no-margin">
+                    Keine Klassenstufe für {activeBrowseSubject}
+                  </h2>
+                  <p className="muted small">
+                    Blende unter Einstellungen → Lehrpläne eine Klassenstufe für
+                    dieses Fach ein, oder wähle ein anderes Fach.
+                  </p>
+                  {browseSubjects.length > 1 && (
+                    <div className="grade-tabs" role="tablist" aria-label="Fach">
+                      {browseSubjects.map((subject) => (
                         <button
-                          key={l.moduleId}
+                          key={subject}
                           type="button"
                           role="tab"
-                          aria-selected={l.moduleId === activeLoaded.moduleId}
+                          aria-selected={subject === activeBrowseSubject}
                           className={`grade-tab ${
-                            l.moduleId === activeLoaded.moduleId
-                              ? 'grade-tab--active'
-                              : ''
+                            subject === activeBrowseSubject ? 'grade-tab--active' : ''
                           }`}
-                          onClick={() => setActiveId(l.moduleId)}
+                          onClick={() => setBrowseSubject(subject)}
                         >
-                          {l.grade.title}
+                          {subject}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <>
+                  <div className="course-head">
+                    <h2 className="section-title no-margin">
+                      {activeModule?.subjectTitle ?? activeBrowseSubject} ·{' '}
+                      {activeLoaded.grade.title}
+                    </h2>
+                    <p className="muted small">
+                      {listInstalledPacks().find((pack) => pack.id === activeLoaded.grade.packId)
+                        ?.title ?? `Lehrplan ${activeBrowseSubject} (Sachsen)`}
+                      . Klappe einen Lernbereich auf, wähle ein Thema und übe direkt
+                      oder erstelle ein Übungsblatt.
+                    </p>
+                  </div>
+
+                  {browseSubjects.length > 1 && (
+                    <div className="grade-tabs" role="tablist" aria-label="Fach">
+                      {browseSubjects.map((subject) => (
+                        <button
+                          key={subject}
+                          type="button"
+                          role="tab"
+                          aria-selected={subject === activeBrowseSubject}
+                          className={`grade-tab ${
+                            subject === activeBrowseSubject ? 'grade-tab--active' : ''
+                          }`}
+                          onClick={() => {
+                            setBrowseSubject(subject)
+                            const first = loaded.find(
+                              (row) =>
+                                subjectOf(row.moduleId).toLowerCase() ===
+                                subject.toLowerCase(),
+                            )
+                            if (first) setActiveId(first.moduleId)
+                          }}
+                        >
+                          {subject}
                         </button>
                       ))}
                     </div>
                   )}
 
-                  <CurriculumBrowser
-                    key={activeLoaded.moduleId}
-                    grade={activeLoaded.grade}
-                    curriculumDevPreview={isCurriculumPreviewRole(userRole)}
-                    onPractice={(topic, areaTitle) =>
-                      openPractice(topic, areaTitle, activeLoaded.grade.title)
-                    }
-                    onWorksheet={(topic, areaTitle) =>
-                      openWorksheet(topic, areaTitle, activeLoaded.grade.title)
-                    }
-                  />
+                  <div className="topic-search">
+                    <input
+                      className="topic-search__field"
+                      type="search"
+                      placeholder="Themen durchsuchen, z. B. „Fläche umrechnen“, „Pythagoras“, „Bruch“ …"
+                      aria-label="Themen durchsuchen"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                    />
+                    {trimmedQuery && (
+                      <button
+                        type="button"
+                        className="link topic-search__clear"
+                        onClick={() => setQuery('')}
+                      >
+                        Suche zurücksetzen
+                      </button>
+                    )}
+                  </div>
+
+                  {trimmedQuery ? (
+                    <SearchResults
+                      query={query}
+                      results={searchResults}
+                      hints={searchHints}
+                      onPractice={openPractice}
+                      onWorksheet={openWorksheet}
+                      onGoToSetup={() =>
+                        setView({ name: 'settings', section: 'curricula' })
+                      }
+                    />
+                  ) : (
+                    <>
+                      {browseLoaded.length > 1 && (
+                        <div className="grade-tabs" role="tablist" aria-label="Klassenstufe">
+                          {browseLoaded.map((l) => (
+                            <button
+                              key={l.moduleId}
+                              type="button"
+                              role="tab"
+                              aria-selected={l.moduleId === activeLoaded.moduleId}
+                              className={`grade-tab ${
+                                l.moduleId === activeLoaded.moduleId
+                                  ? 'grade-tab--active'
+                                  : ''
+                              }`}
+                              onClick={() => setActiveId(l.moduleId)}
+                            >
+                              {l.grade.title}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+
+                      <CurriculumBrowser
+                        key={activeLoaded.moduleId}
+                        grade={activeLoaded.grade}
+                        curriculumDevPreview={isCurriculumPreviewRole(userRole)}
+                        onPractice={(topic, areaTitle) =>
+                          openPractice(topic, areaTitle, activeLoaded.grade.title)
+                        }
+                        onWorksheet={(topic, areaTitle) =>
+                          openWorksheet(topic, areaTitle, activeLoaded.grade.title)
+                        }
+                      />
+                    </>
+                  )}
                 </>
               )}
-            </>
+            </section>
           )}
-        </section>
-      )}
 
-      {view.name === 'settings' && (
-        <Settings
-          loadedIds={loaded.map((l) => l.moduleId)}
-          onLoad={loadCurriculum}
-          onRemove={removeCurriculum}
-          onPacksChanged={reloadPacks}
-          section={view.section}
-          onOpenSection={(id) => setView({ name: 'settings', section: id })}
-          onBack={() => setView({ name: 'settings' })}
-          onShowFaultyTask={openFaultyTask}
-          openFaultyReportCount={openFaultyReportCount}
-          onFaultyReportsChanged={applyFaultyReports}
-          user={activeUser}
-          role={userRole}
-          preferredSubject={preferredSubject}
-          preferredSubjects={preferredSubjects}
-          onChangePreferredSubjects={changePreferredSubjects}
-          onEnsureSubject={ensurePreferredSubject}
-          classLabel={classLabel}
-          lanStatus={lanStatus}
-          onChangeRole={changeRole}
-          onSwitchUser={() => {
-            setActiveStorageUser(null)
-            setActiveUser(null)
-            setClassLabel(null)
-            setView({ name: 'browse' })
-          }}
-          onRenameUser={renameCurrentUser}
-          onDeleteUser={deleteCurrentUser}
-          onCheckUpdates={() => void updateCheck.checkNow()}
-          manualCheckStatus={updateCheck.manualStatus}
-          manualCheckError={updateCheck.manualError}
-        />
-      )}
+          {view.name === 'settings' && (
+            <Settings
+              loadedIds={loaded.map((l) => l.moduleId)}
+              onLoad={loadCurriculum}
+              onRemove={removeCurriculum}
+              onPacksChanged={reloadPacks}
+              section={view.section}
+              onOpenSection={(id) => setView({ name: 'settings', section: id })}
+              onBack={() => setView({ name: 'settings' })}
+              onShowFaultyTask={openFaultyTask}
+              openFaultyReportCount={openFaultyReportCount}
+              onFaultyReportsChanged={applyFaultyReports}
+              user={activeUser}
+              role={userRole}
+              preferredSubject={preferredSubject}
+              preferredSubjects={preferredSubjects}
+              onChangePreferredSubjects={changePreferredSubjects}
+              onEnsureSubject={ensurePreferredSubject}
+              classLabel={classLabel}
+              lanStatus={lanStatus}
+              onChangeRole={changeRole}
+              onSwitchUser={() => {
+                setActiveStorageUser(null)
+                setActiveUser(null)
+                setClassLabel(null)
+                setView({ name: 'browse' })
+              }}
+              onRenameUser={renameCurrentUser}
+              onDeleteUser={deleteCurrentUser}
+              onCheckUpdates={() => void updateCheck.checkNow()}
+              manualCheckStatus={updateCheck.manualStatus}
+              manualCheckError={updateCheck.manualError}
+            />
+          )}
 
-      {view.name === 'challenge' && (
-        <Challenge
-          user={activeUser}
-          role={userRole}
-          loaded={visibleLoaded}
-          onPractice={(topic, areaTitle, gradeTitle, challengeId) =>
-            openPractice(topic, areaTitle, gradeTitle, 'challenge', challengeId)
-          }
-        />
-      )}
+          {view.name === 'challenge' && (
+            <Challenge
+              user={activeUser}
+              role={userRole}
+              loaded={visibleLoaded}
+              onPractice={(topic, areaTitle, gradeTitle, challengeId) =>
+                openPractice(topic, areaTitle, gradeTitle, 'challenge', challengeId)
+              }
+            />
+          )}
 
-      {view.name === 'practice' && (
-        <PracticeSession
-          topic={view.topic}
-          areaTitle={view.areaTitle}
-          user={activeUser}
-          role={userRole}
-          challengeId={view.challengeId}
-          initialSeed={view.initialSeed}
-          mode={view.mode}
-          berichtigungTopics={view.berichtigungTopics}
-          onExit={() =>
-            setView({
-              name:
-                view.returnTo === 'challenge'
-                  ? 'challenge'
-                  : view.returnTo === 'examRun'
-                    ? 'examRun'
-                    : 'browse',
-            })
-          }
-        />
-      )}
+          {view.name === 'practice' && (
+            <PracticeSession
+              topic={view.topic}
+              areaTitle={view.areaTitle}
+              user={activeUser}
+              role={userRole}
+              challengeId={view.challengeId}
+              initialSeed={view.initialSeed}
+              mode={view.mode}
+              berichtigungTopics={view.berichtigungTopics}
+              onExit={() =>
+                setView({
+                  name:
+                    view.returnTo === 'challenge'
+                      ? 'challenge'
+                      : view.returnTo === 'examRun'
+                        ? 'examRun'
+                        : 'browse',
+                })
+              }
+            />
+          )}
 
-      {view.name === 'worksheet' && (
-        <Worksheet
-          topic={view.topic}
-          areaTitle={view.areaTitle}
-          gradeTitle={view.gradeTitle}
-          onExit={() => setView({ name: 'browse' })}
-        />
-      )}
+          {view.name === 'worksheet' && (
+            <Worksheet
+              topic={view.topic}
+              areaTitle={view.areaTitle}
+              gradeTitle={view.gradeTitle}
+              onExit={() => setView({ name: 'browse' })}
+            />
+          )}
 
-      {view.name === 'examBuild' && (
-        <ExamBuilder
-          loaded={examLoaded}
-          preferredSubjects={preferredSubjects}
-          role={userRole}
-          onEnsureModules={async (ids) => {
-            for (const id of ids) await loadCurriculum(id)
-          }}
-          onExit={() => setView({ name: 'browse' })}
-        />
-      )}
+          {view.name === 'examBuild' && (
+            <ExamBuilder
+              loaded={examLoaded}
+              preferredSubjects={preferredSubjects}
+              role={userRole}
+              onEnsureModules={async (ids) => {
+                for (const id of ids) await loadCurriculum(id)
+              }}
+              onExit={() => setView({ name: 'browse' })}
+            />
+          )}
 
-      {view.name === 'examRun' && (
-        <ExamRunner
-          key={examCodeFromLink ?? 'manual'}
-          user={activeUser}
-          role={userRole}
-          initialCode={examCodeFromLink ?? undefined}
-          onExit={() => {
-            setExamCodeFromLink(null)
-            setView({ name: 'browse' })
-          }}
-          onPracticeTopic={openPracticeById}
-          onBerichtigung={openBerichtigung}
-        />
-      )}
+          {view.name === 'examRun' && (
+            <ExamRunner
+              key={examCodeFromLink ?? 'manual'}
+              user={activeUser}
+              role={userRole}
+              initialCode={examCodeFromLink ?? undefined}
+              onExit={() => {
+                setExamCodeFromLink(null)
+                setView({ name: 'browse' })
+              }}
+              onPracticeTopic={openPracticeById}
+              onBerichtigung={openBerichtigung}
+            />
+          )}
 
-      {view.name === 'protocol' && (
-        <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
-      )}
+          {view.name === 'protocol' && (
+            <Protocol user={activeUser} onExit={() => setView({ name: 'browse' })} />
+          )}
+        </div>
+      </div>
 
       <LegalFooter version={updateCheck.currentVersion} installCount={installCount} />
     </main>

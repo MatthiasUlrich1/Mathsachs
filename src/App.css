@@ -1,3 +1,10 @@
+:root {
+  /* Subtle paper shadow for the sheet (a page lying on the desk, no glow) */
+  --paper-shadow:
+    0 1px 2px color-mix(in srgb, var(--graphite) 12%, transparent),
+    0 6px 18px color-mix(in srgb, var(--graphite) 8%, transparent);
+}
+
 .app {
   width: 100%;
   max-width: 520px;
@@ -9,7 +16,7 @@
 }
 
 .app--wide {
-  max-width: 780px;
+  max-width: 860px;
 }
 
 /* Brand — logo PNG + visible headline */
@@ -25,9 +32,8 @@
   flex-shrink: 0;
   width: 112px;
   height: 112px;
-  border-radius: 16px;
+  border-radius: var(--radius-control);
   object-fit: contain;
-  box-shadow: 0 10px 30px rgba(5, 18, 43, 0.45);
 }
 
 .brand__title {
@@ -45,9 +51,9 @@
 }
 
 .brand--compact .brand__logo {
-  width: 72px;
-  height: 72px;
-  border-radius: 14px;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-control);
 }
 
 .brand--compact .brand__title {
@@ -55,12 +61,17 @@
 }
 
 /* Topbar */
+/* Heft-Etikett: the header is a framed label on the cover of the exercise book */
 .topbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 12px 16px;
   flex-wrap: wrap;
+  padding: 10px 14px;
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-control);
 }
 
 .topbar__nav {
@@ -73,16 +84,17 @@
 .tab {
   padding: 8px 14px;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.6);
-  color: var(--text);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: var(--paper);
+  color: var(--graphite);
+  border: 1px solid var(--line);
   font-weight: 600;
   font-size: 14px;
 }
 
 .tab--active {
-  background: linear-gradient(135deg, var(--accent), #4f46e5);
-  border-color: transparent;
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
 }
 
 .tab__badge {
@@ -97,8 +109,8 @@
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
-  color: #fff;
-  background: #dc2626;
+  color: var(--paper);
+  background: var(--correction);
   vertical-align: middle;
 }
 
@@ -106,7 +118,7 @@
 .class-exam-inbox {
   margin: 16px 0 20px;
   padding: 14px 0 4px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .class-exam-manager__list,
@@ -127,9 +139,9 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.35);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .class-exam-manager__actions {
@@ -166,8 +178,8 @@
   gap: 4px;
   padding: 3px 6px 3px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid var(--line);
+  background: var(--paper);
   font-size: 0.88rem;
 }
 
@@ -190,7 +202,7 @@
 }
 
 .class-exam-inbox__new {
-  color: #f87171;
+  color: var(--correction);
   font-weight: 700;
 }
 
@@ -208,8 +220,19 @@
 .user-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding-left: 6px;
+  gap: 10px;
+  padding-left: 12px;
+  margin-left: 4px;
+  border-left: 1px dashed var(--line);
+}
+
+/* Points on the label: marked with the highlighter, not a pill */
+.user-badge__points {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--graphite);
+  background: linear-gradient(transparent 20%, var(--marker) 20%, var(--marker) 90%, transparent 90%);
+  padding: 0 4px;
 }
 
 .user-badge__who {
@@ -222,23 +245,89 @@
 
 .user-badge__name {
   font-weight: 700;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .user-badge__class {
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
-/* Card */
+/* Card: only used standalone (login/start screen). Inside the sheet it is flat. */
 .card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sheet);
   padding: 24px;
-  backdrop-filter: blur(14px);
-  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.5);
+  box-shadow: var(--paper-shadow);
+}
+
+/*
+ * The sheet: the one "card" of the app. A page of the exercise book on the
+ * squared paper, with the red double margin line on the left.
+ * (div.sheet = app shell; article.sheet = printable worksheet/protocol below.)
+ */
+div.sheet {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sheet);
+  box-shadow: var(--paper-shadow);
+  overflow: hidden;
+  text-align: left;
+}
+
+.sheet__margin {
+  position: relative;
+  border-right: 4px double var(--correction);
+}
+
+/* Empty on purpose: D4 draws the correction mark (check/cross/f) here. */
+.sheet__margin-slot {
+  position: absolute;
+  inset: 0;
+}
+
+.sheet__body {
+  min-width: 0;
+  padding: 24px 24px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Inside the sheet: sections are separated by a ruled line, not nested cards */
+div.sheet .card {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+div.sheet .card + .card {
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+}
+
+@media (max-width: 560px) {
+  div.sheet {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+  .sheet__body {
+    padding: 16px 14px 20px 12px;
+  }
+  .topbar {
+    padding: 8px 10px;
+  }
+  .user-badge {
+    border-left: 0;
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 .section-title {
@@ -251,7 +340,7 @@
 }
 
 .muted {
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .small {
@@ -284,15 +373,15 @@
   gap: 12px;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  color: var(--text);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   text-align: left;
 }
 
 .settings-menu__btn:hover {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.08);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 .settings-menu__text {
@@ -313,12 +402,12 @@
 
 .settings-menu__hint {
   font-size: 13px;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .settings-menu__chevron {
   flex-shrink: 0;
-  color: var(--accent-2);
+  color: var(--ink);
   font-size: 22px;
   line-height: 1;
 }
@@ -347,21 +436,21 @@
 .grade-tab {
   padding: 8px 16px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.6);
-  color: var(--text);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--paper);
+  color: var(--graphite);
+  border: 1px solid var(--line);
   font-weight: 600;
   font-size: 14px;
 }
 
 .grade-tab:hover {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .grade-tab--active {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--ink);
   border-color: transparent;
-  color: #fff;
+  color: var(--paper);
 }
 
 /* Curriculum setup ("Lehrpläne") */
@@ -373,22 +462,21 @@
 }
 
 .notice--warn {
-  background: rgba(234, 179, 8, 0.14);
-  border: 1px solid rgba(234, 179, 8, 0.4);
+  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--marker) 40%, transparent);
 }
 
 .notice--error {
-  background: rgba(239, 68, 68, 0.14);
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  background: color-mix(in srgb, var(--correction) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--correction) 40%, transparent);
 }
 
 /* In-app update prompt (GitHub Releases) */
 .update-banner {
-  background: rgba(99, 102, 241, 0.14);
-  border: 1px solid rgba(99, 102, 241, 0.38);
+  background: color-mix(in srgb, var(--ink) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent);
   border-radius: 20px;
   padding: 16px 18px 14px;
-  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.35);
 }
 
 .update-banner__head {
@@ -410,20 +498,20 @@
   width: 32px;
   height: 32px;
   border-radius: 10px;
-  background: rgba(15, 23, 42, 0.45);
-  color: var(--muted);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  color: var(--pencil);
   font-size: 20px;
   line-height: 1;
 }
 
 .update-banner__close:hover {
-  color: var(--text);
-  background: rgba(15, 23, 42, 0.8);
+  color: var(--graphite);
+  background: var(--paper);
 }
 
 .update-banner__notes {
   font-size: 14px;
-  color: var(--text);
+  color: var(--graphite);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -440,9 +528,7 @@
 .update-banner__heading {
   font-weight: 700;
   font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .update-banner__notes ul {
@@ -452,7 +538,7 @@
 
 .update-banner__notes a,
 .update-banner a {
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .update-banner__error {
@@ -483,7 +569,7 @@ a.ghost.update-banner__link {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  color: var(--text);
+  color: var(--graphite);
 }
 
 .update-banner__asset {
@@ -494,7 +580,7 @@ a.ghost.update-banner__link {
   margin: 4px 0 0;
   white-space: pre-line;
   font-size: 14px;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .curriculum-list {
@@ -505,10 +591,10 @@ a.ghost.update-banner__link {
 }
 
 .curriculum-card {
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 16px 18px;
-  background: rgba(15, 23, 42, 0.4);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .curriculum-card__head {
@@ -536,22 +622,22 @@ a.ghost.update-banner__link {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 700;
-  background: rgba(15, 23, 42, 0.7);
-  color: var(--muted);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: var(--paper);
+  color: var(--pencil);
+  border: 1px solid var(--line);
 }
 
 .badge--ok {
-  background: rgba(34, 197, 94, 0.16);
-  color: #4ade80;
-  border-color: rgba(34, 197, 94, 0.4);
+  background: color-mix(in srgb, var(--tick) 16%, transparent);
+  color: var(--tick);
+  border-color: color-mix(in srgb, var(--tick) 40%, transparent);
 }
 
 .badge--extra {
   margin-left: 8px;
-  background: rgba(250, 204, 21, 0.16);
-  color: #facc15;
-  border-color: rgba(250, 204, 21, 0.4);
+  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  color: var(--graphite);
+  border-color: color-mix(in srgb, var(--marker) 40%, transparent);
 }
 
 .curriculum-card__meta {
@@ -588,9 +674,8 @@ a.ghost.update-banner__link {
   border-radius: 12px;
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, var(--accent), #4f46e5);
-  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.35);
+  color: var(--paper);
+  background: var(--ink);
   transition: transform 0.12s ease, opacity 0.12s ease;
 }
 
@@ -608,13 +693,13 @@ a.ghost.update-banner__link {
   border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text);
+  color: var(--graphite);
   background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.3);
+  border: 1px solid var(--line);
 }
 
 .ghost:hover:not(:disabled) {
-  border-color: rgba(148, 163, 184, 0.6);
+  border-color: var(--line);
 }
 
 .ghost:disabled {
@@ -629,19 +714,19 @@ a.ghost.update-banner__link {
   gap: 8px;
   margin-top: 18px;
   padding-top: 16px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .settings-updates__building {
   white-space: pre-line;
   margin-bottom: 0;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.32);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 32%, transparent);
 }
 
 .link {
   background: none;
-  color: var(--accent-2);
+  color: var(--ink);
   font-weight: 600;
   font-size: 14px;
   padding: 4px 6px;
@@ -667,9 +752,9 @@ a.ghost.update-banner__link {
   gap: 2px;
   padding: 12px 18px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   font-weight: 700;
   font-size: 15px;
 }
@@ -677,11 +762,11 @@ a.ghost.update-banner__link {
 .user-list__role {
   font-size: 12px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .user-list__btn:hover {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .task-request__result {
@@ -739,14 +824,14 @@ a.ghost.update-banner__link {
 }
 
 .task-authoring__errors {
-  color: #fca5a5;
+  color: var(--correction);
   margin: 0.75rem 0;
 }
 
 .task-authoring__preview {
   margin-top: 0.75rem;
   padding: 0.75rem;
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid var(--line);
   border-radius: 10px;
 }
 
@@ -787,9 +872,7 @@ a.task-request__send {
 .field__label {
   display: block;
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--muted);
+  color: var(--pencil);
   margin-bottom: 8px;
 }
 
@@ -816,20 +899,20 @@ a.task-request__send {
   gap: 8px;
   padding: 10px 14px;
   border-radius: 12px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   cursor: pointer;
   font-weight: 600;
   font-size: 14px;
 }
 
 .role-option--active {
-  border-color: var(--accent);
-  background: rgba(99, 102, 241, 0.12);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 .role-option input {
-  accent-color: var(--accent);
+  accent-color: var(--ink);
 }
 
 .teacher-code,
@@ -859,10 +942,10 @@ a.task-request__send {
 }
 
 .area {
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
-  background: rgba(15, 23, 42, 0.4);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .area__header {
@@ -872,17 +955,17 @@ a.task-request__send {
   gap: 12px;
   padding: 15px 16px;
   background: transparent;
-  color: var(--text);
+  color: var(--graphite);
   text-align: left;
 }
 
 .area__header:hover {
-  background: rgba(99, 102, 241, 0.08);
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 .area__chevron {
   transition: transform 0.15s ease;
-  color: var(--accent-2);
+  color: var(--ink);
   font-size: 14px;
 }
 
@@ -896,7 +979,7 @@ a.task-request__send {
 }
 
 .area__count {
-  color: var(--muted);
+  color: var(--pencil);
   font-size: 12px;
 }
 
@@ -915,7 +998,7 @@ a.task-request__send {
   gap: 10px;
   padding: 10px 12px;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.5);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 /* Override for the new Fachwissen-aware layout */
@@ -925,7 +1008,7 @@ a.task-request__send {
   gap: 4px;
   padding: 10px 12px;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.5);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .topic__header {
@@ -980,14 +1063,14 @@ a.task-request__send {
 .topic__outline {
   font-size: 13px;
   font-weight: 600;
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .topic__content-id {
   margin-left: 0.45rem;
   font-size: 0.78rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  color: var(--accent, #818cf8);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -1000,30 +1083,30 @@ a.task-request__send {
 }
 
 .topic__release-badge--ok {
-  background: rgba(34, 197, 94, 0.2);
-  color: #86efac;
+  background: color-mix(in srgb, var(--tick) 20%, transparent);
+  color: var(--tick);
 }
 
 .topic__release-badge--locked {
-  background: rgba(248, 113, 113, 0.2);
-  color: #fca5a5;
+  background: color-mix(in srgb, var(--correction) 20%, transparent);
+  color: var(--correction);
 }
 
 .topic__release-badge--review {
-  background: rgba(251, 191, 36, 0.2);
-  color: #fcd34d;
+  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  color: var(--graphite);
 }
 
 .topic__release-badge--neu {
-  background: #0284c7;
-  color: #f0f9ff;
-  border: 1px solid #0369a1;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
 }
 
 .pruefer-criteria {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  border-top: 1px solid var(--line);
 }
 
 .pruefer-criteria__list {
@@ -1043,37 +1126,36 @@ a.task-request__send {
   margin-left: 6px;
   font-weight: 700;
   vertical-align: middle;
-  letter-spacing: 0.04em;
 }
 
 .difficulty-badge--1 {
-  background: rgba(34, 197, 94, 0.18);
-  color: #86efac;
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: color-mix(in srgb, var(--tick) 18%, transparent);
+  color: var(--tick);
+  border: 1px solid color-mix(in srgb, var(--tick) 35%, transparent);
 }
 
 .difficulty-badge--2 {
-  background: rgba(234, 179, 8, 0.18);
-  color: #fde68a;
-  border: 1px solid rgba(234, 179, 8, 0.35);
+  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  color: var(--graphite);
+  border: 1px solid color-mix(in srgb, var(--marker) 35%, transparent);
 }
 
 .difficulty-badge--3 {
-  background: rgba(239, 68, 68, 0.18);
-  color: #fca5a5;
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: color-mix(in srgb, var(--correction) 18%, transparent);
+  color: var(--correction);
+  border: 1px solid color-mix(in srgb, var(--correction) 35%, transparent);
 }
 
 /* info-chip for Fachwissen toggle */
 .chip-btn--info {
-  background: rgba(99, 102, 241, 0.18);
-  border-color: rgba(99, 102, 241, 0.35);
-  color: #a5b4fc;
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 35%, transparent);
+  color: var(--ink);
 }
 
 .chip-btn--info:hover {
-  border-color: var(--accent);
-  color: #fff;
+  border-color: var(--ink);
+  color: var(--paper);
 }
 
 /* Fachwissen card (browser + session) */
@@ -1082,8 +1164,8 @@ a.task-request__send {
   margin-top: 8px;
   padding: 12px 14px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1106,22 +1188,22 @@ a.task-request__send {
   font-size: 14px;
   line-height: 1.6;
   margin: 0;
-  color: var(--text);
+  color: var(--graphite);
 }
 
 .fachwissen-card__source {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--pencil);
   margin: 0;
 }
 
 .fachwissen-card__source a {
-  color: #a5b4fc;
+  color: var(--ink);
   text-decoration: underline;
 }
 
 .fachwissen-card__license {
-  color: var(--muted);
+  color: var(--pencil);
   font-size: 11px;
 }
 
@@ -1138,14 +1220,14 @@ a.task-request__send {
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
-  color: #a5b4fc;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
   cursor: pointer;
 }
 
 .session__fachwissen-toggle:hover {
-  background: rgba(99, 102, 241, 0.28);
+  background: color-mix(in srgb, var(--ink) 28%, transparent);
 }
 
 /* Task Visual Content (SVG) — scale whole diagram to fit viewport */
@@ -1155,9 +1237,9 @@ a.task-request__send {
   align-items: center;
   margin: 20px 0;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.02);
+  background: color-mix(in srgb, var(--grid) 25%, transparent);
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -1211,19 +1293,19 @@ a.task-request__send {
   border-radius: 9px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text);
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: var(--graphite);
+  background: var(--paper);
+  border: 1px solid var(--line);
 }
 
 .chip-btn:hover {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .chip-btn--primary {
-  background: linear-gradient(135deg, var(--accent), #4f46e5);
+  background: var(--ink);
   border-color: transparent;
-  color: #fff;
+  color: var(--paper);
 }
 
 /* Topic search */
@@ -1240,16 +1322,17 @@ a.task-request__send {
   min-width: 240px;
   padding: 12px 14px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   font-size: 15px;
 }
 
 .topic-search__field:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+  border-color: var(--ink);
+  outline: 3px solid var(--focus);
+  outline-offset: 1px;
 }
 
 .topic-search__clear {
@@ -1274,15 +1357,15 @@ a.task-request__send {
 }
 
 .topic__meta {
-  color: var(--muted);
+  color: var(--pencil);
   font-size: 12px;
 }
 
 .search-hint-box {
-  border: 1px dashed rgba(148, 163, 184, 0.35);
+  border: 1px dashed var(--line);
   border-radius: 12px;
   padding: 12px 14px;
-  background: rgba(30, 41, 59, 0.35);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1318,14 +1401,14 @@ a.task-request__send {
   display: flex;
   justify-content: space-between;
   font-size: 13px;
-  color: var(--muted);
+  color: var(--pencil);
   margin-bottom: 8px;
 }
 
 .task-report {
   margin-top: 16px;
   padding-top: 12px;
-  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  border-top: 1px solid var(--line);
 }
 
 .task-report__open {
@@ -1337,8 +1420,8 @@ a.task-request__send {
   margin-top: 6px;
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   color: inherit;
   font: inherit;
   resize: vertical;
@@ -1354,7 +1437,7 @@ a.task-request__send {
 
 .task-report__error {
   margin: 8px 0 0;
-  color: #fca5a5;
+  color: var(--correction);
   font-size: 13px;
 }
 
@@ -1410,8 +1493,8 @@ a.task-request__send {
 .faulty-tasks__item {
   padding: 12px 14px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .faulty-tasks__head {
@@ -1439,8 +1522,8 @@ a.task-request__send {
 .faulty-tasks__reply {
   margin: 10px 0 0;
   padding: 8px 10px;
-  border-left: 3px solid var(--accent);
-  background: rgba(99, 102, 241, 0.1);
+  border-left: 3px solid var(--ink);
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
   white-space: pre-wrap;
 }
 
@@ -1478,8 +1561,8 @@ a.task-request__send {
 .task-report-fixed-banner__reply {
   margin: 8px 0 0;
   padding: 8px 10px;
-  border-left: 3px solid var(--accent);
-  background: rgba(99, 102, 241, 0.12);
+  border-left: 3px solid var(--ink);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
   white-space: pre-wrap;
 }
 
@@ -1490,14 +1573,14 @@ a.task-request__send {
 .progress {
   height: 6px;
   border-radius: 999px;
-  background: rgba(15, 23, 42, 0.7);
+  background: var(--paper);
   overflow: hidden;
   margin-bottom: 20px;
 }
 
 .progress__fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: var(--ink);
   transition: width 0.25s ease;
 }
 
@@ -1507,17 +1590,17 @@ a.task-request__send {
   font-weight: 800;
   padding: 26px 16px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.5);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   transition: background 0.2s ease;
   line-height: 1.3;
 }
 
 .prompt--correct {
-  background: rgba(34, 197, 94, 0.2);
+  background: color-mix(in srgb, var(--tick) 20%, transparent);
 }
 
 .prompt--wrong {
-  background: rgba(239, 68, 68, 0.2);
+  background: color-mix(in srgb, var(--correction) 20%, transparent);
 }
 
 .hint {
@@ -1538,14 +1621,14 @@ a.task-request__send {
   padding: 13px 15px;
   font-size: 17px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   outline: none;
 }
 
 .answer-input__field:focus {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 select.answer-input__field {
@@ -1556,7 +1639,7 @@ select.answer-input__field {
 .answer-input__unit {
   font-size: 17px;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--pencil);
   min-width: 34px;
 }
 
@@ -1577,21 +1660,21 @@ select.answer-input__field {
   font-size: 17px;
   text-align: center;
   border-radius: 10px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   outline: none;
 }
 
 .frac__field:focus {
-  border-color: var(--accent);
+  border-color: var(--ink);
 }
 
 .frac__bar {
   width: 130px;
   height: 3px;
   border-radius: 2px;
-  background: var(--text);
+  background: var(--graphite);
 }
 
 /* Feedback */
@@ -1605,27 +1688,27 @@ select.answer-input__field {
 }
 
 .feedback--good {
-  background: rgba(34, 197, 94, 0.14);
-  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: color-mix(in srgb, var(--tick) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tick) 40%, transparent);
 }
 
 .feedback--partial {
-  background: rgba(234, 179, 8, 0.14);
-  border: 1px solid rgba(234, 179, 8, 0.4);
+  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  border: 1px solid color-mix(in srgb, var(--marker) 40%, transparent);
 }
 
 .feedback--bad {
-  background: rgba(239, 68, 68, 0.12);
-  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: color-mix(in srgb, var(--correction) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--correction) 35%, transparent);
 }
 
 .solution {
   font-weight: 800;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .explanation {
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--paper);
   border-radius: 10px;
   padding: 12px 14px;
   line-height: 1.5;
@@ -1671,21 +1754,18 @@ select.answer-input__field {
   gap: 4px;
   padding: 16px 8px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.55);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .result__value {
   font-size: 26px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--ink);
 }
 
 .result__label {
   font-size: 12px;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 /* Worksheet controls */
@@ -1700,17 +1780,17 @@ select.answer-input__field {
 .worksheet-controls select {
   padding: 8px 10px;
   border-radius: 8px;
-  background: rgba(15, 23, 42, 0.7);
-  color: var(--text);
-  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: var(--paper);
+  color: var(--graphite);
+  border: 1px solid var(--line);
 }
 
 /* Printable sheet + protocol */
-.sheet {
+article.sheet {
   margin-top: 16px;
-  background: #ffffff;
-  color: #111827;
-  border-radius: 12px;
+  background: var(--surface);
+  color: var(--graphite);
+  border-radius: var(--radius-control);
   padding: 28px 32px;
   line-height: 1.5;
 }
@@ -1722,7 +1802,7 @@ select.answer-input__field {
 
 .sheet__head p {
   font-size: 14px;
-  color: #374151;
+  color: var(--graphite);
 }
 
 .sheet__line {
@@ -1753,7 +1833,7 @@ select.answer-input__field {
 }
 
 .sheet__blank {
-  color: #6b7280;
+  color: var(--pencil);
   white-space: normal;
   text-align: right;
   flex-shrink: 0;
@@ -1763,7 +1843,7 @@ select.answer-input__field {
 .sheet__paper-hint {
   margin: 0;
   font-size: 12.5px;
-  color: #4b5563;
+  color: var(--pencil);
   font-style: italic;
 }
 
@@ -1774,36 +1854,36 @@ select.answer-input__field {
   display: grid;
   gap: 4px;
   font-size: 14px;
-  color: #111827;
+  color: var(--graphite);
 }
 
 .sheet__option-box {
-  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-  color: #374151;
+  font-variant-numeric: tabular-nums;
+  color: var(--graphite);
 }
 
-.sheet .task-visual {
+article.sheet .task-visual {
   margin: 6px 0 2px;
   padding: 8px 10px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 8px;
   /* Avoid flex+percentage collapse that can hide map figures */
   display: block;
   overflow: visible;
 }
 
-.sheet .task-visual svg {
+article.sheet .task-visual svg {
   max-height: 220px;
 }
 
-.sheet .task-visual figure {
+article.sheet .task-visual figure {
   width: 100%;
   max-width: 100%;
   margin: 0;
 }
 
-.sheet .task-visual img {
+article.sheet .task-visual img {
   display: block;
   width: auto;
   max-width: 100%;
@@ -1813,11 +1893,11 @@ select.answer-input__field {
   margin-inline: auto;
 }
 
-.sheet .task-visual figcaption {
+article.sheet .task-visual figcaption {
   margin-top: 6px;
   font-size: 10.5px;
   line-height: 1.35;
-  color: #4b5563;
+  color: var(--pencil);
   text-align: left;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -1825,7 +1905,7 @@ select.answer-input__field {
 
 .sheet__solutions {
   margin-top: 24px;
-  border-top: 1px dashed #9ca3af;
+  border-top: 1px dashed var(--pencil);
   padding-top: 12px;
 }
 
@@ -1838,7 +1918,7 @@ select.answer-input__field {
   padding-left: 22px;
   columns: 2;
   font-size: 13px;
-  color: #374151;
+  color: var(--graphite);
 }
 
 .protocol-summary {
@@ -1856,11 +1936,11 @@ select.answer-input__field {
 .protocol-summary__item .big {
   font-size: 30px;
   font-weight: 800;
-  color: #4f46e5;
+  color: var(--ink);
 }
 
 .protocol-summary__item .muted {
-  color: #6b7280;
+  color: var(--pencil);
 }
 
 .protocol-periods,
@@ -1872,12 +1952,12 @@ select.answer-input__field {
 .protocol-transfers h3 {
   font-size: 15px;
   margin-bottom: 4px;
-  color: #111827;
+  color: var(--graphite);
 }
 
 .protocol-periods .muted,
 .protocol-transfers .muted {
-  color: #6b7280;
+  color: var(--pencil);
 }
 
 .protocol-stats {
@@ -1889,30 +1969,28 @@ select.answer-input__field {
 
 .protocol-stats dt {
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: #6b7280;
+  color: var(--pencil);
 }
 
 .protocol-stats dd {
   margin: 2px 0 0;
   font-size: 18px;
   font-weight: 800;
-  color: #4f46e5;
+  color: var(--ink);
 }
 
 .protocol-transfer {
   margin-top: 12px;
   padding: 12px 14px;
   border-radius: 10px;
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
+  background: var(--paper);
+  border: 1px solid var(--line);
 }
 
 .protocol-transfer__title {
   font-weight: 700;
   margin: 0 0 8px;
-  color: #111827;
+  color: var(--graphite);
 }
 
 @media (max-width: 560px) {
@@ -1928,7 +2006,7 @@ select.answer-input__field {
 .protocol-area h3 {
   font-size: 15px;
   margin-bottom: 8px;
-  color: #111827;
+  color: var(--graphite);
 }
 
 .protocol-table {
@@ -1941,17 +2019,17 @@ select.answer-input__field {
 .protocol-table td {
   text-align: left;
   padding: 7px 8px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--line);
 }
 
 .protocol-table th {
-  color: #6b7280;
+  color: var(--pencil);
   font-weight: 600;
 }
 
 .bar {
   position: relative;
-  background: #e5e7eb;
+  background: var(--line);
   border-radius: 999px;
   height: 18px;
   min-width: 90px;
@@ -1961,7 +2039,7 @@ select.answer-input__field {
 .bar__fill {
   position: absolute;
   inset: 0 auto 0 0;
-  background: linear-gradient(90deg, #6366f1, #22d3ee);
+  background: var(--ink);
   border-radius: 999px;
 }
 
@@ -1972,7 +2050,7 @@ select.answer-input__field {
   place-items: center;
   font-size: 11px;
   font-weight: 700;
-  color: #111827;
+  color: var(--graphite);
 }
 
 /* Exam builder / runner */
@@ -1992,9 +2070,9 @@ select.answer-input__field {
   border-radius: 999px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--muted);
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: var(--pencil);
+  background: var(--paper);
+  border: 1px solid var(--line);
 }
 
 .exam-step__num {
@@ -2004,23 +2082,23 @@ select.answer-input__field {
   height: 22px;
   border-radius: 999px;
   font-size: 12px;
-  background: rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: color-mix(in srgb, var(--grid) 60%, transparent);
+  color: var(--graphite);
 }
 
 .exam-step--active {
-  color: #fff;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: var(--paper);
+  background: var(--ink);
   border-color: transparent;
 }
 
 .exam-step--active .exam-step__num {
-  background: rgba(255, 255, 255, 0.25);
+  background: color-mix(in srgb, var(--paper) 25%, transparent);
 }
 
 .exam-step--done {
-  color: #4ade80;
-  border-color: rgba(34, 197, 94, 0.4);
+  color: var(--tick);
+  border-color: color-mix(in srgb, var(--tick) 40%, transparent);
 }
 
 .exam-nav {
@@ -2058,21 +2136,21 @@ select.answer-input__field {
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .exam-area {
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 10px 14px 14px;
   margin-bottom: 12px;
-  background: rgba(15, 23, 42, 0.4);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .exam-area__legend {
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--pencil);
   padding: 0 6px;
 }
 
@@ -2093,7 +2171,7 @@ select.answer-input__field {
 .exam-check input {
   width: 17px;
   height: 17px;
-  accent-color: var(--accent);
+  accent-color: var(--ink);
 }
 
 .exam-proposals {
@@ -2103,10 +2181,10 @@ select.answer-input__field {
 }
 
 .exam-pool {
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 14px 16px;
-  background: rgba(15, 23, 42, 0.4);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
 .exam-pool__head {
@@ -2136,13 +2214,13 @@ select.answer-input__field {
   gap: 12px;
   padding: 10px 12px;
   border-radius: 10px;
-  background: rgba(30, 41, 59, 0.5);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid transparent;
 }
 
 .exam-task--on {
-  border-color: rgba(99, 102, 241, 0.5);
-  background: rgba(99, 102, 241, 0.12);
+  border-color: color-mix(in srgb, var(--ink) 50%, transparent);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 .exam-task__main {
@@ -2158,7 +2236,7 @@ select.answer-input__field {
   margin-top: 3px;
   width: 17px;
   height: 17px;
-  accent-color: var(--accent);
+  accent-color: var(--ink);
 }
 
 .exam-task__body {
@@ -2174,7 +2252,7 @@ select.answer-input__field {
 
 .exam-task__sol {
   font-size: 12px;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .exam-task__points {
@@ -2183,7 +2261,7 @@ select.answer-input__field {
   align-items: center;
   gap: 2px;
   font-size: 11px;
-  color: var(--muted);
+  color: var(--pencil);
   flex-shrink: 0;
 }
 
@@ -2191,9 +2269,9 @@ select.answer-input__field {
   width: 58px;
   padding: 6px 8px;
   border-radius: 8px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   text-align: center;
 }
 
@@ -2207,9 +2285,9 @@ select.answer-input__field {
   width: 100%;
   padding: 12px 14px;
   border-radius: 12px;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: var(--text);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 13px;
   resize: vertical;
@@ -2248,10 +2326,7 @@ select.answer-input__field {
 .exam-summary__item .big {
   font-size: 28px;
   font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--ink);
 }
 
 .exam-review {
@@ -2263,22 +2338,22 @@ select.answer-input__field {
 }
 
 .exam-review__item {
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  border: 1px solid var(--line);
   border-left-width: 4px;
   border-radius: 12px;
   padding: 14px 16px;
-  background: rgba(15, 23, 42, 0.4);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
 .exam-review__item--ok {
-  border-left-color: #22c55e;
+  border-left-color: var(--tick);
 }
 
 .exam-review__item--bad {
-  border-left-color: #ef4444;
+  border-left-color: var(--correction);
 }
 
 .exam-review__head {
@@ -2297,7 +2372,7 @@ select.answer-input__field {
   flex-shrink: 0;
   font-size: 13px;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .exam-review__line {
@@ -2308,7 +2383,7 @@ select.answer-input__field {
 .foot {
   text-align: center;
   font-size: 12px;
-  color: var(--muted);
+  color: var(--pencil);
   padding-bottom: 8px;
 }
 
@@ -2362,8 +2437,8 @@ select.answer-input__field {
   gap: 14px;
   padding: 12px 14px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .supporters-list__logo {
@@ -2399,8 +2474,8 @@ select.answer-input__field {
   margin: 4px 0 18px;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.18);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .user-guide__toc-title {
@@ -2436,7 +2511,7 @@ select.answer-input__field {
 .user-guide__heading {
   margin: 18px 0 0;
   padding-top: 14px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 1px solid var(--line);
   font-size: 1.05rem;
   font-weight: 700;
   scroll-margin-top: 72px;
@@ -2471,8 +2546,8 @@ select.answer-input__field {
   font-size: 0.92em;
   padding: 0.1em 0.35em;
   border-radius: 6px;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .foot__legal {
@@ -2485,7 +2560,7 @@ select.answer-input__field {
 }
 
 .foot__sep {
-  color: rgba(148, 163, 184, 0.45);
+  color: var(--pencil);
 }
 
 /* LAN / WLAN access from the desktop app */
@@ -2516,8 +2591,8 @@ select.answer-input__field {
   word-break: break-all;
   padding: 10px 12px;
   border-radius: 10px;
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: var(--paper);
+  border: 1px solid var(--line);
 }
 
 .lan-card__actions {
@@ -2551,8 +2626,7 @@ a.link {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: rgba(2, 6, 23, 0.72);
-  backdrop-filter: blur(6px);
+  background: color-mix(in srgb, var(--graphite) 72%, transparent);
 }
 
 .dialog {
@@ -2585,7 +2659,7 @@ a.link {
 }
 
 .impressum a {
-  color: var(--accent-2);
+  color: var(--ink);
   font-weight: 600;
 }
 
@@ -2594,10 +2668,10 @@ a.link {
   white-space: pre-wrap;
   font-size: 12px;
   line-height: 1.5;
-  color: var(--text);
+  color: var(--graphite);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 12px 14px;
 }
@@ -2633,8 +2707,8 @@ a.link {
   flex-wrap: wrap;
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .class-codes__code {
@@ -2683,8 +2757,8 @@ a.link {
 .class-codes__row {
   padding: 14px 16px;
   border-radius: 14px;
-  background: rgba(15, 23, 42, 0.45);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 1px solid var(--line);
 }
 
 .class-codes__row-top {
@@ -2723,9 +2797,7 @@ a.link {
 
 .class-codes__stats dt {
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .class-codes__stats dd {
@@ -2745,7 +2817,7 @@ a.link {
   flex-direction: column;
   gap: 12px;
   padding-top: 8px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .grade-codes__assigned {
@@ -2782,14 +2854,12 @@ a.link {
 .grade-comp__table td {
   text-align: left;
   padding: 6px 8px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  border-bottom: 1px solid var(--line);
 }
 
 .grade-comp__table th {
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--pencil);
   font-weight: 600;
 }
 
@@ -2828,15 +2898,13 @@ a.link {
 .rights-matrix__table td {
   padding: 8px 10px;
   text-align: center;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  border-bottom: 1px solid var(--line);
   vertical-align: top;
 }
 
 .rights-matrix__table thead th {
   font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .rights-matrix__table tbody th {
@@ -2850,21 +2918,21 @@ a.link {
 }
 
 .rights-matrix__cell--no {
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .rights-matrix__cell--yes {
-  color: #4ade80;
+  color: var(--tick);
 }
 
 .rights-matrix__cell--optin,
 .rights-matrix__cell--viaClass,
 .rights-matrix__cell--viaClassOrGrade {
-  color: #4ade80;
+  color: var(--tick);
 }
 
 .rights-matrix__cell--planned {
-  color: #fbbf24;
+  color: var(--graphite);
   font-weight: 700;
 }
 
@@ -2873,7 +2941,7 @@ a.link {
   margin-top: 2px;
   font-size: 11px;
   font-weight: 600;
-  color: var(--muted);
+  color: var(--pencil);
 }
 
 .exam-export-actions {
@@ -2887,6 +2955,21 @@ a.link {
 @media print {
   body {
     background: #fff;
+    background-image: none;
+  }
+  div.sheet {
+    display: block;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    overflow: visible;
+  }
+  .sheet__margin {
+    display: none;
+  }
+  .sheet__body {
+    padding: 0;
   }
   .no-print,
   .topbar,
@@ -2902,7 +2985,7 @@ a.link {
     max-width: none;
     gap: 0;
   }
-  .sheet {
+  article.sheet {
     margin: 0;
     border-radius: 0;
     padding: 0;
@@ -2922,7 +3005,7 @@ a.link {
 .challenge-active {
   margin-top: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(148, 163, 184, 0.16);
+  border-top: 1px solid var(--line);
 }
 
 .challenge-scope,
@@ -2959,7 +3042,7 @@ a.link {
 
 .challenge-phase {
   font-weight: 600;
-  color: var(--accent-2);
+  color: var(--ink);
 }
 
 .challenge-prize-info {
@@ -2982,31 +3065,31 @@ a.link {
 }
 
 .challenge-class-goal {
-  color: var(--text);
+  color: var(--graphite);
 }
 
 .challenge-class-goal strong,
 .challenge-class-goal__label {
-  color: #ecfeff;
-  background: rgba(34, 211, 238, 0.18);
+  color: var(--graphite);
+  background: color-mix(in srgb, var(--ink) 18%, transparent);
   padding: 2px 8px;
   border-radius: 6px;
 }
 
 /* Printable protocol is a white card — dark-theme cyan/white is unreadable there. */
-.sheet .challenge-class-goal,
-.sheet .challenge-class-goal--sheet {
-  color: #1e3a5f;
+article.sheet .challenge-class-goal,
+article.sheet .challenge-class-goal--sheet {
+  color: var(--graphite);
 }
 
-.sheet .challenge-class-goal strong,
-.sheet .challenge-class-goal__label {
-  color: #0f3d4c;
-  background: #a5f3fc;
+article.sheet .challenge-class-goal strong,
+article.sheet .challenge-class-goal__label {
+  color: var(--graphite);
+  background: var(--marker);
 }
 
-.sheet .challenge-class-goal__remaining {
-  color: #1e3a5f;
+article.sheet .challenge-class-goal__remaining {
+  color: var(--graphite);
   font-weight: 600;
 }
 
@@ -3027,20 +3110,20 @@ a.link {
 
 /* Success notice (green) */
 .notice--ok {
-  background: rgba(34, 197, 94, 0.14);
-  border: 1px solid rgba(34, 197, 94, 0.4);
+  background: color-mix(in srgb, var(--tick) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tick) 40%, transparent);
   color: inherit;
 }
 
 /* Danger (destructive) ghost button */
 .user-mgmt__danger {
-  color: #ef4444;
-  border-color: rgba(239, 68, 68, 0.45);
+  color: var(--correction);
+  border-color: color-mix(in srgb, var(--correction) 45%, transparent);
 }
 
 .user-mgmt__danger:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.7);
+  background: color-mix(in srgb, var(--correction) 10%, transparent);
+  border-color: color-mix(in srgb, var(--correction) 70%, transparent);
 }
 
 .user-mgmt__delete-confirm {
