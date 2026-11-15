@@ -30,6 +30,18 @@ import {
   divideSolvableParts,
   type DivideShape,
 } from '../lib/divideToolLogic'
+import {
+  RATIO_MAX_LABEL_CHARS,
+  RATIO_MAX_SEGMENTS,
+  RATIO_MIN_SEGMENTS,
+  ratioColourMatches,
+  ratioColourSolution,
+  ratioSplitAmounts,
+  ratioSplitExact,
+  ratioSplitMatches,
+  type RatioBarMode,
+} from '../lib/ratioBarLogic'
+import { formatDe } from '../lib/num'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -270,5 +282,111 @@ export const divideToolTask = (input: DivideToolTaskInput): Task => {
     },
     check: (answer: UserInput) =>
       answer.kind === 'divideTool' && divideMatches(count, persons, answer.partsPerWhole, answer.assignment),
+  }
+}
+
+export interface RatioBarTaskInput {
+  /** May state the ratio in words or as "a : b" — representing it is the task. Do not name the field counts. */
+  question: string
+  /** colour (default): colour the fields of a bar. split: the divided bar is given, type the two shares of `total`. */
+  mode?: RatioBarMode
+  /** colour mode: number of fields, 4..12, a multiple of ratio[0] + ratio[1]. Ignored in split mode. */
+  segments?: number
+  /** Ratio A : B, positive integers, ratio[0] + ratio[1] <= 12. */
+  ratio: [number, number]
+  /** Names of the two parts for the legend, e.g. ['Saft', 'Wasser'] (at most 12 characters each). */
+  labels?: [string, string]
+  /** split mode: the total amount (at most two decimals; both shares must be exact with two decimals). */
+  total?: number
+  /** split mode: unit of the amounts, e.g. 'ml'. */
+  unit?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/** Ratio bar: colour a bar so that its fields have the ratio A : B, or split a total by the ratio. */
+export const ratioBarTask = (input: RatioBarTaskInput): Task => {
+  const mode: RatioBarMode = input.mode ?? 'colour'
+  if (mode !== 'colour' && mode !== 'split') {
+    throw new Error(`ratioBarTask: mode must be 'colour' or 'split', got ${String(mode)}`)
+  }
+  const ratio = input.ratio
+  if (!Array.isArray(ratio) || ratio.length !== 2 || !ratio.every((n) => Number.isInteger(n) && n >= 1)) {
+    throw new Error(`ratioBarTask: ratio must be two positive integers, got ${JSON.stringify(ratio)}`)
+  }
+  const sum = ratio[0] + ratio[1]
+  if (sum > RATIO_MAX_SEGMENTS) {
+    throw new Error(`ratioBarTask: ratio parts must add up to at most ${RATIO_MAX_SEGMENTS}, got ${sum}`)
+  }
+  const labels: [string, string] = input.labels ?? ['erster Teil', 'zweiter Teil']
+  for (const l of labels) {
+    if (typeof l !== 'string' || l.trim() === '' || l.length > RATIO_MAX_LABEL_CHARS) {
+      throw new Error(`ratioBarTask: each label needs 1..${RATIO_MAX_LABEL_CHARS} characters, got ${JSON.stringify(l)}`)
+    }
+  }
+  const common = {
+    question: input.question,
+    answerKind: 'text' as const,
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+  }
+  const instruction = input.instruction
+
+  if (mode === 'colour') {
+    const segments = input.segments
+    if (!Number.isInteger(segments) || segments! < RATIO_MIN_SEGMENTS || segments! > RATIO_MAX_SEGMENTS) {
+      throw new Error(`ratioBarTask: segments must be ${RATIO_MIN_SEGMENTS}..${RATIO_MAX_SEGMENTS}, got ${String(segments)}`)
+    }
+    if (segments! % sum !== 0) {
+      throw new Error(`ratioBarTask: segments (${segments}) must be a multiple of ${ratio[0]} + ${ratio[1]} = ${sum}`)
+    }
+    const n = segments!
+    return {
+      ...common,
+      sampleAnswer: { kind: 'ratioBar', parts: ratioColourSolution(n, ratio) },
+      interactive: {
+        type: 'ratioBar',
+        props: {
+          mode,
+          segments: n,
+          ratio: [ratio[0], ratio[1]],
+          labels,
+          instruction:
+            instruction ??
+            'Tippe ein Feld an, um es zu färben: einmal für A, zweimal für B, dreimal macht es wieder leer. Färbe alle Felder.',
+        },
+      },
+      check: (answer: UserInput) => answer.kind === 'ratioBar' && ratioColourMatches(n, ratio, answer.parts),
+    }
+  }
+
+  const total = input.total
+  if (typeof total !== 'number' || !Number.isFinite(total) || total <= 0 || total > 100000) {
+    throw new Error(`ratioBarTask: total must be a positive number (at most 100000), got ${String(total)}`)
+  }
+  if (!ratioSplitExact(total, ratio)) {
+    throw new Error(`ratioBarTask: ${total} split ${ratio[0]} : ${ratio[1]} is not exact with two decimals`)
+  }
+  const unit = input.unit?.trim() ?? ''
+  const [ea, eb] = ratioSplitAmounts(total, ratio)
+  return {
+    ...common,
+    sampleAnswer: { kind: 'ratioBar', parts: [], amounts: [formatDe(ea), formatDe(eb)] },
+    interactive: {
+      type: 'ratioBar',
+      props: {
+        mode,
+        segments: sum,
+        ratio: [ratio[0], ratio[1]],
+        labels,
+        total,
+        unit,
+        instruction: instruction ?? 'Schreibe in die beiden Felder, wie viel zu A und wie viel zu B gehört.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'ratioBar' && ratioSplitMatches(total, ratio, answer.amounts),
   }
 }

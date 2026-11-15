@@ -17,6 +17,7 @@ import { FractionModel } from './FractionModel'
 import { FractionWall } from './FractionWall'
 import { DivideTool } from './DivideTool'
 import { emptyAssignment } from '../lib/divideToolLogic'
+import { RatioBar } from './RatioBar'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -133,6 +134,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'divideTool') {
     // Undivided and nothing handed out: the start state does not show a solution.
     return { kind: 'divideTool', partsPerWhole: 1, assignment: emptyAssignment(Number(task.interactive.props.count) || 1, 1) }
+  }
+  if (task.interactive?.type === 'ratioBar') {
+    // Nothing coloured, nothing typed: the start state does not show a solution.
+    return { kind: 'ratioBar', parts: [] }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -537,6 +542,20 @@ export function TaskInteractive({
               ? value
               : { kind: 'divideTool', partsPerWhole: 1, assignment: emptyAssignment(Number(interactive.props.count) || 1, 1) }
           }
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'ratioBar' && (
+        <RatioBar
+          mode={interactive.props.mode === 'split' ? 'split' : 'colour'}
+          segments={Number(interactive.props.segments)}
+          ratio={interactive.props.ratio as [number, number]}
+          labels={interactive.props.labels as [string, string]}
+          total={interactive.props.total === undefined ? undefined : Number(interactive.props.total)}
+          unit={typeof interactive.props.unit === 'string' ? interactive.props.unit : undefined}
+          value={value.kind === 'ratioBar' ? value : { kind: 'ratioBar', parts: [] }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

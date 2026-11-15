@@ -20,6 +20,7 @@ import {
 import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
+import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
 export type WorksheetPrintExtras = {
   /** SVG/HTML shown under the question (visualContent or static stand-in). */
@@ -360,6 +361,40 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
         paperHint: 'Teile jedes Ganze in gleich große Teile. Zeichne die Schnitte ein und verteile die Teile, indem du sie den Kindern zuschreibst.',
         answerBlank: `Jedes Kind bekommt __________ ${objectName}`,
       }
+    }
+
+    case 'ratioBar': {
+      // Paper: colour mode = empty bar + legend to colour in; split mode = the divided bar and two typed fields.
+      const split = props.mode === 'split'
+      const ratio = props.ratio as [number, number] | undefined
+      const labels = (Array.isArray(props.labels) ? props.labels.map(String) : ['erster Teil', 'zweiter Teil']) as [string, string]
+      const segments = Number(props.segments)
+      const total = Number(props.total)
+      const unit = typeof props.unit === 'string' ? props.unit.trim() : ''
+      const valid =
+        Array.isArray(ratio) &&
+        Number.isInteger(segments) &&
+        segments >= (split ? 2 : RATIO_MIN_SEGMENTS) &&
+        segments <= RATIO_MAX_SEGMENTS &&
+        (!split || Number.isFinite(total))
+      const drawing = valid
+        ? ratioBarPrintSvg(split ? 'split' : 'colour', segments, labels, ratio, split ? { value: total, unit } : undefined)
+        : ''
+      // A reference figure from the task (visualContent) comes first, then the bar to work on.
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      const unitText = unit ? ` ${unit}` : ''
+      return split
+        ? {
+            visualHtml,
+            paperHint: 'Schreibe in die beiden Felder, wie viel zu A und wie viel zu B gehört.',
+            answerBlank: `A (${labels[0]}): __________${unitText}     B (${labels[1]}): __________${unitText}`,
+          }
+        : {
+            visualHtml,
+            // The on-screen instruction mentions tapping, which does not exist on paper.
+            paperHint: 'Färbe die Felder mit zwei Farben: eine Farbe für A, eine für B. Färbe alle Felder.',
+            answerBlank: 'Gefärbt: __________ Felder A und __________ Felder B',
+          }
     }
 
     case 'choicePick': {

@@ -111,6 +111,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { mode: 'equivalent', rows: '1, 2, 3, 4, 6, 8, 12', num: 1, den: 2, aNum: 3, aDen: 4, bNum: 2, bDen: 3 }
     case 'divideTool':
       return { shape: 'circle', count: 3, persons: 4, objectName: 'Pizza' }
+    case 'ratioBar':
+      return { mode: 'colour', segments: 10, ratioA: 2, ratioB: 3, labelA: 'Saft', labelB: 'Wasser', total: 500, unit: 'ml' }
     case 'fractionModel':
       return { shape: 'bar', num: 3, den: 4, allowEquivalent: true }
     case 'paramSlider':
@@ -998,6 +1000,36 @@ function ElementPropsForm({
               {field('num', 'Zähler des vorgegebenen Bruchs')}
               {field('den', 'Nenner des vorgegebenen Bruchs (muss eine Reihe sein)')}
             </>
+          )}
+        </>
+      )
+    case 'ratioBar':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-mode">
+              Modus
+            </label>
+            <select
+              id="prop-mode"
+              value={propStr(draft, 'mode', 'colour')}
+              onChange={(e) => setDraft(setProp(draft, 'mode', e.target.value))}
+            >
+              <option value="colour">Felder färben</option>
+              <option value="split">Gesamtmenge aufteilen</option>
+            </select>
+          </div>
+          {field('ratioA', 'Verhältnis: erste Zahl (A)')}
+          {field('ratioB', 'Verhältnis: zweite Zahl (B)')}
+          {field('labelA', 'Name von A (höchstens 12 Zeichen, z. B. Saft)')}
+          {field('labelB', 'Name von B (höchstens 12 Zeichen, z. B. Wasser)')}
+          {propStr(draft, 'mode', 'colour') === 'split' ? (
+            <>
+              {field('total', 'Gesamtmenge (Anteile müssen auf höchstens zwei Dezimalstellen aufgehen)')}
+              {field('unit', 'Einheit (z. B. ml)')}
+            </>
+          ) : (
+            field('segments', 'Anzahl der Felder (4–12, ein Vielfaches von A + B)')
           )}
         </>
       )

@@ -55,6 +55,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'divideTool':
       // Only handed-out parts count; the stepper alone is not an attempt.
       return input.assignment.some((v) => v !== null)
+    case 'ratioBar':
+      // Untouched = no coloured field and no typed amount (the split bar itself is given).
+      return input.parts.some((v) => v !== null) || (input.amounts ?? []).some((s) => s.trim() !== '')
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

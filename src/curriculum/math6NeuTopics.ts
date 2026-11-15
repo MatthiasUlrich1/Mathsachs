@@ -24,6 +24,7 @@ import {
   fractionModelTask,
   fractionWallTask,
   divideToolTask,
+  ratioBarTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -1329,6 +1330,56 @@ const proportionalNeu: Topic = asNeuTopic('lb2-proportional', {
         solution: correct,
         explanation:
           'Bei einer proportionalen Zuordnung ist der Quotient y : x = k konstant. Ein konstantes Produkt kennzeichnet dagegen eine antiproportionale Zuordnung, und der Graph einer proportionalen Zuordnung ist eine Ursprungsgerade (sie verläuft durch (0|0)).',
+      })
+    },
+    // V5 Verhältnisleiste (Färben) — Mischung als Verhältnis darstellen
+    (rng: Rng) => {
+      const t = (n: number) => (n === 1 ? '1 Teil' : `${n} Teile`)
+      const td = (n: number) => (n === 1 ? '1 Teil' : `${n} Teilen`)
+      const mix = pick(rng, [
+        { text: (a: number, b: number) => `Für einen Saftdrink mischst du ${t(a)} Apfelsaft mit ${td(b)} Wasser.`, labels: ['Apfelsaft', 'Wasser'] as [string, string], what: 'saft' },
+        { text: (a: number, b: number) => `Für Mörtel werden ${t(a)} Zement und ${t(b)} Sand gemischt.`, labels: ['Zement', 'Sand'] as [string, string], what: 'moertel' },
+        { text: (a: number, b: number) => `Für ein helles Blau mischst du ${t(a)} blaue Farbe mit ${td(b)} weißer Farbe.`, labels: ['blaue Farbe', 'weiße Farbe'] as [string, string], what: 'farbe' },
+        { text: (a: number, b: number) => `Ein Müsli besteht aus ${td(a)} Haferflocken und ${td(b)} Nüssen.`, labels: ['Haferflocken', 'Nüsse'] as [string, string], what: 'muesli' },
+      ])
+      const [a, b, segments] = pick(rng, [
+        [1, 2, 6], [1, 2, 9], [1, 3, 8], [1, 3, 12], [1, 4, 10], [2, 3, 10], [3, 2, 10], [3, 1, 8], [2, 1, 12], [4, 1, 5], [3, 4, 7], [2, 5, 7],
+      ] as Array<[number, number, number]>)
+      const k = segments / (a + b)
+      return ratioBarTask({
+        question: `${mix.text(a, b)} Das Verhältnis ist ${a} : ${b}. Färbe die Leiste so, dass sie diese Mischung zeigt: eine Farbe für ${mix.labels[0]}, eine andere für ${mix.labels[1]}. Alle Felder werden gefärbt.`,
+        mode: 'colour',
+        segments,
+        ratio: [a, b],
+        labels: mix.labels,
+        solution: `${a * k} Felder ${mix.labels[0]} und ${b * k} Felder ${mix.labels[1]}`,
+        explanation: `Das Verhältnis ${a} : ${b} heißt: Auf ${t(a)} ${mix.labels[0]} kommen ${t(b)} ${mix.labels[1]}. Zusammen sind das ${a + b} Teile. Die Leiste hat ${segments} Felder, das sind ${k} Gruppe${k === 1 ? '' : 'n'} zu je ${a + b} Feldern. In jeder Gruppe gehören ${a} Felder zu ${mix.labels[0]} und ${b} Felder zu ${mix.labels[1]}. Also färbst du ${a * k} Felder in der einen und ${b * k} Felder in der anderen Farbe. Die Reihenfolge der Felder ist egal, es kommt nur auf die Anzahl an.`,
+        dedupeKey: `ratiobar-farben:${mix.what}:${a}:${b}:${segments}`,
+      })
+    },
+    // V6 Verhältnisleiste (Aufteilen) — Rezept: Gesamtmenge im Verhältnis teilen
+    (rng: Rng) => {
+      const rec = pick(rng, [
+        { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [50, 60, 100, 150] },
+        { text: 'Ein Salatdressing', labels: ['Öl', 'Essig'] as [string, string], unit: 'ml', ks: [10, 20, 25, 30] },
+        { text: 'Ein Teig', labels: ['Mehl', 'Wasser'] as [string, string], unit: 'g', ks: [25, 50, 75, 100] },
+        { text: 'Eine Kakaomischung', labels: ['Milch', 'Kakaopulver'] as [string, string], unit: 'ml', ks: [12.5, 25, 37.5] },
+      ])
+      const [a, b] = pick(rng, [[1, 3], [1, 4], [2, 3], [3, 2], [3, 5], [1, 2], [2, 1], [5, 3]] as Array<[number, number]>)
+      const k = pick(rng, rec.ks)
+      const total = roundTo(k * (a + b), 2)
+      const amountA = roundTo(k * a, 2)
+      const amountB = roundTo(k * b, 2)
+      return ratioBarTask({
+        question: `${rec.text} aus ${rec.labels[0]} und ${rec.labels[1]} im Verhältnis ${a} : ${b} soll insgesamt ${formatDe(total)} ${rec.unit} ergeben. Wie viel ${rec.labels[0]} und wie viel ${rec.labels[1]} werden gebraucht?`,
+        mode: 'split',
+        ratio: [a, b],
+        labels: rec.labels,
+        total,
+        unit: rec.unit,
+        solution: `${formatDe(amountA)} ${rec.unit} ${rec.labels[0]} und ${formatDe(amountB)} ${rec.unit} ${rec.labels[1]}`,
+        explanation: `Das Verhältnis ${a} : ${b} teilt die Menge in ${a} + ${b} = ${a + b} gleich große Teile. Ein Teil ist ${formatDe(total)} ${rec.unit} : ${a + b} = ${formatDe(k)} ${rec.unit}. ${rec.labels[0]} bekommt ${a} Teil${a === 1 ? '' : 'e'}: ${a} · ${formatDe(k)} = ${formatDe(amountA)} ${rec.unit}. ${rec.labels[1]} bekommt ${b} Teil${b === 1 ? '' : 'e'}: ${b} · ${formatDe(k)} = ${formatDe(amountB)} ${rec.unit}. Probe: ${formatDe(amountA)} + ${formatDe(amountB)} = ${formatDe(total)}.`,
+        dedupeKey: `ratiobar-rezept:${rec.labels[0]}:${a}:${b}:${total}`,
       })
     },
   ),
@@ -2875,6 +2926,31 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
           denominator: d,
           showLabel: true,
         }),
+      })
+    },
+    // V5 Verhältnisleiste (Aufteilen) — Anteile an einer Gesamtmenge als Verhältnis
+    (rng: Rng) => {
+      const ctx = pick(rng, [
+        { text: 'Zwei Freundinnen teilen den Gewinn vom Kuchenverkauf', names: ['Mia', 'Lena'] as [string, string], unit: '€' },
+        { text: 'Zwei Geschwister teilen sich das Preisgeld', names: ['Tom', 'Anna'] as [string, string], unit: '€' },
+        { text: 'Zwei Teams teilen sich den Erlös vom Sponsorenlauf', names: ['Team Rot', 'Team Blau'] as [string, string], unit: '€' },
+      ])
+      const [a, b] = pick(rng, [[1, 2], [1, 3], [2, 3], [3, 2], [1, 4], [3, 5], [2, 5], [3, 1]] as Array<[number, number]>)
+      const k = pick(rng, [5, 8, 10, 12.5, 15, 20, 25])
+      const total = roundTo(k * (a + b), 2)
+      const amountA = roundTo(k * a, 2)
+      const amountB = roundTo(k * b, 2)
+      const sum = a + b
+      return ratioBarTask({
+        question: `${ctx.text}: ${formatDe(total)} ${ctx.unit}. ${ctx.names[0]} bekommt ${a} Teil${a === 1 ? '' : 'e'}, ${ctx.names[1]} bekommt ${b} Teil${b === 1 ? '' : 'e'} (Verhältnis ${a} : ${b}). Wie viel bekommt jeder?`,
+        mode: 'split',
+        ratio: [a, b],
+        labels: ctx.names,
+        total,
+        unit: ctx.unit,
+        solution: `${ctx.names[0]}: ${formatDe(amountA)} ${ctx.unit}, ${ctx.names[1]}: ${formatDe(amountB)} ${ctx.unit}`,
+        explanation: `Das Verhältnis ${a} : ${b} bedeutet ${sum} gleich große Teile. ${ctx.names[0]} erhält den Anteil ${a}/${sum}, ${ctx.names[1]} den Anteil ${b}/${sum} der Gesamtsumme. Ein Teil ist ${formatDe(total)} ${ctx.unit} : ${sum} = ${formatDe(k)} ${ctx.unit}. Also bekommt ${ctx.names[0]} ${a} · ${formatDe(k)} = ${formatDe(amountA)} ${ctx.unit} und ${ctx.names[1]} ${b} · ${formatDe(k)} = ${formatDe(amountB)} ${ctx.unit}. Probe: ${formatDe(amountA)} + ${formatDe(amountB)} = ${formatDe(total)}.`,
+        dedupeKey: `ratiobar-anteil:${ctx.names[0]}:${a}:${b}:${total}`,
       })
     },
   ),

@@ -58,6 +58,8 @@ export type UserInput =
   | { kind: 'fractionWall'; selected: Array<{ row: number; count: number }> }
   /** Dividing tool: parts per whole and, per part, the person (0-based) who got it (`null` = not handed out). */
   | { kind: 'divideTool'; partsPerWhole: number; assignment: Array<number | null> }
+  /** Ratio bar: field colours (colour mode) or the two typed shares (split mode, `parts` stays empty). */
+  | { kind: 'ratioBar'; parts: Array<'A' | 'B' | null>; amounts?: [string, string] }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -101,6 +103,7 @@ export const emptyInput = (
   if (kind === 'fractionModel') return { kind: 'fractionModel', den: 4, shaded: [] }
   if (kind === 'fractionWall') return { kind: 'fractionWall', selected: [] }
   if (kind === 'divideTool') return { kind: 'divideTool', partsPerWhole: 1, assignment: [] }
+  if (kind === 'ratioBar') return { kind: 'ratioBar', parts: [] }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -130,6 +133,7 @@ export interface InteractiveConfig {
     | 'fractionModel'
     | 'fractionWall'
     | 'divideTool'
+    | 'ratioBar'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

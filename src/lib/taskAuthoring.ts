@@ -17,6 +17,7 @@ import {
   fractionModelTask,
   fractionWallTask,
   divideToolTask,
+  ratioBarTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -87,6 +88,7 @@ export type AuthoringElementType =
   | 'fractionModel'
   | 'fractionWall'
   | 'divideTool'
+  | 'ratioBar'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -118,6 +120,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'fractionModel', label: 'Bruchmodell (Teile färben)' },
   { id: 'fractionWall', label: 'Bruchwand (gleichwertige Brüche / vergleichen)' },
   { id: 'divideTool', label: 'Teilwerkzeug (Ganze gerecht verteilen)' },
+  { id: 'ratioBar', label: 'Verhältnisleiste (Felder färben / Menge aufteilen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -478,6 +481,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'ratioBar': {
+      try {
+        ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Verhältnisleiste: Verhältnis (ganze Zahlen, Summe höchstens 12), Namen (höchstens 12 Zeichen), bei „Färben“ die Felder (4–12, ein Vielfaches der Summe) und bei „Aufteilen“ die Gesamtmenge (höchstens zwei Dezimalstellen, Anteile ohne Rest) prüfen. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'fractionModel': {
       const num = Number(p.num)
       const den = Number(p.den)
@@ -756,6 +769,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       )
     case 'divideTool':
       return withVisual(divideToolTask({ question, solution, explanation, ...divideInputFromProps(p) }))
+    case 'ratioBar':
+      return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
       return withVisual(
         fractionModelTask({
@@ -978,6 +993,20 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
 })`
       break
     }
+    case 'ratioBar': {
+      const r = ratioInputFromProps(p)
+      const amountLines = r.mode === 'split' ? `total: ${r.total},\n  unit: ${JSON.stringify(r.unit)},` : `segments: ${r.segments},`
+      call = `ratioBarTask({
+  question: ${q},
+  mode: ${JSON.stringify(r.mode)},
+  ${amountLines}
+  ratio: [${r.ratio[0]}, ${r.ratio[1]}],
+  labels: [${JSON.stringify(r.labels[0])}, ${JSON.stringify(r.labels[1])}],
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'divideTool': {
       const d = divideInputFromProps(p)
       call = `divideToolTask({
@@ -1120,4 +1149,14 @@ const divideInputFromProps = (p: Record<string, unknown>) => ({
   count: Number(p.count),
   persons: Number(p.persons),
   objectName: String(p.objectName ?? '').trim() || (p.shape === 'circle' ? 'Pizza' : 'Schokoriegel'),
+})
+
+/** Builds the ratioBarTask input of an authoring draft (validated beforehand). */
+const ratioInputFromProps = (p: Record<string, unknown>) => ({
+  mode: (p.mode === 'split' ? 'split' : 'colour') as 'colour' | 'split',
+  segments: Number(p.segments),
+  ratio: [Number(p.ratioA), Number(p.ratioB)] as [number, number],
+  labels: [String(p.labelA ?? '').trim(), String(p.labelB ?? '').trim()] as [string, string],
+  total: Number(String(p.total ?? '').replace(',', '.')),
+  unit: String(p.unit ?? '').trim(),
 })

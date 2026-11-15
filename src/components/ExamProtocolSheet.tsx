@@ -77,6 +77,13 @@ export const formatExamAnswer = (input: UserInput): string => {
     const given = input.assignment.filter((v) => v !== null).length
     return given > 0 ? `${input.partsPerWhole} Teile pro Ganzes, ${given} von ${input.assignment.length} Teilen verteilt` : '—'
   }
+  if (input.kind === 'ratioBar') {
+    const [aText, bText] = input.amounts ?? ['', '']
+    if (aText.trim() || bText.trim()) return `A: ${aText.trim() || '—'}, B: ${bText.trim() || '—'}`
+    const a = input.parts.filter((v) => v === 'A').length
+    const b = input.parts.filter((v) => v === 'B').length
+    return a + b > 0 ? `${a} Felder A, ${b} Felder B` : '—'
+  }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }

@@ -1,0 +1,85 @@
+.ratio-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.ratio-bar__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.ratio-bar__svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  /* Tap-only widget: page scroll keeps working, double-tap zoom is off. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ratio-bar__cell {
+  stroke: #334155;
+  stroke-width: 1.5;
+  cursor: pointer;
+}
+
+.ratio-bar__cell--fixed {
+  cursor: default;
+}
+
+.ratio-bar__svg[aria-disabled="true"] .ratio-bar__cell {
+  cursor: default;
+}
+
+.ratio-bar__cell:focus-visible {
+  outline: 3px solid #dc2626;
+  outline-offset: 1px;
+}
+
+.ratio-bar__letter,
+.ratio-bar__legend,
+.ratio-bar__total {
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+.ratio-bar__total {
+  font-weight: 600;
+}
+
+.ratio-bar__answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+}
+
+.ratio-bar__answer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.ratio-bar__input {
+  width: 6em;
+  min-height: 44px;
+  padding: 4px 8px;
+  font-size: 1rem;
+  text-align: right;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+}
+
+.ratio-bar__input:disabled {
+  cursor: default;
+}
+
