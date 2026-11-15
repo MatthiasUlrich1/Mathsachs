@@ -74,3 +74,15 @@ export function hydrateExamBuilderFromSpec(spec: ExamSpec): ExamBuilderHydrateSt
     selections,
   }
 }
+
+/**
+ * Themenschluessel beim Bearbeiten einer Klausur: alle gespeicherten Schluessel bleiben erhalten,
+ * auch solche ohne sichtbares Thema (z. B. gesperrt fuer diese Rolle), damit sie beim Speichern
+ * nicht verloren gehen. `unresolved` sind die Schluessel ohne geladenes Thema (Warnung in Schritt 2).
+ */
+export function resolveEditThemeKeys(
+  hydratedKeys: string[],
+  knownKeys: ReadonlySet<string>,
+): { keys: string[]; unresolved: string[] } {
+  return { keys: [...hydratedKeys], unresolved: hydratedKeys.filter((k) => !knownKeys.has(k)) }
+}

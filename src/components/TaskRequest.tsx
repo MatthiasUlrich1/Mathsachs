@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import type { UserRole } from '../lib/roles'
 import {
   TASK_REQUEST_ATTACHMENT_NOTE,
   buildTaskRequestMailto,
@@ -11,7 +12,7 @@ import {
   type TaskRequestPackOption,
 } from '../legal/taskRequest'
 
-export function TaskRequest({ role }: { role?: unknown } = {}) {
+export function TaskRequest({ role }: { role?: UserRole | undefined } = {}) {
   const [packs, setPacks] = useState<TaskRequestPackOption[]>([])
   const [packsLoading, setPacksLoading] = useState(true)
   const [packId, setPackId] = useState('')

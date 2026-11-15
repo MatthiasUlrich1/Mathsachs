@@ -42,7 +42,7 @@ import {
   isTeacherRole,
   roleLabel,
 } from './lib/roles'
-import { filterLoadedForRole } from './lib/topicVisibility'
+import { filterLoadedForRole, loadedSubjectsOf } from './lib/topicVisibility'
 import { applyRoleChange } from './lib/teacherCode'
 import {
   RoleOptions,
@@ -534,17 +534,11 @@ export default function App() {
 
   const subjectOf = (moduleId: string) => normalizeSubject(subjectTitleForModule(moduleId))
 
-  const loadedSubjects = (() => {
-    const seen = new Set<string>()
-    const out: string[] = []
-    for (const row of loaded) {
-      const subject = subjectOf(row.moduleId)
-      if (seen.has(subject.toLowerCase())) continue
-      seen.add(subject.toLowerCase())
-      out.push(subject)
-    }
-    return out
-  })()
+  // Gesperrte Themen (released:false, __neu) sehen nur Pruefer/Entwickler:
+  // Uebersicht, Suche, Faecher, Challenge- und Klausur-Auswahl arbeiten auf der gefilterten Liste.
+  const visibleLoaded = filterLoadedForRole(loaded, userRole)
+
+  const loadedSubjects = loadedSubjectsOf(visibleLoaded, subjectOf)
 
   const browseSubjects = isTeacherRole(userRole)
     ? loadedSubjects.filter((s) => isPreferredSubject(s, preferredSubjects))
@@ -558,10 +552,6 @@ export default function App() {
           browseSubjects.some((s) => s.toLowerCase() === preferredSubject.toLowerCase())
         ? preferredSubject
         : (browseSubjects[0] ?? preferredSubject)
-
-  // Gesperrte Themen (released:false, __neu) sehen nur Pruefer/Entwickler:
-  // Uebersicht, Suche, Challenge- und Klausur-Auswahl arbeiten auf der gefilterten Liste.
-  const visibleLoaded = filterLoadedForRole(loaded, userRole)
 
   const browseLoaded = visibleLoaded.filter(
     (row) => subjectOf(row.moduleId).toLowerCase() === activeBrowseSubject.toLowerCase(),

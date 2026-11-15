@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import type { Grade, Topic } from '../curriculum/types'
+import { PLACEHOLDER_NEU_TOPIC_IDS } from '../curriculum/placeholderNeuIds'
 import {
+  loadedSubjectsOf,
   filterGradeForRole,
   filterLoadedForRole,
   isTopicVisible,
@@ -43,6 +45,32 @@ describe('isTopicVisible', () => {
 
   it('treats outline topics flagged neu as locked even without released', () => {
     expect(isTopicVisible({ id: 'x', neu: true }, 'lehrer')).toBe(false)
+  })
+})
+
+describe('isNeuTopic registry', () => {
+  const [registryId] = [...PLACEHOLDER_NEU_TOPIC_IDS]
+
+  it('locks an id only known from the registry (no neu flag, no released) for students, not for pruefer', () => {
+    expect(registryId).toBeTruthy()
+    expect(isTopicVisible({ id: registryId }, 'schueler')).toBe(false)
+    expect(isTopicVisible({ id: registryId }, 'pruefer')).toBe(true)
+  })
+})
+
+describe('loadedSubjectsOf', () => {
+  it('lists no subject whose grades only contain locked topics', () => {
+    const locked = {
+      ...grade(),
+      areas: [{ id: 'a', title: 'A', topics: [topic('z', { released: false })] }],
+    } as unknown as Grade
+    const rows = [
+      { moduleId: 'math', grade: grade() },
+      { moduleId: 'bio', grade: locked },
+    ]
+    const subjectOf = (id: string) => (id === 'math' ? 'Mathematik' : 'Biologie')
+    expect(loadedSubjectsOf(filterLoadedForRole(rows, 'schueler'), subjectOf)).toEqual(['Mathematik'])
+    expect(loadedSubjectsOf(filterLoadedForRole(rows, 'pruefer'), subjectOf)).toEqual(['Mathematik', 'Biologie'])
   })
 })
 

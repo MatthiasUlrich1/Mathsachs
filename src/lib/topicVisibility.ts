@@ -47,3 +47,19 @@ export function filterLoadedForRole<T extends { grade: Grade }>(
     .map((row) => ({ ...row, grade: filterGradeForRole(row.grade, role) }))
     .filter((row, i) => row.grade.areas.length > 0 || loaded[i]!.grade.areas.length === 0)
 }
+
+/** Faecher (Reihenfolge des ersten Auftretens, ohne Duplikate) der geladenen Klassenstufen. */
+export function loadedSubjectsOf<T extends { moduleId: string }>(
+  loaded: T[],
+  subjectOf: (moduleId: string) => string,
+): string[] {
+  const seen = new Set<string>()
+  const out: string[] = []
+  for (const row of loaded) {
+    const subject = subjectOf(row.moduleId)
+    if (seen.has(subject.toLowerCase())) continue
+    seen.add(subject.toLowerCase())
+    out.push(subject)
+  }
+  return out
+}

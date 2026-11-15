@@ -8,6 +8,7 @@ import {
   examSelKey,
   examThemeKey,
   hydrateExamBuilderFromSpec,
+  resolveEditThemeKeys,
 } from '../exam/examBuilderState'
 import {
   mergeExamAssignableClasses,
@@ -139,8 +140,10 @@ export function ExamBuilder({
   const applyExamEdit = (exam: StoredClassExam) => {
     const spec = decodeExam(exam.examCode)
     const hydrated = hydrateExamBuilderFromSpec(spec)
-    const known = hydrated.selectedThemes.filter((k) => entryByKey.has(k))
-    setSelectedThemes(new Set(known.length ? known : hydrated.selectedThemes))
+    // Auch Schluessel ohne sichtbares Thema behalten (sonst gehen sie beim Speichern verloren);
+    // Schritt 2 zeigt dafuer die Warnung "Thema nicht verfuegbar".
+    const { keys } = resolveEditThemeKeys(hydrated.selectedThemes, new Set(entryByKey.keys()))
+    setSelectedThemes(new Set(keys))
     setPools(hydrated.pools)
     setSelections(hydrated.selections)
     setTitle(hydrated.title)

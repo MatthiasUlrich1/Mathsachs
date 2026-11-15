@@ -5,6 +5,7 @@ import {
   EXAM_POOL_SIZE,
   buildExamPoolSeeds,
   hydrateExamBuilderFromSpec,
+  resolveEditThemeKeys,
   examSelKey,
   examThemeKey,
 } from './examBuilderState'
@@ -54,5 +55,17 @@ describe('buildExamPoolSeeds', () => {
       return taskContentIds(task).sort().join('|')
     })
     expect(new Set(fingerprints).size).toBe(fingerprints.length)
+  })
+})
+
+describe('resolveEditThemeKeys', () => {
+  it('keeps keys without a visible topic and reports them as unresolved', () => {
+    const out = resolveEditThemeKeys(['m5::a', 'm5::b__neu'], new Set(['m5::a']))
+    expect(out.keys).toEqual(['m5::a', 'm5::b__neu'])
+    expect(out.unresolved).toEqual(['m5::b__neu'])
+  })
+
+  it('reports nothing when all keys resolve', () => {
+    expect(resolveEditThemeKeys(['k'], new Set(['k'])).unresolved).toEqual([])
   })
 })
