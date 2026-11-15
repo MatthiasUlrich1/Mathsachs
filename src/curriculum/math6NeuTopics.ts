@@ -18,17 +18,17 @@ import {
 } from '../lib/fraction'
 import { shuffleChoices } from './biologieHelpers'
 import {
+  angleProtractorTask,
   choicePickTask,
+  constructionStepsTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
-  paramSliderTask,
   textTask,
   valueTask,
   visualTask,
 } from './taskHelpers'
 import {
-  generateAngleSvg,
   generateCubeNetChoicesSvg,
   generateCuboidFaceEdgeSvg,
   generateCuboidSvg,
@@ -42,6 +42,8 @@ import {
   generateTriangleSvg,
   generateValueTableSvg,
 } from '../lib/geometrySvg'
+import { hasCircle, hasPointNear, hasSegment } from './measureTaskHelpers'
+import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
 import type { Topic } from './types'
 
@@ -1580,21 +1582,21 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
         dedupeKey: `lb3dreieck-mc:${a}:${b}`,
       })
     },
-    // V3 Portfolio — Winkel schätzen und am Regler einstellen
+    // V3 Portfolio — Winkel γ mit dem Geodreieck messen (Figur ohne Gradzahl)
     (rng: Rng) => {
       const a = randInt(rng, 40, 90)
       const b = randInt(rng, 30, 150 - a)
       const c = 180 - a - b
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
-      const svg = generateAngleSvg({ angle: c, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist unten (ohne Gradangabe) abgebildet. Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Winkel γ (Grad)', min: 0, max: 150, step: 5, start: 75 }],
-        correct: { grad: c },
+      return angleProtractorTask({
+        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist abgebildet (ohne Gradangabe). Miss γ mit dem Geodreieck.`,
+        mode: 'measure',
+        angle: c,
+        startAngle,
         solution: `${c}°`,
-        explanation: `Winkelsumme = 180°. γ = 180° − ${a}° − ${b}° = ${c}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Winkel γ ein:',
+        explanation: `Am Geodreieck liest du γ = ${c}° ab. Zur Probe: Die Winkelsumme im Dreieck beträgt 180°, also γ = 180° − ${a}° − ${b}° = ${c}°.`,
+        instruction: 'Miss den Winkel γ mit dem Geodreieck und trage die Gradzahl ein:',
+        dedupeKey: `lb3dreieck-messen:${a}:${b}`,
       })
     },
     // V4 MC — Konzept: Winkelsumme unabhängig von der Dreiecksart
@@ -1673,15 +1675,15 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
       const c = randInt(rng, 60, 110)
       const d = 360 - a - b - c
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
-      const svg = generateAngleSvg({ angle: d, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist unten (ohne Gradangabe) abgebildet. Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Winkel δ (Grad)', min: 0, max: 150, step: 5, start: 75 }],
-        correct: { grad: d },
+      return angleProtractorTask({
+        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist abgebildet (ohne Gradangabe). Miss δ mit dem Geodreieck.`,
+        mode: 'measure',
+        angle: d,
+        startAngle,
         solution: `${d}°`,
-        explanation: `Winkelsumme im Viereck = 360°. δ = 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Winkel δ ein:',
+        explanation: `Am Geodreieck liest du δ = ${d}° ab. Zur Probe: Die Winkelsumme im Viereck beträgt 360°, also δ = 360° − ${a}° − ${b}° − ${c}° = ${d}°.`,
+        instruction: 'Miss den Winkel δ mit dem Geodreieck und trage die Gradzahl ein:',
+        dedupeKey: `lb3viereck-messen:${a}:${b}:${c}`,
       })
     },
     // V4 MC — Konzept: Winkelsumme im Fünfeck (Formel (n−2)·180°)
@@ -1965,6 +1967,17 @@ const flaecheDreieckNeu: Topic = asNeuTopic('lb3-flaeche-dreieck', {
   ),
 })
 
+/** Planfigur Dreieck (Skizze, nicht maßstabsgetreu) mit den gegebenen Seitenlängen. */
+const dreieckPlanSvg = (c: string, b: string, a: string): string =>
+  `<svg viewBox="0 0 300 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze des Dreiecks ABC mit den drei Seitenlängen">` +
+  `<polygon points="40,160 260,160 190,40" fill="#eef3fb" stroke="#1d3557" stroke-width="2"/>` +
+  `<g font-family="sans-serif" font-size="15" fill="#1f2937">` +
+  `<text x="26" y="176">A</text><text x="262" y="176">B</text><text x="188" y="30">C</text>` +
+  `<text x="118" y="184">c = ${c}</text>` +
+  `<text x="40" y="94">b = ${b}</text>` +
+  `<text x="232" y="94">a = ${a}</text>` +
+  `</g></svg>`
+
 // 23) Kongruenzsatz wählen
 const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
   id: 'lb3-kongruenzsatz__neu',
@@ -2035,6 +2048,78 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
         solution: correct,
         explanation: 'Nein — gleiche Winkel allein legen nur die Form fest (die Dreiecke sind ähnlich), nicht die Größe. Für Kongruenz braucht man zusätzlich mindestens eine Seitenlänge (z. B. WSW statt nur WWW).',
         instruction: 'Ja oder Nein?',
+      })
+    },
+    // V5 Geführte Konstruktion — Dreieck aus drei Seiten (SSS) mit Zirkel und Lineal
+    (rng: Rng) => {
+      const setup = pick(rng, [
+        { c: 6, b: 5, a: 5, cx: 3, cy: 4 },
+        { c: 8, b: 5, a: 5, cx: 4, cy: 3 },
+        { c: 4, b: 5, a: 3, cx: 4, cy: 3 },
+        { c: 4, b: 3, a: 5, cx: 0, cy: 3 },
+      ])
+      const { c, b, a, cx, cy } = setup
+      const B = { x: c, y: 0 }
+      const candidates = [
+        { x: cx, y: cy },
+        { x: cx, y: -cy },
+      ]
+      const startScene = emptyCoordinateScene({
+        xRange: [-3, c + 3],
+        yRange: [-5, 5],
+        snap: 'half',
+        objects: [{ id: 'A', kind: 'point', x: 0, y: 0, label: 'A', fixed: true }],
+      })
+      const connected = (s: typeof startScene) =>
+        candidates.some(
+          (p) => hasPointNear(s, p.x, p.y) && hasSegment(s, 'A', p, b) && hasSegment(s, B, p, a),
+        )
+      return constructionStepsTask({
+        question: `Konstruiere das Dreieck ABC mit c = ${c} cm, b = ${b} cm und a = ${a} cm. Der Punkt A ist vorgegeben, B soll rechts von A liegen.`,
+        planFigureSvg: dreieckPlanSvg(`${c} cm`, `${b} cm`, `${a} cm`),
+        startScene,
+        steps: [
+          {
+            instruction: `Zeichne die Seite c = ${c} cm: Strecke von A aus ${c} cm nach rechts bis B.`,
+            allowedTools: ['segment', 'select', 'delete'],
+            check: (s) => hasSegment(s, 'A', B, c),
+          },
+          {
+            instruction: `Schlage einen Kreisbogen um A mit dem Radius b = ${b} cm.`,
+            allowedTools: ['circle', 'select', 'delete'],
+            check: (s) => hasCircle(s, 'A', b),
+          },
+          {
+            instruction: `Schlage einen Kreisbogen um B mit dem Radius a = ${a} cm.`,
+            allowedTools: ['circle', 'select', 'delete'],
+            check: (s) => hasCircle(s, B, a),
+          },
+          {
+            instruction: 'Markiere einen Schnittpunkt der beiden Kreisbögen als C.',
+            allowedTools: ['point', 'select', 'delete'],
+            check: (s) => candidates.some((p) => hasPointNear(s, p.x, p.y)),
+          },
+          {
+            instruction: 'Verbinde C mit A und mit B.',
+            allowedTools: ['segment', 'select', 'delete'],
+            check: connected,
+          },
+        ],
+        solutionScene: {
+          ...startScene,
+          objects: [
+            ...startScene.objects,
+            { id: 's-ab', kind: 'segment', x1: 0, y1: 0, x2: B.x, y2: B.y },
+            { id: 's-ka', kind: 'circle', cx: 0, cy: 0, r: b },
+            { id: 's-kb', kind: 'circle', cx: B.x, cy: B.y, r: a },
+            { id: 's-c', kind: 'point', x: cx, y: cy },
+            { id: 's-ac', kind: 'segment', x1: 0, y1: 0, x2: cx, y2: cy },
+            { id: 's-bc', kind: 'segment', x1: B.x, y1: B.y, x2: cx, y2: cy },
+          ],
+        },
+        solution: `Dreieck ABC mit C(${cx}|${cy}) (oder gespiegelt an AB)`,
+        explanation: `Bei SSS sind alle drei Seiten bekannt. Die Kreisbögen um A (b = ${b} cm) und um B (a = ${a} cm) schneiden sich in zwei Punkten, die spiegelbildlich zu AB liegen. Beide Punkte liefern ein Dreieck mit denselben Seitenlängen, die beiden Dreiecke sind kongruent. Das Dreieck ist durch SSS also bis auf Spiegelung eindeutig festgelegt.`,
+        dedupeKey: `lb3kong-konstruktion-sss:${c}:${b}:${a}`,
       })
     },
   ),

@@ -6,7 +6,6 @@
 import { pick, randInt, type Rng } from '../lib/rng'
 import { formatDe, roundTo } from '../lib/num'
 import {
-  generateAngleSvg,
   generateCuboidSvg,
   generatePrismVolumeSvg,
   generatePyramidSurfaceSvg,
@@ -15,7 +14,9 @@ import {
 } from '../lib/geometrySvg'
 import { shuffleChoices } from './biologieHelpers'
 import {
+  angleProtractorTask,
   choicePickTask,
+  constructionStepsTask,
   dragDropSortTask,
   mixedVariants,
   multiSelectTask,
@@ -23,6 +24,8 @@ import {
   paramSliderTask,
   valueTask,
 } from './taskHelpers'
+import { compassArcTask, hasCircle, hasPointNear } from './measureTaskHelpers'
+import { emptyCoordinateScene, sameLine, type CoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
 import type { Topic } from './types'
 
@@ -73,6 +76,21 @@ function fourChoices(correct: string, wrongCandidates: string[]): string[] {
 
 /** Startwinkel-Varianten, damit gleich große Winkel optisch unterschiedlich aussehen. */
 const START_ANGLES = [0, 20, 45, 90, 135, 180, 225, 270] as const
+/** Planfigur Mittelsenkrechte (Skizze, nicht maßstabsgetreu): AB, zwei Kreisbögen mit gleichem Radius, P, Q und die Gerade PQ. */
+const mittelsenkrechtePlanSvg = (lenCm: number, radiusCm: number): string =>
+  `<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skizze zur Konstruktion der Mittelsenkrechten">` +
+  `<line x1="40" y1="100" x2="260" y2="100" stroke="#1d3557" stroke-width="2"/>` +
+  `<path d="M138.3 168.8 A120 120 0 0 0 138.3 31.2" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>` +
+  `<path d="M161.7 31.2 A120 120 0 0 0 161.7 168.8" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-dasharray="5 4"/>` +
+  `<line x1="150" y1="14" x2="150" y2="186" stroke="#c62828" stroke-width="1.6"/>` +
+  `<circle cx="40" cy="100" r="3.5" fill="#1d3557"/><circle cx="260" cy="100" r="3.5" fill="#1d3557"/>` +
+  `<circle cx="150" cy="52" r="3.5" fill="#c62828"/><circle cx="150" cy="148" r="3.5" fill="#c62828"/>` +
+  `<g font-family="sans-serif" font-size="14" fill="#1f2937">` +
+  `<text x="30" y="122">A</text><text x="256" y="122">B</text>` +
+  `<text x="158" y="50">P</text><text x="158" y="160">Q</text>` +
+  `<text x="85" y="124">AB = ${lenCm} cm</text>` +
+  `<text x="52" y="46" font-size="12">r = ${radiusCm} cm</text><text x="206" y="46" font-size="12">r = ${radiusCm} cm</text>` +
+  `</g></svg>`
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Geometrie in der Ebene
@@ -123,20 +141,20 @@ const nebenwinkelNeu: Topic = asNeuTopic('k7-lb1-nebenwinkel', {
         dedupeKey: `k7neben-mc:${a}`,
       })
     },
-    // V3 Portfolio — Winkel schätzen und am Regler einstellen
+    // V3 Portfolio — Nebenwinkel berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
       const a = randInt(rng, 20, 160)
       const value = 180 - a
       const startAngle = pick(rng, START_ANGLES)
-      const svg = generateAngleSvg({ angle: value, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein Winkel misst ${a}°. Sein Nebenwinkel ist unten abgebildet (ohne Gradangabe). Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Nebenwinkel (Grad)', min: 0, max: 180, step: 5, start: 90 }],
-        correct: { grad: value },
+      return angleProtractorTask({
+        question: `Zwei Winkel liegen als Nebenwinkel an einer Geraden. Der eine misst ${a}°. Zeichne mit dem Geodreieck den anderen Winkel.`,
+        mode: 'draw',
+        angle: value,
+        startAngle,
         solution: `${value}°`,
-        explanation: `Nebenwinkel ergänzen sich zu 180°: 180° − ${a}° = ${value}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Nebenwinkel ein:',
+        explanation: `Nebenwinkel ergänzen sich zu 180°: 180° − ${a}° = ${value}°. Stelle den zweiten Schenkel am Geodreieck auf ${value}° ein.`,
+        instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+        dedupeKey: `k7neben-zeichnen:${a}`,
       })
     },
     // V4 MC — Konzeptfrage
@@ -203,19 +221,20 @@ const scheitelwinkelNeu: Topic = asNeuTopic('k7-lb1-scheitelwinkel', {
         dedupeKey: `k7scheitel-mc:${a}`,
       })
     },
-    // V3 Portfolio — Winkel schätzen und am Regler einstellen
+    // V3 Portfolio — Scheitelwinkel über den Nebenwinkel bestimmen und zeichnen
     (rng: Rng) => {
       const a = randInt(rng, 20, 160)
+      const neben = 180 - a
       const startAngle = pick(rng, START_ANGLES)
-      const svg = generateAngleSvg({ angle: a, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein Winkel beträgt ${a}°. Sein Scheitelwinkel ist unten abgebildet (ohne Gradangabe). Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Scheitelwinkel (Grad)', min: 0, max: 180, step: 5, start: 90 }],
-        correct: { grad: a },
+      return angleProtractorTask({
+        question: `Zwei Geraden schneiden sich. Der Winkel α hat einen Nebenwinkel von ${neben}°. Zeichne mit dem Geodreieck den Scheitelwinkel von α.`,
+        mode: 'draw',
+        angle: a,
+        startAngle,
         solution: `${a}°`,
-        explanation: `Scheitelwinkel sind gleich groß: ${a}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Scheitelwinkel ein:',
+        explanation: `α ergänzt seinen Nebenwinkel zu 180°: α = 180° − ${neben}° = ${a}°. Der Scheitelwinkel von α ist gleich groß, also ${a}°. Stelle den zweiten Schenkel am Geodreieck auf ${a}° ein.`,
+        instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+        dedupeKey: `k7scheitel-zeichnen:${a}`,
       })
     },
     // V4 MC — Konzeptfrage
@@ -285,7 +304,7 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
         dedupeKey: `k7vieleck-mc:${n}`,
       })
     },
-    // V3 Portfolio — Innenwinkel eines regelmäßigen n-Ecks schätzen
+    // V3 Portfolio — Innenwinkel eines regelmäßigen n-Ecks berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
       const regularPairs: Array<{ n: number; interior: number }> = [
         { n: 3, interior: 60 },
@@ -302,15 +321,15 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
       ]
       const { n, interior } = pick(rng, regularPairs)
       const startAngle = pick(rng, START_ANGLES)
-      const svg = generateAngleSvg({ angle: interior, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein regelmäßiges ${n}-Eck hat ${n} gleich große Innenwinkel. Einer davon ist unten abgebildet (ohne Gradangabe). Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Innenwinkel (Grad)', min: 0, max: 180, step: 5, start: 90 }],
-        correct: { grad: interior },
+      return angleProtractorTask({
+        question: `Zeichne mit dem Geodreieck einen Innenwinkel eines regelmäßigen ${n}-Ecks. Alle ${n} Innenwinkel sind gleich groß.`,
+        mode: 'draw',
+        angle: interior,
+        startAngle,
         solution: `${interior}°`,
-        explanation: `Innenwinkelsumme = (n − 2) · 180° = (${n} − 2) · 180° = ${(n - 2) * 180}°. Da alle ${n} Winkel gleich groß sind: ${(n - 2) * 180}° : ${n} = ${interior}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Innenwinkel ein:',
+        explanation: `Innenwinkelsumme = (n − 2) · 180° = (${n} − 2) · 180° = ${(n - 2) * 180}°. Da alle ${n} Winkel gleich groß sind: ${(n - 2) * 180}° : ${n} = ${interior}°. Stelle den zweiten Schenkel am Geodreieck auf ${interior}° ein.`,
+        instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+        dedupeKey: `k7vieleck-zeichnen:${n}`,
       })
     },
     // V4 MC — Konzeptfrage (Begründung der Formel)
@@ -378,20 +397,20 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
         dedupeKey: `k7basis-mc:${apex}`,
       })
     },
-    // V3 Portfolio — Basiswinkel schätzen und am Regler einstellen
+    // V3 Portfolio — Basiswinkel berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
       const apex = randInt(rng, 10, 70) * 2
       const base = (180 - apex) / 2
       const startAngle = pick(rng, START_ANGLES)
-      const svg = generateAngleSvg({ angle: base, label: '', startAngle })
-      return paramSliderTask({
-        question: `Ein gleichschenkliges Dreieck hat an der Spitze einen Winkel von ${apex}°. Ein Basiswinkel ist unten abgebildet (ohne Gradangabe). Schätze ihn und stelle ihn am Regler ein.`,
-        params: [{ id: 'grad', label: 'Basiswinkel (Grad)', min: 0, max: 90, step: 5, start: 45 }],
-        correct: { grad: base },
+      return angleProtractorTask({
+        question: `Ein gleichschenkliges Dreieck hat an der Spitze einen Winkel von ${apex}°. Zeichne mit dem Geodreieck einen der beiden Basiswinkel.`,
+        mode: 'draw',
+        angle: base,
+        startAngle,
         solution: `${base}°`,
-        explanation: `Basiswinkel = (180° − ${apex}°) : 2 = ${base}°.`,
-        visualContent: svg,
-        instruction: 'Stelle den geschätzten Basiswinkel ein:',
+        explanation: `Basiswinkel = (180° − ${apex}°) : 2 = ${base}°. Stelle den zweiten Schenkel am Geodreieck auf ${base}° ein.`,
+        instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+        dedupeKey: `k7basis-zeichnen:${apex}`,
       })
     },
     // V4 MC — Konzeptfrage
@@ -493,6 +512,101 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
         solution: correct,
         explanation:
           'Das ist die definierende Eigenschaft der Mittelsenkrechten: gleicher Abstand zu A und zu B — nur der Mittelpunkt selbst liegt dabei auch auf AB.',
+      })
+    },
+    // V5 Zirkel — zwei Kreisbögen mit gleichem Radius um A und B schlagen
+    (rng: Rng) => {
+      const len = pick(rng, [4, 6, 8])
+      const ax = randInt(rng, 0, 3)
+      const ay = randInt(rng, 0, 3)
+      const half = len / 2
+      const r = half + 2
+      return compassArcTask({
+        question: `Die Punkte A und B sind ${len} cm voneinander entfernt. Schlage mit dem Zirkel um A und um B je einen Kreisbogen mit demselben Radius, damit sich die Bögen schneiden. Der Radius ist frei wählbar, muss aber größer als ${half} cm sein.`,
+        points: [
+          { id: 'A', x: ax, y: ay, label: 'A' },
+          { id: 'B', x: ax + len, y: ay, label: 'B' },
+        ],
+        targets: [
+          { centerId: 'A', radius: r },
+          { centerId: 'B', radius: r },
+        ],
+        sameRadius: true,
+        minRadius: half,
+        solution: `Zwei Kreisbögen mit gleichem Radius (größer als ${half} cm) um A und um B`,
+        explanation: `Die Punkte der Mittelsenkrechten sind von A und B gleich weit entfernt. Darum brauchst du um A und um B Kreisbögen mit demselben Radius. Ist der Radius kleiner als ${half} cm (die Hälfte von AB), erreichen sich die Bögen nicht und schneiden sich nicht. Zum Beispiel passt r = ${r} cm.`,
+        dedupeKey: `k7mittel-zirkel:${len}:${ax}:${ay}`,
+      })
+    },
+    // V6 Geführte Konstruktion — Bögen, Schnittpunkte, Mittelsenkrechte
+    (rng: Rng) => {
+      const setup = pick(rng, [
+        { len: 4, r: 2.5, h: 1.5 },
+        { len: 6, r: 5, h: 4 },
+        { len: 8, r: 5, h: 3 },
+      ])
+      const { len, r, h } = setup
+      const A = { x: 0, y: 0 }
+      const B = { x: len, y: 0 }
+      const P = { x: len / 2, y: h }
+      const Q = { x: len / 2, y: -h }
+      const fmt = (v: number) => formatDe(v)
+      const startScene = emptyCoordinateScene({
+        xRange: [-3, len + 3],
+        yRange: [-5, 5],
+        snap: 'half',
+        objects: [
+          { id: 'A', kind: 'point', x: A.x, y: A.y, label: 'A', fixed: true },
+          { id: 'B', kind: 'point', x: B.x, y: B.y, label: 'B', fixed: true },
+        ],
+      })
+      const throughPQ = (scene: CoordinateScene) =>
+        scene.objects.some((o) => {
+          if (o.kind === 'line') return sameLine(o, { x1: P.x, y1: P.y, x2: Q.x, y2: Q.y })
+          if (o.kind !== 'segment') return false
+          const length = Math.hypot(o.x2 - o.x1, o.y2 - o.y1)
+          return length >= 2 * h - 0.3 && sameLine(o, { x1: P.x, y1: P.y, x2: Q.x, y2: Q.y })
+        })
+      return constructionStepsTask({
+        question: `Konstruiere die Mittelsenkrechte der Strecke AB mit AB = ${len} cm. Die Planfigur zeigt den Aufbau.`,
+        planFigureSvg: mittelsenkrechtePlanSvg(len, r),
+        startScene,
+        steps: [
+          {
+            instruction: `Schlage mit dem Zirkel einen Kreisbogen um A mit dem Radius r = ${fmt(r)} cm.`,
+            allowedTools: ['circle', 'select', 'delete'],
+            check: (s) => hasCircle(s, 'A', r),
+          },
+          {
+            instruction: `Schlage mit demselben Radius r = ${fmt(r)} cm einen Kreisbogen um B.`,
+            allowedTools: ['circle', 'select', 'delete'],
+            check: (s) => hasCircle(s, 'B', r),
+          },
+          {
+            instruction: 'Markiere die beiden Schnittpunkte der Kreisbögen.',
+            allowedTools: ['point', 'select', 'delete'],
+            check: (s) => hasPointNear(s, P.x, P.y) && hasPointNear(s, Q.x, Q.y),
+          },
+          {
+            instruction: 'Zeichne die Gerade durch die beiden Schnittpunkte.',
+            allowedTools: ['line', 'segment', 'select', 'delete'],
+            check: throughPQ,
+          },
+        ],
+        solutionScene: {
+          ...startScene,
+          objects: [
+            ...startScene.objects,
+            { id: 's-ka', kind: 'circle', cx: A.x, cy: A.y, r },
+            { id: 's-kb', kind: 'circle', cx: B.x, cy: B.y, r },
+            { id: 's-p', kind: 'point', x: P.x, y: P.y },
+            { id: 's-q', kind: 'point', x: Q.x, y: Q.y },
+            { id: 's-m', kind: 'line', x1: P.x, y1: P.y, x2: Q.x, y2: Q.y },
+          ],
+        },
+        solution: `Mittelsenkrechte durch P(${fmt(P.x)}|${fmt(P.y)}) und Q(${fmt(Q.x)}|${fmt(Q.y)})`,
+        explanation: `Beide Kreisbögen haben den Radius ${fmt(r)} cm, der größer ist als die halbe Strecke (${fmt(len / 2)} cm). Deshalb schneiden sie sich in zwei Punkten, die von A und B gleich weit entfernt sind. Die Gerade durch diese Punkte ist die Mittelsenkrechte von AB.`,
+        dedupeKey: `k7mittel-konstruktion:${len}:${fmt(r)}`,
       })
     },
   ),

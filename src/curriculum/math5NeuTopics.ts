@@ -16,13 +16,13 @@ import {
   fractionTask,
   mixedVariants,
   numberLineTask,
-  paramSliderTask,
+  angleProtractorTask,
+  rulerMeasureTask,
   textTask,
   valueTask,
 } from './taskHelpers'
 import { digitGridDivideTask, longDivisionSteps } from './digitGridTasks'
 import {
-  generateAngleSvg,
   generateCompositeCuboidSvg,
   generateCuboidSvg,
   generateFractionBarSvg,
@@ -1863,25 +1863,51 @@ export const math5NeuLb3: Topic[] = [
           dedupeKey: `winkelarten-alltag:${item.deg}`,
         })
       },
-      // Variant 3: Portfolio — virtuelles Messen mit dem Schieberegler (kein Gradzahl-Spoiler)
+      // Variant 3: Portfolio — Winkel mit dem Geodreieck messen (Figur ohne Gradzahl)
       (rng: Rng) => {
-        const deg = pick(rng, [15, 30, 45, 60, 75, 105, 120, 135, 150, 165])
+        const deg = pick(rng, [15, 25, 35, 40, 55, 65, 75, 105, 115, 125, 135, 145, 155, 165])
         const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
-        const svg = generateAngleSvg({ angle: deg, label: '', startAngle })
-        return paramSliderTask({
-          question: 'Schätze die Größe des abgebildeten Winkels und stelle sie am Regler ein.',
-          params: [{ id: 'grad', label: 'Winkel (Grad)', min: 0, max: 180, step: 15, start: 90 }],
-          correct: { grad: deg },
+        const szene = pick(rng, [
+          'die beiden Arme einer geöffneten Schere',
+          'die aufgeklappten Schenkel eines Zirkels',
+          'die beiden Zeiger einer Uhr',
+          'einen Türflügel und den Türrahmen',
+          'das aufgeklappte Display eines Laptops',
+          'eine Leiter und die Wand, an der sie lehnt',
+          'einen Fensterflügel und den Fensterrahmen',
+          'die beiden Seiten eines aufgeschlagenen Buches',
+        ])
+        return angleProtractorTask({
+          question: `Die beiden Schenkel stehen für ${szene}. Miss den Winkel zwischen ihnen mit dem Geodreieck.`,
+          mode: 'measure',
+          angle: deg,
+          startAngle,
           solution: `${deg}°`,
-          explanation: `Der Winkel ist ${deg}° groß${
+          explanation: `Der Nullpunkt des Geodreiecks liegt auf dem Scheitel, ein Schenkel auf der 0-Linie. Am anderen Schenkel liest du ${deg}° ab. ${
             deg < 90
-              ? ' — kleiner als ein rechter Winkel (90°), also spitz'
-              : deg > 90
-                ? ' — größer als ein rechter Winkel (90°), also stumpf'
-                : ' — genau ein rechter Winkel'
-          }.`,
-          visualContent: svg,
-          instruction: 'Vergleiche mit einem rechten Winkel (90°) und stelle den geschätzten Winkel ein:',
+              ? `${deg}° ist kleiner als 90°, der Winkel ist also spitz.`
+              : `${deg}° liegt zwischen 90° und 180°, der Winkel ist also stumpf.`
+          }`,
+          instruction: 'Miss den Winkel mit dem Geodreieck und trage die Gradzahl ein:',
+          dedupeKey: `winkelarten-messen:${deg}`,
+        })
+      },
+      // Variant 4: Portfolio — Winkel einer bestimmten Art mit dem Geodreieck zeichnen
+      (rng: Rng) => {
+        const art = pick(rng, ['spitzen', 'stumpfen'] as const)
+        const deg = art === 'spitzen' ? pick(rng, [20, 30, 40, 50, 65, 70, 80]) : pick(rng, [100, 110, 120, 130, 140, 150, 160])
+        const startAngle = pick(rng, [0, 30, 60, 90, 120, 150, 180, 210])
+        return angleProtractorTask({
+          question: `Zeichne mit dem Geodreieck einen ${art} Winkel mit ${deg}°.`,
+          mode: 'draw',
+          angle: deg,
+          startAngle,
+          solution: `${deg}°`,
+          explanation: `Ein ${art} Winkel ${
+            art === 'spitzen' ? 'ist kleiner als 90°' : 'liegt zwischen 90° und 180°'
+          }, ${deg}° passt dazu. Der Scheitel liegt auf dem Nullpunkt des Geodreiecks, ein Schenkel auf der 0-Linie; den zweiten Schenkel stellst du auf ${deg}° ein.`,
+          instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+          dedupeKey: `winkelarten-zeichnen:${deg}`,
         })
       },
     ),
@@ -1938,20 +1964,20 @@ export const math5NeuLb3: Topic[] = [
           dedupeKey: `winkelerg-neben:${x}`,
         })
       },
-      // Variant 3: Portfolio — Winkel schätzen und zu 180° ergänzen
+      // Variant 3: Portfolio — Ergänzungswinkel zu 180° mit dem Geodreieck zeichnen
       (rng: Rng) => {
-        const deg = pick(rng, [20, 40, 60, 80, 100, 120, 140, 160])
+        const deg = pick(rng, [20, 35, 45, 55, 70, 85, 100, 115, 125, 140, 150, 160])
         const startAngle = pick(rng, [0, 30, 60, 90, 120, 150, 180, 210])
-        const svg = generateAngleSvg({ angle: deg, label: '', startAngle })
         const value = 180 - deg
-        return paramSliderTask({
-          question: 'Schätze die Größe des abgebildeten Winkels. Stelle dann am Regler den Winkel ein, der ihn zu einem gestreckten Winkel (180°) ergänzt.',
-          params: [{ id: 'grad', label: 'Ergänzungswinkel (Grad)', min: 0, max: 180, step: 20, start: 90 }],
-          correct: { grad: value },
+        return angleProtractorTask({
+          question: `Ein Winkel ist ${deg}° groß. Zeichne mit dem Geodreieck den Winkel, der ihn zu einem gestreckten Winkel (180°) ergänzt.`,
+          mode: 'draw',
+          angle: value,
+          startAngle,
           solution: `${value}°`,
-          explanation: `Der abgebildete Winkel ist ${deg}° groß. Ergänzung zu 180°: 180° − ${deg}° = ${value}°.`,
-          visualContent: svg,
-          instruction: 'Stelle den Ergänzungswinkel ein:',
+          explanation: `Ein gestreckter Winkel misst 180°. Der gesuchte Winkel ergänzt ${deg}° dazu: 180° − ${deg}° = ${value}°. Stelle den zweiten Schenkel am Geodreieck auf ${value}° ein.`,
+          instruction: 'Stelle den zweiten Schenkel am Geodreieck auf den gesuchten Winkel ein:',
+          dedupeKey: `winkelerg-zeichnen:${deg}`,
         })
       },
     ),
@@ -2639,6 +2665,38 @@ export const math5NeuLb3: Topic[] = [
           visualContent: svg,
         }
       },
+      // Variant 4: Lineal — Gesamtstrecke aus zwei Teilstrecken zeichnen
+      (rng: Rng) => {
+        const ab = randInt(rng, 4, 11) / 2
+        const bc = randInt(rng, 4, 11) / 2
+        const total = roundTo(ab + bc, 1)
+        const angle = pick(rng, [-10, -5, 0, 5, 10])
+        return rulerMeasureTask({
+          question: `Die Punkte A, B und C liegen in dieser Reihenfolge auf einer Geraden. Es gilt AB = ${formatDe(ab)} cm und BC = ${formatDe(bc)} cm. Zeichne die Strecke AC mit dem Lineal.`,
+          mode: 'draw',
+          lengthCm: total,
+          angle,
+          solution: `${formatDe(total)} cm`,
+          explanation: `B liegt zwischen A und C, also werden die Teilstrecken addiert: AC = AB + BC = ${formatDe(ab)} cm + ${formatDe(bc)} cm = ${formatDe(total)} cm. Ziehe den Endpunkt am Lineal bis zur Marke ${formatDe(total)} cm.`,
+          dedupeKey: `streckenlaenge-lineal-addition:${ab}:${bc}`,
+        })
+      },
+      // Variant 5: Lineal — eine Strecke ausmessen (Teilstrecke einer Wegstrecke)
+      (rng: Rng) => {
+        const lenMm = randInt(rng, 25, 118)
+        const len = lenMm / 10
+        const angle = pick(rng, [-12, -6, 0, 6, 12])
+        const name = pick(rng, ['AB', 'PQ', 'RS', 'MN'])
+        return rulerMeasureTask({
+          question: `Miss die Länge der Strecke ${name} mit dem Lineal auf Millimeter genau.`,
+          mode: 'measure',
+          lengthCm: len,
+          angle,
+          solution: `${formatDe(len)} cm`,
+          explanation: `Lege die 0-cm-Marke des Lineals genau an den Anfangspunkt der Strecke ${name}. Am Endpunkt liest du ${formatDe(len)} cm ab. Teillängen in derselben Einheit kannst du anschließend addieren.`,
+          dedupeKey: `streckenlaenge-lineal-messen:${lenMm}:${name}`,
+        })
+      },
     ),
   }),
 
@@ -2725,6 +2783,22 @@ export const math5NeuLb3: Topic[] = [
           instruction: 'Tippe auf die Gitterstelle für M:',
         })
       },
+      // Variant 4: Lineal — Halbe Strecke bis zum Mittelpunkt zeichnen
+      (rng: Rng) => {
+        const half = randInt(rng, 6, 55) / 10
+        const whole = roundTo(2 * half, 1)
+        const part = pick(rng, ['AM', 'MB'] as const)
+        const angle = pick(rng, [-12, -6, 0, 6, 12])
+        return rulerMeasureTask({
+          question: `Die Strecke AB ist ${formatDe(whole)} cm lang. M ist der Mittelpunkt von AB. Zeichne die Strecke ${part} mit dem Lineal.`,
+          mode: 'draw',
+          lengthCm: half,
+          angle,
+          solution: `${formatDe(half)} cm`,
+          explanation: `Der Mittelpunkt M teilt AB in zwei gleich lange Teile: ${part} = AB : 2 = ${formatDe(whole)} cm : 2 = ${formatDe(half)} cm. Ziehe den Endpunkt am Lineal bis zur Marke ${formatDe(half)} cm.`,
+          dedupeKey: `mittelpunkt-lineal-halbe:${whole}:${part}`,
+        })
+      },
     ),
   }),
 
@@ -2801,6 +2875,37 @@ export const math5NeuLb3: Topic[] = [
             : `Eine ${LINE_KIND_LABEL_NEU[kind]} geht ${
                 kind === 'halbgerade' ? 'von ihrem Anfangspunkt aus' : 'nach beiden Seiten'
               } unbegrenzt weiter, daher hat sie keine endliche Länge.`,
+        })
+      },
+      // Variant 4: Lineal — Strecke mit vorgegebener Länge zeichnen (nur Strecken haben eine Länge)
+      (rng: Rng) => {
+        const len = randInt(rng, 20, 100) / 10
+        const name = pick(rng, ['ST', 'KL', 'UV', 'XY'])
+        const angle = pick(rng, [-12, -6, 0, 6, 12])
+        return rulerMeasureTask({
+          question: `Zeichne die Strecke ${name} mit der Länge ${formatDe(len)} cm. Beginne am Punkt ${name[0]} und ziehe den Endpunkt ${name[1]} am Lineal auf die richtige Länge.`,
+          mode: 'draw',
+          lengthCm: len,
+          angle,
+          solution: `${formatDe(len)} cm`,
+          explanation: `Eine Strecke hat zwei Endpunkte und damit eine feste Länge. ${name[0]} liegt auf der 0-cm-Marke, ${name[1]} kommt auf die Marke ${formatDe(len)} cm.`,
+          dedupeKey: `streckenbez-lineal-zeichnen:${len}:${name}`,
+        })
+      },
+      // Variant 5: Lineal — Länge einer Strecke messen
+      (rng: Rng) => {
+        const lenMm = randInt(rng, 30, 112)
+        const len = lenMm / 10
+        const name = pick(rng, ['EF', 'GH', 'JK', 'CD'])
+        const angle = pick(rng, [-12, -6, 0, 6, 12])
+        return rulerMeasureTask({
+          question: `Die Strecke ${name} ist durch ihre beiden Endpunkte ${name[0]} und ${name[1]} begrenzt. Wie lang ist sie? Miss mit dem Lineal.`,
+          mode: 'measure',
+          lengthCm: len,
+          angle,
+          solution: `${formatDe(len)} cm`,
+          explanation: `Weil ${name} eine Strecke mit zwei Endpunkten ist, lässt sich ihre Länge messen: Die 0-cm-Marke liegt bei ${name[0]}, bei ${name[1]} liest du ${formatDe(len)} cm ab. Bei einer Geraden oder Halbgeraden gäbe es keine feste Länge.`,
+          dedupeKey: `streckenbez-lineal-messen:${lenMm}:${name}`,
         })
       },
     ),
