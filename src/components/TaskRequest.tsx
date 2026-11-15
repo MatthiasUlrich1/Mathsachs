@@ -11,7 +11,7 @@ import {
   type TaskRequestPackOption,
 } from '../legal/taskRequest'
 
-export function TaskRequest() {
+export function TaskRequest({ role }: { role?: unknown } = {}) {
   const [packs, setPacks] = useState<TaskRequestPackOption[]>([])
   const [packsLoading, setPacksLoading] = useState(true)
   const [packId, setPackId] = useState('')
@@ -53,7 +53,7 @@ export function TaskRequest() {
     }
     let cancelled = false
     setAreasLoading(true)
-    void loadTaskRequestAreas(gradeId, packId)
+    void loadTaskRequestAreas(gradeId, packId, role)
       .then((titles) => {
         if (cancelled) return
         setAreas(titles)
@@ -69,7 +69,7 @@ export function TaskRequest() {
     return () => {
       cancelled = true
     }
-  }, [gradeId, packId])
+  }, [gradeId, packId, role])
 
   const fields = useMemo(
     () => ({

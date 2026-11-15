@@ -37,6 +37,7 @@ import {
   loadTaskRequestPacks,
   type TaskRequestPackOption,
 } from '../legal/taskRequest'
+import { isTopicVisible } from './topicVisibility'
 import { getSvgTemplate, sanitizeSvg } from './svgTemplateRegistry'
 import {
   emptyCoordinateScene,
@@ -66,15 +67,19 @@ export async function loadAuthoringPacks(): Promise<TaskRequestPackOption[]> {
 export async function loadAuthoringAreas(
   packId: string,
   gradeId: string,
+  role?: unknown,
 ): Promise<AuthoringAreaOption[]> {
   const pack = await bundledPackById(packId.trim())
   const grade = pack?.official.find((g) => g.id === gradeId.trim())
   if (!grade) return []
-  return grade.areas.map((area) => ({
-    id: area.id,
-    title: area.title,
-    topics: area.topics.map((t) => ({ id: t.id, title: t.title })),
-  }))
+  return grade.areas.flatMap((area) => {
+    // Gesperrte Themen nur fuer Pruefer/Entwickler waehlbar; Lernbereiche, die dadurch leer werden, entfallen.
+    const topics = area.topics
+      .filter((t) => isTopicVisible(t, role))
+      .map((t) => ({ id: t.id, title: t.title }))
+    if (topics.length === 0 && area.topics.length > 0) return []
+    return [{ id: area.id, title: area.title, topics }]
+  })
 }
 
 export type AuthoringElementType =

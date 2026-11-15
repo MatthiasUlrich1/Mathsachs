@@ -42,6 +42,7 @@ import {
   isTeacherRole,
   roleLabel,
 } from './lib/roles'
+import { filterLoadedForRole } from './lib/topicVisibility'
 import { applyRoleChange } from './lib/teacherCode'
 import {
   RoleOptions,
@@ -558,13 +559,17 @@ export default function App() {
         ? preferredSubject
         : (browseSubjects[0] ?? preferredSubject)
 
-  const browseLoaded = loaded.filter(
+  // Gesperrte Themen (released:false, __neu) sehen nur Pruefer/Entwickler:
+  // Uebersicht, Suche, Challenge- und Klausur-Auswahl arbeiten auf der gefilterten Liste.
+  const visibleLoaded = filterLoadedForRole(loaded, userRole)
+
+  const browseLoaded = visibleLoaded.filter(
     (row) => subjectOf(row.moduleId).toLowerCase() === activeBrowseSubject.toLowerCase(),
   )
 
   // ExamBuilder filters create themes by preferredSubjects; pass all loaded so
   // editing a Klausur from another Fach still works after onEnsureModules.
-  const examLoaded = loaded
+  const examLoaded = visibleLoaded
 
   const createUser = () => {
     const name = newName.trim()
@@ -717,7 +722,7 @@ export default function App() {
     : undefined
 
   const trimmedQuery = query.trim()
-  const searchScope = browseLoaded.length > 0 ? browseLoaded : loaded
+  const searchScope = browseLoaded.length > 0 ? browseLoaded : visibleLoaded
   const searchResults = trimmedQuery ? searchTopics(query, searchScope) : []
   const searchHints = trimmedQuery
     ? searchUnloadedHints(
@@ -1082,7 +1087,7 @@ export default function App() {
         <Challenge
           user={activeUser}
           role={userRole}
-          loaded={loaded}
+          loaded={visibleLoaded}
           onPractice={(topic, areaTitle, gradeTitle, challengeId) =>
             openPractice(topic, areaTitle, gradeTitle, 'challenge', challengeId)
           }

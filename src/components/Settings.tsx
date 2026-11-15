@@ -268,7 +268,7 @@ export function Settings({
 
       {section === 'tasks' &&
         (canRequestTasks(role) ? (
-          <TaskRequest />
+          <TaskRequest role={role} />
         ) : (
           <section className="card" aria-label="Aufgaben ergänzen">
             <h2 className="section-title no-margin">Aufgaben ergänzen</h2>

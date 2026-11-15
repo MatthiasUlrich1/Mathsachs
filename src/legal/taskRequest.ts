@@ -9,6 +9,7 @@ import {
 } from '../curriculum/pack'
 import { bundledPackById } from '../curriculum/install'
 import { CONTACT_EMAIL } from './content'
+import { isTopicVisible } from '../lib/topicVisibility'
 
 /** Exact subject for the teacher task-request mail. */
 export const TASK_REQUEST_SUBJECT =
@@ -102,6 +103,7 @@ export function getTaskRequestGrade(
 export async function loadTaskRequestAreas(
   gradeId: string,
   packId?: string,
+  role?: unknown,
 ): Promise<string[]> {
   const trimmed = gradeId.trim()
   if (!trimmed) return []
@@ -111,7 +113,16 @@ export async function loadTaskRequestAreas(
   for (const id of packIds) {
     const pack = await bundledPackById(id)
     const grade = pack?.official.find((row) => row.id === trimmed)
-    if (grade) return grade.areas.map((area) => area.title)
+    if (grade) {
+      // Lernbereiche, die nur gesperrte Themen enthalten, nur fuer Pruefer/Entwickler.
+      return grade.areas
+        .filter(
+          (area) =>
+            area.topics.length === 0 ||
+            area.topics.some((topic) => isTopicVisible(topic, role)),
+        )
+        .map((area) => area.title)
+    }
   }
   return []
 }

@@ -44,11 +44,11 @@ export interface ExploreRef {
   params?: Record<string, number>
 }
 
-import { isCurriculumPreviewRole } from './roles'
+import { isTopicVisible } from './topicVisibility'
 
 /** Boards gehoeren zum Fachwissen: bei gesperrten (released:false) Themen nur fuer Pruefer/Entwickler. */
-export function canShowExploreBoard(topic: { released?: boolean }, role?: unknown): boolean {
-  return topic.released !== false || isCurriculumPreviewRole(role)
+export function canShowExploreBoard(topic: { id?: string; released?: boolean; neu?: boolean }, role?: unknown): boolean {
+  return isTopicVisible(topic, role)
 }
 
 /* ----------------------------- Helfer ----------------------------- */

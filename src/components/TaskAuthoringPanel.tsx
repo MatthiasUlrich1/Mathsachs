@@ -246,7 +246,7 @@ export function TaskAuthoringPanel({ role }: Props) {
       </div>
 
       <h3 className="task-authoring__sub">Ziel</h3>
-      <TargetCascadingSelects draft={draft} setDraft={setDraft} />
+      <TargetCascadingSelects draft={draft} setDraft={setDraft} role={role} />
 
       <h3 className="task-authoring__sub">Interaktion</h3>
       <div className="field">
@@ -465,9 +465,11 @@ export function TaskAuthoringPanel({ role }: Props) {
 function TargetCascadingSelects({
   draft,
   setDraft,
+  role,
 }: {
   draft: DraftAuthoringTask
   setDraft: (d: DraftAuthoringTask) => void
+  role: UserRole
 }) {
   const [packs, setPacks] = useState<TaskRequestPackOption[]>([])
   const [packsLoading, setPacksLoading] = useState(true)
@@ -507,7 +509,7 @@ function TargetCascadingSelects({
     }
     let cancelled = false
     setAreasLoading(true)
-    void loadAuthoringAreas(draft.target.packId, draft.target.gradeId)
+    void loadAuthoringAreas(draft.target.packId, draft.target.gradeId, role)
       .then((next) => {
         if (cancelled) return
         setAreas(next)
@@ -521,7 +523,7 @@ function TargetCascadingSelects({
     return () => {
       cancelled = true
     }
-  }, [draft.target.packId, draft.target.gradeId])
+  }, [draft.target.packId, draft.target.gradeId, role])
 
   const selectedArea = areas.find((a) => a.id === draft.target.areaId)
   const topics = selectedArea?.topics ?? []

@@ -3,6 +3,8 @@ import { ExploreBoard } from './ExploreBoard'
 import type { Grade, Topic } from '../curriculum/types'
 import { formatTopicContentId } from '../curriculum/contentId'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
+import { filterGradeForRole } from '../lib/topicVisibility'
+import { canShowExploreBoard } from '../lib/exploreBoards'
 
 interface Props {
   grade: Grade
@@ -26,10 +28,9 @@ function DifficultyBadge({ level }: { level: 1 | 2 | 3 }) {
   )
 }
 
-function topicUnavailable(topic: Topic, curriculumDevPreview: boolean): boolean {
-  if (topic.outlineOnly) return true
-  if (topic.released === false && !curriculumDevPreview) return true
-  return false
+/** Nur echte Struktur-Platzhalter; gesperrte Themen werden vorher komplett ausgeblendet. */
+function topicUnavailable(topic: Topic): boolean {
+  return topic.outlineOnly === true
 }
 
 function TopicRow({
@@ -46,7 +47,7 @@ function TopicRow({
   onWorksheet: (topic: Topic, areaTitle: string) => void
 }) {
   const [fwOpen, setFwOpen] = useState(false)
-  const unavailable = topicUnavailable(topic, curriculumDevPreview)
+  const unavailable = topicUnavailable(topic)
   const released = topic.released !== false
 
   return (
@@ -126,7 +127,7 @@ function TopicRow({
       {fwOpen && topic.fachwissen && (
         <div className="fachwissen-card">
           <p className="fachwissen-card__text">{topic.fachwissen.text}</p>
-          {topic.fachwissen.explore && (curriculumDevPreview || topic.released !== false) && (
+          {topic.fachwissen.explore && (curriculumDevPreview || canShowExploreBoard(topic)) && (
             <ExploreBoard
               boardId={topic.fachwissen.explore.boardId}
               params={topic.fachwissen.explore.params}
@@ -158,11 +159,13 @@ function TopicRow({
 }
 
 export function CurriculumBrowser({
-  grade,
+  grade: fullGrade,
   curriculumDevPreview = false,
   onPractice,
   onWorksheet,
 }: Props) {
+  // Gesperrte Themen (und dadurch leere Lernbereiche) nur fuer Pruefer/Entwickler sichtbar.
+  const grade = curriculumDevPreview ? fullGrade : filterGradeForRole(fullGrade)
   const [open, setOpen] = useState<Record<string, boolean>>({
     [grade.areas[0]?.id ?? '']: true,
   })
