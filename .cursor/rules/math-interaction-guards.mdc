@@ -15,13 +15,38 @@ alwaysApply: false
 - Pro Thema `mixedVariants`: mind. Tippen + MC; wo Portfolio passt zusätzlich Zahlenstrahl, Visual/SVG, Koordinaten, Bruchmodell.
 - Keine Bulk-Python-Generatoren; Varianten händisch mit `dedupeKey`.
 
-## Winkelmessen (Portfolio)
-- Virtuelles Messen: `paramSliderTask` (param `grad`) + `generateAngleSvg({ label: '' })` — Gradzahl nicht im Diagramm spoilern.
-- Nicht `dragDropSortTask` für Winkelarten; nicht nur Tippen, wenn Messen didaktisch besser passt.
+## Neue Interaktionen — wofür nutzen
+Helfer in `src/curriculum/measureTaskHelpers.ts` und `interactionTaskHelpers.ts` (Re-Export über `taskHelpers.ts`).
+- `angleProtractorTask` (`mode: 'measure' | 'draw'`): Winkel mit dem Geodreieck messen oder zeichnen.
+- `rulerMeasureTask` (`mode: 'measure' | 'draw'`): Strecken mit dem Lineal messen oder abtragen.
+- `compassArcTask`: Zirkel/Kreis-Werkzeug im Koordinateneditor (Kreise, Bögen, Abstände abtragen).
+- `constructionStepsTask`: geführte Konstruktion mit Planfigur, Schritt für Schritt (z. B. Mittelsenkrechte, Dreieck).
+- `fractionModelTask`: Brüche an Balken/Kreis darstellen (Teile einstellen, Teile färben).
+- `fractionWallTask` (`mode: 'equivalent' | 'compare'`): gleichwertige Brüche finden und Brüche vergleichen an der Bruchwand.
+- `divideToolTask`: Ganze gerecht auf Personen verteilen (Brüche als Teilen).
+- `ratioBarTask` (`mode: 'colour' | 'split'`): Verhältnisse als Felder färben oder eine Menge im Verhältnis aufteilen.
+- `numberLineMultiTask`: mehrere Zahlen auf einer Zahlengeraden platzieren (ziehen), z. B. Brüche/Dezimalzahlen/negative Zahlen.
+- `treeDiagramTask`: Baumdiagramm, Wahrscheinlichkeiten an Ästen und Blättern eintragen.
+- `barChartTask`: Säulendiagramm zeichnen (Säulenhöhen ziehen).
+- `pieChartTask`: Kreisdiagramm zeichnen (Sektorgrenzen ziehen).
+- `clockTask` (`mode: 'setTime' | 'angle'`): Uhrzeit einstellen oder Winkel zwischen Zeigern bestimmen.
+- `symmetryDrawTask`: symmetrische Figur auf dem Gitter ergänzen.
+- Erkundungs-Tafelbild (`fachwissen.explore` mit `boardId` aus `src/lib/exploreBoards.ts`): nicht bewertet, nur zum Entdecken im Fachwissen; Sichtbarkeit nur Prüfer/Entwickler bei gesperrten Themen.
+- `paramSliderTask` ist **kein** Ersatz für Geodreieck/Lineal — nur für Parameter bzw. berechnete Werte.
+- Messen/Konstruieren nie als `paramSliderTask` + Winkel-/Raster-SVG nachbauen; Gradzahl/Länge nicht im Diagramm spoilern.
+- Nicht `dragDropSortTask` für Winkelarten; nicht nur Tippen, wenn Messen/Zeichnen didaktisch besser passt.
 
-## Strecken messen (Lineal-ähnlich)
-- Raster-SVG ohne Längenlabel (`generateSegmentsOnGridSvg` / passende Helper mit `showLengthLabels: false`) + `paramSliderTask` (`cm`/`laenge`).
-- Keine Spoiler-Maße im Diagramm, wenn die Aufgabe „messen“ heißt.
+## Bau-Regeln für Widgets (Lessons aus Review)
+- Tippen-Widgets: `touch-action: manipulation` und Auswahl per `onClick`; nur Zieh-Widgets `touch-action: none`.
+- Pointer: `setPointerCapture` (try/catch) am **stabilen** `svg`, `onLostPointerCapture` behandeln, aktive `pointerId` merken und andere Pointer ignorieren; gezogene Elemente ändern während des Ziehens nie ihre DOM-Position; Greif-Offset halten.
+- Ziehgriffe: unsichtbare Trefferfläche mit Radius ≥ 22 SVG-Einheiten; alles innerhalb der viewBox (Test auf Bounding-Box).
+- Jeder SVG-Text muss in die viewBox passen (Test: Zeichen × Schriftgröße × 0,6); Schriftgrößen/Abstände als exportierte Konstanten zwischen Komponente und Geometrie-Modul teilen, nie Zahlen doppeln.
+- Kein `role="img"` auf einem `svg` mit interaktiven Teilen — `role="group"` + `aria-label`. Deaktiviert: `cursor: default`.
+- Unberührt = `null` (in der Prüfung „nicht bearbeitet“); `check` schlägt bei unberührtem Widget fehl; Validatoren verbieten Antworten, die dem Neutralzustand entsprechen.
+- Startzustand darf nie von der Lösung abhängen (z. B. Säule startet nur bei Antwort 0 woanders = Spoiler).
+- Komma-Dezimalzahlen („0,3“) überall akzeptieren (vorhandene `parseNumber`-Helfer nutzen).
+- Neuer Widget-Typ: alle Verdrahtungsstellen spiegeln (`grep -rn "angleProtractor" src`: types, Re-Export, TaskMedia, examAnswerAttempted, ExamProtocolSheet, worksheetPrint, taskAuthoring + Panel). Autoren-Export-Snippets geben jede Nicht-Default-Prop aus.
+- Arbeitsblatt-Druck: `visualContent` **und** leeren Widget-/Antwortbereich drucken, nie `visual ?? fallback`.
 
 ## Status
 - Graphic-Reviews / Prüfung: `released: false` belassen bis User-Freigabe.

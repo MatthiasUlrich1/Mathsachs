@@ -113,3 +113,15 @@ nach Verdichtung (z. B. Geschichte K6 LB2/LB3).
 8. Regression: `geschichteQuality.test.ts`, `gapAnswerMatch.test.ts`,
    `practiceRoundLength.test.ts` wo betroffen.
 9. Pack-Version bump + CHANGELOG + Curricula exporten bei Pack-Änderung.
+
+## 7) Autorenregeln für Interaktions-Aufgaben (Lessons aus Review)
+
+- **Spoiler-Tests müssen fehlschlagen können:** Mehrwert-Lösungen aufspalten und jeden Wert prüfen; eine Negativkontrolle (absichtlich gespoilerter String wird erkannt); Regexe korrekt escapen (`String.raw`).
+- **Frage druckbar:** Frage muss auch auf Papier Sinn ergeben; Hinweise nur für den Bildschirm (Linien, Griffe, Buttons) gehören in `instruction`, nicht in `question`.
+- **Geld:** immer zwei Nachkommastellen mit Komma („12,50 €“); Eingaben 12,5 / 12,50 / 12.5 akzeptieren.
+- **Singular bei 1:** „1 Strich“, „1 Teil“, nicht „1 Striche“.
+- **Realistische Szenarien:** Rezepte, Mischungen usw. nur mit realistischen Mengen/Verhältnissen; Zufallsparameter pro Szenario einschränken.
+- **Disjunkte Pools (Regel 0b):** nie dasselbe Szenario in zwei Themen; je Thema eigener Pool, `dedupeKey`-Disjunktheit testen; Szenarien innerhalb eines Pools mit verschiedenen Lösungsvektoren.
+- **Toleranz konsistent:** bei Toleranz alle akzeptierten Antworten je Parameter berechnen; Lösung und Erklärung zu dieser Menge passend (per Test absichern).
+- **Beschreibungen korrekt** für jeden erzeugten Wert (z. B. Zeigerstellungen).
+- **Mindestumfang:** je neuem Widget mind. 2 händische Varianten mit eigenem `dedupeKey`, aufgabenspezifische Erklärung, Runde 10 (`practiceRoundLength`).

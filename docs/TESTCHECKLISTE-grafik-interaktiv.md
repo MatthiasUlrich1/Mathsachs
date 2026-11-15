@@ -2,7 +2,7 @@
 
 Stand: v0.26.2 — Klasse für Klasse abhaken. Kommentarzeile für Notizen.
 
-Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid, Auswahl tippen, Mehrfachauswahl, Punkt setzen, Schieberegler.
+Legende: **SVG/Grafik** = Diagramm; Widgets: Zahlenstrahl, Drag&Drop, DigitGrid, Auswahl tippen, Mehrfachauswahl, Punkt setzen, Schieberegler, Winkelmesser (Geodreieck), Lineal, Zirkel/Kreis-Werkzeug, geführte Konstruktion, Bruchmodell, Bruchwand, Teilwerkzeug, Verhältnisleiste, Zahlengerade mit mehreren Zahlen, Baumdiagramm, Säulendiagramm, Kreisdiagramm, Uhr, Symmetrie-Gitter; Erkundungs-Tafelbild (Fachwissen, nicht bewertet).
 
 ---
 
