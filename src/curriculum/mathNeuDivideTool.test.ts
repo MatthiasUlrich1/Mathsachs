@@ -95,3 +95,30 @@ describe('Spoiler-Prüfung Negativkontrolle', () => {
     expect(spoilers({ ...sample, interactive: { ...sample.interactive!, props: leaked } }).length).toBeGreaterThan(0)
   })
 })
+
+describe('Grammatik: Mehrzahl bei Anteilen über einem Ganzen', () => {
+  it('Lösung und Erklärung nennen bei count > persons die Mehrzahl, sonst die Einzahl', () => {
+    const tasks = divideTasks(topicOf('lb1-sachaufgabe-bruch__neu'))
+    let sawPlural = 0
+    let sawSingular = 0
+    for (const t of tasks) {
+      const { count, persons, objectName } = t.interactive!.props as { count: number; persons: number; objectName: string }
+      const m = /^Jedes Kind bekommt (\d+)\/(\d+)(?: = \d+\/\d+)? ([^.]+)\.$/.exec(t.solution)
+      if (!m) continue
+      expect(Number(m[1])).toBe(count)
+      if (count > persons) {
+        if (objectName === 'Schokoladentafel') {
+          expect(m[3], t.solution).toBe('Schokoladentafeln')
+          expect(t.explanation).toMatch(new RegExp(`${count}/${persons} Schokoladentafeln`))
+          expect(t.explanation).not.toMatch(new RegExp(`${count}/${persons} Schokoladentafel[^n]`))
+          sawPlural++
+        }
+      } else if (objectName === 'Schokoladentafel') {
+        expect(m[3], t.solution).toBe('Schokoladentafel')
+        sawSingular++
+      }
+    }
+    expect(sawPlural).toBeGreaterThan(0)
+    expect(sawSingular).toBeGreaterThan(0)
+  })
+})

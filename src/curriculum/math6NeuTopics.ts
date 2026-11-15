@@ -32,6 +32,9 @@ import {
   textTask,
   valueTask,
   visualTask,
+  hasCircle,
+  hasPointNear,
+  hasSegment,
 } from './taskHelpers'
 import {
   generateCubeNetChoicesSvg,
@@ -47,7 +50,6 @@ import {
   generateTriangleSvg,
   generateValueTableSvg,
 } from '../lib/geometrySvg'
-import { hasCircle, hasPointNear, hasSegment } from './measureTaskHelpers'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
 import { TABLE_SURVEYS, TALLY_SURVEYS, surveyBarChartTask } from './barChartSurveys'
@@ -1247,6 +1249,8 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
       ])
       const g = gcd(count, persons)
       const share = `${count / g}/${persons / g}`
+      // A share above one whole reads in the plural ("4/3 Schokoladentafeln"), below one in the singular.
+      const unit = count > persons ? treat.many : treat.one
       const subject = `${count} ${treat.many} werden`
       return divideToolTask({
         question: `${subject} gerecht an ${persons} Kinder verteilt. Zerlege die ${treat.many} in gleich große Teile und verteile alle Teile so, dass jedes Kind gleich viel bekommt.`,
@@ -1254,8 +1258,8 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
         count,
         persons,
         objectName: treat.one,
-        solution: `Jedes Kind bekommt ${count}/${persons}${g > 1 ? ` = ${share}` : ''} ${treat.one}.`,
-        explanation: `${count} ${treat.many} für ${persons} Kinder: Das ist die Rechnung ${count} : ${persons}. Schneide jedes Ganze in ${persons} gleich große Teile. Ein Teil ist dann 1/${persons}. Jedes Kind bekommt von jedem Ganzen ein Teil, also ${count} Teile: ${count}/${persons} ${treat.one}${g > 1 ? `, gekürzt ${share}` : ''}. Der Bruch ${count}/${persons} ist also das Ergebnis von ${count} : ${persons}. Es geht auch mit anderen Teilungen, solange jedes Kind gleich viele Teile bekommt.`,
+        solution: `Jedes Kind bekommt ${count}/${persons}${g > 1 ? ` = ${share}` : ''} ${unit}.`,
+        explanation: `${count} ${treat.many} für ${persons} Kinder: Das ist die Rechnung ${count} : ${persons}. Schneide jedes Ganze in ${persons} gleich große Teile. Ein Teil ist dann 1/${persons}. Jedes Kind bekommt von jedem Ganzen ein Teil, also ${count} Teile: ${count}/${persons} ${unit}${g > 1 ? `, gekürzt ${share}` : ''}. Der Bruch ${count}/${persons} ist also das Ergebnis von ${count} : ${persons}. Es geht auch mit anderen Teilungen, solange jedes Kind gleich viele Teile bekommt.`,
         dedupeKey: `teilen-quotient:${treat.one}:${count}:${persons}`,
       })
     },
@@ -1389,10 +1393,10 @@ const proportionalNeu: Topic = asNeuTopic('lb2-proportional', {
     (rng: Rng) => {
       const rec = pick(rng, [
         { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [50, 60, 100, 150], ratios: [[1, 2], [1, 3], [2, 3], [3, 2], [1, 4], [2, 1]] as Array<[number, number]> },
-        // Öl immer mehr als Essig, Mehl immer mehr als Wasser, Milch immer weit mehr als Kakaopulver
+        // Öl immer mehr als Essig, Mehl immer mehr als Wasser, Apfelsaft immer mehr als Tee (beide Teile in derselben Einheit)
         { text: 'Ein Salatdressing', labels: ['Öl', 'Essig'] as [string, string], unit: 'ml', ks: [10, 20, 25, 30], ratios: [[3, 1], [2, 1], [3, 2], [5, 2]] as Array<[number, number]> },
         { text: 'Ein Teig', labels: ['Mehl', 'Wasser'] as [string, string], unit: 'g', ks: [25, 50, 75, 100], ratios: [[2, 1], [3, 2], [5, 3], [3, 1]] as Array<[number, number]> },
-        { text: 'Eine Kakaomischung', labels: ['Milch', 'Kakaopulver'] as [string, string], unit: 'ml', ks: [12.5, 25, 37.5], ratios: [[8, 1], [6, 1], [10, 1]] as Array<[number, number]> },
+        { text: 'Ein Kinderpunsch', labels: ['Apfelsaft', 'Tee'] as [string, string], unit: 'ml', ks: [25, 50, 75, 100], ratios: [[2, 1], [3, 1], [3, 2], [4, 1]] as Array<[number, number]> },
       ])
       const [a, b] = pick(rng, rec.ratios)
       const k = pick(rng, rec.ks)

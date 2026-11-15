@@ -136,3 +136,25 @@ export const rulerLocalToSvg = (pose: RulerPose, p: Point): Point => {
     y: pose.y - p.x * Math.sin(a) + p.y * Math.cos(a),
   }
 }
+
+/** Visible margin (SVG units) that the grab points keep to the viewBox edge. */
+export const RULER_EDGE_MARGIN = 14
+
+/** Centre of the rotation handle for a pose (SVG units). */
+export const rulerHandleCentre = (pose: RulerPose, unitPx: number): Point =>
+  rulerLocalToSvg(pose, { x: rulerLength(unitPx) - RULER_HANDLE_OFFSET_X, y: RULER_HANDLE_Y })
+
+/**
+ * Shift the pose so that the 0 mark (move grip) and the rotation handle both stay inside the
+ * viewBox with RULER_EDGE_MARGIN to spare. Rotation is untouched. If both cannot fit, the shift is
+ * split evenly so neither is lost by more than necessary.
+ */
+export const clampRulerPose = (pose: RulerPose, unitPx: number): RulerPose => {
+  const pts = [{ x: pose.x, y: pose.y }, rulerHandleCentre(pose, unitPx)]
+  const shiftFor = (key: 'x' | 'y', size: number): number => {
+    const lo = Math.max(...pts.map((p) => RULER_EDGE_MARGIN - p[key]))
+    const hi = Math.min(...pts.map((p) => size - RULER_EDGE_MARGIN - p[key]))
+    return lo <= hi ? Math.min(hi, Math.max(lo, 0)) : (lo + hi) / 2
+  }
+  return { ...pose, x: pose.x + shiftFor('x', RULER_VIEWBOX.w), y: pose.y + shiftFor('y', RULER_VIEWBOX.h) }
+}

@@ -97,3 +97,16 @@ export const measureStartPose = (angle: number, startAngle: number): ProtractorP
   y: 200,
   rot: normalizeDegrees(startAngle + 25 + ((angle * 7) % 35)),
 })
+
+/** Distance from the origin to the far side of the rotation handle, plus a visible margin. */
+export const PROTRACTOR_EDGE_MARGIN = PROTRACTOR_HANDLE_Y + PROTRACTOR_HANDLE_RADIUS + 6
+
+/**
+ * Keep the protractor origin far enough from the viewBox edge that the rotation handle (and the
+ * origin grip) stay inside and reachable at any rotation.
+ */
+export const clampProtractorPose = (pose: ProtractorPose): ProtractorPose => {
+  const clamp = (v: number, size: number) =>
+    Math.min(size - PROTRACTOR_EDGE_MARGIN, Math.max(PROTRACTOR_EDGE_MARGIN, v))
+  return { ...pose, x: clamp(pose.x, PROTRACTOR_VIEWBOX.w), y: clamp(pose.y, PROTRACTOR_VIEWBOX.h) }
+}

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import {
   PROTRACTOR_HALF_WIDTH,
+  clampProtractorPose,
   PROTRACTOR_HANDLE_RADIUS,
   PROTRACTOR_HANDLE_Y,
   PROTRACTOR_SNAP_DISTANCE,
@@ -76,6 +77,24 @@ describe('protractorGeometry', () => {
       const pose = measureStartPose(angle, 0)
       expect(Math.hypot(pose.x - V.x, pose.y - V.y)).toBeGreaterThan(PROTRACTOR_SNAP_DISTANCE)
       expect(pose.rot % 360).not.toBe(0)
+    }
+  })
+})
+
+describe('clampProtractorPose', () => {
+  it('keeps an inside pose and pulls far-off poses back with the handle reachable', () => {
+    expect(clampProtractorPose({ x: 240, y: 200, rot: 30 })).toEqual({ x: 240, y: 200, rot: 30 })
+    for (const [x, y] of [[-300, -300], [9999, 9999], [0, 160], [360, 320]] as const) {
+      const c = clampProtractorPose({ x, y, rot: 77 })
+      expect(c.rot).toBe(77)
+      for (let rot = 0; rot < 360; rot += 10) {
+        const a = (rot * Math.PI) / 180
+        const h = { x: c.x + PROTRACTOR_HANDLE_Y * Math.sin(a), y: c.y + PROTRACTOR_HANDLE_Y * Math.cos(a) }
+        expect(h.x).toBeGreaterThan(PROTRACTOR_HANDLE_RADIUS)
+        expect(h.x).toBeLessThan(VB.w - PROTRACTOR_HANDLE_RADIUS)
+        expect(h.y).toBeGreaterThan(PROTRACTOR_HANDLE_RADIUS)
+        expect(h.y).toBeLessThan(VB.h - PROTRACTOR_HANDLE_RADIUS)
+      }
     }
   })
 })

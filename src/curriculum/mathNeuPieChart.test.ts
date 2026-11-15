@@ -8,6 +8,7 @@ import { worksheetPrintExtras } from '../lib/worksheetPrint'
 import { pcExtentFits, pcSourceFits, pcStartPercents, pcTextExtents } from '../lib/pieChartLogic'
 import { buildUniqueTaskRound } from './uniqueRound'
 import { math6NeuTopics } from './math6NeuTopics'
+import { TABLE_SURVEYS, TALLY_SURVEYS } from './barChartSurveys'
 import { COUNT_SURVEYS, COUNT_SURVEYS_ANTEIL, COUNT_SURVEYS_HAEUFIGKEIT, PERCENT_SURVEYS, countPieChartTask, percentPieChartTask } from './pieChartSurveys'
 import type { Task, Topic } from './types'
 
@@ -184,6 +185,12 @@ describe('Themen und Szenarien sind getrennt', () => {
     ].map((v) => v.join(','))
     expect(new Set(vectors).size).toBe(vectors.length)
     for (const s of COUNT_SURVEYS) expect(s.counts.every((n) => n === s.counts[0])).toBe(false)
+  })
+
+  it('Häufigkeit: Kreisdiagramm-Themen wiederholen kein Thema der Säulendiagramm-Umfragen', () => {
+    const barHeads = new Set([...TALLY_SURVEYS, ...TABLE_SURVEYS].map((s) => s.head))
+    expect(barHeads.has('Haustier')).toBe(true) // control: the comparison can see overlaps
+    for (const s of COUNT_SURVEYS_HAEUFIGKEIT) expect(barHeads.has(s.head), s.head).toBe(false)
   })
 
   it('Verein-Szenario: nicht alle Kinder sind im Verein', () => {

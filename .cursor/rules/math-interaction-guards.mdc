@@ -1,6 +1,6 @@
 ---
 description: Mathe-Interaktionen korrekt wählen (Bettermarks-Vorbild, kein Sort-Missbrauch)
-globs: src/curriculum/math*.ts
+globs: src/curriculum/math*.ts,src/curriculum/*TaskHelpers.ts,src/components/**/*.tsx,src/lib/*Logic.ts,src/lib/*Geometry.ts
 alwaysApply: false
 ---
 

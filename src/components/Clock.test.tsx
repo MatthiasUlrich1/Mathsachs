@@ -4,13 +4,19 @@ import fs from 'node:fs'
 import { describe, expect, it, vi } from 'vitest'
 import type { UserInput } from '../curriculum/types'
 
+const refLog = vi.hoisted(() => [] as Array<{ current: unknown }>)
+
 // The component only needs a ref and one piece of state: make the hooks plain so the element tree
 // can be inspected and the handlers called directly (no DOM environment in this project).
 vi.mock('react', async (importOriginal) => {
   const actual = await importOriginal<typeof import('react')>()
   return {
     ...actual,
-    useRef: <T,>(v: T) => ({ current: v }),
+    useRef: <T,>(v: T) => {
+      const r = { current: v }
+      refLog.push(r)
+      return r
+    },
     useState: <T,>(v: T | (() => T)) => [typeof v === 'function' ? (v as () => T)() : v, () => {}],
   }
 })
@@ -131,6 +137,19 @@ describe('Clock markup', () => {
 })
 
 describe('Clock dragging', () => {
+  it('a stale pointer id without a drag does not lock the clock; a running drag still ignores a second pointer', () => {
+    refLog.length = 0
+    const els = tree()
+    const [, drag, active] = refLog as [unknown, { current: unknown }, { current: number | null }]
+    active.current = 7 // capture failed, release happened outside: id left over, no drag
+    ;(handle(els, 'minute').props.onPointerDown as Handler)(ptr(2, 90))
+    expect(active.current).toBe(1)
+    expect(drag.current).not.toBeNull()
+    // second pointer while dragging is ignored
+    ;(handle(els, 'hour').props.onPointerDown as Handler)({ ...ptr(200, 50), pointerId: 2 })
+    expect(active.current).toBe(1)
+  })
+
   it('pressing a knob does not move it; dragging the minute hand snaps to 5 minutes and carries the hour hand', () => {
     const onChange = vi.fn()
     const els = tree({ onChange })

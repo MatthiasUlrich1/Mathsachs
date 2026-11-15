@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import {
   RULER_CM,
+  RULER_EDGE_MARGIN,
+  clampRulerPose,
+  rulerHandleCentre,
   RULER_HANDLE_RADIUS,
   RULER_MAX_ANGLE,
   RULER_ORIGIN as O,
@@ -93,6 +96,31 @@ describe('rulerGeometry', () => {
       const pose = rulerStartPose(t / 10, 0)
       expect(Math.hypot(pose.x - O.x, pose.y - O.y)).toBeGreaterThan(RULER_SNAP_DISTANCE)
       expect(pose.rot).toBeGreaterThan(0)
+    }
+  })
+})
+
+describe('clampRulerPose', () => {
+  const M = RULER_EDGE_MARGIN
+  const inside = (p: { x: number; y: number }) =>
+    p.x >= M - 1e-6 && p.x <= VB.w - M + 1e-6 && p.y >= M - 1e-6 && p.y <= VB.h - M + 1e-6
+  it('keeps a pose that is inside unchanged', () => {
+    const pose = { x: 60, y: 190, rot: 5 }
+    expect(clampRulerPose(pose, 40)).toEqual(pose)
+  })
+  it('pulls the grips of the long ruler back inside for far-off positions (near-horizontal)', () => {
+    for (const rot of [0, 5, 15, 345, 180, 195]) {
+      for (const [x, y] of [[-500, -500], [2000, 2000], [-100, 190], [700, 10], [320, 900]] as const) {
+        const c = clampRulerPose({ x, y, rot }, 40)
+        expect(c.rot).toBe(rot)
+        expect(inside({ x: c.x, y: c.y }) && inside(rulerHandleCentre(c, 40)), `${x},${y},${rot}`).toBe(true)
+      }
+    }
+  })
+  it('keeps both grips inside for the short ruler at any rotation', () => {
+    for (let rot = 0; rot < 360; rot += 10) {
+      const c = clampRulerPose({ x: -900, y: 900, rot }, 20)
+      expect(inside({ x: c.x, y: c.y }) && inside(rulerHandleCentre(c, 20)), `rot ${rot}`).toBe(true)
     }
   })
 })

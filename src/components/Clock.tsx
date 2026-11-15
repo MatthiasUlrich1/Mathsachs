@@ -73,7 +73,9 @@ export const Clock: React.FC<ClockProps> = ({ minuteSnap = CK_DEFAULT_SNAP, valu
   }
 
   const onDown = (fallback: ClockHand) => (e: React.PointerEvent) => {
-    if (disabled || activePointer.current !== null) return
+    // A stale pointer id (capture failed and the release happened outside the svg) must not lock the clock:
+    // only an active drag blocks a second pointer.
+    if (disabled || (activePointer.current !== null && drag.current !== null)) return
     activePointer.current = e.pointerId
     try {
       // Capture on the svg: it never moves in the DOM.

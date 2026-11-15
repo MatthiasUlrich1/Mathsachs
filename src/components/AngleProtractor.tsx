@@ -15,6 +15,7 @@ import {
   normalizeDegrees,
   pointAt,
   snapToVertex,
+  clampProtractorPose,
   type Point,
   type ProtractorPose,
 } from '../lib/protractorGeometry'
@@ -152,7 +153,8 @@ export const AngleProtractor: React.FC<AngleProtractorProps> = ({
     if (!d || disabled) return
     const p = toSvg(e)
     if (d.kind === 'move') {
-      const next = snapToVertex({ x: p.x + d.dx, y: p.y + d.dy })
+      const c = clampProtractorPose({ rot: 0, x: p.x + d.dx, y: p.y + d.dy })
+      const next = snapToVertex({ x: c.x, y: c.y })
       setPose((cur) => ({ ...cur, x: next.x, y: next.y }))
     } else if (d.kind === 'rotate') {
       const rot = Math.round(

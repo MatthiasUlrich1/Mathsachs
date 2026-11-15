@@ -24,8 +24,10 @@ import {
   paramSliderTask,
   valueTask,
   numberLineMultiTask,
+  compassArcTask,
+  hasCircle,
+  hasPointNear,
 } from './taskHelpers'
-import { compassArcTask, hasCircle, hasPointNear } from './measureTaskHelpers'
 import { emptyCoordinateScene, sameLine, type CoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
 import type { Topic } from './types'

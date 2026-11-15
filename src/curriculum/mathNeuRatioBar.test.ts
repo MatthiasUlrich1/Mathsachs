@@ -133,7 +133,7 @@ describe('Inhaltliche Qualität', () => {
     expect(sawHalf).toBe(true)
   })
 
-  it('Rezepte nutzen nur realistische Verhältnisse (Kakao < Milch, Wasser < Mehl, Essig < Öl)', () => {
+  it('Rezepte nutzen nur realistische Verhältnisse (Tee < Apfelsaft, Wasser < Mehl, Essig < Öl)', () => {
     const tasks = barTasks(topicOf('lb2-proportional__neu')).filter((t) => t.interactive!.props.mode === 'split')
     expect(tasks.length).toBeGreaterThan(0)
     const seen = new Set<string>()
@@ -141,8 +141,8 @@ describe('Inhaltliche Qualität', () => {
       const [x, y] = t.interactive!.props.labels as string[]
       const [a, b] = t.interactive!.props.ratio as number[]
       seen.add(x!)
-      if (['Milch', 'Mehl', 'Öl'].includes(x!)) expect(a, `${x}:${y} ${a}:${b}`).toBeGreaterThan(b!)
-      if (x === 'Milch') expect(a! / b!, t.question).toBeGreaterThanOrEqual(6)
+      if (['Apfelsaft', 'Mehl', 'Öl'].includes(x!)) expect(a, `${x}:${y} ${a}:${b}`).toBeGreaterThan(b!)
+      if (x === 'Apfelsaft') expect(y).toBe('Tee')
     }
     expect(seen.size).toBeGreaterThanOrEqual(3)
   })

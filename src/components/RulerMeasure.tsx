@@ -19,6 +19,7 @@ import {
   roundCm,
   rulerLength,
   rulerStartPose,
+  clampRulerPose,
   segmentEnd,
   snapRotation,
   snapToEnd,
@@ -144,8 +145,11 @@ export const RulerMeasure: React.FC<RulerMeasureProps> = ({
     if (!d || disabled) return
     const p = toSvg(e)
     if (d.kind === 'move') {
-      const next = snapToEnd({ x: p.x + d.dx, y: p.y + d.dy })
-      setPose((cur) => ({ ...cur, x: next.x, y: next.y }))
+      setPose((cur) => {
+        const c = clampRulerPose({ ...cur, x: p.x + d.dx, y: p.y + d.dy }, unitPx)
+        const next = snapToEnd({ x: c.x, y: c.y })
+        return { ...cur, x: next.x, y: next.y }
+      })
     } else if (d.kind === 'rotate') {
       const raw = normalizeDegrees(directionDegrees({ x: pose.x, y: pose.y }, p) + d.offset)
       const rot = Math.round(raw * 10) / 10

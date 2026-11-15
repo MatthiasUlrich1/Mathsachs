@@ -42,18 +42,18 @@ export const COUNT_SURVEYS: CountSurvey[] = [
     counts: [9, 6, 3, 2],
   },
   {
-    id: 'schulweg6b',
-    context: 'Bei einer Umfrage in der Jahrgangsstufe 6 wurden 40 Kinder gefragt, wie sie morgens zur Schule kommen.',
-    head: 'Weg zur Schule',
-    categories: ['Zu Fuß', 'Fahrrad', 'Bus', 'Auto'],
-    counts: [14, 10, 12, 4],
+    id: 'jahreszeit6b',
+    context: 'In der Jahrgangsstufe 6 wurden 40 Kinder gefragt, welche Jahreszeit sie am liebsten mögen.',
+    head: 'Lieblingsjahreszeit',
+    categories: ['Frühling', 'Sommer', 'Herbst', 'Winter'],
+    counts: [6, 14, 8, 12],
   },
   {
-    id: 'tier6c',
-    context: 'In der Klasse 6c wurden 25 Kinder gefragt, welches Haustier sie haben (ein Tier pro Kind oder keins).',
-    head: 'Haustier',
-    categories: ['Hund', 'Katze', 'Fisch', 'Kein Tier'],
-    counts: [10, 5, 5, 5],
+    id: 'getraenk6c',
+    context: 'In der Klasse 6c wurden 20 Kinder gefragt, was sie morgens zum Frühstück am liebsten trinken.',
+    head: 'Frühstücksgetränk',
+    categories: ['Milch', 'Tee', 'Saft', 'Wasser'],
+    counts: [9, 3, 5, 3],
   },
   {
     id: 'verein50',
@@ -72,7 +72,7 @@ export const COUNT_SURVEYS: CountSurvey[] = [
 ]
 
 /** Split by topic so that the topics never produce the same tasks. */
-export const COUNT_SURVEYS_HAEUFIGKEIT: CountSurvey[] = COUNT_SURVEYS.filter((s) => ['pause6a', 'schulweg6b', 'tier6c'].includes(s.id))
+export const COUNT_SURVEYS_HAEUFIGKEIT: CountSurvey[] = COUNT_SURVEYS.filter((s) => ['pause6a', 'jahreszeit6b', 'getraenk6c'].includes(s.id))
 export const COUNT_SURVEYS_ANTEIL: CountSurvey[] = COUNT_SURVEYS.filter((s) => ['verein50', 'eis6d'].includes(s.id))
 
 export const PERCENT_SURVEYS: PercentSurvey[] = [
