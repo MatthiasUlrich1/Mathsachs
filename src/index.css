@@ -111,7 +111,8 @@ body {
   padding: 24px;
 }
 
-#root {
+/* :where() keeps this at specificity 0 */
+:where(#root) {
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -125,9 +126,8 @@ body {
 }
 
 /* Headings */
-h1,
-h2,
-h3 {
+/* Base elements below use :where() so component CSS always wins. */
+:where(h1, h2, h3) {
   font-family: var(--font-heading);
   font-weight: 700;
   font-stretch: 90%;
@@ -135,25 +135,25 @@ h3 {
   color: var(--graphite);
 }
 
-h1 {
+:where(h1) {
   font-size: var(--fs-6);
   font-weight: 800;
 }
 
-h2 {
+:where(h2) {
   font-size: var(--fs-5);
 }
 
-h3 {
+:where(h3) {
   font-size: var(--fs-4);
   font-weight: 600;
 }
 
-p {
+:where(p) {
   max-width: 70ch;
 }
 
-a {
+:where(a) {
   color: var(--ink);
   text-underline-offset: 0.15em;
 }
@@ -173,17 +173,12 @@ a {
 }
 
 /* Link-style buttons carry no frame */
-:where(button).link {
+:where(button.link) {
   border: 0;
   background: none;
-  padding: 0;
-  color: var(--ink);
-  font-weight: inherit;
-  border-radius: 0;
 }
 
-:where(button).secondary,
-:where(button).ghost {
+:where(button.secondary, button.ghost) {
   background: transparent;
   color: var(--ink);
 }
@@ -208,7 +203,7 @@ a {
   opacity: 1;
 }
 
-:focus-visible {
+:where(:focus-visible) {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }

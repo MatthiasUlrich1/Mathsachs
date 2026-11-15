@@ -90,3 +90,67 @@ describe('WCAG contrast >= 4.5 (text pairs)', () => {
     })
   }
 })
+
+/** Removes balanced :where(...) groups (they contribute no specificity). */
+const stripWhere = (sel: string): string => {
+  let out = ''
+  for (let i = 0; i < sel.length; ) {
+    if (sel.startsWith(':where(', i)) {
+      let depth = 0
+      let j = i + ':where'.length
+      for (; j < sel.length; j++) {
+        if (sel[j] === '(') depth++
+        else if (sel[j] === ')' && --depth === 0) break
+      }
+      i = j + 1
+    } else out += sel[i++]
+  }
+  return out
+}
+
+const splitTopLevel = (list: string): string[] => {
+  const parts: string[] = []
+  let depth = 0
+  let cur = ''
+  for (const ch of list) {
+    if (ch === '(') depth++
+    if (ch === ')') depth--
+    if (ch === ',' && depth === 0) {
+      parts.push(cur.trim())
+      cur = ''
+    } else cur += ch
+  }
+  parts.push(cur.trim())
+  return parts
+}
+
+describe('CSS cascade order and specificity', () => {
+  it('main.tsx imports index.css before App', () => {
+    const main = readFileSync(new URL('../main.tsx', import.meta.url), 'utf8')
+    const iCss = main.indexOf("import './index.css'")
+    const iApp = main.indexOf('import App from')
+    expect(iCss).toBeGreaterThan(-1)
+    expect(iApp).toBeGreaterThan(iCss)
+  })
+
+  it('every base selector outside the token blocks has specificity 0', () => {
+    const stripped = css.replace(/\/\*[\s\S]*?\*\//g, '')
+    const preludes = [...stripped.matchAll(/([^{}]+)\{/g)].map((m) => m[1].trim())
+    const tokenBlocks = [
+      ':root',
+      ":root[data-theme='tafel']",
+      ":root:not([data-theme='heft'])",
+    ]
+    const offenders: string[] = []
+    for (const prelude of preludes) {
+      if (prelude.startsWith('@')) continue
+      for (const sel of splitTopLevel(prelude)) {
+        if (tokenBlocks.includes(sel) || sel === 'body' || sel === '*') continue
+        // Only pseudo-elements (::x), universal and whitespace may remain once :where() is removed.
+        const rest = stripWhere(sel).replace(/::[a-z-]+/g, '').replace(/[\s*]/g, '')
+        if (rest !== '') offenders.push(sel)
+      }
+    }
+    expect(offenders).toEqual([])
+  })
+})
