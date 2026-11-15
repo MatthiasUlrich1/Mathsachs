@@ -137,6 +137,7 @@ describe('CSS cascade order and specificity', () => {
     const stripped = css.replace(/\/\*[\s\S]*?\*\//g, '')
     const preludes = [...stripped.matchAll(/([^{}]+)\{/g)].map((m) => m[1].trim())
     const tokenBlocks = [
+      ':root[data-theme]',
       ':root',
       ":root[data-theme='tafel']",
       ":root:not([data-theme='heft'])",
@@ -152,5 +153,79 @@ describe('CSS cascade order and specificity', () => {
       }
     }
     expect(offenders).toEqual([])
+  })
+})
+
+/* ---- D2 fix round: --on-marker, tinted badges, print = Heft ---- */
+
+const toRgb = (h: string): number[] => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16))
+/** sRGB color-mix(a pa%, b) as hex (what the browser computes for opaque b). */
+const mixHex = (a: string, pa: number, b: string): string =>
+  '#' +
+  toRgb(a)
+    .map((v, i) => Math.round(v * pa + toRgb(b)[i] * (1 - pa)))
+    .map((v) => v.toString(16).padStart(2, '0'))
+    .join('')
+
+describe('--on-marker and tinted badges', () => {
+  const themes = { Heft: heft, Tafel: tafel }
+  for (const [name, body] of Object.entries(themes)) {
+    const c = (t: string) => valueOf(body, t)
+    it(`${name}: --on-marker on solid --marker >= 4.5`, () => {
+      expect(contrastRatio(c('on-marker'), c('marker'))).toBeGreaterThanOrEqual(4.5)
+    })
+    for (const x of ['tick', 'correction', 'ink']) {
+      for (const base of ['paper', 'surface']) {
+        it(`${name}: --${x} mixed 55% with graphite on its 10% tint over --${base}`, () => {
+          const text = mixHex(c(x), 0.55, c('graphite'))
+          const bg = mixHex(c(x), 0.1, c(base))
+          expect(contrastRatio(text, bg)).toBeGreaterThanOrEqual(4.5)
+        })
+      }
+    }
+    for (const base of ['paper', 'surface']) {
+      it(`${name}: --graphite on 20% --marker tint over --${base}`, () => {
+        expect(
+          contrastRatio(c('graphite'), mixHex(c('marker'), 0.2, c(base))),
+        ).toBeGreaterThanOrEqual(4.5)
+      })
+    }
+  }
+  it('mix helper negative control: raw --tick on its 20% tint fails in Heft', () => {
+    const t = valueOf(heft, 'tick')
+    expect(contrastRatio(t, mixHex(t, 0.2, valueOf(heft, 'paper')))).toBeLessThan(4.5)
+  })
+  it('--scrim is defined in all theme blocks', () => {
+    for (const b of [heft, tafel, tafelAuto]) expect(b).toMatch(/--scrim:/)
+  })
+})
+
+describe('print is always Heft', () => {
+  const printCss = (() => {
+    const i = css.indexOf('@media print')
+    if (i < 0) throw new Error('no @media print in index.css')
+    const open = css.indexOf('{', i)
+    let depth = 0
+    for (let j = open; j < css.length; j++) {
+      if (css[j] === '{') depth++
+      else if (css[j] === '}' && --depth === 0) return css.slice(open + 1, j)
+    }
+    throw new Error('unbalanced')
+  })()
+
+  it('overrides :root and :root[data-theme]', () => {
+    expect(printCss).toMatch(/:root,\s*:root\[data-theme\]\s*\{/)
+  })
+  it.each([...TOKENS, 'on-marker'])('--%s equals its Heft value in print', (t) => {
+    const re = new RegExp(`--${t}:\\s*(#[0-9a-fA-F]{6})\\s*;`)
+    const printed = re.exec(printCss)?.[1]
+    expect(printed).toBeDefined()
+    expect(printed!.toLowerCase()).toBe(re.exec(heft)![1].toLowerCase())
+  })
+  it('forces color-scheme light in print', () => {
+    expect(printCss).toMatch(/color-scheme:\s*light/)
+  })
+  it('print block comes after the Tafel blocks (cascade order)', () => {
+    expect(css.indexOf('@media print')).toBeGreaterThan(css.lastIndexOf("--marker: #f6e27a"))
   })
 })

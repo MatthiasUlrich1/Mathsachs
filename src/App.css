@@ -83,7 +83,7 @@
 
 .tab {
   padding: 8px 14px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   color: var(--graphite);
   border: 1px solid var(--line);
@@ -140,7 +140,7 @@
   gap: 12px;
   padding: 12px;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
@@ -230,8 +230,8 @@
 .user-badge__points {
   font-weight: 800;
   font-variant-numeric: tabular-nums;
-  color: var(--graphite);
   background: linear-gradient(transparent 20%, var(--marker) 20%, var(--marker) 90%, transparent 90%);
+  color: var(--on-marker);
   padding: 0 4px;
 }
 
@@ -372,7 +372,7 @@ div.sheet .card + .card {
   justify-content: space-between;
   gap: 12px;
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -455,14 +455,14 @@ div.sheet .card + .card {
 
 /* Curriculum setup ("Lehrpläne") */
 .notice {
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 12px 14px;
   font-size: 14px;
   margin-bottom: 16px;
 }
 
 .notice--warn {
-  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
   border: 1px solid color-mix(in srgb, var(--marker) 40%, transparent);
 }
 
@@ -475,7 +475,7 @@ div.sheet .card + .card {
 .update-banner {
   background: color-mix(in srgb, var(--ink) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--ink) 38%, transparent);
-  border-radius: 20px;
+  border-radius: var(--radius-control);
   padding: 16px 18px 14px;
 }
 
@@ -497,7 +497,7 @@ div.sheet .card + .card {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   color: var(--pencil);
   font-size: 20px;
@@ -592,7 +592,7 @@ a.ghost.update-banner__link {
 
 .curriculum-card {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   padding: 16px 18px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
@@ -628,14 +628,14 @@ a.ghost.update-banner__link {
 }
 
 .badge--ok {
-  background: color-mix(in srgb, var(--tick) 16%, transparent);
-  color: var(--tick);
+  background: color-mix(in srgb, var(--tick) 10%, transparent);
+  color: color-mix(in srgb, var(--tick) 55%, var(--graphite));
   border-color: color-mix(in srgb, var(--tick) 40%, transparent);
 }
 
 .badge--extra {
   margin-left: 8px;
-  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
   color: var(--graphite);
   border-color: color-mix(in srgb, var(--marker) 40%, transparent);
 }
@@ -671,7 +671,7 @@ a.ghost.update-banner__link {
 /* Buttons */
 .primary {
   padding: 13px 18px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   font-size: 15px;
   font-weight: 700;
   color: var(--paper);
@@ -690,7 +690,7 @@ a.ghost.update-banner__link {
 
 .ghost {
   padding: 11px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   font-size: 14px;
   font-weight: 600;
   color: var(--graphite);
@@ -751,7 +751,7 @@ a.ghost.update-banner__link {
   align-items: flex-start;
   gap: 2px;
   padding: 12px 18px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -832,7 +832,7 @@ a.ghost.update-banner__link {
   margin-top: 0.75rem;
   padding: 0.75rem;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
 }
 
 .task-authoring-svg {
@@ -898,7 +898,7 @@ a.task-request__send {
   align-items: center;
   gap: 8px;
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   cursor: pointer;
@@ -943,7 +943,7 @@ a.task-request__send {
 
 .area {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   overflow: hidden;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
@@ -997,7 +997,7 @@ a.task-request__send {
   justify-content: space-between;
   gap: 10px;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
@@ -1007,7 +1007,7 @@ a.task-request__send {
   flex-direction: column;
   gap: 4px;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
@@ -1079,21 +1079,21 @@ a.task-request__send {
   font-size: 0.7rem;
   font-weight: 600;
   padding: 0.08rem 0.35rem;
-  border-radius: 4px;
+  border-radius: 999px;
 }
 
 .topic__release-badge--ok {
-  background: color-mix(in srgb, var(--tick) 20%, transparent);
-  color: var(--tick);
+  background: color-mix(in srgb, var(--tick) 10%, transparent);
+  color: color-mix(in srgb, var(--tick) 55%, var(--graphite));
 }
 
 .topic__release-badge--locked {
-  background: color-mix(in srgb, var(--correction) 20%, transparent);
-  color: var(--correction);
+  background: color-mix(in srgb, var(--correction) 10%, transparent);
+  color: color-mix(in srgb, var(--correction) 55%, var(--graphite));
 }
 
 .topic__release-badge--review {
-  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
   color: var(--graphite);
 }
 
@@ -1122,35 +1122,35 @@ a.task-request__send {
   display: inline-block;
   font-size: 11px;
   padding: 1px 6px;
-  border-radius: 6px;
+  border-radius: 999px;
   margin-left: 6px;
   font-weight: 700;
   vertical-align: middle;
 }
 
 .difficulty-badge--1 {
-  background: color-mix(in srgb, var(--tick) 18%, transparent);
-  color: var(--tick);
+  background: color-mix(in srgb, var(--tick) 10%, transparent);
+  color: color-mix(in srgb, var(--tick) 55%, var(--graphite));
   border: 1px solid color-mix(in srgb, var(--tick) 35%, transparent);
 }
 
 .difficulty-badge--2 {
-  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
   color: var(--graphite);
   border: 1px solid color-mix(in srgb, var(--marker) 35%, transparent);
 }
 
 .difficulty-badge--3 {
-  background: color-mix(in srgb, var(--correction) 18%, transparent);
-  color: var(--correction);
+  background: color-mix(in srgb, var(--correction) 10%, transparent);
+  color: color-mix(in srgb, var(--correction) 55%, var(--graphite));
   border: 1px solid color-mix(in srgb, var(--correction) 35%, transparent);
 }
 
 /* info-chip for Fachwissen toggle */
 .chip-btn--info {
-  background: color-mix(in srgb, var(--ink) 18%, transparent);
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
   border-color: color-mix(in srgb, var(--ink) 35%, transparent);
-  color: var(--ink);
+  color: color-mix(in srgb, var(--ink) 55%, var(--graphite));
 }
 
 .chip-btn--info:hover {
@@ -1163,7 +1163,7 @@ a.task-request__send {
   width: 100%;
   margin-top: 8px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
   display: flex;
@@ -1217,11 +1217,11 @@ a.task-request__send {
 .session__fachwissen-toggle {
   align-self: flex-start;
   padding: 6px 12px;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink);
-  background: color-mix(in srgb, var(--ink) 15%, transparent);
+  color: color-mix(in srgb, var(--ink) 55%, var(--graphite));
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
   cursor: pointer;
 }
@@ -1238,7 +1238,7 @@ a.task-request__send {
   margin: 20px 0;
   padding: 20px;
   background: color-mix(in srgb, var(--grid) 25%, transparent);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--line);
   width: 100%;
   max-width: 100%;
@@ -1290,7 +1290,7 @@ a.task-request__send {
 
 .chip-btn {
   padding: 7px 12px;
-  border-radius: 9px;
+  border-radius: var(--radius-control);
   font-size: 13px;
   font-weight: 600;
   color: var(--graphite);
@@ -1321,7 +1321,7 @@ a.task-request__send {
   flex: 1;
   min-width: 240px;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -1363,7 +1363,7 @@ a.task-request__send {
 
 .search-hint-box {
   border: 1px dashed var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 12px 14px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   display: flex;
@@ -1419,7 +1419,7 @@ a.task-request__send {
   width: 100%;
   margin-top: 6px;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   color: inherit;
@@ -1492,7 +1492,7 @@ a.task-request__send {
 
 .faulty-tasks__item {
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -1589,7 +1589,7 @@ a.task-request__send {
   font-size: 30px;
   font-weight: 800;
   padding: 26px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   transition: background 0.2s ease;
   line-height: 1.3;
@@ -1620,7 +1620,7 @@ a.task-request__send {
   flex: 1;
   padding: 13px 15px;
   font-size: 17px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -1659,7 +1659,7 @@ select.answer-input__field {
   padding: 10px 12px;
   font-size: 17px;
   text-align: center;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -1673,7 +1673,7 @@ select.answer-input__field {
 .frac__bar {
   width: 130px;
   height: 3px;
-  border-radius: 2px;
+  border-radius: 999px;
   background: var(--graphite);
 }
 
@@ -1681,7 +1681,7 @@ select.answer-input__field {
 .feedback {
   margin-top: 16px;
   padding: 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -1693,7 +1693,7 @@ select.answer-input__field {
 }
 
 .feedback--partial {
-  background: color-mix(in srgb, var(--marker) 30%, transparent);
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
   border: 1px solid color-mix(in srgb, var(--marker) 40%, transparent);
 }
 
@@ -1709,7 +1709,7 @@ select.answer-input__field {
 
 .explanation {
   background: var(--paper);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   padding: 12px 14px;
   line-height: 1.5;
   font-size: 14px;
@@ -1753,7 +1753,7 @@ select.answer-input__field {
   align-items: center;
   gap: 4px;
   padding: 16px 8px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
 
@@ -1779,7 +1779,7 @@ select.answer-input__field {
 
 .worksheet-controls select {
   padding: 8px 10px;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   color: var(--graphite);
   border: 1px solid var(--line);
@@ -1867,7 +1867,7 @@ article.sheet .task-visual {
   padding: 8px 10px;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   /* Avoid flex+percentage collapse that can hide map figures */
   display: block;
   overflow: visible;
@@ -1982,7 +1982,7 @@ article.sheet .task-visual figcaption {
 .protocol-transfer {
   margin-top: 12px;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
 }
@@ -2141,7 +2141,7 @@ article.sheet .task-visual figcaption {
 
 .exam-area {
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 10px 14px 14px;
   margin-bottom: 12px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
@@ -2182,7 +2182,7 @@ article.sheet .task-visual figcaption {
 
 .exam-pool {
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   padding: 14px 16px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
 }
@@ -2213,7 +2213,7 @@ article.sheet .task-visual figcaption {
   justify-content: space-between;
   gap: 12px;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid transparent;
 }
@@ -2268,7 +2268,7 @@ article.sheet .task-visual figcaption {
 .exam-task__points input {
   width: 58px;
   padding: 6px 8px;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -2284,7 +2284,7 @@ article.sheet .task-visual figcaption {
 .exam-code__field {
   width: 100%;
   padding: 12px 14px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -2340,7 +2340,7 @@ article.sheet .task-visual figcaption {
 .exam-review__item {
   border: 1px solid var(--line);
   border-left-width: 4px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 14px 16px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   display: flex;
@@ -2405,7 +2405,7 @@ article.sheet .task-visual figcaption {
 
 .foot__supporter--on-dark {
   background: #0a0a0a;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 8px 12px;
 }
 
@@ -2436,7 +2436,7 @@ article.sheet .task-visual figcaption {
   align-items: center;
   gap: 14px;
   padding: 12px 14px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -2450,7 +2450,7 @@ article.sheet .task-visual figcaption {
 
 .supporters-list__logo--on-dark {
   background: #0a0a0a;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   padding: 6px;
 }
 
@@ -2473,7 +2473,7 @@ article.sheet .task-visual figcaption {
 .user-guide__toc {
   margin: 4px 0 18px;
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -2545,7 +2545,7 @@ article.sheet .task-visual figcaption {
 .user-guide__body code {
   font-size: 0.92em;
   padding: 0.1em 0.35em;
-  border-radius: 6px;
+  border-radius: 999px;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -2590,7 +2590,7 @@ article.sheet .task-visual figcaption {
   font-weight: 700;
   word-break: break-all;
   padding: 10px 12px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--paper);
   border: 1px solid var(--line);
 }
@@ -2607,7 +2607,7 @@ article.sheet .task-visual figcaption {
 
 .lan-card__qr img {
   display: block;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   background: #fff;
   padding: 8px;
 }
@@ -2626,7 +2626,7 @@ a.link {
   display: grid;
   place-items: center;
   padding: 24px;
-  background: color-mix(in srgb, var(--graphite) 72%, transparent);
+  background: var(--scrim);
 }
 
 .dialog {
@@ -2672,7 +2672,7 @@ a.link {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 12px 14px;
 }
 
@@ -2706,7 +2706,7 @@ a.link {
   gap: 12px;
   flex-wrap: wrap;
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -2756,7 +2756,7 @@ a.link {
 
 .class-codes__row {
   padding: 14px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--grid) 30%, transparent);
   border: 1px solid var(--line);
 }
@@ -3073,7 +3073,7 @@ a.link {
   color: var(--graphite);
   background: color-mix(in srgb, var(--ink) 18%, transparent);
   padding: 2px 8px;
-  border-radius: 6px;
+  border-radius: 999px;
 }
 
 /* Printable protocol is a white card — dark-theme cyan/white is unreadable there. */
@@ -3084,8 +3084,8 @@ article.sheet .challenge-class-goal--sheet {
 
 article.sheet .challenge-class-goal strong,
 article.sheet .challenge-class-goal__label {
-  color: var(--graphite);
   background: var(--marker);
+  color: var(--on-marker);
 }
 
 article.sheet .challenge-class-goal__remaining {

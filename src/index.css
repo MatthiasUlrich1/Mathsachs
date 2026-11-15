@@ -17,6 +17,10 @@
   /* Design brief said #1E8E4F (4.06:1 on paper, fails WCAG AA); darkened to pass. */
   --tick: #1c854a;
   --marker: #ffe14d;
+  /* Text on solid --marker */
+  --on-marker: #23272f;
+  /* Dialog scrim, dark in both themes */
+  --scrim: color-mix(in srgb, #23272f 60%, transparent);
   --focus: var(--ink);
 
   /* Type */
@@ -68,6 +72,8 @@
   --correction: #f28b82;
   --tick: #8fd19e;
   --marker: #f6e27a;
+  --on-marker: #1e3b35;
+  --scrim: color-mix(in srgb, #0d1f1b 70%, transparent);
   color-scheme: dark;
 }
 
@@ -83,6 +89,8 @@
     --correction: #f28b82;
     --tick: #8fd19e;
     --marker: #f6e27a;
+    --on-marker: #1e3b35;
+    --scrim: color-mix(in srgb, #0d1f1b 70%, transparent);
     color-scheme: dark;
   }
 }
@@ -222,5 +230,25 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Print is always Heft (black on white paper), whatever the screen theme. */
+@media print {
+  :root,
+  :root[data-theme] {
+    --paper: #fbfcfe;
+    --surface: #ffffff;
+    --grid: #dce6f2;
+    --line: #c3cfe0;
+    --ink: #1d3fa8;
+    --graphite: #23272f;
+    --pencil: #5b6472;
+    --correction: #d62839;
+    --tick: #1c854a;
+    --marker: #ffe14d;
+    --on-marker: #23272f;
+    --scrim: color-mix(in srgb, #23272f 60%, transparent);
+    color-scheme: light;
   }
 }
