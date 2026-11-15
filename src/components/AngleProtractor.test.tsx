@@ -19,7 +19,7 @@ describe('AngleProtractor', () => {
     expect(html).toContain('data-testid="rotate-handle"')
     expect(html).toContain('viewBox="0 0 360 320"')
     expect(html).toContain('inputMode="decimal"')
-    expect(html).toContain('transform="translate(285 280) rotate(')
+    expect(html).toContain('transform="translate(240 200) rotate(')
     expect(html).not.toContain('47°')
   })
 

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
 import { angleProtractorTask, digitGridMultiplyTask, visualTask } from '../curriculum/taskHelpers'
-import { TaskVisual, initTaskInput } from './TaskMedia'
+import { TaskVisual, initTaskInput, taskInteractiveKey } from './TaskMedia'
 
 describe('TaskMedia', () => {
   it('renders visualContent as SVG markup', () => {
@@ -100,5 +100,13 @@ describe('graphical tasks stay attached after generate', () => {
       expect(start.degrees).not.toBe(47)
       expect(draw.check(start)).toBe(false)
     }
+  })
+
+  it('taskInteractiveKey differs between angle tasks and is stable for the same task', () => {
+    const make = (angle: number) =>
+      angleProtractorTask({ question: 'q', mode: 'measure', angle, solution: 's', explanation: 'e' })
+    expect(taskInteractiveKey(make(47))).toBe(taskInteractiveKey(make(47)))
+    expect(taskInteractiveKey(make(47))).not.toBe(taskInteractiveKey(make(62)))
+    expect(taskInteractiveKey(visualTask({ question: 'q', answerKind: 'integer', value: 1, solution: '1', explanation: 'e', visualContent: '<svg/>' }))).toBe('')
   })
 })

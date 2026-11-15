@@ -15,6 +15,12 @@ export const PROTRACTOR_RADIUS = 100
 /** Protractor origin snaps onto the vertex within this distance. */
 export const PROTRACTOR_SNAP_DISTANCE = 12
 
+/** Half width of the drawn triangle (scale radius plus rim). */
+export const PROTRACTOR_HALF_WIDTH = PROTRACTOR_RADIUS + 10
+/** Rotation handle below the long side (centre y and radius, local units). */
+export const PROTRACTOR_HANDLE_Y = 38
+export const PROTRACTOR_HANDLE_RADIUS = 14
+
 export interface Point {
   x: number
   y: number
@@ -62,6 +68,17 @@ export const legDegreesFromPointer = (
   return Math.min(179, Math.max(1, Math.round(clamped)))
 }
 
+/** Absolute math direction of a leg point, shifted by a grab offset (keeps the handle from jumping). */
+export const legGrabOffset = (
+  pointer: Point,
+  startAngle: number,
+  currentDegrees: number,
+  vertex: Point = PROTRACTOR_VERTEX,
+): number => {
+  const off = normalizeDegrees(startAngle + currentDegrees - directionDegrees(vertex, pointer))
+  return off > 180 ? off - 360 : off
+}
+
 /**
  * Where the learner's second leg starts in draw mode: always clearly away
  * from the target so the start position never spoils the answer.
@@ -75,7 +92,8 @@ export const drawStartDegrees = (angle: number): number => {
 
 /** Start pose of the loose protractor in measure mode (off the vertex and not aligned). */
 export const measureStartPose = (angle: number, startAngle: number): ProtractorPose => ({
-  x: 285,
-  y: 280,
+  // Whole instrument (radius <= half width) stays inside the viewBox at any rotation.
+  x: 240,
+  y: 200,
   rot: normalizeDegrees(startAngle + 25 + ((angle * 7) % 35)),
 })

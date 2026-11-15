@@ -229,7 +229,7 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
           instruction ??
           (measure
             ? 'Miss den Winkel mit dem Geodreieck und trage die Gradzahl ein.'
-            : 'Zeichne den Winkel mit dem Geodreieck und trage die Gradzahl ein.'),
+            : 'Zeichne den Winkel mit dem Geodreieck.'),
         answerBlank: '__________ °',
       }
     }

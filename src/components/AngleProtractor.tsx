@@ -3,12 +3,14 @@ import type { UserInput } from '../curriculum/types'
 import { parseNumber } from '../lib/num'
 import {
   PROTRACTOR_LEG_LENGTH,
-  PROTRACTOR_RADIUS,
   PROTRACTOR_VERTEX,
   PROTRACTOR_VIEWBOX,
   directionDegrees,
   drawStartDegrees,
+  PROTRACTOR_HALF_WIDTH,
+  PROTRACTOR_HANDLE_Y,
   legDegreesFromPointer,
+  legGrabOffset,
   measureStartPose,
   normalizeDegrees,
   pointAt,
@@ -34,12 +36,11 @@ export interface AngleProtractorProps {
   disabled?: boolean
 }
 
-const R = PROTRACTOR_RADIUS
 /** Half width of the drawn triangle (a little larger than the scale radius). */
-const RT = R + 10
+const RT = PROTRACTOR_HALF_WIDTH
 const DEG = Math.PI / 180
 const V = PROTRACTOR_VERTEX
-const ROTATE_HANDLE_Y = 38
+const ROTATE_HANDLE_Y = PROTRACTOR_HANDLE_Y
 
 /** Point on the triangle's short side hit by the ray at math angle `deg` from the origin. */
 const edgePoint = (deg: number): Point => {
@@ -90,7 +91,7 @@ export const AngleProtractor: React.FC<AngleProtractorProps> = ({
 }) => {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const drag = useRef<
-    { kind: 'move'; dx: number; dy: number } | { kind: 'rotate'; offset: number } | { kind: 'leg' } | null
+    { kind: 'move'; dx: number; dy: number } | { kind: 'rotate'; offset: number } | { kind: 'leg'; offset: number } | null
   >(null)
   const [pose, setPose] = useState<ProtractorPose>(() => measureStartPose(angle, startAngle))
   const [text, setText] = useState(
@@ -142,8 +143,8 @@ export const AngleProtractor: React.FC<AngleProtractorProps> = ({
   const onLegDown = (e: React.PointerEvent) => {
     if (disabled || mode !== 'draw') return
     capture(e)
-    drag.current = { kind: 'leg' }
-    emitDraw(legDegreesFromPointer(toSvg(e), startAngle))
+    // Keep the grab offset (like rotate) so the leg does not jump to the pointer.
+    drag.current = { kind: 'leg', offset: legGrabOffset(toSvg(e), startAngle, drawDegrees) }
   }
 
   const onMove = (e: React.PointerEvent) => {
@@ -159,7 +160,8 @@ export const AngleProtractor: React.FC<AngleProtractorProps> = ({
       )
       setPose((cur) => ({ ...cur, rot }))
     } else {
-      emitDraw(legDegreesFromPointer(p, startAngle))
+      const target = pointAt(V, directionDegrees(V, p) + d.offset, 100)
+      emitDraw(legDegreesFromPointer(target, startAngle))
     }
   }
 

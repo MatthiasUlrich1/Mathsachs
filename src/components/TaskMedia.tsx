@@ -153,6 +153,22 @@ interface InteractiveProps {
   partResults?: boolean[]
 }
 
+/**
+ * Stable identity of a task's interactive widget. Used as React key so widget-local
+ * state (typed text, pose, drag) never leaks between consecutive tasks.
+ */
+export function taskInteractiveKey(task: Task): string {
+  const i = task.interactive
+  if (!i) return ''
+  let props = ''
+  try {
+    props = JSON.stringify(i.props)
+  } catch {
+    props = ''
+  }
+  return `${i.type}|${task.question}|${props}`
+}
+
 /** Interactive widgets for a task. */
 export function TaskInteractive({
   task,
@@ -165,7 +181,7 @@ export function TaskInteractive({
   if (!interactive) return null
 
   return (
-    <div className="task-interactive">
+    <div className="task-interactive" key={taskInteractiveKey(task)}>
       {interactive.type === 'numberLine' && !disabled && interactive.props.variant === 'thermometer' && (
         <ThermometerSlider
           min={interactive.props.min}
