@@ -137,6 +137,21 @@ export const rulerLocalToSvg = (pose: RulerPose, p: Point): Point => {
   }
 }
 
+/**
+ * Maximum tilt of the loose ruler relative to horizontal, in both directions (degrees).
+ * 45 degrees would put the rotation handle of the long ruler (13 cm at 40 units/cm) outside the
+ * viewBox when tilted clockwise, so both grips could not stay reachable; 40 keeps both inside.
+ * The upside-down range (180 +- this value) is forbidden as well.
+ */
+export const RULER_MAX_ROTATION = 40
+
+/** Nearest allowed rotation in [-RULER_MAX_ROTATION, RULER_MAX_ROTATION], normalised to 0..360. */
+export const clampRulerRotation = (rot: number): number => {
+  const r = ((((rot + 180) % 360) + 360) % 360) - 180 // -180..179.99
+  const c = Math.max(-RULER_MAX_ROTATION, Math.min(RULER_MAX_ROTATION, r === -180 ? 180 : r))
+  return normalizeDegrees(c)
+}
+
 /** Visible margin (SVG units) that the grab points keep to the viewBox edge. */
 export const RULER_EDGE_MARGIN = 14
 

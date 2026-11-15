@@ -2,7 +2,9 @@ import { describe, expect, it } from 'vitest'
 import {
   RULER_CM,
   RULER_EDGE_MARGIN,
+  RULER_MAX_ROTATION,
   clampRulerPose,
+  clampRulerRotation,
   rulerHandleCentre,
   RULER_HANDLE_RADIUS,
   RULER_MAX_ANGLE,
@@ -153,5 +155,37 @@ describe('clampRulerPose: 0 mark always inside', () => {
     }
     // negative control: the midpoint rule loses the 0 mark for some of these poses
     expect(oldFailures).toBeGreaterThan(0)
+  })
+})
+
+describe('clampRulerRotation: both grips reachable at every allowed rotation', () => {
+  const M = RULER_EDGE_MARGIN
+  const ok = (p: { x: number; y: number }) =>
+    p.x >= M - 1e-6 && p.x <= VB.w - M + 1e-6 && p.y >= M - 1e-6 && p.y <= VB.h - M + 1e-6
+  const allowed = (r: number) => r <= RULER_MAX_ROTATION + 1e-9 || r >= 360 - RULER_MAX_ROTATION - 1e-9
+  it('maps every rotation 0..359 into the allowed range and keeps allowed ones', () => {
+    for (let r = 0; r < 360; r += 0.5) {
+      const c = clampRulerRotation(r)
+      expect(allowed(c), `${r} -> ${c}`).toBe(true)
+      if (allowed(r)) expect(c).toBeCloseTo(r, 9)
+    }
+    expect(clampRulerRotation(90)).toBe(RULER_MAX_ROTATION)
+    expect(clampRulerRotation(270)).toBe(360 - RULER_MAX_ROTATION)
+    expect(clampRulerRotation(-10)).toBe(350)
+  })
+  it('keeps 0 mark and rotation handle inside at all allowed rotations, both units, all edges', () => {
+    const starts = [[-300, 190], [900, 190], [320, -300], [320, 900], [5, 5], [630, 370], [5, 370], [630, 5]] as const
+    for (const unitPx of [20, 40]) {
+      for (let r = 0; r < 360; r += 0.5) {
+        const rot = clampRulerRotation(r)
+        for (const [x, y] of starts) {
+          const c = clampRulerPose({ x, y, rot }, unitPx)
+          expect(ok({ x: c.x, y: c.y }) && ok(rulerHandleCentre(c, unitPx)), `${unitPx} ${r} ${x},${y}`).toBe(true)
+        }
+      }
+    }
+  })
+  it('keeps the existing start poses valid', () => {
+    for (let rot = 4; rot <= 11; rot++) expect(clampRulerRotation(rot)).toBe(rot)
   })
 })

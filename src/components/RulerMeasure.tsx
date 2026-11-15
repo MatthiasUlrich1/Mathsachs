@@ -20,6 +20,7 @@ import {
   rulerLength,
   rulerStartPose,
   clampRulerPose,
+  clampRulerRotation,
   segmentEnd,
   snapRotation,
   snapToEnd,
@@ -154,7 +155,7 @@ export const RulerMeasure: React.FC<RulerMeasureProps> = ({
       const raw = normalizeDegrees(directionDegrees({ x: pose.x, y: pose.y }, p) + d.offset)
       const rot = Math.round(raw * 10) / 10
       const onEnd = pose.x === O.x && pose.y === O.y
-      setPose((cur) => clampRulerPose({ ...cur, rot: onEnd ? snapRotation(rot, angle) : rot }, unitPx))
+      setPose((cur) => clampRulerPose({ ...cur, rot: clampRulerRotation(onEnd ? snapRotation(rot, angle) : rot) }, unitPx))
     } else {
       emitDraw(lengthFromPointer(p, angle, unitPx, d.offset))
     }

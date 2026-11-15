@@ -58,6 +58,6 @@ For each topic, check: operation on desktop **and** phone/tablet (touch), correc
 | ☐ | Laplace in Prozent (`k8-lb2-laplace-prozent__neu`) | Tree diagram (coin + die, spinning wheel) | "davon ist 1 Gewinn" in the singular |
 | ☐ | Gegenwahrscheinlichkeit (`k8-lb2-gegenwahrscheinlichkeit__neu`) | Tree diagram (rain on two days) | Start label ("Samstag") visible |
 
-## Known issue (not fixed yet)
+## Known issue (fixed)
 
-- **Ruler at a steep angle:** if the ruler is rotated to about 45°–135°, its rotation handle is outside the picture, and it can no longer be rotated back (only moved). Suggestion: limit the rotation to ±45°. Please check whether this bothers you during testing.
+- **Ruler at a steep angle:** fixed. The ruler can now only be tilted by up to 40° in both directions (no upside-down), so the rotation handle stays reachable. Please check that it still feels natural.
