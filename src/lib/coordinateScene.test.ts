@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import {
   emptyCoordinateScene,
+  circleArcPath,
   generateCoordinateSceneSvg,
+  hasCircle,
   sameLine,
   scenesMatch,
   snapCoord,
@@ -71,5 +73,54 @@ describe('coordinateScene', () => {
         solutionScene,
       ),
     ).toBe(false)
+  })
+})
+
+describe('circle objects', () => {
+  const scene = emptyCoordinateScene({
+    xRange: [-6, 6],
+    yRange: [-6, 6],
+    objects: [
+      { id: 'A', kind: 'point', x: -2, y: 0, label: 'A', fixed: true },
+      { id: 'c1', kind: 'circle', cx: -2, cy: 0, r: 3 },
+    ],
+  })
+
+  it('hasCircle finds a circle by point id or coordinates within tolerance', () => {
+    expect(hasCircle(scene, 'A', 3)).toBe(true)
+    expect(hasCircle(scene, 'A', 3.1)).toBe(true)
+    expect(hasCircle(scene, 'A', 3.4)).toBe(false)
+    expect(hasCircle(scene, { x: -2, y: 0 }, 3)).toBe(true)
+    expect(hasCircle(scene, { x: 2, y: 0 }, 3)).toBe(false)
+    expect(hasCircle(scene, 'unknown', 3)).toBe(false)
+  })
+
+  it('renders full circles and arcs as SVG paths', () => {
+    const svg = generateCoordinateSceneSvg({
+      ...scene,
+      objects: [
+        ...scene.objects,
+        { id: 'a1', kind: 'circle', cx: 0, cy: 0, r: 2, arc: [0, 90] },
+      ],
+    })
+    expect(svg.match(/<path d="M/g)?.length).toBe(2)
+    expect(svg).toContain(' A ')
+  })
+
+  it('circleArcPath: arc over 180 degrees uses the large-arc flag', () => {
+    const toSvg = (x: number, y: number): [number, number] => [x * 10, -y * 10]
+    expect(circleArcPath({ cx: 0, cy: 0, r: 1, arc: [0, 90] }, toSvg, 10)).toBe(
+      'M 10 0 A 10 10 0 0 0 0 -10',
+    )
+    expect(circleArcPath({ cx: 0, cy: 0, r: 1, arc: [0, 270] }, toSvg, 10)).toContain('10 10 0 1 0')
+  })
+
+  it('scenesMatch compares circles by center and radius', () => {
+    const mk = (r: number, cx = 0) =>
+      emptyCoordinateScene({ objects: [{ id: 'c', kind: 'circle', cx, cy: 0, r }] })
+    expect(scenesMatch(mk(3), mk(3.1))).toBe(true)
+    expect(scenesMatch(mk(3), mk(4))).toBe(false)
+    expect(scenesMatch(mk(3, 2), mk(3))).toBe(false)
+    expect(scenesMatch(emptyCoordinateScene(), mk(3))).toBe(false)
   })
 })

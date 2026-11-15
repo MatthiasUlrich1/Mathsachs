@@ -1090,7 +1090,7 @@ interface CoordinateDrawTaskInput {
   explanation: string
   /** Tools the learner may use. Default: line + segment + point + select + delete. */
   allowedTools?: Array<
-    'select' | 'point' | 'segment' | 'ray' | 'line' | 'label' | 'delete'
+    'select' | 'point' | 'segment' | 'ray' | 'line' | 'circle' | 'label' | 'delete'
   >
   instruction?: string
   visualContent?: string

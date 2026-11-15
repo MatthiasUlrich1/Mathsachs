@@ -1,10 +1,12 @@
 import { useCallback, useRef, useState } from 'react'
 import {
+  circleArcPath,
   emptyCoordinateScene,
   newGraphObjectId,
   snapPoint,
   type CoordinateScene,
   type GraphObject,
+  type GraphPointObj,
   type SnapMode,
 } from '../lib/coordinateScene'
 import './CoordinateGraphEditor.css'
@@ -15,6 +17,7 @@ export type EditorTool =
   | 'segment'
   | 'ray'
   | 'line'
+  | 'circle'
   | 'label'
   | 'delete'
 
@@ -33,9 +36,13 @@ const ALL_TOOLS: Array<{ id: EditorTool; label: string }> = [
   { id: 'segment', label: 'Strecke' },
   { id: 'ray', label: 'Halbgerade' },
   { id: 'line', label: 'Gerade' },
+  { id: 'circle', label: 'Zirkel' },
   { id: 'label', label: 'Text' },
   { id: 'delete', label: 'Löschen' },
 ]
+
+/** Radius is shown/set in cm = grid units, rounded to 0.1. */
+const roundRadius = (r: number) => Math.round(r * 10) / 10
 
 /** Interactive graph: draw lines / place & drag objects (optional snap). */
 export function CoordinateGraphEditor({
@@ -46,12 +53,19 @@ export function CoordinateGraphEditor({
   disabled = false,
   solutionOverlay = null,
 }: CoordinateGraphEditorProps) {
+  // The circle tool is opt-in: without an explicit allowedTools list the toolbar stays as before.
   const tools = ALL_TOOLS.filter((t) =>
-    allowedTools ? allowedTools.includes(t.id) : true,
+    allowedTools ? allowedTools.includes(t.id) : t.id !== 'circle',
   )
+  const hasCircleTool = tools.some((t) => t.id === 'circle')
   const [tool, setTool] = useState<EditorTool>(tools[0]?.id ?? 'point')
   const [pending, setPending] = useState<{ x: number; y: number } | null>(null)
   const [dragId, setDragId] = useState<string | null>(null)
+  const [dragPart, setDragPart] = useState<'move' | 'radius'>('move')
+  /** Circle tool: pointer is held down after setting the needle point (drag radius). */
+  const [circleDrag, setCircleDrag] = useState(false)
+  const history = useRef<GraphObject[][]>([])
+  const [undoCount, setUndoCount] = useState(0)
   const [hover, setHover] = useState<{ x: number; y: number } | null>(null)
   const svgRef = useRef<SVGSVGElement>(null)
 
@@ -91,7 +105,85 @@ export function CoordinateGraphEditor({
     [cellSize, scene.snap, scene.xRange, scene.yRange, totalH, totalW, xMin, yMax],
   )
 
-  const updateObjects = (objects: GraphObject[]) => onChange({ ...scene, objects })
+  /** Pointer position in grid units without snapping (null outside the grid). */
+  const screenToMathRaw = (clientX: number, clientY: number) => {
+    const svg = svgRef.current
+    if (!svg) return null
+    const rect = svg.getBoundingClientRect()
+    if (!rect.width || !rect.height) return null
+    const sx = ((clientX - rect.left) / rect.width) * totalW
+    const sy = ((clientY - rect.top) / rect.height) * totalH
+    const x = xMin + (sx - padL) / cellSize
+    const y = yMax - (sy - padT) / cellSize
+    if (x < xMin - 0.3 || x > xMax + 0.3 || y < yMin - 0.3 || y > yMax + 0.3) return null
+    return { x, y }
+  }
+
+  const pushHistory = () => {
+    history.current.push(scene.objects)
+    if (history.current.length > 50) history.current.shift()
+    setUndoCount(history.current.length)
+  }
+
+  const updateObjects = (objects: GraphObject[], record = true) => {
+    if (record) pushHistory()
+    onChange({ ...scene, objects })
+  }
+
+  const undo = () => {
+    const prev = history.current.pop()
+    setUndoCount(history.current.length)
+    setPending(null)
+    setCircleDrag(false)
+    if (prev) onChange({ ...scene, objects: prev })
+  }
+
+  const nearestPoint = (p: { x: number; y: number }, tol: number): GraphPointObj | null => {
+    let best: GraphPointObj | null = null
+    let bestD = tol
+    for (const o of scene.objects) {
+      if (o.kind !== 'point') continue
+      const d = Math.hypot(o.x - p.x, o.y - p.y)
+      if (d <= bestD) {
+        best = o
+        bestD = d
+      }
+    }
+    return best
+  }
+
+  /** Needle point: snaps onto an existing point, otherwise onto the grid. */
+  const circleCenterAt = (clientX: number, clientY: number) => {
+    const raw = screenToMathRaw(clientX, clientY)
+    if (!raw) return null
+    const pt = nearestPoint(raw, 0.5)
+    if (pt) return { x: pt.x, y: pt.y }
+    return screenToMath(clientX, clientY)
+  }
+
+  /** Radius to a pointer position: onto an existing point exactly, otherwise rounded to 0.1. */
+  const circleRadiusAt = (
+    c: { x: number; y: number },
+    clientX: number,
+    clientY: number,
+  ): number | null => {
+    const raw = screenToMathRaw(clientX, clientY)
+    if (!raw) return null
+    const pt = nearestPoint(raw, 0.35)
+    return pt
+      ? Math.hypot(pt.x - c.x, pt.y - c.y)
+      : roundRadius(Math.hypot(raw.x - c.x, raw.y - c.y))
+  }
+
+  const commitCircle = (c: { x: number; y: number }, r: number | null) => {
+    setPending(null)
+    setCircleDrag(false)
+    if (r == null || r < 0.2) return
+    updateObjects([
+      ...scene.objects,
+      { id: newGraphObjectId(), kind: 'circle', cx: c.x, cy: c.y, r },
+    ])
+  }
 
   const hitTest = (p: { x: number; y: number }): GraphObject | null => {
     const tol = scene.snap === 'off' ? 0.4 : 0.35
@@ -99,6 +191,10 @@ export function CoordinateGraphEditor({
       const o = scene.objects[i]!
       if (o.kind === 'point' || o.kind === 'label') {
         if (Math.hypot(o.x - p.x, o.y - p.y) <= tol) return o
+      }
+      if (o.kind === 'circle') {
+        const d = Math.hypot(o.cx - p.x, o.cy - p.y)
+        if (d <= tol || Math.abs(d - o.r) <= tol) return o
       }
       if (o.kind === 'segment' || o.kind === 'ray' || o.kind === 'line') {
         if (
@@ -114,18 +210,40 @@ export function CoordinateGraphEditor({
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (disabled) return
+    if (tool === 'circle') {
+      ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
+      if (!pending) {
+        const c = circleCenterAt(e.clientX, e.clientY)
+        if (!c) return
+        setPending(c)
+        setCircleDrag(true)
+        setHover(c)
+        return
+      }
+      // second tap: pencil point
+      commitCircle(pending, circleRadiusAt(pending, e.clientX, e.clientY))
+      return
+    }
     const p = screenToMath(e.clientX, e.clientY)
     if (!p) return
     ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
 
     if (tool === 'select') {
       const hit = hitTest(p)
-      if (hit) setDragId(hit.id)
+      if (hit && !(hit.kind === 'point' && hit.fixed)) {
+        pushHistory()
+        setDragId(hit.id)
+        if (hit.kind === 'circle') {
+          setDragPart(Math.hypot(hit.cx - p.x, hit.cy - p.y) <= 0.5 ? 'move' : 'radius')
+        }
+      }
       return
     }
     if (tool === 'delete') {
       const hit = hitTest(p)
-      if (hit) updateObjects(scene.objects.filter((o) => o.id !== hit.id))
+      if (hit && !(hit.kind === 'point' && hit.fixed)) {
+        updateObjects(scene.objects.filter((o) => o.id !== hit.id))
+      }
       return
     }
     if (tool === 'point') {
@@ -176,12 +294,25 @@ export function CoordinateGraphEditor({
 
   const onPointerMove = (e: React.PointerEvent) => {
     if (disabled) return
+    if (tool === 'circle') {
+      setHover(
+        pending
+          ? screenToMathRaw(e.clientX, e.clientY)
+          : screenToMath(e.clientX, e.clientY),
+      )
+      return
+    }
     const p = screenToMath(e.clientX, e.clientY)
     setHover(p)
     if (!dragId || !p) return
     updateObjects(
       scene.objects.map((o) => {
         if (o.id !== dragId) return o
+        if (o.kind === 'circle') {
+          if (dragPart === 'move') return { ...o, cx: p.x, cy: p.y }
+          const r = circleRadiusAt({ x: o.cx, y: o.cy }, e.clientX, e.clientY)
+          return r != null && r >= 0.2 ? { ...o, r } : o
+        }
         if (o.kind === 'point' || o.kind === 'label') {
           return { ...o, x: p.x, y: p.y }
         }
@@ -190,10 +321,19 @@ export function CoordinateGraphEditor({
         if (d1 <= d2) return { ...o, x1: p.x, y1: p.y }
         return { ...o, x2: p.x, y2: p.y }
       }),
+      false,
     )
   }
 
-  const onPointerUp = () => setDragId(null)
+  const onPointerUp = (e: React.PointerEvent) => {
+    setDragId(null)
+    if (tool === 'circle' && pending && circleDrag) {
+      setCircleDrag(false)
+      const r = circleRadiusAt(pending, e.clientX, e.clientY)
+      // Dragged out a radius: commit. A plain tap only sets the needle point.
+      if (r != null && r >= 0.2) commitCircle(pending, r)
+    }
+  }
 
   const [ox, oy] = toSvg(0, 0)
   const gridLines: React.ReactNode[] = []
@@ -258,6 +398,18 @@ export function CoordinateGraphEditor({
         </text>
       )
     }
+    if (o.kind === 'circle') {
+      return (
+        <path
+          key={o.id}
+          d={circleArcPath(o, toSvg, cellSize)}
+          fill="none"
+          stroke={color}
+          strokeWidth={2.5}
+          opacity={opacity}
+        />
+      )
+    }
     const [a, b] = extendForDisplay(o, xMin, xMax, yMin, yMax)
     const [p1, p2] = [toSvg(a[0], a[1]), toSvg(b[0], b[1])]
     const [h1x, h1y] = toSvg(o.x1, o.y1)
@@ -296,6 +448,24 @@ export function CoordinateGraphEditor({
         } as GraphObject)
       : null
 
+  const circlePreviewR =
+    tool === 'circle' && pending && hover
+      ? roundRadius(Math.hypot(hover.x - pending.x, hover.y - pending.y))
+      : null
+  const circlePreviewObj: GraphObject | null =
+    circlePreviewR != null && circlePreviewR > 0
+      ? {
+          id: 'preview-circle',
+          kind: 'circle',
+          cx: pending!.x,
+          cy: pending!.y,
+          r: circlePreviewR,
+          color: '#64b5f6',
+        }
+      : null
+
+  const userObjectCount = scene.objects.filter((o) => !(o.kind === 'point' && o.fixed)).length
+
   return (
     <div className="coordinate-graph-editor">
       {instruction && (
@@ -333,11 +503,23 @@ export function CoordinateGraphEditor({
         <button
           type="button"
           className="coordinate-graph-editor__tool"
-          disabled={disabled || scene.objects.length === 0}
-          onClick={() => updateObjects([])}
+          disabled={disabled || userObjectCount === 0}
+          onClick={() =>
+            updateObjects(scene.objects.filter((o) => o.kind === 'point' && o.fixed))
+          }
         >
           Leeren
         </button>
+        {hasCircleTool && (
+          <button
+            type="button"
+            className="coordinate-graph-editor__tool"
+            disabled={disabled || undoCount === 0}
+            onClick={undo}
+          >
+            Rückgängig
+          </button>
+        )}
       </div>
       <svg
         ref={svgRef}
@@ -401,6 +583,20 @@ export function CoordinateGraphEditor({
           />
         )}
         {previewLine && renderObject(previewLine)}
+        {circlePreviewObj && renderObject(circlePreviewObj)}
+        {circlePreviewObj && pending && (
+          <text
+            x={toSvg(pending.x, pending.y)[0] + 8}
+            y={toSvg(pending.x, pending.y)[1] + 18}
+            fontSize={13}
+            fontWeight={700}
+            fill="#0d47a1"
+            pointerEvents="none"
+            data-testid="circle-radius"
+          >
+            {`r = ${(circlePreviewR ?? 0).toFixed(1).replace(".", ",")} cm`}
+          </text>
+        )}
         {hover && tool !== 'select' && tool !== 'delete' && (
           <circle
             cx={toSvg(hover.x, hover.y)[0]}
@@ -414,7 +610,9 @@ export function CoordinateGraphEditor({
       <p className="coordinate-graph-editor__hint">
         {tool === 'line' || tool === 'segment' || tool === 'ray'
           ? 'Zwei Punkte tippen: Start, dann Richtung/Ende.'
-          : tool === 'select'
+          : tool === 'circle'
+            ? 'Zirkel: Einstichpunkt antippen (rastet auf Punkten ein), dann Radius ziehen oder Endpunkt antippen.'
+            : tool === 'select'
             ? 'Objekt antippen und ziehen.'
             : tool === 'label'
               ? 'Position tippen, dann Text eingeben.'

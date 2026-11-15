@@ -10,6 +10,13 @@ import {
   drawStartLength,
   roundCm,
 } from '../lib/rulerGeometry'
+import {
+  circlesOf,
+  emptyCoordinateScene,
+  pointNear,
+  type CoordinateScene,
+  type GraphObject,
+} from '../lib/coordinateScene'
 import type { Task, UserInput } from './types'
 
 export interface AngleProtractorTaskInput {
@@ -148,5 +155,132 @@ export const rulerMeasureTask = (input: RulerMeasureTaskInput): Task => {
       }
       return false
     },
+  }
+}
+
+export interface CompassArcTaskInput {
+  question: string
+  /** Given points (grid units, 1 unit = 1 cm); shown fixed and labelled. */
+  points: Array<{ id: string; x: number; y: number; label: string }>
+  /** Required arcs; radius in grid units. With sameRadius the radius value is not checked. */
+  targets: Array<{ centerId: string; radius: number }>
+  /** Accepted radius deviation in grid units (default 0.15). */
+  radiusTolerance?: number
+  /** All arcs share one radius (value free, e.g. perpendicular bisector). */
+  sameRadius?: boolean
+  /** With sameRadius: the common radius must be larger than this. */
+  minRadius?: number
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/** Center distance within which a drawn circle counts as "around" a point. */
+const COMPASS_CENTER_TOL = 0.35
+
+/**
+ * Compass as a circle tool in the coordinate editor: the learner draws arcs around given points.
+ * The check only looks at circles; given (fixed) points are ignored.
+ */
+export const compassArcTask = (input: CompassArcTaskInput): Task => {
+  const { points, targets, sameRadius = false, minRadius = 0 } = input
+  const tol = input.radiusTolerance ?? 0.15
+  if (targets.length === 0) throw new Error('compassArcTask: at least one target needed')
+  const centers = targets.map((t) => {
+    const p = points.find((q) => q.id === t.centerId)
+    if (!p) throw new Error(`compassArcTask: unknown centerId "${t.centerId}"`)
+    return { x: p.x, y: p.y }
+  })
+  const sampleR = (i: number) => targets[i]!.radius
+  if (sameRadius && !(sampleR(0) > minRadius)) {
+    throw new Error('compassArcTask: with sameRadius, targets[0].radius must exceed minRadius')
+  }
+
+  const reach = Math.max(1, ...targets.map((t) => t.radius), sameRadius ? minRadius * 1.5 : 0)
+  const xs = points.map((p) => p.x)
+  const ys = points.map((p) => p.y)
+  const range = (vals: number[]): [number, number] => [
+    Math.floor(Math.min(...vals) - reach) - 1,
+    Math.ceil(Math.max(...vals) + reach) + 1,
+  ]
+  const fixedPoints: GraphObject[] = points.map((p) => ({
+    id: p.id,
+    kind: 'point',
+    x: p.x,
+    y: p.y,
+    label: p.label,
+    fixed: true,
+  }))
+  const blank = emptyCoordinateScene({
+    xRange: range(xs),
+    yRange: range(ys),
+    snap: 'half',
+    objects: fixedPoints,
+  })
+  const solutionScene: CoordinateScene = {
+    ...blank,
+    objects: [
+      ...fixedPoints,
+      ...targets.map((_t, i): GraphObject => ({
+        id: `sol-arc-${i}`,
+        kind: 'circle',
+        cx: centers[i]!.x,
+        cy: centers[i]!.y,
+        r: sampleR(i),
+        color: '#c62828',
+      })),
+    ],
+  }
+
+  const checkScene = (scene: CoordinateScene): boolean => {
+    const circles = circlesOf(scene)
+    const around = (c: { x: number; y: number }) =>
+      circles.filter((o) => pointNear({ x: o.cx, y: o.cy }, c, COMPASS_CENTER_TOL))
+    // No arcs around points that are not targets.
+    if (circles.some((o) => !centers.some((c) => pointNear({ x: o.cx, y: o.cy }, c, COMPASS_CENTER_TOL)))) {
+      return false
+    }
+    if (sameRadius) {
+      // One common radius r > minRadius that every target center has an arc for.
+      return circles.some((cand) => {
+        const r = cand.r
+        return (
+          r > minRadius &&
+          centers.every((c) => around(c).some((o) => Math.abs(o.r - r) <= tol + 1e-9))
+        )
+      })
+    }
+    const used = new Set<string>()
+    return targets.every((t, i) => {
+      const hit = around(centers[i]!).find(
+        (o) => !used.has(o.id) && Math.abs(o.r - t.radius) <= tol + 1e-9,
+      )
+      if (!hit) return false
+      used.add(hit.id)
+      return true
+    })
+  }
+
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    sampleAnswer: { kind: 'coordinateDraw', scene: solutionScene },
+    interactive: {
+      type: 'coordinateDraw',
+      props: {
+        instruction:
+          input.instruction ??
+          'Zeichne mit dem Zirkel die gesuchten Kreisbögen: Einstichpunkt antippen, dann den Radius ziehen.',
+        allowedTools: ['select', 'point', 'segment', 'circle', 'label', 'delete'],
+        blankScene: blank,
+        solutionScene,
+      },
+    },
+    check: (answer: UserInput) =>
+      answer.kind === 'coordinateDraw' && checkScene(answer.scene),
   }
 }

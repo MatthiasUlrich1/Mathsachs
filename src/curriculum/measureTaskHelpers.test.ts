@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { angleProtractorTask, rulerMeasureTask } from './measureTaskHelpers'
+import { angleProtractorTask, compassArcTask, rulerMeasureTask } from './measureTaskHelpers'
+import { emptyCoordinateScene, type CoordinateScene, type GraphObject } from '../lib/coordinateScene'
 import { examAnswerAttempted } from '../exam/examAnswerAttempted'
-import { emptyInput } from './types'
+import { emptyInput, type UserInput } from './types'
 import { drawStartDegrees } from '../lib/protractorGeometry'
 import { drawStartLength } from '../lib/rulerGeometry'
 
@@ -184,5 +185,108 @@ describe('rulerMeasureTask', () => {
     expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: 4.3, touched: false })).toBe(false)
     expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: null, touched: true })).toBe(false)
     expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: 4.3, touched: true })).toBe(true)
+  })
+})
+
+describe('compassArcTask', () => {
+  const A = { id: 'A', x: -2, y: 0, label: 'A' }
+  const B = { id: 'B', x: 2, y: 0, label: 'B' }
+  const scene = (circles: Array<[number, number, number]>) =>
+    emptyCoordinateScene({
+      objects: [
+        { id: 'A', kind: 'point', x: -2, y: 0, fixed: true },
+        { id: 'B', kind: 'point', x: 2, y: 0, fixed: true },
+        ...circles.map(([cx, cy, r], i): GraphObject => ({ id: `c${i}`, kind: 'circle', cx, cy, r })),
+      ],
+    })
+  const answer = (circles: Array<[number, number, number]>): UserInput => ({
+    kind: 'coordinateDraw',
+    scene: scene(circles),
+  })
+
+  const bisector = () =>
+    compassArcTask({
+      question: 'Konstruiere die Mittelsenkrechte.',
+      points: [A, B],
+      targets: [
+        { centerId: 'A', radius: 3 },
+        { centerId: 'B', radius: 3 },
+      ],
+      sameRadius: true,
+      minRadius: 2,
+      solution: 'Zwei Bögen mit gleichem Radius > |AB|/2.',
+      explanation: 'Die Bögen schneiden sich auf der Mittelsenkrechten.',
+    })
+
+  it('perpendicular bisector: two arcs with the same radius above minRadius', () => {
+    const t = bisector()
+    expect(t.check(answer([[-2, 0, 3], [2, 0, 3]]))).toBe(true)
+    expect(t.check(answer([[-2, 0, 2.5], [2, 0, 2.6]]))).toBe(true)
+  })
+
+  it('perpendicular bisector: radius too small, different radii, single arc, empty', () => {
+    const t = bisector()
+    expect(t.check(answer([[-2, 0, 1.9], [2, 0, 1.9]]))).toBe(false)
+    expect(t.check(answer([[-2, 0, 3], [2, 0, 2]]))).toBe(false)
+    expect(t.check(answer([[-2, 0, 3]]))).toBe(false)
+    expect(t.check(answer([]))).toBe(false)
+    expect(t.check({ kind: 'value', value: '3' })).toBe(false)
+  })
+
+  it('rejects arcs around points that are not targets', () => {
+    const t = bisector()
+    expect(t.check(answer([[-2, 0, 3], [2, 0, 3], [0, 4, 3]]))).toBe(false)
+  })
+
+  it('sample answer satisfies its own check and given points do not count as an attempt', () => {
+    const t = bisector()
+    expect(t.check(t.sampleAnswer)).toBe(true)
+    const props = t.interactive!.props as { blankScene: CoordinateScene; allowedTools: string[] }
+    expect(props.allowedTools).toEqual(['select', 'point', 'segment', 'circle', 'label', 'delete'])
+    expect(examAnswerAttempted(t, { kind: 'coordinateDraw', scene: props.blankScene })).toBe(false)
+    expect(examAnswerAttempted(t, answer([[-2, 0, 3]]))).toBe(true)
+  })
+
+  it('triangle SSS: two fixed radii around two points', () => {
+    const t = compassArcTask({
+      question: 'Konstruiere C mit b = 4 cm und a = 5 cm.',
+      points: [A, B],
+      targets: [
+        { centerId: 'A', radius: 4 },
+        { centerId: 'B', radius: 5 },
+      ],
+      solution: 'C ist der Schnittpunkt.',
+      explanation: 'Kreise um A (4 cm) und B (5 cm).',
+    })
+    expect(t.check(answer([[-2, 0, 4], [2, 0, 5]]))).toBe(true)
+    expect(t.check(answer([[-2, 0, 4.1], [2, 0, 4.9]]))).toBe(true)
+    expect(t.check(answer([[-2, 0, 5], [2, 0, 4]]))).toBe(false)
+    expect(t.check(answer([[-2, 0, 4]]))).toBe(false)
+    expect(t.check(answer([[-2, 0, 4], [2, 0, 5], [0, 4, 1]]))).toBe(false)
+    expect(t.check(t.sampleAnswer)).toBe(true)
+  })
+
+  it('same center twice needs two distinct arcs', () => {
+    const t = compassArcTask({
+      question: 'Zwei Kreise um A.',
+      points: [A],
+      targets: [
+        { centerId: 'A', radius: 2 },
+        { centerId: 'A', radius: 3 },
+      ],
+      solution: 's',
+      explanation: 'e',
+    })
+    expect(t.check(answer([[-2, 0, 2]]))).toBe(false)
+    expect(t.check(answer([[-2, 0, 2], [-2, 0, 3]]))).toBe(true)
+  })
+
+  it('throws on unknown center or inconsistent sameRadius', () => {
+    expect(() =>
+      compassArcTask({ question: 'q', points: [A], targets: [{ centerId: 'X', radius: 1 }], solution: 's', explanation: 'e' }),
+    ).toThrow()
+    expect(() =>
+      compassArcTask({ question: 'q', points: [A], targets: [{ centerId: 'A', radius: 1 }], sameRadius: true, minRadius: 2, solution: 's', explanation: 'e' }),
+    ).toThrow()
   })
 })

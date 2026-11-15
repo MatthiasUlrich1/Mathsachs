@@ -11,6 +11,8 @@ export type GraphPointObj = {
   y: number
   label?: string
   color?: string
+  /** Given by the task: cannot be moved, deleted or cleared by the learner. */
+  fixed?: boolean
 }
 
 export type GraphSegmentObj = {
@@ -53,12 +55,25 @@ export type GraphLabelObj = {
   color?: string
 }
 
+/** Circle or arc (compass). Grid units; angles in degrees, counter-clockwise (math orientation). */
+export type GraphCircleObj = {
+  id: string
+  kind: 'circle'
+  cx: number
+  cy: number
+  r: number
+  /** Optional arc [startDeg, endDeg] (counter-clockwise); omitted = full circle. */
+  arc?: [number, number]
+  color?: string
+}
+
 export type GraphObject =
   | GraphPointObj
   | GraphSegmentObj
   | GraphRayObj
   | GraphLineObj
   | GraphLabelObj
+  | GraphCircleObj
 
 export type SnapMode = 'off' | 'half' | 'integer'
 
@@ -245,6 +260,9 @@ export function generateCoordinateSceneSvg(scene: CoordinateScene): string {
           `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" stroke="${color}" stroke-width="2.5" marker-end="url(#${defId})"/>`,
         )
       }
+    } else if (o.kind === 'circle') {
+      const d = circleArcPath(o, toSvg, cellSize)
+      extras.push(`<path d="${d}" fill="none" stroke="${color}" stroke-width="2"/>`)
     } else if (o.kind === 'label') {
       const [sx, sy] = toSvg(o.x, o.y)
       extras.push(
@@ -259,6 +277,33 @@ export function generateCoordinateSceneSvg(scene: CoordinateScene): string {
   }
 
   return base.replace('</svg>', `  ${extras.join('\n  ')}\n</svg>`)
+}
+
+/**
+ * SVG path data of a full circle (two half-arcs) or an arc of it.
+ * toSvg maps grid units to SVG px; cellSize is SVG px per grid unit.
+ */
+export function circleArcPath(
+  o: { cx: number; cy: number; r: number; arc?: [number, number] },
+  toSvg: (mx: number, my: number) => [number, number],
+  cellSize: number,
+): string {
+  const rp = o.r * cellSize
+  const f = (n: number) => Number(n.toFixed(2))
+  if (!o.arc) {
+    const [sx, sy] = toSvg(o.cx, o.cy)
+    return `M ${f(sx - rp)} ${f(sy)} a ${f(rp)} ${f(rp)} 0 1 0 ${f(2 * rp)} 0 a ${f(rp)} ${f(rp)} 0 1 0 ${f(-2 * rp)} 0`
+  }
+  const [a0, a1] = o.arc
+  const span = (((a1 - a0) % 360) + 360) % 360 || 360
+  const at = (deg: number) => {
+    const t = (deg * Math.PI) / 180
+    return toSvg(o.cx + o.r * Math.cos(t), o.cy + o.r * Math.sin(t))
+  }
+  const [x0, y0] = at(a0)
+  const [x1, y1] = at(a0 + span)
+  // SVG y points down: counter-clockwise in math = sweep-flag 0
+  return `M ${f(x0)} ${f(y0)} A ${f(rp)} ${f(rp)} 0 ${span > 180 ? 1 : 0} 0 ${f(x1)} ${f(y1)}`
 }
 
 function escapeXml(s: string): string {
@@ -332,7 +377,11 @@ export function scenesMatch(
   const ansPts = answer.objects.filter((o) => o.kind === 'point') as GraphPointObj[]
   const solPts = solution.objects.filter((o) => o.kind === 'point') as GraphPointObj[]
 
+  const ansCircles = circlesOf(answer)
+  const solCircles = circlesOf(solution)
+
   if (
+    ansCircles.length !== solCircles.length ||
     ansLines.length !== solLines.length ||
     ansSegs.length !== solSegs.length ||
     ansRays.length !== solRays.length ||
@@ -368,6 +417,18 @@ export function scenesMatch(
     usedRay.add(idx)
   }
 
+  const usedCircle = new Set<number>()
+  for (const s of solCircles) {
+    const idx = ansCircles.findIndex(
+      (a, i) =>
+        !usedCircle.has(i) &&
+        pointNear({ x: a.cx, y: a.cy }, { x: s.cx, y: s.cy }, tol) &&
+        near(a.r, s.r, tol),
+    )
+    if (idx < 0) return false
+    usedCircle.add(idx)
+  }
+
   const usedPt = new Set<number>()
   for (const s of solPts) {
     const idx = ansPts.findIndex((a, i) => !usedPt.has(i) && pointNear(a, s, tol))
@@ -376,6 +437,42 @@ export function scenesMatch(
   }
 
   return true
+}
+
+export function circlesOf(scene: CoordinateScene): GraphCircleObj[] {
+  return scene.objects.filter((o): o is GraphCircleObj => o.kind === 'circle')
+}
+
+/**
+ * Is there a circle/arc in `scene` whose center is the given point and whose radius is r?
+ *
+ * @param center     id of a point object in the scene, or explicit coordinates (grid units);
+ *                   an unknown id yields false
+ * @param r          wanted radius (grid units)
+ * @param tol        radius tolerance (default 0.15 grid units)
+ * @param centerTol  distance tolerance of the center (default 0.35, as pointNear)
+ */
+export function hasCircle(
+  scene: CoordinateScene,
+  center: string | { x: number; y: number },
+  r: number,
+  tol = 0.15,
+  centerTol = 0.35,
+): boolean {
+  let c: { x: number; y: number } | null
+  if (typeof center === 'string') {
+    const p = scene.objects.find(
+      (o): o is GraphPointObj => o.kind === 'point' && o.id === center,
+    )
+    c = p ? { x: p.x, y: p.y } : null
+  } else {
+    c = center
+  }
+  if (!c) return false
+  return circlesOf(scene).some(
+    (o) =>
+      pointNear({ x: o.cx, y: o.cy }, c, centerTol) && Math.abs(o.r - r) <= tol + 1e-9,
+  )
 }
 
 export function parseCoordinateScene(raw: unknown): CoordinateScene | null {

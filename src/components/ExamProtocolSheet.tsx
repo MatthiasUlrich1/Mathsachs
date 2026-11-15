@@ -54,7 +54,7 @@ export const formatExamAnswer = (input: UserInput): string => {
     return `(${input.x}|${input.y})`
   }
   if (input.kind === 'coordinateDraw') {
-    const n = input.scene.objects.length
+    const n = input.scene.objects.filter((o) => !(o.kind === 'point' && o.fixed)).length
     return n ? `${n} Objekt${n === 1 ? '' : 'e'}` : '—'
   }
   if (input.kind === 'paramSlider') {
