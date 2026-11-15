@@ -558,3 +558,85 @@ export function parseCoordinateScene(raw: unknown): CoordinateScene | null {
     objects,
   }
 }
+
+/** Smaller angle (0..180 degrees) between two direction vectors; null for a zero vector. */
+export function angleBetweenDeg(
+  u: { x: number; y: number },
+  v: { x: number; y: number },
+): number | null {
+  const lu = Math.hypot(u.x, u.y)
+  const lv = Math.hypot(v.x, v.y)
+  if (lu < 1e-9 || lv < 1e-9) return null
+  const cos = Math.max(-1, Math.min(1, (u.x * v.x + u.y * v.y) / (lu * lv)))
+  return (Math.acos(cos) * 180) / Math.PI
+}
+
+/**
+ * Is there a ray starting at `vertex` whose smaller angle to the direction
+ * vertex -> `from` is `degrees` (+/- tol)? The smaller angle makes mirrored constructions
+ * (leg on the other side of the first leg) count as correct.
+ *
+ * @param vertex     id of a point object, or coordinates; an unknown id yields false
+ * @param from       id / coordinates of a point on the first leg (direction vertex -> from)
+ * @param degrees    wanted angle, 0..180
+ * @param tol        angle tolerance in degrees (default 1: the angle tool snaps to whole degrees)
+ * @param vertexTol  distance tolerance of the ray origin (default 0.35, as pointNear)
+ */
+export function hasAngleAt(
+  scene: CoordinateScene,
+  vertex: ScenePointRef,
+  from: ScenePointRef,
+  degrees: number,
+  tol = 1,
+  vertexTol = 0.35,
+): boolean {
+  const v = resolvePointRef(scene, vertex)
+  const f = resolvePointRef(scene, from)
+  if (!v || !f) return false
+  const leg = { x: f.x - v.x, y: f.y - v.y }
+  return scene.objects.some((o) => {
+    if (o.kind !== 'ray') return false
+    if (!pointNear({ x: o.x1, y: o.y1 }, v, vertexTol)) return false
+    const a = angleBetweenDeg(leg, { x: o.x2 - o.x1, y: o.y2 - o.y1 })
+    return a !== null && Math.abs(a - degrees) <= tol + 1e-9
+  })
+}
+
+/** Intersection point of two rays (origin + direction, t >= 0); null if parallel or not meeting. */
+export function rayIntersection(
+  a: { x1: number; y1: number; x2: number; y2: number },
+  b: { x1: number; y1: number; x2: number; y2: number },
+): { x: number; y: number } | null {
+  const ax = a.x2 - a.x1
+  const ay = a.y2 - a.y1
+  const bx = b.x2 - b.x1
+  const by = b.y2 - b.y1
+  const det = ax * by - ay * bx
+  if (Math.abs(det) < 1e-9) return null
+  const dx = b.x1 - a.x1
+  const dy = b.y1 - a.y1
+  const t = (dx * by - dy * bx) / det
+  const s = (dx * ay - dy * ax) / det
+  if (t < -1e-9 || s < -1e-9) return null
+  return { x: a.x1 + t * ax, y: a.y1 + t * ay }
+}
+
+/**
+ * Do two rays of the scene (e.g. the angle legs at A and B) meet near (x, y)?
+ * Rays on opposite sides of the base never meet, so they do not pass.
+ */
+export function hasRayIntersectionAt(
+  scene: CoordinateScene,
+  x: number,
+  y: number,
+  tol = 0.35,
+): boolean {
+  const rays = scene.objects.filter((o): o is GraphRayObj => o.kind === 'ray')
+  for (let i = 0; i < rays.length; i++) {
+    for (let j = i + 1; j < rays.length; j++) {
+      const p = rayIntersection(rays[i]!, rays[j]!)
+      if (p && pointNear(p, { x, y }, tol)) return true
+    }
+  }
+  return false
+}

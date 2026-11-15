@@ -36,6 +36,7 @@ import {
   hasPointNear,
   hasSegment,
 } from './taskHelpers'
+import { SWS_SETS, WSW_SETS, swsConstructionTask, wswConstructionTask } from './angleConstructionTasks'
 import {
   generateCubeNetChoicesSvg,
   generateCuboidFaceEdgeSvg,
@@ -2292,6 +2293,10 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
         dedupeKey: `lb3kong-konstruktion-sss:${c}:${b}:${a}`,
       })
     },
+    // V6 Geführte Konstruktion — SWS mit Winkel-Werkzeug
+    (rng: Rng) => swsConstructionTask(pick(rng, SWS_SETS)),
+    // V7 Geführte Konstruktion — WSW mit Winkel-Werkzeug
+    (rng: Rng) => wswConstructionTask(pick(rng, WSW_SETS)),
   ),
 })
 

@@ -280,7 +280,14 @@ export const compassArcTask = (input: CompassArcTaskInput): Task => {
 }
 
 // Check building blocks for construction steps (one home: lib/coordinateScene).
-export { hasCircle, hasSegment, hasPointNear, hasLabel } from '../lib/coordinateScene'
+export {
+  hasCircle,
+  hasSegment,
+  hasPointNear,
+  hasLabel,
+  hasAngleAt,
+  hasRayIntersectionAt,
+} from '../lib/coordinateScene'
 
 export interface ConstructionStep {
   /** Short task for this step, e.g. "Zeichne die Seite c = 5 cm, beginne bei A." */

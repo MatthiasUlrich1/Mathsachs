@@ -9,6 +9,7 @@ import {
   type GraphPointObj,
   type SnapMode,
 } from '../lib/coordinateScene'
+import { angleLegFromPointer } from '../lib/angleToolLogic'
 import './CoordinateGraphEditor.css'
 
 export type EditorTool =
@@ -18,6 +19,7 @@ export type EditorTool =
   | 'ray'
   | 'line'
   | 'circle'
+  | 'angle'
   | 'label'
   | 'delete'
 
@@ -37,6 +39,7 @@ const ALL_TOOLS: Array<{ id: EditorTool; label: string }> = [
   { id: 'ray', label: 'Halbgerade' },
   { id: 'line', label: 'Gerade' },
   { id: 'circle', label: 'Zirkel' },
+  { id: 'angle', label: 'Winkel' },
   { id: 'label', label: 'Text' },
   { id: 'delete', label: 'Löschen' },
 ]
@@ -53,17 +56,21 @@ export function CoordinateGraphEditor({
   disabled = false,
   solutionOverlay = null,
 }: CoordinateGraphEditorProps) {
-  // The circle tool is opt-in: without an explicit allowedTools list the toolbar stays as before.
+  // The circle and angle tools are opt-in: without an explicit allowedTools list the toolbar stays as before.
   const tools = ALL_TOOLS.filter((t) =>
-    allowedTools ? allowedTools.includes(t.id) : t.id !== 'circle',
+    allowedTools ? allowedTools.includes(t.id) : t.id !== 'circle' && t.id !== 'angle',
   )
   const hasCircleTool = tools.some((t) => t.id === 'circle')
+  const hasAngleTool = tools.some((t) => t.id === 'angle')
   const [tool, setTool] = useState<EditorTool>(tools[0]?.id ?? 'point')
   const [pending, setPending] = useState<{ x: number; y: number } | null>(null)
   const [dragId, setDragId] = useState<string | null>(null)
   const [dragPart, setDragPart] = useState<'move' | 'radius'>('move')
   /** Circle tool: pointer is held down after setting the needle point (drag radius). */
   const [circleDrag, setCircleDrag] = useState(false)
+  /** Angle tool: vertex is `pending`; this is the first-leg point, then the drag state. */
+  const [angleLeg, setAngleLeg] = useState<{ x: number; y: number } | null>(null)
+  const [angleDrag, setAngleDrag] = useState(false)
   const history = useRef<GraphObject[][]>([])
   const [undoCount, setUndoCount] = useState(0)
   const [hover, setHover] = useState<{ x: number; y: number } | null>(null)
@@ -130,11 +137,18 @@ export function CoordinateGraphEditor({
     onChange({ ...scene, objects })
   }
 
+  /** Clears every half-finished multi-click tool state (tool switch, undo). */
+  const resetPending = () => {
+    setPending(null)
+    setCircleDrag(false)
+    setAngleLeg(null)
+    setAngleDrag(false)
+  }
+
   const undo = () => {
     const prev = history.current.pop()
     setUndoCount(history.current.length)
-    setPending(null)
-    setCircleDrag(false)
+    resetPending()
     if (prev) onChange({ ...scene, objects: prev })
   }
 
@@ -188,6 +202,50 @@ export function CoordinateGraphEditor({
     ])
   }
 
+  /** Angle tool: points and segment ends the vertex / first leg may snap to. */
+  const anglePointAt = (clientX: number, clientY: number, not?: { x: number; y: number }) => {
+    const raw = screenToMathRaw(clientX, clientY)
+    if (!raw) return null
+    let best: { x: number; y: number } | null = null
+    let bestD = 0.5
+    const consider = (q: { x: number; y: number }) => {
+      if (not && Math.hypot(q.x - not.x, q.y - not.y) < 0.1) return
+      const d = Math.hypot(q.x - raw.x, q.y - raw.y)
+      if (d <= bestD) {
+        best = q
+        bestD = d
+      }
+    }
+    for (const o of scene.objects) {
+      if (o.kind === 'point') consider({ x: o.x, y: o.y })
+      else if (o.kind === 'segment') {
+        consider({ x: o.x1, y: o.y1 })
+        consider({ x: o.x2, y: o.y2 })
+      }
+    }
+    return best
+  }
+
+  const commitAngle = (pointer: { x: number; y: number } | null) => {
+    setAngleDrag(false)
+    if (!pending || !angleLeg || !pointer) return
+    const leg = angleLegFromPointer(pending, angleLeg, pointer)
+    if (!leg) return
+    updateObjects([
+      ...scene.objects,
+      {
+        id: newGraphObjectId(),
+        kind: 'ray',
+        x1: pending.x,
+        y1: pending.y,
+        x2: leg.end.x,
+        y2: leg.end.y,
+      },
+    ])
+    setPending(null)
+    setAngleLeg(null)
+  }
+
   const hitTest = (p: { x: number; y: number }): GraphObject | null => {
     const tol = scene.snap === 'off' ? 0.4 : 0.35
     for (let i = scene.objects.length - 1; i >= 0; i--) {
@@ -225,6 +283,29 @@ export function CoordinateGraphEditor({
       }
       // second tap: pencil point
       commitCircle(pending, circleRadiusAt(pending, e.clientX, e.clientY))
+      return
+    }
+    if (tool === 'angle') {
+      ;(e.currentTarget as Element).setPointerCapture?.(e.pointerId)
+      if (!pending) {
+        const v = anglePointAt(e.clientX, e.clientY)
+        if (v) {
+          setPending(v)
+          setHover(v)
+        }
+        return
+      }
+      if (!angleLeg) {
+        const l = anglePointAt(e.clientX, e.clientY, pending)
+        if (l) {
+          setAngleLeg(l)
+          setHover(l)
+        }
+        return
+      }
+      // Third press: the second leg follows the pointer until it is released.
+      setAngleDrag(true)
+      setHover(screenToMathRaw(e.clientX, e.clientY))
       return
     }
     const p = screenToMath(e.clientX, e.clientY)
@@ -305,6 +386,14 @@ export function CoordinateGraphEditor({
       )
       return
     }
+    if (tool === 'angle') {
+      setHover(
+        pending && angleLeg
+          ? screenToMathRaw(e.clientX, e.clientY)
+          : screenToMath(e.clientX, e.clientY),
+      )
+      return
+    }
     const p = screenToMath(e.clientX, e.clientY)
     setHover(p)
     if (!dragId || !p) return
@@ -330,6 +419,11 @@ export function CoordinateGraphEditor({
 
   const onPointerUp = (e: React.PointerEvent) => {
     setDragId(null)
+    if (tool === 'angle') {
+      // Commit exactly what the live label showed (the last hover position).
+      if (angleDrag) commitAngle(hover ?? screenToMathRaw(e.clientX, e.clientY))
+      return
+    }
     if (tool === 'circle' && pending && circleDrag) {
       setCircleDrag(false)
       const r = circleRadiusAt(pending, e.clientX, e.clientY)
@@ -467,6 +561,22 @@ export function CoordinateGraphEditor({
         }
       : null
 
+  const angleLive =
+    tool === 'angle' && pending && angleLeg && hover
+      ? angleLegFromPointer(pending, angleLeg, hover)
+      : null
+  const anglePreviewObj: GraphObject | null = angleLive
+    ? {
+        id: 'preview-angle',
+        kind: 'ray',
+        x1: pending!.x,
+        y1: pending!.y,
+        x2: angleLive.end.x,
+        y2: angleLive.end.y,
+        color: '#64b5f6',
+      }
+    : null
+
   const userObjectCount = scene.objects.filter((o) => !(o.kind === 'point' && o.fixed)).length
 
   return (
@@ -483,7 +593,7 @@ export function CoordinateGraphEditor({
             disabled={disabled}
             onClick={() => {
               setTool(t.id)
-              setPending(null)
+              resetPending()
             }}
           >
             {t.label}
@@ -513,7 +623,7 @@ export function CoordinateGraphEditor({
         >
           Leeren
         </button>
-        {hasCircleTool && (
+        {(hasCircleTool || hasAngleTool) && (
           <button
             type="button"
             className="coordinate-graph-editor__tool"
@@ -600,6 +710,32 @@ export function CoordinateGraphEditor({
             {`r = ${(circlePreviewR ?? 0).toFixed(1).replace(".", ",")} cm`}
           </text>
         )}
+        {anglePreviewObj && renderObject(anglePreviewObj)}
+        {angleLeg && pending && (
+          <line
+            x1={toSvg(pending.x, pending.y)[0]}
+            y1={toSvg(pending.x, pending.y)[1]}
+            x2={toSvg(angleLeg.x, angleLeg.y)[0]}
+            y2={toSvg(angleLeg.x, angleLeg.y)[1]}
+            stroke="#90caf9"
+            strokeWidth={2}
+            strokeDasharray="4 3"
+            pointerEvents="none"
+          />
+        )}
+        {angleLive && pending && (
+          <text
+            x={toSvg(pending.x, pending.y)[0] + 8}
+            y={toSvg(pending.x, pending.y)[1] + 18}
+            fontSize={13}
+            fontWeight={700}
+            fill="#0d47a1"
+            pointerEvents="none"
+            data-testid="angle-value"
+          >
+            {`α = ${angleLive.deg}°`}
+          </text>
+        )}
         {hover && tool !== 'select' && tool !== 'delete' && (
           <circle
             cx={toSvg(hover.x, hover.y)[0]}
@@ -615,7 +751,9 @@ export function CoordinateGraphEditor({
           ? 'Zwei Punkte tippen: Start, dann Richtung/Ende.'
           : tool === 'circle'
             ? 'Zirkel: Einstichpunkt antippen (rastet auf Punkten ein), dann Radius ziehen oder Endpunkt antippen.'
-            : tool === 'select'
+            : tool === 'angle'
+              ? 'Winkel: Scheitelpunkt antippen, dann einen Punkt des ersten Schenkels, dann den zweiten Schenkel ziehen (ganze Grad).'
+              : tool === 'select'
             ? 'Objekt antippen und ziehen.'
             : tool === 'label'
               ? 'Position tippen, dann Text eingeben.'

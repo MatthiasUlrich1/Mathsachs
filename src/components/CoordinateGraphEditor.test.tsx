@@ -34,3 +34,39 @@ describe('CoordinateGraphEditor circle tool', () => {
     expect(html).toContain('viewBox=')
   })
 })
+
+describe('CoordinateGraphEditor angle tool', () => {
+  it('shows Winkel and Rückgängig only when angle is allowed (opt-in)', () => {
+    const withAngle = renderToStaticMarkup(
+      <CoordinateGraphEditor scene={scene} onChange={() => {}} allowedTools={['select', 'angle']} />,
+    )
+    expect(withAngle).toContain('Winkel')
+    expect(withAngle).toContain('Rückgängig')
+    const legacy = renderToStaticMarkup(
+      <CoordinateGraphEditor scene={scene} onChange={() => {}} allowedTools={['select', 'line']} />,
+    )
+    expect(legacy).not.toContain('Winkel')
+    const defaults = renderToStaticMarkup(<CoordinateGraphEditor scene={scene} onChange={() => {}} />)
+    expect(defaults).not.toContain('Winkel')
+  })
+
+  it('renders drawn angle rays with the existing ray markup', () => {
+    const withRay = {
+      ...scene,
+      objects: [...scene.objects, { id: 'r', kind: 'ray' as const, x1: 0, y1: 0, x2: 3, y2: 2 }],
+    }
+    const html = renderToStaticMarkup(
+      <CoordinateGraphEditor scene={withRay} onChange={() => {}} allowedTools={['angle']} />,
+    )
+    expect(html).toContain('marker-end')
+  })
+})
+
+describe('CoordinateGraphEditor angle tool hint', () => {
+  it('explains the three steps when the angle tool is active', () => {
+    const html = renderToStaticMarkup(
+      <CoordinateGraphEditor scene={scene} onChange={() => {}} allowedTools={['angle']} />,
+    )
+    expect(html).toContain('Scheitelpunkt antippen')
+  })
+})
