@@ -60,6 +60,16 @@ const tasksOf = (topic: Topic): Task[] => {
 
 const isNew = (t: Task) => NEW_TYPES.includes(t.interactive?.type as InteractiveType)
 
+/** Spoiler-Matcher: nennt der Text den Zielwert? Escapes doppelt, weil sie in normalen Strings stehen. */
+const mentionsDegrees = (text: string, angle: number): boolean =>
+  new RegExp('(^|\\D)' + angle + '\\s*°').test(text)
+const assignsGreekAngle = (text: string, angle: number): boolean =>
+  new RegExp('[γδ]\\s*=\\s*' + angle + '\\s*°').test(text)
+const mentionsCm = (text: string, cm: number): boolean =>
+  [formatDe(cm), String(cm)].some((form) =>
+    new RegExp('(^|[^\\d.,])' + form.replace('.', '\\.') + '(?!\\d)\\s*cm').test(text),
+  )
+
 describe('Neu-Themen Messinstrumente', () => {
   it.each(SWITCHED)('$id: bleibt gesperrt und neu', ({ id }) => {
     const t = topicOf(id)
@@ -94,6 +104,19 @@ describe('Neu-Themen Messinstrumente', () => {
     }
   })
 
+  it('Spoiler-Matcher schlagen bei bewusst verratenen Werten an (Negativkontrolle)', () => {
+    expect(mentionsDegrees('Der Winkel ist 45° groß.', 45)).toBe(true)
+    expect(mentionsDegrees('<text>45 °</text>', 45)).toBe(true)
+    expect(mentionsDegrees('Winkel 145°', 45)).toBe(false)
+    expect(assignsGreekAngle('Der Winkel γ = 45° ist gesucht.', 45)).toBe(true)
+    expect(assignsGreekAngle('δ=45°', 45)).toBe(true)
+    expect(assignsGreekAngle('α = 45°, β = 60°', 45)).toBe(false)
+    expect(mentionsCm('Die Strecke ist 4,3 cm lang.', 4.3)).toBe(true)
+    expect(mentionsCm('AB = 4.3 cm', 4.3)).toBe(true)
+    expect(mentionsCm('AB = 14,3 cm', 4.3)).toBe(false)
+    expect(mentionsCm('AB = 4,35 cm', 4.3)).toBe(false)
+  })
+
   it('Mess-Aufgaben verraten den Zielwert nicht in Frage, Figur oder Props', () => {
     let measured = 0
     for (const { id } of SWITCHED) {
@@ -103,16 +126,15 @@ describe('Neu-Themen Messinstrumente', () => {
         measured++
         // Alles, was die Lernenden sehen: Frage, Figur und die Props ohne Zielfeld.
         const { angle, lengthCm, ...visibleProps } = props
-        const visible = [t.question, t.visualContent ?? '', JSON.stringify(visibleProps)].join(' | ')
+        const propsText = JSON.stringify(visibleProps)
         if (t.interactive?.type === 'angleProtractor') {
-          // Die Frage darf die Gradzahl nur nennen, wenn sie zufällig einer Angabe entspricht (alpha/beta).
-          expect(t.visualContent ?? '', id).not.toMatch(new RegExp(`(^|\D)${angle}\s*°`))
-          expect(JSON.stringify(visibleProps), id).not.toMatch(new RegExp(`(^|\D)${angle}\s*°`))
-          expect(t.question, id).not.toMatch(new RegExp(`[γδ]\s*=\s*${angle}\s*°`))
+          expect(mentionsDegrees(t.visualContent ?? '', angle!), id).toBe(false)
+          expect(mentionsDegrees(propsText, angle!), id).toBe(false)
+          expect(assignsGreekAngle(t.question, angle!), id).toBe(false)
         }
         if (t.interactive?.type === 'rulerMeasure') {
-          for (const form of [formatDe(lengthCm!), String(lengthCm)]) {
-            expect(visible, `${id}: ${form}`).not.toMatch(new RegExp(`(^|[^\d.,])${form.replace('.', '\.')}\s*cm`))
+          for (const text of [t.question, t.visualContent ?? '', propsText]) {
+            expect(mentionsCm(text, lengthCm!), id + ': ' + text).toBe(false)
           }
         }
       }
