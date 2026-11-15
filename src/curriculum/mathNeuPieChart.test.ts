@@ -8,7 +8,7 @@ import { worksheetPrintExtras } from '../lib/worksheetPrint'
 import { pcExtentFits, pcSourceFits, pcStartPercents, pcTextExtents } from '../lib/pieChartLogic'
 import { buildUniqueTaskRound } from './uniqueRound'
 import { math6NeuTopics } from './math6NeuTopics'
-import { COUNT_SURVEYS, PERCENT_SURVEYS, countPieChartTask, percentPieChartTask } from './pieChartSurveys'
+import { COUNT_SURVEYS, COUNT_SURVEYS_ANTEIL, COUNT_SURVEYS_HAEUFIGKEIT, PERCENT_SURVEYS, countPieChartTask, percentPieChartTask } from './pieChartSurveys'
 import type { Task, Topic } from './types'
 
 const CASES: Array<{ id: string; min: number }> = [
@@ -159,6 +159,36 @@ describe('Szenarien', () => {
       const t = countPieChartTask(createRng(5), s)
       expect(`${t.question} ${t.explanation} ${t.solution}`).not.toMatch(/\b1 Kinder\b/)
     }
+  })
+})
+
+describe('Themen und Szenarien sind getrennt', () => {
+  it('Häufigkeit und Anteil-Prozent erzeugen keine gleichen Aufgaben (dedupeKey und Frage)', () => {
+    const a = chartTasks(topicOf('lb2-haeufigkeit__neu')).filter(isCountTask)
+    const b = chartTasks(topicOf('lb5-anteil-prozent__neu')).filter(isCountTask)
+    expect(a.length).toBeGreaterThan(0)
+    expect(b.length).toBeGreaterThan(0)
+    const keysA = new Set(a.map((t) => t.dedupeKey))
+    const qA = new Set(a.map((t) => t.question))
+    for (const t of b) {
+      expect(keysA.has(t.dedupeKey), t.dedupeKey).toBe(false)
+      expect(qA.has(t.question), t.question).toBe(false)
+    }
+    expect(COUNT_SURVEYS_HAEUFIGKEIT.length + COUNT_SURVEYS_ANTEIL.length).toBe(COUNT_SURVEYS.length)
+  })
+
+  it('kein Prozentvektor kommt in zwei Szenarien vor, und kein Szenario startet gleich aufgeteilt', () => {
+    const vectors = [
+      ...COUNT_SURVEYS.map((s) => s.counts.map((n) => (n / s.counts.reduce((x, y) => x + y, 0)) * 100)),
+      ...PERCENT_SURVEYS.map((s) => s.percents),
+    ].map((v) => v.join(','))
+    expect(new Set(vectors).size).toBe(vectors.length)
+    for (const s of COUNT_SURVEYS) expect(s.counts.every((n) => n === s.counts[0])).toBe(false)
+  })
+
+  it('Verein-Szenario: nicht alle Kinder sind im Verein', () => {
+    const v = COUNT_SURVEYS.find((s) => s.id === 'verein50')!
+    expect(v.categories).toContain('Kein Verein')
   })
 })
 

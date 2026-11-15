@@ -57,19 +57,23 @@ export const COUNT_SURVEYS: CountSurvey[] = [
   },
   {
     id: 'verein50',
-    context: 'Beim Sportfest wurden 50 Kinder gefragt, in welchem Verein sie spielen (ein Verein pro Kind).',
+    context: 'Beim Sportfest wurden 50 Kinder gefragt, in welchem Sportverein sie spielen (ein Verein pro Kind) oder ob sie in keinem Verein sind.',
     head: 'Sportverein',
-    categories: ['Fußball', 'Handball', 'Schwimmen', 'Turnen'],
-    counts: [20, 10, 15, 5],
+    categories: ['Fußball', 'Handball', 'Schwimmen', 'Turnen', 'Kein Verein'],
+    counts: [15, 5, 10, 5, 15],
   },
   {
     id: 'eis6d',
     context: 'Beim Klassenfest der 6d wurden 20 Kinder gefragt, welche Eissorte sie am liebsten mögen.',
     head: 'Lieblingseis',
     categories: ['Schoko', 'Vanille', 'Erdbeere', 'Zitrone'],
-    counts: [7, 5, 6, 2],
+    counts: [6, 5, 7, 2],
   },
 ]
+
+/** Split by topic so that the topics never produce the same tasks. */
+export const COUNT_SURVEYS_HAEUFIGKEIT: CountSurvey[] = COUNT_SURVEYS.filter((s) => ['pause6a', 'schulweg6b', 'tier6c'].includes(s.id))
+export const COUNT_SURVEYS_ANTEIL: CountSurvey[] = COUNT_SURVEYS.filter((s) => ['verein50', 'eis6d'].includes(s.id))
 
 export const PERCENT_SURVEYS: PercentSurvey[] = [
   {
