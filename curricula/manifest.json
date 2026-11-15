@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-18T17:43:54.980Z",
+  "updatedAt": "2026-11-15T19:39:39.199Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -9,7 +9,7 @@
       "subject": "Mathematik",
       "version": "1.2.9",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen.json",
-      "size": 71977,
+      "size": 179595,
       "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544)."
     },
     {

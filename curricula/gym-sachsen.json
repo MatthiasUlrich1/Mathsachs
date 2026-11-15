@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.2.9",
   "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
-  "contentHash": "51da82db",
+  "contentHash": "0e4916b3",
   "official": [
     {
       "id": "klasse-5",
@@ -102,6 +102,192 @@
               "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb1-runden-natuerlich__neu",
+              "title": "Natürliche Zahlen runden (große Zahlen) · Neu (Prüfung)",
+              "hint": "Schau auf die Ziffer rechts von der Rundungsstelle – ab 5 wird aufgerundet.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "runden",
+                "Zehntausender",
+                "Hunderttausender",
+                "Überschlag",
+                "Zahlenstrahl",
+                "Neu",
+                "Prüfung",
+                "lb1-runden-natuerlich"
+              ],
+              "released": false,
+              "reviewOf": "lb1-runden-natuerlich"
+            },
+            {
+              "id": "lb1-addition__neu",
+              "title": "Addition natürlicher Zahlen (Dreiersummen & Ergänzen) · Neu (Prüfung)",
+              "hint": "Reihenfolge und Klammerung sind bei der Addition egal.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Addition",
+                "Summand",
+                "Übertrag",
+                "Ergänzen",
+                "Dreiersumme",
+                "Kommutativgesetz",
+                "Neu",
+                "Prüfung",
+                "lb1-addition"
+              ],
+              "released": false,
+              "reviewOf": "lb1-addition"
+            },
+            {
+              "id": "lb1-subtraktion__neu",
+              "title": "Subtraktion natürlicher Zahlen (mit Nullen) · Neu (Prüfung)",
+              "hint": "Bei Nullen im Minuenden musst du über mehrere Stellen entbündeln.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Subtraktion",
+                "Minuend",
+                "Subtrahend",
+                "Entbündeln",
+                "Nullen",
+                "Neu",
+                "Prüfung",
+                "lb1-subtraktion"
+              ],
+              "released": false,
+              "reviewOf": "lb1-subtraktion"
+            },
+            {
+              "id": "lb1-multiplikation__neu",
+              "title": "Multiplikation natürlicher Zahlen (große Faktoren) · Neu (Prüfung)",
+              "hint": "Zerlege den zweiten Faktor in Zehner und Einer.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Multiplikation",
+                "Faktor",
+                "Teilprodukt",
+                "Stellenwertverfahren",
+                "Neu",
+                "Prüfung",
+                "lb1-multiplikation"
+              ],
+              "released": false,
+              "reviewOf": "lb1-multiplikation"
+            },
+            {
+              "id": "lb1-schriftliches-rechnen__neu",
+              "title": "Schriftliches Rechnen (Kästchenpapier) — erweitert · Neu (Prüfung)",
+              "hint": "Schreibe stellenrichtig untereinander und trage jede Ziffer in ein Kästchen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "schriftlich",
+                "Kästchen",
+                "Übertrag",
+                "Stellenwert",
+                "Überschlag",
+                "Neu",
+                "Prüfung",
+                "lb1-schriftliches-rechnen"
+              ],
+              "released": false,
+              "reviewOf": "lb1-schriftliches-rechnen"
+            },
+            {
+              "id": "lb1-division-rest__neu",
+              "title": "Division mit Rest (große Zahlen) · Neu (Prüfung)",
+              "hint": "Der Rest ist immer kleiner als der Divisor.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Division",
+                "Rest",
+                "Quotient",
+                "Probe",
+                "Neu",
+                "Prüfung",
+                "lb1-division-rest"
+              ],
+              "released": false,
+              "reviewOf": "lb1-division-rest"
+            },
+            {
+              "id": "lb1-schriftliche-division__neu",
+              "title": "Schriftliche Division (Verfahren verstehen) · Neu (Prüfung)",
+              "hint": "Prüfe zuerst, wie viele führende Ziffern mindestens so groß wie der Divisor sind.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "schriftlich",
+                "Division",
+                "Quotient",
+                "Probe",
+                "Nullen",
+                "Neu",
+                "Prüfung",
+                "lb1-schriftliche-division"
+              ],
+              "released": false,
+              "reviewOf": "lb1-schriftliche-division"
+            },
+            {
+              "id": "lb1-potenzieren__neu",
+              "title": "Potenzieren (Potenzschreibweise & Zehnerpotenzen) · Neu (Prüfung)",
+              "hint": "aⁿ bedeutet: a wird n-mal mit sich selbst multipliziert.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Potenz",
+                "Exponent",
+                "Basis",
+                "Zehnerpotenz",
+                "Kubikzahl",
+                "Neu",
+                "Prüfung",
+                "lb1-potenzieren"
+              ],
+              "released": false,
+              "reviewOf": "lb1-potenzieren"
+            },
+            {
+              "id": "lb1-teilbarkeit__neu",
+              "title": "Teilbarkeit und Rest · Neu (Prüfung)",
+              "hint": "Teilbar heißt: Rest 0 bei der Division.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Teilbarkeit",
+                "Rest",
+                "Teilbarkeitsregel",
+                "Quersumme",
+                "Neu",
+                "Prüfung",
+                "lb1-teilbarkeit"
+              ],
+              "released": false,
+              "reviewOf": "lb1-teilbarkeit"
+            },
+            {
+              "id": "lb1-primzahl__neu",
+              "title": "Primzahlen erkennen (erweitert) · Neu (Prüfung)",
+              "hint": "Eine Primzahl hat genau zwei Teiler: 1 und sich selbst.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Primzahl",
+                "Teiler",
+                "Primfaktorzerlegung",
+                "Neu",
+                "Prüfung",
+                "lb1-primzahl"
+              ],
+              "released": false,
+              "reviewOf": "lb1-primzahl"
             }
           ]
         },
@@ -200,6 +386,219 @@
                 "Länge",
                 "Masse"
               ]
+            },
+            {
+              "id": "lb2-kuerzen__neu",
+              "title": "Brüche kürzen (Anwendungen & Erkennen) · Neu (Prüfung)",
+              "hint": "Teile Zähler und Nenner durch ihren größten gemeinsamen Teiler (ggT).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "kürzen",
+                "ggT",
+                "gekürzt",
+                "äquivalent",
+                "Bruch",
+                "Neu",
+                "Prüfung",
+                "lb2-kuerzen"
+              ],
+              "released": false,
+              "reviewOf": "lb2-kuerzen"
+            },
+            {
+              "id": "lb2-erweitern__neu",
+              "title": "Brüche erweitern (Nenner finden & Vergleich) · Neu (Prüfung)",
+              "hint": "Multipliziere Zähler und Nenner mit derselben Zahl.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "erweitern",
+                "äquivalent",
+                "gemeinsamer Nenner",
+                "Bruch",
+                "Zehntel",
+                "Neu",
+                "Prüfung",
+                "lb2-erweitern"
+              ],
+              "released": false,
+              "reviewOf": "lb2-erweitern",
+              "explore": {
+                "boardId": "bruchErweitern"
+              }
+            },
+            {
+              "id": "lb2-anteil-bruch__neu",
+              "title": "Anteil als Bruch (Alltag & Komplement) · Neu (Prüfung)",
+              "hint": "Zähler = Anzahl der betrachteten Teile, Nenner = Gesamtanzahl.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Anteil",
+                "Bruch",
+                "Verhältnis",
+                "Komplement",
+                "Alltag",
+                "Neu",
+                "Prüfung",
+                "lb2-anteil-bruch"
+              ],
+              "released": false,
+              "reviewOf": "lb2-anteil-bruch"
+            },
+            {
+              "id": "lb2-grafische-brueche__neu",
+              "title": "Brüche grafisch erkennen (Multiple Choice & genaues Ablesen) · Neu (Prüfung)",
+              "hint": "Zähle die eingefärbten Teile und die Gesamtanzahl.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Bruch",
+                "grafisch",
+                "Kreisdiagramm",
+                "Balken",
+                "Raster",
+                "ablesen",
+                "Neu",
+                "Prüfung",
+                "lb2-grafische-brueche"
+              ],
+              "released": false,
+              "reviewOf": "lb2-grafische-brueche"
+            },
+            {
+              "id": "lb2-dez-add-sub__neu",
+              "title": "Dezimalzahlen addieren/subtrahieren (Ketten & Alltag) · Neu (Prüfung)",
+              "hint": "Schreibe die Zahlen kommagerecht untereinander und rechne stellenweise.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "addieren",
+                "subtrahieren",
+                "Geld",
+                "Alltag",
+                "Komma",
+                "Neu",
+                "Prüfung",
+                "lb2-dez-add-sub"
+              ],
+              "released": false,
+              "reviewOf": "lb2-dez-add-sub"
+            },
+            {
+              "id": "lb2-dez-mult__neu",
+              "title": "Dezimalzahl multiplizieren (Dezimal mal Dezimal & Alltag) · Neu (Prüfung)",
+              "hint": "Rechne wie mit natürlichen Zahlen, zähle die Nachkommastellen zusammen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "multiplizieren",
+                "Nachkommastellen",
+                "Alltag",
+                "Preis",
+                "Neu",
+                "Prüfung",
+                "lb2-dez-mult"
+              ],
+              "released": false,
+              "reviewOf": "lb2-dez-mult"
+            },
+            {
+              "id": "lb2-dez-div__neu",
+              "title": "Dezimalzahl dividieren (Dezimal durch Dezimal & Verteilen) · Neu (Prüfung)",
+              "hint": "Teile wie bei natürlichen Zahlen und setze das Komma richtig.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "dividieren",
+                "Alltag",
+                "Verteilen",
+                "Komma",
+                "Neu",
+                "Prüfung",
+                "lb2-dez-div"
+              ],
+              "released": false,
+              "reviewOf": "lb2-dez-div"
+            },
+            {
+              "id": "lb2-runden-dezimal__neu",
+              "title": "Dezimalzahlen runden (Cent & Zahlenstrahl) · Neu (Prüfung)",
+              "hint": "Ist die nächste Ziffer 5 oder größer, wird aufgerundet.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "runden",
+                "Dezimalzahl",
+                "Cent",
+                "Zahlenstrahl",
+                "Preis",
+                "Neu",
+                "Prüfung",
+                "lb2-runden-dezimal"
+              ],
+              "released": false,
+              "reviewOf": "lb2-runden-dezimal"
+            },
+            {
+              "id": "lb2-mittelwert__neu",
+              "title": "Arithmetisches Mittel (Dezimalwerte & fehlende Zahl) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mittelwert",
+                "Durchschnitt",
+                "arithmetisches Mittel",
+                "Ergänzen",
+                "Neu",
+                "Prüfung",
+                "lb2-mittelwert"
+              ],
+              "released": false,
+              "reviewOf": "lb2-mittelwert"
+            },
+            {
+              "id": "lb2-zahlenstrahl__neu",
+              "title": "Zahlenstrahl: Abstand, Vergleich & Zahlenfolge · Neu (Prüfung)",
+              "hint": "Der Abstand zwischen zwei Zahlen ist ihre Differenz.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenstrahl",
+                "Abstand",
+                "vergleichen",
+                "Zahlenfolge",
+                "Dezimalzahl",
+                "Neu",
+                "Prüfung",
+                "lb2-zahlenstrahl"
+              ],
+              "released": false,
+              "reviewOf": "lb2-zahlenstrahl"
+            },
+            {
+              "id": "lb2-ordnen-einheiten__neu",
+              "title": "Größen ordnen und vergleichen (Zeit & Differenzen) · Neu (Prüfung)",
+              "hint": "Rechne alle Angaben in dieselbe Einheit um, dann vergleiche.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "ordnen",
+                "vergleichen",
+                "Zeit",
+                "Einheiten",
+                "umrechnen",
+                "Differenz",
+                "Neu",
+                "Prüfung",
+                "lb2-ordnen-einheiten"
+              ],
+              "released": false,
+              "reviewOf": "lb2-ordnen-einheiten"
             }
           ]
         },
@@ -284,6 +683,218 @@
               "hint": "Punktspiegelung an S: A' = 2S − A. Antwortformat x; y (auch Komma oder (x|y)).",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb3-winkelarten__neu",
+              "title": "Winkelarten im Alltag & virtuelles Messen · Neu (Prüfung)",
+              "hint": "Vergleiche mit einem rechten Winkel (90°): kleiner = spitz, größer = stumpf, genau 180° = gestreckt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkel",
+                "Winkelart",
+                "spitz",
+                "recht",
+                "stumpf",
+                "gestreckt",
+                "Uhrzeiger",
+                "messen",
+                "Neu",
+                "Prüfung",
+                "lb3-winkelarten"
+              ],
+              "released": false,
+              "reviewOf": "lb3-winkelarten",
+              "explore": {
+                "boardId": "winkelarten"
+              }
+            },
+            {
+              "id": "lb3-winkel-ergaenzung__neu",
+              "title": "Winkel ergänzen — Vollwinkel & Nebenwinkel · Neu (Prüfung)",
+              "hint": "Vollwinkel: 360° minus die bekannten Winkel. Nebenwinkel an einer Geraden: 180° minus den gegebenen Winkel.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vollwinkel",
+                "Nebenwinkel",
+                "Scheitelwinkel",
+                "Ergänzungswinkel",
+                "360°",
+                "Neu",
+                "Prüfung",
+                "lb3-winkel-ergaenzung"
+              ],
+              "released": false,
+              "reviewOf": "lb3-winkel-ergaenzung"
+            },
+            {
+              "id": "lb3-koordinaten-ablesen__neu",
+              "title": "Koordinaten ablesen — Achsenabstand & Quadranten · Neu (Prüfung)",
+              "hint": "Abstand zur x-Achse = |y|, Abstand zur y-Achse = |x|.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Koordinaten",
+                "ablesen",
+                "Quadrant",
+                "Achsenabstand",
+                "Betrag",
+                "Neu",
+                "Prüfung",
+                "lb3-koordinaten-ablesen"
+              ],
+              "released": false,
+              "reviewOf": "lb3-koordinaten-ablesen"
+            },
+            {
+              "id": "lb3-koordinaten-eintragen__neu",
+              "title": "Punkte eintragen — Figuren & Bedingungen · Neu (Prüfung)",
+              "hint": "Auf einer Achse ist eine der beiden Koordinaten immer 0.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Koordinaten",
+                "eintragen",
+                "Quadrant",
+                "Vorzeichen",
+                "Achse",
+                "Neu",
+                "Prüfung",
+                "lb3-koordinaten-eintragen"
+              ],
+              "released": false,
+              "reviewOf": "lb3-koordinaten-eintragen"
+            },
+            {
+              "id": "lb3-koordinaten-abstand__neu",
+              "title": "Abstand zwischen Punkten — Umfang & Vergleich · Neu (Prüfung)",
+              "hint": "3-4-5-Dreieck: Katheten 3 und 4 LE, Hypotenuse immer 5 LE (bzw. Vielfache davon).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Abstand",
+                "Umfang",
+                "Dreieck",
+                "Koordinaten",
+                "Pythagoras",
+                "Neu",
+                "Prüfung",
+                "lb3-koordinaten-abstand"
+              ],
+              "released": false,
+              "reviewOf": "lb3-koordinaten-abstand"
+            },
+            {
+              "id": "lb3-verschiebung__neu",
+              "title": "Verschiebung — Rückwärts & Vektorketten · Neu (Prüfung)",
+              "hint": "Rückwärts rechnen: A = A' − Vektor. Gegenvektor: Vorzeichen von dx und dy umdrehen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Verschiebung",
+                "Vektor",
+                "Translation",
+                "Gegenvektor",
+                "rückwärts",
+                "Neu",
+                "Prüfung",
+                "lb3-verschiebung"
+              ],
+              "released": false,
+              "reviewOf": "lb3-verschiebung"
+            },
+            {
+              "id": "lb3-achsensymmetrie__neu",
+              "title": "Achsensymmetrie — Buchstaben & Spiegelachse · Neu (Prüfung)",
+              "hint": "Gleiche x, Vorzeichenwechsel bei y → Spiegelung an der x-Achse (und umgekehrt für die y-Achse).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Achsensymmetrie",
+                "Buchstabe",
+                "Spiegelachse",
+                "spiegeln",
+                "Neu",
+                "Prüfung",
+                "lb3-achsensymmetrie"
+              ],
+              "released": false,
+              "reviewOf": "lb3-achsensymmetrie"
+            },
+            {
+              "id": "lb3-punktsymmetrie__neu",
+              "title": "Punktsymmetrie — Zeichen & Spiegelpunkt · Neu (Prüfung)",
+              "hint": "A' = 2S − A. Punktsymmetrische Zeichen sehen nach 180°-Drehung genauso aus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Punktsymmetrie",
+                "Zeichen",
+                "Drehung",
+                "Spiegelpunkt",
+                "Neu",
+                "Prüfung",
+                "lb3-punktsymmetrie"
+              ],
+              "released": false,
+              "reviewOf": "lb3-punktsymmetrie"
+            },
+            {
+              "id": "lb3-strecken-laenge__neu",
+              "title": "Streckenlänge — Addition & Umfang · Neu (Prüfung)",
+              "hint": "Liegt B zwischen A und C auf einer Geraden, gilt AC = AB + BC. Rechteck: Umfang = 2 · (a + b).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Strecke",
+                "Länge",
+                "Umfang",
+                "Streckenaddition",
+                "Rechteck",
+                "Neu",
+                "Prüfung",
+                "lb3-strecken-laenge"
+              ],
+              "released": false,
+              "reviewOf": "lb3-strecken-laenge"
+            },
+            {
+              "id": "lb3-strecken-mittelpunkt__neu",
+              "title": "Mittelpunkt — Rückwärts & Erkennen · Neu (Prüfung)",
+              "hint": "Rückwärts: B = 2M − A (wenn M der Mittelpunkt von AB ist).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mittelpunkt",
+                "Strecke",
+                "rückwärts",
+                "halbieren",
+                "Neu",
+                "Prüfung",
+                "lb3-strecken-mittelpunkt"
+              ],
+              "released": false,
+              "reviewOf": "lb3-strecken-mittelpunkt"
+            },
+            {
+              "id": "lb3-strecken-bezeichnung__neu",
+              "title": "Strecke, Gerade & Halbgerade im Alltag · Neu (Prüfung)",
+              "hint": "Strecke: 2 Endpunkte. Halbgerade: 1 Endpunkt. Gerade: kein Endpunkt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Strecke",
+                "Halbgerade",
+                "Gerade",
+                "Alltag",
+                "Endpunkte",
+                "Neu",
+                "Prüfung",
+                "lb3-strecken-bezeichnung"
+              ],
+              "released": false,
+              "reviewOf": "lb3-strecken-bezeichnung"
             }
           ]
         },
@@ -336,6 +947,143 @@
               "hint": "Zerlege in zwei Quader und addiere die Volumina – oder ziehe die Aussparung ab.",
               "pointsPerTask": 12,
               "tasksPerRound": 10
+            },
+            {
+              "id": "lb4-umfang-rechteck__neu",
+              "title": "Umfang von Rechteck & Quadrat — Seite gesucht & Vergleich · Neu (Prüfung)",
+              "hint": "Fehlende Seite: Halbiere den Umfang, dann ziehe die bekannte Seite ab: b = U : 2 − a.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Umfang",
+                "Rechteck",
+                "Quadrat",
+                "Seite berechnen",
+                "rückwärts rechnen",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "lb4-umfang-rechteck"
+              ],
+              "released": false,
+              "reviewOf": "lb4-umfang-rechteck"
+            },
+            {
+              "id": "lb4-flaeche-rechteck__neu",
+              "title": "Flächeninhalt von Rechteck & Quadrat — Seite gesucht & Einheiten · Neu (Prüfung)",
+              "hint": "Fehlende Seite: b = A : a. Überlege zuerst, welche Flächeneinheit zur Größe des Gegenstands passt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fläche",
+                "Rechteck",
+                "Quadrat",
+                "Seite berechnen",
+                "Flächeneinheiten",
+                "Größenvorstellung",
+                "Neu",
+                "Prüfung",
+                "lb4-flaeche-rechteck"
+              ],
+              "released": false,
+              "reviewOf": "lb4-flaeche-rechteck"
+            },
+            {
+              "id": "lb4-volumen-quader__neu",
+              "title": "Volumen von Quader & Würfel — Kante gesucht & Einheiten · Neu (Prüfung)",
+              "hint": "Fehlende Kante: c = V : (a · b). Merke: 1 dm³ entspricht genau 1 Liter.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumen",
+                "Quader",
+                "Würfel",
+                "Kante berechnen",
+                "Rauminhalt",
+                "Liter",
+                "Volumeneinheiten",
+                "Neu",
+                "Prüfung",
+                "lb4-volumen-quader"
+              ],
+              "released": false,
+              "reviewOf": "lb4-volumen-quader"
+            },
+            {
+              "id": "lb4-oberflaeche-quader__neu",
+              "title": "Oberfläche von Quadern — Teilflächen & Materialbedarf · Neu (Prüfung)",
+              "hint": "Die Oberfläche besteht aus drei Flächenpaaren: O = 2 · (a·b + a·c + b·c).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Oberfläche",
+                "Quader",
+                "Teilflächen",
+                "Materialbedarf",
+                "Netz",
+                "Neu",
+                "Prüfung",
+                "lb4-oberflaeche-quader"
+              ],
+              "released": false,
+              "reviewOf": "lb4-oberflaeche-quader"
+            },
+            {
+              "id": "lb4-flaeche-zusammengesetzt__neu",
+              "title": "Zusammengesetzte Flächen — U-Form & Zerlegung erkennen · Neu (Prüfung)",
+              "hint": "Zerlege in zwei Rechtecke oder ziehe eine Aussparung vom großen Rechteck ab — beide Wege führen zum gleichen Ergebnis.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "zusammengesetzte Fläche",
+                "L-Form",
+                "U-Form",
+                "zerlegen",
+                "Aussparung",
+                "Neu",
+                "Prüfung",
+                "lb4-flaeche-zusammengesetzt"
+              ],
+              "released": false,
+              "reviewOf": "lb4-flaeche-zusammengesetzt"
+            },
+            {
+              "id": "lb4-umfang-zusammengesetzt__neu",
+              "title": "Zusammengesetzte Flächen — Umfang bei der U-Form · Neu (Prüfung)",
+              "hint": "Eine Eckaussparung lässt den Umfang gleich; eine Kerbe in der Mitte (U-Form) fügt zwei zusätzliche Innenkanten hinzu.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Umfang",
+                "zusammengesetzte Figur",
+                "U-Form",
+                "L-Form",
+                "Innenkanten",
+                "Neu",
+                "Prüfung",
+                "lb4-umfang-zusammengesetzt"
+              ],
+              "released": false,
+              "reviewOf": "lb4-umfang-zusammengesetzt"
+            },
+            {
+              "id": "lb4-volumen-zusammengesetzt__neu",
+              "title": "Zusammengesetzte Quader — Volumen rückwärts rechnen · Neu (Prüfung)",
+              "hint": "Zerlege in zwei Quader oder ziehe die Aussparung vom großen Quader ab. Für eine fehlende Größe löse die Gleichung nach ihr auf.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumen",
+                "zusammengesetzter Körper",
+                "L-Körper",
+                "Quader",
+                "rückwärts rechnen",
+                "Neu",
+                "Prüfung",
+                "lb4-volumen-zusammengesetzt"
+              ],
+              "released": false,
+              "reviewOf": "lb4-volumen-zusammengesetzt"
             }
           ]
         },
@@ -501,6 +1249,198 @@
                 "min",
                 "h"
               ]
+            },
+            {
+              "id": "lb5-gesamtpreis__neu",
+              "title": "Sachaufgabe: Gesamtpreis mit mehreren Artikeln · Neu (Prüfung)",
+              "hint": "Berechne jeden Posten einzeln (Anzahl · Stückpreis) und addiere die Teilbeträge.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Gesamtpreis",
+                "Einkauf",
+                "addieren",
+                "multiplizieren",
+                "Alltag",
+                "Stückpreis",
+                "Neu",
+                "Prüfung",
+                "lb5-gesamtpreis"
+              ],
+              "released": false,
+              "reviewOf": "lb5-gesamtpreis"
+            },
+            {
+              "id": "lb5-teilen__neu",
+              "title": "Sachaufgabe: Aufteilen mit Rest · Neu (Prüfung)",
+              "hint": "Teile mit Rest: Zuerst die vollen Gruppen zählen, dann prüfen, was übrig bleibt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Division",
+                "Rest",
+                "aufteilen",
+                "aufrunden",
+                "Alltag",
+                "Neu",
+                "Prüfung",
+                "lb5-teilen"
+              ],
+              "released": false,
+              "reviewOf": "lb5-teilen"
+            },
+            {
+              "id": "lb5-mehrstufig__neu",
+              "title": "Sachaufgabe: Mehrstufige Alltagsrechnung — Sparen & Teilen · Neu (Prüfung)",
+              "hint": "Löse Schritt für Schritt und halte jedes Zwischenergebnis fest, bevor du weiterrechnest.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "mehrstufig",
+                "sparen",
+                "Taschengeld",
+                "Alltag",
+                "Restaurant",
+                "Neu",
+                "Prüfung",
+                "lb5-mehrstufig"
+              ],
+              "released": false,
+              "reviewOf": "lb5-mehrstufig"
+            },
+            {
+              "id": "lb5-sachaufgabe-flaeche__neu",
+              "title": "Sachaufgabe: Fläche & Umfang — Materialkosten im Alltag · Neu (Prüfung)",
+              "hint": "Berechne zuerst Fläche oder Umfang, multipliziere das Ergebnis dann mit dem Preis pro Einheit.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Fläche",
+                "Umfang",
+                "Kosten",
+                "Garten",
+                "Zimmer",
+                "Alltag",
+                "Neu",
+                "Prüfung",
+                "lb5-sachaufgabe-flaeche"
+              ],
+              "released": false,
+              "reviewOf": "lb5-sachaufgabe-flaeche"
+            },
+            {
+              "id": "k5-umrechnen-laenge__neu",
+              "title": "Längeneinheiten im Alltag — Sachaufgaben & Vergleiche · Neu (Prüfung)",
+              "hint": "Rechne beide Längen in dieselbe Einheit um, bevor du vergleichst oder weiterrechnest.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Längeneinheiten",
+                "Länge",
+                "umrechnen",
+                "Alltag",
+                "Sachaufgabe",
+                "mm",
+                "cm",
+                "m",
+                "km",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "k5-umrechnen-laenge"
+              ],
+              "released": false,
+              "reviewOf": "k5-umrechnen-laenge"
+            },
+            {
+              "id": "k5-umrechnen-flaeche__neu",
+              "title": "Flächeneinheiten im Alltag — Sachaufgaben & Vergleiche · Neu (Prüfung)",
+              "hint": "Rechne beide Flächen in dieselbe Einheit um, bevor du vergleichst.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Flächeneinheiten",
+                "Fläche",
+                "umrechnen",
+                "Ar",
+                "Hektar",
+                "Alltag",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "k5-umrechnen-flaeche"
+              ],
+              "released": false,
+              "reviewOf": "k5-umrechnen-flaeche"
+            },
+            {
+              "id": "k5-umrechnen-volumen__neu",
+              "title": "Volumeneinheiten im Alltag — Sachaufgaben & Vergleiche · Neu (Prüfung)",
+              "hint": "Merke: 1 l = 1000 ml. Rechne beide Mengen in dieselbe Einheit um, bevor du vergleichst.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumeneinheiten",
+                "Volumen",
+                "Liter",
+                "ml",
+                "umrechnen",
+                "Alltag",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "k5-umrechnen-volumen"
+              ],
+              "released": false,
+              "reviewOf": "k5-umrechnen-volumen"
+            },
+            {
+              "id": "k5-umrechnen-masse__neu",
+              "title": "Masseneinheiten im Alltag — Sachaufgaben & Vergleiche · Neu (Prüfung)",
+              "hint": "Merke: 1 kg = 1000 g, 1 t = 1000 kg. Rechne beide Massen in dieselbe Einheit um, bevor du vergleichst.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Masseneinheiten",
+                "Masse",
+                "Gewicht",
+                "kg",
+                "g",
+                "t",
+                "umrechnen",
+                "Alltag",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "k5-umrechnen-masse"
+              ],
+              "released": false,
+              "reviewOf": "k5-umrechnen-masse"
+            },
+            {
+              "id": "k5-umrechnen-zeit__neu",
+              "title": "Zeiteinheiten im Alltag — Sachaufgaben & Vergleiche · Neu (Prüfung)",
+              "hint": "Merke: 1 h = 60 min. Rechne beide Zeitspannen in dieselbe Einheit um, bevor du vergleichst.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zeiteinheiten",
+                "Zeit",
+                "Minuten",
+                "Stunden",
+                "umrechnen",
+                "Alltag",
+                "vergleichen",
+                "Neu",
+                "Prüfung",
+                "k5-umrechnen-zeit"
+              ],
+              "released": false,
+              "reviewOf": "k5-umrechnen-zeit"
             }
           ]
         }
@@ -614,6 +1554,243 @@
                 "Anteil",
                 "Alltag"
               ]
+            },
+            {
+              "id": "lb1-kuerzen__neu",
+              "title": "Brüche kürzen · Neu (Prüfung)",
+              "hint": "Teile Zähler und Nenner durch ihren größten gemeinsamen Teiler.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kürzen",
+                "ggT",
+                "Bruch",
+                "vollständig gekürzt",
+                "Neu",
+                "Prüfung",
+                "lb1-kuerzen"
+              ],
+              "released": false,
+              "reviewOf": "lb1-kuerzen"
+            },
+            {
+              "id": "lb1-erweitern__neu",
+              "title": "Brüche erweitern · Neu (Prüfung)",
+              "hint": "Multipliziere Zähler und Nenner mit demselben Faktor.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erweitern",
+                "gleichwertig",
+                "Bruch",
+                "Faktor",
+                "Neu",
+                "Prüfung",
+                "lb1-erweitern"
+              ],
+              "released": false,
+              "reviewOf": "lb1-erweitern",
+              "explore": {
+                "boardId": "bruchErweitern"
+              }
+            },
+            {
+              "id": "lb1-vergleichen__neu",
+              "title": "Brüche vergleichen · Neu (Prüfung)",
+              "hint": "Bringe beide Brüche auf einen gemeinsamen Nenner.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vergleichen",
+                "gemeinsamer Nenner",
+                "kgV",
+                "Bruch",
+                "Neu",
+                "Prüfung",
+                "lb1-vergleichen"
+              ],
+              "released": false,
+              "reviewOf": "lb1-vergleichen"
+            },
+            {
+              "id": "lb1-add-sub-brueche__neu",
+              "title": "Brüche addieren und subtrahieren · Neu (Prüfung)",
+              "hint": "Bringe beide Brüche zuerst auf einen gemeinsamen Nenner.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Addition",
+                "Subtraktion",
+                "Brüche",
+                "gemeinsamer Nenner",
+                "Neu",
+                "Prüfung",
+                "lb1-add-sub-brueche"
+              ],
+              "released": false,
+              "reviewOf": "lb1-add-sub-brueche"
+            },
+            {
+              "id": "lb1-mult-brueche__neu",
+              "title": "Brüche multiplizieren · Neu (Prüfung)",
+              "hint": "Zähler mal Zähler, Nenner mal Nenner – dann kürzen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Multiplikation",
+                "Brüche",
+                "kürzen",
+                "Produkt",
+                "Neu",
+                "Prüfung",
+                "lb1-mult-brueche"
+              ],
+              "released": false,
+              "reviewOf": "lb1-mult-brueche"
+            },
+            {
+              "id": "lb1-div-brueche__neu",
+              "title": "Brüche dividieren · Neu (Prüfung)",
+              "hint": "Durch einen Bruch teilen heißt: mit dem Kehrwert multiplizieren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Division",
+                "Kehrwert",
+                "Brüche",
+                "Quotient",
+                "Neu",
+                "Prüfung",
+                "lb1-div-brueche"
+              ],
+              "released": false,
+              "reviewOf": "lb1-div-brueche"
+            },
+            {
+              "id": "lb1-bruch-dezimal__neu",
+              "title": "Brüche in Dezimalzahlen umwandeln · Neu (Prüfung)",
+              "hint": "Dividiere Zähler durch Nenner.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "Bruch",
+                "periodisch",
+                "endlich",
+                "Neu",
+                "Prüfung",
+                "lb1-bruch-dezimal"
+              ],
+              "released": false,
+              "reviewOf": "lb1-bruch-dezimal"
+            },
+            {
+              "id": "lb1-prozent__neu",
+              "title": "In Prozent umwandeln · Neu (Prüfung)",
+              "hint": "Prozent bedeutet „von Hundert\".",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prozent",
+                "Bruch",
+                "Dezimalzahl",
+                "von Hundert",
+                "Neu",
+                "Prüfung",
+                "lb1-prozent"
+              ],
+              "released": false,
+              "reviewOf": "lb1-prozent"
+            },
+            {
+              "id": "lb1-dez-add-sub__neu",
+              "title": "Dezimalzahlen addieren und subtrahieren · Neu (Prüfung)",
+              "hint": "Schreibe die Zahlen kommagerecht untereinander.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "Addition",
+                "Subtraktion",
+                "Komma",
+                "Neu",
+                "Prüfung",
+                "lb1-dez-add-sub"
+              ],
+              "released": false,
+              "reviewOf": "lb1-dez-add-sub"
+            },
+            {
+              "id": "lb1-dez-mult__neu",
+              "title": "Dezimalzahlen multiplizieren · Neu (Prüfung)",
+              "hint": "Zähle die Nachkommastellen beider Faktoren zusammen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "Multiplikation",
+                "Komma",
+                "Nachkommastellen",
+                "Neu",
+                "Prüfung",
+                "lb1-dez-mult"
+              ],
+              "released": false,
+              "reviewOf": "lb1-dez-mult"
+            },
+            {
+              "id": "lb1-dez-div__neu",
+              "title": "Dezimalzahlen dividieren · Neu (Prüfung)",
+              "hint": "Teile wie bei natürlichen Zahlen und setze das Komma richtig.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dezimalzahl",
+                "Division",
+                "Komma",
+                "Zehnerpotenz",
+                "Neu",
+                "Prüfung",
+                "lb1-dez-div"
+              ],
+              "released": false,
+              "reviewOf": "lb1-dez-div"
+            },
+            {
+              "id": "lb1-runden__neu",
+              "title": "Dezimalzahlen runden · Neu (Prüfung)",
+              "hint": "Schau auf die Ziffer rechts von der Rundungsstelle.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Runden",
+                "Dezimalzahl",
+                "Rundungsstelle",
+                "Cent",
+                "Neu",
+                "Prüfung",
+                "lb1-runden"
+              ],
+              "released": false,
+              "reviewOf": "lb1-runden"
+            },
+            {
+              "id": "lb1-sachaufgabe-bruch__neu",
+              "title": "Sachaufgabe: Bruchrechnung im Alltag · Neu (Prüfung)",
+              "hint": "Überlege erst, welcher Bruch gesucht ist, dann rechne.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Bruch",
+                "Anteil",
+                "Alltag",
+                "Neu",
+                "Prüfung",
+                "lb1-sachaufgabe-bruch"
+              ],
+              "released": false,
+              "reviewOf": "lb1-sachaufgabe-bruch"
             }
           ]
         },
@@ -654,6 +1831,78 @@
                 "proportional",
                 "Einheiten"
               ]
+            },
+            {
+              "id": "lb2-proportional__neu",
+              "title": "Proportionale Zuordnung (Dreisatz) · Neu (Prüfung)",
+              "hint": "Rechne erst auf eine Einheit zurück, dann auf die gesuchte Menge hoch.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Proportional",
+                "Dreisatz",
+                "Zuordnung",
+                "Faktor",
+                "Neu",
+                "Prüfung",
+                "lb2-proportional"
+              ],
+              "released": false,
+              "reviewOf": "lb2-proportional"
+            },
+            {
+              "id": "lb2-antiproportional__neu",
+              "title": "Antiproportionale Zuordnung · Neu (Prüfung)",
+              "hint": "Produkt x · y bleibt konstant.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Antiproportional",
+                "Dreisatz",
+                "Zuordnung",
+                "Produkt",
+                "Neu",
+                "Prüfung",
+                "lb2-antiproportional"
+              ],
+              "released": false,
+              "reviewOf": "lb2-antiproportional"
+            },
+            {
+              "id": "lb2-haeufigkeit__neu",
+              "title": "Relative Häufigkeit in Prozent · Neu (Prüfung)",
+              "hint": "Relative Häufigkeit = Anzahl der Treffer : Gesamtanzahl, dann · 100 für Prozent.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Relative Häufigkeit",
+                "Prozent",
+                "Statistik",
+                "Gesetz der großen Zahlen",
+                "Neu",
+                "Prüfung",
+                "lb2-haeufigkeit"
+              ],
+              "released": false,
+              "reviewOf": "lb2-haeufigkeit"
+            },
+            {
+              "id": "lb2-sachaufgabe-dreisatz__neu",
+              "title": "Sachaufgabe: Dreisatz mit Einheiten · Neu (Prüfung)",
+              "hint": "Erst den Wert für eine Einheit bestimmen, dann auf die gesuchte Menge hochrechnen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Dreisatz",
+                "proportional",
+                "Einheiten",
+                "Neu",
+                "Prüfung",
+                "lb2-sachaufgabe-dreisatz"
+              ],
+              "released": false,
+              "reviewOf": "lb2-sachaufgabe-dreisatz"
             }
           ]
         },
@@ -723,6 +1972,138 @@
                 "Rechteck",
                 "Alltag"
               ]
+            },
+            {
+              "id": "lb3-winkel-dreieck__neu",
+              "title": "Innenwinkelsatz im Dreieck · Neu (Prüfung)",
+              "hint": "Die Innenwinkel im Dreieck ergeben zusammen 180°.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkelsumme",
+                "Dreieck",
+                "Innenwinkel",
+                "gleichschenklig",
+                "Neu",
+                "Prüfung",
+                "lb3-winkel-dreieck"
+              ],
+              "released": false,
+              "reviewOf": "lb3-winkel-dreieck"
+            },
+            {
+              "id": "lb3-winkel-viereck__neu",
+              "title": "Winkelsumme im Viereck · Neu (Prüfung)",
+              "hint": "Die Innenwinkel im Viereck ergeben zusammen 360°.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkelsumme",
+                "Viereck",
+                "Innenwinkel",
+                "Vieleck",
+                "Neu",
+                "Prüfung",
+                "lb3-winkel-viereck"
+              ],
+              "released": false,
+              "reviewOf": "lb3-winkel-viereck"
+            },
+            {
+              "id": "lb3-umfang-rechteck__neu",
+              "title": "Umfang von Rechteck und Quadrat · Neu (Prüfung)",
+              "hint": "U = 2 · (a + b) beim Rechteck, U = 4 · a beim Quadrat.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Umfang",
+                "Rechteck",
+                "Quadrat",
+                "Seitenlänge",
+                "Neu",
+                "Prüfung",
+                "lb3-umfang-rechteck"
+              ],
+              "released": false,
+              "reviewOf": "lb3-umfang-rechteck"
+            },
+            {
+              "id": "lb3-flaeche-rechteck__neu",
+              "title": "Flächeninhalt von Rechteck und Quadrat · Neu (Prüfung)",
+              "hint": "A = a · b beim Rechteck, A = a² beim Quadrat.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fläche",
+                "Rechteck",
+                "Quadrat",
+                "Flächeneinheit",
+                "Neu",
+                "Prüfung",
+                "lb3-flaeche-rechteck"
+              ],
+              "released": false,
+              "reviewOf": "lb3-flaeche-rechteck"
+            },
+            {
+              "id": "lb3-flaeche-dreieck__neu",
+              "title": "Flächeninhalt von Dreiecken · Neu (Prüfung)",
+              "hint": "A = (g · h) : 2",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fläche",
+                "Dreieck",
+                "Grundseite",
+                "Höhe",
+                "Neu",
+                "Prüfung",
+                "lb3-flaeche-dreieck"
+              ],
+              "released": false,
+              "reviewOf": "lb3-flaeche-dreieck"
+            },
+            {
+              "id": "lb3-kongruenzsatz__neu",
+              "title": "Kongruenzsatz wählen · Neu (Prüfung)",
+              "hint": "SSS, SWS, WSW oder SsW — welche Angabe reicht?",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kongruenz",
+                "SSS",
+                "SWS",
+                "WSW",
+                "SsW",
+                "Dreieck",
+                "Hypotenuse",
+                "Kathete",
+                "Neu",
+                "Prüfung",
+                "lb3-kongruenzsatz"
+              ],
+              "released": false,
+              "reviewOf": "lb3-kongruenzsatz"
+            },
+            {
+              "id": "lb3-sachaufgabe-geometrie__neu",
+              "title": "Sachaufgabe: Fläche und Umfang im Alltag · Neu (Prüfung)",
+              "hint": "Umfang für Begrenzungen/Strecken, Fläche für Belag/Material.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sachaufgabe",
+                "Fläche",
+                "Umfang",
+                "Dreieck",
+                "Rechteck",
+                "Alltag",
+                "Neu",
+                "Prüfung",
+                "lb3-sachaufgabe-geometrie"
+              ],
+              "released": false,
+              "reviewOf": "lb3-sachaufgabe-geometrie"
             }
           ]
         },
@@ -776,6 +2157,103 @@
                 "Netz",
                 "falten"
               ]
+            },
+            {
+              "id": "lb4-volumen-quader__neu",
+              "title": "Volumen von Quader und Würfel · Neu (Prüfung)",
+              "hint": "V = a · b · c beim Quader, V = a³ beim Würfel.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumen",
+                "Quader",
+                "Würfel",
+                "Rauminhalt",
+                "Neu",
+                "Prüfung",
+                "lb4-volumen-quader"
+              ],
+              "released": false,
+              "reviewOf": "lb4-volumen-quader"
+            },
+            {
+              "id": "lb4-oberflaeche-quader__neu",
+              "title": "Oberflächeninhalt von Quadern · Neu (Prüfung)",
+              "hint": "O = 2 · (a·b + a·c + b·c) beim Quader, O = 6 · a² beim Würfel.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Oberfläche",
+                "Quader",
+                "Würfel",
+                "Mantelfläche",
+                "Neu",
+                "Prüfung",
+                "lb4-oberflaeche-quader"
+              ],
+              "released": false,
+              "reviewOf": "lb4-oberflaeche-quader"
+            },
+            {
+              "id": "lb4-volumen-prisma__neu",
+              "title": "Volumen gerader Prismen · Neu (Prüfung)",
+              "hint": "V = G · h, wobei G die Grundfläche ist.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Volumen",
+                "Prisma",
+                "Grundfläche",
+                "Höhe",
+                "Neu",
+                "Prüfung",
+                "lb4-volumen-prisma"
+              ],
+              "released": false,
+              "reviewOf": "lb4-volumen-prisma"
+            },
+            {
+              "id": "lb4-flaeche-kante-quader__neu",
+              "title": "Fläche und senkrechte Seitenlänge · Neu (Prüfung)",
+              "hint": "2D · 1D = 3D: V = G · h, also G = V : h und h = V : G.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Quader",
+                "Würfel",
+                "Volumen",
+                "Grundfläche",
+                "Höhe",
+                "Dimension",
+                "Prisma",
+                "Neu",
+                "Prüfung",
+                "lb4-flaeche-kante-quader"
+              ],
+              "released": false,
+              "reviewOf": "lb4-flaeche-kante-quader"
+            },
+            {
+              "id": "lb4-wuerfelnetz__neu",
+              "title": "Würfelnetz erkennen · Neu (Prüfung)",
+              "hint": "Ein faltbares Netz hat sechs Quadrate ohne Überlappung beim Falten.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Würfel",
+                "Körpernetz",
+                "Netz",
+                "falten",
+                "Prisma",
+                "Kanten",
+                "Ecken",
+                "Flächen",
+                "Neu",
+                "Prüfung",
+                "lb4-wuerfelnetz"
+              ],
+              "released": false,
+              "reviewOf": "lb4-wuerfelnetz"
             }
           ]
         },
@@ -846,6 +2324,87 @@
                 "Zentimeter",
                 "Kilometer"
               ]
+            },
+            {
+              "id": "lb5-anteil-groesse__neu",
+              "title": "Anteil einer Größe berechnen · Neu (Prüfung)",
+              "hint": "Erst durch den Nenner teilen, dann mit dem Zähler multiplizieren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Anteil",
+                "Bruch",
+                "Größe",
+                "Zähler",
+                "Nenner",
+                "Neu",
+                "Prüfung",
+                "lb5-anteil-groesse"
+              ],
+              "released": false,
+              "reviewOf": "lb5-anteil-groesse"
+            },
+            {
+              "id": "lb5-anteil-prozent__neu",
+              "title": "Prozent einer Größe berechnen · Neu (Prüfung)",
+              "hint": "W = G · p : 100; umgekehrt G = W : p · 100 und p = W : G · 100.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prozent",
+                "Grundwert",
+                "Prozentwert",
+                "Prozentsatz",
+                "Neu",
+                "Prüfung",
+                "lb5-anteil-prozent"
+              ],
+              "released": false,
+              "reviewOf": "lb5-anteil-prozent"
+            },
+            {
+              "id": "k6-umrechnen-flaeche__neu",
+              "title": "Einheiten umrechnen: Flächeninhalt · Neu (Prüfung)",
+              "hint": "1 m² = 10 000 cm², da Länge UND Breite je ×100 gehen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Fläche",
+                "Flächeninhalt",
+                "Flächeneinheiten",
+                "m²",
+                "cm²",
+                "a",
+                "ha",
+                "umrechnen",
+                "Neu",
+                "Prüfung",
+                "k6-umrechnen-flaeche"
+              ],
+              "released": false,
+              "reviewOf": "k6-umrechnen-flaeche"
+            },
+            {
+              "id": "k6-umrechnen-laenge__neu",
+              "title": "Einheiten umrechnen: Länge · Neu (Prüfung)",
+              "hint": "1 km = 1000 m, 1 m = 100 cm, 1 cm = 10 mm.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Länge",
+                "Längeneinheiten",
+                "mm",
+                "cm",
+                "dm",
+                "m",
+                "km",
+                "umrechnen",
+                "Neu",
+                "Prüfung",
+                "k6-umrechnen-laenge"
+              ],
+              "released": false,
+              "reviewOf": "k6-umrechnen-laenge"
             }
           ]
         }
@@ -930,6 +2489,107 @@
                 "Lot",
                 "Mittelpunkt"
               ]
+            },
+            {
+              "id": "k7-lb1-nebenwinkel__neu",
+              "title": "Nebenwinkel berechnen · Neu (Prüfung)",
+              "hint": "Nebenwinkel liegen an einer Geraden nebeneinander und ergänzen sich zu 180°.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkel",
+                "Nebenwinkel",
+                "Geraden",
+                "180 Grad",
+                "supplementär",
+                "Winkelpaar",
+                "Neu",
+                "Prüfung",
+                "k7-lb1-nebenwinkel"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb1-nebenwinkel"
+            },
+            {
+              "id": "k7-lb1-scheitelwinkel__neu",
+              "title": "Scheitel- und Stufenwinkel · Neu (Prüfung)",
+              "hint": "Scheitelwinkel und Stufenwinkel sind gleich groß.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Winkel",
+                "Scheitelwinkel",
+                "Stufenwinkel",
+                "Wechselwinkel",
+                "Parallelen",
+                "Neu",
+                "Prüfung",
+                "k7-lb1-scheitelwinkel"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb1-scheitelwinkel"
+            },
+            {
+              "id": "k7-lb1-winkelsumme-vieleck__neu",
+              "title": "Innenwinkelsumme im Vieleck · Neu (Prüfung)",
+              "hint": "Winkelsumme = (n − 2) · 180°.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Vieleck",
+                "Polygon",
+                "Innenwinkelsumme",
+                "Winkelsumme",
+                "n-Eck",
+                "regelmäßig",
+                "Neu",
+                "Prüfung",
+                "k7-lb1-winkelsumme-vieleck"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb1-winkelsumme-vieleck"
+            },
+            {
+              "id": "k7-lb1-basiswinkel__neu",
+              "title": "Basiswinkel im gleichschenkligen Dreieck · Neu (Prüfung)",
+              "hint": "Die beiden Basiswinkel sind gleich groß.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Dreieck",
+                "gleichschenklig",
+                "Basiswinkel",
+                "Spitzenwinkel",
+                "Winkel",
+                "Neu",
+                "Prüfung",
+                "k7-lb1-basiswinkel"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb1-basiswinkel"
+            },
+            {
+              "id": "k7-lb1-mittelsenkrechte-schritte__neu",
+              "title": "Mittelsenkrechte: Konstruktionsschritte · Neu (Prüfung)",
+              "hint": "Jeder Punkt auf der Mittelsenkrechten ist von A und B gleich weit entfernt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mittelsenkrechte",
+                "Konstruktion",
+                "Zirkel",
+                "Lot",
+                "Mittelpunkt",
+                "gleich weit entfernt",
+                "Neu",
+                "Prüfung",
+                "k7-lb1-mittelsenkrechte-schritte"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb1-mittelsenkrechte-schritte",
+              "explore": {
+                "boardId": "mittelsenkrechte"
+              }
             }
           ]
         },
@@ -1051,6 +2711,164 @@
                 "Multiplikation",
                 "Terme"
               ]
+            },
+            {
+              "id": "k7-lb2-add-rational__neu",
+              "title": "Rationale Zahlen addieren · Neu (Prüfung)",
+              "hint": "Achte auf die Vorzeichen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "rationale Zahlen",
+                "Vorzeichen",
+                "negative Zahlen",
+                "addieren",
+                "Addition",
+                "Zahlenstrahl",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-add-rational"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-add-rational"
+            },
+            {
+              "id": "k7-lb2-sub-rational__neu",
+              "title": "Rationale Zahlen subtrahieren · Neu (Prüfung)",
+              "hint": "Minus einer negativen Zahl heißt plus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "rationale Zahlen",
+                "Vorzeichen",
+                "negative Zahlen",
+                "subtrahieren",
+                "Subtraktion",
+                "Kontostand",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-sub-rational"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-sub-rational"
+            },
+            {
+              "id": "k7-lb2-mul-rational__neu",
+              "title": "Rationale Zahlen multiplizieren · Neu (Prüfung)",
+              "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "rationale Zahlen",
+                "Vorzeichenregel",
+                "multiplizieren",
+                "Multiplikation",
+                "mal",
+                "Schulden",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-mul-rational"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-mul-rational"
+            },
+            {
+              "id": "k7-lb2-div-rational__neu",
+              "title": "Rationale Zahlen dividieren · Neu (Prüfung)",
+              "hint": "Gleiche Vorzeichen → plus, verschiedene → minus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "rationale Zahlen",
+                "Vorzeichenregel",
+                "dividieren",
+                "Division",
+                "teilen",
+                "Schulden",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-div-rational"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-div-rational"
+            },
+            {
+              "id": "k7-lb2-betrag__neu",
+              "title": "Betrag einer Zahl · Neu (Prüfung)",
+              "hint": "Der Betrag ist immer nicht negativ.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Betrag",
+                "Absolutbetrag",
+                "Betragsstriche",
+                "Abstand",
+                "Abweichung",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-betrag"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-betrag"
+            },
+            {
+              "id": "k7-lb2-term-vorrang__neu",
+              "title": "Term mit Rechengesetzen auswerten · Neu (Prüfung)",
+              "hint": "Klammer vor Punkt vor Strich.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Term",
+                "Rechengesetze",
+                "Punkt vor Strich",
+                "Klammer",
+                "auswerten",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-term-vorrang"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-term-vorrang"
+            },
+            {
+              "id": "k7-lb2-gleichung-add__neu",
+              "title": "Gleichung umstellen: x + a = b · Neu (Prüfung)",
+              "hint": "Subtrahiere a auf beiden Seiten.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gleichung",
+                "lösen",
+                "x",
+                "Äquivalenzumformung",
+                "Addition",
+                "Subtraktion",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-gleichung-add"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-gleichung-add"
+            },
+            {
+              "id": "k7-lb2-gleichung-mul__neu",
+              "title": "Gleichung umstellen: a · x = b · Neu (Prüfung)",
+              "hint": "Dividiere beide Seiten durch a.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gleichung",
+                "lösen",
+                "x",
+                "Faktor",
+                "Division",
+                "Multiplikation",
+                "Neu",
+                "Prüfung",
+                "k7-lb2-gleichung-mul"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb2-gleichung-mul"
             }
           ]
         },
@@ -1121,6 +2939,100 @@
                 "Grundfläche",
                 "Seitenfläche"
               ]
+            },
+            {
+              "id": "k7-lb3-volumen-prisma__neu",
+              "title": "Volumen von Prismen: rückwärts rechnen · Neu (Prüfung)",
+              "hint": "V = G · h → G = V : h bzw. h = V : G.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prisma",
+                "Volumen",
+                "Grundfläche",
+                "Höhe",
+                "rückwärts rechnen",
+                "Neu",
+                "Prüfung",
+                "k7-lb3-volumen-prisma"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb3-volumen-prisma"
+            },
+            {
+              "id": "k7-lb3-mantel-prisma__neu",
+              "title": "Mantelfläche & Oberfläche von Prismen · Neu (Prüfung)",
+              "hint": "O = M + 2 · G; M = U · h.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Prisma",
+                "Mantelfläche",
+                "Oberfläche",
+                "Umfang",
+                "Grundfläche",
+                "Neu",
+                "Prüfung",
+                "k7-lb3-mantel-prisma"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb3-mantel-prisma"
+            },
+            {
+              "id": "k7-lb3-volumen-pyramide__neu",
+              "title": "Volumen von Pyramiden: Vergleich mit dem Prisma · Neu (Prüfung)",
+              "hint": "V_Pyramide = V_Prisma : 3 (gleiche Grundfläche und Höhe).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pyramide",
+                "Volumen",
+                "Prisma",
+                "ein Drittel",
+                "Vergleich",
+                "Neu",
+                "Prüfung",
+                "k7-lb3-volumen-pyramide"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb3-volumen-pyramide"
+            },
+            {
+              "id": "k7-lb3-oberflaeche-quader__neu",
+              "title": "Oberfläche des Quaders in Sachaufgaben · Neu (Prüfung)",
+              "hint": "O = 2 · (a·b + a·c + b·c).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Quader",
+                "Oberfläche",
+                "Verpackung",
+                "Material",
+                "Flächenpaare",
+                "Neu",
+                "Prüfung",
+                "k7-lb3-oberflaeche-quader"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb3-oberflaeche-quader"
+            },
+            {
+              "id": "k7-lb3-oberflaeche-pyramide__neu",
+              "title": "Oberfläche der Pyramide: rückwärts rechnen · Neu (Prüfung)",
+              "hint": "M = O − a²; hₛ = M : (2 · a).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pyramide",
+                "Oberfläche",
+                "Seitenflächenhöhe",
+                "rückwärts rechnen",
+                "Neu",
+                "Prüfung",
+                "k7-lb3-oberflaeche-pyramide"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb3-oberflaeche-pyramide"
             }
           ]
         },
@@ -1181,6 +3093,81 @@
                 "Daten",
                 "Statistik"
               ]
+            },
+            {
+              "id": "k7-lb4-mittelwert__neu",
+              "title": "Arithmetisches Mittel: fehlenden Wert finden · Neu (Prüfung)",
+              "hint": "Summe aller Werte = Mittelwert · Anzahl.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mittelwert",
+                "arithmetisches Mittel",
+                "Durchschnitt",
+                "fehlender Wert",
+                "Statistik",
+                "Neu",
+                "Prüfung",
+                "k7-lb4-mittelwert"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb4-mittelwert"
+            },
+            {
+              "id": "k7-lb4-median__neu",
+              "title": "Median bei gerader Anzahl · Neu (Prüfung)",
+              "hint": "Gerade Anzahl: Mittel der beiden mittleren Werte.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Median",
+                "Zentralwert",
+                "gerade Anzahl",
+                "sortieren",
+                "Statistik",
+                "Neu",
+                "Prüfung",
+                "k7-lb4-median"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb4-median"
+            },
+            {
+              "id": "k7-lb4-spannweite__neu",
+              "title": "Spannweite: Maximum und Minimum verknüpfen · Neu (Prüfung)",
+              "hint": "Maximum = Minimum + Spannweite.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Spannweite",
+                "Maximum",
+                "Minimum",
+                "negative Zahlen",
+                "Statistik",
+                "Neu",
+                "Prüfung",
+                "k7-lb4-spannweite"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb4-spannweite"
+            },
+            {
+              "id": "k7-lb4-rel-haeufigkeit__neu",
+              "title": "Relative Häufigkeit: absolute Anzahl finden · Neu (Prüfung)",
+              "hint": "Anzahl = relative Häufigkeit (%) · Gesamtanzahl : 100.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "relative Häufigkeit",
+                "Prozent",
+                "absolute Häufigkeit",
+                "Statistik",
+                "Neu",
+                "Prüfung",
+                "k7-lb4-rel-haeufigkeit"
+              ],
+              "released": false,
+              "reviewOf": "k7-lb4-rel-haeufigkeit"
             }
           ]
         }
@@ -1266,6 +3253,100 @@
                 "Klammer",
                 "Term"
               ]
+            },
+            {
+              "id": "k8-lb1-zusammenfassen__neu",
+              "title": "Terme zusammenfassen (zwei Pakete) · Neu (Prüfung)",
+              "hint": "Addiere die x-Glieder und die Zahlen getrennt.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Term",
+                "zusammenfassen",
+                "gleichartige Glieder",
+                "Variable",
+                "x",
+                "Neu",
+                "Prüfung",
+                "k8-lb1-zusammenfassen"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb1-zusammenfassen"
+            },
+            {
+              "id": "k8-lb1-term-auswerten__neu",
+              "title": "Term auswerten (Handytarif) · Neu (Prüfung)",
+              "hint": "Setze den Wert für x ein und rechne aus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Term",
+                "einsetzen",
+                "auswerten",
+                "Handytarif",
+                "Grundgebühr",
+                "Neu",
+                "Prüfung",
+                "k8-lb1-term-auswerten"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb1-term-auswerten"
+            },
+            {
+              "id": "k8-lb1-gleichung-linear__neu",
+              "title": "Lineare Gleichung lösen (Zahlenrätsel) · Neu (Prüfung)",
+              "hint": "Erst die Zahl, dann den Faktor beseitigen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gleichung",
+                "Zahlenrätsel",
+                "lösen",
+                "x",
+                "Äquivalenzumformung",
+                "Neu",
+                "Prüfung",
+                "k8-lb1-gleichung-linear"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb1-gleichung-linear"
+            },
+            {
+              "id": "k8-lb1-gleichung-beidseitig__neu",
+              "title": "Gleichung mit x auf beiden Seiten (Vergleich) · Neu (Prüfung)",
+              "hint": "Bringe alle x auf eine Seite.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gleichung",
+                "beide Seiten",
+                "lösen",
+                "x",
+                "Vergleich",
+                "Neu",
+                "Prüfung",
+                "k8-lb1-gleichung-beidseitig"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb1-gleichung-beidseitig"
+            },
+            {
+              "id": "k8-lb1-ausmultiplizieren__neu",
+              "title": "Klammer ausmultiplizieren (Materialkosten) · Neu (Prüfung)",
+              "hint": "Wende das Distributivgesetz an: a·(b+c) = a·b + a·c.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Distributivgesetz",
+                "ausmultiplizieren",
+                "Klammer",
+                "Materialkosten",
+                "Neu",
+                "Prüfung",
+                "k8-lb1-ausmultiplizieren"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb1-ausmultiplizieren"
             }
           ]
         },
@@ -1311,6 +3392,58 @@
                 "Wahrscheinlichkeit",
                 "Komplement"
               ]
+            },
+            {
+              "id": "k8-lb2-laplace-bruch__neu",
+              "title": "Laplace-Wahrscheinlichkeit als Bruch (Kartenstapel) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wahrscheinlichkeit",
+                "Laplace",
+                "Bruch",
+                "Kartenstapel",
+                "günstige Ergebnisse",
+                "Neu",
+                "Prüfung",
+                "k8-lb2-laplace-bruch"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb2-laplace-bruch"
+            },
+            {
+              "id": "k8-lb2-laplace-prozent__neu",
+              "title": "Laplace-Wahrscheinlichkeit in Prozent (Glücksrad) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Wahrscheinlichkeit",
+                "Laplace",
+                "Prozent",
+                "Glücksrad",
+                "Neu",
+                "Prüfung",
+                "k8-lb2-laplace-prozent"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb2-laplace-prozent"
+            },
+            {
+              "id": "k8-lb2-gegenwahrscheinlichkeit__neu",
+              "title": "Gegenwahrscheinlichkeit (Wettervorhersage) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Gegenwahrscheinlichkeit",
+                "Gegenereignis",
+                "Komplement",
+                "Wettervorhersage",
+                "Neu",
+                "Prüfung",
+                "k8-lb2-gegenwahrscheinlichkeit"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb2-gegenwahrscheinlichkeit"
             }
           ]
         },
@@ -1374,8 +3507,8 @@
             },
             {
               "id": "k8-lb3-steigung__grafik",
-              "title": "Gerade einstellen (m und n)",
-              "hint": "Stelle Steigung und Achsenabschnitt am Slider ein.",
+              "title": "Gerade einstellen (m und n) · Grafik (Prüfung)",
+              "hint": "Stelle Steigung und Achsenabschnitt so ein, dass die Gerade zur Vorgabe passt.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1383,34 +3516,38 @@
                 "Achsenabschnitt",
                 "lineare Funktion",
                 "Gerade",
+                "Slider",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k8-lb3-steigung"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k8-lb3-steigung"
             },
             {
               "id": "k8-lb3-achsenabschnitt__grafik",
-              "title": "Nullstelle einer Geraden tippen",
-              "hint": "Schnittpunkt mit der x-Achse tippen.",
+              "title": "Nullstelle einer Geraden tippen · Grafik (Prüfung)",
+              "hint": "Tippe den Schnittpunkt der Geraden mit der x-Achse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
                 "Nullstelle",
                 "x-Achse",
                 "lineare Funktion",
+                "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k8-lb3-achsenabschnitt"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k8-lb3-achsenabschnitt"
             },
             {
               "id": "k8-lb3-funktionswert__grafik",
-              "title": "Gerade durch zwei Punkte zeichnen",
-              "hint": "Werkzeug Gerade: zwei Punkte tippen.",
+              "title": "Gerade durch zwei Punkte zeichnen · Grafik (Prüfung)",
+              "hint": "Zeichne die Gerade durch die beiden gegebenen Punkte.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1418,11 +3555,82 @@
                 "zwei Punkte",
                 "lineare Funktion",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k8-lb3-funktionswert"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k8-lb3-funktionswert"
+            },
+            {
+              "id": "k8-lb3-funktionswert__neu",
+              "title": "Funktionswert einsetzen (Fahrradverleih) · Neu (Prüfung)",
+              "hint": "Setze den gegebenen x-Wert in die Funktion ein.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "lineare Funktion",
+                "Funktionswert",
+                "Fahrradverleih",
+                "Grundgebühr",
+                "Neu",
+                "Prüfung",
+                "k8-lb3-funktionswert"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-funktionswert"
+            },
+            {
+              "id": "k8-lb3-steigung__neu",
+              "title": "Steigung bestimmen (Höhenprofil) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Steigung",
+                "Höhenprofil",
+                "Differenzenquotient",
+                "Wanderweg",
+                "Neu",
+                "Prüfung",
+                "k8-lb3-steigung"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-steigung"
+            },
+            {
+              "id": "k8-lb3-achsenabschnitt__neu",
+              "title": "y-Achsenabschnitt bestimmen (Sparplan) · Neu (Prüfung)",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "y-Achsenabschnitt",
+                "Sparplan",
+                "Startbetrag",
+                "lineare Funktion",
+                "Neu",
+                "Prüfung",
+                "k8-lb3-achsenabschnitt"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-achsenabschnitt"
+            },
+            {
+              "id": "k8-lb3-lgs__neu",
+              "title": "Lineares Gleichungssystem (Kinokarten) · Neu (Prüfung)",
+              "hint": "Additions- oder Einsetzungsverfahren.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "LGS",
+                "Gleichungssystem",
+                "Kinokarten",
+                "zwei Unbekannte",
+                "Neu",
+                "Prüfung",
+                "k8-lb3-lgs"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb3-lgs"
             }
           ]
         },
@@ -1468,6 +3676,63 @@
                 "Seitenverhältnis",
                 "Faktor"
               ]
+            },
+            {
+              "id": "k8-lb4-streckfaktor__neu",
+              "title": "Streckfaktor bestimmen (Modell & Karte) · Neu (Prüfung)",
+              "hint": "k = Bildlänge : Originallänge.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ähnlichkeit",
+                "Streckfaktor",
+                "zentrische Streckung",
+                "Maßstab",
+                "Verkleinerung",
+                "Neu",
+                "Prüfung",
+                "k8-lb4-streckfaktor"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb4-streckfaktor"
+            },
+            {
+              "id": "k8-lb4-strahlensatz__neu",
+              "title": "Strahlensatz: Schattenaufgabe · Neu (Prüfung)",
+              "hint": "Stelle die Proportion auf: Höhe : Schatten = Höhe : Schatten.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Strahlensatz",
+                "Ähnlichkeit",
+                "Verhältnis",
+                "Schatten",
+                "Streckenlänge",
+                "Neu",
+                "Prüfung",
+                "k8-lb4-strahlensatz"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb4-strahlensatz"
+            },
+            {
+              "id": "k8-lb4-aehnliche-seite__neu",
+              "title": "Ähnliche Figuren: Seitenlänge (Rechtecke & Dreiecke) · Neu (Prüfung)",
+              "hint": "Multipliziere mit dem Ähnlichkeitsfaktor k.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ähnlichkeit",
+                "ähnliche Dreiecke",
+                "Seitenverhältnis",
+                "Faktor",
+                "Rechteck",
+                "Neu",
+                "Prüfung",
+                "k8-lb4-aehnliche-seite"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb4-aehnliche-seite"
             }
           ]
         },
@@ -1502,6 +3767,43 @@
                 "heuristisch",
                 "Strategie"
               ]
+            },
+            {
+              "id": "k8-lb5-zahlenraetsel__neu",
+              "title": "Zahlenrätsel (Gleichung aufstellen) — Rätselrunde · Neu (Prüfung)",
+              "hint": "Übersetze den Text in eine Gleichung a·x + b = c und löse.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zahlenrätsel",
+                "Gleichung",
+                "heuristisch",
+                "Textaufgabe",
+                "Übersetzen",
+                "Neu",
+                "Prüfung",
+                "k8-lb5-zahlenraetsel"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb5-zahlenraetsel"
+            },
+            {
+              "id": "k8-lb5-rueckwaerts__neu",
+              "title": "Rückwärtsrechnen — Umkehroperationen · Neu (Prüfung)",
+              "hint": "Kehre jeden Rechenschritt mit der Umkehroperation um.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rückwärtsrechnen",
+                "Umkehroperation",
+                "heuristisch",
+                "Strategie",
+                "Neu",
+                "Prüfung",
+                "k8-lb5-rueckwaerts"
+              ],
+              "released": false,
+              "reviewOf": "k8-lb5-rueckwaerts"
             }
           ]
         }
@@ -1574,7 +3876,7 @@
             },
             {
               "id": "k9-lb1-scheitel__grafik",
-              "title": "Scheitelpunkt am Graphen tippen",
+              "title": "Scheitelpunkt am Graphen tippen · Grafik (Prüfung)",
               "hint": "Tippe den tiefsten bzw. höchsten Punkt der Parabel.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
@@ -1583,16 +3885,17 @@
                 "Parabel",
                 "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k9-lb1-scheitel"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k9-lb1-scheitel"
             },
             {
               "id": "k9-lb1-quadrat-wert__grafik",
-              "title": "Nullstelle einer Parabel tippen",
-              "hint": "Tippe einen Schnittpunkt mit der x-Achse.",
+              "title": "Nullstelle einer Parabel tippen · Grafik (Prüfung)",
+              "hint": "Tippe einen Schnittpunkt der Parabel mit der x-Achse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -1600,11 +3903,89 @@
                 "Parabel",
                 "x-Achse",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k9-lb1-quadrat-wert"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k9-lb1-quadrat-wert"
+            },
+            {
+              "id": "k9-lb1-potenz-produkt__neu",
+              "title": "Potenzgesetz: Produkt als Zahlenwert · Neu (Prüfung)",
+              "hint": "Addiere zuerst die Exponenten, rechne dann die Potenz aus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Potenz",
+                "Potenzgesetze",
+                "Exponent",
+                "Produkt",
+                "Zahlenwert",
+                "Neu",
+                "Prüfung",
+                "k9-lb1-potenz-produkt"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-potenz-produkt"
+            },
+            {
+              "id": "k9-lb1-potenz-quotient__neu",
+              "title": "Potenzgesetz: Quotient und Potenz einer Potenz als Zahlenwert · Neu (Prüfung)",
+              "hint": "Subtrahiere bzw. multipliziere zuerst die Exponenten, rechne dann aus.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Potenz",
+                "Potenzgesetze",
+                "Exponent",
+                "Quotient",
+                "Potenz einer Potenz",
+                "Zahlenwert",
+                "Neu",
+                "Prüfung",
+                "k9-lb1-potenz-quotient"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-potenz-quotient"
+            },
+            {
+              "id": "k9-lb1-quadrat-wert__neu",
+              "title": "Funktionswert einer Parabel in Nullstellenform · Neu (Prüfung)",
+              "hint": "Setze x ein und berechne beide Faktoren, dann multipliziere.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quadratische Funktion",
+                "Nullstellenform",
+                "Funktionswert",
+                "Produktform",
+                "einsetzen",
+                "Neu",
+                "Prüfung",
+                "k9-lb1-quadrat-wert"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-quadrat-wert"
+            },
+            {
+              "id": "k9-lb1-scheitel__neu",
+              "title": "Scheitelpunkt: y-Koordinate bestimmen · Neu (Prüfung)",
+              "hint": "In f(x) = a(x − d)² + e ist S(d|e). Gefragt ist hier die y-Koordinate e.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Scheitelpunkt",
+                "Scheitelform",
+                "Parabel",
+                "y-Koordinate",
+                "Extrempunkt",
+                "Neu",
+                "Prüfung",
+                "k9-lb1-scheitel"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb1-scheitel"
             }
           ]
         },
@@ -1666,6 +4047,83 @@
                 "Radius",
                 "Kugelvolumen"
               ]
+            },
+            {
+              "id": "k9-lb2-kreis-umfang__neu",
+              "title": "Radius aus dem Umfang berechnen · Neu (Prüfung)",
+              "hint": "Stelle U = 2πr nach r um: r = U : (2π).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kreis",
+                "Umfang",
+                "Pi",
+                "Radius",
+                "umstellen",
+                "Neu",
+                "Prüfung",
+                "k9-lb2-kreis-umfang"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb2-kreis-umfang"
+            },
+            {
+              "id": "k9-lb2-kreis-flaeche__neu",
+              "title": "Radius aus dem Flächeninhalt berechnen · Neu (Prüfung)",
+              "hint": "Stelle A = πr² nach r um: r = √(A : π).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kreis",
+                "Flächeninhalt",
+                "Pi",
+                "Radius",
+                "umstellen",
+                "Wurzel",
+                "Neu",
+                "Prüfung",
+                "k9-lb2-kreis-flaeche"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb2-kreis-flaeche"
+            },
+            {
+              "id": "k9-lb2-zylinder-volumen__neu",
+              "title": "Höhe eines Zylinders aus dem Volumen berechnen · Neu (Prüfung)",
+              "hint": "Stelle V = πr²h nach h um: h = V : (πr²).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zylinder",
+                "Volumen",
+                "Höhe",
+                "Pi",
+                "umstellen",
+                "Neu",
+                "Prüfung",
+                "k9-lb2-zylinder-volumen"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb2-zylinder-volumen"
+            },
+            {
+              "id": "k9-lb2-kugel-volumen__neu",
+              "title": "Oberfläche einer Kugel berechnen · Neu (Prüfung)",
+              "hint": "O = 4πr² — vier Großkreisflächen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Kugel",
+                "Oberfläche",
+                "Pi",
+                "Radius",
+                "Großkreis",
+                "Neu",
+                "Prüfung",
+                "k9-lb2-kugel-volumen"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb2-kugel-volumen"
             }
           ]
         },
@@ -1714,6 +4172,64 @@
                 "tan",
                 "Winkel"
               ]
+            },
+            {
+              "id": "k9-lb3-pythagoras-hypotenuse__neu",
+              "title": "Pythagoras: Diagonale eines Rechtecks · Neu (Prüfung)",
+              "hint": "Die Diagonale ist die Hypotenuse des Dreiecks aus Länge und Breite.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pythagoras",
+                "Rechteck",
+                "Diagonale",
+                "Länge",
+                "Breite",
+                "Neu",
+                "Prüfung",
+                "k9-lb3-pythagoras-hypotenuse"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb3-pythagoras-hypotenuse"
+            },
+            {
+              "id": "k9-lb3-pythagoras-kathete__neu",
+              "title": "Quadratseite aus der Diagonale berechnen · Neu (Prüfung)",
+              "hint": "Bei einem Quadrat gilt d = a·√2, also a = d : √2.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pythagoras",
+                "Quadrat",
+                "Diagonale",
+                "Seitenlänge",
+                "Wurzel 2",
+                "Neu",
+                "Prüfung",
+                "k9-lb3-pythagoras-kathete"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb3-pythagoras-kathete"
+            },
+            {
+              "id": "k9-lb3-trig-wert__neu",
+              "title": "Sinus, Kosinus, Tangens aus den Dreiecksseiten · Neu (Prüfung)",
+              "hint": "sin = Gegenkathete/Hypotenuse, cos = Ankathete/Hypotenuse, tan = Gegenkathete/Ankathete.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Sinus",
+                "Kosinus",
+                "Tangens",
+                "Trigonometrie",
+                "Seitenverhältnis",
+                "Kathete",
+                "Neu",
+                "Prüfung",
+                "k9-lb3-trig-wert"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb3-trig-wert"
             }
           ]
         },
@@ -1762,6 +4278,63 @@
                 "Kennwert",
                 "Daten"
               ]
+            },
+            {
+              "id": "k9-lb4-mittelwert__neu",
+              "title": "Fehlenden Wert zum Zielmittelwert finden · Neu (Prüfung)",
+              "hint": "Gesamtsumme = Mittelwert · Anzahl. Ziehe die bekannten Werte ab.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Mittelwert",
+                "Durchschnitt",
+                "fehlender Wert",
+                "Zielwert",
+                "Daten",
+                "Neu",
+                "Prüfung",
+                "k9-lb4-mittelwert"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb4-mittelwert"
+            },
+            {
+              "id": "k9-lb4-median__neu",
+              "title": "Median bei gerader Anzahl von Werten · Neu (Prüfung)",
+              "hint": "Bei gerader Anzahl ist der Median der Mittelwert der beiden mittleren Zahlen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Median",
+                "Zentralwert",
+                "gerade Anzahl",
+                "ordnen",
+                "Daten",
+                "Neu",
+                "Prüfung",
+                "k9-lb4-median"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb4-median"
+            },
+            {
+              "id": "k9-lb4-modalwert__neu",
+              "title": "Modalwert aus einer Häufigkeitstabelle (auch bimodal) · Neu (Prüfung)",
+              "hint": "Der Modalwert ist der Wert mit der größten Häufigkeit.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Modalwert",
+                "Modus",
+                "Häufigkeitstabelle",
+                "bimodal",
+                "Noten",
+                "Neu",
+                "Prüfung",
+                "k9-lb4-modalwert"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb4-modalwert"
             }
           ]
         },
@@ -1783,6 +4356,25 @@
                 "Anwendung",
                 "Vernetzung"
               ]
+            },
+            {
+              "id": "k9-lb5-leiter__neu",
+              "title": "Vernetzung: Abstand zweier Orte auf einer Karte · Neu (Prüfung)",
+              "hint": "Ost-/Nord-Abstand und Luftlinie bilden ein rechtwinkliges Dreieck.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Pythagoras",
+                "Sachaufgabe",
+                "Karte",
+                "Luftlinie",
+                "Vernetzung",
+                "Neu",
+                "Prüfung",
+                "k9-lb5-leiter"
+              ],
+              "released": false,
+              "reviewOf": "k9-lb5-leiter"
             }
           ]
         }
@@ -1850,6 +4442,81 @@
                 "Wachstumsfaktor",
                 "Bakterien"
               ]
+            },
+            {
+              "id": "k10-lb1-zinsen__neu",
+              "title": "Zinsen für mehrere Monate berechnen · Neu (Prüfung)",
+              "hint": "Rechne den Jahreszins anteilig auf die Monate um: Z = K · p · m : (100 · 12).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinsen",
+                "Monatszinsen",
+                "anteilig",
+                "Zinsrechnung",
+                "Jahreszins",
+                "Neu",
+                "Prüfung",
+                "k10-lb1-zinsen"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb1-zinsen"
+            },
+            {
+              "id": "k10-lb1-zinseszins__neu",
+              "title": "Zinseszins: Anfangskapital (Barwert) berechnen · Neu (Prüfung)",
+              "hint": "Stelle Kₙ = K₀ · (1 + p/100)ⁿ nach K₀ um: K₀ = Kₙ : (1 + p/100)ⁿ.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinseszins",
+                "Barwert",
+                "Anfangskapital",
+                "Zinsrechnung",
+                "umstellen",
+                "Neu",
+                "Prüfung",
+                "k10-lb1-zinseszins"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb1-zinseszins"
+            },
+            {
+              "id": "k10-lb1-prozentuale-zunahme__neu",
+              "title": "Prozentuale Abnahme · Neu (Prüfung)",
+              "hint": "Eine Abnahme um p % bedeutet: neuer Wert = alter Wert · (1 − p/100).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "prozentuale Abnahme",
+                "Rabatt",
+                "Prozent",
+                "Minderung",
+                "Abnahme",
+                "Neu",
+                "Prüfung",
+                "k10-lb1-prozentuale-zunahme"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb1-prozentuale-zunahme"
+            },
+            {
+              "id": "k10-lb1-exp-wachstum__neu",
+              "title": "Exponentieller Zerfall (Halbierung) · Neu (Prüfung)",
+              "hint": "Bei jeder Halbwertszeit wird die Menge halbiert: Restmenge = Start · (1/2)ⁿ.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "exponentieller Zerfall",
+                "Halbwertszeit",
+                "Abnahme",
+                "Wachstumsfaktor",
+                "Neu",
+                "Prüfung",
+                "k10-lb1-exp-wachstum"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb1-exp-wachstum"
             }
           ]
         },
@@ -1884,6 +4551,44 @@
                 "Gewinn",
                 "Wahrscheinlichkeit"
               ]
+            },
+            {
+              "id": "k10-lb2-erwartungswert__neu",
+              "title": "Erwartungswert bei unterschiedlichen Wahrscheinlichkeiten · Neu (Prüfung)",
+              "hint": "Multipliziere jede Auszahlung mit ihrer Wahrscheinlichkeit (in %) und addiere, dann durch 100 teilen.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erwartungswert",
+                "Wahrscheinlichkeit",
+                "Prozent",
+                "gewichteter Mittelwert",
+                "Glücksspiel",
+                "Neu",
+                "Prüfung",
+                "k10-lb2-erwartungswert"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb2-erwartungswert"
+            },
+            {
+              "id": "k10-lb2-erwartungswert-wuerfel__neu",
+              "title": "Erwartungswert: gerade oder ungerade Augenzahl · Neu (Prüfung)",
+              "hint": "Drei Augenzahlen sind gerade, drei ungerade — jeweils mit Wahrscheinlichkeit 1/2.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erwartungswert",
+                "Würfel",
+                "gerade",
+                "ungerade",
+                "Wahrscheinlichkeit",
+                "Neu",
+                "Prüfung",
+                "k10-lb2-erwartungswert-wuerfel"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb2-erwartungswert-wuerfel"
             }
           ]
         },
@@ -1930,6 +4635,63 @@
                 "Gleichung",
                 "Seite"
               ]
+            },
+            {
+              "id": "k10-lb3-rechteck-breite__neu",
+              "title": "Rechteck: Länge aus Fläche und Breite · Neu (Prüfung)",
+              "hint": "Stelle A = a · b nach a um: a = A : b.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rechteck",
+                "Flächeninhalt",
+                "algebraisch",
+                "Gleichung",
+                "Länge",
+                "Neu",
+                "Prüfung",
+                "k10-lb3-rechteck-breite"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb3-rechteck-breite"
+            },
+            {
+              "id": "k10-lb3-quadrat-seite__neu",
+              "title": "Quadrat: Umfang aus Flächeninhalt berechnen · Neu (Prüfung)",
+              "hint": "Berechne zuerst die Seite a = √A, dann den Umfang U = 4 · a.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Quadrat",
+                "Flächeninhalt",
+                "Umfang",
+                "Wurzel",
+                "algebraisch",
+                "Neu",
+                "Prüfung",
+                "k10-lb3-quadrat-seite"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb3-quadrat-seite"
+            },
+            {
+              "id": "k10-lb3-rechteck-umfang__neu",
+              "title": "Rechteck: Länge aus Umfang bestimmen · Neu (Prüfung)",
+              "hint": "Stelle U = 2 · (a + b) nach a um: a = U : 2 − b.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Rechteck",
+                "Umfang",
+                "algebraisch",
+                "Gleichung",
+                "Länge",
+                "Neu",
+                "Prüfung",
+                "k10-lb3-rechteck-umfang"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb3-rechteck-umfang"
             }
           ]
         },
@@ -1981,7 +4743,7 @@
             },
             {
               "id": "k10-lb4-parabel-wert__grafik",
-              "title": "Scheitel einer Parabel tippen",
+              "title": "Scheitel einer Parabel tippen · Grafik (Prüfung)",
               "hint": "Tippe den Scheitel der gezeichneten Parabel.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
@@ -1990,16 +4752,17 @@
                 "Parabel",
                 "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k10-lb4-parabel-wert"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k10-lb4-parabel-wert"
             },
             {
               "id": "k10-lb4-parabel-wert__grafik-ablesen",
-              "title": "Funktionswert am Parabelgraphen",
-              "hint": "Lies f(x₀) am Graphen ab (oder rechne nach).",
+              "title": "Funktionswert am Parabelgraphen · Grafik (Prüfung)",
+              "hint": "Lies den y-Wert am Graphen ab.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2007,10 +4770,68 @@
                 "Parabel",
                 "ablesen",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k10-lb4-parabel-wert"
               ],
-              "released": true,
+              "released": false,
+              "reviewOf": "k10-lb4-parabel-wert"
+            },
+            {
+              "id": "k10-lb4-reinquadratisch__neu",
+              "title": "Quadratische Gleichung mit Faktor: a·x² = b · Neu (Prüfung)",
+              "hint": "Teile zuerst durch a, ziehe dann die Wurzel: x = √(b : a).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quadratische Gleichung",
+                "Wurzel",
+                "Koeffizient",
+                "lösen",
+                "reinquadratisch",
+                "Neu",
+                "Prüfung",
+                "k10-lb4-reinquadratisch"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb4-reinquadratisch"
+            },
+            {
+              "id": "k10-lb4-quadratische-gleichung__neu",
+              "title": "Quadratische Gleichung: kleinere Lösung und Satz von Vieta · Neu (Prüfung)",
+              "hint": "x² + px + q = 0: Summe der Lösungen = −p, Produkt der Lösungen = q.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "quadratische Gleichung",
+                "Satz von Vieta",
+                "Lösungen",
+                "Summe",
+                "Produkt",
+                "Neu",
+                "Prüfung",
+                "k10-lb4-quadratische-gleichung"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb4-quadratische-gleichung"
+            },
+            {
+              "id": "k10-lb4-parabel-wert__neu",
+              "title": "Funktionswert einer Parabel am Regler einstellen · Neu (Prüfung)",
+              "hint": "Berechne f(x) = a·x² + c und stelle den Wert am Regler ein.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Parabel",
+                "quadratische Funktion",
+                "Funktionswert",
+                "Regler",
+                "einsetzen",
+                "Neu",
+                "Prüfung",
+                "k10-lb4-parabel-wert"
+              ],
+              "released": false,
               "reviewOf": "k10-lb4-parabel-wert"
             }
           ]
@@ -2045,6 +4866,44 @@
                 "Zinsen",
                 "Kapital"
               ]
+            },
+            {
+              "id": "k10-lb5-kapital__neu",
+              "title": "Kapital aus Zinsen über mehrere Jahre bestimmen · Neu (Prüfung)",
+              "hint": "Ohne Zinseszins gilt: Z(gesamt) = K · p · n : 100, also K = Z(gesamt) · 100 : (p · n).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinsrechnung",
+                "Kapital",
+                "mehrere Jahre",
+                "Grundwert",
+                "Prozentsatz",
+                "Neu",
+                "Prüfung",
+                "k10-lb5-kapital"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb5-kapital"
+            },
+            {
+              "id": "k10-lb5-zinssatz__neu",
+              "title": "Zinssatz aus Zinsen über mehrere Jahre bestimmen · Neu (Prüfung)",
+              "hint": "Ohne Zinseszins gilt: p = Z(gesamt) · 100 : (K · n).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Zinsrechnung",
+                "Zinssatz",
+                "mehrere Jahre",
+                "Prozentsatz",
+                "Kapital",
+                "Neu",
+                "Prüfung",
+                "k10-lb5-zinssatz"
+              ],
+              "released": false,
+              "reviewOf": "k10-lb5-zinssatz"
             }
           ]
         }
@@ -2107,8 +4966,8 @@
             },
             {
               "id": "k1112-lb1-ableitung-stelle__grafik",
-              "title": "Steigung der Tangente ablesen",
-              "hint": "Lies die Steigung der eingezeichneten Tangente ab.",
+              "title": "Steigung der Tangente ablesen · Grafik (Prüfung)",
+              "hint": "Lies die Steigung der eingezeichneten Tangente ab (ohne Beschriftung m=…).",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2117,16 +4976,17 @@
                 "Steigung",
                 "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k1112-lb1-ableitung-stelle"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k1112-lb1-ableitung-stelle"
             },
             {
               "id": "k1112-lb1-bestimmtes-integral__grafik",
-              "title": "Fläche unter dem Graphen",
-              "hint": "Rechteckfläche bzw. Integral berechnen.",
+              "title": "Fläche unter dem Graphen · Grafik (Prüfung)",
+              "hint": "Berechne die markierte Rechteckfläche bzw. das bestimmte Integral.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2134,15 +4994,16 @@
                 "Fläche",
                 "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k1112-lb1-bestimmtes-integral"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k1112-lb1-bestimmtes-integral"
             },
             {
               "id": "k1112-lb1-nullstelle-linear__grafik",
-              "title": "Nullstelle linearer Graph tippen",
+              "title": "Nullstelle linearer Graph tippen · Grafik (Prüfung)",
               "hint": "Tippe den Schnitt mit der x-Achse.",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
@@ -2151,11 +5012,69 @@
                 "lineare Funktion",
                 "Graph",
                 "Grafik",
+                "Prüfung",
                 "Interactive",
                 "k1112-lb1-nullstelle-linear"
               ],
-              "released": true,
+              "released": false,
               "reviewOf": "k1112-lb1-nullstelle-linear"
+            },
+            {
+              "id": "k1112-lb1-ableitung-stelle__neu",
+              "title": "Ableitung: Extremstelle einer Parabel bestimmen · Neu (Prüfung)",
+              "hint": "An der Extremstelle gilt f'(x) = 0: Löse 2ax + b = 0 nach x auf.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Ableitung",
+                "Extremstelle",
+                "notwendige Bedingung",
+                "Scheitelpunkt",
+                "f'(x)=0",
+                "Neu",
+                "Prüfung",
+                "k1112-lb1-ableitung-stelle"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-ableitung-stelle"
+            },
+            {
+              "id": "k1112-lb1-nullstelle-linear__neu",
+              "title": "Nullstelle einer linearen Funktion: Parameter bestimmen · Neu (Prüfung)",
+              "hint": "Setze x = x₀ in f(x) = mx + n ein und löse nach n auf: n = −m·x₀.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Nullstelle",
+                "lineare Funktion",
+                "Parameter",
+                "Gleichung",
+                "y-Achsenabschnitt",
+                "Neu",
+                "Prüfung",
+                "k1112-lb1-nullstelle-linear"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-nullstelle-linear"
+            },
+            {
+              "id": "k1112-lb1-bestimmtes-integral__neu",
+              "title": "Bestimmtes Integral: Dreiecksfläche unter einer Geraden · Neu (Prüfung)",
+              "hint": "Die Fläche unter f(x) = mx von 0 bis q ist ein Dreieck: A = (m · q²) : 2.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Integral",
+                "Dreiecksfläche",
+                "lineare Funktion",
+                "Stammfunktion",
+                "Fläche",
+                "Neu",
+                "Prüfung",
+                "k1112-lb1-bestimmtes-integral"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb1-bestimmtes-integral"
             }
           ]
         },
@@ -2191,6 +5110,44 @@
                 "Norm",
                 "analytische Geometrie"
               ]
+            },
+            {
+              "id": "k1112-lb2-skalarprodukt__neu",
+              "title": "Skalarprodukt: Orthogonalität von Vektoren · Neu (Prüfung)",
+              "hint": "Zwei Vektoren stehen senkrecht zueinander, wenn ihr Skalarprodukt null ist: a · b = 0.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Skalarprodukt",
+                "Orthogonalität",
+                "senkrecht",
+                "Vektoren",
+                "analytische Geometrie",
+                "Neu",
+                "Prüfung",
+                "k1112-lb2-skalarprodukt"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb2-skalarprodukt"
+            },
+            {
+              "id": "k1112-lb2-betrag-vektor__neu",
+              "title": "Vektor: fehlende Komponente aus dem Betrag bestimmen · Neu (Prüfung)",
+              "hint": "Stelle |v|² = x² + y² + z² nach z um: z = √(|v|² − x² − y²).",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Betrag",
+                "Vektor",
+                "fehlende Komponente",
+                "Umstellen",
+                "Pythagoras",
+                "Neu",
+                "Prüfung",
+                "k1112-lb2-betrag-vektor"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb2-betrag-vektor"
             }
           ]
         },
@@ -2224,6 +5181,44 @@
                 "Stochastik",
                 "n mal p"
               ]
+            },
+            {
+              "id": "k1112-lb3-binomialverteilung__neu",
+              "title": "Binomialverteilung: Gegenereignisse und Einzelfall · Neu (Prüfung)",
+              "hint": "P(X=0) = (1−p)ⁿ (kein Treffer); P(X=n) = pⁿ (nur Treffer); P(X=1) = n·p·(1−p)ⁿ⁻¹.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Binomialverteilung",
+                "Gegenereignis",
+                "Wahrscheinlichkeit",
+                "Bernoulli",
+                "Stochastik",
+                "Neu",
+                "Prüfung",
+                "k1112-lb3-binomialverteilung"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb3-binomialverteilung"
+            },
+            {
+              "id": "k1112-lb3-erwartungswert-binom__neu",
+              "title": "Erwartungswert der Binomialverteilung: n bestimmen · Neu (Prüfung)",
+              "hint": "Stelle E(X) = n · p nach n um: n = E(X) : p.",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10,
+              "keywords": [
+                "Erwartungswert",
+                "Binomialverteilung",
+                "umstellen",
+                "n bestimmen",
+                "Stochastik",
+                "Neu",
+                "Prüfung",
+                "k1112-lb3-erwartungswert-binom"
+              ],
+              "released": false,
+              "reviewOf": "k1112-lb3-erwartungswert-binom"
             }
           ]
         }

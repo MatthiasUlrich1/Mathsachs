@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.147] – 2026-11-15
+
+### Hinzugefügt
+- **Mathe Messinstrumente:** Geodreieck (Winkel messen/zeichnen), Lineal und Zirkel/Kreis-Werkzeug im Koordinateneditor; geführte Konstruktion mit Planfigur.
+- **10 weitere Interaktionen:** Bruchmodell, Bruchwand, Aufteil-Werkzeug, Verhältnis-Balken, Zahlengerade mit mehreren Zahlen, Baumdiagramm, Säulendiagramm, Kreisdiagramm, Uhr, Symmetrie ergänzen.
+- **Fachwissen-Erkundungs-Tafeln:** Mittelsenkrechte, Winkelarten, Brüche erweitern.
+- Alle neuen Interaktionen nur in gesperrten `__neu`-Themen (K5–K8), `neu:true` / `released:false`, sichtbar nur für Prüfer/Entwickler.
+- **Autorenregeln:** Regeln für neue Interaktionen in `.cursor/rules`.
+- **Modellregeln:** Modellvorgaben in CLAUDE.md.
+- Refs #49.
+
 ## [0.28.146] – 2026-11-15
 
 ### Behoben
