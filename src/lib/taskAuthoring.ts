@@ -18,6 +18,7 @@ import {
   fractionWallTask,
   divideToolTask,
   ratioBarTask,
+  numberLineMultiTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -89,6 +90,7 @@ export type AuthoringElementType =
   | 'fractionWall'
   | 'divideTool'
   | 'ratioBar'
+  | 'numberLineMulti'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -121,6 +123,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'fractionWall', label: 'Bruchwand (gleichwertige Brüche / vergleichen)' },
   { id: 'divideTool', label: 'Teilwerkzeug (Ganze gerecht verteilen)' },
   { id: 'ratioBar', label: 'Verhältnisleiste (Felder färben / Menge aufteilen)' },
+  { id: 'numberLineMulti', label: 'Zahlengerade mit mehreren Zahlen (ziehen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -481,6 +484,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'numberLineMulti': {
+      try {
+        numberLineMultiTask({ question: 'q', solution: 's', explanation: 'e', ...numberLineMultiInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Zahlengerade: Anfang < Ende, Schrittweite (Ende − Anfang ein Vielfaches), 2–5 Zahlen als „Anzeige = Wert“ je Zeile (Anzeige höchstens 7 Zeichen, Werte auf dem Raster, nicht an beschrifteten Strichen, alle verschieden) prüfen. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -769,6 +782,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       )
     case 'divideTool':
       return withVisual(divideToolTask({ question, solution, explanation, ...divideInputFromProps(p) }))
+    case 'numberLineMulti':
+      return withVisual(numberLineMultiTask({ question, solution, explanation, ...numberLineMultiInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -993,6 +1008,19 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
 })`
       break
     }
+    case 'numberLineMulti': {
+      const n = numberLineMultiInputFromProps(p)
+      call = `numberLineMultiTask({
+  question: ${q},
+  min: ${n.min},
+  max: ${n.max},
+  step: ${n.step},
+  items: ${JSON.stringify(n.items)},
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'ratioBar': {
       const r = ratioInputFromProps(p)
       const amountLines = r.mode === 'split' ? `total: ${r.total},\n  unit: ${JSON.stringify(r.unit)},` : `segments: ${r.segments},`
@@ -1160,3 +1188,30 @@ const ratioInputFromProps = (p: Record<string, unknown>) => ({
   total: Number(String(p.total ?? '').replace(',', '.')),
   unit: String(p.unit ?? '').trim(),
 })
+
+/** Builds the numberLineMultiTask input of an authoring draft (validated beforehand). One "label = value" per line. */
+const numberLineMultiInputFromProps = (p: Record<string, unknown>) => {
+  const num = (v: unknown): number => Number(String(v ?? '').trim().replace(',', '.'))
+  const rawList = Array.isArray(p.items) ? p.items.map(String).join('\n') : String(p.items ?? '')
+  const items = rawList
+    .split(/\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line, index) => {
+      const cut = line.lastIndexOf('=')
+      return {
+        id: `i${index + 1}`,
+        label: (cut < 0 ? line : line.slice(0, cut)).trim(),
+        value: cut < 0 ? Number.NaN : num(line.slice(cut + 1)),
+      }
+    })
+  const optional = (v: unknown): number | undefined => (String(v ?? '').trim() === '' ? undefined : num(v))
+  return {
+    min: num(p.min),
+    max: num(p.max),
+    step: num(p.step),
+    snap: optional(p.snap),
+    labelEvery: optional(p.labelEvery),
+    items,
+  }
+}

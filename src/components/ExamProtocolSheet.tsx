@@ -84,6 +84,10 @@ export const formatExamAnswer = (input: UserInput): string => {
     const b = input.parts.filter((v) => v === 'B').length
     return a + b > 0 ? `Felder A: ${a}, Felder B: ${b}` : '—'
   }
+  if (input.kind === 'numberLineMulti') {
+    const placed = Object.entries(input.positions ?? {})
+    return placed.length ? placed.map(([id, p]) => `${id}: ${String(p).replace('.', ',')}`).join('; ') : '—'
+  }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }

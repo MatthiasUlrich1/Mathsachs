@@ -113,6 +113,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { shape: 'circle', count: 3, persons: 4, objectName: 'Pizza' }
     case 'ratioBar':
       return { mode: 'colour', segments: 10, ratioA: 2, ratioB: 3, labelA: 'Saft', labelB: 'Wasser', total: 500, unit: 'ml' }
+    case 'numberLineMulti':
+      return { min: 0, max: 2, step: 0.25, labelEvery: 4, items: '3/4 = 0,75\n1,5 = 1,5\n1/4 = 0,25' }
     case 'fractionModel':
       return { shape: 'bar', num: 3, den: 4, allowEquivalent: true }
     case 'paramSlider':
@@ -1031,6 +1033,17 @@ function ElementPropsForm({
           ) : (
             field('segments', 'Anzahl der Felder (4–12, ein Vielfaches von A + B)')
           )}
+        </>
+      )
+    case 'numberLineMulti':
+      return (
+        <>
+          {field('min', 'Anfang der Zahlengeraden')}
+          {field('max', 'Ende der Zahlengeraden')}
+          {field('step', 'Schrittweite der Striche (Ende − Anfang muss ein Vielfaches sein)')}
+          {field('snap', 'Raster fürs Einrasten (leer = halbe Schrittweite)')}
+          {field('labelEvery', 'Zahl an jedem wievielten Strich (leer = automatisch)')}
+          {field('items', 'Zahlen zum Einordnen, eine pro Zeile als „Anzeige = Wert“ (2–5, Anzeige höchstens 7 Zeichen)', true)}
         </>
       )
     case 'divideTool':

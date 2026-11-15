@@ -25,6 +25,7 @@ import {
   fractionWallTask,
   divideToolTask,
   ratioBarTask,
+  numberLineMultiTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -411,6 +412,28 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         solution: `${big.n}/${big.d}`,
         explanation: `Die Teile reichen von links unterschiedlich weit: ${big.n}/${big.d} ragt weiter als ${small.n}/${small.d}. Rechnerisch: Mit dem gemeinsamen Nenner ${common} ist ${a.n}/${a.d} = ${a.n * b.d}/${common} und ${b.n}/${b.d} = ${b.n * a.d}/${common}. Also ist ${big.n}/${big.d} größer.`,
         dedupeKey: `vgl-wand:${a.n}:${a.d}:${b.n}:${b.d}`,
+      })
+    },
+    // V4 Zahlenstrahl — mehrere Brüche an die richtige Stelle ziehen
+    (rng: Rng) => {
+      const line = pick(rng, [
+        { max: 2, den: 4, labelEvery: 4, sets: [[['1/4', 1], ['3/4', 3], ['5/4', 5], ['3/2', 6]], [['1/2', 2], ['3/4', 3], ['5/4', 5], ['7/4', 7]]] },
+        { max: 1, den: 8, labelEvery: 8, sets: [[['1/8', 1], ['3/8', 3], ['5/8', 5], ['3/4', 6]], [['1/8', 1], ['1/2', 4], ['5/8', 5], ['7/8', 7]]] },
+      ])
+      const set = pick(rng, line.sets as Array<Array<[string, number]>>)
+      const items = set.map(([label, k], i) => ({ id: String.fromCharCode(97 + i), label, value: k / line.den }))
+      const names = set.map(([label]) => label)
+      const hinweis = set.map(([label, k]) => `${label} liegt beim ${k}. Strich nach der 0`).join('; ')
+      return numberLineMultiTask({
+        question: `Ordne die Brüche ${[names[2], names[0], names[3]].join(', ')} und ${names[1]} auf dem Zahlenstrahl ein. Der Zahlenstrahl geht von 0 bis ${line.max}. Zwischen 0 und 1 liegen ${line.den} gleich große Abschnitte.`,
+        min: 0,
+        max: line.max,
+        step: 1 / line.den,
+        labelEvery: line.labelEvery,
+        items,
+        solution: `${names.join(' < ')} (von links nach rechts)`,
+        explanation: `Ein Abschnitt ist ${line.den === 4 ? 'ein Viertel' : 'ein Achtel'} (1/${line.den}) lang. ${hinweis}. Je größer der Bruch, desto weiter rechts liegt er; so kannst du die Brüche auch der Größe nach vergleichen.`,
+        dedupeKey: `nlmulti-bruch:${line.den}:${names.join(',')}`,
       })
     },
   ),

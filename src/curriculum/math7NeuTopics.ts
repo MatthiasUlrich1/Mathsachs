@@ -23,6 +23,7 @@ import {
   numberLineTask,
   paramSliderTask,
   valueTask,
+  numberLineMultiTask,
 } from './taskHelpers'
 import { compassArcTask, hasCircle, hasPointNear } from './measureTaskHelpers'
 import { emptyCoordinateScene, sameLine, type CoordinateScene } from '../lib/coordinateScene'
@@ -951,6 +952,32 @@ const betragNeu: Topic = asNeuTopic('k7-lb2-betrag', {
         solution: `${target} und ${-target}`,
         explanation: `|${target}| = ${target} und |${-target}| = ${target}. Die anderen Zahlen haben einen anderen Betrag.`,
         instruction: 'Tippe alle Zahlen mit diesem Betrag:',
+      })
+    },
+    // V4 Zahlengerade — negative und positive Zahlen einordnen (Betrag = Abstand von 0)
+    (rng: Rng) => {
+      const labels = pick(rng, [
+        ['-2,5', '-0,5', '1,5', '2,5'],
+        ['-2,5', '-1,5', '0,5', '1,5'],
+        ['-1,5', '-0,5', '1,5', '2,5'],
+      ])
+      const items = labels.map((label, i) => ({ id: String.fromCharCode(97 + i), label, value: Number(label.replace(',', '.')) }))
+      const hinweis = items
+        .map((it) => {
+          const k = Math.round(Math.abs(it.value) * 2)
+          return `${it.label}: ${k} Striche ${it.value < 0 ? 'links' : 'rechts'} von der 0`
+        })
+        .join('; ')
+      return numberLineMultiTask({
+        question: `Ordne die Zahlen ${[labels[2], labels[0], labels[3]].join('; ')} und ${labels[1]} auf der Zahlengeraden ein. Zwischen zwei beschrifteten Strichen liegen zwei gleich große Abschnitte.`,
+        min: -3,
+        max: 3,
+        step: 0.5,
+        labelEvery: 2,
+        items,
+        solution: `${labels.join(' < ')} (von links nach rechts)`,
+        explanation: `Ein Abschnitt ist 0,5 lang. Negative Zahlen liegen links von der 0, positive rechts. ${hinweis}. Zahlen mit gleichem Betrag haben den gleichen Abstand zur 0 und liegen spiegelbildlich zur 0.`,
+        dedupeKey: `k7-nlmulti-betrag:${labels.join(',')}`,
       })
     },
   ),

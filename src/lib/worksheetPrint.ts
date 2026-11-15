@@ -20,6 +20,7 @@ import {
 import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
+import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
 export type WorksheetPrintExtras = {
@@ -395,6 +396,27 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
             paperHint: 'Färbe die Felder mit zwei Farben: eine Farbe für A, eine für B. Färbe alle Felder.',
             answerBlank: 'Gefärbt: __________ Felder A und __________ Felder B',
           }
+    }
+
+    case 'numberLineMulti': {
+      // Paper: the line with ticks, the labels listed beside it (the on-screen instruction talks about dragging).
+      const min = Number(props.min)
+      const max = Number(props.max)
+      const step = Number(props.step)
+      const valid = Number.isFinite(min) && Number.isFinite(max) && Number.isFinite(step) && max > min && step > 0
+      const labelEvery = Number(props.labelEvery) >= 1 ? Number(props.labelEvery) : valid ? nlmDefaultLabelEvery(min, max, step) : 1
+      const items = (props.items as Array<{ id?: string; label?: string }> | undefined) ?? []
+      const order = Array.isArray(props.order) ? (props.order as string[]) : items.map((i) => String(i.id))
+      const labels = order
+        .map((id) => items.find((i) => String(i.id) === id)?.label)
+        .filter((l): l is string => typeof l === 'string' && l !== '')
+      const drawing = valid ? numberLineMultiPrintSvg(min, max, step, labelEvery) : ''
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        paperHint: `Trage ein: ${labels.join(', ')}`,
+        answerBlank: 'Zeichne für jede Zahl einen Strich auf der Zahlengeraden und schreibe die Zahl darüber.',
+      }
     }
 
     case 'choicePick': {

@@ -42,6 +42,21 @@ import {
   formatRatioAmount,
   type RatioBarMode,
 } from '../lib/ratioBarLogic'
+import {
+  NLM_MAX_ITEMS,
+  NLM_MAX_LABEL_CHARS,
+  NLM_MAX_TICKS,
+  NLM_MIN_ITEMS,
+  nlmChipTextFits,
+  nlmDefaultLabelEvery,
+  nlmLabelledTicks,
+  nlmMatches,
+  nlmSolution,
+  nlmTickValues,
+  nlmTrayOrder,
+  type NlmItem,
+} from '../lib/numberLineMultiLogic'
+import { hashStringSeed } from './taskHelpers'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -388,5 +403,109 @@ export const ratioBarTask = (input: RatioBarTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'ratioBar' && ratioSplitMatches(total, ratio, answer.amounts),
+  }
+}
+
+export interface NumberLineMultiTaskInput {
+  /** Do not list the values on the line or give the order; screen-only hints belong in `instruction`. */
+  question: string
+  min: number
+  max: number
+  /** Distance between tick marks. */
+  step: number
+  /** Labels to place. `value` is the target; `label` the display text, e.g. '3/4' or '-1,5' (at most 7 characters). */
+  items: Array<{ id: string; label: string; value: number }>
+  /** Positions snap to this grid (default step / 2). `step / snap` must be a whole number and every value must lie on the grid. */
+  snap?: number
+  /** Allowed distance to the target value (default snap / 2). */
+  tolerance?: number
+  /** Numbers are written at min, max and every labelEvery-th tick (default: every tick up to 10 ticks, else every 2nd). */
+  labelEvery?: number
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+const isMultipleOf = (value: number, unit: number): boolean => {
+  const k = value / unit
+  return Math.abs(k - Math.round(k)) < 1e-6
+}
+
+/** Several labels are dragged onto a number line (ordering fractions, decimals and negative numbers). */
+export const numberLineMultiTask = (input: NumberLineMultiTaskInput): Task => {
+  const { min, max, step, items } = input
+  if (![min, max, step].every(Number.isFinite) || !(max > min) || !(step > 0)) {
+    throw new Error(`numberLineMultiTask: need finite min < max and step > 0, got ${min}, ${max}, ${step}`)
+  }
+  if (!isMultipleOf(max - min, step)) {
+    throw new Error(`numberLineMultiTask: max - min (${max - min}) must be a multiple of step (${step})`)
+  }
+  const tickCount = nlmTickValues(min, max, step).length
+  if (tickCount > NLM_MAX_TICKS) {
+    throw new Error(`numberLineMultiTask: at most ${NLM_MAX_TICKS} ticks, got ${tickCount}`)
+  }
+  const snap = input.snap ?? step / 2
+  if (!(snap > 0) || snap > step || !isMultipleOf(step, snap)) {
+    throw new Error(`numberLineMultiTask: step (${step}) must be a multiple of snap (${snap})`)
+  }
+  const tolerance = input.tolerance ?? snap / 2
+  if (!(tolerance >= 0) || !Number.isFinite(tolerance)) {
+    throw new Error(`numberLineMultiTask: tolerance must be >= 0, got ${tolerance}`)
+  }
+  const labelEvery = input.labelEvery ?? nlmDefaultLabelEvery(min, max, step)
+  if (!Number.isInteger(labelEvery) || labelEvery < 1) {
+    throw new Error(`numberLineMultiTask: labelEvery must be a whole number >= 1, got ${labelEvery}`)
+  }
+  if (!Array.isArray(items) || items.length < NLM_MIN_ITEMS || items.length > NLM_MAX_ITEMS) {
+    throw new Error(`numberLineMultiTask: need ${NLM_MIN_ITEMS}..${NLM_MAX_ITEMS} items`)
+  }
+  const written = nlmLabelledTicks(min, max, step, labelEvery)
+  const ids = new Set<string>()
+  for (const it of items) {
+    if (!it.id || ids.has(it.id)) throw new Error(`numberLineMultiTask: item ids must be unique and non-empty, got ${JSON.stringify(it.id)}`)
+    ids.add(it.id)
+    if (typeof it.label !== 'string' || it.label.trim() === '' || it.label.length > NLM_MAX_LABEL_CHARS || !nlmChipTextFits(it.label)) {
+      throw new Error(`numberLineMultiTask: label needs 1..${NLM_MAX_LABEL_CHARS} characters, got ${JSON.stringify(it.label)}`)
+    }
+    if (!Number.isFinite(it.value) || it.value < min - 1e-9 || it.value > max + 1e-9) {
+      throw new Error(`numberLineMultiTask: value ${it.value} of "${it.label}" is outside ${min}..${max}`)
+    }
+    if (!isMultipleOf(it.value - min, snap)) {
+      throw new Error(`numberLineMultiTask: value ${it.value} of "${it.label}" is not on the snap grid (${snap})`)
+    }
+    if (written.some((w) => Math.abs(w - it.value) < 1e-9)) {
+      throw new Error(`numberLineMultiTask: value ${it.value} of "${it.label}" is already written on the line`)
+    }
+  }
+  const values = items.map((i) => Math.round(i.value * 1e9))
+  if (new Set(values).size !== values.length) throw new Error('numberLineMultiTask: item values must differ')
+
+  const nlmItems: NlmItem[] = items.map((i) => ({ id: i.id, label: i.label, value: i.value }))
+  const order = nlmTrayOrder(nlmItems, hashStringSeed(`${input.question}|${items.map((i) => i.id).join(',')}`))
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    sampleAnswer: { kind: 'numberLineMulti', positions: nlmSolution(nlmItems) },
+    interactive: {
+      type: 'numberLineMulti',
+      props: {
+        min,
+        max,
+        step,
+        snap,
+        labelEvery,
+        // The target values stay in `check`; the props only carry what the widget needs to draw.
+        items: items.map((i) => ({ id: i.id, label: i.label })),
+        order,
+        instruction:
+          input.instruction ??
+          'Ziehe jede Zahl aus dem Feld oben an ihre Stelle auf der Zahlengeraden. Zurück ins Feld ziehen nimmt sie wieder weg.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'numberLineMulti' && nlmMatches(nlmItems, answer.positions, tolerance),
   }
 }

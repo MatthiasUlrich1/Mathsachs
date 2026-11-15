@@ -1,0 +1,103 @@
+.number-line-multi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.number-line-multi__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.number-line-multi__svg {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  background: #f8fafc;
+  border-radius: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.number-line-multi__line,
+.number-line-multi__tick {
+  stroke: #334155;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.number-line-multi__tick {
+  stroke-width: 1.5;
+}
+
+.number-line-multi__num {
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+.number-line-multi__slot {
+  fill: none;
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.number-line-multi__stem {
+  stroke: #0ea5e9;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.number-line-multi__dot {
+  fill: #0ea5e9;
+  stroke: #fff;
+  stroke-width: 1.5;
+  pointer-events: none;
+}
+
+/* Only the draggable labels block page scrolling; the rest of the figure scrolls normally. */
+.number-line-multi__chip {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+
+.number-line-multi__chip rect {
+  fill: #e0f2fe;
+  stroke: #0369a1;
+  stroke-width: 2;
+}
+
+.number-line-multi__chip text {
+  fill: #0f172a;
+  font-weight: 600;
+}
+
+.number-line-multi__chip--placed rect {
+  fill: #bae6fd;
+}
+
+.number-line-multi__chip--dragging {
+  cursor: grabbing;
+}
+
+.number-line-multi__chip--dragging rect {
+  filter: drop-shadow(0 2px 3px rgba(15, 23, 42, 0.35));
+}
+
+.number-line-multi__chip:focus-visible rect {
+  stroke: #dc2626;
+  stroke-width: 3;
+}
+
+.number-line-multi__svg[aria-disabled="true"] .number-line-multi__chip {
+  cursor: default;
+  touch-action: auto;
+}

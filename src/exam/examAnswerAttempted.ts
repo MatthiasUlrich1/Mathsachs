@@ -58,6 +58,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'ratioBar':
       // Untouched = no coloured field and no typed amount (the split bar itself is given).
       return input.parts.some((v) => v !== null) || (input.amounts ?? []).some((s) => s.trim() !== '')
+    case 'numberLineMulti':
+      // Untouched = no label placed on the line (labels in the tray are not an answer).
+      return Object.keys(input.positions ?? {}).length > 0
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

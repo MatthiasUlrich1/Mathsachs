@@ -23,6 +23,7 @@ import {
   rulerMeasureTask,
   textTask,
   valueTask,
+  numberLineMultiTask,
 } from './taskHelpers'
 import { digitGridDivideTask, longDivisionSteps } from './digitGridTasks'
 import {
@@ -1679,6 +1680,33 @@ export const math5NeuLb2: Topic[] = [
           solution: formatDe(next),
           explanation: `Der Abstand zwischen den Zahlen beträgt ${formatDe(step)}. Die nächste Zahl ist ${formatDe(third)} + ${formatDe(step)} = ${formatDe(next)}.`,
           eps: 0.05,
+        })
+      },
+      // Variant 4: Interaktiv — mehrere Dezimalzahlen auf den Zahlenstrahl ziehen
+      (rng: Rng) => {
+        const labels = pick(rng, [
+          ['0,3', '0,7', '1,2', '1,6'],
+          ['0,4', '0,9', '1,3', '1,8'],
+          ['0,2', '0,6', '1,1', '1,9'],
+          ['0,1', '0,8', '1,4', '1,7'],
+        ])
+        const items = labels.map((label, i) => ({ id: String.fromCharCode(97 + i), label, value: Number(label.replace(',', '.')) }))
+        const hinweis = items
+          .map((it) => {
+            const k = Math.round(it.value * 10)
+            return `${it.label} = ${k} Zehntel, also ${k} Striche rechts von der 0`
+          })
+          .join('; ')
+        return numberLineMultiTask({
+          question: `Ordne die Dezimalzahlen ${[labels[2], labels[0], labels[3]].join('; ')} und ${labels[1]} auf dem Zahlenstrahl ein. Der Zahlenstrahl geht von 0 bis 2. Zwischen zwei kleinen Strichen liegt jeweils 0,1.`,
+          min: 0,
+          max: 2,
+          step: 0.1,
+          labelEvery: 5,
+          items,
+          solution: `${labels.join(' < ')} (von links nach rechts)`,
+          explanation: `Jeder kleine Strich ist ein Zehntel (0,1) lang. ${hinweis}. So findest du zu jeder Zahl den passenden Strich; je größer die Zahl, desto weiter rechts liegt sie.`,
+          dedupeKey: `nlmulti-dez:${labels.join(',')}`,
         })
       },
     ),

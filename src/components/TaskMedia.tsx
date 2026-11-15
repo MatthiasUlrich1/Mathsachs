@@ -18,6 +18,7 @@ import { FractionWall } from './FractionWall'
 import { DivideTool } from './DivideTool'
 import { emptyAssignment } from '../lib/divideToolLogic'
 import { RatioBar } from './RatioBar'
+import { NumberLineMulti } from './NumberLineMulti'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -138,6 +139,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'ratioBar') {
     // Nothing coloured, nothing typed: the start state does not show a solution.
     return { kind: 'ratioBar', parts: [] }
+  }
+  if (task.interactive?.type === 'numberLineMulti') {
+    // Every label starts in the tray: nothing placed, nothing given away.
+    return { kind: 'numberLineMulti', positions: {} }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -556,6 +561,21 @@ export function TaskInteractive({
           total={interactive.props.total === undefined ? undefined : Number(interactive.props.total)}
           unit={typeof interactive.props.unit === 'string' ? interactive.props.unit : undefined}
           value={value.kind === 'ratioBar' ? value : { kind: 'ratioBar', parts: [] }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'numberLineMulti' && (
+        <NumberLineMulti
+          items={interactive.props.items as Array<{ id: string; label: string }>}
+          order={interactive.props.order as string[] | undefined}
+          min={Number(interactive.props.min)}
+          max={Number(interactive.props.max)}
+          step={Number(interactive.props.step)}
+          snap={interactive.props.snap === undefined ? undefined : Number(interactive.props.snap)}
+          labelEvery={Number(interactive.props.labelEvery) || 1}
+          value={value.kind === 'numberLineMulti' ? value : { kind: 'numberLineMulti', positions: {} }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}
