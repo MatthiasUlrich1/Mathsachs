@@ -1,5 +1,6 @@
 import type { Task, UserInput } from '../curriculum/types'
 import { bcTouched } from '../lib/barChartLogic'
+import { pcTouched } from '../lib/pieChartLogic'
 import { treeAnyInput } from '../lib/treeDiagramLogic'
 
 /** True when the learner has entered something beyond the blank widget state. */
@@ -66,6 +67,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'treeDiagram':
       // Untouched = every field empty.
       return treeAnyInput(input.branches, input.leaves)
+    case 'pieChart':
+      // Untouched = no boundary moved (the equal start shares are not an answer).
+      return pcTouched(input.percents)
     case 'barChart':
       // Untouched = no bar moved (bars at their start height are not an answer).
       return bcTouched(input.values)

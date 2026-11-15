@@ -57,6 +57,7 @@ import {
   type NlmItem,
 } from '../lib/numberLineMultiLogic'
 import { bcMatches, bcValidate } from '../lib/barChartLogic'
+import { PC_DEFAULT_SNAP, pcMatches, pcStartPercents, pcValidate } from '../lib/pieChartLogic'
 import { hashStringSeed } from '../lib/seed'
 import {
   buildTreeModel,
@@ -630,5 +631,59 @@ export const barChartTask = (input: BarChartTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'barChart' && bcMatches(target, answer.values, step, yMax),
+  }
+}
+
+export interface PieChartTaskInput {
+  /** Do not state the shares when the table gives counts; screen-only hints belong in `instruction`. The data has to be readable in `visualContent` (table of counts or percents). */
+  question: string
+  /** 2-5 category names (at most 14 characters, they must fit in the legend). */
+  categories: string[]
+  /** Target share per category in percent: a multiple of `snapPercent`, greater than 0, adding up to 100, and not the start state. */
+  percents: number[]
+  /** Boundaries snap to multiples of this percent: 1, 2, 4, 5 or 10 (default 5). */
+  snapPercent?: number
+  /** Allowed deviation per sector in percent (default `snapPercent / 2`, below `snapPercent`). */
+  tolerance?: number
+  /** The table the learner reads the data from. */
+  visualContent?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/**
+ * The learner builds a pie chart by dragging the sector boundaries around the circle (snap to `snapPercent`).
+ * UserInput `percents` has one share per category, or `null` while nothing was moved.
+ * Start state: equal shares on the snap grid, the remainder to the last sector. It only depends on the number of
+ * categories (never on the answer); the helper throws when the target equals it.
+ */
+export const pieChartTask = (input: PieChartTaskInput): Task => {
+  const { categories, percents } = input
+  const snap = input.snapPercent ?? PC_DEFAULT_SNAP
+  const tolerance = input.tolerance ?? snap / 2
+  pcValidate(categories, percents, snap, tolerance)
+  const target = [...percents]
+  const start = pcStartPercents(categories.length, snap)
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    ...(input.visualContent?.trim() ? { visualContent: input.visualContent } : {}),
+    sampleAnswer: { kind: 'pieChart', percents: [...target] },
+    interactive: {
+      type: 'pieChart',
+      props: {
+        categories: [...categories],
+        ...(snap !== PC_DEFAULT_SNAP ? { snapPercent: snap } : {}),
+        instruction:
+          input.instruction ??
+          'Ziehe die Punkte am Kreisrand, bis die Sektoren zu den Angaben passen. Mit den Pfeiltasten verschiebst du einen ausgewählten Punkt Schritt für Schritt.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'pieChart' && pcMatches(target, answer.percents, start, tolerance),
   }
 }

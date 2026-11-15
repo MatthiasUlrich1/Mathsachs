@@ -22,6 +22,7 @@ import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
 import { barChartPrintSvg, bcValidateAxis } from './barChartLogic'
+import { pieChartPrintSvg, pcValidateAxis, PC_DEFAULT_SNAP } from './pieChartLogic'
 import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
@@ -455,6 +456,24 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       return {
         visualHtml,
         paperHint: 'Zeichne zu jeder Kategorie einen Balken in das Achsenkreuz. Die Höhe liest du aus den Angaben oben ab.',
+        answerBlank: '',
+      }
+    }
+
+    case 'pieChart': {
+      // Paper: the data table (visualContent) first, then the empty circle with its percent scale to draw the sectors into.
+      const categories = Array.isArray(props.categories) ? (props.categories as string[]) : []
+      let valid = true
+      try {
+        pcValidateAxis(categories, props.snapPercent === undefined ? PC_DEFAULT_SNAP : Number(props.snapPercent))
+      } catch {
+        valid = false
+      }
+      const drawing = valid ? pieChartPrintSvg(categories) : ''
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        paperHint: 'Zeichne die Sektoren mit dem Geodreieck in den Kreis. Der Kreis hat 100 Teile; markiert sind 5er-Schritte (1 % entspricht 3,6 Grad). Male jeden Sektor in der Farbe seines Kästchens aus.',
         answerBlank: '',
       }
     }

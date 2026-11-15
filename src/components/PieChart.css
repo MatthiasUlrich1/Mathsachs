@@ -1,0 +1,92 @@
+.pie-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pie-chart__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.pie-chart__svg {
+  display: block;
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  background: #f8fafc;
+  border-radius: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pie-chart__rim {
+  fill: none;
+  stroke: #334155;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.pie-chart__start {
+  stroke: #0f172a;
+  stroke-width: 3;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.pie-chart__sector {
+  pointer-events: none;
+}
+
+.pie-chart__label,
+.pie-chart__legend-name,
+.pie-chart__legend-value {
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+.pie-chart__label,
+.pie-chart__legend-value {
+  font-weight: 700;
+}
+
+/* Only the knobs block page scrolling; the rest of the figure scrolls normally. */
+.pie-chart__handle {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+
+.pie-chart__hit {
+  fill: transparent;
+}
+
+.pie-chart__knob {
+  fill: #fff;
+  stroke: #0f172a;
+  stroke-width: 3;
+}
+
+.pie-chart__handle--touched .pie-chart__knob {
+  fill: #e2e8f0;
+}
+
+.pie-chart__handle--dragging {
+  cursor: grabbing;
+}
+
+.pie-chart__handle:focus-visible .pie-chart__knob {
+  stroke: #dc2626;
+  stroke-width: 4;
+}
+
+.pie-chart__svg[aria-disabled="true"] .pie-chart__handle {
+  cursor: default;
+  touch-action: auto;
+}

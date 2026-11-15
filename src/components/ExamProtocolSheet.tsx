@@ -1,6 +1,7 @@
 import type { Task, UserInput } from '../curriculum/types'
 import type { ResolvedExamTask } from '../exam/examCode'
 import { bcFormatNumber, bcTouched } from '../lib/barChartLogic'
+import { pcTouched } from '../lib/pieChartLogic'
 import { treePathLabel, type TreeLevel } from '../lib/treeDiagramLogic'
 
 export interface ExamTaskResult {
@@ -109,6 +110,11 @@ export const formatExamAnswer = (input: UserInput, task?: Task): string => {
     const cats = task?.interactive?.type === 'barChart' ? (task.interactive.props.categories as string[] | undefined) : undefined
     // Untouched bars of a chart that was started count as 0.
     return bcTouched(input.values) ? input.values.map((v, i) => `${cats?.[i] ?? `Balken ${i + 1}`}: ${bcFormatNumber(v ?? 0)}`).join('; ') : '—'
+  }
+  if (input.kind === 'pieChart') {
+    if (!pcTouched(input.percents)) return '—'
+    const cats = task?.interactive?.type === 'pieChart' ? (task.interactive.props.categories as string[] | undefined) : undefined
+    return (input.percents ?? []).map((p, i) => `${cats?.[i] ?? `Sektor ${i + 1}`}: ${p} %`).join('; ')
   }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'

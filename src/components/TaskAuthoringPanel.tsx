@@ -117,6 +117,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { level1: 'Rot, Blau', level2: 'Rot, Blau', probabilities: '0 = 3/5\n1 = 2/5\n0.0 = 1/2\n0.1 = 1/2\n1.0 = 3/4\n1.1 = 1/4', blankBranches: '0.0, 0.1', blankLeaves: '0.0', rootLabel: '' }
     case 'barChart':
       return { yMax: 12, step: 1, yLabel: 'Anzahl Kinder', items: 'Fußball = 8\nSchwimmen = 5\nTanzen = 3' }
+    case 'pieChart':
+      return { snapPercent: 5, items: 'Fußball = 40\nSchwimmen = 30\nTanzen = 30' }
     case 'numberLineMulti':
       return { min: 0, max: 2, step: 0.25, labelEvery: 4, items: '3/4 = 0,75\n1,5 = 1,5\n1/4 = 0,25' }
     case 'fractionModel':
@@ -1048,6 +1050,14 @@ function ElementPropsForm({
           {field('blankBranches', 'Zweige, die die Lernenden ausfüllen (Nummern, durch Komma getrennt)')}
           {field('blankLeaves', 'Pfade (Enden), die die Lernenden ausfüllen: Produkt entlang des Pfads (nur bei zwei Stufen)')}
           {field('rootLabel', 'Beschriftung am Start (optional)')}
+        </>
+      )
+    case 'pieChart':
+      return (
+        <>
+          {field('items', 'Kategorien mit ihrem Anteil in Prozent, eine pro Zeile als „Name = Prozent“ (2–5, Name höchstens 14 Zeichen, zusammen 100). Die Daten (Tabelle mit Anzahlen oder Prozenten) müssen in der Aufgabenfigur stehen.', true)}
+          {field('snapPercent', 'Schrittweite in Prozent (1, 2, 4, 5 oder 10; leer = 5)')}
+          {field('tolerance', 'Erlaubte Abweichung je Sektor in Prozent (leer = halbe Schrittweite)')}
         </>
       )
     case 'barChart':

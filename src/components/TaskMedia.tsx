@@ -20,6 +20,7 @@ import { emptyAssignment } from '../lib/divideToolLogic'
 import { RatioBar } from './RatioBar'
 import { NumberLineMulti } from './NumberLineMulti'
 import { BarChart } from './BarChart'
+import { PieChart } from './PieChart'
 import { TreeDiagram } from './TreeDiagram'
 import type { TreeLevel } from '../lib/treeDiagramLogic'
 import { RulerMeasure } from './RulerMeasure'
@@ -154,6 +155,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'barChart') {
     // Every bar starts untouched (flat on the axis): the heights are not given away.
     return { kind: 'barChart', values: ((task.interactive.props.categories ?? []) as string[]).map(() => null) }
+  }
+  if (task.interactive?.type === 'pieChart') {
+    // Untouched: the equal start shares are shown but not stored as an answer.
+    return { kind: 'pieChart', percents: null }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -612,6 +617,16 @@ export function TaskInteractive({
           step={Number(interactive.props.step)}
           yLabel={interactive.props.yLabel as string | undefined}
           value={value.kind === 'barChart' ? value : { kind: 'barChart', values: [] }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'pieChart' && (
+        <PieChart
+          categories={interactive.props.categories as string[]}
+          snapPercent={interactive.props.snapPercent === undefined ? undefined : Number(interactive.props.snapPercent)}
+          value={value.kind === 'pieChart' ? value : { kind: 'pieChart', percents: null }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

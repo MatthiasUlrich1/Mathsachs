@@ -21,6 +21,7 @@ import {
   numberLineMultiTask,
   treeDiagramTask,
   barChartTask,
+  pieChartTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -95,6 +96,7 @@ export type AuthoringElementType =
   | 'numberLineMulti'
   | 'treeDiagram'
   | 'barChart'
+  | 'pieChart'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -130,6 +132,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'numberLineMulti', label: 'Zahlengerade mit mehreren Zahlen (ziehen)' },
   { id: 'treeDiagram', label: 'Baumdiagramm (Wahrscheinlichkeiten eintragen)' },
   { id: 'barChart', label: 'Säulendiagramm zeichnen (Balkenhöhen ziehen)' },
+  { id: 'pieChart', label: 'Kreisdiagramm zeichnen (Sektorgrenzen ziehen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -520,6 +523,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'pieChart': {
+      try {
+        pieChartTask({ question: 'q', solution: 's', explanation: 'e', ...pieChartInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Kreisdiagramm: 2–5 Kategorien (höchstens 14 Zeichen) als „Name = Prozent“ je Zeile, alle Prozentwerte größer als 0 und Vielfache der Schrittweite (1, 2, 4, 5 oder 10), zusammen genau 100, und nicht die gleichmäßige Startaufteilung. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -814,6 +827,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(treeDiagramTask({ question, solution, explanation, ...treeInputFromProps(p) }))
     case 'barChart':
       return withVisual(barChartTask({ question, solution, explanation, ...barChartInputFromProps(p) }))
+    case 'pieChart':
+      return withVisual(pieChartTask({ question, solution, explanation, ...pieChartInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -1059,6 +1074,17 @@ ${[n.snap, n.labelEvery].some((v) => v !== undefined) ? [n.snap !== undefined ? 
   probabilities: ${JSON.stringify(t.probabilities)},
   blanks: ${JSON.stringify(t.blanks)},
 ${t.rootLabel ? `  rootLabel: ${JSON.stringify(t.rootLabel)},\n` : ''}  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
+    case 'pieChart': {
+      const b = pieChartInputFromProps(p)
+      call = `pieChartTask({
+  question: ${q},
+  categories: ${JSON.stringify(b.categories)},
+  percents: ${JSON.stringify(b.percents)},
+${b.snapPercent !== 5 ? `  snapPercent: ${b.snapPercent},\n` : ''}${b.tolerance !== undefined ? `  tolerance: ${b.tolerance},\n` : ''}  solution: ${sol},
   explanation: ${expl},
 })`
       break
@@ -1311,5 +1337,27 @@ const barChartInputFromProps = (p: Record<string, unknown>) => {
     yMax: num(p.yMax),
     step: num(p.step),
     yLabel: String(p.yLabel ?? '').trim(),
+  }
+}
+
+/** Builds the pieChartTask input of an authoring draft (validated beforehand). One "category = percent" per line. */
+const pieChartInputFromProps = (p: Record<string, unknown>) => {
+  const num = (v: unknown): number => Number(String(v ?? '').trim().replace(',', '.'))
+  const rawList = Array.isArray(p.items) ? p.items.map(String).join('\n') : String(p.items ?? '')
+  const rows = rawList
+    .split(/\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const cut = line.lastIndexOf('=')
+      return { name: (cut < 0 ? line : line.slice(0, cut)).trim(), value: cut < 0 ? Number.NaN : num(line.slice(cut + 1).replace('%', '')) }
+    })
+  const snapRaw = String(p.snapPercent ?? '').trim()
+  const tolRaw = String(p.tolerance ?? '').trim()
+  return {
+    categories: rows.map((r) => r.name),
+    percents: rows.map((r) => r.value),
+    snapPercent: snapRaw === '' ? 5 : num(snapRaw),
+    ...(tolRaw === '' ? {} : { tolerance: num(tolRaw) }),
   }
 }

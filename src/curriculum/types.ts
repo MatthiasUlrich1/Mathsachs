@@ -66,6 +66,8 @@ export type UserInput =
   | { kind: 'treeDiagram'; branches: Record<string, string>; leaves: Record<string, string> }
   /** Bar chart: one height per category, `null` for a bar that was never moved. */
   | { kind: 'barChart'; values: Array<number | null> }
+  /** Pie chart: the share (percent) of every sector, `null` while no boundary was moved. */
+  | { kind: 'pieChart'; percents: number[] | null }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -113,6 +115,7 @@ export const emptyInput = (
   if (kind === 'numberLineMulti') return { kind: 'numberLineMulti', positions: {} }
   if (kind === 'treeDiagram') return { kind: 'treeDiagram', branches: {}, leaves: {} }
   if (kind === 'barChart') return { kind: 'barChart', values: [] }
+  if (kind === 'pieChart') return { kind: 'pieChart', percents: null }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -146,6 +149,7 @@ export interface InteractiveConfig {
     | 'numberLineMulti'
     | 'treeDiagram'
     | 'barChart'
+    | 'pieChart'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

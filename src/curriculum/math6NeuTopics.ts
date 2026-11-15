@@ -51,6 +51,7 @@ import { hasCircle, hasPointNear, hasSegment } from './measureTaskHelpers'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
 import { TABLE_SURVEYS, TALLY_SURVEYS, surveyBarChartTask } from './barChartSurveys'
+import { COUNT_SURVEYS, PERCENT_SURVEYS, countPieChartTask, percentPieChartTask } from './pieChartSurveys'
 import type { Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -830,6 +831,8 @@ const prozentNeu: Topic = asNeuTopic('lb1-prozent', {
         visualContent: generateFractionGridSvg({ numerator: n, denominator: denom, cols }),
       })
     },
+    // V5 Kreisdiagramm — Anteile in Prozent aus einer Tabelle als Kreisdiagramm zeichnen (Grenzen ziehen)
+    (rng: Rng) => percentPieChartTask(rng, pick(rng, PERCENT_SURVEYS)),
   ),
 })
 
@@ -1593,6 +1596,8 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
     (rng: Rng) => surveyBarChartTask(rng, pick(rng, TALLY_SURVEYS), 'tally'),
     // V6 Tabelle — Häufigkeitstabelle als Säulendiagramm darstellen (Balken ziehen)
     (rng: Rng) => surveyBarChartTask(rng, pick(rng, TABLE_SURVEYS), 'table'),
+    // V7 Kreisdiagramm — Anzahlen aus einer Umfrage in Prozent umrechnen und als Kreisdiagramm zeichnen (Grenzen ziehen)
+    (rng: Rng) => countPieChartTask(rng, pick(rng, COUNT_SURVEYS)),
   ),
 })
 
@@ -3083,6 +3088,8 @@ const anteilProzentNeu: Topic = asNeuTopic('lb5-anteil-prozent', {
         }),
       })
     },
+    // V5 Kreisdiagramm — Anzahlen in Prozentanteile umrechnen und als Kreisdiagramm zeichnen (Grenzen ziehen)
+    (rng: Rng) => countPieChartTask(rng, pick(rng, COUNT_SURVEYS)),
   ),
 })
 
