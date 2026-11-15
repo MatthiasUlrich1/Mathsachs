@@ -146,6 +146,9 @@ export function applyPackTopicMeta(grade: Grade, packGrade: PackGrade): Grade {
             : {}),
           ...(meta.excludeFachwissen ? { excludeFachwissen: true } : {}),
           ...(meta.reviewOf ? { reviewOf: meta.reviewOf } : {}),
+          ...(meta.explore && topic.fachwissen
+            ? { fachwissen: { ...topic.fachwissen, explore: meta.explore } }
+            : {}),
         }
       }),
     })),

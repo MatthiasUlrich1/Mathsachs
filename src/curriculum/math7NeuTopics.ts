@@ -445,6 +445,7 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
     text: 'Die Mittelsenkrechte einer Strecke AB steht senkrecht auf AB und geht durch ihren Mittelpunkt. Jeder Punkt auf der Mittelsenkrechten ist von A und B gleich weit entfernt. Konstruktion: Kreisbögen mit gleichem Radius (> ½|AB|) um A und um B schlagen; die Gerade durch die beiden Schnittpunkte ist die Mittelsenkrechte.',
     quelle: 'Wikipedia: Mittelsenkrechte',
     url: 'https://de.wikipedia.org/wiki/Mittelsenkrechte',
+    explore: { boardId: 'mittelsenkrechte' },
   },
   generate: mixedVariants(
     // V1 dragDropSort — echte Konstruktionsreihenfolge (feiner gegliedert als im Hauptthema)

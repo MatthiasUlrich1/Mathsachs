@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ExploreBoard } from './ExploreBoard'
 import type { Grade, Topic } from '../curriculum/types'
 import { formatTopicContentId } from '../curriculum/contentId'
 import { TeacherExtraBadge } from './TeacherExtraBadge'
@@ -125,6 +126,12 @@ function TopicRow({
       {fwOpen && topic.fachwissen && (
         <div className="fachwissen-card">
           <p className="fachwissen-card__text">{topic.fachwissen.text}</p>
+          {topic.fachwissen.explore && (
+            <ExploreBoard
+              boardId={topic.fachwissen.explore.boardId}
+              params={topic.fachwissen.explore.params}
+            />
+          )}
           {topic.fachwissen.quelle && (
             <p className="fachwissen-card__source">
               Quelle:{' '}

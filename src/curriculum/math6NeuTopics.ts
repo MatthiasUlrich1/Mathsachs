@@ -221,6 +221,7 @@ const erweiternNeu: Topic = asNeuTopic('lb1-erweitern', {
     text: 'Beim Erweitern eines Bruchs werden Zähler und Nenner mit derselben Zahl k (k ≠ 0) multipliziert. Da man dabei mit k/k = 1 multipliziert, ändert sich der Wert des Bruchs nicht. Erweitern wird gebraucht, um Brüche auf einen gemeinsamen Nenner zu bringen, bevor man sie addiert, subtrahiert oder vergleicht.',
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+    explore: { boardId: 'bruchErweitern' },
   },
   generate: mixedVariants(
     // V1 Tippen — Nenner gesucht (Gegenrichtung zum Haupt-Thema)

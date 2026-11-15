@@ -943,6 +943,7 @@ export const math5NeuLb2: Topic[] = [
       text: 'Erweitern bedeutet, Zähler und Nenner eines Bruchs mit derselben Zahl ungleich 0 zu multiplizieren – der Wert bleibt unverändert, da man mit k/k = 1 multipliziert. Erweitern ist die Umkehrung des Kürzens und wird gebraucht, um Brüche vergleichbar zu machen oder auf einen gemeinsamen Nenner wie 10 oder 100 zu bringen, was den Übergang zu Dezimalzahlen erleichtert.',
       quelle: 'Wikipedia: Bruchrechnung',
       url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
+      explore: { boardId: 'bruchErweitern' },
     },
     generate: mixedVariants(
       // Variant 1: Tippen — fehlenden Nenner bestimmen
@@ -1928,6 +1929,7 @@ export const math5NeuLb3: Topic[] = [
       text: 'Winkelarten begegnen uns ständig im Alltag: Die Uhrzeiger bilden je nach Uhrzeit unterschiedliche Winkel, eine angelehnte Tür einen spitzen, eine weit geöffnete einen stumpfen Winkel. Um die Größe eines Winkels ohne Winkelmesser grob einzuschätzen, vergleicht man ihn gedanklich mit einem rechten Winkel (90°) als Referenz.',
       quelle: 'Wikipedia: Winkel',
       url: 'https://de.wikipedia.org/wiki/Winkel',
+      explore: { boardId: 'winkelarten' },
     },
     generate: mixedVariants(
       // Variant 1: Tippen — Winkel zwischen den Uhrzeigern

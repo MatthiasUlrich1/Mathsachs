@@ -1,0 +1,93 @@
+.explore-board {
+  margin: 12px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.explore-board__figure {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.explore-board__figure .eb-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.explore-board__caption {
+  margin: 0;
+  font-size: 0.95rem;
+  text-align: center;
+  color: var(--text, #1e293b);
+}
+
+.explore-board__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.explore-board__slider {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.95rem;
+}
+
+.explore-board__slider input[type='range'] {
+  width: 100%;
+  min-height: 28px;
+}
+
+.explore-board__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.explore-board__toggle input {
+  width: 20px;
+  height: 20px;
+}
+
+.eb-text {
+  fill: var(--text, #1e293b);
+  font-family: inherit;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--surface, #fff);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.eb-circle {
+  fill: none;
+  stroke-width: 2;
+}
+.eb-circle--a { stroke: #2563eb; }
+.eb-circle--b { stroke: #d97706; }
+.eb-seg { stroke: var(--text, #1e293b); stroke-width: 2.5; }
+.eb-axis { stroke: #16a34a; stroke-width: 2.5; stroke-dasharray: 7 4; }
+.eb-rightangle { fill: none; stroke: #16a34a; stroke-width: 1.5; }
+.eb-dot { fill: var(--text, #1e293b); }
+.eb-dot--s { fill: #dc2626; }
+.eb-dot--m { fill: #16a34a; }
+.eb-arm { stroke: #2563eb; stroke-width: 3; stroke-linecap: round; }
+.eb-arm--fixed { stroke: var(--text, #1e293b); }
+.eb-sector { fill: rgba(37, 99, 235, 0.18); stroke: none; }
+.eb-arc { fill: none; stroke: #2563eb; stroke-width: 2; }
+.eb-part { fill: var(--surface, #fff); stroke: #94a3b8; stroke-width: 1; }
+.eb-part--fill { fill: #93c5fd; }
+.eb-frame { fill: none; stroke: var(--text, #1e293b); stroke-width: 2; }
+.eb-strong { stroke: var(--text, #1e293b); stroke-width: 2.5; }

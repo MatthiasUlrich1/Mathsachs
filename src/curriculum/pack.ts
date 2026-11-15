@@ -48,6 +48,8 @@ export interface PackTopic {
    * (wird beim Hydrieren ergänzt, falls nicht authored).
    */
   excludeFachwissen?: boolean
+  /** Erkundungs-Tafelbild im Fachwissen (Board-ID + optionale Startwerte), reine Daten. */
+  explore?: { boardId: string; params?: Record<string, number> }
 }
 
 export interface PackArea {
@@ -147,6 +149,19 @@ export function packContentHash(official: PackGrade[], extras: PackExtra[]): str
   return (h >>> 0).toString(16).padStart(8, '0')
 }
 
+export const parseExplore = (raw: unknown): PackTopic['explore'] => {
+  if (!isRecord(raw)) return undefined
+  const boardId = asString(raw.boardId).trim()
+  if (!boardId) return undefined
+  const params: Record<string, number> = {}
+  if (isRecord(raw.params)) {
+    for (const [key, value] of Object.entries(raw.params)) {
+      if (typeof value === 'number' && Number.isFinite(value)) params[key] = value
+    }
+  }
+  return { boardId, ...(Object.keys(params).length ? { params } : {}) }
+}
+
 const parseTopic = (raw: unknown): PackTopic | null => {
   if (!isRecord(raw)) return null
   const id = asString(raw.id).trim()
@@ -172,6 +187,7 @@ const parseTopic = (raw: unknown): PackTopic | null => {
       ? { tasksPerRound: Math.min(MAX_TASKS_PER_ROUND, Math.trunc(raw.tasksPerRound)) }
       : {}),
     ...(raw.excludeFachwissen === true ? { excludeFachwissen: true } : {}),
+    ...(parseExplore(raw.explore) ? { explore: parseExplore(raw.explore) } : {}),
   }
 }
 

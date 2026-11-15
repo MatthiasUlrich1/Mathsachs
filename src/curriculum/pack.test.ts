@@ -176,3 +176,57 @@ describe('install and version gate', () => {
     expect(packNeedsUpdate(local.version, '1.0.0')).toBe(false)
   })
 })
+
+describe('explore (Erkundungs-Tafelbild) im Pack', () => {
+  const withExplore = (explore: unknown): unknown => ({
+    ...samplePack('1.0.0'),
+    official: [
+      {
+        ...samplePack('1.0.0').official[0],
+        areas: [
+          {
+            id: 'lb1',
+            title: 'Test',
+            topics: [{ id: 't1__neu', title: 'T', pointsPerTask: 10, explore }],
+          },
+        ],
+      },
+    ],
+  })
+  const exploreOf = (raw: unknown) =>
+    parseCurriculumPack(JSON.parse(JSON.stringify(raw)))?.official[0].areas[0].topics[0].explore
+
+  it('bleibt als reine Daten erhalten (JSON-Round-Trip)', () => {
+    expect(exploreOf(withExplore({ boardId: 'winkelarten' }))).toEqual({ boardId: 'winkelarten' })
+    expect(exploreOf(withExplore({ boardId: 'winkelarten', params: { winkel: 90 } }))).toEqual({
+      boardId: 'winkelarten',
+      params: { winkel: 90 },
+    })
+  })
+
+  it('verwirft kaputte Angaben', () => {
+    expect(exploreOf(withExplore({ boardId: '  ' }))).toBeUndefined()
+    expect(exploreOf(withExplore('x'))).toBeUndefined()
+    expect(exploreOf(withExplore({ boardId: 'a', params: { x: 'y', z: 2 } }))).toEqual({
+      boardId: 'a',
+      params: { z: 2 },
+    })
+  })
+
+  it('Seed-Pack: die __neu-Themen tragen explore, Round-Trip identisch', async () => {
+    const { buildGymSachsenSeed } = await import('./seed')
+    const pack = await buildGymSachsenSeed()
+    const found: Record<string, unknown> = {}
+    for (const g of pack.official)
+      for (const a of g.areas)
+        for (const t of a.topics) if (t.explore) found[t.id] = t.explore
+    expect(found).toEqual({
+      'lb2-erweitern__neu': { boardId: 'bruchErweitern' },
+      'lb3-winkelarten__neu': { boardId: 'winkelarten' },
+      'lb1-erweitern__neu': { boardId: 'bruchErweitern' },
+      'k7-lb1-mittelsenkrechte-schritte__neu': { boardId: 'mittelsenkrechte' },
+    })
+    const again = parseCurriculumPack(JSON.parse(JSON.stringify(pack)))
+    expect(again?.official).toEqual(pack.official)
+  })
+})

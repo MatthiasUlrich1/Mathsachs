@@ -25,6 +25,11 @@ export interface Fachwissen {
    * Der Link öffnet sich in einem neuen Tab.
    */
   url?: string
+  /**
+   * Optionales Erkundungs-Tafelbild (nicht bewertet) im Fachwissen-Panel.
+   * Reine Daten: Board-ID aus `src/lib/exploreBoards.ts` plus optionale Startwerte je Regler-ID.
+   */
+  explore?: { boardId: string; params?: Record<string, number> }
 }
 
 /** What the learner typed, depending on the input widget shown. */

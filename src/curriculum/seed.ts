@@ -32,6 +32,7 @@ const topicMeta = (topic: {
   released?: boolean
   reviewOf?: string
   tasksPerRound?: number
+  fachwissen?: { explore?: { boardId: string; params?: Record<string, number> } }
 }): PackTopic => ({
   id: topic.id,
   title: topic.title,
@@ -41,6 +42,7 @@ const topicMeta = (topic: {
   ...(topic.keywords?.length ? { keywords: topic.keywords } : {}),
   ...(topic.released === false ? { released: false } : topic.released === true ? { released: true } : {}),
   ...(topic.reviewOf ? { reviewOf: topic.reviewOf } : {}),
+  ...(topic.fachwissen?.explore ? { explore: topic.fachwissen.explore } : {}),
 })
 
 export function gradeToPackGrade(

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { ExploreBoard } from './ExploreBoard'
 import { createRng, timeSeed } from '../lib/rng'
 import { reportSchuelerAnswersChecked } from '../lib/schuelerAnswerStats'
 import { recordSession } from '../lib/storage'
@@ -299,6 +300,12 @@ export function PracticeSession({
               )}
               {fachwissen && (
                 <p className="fachwissen-card__text">{fachwissen.text}</p>
+              )}
+              {fachwissen?.explore && (
+                <ExploreBoard
+                  boardId={fachwissen.explore.boardId}
+                  params={fachwissen.explore.params}
+                />
               )}
               {fachwissen?.quelle && (
                 <p className="fachwissen-card__source">
