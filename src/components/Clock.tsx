@@ -51,6 +51,8 @@ const HAND_NAME: Record<ClockHand, string> = { hour: 'Stundenzeiger', minute: 'M
 export const Clock: React.FC<ClockProps> = ({ minuteSnap = CK_DEFAULT_SNAP, value, onChange, instruction, disabled = false }) => {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const drag = useRef<ClockDrag | null>(null)
+  // Only the pointer that started the drag may move or end it (a second finger is ignored).
+  const activePointer = useRef<number | null>(null)
   const [dragging, setDragging] = useState<ClockHand | null>(null)
   const touched = value.touched === true
   const shown: ClockTime = touched ? { h: value.h, m: value.m } : ckStart()
@@ -71,7 +73,8 @@ export const Clock: React.FC<ClockProps> = ({ minuteSnap = CK_DEFAULT_SNAP, valu
   }
 
   const onDown = (fallback: ClockHand) => (e: React.PointerEvent) => {
-    if (disabled) return
+    if (disabled || activePointer.current !== null) return
+    activePointer.current = e.pointerId
     try {
       // Capture on the svg: it never moves in the DOM.
       svgRef.current?.setPointerCapture?.(e.pointerId)
@@ -87,14 +90,16 @@ export const Clock: React.FC<ClockProps> = ({ minuteSnap = CK_DEFAULT_SNAP, valu
 
   const onMove = (e: React.PointerEvent) => {
     const g = drag.current
-    if (!g || disabled) return
+    if (!g || disabled || e.pointerId !== activePointer.current) return
     const p = toSvg(e)
     const next = ckDragMove(g, ckPointerAngle(p.x, p.y))
     drag.current = next
     commit(ckDragTime(next, shown, minuteSnap))
   }
 
-  const onUp = () => {
+  const onUp = (e: React.PointerEvent) => {
+    if (activePointer.current !== null && e.pointerId !== activePointer.current) return
+    activePointer.current = null
     drag.current = null
     setDragging(null)
   }

@@ -210,6 +210,18 @@ describe('Clock dragging', () => {
     expect(onChange).not.toHaveBeenCalled()
   })
 
+  it('a second pointer can neither start nor drive nor end the drag', () => {
+    const onChange = vi.fn()
+    const els = tree({ onChange })
+    ;(handle(els, 'minute').props.onPointerDown as Handler)(ptr(0, 90))
+    ;(handle(els, 'minute').props.onPointerDown as Handler)({ ...ptr(180, 90), pointerId: 2 })
+    ;(svgOf(els).props.onPointerMove as Handler)({ ...ptr(180, 90), pointerId: 2 })
+    expect(onChange).not.toHaveBeenCalled()
+    ;(svgOf(els).props.onPointerUp as Handler)({ ...ptr(180, 90), pointerId: 2 })
+    ;(svgOf(els).props.onPointerMove as Handler)(ptr(90, 90))
+    expect(onChange).toHaveBeenLastCalledWith({ kind: 'clock', h: 0, m: 15, touched: true })
+  })
+
   it('survives a pointer without capture support', () => {
     expect(() => (handle(tree(), 'minute').props.onPointerDown as Handler)({ clientX: 1, clientY: 1, pointerId: 1 })).not.toThrow()
   })

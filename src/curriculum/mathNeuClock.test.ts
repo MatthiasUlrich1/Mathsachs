@@ -108,7 +108,7 @@ describe('Uhr im Thema Winkelarten', () => {
       angles.add(deg)
       expect(ckAngleBetween(answerOf(t)), t.question).toBe(deg)
       expect(t.dedupeKey).toBe(`winkelarten-uhr-winkel:${deg}`)
-      if (deg !== 180) expect(t.explanation, t.question).toMatch(/weitere passende Uhrzeiten/)
+      expect(deg).toBeLessThan(180)
       expect(t.solution).toContain(ckFormatTime(answerOf(t)))
     }
     expect(angles.size).toBeGreaterThan(6)
@@ -124,6 +124,34 @@ describe('Uhr im Thema Winkelarten', () => {
       expect(ckAngleBetween({ h: Number(m[1]) % 12, m: Number(m[2]) }), t.explanation).toBe(deg)
     }
     expect(checked).toBeGreaterThan(0)
+  })
+})
+
+describe('Winkel-Uhr: genannte Uhrzeiten stimmen mit der Prüfung überein', () => {
+  const tasks = clockTasks(topicOf('lb3-winkelarten__neu'))
+  const accepted = (deg: number): string[] => {
+    const out: string[] = []
+    for (let h = 0; h < 12; h++) for (let m = 0; m < 60; m += 5) if (Math.abs(ckAngleBetween({ h, m }) - deg) <= 2.5 + 1e-9) out.push(ckFormatTime({ h, m }))
+    return out
+  }
+
+  it('jede genannte Uhrzeit wird akzeptiert; bei mehreren akzeptierten Zeiten steht "weitere Uhrzeiten" da', () => {
+    const degs = new Set<number>()
+    for (const t of tasks) {
+      const deg = Number(/(\d+)°/.exec(t.question)![1])
+      degs.add(deg)
+      const ok = accepted(deg)
+      const named = `${t.solution} ${t.explanation}`.match(/\b\d{1,2}:\d{2}\b/g) ?? []
+      expect(named.length, t.question).toBeGreaterThan(0)
+      for (const time of named) expect(ok, `${t.question} nennt ${time}`).toContain(time)
+      if (ok.length > 1) expect(t.explanation, t.question).toMatch(/weitere (passende )?Uhrzeiten/)
+    }
+    expect(degs.has(180)).toBe(false)
+    expect(degs.size).toBeGreaterThan(6)
+  })
+
+  it('Gegenprobe: 180 Grad hätte mehrere akzeptierte Zeiten', () => {
+    expect(accepted(180).length).toBeGreaterThan(1)
   })
 })
 
@@ -147,6 +175,25 @@ describe('Uhr im Thema Zeiteinheiten', () => {
       expect(t.solution).toBe(`${ckFormatTime(answerOf(t))} Uhr`)
       expect(t.question).toMatch(/Zeige an der Uhr/)
     }
+  })
+
+  it('Dauer: die Beschreibung des Stundenzeigers passt zur Minutenzahl', () => {
+    const seen = new Set<string>()
+    for (const t of duration) {
+      const { h, m } = answerOf(t)
+      const shown = h === 0 ? 12 : h
+      const next = shown === 12 ? 1 : shown + 1
+      const want = m === 0 ? `genau auf der ${shown}` : m < 30 ? `ein Stück hinter der ${shown}` : m === 30 ? `genau in der Mitte zwischen der ${shown} und der ${next}` : `kurz vor der ${next}`
+      expect(t.explanation, t.question).toContain(`Stundenzeiger steht ${want}.`)
+      expect(t.explanation).not.toContain('kurz hinter')
+      seen.add(m === 0 ? 'voll' : m < 30 ? 'vor30' : m === 30 ? 'halb' : 'nach30')
+    }
+    expect(seen.size).toBeGreaterThanOrEqual(3)
+  })
+
+  it('Dauer: der dedupeKey nennt die Szene', () => {
+    const scenes = new Set(duration.map((t) => t.dedupeKey!.split(':')[1]!.split('-')[0]))
+    expect(scenes.size).toBeGreaterThanOrEqual(4)
   })
 
   it('Worte: die Uhrzeit passt zur Formulierung', () => {

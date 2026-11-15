@@ -2029,7 +2029,7 @@ export const math5NeuLb3: Topic[] = [
       },
       // Variant 5: Uhr — eine Uhrzeit mit vorgegebenem Winkel zwischen den Zeigern einstellen
       (rng: Rng) => {
-        const deg = pick(rng, [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180])
+        const deg = pick(rng, [15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165])
         const full = deg % 30 === 0
         // Volle Stunde x:00 (Winkel 30 · x) oder halbe Stunde x:30 (Winkel |30 · x − 165|).
         const x = full ? deg / 30 : (deg + 165) / 30
@@ -2038,16 +2038,14 @@ export const math5NeuLb3: Topic[] = [
         const other = otherX % 12 === 0 ? 12 : otherX
         const hand = 30 * x + 15
         const explanation = full
-          ? deg === 180
-            ? `Um 6 Uhr zeigt der Minutenzeiger auf die 12 und der Stundenzeiger auf die 6. Von einer Zahl zur nächsten sind es 30°, bis zur 6 also 6 · 30° = 180°. Die Zeiger zeigen in entgegengesetzte Richtungen.`
-            : `Der Minutenzeiger zeigt auf die 12. Von einer Zahl zur nächsten sind es 30°, der Stundenzeiger legt ${x} Zahlenschritte zurück: ${x} · 30° = ${deg}°. Also passt ${x}:00 Uhr. Es gibt weitere passende Uhrzeiten, zum Beispiel ${other}:00 Uhr.`
+          ? `Der Minutenzeiger zeigt auf die 12. Von einer Zahl zur nächsten sind es 30°, der Stundenzeiger legt ${x} Zahlenschritte zurück: ${x} · 30° = ${deg}°. Also passt ${x}:00 Uhr. Es gibt weitere passende Uhrzeiten, zum Beispiel ${other}:00 Uhr.`
           : `Um ${x}:30 Uhr zeigt der Minutenzeiger auf die 6 (180°). Der Stundenzeiger steht genau zwischen der ${x} und der ${x + 1}, das sind ${x} · 30° + 15° = ${hand}°. Der Unterschied ist ${Math.abs(hand - 180)}°. Es gibt weitere passende Uhrzeiten, zum Beispiel ${other}:30 Uhr.`
         return clockTask({
-          question: `Finde eine Uhrzeit, bei der ${deg === 180 ? 'der Winkel' : 'der kleinere Winkel'} zwischen Stunden- und Minutenzeiger ${deg}° beträgt.`,
+          question: `Finde eine Uhrzeit, bei der der kleinere Winkel zwischen Stunden- und Minutenzeiger ${deg}° beträgt.`,
           mode: 'angle',
           angle: deg,
           exampleTime: example,
-          solution: deg === 180 ? '6:00 Uhr' : `z. B. ${ckFormatTime(example)} Uhr`,
+          solution: `z. B. ${ckFormatTime(example)} Uhr`,
           explanation,
           instruction: 'Stelle die Zeiger so ein, dass sie den gesuchten Winkel bilden. Es gibt oft mehrere richtige Uhrzeiten.',
           dedupeKey: `winkelarten-uhr-winkel:${deg}`,
@@ -4343,11 +4341,11 @@ export const math5NeuLb5: Topic[] = [
       (rng: Rng) => {
         // Jede Szene nur mit Uhrzeiten und Dauern, die dort realistisch sind.
         const szene = pick(rng, [
-          { hours: [6, 7, 8], dauer: [20, 25, 35, 40, 50], satz: (s: string, d: number) => `Der Bus fährt um ${s} Uhr ab. Die Fahrt dauert ${d} Minuten. Zeige an der Uhr, wann der Bus ankommt.` },
-          { hours: [3, 4, 5, 6, 7], dauer: [85, 90, 95, 105, 115], satz: (s: string, d: number) => `Der Film beginnt um ${s} Uhr und läuft ${d} Minuten. Zeige an der Uhr, wann er zu Ende ist.` },
-          { hours: [2, 3, 4], dauer: [35, 40, 45, 50, 55, 60], satz: (s: string, d: number) => `Ein Kuchen kommt um ${s} Uhr in den Ofen und muss ${d} Minuten backen. Zeige an der Uhr, wann er fertig ist.` },
-          { hours: [4, 5, 6], dauer: [45, 60, 75, 90], satz: (s: string, d: number) => `Das Fußballtraining beginnt um ${s} Uhr und dauert ${d} Minuten. Zeige an der Uhr, wann es endet.` },
-          { hours: [2, 3, 4], dauer: [25, 30, 35, 40, 45], satz: (s: string, d: number) => `Mia beginnt um ${s} Uhr mit den Hausaufgaben und braucht ${d} Minuten dafür. Zeige an der Uhr, wann sie fertig ist.` },
+          { id: 'bus', hours: [6, 7, 8], dauer: [20, 25, 35, 40, 50], satz: (s: string, d: number) => `Der Bus fährt um ${s} Uhr ab. Die Fahrt dauert ${d} Minuten. Zeige an der Uhr, wann der Bus ankommt.` },
+          { id: 'film', hours: [3, 4, 5, 6, 7], dauer: [85, 90, 95, 105, 115], satz: (s: string, d: number) => `Der Film beginnt um ${s} Uhr und läuft ${d} Minuten. Zeige an der Uhr, wann er zu Ende ist.` },
+          { id: 'kuchen', hours: [2, 3, 4], dauer: [35, 40, 45, 50, 55, 60], satz: (s: string, d: number) => `Ein Kuchen kommt um ${s} Uhr in den Ofen und muss ${d} Minuten backen. Zeige an der Uhr, wann er fertig ist.` },
+          { id: 'training', hours: [4, 5, 6], dauer: [45, 60, 75, 90], satz: (s: string, d: number) => `Das Fußballtraining beginnt um ${s} Uhr und dauert ${d} Minuten. Zeige an der Uhr, wann es endet.` },
+          { id: 'hausaufgaben', hours: [2, 3, 4], dauer: [25, 30, 35, 40, 45], satz: (s: string, d: number) => `Mia beginnt um ${s} Uhr mit den Hausaufgaben und braucht ${d} Minuten dafür. Zeige an der Uhr, wann sie fertig ist.` },
         ])
         const startH = pick(rng, szene.hours)
         let startM = pick(rng, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
@@ -4365,14 +4363,23 @@ export const math5NeuLb5: Topic[] = [
           sum < 60
             ? `${startM} min + ${d} min = ${sum} min, das ist weniger als eine Stunde. Die Stunde bleibt ${startH}.`
             : `${startM} min + ${d} min = ${sum} min = ${Math.floor(sum / 60)} h ${sum % 60} min. Zur Stunde ${startH} kommen ${Math.floor(sum / 60)} h dazu.`
+        const nextHour = endHour === 12 ? 1 : endHour + 1
+        const hourHandText =
+          end.m === 0
+            ? `steht genau auf der ${endHour}`
+            : end.m < 30
+              ? `steht ein Stück hinter der ${endHour}`
+              : end.m === 30
+                ? `steht genau in der Mitte zwischen der ${endHour} und der ${nextHour}`
+                : `steht kurz vor der ${nextHour}`
         return clockTask({
           question: szene.satz(ckFormatTime({ h: startH, m: startM }), d),
           mode: 'setTime',
           time: end,
           solution: `${ckFormatTime(end)} Uhr`,
-          explanation: `${calc} Das Ende ist also um ${ckFormatTime(end)} Uhr. Auf der Uhr zeigt der Minutenzeiger dann auf die ${end.m === 0 ? 12 : end.m / 5}, der Stundenzeiger ${end.m === 0 ? 'genau auf die' : 'steht kurz hinter der'} ${endHour}.`,
+          explanation: `${calc} Das Ende ist also um ${ckFormatTime(end)} Uhr. Auf der Uhr zeigt der Minutenzeiger dann auf die ${end.m === 0 ? 12 : end.m / 5}, der Stundenzeiger ${hourHandText}.`,
           instruction: 'Stelle die Uhr auf die gesuchte Uhrzeit ein. Der kurze Zeiger zeigt die Stunde, der lange die Minuten.',
-          dedupeKey: `zeit-uhr-dauer:${startH}-${startM}-${d}`,
+          dedupeKey: `zeit-uhr-dauer:${szene.id}-${startH}-${startM}-${d}`,
         })
       },
       // Variant 5: Uhr — eine Uhrzeit in Worten ("Viertel nach 3") an der Uhr einstellen
