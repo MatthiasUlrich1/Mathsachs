@@ -32,7 +32,7 @@ describe('old palette is gone from CSS', () => {
   it('App.css has no glass effect and only the highlighter gradient', () => {
     const css = readFileSync(join(process.cwd(), 'src/App.css'), 'utf8')
     expect(css).not.toContain('backdrop-filter')
-    const gradients = css.match(/linear-gradient([^;]*/g) ?? []
+    const gradients = css.match(/linear-gradient\([^;]*/g) ?? []
     expect(gradients.every((g) => g.includes('var(--marker)'))).toBe(true)
   })
 })
