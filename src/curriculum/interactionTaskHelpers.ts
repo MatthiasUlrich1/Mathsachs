@@ -62,6 +62,7 @@ import {
   formatProbability,
   treeAllEdgeIds,
   treeMatches,
+  validateRootLabel,
   validateTreeBlanks,
   type TreeBlanks,
   type TreeLevel,
@@ -541,6 +542,7 @@ export const treeDiagramTask = (input: TreeDiagramTaskInput): Task => {
   const { levels, probabilities, blanks } = input
   const model = buildTreeModel(levels, probabilities)
   validateTreeBlanks(levels, blanks)
+  validateRootLabel(input.rootLabel?.trim())
   const given: Record<string, string> = {}
   for (const id of treeAllEdgeIds(levels)) {
     if (!blanks.branches.includes(id)) given[id] = probabilities[id]!.trim()

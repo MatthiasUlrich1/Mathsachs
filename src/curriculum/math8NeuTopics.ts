@@ -631,7 +631,7 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
       const q2 = subtract({ n: 1, d: 1 }, p2)
       const beide = multiply(p1, p2)
       return treeDiagramTask({
-        question: `Ein Glücksrad hat ${n1} gleich große Felder, davon sind ${k1} rot. Dreht es sich auf Rot, darfst du ein zweites Rad mit ${n2} gleich großen Feldern drehen, davon sind ${k2} Gewinne. Auch bei Grün darfst du das zweite Rad drehen. Wie groß ist die Wahrscheinlichkeit für Rot und Gewinn? Trage sie am Ende des passenden Pfades ein.`,
+        question: `Ein Glücksrad hat ${n1} gleich große Felder, davon ${k1 === 1 ? 'ist' : 'sind'} ${k1} rot. Die übrigen Felder sind grün. Egal ob Rot oder Grün: Danach drehst du ein zweites Rad mit ${n2} gleich großen Feldern, davon ${k2 === 1 ? 'ist 1 Gewinn' : `sind ${k2} Gewinne`}. Wie groß ist die Wahrscheinlichkeit für Rot und Gewinn? Trage sie am Ende des passenden Pfades ein.`,
         levels: [{ outcomes: ['Rot', 'Grün'] }, { outcomes: ['Gewinn', 'Niete'] }],
         probabilities: {
           '0': format(p1),

@@ -3,6 +3,7 @@ import {
   TREE_CHIP_FONT_PX,
   TREE_CHIP_H_PX,
   TREE_CHIP_W_PCT,
+  TREE_INPUT_FONT_PX,
   TREE_INPUT_H_PX,
   TREE_INPUT_W_PX,
   TREE_MIN_WIDTH_PX,
@@ -39,13 +40,14 @@ export function TreeDiagram({ levels, given, blankBranches, blankLeaves, rootLab
   const leaves = value.leaves ?? {}
   const setBranch = (id: string, text: string) => onChange({ kind: 'treeDiagram', branches: { ...branches, [id]: text }, leaves })
   const setLeaf = (id: string, text: string) => onChange({ kind: 'treeDiagram', branches, leaves: { ...leaves, [id]: text } })
-  const at = (xPct: number, y: number, w: number, h: number) => ({
+  const at = (xPct: number, y: number, w: number | string, h: number) => ({
     left: `${xPct}%`,
     top: y,
     width: w,
     height: h,
     transform: 'translate(-50%, -50%)',
   })
+  const fieldFont = { fontSize: TREE_INPUT_FONT_PX }
   return (
     <div className="tree-diagram">
       {instruction && <p className="tree-diagram__instruction">{instruction}</p>}
@@ -62,22 +64,25 @@ export function TreeDiagram({ levels, given, blankBranches, blankLeaves, rootLab
               <line key={e.id} x1={e.x1} y1={e.y1} x2={e.x2} y2={e.y2} vectorEffect="non-scaling-stroke" />
             ))}
           </svg>
-          <span className="tree-diagram__root" style={{ left: `${lay.root.x}%`, top: lay.root.y }}>
-            {rootLabel && <span className="tree-diagram__root-label">{rootLabel}</span>}
-          </span>
+          <span className="tree-diagram__root" style={{ left: `${lay.root.x}%`, top: lay.root.y }} />
+          {rootLabel && (
+            <span className="tree-diagram__root-label" data-testid="tree-root-label">
+              {rootLabel}
+            </span>
+          )}
           {lay.nodes.map((n) => (
             <span
               key={`${n.level}:${n.id}`}
               className="tree-diagram__chip"
               data-testid={`tree-chip-${n.id}`}
-              style={{ ...at(n.x, n.y, 0, TREE_CHIP_H_PX), width: `${TREE_CHIP_W_PCT}%`, fontSize: TREE_CHIP_FONT_PX }}
+              style={{ ...at(n.x, n.y, `${TREE_CHIP_W_PCT}%`, TREE_CHIP_H_PX), fontSize: TREE_CHIP_FONT_PX }}
             >
               {n.label}
             </span>
           ))}
           {lay.edges.map((e) => {
             const blank = blankBranches.includes(e.id)
-            const style = at(e.fx, e.fy, TREE_INPUT_W_PX, TREE_INPUT_H_PX)
+            const style = { ...at(e.fx, e.fy, TREE_INPUT_W_PX, TREE_INPUT_H_PX), ...fieldFont }
             return blank ? (
               <input
                 key={`b${e.id}`}
@@ -108,7 +113,7 @@ export function TreeDiagram({ levels, given, blankBranches, blankLeaves, rootLab
                 className="tree-diagram__input tree-diagram__input--leaf"
                 data-testid={`tree-leaf-${f.id}`}
                 aria-label={`Wahrscheinlichkeit des Pfads ${treePathLabel(levels, f.id)}`}
-                style={at(f.x, f.y, TREE_INPUT_W_PX, TREE_INPUT_H_PX)}
+                style={{ ...at(f.x, f.y, TREE_INPUT_W_PX, TREE_INPUT_H_PX), ...fieldFont }}
                 value={leaves[f.id] ?? ''}
                 disabled={disabled}
                 onChange={(ev) => setLeaf(f.id, ev.target.value)}

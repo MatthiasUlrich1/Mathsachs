@@ -43,6 +43,8 @@ const spoilerHits = (t: Task, text: string): string[] => {
   })
 }
 
+const BAD_PLURAL = /\b1 (Gewinne|Kugeln|Felder|Striche|Teile)\b/
+
 describe.each(IDS)('Neu-Thema Baumdiagramm %s', (id) => {
   const topic = topicOf(id)
   const tasks = treeTasks(topic)
@@ -91,11 +93,23 @@ describe.each(IDS)('Neu-Thema Baumdiagramm %s', (id) => {
     }
   })
 
+  it('Grammatik: nie "1 Gewinne", "1 Kugeln" usw.', () => {
+    for (const t of tasks) for (const text of [t.question, t.explanation, t.solution]) expect(text, t.question).not.toMatch(BAD_PLURAL)
+  })
+
   it('Rundenlänge 10 bei genügend großem Pool', () => {
     for (const seed of [1, 42, 999]) {
       const round = buildUniqueTaskRound(topic.generate, createRng(seed), 10, 400)
       expect(round.length, `${id} seed=${seed}`).toBe(10)
     }
+  })
+})
+
+describe('Grammatik-Negativkontrolle', () => {
+  it('der Test erkennt "1 Gewinne" und lässt "1 Gewinn" und "11 Felder" durch', () => {
+    expect('davon sind 1 Gewinne').toMatch(BAD_PLURAL)
+    expect('davon ist 1 Gewinn').not.toMatch(BAD_PLURAL)
+    expect('11 Felder').not.toMatch(BAD_PLURAL)
   })
 })
 

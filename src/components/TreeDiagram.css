@@ -52,8 +52,9 @@
 .tree-diagram__root-label {
   position: absolute;
   left: 0;
-  bottom: 12px;
-  font-size: 0.8rem;
+  top: 0;
+  line-height: 18px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
@@ -91,7 +92,7 @@
 }
 
 .tree-diagram__input {
-  padding: 2px 4px;
+  padding: 2px;
   border: 1px solid #94a3b8;
   border-radius: 8px;
   background: #ffffff;

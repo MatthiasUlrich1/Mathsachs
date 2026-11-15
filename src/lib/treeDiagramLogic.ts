@@ -23,13 +23,25 @@ export const TREE_MIN_WIDTH_PX = 343
 export const TREE_ROW_PX = 76
 /** Branch fields sit at this fraction of the edge, counted from the parent (keeps sibling fields 44+ px apart). */
 export const TREE_EDGE_T = 0.6
-export const TREE_INPUT_W_PX = 56
+export const TREE_INPUT_W_PX = 64
+export const TREE_INPUT_FONT_PX = 16
+export const TREE_INPUT_PAD_PX = 2
+export const TREE_MAX_ENTRY_CHARS = 6
+export const TREE_ROOT_LABEL_FONT_PX = 13
+export const TREE_ROOT_LABEL_H_PX = 18
+export const TREE_MAX_ROOT_LABEL_CHARS = 12
 export const TREE_INPUT_H_PX = 44
-export const TREE_CHIP_W_PCT = 15
+export const TREE_CHIP_W_PCT = 14
 export const TREE_CHIP_H_PX = 32
-export const TREE_CHIP_FONT_PX = 13
+export const TREE_CHIP_FONT_PX = 12
 export const TREE_ROOT_X = 1.5
-export const TREE_LEAF_INPUT_X = 88
+export const TREE_LEAF_INPUT_X = 88.7
+
+/** A typed entry of TREE_MAX_ENTRY_CHARS characters ("12,5 %", "15/100") fits a field. */
+export const treeEntryFits = (chars = TREE_MAX_ENTRY_CHARS): boolean =>
+  chars * TREE_INPUT_FONT_PX * 0.6 + 2 * TREE_INPUT_PAD_PX <= TREE_INPUT_W_PX
+
+export const treeRootLabelWidthPx = (label: string): number => Math.ceil(label.length * TREE_ROOT_LABEL_FONT_PX * 0.6)
 
 export const treeChipTextFits = (label: string, widthPx = TREE_MIN_WIDTH_PX): boolean =>
   label.length * TREE_CHIP_FONT_PX * 0.6 <= (TREE_CHIP_W_PCT / 100) * widthPx - 4
@@ -130,6 +142,10 @@ export interface TreeBlanks {
   leaves: string[]
 }
 
+export const validateRootLabel = (rootLabel: string | undefined): void => {
+  if (rootLabel !== undefined && rootLabel.length > TREE_MAX_ROOT_LABEL_CHARS) throw new Error(`treeDiagram: rootLabel has at most ${TREE_MAX_ROOT_LABEL_CHARS} characters`)
+}
+
 export const validateTreeBlanks = (levels: TreeLevel[], blanks: TreeBlanks): void => {
   const edgeIds = treeAllEdgeIds(levels)
   const leafIds = treeLeafIds(levels)
@@ -200,8 +216,8 @@ export interface TreeLayout {
 
 export const treeLayout = (levels: TreeLevel[], rowPx = TREE_ROW_PX): TreeLayout => {
   const two = levels.length > 1
-  const c1 = two ? 32.5 : 60
-  const c2 = 69.5
+  const c1 = two ? 32 : 60
+  const c2 = 71
   const half = TREE_CHIP_W_PCT / 2
   const n1 = levels[0]!.outcomes.length
   const n2 = two ? levels[1]!.outcomes.length : 1
@@ -246,7 +262,7 @@ export interface TreeBox {
 }
 
 /** All rectangles the tree occupies at a content width (px): branch fields, leaf fields and outcome chips. */
-export const treeBoxes = (levels: TreeLevel[], widthPx = TREE_MIN_WIDTH_PX): TreeBox[] => {
+export const treeBoxes = (levels: TreeLevel[], widthPx = TREE_MIN_WIDTH_PX, rootLabel = ''): TreeBox[] => {
   const lay = treeLayout(levels)
   const box = (kind: TreeBox['kind'], id: string, xPct: number, y: number, w: number, h: number): TreeBox => {
     const cx = (xPct / 100) * widthPx
@@ -255,6 +271,7 @@ export const treeBoxes = (levels: TreeLevel[], widthPx = TREE_MIN_WIDTH_PX): Tre
   return [
     ...lay.edges.map((e) => box('branch', e.id, e.fx, e.fy, TREE_INPUT_W_PX, TREE_INPUT_H_PX)),
     ...lay.leafFields.map((f) => box('leaf', f.id, f.x, f.y, TREE_INPUT_W_PX, TREE_INPUT_H_PX)),
+    ...(rootLabel ? [{ kind: 'chip' as const, id: 'root-label', left: 0, top: 0, right: treeRootLabelWidthPx(rootLabel), bottom: TREE_ROOT_LABEL_H_PX }] : []),
     ...lay.nodes.map((n) => box('chip', `${n.level}:${n.id}`, n.x, n.y, (TREE_CHIP_W_PCT / 100) * widthPx, TREE_CHIP_H_PX)),
   ]
 }
@@ -267,7 +284,7 @@ export const TREE_PRINT_FONT = 15
 const esc = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
 /** Static tree for paper: given values printed, "___" at every blank field. */
-export const treePrintSvg = (levels: TreeLevel[], given: Record<string, string>, blanks: TreeBlanks): string => {
+export const treePrintSvg = (levels: TreeLevel[], given: Record<string, string>, blanks: TreeBlanks, rootLabel = ''): string => {
   const lay = treeLayout(levels, TREE_PRINT_ROW)
   const px = (pct: number) => Math.round((pct / 100) * TREE_PRINT_W * 10) / 10
   const parts: string[] = []
@@ -277,6 +294,7 @@ export const treePrintSvg = (levels: TreeLevel[], given: Record<string, string>,
   }
   const text = (xPct: number, y: number, s: string, extra = '') =>
     `<text x="${px(xPct)}" y="${y + 5}" text-anchor="middle" font-size="${TREE_PRINT_FONT}" fill="#0f172a"${extra}>${esc(s)}</text>`
+  if (rootLabel) parts.push(`<text x="2" y="14" font-size="${TREE_PRINT_FONT}" fill="#0f172a">${esc(rootLabel)}</text>`)
   for (const e of lay.edges) {
     const isBlank = blanks.branches.includes(e.id)
     const value = isBlank ? '___' : treeDisplayValue(given[e.id] ?? '')

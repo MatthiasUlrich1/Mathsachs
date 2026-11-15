@@ -428,7 +428,7 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
         leaves: Array.isArray(props.blankLeaves) ? (props.blankLeaves as string[]) : [],
       }
       const given = (props.given ?? {}) as Record<string, string>
-      const drawing = levels.length >= 1 && levels.length <= 2 ? treePrintSvg(levels, given, blanks) : ''
+      const drawing = levels.length >= 1 && levels.length <= 2 ? treePrintSvg(levels, given, blanks, typeof props.rootLabel === 'string' ? props.rootLabel : '') : ''
       const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
       return {
         visualHtml,

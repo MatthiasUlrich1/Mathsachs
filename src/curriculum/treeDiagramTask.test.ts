@@ -83,6 +83,11 @@ describe('treeDiagramTask config', () => {
     expect(make({ instruction: 'Eigener Text' }).interactive!.props.instruction).toBe('Eigener Text')
   })
 
+  it('rootLabel is limited to 12 characters', () => {
+    expect(() => make({ rootLabel: 'x'.repeat(13) })).toThrow(/rootLabel/)
+    expect(() => make({ rootLabel: 'Samstag' })).not.toThrow()
+  })
+
   it('dedupeKey is kept', () => {
     expect(make({ dedupeKey: ' k ' }).dedupeKey).toBe('k')
     expect(make().dedupeKey).toBeUndefined()
@@ -132,6 +137,7 @@ describe('treeDiagram wiring', () => {
     const withVisual = worksheetPrintExtras({ ...t, visualContent: '<svg id="ref"></svg>' })
     expect(withVisual.visualHtml!.startsWith('<svg id="ref">')).toBe(true)
     expect(withVisual.visualHtml).toContain('___')
+    expect(worksheetPrintExtras(make({ rootLabel: 'Samstag' })).visualHtml).toContain('>Samstag</text>')
   })
 })
 

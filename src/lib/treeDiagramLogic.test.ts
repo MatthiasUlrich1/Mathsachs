@@ -10,7 +10,10 @@ import {
   parseProbability,
   treeAllEdgeIds,
   treeBoxes,
+  TREE_MAX_ENTRY_CHARS,
+  TREE_MAX_ROOT_LABEL_CHARS,
   treeChipTextFits,
+  treeEntryFits,
   treeLayout,
   treeLeafIds,
   treeMatches,
@@ -114,7 +117,7 @@ describe('layout fits at 343 px (375 px phone minus gutter)', () => {
   ]
   for (const [name, levels] of cases) {
     it(`${name}: fields and chips do not overlap and stay inside the box`, () => {
-      const boxes = treeBoxes(levels)
+      const boxes = treeBoxes(levels, TREE_MIN_WIDTH_PX, 'x'.repeat(TREE_MAX_ROOT_LABEL_CHARS))
       const lay = treeLayout(levels)
       for (const b of boxes) {
         expect(b.left, `${b.kind} ${b.id}`).toBeGreaterThanOrEqual(0)
@@ -132,6 +135,17 @@ describe('layout fits at 343 px (375 px phone minus gutter)', () => {
       }
     })
   }
+
+  it('the root label is part of the fit test: a label that is too wide leaves the box', () => {
+    const boxes = treeBoxes([two[0]!], TREE_MIN_WIDTH_PX, 'x'.repeat(60))
+    const label = boxes.find((b) => b.id === 'root-label')!
+    expect(label.right).toBeGreaterThan(TREE_MIN_WIDTH_PX)
+  })
+
+  it('a 6-character entry (12,5 % / 15/100) fits a field; 8 characters would not', () => {
+    expect(treeEntryFits(TREE_MAX_ENTRY_CHARS)).toBe(true)
+    expect(treeEntryFits(8)).toBe(false)
+  })
 
   it('fields are at least 44 px tall', () => {
     expect(TREE_INPUT_H_PX).toBeGreaterThanOrEqual(44)
@@ -159,6 +173,10 @@ describe('treePrintSvg', () => {
     expect((svg.match(/___/g) ?? []).length).toBe(3)
     expect(svg).not.toContain('2/4')
     expect(svg).not.toContain('3/10')
+  })
+  it('prints the root label when given', () => {
+    expect(treePrintSvg(two, urn, { branches: [], leaves: [] }, 'Samstag')).toContain('>Samstag</text>')
+    expect(treePrintSvg(two, urn, { branches: [], leaves: [] })).not.toContain('Samstag')
   })
   it('escapes author text', () => {
     const s = treePrintSvg([{ outcomes: ['<a>', 'b&'] }], { '0': '1/2', '1': '1/2' }, { branches: [], leaves: [] })
