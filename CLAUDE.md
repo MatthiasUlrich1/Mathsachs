@@ -23,3 +23,31 @@ Grundsatz: **Für jede Ausführung das günstigste Modell nutzen, das die Aufgab
 
 - Subagents (Agent-Tool) immer mit explizitem `model` starten: `haiku` für Shipping, `sonnet` für normale Aufgaben.
 - `opus` nur für Plan-Agents oder nach Erlaubnis gemäß Punkt 3.
+- **Immer erst planen, dann an Subagents übergeben.** Plan dem Nutzer vorlegen, nach OK ausführen lassen.
+
+## Aufgaben & Interaktionen (Qualität, alle Fächer und Lehrpläne)
+
+Claude ist für das Erstellen von Aufgaben und Interaktionen zuständig. Der Anspruch ist hohe Qualität. Die folgenden Regeln sind **verbindlich** und gelten auch für jeden Subagent (im Subagent-Prompt ausdrücklich darauf verweisen):
+
+@.cursor/rules/hand_authored_curriculum.mdc
+@.cursor/rules/curriculum-aufgaben-qualitaet.mdc
+@.cursor/rules/curriculum-lernbereiche.mdc
+@.cursor/rules/math-interaction-guards.mdc
+@.cursor/rules/input-focus-guards.mdc
+
+Definition of Done je Fach × Klasse: `docs/LEHRPLAN-QUALITAETSPLAN.md`.
+
+### Freigabe (hart)
+
+- Freigegebene Themen und Generatoren (`src/curriculum/mathN.ts` usw.) **nicht verändern**.
+- Neue Inhalte nur in `__neu`-Themen (`*NeuTopics.ts`, `asNeuTopic`). Sie bleiben `neu: true` / `released: false` und sind nur für die Rollen Prüfer und Entwickler sichtbar, bis der Nutzer ausdrücklich freigibt. Nach der Freigabe kommen sie als Ergänzung in den Aufgabenpool.
+
+### Vorbild Bettermarks
+
+- Bettermarks dient als Vorbild für **Interaktionsarten** (Winkelmesser, Lineal, Zirkel, Zahlenstrahl usw.). Die Mechanik bauen wir selbst nach.
+- Aufgabentexte, Grafiken und Bilder von Bettermarks **nicht 1:1 übernehmen**. Aufgaben selbst formulieren (Urheberrecht).
+- Für Bettermarks meldet sich der Nutzer selbst an (SchulLogin). Claude gibt keine Zugangsdaten ein.
+
+### Code-Exploration
+
+- Vor dem Erkunden des Codes `graphify query "<Frage>"` nutzen (siehe `.cursor/rules/graphify.mdc`). Nach Code-Änderungen `graphify update .`.
