@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.148] – 2026-11-15
+
+### Hinzugefügt
+- **Mathe Messinstrumente:** Winkel-Werkzeug im Konstruktionseditor; neue Konstruktionen SWS und WSW in „Kongruenzsatz wählen“ (Klasse 6, gesperrt).
+- Refs #49.
+
+### Geändert
+- **Lineal:** Drehung auf ±40° begrenzt.
+- **Sichtbarkeit:** Gesperrte Themen (inkl. Neu-Themen) sind für Schüler, Lehrer und Eltern überall ausgeblendet (Themenübersicht, Suche, Fächer-Tabs, Klausur-, Challenge-, Arbeitsblatt- und Aufgabengenerator-Auswahl); sichtbar nur für Prüfer/Entwickler.
+- **Klausur:** Bearbeitung hängt nicht mehr bei für die Rolle ausgeblendeten Modulen (mit Abbrechen).
+
 ## [0.28.147] – 2026-11-15
 
 ### Hinzugefügt
