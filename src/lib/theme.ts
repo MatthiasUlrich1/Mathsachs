@@ -17,13 +17,20 @@ export function resolveTheme(pref: ThemePreference, systemDark: boolean): Resolv
   return systemDark ? 'tafel' : 'heft'
 }
 
-const getStore = (storage?: Pick<Storage, 'getItem' | 'setItem'> | null) =>
-  storage ?? (typeof localStorage !== 'undefined' ? localStorage : null)
+/** Resolves the storage; the global access itself can throw (blocked storage). */
+const getStore = (storage?: unknown): Pick<Storage, 'getItem' | 'setItem'> | null => {
+  if (storage) return storage as Pick<Storage, 'getItem' | 'setItem'>
+  try {
+    return typeof localStorage !== 'undefined' ? localStorage : null
+  } catch {
+    return null
+  }
+}
 
 export function loadThemePreference(
   storage?: Pick<Storage, 'getItem'> | null,
 ): ThemePreference {
-  const store = getStore(storage as Pick<Storage, 'getItem' | 'setItem'> | null | undefined)
+  const store = getStore(storage)
   if (!store) return 'system'
   try {
     const raw = store.getItem(THEME_STORAGE_KEY)
@@ -37,7 +44,7 @@ export function saveThemePreference(
   pref: ThemePreference,
   storage?: Pick<Storage, 'setItem'> | null,
 ): void {
-  const store = getStore(storage as Pick<Storage, 'getItem' | 'setItem'> | null | undefined)
+  const store = getStore(storage)
   if (!store) return
   try {
     store.setItem(THEME_STORAGE_KEY, pref)

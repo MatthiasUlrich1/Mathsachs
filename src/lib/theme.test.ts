@@ -1,5 +1,6 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import {
+  applyTheme,
   isThemePreference,
   loadThemePreference,
   resolveTheme,
@@ -53,5 +54,39 @@ describe('theme persistence', () => {
   it('does not throw when storage throws', () => {
     expect(loadThemePreference(throwing)).toBe('system')
     expect(() => saveThemePreference('heft', throwing)).not.toThrow()
+  })
+})
+
+describe('blocked localStorage global', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('does not throw when reading the localStorage getter throws', () => {
+    Object.defineProperty(globalThis, 'localStorage', {
+      configurable: true,
+      get() {
+        throw new Error('SecurityError')
+      },
+    })
+    try {
+      expect(loadThemePreference()).toBe('system')
+      expect(() => saveThemePreference('tafel')).not.toThrow()
+    } finally {
+      delete (globalThis as { localStorage?: unknown }).localStorage
+    }
+  })
+})
+
+describe('applyTheme', () => {
+  afterEach(() => vi.unstubAllGlobals())
+
+  it('sets and removes data-theme on the root element', () => {
+    const dataset: Record<string, string> = {}
+    vi.stubGlobal('document', { documentElement: { dataset } })
+    applyTheme('tafel')
+    expect(dataset.theme).toBe('tafel')
+    applyTheme('heft')
+    expect(dataset.theme).toBe('heft')
+    applyTheme('system')
+    expect('theme' in dataset).toBe(false)
   })
 })

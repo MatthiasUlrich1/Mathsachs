@@ -33,6 +33,17 @@
         }
       })()
     </script>
+    <script>
+      // Apply the stored theme before first paint (avoids a flash). Mirrors src/lib/theme.ts.
+      (function () {
+        try {
+          var t = localStorage.getItem('tasktrophy.theme')
+          if (t === 'heft' || t === 'tafel') document.documentElement.dataset.theme = t
+        } catch (e) {
+          /* blocked storage: fall back to system */
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

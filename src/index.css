@@ -158,8 +158,9 @@ a {
   text-underline-offset: 0.15em;
 }
 
-/* Buttons: solid ink = primary, outline = secondary */
-button {
+/* Buttons: solid ink = primary, outline = secondary.
+   All base rules use :where() (specificity 0) so component classes always win. */
+:where(button) {
   font-family: inherit;
   font-size: var(--fs-2);
   cursor: pointer;
@@ -171,16 +172,24 @@ button {
   font-weight: 700;
 }
 
-button.secondary,
-button.ghost {
+/* Link-style buttons carry no frame */
+:where(button).link {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--ink);
+  font-weight: inherit;
+  border-radius: 0;
+}
+
+:where(button).secondary,
+:where(button).ghost {
   background: transparent;
   color: var(--ink);
 }
 
 /* Inputs */
-input,
-select,
-textarea {
+:where(input, select, textarea) {
   font-family: inherit;
   font-size: var(--fs-2);
   color: var(--graphite);
@@ -190,9 +199,7 @@ textarea {
   padding: 0.5rem 0.75rem;
 }
 
-input[type='number'],
-input[inputmode='numeric'],
-input[inputmode='decimal'] {
+:where(input[type='number'], input[inputmode='numeric'], input[inputmode='decimal']) {
   font-variant-numeric: tabular-nums;
 }
 
@@ -206,10 +213,8 @@ input[inputmode='decimal'] {
   outline-offset: 2px;
 }
 
-button[disabled],
-input[disabled],
-select[disabled],
-textarea[disabled] {
+/* Disabled */
+:where(button, input, select, textarea):where([disabled]) {
   opacity: 0.55;
   cursor: not-allowed;
 }

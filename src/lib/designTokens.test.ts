@@ -77,6 +77,9 @@ describe('WCAG contrast >= 4.5 (text pairs)', () => {
         expect(contrastRatio(c(fg), c(bg))).toBeGreaterThanOrEqual(4.5)
       })
     }
+    it.each(['pencil', 'ink'])(`${name}: --%s on --grid`, (fg) => {
+      expect(contrastRatio(c(fg), c('grid'))).toBeGreaterThanOrEqual(4.5)
+    })
     it(`${name}: --paper on --ink (primary button)`, () => {
       expect(contrastRatio(c('paper'), c('ink'))).toBeGreaterThanOrEqual(4.5)
     })
