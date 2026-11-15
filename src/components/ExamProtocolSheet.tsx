@@ -53,7 +53,7 @@ export const formatExamAnswer = (input: UserInput): string => {
     if (!Number.isFinite(input.x) || !Number.isFinite(input.y)) return '—'
     return `(${input.x}|${input.y})`
   }
-  if (input.kind === 'coordinateDraw') {
+  if (input.kind === 'coordinateDraw' || input.kind === 'constructionSteps') {
     const n = input.scene.objects.filter((o) => !(o.kind === 'point' && o.fixed)).length
     return n ? `${n} Objekt${n === 1 ? '' : 'e'}` : '—'
   }

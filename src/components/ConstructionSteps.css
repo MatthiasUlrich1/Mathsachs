@@ -1,0 +1,65 @@
+.construction-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.construction-steps__plan {
+  margin: 0;
+  max-width: 360px;
+}
+
+.construction-steps__plan-svg svg {
+  width: 100%;
+  height: auto;
+}
+
+.construction-steps__plan figcaption {
+  font-size: 0.8rem;
+  color: var(--muted, #94a3b8);
+}
+
+.construction-steps__indicator {
+  margin: 0;
+  font-weight: 700;
+}
+
+.construction-steps__instruction {
+  margin: 0.15rem 0 0;
+}
+
+.construction-steps__list {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.construction-steps__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.construction-steps__check {
+  font: inherit;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(30, 64, 175, 0.55);
+  color: var(--text, #e2e8f0);
+  cursor: pointer;
+}
+
+.construction-steps__feedback {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.construction-steps__feedback.is-ok {
+  color: #22c55e;
+}
+
+.construction-steps__feedback.is-retry {
+  color: #f59e0b;
+}

@@ -10,9 +10,11 @@ import {
   drawStartLength,
   roundCm,
 } from '../lib/rulerGeometry'
+import type { EditorTool } from '../components/CoordinateGraphEditor'
 import {
   circlesOf,
   emptyCoordinateScene,
+  hasCircle,
   pointNear,
   type CoordinateScene,
   type GraphObject,
@@ -251,15 +253,7 @@ export const compassArcTask = (input: CompassArcTaskInput): Task => {
         )
       })
     }
-    const used = new Set<string>()
-    return targets.every((t, i) => {
-      const hit = around(centers[i]!).find(
-        (o) => !used.has(o.id) && Math.abs(o.r - t.radius) <= tol + 1e-9,
-      )
-      if (!hit) return false
-      used.add(hit.id)
-      return true
-    })
+    return targets.every((t, i) => hasCircle(scene, centers[i]!, t.radius, tol, COMPASS_CENTER_TOL))
   }
 
   return {
@@ -282,5 +276,84 @@ export const compassArcTask = (input: CompassArcTaskInput): Task => {
     },
     check: (answer: UserInput) =>
       answer.kind === 'coordinateDraw' && checkScene(answer.scene),
+  }
+}
+
+// Check building blocks for construction steps (one home: lib/coordinateScene).
+export { hasCircle, hasSegment, hasPointNear, hasLabel } from '../lib/coordinateScene'
+
+export interface ConstructionStep {
+  /** Short task for this step, e.g. "Zeichne die Seite c = 5 cm, beginne bei A." */
+  instruction: string
+  allowedTools: EditorTool[]
+  /** Checks only what this step adds (the scene still contains the earlier steps). */
+  check: (scene: CoordinateScene) => boolean
+}
+
+export interface ConstructionStepsTaskInput {
+  question: string
+  /** Sketch with the given measurements, NOT to scale (SVG markup). */
+  planFigureSvg: string
+  /** Scene the learner starts with, e.g. point A (fixed) and a guide line. */
+  startScene: CoordinateScene
+  /** 2..5 steps, done in order. */
+  steps: ConstructionStep[]
+  /** Scene that passes every step; used as sampleAnswer (defaults to startScene). */
+  solutionScene?: CoordinateScene
+  solution: string
+  explanation: string
+  dedupeKey?: string
+}
+
+/** Do all step checks hold on this scene? (Exam / worksheet: all steps at once.) */
+export const allConstructionStepsPass = (
+  steps: readonly ConstructionStep[],
+  scene: CoordinateScene,
+): boolean => steps.every((s) => s.check(scene))
+
+/**
+ * Guided mode: the step index after "Schritt prüfen". It only moves forward by one,
+ * and only when the current step passes, so steps cannot be skipped.
+ * stepIndex === steps.length means every step is done.
+ */
+export const advanceConstructionStep = (
+  steps: readonly ConstructionStep[],
+  scene: CoordinateScene,
+  stepIndex: number,
+): number => {
+  const step = steps[stepIndex]
+  return step && step.check(scene) ? stepIndex + 1 : stepIndex
+}
+
+/**
+ * Guided construction in steps (Planfigur + canvas + "Schritt n von N").
+ * The task check needs every step check to hold on the final scene.
+ */
+export const constructionStepsTask = (input: ConstructionStepsTaskInput): Task => {
+  const { steps, startScene } = input
+  if (steps.length < 2 || steps.length > 5) {
+    throw new Error(`constructionStepsTask: 2..5 steps needed, got ${steps.length}`)
+  }
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    sampleAnswer: {
+      kind: 'constructionSteps',
+      scene: input.solutionScene ?? startScene,
+      stepIndex: steps.length,
+    },
+    interactive: {
+      type: 'constructionSteps',
+      props: {
+        planFigureSvg: input.planFigureSvg,
+        blankScene: startScene,
+        steps,
+      },
+    },
+    check: (answer: UserInput) =>
+      answer.kind === 'constructionSteps' && allConstructionStepsPass(steps, answer.scene),
   }
 }

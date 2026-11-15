@@ -4,6 +4,9 @@ import {
   circleArcPath,
   generateCoordinateSceneSvg,
   hasCircle,
+  hasLabel,
+  hasPointNear,
+  hasSegment,
   sameLine,
   scenesMatch,
   snapCoord,
@@ -122,5 +125,39 @@ describe('circle objects', () => {
     expect(scenesMatch(mk(3), mk(4))).toBe(false)
     expect(scenesMatch(mk(3, 2), mk(3))).toBe(false)
     expect(scenesMatch(emptyCoordinateScene(), mk(3))).toBe(false)
+  })
+})
+
+describe('construction check building blocks', () => {
+  const scene = emptyCoordinateScene({
+    objects: [
+      { id: 'A', kind: 'point', x: 0, y: 0, label: 'A', fixed: true },
+      { id: 's1', kind: 'segment', x1: 0, y1: 0, x2: 5, y2: 0 },
+      { id: 'p', kind: 'point', x: 5, y: 0 },
+      { id: 't', kind: 'label', x: 5, y: 0.5, text: ' b ' },
+    ],
+  })
+
+  it('hasSegment matches length and end points in either direction, end optional', () => {
+    expect(hasSegment(scene, 'A', { x: 5, y: 0 }, 5)).toBe(true)
+    expect(hasSegment(scene, { x: 5, y: 0 }, 'A', 5)).toBe(true)
+    expect(hasSegment(scene, 'A', null, 5)).toBe(true)
+    expect(hasSegment(scene, 'A', null, 4.5)).toBe(false)
+    expect(hasSegment(scene, 'A', { x: 5, y: 2 }, 5)).toBe(false)
+    expect(hasSegment(scene, 'unknown', null, 5)).toBe(false)
+    expect(hasSegment(scene, { x: 1, y: 1 }, null, 5)).toBe(false)
+  })
+
+  it('hasPointNear looks at point objects only', () => {
+    expect(hasPointNear(scene, 5.2, 0)).toBe(true)
+    expect(hasPointNear(scene, 2.5, 0)).toBe(false)
+  })
+
+  it('hasLabel is trimmed/case-insensitive, covers point labels, optional position', () => {
+    expect(hasLabel(scene, 'B')).toBe(true)
+    expect(hasLabel(scene, 'a')).toBe(true)
+    expect(hasLabel(scene, 'C')).toBe(false)
+    expect(hasLabel(scene, 'b', { x: 5, y: 0 })).toBe(true)
+    expect(hasLabel(scene, 'b', { x: -3, y: 3 })).toBe(false)
   })
 })

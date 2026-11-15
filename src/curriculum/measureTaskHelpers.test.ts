@@ -1,5 +1,16 @@
 import { describe, expect, it } from 'vitest'
-import { angleProtractorTask, compassArcTask, rulerMeasureTask } from './measureTaskHelpers'
+import {
+  advanceConstructionStep,
+  allConstructionStepsPass,
+  angleProtractorTask,
+  compassArcTask,
+  constructionStepsTask,
+  hasCircle,
+  hasPointNear,
+  hasSegment,
+  rulerMeasureTask,
+  type ConstructionStep,
+} from './measureTaskHelpers'
 import { emptyCoordinateScene, type CoordinateScene, type GraphObject } from '../lib/coordinateScene'
 import { examAnswerAttempted } from '../exam/examAnswerAttempted'
 import { emptyInput, type UserInput } from './types'
@@ -288,5 +299,99 @@ describe('compassArcTask', () => {
     expect(() =>
       compassArcTask({ question: 'q', points: [A], targets: [{ centerId: 'A', radius: 1 }], sameRadius: true, minRadius: 2, solution: 's', explanation: 'e' }),
     ).toThrow()
+  })
+})
+
+describe('constructionStepsTask (SSS triangle c=5, b=4, a=3)', () => {
+  const A = { x: 0, y: 0 }
+  const B = { x: 5, y: 0 }
+  const C = { x: 3.2, y: 2.4 } // |AC| = 4, |BC| = 3
+  const start = emptyCoordinateScene({
+    xRange: [-1, 7],
+    yRange: [-1, 5],
+    objects: [{ id: 'A', kind: 'point', x: 0, y: 0, label: 'A', fixed: true }],
+  })
+  const steps: ConstructionStep[] = [
+    { instruction: 'Zeichne c = 5 cm von A aus.', allowedTools: ['segment', 'select'], check: (s) => hasSegment(s, 'A', B, 5) },
+    { instruction: 'Kreis um A mit b = 4 cm.', allowedTools: ['circle', 'select'], check: (s) => hasCircle(s, 'A', 4) },
+    { instruction: 'Kreis um B mit a = 3 cm.', allowedTools: ['circle', 'select'], check: (s) => hasCircle(s, B, 3) },
+    {
+      instruction: 'Markiere C und verbinde.',
+      allowedTools: ['point', 'segment'],
+      check: (s) => hasPointNear(s, C.x, C.y) && hasSegment(s, 'A', C, 4) && hasSegment(s, B, C, 3),
+    },
+  ]
+  const seg = (id: string, p: { x: number; y: number }, q: { x: number; y: number }): GraphObject => ({
+    id, kind: 'segment', x1: p.x, y1: p.y, x2: q.x, y2: q.y,
+  })
+  const circ = (id: string, c: { x: number; y: number }, r: number): GraphObject => ({
+    id, kind: 'circle', cx: c.x, cy: c.y, r,
+  })
+  const withObjs = (...objs: GraphObject[]): CoordinateScene => ({ ...start, objects: [...start.objects, ...objs] })
+  const s1 = withObjs(seg('s1', A, B))
+  const s2 = withObjs(seg('s1', A, B), circ('k1', A, 4))
+  const s3 = withObjs(seg('s1', A, B), circ('k1', A, 4), circ('k2', B, 3))
+  const s4 = withObjs(
+    seg('s1', A, B), circ('k1', A, 4), circ('k2', B, 3),
+    { id: 'pc', kind: 'point', x: C.x, y: C.y }, seg('s2', A, C), seg('s3', B, C),
+  )
+  const task = constructionStepsTask({
+    question: 'Konstruiere das Dreieck.',
+    planFigureSvg: '<svg viewBox="0 0 10 10"/>',
+    startScene: start,
+    steps,
+    solutionScene: s4,
+    solution: 'Dreieck ABC',
+    explanation: 'SSS',
+  })
+
+  it('correct scene passes each step in turn and advances one step at a time', () => {
+    expect(steps[0]!.check(s1)).toBe(true)
+    expect(steps[1]!.check(s2)).toBe(true)
+    expect(steps[2]!.check(s3)).toBe(true)
+    expect(steps[3]!.check(s4)).toBe(true)
+    expect(advanceConstructionStep(steps, s1, 0)).toBe(1)
+    expect(advanceConstructionStep(steps, s2, 1)).toBe(2)
+    expect(advanceConstructionStep(steps, s3, 2)).toBe(3)
+    expect(advanceConstructionStep(steps, s4, 3)).toBe(4)
+    expect(advanceConstructionStep(steps, s4, 4)).toBe(4)
+  })
+
+  it('wrong length in step 1 fails and does not advance', () => {
+    const wrong = withObjs(seg('s1', A, { x: 4.5, y: 0 }))
+    expect(steps[0]!.check(wrong)).toBe(false)
+    expect(advanceConstructionStep(steps, wrong, 0)).toBe(0)
+    expect(advanceConstructionStep(steps, start, 0)).toBe(0)
+  })
+
+  it('steps cannot be skipped: a later step done early does not advance past an open step', () => {
+    const skipped = withObjs(seg('s1', A, B), circ('k2', B, 3)) // step 2 (circle around A) missing
+    expect(steps[2]!.check(skipped)).toBe(true)
+    expect(advanceConstructionStep(steps, skipped, 1)).toBe(1)
+    expect(allConstructionStepsPass(steps, skipped)).toBe(false)
+  })
+
+  it('task check needs all step checks on the final scene; sampleAnswer passes', () => {
+    expect(task.check(task.sampleAnswer)).toBe(true)
+    expect(task.check({ kind: 'constructionSteps', scene: s3, stepIndex: 3 })).toBe(false)
+    expect(task.check({ kind: 'coordinateDraw', scene: s4 })).toBe(false)
+    expect(task.interactive?.type).toBe('constructionSteps')
+  })
+
+  it('exam: only given points = not attempted; any added object = attempted', () => {
+    expect(examAnswerAttempted(task, emptyInput('constructionSteps'))).toBe(false)
+    expect(examAnswerAttempted(task, { kind: 'constructionSteps', scene: start, stepIndex: 0 })).toBe(false)
+    expect(examAnswerAttempted(task, { kind: 'constructionSteps', scene: s1, stepIndex: 0 })).toBe(true)
+  })
+
+  it('rejects fewer than 2 or more than 5 steps', () => {
+    const make = (n: number) =>
+      constructionStepsTask({
+        question: 'q', planFigureSvg: '<svg/>', startScene: start,
+        steps: Array.from({ length: n }, () => steps[0]!), solution: 's', explanation: 'e',
+      })
+    expect(() => make(1)).toThrow()
+    expect(() => make(6)).toThrow()
+    expect(() => make(2)).not.toThrow()
   })
 })

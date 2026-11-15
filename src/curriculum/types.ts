@@ -41,6 +41,12 @@ export type UserInput =
   | { kind: 'multiSelect'; selected: string[] }
   | { kind: 'coordinateClick'; x: number; y: number; points?: Array<{ x: number; y: number }> }
   | { kind: 'coordinateDraw'; scene: import('../lib/coordinateScene').CoordinateScene }
+  /** Guided construction: drawing so far + index of the current step (steps.length = all done). */
+  | {
+      kind: 'constructionSteps'
+      scene: import('../lib/coordinateScene').CoordinateScene
+      stepIndex: number
+    }
   | { kind: 'paramSlider'; values: Record<string, number> }
   /** Virtual Geodreieck: degrees measured/drawn; untouched = not attempted. */
   | { kind: 'angleProtractor'; degrees: number | null; touched: boolean }
@@ -77,6 +83,12 @@ export const emptyInput = (
       kind: 'coordinateDraw',
       scene: { xRange: [-5, 5], yRange: [-5, 5], snap: 'half', objects: [] },
     }
+  if (kind === 'constructionSteps')
+    return {
+      kind: 'constructionSteps',
+      scene: { xRange: [-5, 5], yRange: [-5, 5], snap: 'half', objects: [] },
+      stepIndex: 0,
+    }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   if (kind === 'angleProtractor') return { kind: 'angleProtractor', degrees: null, touched: false }
   if (kind === 'rulerMeasure') return { kind: 'rulerMeasure', length: null, touched: false }
@@ -102,6 +114,7 @@ export interface InteractiveConfig {
     | 'multiSelect'
     | 'coordinateClick'
     | 'coordinateDraw'
+    | 'constructionSteps'
     | 'paramSlider'
     | 'angleProtractor'
     | 'rulerMeasure'

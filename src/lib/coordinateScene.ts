@@ -443,6 +443,18 @@ export function circlesOf(scene: CoordinateScene): GraphCircleObj[] {
   return scene.objects.filter((o): o is GraphCircleObj => o.kind === 'circle')
 }
 
+/** A point of the scene by id, or explicit grid coordinates. */
+export type ScenePointRef = string | { x: number; y: number }
+
+function resolvePointRef(
+  scene: CoordinateScene,
+  ref: ScenePointRef,
+): { x: number; y: number } | null {
+  if (typeof ref !== 'string') return ref
+  const p = scene.objects.find((o): o is GraphPointObj => o.kind === 'point' && o.id === ref)
+  return p ? { x: p.x, y: p.y } : null
+}
+
 /**
  * Is there a circle/arc in `scene` whose center is the given point and whose radius is r?
  *
@@ -454,25 +466,79 @@ export function circlesOf(scene: CoordinateScene): GraphCircleObj[] {
  */
 export function hasCircle(
   scene: CoordinateScene,
-  center: string | { x: number; y: number },
+  center: ScenePointRef,
   r: number,
   tol = 0.15,
   centerTol = 0.35,
 ): boolean {
-  let c: { x: number; y: number } | null
-  if (typeof center === 'string') {
-    const p = scene.objects.find(
-      (o): o is GraphPointObj => o.kind === 'point' && o.id === center,
-    )
-    c = p ? { x: p.x, y: p.y } : null
-  } else {
-    c = center
-  }
+  const c = resolvePointRef(scene, center)
   if (!c) return false
   return circlesOf(scene).some(
     (o) =>
       pointNear({ x: o.cx, y: o.cy }, c, centerTol) && Math.abs(o.r - r) <= tol + 1e-9,
   )
+}
+
+/**
+ * Is there a segment of length `lengthCm` (grid units = cm, +/- tol) that starts at `from`
+ * (either end of the segment may match) and ends at `to`?
+ *
+ * @param from       id of a point object, or coordinates; an unknown id yields false
+ * @param to         id / coordinates of the other end, or null when only the length matters
+ * @param endTol     distance tolerance of the end points (default 0.35, as pointNear)
+ */
+export function hasSegment(
+  scene: CoordinateScene,
+  from: ScenePointRef,
+  to: ScenePointRef | null,
+  lengthCm: number,
+  tol = 0.15,
+  endTol = 0.35,
+): boolean {
+  const a = resolvePointRef(scene, from)
+  const b = to === null ? null : resolvePointRef(scene, to)
+  if (!a || (to !== null && !b)) return false
+  return scene.objects.some((o) => {
+    if (o.kind !== 'segment') return false
+    if (Math.abs(Math.hypot(o.x2 - o.x1, o.y2 - o.y1) - lengthCm) > tol + 1e-9) return false
+    const p1 = { x: o.x1, y: o.y1 }
+    const p2 = { x: o.x2, y: o.y2 }
+    if (b === null) return pointNear(p1, a, endTol) || pointNear(p2, a, endTol)
+    return (
+      (pointNear(p1, a, endTol) && pointNear(p2, b, endTol)) ||
+      (pointNear(p2, a, endTol) && pointNear(p1, b, endTol))
+    )
+  })
+}
+
+/** Is there a point object near (x, y)? (Fixed given points count too.) */
+export function hasPointNear(
+  scene: CoordinateScene,
+  x: number,
+  y: number,
+  tol = 0.35,
+): boolean {
+  return scene.objects.some((o) => o.kind === 'point' && pointNear(o, { x, y }, tol))
+}
+
+/**
+ * Is there a text label (label object, or label of a point) equal to `text`
+ * (trimmed, case-insensitive)? With `near` it must sit within `nearTol` of that position.
+ */
+export function hasLabel(
+  scene: CoordinateScene,
+  text: string,
+  near?: { x: number; y: number },
+  nearTol = 0.8,
+): boolean {
+  const want = text.trim().toLowerCase()
+  return scene.objects.some((o) => {
+    let t: string | undefined
+    if (o.kind === 'label') t = o.text
+    else if (o.kind === 'point') t = o.label
+    if (t === undefined || t.trim().toLowerCase() !== want) return false
+    return !near || pointNear(o as { x: number; y: number }, near, nearTol)
+  })
 }
 
 export function parseCoordinateScene(raw: unknown): CoordinateScene | null {

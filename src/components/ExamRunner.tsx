@@ -616,6 +616,7 @@ export function ExamRunner({
           task={task}
           value={answers[current] ?? initTaskInput(task)}
           onChange={setAnswer}
+          allAtOnce
         />
 
         {!task.interactive && (

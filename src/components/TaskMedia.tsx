@@ -10,6 +10,7 @@ import { ChoicePick } from './ChoicePick'
 import { MultiSelect } from './MultiSelect'
 import { CoordinateClick } from './CoordinateClick'
 import { CoordinateGraphEditor } from './CoordinateGraphEditor'
+import { ConstructionSteps } from './ConstructionSteps'
 import { ParamSlider } from './ParamSlider'
 import { AngleProtractor } from './AngleProtractor'
 import { RulerMeasure } from './RulerMeasure'
@@ -86,6 +87,11 @@ export const initTaskInput = (task: Task): UserInput => {
       emptyCoordinateScene()
     return { kind: 'coordinateDraw', scene: blank }
   }
+  if (task.interactive?.type === 'constructionSteps') {
+    const blank =
+      parseCoordinateScene(task.interactive.props.blankScene) ?? emptyCoordinateScene()
+    return { kind: 'constructionSteps', scene: blank, stepIndex: 0 }
+  }
   if (task.interactive?.type === 'paramSlider') {
     const params = (task.interactive.props.params ?? []) as ParamSliderSpec[]
     const values: Record<string, number> = {}
@@ -161,6 +167,8 @@ interface InteractiveProps {
   disabled?: boolean
   /** Per-part correctness after check (cloze blanks / pairMatch left items). */
   partResults?: boolean[]
+  /** Exam: construction steps are all shown at once instead of unlocked one by one. */
+  allAtOnce?: boolean
 }
 
 /**
@@ -186,6 +194,7 @@ export function TaskInteractive({
   onChange,
   disabled = false,
   partResults,
+  allAtOnce = false,
 }: InteractiveProps) {
   const interactive = task.interactive
   if (!interactive) return null
@@ -413,6 +422,24 @@ export function TaskInteractive({
               ? parseCoordinateScene(interactive.props.solutionScene)
               : null
           }
+        />
+      )}
+      {interactive.type === 'constructionSteps' && (
+        <ConstructionSteps
+          planFigureSvg={interactive.props.planFigureSvg}
+          steps={interactive.props.steps}
+          value={
+            value.kind === 'constructionSteps'
+              ? value
+              : {
+                  kind: 'constructionSteps',
+                  scene: parseCoordinateScene(interactive.props.blankScene) ?? emptyCoordinateScene(),
+                  stepIndex: 0,
+                }
+          }
+          onChange={onChange}
+          allAtOnce={allAtOnce}
+          disabled={disabled}
         />
       )}
       {interactive.type === 'paramSlider' && (

@@ -161,18 +161,21 @@ export function CoordinateGraphEditor({
     return screenToMath(clientX, clientY)
   }
 
-  /** Radius to a pointer position: onto an existing point exactly, otherwise rounded to 0.1. */
+  /** Radius to a raw position: onto an existing point exactly, otherwise rounded to 0.1. */
+  const circleRadiusTo = (c: { x: number; y: number }, raw: { x: number; y: number }): number => {
+    const pt = nearestPoint(raw, 0.35)
+    return pt
+      ? Math.hypot(pt.x - c.x, pt.y - c.y)
+      : roundRadius(Math.hypot(raw.x - c.x, raw.y - c.y))
+  }
+
   const circleRadiusAt = (
     c: { x: number; y: number },
     clientX: number,
     clientY: number,
   ): number | null => {
     const raw = screenToMathRaw(clientX, clientY)
-    if (!raw) return null
-    const pt = nearestPoint(raw, 0.35)
-    return pt
-      ? Math.hypot(pt.x - c.x, pt.y - c.y)
-      : roundRadius(Math.hypot(raw.x - c.x, raw.y - c.y))
+    return raw ? circleRadiusTo(c, raw) : null
   }
 
   const commitCircle = (c: { x: number; y: number }, r: number | null) => {
@@ -450,7 +453,7 @@ export function CoordinateGraphEditor({
 
   const circlePreviewR =
     tool === 'circle' && pending && hover
-      ? roundRadius(Math.hypot(hover.x - pending.x, hover.y - pending.y))
+      ? circleRadiusTo(pending, hover) // same function as the commit: shown r = drawn r
       : null
   const circlePreviewObj: GraphObject | null =
     circlePreviewR != null && circlePreviewR > 0

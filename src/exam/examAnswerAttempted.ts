@@ -16,6 +16,7 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
         Number.isFinite(input.x) && Number.isFinite(input.y)
       ) || (input.points?.length ?? 0) > 0
     case 'coordinateDraw':
+    case 'constructionSteps':
       // Given (fixed) points do not count as an attempt.
       return input.scene.objects.some((o) => !(o.kind === 'point' && o.fixed))
     case 'digitGrid': {

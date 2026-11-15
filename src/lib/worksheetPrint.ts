@@ -217,6 +217,22 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       }
     }
 
+    case 'constructionSteps': {
+      // All steps at once: Planfigur, then the start scene to draw in.
+      const blank = parseCoordinateScene(props.blankScene) ?? emptyCoordinateScene()
+      const steps = (Array.isArray(props.steps) ? props.steps : []) as Array<{ instruction?: string }>
+      const plan = typeof props.planFigureSvg === 'string' ? props.planFigureSvg : ''
+      const list = steps
+        .map((s, i) => `${i + 1}. ${s.instruction ?? ''}`.trim())
+        .join(' ')
+      return {
+        visualHtml:
+          fromVisual.visualHtml ??
+          `<div>${plan}</div><div>${generateCoordinateSceneSvg(blank)}</div>`,
+        paperHint: list || 'Konstruiere die Figur Schritt für Schritt.',
+      }
+    }
+
     case 'paramSlider': {
       const params = (props.params ?? []) as ParamSliderSpec[]
       const starts = paramStartValues(params)

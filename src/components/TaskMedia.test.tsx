@@ -2,7 +2,8 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import { angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
+import { constructionStepsTask, angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
+import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { TaskVisual, initTaskInput, taskInteractiveKey } from './TaskMedia'
 
 describe('TaskMedia', () => {
@@ -100,6 +101,28 @@ describe('graphical tasks stay attached after generate', () => {
       expect(start.degrees).not.toBe(47)
       expect(draw.check(start)).toBe(false)
     }
+  })
+
+  it('initTaskInput: constructionSteps starts at step 0 on the start scene', () => {
+    const start = emptyCoordinateScene({
+      objects: [{ id: 'A', kind: 'point', x: 0, y: 0, label: 'A', fixed: true }],
+    })
+    const mk = (q: string) =>
+      constructionStepsTask({
+        question: q,
+        planFigureSvg: '<svg/>',
+        startScene: start,
+        steps: [
+          { instruction: 'a', allowedTools: ['segment'], check: () => true },
+          { instruction: 'b', allowedTools: ['circle'], check: () => true },
+        ],
+        solution: 's',
+        explanation: 'e',
+      })
+    const t = mk('q1')
+    expect(initTaskInput(t)).toEqual({ kind: 'constructionSteps', scene: start, stepIndex: 0 })
+    expect(taskInteractiveKey(mk('q1'))).toBe(taskInteractiveKey(t))
+    expect(taskInteractiveKey(mk('q2'))).not.toBe(taskInteractiveKey(t))
   })
 
   it('taskInteractiveKey differs between angle tasks and is stable for the same task', () => {

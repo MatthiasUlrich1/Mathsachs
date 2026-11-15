@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from './rng'
 import {
   angleProtractorTask,
+  constructionStepsTask,
   rulerMeasureTask,
   choicePickTask,
   coordinateClickTask,
@@ -176,5 +177,27 @@ describe('worksheetPrintExtras', () => {
       rulerMeasureTask({ question: 'q', mode: 'measure', lengthCm: 4.3, solution: 's', explanation: 'e' }),
     )
     expect(measure.visualHtml).toContain('<svg')
+  })
+
+  it('prints Planfigur, start grid and all step instructions for constructionSteps', () => {
+    const extras = worksheetPrintExtras(
+      constructionStepsTask({
+        question: 'q',
+        planFigureSvg: '<svg id="plan" viewBox="0 0 10 10"></svg>',
+        startScene: emptyCoordinateScene({
+          objects: [{ id: 'A', kind: 'point', x: 0, y: 0, label: 'A', fixed: true }],
+        }),
+        steps: [
+          { instruction: 'Zeichne c.', allowedTools: ['segment'], check: () => true },
+          { instruction: 'Zeichne den Kreis.', allowedTools: ['circle'], check: () => true },
+        ],
+        solution: 's',
+        explanation: 'e',
+      }),
+    )
+    expect(extras.visualHtml).toContain('id="plan"')
+    expect((extras.visualHtml ?? '').match(/<svg/g)?.length).toBe(2)
+    expect(extras.paperHint).toContain('1. Zeichne c.')
+    expect(extras.paperHint).toContain('2. Zeichne den Kreis.')
   })
 })
