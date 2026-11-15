@@ -38,6 +38,8 @@
 }
 
 .sym-draw__cell:focus-visible {
-  outline: 3px solid #dc2626;
-  outline-offset: -2px;
+  /* Keyboard focus: a thick red frame (stroke), outlines do not fit rects inside an svg. */
+  outline: none;
+  stroke: #dc2626;
+  stroke-width: 3;
 }

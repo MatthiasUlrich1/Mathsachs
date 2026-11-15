@@ -30,7 +30,7 @@ export const SYM_VERTICAL_FIGURES: SymFigure[] = [
     rows: 7,
     at: 4,
     art: ['...#....', '..##....', '.###....', '####....', '.###....', '.##.....', '.##.....'],
-    tip: 'Die Dachspitze liegt direkt an der Achse, ihr Bild also direkt auf der anderen Seite. Die Dachkante ganz links hat 4 Felder Abstand zur Achse, ihr Bild ganz rechts ebenfalls.',
+    tip: 'Die Dachspitze liegt direkt an der Achse, ihr Bild also direkt auf der anderen Seite. Die Dachkante am weitesten von der Achse entfernt hat 4 Felder Abstand, ihr Bild ebenfalls.',
   },
   {
     id: 'pfeil-hoch',
@@ -46,7 +46,7 @@ export const SYM_VERTICAL_FIGURES: SymFigure[] = [
     rows: 5,
     at: 4,
     art: ['.###....', '...#....', '...#....', '...#....', '...#....'],
-    tip: 'Der Balken oben ist links 3 Felder lang, rechts kommen 3 Felder dazu. Der Strich in der Mitte besteht aus zwei Feldern nebeneinander.',
+    tip: 'Der Balken ist auf der Seite der Figur 3 Felder lang, auf der anderen Seite kommen 3 Felder dazu. Der Strich an der Achse besteht aus zwei Feldern nebeneinander.',
   },
   {
     id: 'krone',
@@ -54,7 +54,7 @@ export const SYM_VERTICAL_FIGURES: SymFigure[] = [
     rows: 5,
     at: 4,
     art: ['#..#....', '##.#....', '####....', '####....'],
-    tip: 'Jede Zacke hat ihr Bild im gleichen Abstand auf der anderen Seite: die Zacke ganz links gehört zur Zacke ganz rechts.',
+    tip: 'Jede Zacke hat ihr Bild im gleichen Abstand auf der anderen Seite der Achse: die Zacke am weitesten von der Achse entfernt gehört zur Zacke, die auf der Gegenseite am weitesten entfernt ist.',
   },
   {
     id: 'treppenturm',
@@ -81,7 +81,7 @@ export const SYM_HORIZONTAL_FIGURES: SymFigure[] = [
     rows: 8,
     at: 4,
     art: ['..#....', '..##...', '..###..', '#######'],
-    tip: 'Der Rumpf des Boots steht direkt an der Achse, das Spiegelbild hängt darunter. Das Segel zeigt im Bild nach unten.',
+    tip: 'Der Rumpf des Boots grenzt an die Achse, das Spiegelbild schließt direkt an der Achse an, auf der Gegenseite. Das Segel zeigt im Bild von der Achse weg in die andere Richtung.',
   },
   {
     id: 'tanne',
@@ -89,7 +89,7 @@ export const SYM_HORIZONTAL_FIGURES: SymFigure[] = [
     rows: 8,
     at: 4,
     art: ['...#...', '..###..', '.#####.', '...#...'],
-    tip: 'Der Stamm grenzt an die Achse, die Spitze ist am weitesten entfernt. Im Bild liegt die Spitze ganz unten.',
+    tip: 'Der Stamm grenzt an die Achse, die Spitze ist am weitesten entfernt. Im Bild liegt die Spitze auf der Gegenseite der Achse genauso weit weg.',
   },
   {
     id: 'treppe',
@@ -97,7 +97,7 @@ export const SYM_HORIZONTAL_FIGURES: SymFigure[] = [
     rows: 8,
     at: 4,
     art: ['......#', '.....##', '....###', '...####'],
-    tip: 'Die längste Reihe grenzt an die Achse. Die kürzeste Reihe ist am weitesten weg, ihr Bild ist die unterste Reihe.',
+    tip: 'Die längste Reihe grenzt an die Achse. Die kürzeste Reihe ist am weitesten von der Achse entfernt, ihr Bild ist die am weitesten entfernte Reihe auf der Gegenseite.',
   },
   {
     id: 'burgmauer',
@@ -105,15 +105,15 @@ export const SYM_HORIZONTAL_FIGURES: SymFigure[] = [
     rows: 6,
     at: 3,
     art: ['#.#.#.#', '#######', '#######'],
-    tip: 'Die Zinnen oben sind am weitesten von der Achse entfernt, ihr Bild liegt ganz unten. Die zwei vollen Reihen grenzen an die Achse.',
+    tip: 'Die Zinnen sind am weitesten von der Achse entfernt, ihr Bild liegt auf der Gegenseite ebenso weit weg. Die zwei vollen Reihen grenzen an die Achse.',
   },
   {
     id: 'pfeil-rechts',
-    cols: 8,
+    cols: 9,
     rows: 8,
     at: 4,
-    art: ['....#...', '....##..', '....###.', '########'],
-    tip: 'Die Achse läuft durch die Mitte des Pfeils. Die obere Hälfte des Pfeilkopfs wird zur unteren Hälfte, die Spitze bleibt in der letzten Spalte.',
+    art: ['....#....', '....##...', '....###..', '#########'],
+    tip: 'Die Achse läuft durch die Mitte des Pfeils: Schaft und Spitze grenzen an sie. Der Pfeilkopf wird an der Achse zu einem Dreieck ergänzt, die Spitze bleibt in der letzten Spalte.',
   },
 ]
 
@@ -135,39 +135,39 @@ export const SYM_POINT_FIGURES_A: SymFigure[] = [
     tip: 'Der linke Strich wird zum rechten Strich, der rechte zum linken. Die schräge Verbindung läuft im Bild weiter bis nach rechts unten.',
   },
   {
-    id: 'haken',
+    id: 'l-winkel',
     cols: 10,
     rows: 6,
     point: { x: 6, y: 3 },
     art: ['..#.......', '..#.......', '..###.....'],
-    tip: 'Der Punkt liegt nicht in der Mitte des Gitters. Zähle für jedes Feld, wie viele Felder es vom Punkt entfernt ist (nach links und nach oben), und gehe genauso weit in die Gegenrichtung (nach rechts und nach unten).',
+    tip: 'Der markierte Punkt liegt nicht in der Mitte des Gitters. Zähle für jedes Feld, wie viele Felder es vom Punkt entfernt ist (nach links und nach oben), und gehe genauso weit in die Gegenrichtung (nach rechts und nach unten).',
   },
 ]
 
 export const SYM_POINT_FIGURES_B: SymFigure[] = [
   {
-    id: 'zickzack',
+    id: 'buchstabe-s',
     cols: 8,
     rows: 8,
     point: { x: 4, y: 4 },
-    art: ['........', '.##.....', '..##....', '...##...'],
-    tip: 'Die Zickzacklinie läuft von links oben bis zur Mitte. Ihr Bild läuft von der Mitte weiter nach rechts unten.',
+    art: ['........', '..#####.', '..#.....', '..###...'],
+    tip: 'Der obere Balken des S ist 5 Felder lang. Sein Bild ist der untere Balken, ebenfalls 5 Felder lang, aber um ein Feld nach links versetzt, weil die Punktspiegelung die Richtung umkehrt.',
   },
   {
-    id: 'rotor',
+    id: 'parallelogramm',
     cols: 8,
     rows: 8,
     point: { x: 4, y: 4 },
-    art: ['........', '..##....', '...#....', '...#....'],
-    tip: 'Das Feld links oben am Rotorblatt liegt im Bild rechts unten. Der markierte Punkt in der Mitte ist das Drehzentrum und bleibt, wo er ist.',
+    art: ['........', '........', '...####.', '..####..'],
+    tip: 'Jede Reihe hat ihr Bild in der Reihe auf der Gegenseite des Punktes: die oberste vorgegebene Reihe gehört zur untersten Bildreihe. Gegenüberliegende Seiten des schiefen Vierecks bleiben parallel.',
   },
   {
-    id: 'winkelhaken',
+    id: 'austauschpfeile',
     cols: 8,
     rows: 8,
     point: { x: 4, y: 4 },
-    art: ['........', '...#....', '...#....', '.###....'],
-    tip: 'Die Ecke des Winkels liegt unten rechts. Im Bild liegt sie oben links, und die beiden Schenkel zeigen nach unten und nach rechts, denn bei der Punktspiegelung wird alles um 180 Grad gedreht.',
+    art: ['........', '.....#..', '.######.', '.....#..'],
+    tip: 'Der obere Pfeil zeigt nach rechts, sein Bild zeigt nach links: Bei der Punktspiegelung wird alles um 180 Grad gedreht. Der Schaft ist in beiden Pfeilen 6 Felder lang.',
   },
 ]
 
@@ -253,7 +253,7 @@ export const symmetryPointVariantA = (rng: Rng): Task => {
   )
 }
 
-/** Variant: point symmetry, zigzag and rotor patterns (other pool than variant A). */
+/** Variant: point symmetry, S, parallelogram and exchange arrows (other pool than variant A). */
 export const symmetryPointVariantB = (rng: Rng): Task => {
   const f = pick(rng, SYM_POINT_FIGURES_B)
   return taskFor(

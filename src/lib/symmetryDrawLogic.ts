@@ -102,7 +102,6 @@ export const symValidate = (config: SymConfig): void => {
   if (!isInt(cols) || !isInt(rows) || cols < SYM_MIN_SIZE || rows < SYM_MIN_SIZE || cols > SYM_MAX_SIZE || rows > SYM_MAX_SIZE) {
     throw new Error(`symmetryDrawTask: cols and rows must be whole numbers from ${SYM_MIN_SIZE} to ${SYM_MAX_SIZE}`)
   }
-  if (cols > symMaxColsForPhone()) throw new Error('symmetryDrawTask: too many columns for a phone screen')
   if ((axis === undefined) === (point === undefined)) throw new Error('symmetryDrawTask: give exactly one of axis and point')
   if (axis) {
     if (axis.kind === 'diagonal') {
@@ -172,7 +171,9 @@ export const symIsToggleable = (config: SymConfig, x: number, y: number): boolea
   if (config.given.includes(cellKey(x, y))) return false
   const axis = config.axis
   if (!axis) return true
-  const [gx, gy] = parseCell(config.given[0]) as [number, number]
+  const first = parseCell(config.given[0])
+  if (!first) return false
+  const [gx, gy] = first
   const side = symSide(axis, x, y)
   return side !== 0 && side === -symSide(axis, gx, gy)
 }

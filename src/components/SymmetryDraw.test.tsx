@@ -103,6 +103,37 @@ describe('SymmetryDraw', () => {
     expect(calls).toHaveLength(2)
   })
 
+  it('malformed props render an empty inert grid instead of crashing', () => {
+    const bad: Array<Partial<SymmetryDrawProps>> = [
+      { given: undefined as never },
+      { given: null as never },
+      { given: [] },
+      { given: [5, 'x', null] as never },
+      { given: ['99,99'] },
+      { cols: Number.NaN },
+      { rows: 99 },
+      { axis: { kind: 'vertical' } },
+      { axis: undefined, point: undefined },
+    ]
+    for (const over of bad) {
+      expect(() => renderToStaticMarkup(createElement(SymmetryDraw, { ...base, ...over })), JSON.stringify(over)).not.toThrow()
+      const html = renderToStaticMarkup(createElement(SymmetryDraw, { ...base, ...over }))
+      expect(html).toContain('role="group"')
+      expect(html).not.toContain('data-state="given"')
+      expect(html).not.toContain('role="button"')
+      expect(html).not.toContain('sym-axis')
+      const els = tree(over)
+      expect(els.some((e) => typeof e.props.onClick === 'function')).toBe(false)
+    }
+  })
+
+  it('keyboard focus is shown by stroke, not by an outline', async () => {
+    const css = (await import('node:fs')).readFileSync(new URL('./SymmetryDraw.css', import.meta.url), 'utf8')
+    const block = /focus-visible {([^}]*)}/.exec(css)![1]!
+    expect(block).toMatch(/stroke:/)
+    expect(block).not.toMatch(/outline:s*d/)
+  })
+
   it('shows the drawn cells and says so in the labels', () => {
     const html = renderToStaticMarkup(createElement(SymmetryDraw, { ...base, value: { kind: 'symmetryDraw', cells: ['4,1', '5,2'] } }))
     expect(html.match(/data-state="on"/g)).toHaveLength(2)

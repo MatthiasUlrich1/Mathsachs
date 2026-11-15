@@ -5,11 +5,14 @@ import {
   SYM_DRAWN_FILL,
   SYM_GIVEN_FILL,
   SYM_GRID_STROKE,
+  SYM_MAX_SIZE,
   cellKey,
   sortCells,
   symIsToggleable,
   symLayout,
   symToggle,
+  symValidate,
+  type SymConfig,
   type SymAxis,
   type SymPoint,
 } from '../lib/symmetryDrawLogic'
@@ -38,9 +41,19 @@ const keyActivate = (run: () => void) => (e: { key: string; preventDefault: () =
 
 /** Symmetry drawing: tap the cells of the free side to colour them. Tap-only, no state of its own. */
 export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, instruction, disabled }: SymmetryDrawProps) {
-  const config = { cols, rows, given, axis, point }
+  // Malformed props (wrong sizes, missing or broken cells, bad axis) must not crash: show an empty, inert grid instead.
+  const size = (n: number): number => (Number.isInteger(n) && n >= 1 && n <= SYM_MAX_SIZE ? n : Math.min(SYM_MAX_SIZE, Math.max(1, Math.round(Number(n)) || 1)))
+  const rawGiven = Array.isArray(given) ? given.filter((g): g is string => typeof g === 'string') : []
+  let config: SymConfig = { cols, rows, given: rawGiven, axis, point }
+  let valid = true
+  try {
+    symValidate(config)
+  } catch {
+    valid = false
+    config = { cols: size(cols), rows: size(rows), given: [] }
+  }
   const layout = symLayout(config)
-  const givenSet = new Set(given)
+  const givenSet = new Set(config.given)
   const cells = new Set(Array.isArray(value.cells) ? value.cells : [])
 
   const tap = (x: number, y: number) => {
@@ -49,13 +62,13 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
   }
 
   const grid = []
-  for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
+  for (let y = 0; y < config.rows; y++) {
+    for (let x = 0; x < config.cols; x++) {
       const key = cellKey(x, y)
       const r = layout.cellRect(x, y)
       const isGiven = givenSet.has(key)
       const on = cells.has(key)
-      const free = !isGiven && symIsToggleable(config, x, y)
+      const free = valid && !isGiven && symIsToggleable(config, x, y)
       const where = `Spalte ${x + 1}, Zeile ${y + 1}`
       grid.push(
         <rect
@@ -83,8 +96,8 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
     }
   }
 
-  const a = layout.axisLine
-  const c = layout.centre
+  const a = valid ? layout.axisLine : null
+  const c = valid ? layout.centre : null
   return (
     <div className="sym-draw">
       {instruction && <p className="sym-draw__instruction">{instruction}</p>}
@@ -94,9 +107,11 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
         role="group"
         aria-disabled={disabled ? true : undefined}
         aria-label={
-          point
-            ? `Gitter mit ${cols} Spalten und ${rows} Zeilen, Symmetriepunkt markiert, ${cells.size} Felder gefärbt`
-            : `Gitter mit ${cols} Spalten und ${rows} Zeilen, Spiegelachse gestrichelt, ${cells.size} Felder gefärbt`
+          !valid
+            ? 'Leeres Gitter'
+            : point
+            ? `Gitter mit ${config.cols} Spalten und ${config.rows} Zeilen, Symmetriepunkt markiert, ${cells.size} Felder gefärbt`
+            : `Gitter mit ${config.cols} Spalten und ${config.rows} Zeilen, Spiegelachse gestrichelt, ${cells.size} Felder gefärbt`
         }
       >
         {grid}

@@ -170,6 +170,11 @@ describe('tapping', () => {
     expect(symIsToggleable(diag, 0, 5)).toBe(false)
   })
 
+  it('an axis task without given cells has no free side (nothing is toggleable)', () => {
+    expect(symIsToggleable({ ...vertical, given: [] }, 5, 2)).toBe(false)
+    expect(symIsToggleable({ ...vertical, given: ['x'] }, 5, 2)).toBe(false)
+  })
+
   it('point symmetry: every cell that is not given can be set', () => {
     const p: SymConfig = { cols: 8, rows: 8, given: ['1,1'], point: { x: 4, y: 4 } }
     expect(symIsToggleable(p, 6, 6)).toBe(true)

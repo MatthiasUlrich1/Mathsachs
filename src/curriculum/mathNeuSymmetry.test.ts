@@ -165,6 +165,47 @@ describe('Figuren', () => {
     expect(all[3]!.size).toBe(SYM_POINT_FIGURES_B.length)
   })
 
+  it('Hinweistexte passen zu beiden Lagen der Figur (nicht umkehrbare Himmelsrichtungen sind verboten)', () => {
+    // A figure may be drawn on either side of its axis, so its tip must not name sides that flip with it.
+    const forbiddenVertical = /links|rechts/i
+    const forbiddenHorizontal = /oben|unten|obere|untere|oberste|unterste|darunter|darüber/i
+    const orientationWords = (f: SymFigure, kind: 'vertical' | 'horizontal'): boolean =>
+      (kind === 'vertical' ? forbiddenVertical : forbiddenHorizontal).test(f.tip)
+    for (const f of SYM_VERTICAL_FIGURES) {
+      if (f.cols === 2 * (f.at as number)) expect(orientationWords(f, 'vertical'), f.id).toBe(false)
+    }
+    for (const f of SYM_HORIZONTAL_FIGURES) {
+      if (f.rows === 2 * (f.at as number)) expect(orientationWords(f, 'horizontal'), f.id).toBe(false)
+    }
+    // the generated explanation of both orientations carries the tip, so it is orientation-free as well
+    const seenSides = new Set<string>()
+    for (const seed of SEEDS) {
+      for (const [variant, kind] of [[symmetryVerticalVariant, 'vertical'], [symmetryHorizontalVariant, 'horizontal']] as const) {
+        const t = variant(createRng(seed))
+        const flippable = (t.interactive!.props.axis as { at: number }).at * 2 === (kind === 'vertical' ? t.interactive!.props.cols : t.interactive!.props.rows)
+        seenSides.add(t.dedupeKey!.split(':').pop()!)
+        if (flippable) expect((kind === 'vertical' ? forbiddenVertical : forbiddenHorizontal).test(t.explanation.replace(/^[^.]*.[^.]*.s*/, '')), t.dedupeKey!).toBe(false)
+      }
+    }
+    expect([...seenSides].sort()).toEqual(['links', 'oben', 'rechts', 'unten'])
+    // negative control: a tip that names a side IS detected
+    expect(orientationWords({ ...SYM_VERTICAL_FIGURES[0]!, tip: 'Die Kante ganz links.' }, 'vertical')).toBe(true)
+    expect(orientationWords({ ...SYM_HORIZONTAL_FIGURES[0]!, tip: 'Das Bild hängt darunter.' }, 'horizontal')).toBe(true)
+  })
+
+  it('Pfeil-rechts ist ein Pfeil: Spitze an der Achse, Kopf breiter als der Schaft', () => {
+    const f = SYM_HORIZONTAL_FIGURES.find((x) => x.id === 'pfeil-rechts')!
+    const colHeights = [...f.art[0]!].map((_, x) => f.art.filter((row) => row[x] === '#').length)
+    expect(f.art[f.at! - 1]).toBe('#'.repeat(f.cols)) // shaft and tip touch the axis over the full width
+    expect(Math.max(...colHeights)).toBeGreaterThan(colHeights[0]!)
+    expect(colHeights[f.cols - 1]).toBe(1) // the point
+  })
+
+  it('Punkt-Gruppe B wiederholt nicht das Diagonalmotiv von Z und N und hat treffende Namen', () => {
+    expect(SYM_POINT_FIGURES_B.map((f) => f.id).sort()).toEqual(['austauschpfeile', 'buchstabe-s', 'parallelogramm'])
+    expect(SYM_POINT_FIGURES_A.map((f) => f.id)).not.toContain('haken')
+  })
+
   it('Lösungstext nennt genau die Felder der sampleAnswer', () => {
     const rng = createRng(7)
     for (const variant of [symmetryVerticalVariant, symmetryHorizontalVariant, symmetryPointVariantA, symmetryPointVariantB]) {
