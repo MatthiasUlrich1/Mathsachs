@@ -791,6 +791,24 @@ const menschNatur: BioBank = {
       "term": "Bewässerungskanal",
       "meaning": "Wasserverteilung",
       "wissen": "Organisierte Technik für Trockengebiete."
+    },
+    {
+      "concept": "ge:k5:mn:p4",
+      "term": "Terrasse",
+      "meaning": "Stufenacker am Hang gegen Erosion",
+      "wissen": "Anpassung an Gelände, schonender Ackerbau."
+    },
+    {
+      "concept": "ge:k5:mn:p5",
+      "term": "Deich",
+      "meaning": "Hochwasserschutz für Siedlungen",
+      "wissen": "Gemeinschaftliche Bauleistung, sichert Ernten."
+    },
+    {
+      "concept": "ge:k5:mn:p6",
+      "term": "Pflug",
+      "meaning": "Bodenbearbeitung, tieferes Lockern",
+      "wissen": "Eisenpflug ermöglichte schwere Lehmböden."
     }
   ],
   "trueFalse": [
@@ -800,6 +818,96 @@ const menschNatur: BioBank = {
       "correct": true,
       "explanation": "Umwelt und Gesellschaft bedingen sich.",
       "wissen": "Umwelt und Gesellschaft bedingen sich. Ressourcen und Klima sind historische Faktoren. Längsschnitte zeigen Wandel."
+    },
+    {
+      "concept": "ge:k5:mn:t2",
+      "statement": "Klimaänderungen hatten in der Antike keinen Einfluss auf Ernten und Wanderungen.",
+      "correct": false,
+      "explanation": "Dürre und Kälte verursachten Ernteausfälle und Migrationsdruck.",
+      "wissen": "Klima ist ein historischer Faktor neben Politik und Wirtschaft. Es erklärt nicht alles allein, aber es wirkt mit."
+    },
+    {
+      "concept": "ge:k5:mn:t3",
+      "statement": "Bewässerung war in Mesopotamien und Ägypten zentral für stabile Erträge.",
+      "correct": true,
+      "explanation": "Kanäle leiteten Flusswasser auf Felder bei geringem Regen.",
+      "wissen": "Organisierte Bewässerung erforderte Verwaltung und Recht. Sie trug zur Staatsbildung bei."
+    }
+  ],
+  "sorts": [
+    {
+      "concept": "ge:k5:mn:s1",
+      "question": "Ordne den typischen Jahreszyklus am Nil (ältestes zuerst).",
+      "labels": [
+        "Nil schwillt an (Überschwemmung)",
+        "Schlamm setzt sich auf Feldern ab",
+        "Aussaat nach Rückgang des Wassers",
+        "Ernte und Einlagerung in Speicher"
+      ],
+      "explanation": "Überschwemmung → Schlamm → Aussaat → Ernte — der ägyptische Rhythmus.",
+      "wissen": "Der Nil bestimmte den Kalender. Priester berechneten den Anstieg. Staat organisierte Vorrat."
+    }
+  ],
+  "multis": [
+    {
+      "concept": "ge:k5:mn:m1",
+      "question": "Welche Folgen kann Rodung für Mensch und Natur haben?",
+      "correct": [
+        "Mehr Ackerfläche für Ernährung",
+        "Erosion und Verlust von Oberboden",
+        "Holzknappheit für Bau und Feuer"
+      ],
+      "wrong": [
+        "Sofortige Wüstenbildung weltweit",
+        "Automatisch mehr Wildtiere",
+        "Keine Veränderung der Landschaft"
+      ],
+      "explanation": "Rodung ist ambivalent: Gewinn an Fläche, Risiko für Boden.",
+      "wissen": "Historisch führten großflächige Rodungen zu Erosion und Holznot. Wiederaufforstung war selten."
+    }
+  ],
+"causeEffects": [
+      {
+        "concept": "ge:k5:mn:c1",
+        "cause": "Regelmäßige Nilüberschwemmung",
+        "effect": "Fruchtbare Böden ohne künstlichen Dünger",
+        "wissen": "Der Nil brachte jährlich nährstoffreichen Schlamm. Kein Kunstdünger nötig — natürliche Fruchtbarkeit."
+      },
+      {
+        "concept": "ge:k5:mn:c2",
+        "cause": "Rodung großer Waldgebiete",
+        "effect": "Bodenabtrag durch Wind und Regen steigt",
+        "wissen": "Ohne Wurzeln und Kronen schützen, wird Oberboden abgetragen. Erosion folgt oft auf Rodung."
+      },
+      {
+        "concept": "ge:k5:mn:c3",
+        "cause": "Bau von Bewässerungskanälen",
+        "effect": "Ackerbau auch in Trockenzeiten möglich",
+        "wissen": "Kanäle leiten Flusswasser auf Felder. Erfordert Organisation, Recht, Wartung — Basis früher Staatlichkeit."
+      },
+      {
+        "concept": "ge:k5:mn:c4",
+        "cause": "Einführung des Eisenpflugs",
+        "effect": "Schwere Lehmböden werden ackerbar",
+        "wissen": "Holzpflug brach auf leichten Böden. Eisenpflug (ab ca. 500 v. Chr.) öffnete schwere, fruchtbare Löss-/Lehmböden."
+      }
+    ],
+  "sources": [
+    {
+      "concept": "ge:k5:mn:src1",
+      "question": "Was beschreibt dieser Text über das alte Ägypten?",
+      "sourceText": "Der Nil steigt jedes Jahr, überflutet die Felder und hinterlässt schwarzen Schlamm, der fruchtbarer ist als jeder Dünger.",
+      "sourceLabel": "Herodot, Historien II, 5. Jh. v. Chr.",
+      "sourceKind": "antike Quelle",
+      "attribution": "Herodot, gemeinfrei",
+      "correct": "Die jährliche Nilüberschwemmung düngte die Äcker natürlich.",
+      "wrong": [
+        "Der Nil war für die Landwirtschaft unwichtig.",
+        "Ägypter nutzten nur künstlichen Dünger.",
+        "Der Schlamm war giftig für Pflanzen."
+      ],
+      "explanation": "Herodot nannte Ägypten ‚Geschenk des Nils‘ — die Überschwemmung sicherte den Ertrag.",
+      "wissen": "Antike Autoren wie Herodot sind wichtige Quellen für Umweltgeschichte. Ihre Berichte sind aber selektiv."
     }
   ]
 }
@@ -927,6 +1035,24 @@ const alexander: BioBank = {
       "term": "Hellenismus",
       "meaning": "Griechisch-orientalische Mischkultur",
       "wissen": "Städte und Sprache im Osten."
+    },
+    {
+      "concept": "ge:k5:al:p4",
+      "term": "Issos",
+      "meaning": "Schlacht 333 v. Chr. gegen Dareios III.",
+      "wissen": "Alexander besiegte den Großkönig erstmals."
+    },
+    {
+      "concept": "ge:k5:al:p5",
+      "term": "Gaugamela",
+      "meaning": "Entscheidende Schlacht 331 v. Chr.",
+      "wissen": "Ende der achämenidischen Herrschaft."
+    },
+    {
+      "concept": "ge:k5:al:p6",
+      "term": "Philipp II.",
+      "meaning": "Vater, einte Makedonien, reformierte Heer",
+      "wissen": "Schaffte die Basis für Alexanders Eroberungen."
     }
   ],
   "trueFalse": [
@@ -936,6 +1062,97 @@ const alexander: BioBank = {
       "correct": false,
       "explanation": "Diadochenkämpfe zersplitterten das Reich.",
       "wissen": "Diadochenkämpfe zersplitterten das Reich. Teilreiche entstanden. Die Einheit war kurzlebig."
+    },
+    {
+      "concept": "ge:k5:al:t2",
+      "statement": "Alexander wurde von Platon unterrichtet.",
+      "correct": false,
+      "explanation": "Sein Lehrer war Aristoteles, nicht Platon.",
+      "wissen": "Aristoteles (Schüler Platons) unterrichtete Alexander ca. 343–340 v. Chr."
+    },
+    {
+      "concept": "ge:k5:al:t3",
+      "statement": "Die Schlacht bei Gaugamela war die letzte große Feldschlacht gegen die Perser.",
+      "correct": true,
+      "explanation": "331 v. Chr. besiegte Alexander Dareios III. endgültig.",
+      "wissen": "Nach Gaugamela floh Dareios, wurde später ermordet. Alexander übernahm das Perserreich."
+    }
+  ],
+  "sorts": [
+    {
+      "concept": "ge:k5:al:s1",
+      "question": "Ordne die Hauptstationen von Alexanders Zug (ältestes zuerst).",
+      "labels": [
+        "Übergang nach Kleinasien (334 v. Chr.)",
+        "Schlacht bei Issos (333 v. Chr.)",
+        "Eroberung Ägyptens, Gründung Alexandria (332 v. Chr.)",
+        "Schlacht bei Gaugamela (331 v. Chr.)",
+        "Vorstoß bis zum Indus (327–325 v. Chr.)"
+      ],
+      "explanation": "Kleinasien → Syrien/Phönizien → Ägypten → Mesopotamien/Persien → Indus.",
+      "wissen": "Der Zug dauerte ca. 10 Jahre. Logistik, Belagerungen und Gründung hellenistischer Städte prägten den Weg."
+    }
+  ],
+  "multis": [
+    {
+      "concept": "ge:k5:al:m1",
+      "question": "Welche drei Reiche/Dynastien entstanden aus den Diadochenkämpfen?",
+      "correct": [
+        "Ptolemäer (Ägypten)",
+        "Seleukiden (Syrien, Mesopotamien, Persien)",
+        "Antigoniden (Makedonien, Griechenland)"
+      ],
+      "wrong": [
+        "Römer, Karthager, Etrusker",
+        "Hohenzollern, Habsburg, Bourbon",
+        "Nur ein einziges Großreich blieb erhalten"
+      ],
+      "explanation": "Drei große hellenistische Reiche teilten Alexanders Erbe.",
+      "wissen": "Kleinere Fürstentümer (Attaliden in Pergamon, Baktrien) kamen hinzu. Rom übernahm später alle."
+    }
+  ],
+  "causeEffects": [
+    {
+      "concept": "ge:k5:al:c1",
+      "cause": "Philipps Heereform (Phallanx, Sarissa)",
+      "effect": "Makedonien wird militärische Großmacht",
+      "wissen": "Philippos II. reformierte das Heer: Phallanx mit langer Sarissa, Berufssoldaten, Belagerungstechnik. Basis für Alexanders Siege."
+    },
+    {
+      "concept": "ge:k5:al:c2",
+      "cause": "Siege bei Issos und Gaugamela",
+      "effect": "Ende des Achämenidenreichs, Alexander Herr über Persien",
+      "wissen": "Zwei Entscheidungsschlachten (333, 331 v. Chr.) brachen persische Macht. Dareios floh, wurde ermordet. Alexander übernahm Reich."
+    },
+    {
+      "concept": "ge:k5:al:c3",
+      "cause": "Gründung griechischer Städte im Osten",
+      "effect": "Verbreitung griechischer Sprache, Kultur, Polis-Struktur",
+      "wissen": "Über 20 Stadtgründungen (viele 'Alexandria'). Gymnasion, Theater, Polis-Verfassung exportiert. Hellenismus beginnt."
+    },
+    {
+      "concept": "ge:k5:al:c4",
+      "cause": "Früher Tod ohne Erben (323 v. Chr.)",
+      "effect": "Diadochenkämpfe, Zersplitterung in Teilreiche",
+      "wissen": "Alexander starb mit 32, ohne legitimen Erben. Generäle (Diadochen) kämpften 40 Jahre um das Erbe. Drei Großreiche entstanden."
+    }
+  ],
+  "sources": [
+    {
+      "concept": "ge:k5:al:src1",
+      "question": "Was berichtet Arrian über Alexanders Tod?",
+      "sourceText": "Alexander starb im Palast des Nebukadnezar in Babylon, nachdem er zehn Tage gefiebert hatte. Er war 32 Jahre alt.",
+      "sourceLabel": "Arrian, Anabasis VII, 2. Jh. n. Chr.",
+      "sourceKind": "antike Quelle",
+      "attribution": "Arrian, gemeinfrei",
+      "correct": "Alexander starb 323 v. Chr. in Babylon mit 32 Jahren an Fieber.",
+      "wrong": [
+        "Er wurde im Kampf getötet.",
+        "Er starb friedlich im Alter von 80 Jahren in Makedonien.",
+        "Er vergiftete sich selbst."
+      ],
+      "explanation": "Arrian nutzte zeitgenössische Hofberichte (Ptolemaios, Aristobulos). Die Todesursache bleibt unklar (Fieber, Gift, Krankheit).",
+      "wissen": "Antike Biografien (Arrian, Plutarch, Curtius Rufus) basieren auf früheren, teils verlorenen Quellen. Vergleich ist nötig."
     }
   ]
 }
@@ -1048,6 +1265,24 @@ const alexandria: BioBank = {
       "term": "Ptolemäer",
       "meaning": "Herrscherdynastie",
       "wissen": "Griechischstämmige Könige in Ägypten."
+    },
+    {
+      "concept": "ge:k5:ax:p4",
+      "term": "Museion",
+      "meaning": "Forschungsinstitut bei der Bibliothek",
+      "wissen": "Gelehrte lebten und arbeiteten dort staatlich finanziert."
+    },
+    {
+      "concept": "ge:k5:ax:p5",
+      "term": "Kleopatra VII.",
+      "meaning": "Letzte Ptolemäerin, verbündet mit Caesar/Antonius",
+      "wissen": "Nach ihrem Tod 30 v. Chr. wurde Ägypten römische Provinz."
+    },
+    {
+      "concept": "ge:k5:ax:p6",
+      "term": "Hafen (Großer Hafen / Eunostos)",
+      "meaning": "Verbindung Mittelmeer – Nil – Rotes Meer",
+      "wissen": "Getreideexporte ernährten später Rom. Handel mit Indien, Arabien."
     }
   ],
   "trueFalse": [
@@ -1057,6 +1292,96 @@ const alexandria: BioBank = {
       "correct": true,
       "explanation": "Hafen, Bibliothek und Vielfalt prägten die Stadt.",
       "wissen": "Hafen, Bibliothek und Vielfalt prägten die Stadt. Sie verband Ägypten mit dem Mittelmeer."
+    },
+    {
+      "concept": "ge:k5:ax:t2",
+      "statement": "Die Bibliothek von Alexandria brannte einmal komplett ab und war für immer weg.",
+      "correct": false,
+      "explanation": "Mehrere Brände/Verluste über Jahrhunderte; Ende unklar (Caesar 48 v. Chr., Christen 391 n. Chr., Araber 642 n. Chr.).",
+      "wissen": "Der Mythos vom einen großen Brand vereinfacht. Bestand und Verluste streuten über Jahrhunderte."
+    },
+    {
+      "concept": "ge:k5:ax:t3",
+      "statement": "Die Ptolemäer waren eine ägyptische Pharaonendynastie.",
+      "correct": false,
+      "explanation": "Sie waren makedonisch-griechischer Herkunft, regierten aber als Pharaonen.",
+      "wissen": "Ptolemaios I. (General Alexanders) gründete die Dynastie. Sie übernahmen ägyptische Titel und Kulte."
+    }
+  ],
+  "sorts": [
+    {
+      "concept": "ge:k5:ax:s1",
+      "question": "Ordne Entwicklung Alexandria (ältestes zuerst).",
+      "labels": [
+        "Gründung durch Alexander (331 v. Chr.)",
+        "Ausbau unter Ptolemäern: Bibliothek, Museion, Pharos",
+        "Blüte als Handels- und Wissenschaftsmetropole",
+        "Ende der Ptolemäer, Ägypten wird römisch (30 v. Chr.)"
+      ],
+      "explanation": "Gründung → hellenistischer Ausbau → Blüte → römische Übernahme.",
+      "wissen": "Ptolemäer machten Alexandria zur Hauptstadt. Getreide, Papyrus, Wissenschaft prägten die Stadt."
+    }
+  ],
+  "multis": [
+    {
+      "concept": "ge:k5:ax:m1",
+      "question": "Welche drei Elemente machten Alexandria zur Begegnungsstätte?",
+      "correct": [
+        "Hafen mit internationalem Handel",
+        "Bibliothek und Museion als Wissenszentrum",
+        "Bevölkerung: Griechen, Ägypter, Juden, Syrer u. a."
+      ],
+      "wrong": [
+        "Nur einheimische ägyptische Bevölkerung",
+        "Isolation vom Mittelmeerhandel",
+        "Keine religiöse Vielfalt"
+      ],
+      "explanation": "Hafen, Wissen, Vielfalt — das hellenistische Modell.",
+      "wissen": "Kulturmischung war Alltag. Septuaginta (griechische Bibel) entstand hier. Handel brachte Ideen und Waren."
+    }
+  ],
+  "causeEffects": [
+    {
+      "concept": "ge:k5:ax:c1",
+      "cause": "Lage am Nil-Delta mit zwei Häfen",
+      "effect": "Kontrolle des Getreidehandels und Seehandelsrouten",
+      "wissen": "Zwei Häfen (Großer Hafen, Eunostos) verbanden Nil, Mittelmeer, Rotes Meer. Getreide, Papyrus, Gewürze flossen durch Alexandria."
+    },
+    {
+      "concept": "ge:k5:ax:c2",
+      "cause": "Ptolemäische Förderung von Bibliothek und Museion",
+      "effect": "Zuzug von Gelehrten, Sammlung von Wissen, Forschung",
+      "wissen": "Ptolemäer finanzierten Museion (Forschungsinstitut) und Bibliothek. Gelehrte erhielten Gehalt, Steuerfreiheit, Wohnraum. Zentrum antiker Wissenschaft."
+    },
+    {
+      "concept": "ge:k5:ax:c3",
+      "cause": "Bevölkerungsmischung (Griechen, Ägypter, Juden, Händler)",
+      "effect": "Kultureller Austausch, neue Kulte (Serapis), Übersetzungen (Septuaginta)",
+      "wissen": "Stadtviertel nach Herkunft. Serapis-Kult (griechisch-ägyptisch) als Staatskult. Septuaginta: Tora ins Griechische übersetzt für griechischsprachige Juden."
+    },
+    {
+      "concept": "ge:k5:ax:c4",
+      "cause": "Römische Annexion (30 v. Chr.)",
+      "effect": "Ägypten wird Kornkammer Roms, Alexandria zweitgrößte Stadt des Reiches",
+      "wissen": "Nach Actium (31 v. Chr.) und Tod Kleopatras VII. (30 v. Chr.) römische Provinz. Getreideversorgung Roms sicherte Alexandrias Bedeutung."
+    }
+  ],
+  "sources": [
+    {
+      "concept": "ge:k5:ax:src1",
+      "question": "Was beschreibt Strabon über den Hafen von Alexandria?",
+      "sourceText": "Der Hafen ist so groß, dass er die größte Flotte aufnehmen kann; der Pharos leuchtet weit hinaus und weist den Schiffen den Weg.",
+      "sourceLabel": "Strabon, Geographika XVII, 1. Jh. v. Chr.",
+      "sourceKind": "antike Quelle",
+      "attribution": "Strabon, gemeinfrei",
+      "correct": "Der Hafen war riesig und der Leuchtturm (Pharos) ein berühmtes Weltwunder.",
+      "wrong": [
+        "Der Hafen war winzig und nur für Fischerboote.",
+        "Es gab keinen Leuchtturm.",
+        "Schiffe mussten außen vor Anker liegen."
+      ],
+      "explanation": "Strabon beschreibt die Infrastruktur, die Alexandria zum Handelszentrum machte.",
+      "wissen": "Strabon bereiste die Region. Seine Geographie ist wichtige Quelle für hellenistische Stadtanlagen."
     }
   ]
 }
@@ -1170,6 +1495,24 @@ const alexGeschichten: BioBank = {
       "term": "Heldenvita",
       "meaning": "Ruhm-Erzählung",
       "wissen": "Selektiv und oft panegyrisch."
+    },
+    {
+      "concept": "ge:k5:ag:p4",
+      "term": "Bukephalos",
+      "meaning": "Pferd Alexanders, nur er konnte es reiten",
+      "wissen": "Symbol für Beherrschung des Wilden. Stadt Bukephala benannt danach."
+    },
+    {
+      "concept": "ge:k5:ag:p5",
+      "term": "Hephaistion",
+      "meaning": "Gefährte und möglicher Geliebter Alexanders",
+      "wissen": "Sein Tod 324 v. Chr. traf Alexander schwer. Staatstrauer angeordnet."
+    },
+    {
+      "concept": "ge:k5:ag:p6",
+      "term": "Roxane",
+      "meaning": "Baktrische Prinzessin, Alexanders Frau",
+      "wissen": "Heirat 327 v. Chr. als Politik. Sohn Alexander IV. nachgeboren, später ermordet."
     }
   ],
   "trueFalse": [
@@ -1179,6 +1522,96 @@ const alexGeschichten: BioBank = {
       "correct": false,
       "explanation": "Viele Berichte sind später und stilisiert.",
       "wissen": "Viele Berichte sind später und stilisiert. Legenden mischen sich mit Historischem. Quellenkritik ist Pflicht."
+    },
+    {
+      "concept": "ge:k5:ag:t2",
+      "statement": "Der gordische Knoten wurde von Alexander mit dem Schwert durchhauen.",
+      "correct": true,
+      "explanation": "Die Sage: er löst das Problem durch entschlossene Tat.",
+      "wissen": "Varianten: durchhauen oder den Stift ziehen. Beide stilisieren Entschlossenheit. Historisch nicht belegbar."
+    },
+    {
+      "concept": "ge:k5:ag:t3",
+      "statement": "Alexander heiratete Roxane aus Liebe, nicht aus politischer Berechnung.",
+      "correct": false,
+      "explanation": "Die Heirat 327 v. Chr. band baktrische Eliten an das Reich.",
+      "wissen": "Herrscherheiraten waren Politik. Roxane war Tochter des Oxyartes. Alexander IV. starb als Kind in Gefangenschaft."
+    }
+  ],
+  "sorts": [
+    {
+      "concept": "ge:k5:ag:s1",
+      "question": "Ordne die Überlieferungsschichten (ältestes zuerst).",
+      "labels": [
+        "Zeitgenössische Hofberichte (Ptolemaios, Aristobulos) — verloren",
+        "Alexanderroman (Pseudo-Kallisthenes, 3. Jh. n. Chr.) — legendenhaft",
+        "Arrian / Plutarch (2. Jh. n. Chr.) — nutzen frühe Quellen kritisch",
+        "Mittelalterliche Bearbeitungen (z. B. Alexanderlied) — christlich überformt"
+      ],
+      "explanation": "Nah an der Zeit → spätere Sammler → antike Historiker → mittelalterliche Dichtung.",
+      "wissen": "Keine Autobiografie erhalten. Arrian gilt als beste Quelle, da er Ptolemaios/Aristobulos folgte. Legenden wuchsen stetig."
+    }
+  ],
+  "multis": [
+    {
+      "concept": "ge:k5:ag:m1",
+      "question": "Welche drei Legenden ranken sich um Alexander?",
+      "correct": [
+        "Gordischer Knoten (durchhauen / lösen)",
+        "Orakel von Siwa (Sohn des Ammon/Zeus)",
+        "Bukephalos (unzähmbares Pferd, nur Alexander reitet es)"
+      ],
+      "wrong": [
+        "Er erfand den Buchdruck.",
+        "Er baute die Chinesische Mauer.",
+        "Er flog mit einem Drachen zum Mond."
+      ],
+      "explanation": "Knoten, Siwa, Bukephalos — klassische Alexanderlegenden.",
+      "wissen": "Diese Episoden dienen Herrscherideologie: Entschlossenheit, göttliche Abstammung, Beherrschung der Natur."
+    }
+  ],
+  "causeEffects": [
+    {
+      "concept": "ge:k5:ag:c1",
+      "cause": "Fehlende zeitgenössische Autobiografie",
+      "effect": "Abhängigkeit von späteren, teils legendenhaften Berichten",
+      "wissen": "Keine Selbstzeugnisse Alexanders erhalten. Hofberichte (Ptolemaios, Aristobulos) sind verloren. Spätere Autoren (Arrian, Plutarch, Curtius) nutzen diese zweitrangig."
+    },
+    {
+      "concept": "ge:k5:ag:c2",
+      "cause": "Herrscherideologie (göttliche Abstammung, Unbesiegbarkeit)",
+      "effect": "Legendenbildung: Siwa, Knoten, Bukephalos, Unverwundbarkeit",
+      "wissen": "Alexander nutzte Mythos politisch. Siwa-Besuch stilisierte göttliche Abstammung. Knoten und Bukephalos zeigen 'Herrscher über Natur/Götter'."
+    },
+    {
+      "concept": "ge:k5:ag:c3",
+      "cause": "Alexanderroman (Pseudo-Kallisthenes) verbreitete sich in vielen Sprachen",
+      "effect": "Alexander wird zum weltliterarischen Helden (bis ins Mittelalter, Orient, Europa)",
+      "wissen": "Alexanderroman (3. Jh. n. Chr.) übersetzt in Syrisch, Arabisch, Persisch, Armenisch, Georgisch, Latein, Altfranzösisch, Mittelhochdeutsch. Vorbild für Ritterideale."
+    },
+    {
+      "concept": "ge:k5:ag:c4",
+      "cause": "Quellenkritik (Arrian vs. Curtius Rufus vs. Plutarch)",
+      "effect": "Unterscheidung: historischer Kern vs. literarische Ausschmückung",
+      "wissen": "Arrian (2. Jh.) folgt Ptolemaios/Aristobulos — nüchtern, militärisch. Plutarch — Charakter, Moral, Anekdoten. Curtius Rufus (1. Jh. n. Chr.) — dramatisch, rhetorisch. Vergleich nötig."
+    }
+  ],
+  "sources": [
+    {
+      "concept": "ge:k5:ag:src1",
+      "question": "Was schreibt Plutarch über Alexanders Tod?",
+      "sourceText": "Manche sagen, er sei an einer Krankheit gestorben; andere, er sei vergiftet worden. Die Ärzte aber gaben keine klare Auskunft.",
+      "sourceLabel": "Plutarch, Alexander 75, 2. Jh. n. Chr.",
+      "sourceKind": "antike Quelle",
+      "attribution": "Plutarch, gemeinfrei",
+      "correct": "Plutarch nennt Krankheit und Gift als mögliche Todesursachen — sicher ist keins.",
+      "wrong": [
+        "Er wurde im Kampf erschlagen.",
+        "Er starb an Altersschwäche in Makedonien.",
+        "Er vergiftete sich selbst absichtlich."
+      ],
+      "explanation": "Plutarch wägt Varianten ab. Die Todesursache (Fieber, Malaria, Typhus, Gift) ist bis heute ungeklärt.",
+      "wissen": "Plutarch nutzte frühere Quellen (Aristobulos, Ptolemaios). Sein Fokus liegt auf Charakter und Moral, nicht nur Fakten."
     }
   ]
 }

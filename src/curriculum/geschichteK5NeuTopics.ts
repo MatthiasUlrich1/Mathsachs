@@ -282,6 +282,92 @@ function archaeoKnow(rng: Rng) {
   )
 }
 
+function archaeoMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Was ist ein typischer Fund aus der Steinzeit in Sachsen?',
+      correct: 'Feuersteingerät (z. B. Klinge, Schaber)',
+      wrong: ['Ein Smartphone mit Ladekabel', 'Eine mittelalterliche Münze', 'Ein Plastikspielzeug'],
+    },
+    {
+      q: 'Wie nennt man die wissenschaftliche Ausgrabung?',
+      correct: 'Grabung',
+      wrong: ['Nur Bau eines Schwimmbads', 'Nur Pflügen ohne Dokumentation', 'Nur Zufallsfund beim Spazieren'],
+    },
+    {
+      q: 'Was verrät die Fundschicht (Stratigraphie)?',
+      correct: 'Relative Zeitfolge: tiefer = älter',
+      wrong: ['Dass alle Funde gleich alt sind', 'Dass Tiefe keine Rolle spielt', 'Dass nur die Oberfläche zählt'],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Funde, Grabung und Schichten sind Kern der archäologischen Methode.',
+    fachwissen: TOPIC_FW.archaeo,
+    dedupeKey: `ge:k5:archaeo:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:archaeo:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
+function archaeoMatch2(rng: Rng) {
+  const terms = ['Stratigraphie', 'Typologie', 'C14-Datierung']
+  const meanings = [
+    'Schichtenfolge lesen',
+    'Formvergleich von Artefakten',
+    'Absolutes Alter organischer Reste messen',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Methode und Bedeutung.',
+    terms,
+    meanings,
+    distractor: 'Nur eine Wettervorhersage für morgen',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Wichtige Verfahren zur zeitlichen Einordnung.',
+    fachwissen: TOPIC_FW.archaeo,
+    dedupeKey: 'ge:k5:archaeo:match2',
+    contentIds: ['ge:k5:archaeo:match2'],
+  })
+}
+
+function archaeoClassify2(rng: Rng) {
+  const pairs = [
+    { a: 'Keramikscherbe mit Verzierung', b: 'Kann auf Kultur/Kulturkreis hinweisen' },
+    { a: 'Tierknochen mit Schnittspuren', b: 'Zeugnis für Ernährung und Werkzeugnutzung' },
+    { a: 'Pflanzenreste (verkohlt)', b: 'Hinweis auf Anbau und Umwelt' },
+  ]
+  return classifySlotsTask(rng, {
+    question: 'Ordne Fund und archäologische Aussage zu.',
+    slotLabels: pairs.map((p) => p.a),
+    itemLabels: pairs.map((p) => p.b),
+    correctSlots: [0, 1, 2],
+    distractors: ['Nur ein heutiges Verpackungsmaterial'],
+    solution: pairs.map((p) => `${p.a} → ${p.b}`).join('; '),
+    explanation: 'Verschiedene Fundarten liefern unterschiedliche Informationen.',
+    fachwissen: TOPIC_FW.archaeo,
+  })
+}
+
+function archaeoSort(rng: Rng) {
+  const labels = [
+    'Fund wird im Gelände entdeckt',
+    'Grabung mit Dokumentation',
+    'Bestimmung und Datierung im Labor',
+    'Einordnung in Regionalgeschichte',
+  ]
+  return sortChronologyTask(rng, {
+    question: 'Ordne den archäologischen Arbeitsablauf.',
+    labels,
+    solution: labels.join(' → '),
+    explanation: 'Vom Fund bis zur historischen Aussage.',
+    fachwissen: TOPIC_FW.archaeo,
+    dedupeKey: 'ge:k5:archaeo:sort',
+  })
+}
+
 export const geArchaologieSachsen: Topic['generate'] = mixedVariants(
   archaeoMc,
   archaeoMatch,
@@ -289,6 +375,10 @@ export const geArchaologieSachsen: Topic['generate'] = mixedVariants(
   archaeoCause,
   archaeoTf,
   archaeoKnow,
+  archaeoMc2,
+  archaeoMatch2,
+  archaeoClassify2,
+  archaeoSort,
 )
 
 // ─── Entwicklungsstufen zum Jetztmenschen ────────────────────────────────────
@@ -397,12 +487,112 @@ function jetztMulti(rng: Rng) {
   })
 }
 
+function jetztMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Wie nennt man die frühe Menschenform mit aufrechtem Gang und einfachen Steinwerkzeugen?',
+      correct: 'Homo erectus / Frühmensch',
+      wrong: ['Nur ein moderner Sportler', 'Nur ein Dinosaurier', 'Nur eine Pflanzenart'],
+    },
+    {
+      q: 'Was unterscheidet Altsteinzeit und Jungsteinzeit grundlegend?',
+      correct: 'Jagd/Sammeln vs. Ackerbau/Viehzucht + Sesshaftigkeit',
+      wrong: ['Nur die Farbe der Werkzeuge', 'Nur die Länge der Namen', 'Gar keinen Unterschied'],
+    },
+    {
+      q: 'Welche Bedeutung hatte die Kontrolle über Feuer?',
+      correct: 'Wärme, Schutz, gekochte Nahrung, Licht, neue Lebensräume',
+      wrong: ['Nur für moderne Heizungen', 'Nur als Dekoration', 'Feuer war immer schädlich'],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Menschenformen, Epochen und Feuer sind zentrale Orientierungspunkte.',
+    fachwissen: TOPIC_FW.jetztmensch,
+    dedupeKey: `ge:k5:jetzt:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:jetzt:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
+function jetztMatch2(rng: Rng) {
+  const terms = ['Homo erectus', 'Feuerbeherrschung', 'Sesshaftigkeit']
+  const meanings = [
+    'Frühe Menschenform mit aufrechtem Gang',
+    'Kochen, Wärme, neue Räume erschließen',
+    'Fester Wohnsitz durch Landwirtschaft',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Begriff und Bedeutung.',
+    terms,
+    meanings,
+    distractor: 'Nur ein heutiges Küchengerät',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Schlüsselbegriffe der Menschwerdung.',
+    fachwissen: TOPIC_FW.jetztmensch,
+    dedupeKey: 'ge:k5:jetzt:match2',
+    contentIds: ['ge:k5:jetzt:match2'],
+  })
+}
+
+function jetztClassify(rng: Rng) {
+  const pairs = [
+    { a: 'Jäger und Sammler (Altsteinzeit)', b: 'Mobile Gruppen, keine Vorräte' },
+    { a: 'Bauern und Viehzüchter (Jungsteinzeit)', b: 'Sesshaft, Vorräte, Spezialisierung' },
+    { a: 'Homo sapiens (heute)', b: 'Symbolisches Denken, komplexe Sprache, Technik' },
+  ]
+  return classifySlotsTask(rng, {
+    question: 'Ordne Lebensweise und Epoche zu.',
+    slotLabels: pairs.map((p) => p.a),
+    itemLabels: pairs.map((p) => p.b),
+    correctSlots: [0, 1, 2],
+    distractors: ['Nur ein Computerprogramm'],
+    solution: pairs.map((p) => `${p.a} → ${p.b}`).join('; '),
+    explanation: 'Entwicklungsstufen unterscheiden sich in Technik, Wirtschaft, Gesellschaft.',
+    fachwissen: TOPIC_FW.jetztmensch,
+  })
+}
+
+function jetztCause2(rng: Rng) {
+  return causePairs(rng, {
+    question: 'Weitere Ursachen und Folgen der Menschwerdung.',
+    pairs: [
+      { cause: 'Aufrechter Gang', effect: 'Hände frei für Werkzeug und Tragen' },
+      { cause: 'Größeres Gehirn / Sprache', effect: 'Planung, Zusammenarbeit, Wissensweitergabe' },
+      { cause: 'Feuer und Kochen', effect: 'Mehr Energie, kleinere Zähne/Darm, größere Gruppen' },
+    ],
+    distractorEffects: ['Sofortiger Bau von Wolkenkratzern'],
+    explanation: 'Körper, Kultur und Umwelt bedingen sich wechselseitig.',
+    fachwissen: TOPIC_FW.jetztmensch,
+    dedupeKey: 'ge:k5:jetzt:cause2',
+  })
+}
+
+function jetztTf(rng: Rng) {
+  return trueFalse(rng, {
+    statement: 'Alle frühen Menschenformen lebten zur gleichen Zeit nebeneinander.',
+    correct: false,
+    explanation: 'Die Formen folgen nacheinander; nur in Übergangsphasen gab es Überschneidungen.',
+    fachwissen: TOPIC_FW.jetztmensch,
+    dedupeKey: 'ge:k5:jetzt:tf',
+    contentIds: ['ge:k5:jetzt:tf'],
+  })
+}
+
 export const geJetztmensch: Topic['generate'] = mixedVariants(
   jetztMc,
   jetztSort,
   jetztMatch,
   jetztCause,
   jetztMulti,
+  jetztMc2,
+  jetztMatch2,
+  jetztClassify,
+  jetztCause2,
+  jetztTf,
 )
 
 // ─── Ägypten: Gesellschaftspyramide ──────────────────────────────────────────
@@ -503,11 +693,106 @@ function pyramideClassify(rng: Rng) {
   })
 }
 
+function pyramideSort(rng: Rng) {
+  const labels = [
+    'Bauern bestellen Felder',
+    'Schreiber erfassen Erträge',
+    'Pharao und Hof verteilen und entscheiden',
+  ]
+  return sortChronologyTask(rng, {
+    question: 'Ordne typische Schritte der Verwaltung (von unten nach oben).',
+    labels,
+    solution: labels.join(' → '),
+    explanation: 'Pyramide: Basis arbeitet, Mitte verwaltet, Spitze entscheidet.',
+    fachwissen: TOPIC_FW.pyramide,
+    dedupeKey: 'ge:k5:pyramide:sort',
+    contentIds: ['ge:k5:pyramide:sort'],
+  })
+}
+
+function pyramideMatch2(rng: Rng) {
+  const terms = ['Vizier', 'Priester', 'Handwerker']
+  const meanings = [
+    'Höchster Beamter unter dem Pharao',
+    'Tempelkult und Rituale',
+    'Werkstätten für Bau, Gerät, Luxus',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Weitere Stände und ihre Aufgaben.',
+    terms,
+    meanings,
+    distractor: 'Nur ein moderner Bürgermeister',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Verwaltung, Kult und Produktion in der Hochkultur.',
+    fachwissen: TOPIC_FW.pyramide,
+    dedupeKey: 'ge:k5:pyramide:match2',
+    contentIds: ['ge:k5:pyramide:match2'],
+  })
+}
+
+function pyramideMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Was sicherte den Pharao seine Macht?',
+      correct: 'Kontrolle über Nil, Getreide und Armee',
+      wrong: [
+        'Nur durch Zaubersprüche',
+        'Weil er jeden Tag Pyramiden baute',
+        'Nur durch Zustimmung aller Bauern',
+      ],
+    },
+    {
+      q: 'Warum waren Schreiber angesehen?',
+      correct: 'Sie beherrschten Lesen, Schreiben und Rechnen',
+      wrong: [
+        'Weil sie die einzigen Sportler waren',
+        'Nur weil sie Hieroglyphen erfanden',
+        'Weil sie keine Steuern zahlten',
+      ],
+    },
+    {
+      q: 'Was kennzeichnete die Basis der Pyramide?',
+      correct: 'Viele Bauern, Arbeiter und Unfreie',
+      wrong: [
+        'Nur Adlige und Priester',
+        'Nur ausländische Söldner',
+        'Keine Menschen, nur Tiere',
+      ],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Macht, Schrift und breite Basis — die drei Säulen der Pyramide.',
+    fachwissen: TOPIC_FW.pyramide,
+    dedupeKey: `ge:k5:pyramide:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:pyramide:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
+function pyramideTf(rng: Rng) {
+  return trueFalse(rng, {
+    statement: 'In der ägyptischen Gesellschaftspyramide hatten alle Stände gleiche Rechte.',
+    correct: false,
+    explanation: 'Rechte und Pflichten waren ungleich verteilt — oben wenige, unten viele.',
+    fachwissen: TOPIC_FW.pyramide,
+    dedupeKey: 'ge:k5:pyramide:tf',
+    contentIds: ['ge:k5:pyramide:tf'],
+  })
+}
+
 export const geGesellschaftspyramide: Topic['generate'] = mixedVariants(
   pyramideMc,
   pyramideMatch,
   pyramideCause,
   pyramideClassify,
+  pyramideSort,
+  pyramideMatch2,
+  pyramideMc2,
+  pyramideTf,
 )
 
 // ─── Griechische Polis ───────────────────────────────────────────────────────
@@ -651,6 +936,40 @@ function polisKnow(rng: Rng) {
   )
 }
 
+function polisMulti(rng: Rng) {
+  const correct = ['Agora', 'Akropolis', 'Umland']
+  return multiSelectTask({
+    question: 'Welche drei Elemente gehören typischerweise zur Struktur einer Polis?',
+    choices: shuffle(rng, [...correct, 'Modernes Einkaufszentrum', 'Römisches Forum']),
+    correct,
+    solution: correct.join('; '),
+    explanation: 'Polis = Stadt (Agora, Akropolis) + Umland.',
+    fachwissen: TOPIC_FW.polis,
+    dedupeKey: 'ge:k5:polis:multi',
+    contentIds: ['ge:k5:polis:multi'],
+  })
+}
+
+function polisMatch2(rng: Rng) {
+  const terms = ['Pnyx', 'Areopag', 'Astynomen']
+  const meanings = [
+    'Versammlungsort des Volkes auf dem Hügel',
+    'Gerichtshof für Mord und religiöse Delikte',
+    'Marktaufseher für Preise und Maße',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Weitere Orte und Ämter der Polis.',
+    terms,
+    meanings,
+    distractor: 'Nur ein heutiges Standesamt',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Politische und rechtliche Institutionen der Polis.',
+    fachwissen: TOPIC_FW.polis,
+    dedupeKey: 'ge:k5:polis:match2',
+    contentIds: ['ge:k5:polis:match2'],
+  })
+}
+
 export const gePolis: Topic['generate'] = mixedVariants(
   polisLabel,
   polisMc,
@@ -658,6 +977,8 @@ export const gePolis: Topic['generate'] = mixedVariants(
   polisCause,
   polisTf,
   polisKnow,
+  polisMulti,
+  polisMatch2,
 )
 
 // ─── Gruppen ohne Mitbestimmung ──────────────────────────────────────────────
@@ -774,12 +1095,95 @@ function ohneCause(rng: Rng) {
   })
 }
 
+function ohneMatch2(rng: Rng) {
+  const terms = ['Archonten', 'Boule', 'Heloten']
+  const meanings = [
+    'Jährlich gewählte hohe Beamte Athens',
+    'Rat von 500, bereitete Versammlungen vor',
+    'Unfreie Bauern in Sparta (Vergleich)',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Ämter und Gruppen — auch zum Vergleich mit Sparta.',
+    terms,
+    meanings,
+    distractor: 'Nur ein heutiger Bundeskanzler',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Athener Ämter; Heloten zeigen spartanisches Gegenbild.',
+    fachwissen: TOPIC_FW.ohne,
+    dedupeKey: 'ge:k5:ohne:match2',
+    contentIds: ['ge:k5:ohne:match2'],
+  })
+}
+
+function ohneSort(rng: Rng) {
+  const labels = [
+    'Bürgerrecht wird erworben (Geburt, Eltern)',
+    'Bürger nimmt an Volksversammlung teil',
+    'Entscheidung wirkt auf ganze Polis',
+  ]
+  return sortChronologyTask(rng, {
+    question: 'Ordne: Wie wirkt Bürgerrecht auf Entscheidungen?',
+    labels,
+    solution: labels.join(' → '),
+    explanation: 'Bürgerrecht → Teilnahme → politische Wirkung.',
+    fachwissen: TOPIC_FW.ohne,
+    dedupeKey: 'ge:k5:ohne:sort',
+    contentIds: ['ge:k5:ohne:sort'],
+  })
+}
+
+function ohneMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Was war die Boule in Athen?',
+      correct: 'Rat von 500, der die Volksversammlung vorbereitete',
+      wrong: [
+        'Nur ein Fest zu Ehren des Dionysos',
+        'Eine spartanische Kampfeinheit',
+        'Ein römisches Senatorenhaus',
+      ],
+    },
+    {
+      q: 'Warum wurden Heloten in Sparta nicht wie attische Sklaven behandelt?',
+      correct: 'Heloten waren unfreie Bauern, an den Boden gebunden, keine chattel slaves',
+      wrong: [
+        'Weil Heloten freie Bürger waren',
+        'Weil Sparta gar keine Unfreien kannte',
+        'Weil Heloten das Wahlrecht hatten',
+      ],
+    },
+    {
+      q: 'Was geschah, wenn ein Bürger sein Recht missbrauchte?',
+      correct: 'Graphē Paranomōn — Klage wegen gesetzwidrigen Antrags',
+      wrong: [
+        'Er wurde sofort zum Sklaven',
+        'Er musste eine Pyramide bauen',
+        'Er erhielt einen Orden',
+      ],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Institutionen und rechtliche Kontrolle in der Demokratie.',
+    fachwissen: TOPIC_FW.ohne,
+    dedupeKey: `ge:k5:ohne:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:ohne:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
 export const geOhneMitbestimmung: Topic['generate'] = mixedVariants(
   ohneMc,
   ohneClassify,
   ohneMatch,
   ohneMulti,
   ohneCause,
+  ohneMatch2,
+  ohneSort,
+  ohneMc2,
 )
 
 // ─── Ressourcen: Wasser, Boden, Ernährung ────────────────────────────────────
@@ -891,12 +1295,95 @@ function resTf(rng: Rng) {
   })
 }
 
+function resMatch2(rng: Rng) {
+  const terms = ['Lehm', 'Holz', 'Salz']
+  const meanings = [
+    'Baustoff für Ziegel und Häuser',
+    'Brennstoff, Werkzeug, Schiffbau',
+    'Konservierung, Handel, Steuerquelle',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Weitere wichtige Rohstoffe früher Gesellschaften.',
+    terms,
+    meanings,
+    distractor: 'Nur ein heutiges Plastikspielzeug',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Rohstoffe prägen Bauweise, Ernährung und Handel.',
+    fachwissen: TOPIC_FW.ressourcen,
+    dedupeKey: 'ge:k5:res:match2',
+    contentIds: ['ge:k5:res:match2'],
+  })
+}
+
+function resSort(rng: Rng) {
+  const labels = [
+    'Fluss führt Wasser und Schlamm',
+    'Felder werden bewässert und bestellt',
+    'Ernte füllt Speicher für schlechte Jahre',
+  ]
+  return sortChronologyTask(rng, {
+    question: 'Ordne typischen Jahresablauf am Fluss (ägyptisch/mesopotamisch).',
+    labels,
+    solution: labels.join(' → '),
+    explanation: 'Wasser → Ackerbau → Vorrat — der Zyklus früher Hochkulturen.',
+    fachwissen: TOPIC_FW.ressourcen,
+    dedupeKey: 'ge:k5:res:sort',
+    contentIds: ['ge:k5:res:sort'],
+  })
+}
+
+function resMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Was passiert bei langer Dürre mit den Vorräten?',
+      correct: 'Sie werden knapp, Preise steigen, Unruhen drohen',
+      wrong: [
+        'Sie vermehren sich wie von Zauberhand',
+        'Alle essen nur noch Gold',
+        'Die Erde produziert automatisch mehr',
+      ],
+    },
+    {
+      q: 'Warum war Salz in der Antike wertvoll?',
+      correct: 'Zum Konservieren von Fleisch und Fisch, als Handelsware',
+      wrong: [
+        'Nur als Streusalz für Autobahnen',
+        'Weil es Wasser in Wein verwandelt',
+        'Nur zur Herstellung von Glas',
+      ],
+    },
+    {
+      q: 'Welche Ressource wurde durch Rodung knapp?',
+      correct: 'Holz für Bau, Feuer, Werkzeug',
+      wrong: [
+        'Nur Diamanten in Flussbetten',
+        'Nur Petroleum aus Quellen',
+        'Nur seltene Erden im Sand',
+      ],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Knappheit und Handel treiben Geschichte an.',
+    fachwissen: TOPIC_FW.ressourcen,
+    dedupeKey: `ge:k5:res:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:res:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
 export const geRessourcen: Topic['generate'] = mixedVariants(
   resMc,
   resMatch,
   resCause,
   resClassify,
   resTf,
+  resMatch2,
+  resSort,
+  resMc2,
 )
 
 // ─── Landschaftswandel: Rodung und Nutzung ───────────────────────────────────
@@ -1013,12 +1500,94 @@ function landMulti(rng: Rng) {
   })
 }
 
+function landMatch2(rng: Rng) {
+  const terms = ['Pflug', 'Deich', 'Terrasse']
+  const meanings = [
+    'Werkzeug zum Umbrechen des Bodens',
+    'Wall zum Schutz vor Überschwemmung',
+    'Stufenförmiger Ackerbau am Hang gegen Erosion',
+  ]
+  return matchTermsTask(rng, {
+    question: 'Technik und Schutzmaßnahmen im Landschaftswandel.',
+    terms,
+    meanings,
+    distractor: 'Nur ein heutiges Navigationsgerät',
+    solution: terms.map((t, i) => `${t} → ${meanings[i]}`).join('; '),
+    explanation: 'Mensch passt Landschaft an — mit Werkzeugen und Bauwerken.',
+    fachwissen: TOPIC_FW.landschaft,
+    dedupeKey: 'ge:k5:land:match2',
+    contentIds: ['ge:k5:land:match2'],
+  })
+}
+
+function landCause2(rng: Rng) {
+  return causePairs(rng, {
+    question: 'Weitere Ursache und Folge beim Landschaftswandel.',
+    pairs: [
+      { cause: 'Terassenbau am Hang', effect: 'Erosion wird gebremst, Acker möglich' },
+      { cause: 'Deichbau an Flüssen', effect: 'Siedlungen und Felder vor Hochwasser schützen' },
+      { cause: 'Eisenpflug statt Holzpflug', effect: 'Schwere Böden lassen sich bearbeiten' },
+    ],
+    distractorEffects: ['Sofortige Besiedelung des Mondes'],
+    explanation: 'Technik mindert oder verschärft Naturgefahren.',
+    fachwissen: TOPIC_FW.landschaft,
+    dedupeKey: 'ge:k5:land:cause2',
+    contentIds: ['ge:k5:land:cause2'],
+  })
+}
+
+function landMc2(rng: Rng) {
+  const items = [
+    {
+      q: 'Was bewirkt Terrassenbau an Hängen?',
+      correct: 'Er verringert Erosion und schafft Ackerfläche',
+      wrong: [
+        'Er lässt Wasser bergauf fließen',
+        'Er macht Berge zu Ebenen ohne Arbeit',
+        'Er ist nur Dekoration für Touristen',
+      ],
+    },
+    {
+      q: 'Warum bauten Menschen Deiche?',
+      correct: 'Zum Schutz von Siedlungen und Feldern vor Hochwasser',
+      wrong: [
+        'Nur um Fische fernzuhalten',
+        'Weil Deiche schön aussehen',
+        'Nur als Grenze zu Nachbarn',
+      ],
+    },
+    {
+      q: 'Was ändert der Eisenpflug gegenüber dem Holzpflug?',
+      correct: 'Er kann schwere, lehmige Böden durchpflügen',
+      wrong: [
+        'Er pflügt von alleine ohne Zugtiere',
+        'Er macht aus Sand fruchtbare Erde',
+        'Er ersetzt Dünger vollständig',
+      ],
+    },
+  ]
+  const it = pick(rng, items)
+  return choicePickTask({
+    question: it.q,
+    choices: shuffleChoices(rng, [it.correct, ...it.wrong], it.correct),
+    correct: it.correct,
+    solution: it.correct,
+    explanation: 'Technischer Fortschritt ändert, wie Menschen Landschaften nutzen.',
+    fachwissen: TOPIC_FW.landschaft,
+    dedupeKey: `ge:k5:land:mc2:${it.q.slice(0, 40)}`,
+    contentIds: [`ge:k5:land:mc2:${it.q.slice(0, 40)}`],
+  })
+}
+
 export const geLandschaft: Topic['generate'] = mixedVariants(
   landMc,
   landSort,
   landCause,
   landMatch,
   landMulti,
+  landMatch2,
+  landCause2,
+  landMc2,
 )
 
 /** Registry — wiring in geschichteGenerators. */

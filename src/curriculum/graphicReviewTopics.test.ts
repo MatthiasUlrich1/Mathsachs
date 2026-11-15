@@ -16,34 +16,28 @@ const ALL = [
   ...math1112GraphicReviews,
 ]
 
-describe('graphic review topics', () => {
-  const releasedIds = new Set([
-    'k8-lb3-steigung__grafik',
-    'k8-lb3-achsenabschnitt__grafik',
-    'k8-lb3-funktionswert__grafik',
-    'k9-lb1-scheitel__grafik',
-    'k9-lb1-quadrat-wert__grafik',
-    'k10-lb4-parabel-wert__grafik',
-    'k10-lb4-parabel-wert__grafik-ablesen',
-    'k1112-lb1-ableitung-stelle__grafik',
-    'k1112-lb1-bestimmtes-integral__grafik',
-    'k1112-lb1-nullstelle-linear__grafik',
-  ])
+const EXPECTED_IDS = [
+  'k8-lb3-steigung__grafik',
+  'k8-lb3-achsenabschnitt__grafik',
+  'k8-lb3-funktionswert__grafik',
+  'k9-lb1-scheitel__grafik',
+  'k9-lb1-quadrat-wert__grafik',
+  'k10-lb4-parabel-wert__grafik',
+  'k10-lb4-parabel-wert__grafik-ablesen',
+  'k1112-lb1-ableitung-stelle__grafik',
+  'k1112-lb1-bestimmtes-integral__grafik',
+  'k1112-lb1-nullstelle-linear__grafik',
+] as const
 
-  it('are locked under a parent id (except freigegebene K8–K11/12-Grafiken)', () => {
-    expect(ALL.length).toBeGreaterThanOrEqual(8)
+describe('graphic review topics', () => {
+  it('lists exactly the marked Grafik-(Prüfung) topics, locked until freigabe', () => {
+    expect(ALL.map((t) => t.id).sort()).toEqual([...EXPECTED_IDS].sort())
     for (const t of ALL) {
       expect(t.reviewOf).toBeTruthy()
       expect(t.id).toContain('__grafik')
-      if (releasedIds.has(t.id)) {
-        expect(t.released).toBe(true)
-        expect(isGraphicReviewTopic(t)).toBe(false)
-        expect(t.title).not.toMatch(/Grafik \(Prüfung\)/)
-      } else {
-        expect(isGraphicReviewTopic(t)).toBe(true)
-        expect(t.released).toBe(false)
-        expect(t.title).toMatch(/Grafik \(Prüfung\)/)
-      }
+      expect(t.released).toBe(false)
+      expect(isGraphicReviewTopic(t)).toBe(true)
+      expect(t.title).toMatch(/Grafik \(Prüfung\)/)
     }
   })
 
@@ -58,9 +52,12 @@ describe('graphic review topics', () => {
           expect(task.visualContent).toContain('<svg')
         }
         if (task.interactive) {
-          expect(['coordinateClick', 'coordinateDraw', 'paramSlider']).toContain(
-            task.interactive.type,
-          )
+          expect([
+            'coordinateClick',
+            'coordinateDraw',
+            'paramSlider',
+            'choicePick',
+          ]).toContain(task.interactive.type)
         }
       }
     }

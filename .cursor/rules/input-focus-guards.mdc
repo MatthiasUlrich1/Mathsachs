@@ -1,0 +1,26 @@
+---
+description: Eingabe-Fokus nicht bei jedem Tastendruck stehlen; DigitGrid R→L
+globs: src/components/{AnswerInput,DigitGrid,TaskMedia,PracticeSession,ExamRunner}.tsx
+alwaysApply: false
+---
+
+# Input-Fokus / Cursor-Guards
+
+## Kein Autofocus auf `value`
+- `useEffect` darf **nicht** `value` / Input-State in den Dependencies haben, wenn es `.focus()` aufruft.
+- Sonst: Bruch-Eingabe springt bei jedem Tastendruck Nenner → Zähler; Einzeiler setzt Caret zurück.
+- Autofocus nur bei `disabled` / `answerKind` / `focusKey` (Aufgabenwechsel).
+
+## DigitGrid = schriftlich von rechts nach links
+- Nach Ziffer: Fokus auf `cellIndex - 1` (Richtung höhere Stellen / links).
+- Startfokus: rechteste Zelle der ersten editierbaren Zeile (Einer).
+- Backspace auf leerer Zelle: nach rechts (`cellIndex + 1`), nicht nach links.
+- Pfeiltasten bleiben visuell links/rechts.
+
+## Regression
+- Tests/Kommentare in `DigitGrid.test.tsx` / `AnswerInput` dokumentieren die Verträge.
+
+# Spoiler / Strategie nur in Fachwissen
+- `topic.hint` nie sticky unter der Frage — nur im aufgeklappten Fachwissen-Panel (Tipp).
+- Erklärungen: Meta („Achte auf…“, „Schau auf…“) per `stripStrategySpoilers` ausblenden; konkreter Rechenweg bleibt.
+- Formeln/Regeln gehören in `fachwissen.text`, nicht in Frage oder sticky Hint.

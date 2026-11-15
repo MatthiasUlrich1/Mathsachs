@@ -8,6 +8,13 @@ import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { math8GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
+import {
+  math8NeuLb1,
+  math8NeuLb2,
+  math8NeuLb3,
+  math8NeuLb4,
+  math8NeuLb5,
+} from './math8NeuTopics'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -518,7 +525,7 @@ const achsenabschnitt: Topic = {
       const m = nonZero(rng, -3, 3)
       const n = nonZero(rng, -4, 4)
       return paramSliderTask({
-        question: `Stelle n so ein, dass die Gerade Steigung m = ${m} und Achsenabschnitt n = ${n} hat.`,
+        question: `Eine Gerade mit Steigung m = ${m} geht durch den Punkt P(1 | ${m + n}). Stelle den y-Achsenabschnitt n am Regler ein.`,
         params: [
           { id: 'm', label: 'Steigung m', min: -4, max: 4, step: 1, start: m },
           { id: 'n', label: 'Achsenabschnitt n', min: -5, max: 5, step: 1, start: 0 },
@@ -765,31 +772,45 @@ export const klasse8: Grade = {
       id: 'lb1',
       title: 'Arbeiten mit Termen und Gleichungen',
       ustd: 24,
-      topics: [zusammenfassen, termAuswerten, gleichungLinear, gleichungBeidseitig, ausmultiplizieren],
+      topics: [
+        zusammenfassen,
+        termAuswerten,
+        gleichungLinear,
+        gleichungBeidseitig,
+        ausmultiplizieren,
+        ...math8NeuLb1,
+      ],
     },
     {
       id: 'lb2',
       title: 'Zufallsversuche',
       ustd: 24,
-      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit],
+      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, ...math8NeuLb2],
     },
     {
       id: 'lb3',
       title: 'Funktionen und lineare Gleichungssysteme',
       ustd: 32,
-      topics: [funktionswert, steigung, achsenabschnitt, lgs, ...math8GraphicReviews],
+      topics: [
+        funktionswert,
+        steigung,
+        achsenabschnitt,
+        lgs,
+        ...math8GraphicReviews,
+        ...math8NeuLb3,
+      ],
     },
     {
       id: 'lb4',
       title: 'Ähnlichkeit',
       ustd: 20,
-      topics: [streckfaktor, strahlensatz, aehnlicheSeite],
+      topics: [streckfaktor, strahlensatz, aehnlicheSeite, ...math8NeuLb4],
     },
     {
       id: 'lb5',
       title: 'Vernetzung: Heuristische Strategien',
       ustd: 4,
-      topics: [zahlenraetsel, rueckwaerts],
+      topics: [zahlenraetsel, rueckwaerts, ...math8NeuLb5],
     },
   ],
 }

@@ -24,6 +24,12 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
+import {
+  math7NeuLb1,
+  math7NeuLb2,
+  math7NeuLb3,
+  math7NeuLb4,
+} from './math7NeuTopics'
 import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -1024,7 +1030,14 @@ export const klasse7: Grade = {
       id: 'lb1',
       title: 'Geometrie in der Ebene',
       ustd: 24,
-      topics: [nebenwinkel, scheitelwinkel, winkelsummeVieleck, basiswinkel, mittelsenkrechteSchritte],
+      topics: [
+        nebenwinkel,
+        scheitelwinkel,
+        winkelsummeVieleck,
+        basiswinkel,
+        mittelsenkrechteSchritte,
+        ...math7NeuLb1,
+      ],
     },
     {
       id: 'lb2',
@@ -1039,19 +1052,33 @@ export const klasse7: Grade = {
         termVorrang,
         gleichungAdd,
         gleichungMul,
+        ...math7NeuLb2,
       ],
     },
     {
       id: 'lb3',
       title: 'Darstellen und Berechnen von Prismen und Pyramiden',
       ustd: 20,
-      topics: [volumenPrisma, mantelPrisma, volumenPyramide, oberflaechePrisma, oberflaechePyramide],
+      topics: [
+        volumenPrisma,
+        mantelPrisma,
+        volumenPyramide,
+        oberflaechePrisma,
+        oberflaechePyramide,
+        ...math7NeuLb3,
+      ],
     },
     {
       id: 'lb4',
       title: 'Vernetzung: Darstellen von Daten',
       ustd: 4,
-      topics: [mittelwert, median, spannweite, relativeHaeufigkeit],
+      topics: [
+        mittelwert,
+        median,
+        spannweite,
+        relativeHaeufigkeit,
+        ...math7NeuLb4,
+      ],
     },
   ],
 }

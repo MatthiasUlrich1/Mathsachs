@@ -625,6 +625,7 @@ export function ExamRunner({
             value={answers[current] ?? emptyInput(task.answerKind)}
             onChange={setAnswer}
             onSubmit={() => (isLast ? undefined : goToTask(current + 1))}
+            focusKey={current}
           />
         )}
 

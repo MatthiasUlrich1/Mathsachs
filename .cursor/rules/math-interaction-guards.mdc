@@ -1,0 +1,37 @@
+---
+description: Mathe-Interaktionen korrekt wählen (Bettermarks-Vorbild, kein Sort-Missbrauch)
+globs: src/curriculum/math*.ts
+alwaysApply: false
+---
+
+# Mathe-Interaktionen — Guards
+
+## dragDropSortTask nur für echte Reihenfolge
+- `dragDropSortTask` nur, wenn die Lösung eine **geordnete Liste** ist (Zahlen der Größe nach, Schritte einer Konstruktion, chronologisch).
+- **Verboten:** Sortieren für Kategorien (teilbar/nicht teilbar, gerade/ungerade, wahr/falsch). Dafür: `choicePickTask`, Match/Zuordnung, oder zwei klare MC-Varianten.
+- Fehlerbeispiel (behoben): `lb1-teilbarkeit` V3 — Kategorisierung über Sort.
+
+## Bettermarks-Nähe
+- Pro Thema `mixedVariants`: mind. Tippen + MC; wo Portfolio passt zusätzlich Zahlenstrahl, Visual/SVG, Koordinaten, Bruchmodell.
+- Keine Bulk-Python-Generatoren; Varianten händisch mit `dedupeKey`.
+
+## Winkelmessen (Portfolio)
+- Virtuelles Messen: `paramSliderTask` (param `grad`) + `generateAngleSvg({ label: '' })` — Gradzahl nicht im Diagramm spoilern.
+- Nicht `dragDropSortTask` für Winkelarten; nicht nur Tippen, wenn Messen didaktisch besser passt.
+
+## Strecken messen (Lineal-ähnlich)
+- Raster-SVG ohne Längenlabel (`generateSegmentsOnGridSvg` / passende Helper mit `showLengthLabels: false`) + `paramSliderTask` (`cm`/`laenge`).
+- Keine Spoiler-Maße im Diagramm, wenn die Aufgabe „messen“ heißt.
+
+## Status
+- Graphic-Reviews / Prüfung: `released: false` belassen bis User-Freigabe.
+- Kein stilles Freigeben von Neu-Themen.
+
+## Grafik (Prüfung) — nur händisch
+- **Verboten:** `addGraphicReviewsToGrade` als Massen-Klon jedes Topics (sinnlose Tippen-Kopien mit „Grafik“-Label).
+- Echte Grafik-Prüfung nur in `graphicReviewTopics.ts` (oder bewusst eingebunden), mit Graph/Koordinaten/Mess-Interaktion.
+- **Niemals** freigegebene Generatoren in `math5.ts`…`math11_12.ts` umschreiben, um Grafik-Prüfung zu „verbessern“. Originale bleiben; Grafik-Prüfung ergänzt später nach Freigabe.
+- `coordinateClick`: nur **ganzzahlige** Zielpunkte konstruieren (Gitter-Snap).
+- Frage nicht spoilen (keine Faktorform, wenn Nullstelle geklickt werden soll; kein `m=`-Label auf der Tangente).
+- `reviewOf` muss auf ein **existierendes** Haupt-Topic zeigen.
+- Kritische Curriculum-Inhalte / Neu-Banken: Bau-Subagents mit **Claude Sonnet** (`claude-sonnet-5-thinking-high`), nicht billiges Massen-Modell.

@@ -7,6 +7,11 @@ import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
 import { math1112GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
+import {
+  math1112NeuLb1,
+  math1112NeuLb2,
+  math1112NeuLb3,
+} from './math11_12NeuTopics'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -393,19 +398,25 @@ export const klasse11_12: Grade = {
       id: 'lb1',
       title: 'Differential- und Integralrechnung',
       ustd: 52,
-      topics: [ableitungStelle, nullstelleLinear, bestimmtesIntegral, ...math1112GraphicReviews],
+      topics: [
+        ableitungStelle,
+        nullstelleLinear,
+        bestimmtesIntegral,
+        ...math1112GraphicReviews,
+        ...math1112NeuLb1,
+      ],
     },
     {
       id: 'lb2',
       title: 'Vektoren, Geraden und Ebenen',
       ustd: 32,
-      topics: [skalarprodukt, betragVektor],
+      topics: [skalarprodukt, betragVektor, ...math1112NeuLb2],
     },
     {
       id: 'lb3',
       title: 'Binomialverteilte Zufallsgrößen',
       ustd: 18,
-      topics: [binomialverteilung, erwartungswertBinom],
+      topics: [binomialverteilung, erwartungswertBinom, ...math1112NeuLb3],
     },
   ],
 }

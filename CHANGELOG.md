@@ -9,6 +9,19 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.145] – 2026-11-15
+
+### Hinzugefügt
+- **Mathe Neu-Banken (K5–JGS):** Zusätzliche `__neu`-Themen nach Bettermarks-Vorbild
+  (Inhalt + Portfolio-Mix), getrennt von Originalen; `neu:true` / `released:false` bis Freigabe.
+- **Graphic-Reviews:** weitere interaktive Prüfungs-Themen für Mathe.
+
+### Behoben
+- **DigitGrid:** Eingabe von rechts nach links (Einer zuerst); Backspace rückt nach rechts.
+- **Bruch-Fokus:** Cursor springt nicht mehr vom Nenner zum Zähler bei jeder Eingabe
+  (`focusKey` statt Fokus-Effekt auf `value`).
+- **Strategie-Spoiler:** Tipps nur noch im Fachwissen; Fragen/Explanations ohne Lösungsstrategie.
+
 ## [0.28.144] – 2026-10-26
 
 ### Behoben

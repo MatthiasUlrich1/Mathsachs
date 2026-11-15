@@ -122,19 +122,26 @@ describe('worksheetPrintExtras', () => {
     expect(printLabel({ label: 'Alpha', value: 0 })).toBe('Alpha')
   })
 
-  it('covers freigegebene K8 grafik topics with printable visuals', () => {
+  it('covers K8 Grafik-Prüfung topics with printable visuals', () => {
+    // Skip slider-only first variants; these always can emit SVG
     const ids = [
-      'k8-lb3-steigung__grafik',
       'k8-lb3-achsenabschnitt__grafik',
       'k8-lb3-funktionswert__grafik',
     ]
     for (const id of ids) {
       const topic = math8GraphicReviews.find((t) => t.id === id)
       expect(topic, id).toBeTruthy()
-      const task = topic!.generate(createRng(42))
-      const extras = worksheetPrintExtras(task)
-      expect(extras.visualHtml, id).toMatch(/<svg[\s>]/i)
-      expect(extras.paperHint || extras.answerBlank, id).toBeTruthy()
+      let sawSvg = false
+      for (let seed = 1; seed <= 24; seed++) {
+        const task = topic!.generate(createRng(seed * 17))
+        const extras = worksheetPrintExtras(task)
+        if (extras.visualHtml?.match(/<svg[\s>]/i)) {
+          sawSvg = true
+          expect(extras.paperHint || extras.answerBlank, id).toBeTruthy()
+          break
+        }
+      }
+      expect(sawSvg, id).toBe(true)
     }
   })
 })

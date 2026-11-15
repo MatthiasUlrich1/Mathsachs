@@ -40,6 +40,13 @@ import {
 } from './taskHelpers'
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
+import {
+  math6NeuLb1,
+  math6NeuLb2,
+  math6NeuLb3,
+  math6NeuLb4,
+  math6NeuLb5,
+} from './math6NeuTopics'
 
 /**
  * Proper fraction that still needs shortening when shown as a diagram:
@@ -2039,13 +2046,14 @@ export const klasse6: Grade = {
         dezDiv,
         runden,
         sachaufgabeBruch,
+        ...math6NeuLb1,
       ],
     },
     {
       id: 'lb2',
       title: 'Zuordnungen in der Umwelt',
       ustd: 24,
-      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz],
+      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz, ...math6NeuLb2],
     },
     {
       id: 'lb3',
@@ -2059,19 +2067,33 @@ export const klasse6: Grade = {
         flaecheDreieck,
         kongruenzSatz,
         sachaufgabeGeometrie,
+        ...math6NeuLb3,
       ],
     },
     {
       id: 'lb4',
       title: 'Prismen',
       ustd: 12,
-      topics: [volumenQuader, oberflaecheQuader, volumenPrisma, flaecheKanteQuader, wuerfelNetz],
+      topics: [
+        volumenQuader,
+        oberflaecheQuader,
+        volumenPrisma,
+        flaecheKanteQuader,
+        wuerfelNetz,
+        ...math6NeuLb4,
+      ],
     },
     {
       id: 'lb5',
       title: 'Vernetzung: Anteile',
       ustd: 4,
-      topics: [anteilVonGroesse, anteilProzent, flaecheUmrechnen, laengeUmrechnen],
+      topics: [
+        anteilVonGroesse,
+        anteilProzent,
+        flaecheUmrechnen,
+        laengeUmrechnen,
+        ...math6NeuLb5,
+      ],
     },
   ],
 }

@@ -14,7 +14,9 @@ describe('Klasse 6 curriculum', () => {
   it('exposes Fläche-Kante topic as released (ID 2101)', () => {
     const topic = allTopics.find((t) => t.id === 'lb4-flaeche-kante-quader')
     expect(topic?.released).not.toBe(false)
-    expect(allTopics.every((t) => t.released !== false)).toBe(true)
+    // Freigegebene Originale; Neu-(Prüfung)-Siblings bleiben released:false bis Freigabe.
+    const originals = allTopics.filter((t) => !t.neu && !t.id.endsWith('__neu'))
+    expect(originals.every((t) => t.released !== false)).toBe(true)
   })
 
   it('matches Quader/Würfel wording to the matching solid SVG', () => {

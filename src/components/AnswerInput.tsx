@@ -8,6 +8,11 @@ interface Props {
   onChange: (next: UserInput) => void
   onSubmit: () => void
   disabled?: boolean
+  /**
+   * Stable per task (seed/index). Autofocus only when this / answerKind / disabled
+   * changes — never on every keystroke (would steal focus from Nenner → Zähler).
+   */
+  focusKey?: string | number
 }
 
 export function AnswerInput({
@@ -17,12 +22,15 @@ export function AnswerInput({
   onChange,
   onSubmit,
   disabled,
+  focusKey,
 }: Props) {
   const firstRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     if (!disabled) firstRef.current?.focus()
-  }, [disabled, answerKind, value])
+    // Intentionally omit `value`: re-focusing on every keystroke jumps the caret
+    // (fraction: Nenner → Zähler; single field: caret reset).
+  }, [disabled, answerKind, focusKey])
 
   const handleKey = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {

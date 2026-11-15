@@ -4,7 +4,7 @@ import { reportSchuelerAnswersChecked } from '../lib/schuelerAnswerStats'
 import { recordSession } from '../lib/storage'
 import { normalizeRole, type UserRole } from '../lib/roles'
 import type { TaskGrade, Topic, UserInput } from '../curriculum/types'
-import { awardPoints, gradeTask, isFormulaLikeHint } from '../curriculum/types'
+import { awardPoints, gradeTask, stripStrategySpoilers } from '../curriculum/types'
 import {
   DEFAULT_TASKS_PER_ROUND,
   resolveTasksPerRound,
@@ -99,6 +99,8 @@ export function PracticeSession({
     setInput(initTaskInput(task))
     setLastGrade(null)
     setLastAwarded(0)
+    setShowExplanation(false)
+    setShowFachwissen(false)
   }, [task])
 
   const [correct, setCorrect] = useState(0)
@@ -277,11 +279,8 @@ export function PracticeSession({
         />
       )}
 
-      {activeTopic.hint && phase === 'answering' && !isFormulaLikeHint(activeTopic.hint) && (
-        <p className="muted small hint">{activeTopic.hint}</p>
-      )}
-
-      {fachwissen && (
+      {/* Strategie/Antwortformat: nur im Fachwissen-Panel, nie sticky unter der Frage. */}
+      {(fachwissen || activeTopic.hint) && (
         <div className="session__fachwissen">
           <button
             type="button"
@@ -293,8 +292,15 @@ export function PracticeSession({
           </button>
           {showFachwissen && (
             <div className="fachwissen-card fachwissen-card--session">
-              <p className="fachwissen-card__text">{fachwissen.text}</p>
-              {fachwissen.quelle && (
+              {activeTopic.hint && (
+                <p className="fachwissen-card__tip">
+                  <strong>Tipp:</strong> {activeTopic.hint}
+                </p>
+              )}
+              {fachwissen && (
+                <p className="fachwissen-card__text">{fachwissen.text}</p>
+              )}
+              {fachwissen?.quelle && (
                 <p className="fachwissen-card__source">
                   Quelle:{' '}
                   {fachwissen.url ? (
@@ -326,6 +332,7 @@ export function PracticeSession({
           onChange={setInput}
           onSubmit={submit}
           disabled={phase !== 'answering'}
+          focusKey={`${activeTopic.id}-${index}-${activeSeed}`}
         />
       )}
 
@@ -368,7 +375,9 @@ export function PracticeSession({
               Erklärung anzeigen
             </button>
           ) : (
-            <p className="explanation">{task.explanation}</p>
+            <p className="explanation">
+              {stripStrategySpoilers(task.explanation)}
+            </p>
           )}
           <button type="button" className="primary" onClick={next}>
             {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
@@ -391,7 +400,9 @@ export function PracticeSession({
               Erklärung anzeigen
             </button>
           ) : (
-            <p className="explanation">{task.explanation}</p>
+            <p className="explanation">
+              {stripStrategySpoilers(task.explanation)}
+            </p>
           )}
           <button type="button" className="primary" onClick={next}>
             {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}

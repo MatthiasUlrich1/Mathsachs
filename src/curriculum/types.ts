@@ -181,8 +181,9 @@ export interface Topic {
   id: string
   title: string
   /**
-   * Short under-task tip (answer format, strategy). Never put formulas here —
-   * formulas belong in `fachwissen` (expandable panel only).
+   * Strategy / answer-format tip. Never shown sticky under the question —
+   * only inside the expandable Fachwissen panel (with or without fachwissen.text).
+   * Never put formulas here that belong solely in `fachwissen.text`.
    */
   hint?: string
   pointsPerTask: number
@@ -253,6 +254,30 @@ export interface Grade {
   title: string
   packId?: string
   areas: TopicArea[]
+}
+
+/**
+ * Strip meta strategy sentences from post-answer explanations
+ * („Achte auf…“, „Schau auf…“, „Merke:“, …). Those belong in Fachwissen/Tipp.
+ * Keeps concrete calculation sentences (with digits / ≈ / =).
+ */
+export function stripStrategySpoilers(text: string): string {
+  const raw = text.trim()
+  if (!raw) return raw
+  const sentences = raw.split(/(?<=[.!?])\s+/).filter(Boolean)
+  const kept = sentences.filter((s) => {
+    const t = s.trim()
+    if (!t) return false
+    const metaStart =
+      /^(Achte\b|Schau auf\b|Tipp:|Merke:|Denk daran\b|Wichtig:|Vergiss nicht\b)/i.test(
+        t,
+      )
+    if (!metaStart) return true
+    // Keep if the sentence also carries the concrete result
+    if (/[≈=]/.test(t) && /\d/.test(t)) return true
+    return false
+  })
+  return kept.join(' ').replace(/\s{2,}/g, ' ').trim()
 }
 
 /**

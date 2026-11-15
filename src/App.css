@@ -1094,6 +1094,14 @@ a.task-request__send {
   margin-bottom: 8px;
 }
 
+.fachwissen-card__tip {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
 .fachwissen-card__text {
   font-size: 14px;
   line-height: 1.6;

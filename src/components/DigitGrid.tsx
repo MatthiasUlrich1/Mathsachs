@@ -1,3 +1,4 @@
+import { useEffect, useRef, type FC, type KeyboardEvent } from 'react'
 import './DigitGrid.css'
 
 export interface DigitGridRow {
@@ -42,10 +43,9 @@ const emptyRow = (len: number): string[] => Array.from({ length: len }, () => ''
 
 /**
  * Written-arithmetic style digit grid (Kästchenpapier).
- * Supports stacked +/−, multi-row multiplication (partial products + sum),
- * and division header with editable quotient.
+ * Entry order is right→left (Einer first), matching written calculation.
  */
-export const DigitGrid: React.FC<DigitGridProps> = ({
+export const DigitGrid: FC<DigitGridProps> = ({
   rows,
   digits,
   answerRows,
@@ -54,6 +54,8 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
   instruction,
   disabled = false,
 }) => {
+  const paperRef = useRef<HTMLDivElement>(null)
+
   const editableMeta = rows
     .map((row, idx) => ({ row, idx }))
     .filter(({ row }) => row.editable)
@@ -103,9 +105,9 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
   const focusCell = (
     editableIndex: number,
     cellIndex: number,
-    from: HTMLInputElement,
+    from?: HTMLElement | null,
   ) => {
-    const paper = from.closest('.digit-grid__paper')
+    const paper = from?.closest('.digit-grid__paper') ?? paperRef.current
     if (!paper) return
     const input = paper.querySelector<HTMLInputElement>(
       `input[data-edit-row="${editableIndex}"][data-edit-cell="${cellIndex}"]`,
@@ -113,15 +115,29 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
     input?.focus()
   }
 
+  // Start at ones place (rightmost cell) of first editable row.
+  useEffect(() => {
+    if (disabled || editableMeta.length === 0) return
+    const width = editableMeta[0]!.row.digits.length
+    if (width <= 0) return
+    // Defer so inputs exist after paint.
+    const id = requestAnimationFrame(() => focusCell(0, width - 1))
+    return () => cancelAnimationFrame(id)
+    // Only when grid structure / disabled changes — not on every digit.
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- intentional structure deps
+  }, [disabled, rows.length, editableMeta.length, editableMeta[0]?.row.digits.length])
+
   const onKeyDown = (
     editableIndex: number,
     cellIndex: number,
     width: number,
-    e: React.KeyboardEvent<HTMLInputElement>,
+    e: KeyboardEvent<HTMLInputElement>,
     current: string[],
   ) => {
-    if (e.key === 'Backspace' && !current[cellIndex] && cellIndex > 0) {
-      focusCell(editableIndex, cellIndex - 1, e.currentTarget)
+    // Empty cell + Backspace → move toward ones (right), undoing RTL fill order.
+    if (e.key === 'Backspace' && !current[cellIndex] && cellIndex < width - 1) {
+      focusCell(editableIndex, cellIndex + 1, e.currentTarget)
+      e.preventDefault()
     }
     if (e.key === 'ArrowLeft' && cellIndex > 0) {
       focusCell(editableIndex, cellIndex - 1, e.currentTarget)
@@ -132,12 +148,12 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
       e.preventDefault()
     }
     if (e.key === 'ArrowUp' && editableIndex > 0) {
-      const prevW = editableMeta[editableIndex - 1].row.digits.length
+      const prevW = editableMeta[editableIndex - 1]!.row.digits.length
       focusCell(editableIndex - 1, Math.min(cellIndex, prevW - 1), e.currentTarget)
       e.preventDefault()
     }
     if (e.key === 'ArrowDown' && editableIndex < editableMeta.length - 1) {
-      const nextW = editableMeta[editableIndex + 1].row.digits.length
+      const nextW = editableMeta[editableIndex + 1]!.row.digits.length
       focusCell(editableIndex + 1, Math.min(cellIndex, nextW - 1), e.currentTarget)
       e.preventDefault()
     }
@@ -148,7 +164,12 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
   return (
     <div className="digit-grid">
       {instruction && <div className="digit-grid__instruction">{instruction}</div>}
-      <div className="digit-grid__paper" role="group" aria-label="Schriftliches Rechnen">
+      <div
+        ref={paperRef}
+        className="digit-grid__paper"
+        role="group"
+        aria-label="Schriftliches Rechnen"
+      >
         {rows.map((row, rowIdx) => {
           if (row.rule) {
             return (
@@ -187,11 +208,13 @@ export const DigitGrid: React.FC<DigitGridProps> = ({
                       maxLength={1}
                       value={d}
                       disabled={disabled}
-                      aria-label={`Zeile ${eIdx + 1}, Ziffer ${i + 1}`}
+                      aria-label={`Zeile ${eIdx + 1}, Ziffer ${i + 1} von links`}
                       onChange={(e) => {
+                        const digit = e.target.value.replace(/\D/g, '')
                         setCell(eIdx, i, e.target.value, width)
-                        if (e.target.value.replace(/\D/g, '') && i < width - 1) {
-                          focusCell(eIdx, i + 1, e.currentTarget)
+                        // Written calc: after a digit, advance toward higher places (left).
+                        if (digit && i > 0) {
+                          focusCell(eIdx, i - 1, e.currentTarget)
                         }
                       }}
                       onKeyDown={(e) => onKeyDown(eIdx, i, width, e, values)}

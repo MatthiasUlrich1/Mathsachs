@@ -29,6 +29,13 @@ import {
   type LineFigureKind,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
+import {
+  math5NeuLb1,
+  math5NeuLb2,
+  math5NeuLb3,
+  math5NeuLb4,
+  math5NeuLb5,
+} from './math5NeuTopics'
 
 /** Whether n is a prime number (n ≥ 2). */
 const isPrime = (n: number): boolean => {
@@ -363,7 +370,7 @@ const schriftlicheDivision: Topic = {
       const r = randInt(rng, 0, divisor - 1)
       const dividend = q * divisor + r
       return digitGridDivideTask({
-        question: 'Dividiere schriftlich (Achtung auf Nullen im Quotienten):',
+        question: 'Dividiere schriftlich (große Zahl):',
         dividend,
         divisor,
         quotient: q,
@@ -2741,6 +2748,7 @@ export const klasse5: Grade = {
         potenzieren,
         teilbarkeit,
         primzahl,
+        ...math5NeuLb1,
       ],
     },
     {
@@ -2759,6 +2767,7 @@ export const klasse5: Grade = {
         mittelwert,
         zahlenstrahl,
         ordnenMitEinheiten,
+        ...math5NeuLb2,
       ],
     },
     {
@@ -2777,6 +2786,7 @@ export const klasse5: Grade = {
         verschiebungFormen,
         symmetrieAchsen,
         symmetriePunkt,
+        ...math5NeuLb3,
       ],
     },
     {
@@ -2791,6 +2801,7 @@ export const klasse5: Grade = {
         flaecheZusammengesetzt,
         umfangZusammengesetzt,
         volumenZusammengesetzt,
+        ...math5NeuLb4,
       ],
     },
     {
@@ -2807,6 +2818,7 @@ export const klasse5: Grade = {
         volumenUmrechnen,
         masseUmrechnen,
         zeitUmrechnen,
+        ...math5NeuLb5,
       ],
     },
   ],

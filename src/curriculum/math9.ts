@@ -8,6 +8,13 @@ import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask } from './taskHelpers'
 import { math9GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
+import {
+  math9NeuLb1,
+  math9NeuLb2,
+  math9NeuLb3,
+  math9NeuLb4,
+  math9NeuLb5,
+} from './math9NeuTopics'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -672,31 +679,38 @@ export const klasse9: Grade = {
       id: 'lb1',
       title: 'Funktionen und Potenzen',
       ustd: 48,
-      topics: [potenzProdukt, potenzQuotient, quadratWert, scheitel, ...math9GraphicReviews],
+      topics: [
+        potenzProdukt,
+        potenzQuotient,
+        quadratWert,
+        scheitel,
+        ...math9GraphicReviews,
+        ...math9NeuLb1,
+      ],
     },
     {
       id: 'lb2',
       title: 'Kreise, Kreiszylinder und Kugeln',
       ustd: 8,
-      topics: [kreisUmfang, kreisFlaeche, zylinderVolumen, kugelVolumen],
+      topics: [kreisUmfang, kreisFlaeche, zylinderVolumen, kugelVolumen, ...math9NeuLb2],
     },
     {
       id: 'lb3',
       title: 'Rechtwinklige Dreiecke',
       ustd: 32,
-      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert],
+      topics: [pythagorasHypotenuse, pythagorasKathete, trigWert, ...math9NeuLb3],
     },
     {
       id: 'lb4',
       title: 'Auswerten von Daten',
       ustd: 12,
-      topics: [mittelwert, median, modalwert],
+      topics: [mittelwert, median, modalwert, ...math9NeuLb4],
     },
     {
       id: 'lb5',
       title: 'Vernetzung',
       ustd: 4,
-      topics: [leiterProblem],
+      topics: [leiterProblem, ...math9NeuLb5],
     },
   ],
 }

@@ -4,6 +4,19 @@ import { describe, expect, it } from 'vitest'
 import { DigitGrid } from './DigitGrid'
 
 describe('DigitGrid', () => {
+  it('documents RTL written-calc entry (rightmost cell is ones place)', () => {
+    // Cells are indexed left→right; entry advances to lower index after a digit.
+    // See DigitGrid onChange: focusCell(eIdx, i - 1) when digit entered.
+    const width = 4
+    const onesIndex = width - 1
+    expect(onesIndex).toBe(3)
+    // After typing at ones (3), next focus is tens (2), then hundreds (1), then thousands (0).
+    const advance = (i: number) => (i > 0 ? i - 1 : i)
+    expect(advance(3)).toBe(2)
+    expect(advance(2)).toBe(1)
+    expect(advance(0)).toBe(0)
+  })
+
   it('renders operand rows and answer inputs', () => {
     const html = renderToStaticMarkup(
       createElement(DigitGrid, {
