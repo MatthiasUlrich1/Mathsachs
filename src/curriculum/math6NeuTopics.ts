@@ -1360,12 +1360,13 @@ const proportionalNeu: Topic = asNeuTopic('lb2-proportional', {
     // V6 Verhältnisleiste (Aufteilen) — Rezept: Gesamtmenge im Verhältnis teilen
     (rng: Rng) => {
       const rec = pick(rng, [
-        { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [50, 60, 100, 150] },
-        { text: 'Ein Salatdressing', labels: ['Öl', 'Essig'] as [string, string], unit: 'ml', ks: [10, 20, 25, 30] },
-        { text: 'Ein Teig', labels: ['Mehl', 'Wasser'] as [string, string], unit: 'g', ks: [25, 50, 75, 100] },
-        { text: 'Eine Kakaomischung', labels: ['Milch', 'Kakaopulver'] as [string, string], unit: 'ml', ks: [12.5, 25, 37.5] },
+        { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [50, 60, 100, 150], ratios: [[1, 2], [1, 3], [2, 3], [3, 2], [1, 4], [2, 1]] as Array<[number, number]> },
+        // Öl immer mehr als Essig, Mehl immer mehr als Wasser, Milch immer weit mehr als Kakaopulver
+        { text: 'Ein Salatdressing', labels: ['Öl', 'Essig'] as [string, string], unit: 'ml', ks: [10, 20, 25, 30], ratios: [[3, 1], [2, 1], [3, 2], [5, 2]] as Array<[number, number]> },
+        { text: 'Ein Teig', labels: ['Mehl', 'Wasser'] as [string, string], unit: 'g', ks: [25, 50, 75, 100], ratios: [[2, 1], [3, 2], [5, 3], [3, 1]] as Array<[number, number]> },
+        { text: 'Eine Kakaomischung', labels: ['Milch', 'Kakaopulver'] as [string, string], unit: 'ml', ks: [12.5, 25, 37.5], ratios: [[8, 1], [6, 1], [10, 1]] as Array<[number, number]> },
       ])
-      const [a, b] = pick(rng, [[1, 3], [1, 4], [2, 3], [3, 2], [3, 5], [1, 2], [2, 1], [5, 3]] as Array<[number, number]>)
+      const [a, b] = pick(rng, rec.ratios)
       const k = pick(rng, rec.ks)
       const total = roundTo(k * (a + b), 2)
       const amountA = roundTo(k * a, 2)
@@ -2930,6 +2931,8 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
     },
     // V5 Verhältnisleiste (Aufteilen) — Anteile an einer Gesamtmenge als Verhältnis
     (rng: Rng) => {
+      // Geldbeträge immer mit zwei Nachkommastellen: 37,50 €
+      const euro = (x: number) => x.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
       const ctx = pick(rng, [
         { text: 'Zwei Freundinnen teilen den Gewinn vom Kuchenverkauf', names: ['Mia', 'Lena'] as [string, string], unit: '€' },
         { text: 'Zwei Geschwister teilen sich das Preisgeld', names: ['Tom', 'Anna'] as [string, string], unit: '€' },
@@ -2942,14 +2945,14 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
       const amountB = roundTo(k * b, 2)
       const sum = a + b
       return ratioBarTask({
-        question: `${ctx.text}: ${formatDe(total)} ${ctx.unit}. ${ctx.names[0]} bekommt ${a} Teil${a === 1 ? '' : 'e'}, ${ctx.names[1]} bekommt ${b} Teil${b === 1 ? '' : 'e'} (Verhältnis ${a} : ${b}). Wie viel bekommt jeder?`,
+        question: `${ctx.text}: ${euro(total)} ${ctx.unit}. ${ctx.names[0]} bekommt ${a} Teil${a === 1 ? '' : 'e'}, ${ctx.names[1]} bekommt ${b} Teil${b === 1 ? '' : 'e'} (Verhältnis ${a} : ${b}). Wie viel bekommt jeder?`,
         mode: 'split',
         ratio: [a, b],
         labels: ctx.names,
         total,
         unit: ctx.unit,
-        solution: `${ctx.names[0]}: ${formatDe(amountA)} ${ctx.unit}, ${ctx.names[1]}: ${formatDe(amountB)} ${ctx.unit}`,
-        explanation: `Das Verhältnis ${a} : ${b} bedeutet ${sum} gleich große Teile. ${ctx.names[0]} erhält den Anteil ${a}/${sum}, ${ctx.names[1]} den Anteil ${b}/${sum} der Gesamtsumme. Ein Teil ist ${formatDe(total)} ${ctx.unit} : ${sum} = ${formatDe(k)} ${ctx.unit}. Also bekommt ${ctx.names[0]} ${a} · ${formatDe(k)} = ${formatDe(amountA)} ${ctx.unit} und ${ctx.names[1]} ${b} · ${formatDe(k)} = ${formatDe(amountB)} ${ctx.unit}. Probe: ${formatDe(amountA)} + ${formatDe(amountB)} = ${formatDe(total)}.`,
+        solution: `${ctx.names[0]}: ${euro(amountA)} ${ctx.unit}, ${ctx.names[1]}: ${euro(amountB)} ${ctx.unit}`,
+        explanation: `Das Verhältnis ${a} : ${b} bedeutet ${sum} gleich große Teile. ${ctx.names[0]} erhält den Anteil ${a}/${sum}, ${ctx.names[1]} den Anteil ${b}/${sum} der Gesamtsumme. Ein Teil ist ${euro(total)} ${ctx.unit} : ${sum} = ${euro(k)} ${ctx.unit}. Also bekommt ${ctx.names[0]} ${a} · ${euro(k)} = ${euro(amountA)} ${ctx.unit} und ${ctx.names[1]} ${b} · ${euro(k)} = ${euro(amountB)} ${ctx.unit}. Probe: ${euro(amountA)} + ${euro(amountB)} = ${euro(total)}.`,
         dedupeKey: `ratiobar-anteil:${ctx.names[0]}:${a}:${b}:${total}`,
       })
     },

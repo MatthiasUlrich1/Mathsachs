@@ -82,7 +82,7 @@ export const formatExamAnswer = (input: UserInput): string => {
     if (aText.trim() || bText.trim()) return `A: ${aText.trim() || '—'}, B: ${bText.trim() || '—'}`
     const a = input.parts.filter((v) => v === 'A').length
     const b = input.parts.filter((v) => v === 'B').length
-    return a + b > 0 ? `${a} Felder A, ${b} Felder B` : '—'
+    return a + b > 0 ? `Felder A: ${a}, Felder B: ${b}` : '—'
   }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'

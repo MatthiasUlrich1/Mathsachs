@@ -4,6 +4,7 @@
  */
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
+import { worksheetPrintExtras } from '../lib/worksheetPrint'
 import { buildUniqueTaskRound } from './uniqueRound'
 import { math6NeuTopics } from './math6NeuTopics'
 import type { Task, Topic } from './types'
@@ -28,7 +29,7 @@ const spoilers = (task: Task): string[] => {
       if (ratio.map(String).includes(n)) continue
       if (re.test(task.question)) hits.push(`Ergebnis ${n} in der Frage`)
     }
-  } else if (/\b\d+\s+(Felder|Kästchen)\b/.test(task.question)) {
+  } else if (/\b\d+\s+(Feld\w*|Kästchen)\b/.test(task.question)) {
     hits.push('Feldzahl in der Frage')
   }
   if (/"(parts|amounts)"/.test(JSON.stringify(props))) hits.push('Lösung in den Props')
@@ -101,10 +102,48 @@ describe('Spoiler-Prüfung Negativkontrolle', () => {
     const result = /\d+(?:,\d+)?/.exec(split.solution.replace(/^[^:]*:\s*/, ''))![0]
     expect(spoilers({ ...split, question: `${split.question} Es sind ${result} €.` }).length).toBeGreaterThan(0)
     expect(spoilers({ ...colour, question: `${colour.question} Nimm 10 Felder.` })).toContain('Feldzahl in der Frage')
+    expect(spoilers({ ...colour, question: `${colour.question} Verteile sie auf 10 Feldern.` })).toContain('Feldzahl in der Frage')
     expect(spoilers({ ...colour, question: `${colour.question} Tippe die Felder an.` })).toContain(
       'Bildschirm-Hinweis in der Frage',
     )
     const leaked = { ...colour.interactive!.props, parts: ['A'] }
     expect(spoilers({ ...colour, interactive: { ...colour.interactive!, props: leaked } })).toContain('Lösung in den Props')
+  })
+})
+
+describe('Inhaltliche Qualität', () => {
+  it('Geldbeträge haben immer zwei Nachkommastellen (Frage, Lösung, Erklärung, Druck) und die Eingabe nimmt 37,5 / 37,50 / 37.5', () => {
+    const money = barTasks(topicOf('lb5-anteil-groesse__neu')).filter((t) => t.interactive!.props.unit === '€')
+    expect(money.length).toBeGreaterThan(0)
+    let sawHalf = false
+    for (const t of money) {
+      for (const text of [t.question, t.solution, t.explanation]) {
+        expect(text, text).not.toMatch(/\d,\d (€|\u20ac)/) // one decimal
+        expect(text, text).not.toMatch(/(^|[^\d,])\d+ €/) // none
+      }
+      const svg = worksheetPrintExtras(t).visualHtml!
+      expect(svg).toMatch(/Gesamt: [\d.]+,\d\d €/)
+      const [ea, eb] = (t.sampleAnswer as { amounts: [string, string] }).amounts
+      expect(ea).toMatch(/,\d\d$/)
+      for (const variant of [(s: string) => s, (s: string) => s.replace(/0$/, ''), (s: string) => s.replace(',', '.').replace(/0$/, '')]) {
+        expect(t.check({ kind: 'ratioBar', parts: [], amounts: [variant(ea), variant(eb)] }), `${ea}/${eb}`).toBe(true)
+      }
+      if (/,50 €/.test(t.solution)) sawHalf = true
+    }
+    expect(sawHalf).toBe(true)
+  })
+
+  it('Rezepte nutzen nur realistische Verhältnisse (Kakao < Milch, Wasser < Mehl, Essig < Öl)', () => {
+    const tasks = barTasks(topicOf('lb2-proportional__neu')).filter((t) => t.interactive!.props.mode === 'split')
+    expect(tasks.length).toBeGreaterThan(0)
+    const seen = new Set<string>()
+    for (const t of tasks) {
+      const [x, y] = t.interactive!.props.labels as string[]
+      const [a, b] = t.interactive!.props.ratio as number[]
+      seen.add(x!)
+      if (['Milch', 'Mehl', 'Öl'].includes(x!)) expect(a, `${x}:${y} ${a}:${b}`).toBeGreaterThan(b!)
+      if (x === 'Milch') expect(a! / b!, t.question).toBeGreaterThanOrEqual(6)
+    }
+    expect(seen.size).toBeGreaterThanOrEqual(3)
   })
 })

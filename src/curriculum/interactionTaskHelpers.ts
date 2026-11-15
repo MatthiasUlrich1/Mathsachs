@@ -39,9 +39,9 @@ import {
   ratioSplitAmounts,
   ratioSplitExact,
   ratioSplitMatches,
+  formatRatioAmount,
   type RatioBarMode,
 } from '../lib/ratioBarLogic'
-import { formatDe } from '../lib/num'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -374,7 +374,7 @@ export const ratioBarTask = (input: RatioBarTaskInput): Task => {
   const [ea, eb] = ratioSplitAmounts(total, ratio)
   return {
     ...common,
-    sampleAnswer: { kind: 'ratioBar', parts: [], amounts: [formatDe(ea), formatDe(eb)] },
+    sampleAnswer: { kind: 'ratioBar', parts: [], amounts: [formatRatioAmount(ea, unit), formatRatioAmount(eb, unit)] },
     interactive: {
       type: 'ratioBar',
       props: {

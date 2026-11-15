@@ -106,7 +106,7 @@ describe('ratioBar wiring', () => {
 
   it('exam protocol text', () => {
     expect(formatExamAnswer({ kind: 'ratioBar', parts: [] })).toBe('—')
-    expect(formatExamAnswer(bar('AAB.'))).toBe('2 Felder A, 1 Felder B')
+    expect(formatExamAnswer(bar('AAB.'))).toBe('Felder A: 2, Felder B: 1')
     expect(formatExamAnswer(amounts('150', ''))).toBe('A: 150, B: —')
   })
 

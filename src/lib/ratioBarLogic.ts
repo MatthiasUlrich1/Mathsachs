@@ -188,8 +188,12 @@ export const ratioBarLayout = (mode: RatioBarMode, fields: number): RatioBarLayo
 
 export const ratioLegendText = (letter: 'A' | 'B', label: string): string => `${letter} = ${label}`
 
+/** Euro amounts always show two decimals (37,50 €); other units are trimmed (12,5 ml). */
+export const formatRatioAmount = (value: number, unit: string): string =>
+  unit === '€' ? value.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : formatDe(value)
+
 export const ratioTotalText = (total: number, unit: string): string =>
-  `Gesamt: ${formatDe(total)}${unit ? ` ${unit}` : ''}`
+  `Gesamt: ${formatRatioAmount(total, unit)}${unit ? ` ${unit}` : ''}`
 
 export interface RatioTextExtent {
   text: string

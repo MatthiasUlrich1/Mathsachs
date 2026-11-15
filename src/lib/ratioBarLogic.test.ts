@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import {
   RATIO_MAX_SEGMENTS,
   RATIO_MIN_SEGMENTS,
+  RATIO_SWATCH,
   RATIO_VIEWBOX_W,
   cycleRatioField,
   normalizeParts,
@@ -121,7 +122,7 @@ describe('ratioBarLogic layout', () => {
         })
         for (const it of l.legend) {
           expect(it.swatchX).toBeGreaterThanOrEqual(0)
-          expect(it.swatchY + 18).toBeLessThanOrEqual(l.viewBoxH)
+          expect(it.swatchY + RATIO_SWATCH).toBeLessThanOrEqual(l.viewBoxH)
         }
         expect(l.legend[0]!.swatchY).toBeGreaterThanOrEqual(l.bar.y + l.bar.h)
       }
