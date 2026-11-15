@@ -2,7 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import { angleProtractorTask, digitGridMultiplyTask, visualTask } from '../curriculum/taskHelpers'
+import { angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
 import { TaskVisual, initTaskInput, taskInteractiveKey } from './TaskMedia'
 
 describe('TaskMedia', () => {
@@ -108,5 +108,19 @@ describe('graphical tasks stay attached after generate', () => {
     expect(taskInteractiveKey(make(47))).toBe(taskInteractiveKey(make(47)))
     expect(taskInteractiveKey(make(47))).not.toBe(taskInteractiveKey(make(62)))
     expect(taskInteractiveKey(visualTask({ question: 'q', answerKind: 'integer', value: 1, solution: '1', explanation: 'e', visualContent: '<svg/>' }))).toBe('')
+  })
+
+  it('initTaskInput: rulerMeasure starts untouched (measure empty, draw away from target)', () => {
+    const measure = rulerMeasureTask({ question: 'q', mode: 'measure', lengthCm: 4.3, solution: 's', explanation: 'e' })
+    expect(initTaskInput(measure)).toEqual({ kind: 'rulerMeasure', length: null, touched: false })
+    const draw = rulerMeasureTask({ question: 'q', mode: 'draw', lengthCm: 4.3, solution: 's', explanation: 'e' })
+    const start = initTaskInput(draw)
+    expect(start.kind).toBe('rulerMeasure')
+    if (start.kind === 'rulerMeasure') {
+      expect(start.touched).toBe(false)
+      expect(start.length).not.toBeNull()
+      expect(start.length).not.toBe(4.3)
+      expect(draw.check(start)).toBe(false)
+    }
   })
 })

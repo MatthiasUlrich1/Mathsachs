@@ -1,0 +1,110 @@
+.ruler-measure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.ruler-measure__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.ruler-measure__svg {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  /* Drags must not scroll the page (touch / stylus). */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ruler-measure__segment {
+  stroke: #f57c00;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.ruler-measure__tick {
+  stroke: #f57c00;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.ruler-measure__solution {
+  stroke: #16a34a;
+  stroke-width: 2.5;
+  stroke-dasharray: 6 4;
+}
+
+.ruler-measure__body {
+  fill: rgba(253, 230, 138, 0.55);
+  stroke: #a16207;
+  stroke-width: 1.5;
+}
+
+.ruler-measure__tool--movable .ruler-measure__body {
+  cursor: grab;
+}
+
+.ruler-measure__ticks {
+  stroke: #422006;
+  stroke-width: 0.8;
+  fill: none;
+}
+
+.ruler-measure__label {
+  font-size: 10px;
+  fill: #422006;
+}
+
+.ruler-measure__edge {
+  stroke: #422006;
+  stroke-width: 1;
+}
+
+.ruler-measure__start {
+  fill: #dc2626;
+}
+
+.ruler-measure__handle {
+  cursor: grab;
+}
+
+.ruler-measure__handle circle {
+  fill: #fff;
+  stroke: #a16207;
+  stroke-width: 2;
+}
+
+.ruler-measure__handle text {
+  font-size: 16px;
+  fill: #a16207;
+}
+
+.ruler-measure__end-handle {
+  fill: rgba(245, 124, 0, 0.35);
+  stroke: #f57c00;
+  stroke-width: 2.5;
+  cursor: grab;
+}
+
+.ruler-measure__answer {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.1rem;
+}
+
+.ruler-measure__answer input {
+  width: 6rem;
+  text-align: right;
+  font-size: 1.1rem;
+  padding: 6px 8px;
+}

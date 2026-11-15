@@ -64,6 +64,9 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'angleProtractor') {
     return input.touched && input.degrees !== null ? `${input.degrees}°` : '—'
   }
+  if (input.kind === 'rulerMeasure') {
+    return input.touched && input.length !== null ? `${String(input.length).replace('.', ',')} cm` : '—'
+  }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }

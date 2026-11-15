@@ -142,6 +142,27 @@ function digitBoxes(n: number): string {
  * Build static print extras for one task.
  * Prefer `visualContent`; otherwise derive a paper-suitable diagram from the interactive.
  */
+/** Bare segment with end ticks (40 units per cm), no length label. */
+function rulerSegmentSvg(lengthCm: number, angleDeg: number): string {
+  const u = 40
+  const a = (angleDeg * Math.PI) / 180
+  const dx = lengthCm * u * Math.cos(a)
+  const dy = -lengthCm * u * Math.sin(a)
+  const pad = 12
+  const w = Math.ceil(Math.abs(dx) + 2 * pad)
+  const h = Math.ceil(Math.abs(dy) + 2 * pad)
+  const x1 = pad
+  const y1 = dy < 0 ? pad - dy : pad
+  const x2 = x1 + dx
+  const y2 = y1 + dy
+  const nx = Math.sin(a) * 6
+  const ny = Math.cos(a) * 6
+  const f = (n: number) => n.toFixed(1)
+  const tick = (x: number, y: number) =>
+    `<line x1="${f(x - nx)}" y1="${f(y - ny)}" x2="${f(x + nx)}" y2="${f(y + ny)}"/>`
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="100%" style="max-width:${w}px" role="img" aria-label="Strecke"><g stroke="#111" stroke-width="2" stroke-linecap="round"><line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}"/>${tick(x1, y1)}${tick(x2, y2)}</g></svg>`
+}
+
 export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
   const interactive = task.interactive
   const fromVisual = task.visualContent?.trim()
@@ -231,6 +252,25 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
             ? 'Miss den Winkel mit dem Geodreieck und trage die Gradzahl ein.'
             : 'Zeichne den Winkel mit dem Geodreieck.'),
         answerBlank: '__________ °',
+      }
+    }
+
+    case 'rulerMeasure': {
+      const measure = props.mode !== 'draw'
+      const lengthCm = Number(props.lengthCm)
+      const angle = Number(props.angle ?? 0)
+      // Measure: the bare segment (no length label). Draw: only the answer field.
+      const visualHtml =
+        fromVisual.visualHtml ??
+        (measure && Number.isFinite(lengthCm) ? rulerSegmentSvg(lengthCm, angle) : undefined)
+      return {
+        visualHtml,
+        paperHint:
+          instruction ??
+          (measure
+            ? 'Miss die Strecke mit dem Lineal und trage die Länge in cm ein.'
+            : 'Zeichne die Strecke mit dem Lineal.'),
+        answerBlank: '__________ cm',
       }
     }
 

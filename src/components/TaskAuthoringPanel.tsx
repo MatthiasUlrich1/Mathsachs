@@ -105,6 +105,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       }
     case 'angleProtractor':
       return { mode: 'measure', angle: 47, startAngle: 0, tolerance: 1 }
+    case 'rulerMeasure':
+      return { mode: 'measure', lengthCm: 4.3, angle: 0, tolerance: 0.1 }
     case 'paramSlider':
       return {
         preview: 'linear',
@@ -938,6 +940,27 @@ function ElementPropsForm({
           {field('angle', 'Winkel in ° (ganzzahlig, 1–179)')}
           {field('startAngle', 'Drehung des ersten Schenkels in °')}
           {field('tolerance', 'Toleranz in °')}
+        </>
+      )
+    case 'rulerMeasure':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-mode">
+              Modus
+            </label>
+            <select
+              id="prop-mode"
+              value={propStr(draft, 'mode', 'measure')}
+              onChange={(e) => setDraft(setProp(draft, 'mode', e.target.value))}
+            >
+              <option value="measure">Strecke messen und eintragen</option>
+              <option value="draw">Strecke abtragen (Endpunkt ziehen)</option>
+            </select>
+          </div>
+          {field('lengthCm', 'Länge in cm (0,5–12, Schritt 0,1)')}
+          {field('angle', 'Neigung der Strecke in ° (−15 bis 15)')}
+          {field('tolerance', 'Toleranz in cm')}
         </>
       )
     case 'paramSlider':

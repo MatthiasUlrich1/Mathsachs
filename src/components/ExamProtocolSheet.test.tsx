@@ -83,5 +83,8 @@ describe('ExamProtocolSheet', () => {
     expect(formatExamAnswer({ kind: 'angleProtractor', degrees: 47, touched: true })).toBe('47°')
     expect(formatExamAnswer({ kind: 'angleProtractor', degrees: 47, touched: false })).toBe('—')
     expect(formatExamAnswer({ kind: 'angleProtractor', degrees: null, touched: true })).toBe('—')
+    expect(formatExamAnswer({ kind: 'rulerMeasure', length: 4.3, touched: true })).toBe('4,3 cm')
+    expect(formatExamAnswer({ kind: 'rulerMeasure', length: 4.3, touched: false })).toBe('—')
+    expect(formatExamAnswer({ kind: 'rulerMeasure', length: null, touched: true })).toBe('—')
   })
 })

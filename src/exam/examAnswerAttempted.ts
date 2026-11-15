@@ -43,6 +43,8 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'angleProtractor':
       // Start position must not score: only a moved/typed instrument counts.
       return input.touched && input.degrees !== null
+    case 'rulerMeasure':
+      return input.touched && input.length !== null
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

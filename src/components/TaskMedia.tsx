@@ -12,6 +12,7 @@ import { CoordinateClick } from './CoordinateClick'
 import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ParamSlider } from './ParamSlider'
 import { AngleProtractor } from './AngleProtractor'
+import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
 import { ClozeMulti } from './ClozeMulti'
@@ -99,6 +100,15 @@ export const initTaskInput = (task: Task): UserInput => {
     return {
       kind: 'angleProtractor',
       degrees: typeof start === 'number' ? start : null,
+      touched: false,
+    }
+  }
+  if (task.interactive?.type === 'rulerMeasure') {
+    // Draw mode starts with the end point away from the target (untouched = not attempted).
+    const start = task.interactive.props.initialLength
+    return {
+      kind: 'rulerMeasure',
+      length: typeof start === 'number' ? start : null,
       touched: false,
     }
   }
@@ -426,6 +436,23 @@ export function TaskInteractive({
             value.kind === 'angleProtractor'
               ? value
               : { kind: 'angleProtractor', degrees: null, touched: false }
+          }
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'rulerMeasure' && (
+        <RulerMeasure
+          mode={interactive.props.mode}
+          lengthCm={interactive.props.lengthCm}
+          angle={interactive.props.angle}
+          unitPx={interactive.props.unitPx}
+          initialLength={interactive.props.initialLength ?? undefined}
+          value={
+            value.kind === 'rulerMeasure'
+              ? value
+              : { kind: 'rulerMeasure', length: null, touched: false }
           }
           onChange={onChange}
           instruction={interactive.props.instruction}

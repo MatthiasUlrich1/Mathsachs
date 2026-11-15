@@ -13,6 +13,7 @@ import {
   multiSelectTask,
   numberLineTask,
   angleProtractorTask,
+  rulerMeasureTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -79,6 +80,7 @@ export type AuthoringElementType =
   | 'coordinateDraw'
   | 'paramSlider'
   | 'angleProtractor'
+  | 'rulerMeasure'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -106,6 +108,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'coordinateDraw', label: 'Zeichnen im Koordinatensystem' },
   { id: 'paramSlider', label: 'Parameter-Slider (Funktionsgraph)' },
   { id: 'angleProtractor', label: 'Winkelmesser (Geodreieck)' },
+  { id: 'rulerMeasure', label: 'Lineal (Strecke messen/abtragen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -426,6 +429,22 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       if (!Number.isFinite(tol) || tol < 0) errors.push('Winkelmesser: Toleranz ungültig.')
       break
     }
+    case 'rulerMeasure': {
+      const len = Number(p.lengthCm)
+      if (!Number.isFinite(len) || len < 0.5 || len > 12 || Math.abs(Math.round(len * 10) / 10 - len) > 1e-9) {
+        errors.push('Lineal: Länge muss zwischen 0,5 und 12 cm liegen (Schritt 0,1).')
+      }
+      if (p.mode !== 'measure' && p.mode !== 'draw') {
+        errors.push('Lineal: Modus „messen“ oder „abtragen“ wählen.')
+      }
+      const ang = Number(p.angle ?? 0)
+      if (!Number.isFinite(ang) || Math.abs(ang) > 15) {
+        errors.push('Lineal: Neigung muss zwischen −15° und 15° liegen.')
+      }
+      const tol = Number(p.tolerance ?? 0.1)
+      if (!Number.isFinite(tol) || tol < 0) errors.push('Lineal: Toleranz ungültig.')
+      break
+    }
     case 'pairMatch':
     case 'clozeMulti':
     case 'iconBelong':
@@ -672,6 +691,18 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
           explanation,
         }),
       )
+    case 'rulerMeasure':
+      return withVisual(
+        rulerMeasureTask({
+          question,
+          mode: p.mode === 'draw' ? 'draw' : 'measure',
+          lengthCm: Number(p.lengthCm),
+          angle: Number(p.angle) || 0,
+          tolerance: Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 0.1,
+          solution,
+          explanation,
+        }),
+      )
     default: {
       // Exhaustiveness fallback
       return withVisual(
@@ -855,6 +886,17 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   angle: ${Number(p.angle)},
   startAngle: ${Number(p.startAngle) || 0},
   tolerance: ${Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 1},
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    case 'rulerMeasure':
+      call = `rulerMeasureTask({
+  question: ${q},
+  mode: ${JSON.stringify(p.mode === 'draw' ? 'draw' : 'measure')},
+  lengthCm: ${Number(p.lengthCm)},
+  angle: ${Number(p.angle) || 0},
+  tolerance: ${Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 0.1},
   solution: ${sol},
   explanation: ${expl},
 })`

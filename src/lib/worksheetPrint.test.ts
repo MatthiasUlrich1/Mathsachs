@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from './rng'
 import {
   angleProtractorTask,
+  rulerMeasureTask,
   choicePickTask,
   coordinateClickTask,
   coordinateDrawTask,
@@ -157,6 +158,22 @@ describe('worksheetPrintExtras', () => {
     }
     const measure = worksheetPrintExtras(
       angleProtractorTask({ question: 'q', mode: 'measure', angle: 47, solution: 's', explanation: 'e' }),
+    )
+    expect(measure.visualHtml).toContain('<svg')
+  })
+
+  it('prints a typed cm field and no length label for rulerMeasure', () => {
+    for (const mode of ['measure', 'draw'] as const) {
+      const extras = worksheetPrintExtras(
+        rulerMeasureTask({ question: 'q', mode, lengthCm: 4.3, solution: 's', explanation: 'e' }),
+      )
+      expect(extras.answerBlank).toContain('cm')
+      expect(extras.answerBlank).toContain('___')
+      expect(extras.visualHtml ?? '').not.toContain('4,3')
+      expect(extras.visualHtml ?? '').not.toContain('cm')
+    }
+    const measure = worksheetPrintExtras(
+      rulerMeasureTask({ question: 'q', mode: 'measure', lengthCm: 4.3, solution: 's', explanation: 'e' }),
     )
     expect(measure.visualHtml).toContain('<svg')
   })

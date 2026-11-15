@@ -44,6 +44,8 @@ export type UserInput =
   | { kind: 'paramSlider'; values: Record<string, number> }
   /** Virtual Geodreieck: degrees measured/drawn; untouched = not attempted. */
   | { kind: 'angleProtractor'; degrees: number | null; touched: boolean }
+  /** Virtual ruler: length in cm measured/drawn; untouched = not attempted. */
+  | { kind: 'rulerMeasure'; length: number | null; touched: boolean }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -77,6 +79,7 @@ export const emptyInput = (
     }
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   if (kind === 'angleProtractor') return { kind: 'angleProtractor', degrees: null, touched: false }
+  if (kind === 'rulerMeasure') return { kind: 'rulerMeasure', length: null, touched: false }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -101,6 +104,7 @@ export interface InteractiveConfig {
     | 'coordinateDraw'
     | 'paramSlider'
     | 'angleProtractor'
+    | 'rulerMeasure'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

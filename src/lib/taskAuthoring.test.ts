@@ -166,6 +166,24 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     expect(validateDraft(bad).join(' ')).toContain('Winkelmesser')
   })
 
+  it('builds rulerMeasure task and validates the length', () => {
+    const draft = baseDraft({
+      element: { type: 'rulerMeasure', props: { mode: 'measure', lengthCm: 4.3, angle: 0, tolerance: 0.1 } },
+      task: { question: 'Miss die Strecke.', unit: '', solution: '4,3 cm', explanation: 'Ablesen.', hint: '' },
+    })
+    expect(validateDraft(draft)).toEqual([])
+    const task = draftToTask(draft)
+    expect(task.interactive?.type).toBe('rulerMeasure')
+    expect(task.interactive?.props).toMatchObject({ mode: 'measure', lengthCm: 4.3 })
+    expect(task.check(task.sampleAnswer)).toBe(true)
+    expect(exportGeneratorSnippet(draft)).toContain('rulerMeasureTask({')
+    const bad = baseDraft({
+      element: { type: 'rulerMeasure', props: { mode: 'measure', lengthCm: 20 } },
+      task: { question: 'q', unit: '', solution: 's', explanation: 'e', hint: '' },
+    })
+    expect(validateDraft(bad).join(' ')).toContain('Lineal')
+  })
+
   it('builds coordinateDraw task from solution scene', () => {
     const draft = baseDraft({
       element: {

@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { angleProtractorTask } from './measureTaskHelpers'
+import { angleProtractorTask, rulerMeasureTask } from './measureTaskHelpers'
 import { examAnswerAttempted } from '../exam/examAnswerAttempted'
 import { emptyInput } from './types'
 import { drawStartDegrees } from '../lib/protractorGeometry'
+import { drawStartLength } from '../lib/rulerGeometry'
 
 const measure = () =>
   angleProtractorTask({
@@ -91,5 +92,97 @@ describe('angleProtractorTask', () => {
     expect(examAnswerAttempted(t, { kind: 'angleProtractor', degrees: 47, touched: false })).toBe(false)
     expect(examAnswerAttempted(t, { kind: 'angleProtractor', degrees: null, touched: true })).toBe(false)
     expect(examAnswerAttempted(t, { kind: 'angleProtractor', degrees: 47, touched: true })).toBe(true)
+  })
+})
+
+describe('rulerMeasureTask', () => {
+  const ruler = () =>
+    rulerMeasureTask({
+      question: 'Miss die Strecke.',
+      mode: 'measure',
+      lengthCm: 4.3,
+      solution: '4,3 cm',
+      explanation: 'Am Lineal ablesen.',
+    })
+
+  it('accepts the length within the default tolerance of 0.1 cm', () => {
+    const t = ruler()
+    expect(t.check({ kind: 'rulerMeasure', length: 4.3, touched: true })).toBe(true)
+    expect(t.check({ kind: 'rulerMeasure', length: 4.4, touched: true })).toBe(true)
+    expect(t.check({ kind: 'rulerMeasure', length: 4.2, touched: true })).toBe(true)
+    expect(t.check({ kind: 'rulerMeasure', length: 4.5, touched: true })).toBe(false)
+    expect(t.check({ kind: 'rulerMeasure', length: 4.1, touched: true })).toBe(false)
+  })
+
+  it('honours a custom tolerance', () => {
+    const t = rulerMeasureTask({
+      question: 'q',
+      mode: 'measure',
+      lengthCm: 4.3,
+      tolerance: 0.3,
+      solution: 's',
+      explanation: 'e',
+    })
+    expect(t.check({ kind: 'rulerMeasure', length: 4.6, touched: true })).toBe(true)
+    expect(t.check({ kind: 'rulerMeasure', length: 4.7, touched: true })).toBe(false)
+  })
+
+  it('rejects an untouched instrument and missing length', () => {
+    const t = ruler()
+    expect(t.check({ kind: 'rulerMeasure', length: 4.3, touched: false })).toBe(false)
+    expect(t.check({ kind: 'rulerMeasure', length: null, touched: true })).toBe(false)
+  })
+
+  it('accepts a typed value with a decimal comma (exam/worksheet)', () => {
+    const t = ruler()
+    expect(t.check({ kind: 'value', value: '4,3' })).toBe(true)
+    expect(t.check({ kind: 'value', value: '4.3' })).toBe(true)
+    expect(t.check({ kind: 'value', value: '4,4' })).toBe(true)
+    expect(t.check({ kind: 'value', value: '4,6' })).toBe(false)
+    expect(t.check({ kind: 'value', value: '' })).toBe(false)
+    expect(t.check({ kind: 'value', value: 'abc' })).toBe(false)
+  })
+
+  it('has a sampleAnswer that passes check', () => {
+    for (const mode of ['measure', 'draw'] as const) {
+      const t = rulerMeasureTask({ question: 'q', mode, lengthCm: 7.8, angle: -10, solution: 's', explanation: 'e' })
+      expect(t.check(t.sampleAnswer)).toBe(true)
+    }
+  })
+
+  it('does not spoil the length in the visual or the question', () => {
+    const t = ruler()
+    expect(t.visualContent ?? '').not.toContain('4,3')
+    expect(t.visualContent ?? '').not.toContain('4.3')
+    expect(t.question).not.toContain('4')
+  })
+
+  it('configures the interactive and a spoiler-free draw start', () => {
+    const t = ruler()
+    expect(t.interactive?.type).toBe('rulerMeasure')
+    expect(t.interactive?.props).toMatchObject({ mode: 'measure', lengthCm: 4.3, angle: 0, unitPx: 40 })
+    const draw = rulerMeasureTask({ question: 'q', mode: 'draw', lengthCm: 4.3, solution: 's', explanation: 'e' })
+    expect(draw.interactive?.props.initialLength).toBe(drawStartLength(4.3))
+    expect(draw.interactive?.props.initialLength).not.toBe(4.3)
+  })
+
+  it('rejects lengths, angles and scales outside the allowed range', () => {
+    const make = (extra: object) => () =>
+      rulerMeasureTask({ question: 'q', mode: 'measure', lengthCm: 4.3, solution: 's', explanation: 'e', ...extra })
+    expect(make({ lengthCm: 0.4 })).toThrow()
+    expect(make({ lengthCm: 12.1 })).toThrow()
+    expect(make({ lengthCm: 4.33 })).toThrow()
+    expect(make({ angle: 20 })).toThrow()
+    expect(make({ unitPx: 60 })).toThrow()
+    expect(make({ lengthCm: 0.5 })).not.toThrow()
+    expect(make({ lengthCm: 12, angle: -15, unitPx: 40 })).not.toThrow()
+  })
+
+  it('counts only a touched instrument as attempted in an exam', () => {
+    const t = ruler()
+    expect(examAnswerAttempted(t, emptyInput('rulerMeasure'))).toBe(false)
+    expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: 4.3, touched: false })).toBe(false)
+    expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: null, touched: true })).toBe(false)
+    expect(examAnswerAttempted(t, { kind: 'rulerMeasure', length: 4.3, touched: true })).toBe(true)
   })
 })
