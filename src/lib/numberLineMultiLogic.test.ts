@@ -208,7 +208,6 @@ describe('rows by rank', () => {
 
 describe('end of drag', () => {
   it('clears the grab and the drag state', () => {
-    expect(nlmEndDrag({ id: 'a', dx: 1, dy: 2 }, { id: 'a', cx: 1, cy: 2 })).toEqual({ grab: null, drag: null })
-    expect(nlmEndDrag(null, null)).toEqual({ grab: null, drag: null })
+    expect(nlmEndDrag()).toEqual({ grab: null, drag: null })
   })
 })

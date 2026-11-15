@@ -155,7 +155,7 @@ export const nlmRowsByRank = (ids: readonly string[], positions: Record<string, 
 }
 
 /** State after a drag ended (pointer up, cancel or lost capture): nothing is grabbed any more. */
-export const nlmEndDrag = <G, D>(_grab: G, _drag: D): { grab: null; drag: null } => ({ grab: null, drag: null })
+export const nlmEndDrag = (): { grab: null; drag: null } => ({ grab: null, drag: null })
 
 /** Chip centre kept fully inside the viewBox and above the line. */
 export const nlmClampChip = (cx: number, cy: number): { cx: number; cy: number } => ({

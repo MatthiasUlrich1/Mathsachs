@@ -70,7 +70,7 @@ describe('buildTreeModel', () => {
   it('throws when siblings do not add up to 1, an edge is missing or foreign, or a value is larger than 1', () => {
     expect(() => buildTreeModel(two, { ...urn, '0': '1/5' })).toThrow(/add up to 1/)
     expect(() => buildTreeModel(two, { ...urn, '1.1': '1/2' })).toThrow(/add up to 1/)
-    const { '1.1': _omit, ...missing } = urn
+    const missing = Object.fromEntries(Object.entries(urn).filter(([k]) => k !== '1.1'))
     expect(() => buildTreeModel(two, missing)).toThrow(/1\.1/)
     expect(() => buildTreeModel(two, { ...urn, '2': '0' })).toThrow(/not an edge/)
     expect(() => buildTreeModel(two, { ...urn, '0': '3/2', '1': '-1/2' })).toThrow()

@@ -142,7 +142,7 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
   }
 
   const onUp = () => {
-    const next = nlmEndDrag(grab.current, drag)
+    const next = nlmEndDrag()
     grab.current = next.grab
     setDrag(next.drag)
   }
