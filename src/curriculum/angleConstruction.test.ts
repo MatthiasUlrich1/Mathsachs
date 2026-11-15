@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
+import { formatDe } from '../lib/num'
 import {
   hasAngleAt,
   rayIntersection,
@@ -147,5 +148,106 @@ describe('lb3-kongruenzsatz__neu', () => {
       'lb3kong-konstruktion-sws',
       'lb3kong-konstruktion-wsw',
     ])
+  })
+})
+
+describe('SWS: marked C must lie on the drawn ray', () => {
+  for (const set of SWS_SETS) {
+    it(`c=${set.c}, alpha=${set.alpha}: ray up + C down fails, matching sides pass`, () => {
+      const t = swsConstructionTask(set)
+      const { steps } = propsOf(t)
+      const sol = solutionOf(t)
+      const rayDownCUp = {
+        ...sol,
+        objects: sol.objects.map((o) => (o.id === 's-w' ? ({ ...o, y2: -(o as { y2: number }).y2 } as GraphObject) : o)),
+      }
+      // mirrored ray, C and segments above: the ray no longer carries C
+      expect(steps[1]!.check(rayDownCUp)).toBe(true)
+      expect(steps[2]!.check(rayDownCUp)).toBe(false)
+      expect(allConstructionStepsPass(steps, rayDownCUp)).toBe(false)
+      // only C and the segments mirrored, ray stays up
+      const cDown = {
+        ...sol,
+        objects: sol.objects.map((o): GraphObject => {
+          if (o.kind === 'point' && o.id === 's-c') return { ...o, y: -o.y }
+          if (o.kind === 'segment' && (o.id === 's-ac' || o.id === 's-bc')) return { ...o, y2: -o.y2 }
+          return o
+        }),
+      }
+      expect(steps[2]!.check(cDown)).toBe(false)
+      expect(allConstructionStepsPass(steps, mirrorScene(sol))).toBe(true)
+    })
+
+    it(`c=${set.c}, alpha=${set.alpha}: ray off by 2 degrees fails step 2`, () => {
+      const t = swsConstructionTask(set)
+      const sol = solutionOf(t)
+      const bad = {
+        ...sol,
+        objects: sol.objects.map((o) =>
+          o.id === 's-w'
+            ? ({ ...o, x2: 4 * Math.cos(rad(set.alpha + 2)), y2: 4 * Math.sin(rad(set.alpha + 2)) } as GraphObject)
+            : o,
+        ),
+      }
+      expect(propsOf(t).steps[1]!.check(bad)).toBe(false)
+    })
+  }
+})
+
+describe('WSW: beta off by 2 degrees fails step 3', () => {
+  it('rejects', () => {
+    const set = WSW_SETS[1]!
+    const t = wswConstructionTask(set)
+    const sol = solutionOf(t)
+    const bad = {
+      ...sol,
+      objects: sol.objects.map((o) =>
+        o.id === 's-wb'
+          ? ({ ...o, x2: set.c - 4 * Math.cos(rad(set.beta + 2)), y2: 4 * Math.sin(rad(set.beta + 2)) } as GraphObject)
+          : o,
+      ),
+    }
+    expect(propsOf(t).steps[2]!.check(bad)).toBe(false)
+  })
+})
+
+describe('spoiler-freeness: computed side a and the coordinates of C are not shown', () => {
+  const given = (s: { c: number; b?: number }) => [s.c, s.b].filter((v) => v !== undefined).map((v) => formatDe(v!))
+  const visible = (t: Task) => {
+    const p = propsOf(t)
+    return [t.question, p.planFigureSvg, JSON.stringify(p), p.steps.map((st) => st.instruction).join(' ')].join(' ')
+  }
+  const leaks = (text: string, a: number, C: { x: number; y: number }, givenValues: string[]) => {
+    const found: string[] = []
+    if (text.includes(`(${formatDe(C.x)}|${formatDe(C.y)})`)) found.push('C coordinates')
+    if (text.includes('|')) found.push('pipe')
+    const aText = formatDe(Math.round(a * 10) / 10)
+    if (!givenValues.includes(aText) && text.includes(`${aText} cm`)) found.push('side a')
+    if (/a = /.test(text)) found.push('a label')
+    return found
+  }
+
+  it('SWS tasks show neither a nor C', () => {
+    for (const s of SWS_SETS) {
+      const a = Math.hypot(s.C.x - s.c, s.C.y)
+      expect(leaks(visible(swsConstructionTask(s)), a, s.C, given(s))).toEqual([])
+    }
+  })
+
+  it('WSW tasks show neither the sides a, b nor C', () => {
+    for (const s of WSW_SETS) {
+      const t = wswConstructionTask(s)
+      const a = Math.hypot(s.C.x - s.c, s.C.y)
+      const b = Math.hypot(s.C.x, s.C.y)
+      expect(leaks(visible(t), a, s.C, given(s))).toEqual([])
+      expect(leaks(visible(t), b, s.C, given(s))).toEqual([])
+    }
+  })
+
+  it('negative control: a leaking text is detected', () => {
+    const s = SWS_SETS[1]! // a = |BC| = hypot(1, 4.5), differs from c and b
+    const a = Math.hypot(s.C.x - s.c, s.C.y)
+    const leaky = `${visible(swsConstructionTask(s))} a = ${formatDe(Math.round(a * 10) / 10)} cm, C(${formatDe(s.C.x)}|${formatDe(s.C.y)})`
+    expect(leaks(leaky, a, s.C, given(s)).sort()).toEqual(['C coordinates', 'a label', 'pipe', 'side a'].sort())
   })
 })

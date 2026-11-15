@@ -705,7 +705,7 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
 export { digitGridMultiplyTask, digitGridDivideTask } from './digitGridTasks'
 export { angleProtractorTask, rulerMeasureTask, compassArcTask } from './measureTaskHelpers'
 export type { AngleProtractorTaskInput, RulerMeasureTaskInput, CompassArcTaskInput } from './measureTaskHelpers'
-export { hasCircle, hasPointNear, hasSegment, hasAngleAt, hasRayIntersectionAt } from './measureTaskHelpers'
+export { hasCircle, hasPointNear, hasSegment, hasAngleAt, hasRayIntersectionAt, hasPointOnRay } from './measureTaskHelpers'
 export { fractionModelTask, fractionWallTask, divideToolTask, ratioBarTask, numberLineMultiTask, treeDiagramTask, barChartTask, pieChartTask, clockTask, symmetryDrawTask } from './interactionTaskHelpers'
 export type { FractionModelTaskInput, FractionWallTaskInput, DivideToolTaskInput, RatioBarTaskInput, NumberLineMultiTaskInput, TreeDiagramTaskInput, BarChartTaskInput, PieChartTaskInput, ClockTaskInput, SymmetryDrawTaskInput } from './interactionTaskHelpers'
 export { constructionStepsTask } from './measureTaskHelpers'

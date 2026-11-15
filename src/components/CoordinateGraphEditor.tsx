@@ -9,7 +9,7 @@ import {
   type GraphPointObj,
   type SnapMode,
 } from '../lib/coordinateScene'
-import { angleLegFromPointer } from '../lib/angleToolLogic'
+import { angleLegFromPointer, angleReleasePointer } from '../lib/angleToolLogic'
 import './CoordinateGraphEditor.css'
 
 export type EditorTool =
@@ -417,11 +417,18 @@ export function CoordinateGraphEditor({
     )
   }
 
-  const onPointerUp = (e: React.PointerEvent) => {
+  const onPointerUp = (e: React.PointerEvent, cancelled = false) => {
     setDragId(null)
     if (tool === 'angle') {
-      // Commit exactly what the live label showed (the last hover position).
-      if (angleDrag) commitAngle(hover ?? screenToMathRaw(e.clientX, e.clientY))
+      // Commit exactly what the live label showed; a cancelled gesture only aborts the drag.
+      const target = angleReleasePointer(
+        angleDrag,
+        cancelled,
+        hover,
+        screenToMathRaw(e.clientX, e.clientY),
+      )
+      if (target) commitAngle(target)
+      else setAngleDrag(false)
       return
     }
     if (tool === 'circle' && pending && circleDrag) {
@@ -617,9 +624,10 @@ export function CoordinateGraphEditor({
           type="button"
           className="coordinate-graph-editor__tool"
           disabled={disabled || userObjectCount === 0}
-          onClick={() =>
+          onClick={() => {
+            resetPending()
             updateObjects(scene.objects.filter((o) => o.kind === 'point' && o.fixed))
-          }
+          }}
         >
           Leeren
         </button>
@@ -643,7 +651,7 @@ export function CoordinateGraphEditor({
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
+        onPointerCancel={(e) => onPointerUp(e, true)}
         role="img"
         aria-label="Koordinatensystem zeichnen"
       >

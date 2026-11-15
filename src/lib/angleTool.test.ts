@@ -3,12 +3,13 @@ import {
   angleBetweenDeg,
   emptyCoordinateScene,
   hasAngleAt,
+  hasPointOnRay,
   hasRayIntersectionAt,
   rayIntersection,
   type CoordinateScene,
   type GraphObject,
 } from './coordinateScene'
-import { angleLegFromPointer } from './angleToolLogic'
+import { angleLegFromPointer, angleReleasePointer } from './angleToolLogic'
 
 const rad = (deg: number) => (deg * Math.PI) / 180
 const rayAt = (id: string, ox: number, oy: number, deg: number): GraphObject => ({
@@ -147,5 +148,38 @@ describe('angleLegFromPointer (live value equals committed value)', () => {
 
   it('caps the straight angle at 179', () => {
     expect(angleLegFromPointer(V, L, { x: -3, y: 1 })!.deg).toBe(179)
+  })
+})
+
+describe('hasPointOnRay', () => {
+  const scene = sceneWith({ id: 'r', kind: 'ray', x1: 0, y1: 0, x2: 3, y2: 4 })
+  it('accepts points on the ray, also beyond its drawn end', () => {
+    expect(hasPointOnRay(scene, 'A', 3, 4)).toBe(true)
+    expect(hasPointOnRay(scene, 'A', 6, 8)).toBe(true)
+  })
+  it('rejects points behind the origin and mirrored points', () => {
+    expect(hasPointOnRay(scene, 'A', -3, -4)).toBe(false)
+    expect(hasPointOnRay(scene, 'A', 3, -4)).toBe(false)
+  })
+  it('respects tol: just inside passes, more than tol off fails', () => {
+    expect(hasPointOnRay(scene, 'A', 3.2, 3.8, 0.35)).toBe(true)
+    expect(hasPointOnRay(scene, 'A', 4, 4, 0.35)).toBe(false)
+  })
+  it('needs the ray to start at the given origin and a known origin', () => {
+    expect(hasPointOnRay(scene, 'B', 3, 4)).toBe(false)
+    expect(hasPointOnRay(scene, 'nope', 3, 4)).toBe(false)
+  })
+})
+
+describe('angleReleasePointer (pointer cancel aborts, release commits)', () => {
+  const hover = { x: 2, y: 3 }
+  const released = { x: 2.1, y: 3.1 }
+  it('commits the last hover position on release', () => {
+    expect(angleReleasePointer(true, false, hover, released)).toBe(hover)
+    expect(angleReleasePointer(true, false, null, released)).toBe(released)
+  })
+  it('never commits on pointercancel or without a drag', () => {
+    expect(angleReleasePointer(true, true, hover, released)).toBeNull()
+    expect(angleReleasePointer(false, false, hover, released)).toBeNull()
   })
 })

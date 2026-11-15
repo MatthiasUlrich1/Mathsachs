@@ -640,3 +640,28 @@ export function hasRayIntersectionAt(
   }
   return false
 }
+
+/**
+ * Does a ray starting at `origin` pass within `tol` of (x, y)? The distance is measured to the
+ * ray itself (t >= 0): a point behind the origin counts by its distance to the origin.
+ */
+export function hasPointOnRay(
+  scene: CoordinateScene,
+  origin: ScenePointRef,
+  x: number,
+  y: number,
+  tol = 0.35,
+  originTol = 0.35,
+): boolean {
+  const o = resolvePointRef(scene, origin)
+  if (!o) return false
+  return scene.objects.some((r) => {
+    if (r.kind !== 'ray' || !pointNear({ x: r.x1, y: r.y1 }, o, originTol)) return false
+    const dx = r.x2 - r.x1
+    const dy = r.y2 - r.y1
+    const len2 = dx * dx + dy * dy
+    if (len2 < 1e-12) return false
+    const t = Math.max(0, ((x - r.x1) * dx + (y - r.y1) * dy) / len2)
+    return Math.hypot(x - (r.x1 + t * dx), y - (r.y1 + t * dy)) <= tol + 1e-9
+  })
+}

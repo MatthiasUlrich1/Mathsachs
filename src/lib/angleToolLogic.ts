@@ -35,3 +35,18 @@ export function angleLegFromPointer(vertex: P, leg: P, pointer: P): AngleLeg | n
     end: { x: r6(vertex.x + len * Math.cos(theta)), y: r6(vertex.y + len * Math.sin(theta)) },
   }
 }
+
+/**
+ * Pointer position to commit when the pointer is released, or null when nothing is committed.
+ * A cancelled gesture (pointercancel) never commits; the last hover position wins so the
+ * committed value is the one the live label showed.
+ */
+export function angleReleasePointer(
+  dragging: boolean,
+  cancelled: boolean,
+  hover: P | null,
+  released: P | null,
+): P | null {
+  if (!dragging || cancelled) return null
+  return hover ?? released
+}

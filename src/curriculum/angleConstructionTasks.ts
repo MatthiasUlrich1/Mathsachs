@@ -10,6 +10,7 @@ import {
   constructionStepsTask,
   hasAngleAt,
   hasPointNear,
+  hasPointOnRay,
   hasRayIntersectionAt,
   hasSegment,
 } from './measureTaskHelpers'
@@ -136,7 +137,7 @@ export const swsConstructionTask = (set: SwsSet): Task => {
       {
         instruction: `Markiere auf dem Schenkel den Punkt C im Abstand b = ${cm(b)} von A.`,
         allowedTools: ['point', 'select', 'delete'],
-        check: (s) => candidates.some((p) => hasPointNear(s, p.x, p.y)),
+        check: (s) => candidates.some((p) => hasPointNear(s, p.x, p.y) && hasPointOnRay(s, 'A', p.x, p.y)),
       },
       {
         instruction: 'Verbinde C mit A und mit B.',

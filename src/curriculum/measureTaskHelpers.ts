@@ -287,6 +287,7 @@ export {
   hasLabel,
   hasAngleAt,
   hasRayIntersectionAt,
+  hasPointOnRay,
 } from '../lib/coordinateScene'
 
 export interface ConstructionStep {
