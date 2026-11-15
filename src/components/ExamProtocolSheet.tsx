@@ -1,5 +1,6 @@
 import type { Task, UserInput } from '../curriculum/types'
 import type { ResolvedExamTask } from '../exam/examCode'
+import { treePathLabel, type TreeLevel } from '../lib/treeDiagramLogic'
 
 export interface ExamTaskResult {
   resolved: ResolvedExamTask
@@ -93,6 +94,15 @@ export const formatExamAnswer = (input: UserInput, task?: Task): string => {
   if (input.kind === 'numberLineMulti') {
     const placed = Object.entries(input.positions ?? {})
     return placed.length ? placed.map(([id, p]) => `${numberLineMultiLabel(task, id)}: ${String(p).replace('.', ',')}`).join('; ') : '—'
+  }
+  if (input.kind === 'treeDiagram') {
+    const levels = task?.interactive?.type === 'treeDiagram' ? (task.interactive.props.levels as TreeLevel[] | undefined) : undefined
+    const name = (id: string) => (levels ? treePathLabel(levels, id) : id)
+    const rows = [
+      ...Object.entries(input.branches ?? {}).filter(([, v]) => v.trim()).map(([id, v]) => `Zweig ${name(id)}: ${v.trim()}`),
+      ...Object.entries(input.leaves ?? {}).filter(([, v]) => v.trim()).map(([id, v]) => `Pfad ${name(id)}: ${v.trim()}`),
+    ]
+    return rows.length ? rows.join('; ') : '—'
   }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'

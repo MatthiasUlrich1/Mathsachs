@@ -113,6 +113,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { shape: 'circle', count: 3, persons: 4, objectName: 'Pizza' }
     case 'ratioBar':
       return { mode: 'colour', segments: 10, ratioA: 2, ratioB: 3, labelA: 'Saft', labelB: 'Wasser', total: 500, unit: 'ml' }
+    case 'treeDiagram':
+      return { level1: 'Rot, Blau', level2: 'Rot, Blau', probabilities: '0 = 3/5\n1 = 2/5\n0.0 = 1/2\n0.1 = 1/2\n1.0 = 3/4\n1.1 = 1/4', blankBranches: '0.0, 0.1', blankLeaves: '0.0', rootLabel: '' }
     case 'numberLineMulti':
       return { min: 0, max: 2, step: 0.25, labelEvery: 4, items: '3/4 = 0,75\n1,5 = 1,5\n1/4 = 0,25' }
     case 'fractionModel':
@@ -1033,6 +1035,17 @@ function ElementPropsForm({
           ) : (
             field('segments', 'Anzahl der Felder (4–12, ein Vielfaches von A + B)')
           )}
+        </>
+      )
+    case 'treeDiagram':
+      return (
+        <>
+          {field('level1', '1. Stufe: Ergebnisse, durch Komma getrennt (2–3, je höchstens 6 Zeichen)')}
+          {field('level2', '2. Stufe: Ergebnisse (leer = nur eine Stufe)')}
+          {field('probabilities', 'Wert für jeden Zweig, eine Zeile je „Nummer = Wert“: 0, 1 (1. Stufe), 0.0, 0.1, 1.0, … (2. Stufe). Geschwister ergeben zusammen 1.', true)}
+          {field('blankBranches', 'Zweige, die die Lernenden ausfüllen (Nummern, durch Komma getrennt)')}
+          {field('blankLeaves', 'Pfade (Enden), die die Lernenden ausfüllen: Produkt entlang des Pfads (nur bei zwei Stufen)')}
+          {field('rootLabel', 'Beschriftung am Start (optional)')}
         </>
       )
     case 'numberLineMulti':

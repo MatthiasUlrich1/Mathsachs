@@ -6,7 +6,7 @@
  */
 import { pick, randInt, type Rng } from '../lib/rng'
 import { formatDe, roundTo } from '../lib/num'
-import { makeFraction, format, subtract, type Fraction } from '../lib/fraction'
+import { makeFraction, format, multiply, subtract, type Fraction } from '../lib/fraction'
 import { generateLinearFunctionSvg, generateSpinnerSvg } from '../lib/geometrySvg'
 import { shuffleChoices } from './biologieHelpers'
 import {
@@ -15,6 +15,7 @@ import {
   mixedVariants,
   numberLineTask,
   paramSliderTask,
+  treeDiagramTask,
   valueTask,
 } from './taskHelpers'
 import { asNeuTopic } from './neuTopic'
@@ -459,6 +460,69 @@ const laplaceBruchNeu: Topic = asNeuTopic('k8-lb2-laplace-bruch', {
         explanation: `P = ${k}/${total} = ${formatDe(value)}.`,
       })
     },
+    // V4 Baumdiagramm — Urne, zweimal ziehen ohne Zurücklegen: Zweige der zweiten Stufe eintragen
+    (rng: Rng) => {
+      const [rot, blau] = pick(rng, [
+        [3, 2],
+        [4, 2],
+        [5, 3],
+        [3, 4],
+        [4, 3],
+        [5, 2],
+      ] as const)
+      const n = rot + blau
+      return treeDiagramTask({
+        question: `In einer Urne liegen ${rot} rote und ${blau} blaue Kugeln. Du ziehst zweimal nacheinander eine Kugel, ohne die erste zurückzulegen. Trage die fehlenden Wahrscheinlichkeiten an den Zweigen der zweiten Stufe ein.`,
+        levels: [{ outcomes: ['Rot', 'Blau'] }, { outcomes: ['Rot', 'Blau'] }],
+        probabilities: {
+          '0': `${rot}/${n}`,
+          '1': `${blau}/${n}`,
+          '0.0': `${rot - 1}/${n - 1}`,
+          '0.1': `${blau}/${n - 1}`,
+          '1.0': `${rot}/${n - 1}`,
+          '1.1': `${blau - 1}/${n - 1}`,
+        },
+        blanks: { branches: ['0.0', '0.1', '1.0', '1.1'], leaves: [] },
+        rootLabel: 'Start',
+        solution: `Rot, Rot: ${format(makeFraction(rot - 1, n - 1))}; Rot, Blau: ${format(makeFraction(blau, n - 1))}; Blau, Rot: ${format(makeFraction(rot, n - 1))}; Blau, Blau: ${format(makeFraction(blau - 1, n - 1))}`,
+        explanation: `Nach dem ersten Zug liegen nur noch ${n - 1} Kugeln in der Urne, weil nicht zurückgelegt wird. War die erste Kugel rot, bleiben ${rot - 1} rote und ${blau} blaue: ${rot - 1}/${n - 1} und ${blau}/${n - 1}. War sie blau, bleiben ${rot} rote und ${blau - 1} blaue: ${rot}/${n - 1} und ${blau - 1}/${n - 1}. Probe: Die Zweige, die von einem Punkt ausgehen, ergeben zusammen 1 (Summenregel).`,
+        dedupeKey: `k8neu-tree-urne-zweige:${rot}:${blau}`,
+      })
+    },
+    // V5 Baumdiagramm — Urne ohne Zurücklegen: Pfadwahrscheinlichkeit am Ende des Pfades
+    (rng: Rng) => {
+      const [rot, blau] = pick(rng, [
+        [3, 2],
+        [4, 2],
+        [5, 3],
+        [3, 4],
+        [4, 3],
+        [5, 2],
+      ] as const)
+      const n = rot + blau
+      const erste = pick(rng, ['rot', 'blau'] as const)
+      const zweite = erste === 'rot' ? 'blau' : 'rot'
+      const [a, b] = erste === 'rot' ? [rot, blau] : [blau, rot]
+      const value = multiply(makeFraction(a, n), makeFraction(b, n - 1))
+      const leaf = erste === 'rot' ? '0.1' : '1.0'
+      return treeDiagramTask({
+        question: `In einer Urne liegen ${rot} rote und ${blau} blaue Kugeln. Du ziehst zweimal nacheinander eine Kugel, ohne die erste zurückzulegen. Wie groß ist die Wahrscheinlichkeit, dass die erste Kugel ${erste} und die zweite ${zweite} ist? Trage sie am Ende des passenden Pfades ein.`,
+        levels: [{ outcomes: ['Rot', 'Blau'] }, { outcomes: ['Rot', 'Blau'] }],
+        probabilities: {
+          '0': `${rot}/${n}`,
+          '1': `${blau}/${n}`,
+          '0.0': `${rot - 1}/${n - 1}`,
+          '0.1': `${blau}/${n - 1}`,
+          '1.0': `${rot}/${n - 1}`,
+          '1.1': `${blau - 1}/${n - 1}`,
+        },
+        blanks: { branches: [], leaves: [leaf] },
+        rootLabel: 'Start',
+        solution: format(value),
+        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt der Wahrscheinlichkeiten entlang des Pfades. P = ${a}/${n} · ${b}/${n - 1} = ${a * b}/${n * (n - 1)} = ${format(value)}.`,
+        dedupeKey: `k8neu-tree-urne-pfad:${rot}:${blau}:${erste}`,
+      })
+    },
   ),
 })
 
@@ -530,6 +594,60 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
         instruction: 'Stelle die geschätzte Gewinnwahrscheinlichkeit ein:',
       })
     },
+    // V4 Baumdiagramm — Münze und Würfel: Wahrscheinlichkeit jedes Pfades
+    (rng: Rng) => {
+      const wurf = pick(rng, [
+        { wort: 'Sechs', rest: 'andere', k: 1 },
+        { wort: 'Fünf', rest: 'andere', k: 1 },
+      ])
+      const w = makeFraction(wurf.k, 6)
+      const rest = subtract({ n: 1, d: 1 }, w)
+      const half = { n: 1, d: 2 }
+      const pfad = (f: Fraction): string => format(multiply(half, f))
+      return treeDiagramTask({
+        question: `Du wirfst eine Münze und danach einen Würfel. Beim Würfel unterscheidest du: ${wurf.wort} oder eine andere Zahl. Trage die Wahrscheinlichkeit jedes Pfades am Ende ein.`,
+        levels: [{ outcomes: ['Kopf', 'Zahl'] }, { outcomes: [wurf.wort, wurf.rest] }],
+        probabilities: { '0': '1/2', '1': '1/2', '0.0': format(w), '0.1': format(rest), '1.0': format(w), '1.1': format(rest) },
+        blanks: { branches: [], leaves: ['0.0', '0.1', '1.0', '1.1'] },
+        rootLabel: 'Start',
+        solution: `Kopf, ${wurf.wort}: ${pfad(w)}; Kopf, andere: ${pfad(rest)}; Zahl, ${wurf.wort}: ${pfad(w)}; Zahl, andere: ${pfad(rest)}`,
+        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt entlang des Pfades. Kopf und ${wurf.wort}: 1/2 · ${format(w)} = ${pfad(w)}. Kopf und andere: 1/2 · ${format(rest)} = ${pfad(rest)}. Für Zahl sind die Werte genauso. Probe (Summenregel): Alle vier Pfade zusammen ergeben 1.`,
+        dedupeKey: `k8neu-tree-muenze-wuerfel:${wurf.wort}`,
+      })
+    },
+    // V5 Baumdiagramm — zweistufiges Glücksrad, Pfade zu den Gewinnen
+    (rng: Rng) => {
+      const [n1, k1, n2, k2] = pick(rng, [
+        [5, 2, 4, 1],
+        [4, 1, 5, 2],
+        [10, 3, 4, 1],
+        [5, 3, 10, 3],
+        [4, 3, 5, 1],
+        [10, 7, 5, 2],
+      ] as const)
+      const p1 = makeFraction(k1, n1)
+      const q1 = subtract({ n: 1, d: 1 }, p1)
+      const p2 = makeFraction(k2, n2)
+      const q2 = subtract({ n: 1, d: 1 }, p2)
+      const beide = multiply(p1, p2)
+      return treeDiagramTask({
+        question: `Ein Glücksrad hat ${n1} gleich große Felder, davon sind ${k1} rot. Dreht es sich auf Rot, darfst du ein zweites Rad mit ${n2} gleich großen Feldern drehen, davon sind ${k2} Gewinne. Auch bei Grün darfst du das zweite Rad drehen. Wie groß ist die Wahrscheinlichkeit für Rot und Gewinn? Trage sie am Ende des passenden Pfades ein.`,
+        levels: [{ outcomes: ['Rot', 'Grün'] }, { outcomes: ['Gewinn', 'Niete'] }],
+        probabilities: {
+          '0': format(p1),
+          '1': format(q1),
+          '0.0': format(p2),
+          '0.1': format(q2),
+          '1.0': format(p2),
+          '1.1': format(q2),
+        },
+        blanks: { branches: [], leaves: ['0.0'] },
+        rootLabel: 'Start',
+        solution: `${format(beide)} (${formatDe(roundTo(beide.n / beide.d * 100, 2))} %)`,
+        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt entlang des Pfades. P(Rot und Gewinn) = ${format(p1)} · ${format(p2)} = ${format(beide)}. Das sind ${formatDe(roundTo(beide.n / beide.d * 100, 2))} %.`,
+        dedupeKey: `k8neu-tree-rad:${n1}:${k1}:${n2}:${k2}`,
+      })
+    },
   ),
 })
 
@@ -591,6 +709,30 @@ const gegenwahrscheinlichkeitNeu: Topic = asNeuTopic('k8-lb2-gegenwahrscheinlich
         value,
         solution: formatDe(value),
         explanation: `1 − ${formatDe(p)} = ${formatDe(value)}.`,
+      })
+    },
+    // V4 Baumdiagramm — Regen an zwei Tagen: Gegenwahrscheinlichkeiten (Summenregel) und Pfad
+    (rng: Rng) => {
+      const sa = pick(rng, [30, 20, 60, 40, 10, 70])
+      const so = pick(rng, [10, 15, 25])
+      const de = (prozent: number): string => formatDe(prozent / 100)
+      const keinBeide = ((100 - sa) * (100 - so)) / 10000
+      return treeDiagramTask({
+        question: `Die Regenwahrscheinlichkeit beträgt am Samstag ${de(sa)} und am Sonntag ${de(so)}. An jedem Tag gibt es Regen oder Sonne (also keinen Regen). Die beiden Tage hängen nicht voneinander ab. Trage die fehlenden Wahrscheinlichkeiten ein, auch für den Pfad, bei dem an beiden Tagen die Sonne scheint.`,
+        levels: [{ outcomes: ['Regen', 'Sonne'] }, { outcomes: ['Regen', 'Sonne'] }],
+        probabilities: {
+          '0': de(sa),
+          '1': de(100 - sa),
+          '0.0': de(so),
+          '0.1': de(100 - so),
+          '1.0': de(so),
+          '1.1': de(100 - so),
+        },
+        blanks: { branches: ['1', '0.1', '1.1'], leaves: ['1.1'] },
+        rootLabel: 'Samstag',
+        solution: `${de(100 - sa)}; ${de(100 - so)}; ${de(100 - so)}; Pfad Sonne, Sonne: ${formatDe(keinBeide)}`,
+        explanation: `Die Zweige, die von einem Punkt ausgehen, ergeben zusammen 1 (Summenregel): 1 − ${de(sa)} = ${de(100 - sa)} und 1 − ${de(so)} = ${de(100 - so)}. Weil die Tage nicht voneinander abhängen, gelten am Sonntag nach jedem Samstag dieselben Werte. Pfadregel: ${de(100 - sa)} · ${de(100 - so)} = ${formatDe(keinBeide)}.`,
+        dedupeKey: `k8neu-tree-regen:${sa}:${so}`,
       })
     },
   ),

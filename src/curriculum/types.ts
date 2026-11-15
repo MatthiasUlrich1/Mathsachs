@@ -62,6 +62,8 @@ export type UserInput =
   | { kind: 'ratioBar'; parts: Array<'A' | 'B' | null>; amounts?: [string, string] }
   /** Number line with several labels: id -> value of the placed labels (unplaced labels have no entry). */
   | { kind: 'numberLineMulti'; positions: Record<string, number> }
+  /** Tree diagram: typed values of the blank branch fields and leaf (path) fields, keyed by edge/path id. */
+  | { kind: 'treeDiagram'; branches: Record<string, string>; leaves: Record<string, string> }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -107,6 +109,7 @@ export const emptyInput = (
   if (kind === 'divideTool') return { kind: 'divideTool', partsPerWhole: 1, assignment: [] }
   if (kind === 'ratioBar') return { kind: 'ratioBar', parts: [] }
   if (kind === 'numberLineMulti') return { kind: 'numberLineMulti', positions: {} }
+  if (kind === 'treeDiagram') return { kind: 'treeDiagram', branches: {}, leaves: {} }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -138,6 +141,7 @@ export interface InteractiveConfig {
     | 'divideTool'
     | 'ratioBar'
     | 'numberLineMulti'
+    | 'treeDiagram'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

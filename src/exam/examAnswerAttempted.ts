@@ -1,4 +1,5 @@
 import type { Task, UserInput } from '../curriculum/types'
+import { treeAnyInput } from '../lib/treeDiagramLogic'
 
 /** True when the learner has entered something beyond the blank widget state. */
 export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
@@ -61,6 +62,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'numberLineMulti':
       // Untouched = no label placed on the line (labels in the tray are not an answer).
       return Object.keys(input.positions ?? {}).length > 0
+    case 'treeDiagram':
+      // Untouched = every field empty.
+      return treeAnyInput(input.branches, input.leaves)
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

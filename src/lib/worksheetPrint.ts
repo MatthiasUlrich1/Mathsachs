@@ -21,6 +21,7 @@ import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
+import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
 export type WorksheetPrintExtras = {
@@ -416,6 +417,23 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
         visualHtml,
         paperHint: `Trage ein: ${labels.join(', ')}`,
         answerBlank: 'Zeichne für jede Zahl einen Strich auf der Zahlengeraden und schreibe die Zahl darüber.',
+      }
+    }
+
+    case 'treeDiagram': {
+      // Paper: the tree with "___" at each blank field and the given values printed (typing hints stay on screen).
+      const levels = (Array.isArray(props.levels) ? props.levels : []) as TreeLevel[]
+      const blanks: TreeBlanks = {
+        branches: Array.isArray(props.blankBranches) ? (props.blankBranches as string[]) : [],
+        leaves: Array.isArray(props.blankLeaves) ? (props.blankLeaves as string[]) : [],
+      }
+      const given = (props.given ?? {}) as Record<string, string>
+      const drawing = levels.length >= 1 && levels.length <= 2 ? treePrintSvg(levels, given, blanks) : ''
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        paperHint: 'Schreibe die gesuchten Wahrscheinlichkeiten auf die Linien (___) und an das Ende der Pfade.',
+        answerBlank: '',
       }
     }
 

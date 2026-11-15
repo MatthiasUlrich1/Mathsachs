@@ -57,6 +57,15 @@ import {
   type NlmItem,
 } from '../lib/numberLineMultiLogic'
 import { hashStringSeed } from '../lib/seed'
+import {
+  buildTreeModel,
+  formatProbability,
+  treeAllEdgeIds,
+  treeMatches,
+  validateTreeBlanks,
+  type TreeBlanks,
+  type TreeLevel,
+} from '../lib/treeDiagramLogic'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -507,5 +516,62 @@ export const numberLineMultiTask = (input: NumberLineMultiTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'numberLineMulti' && nlmMatches(nlmItems, answer.positions, tolerance),
+  }
+}
+
+export interface TreeDiagramTaskInput {
+  /** Do not state the blank values; screen-only hints belong in `instruction`. */
+  question: string
+  /** 1-2 levels with 2-3 outcomes each (labels at most 6 characters). Level 2 repeats for every outcome of level 1. */
+  levels: TreeLevel[]
+  /** A fraction or decimal for EVERY edge ("0", "1", "0.0", "0.1" ...). Siblings must add up to 1. Different level-2 values per parent are fine (drawing without replacement). */
+  probabilities: Record<string, string>
+  /** Fields the learner fills: branch ids and leaf (path) ids. All other branches are shown; other leaves stay empty. */
+  blanks: TreeBlanks
+  /** Label of the start of the tree (default: none). */
+  rootLabel?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/** A tree diagram whose branch probabilities and/or path probabilities (product along the path) are typed in. */
+export const treeDiagramTask = (input: TreeDiagramTaskInput): Task => {
+  const { levels, probabilities, blanks } = input
+  const model = buildTreeModel(levels, probabilities)
+  validateTreeBlanks(levels, blanks)
+  const given: Record<string, string> = {}
+  for (const id of treeAllEdgeIds(levels)) {
+    if (!blanks.branches.includes(id)) given[id] = probabilities[id]!.trim()
+  }
+  const sampleBranches: Record<string, string> = {}
+  for (const id of blanks.branches) sampleBranches[id] = probabilities[id]!.trim()
+  const sampleLeaves: Record<string, string> = {}
+  for (const id of blanks.leaves) sampleLeaves[id] = formatProbability(model.leaves[id]!)
+  const asksLeaves = blanks.leaves.length > 0
+  const asksBranches = blanks.branches.length > 0
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    sampleAnswer: { kind: 'treeDiagram', branches: sampleBranches, leaves: sampleLeaves },
+    interactive: {
+      type: 'treeDiagram',
+      props: {
+        levels: levels.map((l) => ({ outcomes: [...l.outcomes] })),
+        // Only the shown values; the expected values of the blanks stay in `check`.
+        given,
+        blankBranches: [...blanks.branches],
+        blankLeaves: [...blanks.leaves],
+        ...(input.rootLabel?.trim() ? { rootLabel: input.rootLabel.trim() } : {}),
+        instruction:
+          input.instruction ??
+          `Trage ${asksBranches && asksLeaves ? 'die Wahrscheinlichkeiten an den Zweigen und am Ende der Pfade' : asksLeaves ? 'die Wahrscheinlichkeiten am Ende der Pfade' : 'die fehlenden Wahrscheinlichkeiten an den Zweigen'} in die Felder ein. Brüche (3/10), Dezimalzahlen (0,3) und Prozent (30 %) sind erlaubt.`,
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'treeDiagram' && treeMatches(model, blanks, answer.branches, answer.leaves),
   }
 }

@@ -19,6 +19,8 @@ import { DivideTool } from './DivideTool'
 import { emptyAssignment } from '../lib/divideToolLogic'
 import { RatioBar } from './RatioBar'
 import { NumberLineMulti } from './NumberLineMulti'
+import { TreeDiagram } from './TreeDiagram'
+import type { TreeLevel } from '../lib/treeDiagramLogic'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -143,6 +145,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'numberLineMulti') {
     // Every label starts in the tray: nothing placed, nothing given away.
     return { kind: 'numberLineMulti', positions: {} }
+  }
+  if (task.interactive?.type === 'treeDiagram') {
+    // Every field starts empty: the blank values are not given away.
+    return { kind: 'treeDiagram', branches: {}, leaves: {} }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -576,6 +582,19 @@ export function TaskInteractive({
           snap={interactive.props.snap === undefined ? undefined : Number(interactive.props.snap)}
           labelEvery={Number(interactive.props.labelEvery) || 1}
           value={value.kind === 'numberLineMulti' ? value : { kind: 'numberLineMulti', positions: {} }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'treeDiagram' && (
+        <TreeDiagram
+          levels={interactive.props.levels as TreeLevel[]}
+          given={(interactive.props.given ?? {}) as Record<string, string>}
+          blankBranches={(interactive.props.blankBranches ?? []) as string[]}
+          blankLeaves={(interactive.props.blankLeaves ?? []) as string[]}
+          rootLabel={interactive.props.rootLabel as string | undefined}
+          value={value.kind === 'treeDiagram' ? value : { kind: 'treeDiagram', branches: {}, leaves: {} }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

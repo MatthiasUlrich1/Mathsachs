@@ -1,0 +1,113 @@
+.tree-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.tree-diagram__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.tree-diagram__scroll {
+  width: 100%;
+  max-width: 560px;
+  overflow-x: auto;
+}
+
+.tree-diagram__canvas {
+  position: relative;
+  width: 100%;
+  /* Typing and tapping only: page scroll keeps working. */
+  touch-action: manipulation;
+}
+
+.tree-diagram__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.tree-diagram__lines line {
+  stroke: #334155;
+  stroke-width: 1.6;
+}
+
+.tree-diagram__root {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  background: #0f172a;
+}
+
+.tree-diagram__root-label {
+  position: absolute;
+  left: 0;
+  bottom: 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.tree-diagram__chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 1.5px solid #334155;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.tree-diagram__given,
+.tree-diagram__input {
+  position: absolute;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.tree-diagram__given {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #0f172a;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tree-diagram__input {
+  padding: 2px 4px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.tree-diagram__input:focus-visible {
+  outline: 3px solid #dc2626;
+  outline-offset: 1px;
+}
+
+.tree-diagram__input--leaf {
+  border-color: #475569;
+  background: #f1f5f9;
+}
+
+.tree-diagram__input:disabled {
+  cursor: default;
+}

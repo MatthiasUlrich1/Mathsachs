@@ -19,6 +19,7 @@ import {
   divideToolTask,
   ratioBarTask,
   numberLineMultiTask,
+  treeDiagramTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -91,6 +92,7 @@ export type AuthoringElementType =
   | 'divideTool'
   | 'ratioBar'
   | 'numberLineMulti'
+  | 'treeDiagram'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -124,6 +126,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'divideTool', label: 'Teilwerkzeug (Ganze gerecht verteilen)' },
   { id: 'ratioBar', label: 'Verhältnisleiste (Felder färben / Menge aufteilen)' },
   { id: 'numberLineMulti', label: 'Zahlengerade mit mehreren Zahlen (ziehen)' },
+  { id: 'treeDiagram', label: 'Baumdiagramm (Wahrscheinlichkeiten eintragen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -494,6 +497,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'treeDiagram': {
+      try {
+        treeDiagramTask({ question: 'q', solution: 's', explanation: 'e', ...treeInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Baumdiagramm: 1–2 Stufen mit je 2–3 Ergebnissen (Namen höchstens 6 Zeichen), für JEDEN Zweig ein Wert als „Nummer = Wert“ (Zweige 0, 1, … und 0.0, 0.1, … 1.0, …; Geschwister ergeben zusammen 1), mindestens ein Feld zum Ausfüllen. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -784,6 +797,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(divideToolTask({ question, solution, explanation, ...divideInputFromProps(p) }))
     case 'numberLineMulti':
       return withVisual(numberLineMultiTask({ question, solution, explanation, ...numberLineMultiInputFromProps(p) }))
+    case 'treeDiagram':
+      return withVisual(treeDiagramTask({ question, solution, explanation, ...treeInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -1021,6 +1036,18 @@ ${[n.snap, n.labelEvery].some((v) => v !== undefined) ? [n.snap !== undefined ? 
 })`
       break
     }
+    case 'treeDiagram': {
+      const t = treeInputFromProps(p)
+      call = `treeDiagramTask({
+  question: ${q},
+  levels: ${JSON.stringify(t.levels)},
+  probabilities: ${JSON.stringify(t.probabilities)},
+  blanks: ${JSON.stringify(t.blanks)},
+${t.rootLabel ? `  rootLabel: ${JSON.stringify(t.rootLabel)},\n` : ''}  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'ratioBar': {
       const r = ratioInputFromProps(p)
       const amountLines = r.mode === 'split' ? `total: ${r.total},\n  unit: ${JSON.stringify(r.unit)},` : `segments: ${r.segments},`
@@ -1213,5 +1240,27 @@ const numberLineMultiInputFromProps = (p: Record<string, unknown>) => {
     snap: optional(p.snap),
     labelEvery: optional(p.labelEvery),
     items,
+  }
+}
+
+/** Builds the treeDiagramTask input of an authoring draft (validated beforehand). Lists are comma separated, values one "id = value" per line. */
+const treeInputFromProps = (p: Record<string, unknown>) => {
+  const list = (v: unknown): string[] =>
+    String(v ?? '')
+      .split(/[,;\n]/)
+      .map((s) => s.trim())
+      .filter(Boolean)
+  const levels = [list(p.level1), list(p.level2)].filter((o) => o.length > 0).map((outcomes) => ({ outcomes }))
+  const probabilities: Record<string, string> = {}
+  for (const line of String(p.probabilities ?? '').split(/\n|;/)) {
+    const cut = line.indexOf('=')
+    if (cut > 0) probabilities[line.slice(0, cut).trim()] = line.slice(cut + 1).trim()
+  }
+  const rootLabel = String(p.rootLabel ?? '').trim()
+  return {
+    levels,
+    probabilities,
+    blanks: { branches: list(p.blankBranches), leaves: list(p.blankLeaves) },
+    ...(rootLabel ? { rootLabel } : {}),
   }
 }
