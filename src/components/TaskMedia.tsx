@@ -21,6 +21,7 @@ import { RatioBar } from './RatioBar'
 import { NumberLineMulti } from './NumberLineMulti'
 import { BarChart } from './BarChart'
 import { PieChart } from './PieChart'
+import { Clock } from './Clock'
 import { TreeDiagram } from './TreeDiagram'
 import type { TreeLevel } from '../lib/treeDiagramLogic'
 import { RulerMeasure } from './RulerMeasure'
@@ -159,6 +160,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'pieChart') {
     // Untouched: the equal start shares are shown but not stored as an answer.
     return { kind: 'pieChart', percents: null }
+  }
+  if (task.interactive?.type === 'clock') {
+    // Untouched: 12:00 is shown but not stored as an answer.
+    return { kind: 'clock', h: 0, m: 0, touched: false }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -627,6 +632,15 @@ export function TaskInteractive({
           categories={interactive.props.categories as string[]}
           snapPercent={interactive.props.snapPercent === undefined ? undefined : Number(interactive.props.snapPercent)}
           value={value.kind === 'pieChart' ? value : { kind: 'pieChart', percents: null }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'clock' && (
+        <Clock
+          minuteSnap={interactive.props.minuteSnap === undefined ? undefined : Number(interactive.props.minuteSnap)}
+          value={value.kind === 'clock' ? value : { kind: 'clock', h: 0, m: 0, touched: false }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

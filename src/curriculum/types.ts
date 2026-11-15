@@ -68,6 +68,8 @@ export type UserInput =
   | { kind: 'barChart'; values: Array<number | null> }
   /** Pie chart: the share (percent) of every sector, `null` while no boundary was moved. */
   | { kind: 'pieChart'; percents: number[] | null }
+  /** Clock: hour 0..11 (0 = 12 o'clock) and minute 0..59 of the hands; `touched` is false until a hand was moved (the start shows 12:00). */
+  | { kind: 'clock'; h: number; m: number; touched: boolean }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -116,6 +118,7 @@ export const emptyInput = (
   if (kind === 'treeDiagram') return { kind: 'treeDiagram', branches: {}, leaves: {} }
   if (kind === 'barChart') return { kind: 'barChart', values: [] }
   if (kind === 'pieChart') return { kind: 'pieChart', percents: null }
+  if (kind === 'clock') return { kind: 'clock', h: 0, m: 0, touched: false }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -150,6 +153,7 @@ export interface InteractiveConfig {
     | 'treeDiagram'
     | 'barChart'
     | 'pieChart'
+    | 'clock'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

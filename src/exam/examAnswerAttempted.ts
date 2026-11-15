@@ -1,5 +1,6 @@
 import type { Task, UserInput } from '../curriculum/types'
 import { bcTouched } from '../lib/barChartLogic'
+import { ckTouched } from '../lib/clockLogic'
 import { pcTouched } from '../lib/pieChartLogic'
 import { treeAnyInput } from '../lib/treeDiagramLogic'
 
@@ -67,6 +68,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'treeDiagram':
       // Untouched = every field empty.
       return treeAnyInput(input.branches, input.leaves)
+    case 'clock':
+      // Untouched = no hand moved (12:00 at the start is not an answer).
+      return ckTouched(input)
     case 'pieChart':
       // Untouched = no boundary moved (the equal start shares are not an answer).
       return pcTouched(input.percents)

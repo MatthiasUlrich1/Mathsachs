@@ -22,6 +22,7 @@ import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
 import { barChartPrintSvg, bcValidateAxis } from './barChartLogic'
+import { clockPrintSvg } from './clockLogic'
 import { pieChartPrintSvg, pcValidateAxis, PC_DEFAULT_SNAP } from './pieChartLogic'
 import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
@@ -474,6 +475,24 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       return {
         visualHtml,
         paperHint: 'Zeichne die Sektoren mit dem Geodreieck in den Kreis. Der Kreis hat 100 Teile; markiert sind 5er-Schritte (1 % entspricht 3,6 Grad). Male jeden Sektor in der Farbe seines Kästchens aus.',
+        answerBlank: '',
+      }
+    }
+
+    case 'clock': {
+      if (props.mode === 'angle') {
+        // Paper: the learner writes a fitting time; the question already names the angle.
+        return {
+          ...fromVisual,
+          paperHint: 'Schreibe eine passende Uhrzeit auf. Stell dir die Zeiger auf dem Zifferblatt vor; ein Zahlenschritt entspricht 30 Grad.',
+          answerBlank: '__________ Uhr',
+        }
+      }
+      // Paper: the given data (visualContent) first, then the empty clock face to draw the hands into.
+      const visualHtml = [fromVisual.visualHtml, clockPrintSvg()].filter(Boolean).join('')
+      return {
+        visualHtml,
+        paperHint: 'Zeichne die Zeiger in das Zifferblatt ein: den kurzen Stundenzeiger und den langen Minutenzeiger.',
         answerBlank: '',
       }
     }

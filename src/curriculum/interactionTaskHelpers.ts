@@ -58,6 +58,18 @@ import {
 } from '../lib/numberLineMultiLogic'
 import { bcMatches, bcValidate } from '../lib/barChartLogic'
 import { PC_DEFAULT_SNAP, pcMatches, pcStartPercents, pcValidate } from '../lib/pieChartLogic'
+import {
+  CK_ALLOWED_SNAPS,
+  CK_DEFAULT_ANGLE_TOLERANCE,
+  CK_DEFAULT_SNAP,
+  ckFindTime,
+  ckMatchesAngle,
+  ckMatchesTime,
+  ckTouched,
+  ckValidateAngle,
+  ckValidateTime,
+  type ClockTime,
+} from '../lib/clockLogic'
 import { hashStringSeed } from '../lib/seed'
 import {
   buildTreeModel,
@@ -685,5 +697,79 @@ export const pieChartTask = (input: PieChartTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'pieChart' && pcMatches(target, answer.percents, start, tolerance),
+  }
+}
+
+export interface ClockTaskInput {
+  /** The task text. In mode setTime it names the time (digits or words), in mode angle only the angle. Screen-only hints belong in `instruction`. */
+  question: string
+  /** `setTime`: set the hands to `time`. `angle`: set the hands so that they form `angle`. */
+  mode: 'setTime' | 'angle'
+  /** Mode setTime: the target. The clock is analog, so 3:00 and 15:00 are the same. Not 12:00 (the start state). */
+  time?: { h: number; m: number }
+  /** Mode angle: the smaller angle between the hands in degrees (greater than 0, at most 180). */
+  angle?: number
+  /** Mode angle: allowed deviation in degrees (default 2.5). */
+  angleTolerance?: number
+  /** Mode angle: a time that forms the angle, used for the sample answer (default: the best fitting time). */
+  exampleTime?: { h: number; m: number }
+  /** The minute hand snaps to multiples of this many minutes: 1 or 5 (default 5). */
+  minuteSnap?: number
+  /** Data the question refers to (optional). */
+  visualContent?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/**
+ * The learner moves the hour and minute hand of an analog clock. The hour hand moves along with the minute hand.
+ * UserInput `{ kind: 'clock', h, m, touched }` (hour 0..11). The start is always 12:00 and does not depend on the answer;
+ * the helper throws when the target is 12:00 or the angle target is within the tolerance of 0 degrees.
+ */
+export const clockTask = (input: ClockTaskInput): Task => {
+  const snap = input.minuteSnap ?? CK_DEFAULT_SNAP
+  if (!CK_ALLOWED_SNAPS.includes(snap)) throw new Error(`clockTask: minuteSnap must be one of ${CK_ALLOWED_SNAPS.join(', ')}, got ${snap}`)
+  const angleTolerance = input.angleTolerance ?? CK_DEFAULT_ANGLE_TOLERANCE
+  let matches: (t: ClockTime) => boolean
+  let sample: ClockTime
+  if (input.mode === 'setTime') {
+    if (!input.time) throw new Error('clockTask: mode setTime needs time')
+    ckValidateTime(input.time, snap)
+    const target = { h: input.time.h % 12, m: input.time.m }
+    matches = (t) => ckMatchesTime(target, t)
+    sample = target
+  } else if (input.mode === 'angle') {
+    const angle = input.angle as number
+    ckValidateAngle(angle, snap, angleTolerance)
+    matches = (t) => ckMatchesAngle(angle, t, angleTolerance)
+    const example = input.exampleTime ? { h: input.exampleTime.h % 12, m: input.exampleTime.m } : ckFindTime(angle, snap, angleTolerance)
+    if (!example || !Number.isInteger(example.h) || !Number.isInteger(example.m) || example.m < 0 || example.m > 59 || example.m % snap !== 0 || !matches(example)) {
+      throw new Error('clockTask: exampleTime does not form the angle within the tolerance (or is not on the minute grid)')
+    }
+    sample = example
+  } else {
+    throw new Error(`clockTask: unknown mode ${String(input.mode)}`)
+  }
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    ...(input.visualContent?.trim() ? { visualContent: input.visualContent } : {}),
+    sampleAnswer: { kind: 'clock', h: sample.h, m: sample.m, touched: true },
+    interactive: {
+      type: 'clock',
+      props: {
+        mode: input.mode,
+        ...(snap !== CK_DEFAULT_SNAP ? { minuteSnap: snap } : {}),
+        instruction:
+          input.instruction ??
+          'Ziehe den Stunden- und den Minutenzeiger an den Punkten an ihren Spitzen. Mit den Pfeiltasten verschiebst du den ausgewählten Zeiger Schritt für Schritt.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'clock' && ckTouched(answer) && matches({ h: answer.h, m: answer.m }),
   }
 }

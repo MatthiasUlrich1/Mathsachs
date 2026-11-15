@@ -22,11 +22,13 @@ import {
   treeDiagramTask,
   barChartTask,
   pieChartTask,
+  clockTask,
   paramSliderTask,
   textTask,
   valueTask,
   visualTask,
 } from '../curriculum/taskHelpers'
+import type { ClockTaskInput } from '../curriculum/taskHelpers'
 import type { Task } from '../curriculum/types'
 import { bundledPackById } from '../curriculum/install'
 import {
@@ -97,6 +99,7 @@ export type AuthoringElementType =
   | 'treeDiagram'
   | 'barChart'
   | 'pieChart'
+  | 'clock'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -133,6 +136,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'treeDiagram', label: 'Baumdiagramm (Wahrscheinlichkeiten eintragen)' },
   { id: 'barChart', label: 'Säulendiagramm zeichnen (Balkenhöhen ziehen)' },
   { id: 'pieChart', label: 'Kreisdiagramm zeichnen (Sektorgrenzen ziehen)' },
+  { id: 'clock', label: 'Uhr (Zeiger verschieben)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -533,6 +537,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'clock': {
+      try {
+        clockTask({ question: 'q', solution: 's', explanation: 'e', ...clockInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Uhr: Uhrzeit (nicht 12:00, Vielfaches der Schrittweite 1 oder 5) bzw. ein Winkel von mehr als 0 bis 180° mit passender Uhrzeit. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -829,6 +843,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(barChartTask({ question, solution, explanation, ...barChartInputFromProps(p) }))
     case 'pieChart':
       return withVisual(pieChartTask({ question, solution, explanation, ...pieChartInputFromProps(p) }))
+    case 'clock':
+      return withVisual(clockTask({ question, solution, explanation, ...clockInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -1074,6 +1090,16 @@ ${[n.snap, n.labelEvery].some((v) => v !== undefined) ? [n.snap !== undefined ? 
   probabilities: ${JSON.stringify(t.probabilities)},
   blanks: ${JSON.stringify(t.blanks)},
 ${t.rootLabel ? `  rootLabel: ${JSON.stringify(t.rootLabel)},\n` : ''}  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
+    case 'clock': {
+      const b = clockInputFromProps(p)
+      call = `clockTask({
+  question: ${q},
+  mode: ${JSON.stringify(b.mode)},
+${b.time ? `  time: ${JSON.stringify(b.time)},\n` : ''}${b.angle !== undefined ? `  angle: ${b.angle},\n` : ''}${b.exampleTime ? `  exampleTime: ${JSON.stringify(b.exampleTime)},\n` : ''}${b.angleTolerance !== undefined ? `  angleTolerance: ${b.angleTolerance},\n` : ''}${b.minuteSnap !== 5 ? `  minuteSnap: ${b.minuteSnap},\n` : ''}  solution: ${sol},
   explanation: ${expl},
 })`
       break
@@ -1359,5 +1385,27 @@ const pieChartInputFromProps = (p: Record<string, unknown>) => {
     percents: rows.map((r) => r.value),
     snapPercent: snapRaw === '' ? 5 : num(snapRaw),
     ...(tolRaw === '' ? {} : { tolerance: num(tolRaw) }),
+  }
+}
+
+/** Reads "7:25" (also "7.25" or "7,25") into a clock time; null when it is not a time. */
+const parseClockTime = (v: unknown): { h: number; m: number } | null => {
+  const mt = /^\s*(\d{1,2})\s*[:.,]\s*(\d{1,2})\s*(?:Uhr)?\s*$/i.exec(String(v ?? ''))
+  return mt ? { h: Number(mt[1]), m: Number(mt[2]) } : null
+}
+
+/** Builds the clockTask input of an authoring draft (validated beforehand). */
+const clockInputFromProps = (p: Record<string, unknown>): Pick<ClockTaskInput, 'mode' | 'time' | 'angle' | 'exampleTime' | 'angleTolerance'> & { minuteSnap: number } => {
+  const num = (v: unknown): number => Number(String(v ?? '').trim().replace(',', '.'))
+  const snapRaw = String(p.minuteSnap ?? '').trim()
+  const tolRaw = String(p.tolerance ?? '').trim()
+  const mode = p.mode === 'angle' ? ('angle' as const) : ('setTime' as const)
+  const example = String(p.exampleTime ?? '').trim() === '' ? null : parseClockTime(p.exampleTime)
+  return {
+    mode,
+    ...(mode === 'setTime' ? { time: parseClockTime(p.time) ?? { h: Number.NaN, m: Number.NaN } } : { angle: num(p.angle) }),
+    ...(mode === 'angle' && example ? { exampleTime: example } : {}),
+    ...(mode === 'angle' && tolRaw !== '' ? { angleTolerance: num(tolRaw) } : {}),
+    minuteSnap: snapRaw === '' ? 5 : num(snapRaw),
   }
 }

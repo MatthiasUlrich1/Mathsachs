@@ -1,0 +1,110 @@
+.clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.clock__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.clock__svg {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  background: #f8fafc;
+  border-radius: 12px;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.clock__face {
+  fill: #fff;
+  stroke: #334155;
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+.clock__tick {
+  stroke: #475569;
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.clock__tick--major {
+  stroke: #0f172a;
+  stroke-width: 2.5;
+}
+
+.clock__number {
+  fill: #0f172a;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.clock__hand {
+  stroke: #0f172a;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.clock__hand--hour {
+  stroke-width: 8;
+}
+
+.clock__hand--minute {
+  stroke-width: 5;
+  stroke: #1d4ed8;
+}
+
+.clock__centre {
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+/* Only the knobs block page scrolling; the rest of the figure scrolls normally. */
+.clock__handle {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+
+.clock__hit {
+  fill: transparent;
+}
+
+.clock__knob {
+  fill: #fff;
+  stroke: #0f172a;
+  stroke-width: 3;
+}
+
+.clock__handle--minute .clock__knob {
+  stroke: #1d4ed8;
+}
+
+.clock__handle--touched .clock__knob {
+  fill: #e2e8f0;
+}
+
+.clock__handle--dragging {
+  cursor: grabbing;
+}
+
+.clock__handle:focus-visible .clock__knob {
+  stroke: #dc2626;
+  stroke-width: 4;
+}
+
+.clock__svg[aria-disabled="true"] .clock__handle {
+  cursor: default;
+  touch-action: auto;
+}

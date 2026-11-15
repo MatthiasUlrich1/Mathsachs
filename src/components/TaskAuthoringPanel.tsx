@@ -117,6 +117,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { level1: 'Rot, Blau', level2: 'Rot, Blau', probabilities: '0 = 3/5\n1 = 2/5\n0.0 = 1/2\n0.1 = 1/2\n1.0 = 3/4\n1.1 = 1/4', blankBranches: '0.0, 0.1', blankLeaves: '0.0', rootLabel: '' }
     case 'barChart':
       return { yMax: 12, step: 1, yLabel: 'Anzahl Kinder', items: 'Fußball = 8\nSchwimmen = 5\nTanzen = 3' }
+    case 'clock':
+      return { mode: 'setTime', time: '7:25', angle: 90, minuteSnap: 5 }
     case 'pieChart':
       return { snapPercent: 5, items: 'Fußball = 40\nSchwimmen = 30\nTanzen = 30' }
     case 'numberLineMulti':
@@ -1050,6 +1052,34 @@ function ElementPropsForm({
           {field('blankBranches', 'Zweige, die die Lernenden ausfüllen (Nummern, durch Komma getrennt)')}
           {field('blankLeaves', 'Pfade (Enden), die die Lernenden ausfüllen: Produkt entlang des Pfads (nur bei zwei Stufen)')}
           {field('rootLabel', 'Beschriftung am Start (optional)')}
+        </>
+      )
+    case 'clock':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-mode">
+              Modus
+            </label>
+            <select
+              id="prop-mode"
+              value={propStr(draft, 'mode', 'setTime')}
+              onChange={(e) => setDraft(setProp(draft, 'mode', e.target.value))}
+            >
+              <option value="setTime">Uhrzeit einstellen</option>
+              <option value="angle">Winkel zwischen den Zeigern einstellen</option>
+            </select>
+          </div>
+          {propStr(draft, 'mode', 'setTime') === 'angle' ? (
+            <>
+              {field('angle', 'Winkel zwischen den Zeigern in ° (größer als 0 und höchstens 180)')}
+              {field('exampleTime', 'Beispiel-Uhrzeit für die Musterlösung (z. B. 4:00, leer = automatisch)')}
+              {field('tolerance', 'Erlaubte Abweichung in ° (leer = 2,5)')}
+            </>
+          ) : (
+            field('time', 'Gesuchte Uhrzeit (z. B. 7:25, nicht 12:00; die Uhr ist analog, 7:25 und 19:25 gelten gleich)')
+          )}
+          {field('minuteSnap', 'Schrittweite des Minutenzeigers (1 oder 5; leer = 5)')}
         </>
       )
     case 'pieChart':
