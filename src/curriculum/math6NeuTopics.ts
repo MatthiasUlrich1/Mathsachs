@@ -22,6 +22,7 @@ import {
   choicePickTask,
   constructionStepsTask,
   fractionModelTask,
+  fractionWallTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -273,6 +274,19 @@ const erweiternNeu: Topic = asNeuTopic('lb1-erweitern', {
         ),
       }
     },
+    // V4 Bruchwand — alle Erweiterungen eines Bruchs finden
+    (rng: Rng) => {
+      const [n, d] = pick(rng, [[1, 2], [1, 3], [2, 3], [1, 5], [2, 5], [3, 4], [5, 6]] as Array<[number, number]>)
+      const same = [2, 3, 4, 5, 6, 8, 10, 12].filter((r) => r !== d && (n * r) % d === 0).map((r) => `${(n * r) / d}/${r}`)
+      return fractionWallTask({
+        mode: 'equivalent',
+        target: { num: n, den: d },
+        question: `Zeige an der Bruchwand, wie sich ${n}/${d} erweitern lässt: Färbe in jeder Reihe, in der es möglich ist, von links genau so viele Teile, dass die Länge zum gefärbten Bruch ${n}/${d} passt.`,
+        solution: same.join(', '),
+        explanation: `Die Länge ${n}/${d} bleibt gleich, nur die Einteilung wird feiner. Das geht in den Reihen, deren Teileanzahl ein Vielfaches von ${d} ist: ${same.join(', ')}. Jeder dieser Brüche entsteht durch Erweitern, also durch Multiplizieren von Zähler und Nenner mit derselben Zahl. In den anderen Reihen gibt es kein Teilstück mit genau dieser Länge.`,
+        dedupeKey: `erw-wand:${n}:${d}`,
+      })
+    },
   ),
 })
 
@@ -371,6 +385,29 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         solution: formatDe(value),
         explanation: `${format(a)} ≈ ${formatDe(roundTo(valueA, 3))} und ${format(b)} ≈ ${formatDe(roundTo(valueB, 3))}. Der größere Wert ist ${biggerLabel} ≈ ${formatDe(value)}.`,
         eps: 0.03,
+      })
+    },
+    // V5 Bruchwand — den größeren Bruch an der Wand erkennen
+    (rng: Rng) => {
+      const [an, ad, bn, bd] = pick(rng, [
+        [2, 3, 3, 4], [3, 5, 1, 2], [5, 8, 2, 3], [3, 4, 4, 5], [1, 3, 3, 8], [4, 5, 5, 6], [3, 8, 2, 5],
+        [7, 10, 3, 4], [5, 12, 2, 5], [1, 4, 2, 6], [5, 6, 7, 8], [3, 10, 1, 3],
+      ] as Array<[number, number, number, number]>)
+      const swap = rng() < 0.5
+      const a = swap ? { n: bn, d: bd } : { n: an, d: ad }
+      const b = swap ? { n: an, d: ad } : { n: bn, d: bd }
+      const aBigger = a.n * b.d > b.n * a.d
+      const big = aBigger ? a : b
+      const small = aBigger ? b : a
+      const common = a.d * b.d
+      return fractionWallTask({
+        mode: 'compare',
+        a: { num: a.n, den: a.d },
+        b: { num: b.n, den: b.d },
+        question: `Vergleiche ${a.n}/${a.d} und ${b.n}/${b.d} an der Bruchwand. Färbe den größeren der beiden Brüche. Mit der roten Linie kannst du die Längen vergleichen.`,
+        solution: `${big.n}/${big.d}`,
+        explanation: `Die Teile reichen von links unterschiedlich weit: ${big.n}/${big.d} ragt weiter als ${small.n}/${small.d}. Rechnerisch: Mit dem gemeinsamen Nenner ${common} ist ${a.n}/${a.d} = ${a.n * b.d}/${common} und ${b.n}/${b.d} = ${b.n * a.d}/${common}. Also ist ${big.n}/${big.d} größer.`,
+        dedupeKey: `vgl-wand:${a.n}:${a.d}:${b.n}:${b.d}`,
       })
     },
   ),

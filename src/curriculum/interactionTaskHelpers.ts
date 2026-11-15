@@ -11,6 +11,15 @@ import {
   type FractionModelShape,
   type FractionTarget,
 } from '../lib/fractionModelLogic'
+import {
+  FRACTION_WALL_DEFAULT_ROWS,
+  FRACTION_WALL_MAX_ROW,
+  equivalentWallSolution,
+  wallCompareMatches,
+  wallEquivalentMatches,
+  wallFractionsEqual,
+  type FractionWallFraction,
+} from '../lib/fractionWallLogic'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -85,5 +94,109 @@ export const fractionModelTask = (input: FractionModelTaskInput): Task => {
     },
     check: (answer: UserInput) =>
       answer.kind === 'fractionModel' && fractionModelMatches(answer.den, answer.shaded, target, allowEquivalent),
+  }
+}
+
+interface FractionWallTaskBase {
+  question: string
+  /** Wall rows as numbers of tiles (row d has d tiles of width 1/d). Default: 1, 2, 3, 4, 5, 6, 8, 10, 12. */
+  rows?: number[]
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+export type FractionWallTaskInput = FractionWallTaskBase &
+  (
+    | {
+        /** Select, in every row where it fits, the run of tiles as long as `target`. The target's own row is shown shaded as reference. */
+        mode: 'equivalent'
+        target: FractionWallFraction
+      }
+    | {
+        /** Select the run for the larger of two different fractions (in its own row). */
+        mode: 'compare'
+        a: FractionWallFraction
+        b: FractionWallFraction
+      }
+  )
+
+const assertWallFraction = (name: string, x: FractionWallFraction, rows: readonly number[]) => {
+  if (!Number.isInteger(x.num) || !Number.isInteger(x.den) || x.num < 1 || x.num > x.den) {
+    throw new Error(`fractionWallTask: ${name} must satisfy 1 <= num <= den, got ${x.num}/${x.den}`)
+  }
+  if (!rows.includes(x.den)) {
+    throw new Error(`fractionWallTask: rows must contain the row ${x.den} of ${name}`)
+  }
+}
+
+/** Fraction wall: tap tiles from the left edge; either find all equivalent fractions or the larger one of two. */
+export const fractionWallTask = (input: FractionWallTaskInput): Task => {
+  const rows = [...(input.rows ?? FRACTION_WALL_DEFAULT_ROWS)]
+  if (
+    rows.length < 2 ||
+    rows.some(
+      (r, i) => !Number.isInteger(r) || r < 1 || r > FRACTION_WALL_MAX_ROW || (i > 0 && r <= rows[i - 1]!),
+    )
+  ) {
+    throw new Error(`fractionWallTask: rows must be ascending, unique integers 1..${FRACTION_WALL_MAX_ROW}`)
+  }
+  const common = {
+    question: input.question,
+    answerKind: 'fraction' as const,
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+  }
+  if (input.mode === 'equivalent') {
+    const { target } = input
+    assertWallFraction('target', target, rows)
+    if (target.num >= target.den) {
+      throw new Error(`fractionWallTask: target must be smaller than 1, got ${target.num}/${target.den}`)
+    }
+    const sample = equivalentWallSolution(rows, target)
+    if (sample.length === 0) {
+      throw new Error(`fractionWallTask: no other row shows ${target.num}/${target.den}; adjust rows`)
+    }
+    return {
+      ...common,
+      sampleAnswer: { kind: 'fractionWall', selected: sample },
+      interactive: {
+        type: 'fractionWall',
+        props: {
+          mode: 'equivalent',
+          rows,
+          target: { num: target.num, den: target.den },
+          instruction:
+            input.instruction ??
+            'Die gefärbte Reihe ist vorgegeben. Tippe in den anderen Reihen auf das letzte Teil, das genauso lang ist:',
+        },
+      },
+      check: (answer: UserInput) =>
+        answer.kind === 'fractionWall' && wallEquivalentMatches(rows, answer.selected, target),
+    }
+  }
+  const { a, b } = input
+  assertWallFraction('a', a, rows)
+  assertWallFraction('b', b, rows)
+  if (wallFractionsEqual(a, b)) {
+    throw new Error(`fractionWallTask: a and b must differ, got ${a.num}/${a.den} and ${b.num}/${b.den}`)
+  }
+  const larger = a.num * b.den > b.num * a.den ? a : b
+  return {
+    ...common,
+    sampleAnswer: { kind: 'fractionWall', selected: [{ row: larger.den, count: larger.num }] },
+    interactive: {
+      type: 'fractionWall',
+      props: {
+        mode: 'compare',
+        rows,
+        a: { num: a.num, den: a.den },
+        b: { num: b.num, den: b.den },
+        instruction: input.instruction ?? 'Färbe in der Wand den größeren Bruch: Tippe auf sein letztes Teil.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'fractionWall' && wallCompareMatches(rows, answer.selected, a, b),
   }
 }

@@ -1,0 +1,74 @@
+.fraction-wall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.fraction-wall__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.fraction-wall__svg {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  /* Tiles are tap-only: page scroll keeps working, double-tap zoom is off. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.fraction-wall__label {
+  font-size: 11px;
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+.fraction-wall__tile {
+  fill: #e2e8f0;
+  stroke: #334155;
+  stroke-width: 1.5;
+  cursor: pointer;
+}
+
+.fraction-wall__tile--on {
+  fill: #3b82f6;
+}
+
+.fraction-wall__tile--ref {
+  fill: #f59e0b;
+}
+
+.fraction-wall__tile--fixed,
+.fraction-wall__svg[aria-disabled="true"] .fraction-wall__tile {
+  cursor: default;
+}
+
+.fraction-wall__tile:focus-visible,
+.fraction-wall__handle:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 1px;
+}
+
+.fraction-wall__line {
+  stroke: #dc2626;
+  stroke-width: 2;
+  stroke-dasharray: 5 3;
+  pointer-events: none;
+}
+
+.fraction-wall__handle {
+  fill: #dc2626;
+  stroke: #fff;
+  stroke-width: 2;
+  cursor: grab;
+  /* Only the drag handle blocks browser panning. */
+  touch-action: none;
+}

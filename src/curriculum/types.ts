@@ -54,6 +54,8 @@ export type UserInput =
   | { kind: 'rulerMeasure'; length: number | null; touched: boolean }
   /** Fraction model: number of parts and the (0-based) indices of the shaded parts. */
   | { kind: 'fractionModel'; den: number; shaded: number[] }
+  /** Fraction wall: selected tile runs from the left edge, per row. */
+  | { kind: 'fractionWall'; selected: Array<{ row: number; count: number }> }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -95,6 +97,7 @@ export const emptyInput = (
   if (kind === 'angleProtractor') return { kind: 'angleProtractor', degrees: null, touched: false }
   if (kind === 'rulerMeasure') return { kind: 'rulerMeasure', length: null, touched: false }
   if (kind === 'fractionModel') return { kind: 'fractionModel', den: 4, shaded: [] }
+  if (kind === 'fractionWall') return { kind: 'fractionWall', selected: [] }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -122,6 +125,7 @@ export interface InteractiveConfig {
     | 'angleProtractor'
     | 'rulerMeasure'
     | 'fractionModel'
+    | 'fractionWall'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

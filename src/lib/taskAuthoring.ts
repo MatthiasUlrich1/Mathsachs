@@ -15,6 +15,7 @@ import {
   angleProtractorTask,
   rulerMeasureTask,
   fractionModelTask,
+  fractionWallTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -83,6 +84,7 @@ export type AuthoringElementType =
   | 'angleProtractor'
   | 'rulerMeasure'
   | 'fractionModel'
+  | 'fractionWall'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -112,6 +114,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'angleProtractor', label: 'Winkelmesser (Geodreieck)' },
   { id: 'rulerMeasure', label: 'Lineal (Strecke messen/abtragen)' },
   { id: 'fractionModel', label: 'Bruchmodell (Teile färben)' },
+  { id: 'fractionWall', label: 'Bruchwand (gleichwertige Brüche / vergleichen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -448,6 +451,20 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       if (!Number.isFinite(tol) || tol < 0) errors.push('Lineal: Toleranz ungültig.')
       break
     }
+    case 'fractionWall': {
+      if (p.mode !== 'equivalent' && p.mode !== 'compare') {
+        errors.push('Bruchwand: Modus „gleichwertig“ oder „vergleichen“ wählen.')
+        break
+      }
+      try {
+        fractionWallTask({ question: 'q', solution: 's', explanation: 'e', ...wallInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Bruchwand: Reihen (aufsteigend, 1–12, mit den Nennern der Brüche) und Brüche prüfen. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'fractionModel': {
       const num = Number(p.num)
       const den = Number(p.den)
@@ -720,6 +737,10 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
           explanation,
         }),
       )
+    case 'fractionWall':
+      return withVisual(
+        fractionWallTask({ question, solution, explanation, ...wallInputFromProps(p) }),
+      )
     case 'fractionModel':
       return withVisual(
         fractionModelTask({
@@ -929,6 +950,19 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   explanation: ${expl},
 })`
       break
+    case 'fractionWall': {
+      const w = wallInputFromProps(p)
+      const frac = (x: { num: number; den: number }) => `{ num: ${x.num}, den: ${x.den} }`
+      call = `fractionWallTask({
+  question: ${q},
+  mode: ${JSON.stringify(w.mode)},
+  rows: [${w.rows.join(', ')}],
+  ${w.mode === 'compare' ? `a: ${frac(w.a)},\n  b: ${frac(w.b)},` : `target: ${frac(w.target)},`}
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'fractionModel':
       call = `fractionModelTask({
   question: ${q},
@@ -1033,4 +1067,21 @@ export function deleteDraft(id: string): DraftAuthoringTask[] {
   const list = loadDrafts().filter((d) => d.id !== id)
   saveDrafts(list)
   return list
+}
+
+/** "1, 2, 3, 4, 6" → [1, 2, 3, 4, 6] (NaN for unreadable entries, caught by validation). */
+const parseWallRows = (v: unknown): number[] =>
+  String(v ?? '')
+    .split(/[\s,;]+/)
+    .filter(Boolean)
+    .map(Number)
+
+const wallFractionOf = (p: Record<string, unknown>, a: string, b: string) => ({ num: Number(p[a]), den: Number(p[b]) })
+
+/** Builds the fractionWallTask input of an authoring draft (validated beforehand). */
+const wallInputFromProps = (p: Record<string, unknown>) => {
+  const rows = parseWallRows(p.rows)
+  return p.mode === 'compare'
+    ? { mode: 'compare' as const, rows, a: wallFractionOf(p, 'aNum', 'aDen'), b: wallFractionOf(p, 'bNum', 'bDen') }
+    : { mode: 'equivalent' as const, rows, target: wallFractionOf(p, 'num', 'den') }
 }

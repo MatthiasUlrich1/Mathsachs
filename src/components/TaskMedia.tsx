@@ -14,6 +14,7 @@ import { ConstructionSteps } from './ConstructionSteps'
 import { ParamSlider } from './ParamSlider'
 import { AngleProtractor } from './AngleProtractor'
 import { FractionModel } from './FractionModel'
+import { FractionWall } from './FractionWall'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -123,6 +124,9 @@ export const initTaskInput = (task: Task): UserInput => {
     // Start with nothing shaded and a number of parts different from the target's.
     const start = task.interactive.props.initialDen
     return { kind: 'fractionModel', den: typeof start === 'number' ? start : 4, shaded: [] }
+  }
+  if (task.interactive?.type === 'fractionWall') {
+    return { kind: 'fractionWall', selected: [] }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -500,6 +504,17 @@ export function TaskInteractive({
               ? value
               : { kind: 'fractionModel', den: interactive.props.initialDen ?? 4, shaded: [] }
           }
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'fractionWall' && (
+        <FractionWall
+          mode={interactive.props.mode === 'compare' ? 'compare' : 'equivalent'}
+          rows={interactive.props.rows}
+          target={interactive.props.target}
+          value={value.kind === 'fractionWall' ? value : { kind: 'fractionWall', selected: [] }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

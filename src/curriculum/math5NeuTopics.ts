@@ -15,6 +15,7 @@ import {
   digitGridTask,
   dragDropSortTask,
   fractionModelTask,
+  fractionWallTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -1008,6 +1009,21 @@ export const math5NeuLb2: Topic[] = [
           }),
           visualContent: generateFractionBarSvg({ numerator: n, denominator: d }),
         }
+      },
+      // Variant 5: Bruchwand — alle gleichwertigen Brüche finden
+      (rng: Rng) => {
+        const [n, d] = pick(rng, [[1, 2], [1, 3], [2, 3], [1, 4], [3, 4]] as Array<[number, number]>)
+        const rows = [1, 2, 3, 4, 6, 8, 12]
+        const same = rows.filter((r) => r !== d && (n * r) % d === 0).map((r) => `${(n * r) / d}/${r}`)
+        return fractionWallTask({
+          mode: 'equivalent',
+          rows,
+          target: { num: n, den: d },
+          question: `In der Bruchwand ist die Reihe 1/${d} bis zum Bruch ${n}/${d} gefärbt. Färbe in den anderen Reihen die Teile, die genauso weit reichen. Welche Brüche sind gleichwertig zu ${n}/${d}?`,
+          solution: same.join(', '),
+          explanation: `Alle Teile, die von links genauso weit reichen wie ${n}/${d}, zeigen denselben Anteil. Du findest ${same.join(', ')}. Sie entstehen, wenn du Zähler und Nenner von ${n}/${d} mit derselben Zahl multiplizierst (erweiterst). Eine Reihe ohne passendes Teilstück, zum Beispiel die Reihe mit 1 Teil, bleibt leer.`,
+          dedupeKey: `erweitern-wand:${n}:${d}`,
+        })
       },
     ),
   }),

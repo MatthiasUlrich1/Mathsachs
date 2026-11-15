@@ -18,6 +18,7 @@ import {
   generateFractionCircleSvg,
 } from './geometrySvg'
 import { lightShadowFromLampParam } from './physikSvg'
+import { fractionWallPrintSvg } from './fractionWallLogic'
 
 export type WorksheetPrintExtras = {
   /** SVG/HTML shown under the question (visualContent or static stand-in). */
@@ -314,6 +315,28 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
         paperHint: fromVisual.visualHtml
           ? 'Färbe im leeren Modell darunter die passenden Teile (siehe Aufgabe).'
           : 'Färbe im Modell die passenden Teile.',
+        answerBlank: '',
+      }
+    }
+
+    case 'fractionWall': {
+      // Paper: the empty wall (equivalent: the reference row already shaded) to colour in.
+      const rows = Array.isArray(props.rows) ? props.rows.map(Number).filter((r) => Number.isInteger(r) && r >= 1) : []
+      const target = (props.target ?? undefined) as { num?: number; den?: number } | undefined
+      const reference =
+        props.mode !== 'compare' && target && Number.isInteger(target.num) && Number.isInteger(target.den)
+          ? { num: Number(target.num), den: Number(target.den) }
+          : undefined
+      const wall = rows.length ? fractionWallPrintSvg(rows, reference) : ''
+      // A reference figure from the task (visualContent) comes first, then the empty wall.
+      const visualHtml = [fromVisual.visualHtml, wall].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        // The on-screen instruction mentions tapping and the slider, which do not exist on paper.
+        paperHint:
+          props.mode === 'compare'
+            ? 'Färbe in der Bruchwand den größeren Bruch: von links bis zum Ende seines Teils.'
+            : 'Färbe in jeder Reihe von links so viele Teile, wie genauso lang sind wie die gefärbte Reihe.',
         answerBlank: '',
       }
     }

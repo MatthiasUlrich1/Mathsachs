@@ -107,6 +107,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { mode: 'measure', angle: 47, startAngle: 0, tolerance: 1 }
     case 'rulerMeasure':
       return { mode: 'measure', lengthCm: 4.3, angle: 0, tolerance: 0.1 }
+    case 'fractionWall':
+      return { mode: 'equivalent', rows: '1, 2, 3, 4, 6, 8, 12', num: 1, den: 2, aNum: 3, aDen: 4, bNum: 2, bDen: 3 }
     case 'fractionModel':
       return { shape: 'bar', num: 3, den: 4, allowEquivalent: true }
     case 'paramSlider':
@@ -963,6 +965,38 @@ function ElementPropsForm({
           {field('lengthCm', 'Länge in cm (0,5–12, Schritt 0,1)')}
           {field('angle', 'Neigung der Strecke in ° (−15 bis 15)')}
           {field('tolerance', 'Toleranz in cm')}
+        </>
+      )
+    case 'fractionWall':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-mode">
+              Modus
+            </label>
+            <select
+              id="prop-mode"
+              value={propStr(draft, 'mode', 'equivalent')}
+              onChange={(e) => setDraft(setProp(draft, 'mode', e.target.value))}
+            >
+              <option value="equivalent">Gleichwertige Brüche finden</option>
+              <option value="compare">Größeren Bruch wählen</option>
+            </select>
+          </div>
+          {field('rows', 'Reihen (Anzahl der Teile, aufsteigend, 1–12, mit Komma getrennt)')}
+          {propStr(draft, 'mode', 'equivalent') === 'compare' ? (
+            <>
+              {field('aNum', 'Bruch A: Zähler')}
+              {field('aDen', 'Bruch A: Nenner (muss eine Reihe sein)')}
+              {field('bNum', 'Bruch B: Zähler')}
+              {field('bDen', 'Bruch B: Nenner (muss eine Reihe sein)')}
+            </>
+          ) : (
+            <>
+              {field('num', 'Zähler des vorgegebenen Bruchs')}
+              {field('den', 'Nenner des vorgegebenen Bruchs (muss eine Reihe sein)')}
+            </>
+          )}
         </>
       )
     case 'fractionModel':
