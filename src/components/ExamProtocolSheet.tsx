@@ -67,6 +67,9 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'rulerMeasure') {
     return input.touched && input.length !== null ? `${String(input.length).replace('.', ',')} cm` : '—'
   }
+  if (input.kind === 'fractionModel') {
+    return input.shaded.length > 0 ? `${input.shaded.length}/${input.den}` : '—'
+  }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }

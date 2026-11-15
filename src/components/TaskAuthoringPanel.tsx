@@ -107,6 +107,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { mode: 'measure', angle: 47, startAngle: 0, tolerance: 1 }
     case 'rulerMeasure':
       return { mode: 'measure', lengthCm: 4.3, angle: 0, tolerance: 0.1 }
+    case 'fractionModel':
+      return { shape: 'bar', num: 3, den: 4, allowEquivalent: true }
     case 'paramSlider':
       return {
         preview: 'linear',
@@ -961,6 +963,39 @@ function ElementPropsForm({
           {field('lengthCm', 'Länge in cm (0,5–12, Schritt 0,1)')}
           {field('angle', 'Neigung der Strecke in ° (−15 bis 15)')}
           {field('tolerance', 'Toleranz in cm')}
+        </>
+      )
+    case 'fractionModel':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-shape">
+              Form
+            </label>
+            <select
+              id="prop-shape"
+              value={propStr(draft, 'shape', 'bar')}
+              onChange={(e) => setDraft(setProp(draft, 'shape', e.target.value))}
+            >
+              <option value="bar">Streifen</option>
+              <option value="circle">Kreis</option>
+            </select>
+          </div>
+          {field('num', 'Zähler (gefärbte Teile)')}
+          {field('den', 'Nenner (Teile insgesamt, 2–12)')}
+          <div className="field">
+            <label className="field__label" htmlFor="prop-allowEquivalent">
+              Gleichwertige Brüche (z. B. 2/4 für 1/2)
+            </label>
+            <select
+              id="prop-allowEquivalent"
+              value={draft.element.props.allowEquivalent === false ? 'no' : 'yes'}
+              onChange={(e) => setDraft(setProp(draft, 'allowEquivalent', e.target.value !== 'no'))}
+            >
+              <option value="yes">erlaubt</option>
+              <option value="no">nur dieser Nenner</option>
+            </select>
+          </div>
         </>
       )
     case 'paramSlider':

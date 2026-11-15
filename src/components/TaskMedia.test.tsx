@@ -2,7 +2,7 @@ import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
-import { constructionStepsTask, angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
+import { fractionModelTask, constructionStepsTask, angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { TaskVisual, initTaskInput, taskInteractiveKey } from './TaskMedia'
 
@@ -145,5 +145,20 @@ describe('graphical tasks stay attached after generate', () => {
       expect(start.length).not.toBe(4.3)
       expect(draw.check(start)).toBe(false)
     }
+  })
+})
+
+describe('TaskMedia fractionModel', () => {
+  it('initTaskInput: fractionModel starts with nothing shaded and a den different from the target', () => {
+    const t = fractionModelTask({
+      question: 'q',
+      shape: 'circle',
+      target: { num: 3, den: 4 },
+      solution: 's',
+      explanation: 'e',
+    })
+    const start = initTaskInput(t)
+    expect(start).toEqual({ kind: 'fractionModel', den: 6, shaded: [] })
+    expect(t.check(start)).toBe(false)
   })
 })

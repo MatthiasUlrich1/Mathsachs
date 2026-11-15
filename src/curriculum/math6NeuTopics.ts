@@ -21,6 +21,7 @@ import {
   angleProtractorTask,
   choicePickTask,
   constructionStepsTask,
+  fractionModelTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -176,6 +177,24 @@ const kuerzenNeu: Topic = asNeuTopic('lb1-kuerzen', {
           explanation: `${n} von ${d} Feldern sind eingefärbt (= ${n}/${d}). Mit ggT ${g} gekürzt: ${base.n}/${base.d}.`,
         }),
         visualContent: generateFractionGridSvg({ numerator: n, denominator: d, cols }),
+      }
+    },
+    // V5 Bruchmodell — Kürzen am Streifen zeigen
+    (rng: Rng) => {
+      const [n, d, k] = pick(rng, [
+        [1, 2, 4], [1, 2, 6], [2, 3, 3], [2, 3, 4], [3, 4, 3], [1, 3, 4], [1, 4, 3], [2, 5, 2], [5, 6, 2],
+      ] as Array<[number, number, number]>)
+      return {
+        ...fractionModelTask({
+          question: `Der Streifen oben zeigt ${n * k}/${d * k}. Kürze den Bruch mit ${k} und zeige das Ergebnis im Streifen darunter.`,
+          shape: 'bar',
+          target: { num: n, den: d },
+          allowEquivalent: false,
+          solution: `${n}/${d}`,
+          explanation: `Beim Kürzen mit ${k} werden Zähler und Nenner durch ${k} geteilt: ${n * k} : ${k} = ${n} und ${d * k} : ${k} = ${d}. Du stellst also ${d} Teile ein und färbst ${n} davon. Der Anteil bleibt gleich groß: ${n * k}/${d * k} = ${n}/${d}.`,
+          dedupeKey: `kuerzen-modell:${n}:${d}:${k}`,
+        }),
+        visualContent: generateFractionBarSvg({ numerator: n * k, denominator: d * k }),
       }
     },
   ),

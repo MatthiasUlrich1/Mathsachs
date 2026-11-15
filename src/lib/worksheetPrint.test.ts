@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from './rng'
 import {
   angleProtractorTask,
+  fractionModelTask,
   constructionStepsTask,
   rulerMeasureTask,
   choicePickTask,
@@ -199,5 +200,26 @@ describe('worksheetPrintExtras', () => {
     expect((extras.visualHtml ?? '').match(/<svg/g)?.length).toBe(2)
     expect(extras.paperHint).toContain('1. Zeichne c.')
     expect(extras.paperHint).toContain('2. Zeichne den Kreis.')
+  })
+})
+
+describe('worksheetPrintExtras fractionModel', () => {
+  it('prints the empty model divided into the target parts, no answer line', () => {
+    for (const shape of ['bar', 'circle'] as const) {
+      const extras = worksheetPrintExtras(
+        fractionModelTask({ question: 'q', shape, target: { num: 3, den: 4 }, solution: 's', explanation: 'e' }),
+      )
+      expect(extras.visualHtml).toContain('<svg')
+      expect(extras.visualHtml).not.toContain('3/4')
+      expect(extras.paperHint).toContain('Färbe')
+      expect(extras.paperHint).not.toContain('Anzahl der Teile')
+      expect(extras.answerBlank).toBe('')
+    }
+    const bar = worksheetPrintExtras(
+      fractionModelTask({ question: 'q', shape: 'bar', target: { num: 3, den: 4 }, solution: 's', explanation: 'e' }),
+    )
+    expect(bar.visualHtml!.match(/<rect/g)).toHaveLength(4)
+    // Nothing shaded on paper: every part uses the empty colour.
+    expect(bar.visualHtml).not.toContain('#2ecc71')
   })
 })

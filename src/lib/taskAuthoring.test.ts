@@ -344,3 +344,28 @@ describe('taskAuthoring draftToTask / export / storage', () => {
     )
   })
 })
+
+describe('task authoring fractionModel', () => {
+  const draftOf = (props: Record<string, unknown>): DraftAuthoringTask => {
+    const d = createEmptyDraft('entwickler')
+    return {
+      ...d,
+      target: { packId: 'p', gradeId: 'g', areaId: 'a', topicId: 't', topicTitle: 'T' },
+      task: { question: 'Zeige 3/4.', unit: '', solution: '3/4', explanation: 'Teile färben.', hint: '' },
+      element: { type: 'fractionModel', props },
+    } as DraftAuthoringTask
+  }
+
+  it('builds a fractionModel task, exports a snippet and validates', () => {
+    const draft = draftOf({ shape: 'circle', num: 3, den: 4, allowEquivalent: false })
+    expect(validateDraft(draft)).toEqual([])
+    const task = draftToTask(draft)
+    expect(task.interactive?.type).toBe('fractionModel')
+    expect(task.interactive?.props).toMatchObject({ shape: 'circle', target: { num: 3, den: 4 }, allowEquivalent: false })
+    expect(task.check(task.sampleAnswer)).toBe(true)
+    expect(exportGeneratorSnippet(draft)).toContain('fractionModelTask({')
+    expect(validateDraft(draftOf({ shape: 'bar', num: 5, den: 4 })).join(' ')).toContain('Bruchmodell')
+    expect(validateDraft(draftOf({ shape: 'bar', num: 1, den: 20 })).join(' ')).toContain('Bruchmodell')
+    expect(validateDraft(draftOf({ shape: 'hex', num: 1, den: 2 })).join(' ')).toContain('Bruchmodell')
+  })
+})

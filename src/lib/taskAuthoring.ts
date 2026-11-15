@@ -14,6 +14,7 @@ import {
   numberLineTask,
   angleProtractorTask,
   rulerMeasureTask,
+  fractionModelTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -81,6 +82,7 @@ export type AuthoringElementType =
   | 'paramSlider'
   | 'angleProtractor'
   | 'rulerMeasure'
+  | 'fractionModel'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -109,6 +111,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'paramSlider', label: 'Parameter-Slider (Funktionsgraph)' },
   { id: 'angleProtractor', label: 'Winkelmesser (Geodreieck)' },
   { id: 'rulerMeasure', label: 'Lineal (Strecke messen/abtragen)' },
+  { id: 'fractionModel', label: 'Bruchmodell (Teile färben)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -445,6 +448,20 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       if (!Number.isFinite(tol) || tol < 0) errors.push('Lineal: Toleranz ungültig.')
       break
     }
+    case 'fractionModel': {
+      const num = Number(p.num)
+      const den = Number(p.den)
+      if (!Number.isInteger(den) || den < 2 || den > 12) {
+        errors.push('Bruchmodell: Nenner muss eine ganze Zahl von 2 bis 12 sein.')
+      }
+      if (!Number.isInteger(num) || num < 1 || num > den) {
+        errors.push('Bruchmodell: Zähler muss eine ganze Zahl von 1 bis zum Nenner sein.')
+      }
+      if (p.shape !== 'bar' && p.shape !== 'circle') {
+        errors.push('Bruchmodell: Form „Streifen“ oder „Kreis“ wählen.')
+      }
+      break
+    }
     case 'pairMatch':
     case 'clozeMulti':
     case 'iconBelong':
@@ -703,6 +720,17 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
           explanation,
         }),
       )
+    case 'fractionModel':
+      return withVisual(
+        fractionModelTask({
+          question,
+          shape: p.shape === 'circle' ? 'circle' : 'bar',
+          target: { num: Number(p.num), den: Number(p.den) },
+          allowEquivalent: p.allowEquivalent !== false,
+          solution,
+          explanation,
+        }),
+      )
     default: {
       // Exhaustiveness fallback
       return withVisual(
@@ -897,6 +925,16 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   lengthCm: ${Number(p.lengthCm)},
   angle: ${Number(p.angle) || 0},
   tolerance: ${Number.isFinite(Number(p.tolerance)) ? Number(p.tolerance) : 0.1},
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    case 'fractionModel':
+      call = `fractionModelTask({
+  question: ${q},
+  shape: ${JSON.stringify(p.shape === 'circle' ? 'circle' : 'bar')},
+  target: { num: ${Number(p.num)}, den: ${Number(p.den)} },
+  allowEquivalent: ${p.allowEquivalent !== false},
   solution: ${sol},
   explanation: ${expl},
 })`

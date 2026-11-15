@@ -52,6 +52,8 @@ export type UserInput =
   | { kind: 'angleProtractor'; degrees: number | null; touched: boolean }
   /** Virtual ruler: length in cm measured/drawn; untouched = not attempted. */
   | { kind: 'rulerMeasure'; length: number | null; touched: boolean }
+  /** Fraction model: number of parts and the (0-based) indices of the shaded parts. */
+  | { kind: 'fractionModel'; den: number; shaded: number[] }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -92,6 +94,7 @@ export const emptyInput = (
   if (kind === 'paramSlider') return { kind: 'paramSlider', values: {} }
   if (kind === 'angleProtractor') return { kind: 'angleProtractor', degrees: null, touched: false }
   if (kind === 'rulerMeasure') return { kind: 'rulerMeasure', length: null, touched: false }
+  if (kind === 'fractionModel') return { kind: 'fractionModel', den: 4, shaded: [] }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -118,6 +121,7 @@ export interface InteractiveConfig {
     | 'paramSlider'
     | 'angleProtractor'
     | 'rulerMeasure'
+    | 'fractionModel'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

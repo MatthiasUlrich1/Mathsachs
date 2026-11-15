@@ -1,0 +1,79 @@
+.fraction-model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.fraction-model__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.fraction-model__stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.fraction-model__step {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #94a3b8;
+  background: #fff;
+  color: #0f172a;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.fraction-model__step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.fraction-model__den {
+  min-width: 5.5em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.fraction-model__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  /* Taps must not scroll or zoom the page (touch / stylus). */
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.fraction-model__svg--bar {
+  max-width: 420px;
+}
+
+.fraction-model__svg--circle {
+  max-width: 260px;
+}
+
+.fraction-model__part {
+  fill: #e2e8f0;
+  stroke: #334155;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  cursor: pointer;
+}
+
+.fraction-model__part--on {
+  fill: #3b82f6;
+}
+
+.fraction-model__part:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 1px;
+}

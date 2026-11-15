@@ -88,3 +88,10 @@ describe('ExamProtocolSheet', () => {
     expect(formatExamAnswer({ kind: 'rulerMeasure', length: null, touched: true })).toBe('—')
   })
 })
+
+describe('formatExamAnswer fractionModel', () => {
+  it('shows shaded parts of den, dash when nothing is shaded', () => {
+    expect(formatExamAnswer({ kind: 'fractionModel', den: 4, shaded: [0, 2] })).toBe('2/4')
+    expect(formatExamAnswer({ kind: 'fractionModel', den: 4, shaded: [] })).toBe('—')
+  })
+})

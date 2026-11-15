@@ -11,7 +11,12 @@ import {
   type CoordinateScene,
   type GraphObject,
 } from './coordinateScene'
-import { generateAngleSvg, generateCoordinateGridSvg } from './geometrySvg'
+import {
+  generateAngleSvg,
+  generateCoordinateGridSvg,
+  generateFractionBarSvg,
+  generateFractionCircleSvg,
+} from './geometrySvg'
 import { lightShadowFromLampParam } from './physikSvg'
 
 export type WorksheetPrintExtras = {
@@ -287,6 +292,26 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
             ? 'Miss die Strecke mit dem Lineal und trage die Länge in cm ein.'
             : 'Zeichne die Strecke mit dem Lineal.'),
         answerBlank: '__________ cm',
+      }
+    }
+
+    case 'fractionModel': {
+      // Paper: the empty model divided into the target's number of parts, to be shaded.
+      const target = (props.target ?? {}) as { num?: number; den?: number }
+      const den = Number(target.den)
+      const circle = props.shape === 'circle'
+      const visualHtml =
+        fromVisual.visualHtml ??
+        (Number.isInteger(den) && den >= 1
+          ? circle
+            ? generateFractionCircleSvg({ numerator: 0, denominator: den })
+            : generateFractionBarSvg({ numerator: 0, denominator: den })
+          : undefined)
+      return {
+        visualHtml,
+        // The on-screen instruction mentions the stepper, which does not exist on paper.
+        paperHint: 'Färbe im Modell die passenden Teile.',
+        answerBlank: '',
       }
     }
 

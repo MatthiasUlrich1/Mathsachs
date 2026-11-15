@@ -47,6 +47,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       return input.touched && input.degrees !== null
     case 'rulerMeasure':
       return input.touched && input.length !== null
+    case 'fractionModel':
+      // Only coloured parts count; the start number of parts alone is not an attempt.
+      return input.shaded.length > 0
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

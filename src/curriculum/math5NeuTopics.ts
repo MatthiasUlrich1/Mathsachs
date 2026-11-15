@@ -14,6 +14,7 @@ import {
   digitGridMultiplyTask,
   digitGridTask,
   dragDropSortTask,
+  fractionModelTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -990,6 +991,24 @@ export const math5NeuLb2: Topic[] = [
           eps: targetDen === 10 ? 0.05 : 0.005,
         })
       },
+      // Variant 4: Bruchmodell — Streifen mit neuer Teilung zeigen
+      (rng: Rng) => {
+        const [n, d, k] = pick(rng, [
+          [1, 2, 4], [1, 2, 6], [2, 3, 3], [2, 3, 4], [3, 4, 2], [3, 4, 3], [1, 3, 4], [1, 4, 3], [2, 5, 2],
+        ] as Array<[number, number, number]>)
+        return {
+          ...fractionModelTask({
+            question: `Der Streifen oben zeigt ${n}/${d}. Erweitere den Bruch mit ${k}: Teile den Streifen darunter in ${d * k} gleich große Teile und färbe denselben Anteil.`,
+            shape: 'bar',
+            target: { num: n * k, den: d * k },
+            allowEquivalent: false,
+            solution: `${n * k}/${d * k}`,
+            explanation: `Beim Erweitern mit ${k} werden Zähler und Nenner mit ${k} multipliziert: ${n} · ${k} = ${n * k} und ${d} · ${k} = ${d * k}. Du stellst also ${d * k} Teile ein und färbst ${n * k} davon. Der gefärbte Anteil bleibt gleich groß: ${n}/${d} = ${n * k}/${d * k}.`,
+            dedupeKey: `erweitern-modell:${n}:${d}:${k}`,
+          }),
+          visualContent: generateFractionBarSvg({ numerator: n, denominator: d }),
+        }
+      },
     ),
   }),
 
@@ -1066,6 +1085,34 @@ export const math5NeuLb2: Topic[] = [
           }),
           visualContent: svg,
         }
+      },
+      // Variant 4: Bruchmodell — Anteil im Kreis darstellen (Nenner vorgegeben)
+      (rng: Rng) => {
+        const [n, d] = pick(rng, [[2, 3], [3, 4], [5, 6], [3, 8], [2, 5], [5, 8]] as Array<[number, number]>)
+        const food = pick(rng, ['Pizza', 'Torte'])
+        return fractionModelTask({
+          question: `Eine ${food} ist in ${d} gleich große Stücke geschnitten. ${n} Stücke wurden gegessen. Zeige den gegessenen Anteil im Kreismodell.`,
+          shape: 'circle',
+          target: { num: n, den: d },
+          allowEquivalent: false,
+          solution: `${n}/${d}`,
+          explanation: `Die ${food} hat ${d} gleich große Stücke, also stellst du ${d} Teile ein. ${n} davon wurden gegessen, also färbst du ${n} Teile. Der gegessene Anteil ist ${n}/${d}.`,
+          dedupeKey: `anteil-modell:${n}:${d}:${food}`,
+        })
+      },
+      // Variant 5: Bruchmodell — Anteil mit frei gewählter Teilung (gleichwertige Brüche zählen)
+      (rng: Rng) => {
+        const [n, d, word] = pick(rng, [
+          [1, 2, 'die Hälfte'], [1, 3, 'ein Drittel'], [1, 4, 'ein Viertel'], [3, 4, 'drei Viertel'],
+        ] as Array<[number, number, string]>)
+        return fractionModelTask({
+          question: `Färbe ${word} des Kreises. Du darfst die Anzahl der Teile selbst wählen.`,
+          shape: 'circle',
+          target: { num: n, den: d },
+          explanation: `${word.charAt(0).toUpperCase()}${word.slice(1)} ist der Bruch ${n}/${d}. Du kannst ihn auch mit mehr Teilen zeigen, zum Beispiel als ${n * 2}/${d * 2} oder ${n * 3}/${d * 3}. Wichtig ist nur, dass die gefärbten Teile im gleichen Verhältnis zur Gesamtzahl der Teile stehen.`,
+          solution: `${n}/${d}`,
+          dedupeKey: `anteil-modell-frei:${n}:${d}`,
+        })
       },
     ),
   }),

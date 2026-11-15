@@ -13,6 +13,7 @@ import { CoordinateGraphEditor } from './CoordinateGraphEditor'
 import { ConstructionSteps } from './ConstructionSteps'
 import { ParamSlider } from './ParamSlider'
 import { AngleProtractor } from './AngleProtractor'
+import { FractionModel } from './FractionModel'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -117,6 +118,11 @@ export const initTaskInput = (task: Task): UserInput => {
       length: typeof start === 'number' ? start : null,
       touched: false,
     }
+  }
+  if (task.interactive?.type === 'fractionModel') {
+    // Start with nothing shaded and a number of parts different from the target's.
+    const start = task.interactive.props.initialDen
+    return { kind: 'fractionModel', den: typeof start === 'number' ? start : 4, shaded: [] }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -480,6 +486,19 @@ export function TaskInteractive({
             value.kind === 'rulerMeasure'
               ? value
               : { kind: 'rulerMeasure', length: null, touched: false }
+          }
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'fractionModel' && (
+        <FractionModel
+          shape={interactive.props.shape}
+          value={
+            value.kind === 'fractionModel'
+              ? value
+              : { kind: 'fractionModel', den: interactive.props.initialDen ?? 4, shaded: [] }
           }
           onChange={onChange}
           instruction={interactive.props.instruction}

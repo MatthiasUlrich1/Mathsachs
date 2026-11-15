@@ -33,3 +33,11 @@ describe('examAnswerAttempted', () => {
     ).toBe(0)
   })
 })
+
+describe('examAnswerAttempted fractionModel', () => {
+  it('only shaded parts count as an attempt', () => {
+    const task = baseTask(() => true)
+    expect(examAnswerAttempted(task, { kind: 'fractionModel', den: 4, shaded: [] })).toBe(false)
+    expect(examAnswerAttempted(task, { kind: 'fractionModel', den: 4, shaded: [1] })).toBe(true)
+  })
+})
