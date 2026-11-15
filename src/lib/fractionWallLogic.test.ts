@@ -126,12 +126,12 @@ describe('geometry', () => {
     }
   })
   it('linePosFromClientX works in SVG units, keeps the grab offset and clamps', () => {
-    // Screen 700 px wide => 2 px per SVG unit; wall spans svg x 36..336.
-    expect(linePosFromClientX(72 + 300, 0, 700)).toBeCloseTo(0.5, 5)
-    expect(linePosFromClientX(10, 0, 700)).toBe(0)
-    expect(linePosFromClientX(9999, 0, 700)).toBe(1)
+    // Screen as wide as the viewBox => 1 px per SVG unit; wall spans svg x 36..336.
+    expect(linePosFromClientX(186, 0, 362)).toBeCloseTo(0.5, 5)
+    expect(linePosFromClientX(10, 0, 362)).toBe(0)
+    expect(linePosFromClientX(9999, 0, 362)).toBe(1)
     // Grab 5 svg units right of the line centre: the line does not jump.
-    expect(linePosFromClientX(2 * (wallLineX(0.5) + 5), 0, 700, 5)).toBeCloseTo(0.5, 2)
+    expect(linePosFromClientX(wallLineX(0.5) + 5, 0, 362, 5)).toBeCloseTo(0.5, 2)
     expect(linePosFromClientX(100, 0, 0)).toBe(0)
   })
 })
@@ -142,5 +142,18 @@ describe('fractionWallPrintSvg', () => {
     expect(svg.match(/<rect/g)).toHaveLength(1 + 2 + 4)
     expect(svg.match(/#94a3b8/g)).toHaveLength(1)
     expect(fractionWallPrintSvg([1, 2, 4]).match(/#94a3b8/g)).toBeNull()
+  })
+})
+
+describe('handle hit area and print labels', () => {
+  it('hit area is at least 22 SVG units in radius (and inside the viewBox)', () => {
+    const b = wallHandleBounds(0.5)
+    expect(b.w).toBeGreaterThanOrEqual(44)
+    expect(b.h).toBeGreaterThanOrEqual(44)
+  })
+  it('prints row 1 as "Ganzes"', () => {
+    const svg = fractionWallPrintSvg([1, 2])
+    expect(svg).toContain('>Ganzes<')
+    expect(svg).toContain('>1/2<')
   })
 })

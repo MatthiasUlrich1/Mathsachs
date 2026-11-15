@@ -114,10 +114,7 @@ export function FractionWallBoard({
                     aria-disabled={isRef || disabled ? true : undefined}
                     aria-label={`Reihe ${rowName(r.row)}, Teil ${t.index + 1} von ${r.row}`}
                     tabIndex={disabled || isRef ? -1 : 0}
-                    onPointerDown={(e) => {
-                      e.preventDefault()
-                      tap(r.row, t.index)
-                    }}
+                    onClick={() => tap(r.row, t.index)}
                     onKeyDown={(e) => {
                       if (e.key === ' ' || e.key === 'Enter') {
                         e.preventDefault()
@@ -139,11 +136,17 @@ export function FractionWallBoard({
           y2={span.y2}
         />
         <circle
+          className="fraction-wall__handle-visual"
+          cx={lineX}
+          cy={FRACTION_WALL_HANDLE.y}
+          r={FRACTION_WALL_HANDLE.r}
+        />
+        <circle
           className="fraction-wall__handle"
           data-testid="wall-handle"
           cx={lineX}
           cy={FRACTION_WALL_HANDLE.y}
-          r={FRACTION_WALL_HANDLE.r}
+          r={FRACTION_WALL_HANDLE.hitR}
           role="slider"
           aria-label="Vergleichslinie"
           aria-valuemin={0}

@@ -281,7 +281,7 @@ const erweiternNeu: Topic = asNeuTopic('lb1-erweitern', {
       return fractionWallTask({
         mode: 'equivalent',
         target: { num: n, den: d },
-        question: `Zeige an der Bruchwand, wie sich ${n}/${d} erweitern lässt: Färbe in jeder Reihe, in der es möglich ist, von links genau so viele Teile, dass die Länge zum gefärbten Bruch ${n}/${d} passt.`,
+        question: `Zeige an der Bruchwand, wie sich ${n}/${d} erweitern lässt: Färbe in jeder Reihe, in der es möglich ist, von links so viele Teile, dass sie genauso lang sind wie der gefärbte Bruch ${n}/${d}.`,
         solution: same.join(', '),
         explanation: `Die Länge ${n}/${d} bleibt gleich, nur die Einteilung wird feiner. Das geht in den Reihen, deren Teileanzahl ein Vielfaches von ${d} ist: ${same.join(', ')}. Jeder dieser Brüche entsteht durch Erweitern, also durch Multiplizieren von Zähler und Nenner mit derselben Zahl. In den anderen Reihen gibt es kein Teilstück mit genau dieser Länge.`,
         dedupeKey: `erw-wand:${n}:${d}`,
@@ -404,7 +404,8 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         mode: 'compare',
         a: { num: a.n, den: a.d },
         b: { num: b.n, den: b.d },
-        question: `Vergleiche ${a.n}/${a.d} und ${b.n}/${b.d} an der Bruchwand. Färbe den größeren der beiden Brüche. Mit der roten Linie kannst du die Längen vergleichen.`,
+        question: `Vergleiche ${a.n}/${a.d} und ${b.n}/${b.d} an der Bruchwand. Färbe den größeren der beiden Brüche.`,
+        instruction: 'Färbe den größeren Bruch: Tippe auf sein letztes Teil. Mit der roten Linie kannst du die Längen vergleichen.',
         solution: `${big.n}/${big.d}`,
         explanation: `Die Teile reichen von links unterschiedlich weit: ${big.n}/${big.d} ragt weiter als ${small.n}/${small.d}. Rechnerisch: Mit dem gemeinsamen Nenner ${common} ist ${a.n}/${a.d} = ${a.n * b.d}/${common} und ${b.n}/${b.d} = ${b.n * a.d}/${common}. Also ist ${big.n}/${big.d} größer.`,
         dedupeKey: `vgl-wand:${a.n}:${a.d}:${b.n}:${b.d}`,

@@ -18,10 +18,12 @@ export interface FractionWallSelection {
   count: number
 }
 
-export const FRACTION_WALL_VIEWBOX_W = 350
-const WALL = { x: 36, w: 300, top: 28, rowH: 26, gap: 4 } as const
+export const FRACTION_WALL_VIEWBOX_W = 362
+const WALL = { x: 36, w: 300, top: 50, rowH: 26, gap: 4 } as const
 const HANDLE_R = 9
-const HANDLE_Y = 11
+const HANDLE_Y = 26
+/** Invisible hit area around the handle (about 44 px at 375 px width). */
+const HANDLE_HIT_R = 22
 
 export const fractionWallViewBoxH = (rowCount: number): number =>
   WALL.top + rowCount * (WALL.rowH + WALL.gap) + 4
@@ -166,12 +168,12 @@ export const linePosFromClientX = (
 
 /** Bounding box of the line handle in SVG units. */
 export const wallHandleBounds = (pos: number): { x: number; y: number; w: number; h: number } => ({
-  x: wallLineX(pos) - HANDLE_R,
-  y: HANDLE_Y - HANDLE_R,
-  w: 2 * HANDLE_R,
-  h: 2 * HANDLE_R,
+  x: wallLineX(pos) - HANDLE_HIT_R,
+  y: HANDLE_Y - HANDLE_HIT_R,
+  w: 2 * HANDLE_HIT_R,
+  h: 2 * HANDLE_HIT_R,
 })
-export const FRACTION_WALL_HANDLE = { r: HANDLE_R, y: HANDLE_Y } as const
+export const FRACTION_WALL_HANDLE = { r: HANDLE_R, hitR: HANDLE_HIT_R, y: HANDLE_Y } as const
 export const fractionWallLineSpan = (rowCount: number): { y1: number; y2: number } => ({
   y1: HANDLE_Y + HANDLE_R,
   y2: fractionWallViewBoxH(rowCount) - 2,
@@ -189,7 +191,7 @@ export const fractionWallPrintSvg = (
   for (const r of layout) {
     const y = r.y - shift
     parts.push(
-      `<text x="${r.labelX}" y="${f(y + r.h / 2 + 4)}" text-anchor="end" font-size="12" fill="#0f172a">1/${r.row}</text>`,
+      `<text x="${r.labelX}" y="${f(y + r.h / 2 + 4)}" text-anchor="end" font-size="12" fill="#0f172a">${r.row === 1 ? "Ganzes" : `1/${r.row}`}</text>`,
     )
     const shaded = reference && r.row === reference.den ? reference.num : 0
     for (const t of r.tiles) {
