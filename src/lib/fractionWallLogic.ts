@@ -18,8 +18,8 @@ export interface FractionWallSelection {
   count: number
 }
 
-export const FRACTION_WALL_VIEWBOX_W = 362
-const WALL = { x: 36, w: 300, top: 50, rowH: 26, gap: 4 } as const
+export const FRACTION_WALL_VIEWBOX_W = 380
+const WALL = { x: 56, w: 300, top: 50, rowH: 26, gap: 4 } as const
 const HANDLE_R = 9
 const HANDLE_Y = 26
 /** Invisible hit area around the handle (about 44 px at 375 px width). */

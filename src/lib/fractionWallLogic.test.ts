@@ -110,8 +110,8 @@ describe('geometry', () => {
     for (const r of layout) {
       expect(r.tiles).toHaveLength(r.row)
       const last = r.tiles[r.tiles.length - 1]!
-      expect(r.tiles[0]!.x).toBe(36)
-      expect(last.x + last.w).toBeCloseTo(336, 1)
+      expect(r.tiles[0]!.x).toBe(56)
+      expect(last.x + last.w).toBeCloseTo(356, 1)
       expect(last.x + last.w).toBeLessThanOrEqual(FRACTION_WALL_VIEWBOX_W)
       expect(r.y + r.h).toBeLessThanOrEqual(h)
       expect(r.labelX).toBeGreaterThan(0)
@@ -126,12 +126,12 @@ describe('geometry', () => {
     }
   })
   it('linePosFromClientX works in SVG units, keeps the grab offset and clamps', () => {
-    // Screen as wide as the viewBox => 1 px per SVG unit; wall spans svg x 36..336.
-    expect(linePosFromClientX(186, 0, 362)).toBeCloseTo(0.5, 5)
-    expect(linePosFromClientX(10, 0, 362)).toBe(0)
-    expect(linePosFromClientX(9999, 0, 362)).toBe(1)
+    // Screen as wide as the viewBox => 1 px per SVG unit; wall spans svg x 56..356.
+    expect(linePosFromClientX(206, 0, 380)).toBeCloseTo(0.5, 5)
+    expect(linePosFromClientX(10, 0, 380)).toBe(0)
+    expect(linePosFromClientX(9999, 0, 380)).toBe(1)
     // Grab 5 svg units right of the line centre: the line does not jump.
-    expect(linePosFromClientX(wallLineX(0.5) + 5, 0, 362, 5)).toBeCloseTo(0.5, 2)
+    expect(linePosFromClientX(wallLineX(0.5) + 5, 0, 380, 5)).toBeCloseTo(0.5, 2)
     expect(linePosFromClientX(100, 0, 0)).toBe(0)
   })
 })
@@ -155,5 +155,18 @@ describe('handle hit area and print labels', () => {
     const svg = fractionWallPrintSvg([1, 2])
     expect(svg).toContain('>Ganzes<')
     expect(svg).toContain('>1/2<')
+  })
+})
+
+describe('row labels fit into the viewBox', () => {
+  it('every label (screen 11px, print 12px) starts at x >= 0, estimated chars * fontSize * 0.6', () => {
+    const labels = [1, 2, 3, 4, 5, 6, 8, 10, 12].map((row) => ({ row, text: row === 1 ? 'Ganzes' : `1/${row}` }))
+    const layout = fractionWallLayout(labels.map((l) => l.row))
+    for (const font of [11, 12]) {
+      for (const l of layout) {
+        const text = l.row === 1 ? 'Ganzes' : `1/${l.row}`
+        expect(l.labelX - text.length * font * 0.6, `${text} @${font}px`).toBeGreaterThanOrEqual(0)
+      }
+    }
   })
 })

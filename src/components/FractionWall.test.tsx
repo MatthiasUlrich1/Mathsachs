@@ -57,7 +57,7 @@ describe('FractionWall markup', () => {
       }),
     )
     expect(html).toContain('role="group"')
-    expect(html).toContain('viewBox="0 0 362 ')
+    expect(html).toContain('viewBox="0 0 380 ')
     expect(html.match(/data-testid="wall-tile"/g)).toHaveLength(1 + 2 + 4 + 8)
     expect(html).toContain('role="slider"')
     expect(html).toContain('data-testid="wall-line"')
@@ -143,10 +143,10 @@ describe('FractionWall interaction', () => {
 
   it('dragging the handle moves the line in SVG units and keeps the grab offset', () => {
     const lines: number[] = []
-    const rect = { left: 0, width: 362 } as DOMRect
+    const rect = { left: 0, width: 380 } as DOMRect
     const svgRef = { current: { getBoundingClientRect: () => rect } as unknown as SVGSVGElement }
     const grabRef = { current: 0 }
-    // Line at pos 0.5 = svg x 186 = client x 186; grab 5 px right of its centre.
+    // Line at pos 0.5 = svg x 206 = client x 206; grab 5 px right of its centre.
     const els = board({ linePos: 0.5, svgRef, grabRef, onLineChange: (p) => lines.push(p) })
     const handle = els.find((e) => e.props['data-testid'] === 'wall-handle')!
     const target = { setPointerCapture() {}, hasPointerCapture: () => true, releasePointerCapture() {} }
@@ -154,10 +154,10 @@ describe('FractionWall interaction', () => {
       preventDefault() {},
       currentTarget: target,
       pointerId: 1,
-      clientX: 191,
+      clientX: 211,
     })
     expect(grabRef.current).toBeCloseTo(5, 5)
-    ;(handle.props.onPointerMove as (e: unknown) => void)({ currentTarget: target, pointerId: 1, clientX: 191 })
+    ;(handle.props.onPointerMove as (e: unknown) => void)({ currentTarget: target, pointerId: 1, clientX: 211 })
     expect(lines[0]).toBeCloseTo(0.5, 5)
     ;(handle.props.onPointerMove as (e: unknown) => void)({ currentTarget: target, pointerId: 1, clientX: 9999 })
     expect(lines[1]).toBe(1)
