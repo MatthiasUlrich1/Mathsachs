@@ -124,3 +124,34 @@ describe('clampRulerPose', () => {
     }
   })
 })
+
+describe('clampRulerPose: 0 mark always inside', () => {
+  const M = RULER_EDGE_MARGIN
+  const inside = (p: { x: number; y: number }) => p.x >= M - 1e-6 && p.x <= VB.w - M + 1e-6 && p.y >= M - 1e-6 && p.y <= VB.h - M + 1e-6
+  // The old behaviour: when both grips cannot fit, split the shift (midpoint) - this pushes both out.
+  const oldMidpoint = (pose: { x: number; y: number; rot: number }, unitPx: number) => {
+    const pts = [{ x: pose.x, y: pose.y }, rulerHandleCentre(pose, unitPx)]
+    const f = (key: 'x' | 'y', size: number) => {
+      const lo = Math.max(...pts.map((p) => M - p[key]))
+      const hi = Math.min(...pts.map((p) => size - M - p[key]))
+      return lo <= hi ? Math.min(hi, Math.max(lo, 0)) : (lo + hi) / 2
+    }
+    return { x: pose.x + f('x', VB.w), y: pose.y + f('y', VB.h) }
+  }
+  const starts = [[-300, 190], [900, 190], [320, -300], [320, 900], [5, 5], [630, 370], [5, 370], [630, 5]] as const
+  it('sweeps all rotations, both unit sizes and positions near all edges', () => {
+    let oldFailures = 0
+    for (const unitPx of [20, 40]) {
+      for (let rot = 0; rot < 360; rot += 5) {
+        for (const [x, y] of starts) {
+          const c = clampRulerPose({ x, y, rot }, unitPx)
+          expect(c.rot).toBe(rot)
+          expect(inside({ x: c.x, y: c.y }), `${unitPx} ${rot} ${x},${y}`).toBe(true)
+          if (!inside(oldMidpoint({ x, y, rot }, unitPx))) oldFailures++
+        }
+      }
+    }
+    // negative control: the midpoint rule loses the 0 mark for some of these poses
+    expect(oldFailures).toBeGreaterThan(0)
+  })
+})

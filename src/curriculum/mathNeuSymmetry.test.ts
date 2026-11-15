@@ -184,7 +184,7 @@ describe('Figuren', () => {
         const t = variant(createRng(seed))
         const flippable = (t.interactive!.props.axis as { at: number }).at * 2 === (kind === 'vertical' ? t.interactive!.props.cols : t.interactive!.props.rows)
         seenSides.add(t.dedupeKey!.split(':').pop()!)
-        if (flippable) expect((kind === 'vertical' ? forbiddenVertical : forbiddenHorizontal).test(t.explanation.replace(/^[^.]*.[^.]*.s*/, '')), t.dedupeKey!).toBe(false)
+        if (flippable) expect((kind === 'vertical' ? forbiddenVertical : forbiddenHorizontal).test(t.explanation.replace(/^[^.]*\.[^.]*\.\s*/, '')), t.dedupeKey!).toBe(false)
       }
     }
     expect([...seenSides].sort()).toEqual(['links', 'oben', 'rechts', 'unten'])

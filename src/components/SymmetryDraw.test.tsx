@@ -131,7 +131,7 @@ describe('SymmetryDraw', () => {
     const css = (await import('node:fs')).readFileSync(new URL('./SymmetryDraw.css', import.meta.url), 'utf8')
     const block = /focus-visible {([^}]*)}/.exec(css)![1]!
     expect(block).toMatch(/stroke:/)
-    expect(block).not.toMatch(/outline:s*d/)
+    expect(block).not.toMatch(/outline:\s*\d/)
   })
 
   it('shows the drawn cells and says so in the labels', () => {
