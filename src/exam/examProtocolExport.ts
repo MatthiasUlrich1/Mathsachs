@@ -37,7 +37,7 @@ export const buildExamProtocolHtml = (input: ExamProtocolExportInput): string =>
   const rows = input.results
     .map((r, i) => {
       const unit = r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''
-      const answer = `${formatExamAnswer(r.answer)}${unit}`
+      const answer = `${formatExamAnswer(r.answer, r.resolved.task)}${unit}`
       const correction = !r.correct
         ? ` (richtig: ${r.resolved.task.solution}${unit})`
         : ''

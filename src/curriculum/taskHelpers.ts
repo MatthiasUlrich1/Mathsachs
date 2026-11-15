@@ -37,6 +37,7 @@ import {
   type LinEq,
 } from '../lib/equationSteps'
 import { gapAnswerMatches, normalizeGapAnswer } from './gapAnswerMatch'
+import { hashStringSeed } from '../lib/seed'
 
 interface ValueTaskInput {
   question: string
@@ -212,15 +213,7 @@ interface DragDropSortTaskInput {
   rng?: Rng
 }
 
-/** Stable 32-bit seed from a string (FNV-1a). */
-export function hashStringSeed(s: string): number {
-  let h = 2166136261
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i)
-    h = Math.imul(h, 16777619)
-  }
-  return h >>> 0
-}
+export { hashStringSeed }
 
 /**
  * Shuffle sort items so the initial display is not already the solution.

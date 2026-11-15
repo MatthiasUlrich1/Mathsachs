@@ -80,6 +80,10 @@ describe.each(CASES)('Neu-Thema Zahlengerade $id', (c) => {
     expect(keys.size).toBeGreaterThanOrEqual(2)
   })
 
+  it('Grammatik: nie "1 Striche"', () => {
+    for (const t of tasks) expect(t.explanation, t.question).not.toMatch(/\b1 Striche\b/)
+  })
+
   it('Papierform: Zahlengerade mit Strichen und Liste der Zahlen, ohne die Zielwerte als Beschriftung', () => {
     for (const t of tasks) {
       const extras = worksheetPrintExtras(t)
@@ -95,6 +99,14 @@ describe.each(CASES)('Neu-Thema Zahlengerade $id', (c) => {
       const round = buildUniqueTaskRound(topic.generate, createRng(seed), 10, 400)
       expect(round.length, `${c.id} seed=${seed}`).toBe(10)
     }
+  })
+})
+
+describe('Grammatik-Negativkontrolle', () => {
+  it('der Test erkennt "1 Striche" und lässt "1 Strich" durch', () => {
+    expect('also 1 Striche rechts').toMatch(/\b1 Striche\b/)
+    expect('also 1 Strich rechts').not.toMatch(/\b1 Striche\b/)
+    expect('also 11 Striche rechts').not.toMatch(/\b1 Striche\b/)
   })
 })
 

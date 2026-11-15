@@ -826,7 +826,7 @@ export function ExamRunner({
               </div>
               <TaskVisual html={r.resolved.task.visualContent} />
               <p className="exam-review__line">
-                Deine Antwort: <strong>{formatExamAnswer(r.answer)}</strong>
+                Deine Antwort: <strong>{formatExamAnswer(r.answer, r.resolved.task)}</strong>
                 {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
                 {r.correct ? ' ✓' : ' ✗'}
               </p>

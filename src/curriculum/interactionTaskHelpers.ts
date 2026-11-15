@@ -56,7 +56,7 @@ import {
   nlmTrayOrder,
   type NlmItem,
 } from '../lib/numberLineMultiLogic'
-import { hashStringSeed } from './taskHelpers'
+import { hashStringSeed } from '../lib/seed'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {

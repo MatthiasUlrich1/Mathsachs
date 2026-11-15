@@ -1016,7 +1016,7 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
   max: ${n.max},
   step: ${n.step},
   items: ${JSON.stringify(n.items)},
-  solution: ${sol},
+${[n.snap, n.labelEvery].some((v) => v !== undefined) ? [n.snap !== undefined ? `  snap: ${n.snap},` : '', n.labelEvery !== undefined ? `  labelEvery: ${n.labelEvery},` : ''].filter(Boolean).join('\n') + '\n' : ''}  solution: ${sol},
   explanation: ${expl},
 })`
       break

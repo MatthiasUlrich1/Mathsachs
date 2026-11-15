@@ -142,8 +142,20 @@ export const nlmSlotX = (i: number, n: number): number => {
   return (NLM_VIEWBOX_W - total) / 2 + NLM_CHIP_W / 2 + i * (NLM_CHIP_W + NLM_SLOT_GAP)
 }
 
-/** Which of the two rows a placed label sits in (stable per label, not per position). */
-export const nlmRowY = (index: number): number => NLM_ROW_Y[index % 2] as number
+/**
+ * Row height of every placed label: ranked by position along the line and alternating between the
+ * two rows, so neighbours never share a row. Equal positions rank by item order.
+ */
+export const nlmRowsByRank = (ids: readonly string[], positions: Record<string, number>): Record<string, number> => {
+  const placed = ids
+    .map((id, index) => ({ id, index, pos: positions[id] }))
+    .filter((p): p is { id: string; index: number; pos: number } => typeof p.pos === 'number')
+    .sort((a, b) => a.pos - b.pos || a.index - b.index)
+  return Object.fromEntries(placed.map((p, rank) => [p.id, NLM_ROW_Y[rank % 2] as number]))
+}
+
+/** State after a drag ended (pointer up, cancel or lost capture): nothing is grabbed any more. */
+export const nlmEndDrag = <G, D>(_grab: G, _drag: D): { grab: null; drag: null } => ({ grab: null, drag: null })
 
 /** Chip centre kept fully inside the viewBox and above the line. */
 export const nlmClampChip = (cx: number, cy: number): { cx: number; cy: number } => ({

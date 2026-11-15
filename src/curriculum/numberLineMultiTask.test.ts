@@ -157,6 +157,15 @@ describe('numberLineMulti wiring', () => {
   })
 })
 
+describe('numberLineMulti exam output', () => {
+  it('shows the labels, not the ids, when the task is known', () => {
+    const t = make()
+    expect(formatExamAnswer(pos({ a: 0.25, c: 1.5 }), t)).toBe('1/4: 0,25; 3/2: 1,5')
+    expect(formatExamAnswer(pos({ a: 0.25 }))).toBe('a: 0,25')
+    expect(formatExamAnswer(pos({}), t)).toBe('—')
+  })
+})
+
 describe('numberLineMulti authoring', () => {
   const draftOf = (props: Record<string, unknown>): DraftAuthoringTask => {
     const d = createEmptyDraft('entwickler')
@@ -179,6 +188,19 @@ describe('numberLineMulti authoring', () => {
     expect(code).toContain('numberLineMultiTask({')
     expect(code).toContain('step: 0.25,')
     expect(code).toContain('"label":"3/4"')
+  })
+
+  it('the exported snippet keeps snap and labelEvery, so the panel default round-trips', () => {
+    const panelDefault = { min: 0, max: 2, step: 0.25, labelEvery: 4, items: '3/4 = 0,75\n1,5 = 1,5\n1/4 = 0,25' }
+    const code = exportGeneratorSnippet(draftOf(panelDefault))
+    expect(code).toContain('labelEvery: 4,')
+    expect(exportGeneratorSnippet(draftOf({ ...panelDefault, snap: '0,25' }))).toContain('snap: 0.25,')
+    // run the exported call against the real helper
+    const run = (snippet: string) =>
+      new Function('numberLineMultiTask', `return ${snippet.slice(snippet.indexOf('numberLineMultiTask('))}`)(numberLineMultiTask)
+    expect(() => run(code)).not.toThrow()
+    // negative control: without labelEvery the line writes 0,25 / 0,75 and the helper refuses
+    expect(() => run(code.replace('labelEvery: 4,', ''))).toThrow(/already written/)
   })
 
   it('reports invalid drafts', () => {

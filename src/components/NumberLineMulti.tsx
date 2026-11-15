@@ -7,6 +7,7 @@ import {
   NLM_LINE_X0,
   NLM_LINE_X1,
   NLM_LINE_Y,
+  NLM_ROW_Y,
   NLM_TICK_FONT,
   NLM_TICK_LABEL_Y,
   NLM_TRAY_Y,
@@ -17,7 +18,8 @@ import {
   nlmFormatTick,
   nlmLabelledTicks,
   nlmNudge,
-  nlmRowY,
+  nlmEndDrag,
+  nlmRowsByRank,
   nlmSlotX,
   nlmSnap,
   nlmTickValues,
@@ -75,6 +77,10 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
   const snap = snapProp ?? step / 2
   const positions = value.positions ?? {}
 
+  const rows = nlmRowsByRank(
+    items.map((i) => i.id),
+    positions,
+  )
   const trayIds = order && order.length === items.length ? order : items.map((i) => i.id)
   const byId = new Map(items.map((it, index) => [it.id, { ...it, index }]))
   const ticks = nlmTickValues(min, max, step)
@@ -103,10 +109,9 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
 
   /** Where a label rests when it is not being dragged. */
   const restCentre = (id: string): { cx: number; cy: number } => {
-    const item = byId.get(id)
     const pos = positions[id]
     if (typeof pos === 'number') {
-      return { cx: nlmClampChip(nlmXFromValue(pos, min, max), 0).cx, cy: nlmRowY(item?.index ?? 0) }
+      return { cx: nlmClampChip(nlmXFromValue(pos, min, max), 0).cx, cy: rows[id] ?? NLM_ROW_Y[0] }
     }
     return { cx: nlmSlotX(trayIds.indexOf(id), trayIds.length), cy: NLM_TRAY_Y }
   }
@@ -114,7 +119,8 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
   const onDown = (id: string) => (e: React.PointerEvent) => {
     if (disabled) return
     try {
-      e.currentTarget.setPointerCapture?.(e.pointerId)
+      // Capture on the svg: it never moves in the DOM, unlike the chip that is re-ordered while dragged.
+      svgRef.current?.setPointerCapture?.(e.pointerId)
     } catch {
       /* synthetic pointers have nothing to capture */
     }
@@ -136,8 +142,9 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
   }
 
   const onUp = () => {
-    grab.current = null
-    setDrag(null)
+    const next = nlmEndDrag(grab.current, drag)
+    grab.current = next.grab
+    setDrag(next.drag)
   }
 
   const onKey = (id: string) => (e: React.KeyboardEvent) => {
@@ -178,6 +185,7 @@ export const NumberLineMulti: React.FC<NumberLineMultiProps> = ({
         onPointerMove={onMove}
         onPointerUp={onUp}
         onPointerCancel={onUp}
+        onLostPointerCapture={onUp}
       >
         <line className="number-line-multi__line" x1={NLM_LINE_X0} y1={NLM_LINE_Y} x2={NLM_LINE_X1} y2={NLM_LINE_Y} />
         {ticks.map((t) => {

@@ -1694,7 +1694,7 @@ export const math5NeuLb2: Topic[] = [
         const hinweis = items
           .map((it) => {
             const k = Math.round(it.value * 10)
-            return `${it.label} = ${k} Zehntel, also ${k} Striche rechts von der 0`
+            return `${it.label} = ${k} Zehntel, also ${k} ${k === 1 ? 'Strich' : 'Striche'} rechts von der 0`
           })
           .join('; ')
         return numberLineMultiTask({

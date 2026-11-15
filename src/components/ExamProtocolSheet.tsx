@@ -1,4 +1,4 @@
-import type { UserInput } from '../curriculum/types'
+import type { Task, UserInput } from '../curriculum/types'
 import type { ResolvedExamTask } from '../exam/examCode'
 
 export interface ExamTaskResult {
@@ -8,8 +8,14 @@ export interface ExamTaskResult {
   earned: number
 }
 
+/** Display text of a number-line label (falls back to the id when the task is not known). */
+const numberLineMultiLabel = (task: Task | undefined, id: string): string => {
+  const items = task?.interactive?.type === 'numberLineMulti' ? (task.interactive.props.items as Array<{ id: string; label: string }> | undefined) : undefined
+  return items?.find((i) => i.id === id)?.label ?? id
+}
+
 /** Render a learner's answer for the evaluation / protocol table. */
-export const formatExamAnswer = (input: UserInput): string => {
+export const formatExamAnswer = (input: UserInput, task?: Task): string => {
   if (input.kind === 'fraction') {
     const num = input.num.trim()
     const den = input.den.trim()
@@ -86,7 +92,7 @@ export const formatExamAnswer = (input: UserInput): string => {
   }
   if (input.kind === 'numberLineMulti') {
     const placed = Object.entries(input.positions ?? {})
-    return placed.length ? placed.map(([id, p]) => `${id}: ${String(p).replace('.', ',')}`).join('; ') : '—'
+    return placed.length ? placed.map(([id, p]) => `${numberLineMultiLabel(task, id)}: ${String(p).replace('.', ',')}`).join('; ') : '—'
   }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
@@ -184,7 +190,7 @@ export function ExamProtocolSheet({
                 <td>{r.resolved.topicTitle || '—'}</td>
                 <td>{r.resolved.task.question}</td>
                 <td>
-                  {formatExamAnswer(r.answer)}
+                  {formatExamAnswer(r.answer, r.resolved.task)}
                   {r.resolved.task.unit ? ` ${r.resolved.task.unit}` : ''}
                   {!r.correct
                     ? ` (richtig: ${r.resolved.task.solution}${

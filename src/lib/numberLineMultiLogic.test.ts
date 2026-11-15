@@ -16,7 +16,9 @@ import {
   nlmFormatTick,
   nlmLabelledTicks,
   nlmMatches,
+  nlmEndDrag,
   nlmNudge,
+  nlmRowsByRank,
   nlmShuffle,
   nlmSlotX,
   nlmSnap,
@@ -182,5 +184,31 @@ describe('print svg', () => {
     expect(svg).toContain('>0<')
     expect(svg).toContain('>2<')
     expect(svg).not.toContain('0,75')
+  })
+})
+
+describe('rows by rank', () => {
+  it('three labels at close positions get alternating rows along the line', () => {
+    const rows = nlmRowsByRank(['a', 'b', 'c'], { a: 1.0, b: 1.125, c: 1.25 })
+    expect(rows).toEqual({ a: NLM_ROW_Y[0], b: NLM_ROW_Y[1], c: NLM_ROW_Y[0] })
+  })
+  it('ranks by position, not by item order; unplaced labels have no row; ties rank by item order', () => {
+    const rows = nlmRowsByRank(['a', 'b', 'c', 'd'], { a: 2, b: 0.5, c: 1 })
+    expect(rows).toEqual({ b: NLM_ROW_Y[0], c: NLM_ROW_Y[1], a: NLM_ROW_Y[0] })
+    expect(rows.d).toBeUndefined()
+    expect(nlmRowsByRank(['a', 'b'], { a: 1, b: 1 })).toEqual({ a: NLM_ROW_Y[0], b: NLM_ROW_Y[1] })
+  })
+  it('neighbours in position order never share a row', () => {
+    const ids = ['a', 'b', 'c', 'd', 'e']
+    const rows = nlmRowsByRank(ids, { a: 0.5, b: 0.375, c: 0.625, d: 0.4375, e: 0.5625 })
+    const byPos = [...ids].sort((x, y) => ({ a: 0.5, b: 0.375, c: 0.625, d: 0.4375, e: 0.5625 }[x as 'a'] - { a: 0.5, b: 0.375, c: 0.625, d: 0.4375, e: 0.5625 }[y as 'a']))
+    for (let i = 1; i < byPos.length; i++) expect(rows[byPos[i]!]).not.toBe(rows[byPos[i - 1]!])
+  })
+})
+
+describe('end of drag', () => {
+  it('clears the grab and the drag state', () => {
+    expect(nlmEndDrag({ id: 'a', dx: 1, dy: 2 }, { id: 'a', cx: 1, cy: 2 })).toEqual({ grab: null, drag: null })
+    expect(nlmEndDrag(null, null)).toEqual({ grab: null, drag: null })
   })
 })

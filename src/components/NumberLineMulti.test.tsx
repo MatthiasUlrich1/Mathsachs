@@ -103,7 +103,7 @@ describe('NumberLineMulti markup', () => {
       expect(Number(r.props.x)).toBeGreaterThanOrEqual(0)
       expect(Number(r.props.x) + NLM_CHIP_W).toBeLessThanOrEqual(NLM_VIEWBOX_W)
       expect(Number(r.props.y) + NLM_CHIP_H).toBeLessThan(NLM_LINE_Y)
-      expect(Number(r.props.y) + NLM_CHIP_H / 2).toBe(NLM_ROW_Y[['a', 'b', 'c'].indexOf(id) % 2])
+      expect(Number(r.props.y) + NLM_CHIP_H / 2).toBe(NLM_ROW_Y[{ a: 0, c: 1, b: 0 }[id as 'a']])
     }
     const dots = els.filter((e) => e.props.className === 'number-line-multi__dot')
     expect(dots.map((d) => d.props.cx).sort()).toEqual([nlmXFromValue(0, 0, 2), nlmXFromValue(1, 0, 2), nlmXFromValue(2, 0, 2)].sort())
@@ -245,3 +245,32 @@ function readCss(): string {
   const fs = require('node:fs') as typeof import('node:fs')
   return fs.readFileSync(new URL('./NumberLineMulti.css', import.meta.url), 'utf8')
 }
+
+describe('NumberLineMulti drag end and capture', () => {
+  it('pointer capture is not taken on the chip (it is re-ordered in the DOM while dragged)', () => {
+    const spy = vi.fn()
+    const els = tree()
+    ;(chip(els, 'a').props.onPointerDown as Handler)({ clientX: 1, clientY: 1, pointerId: 1, currentTarget: { setPointerCapture: spy } })
+    expect(spy).not.toHaveBeenCalled()
+  })
+
+  it('a lost pointer capture ends the drag like pointer-up', () => {
+    const onChange = vi.fn()
+    const els = tree({ onChange })
+    const svg = svgOf(els)
+    expect(typeof svg.props.onLostPointerCapture).toBe('function')
+    ;(chip(els, 'a').props.onPointerDown as Handler)(ptr(nlmSlotX(1, 3), NLM_TRAY_Y))
+    ;(svg.props.onLostPointerCapture as Handler)({})
+    ;(svg.props.onPointerMove as Handler)(ptr(300, 120))
+    expect(onChange).not.toHaveBeenCalled()
+  })
+
+  it('close labels are drawn in alternating rows', () => {
+    const els = tree({ value: { kind: 'numberLineMulti', positions: { a: 1, b: 1.125, c: 1.25 } } })
+    const y = (id: string) => {
+      const r = collect(chip(els, id).props.children as ReactNode).find((e) => e.type === 'rect')!
+      return Number(r.props.y) + NLM_CHIP_H / 2
+    }
+    expect([y('a'), y('b'), y('c')]).toEqual([NLM_ROW_Y[0], NLM_ROW_Y[1], NLM_ROW_Y[0]])
+  })
+})

@@ -965,7 +965,7 @@ const betragNeu: Topic = asNeuTopic('k7-lb2-betrag', {
       const hinweis = items
         .map((it) => {
           const k = Math.round(Math.abs(it.value) * 2)
-          return `${it.label}: ${k} Striche ${it.value < 0 ? 'links' : 'rechts'} von der 0`
+          return `${it.label}: ${k} ${k === 1 ? 'Strich' : 'Striche'} ${it.value < 0 ? 'links' : 'rechts'} von der 0`
         })
         .join('; ')
       return numberLineMultiTask({
