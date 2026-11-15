@@ -1532,7 +1532,6 @@ function landCause2(rng: Rng) {
     explanation: 'Technik mindert oder verschärft Naturgefahren.',
     fachwissen: TOPIC_FW.landschaft,
     dedupeKey: 'ge:k5:land:cause2',
-    contentIds: ['ge:k5:land:cause2'],
   })
 }
 

@@ -3737,7 +3737,7 @@ export const math5NeuLb5: Topic[] = [
     difficulty: 2,
     keywords: ['Längeneinheiten', 'Länge', 'umrechnen', 'Alltag', 'Sachaufgabe', 'mm', 'cm', 'm', 'km', 'vergleichen'],
     fachwissen: {
-      text: 'Längeneinheiten bauen im Zehner- bzw. Tausendersystem aufeinander auf: 1 cm = 10 mm, 1 m = 100 cm, 1 km = 1000 m. Alltagsangaben wie „2 m 35 cm“ sind gemischte Einheiten; um zu rechnen oder zu vergleichen, werden sie zunächst in eine einheitliche Einheit umgewandelt.',
+      text: 'Längeneinheiten bauen im Zehner- bzw. Tausendersystem aufeinander auf: 1 cm = 10 mm, 1 m = 100 cm, 1 km = 1000 m. Der Umrechnungsfaktor ist jeweils eine Potenz von 10 (Zehnerdimension). Kleinere Einheit → größere: dividieren durch den Faktor; größere → kleinere: multiplizieren. Alltagsangaben wie „2 m 35 cm“ sind gemischte Einheiten; zuerst in eine Einheit umwandeln, dann rechnen oder vergleichen.',
       quelle: 'Wikipedia: Länge (Physik)',
       url: 'https://de.wikipedia.org/wiki/L%C3%A4nge_(Physik)',
     },
@@ -3813,7 +3813,7 @@ export const math5NeuLb5: Topic[] = [
     difficulty: 2,
     keywords: ['Flächeneinheiten', 'Fläche', 'umrechnen', 'Ar', 'Hektar', 'Alltag', 'vergleichen'],
     fachwissen: {
-      text: 'Für größere Grundstücksflächen werden im Alltag oft Ar und Hektar statt Quadratmetern genutzt: 1 a = 100 m², 1 ha = 100 a = 10 000 m². Um Flächen in unterschiedlichen Einheiten zu vergleichen, werden beide zunächst in dieselbe Einheit umgerechnet.',
+      text: 'Für größere Grundstücksflächen werden im Alltag oft Ar und Hektar statt Quadratmetern genutzt: 1 a = 100 m², 1 ha = 100 a = 10 000 m². Der Umrechnungsfaktor zwischen benachbarten Flächenstufen folgt der Längendimension (quadratisch). Kleinere Einheit → größere: dividieren; größere → kleinere: multiplizieren. Zum Vergleichen zuerst in dieselbe Einheit umrechnen.',
       quelle: 'Wikipedia: Flächeninhalt',
       url: 'https://de.wikipedia.org/wiki/Fl%C3%A4cheninhalt',
     },
@@ -3882,7 +3882,7 @@ export const math5NeuLb5: Topic[] = [
     difficulty: 2,
     keywords: ['Volumeneinheiten', 'Volumen', 'Liter', 'ml', 'umrechnen', 'Alltag', 'vergleichen'],
     fachwissen: {
-      text: 'Für Flüssigkeiten wird im Alltag meist in Liter und Millilitern statt in cm³ oder dm³ gerechnet: 1 l = 1000 ml. Bei mehreren gleich großen Gefäßen ergibt sich die Gesamtmenge durch Multiplikation; für den Vergleich unterschiedlicher Einheiten müssen beide Mengen zunächst auf dieselbe Einheit gebracht werden.',
+      text: 'Für Flüssigkeiten wird im Alltag meist in Liter und Millilitern statt in cm³ oder dm³ gerechnet: 1 l = 1000 ml. Der Umrechnungsfaktor zwischen l und ml ist 1000 — größere Einheit → kleinere: multiplizieren, kleinere → größere: dividieren. Mehrere gleich große Gefäße: Gesamtmenge multiplizieren; zum Vergleichen beide Mengen in dieselbe Einheit umrechnen.',
       quelle: 'Wikipedia: Volumen',
       url: 'https://de.wikipedia.org/wiki/Volumen',
     },
@@ -3952,7 +3952,7 @@ export const math5NeuLb5: Topic[] = [
     difficulty: 2,
     keywords: ['Masseneinheiten', 'Masse', 'Gewicht', 'kg', 'g', 't', 'umrechnen', 'Alltag', 'vergleichen'],
     fachwissen: {
-      text: 'Masseneinheiten bauen im Tausendersystem aufeinander auf: 1 g = 1000 mg, 1 kg = 1000 g, 1 t = 1000 kg. Bei vielen gleich schweren Gegenständen (z. B. Kisten einer Ladung) ergibt sich das Gesamtgewicht durch Multiplikation; für große Ladungen wird das Ergebnis meist in Tonnen angegeben.',
+      text: 'Masseneinheiten bauen im Tausendersystem aufeinander auf: 1 g = 1000 mg, 1 kg = 1000 g, 1 t = 1000 kg. Der Umrechnungsfaktor ist jeweils 1000. Kleinere Einheit → größere: dividieren; größere → kleinere: multiplizieren. Viele gleich schwere Gegenstände: Gesamtgewicht multiplizieren; große Ladungen oft in Tonnen angeben.',
       quelle: 'Wikipedia: Masse (Physik)',
       url: 'https://de.wikipedia.org/wiki/Masse_(Physik)',
     },
@@ -4028,7 +4028,7 @@ export const math5NeuLb5: Topic[] = [
     difficulty: 2,
     keywords: ['Zeiteinheiten', 'Zeit', 'Minuten', 'Stunden', 'umrechnen', 'Alltag', 'vergleichen'],
     fachwissen: {
-      text: 'Zeiteinheiten bauen nicht im Zehnersystem auf: 1 min = 60 s, 1 h = 60 min. Beim Zusammenrechnen mehrerer gleich langer Zeitabschnitte (z. B. Trainingseinheiten) entsteht oft eine Minutenzahl, die erst durch Division durch 60 in Stunden umgerechnet werden muss.',
+      text: 'Zeiteinheiten bauen nicht im Zehnersystem auf: 1 min = 60 s, 1 h = 60 min. Der Umrechnungsfaktor ist 60 (nicht 10). Kleinere Einheit → größere: dividieren durch den Faktor; größere → kleinere: multiplizieren. Beim Zusammenrechnen gleich langer Abschnitte entsteht oft eine Minutenzahl, die du so in Stunden umrechnest.',
       quelle: 'Wikipedia: Zeit',
       url: 'https://de.wikipedia.org/wiki/Zeit',
     },

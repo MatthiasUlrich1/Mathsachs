@@ -9,6 +9,12 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.28.146] – 2026-11-15
+
+### Behoben
+- **CI/Build:** `geschichteK5NeuTopics` — überflüssiges `contentIds` bei `causePairs` entfernt (TypeScript).
+- **Fachwissen K5:** Umrechnungs-`__neu`-Themen — Wissen mit Faktor/multiplizieren/dividieren (Vitest #45).
+
 ## [0.28.145] – 2026-11-15
 
 ### Hinzugefügt
