@@ -16,6 +16,7 @@ import {
   rulerMeasureTask,
   fractionModelTask,
   fractionWallTask,
+  divideToolTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -85,6 +86,7 @@ export type AuthoringElementType =
   | 'rulerMeasure'
   | 'fractionModel'
   | 'fractionWall'
+  | 'divideTool'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -115,6 +117,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'rulerMeasure', label: 'Lineal (Strecke messen/abtragen)' },
   { id: 'fractionModel', label: 'Bruchmodell (Teile färben)' },
   { id: 'fractionWall', label: 'Bruchwand (gleichwertige Brüche / vergleichen)' },
+  { id: 'divideTool', label: 'Teilwerkzeug (Ganze gerecht verteilen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -465,6 +468,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'divideTool': {
+      try {
+        divideToolTask({ question: 'q', solution: 's', explanation: 'e', ...divideInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Teilwerkzeug: Form, Anzahl der Ganzen (1–4) und Personen (2–6; die Ganzen dürfen nicht ohne Teilen aufgehen) prüfen. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'fractionModel': {
       const num = Number(p.num)
       const den = Number(p.den)
@@ -741,6 +754,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(
         fractionWallTask({ question, solution, explanation, ...wallInputFromProps(p) }),
       )
+    case 'divideTool':
+      return withVisual(divideToolTask({ question, solution, explanation, ...divideInputFromProps(p) }))
     case 'fractionModel':
       return withVisual(
         fractionModelTask({
@@ -963,6 +978,19 @@ export function exportGeneratorSnippet(draft: DraftAuthoringTask): string {
 })`
       break
     }
+    case 'divideTool': {
+      const d = divideInputFromProps(p)
+      call = `divideToolTask({
+  question: ${q},
+  shape: ${JSON.stringify(d.shape)},
+  count: ${d.count},
+  persons: ${d.persons},
+  objectName: ${JSON.stringify(d.objectName)},
+  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'fractionModel':
       call = `fractionModelTask({
   question: ${q},
@@ -1085,3 +1113,11 @@ const wallInputFromProps = (p: Record<string, unknown>) => {
     ? { mode: 'compare' as const, rows, a: wallFractionOf(p, 'aNum', 'aDen'), b: wallFractionOf(p, 'bNum', 'bDen') }
     : { mode: 'equivalent' as const, rows, target: wallFractionOf(p, 'num', 'den') }
 }
+
+/** Builds the divideToolTask input of an authoring draft (validated beforehand). */
+const divideInputFromProps = (p: Record<string, unknown>) => ({
+  shape: (p.shape === 'circle' ? 'circle' : 'bar') as 'bar' | 'circle',
+  count: Number(p.count),
+  persons: Number(p.persons),
+  objectName: String(p.objectName ?? '').trim() || (p.shape === 'circle' ? 'Pizza' : 'Schokoriegel'),
+})

@@ -52,6 +52,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
       return input.shaded.length > 0
     case 'fractionWall':
       return input.selected.length > 0
+    case 'divideTool':
+      // Only handed-out parts count; the stepper alone is not an attempt.
+      return input.assignment.some((v) => v !== null)
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

@@ -19,6 +19,7 @@ import {
 } from './geometrySvg'
 import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
+import { dividePrintSvg } from './divideToolLogic'
 
 export type WorksheetPrintExtras = {
   /** SVG/HTML shown under the question (visualContent or static stand-in). */
@@ -338,6 +339,26 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
             ? 'Färbe in der Bruchwand den größeren Bruch: von links bis zum Ende seines Teils.'
             : 'Färbe in jeder Reihe von links so viele Teile, wie genauso lang sind wie die gefärbte Reihe.',
         answerBlank: '',
+      }
+    }
+
+    case 'divideTool': {
+      // Paper: the undivided wholes and the people to divide and distribute on, plus a typed answer field.
+      const count = Number(props.count)
+      const persons = Number(props.persons)
+      const shape = props.shape === 'circle' ? 'circle' : 'bar'
+      const drawing =
+        Number.isInteger(count) && count >= 1 && Number.isInteger(persons) && persons >= 2
+          ? dividePrintSvg(shape, count, persons)
+          : ''
+      // A reference figure from the task (visualContent) comes first, then the drawing to work on.
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      const objectName = typeof props.objectName === 'string' && props.objectName.trim() ? props.objectName.trim() : shape === 'circle' ? 'Pizza' : 'Schokoriegel'
+      return {
+        visualHtml,
+        // The on-screen instruction mentions the stepper and tapping, which do not exist on paper.
+        paperHint: 'Teile jedes Ganze in gleich große Teile. Zeichne die Schnitte ein und verteile die Teile, indem du sie den Kindern zuschreibst.',
+        answerBlank: `Jedes Kind bekommt __________ ${objectName}`,
       }
     }
 

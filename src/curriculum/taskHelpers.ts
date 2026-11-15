@@ -712,8 +712,8 @@ export const digitGridTask = (input: DigitGridTaskInput): Task => {
 export { digitGridMultiplyTask, digitGridDivideTask } from './digitGridTasks'
 export { angleProtractorTask, rulerMeasureTask } from './measureTaskHelpers'
 export type { AngleProtractorTaskInput, RulerMeasureTaskInput } from './measureTaskHelpers'
-export { fractionModelTask, fractionWallTask } from './interactionTaskHelpers'
-export type { FractionModelTaskInput, FractionWallTaskInput } from './interactionTaskHelpers'
+export { fractionModelTask, fractionWallTask, divideToolTask } from './interactionTaskHelpers'
+export type { FractionModelTaskInput, FractionWallTaskInput, DivideToolTaskInput } from './interactionTaskHelpers'
 export { constructionStepsTask } from './measureTaskHelpers'
 export type { ConstructionStep, ConstructionStepsTaskInput } from './measureTaskHelpers'
 

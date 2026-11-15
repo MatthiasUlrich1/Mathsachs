@@ -109,6 +109,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { mode: 'measure', lengthCm: 4.3, angle: 0, tolerance: 0.1 }
     case 'fractionWall':
       return { mode: 'equivalent', rows: '1, 2, 3, 4, 6, 8, 12', num: 1, den: 2, aNum: 3, aDen: 4, bNum: 2, bDen: 3 }
+    case 'divideTool':
+      return { shape: 'circle', count: 3, persons: 4, objectName: 'Pizza' }
     case 'fractionModel':
       return { shape: 'bar', num: 3, den: 4, allowEquivalent: true }
     case 'paramSlider':
@@ -997,6 +999,27 @@ function ElementPropsForm({
               {field('den', 'Nenner des vorgegebenen Bruchs (muss eine Reihe sein)')}
             </>
           )}
+        </>
+      )
+    case 'divideTool':
+      return (
+        <>
+          <div className="field">
+            <label className="field__label" htmlFor="prop-shape">
+              Form
+            </label>
+            <select
+              id="prop-shape"
+              value={propStr(draft, 'shape', 'circle')}
+              onChange={(e) => setDraft(setProp(draft, 'shape', e.target.value))}
+            >
+              <option value="bar">Streifen (Schokolade)</option>
+              <option value="circle">Kreis (Pizza)</option>
+            </select>
+          </div>
+          {field('count', 'Anzahl der Ganzen (1–4)')}
+          {field('persons', 'Anzahl der Personen (2–6)')}
+          {field('objectName', 'Name des Ganzen (Einzahl, z. B. Pizza)')}
         </>
       )
     case 'fractionModel':

@@ -23,6 +23,7 @@ import {
   constructionStepsTask,
   fractionModelTask,
   fractionWallTask,
+  divideToolTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -1205,6 +1206,28 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
         solution: `${gesamt} Bücher`,
         explanation: `${n} Teile entsprechen ${anteilBetrag} Büchern, also entspricht 1 Teil ${anteilBetrag} : ${n} = ${proTeil} Büchern. Das Ganze (${d} Teile) sind dann ${proTeil} · ${d} = ${gesamt} Bücher.`,
         dedupeKey: `sach-reverse:${n}:${d}:${anteilBetrag}`,
+      })
+    },
+    // V4 Teilwerkzeug — gerecht verteilen: Bruch als Quotient (Anzahl der Teile selbst finden)
+    (rng: Rng) => {
+      const [count, persons] = pick(rng, [[4, 3], [3, 2], [3, 5], [4, 5], [2, 6], [3, 4]] as Array<[number, number]>)
+      const treat = pick(rng, [
+        { shape: 'bar' as const, art: 'Eine', one: 'Schokoladentafel', many: 'Schokoladentafeln' },
+        { shape: 'bar' as const, art: 'Ein', one: 'Schokoriegel', many: 'Schokoriegel' },
+        { shape: 'circle' as const, art: 'Ein', one: 'Kuchen', many: 'Kuchen' },
+      ])
+      const g = gcd(count, persons)
+      const share = `${count / g}/${persons / g}`
+      const subject = `${count} ${treat.many} werden`
+      return divideToolTask({
+        question: `${subject} gerecht an ${persons} Kinder verteilt. Zerlege die ${treat.many} in gleich große Teile und verteile alle Teile so, dass jedes Kind gleich viel bekommt.`,
+        shape: treat.shape,
+        count,
+        persons,
+        objectName: treat.one,
+        solution: `Jedes Kind bekommt ${count}/${persons}${g > 1 ? ` = ${share}` : ''} ${treat.one}.`,
+        explanation: `${count} ${treat.many} für ${persons} Kinder: Das ist die Rechnung ${count} : ${persons}. Schneide jedes Ganze in ${persons} gleich große Teile. Ein Teil ist dann 1/${persons}. Jedes Kind bekommt von jedem Ganzen ein Teil, also ${count} Teile: ${count}/${persons} ${treat.one}${g > 1 ? `, gekürzt ${share}` : ''}. Der Bruch ${count}/${persons} ist also das Ergebnis von ${count} : ${persons}. Es geht auch mit anderen Teilungen, solange jedes Kind gleich viele Teile bekommt.`,
+        dedupeKey: `teilen-quotient:${treat.one}:${count}:${persons}`,
       })
     },
   ),

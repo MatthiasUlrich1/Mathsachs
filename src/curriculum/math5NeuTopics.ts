@@ -16,6 +16,7 @@ import {
   dragDropSortTask,
   fractionModelTask,
   fractionWallTask,
+  divideToolTask,
   fractionTask,
   mixedVariants,
   numberLineTask,
@@ -1128,6 +1129,25 @@ export const math5NeuLb2: Topic[] = [
           explanation: `${word.charAt(0).toUpperCase()}${word.slice(1)} ${n > 1 ? 'sind' : 'ist'} der Bruch ${n}/${d}. Du kannst ihn auch mit mehr Teilen zeigen, zum Beispiel als ${n * 2}/${d * 2} oder ${n * 3}/${d * 3}. Wichtig ist nur, dass die gefärbten Teile im gleichen Verhältnis zur Gesamtzahl der Teile stehen.`,
           solution: `${n}/${d}`,
           dedupeKey: `anteil-modell-frei:${n}:${d}`,
+        })
+      },
+      // Variant 6: Teilwerkzeug — gerecht verteilen, Anteil pro Kind als Bruch (Anzahl der Teile selbst finden)
+      (rng: Rng) => {
+        const [count, persons] = pick(rng, [[3, 4], [2, 3], [3, 5], [1, 4], [2, 5], [1, 3]] as Array<[number, number]>)
+        const food = pick(rng, [
+          { shape: 'circle' as const, art: 'Eine', one: 'Pizza', many: 'Pizzen' },
+          { shape: 'circle' as const, art: 'Eine', one: 'Torte', many: 'Torten' },
+        ])
+        const subject = count === 1 ? `${food.art} ${food.one} soll` : `${count} ${food.many} sollen`
+        return divideToolTask({
+          question: `${subject} gerecht auf ${persons} Kinder verteilt werden. Teile sie so in gleich große Stücke, dass jedes Kind gleich viel bekommt.`,
+          shape: food.shape,
+          count,
+          persons,
+          objectName: food.one,
+          solution: `Jedes Kind bekommt ${count}/${persons} ${food.one}.`,
+          explanation: `Schneide jede ${food.one} in ${persons} gleich große Stücke. Jedes Kind bekommt dann von jeder ${food.one} genau ein Stück, insgesamt ${count} Stück${count === 1 ? '' : 'e'}. Ein Stück ist 1/${persons} einer ${food.one}, also bekommt jedes Kind ${count}/${persons} ${food.one}. Das ist dasselbe wie ${count} : ${persons}. Du darfst auch kleiner schneiden, solange am Ende alle Kinder gleich viele Stücke haben.`,
+          dedupeKey: `teilen-verteilen:${food.one}:${count}:${persons}`,
         })
       },
     ),

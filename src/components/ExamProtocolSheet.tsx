@@ -73,6 +73,10 @@ export const formatExamAnswer = (input: UserInput): string => {
   if (input.kind === 'fractionWall') {
     return input.selected.length > 0 ? input.selected.map((s) => `${s.count}/${s.row}`).join(', ') : '—'
   }
+  if (input.kind === 'divideTool') {
+    const given = input.assignment.filter((v) => v !== null).length
+    return given > 0 ? `${input.partsPerWhole} Teile pro Ganzes, ${given} von ${input.assignment.length} Teilen verteilt` : '—'
+  }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'
   }

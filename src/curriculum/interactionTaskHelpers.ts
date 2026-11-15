@@ -20,6 +20,16 @@ import {
   wallFractionsEqual,
   type FractionWallFraction,
 } from '../lib/fractionWallLogic'
+import {
+  DIVIDE_MAX_COUNT,
+  DIVIDE_MAX_PERSONS,
+  DIVIDE_MIN_COUNT,
+  DIVIDE_MIN_PERSONS,
+  divideMatches,
+  divideSolutionAssignment,
+  divideSolvableParts,
+  type DivideShape,
+} from '../lib/divideToolLogic'
 import type { Task, UserInput } from './types'
 
 export interface FractionModelTaskInput {
@@ -198,5 +208,67 @@ export const fractionWallTask = (input: FractionWallTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'fractionWall' && wallCompareMatches(rows, answer.selected, a, b),
+  }
+}
+
+export interface DivideToolTaskInput {
+  /** Must not name the number of parts: finding a fair division is the task. */
+  question: string
+  /** Chocolate bars (bar) or pizzas / cakes (circle). */
+  shape: DivideShape
+  /** Number of wholes, 1..4. */
+  count: number
+  /** Number of people sharing, 2..6. Drawn as "Kind 1" … "Kind n". */
+  persons: number
+  /** Singular noun for the worksheet ("Jedes Kind bekommt ___ Pizza"). Default: Schokoriegel (bar) / Pizza (circle). */
+  objectName?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/** Dividing tool: cut every whole into equal parts (stepper) and hand all parts out so that everyone gets count/persons. */
+export const divideToolTask = (input: DivideToolTaskInput): Task => {
+  const { shape, count, persons } = input
+  if (shape !== 'bar' && shape !== 'circle') {
+    throw new Error(`divideToolTask: shape must be 'bar' or 'circle', got ${String(shape)}`)
+  }
+  if (!Number.isInteger(count) || count < DIVIDE_MIN_COUNT || count > DIVIDE_MAX_COUNT) {
+    throw new Error(`divideToolTask: count must be ${DIVIDE_MIN_COUNT}..${DIVIDE_MAX_COUNT}, got ${count}`)
+  }
+  if (!Number.isInteger(persons) || persons < DIVIDE_MIN_PERSONS || persons > DIVIDE_MAX_PERSONS) {
+    throw new Error(`divideToolTask: persons must be ${DIVIDE_MIN_PERSONS}..${DIVIDE_MAX_PERSONS}, got ${persons}`)
+  }
+  if (count % persons === 0) {
+    throw new Error(`divideToolTask: ${count} wholes share among ${persons} without dividing; choose other numbers`)
+  }
+  const solvable = divideSolvableParts(count, persons)
+  if (solvable.length === 0) {
+    throw new Error(`divideToolTask: no number of parts (1..12) shares ${count} wholes among ${persons}`)
+  }
+  const parts = solvable[0]!
+  const objectName = input.objectName?.trim() || (shape === 'bar' ? 'Schokoriegel' : 'Pizza')
+  return {
+    question: input.question,
+    answerKind: 'fraction',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    sampleAnswer: { kind: 'divideTool', partsPerWhole: parts, assignment: divideSolutionAssignment(count, persons, parts)! },
+    interactive: {
+      type: 'divideTool',
+      props: {
+        shape,
+        count,
+        persons,
+        objectName,
+        instruction:
+          input.instruction ??
+          'Teile jedes Ganze mit „+“ in gleich große Teile. Tippe dann ein Teil an und danach das Kind, das es bekommt. Alle Kinder sollen gleich viel bekommen.',
+      },
+    },
+    check: (answer: UserInput) =>
+      answer.kind === 'divideTool' && divideMatches(count, persons, answer.partsPerWhole, answer.assignment),
   }
 }

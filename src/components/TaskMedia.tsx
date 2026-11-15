@@ -15,6 +15,8 @@ import { ParamSlider } from './ParamSlider'
 import { AngleProtractor } from './AngleProtractor'
 import { FractionModel } from './FractionModel'
 import { FractionWall } from './FractionWall'
+import { DivideTool } from './DivideTool'
+import { emptyAssignment } from '../lib/divideToolLogic'
 import { RulerMeasure } from './RulerMeasure'
 import { EquationSteps, keysToOps, opsToKeys } from './EquationSteps'
 import { PairMatch } from './PairMatch'
@@ -127,6 +129,10 @@ export const initTaskInput = (task: Task): UserInput => {
   }
   if (task.interactive?.type === 'fractionWall') {
     return { kind: 'fractionWall', selected: [] }
+  }
+  if (task.interactive?.type === 'divideTool') {
+    // Undivided and nothing handed out: the start state does not show a solution.
+    return { kind: 'divideTool', partsPerWhole: 1, assignment: emptyAssignment(Number(task.interactive.props.count) || 1, 1) }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -515,6 +521,22 @@ export function TaskInteractive({
           rows={interactive.props.rows}
           target={interactive.props.target}
           value={value.kind === 'fractionWall' ? value : { kind: 'fractionWall', selected: [] }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'divideTool' && (
+        <DivideTool
+          shape={interactive.props.shape === 'circle' ? 'circle' : 'bar'}
+          count={Number(interactive.props.count)}
+          persons={Number(interactive.props.persons)}
+          objectName={interactive.props.objectName}
+          value={
+            value.kind === 'divideTool'
+              ? value
+              : { kind: 'divideTool', partsPerWhole: 1, assignment: emptyAssignment(Number(interactive.props.count) || 1, 1) }
+          }
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

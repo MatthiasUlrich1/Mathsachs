@@ -1,0 +1,100 @@
+.divide-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 12px 0 4px;
+  width: 100%;
+}
+
+.divide-tool__instruction {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #64748b);
+  text-align: center;
+}
+
+.divide-tool__stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.divide-tool__step {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid #94a3b8;
+  background: #fff;
+  color: #0f172a;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.divide-tool__step:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.divide-tool__parts {
+  min-width: 10em;
+  text-align: center;
+  font-weight: 600;
+}
+
+.divide-tool__svg {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  /* Tap-only widget: page scroll keeps working, double-tap zoom is off. */
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.divide-tool__part {
+  stroke: #334155;
+  stroke-width: 1.5;
+  cursor: pointer;
+}
+
+.divide-tool__part--selected {
+  stroke: #dc2626;
+  stroke-width: 3.5;
+  stroke-dasharray: 5 3;
+}
+
+.divide-tool__person {
+  stroke: #334155;
+  stroke-width: 1.5;
+  cursor: default;
+}
+
+.divide-tool__person--ready {
+  cursor: pointer;
+  stroke-width: 2.5;
+}
+
+.divide-tool__svg[aria-disabled="true"] .divide-tool__part,
+.divide-tool__svg[aria-disabled="true"] .divide-tool__person {
+  cursor: default;
+}
+
+.divide-tool__part:focus-visible,
+.divide-tool__person:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 1px;
+}
+
+.divide-tool__owner,
+.divide-tool__name,
+.divide-tool__count {
+  fill: #0f172a;
+  pointer-events: none;
+}
+
+.divide-tool__name {
+  font-weight: 600;
+}
