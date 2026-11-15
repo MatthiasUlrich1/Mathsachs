@@ -1582,8 +1582,6 @@ export const math5NeuLb2: Topic[] = [
           dedupeKey: `mittel-mc:${numbers.join('-')}`,
         })
       },
-      // Variant 4: Umfrage (Geschwister) als Säulendiagramm darstellen, Balken ziehen
-      (rng: Rng) => surveyBarChartTask(rng, pick(rng, SIBLING_SURVEYS), 'table'),
       // Variant 3: Tippen — fehlende Zahl bei gegebenem Mittelwert
       (rng: Rng) => {
         const k1 = randInt(rng, 3, 18)
@@ -1609,6 +1607,8 @@ export const math5NeuLb2: Topic[] = [
           explanation: `Die Summe aller 4 Zahlen muss ${mean} · 4 = ${mean * 4} betragen. Die drei bekannten Zahlen ergeben ${known.join(' + ')} = ${S}. Die vierte Zahl ist ${mean * 4} − ${S} = ${missing}.`,
         })
       },
+      // Variant 4: Umfrage (Geschwister) als Säulendiagramm darstellen, Balken ziehen
+      (rng: Rng) => surveyBarChartTask(rng, pick(rng, SIBLING_SURVEYS), 'table'),
     ),
   }),
 

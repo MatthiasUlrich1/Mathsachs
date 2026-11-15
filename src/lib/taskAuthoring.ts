@@ -515,7 +515,7 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
         barChartTask({ question: 'q', solution: 's', explanation: 'e', ...barChartInputFromProps(p) })
       } catch (e) {
         errors.push(
-          `Säulendiagramm: 2–6 Kategorien (höchstens 14 Zeichen) als „Name = Wert“ je Zeile, y-Achse bis zu einem Vielfachen der Schrittweite (2–20 Schritte), alle Werte Vielfache der Schrittweite und höchstens bis zum Achsenende. (${e instanceof Error ? e.message : String(e)})`,
+          `Säulendiagramm: 2–6 Kategorien (höchstens 14 Zeichen) als „Name = Wert“ je Zeile, y-Achse bis zu einem Vielfachen der Schrittweite (2–20 Schritte), alle Werte Vielfache der Schrittweite, höchstens bis zum Achsenende und nicht alle 0. (${e instanceof Error ? e.message : String(e)})`,
         )
       }
       break

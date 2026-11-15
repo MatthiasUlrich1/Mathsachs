@@ -78,10 +78,7 @@ export const bcFormatNumber = (value: number): string => {
   return value.toFixed(3).replace('.', ',')
 }
 
-/** The height every bar shows before it is touched: 0, or one step when 0 is the answer (start != answer). */
-export const bcStartValues = (data: readonly number[], step: number): number[] => data.map((v) => (v === 0 ? step : 0))
-
-/** All values exact after snapping; an untouched bar (null) never counts. */
+/** All values exact after snapping; an untouched bar (null) stays at 0. */
 export const bcMatches = (
   data: readonly number[],
   values: ReadonlyArray<number | null> | undefined,
@@ -90,8 +87,8 @@ export const bcMatches = (
 ): boolean => {
   if (!values || values.length !== data.length) return false
   return data.every((target, i) => {
-    const v = values[i]
-    return typeof v === 'number' && Number.isFinite(v) && Math.abs(bcSnap(v, step, yMax) - target) < 1e-9
+    const v = values[i] ?? 0
+    return Number.isFinite(v) && Math.abs(bcSnap(v, step, yMax) - target) < 1e-9
   })
 }
 
@@ -134,15 +131,15 @@ export const bcExtentFits = (e: BcTextExtent): boolean => {
   return left >= 0 && left + w <= BC_VIEWBOX_W && e.y - e.fontSize >= 0 && e.y + e.fontSize * 0.25 <= BC_VIEWBOX_H
 }
 
-/** Input check shared by the helper: throws a descriptive error. */
-export const bcValidate = (categories: readonly string[], data: readonly number[], yMax: number, step: number, axisLabel: string): void => {
-  const fail = (msg: string): never => {
-    throw new Error(`barChartTask: ${msg}`)
-  }
+const fail = (msg: string): never => {
+  throw new Error(`barChartTask: ${msg}`)
+}
+
+/** Axis rules only (categories, y-axis, title); the worksheet frame needs no data. Throws a descriptive error. */
+export const bcValidateAxis = (categories: readonly string[], yMax: number, step: number, axisLabel: string): void => {
   if (!Array.isArray(categories) || categories.length < BC_MIN_CATEGORIES || categories.length > BC_MAX_CATEGORIES) {
     fail(`need ${BC_MIN_CATEGORIES}..${BC_MAX_CATEGORIES} categories`)
   }
-  if (!Array.isArray(data) || data.length !== categories.length) fail('data needs one value per category')
   if (new Set(categories.map((c) => c.trim())).size !== categories.length) fail('category names must differ')
   for (const c of categories) {
     if (typeof c !== 'string' || c.trim() === '' || c.length > BC_MAX_CATEGORY_CHARS) {
@@ -156,12 +153,19 @@ export const bcValidate = (categories: readonly string[], data: readonly number[
   if (Math.round(steps) < BC_MIN_STEPS || Math.round(steps) > BC_MAX_STEPS) {
     fail(`yMax / step must be ${BC_MIN_STEPS}..${BC_MAX_STEPS}, got ${Math.round(steps)}`)
   }
+  if (axisLabel.length > BC_MAX_AXIS_LABEL_CHARS) fail(`axis label has at most ${BC_MAX_AXIS_LABEL_CHARS} characters`)
+}
+
+/** Full input check of the helper: axis rules plus the data (one value per category, on the grid, not all zero). */
+export const bcValidate = (categories: readonly string[], data: readonly number[], yMax: number, step: number, axisLabel: string): void => {
+  if (!Array.isArray(data) || !Array.isArray(categories) || data.length !== categories.length) fail('data needs one value per category')
+  bcValidateAxis(categories, yMax, step, axisLabel)
   for (const v of data) {
     if (!Number.isFinite(v) || v < 0 || v > yMax + 1e-9) fail(`value ${v} is outside 0..${yMax}`)
     const k = v / step
     if (Math.abs(k - Math.round(k)) > 1e-6) fail(`value ${v} is not a multiple of step (${step})`)
   }
-  if (axisLabel.length > BC_MAX_AXIS_LABEL_CHARS) fail(`axis label has at most ${BC_MAX_AXIS_LABEL_CHARS} characters`)
+  if (data.every((v) => v === 0)) fail('data must not be all zero (an untouched chart would already be the answer)')
 }
 
 const esc = (s: string): string => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

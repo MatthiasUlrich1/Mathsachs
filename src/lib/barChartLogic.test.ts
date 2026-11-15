@@ -23,11 +23,11 @@ import {
   bcSlotWidth,
   bcSnap,
   bcSourceFits,
-  bcStartValues,
   bcTextExtents,
   bcTickValues,
   bcTouched,
   bcValidate,
+  bcValidateAxis,
   bcValueFromY,
   bcYFromValue,
 } from './barChartLogic'
@@ -85,18 +85,21 @@ describe('axis maths', () => {
 })
 
 describe('start values and check', () => {
-  it('bars start at 0, or one step when 0 is the answer (start never equals the answer)', () => {
-    expect(bcStartValues([3, 0, 5], 1)).toEqual([1 * 0, 1, 0])
-    expect(bcStartValues([0, 2], 2)).toEqual([2, 0])
-    const data = [4, 0, 7, 0]
-    bcStartValues(data, 1).forEach((s, i) => expect(s).not.toBe(data[i]))
+  it('an untouched bar (null) counts as 0, so a zero bar needs no move', () => {
+    expect(bcMatches([4, 0, 7], [4, null, 7], 1, 10)).toBe(true)
+    expect(bcMatches([4, 0, 7], [4, 0, 7], 1, 10)).toBe(true)
+    expect(bcMatches([4, 0, 7], [4, null, null], 1, 10)).toBe(false)
   })
 
-  it('matches only when every bar was moved to exactly its value (after snapping)', () => {
+  it('all bars untouched never matches real data (the helper refuses all-zero data)', () => {
+    expect(bcMatches([4, 0, 7], [null, null, null], 1, 10)).toBe(false)
+    expect(bcMatches([4, 0, 7], [0, 0, 0], 1, 10)).toBe(false)
+  })
+
+  it('matches only when every bar has exactly its value (after snapping)', () => {
     const data = [4, 0, 7]
     expect(bcMatches(data, [4, 0, 7], 1, 10)).toBe(true)
     expect(bcMatches(data, [4.2, 0.1, 6.9], 1, 10)).toBe(true) // snaps to the step
-    expect(bcMatches(data, [4, null, 7], 1, 10)).toBe(false) // an untouched bar never counts, even when 0 is right
     expect(bcMatches(data, [4, 0, 6], 1, 10)).toBe(false)
     expect(bcMatches(data, [4, 0], 1, 10)).toBe(false)
     expect(bcMatches(data, undefined, 1, 10)).toBe(false)
@@ -129,6 +132,15 @@ describe('validation', () => {
     ['name not fitting under 6 bars', ['A', 'B', 'C', 'D', 'E', 'Schwimmverein'], [1, 1, 1, 1, 1, 1], 4, 1],
   ])('rejects %s', (_name, cats, data, yMax, step) => {
     expect(() => bcValidate(cats as string[], data as number[], yMax as number, step as number, '')).toThrow(/barChartTask/)
+  })
+  it('rejects data that is all zero (the untouched chart would be the answer)', () => {
+    expect(() => bcValidate(['A', 'B'], [0, 0], 4, 1, '')).toThrow(/all zero/)
+    expect(() => bcValidate(['A', 'B'], [0, 1], 4, 1, '')).not.toThrow()
+  })
+  it('the axis rules alone need no data (worksheet frame)', () => {
+    expect(() => bcValidateAxis(['A', 'B'], 4, 1, '')).not.toThrow()
+    expect(() => bcValidateAxis(['A'], 4, 1, '')).toThrow(/categories/)
+    expect(() => bcValidateAxis(['A', 'B'], 5, 2, '')).toThrow(/multiple/)
   })
   it('rejects a long axis label and accepts a decimal step', () => {
     expect(() => bcValidate(['A', 'B'], [1, 2], 4, 1, 'x'.repeat(25))).toThrow()

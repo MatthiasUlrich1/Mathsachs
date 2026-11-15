@@ -72,9 +72,9 @@ describe.each(CASES)('Neu-Thema Säulendiagramm $id', (c) => {
     for (const t of tasks) {
       expect(t.check(t.sampleAnswer), t.question).toBe(true)
       expect(t.check({ kind: 'barChart', values: categoriesOf(t).map(() => null) }), t.question).toBe(false)
-      // the start heights are not the answer for any bar
-      const starts = t.interactive!.props.starts as number[]
-      starts.forEach((s, i) => expect(s, `${t.question} ${i}`).not.toBe(countsOf(t)[i]))
+      // all bars start at 0, no start hint in the props, and the data is not all zero
+      expect('starts' in t.interactive!.props).toBe(false)
+      expect(countsOf(t).some((v) => v > 0)).toBe(true)
       expect(t.dedupeKey?.trim(), t.question).toBeTruthy()
       keys.add(t.dedupeKey!)
       expect(t.explanation.trim().length).toBeGreaterThan(80)
@@ -134,15 +134,21 @@ describe('Umfragen', () => {
     }
   })
 
-  it('eine Umfrage mit 0 hat einen Hinweis in der Erklärung und einen Balken, der nicht bei 0 startet', () => {
+  it('eine Umfrage mit 0: Hinweis in der Erklärung, der Null-Balken muss nicht bewegt werden, alles unberührt besteht nicht', () => {
     const s = TABLE_SURVEYS.find((x) => x.counts.includes(0))!
     for (let seed = 1; seed < 8; seed++) {
       const t = surveyBarChartTask(createRng(seed), s, 'table')
       const zeroIndex = countsOf(t).indexOf(0)
-      expect((t.interactive!.props.starts as number[])[zeroIndex]).toBe(1)
-      expect(t.explanation).toContain('niemand abgestimmt')
-      expect(t.check({ kind: 'barChart', values: countsOf(t).map((v, i) => (i === zeroIndex ? null : v)) })).toBe(false)
+      expect(t.explanation).toContain('Der Balken bleibt bei 0')
+      expect(t.check({ kind: 'barChart', values: countsOf(t).map((v, i) => (i === zeroIndex ? null : v)) })).toBe(true)
+      expect(t.check({ kind: 'barChart', values: countsOf(t).map(() => null) })).toBe(false)
     }
+  })
+
+  it('Geschwister: vier Datensätze, die Erklärung verbindet das Diagramm mit dem Mittelwert', () => {
+    expect(SIBLING_SURVEYS).toHaveLength(4)
+    const t = surveyBarChartTask(createRng(1), SIBLING_SURVEYS[0]!, 'table')
+    expect(t.explanation).toMatch(/Mittelwert/)
   })
 
   it('Strichliste: Zahlen stehen nicht als Text in der Abbildung', () => {

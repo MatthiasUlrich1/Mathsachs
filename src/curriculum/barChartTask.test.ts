@@ -21,11 +21,13 @@ const make = (over: Partial<BarChartTaskInput> = {}) => barChartTask({ ...base, 
 const vals = (values: Array<number | null>): UserInput => ({ kind: 'barChart', values })
 
 describe('barChartTask check', () => {
-  it('sampleAnswer passes; untouched, partial, wrong, an untouched zero bar and the wrong kind fail', () => {
+  it('sampleAnswer passes; untouched, partial, wrong and the wrong kind fail; an untouched bar counts as 0', () => {
     const t = make()
     expect(t.check(t.sampleAnswer)).toBe(true)
     expect(t.check(initTaskInput(t))).toBe(false)
-    expect(t.check(vals([8, 6, 3, null]))).toBe(false) // the 0 bar must be set too
+    expect(t.check(vals([8, 6, 3, null]))).toBe(true) // the 0 bar needs no move
+    expect(t.check(vals([null, null, null, null]))).toBe(false)
+    expect(t.check(vals([8, null, 3, 0]))).toBe(false)
     expect(t.check(vals([8, 6, 2, 0]))).toBe(false)
     expect(t.check(vals([8, 6, 3]))).toBe(false)
     expect(t.check({ kind: 'text', value: '8' } as unknown as UserInput)).toBe(false)
@@ -45,15 +47,14 @@ describe('barChartTask check', () => {
 })
 
 describe('barChartTask content of the task object', () => {
-  it('the start state is not the answer for any bar, and the targets are not in the props', () => {
+  it('all bars start at 0 (no hint at zero targets) and the targets are not in the props', () => {
     const t = make()
     const props = t.interactive!.props
-    expect(props.starts).toEqual([0, 0, 0, 1]) // the zero bar starts one step up
-    const data = base.data
-    ;(props.starts as number[]).forEach((s, i) => expect(s).not.toBe(data[i]))
-    expect(JSON.stringify(props)).not.toMatch(/"data"|"values"|"value"/)
+    expect('starts' in props).toBe(false)
+    expect(JSON.stringify(props)).not.toMatch(/"data"|"values"|"value"|"starts"/)
     expect(t.interactive!.type).toBe('barChart')
-    expect(typeof props.instruction).toBe('string')
+    expect(props.instruction).toMatch(/zu den Angaben passt/)
+    expect(props.instruction).not.toMatch(/Tabelle/)
     // screen-only hints stay out of the question
     expect(t.question).not.toMatch(/zieh|tippe|klick|pfeiltaste/i)
   })
@@ -71,6 +72,7 @@ describe('barChartTask content of the task object', () => {
     expect(() => make({ data: [1, 2] })).toThrow(/data/)
     expect(() => make({ yMax: 7, step: 2 })).toThrow(/multiple/)
     expect(() => make({ data: [8, 6, 3, 11] })).toThrow(/outside/)
+    expect(() => make({ data: [0, 0, 0, 0] })).toThrow(/all zero/)
     expect(() => make({ data: [8, 6, 3, 1.5] })).toThrow(/multiple of step/)
     expect(() => make({ yMax: 100, step: 1 })).toThrow(/yMax \/ step/)
     expect(() => make({ yLabel: 'x'.repeat(30) })).toThrow(/axis label/)
@@ -96,8 +98,15 @@ describe('barChart wiring', () => {
   it('exam protocol text names the categories and marks untouched bars', () => {
     const t = make()
     expect(formatExamAnswer(vals([null, null, null, null]), t)).toBe('—')
-    expect(formatExamAnswer(vals([8, null, 3, 0]), t)).toBe('Hund: 8; Katze: –; Fisch: 3; Pferd: 0')
-    expect(formatExamAnswer(vals([2.5, null]))).toBe('Balken 1: 2,5; Balken 2: –')
+    expect(formatExamAnswer(vals([8, null, 3, 0]), t)).toBe('Hund: 8; Katze: 0; Fisch: 3; Pferd: 0')
+    expect(formatExamAnswer(vals([2.5, null]))).toBe('Balken 1: 2,5; Balken 2: 0')
+  })
+
+  it('worksheet: the frame only needs valid axis rules, not data (no silent drop)', () => {
+    const t = make()
+    expect(worksheetPrintExtras(t).visualHtml).toContain('<svg')
+    const broken = { ...t, interactive: { ...t.interactive!, props: { ...t.interactive!.props, yMax: 7, step: 2 } } }
+    expect(worksheetPrintExtras(broken).visualHtml ?? '').not.toContain('<svg')
   })
 
   it('worksheet: the table (visualContent) comes first, then the empty axes with categories and ticks, no bars', () => {
@@ -134,7 +143,7 @@ describe('barChart authoring', () => {
     const t = draftToTask(d)
     expect(t.interactive?.type).toBe('barChart')
     expect(t.check(t.sampleAnswer)).toBe(true)
-    expect(t.check(vals([8, 5, null]))).toBe(false)
+    expect(t.check(vals([8, null, null]))).toBe(false)
     const code = exportGeneratorSnippet(d)
     expect(code).toContain('barChartTask({')
     expect(code).toContain('categories: ["Fußball","Schwimmen","Tanzen"],')

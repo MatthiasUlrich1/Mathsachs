@@ -21,7 +21,7 @@ import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
-import { barChartPrintSvg, bcValidate } from './barChartLogic'
+import { barChartPrintSvg, bcValidateAxis } from './barChartLogic'
 import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
@@ -446,7 +446,7 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       const yLabel = typeof props.yLabel === 'string' ? props.yLabel : ''
       let valid = true
       try {
-        bcValidate(categories, categories.map(() => 0), yMax, step, yLabel)
+        bcValidateAxis(categories, yMax, step, yLabel)
       } catch {
         valid = false
       }

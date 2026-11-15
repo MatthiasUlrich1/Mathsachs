@@ -1573,10 +1573,6 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
         visualContent: generateFractionCircleSvg({ numerator: k, denominator: denom }),
       })
     },
-    // V5 Strichliste — Umfrage auszählen und als Säulendiagramm zeichnen (Balken ziehen)
-    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TALLY_SURVEYS), 'tally'),
-    // V6 Tabelle — Häufigkeitstabelle als Säulendiagramm darstellen (Balken ziehen)
-    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TABLE_SURVEYS), 'table'),
     // V4 MC — Konzept: Gesetz der großen Zahlen
     (rng: Rng) => {
       const correct = 'Je mehr Versuche durchgeführt werden, desto stabiler wird die relative Häufigkeit.'
@@ -1593,6 +1589,10 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
           'Das Gesetz der großen Zahlen besagt: Je mehr Versuche man durchführt, desto stabiler (vorhersagbarer) wird die relative Häufigkeit eines Ereignisses. Bei wenigen Versuchen kann sie stark schwanken.',
       })
     },
+    // V5 Strichliste — Umfrage auszählen und als Säulendiagramm zeichnen (Balken ziehen)
+    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TALLY_SURVEYS), 'tally'),
+    // V6 Tabelle — Häufigkeitstabelle als Säulendiagramm darstellen (Balken ziehen)
+    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TABLE_SURVEYS), 'table'),
   ),
 })
 

@@ -1,5 +1,6 @@
 import { createElement, isValidElement, type ReactElement, type ReactNode } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
+import fs from 'node:fs'
 import { describe, expect, it, vi } from 'vitest'
 import type { UserInput } from '../curriculum/types'
 
@@ -34,7 +35,6 @@ const base: BarChartProps = {
   categories: ['Hund', 'Katze', 'Fisch'],
   yMax: 10,
   step: 1,
-  starts: [0, 0, 0],
   yLabel: 'Anzahl Kinder',
   value: blank,
   onChange: () => {},
@@ -73,12 +73,14 @@ describe('BarChart markup', () => {
     expect(Number(fill(1).props.height)).toBe(0)
   })
 
-  it('an untouched bar whose answer is 0 starts one step up (from starts)', () => {
-    const els = tree({ starts: [0, 1, 0] })
-    const fill = collect(bar(els, 1).props.children as ReactNode).find((e) => e.props.className === 'bar-chart__fill')!
-    expect(Number(fill.props.y)).toBeCloseTo(bcYFromValue(1, 10), 6)
-    expect(bar(els, 1).props['aria-valuenow']).toBe(1)
-    expect(bar(els, 1).props['data-value']).toBeUndefined()
+  it('every untouched bar starts flat at 0 (no step-up hint)', () => {
+    const els = tree()
+    for (let i = 0; i < 3; i++) {
+      const fill = collect(bar(els, i).props.children as ReactNode).find((e) => e.props.className === 'bar-chart__fill')!
+      expect(Number(fill.props.height)).toBe(0)
+      expect(bar(els, i).props['aria-valuenow']).toBe(0)
+      expect(bar(els, i).props['data-value']).toBeUndefined()
+    }
   })
 
   it('only the bars block touch scrolling (css), the svg does not; disabled is not focusable and shows a default cursor', () => {
@@ -168,8 +170,8 @@ describe('BarChart dragging', () => {
 
   it('clamps to 0 and yMax', () => {
     const onChange = vi.fn()
-    const els = tree({ onChange })
-    ;(bar(els, 1).props.onPointerDown as Handler)(ptr(BC_Y_BASE))
+    const els = tree({ onChange, value: { kind: 'barChart', values: [null, 5, null] } })
+    ;(bar(els, 1).props.onPointerDown as Handler)(ptr(bcYFromValue(5, 10)))
     const move = svgOf(els).props.onPointerMove as Handler
     move(ptr(-900))
     expect(onChange).toHaveBeenLastCalledWith({ kind: 'barChart', values: [null, 10, null] })
@@ -190,6 +192,15 @@ describe('BarChart dragging', () => {
     const off = tree({ onChange, disabled: true })
     ;(bar(off, 0).props.onPointerDown as Handler)(ptr(BC_Y_BASE))
     ;(svgOf(off).props.onPointerMove as Handler)(ptr(100))
+    expect(onChange).not.toHaveBeenCalled()
+  })
+
+  it('a drag that ends where the bar already is does not count as moving it', () => {
+    const onChange = vi.fn()
+    const els = tree({ onChange })
+    ;(bar(els, 0).props.onPointerDown as Handler)(ptr(BC_Y_BASE))
+    ;(svgOf(els).props.onPointerMove as Handler)(ptr(BC_Y_BASE + 3))
+    ;(bar(els, 1).props.onPointerDown as Handler)(ptr(BC_Y_BASE + 200))
     expect(onChange).not.toHaveBeenCalled()
   })
 
@@ -217,13 +228,14 @@ describe('BarChart keyboard', () => {
     expect(onChange).not.toHaveBeenCalled()
   })
 
-  it('an untouched bar starts from its shown start height', () => {
+  it('an untouched bar starts from 0 and counts as moved only once it really changes', () => {
     const onChange = vi.fn()
-    const els = tree({ onChange, starts: [0, 2, 0], step: 2, yMax: 10 })
+    const els = tree({ onChange, step: 2, yMax: 10 })
     ;(bar(els, 1).props.onKeyDown as Handler)(key('ArrowUp'))
-    expect(onChange).toHaveBeenLastCalledWith({ kind: 'barChart', values: [null, 4, null] })
+    expect(onChange).toHaveBeenLastCalledWith({ kind: 'barChart', values: [null, 2, null] })
+    onChange.mockClear()
     ;(bar(els, 1).props.onKeyDown as Handler)(key('ArrowDown'))
-    expect(onChange).toHaveBeenLastCalledWith({ kind: 'barChart', values: [null, 0, null] })
+    expect(onChange).not.toHaveBeenCalled() // already at 0: the bar stays untouched
   })
 
   it('ignores other keys and does nothing when disabled', () => {
@@ -235,7 +247,5 @@ describe('BarChart keyboard', () => {
 })
 
 function readCss(): string {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  const fs = require('node:fs') as typeof import('node:fs')
   return fs.readFileSync(new URL('./BarChart.css', import.meta.url), 'utf8')
 }

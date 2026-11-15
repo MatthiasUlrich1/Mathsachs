@@ -610,7 +610,6 @@ export function TaskInteractive({
           categories={interactive.props.categories as string[]}
           yMax={Number(interactive.props.yMax)}
           step={Number(interactive.props.step)}
-          starts={interactive.props.starts as number[] | undefined}
           yLabel={interactive.props.yLabel as string | undefined}
           value={value.kind === 'barChart' ? value : { kind: 'barChart', values: [] }}
           onChange={onChange}

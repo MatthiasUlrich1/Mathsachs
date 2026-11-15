@@ -35,8 +35,6 @@ export interface BarChartProps {
   categories: string[]
   yMax: number
   step: number
-  /** Height every untouched bar shows (default 0). */
-  starts?: number[]
   /** Short title of the y-axis. */
   yLabel?: string
   value: BarChartValue
@@ -49,7 +47,7 @@ export interface BarChartProps {
  * Bar chart the learner builds: drag the top of each bar (or use the arrow keys); heights snap to the grid.
  * Pointer events only (mouse, touch, stylus). `values[i]` is null while bar i has not been moved.
  */
-export const BarChart: React.FC<BarChartProps> = ({ categories, yMax, step, starts, yLabel, value, onChange, instruction, disabled = false }) => {
+export const BarChart: React.FC<BarChartProps> = ({ categories, yMax, step, yLabel, value, onChange, instruction, disabled = false }) => {
   const svgRef = useRef<SVGSVGElement | null>(null)
   const grab = useRef<{ index: number; dy: number } | null>(null)
   const [dragging, setDragging] = useState<number | null>(null)
@@ -58,14 +56,15 @@ export const BarChart: React.FC<BarChartProps> = ({ categories, yMax, step, star
     const v = value.values?.[i]
     return typeof v === 'number' && Number.isFinite(v) ? v : null
   })
-  const shown = (i: number): number => values[i] ?? starts?.[i] ?? 0
+  const shown = (i: number): number => values[i] ?? 0
   const ticks = bcTickValues(yMax, step)
   const labelled = new Set(bcLabelledTicks(yMax, step))
   const slotW = bcSlotWidth(n)
   const barW = bcBarWidth(n)
 
   const setBar = (index: number, next: number) => {
-    if (values[index] === next) return
+    // Only a real change counts as moving a bar (a no-op drag on an untouched bar stays untouched).
+    if (shown(index) === next) return
     const out = [...values]
     out[index] = next
     onChange({ kind: 'barChart', values: out })

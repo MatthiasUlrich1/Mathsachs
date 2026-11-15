@@ -56,7 +56,7 @@ import {
   nlmTrayOrder,
   type NlmItem,
 } from '../lib/numberLineMultiLogic'
-import { bcMatches, bcStartValues, bcValidate } from '../lib/barChartLogic'
+import { bcMatches, bcValidate } from '../lib/barChartLogic'
 import { hashStringSeed } from '../lib/seed'
 import {
   buildTreeModel,
@@ -584,7 +584,7 @@ export interface BarChartTaskInput {
   question: string
   /** 2-6 category names (at most 14 characters, they must fit under the bars). */
   categories: string[]
-  /** Target height per category: a multiple of `step` between 0 and `yMax`. */
+  /** Target height per category: a multiple of `step` between 0 and `yMax`; not all zero. */
   data: number[]
   /** Upper end of the y-axis; a multiple of `step`, 2-20 steps. */
   yMax: number
@@ -623,12 +623,10 @@ export const barChartTask = (input: BarChartTaskInput): Task => {
         categories: [...categories],
         yMax,
         step,
-        // Only where the bars start (0, or one step for a bar whose answer is 0); the targets stay in `check`.
-        starts: bcStartValues(target, step),
         ...(yLabel ? { yLabel } : {}),
         instruction:
           input.instruction ??
-          'Ziehe die Spitze jedes Balkens nach oben oder unten, bis die Höhe zur Tabelle passt. Mit den Pfeiltasten verschiebst du einen ausgewählten Balken Schritt für Schritt.',
+          'Ziehe die Spitze jedes Balkens nach oben oder unten, bis die Höhe zu den Angaben passt. Mit den Pfeiltasten verschiebst du einen ausgewählten Balken Schritt für Schritt.',
       },
     },
     check: (answer: UserInput) => answer.kind === 'barChart' && bcMatches(target, answer.values, step, yMax),

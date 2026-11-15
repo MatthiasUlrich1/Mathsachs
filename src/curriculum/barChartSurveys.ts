@@ -19,6 +19,8 @@ export interface Survey {
   yMax: number
   /** Whether the categories may be shown in a different order (not for ordered categories like 0, 1, 2 ...). */
   rotatable: boolean
+  /** Optional closing sentence of the explanation. */
+  note?: string
 }
 
 export const TALLY_SURVEYS: Survey[] = [
@@ -86,6 +88,7 @@ export const SIBLING_SURVEYS: Survey[] = [
   [6, 12, 5, 2],
   [4, 11, 7, 3],
   [5, 13, 6, 2],
+  [3, 10, 8, 4],
 ].map((counts, i) => ({
   id: `geschwister5a-${i}`,
   context: 'In der Klasse 5a wurde gefragt, wie viele Geschwister jedes Kind hat.',
@@ -94,6 +97,7 @@ export const SIBLING_SURVEYS: Survey[] = [
   counts,
   yMax: 14,
   rotatable: false,
+  note: 'Aus dem Diagramm kann man danach den Mittelwert der Geschwisterzahl abschätzen: Jede Zahl mal die Anzahl der Kinder rechnen, alles addieren und durch die Kinderzahl teilen (bei „3 oder mehr“ mit 3 rechnen).',
 }))
 
 const rotate = <T>(list: readonly T[], by: number): T[] => [...list.slice(by), ...list.slice(0, by)]
@@ -104,7 +108,7 @@ const orderedPairs = (categories: readonly string[], counts: readonly number[]):
 const zeroNote = (categories: readonly string[], counts: readonly number[]): string => {
   const zero = categories.filter((_, i) => counts[i] === 0)
   return zero.length
-    ? ` Bei ${zero.join(', ')} hat niemand abgestimmt: Der Balken muss genau auf 0 stehen, er darf nicht eine Gitterlinie höher stehen.`
+    ? ` Bei ${zero.join(', ')} hat niemand abgestimmt: Der Balken bleibt bei 0.`
     : ''
 }
 
@@ -131,7 +135,7 @@ export const surveyBarChartTask = (rng: Rng, survey: Survey, mode: 'tally' | 'ta
     yLabel: 'Anzahl Kinder',
     visualContent: figure,
     solution: `Höhe der Balken: ${orderedPairs(categories, counts)}`,
-    explanation: `${how} Das ergibt: ${orderedPairs(categories, counts)}. Zusammen sind das ${total} Kinder. Jede Säule reicht bis zu ihrer Zahl auf der y-Achse; bei „${top}“ ist sie am höchsten, weil dort die meisten Kinder gezählt wurden.${zeroNote(categories, counts)}`,
+    explanation: `${how} Das ergibt: ${orderedPairs(categories, counts)}. Zusammen sind das ${total} Kinder. Jede Säule reicht bis zu ihrer Zahl auf der y-Achse; bei „${top}“ ist sie am höchsten, weil dort die meisten Kinder gezählt wurden.${zeroNote(categories, counts)}${survey.note ? ` ${survey.note}` : ''}`,
     dedupeKey: `barchart-${mode}:${survey.id}:${rot}`,
   })
 }
