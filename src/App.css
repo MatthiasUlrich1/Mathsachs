@@ -3048,3 +3048,33 @@ a.link {
   flex-direction: column;
   gap: 10px;
 }
+
+/* Theme choice (Settings hub) — uses design tokens */
+.settings-theme {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 8px 14px 12px;
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.settings-theme__legend {
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.settings-theme__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.settings-theme__option input {
+  accent-color: var(--ink);
+  width: 18px;
+  height: 18px;
+  padding: 0;
+}

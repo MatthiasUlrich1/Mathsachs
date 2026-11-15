@@ -1,4 +1,10 @@
 import { useState } from 'react'
+import {
+  loadThemePreference,
+  setThemePreference,
+  THEME_OPTIONS,
+  type ThemePreference,
+} from '../lib/theme'
 import { CurriculumSetup } from './CurriculumSetup'
 import { ClassCodes } from './ClassCodes'
 import { FaultyTasksPanel } from './FaultyTasksPanel'
@@ -121,6 +127,11 @@ export function Settings({
   const [teacherCodeDraft, setTeacherCodeDraft] = useState('')
   const [teacherCodeError, setTeacherCodeError] = useState<string | null>(null)
   const selectedRole = pendingRole ?? role
+  const [themePref, setThemePref] = useState<ThemePreference>(() => loadThemePreference())
+  const pickTheme = (next: ThemePreference) => {
+    setThemePref(next)
+    setThemePreference(next)
+  }
   const lanAvailable = Boolean(lanStatus)
   const updateHint = manualCheckHint(manualCheckStatus, manualCheckError)
 
@@ -206,6 +217,22 @@ export function Settings({
             )
           })}
         </ul>
+
+        <fieldset className="settings-theme">
+          <legend className="settings-theme__legend">Darstellung</legend>
+          {THEME_OPTIONS.map((opt) => (
+            <label key={opt.value} className="settings-theme__option">
+              <input
+                type="radio"
+                name="theme"
+                value={opt.value}
+                checked={themePref === opt.value}
+                onChange={() => pickTheme(opt.value)}
+              />
+              <span>{opt.label}</span>
+            </label>
+          ))}
+        </fieldset>
 
         <div className="settings-updates">
           <button

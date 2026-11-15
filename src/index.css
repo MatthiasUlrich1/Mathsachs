@@ -1,18 +1,90 @@
+/*
+ * Design system "Schulheft & Tafel".
+ * Heft (light, default) = :root. Tafel (dark) = [data-theme="tafel"] or, unless
+ * the user forced Heft, prefers-color-scheme: dark.
+ * Every token below must be defined in BOTH themes (src/lib/designTokens.test.ts).
+ */
 :root {
-  --bg-0: #0f172a;
-  --bg-1: #1e293b;
-  --accent: #6366f1;
-  --accent-2: #22d3ee;
-  --good: #22c55e;
-  --bad: #ef4444;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
+  /* Colours: Heft */
+  --paper: #fbfcfe;
+  --surface: #ffffff;
+  --grid: #dce6f2;
+  --line: #c3cfe0;
+  --ink: #1d3fa8;
+  --graphite: #23272f;
+  --pencil: #5b6472;
+  --correction: #d62839;
+  /* Design brief said #1E8E4F (4.06:1 on paper, fails WCAG AA); darkened to pass. */
+  --tick: #1c854a;
+  --marker: #ffe14d;
+  --focus: var(--ink);
 
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  color: var(--text);
-  color-scheme: dark;
+  /* Type */
+  --font-body: 'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Bricolage Grotesque Variable', 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --fs-1: 0.875rem;
+  --fs-2: 1rem;
+  --fs-3: 1.125rem;
+  --fs-4: 1.375rem;
+  --fs-5: 1.75rem;
+  --fs-6: 2.25rem;
+
+  /* Radii */
+  --radius-sheet: 14px;
+  --radius-control: 10px;
+  --radius-chip: 999px;
+
+  /*
+   * DEPRECATED aliases of the old dark slate/indigo palette. Kept only so
+   * App.css and component CSS keep working until they are migrated to the
+   * tokens above (D2/D3). Do not use in new code.
+   */
+  --bg-0: var(--paper);
+  --bg-1: var(--surface);
+  --accent: var(--ink);
+  --accent-2: var(--ink);
+  --good: var(--tick);
+  --bad: var(--correction);
+  --text: var(--graphite);
+  --muted: var(--pencil);
+
+  font-family: var(--font-body);
+  font-size: 100%;
+  line-height: 1.5;
+  color: var(--graphite);
+  color-scheme: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:root[data-theme='tafel'] {
+  --paper: #1e3b35;
+  --surface: #23423b;
+  --grid: #2a4a43;
+  --line: #3f6158;
+  --ink: #9cc7f2;
+  --graphite: #eef2ea;
+  --pencil: #b5c2b8;
+  --correction: #f28b82;
+  --tick: #8fd19e;
+  --marker: #f6e27a;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='heft']) {
+    --paper: #1e3b35;
+    --surface: #23423b;
+    --grid: #2a4a43;
+    --line: #3f6158;
+    --ink: #9cc7f2;
+    --graphite: #eef2ea;
+    --pencil: #b5c2b8;
+    --correction: #f28b82;
+    --tick: #8fd19e;
+    --marker: #f6e27a;
+    color-scheme: dark;
+  }
 }
 
 * {
@@ -25,10 +97,14 @@ body {
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
-  background:
-    radial-gradient(1200px 600px at 15% -10%, rgba(99, 102, 241, 0.35), transparent 60%),
-    radial-gradient(1000px 600px at 100% 0%, rgba(34, 211, 238, 0.25), transparent 55%),
-    linear-gradient(180deg, var(--bg-0), #0b1120);
+  background-color: var(--paper);
+  /* Squared paper: 5 mm grid, about 20 px */
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--graphite);
+  font-family: var(--font-body);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,12 +124,103 @@ body {
   }
 }
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-stretch: 90%;
+  line-height: 1.15;
+  color: var(--graphite);
 }
 
-input {
+h1 {
+  font-size: var(--fs-6);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: var(--fs-5);
+}
+
+h3 {
+  font-size: var(--fs-4);
+  font-weight: 600;
+}
+
+p {
+  max-width: 70ch;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.15em;
+}
+
+/* Buttons: solid ink = primary, outline = secondary */
+button {
   font-family: inherit;
+  font-size: var(--fs-2);
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  font-weight: 700;
+}
+
+button.secondary,
+button.ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* Inputs */
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: var(--fs-2);
+  color: var(--graphite);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 0.5rem 0.75rem;
+}
+
+input[type='number'],
+input[inputmode='numeric'],
+input[inputmode='decimal'] {
+  font-variant-numeric: tabular-nums;
+}
+
+::placeholder {
+  color: var(--pencil);
+  opacity: 1;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+button[disabled],
+input[disabled],
+select[disabled],
+textarea[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
