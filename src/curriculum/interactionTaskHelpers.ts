@@ -56,6 +56,7 @@ import {
   nlmTrayOrder,
   type NlmItem,
 } from '../lib/numberLineMultiLogic'
+import { bcMatches, bcStartValues, bcValidate } from '../lib/barChartLogic'
 import { hashStringSeed } from '../lib/seed'
 import {
   buildTreeModel,
@@ -575,5 +576,61 @@ export const treeDiagramTask = (input: TreeDiagramTaskInput): Task => {
       },
     },
     check: (answer: UserInput) => answer.kind === 'treeDiagram' && treeMatches(model, blanks, answer.branches, answer.leaves),
+  }
+}
+
+export interface BarChartTaskInput {
+  /** Do not state the bar heights; screen-only hints belong in `instruction`. The data has to be readable in `visualContent` or the question (e.g. a tally sheet). */
+  question: string
+  /** 2-6 category names (at most 14 characters, they must fit under the bars). */
+  categories: string[]
+  /** Target height per category: a multiple of `step` between 0 and `yMax`. */
+  data: number[]
+  /** Upper end of the y-axis; a multiple of `step`, 2-20 steps. */
+  yMax: number
+  /** Distance between grid lines; bars snap to it. */
+  step: number
+  /** Short title of the y-axis, e.g. "Anzahl Kinder" (default: none, at most 24 characters). */
+  yLabel?: string
+  /** The table or tally sheet the learner reads the data from. */
+  visualContent?: string
+  solution: string
+  explanation: string
+  instruction?: string
+  dedupeKey?: string
+}
+
+/**
+ * The learner builds a bar chart by dragging the bar heights (snap to `step`).
+ * UserInput `values` has one entry per category: the dragged height, or `null` for a bar that was never touched.
+ */
+export const barChartTask = (input: BarChartTaskInput): Task => {
+  const { categories, data, yMax, step } = input
+  const yLabel = input.yLabel?.trim() ?? ''
+  bcValidate(categories, data, yMax, step, yLabel)
+  const target = [...data]
+  return {
+    question: input.question,
+    answerKind: 'text',
+    solution: input.solution,
+    explanation: input.explanation,
+    ...(input.dedupeKey?.trim() ? { dedupeKey: input.dedupeKey.trim() } : {}),
+    ...(input.visualContent?.trim() ? { visualContent: input.visualContent } : {}),
+    sampleAnswer: { kind: 'barChart', values: [...target] },
+    interactive: {
+      type: 'barChart',
+      props: {
+        categories: [...categories],
+        yMax,
+        step,
+        // Only where the bars start (0, or one step for a bar whose answer is 0); the targets stay in `check`.
+        starts: bcStartValues(target, step),
+        ...(yLabel ? { yLabel } : {}),
+        instruction:
+          input.instruction ??
+          'Ziehe die Spitze jedes Balkens nach oben oder unten, bis die Höhe zur Tabelle passt. Mit den Pfeiltasten verschiebst du einen ausgewählten Balken Schritt für Schritt.',
+      },
+    },
+    check: (answer: UserInput) => answer.kind === 'barChart' && bcMatches(target, answer.values, step, yMax),
   }
 }

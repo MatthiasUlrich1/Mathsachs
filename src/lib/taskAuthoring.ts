@@ -20,6 +20,7 @@ import {
   ratioBarTask,
   numberLineMultiTask,
   treeDiagramTask,
+  barChartTask,
   paramSliderTask,
   textTask,
   valueTask,
@@ -93,6 +94,7 @@ export type AuthoringElementType =
   | 'ratioBar'
   | 'numberLineMulti'
   | 'treeDiagram'
+  | 'barChart'
   | 'pairMatch'
   | 'clozeMulti'
   | 'iconBelong'
@@ -127,6 +129,7 @@ export const AUTHORING_ELEMENT_OPTIONS: Array<{
   { id: 'ratioBar', label: 'Verhältnisleiste (Felder färben / Menge aufteilen)' },
   { id: 'numberLineMulti', label: 'Zahlengerade mit mehreren Zahlen (ziehen)' },
   { id: 'treeDiagram', label: 'Baumdiagramm (Wahrscheinlichkeiten eintragen)' },
+  { id: 'barChart', label: 'Säulendiagramm zeichnen (Balkenhöhen ziehen)' },
 ]
 
 export type DraftStatus = 'draft' | 'submitted' | 'approved' | 'rejected'
@@ -507,6 +510,16 @@ export function validateDraft(draft: DraftAuthoringTask): string[] {
       }
       break
     }
+    case 'barChart': {
+      try {
+        barChartTask({ question: 'q', solution: 's', explanation: 'e', ...barChartInputFromProps(p) })
+      } catch (e) {
+        errors.push(
+          `Säulendiagramm: 2–6 Kategorien (höchstens 14 Zeichen) als „Name = Wert“ je Zeile, y-Achse bis zu einem Vielfachen der Schrittweite (2–20 Schritte), alle Werte Vielfache der Schrittweite und höchstens bis zum Achsenende. (${e instanceof Error ? e.message : String(e)})`,
+        )
+      }
+      break
+    }
     case 'ratioBar': {
       try {
         ratioBarTask({ question: 'q', solution: 's', explanation: 'e', ...ratioInputFromProps(p) })
@@ -799,6 +812,8 @@ export function draftToTask(draft: DraftAuthoringTask): Task {
       return withVisual(numberLineMultiTask({ question, solution, explanation, ...numberLineMultiInputFromProps(p) }))
     case 'treeDiagram':
       return withVisual(treeDiagramTask({ question, solution, explanation, ...treeInputFromProps(p) }))
+    case 'barChart':
+      return withVisual(barChartTask({ question, solution, explanation, ...barChartInputFromProps(p) }))
     case 'ratioBar':
       return withVisual(ratioBarTask({ question, solution, explanation, ...ratioInputFromProps(p) }))
     case 'fractionModel':
@@ -1048,6 +1063,19 @@ ${t.rootLabel ? `  rootLabel: ${JSON.stringify(t.rootLabel)},\n` : ''}  solution
 })`
       break
     }
+    case 'barChart': {
+      const b = barChartInputFromProps(p)
+      call = `barChartTask({
+  question: ${q},
+  categories: ${JSON.stringify(b.categories)},
+  data: ${JSON.stringify(b.data)},
+  yMax: ${b.yMax},
+  step: ${b.step},
+${b.yLabel ? `  yLabel: ${JSON.stringify(b.yLabel)},\n` : ''}  solution: ${sol},
+  explanation: ${expl},
+})`
+      break
+    }
     case 'ratioBar': {
       const r = ratioInputFromProps(p)
       const amountLines = r.mode === 'split' ? `total: ${r.total},\n  unit: ${JSON.stringify(r.unit)},` : `segments: ${r.segments},`
@@ -1262,5 +1290,26 @@ const treeInputFromProps = (p: Record<string, unknown>) => {
     probabilities,
     blanks: { branches: list(p.blankBranches), leaves: list(p.blankLeaves) },
     ...(rootLabel ? { rootLabel } : {}),
+  }
+}
+
+/** Builds the barChartTask input of an authoring draft (validated beforehand). One "category = value" per line. */
+const barChartInputFromProps = (p: Record<string, unknown>) => {
+  const num = (v: unknown): number => Number(String(v ?? '').trim().replace(',', '.'))
+  const rawList = Array.isArray(p.items) ? p.items.map(String).join('\n') : String(p.items ?? '')
+  const rows = rawList
+    .split(/\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const cut = line.lastIndexOf('=')
+      return { name: (cut < 0 ? line : line.slice(0, cut)).trim(), value: cut < 0 ? Number.NaN : num(line.slice(cut + 1)) }
+    })
+  return {
+    categories: rows.map((r) => r.name),
+    data: rows.map((r) => r.value),
+    yMax: num(p.yMax),
+    step: num(p.step),
+    yLabel: String(p.yLabel ?? '').trim(),
   }
 }

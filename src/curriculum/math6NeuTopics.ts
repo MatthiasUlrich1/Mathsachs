@@ -50,6 +50,7 @@ import {
 import { hasCircle, hasPointNear, hasSegment } from './measureTaskHelpers'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { asNeuTopic } from './neuTopic'
+import { TABLE_SURVEYS, TALLY_SURVEYS, surveyBarChartTask } from './barChartSurveys'
 import type { Topic } from './types'
 
 // ---------------------------------------------------------------------------
@@ -1572,6 +1573,10 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
         visualContent: generateFractionCircleSvg({ numerator: k, denominator: denom }),
       })
     },
+    // V5 Strichliste — Umfrage auszählen und als Säulendiagramm zeichnen (Balken ziehen)
+    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TALLY_SURVEYS), 'tally'),
+    // V6 Tabelle — Häufigkeitstabelle als Säulendiagramm darstellen (Balken ziehen)
+    (rng: Rng) => surveyBarChartTask(rng, pick(rng, TABLE_SURVEYS), 'table'),
     // V4 MC — Konzept: Gesetz der großen Zahlen
     (rng: Rng) => {
       const correct = 'Je mehr Versuche durchgeführt werden, desto stabiler wird die relative Häufigkeit.'

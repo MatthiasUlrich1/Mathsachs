@@ -1,5 +1,6 @@
 import type { Task, UserInput } from '../curriculum/types'
 import type { ResolvedExamTask } from '../exam/examCode'
+import { bcFormatNumber } from '../lib/barChartLogic'
 import { treePathLabel, type TreeLevel } from '../lib/treeDiagramLogic'
 
 export interface ExamTaskResult {
@@ -103,6 +104,11 @@ export const formatExamAnswer = (input: UserInput, task?: Task): string => {
       ...Object.entries(input.leaves ?? {}).filter(([, v]) => v.trim()).map(([id, v]) => `Pfad ${name(id)}: ${v.trim()}`),
     ]
     return rows.length ? rows.join('; ') : '—'
+  }
+  if (input.kind === 'barChart') {
+    const cats = task?.interactive?.type === 'barChart' ? (task.interactive.props.categories as string[] | undefined) : undefined
+    const rows = (input.values ?? []).map((v, i) => `${cats?.[i] ?? `Balken ${i + 1}`}: ${typeof v === 'number' ? bcFormatNumber(v) : '–'}`)
+    return rows.some((_, i) => typeof input.values[i] === 'number') ? rows.join('; ') : '—'
   }
   if (input.kind === 'equationSteps') {
     return input.ops.length ? input.ops.join(' → ') : '—'

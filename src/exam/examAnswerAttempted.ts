@@ -1,4 +1,5 @@
 import type { Task, UserInput } from '../curriculum/types'
+import { bcTouched } from '../lib/barChartLogic'
 import { treeAnyInput } from '../lib/treeDiagramLogic'
 
 /** True when the learner has entered something beyond the blank widget state. */
@@ -65,6 +66,9 @@ export function examAnswerAttempted(_task: Task, input: UserInput): boolean {
     case 'treeDiagram':
       // Untouched = every field empty.
       return treeAnyInput(input.branches, input.leaves)
+    case 'barChart':
+      // Untouched = no bar moved (bars at their start height are not an answer).
+      return bcTouched(input.values)
     case 'numberLine':
     case 'paramSlider':
       // Defaults look "filled" — only score when the caller locks the task (leave/submit).

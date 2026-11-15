@@ -19,6 +19,7 @@ import { DivideTool } from './DivideTool'
 import { emptyAssignment } from '../lib/divideToolLogic'
 import { RatioBar } from './RatioBar'
 import { NumberLineMulti } from './NumberLineMulti'
+import { BarChart } from './BarChart'
 import { TreeDiagram } from './TreeDiagram'
 import type { TreeLevel } from '../lib/treeDiagramLogic'
 import { RulerMeasure } from './RulerMeasure'
@@ -149,6 +150,10 @@ export const initTaskInput = (task: Task): UserInput => {
   if (task.interactive?.type === 'treeDiagram') {
     // Every field starts empty: the blank values are not given away.
     return { kind: 'treeDiagram', branches: {}, leaves: {} }
+  }
+  if (task.interactive?.type === 'barChart') {
+    // Every bar starts untouched (flat on the axis): the heights are not given away.
+    return { kind: 'barChart', values: ((task.interactive.props.categories ?? []) as string[]).map(() => null) }
   }
   if (task.interactive?.type === 'equationSteps') {
     return { kind: 'equationSteps', ops: [] }
@@ -595,6 +600,19 @@ export function TaskInteractive({
           blankLeaves={(interactive.props.blankLeaves ?? []) as string[]}
           rootLabel={interactive.props.rootLabel as string | undefined}
           value={value.kind === 'treeDiagram' ? value : { kind: 'treeDiagram', branches: {}, leaves: {} }}
+          onChange={onChange}
+          instruction={interactive.props.instruction}
+          disabled={disabled}
+        />
+      )}
+      {interactive.type === 'barChart' && (
+        <BarChart
+          categories={interactive.props.categories as string[]}
+          yMax={Number(interactive.props.yMax)}
+          step={Number(interactive.props.step)}
+          starts={interactive.props.starts as number[] | undefined}
+          yLabel={interactive.props.yLabel as string | undefined}
+          value={value.kind === 'barChart' ? value : { kind: 'barChart', values: [] }}
           onChange={onChange}
           instruction={interactive.props.instruction}
           disabled={disabled}

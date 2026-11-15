@@ -21,6 +21,7 @@ import { lightShadowFromLampParam } from './physikSvg'
 import { fractionWallPrintSvg } from './fractionWallLogic'
 import { dividePrintSvg } from './divideToolLogic'
 import { numberLineMultiPrintSvg, nlmDefaultLabelEvery } from './numberLineMultiLogic'
+import { barChartPrintSvg, bcValidate } from './barChartLogic'
 import { treePrintSvg, type TreeBlanks, type TreeLevel } from './treeDiagramLogic'
 import { ratioBarPrintSvg, RATIO_MAX_SEGMENTS, RATIO_MIN_SEGMENTS } from './ratioBarLogic'
 
@@ -433,6 +434,27 @@ export function worksheetPrintExtras(task: Task): WorksheetPrintExtras {
       return {
         visualHtml,
         paperHint: 'Schreibe die gesuchten Wahrscheinlichkeiten auf die Linien (___) und an das Ende der Pfade.',
+        answerBlank: '',
+      }
+    }
+
+    case 'barChart': {
+      // Paper: the data table (visualContent) first, then the empty axes to draw the bars into.
+      const categories = Array.isArray(props.categories) ? (props.categories as string[]) : []
+      const yMax = Number(props.yMax)
+      const step = Number(props.step)
+      const yLabel = typeof props.yLabel === 'string' ? props.yLabel : ''
+      let valid = true
+      try {
+        bcValidate(categories, categories.map(() => 0), yMax, step, yLabel)
+      } catch {
+        valid = false
+      }
+      const drawing = valid ? barChartPrintSvg(categories, yMax, step, yLabel) : ''
+      const visualHtml = [fromVisual.visualHtml, drawing].filter(Boolean).join('') || undefined
+      return {
+        visualHtml,
+        paperHint: 'Zeichne zu jeder Kategorie einen Balken in das Achsenkreuz. Die Höhe liest du aus den Angaben oben ab.',
         answerBlank: '',
       }
     }

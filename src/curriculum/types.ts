@@ -64,6 +64,8 @@ export type UserInput =
   | { kind: 'numberLineMulti'; positions: Record<string, number> }
   /** Tree diagram: typed values of the blank branch fields and leaf (path) fields, keyed by edge/path id. */
   | { kind: 'treeDiagram'; branches: Record<string, string>; leaves: Record<string, string> }
+  /** Bar chart: one height per category, `null` for a bar that was never moved. */
+  | { kind: 'barChart'; values: Array<number | null> }
   | { kind: 'equationSteps'; ops: string[] }
   /** Two-column click pairing: leftId → rightId ('' = unpaired). */
   | { kind: 'pairMatch'; links: Record<string, string> }
@@ -110,6 +112,7 @@ export const emptyInput = (
   if (kind === 'ratioBar') return { kind: 'ratioBar', parts: [] }
   if (kind === 'numberLineMulti') return { kind: 'numberLineMulti', positions: {} }
   if (kind === 'treeDiagram') return { kind: 'treeDiagram', branches: {}, leaves: {} }
+  if (kind === 'barChart') return { kind: 'barChart', values: [] }
   if (kind === 'equationSteps') return { kind: 'equationSteps', ops: [] }
   if (kind === 'pairMatch' || kind === 'causeEffect') return { kind: 'pairMatch', links: {} }
   if (kind === 'clozeMulti') return { kind: 'clozeMulti', blanks: [] }
@@ -142,6 +145,7 @@ export interface InteractiveConfig {
     | 'ratioBar'
     | 'numberLineMulti'
     | 'treeDiagram'
+    | 'barChart'
     | 'equationSteps'
     | 'pairMatch'
     | 'clozeMulti'

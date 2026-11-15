@@ -115,6 +115,8 @@ function defaultPropsFor(type: AuthoringElementType): Record<string, unknown> {
       return { mode: 'colour', segments: 10, ratioA: 2, ratioB: 3, labelA: 'Saft', labelB: 'Wasser', total: 500, unit: 'ml' }
     case 'treeDiagram':
       return { level1: 'Rot, Blau', level2: 'Rot, Blau', probabilities: '0 = 3/5\n1 = 2/5\n0.0 = 1/2\n0.1 = 1/2\n1.0 = 3/4\n1.1 = 1/4', blankBranches: '0.0, 0.1', blankLeaves: '0.0', rootLabel: '' }
+    case 'barChart':
+      return { yMax: 12, step: 1, yLabel: 'Anzahl Kinder', items: 'Fußball = 8\nSchwimmen = 5\nTanzen = 3' }
     case 'numberLineMulti':
       return { min: 0, max: 2, step: 0.25, labelEvery: 4, items: '3/4 = 0,75\n1,5 = 1,5\n1/4 = 0,25' }
     case 'fractionModel':
@@ -1046,6 +1048,15 @@ function ElementPropsForm({
           {field('blankBranches', 'Zweige, die die Lernenden ausfüllen (Nummern, durch Komma getrennt)')}
           {field('blankLeaves', 'Pfade (Enden), die die Lernenden ausfüllen: Produkt entlang des Pfads (nur bei zwei Stufen)')}
           {field('rootLabel', 'Beschriftung am Start (optional)')}
+        </>
+      )
+    case 'barChart':
+      return (
+        <>
+          {field('items', 'Kategorien mit dem richtigen Wert, eine pro Zeile als „Name = Wert“ (2–6, Name höchstens 14 Zeichen). Die Daten müssen in der Aufgabenfigur (Tabelle oder Strichliste) stehen.', true)}
+          {field('yMax', 'Ende der y-Achse (ein Vielfaches der Schrittweite)')}
+          {field('step', 'Schrittweite der Gitterlinien (Balken rasten darauf ein)')}
+          {field('yLabel', 'Titel der y-Achse, z. B. „Anzahl Kinder“ (optional, höchstens 24 Zeichen)')}
         </>
       )
     case 'numberLineMulti':
