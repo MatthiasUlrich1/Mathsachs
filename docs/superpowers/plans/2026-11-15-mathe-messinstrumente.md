@@ -193,37 +193,37 @@ Rules: keep the existing variants, add or swap them in `mixedVariants`, do not t
 - **Content:** each new interaction gets at least 2 hand-written variants in fitting **`__neu` topics** (find them with `graphify query` / `grep -n "id: '" src/curriculum/math*NeuTopics.ts`). Only `__neu`, lock stays. Name the topics in the commit text.
 - At the end, each time: `npx vitest run` (affected) + `npx tsc --noEmit` green, commit `feat(interaktion): <Name>`.
 
-### B1: `fractionModelTask` (interactive fraction model)
+### Task B1: `fractionModelTask` (interactive fraction model)
 `{ kind: 'fractionModel'; den: number; shaded: number[] }`. Learner sets the number of parts (stepper 2–12) and colours parts by clicking (bar or circle, `shape: 'bar' | 'circle'`). Input: `target: { num; den }`, `allowEquivalent?: boolean` (default true: 2/4 counts for 1/2). Check: `shaded.length / den === num / target.den` (and `den === target.den` if `allowEquivalent:false`). Use: K5/6 fraction basics, extending/reducing.
 
-### B2: `fractionWallTask` (fraction wall)
+### Task B2: `fractionWallTask` (fraction wall)
 Wall with rows 1, 1/2 … 1/12 (`rows: number[]`). A vertical comparison line can be moved with a slider; learner clicks tiles. `{ kind: 'fractionWall'; selected: Array<{ row: number; count: number }> }`. Modes: `equivalent` (choose all rows where k tiles are exactly as long as the target), `compare` (choose the longer of two fractions). Use: equivalent fractions, ordering.
 
-### B3: `divideToolTask` (dividing tool)
+### Task B3: `divideToolTask` (dividing tool)
 Objects (bars/circles, `count`) are divided into equal parts with a stepper “Teile pro Ganzes”, then the parts are dragged onto `persons` people. `{ kind: 'divideTool'; partsPerWhole: number; assignment: number[] /* part→person */ }`. Check: every person gets the same total share = `count / persons`. Use: fraction as share (“3 pizzas for 4 children”). No Bettermarks images; simple shapes or Commons images with attribution.
 
-### B4: `ratioBarTask` (ratio bar)
+### Task B4: `ratioBarTask` (ratio bar)
 Bar with `segments` fields; learner colours fields A/B (click toggles). `{ kind: 'ratioBar'; parts: Array<'A' | 'B' | null> }`. Check: count A : count B = `ratio[0] : ratio[1]` (reduced), all fields filled. Optional mode `split`: total amount + typed fields per share. Use: ratios, proportional relationships K6/7.
 
-### B5: `numberLineMultiTask` (several labels on the number line)
+### Task B5: `numberLineMultiTask` (several labels on the number line)
 Several labels (`items: Array<{ id; label; value }>`) are dragged onto a number line (`min, max, step`); snap to `snap` (default step/2). `{ kind: 'numberLineMulti'; positions: Record<string, number> }`. Check: each `|pos − value| ≤ tolerance` (default `snap/2`). Use: ordering fractions/decimals/negative numbers. Coordinate with the existing `NumberLineSlider` (reuse styles).
 
-### B6: `treeDiagramTask` (build a tree diagram)
+### Task B6: `treeDiagramTask` (build a tree diagram)
 Tree from `levels: Array<{ outcomes: string[] }>` (2 levels, 2–3 branches). Learner fills branch probabilities (fraction/decimal input) and optionally path probabilities at the leaves. `{ kind: 'treeDiagram'; branches: Record<string, string>; leaves: Record<string, string> }` (edge IDs `"0"`, `"0.1"` …). Check: values are numerically equivalent (`3/10` = `0,3`), `blanks` decides which fields are asked; the rest are shown. Use: K7/8 multistage random experiments (path rule, sum rule).
 
-### B7: `barChartTask` (build a bar chart)
+### Task B7: `barChartTask` (build a bar chart)
 Learner drags bar heights (snap to `step`) to the data from a table. `{ kind: 'barChart'; values: number[] }`. Input: `categories`, `data`, `yMax`, `step`. Check: every value exact (after snap). Use: K5/6 statistics, frequencies.
 
-### B8: `pieChartTask` (pie chart)
+### Task B8: `pieChartTask` (pie chart)
 Learner moves the sector boundaries (handles on the edge, snap `snapPercent`, default 5 %). `{ kind: 'pieChart'; percents: number[] }`. Check: every share `±tolerance` (default `snapPercent/2`), sum 100. Use: relative frequency, percentages.
 
-### B9: `clockTask` (clock with hands)
+### Task B9: `clockTask` (clock with hands)
 Drag the hour and minute hands (minute snap 5 or 1). `{ kind: 'clock'; h: number; m: number }`. Modes: `setTime` (set a time), `angle` (set the hands so that they form angle X; check through the angle between the hands ±2.5°). The hour hand moves with the minute hand automatically (realistic). Use: angles on the clock K5, time periods.
 
-### B10: `symmetryDrawTask` (complete a symmetric figure)
+### Task B10: `symmetryDrawTask` (complete a symmetric figure)
 Grid (`cols × rows`), given figure on one side, axis (`axis: { kind: 'vertical' | 'horizontal' | 'diagonal'; at }`) or symmetry centre (`point`). Learner colours cells by clicking. `{ kind: 'symmetryDraw'; cells: string[] /* "x,y" */ }`. Check: coloured cells = mirror image of the given figure (exact set). Use: axial/point symmetry K5/6.
 
-### B11: exploration board (`exploreBoard`, not graded)
+### Task B11: exploration board (`exploreBoard`, not graded)
 A learning board like a Bettermarks Tafelbild: slider + checkboxes change an SVG live. **No task type**, but an optional `fachwissen.explore?: { boardId: string; params?: Record<string, number> }` on the topic. Boards are pure functions in `src/lib/exploreBoards.ts` (registry `Record<string, { controls; render(state): string }>`), so curriculum packs only store IDs. Component `ExploreBoard.tsx` in the Fachwissen panel. 3 boards to start: `mittelsenkrechte` (equal radii around A/B, toggle line), `winkelarten` (slider 0–360°, shows the type of angle), `bruchErweitern` (num/den × k, bar model). Hook into the matching `__neu` topics.
 
 ---
