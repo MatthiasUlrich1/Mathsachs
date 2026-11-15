@@ -36,8 +36,18 @@ For each topic, check: operation on desktop **and** phone/tablet (touch), correc
 | ☐ | Innenwinkelsatz (`lb3-winkel-dreieck__neu`) | Geodreieck measure γ + check with the angle sum | |
 | ☐ | Winkelsumme Viereck (`lb3-winkel-viereck__neu`) | Geodreieck measure δ | |
 | ☐ | Kongruenzsatz wählen (`lb3-kongruenzsatz__neu`) | **Guided construction** SSS (5 steps, Planfigur) | Circle tool (compass) shows "r = … cm"; steps unlock one after another |
+| ☐ | Kongruenzsatz wählen (`lb3-kongruenzsatz__neu`) | Guided construction **SWS** and **WSW** with the new **angle tool** | Tap the vertex, then the first leg, drag the second leg ("α = …°"); point C must lie on the angle leg; a mirrored triangle also counts as correct |
 | ☐ | Anteil einer Größe (`lb5-anteil-groesse__neu`) | Ratio bar (split) | "37,50 €" with two decimal places |
 | ☐ | Prozent einer Größe (`lb5-anteil-prozent__neu`) | Pie chart (counts, incl. "Kein Verein") | |
+
+## Visibility (log in as Schüler, Lehrer and Prüfer)
+
+| ☐ | Check | Expected |
+|---|---|---|
+| ☐ | Topic overview, search, subject tabs as **Schüler** | No "· Neu (Prüfung)" topic, no subject that only has locked topics |
+| ☐ | Exam builder, challenge, task generator as **Lehrer** | Locked topics cannot be selected |
+| ☐ | Editing an exam that contains locked topics, as **Lehrer** | Opens (no endless "Klausur wird geladen …"), warning "nicht verfügbar", "Abbrechen" button while loading |
+| ☐ | Same views as **Prüfer** | All Neu topics visible |
 
 ## Grade 7
 
