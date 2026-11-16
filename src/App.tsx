@@ -8,6 +8,8 @@ import {
   subjectTitleForModule,
 } from './curriculum/registry'
 import { listInstalledPacks } from './curriculum/install'
+import { hasAnyInstalledPack } from './curriculum/registry'
+import { BROWSE_EMPTY_COPY, browseEmptyState } from './lib/browseEmptyState'
 import { migrateBundledCurriculumIfNeeded, upgradeInstalledPacksFromBundled } from './curriculum/install'
 import { loadInstalledGrade } from './curriculum/loadGrade'
 import { isPreferredSubject, normalizeSubject } from './curriculum/packFilters'
@@ -705,6 +707,11 @@ export default function App() {
     )
   }
 
+  const emptyState = browseEmptyState({
+    ready,
+    loadedCount: loaded.length,
+    anyInstalled: loaded.length === 0 && hasAnyInstalledPack(),
+  })
   const activeLoaded =
     browseLoaded.find((l) => l.moduleId === activeId) ?? browseLoaded[0] ?? null
   const activeModule = activeLoaded
@@ -879,16 +886,12 @@ export default function App() {
         <div className="sheet__body">
           {view.name === 'browse' && (
             <section className="card">
-              {!ready ? (
+              {emptyState === 'loading' ? (
                 <p className="muted">Lehrpläne werden geladen …</p>
-              ) : loaded.length === 0 ? (
+              ) : emptyState === 'no-curriculum' || emptyState === 'no-grade-selected' ? (
                 <div className="course-head">
-                  <h2 className="section-title no-margin">Kein Lehrplan installiert</h2>
-                  <p className="muted small">
-                    Installiere unter Einstellungen → Lehrpläne zuerst
-                    „Gymnasium Sachsen · Mathematik“, „Gymnasium Sachsen · Physik“
-                    oder einen anderen Lehrplan.
-                  </p>
+                  <h2 className="section-title no-margin">{BROWSE_EMPTY_COPY[emptyState].title}</h2>
+                  <p className="muted small">{BROWSE_EMPTY_COPY[emptyState].body}</p>
                   <button
                     type="button"
                     className="primary setup-cta"
@@ -896,7 +899,7 @@ export default function App() {
                       setView({ name: 'settings', section: 'curricula' })
                     }
                   >
-                    Zu den Lehrplänen
+                    {BROWSE_EMPTY_COPY[emptyState].button}
                   </button>
                 </div>
               ) : !activeLoaded ? (

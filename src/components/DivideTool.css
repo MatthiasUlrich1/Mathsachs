@@ -23,7 +23,7 @@
 .divide-tool__step {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--pencil);
   background: var(--surface);
   color: var(--graphite);
@@ -91,7 +91,8 @@
 .divide-tool__owner,
 .divide-tool__name,
 .divide-tool__count {
-  /* drawn on the person shades: dark text that passes 4.5:1 on every series fill */
+  /* Always drawn over a series fill (person rect / owned part), never over unowned --surface parts:
+     dark text that passes 4.5:1 on every series fill. */
   fill: var(--on-fill);
   pointer-events: none;
 }

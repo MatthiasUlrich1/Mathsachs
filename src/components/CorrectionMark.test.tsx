@@ -36,6 +36,11 @@ describe('announcementForPhase + CheckAnnouncement', () => {
     expect(announcementForPhase('partial', 0, true)).toBe('Teilweise richtig.')
     expect(announcementForPhase('wrong', 0, true)).toBe('Leider falsch.')
   })
+  it('partial announces how many parts were right', () => {
+    expect(announcementForPhase('partial', 0, true, [true, false, true])).toBe('Teilweise richtig (2 von 3).')
+    expect(announcementForPhase('partial', 2, true, [true, false])).toBe('Teilweise richtig (1 von 2). Plus 2 Punkte.')
+    expect(announcementForPhase('partial', 0, true, [])).toBe('Teilweise richtig.')
+  })
   it('live region exists in the answering phase and holds the text after checking', () => {
     const before = renderToStaticMarkup(createElement(CheckAnnouncement, { text: '' }))
     expect(before).toContain('role="status"')

@@ -44,11 +44,12 @@
   color: var(--tick);
 }
 
-/* both: a tick in pencil parentheses */
+/* the red cross (wrong) */
 .correction-mark--cross {
   color: var(--correction);
 }
 
+/* half: a tick in pencil parentheses */
 .correction-mark--half .correction-mark__tick {
   stroke: var(--tick);
 }

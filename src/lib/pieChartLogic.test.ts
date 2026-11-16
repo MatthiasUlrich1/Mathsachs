@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest'
 import {
+  PC_TAG_CLEARANCE,
+  pcTagCircleClearance,
+  pcTagKnobClearance,
+  pcTagPlacements,
   PC_CX,
   PC_CY,
   PC_HIT_R,
@@ -260,5 +264,51 @@ describe('print and table svgs', () => {
     expect(pcSourceFits('Umfrage: Haustier', 'Haustier', 'Anzahl Kinder', ['Hund', 'Kein Tier'], ['10', '5'])).toBe(true)
     expect(pcSourceFits('Umfrage', 'Haustier', 'Anzahl Kinder', ['x'.repeat(40)], ['10'])).toBe(false)
     expect(pcSourceFits('x'.repeat(60), 'a', 'b', ['c'], ['1'])).toBe(false)
+  })
+})
+
+describe("sector tags: clearance and zero-width sectors", () => {
+  const cats = ["Sparen", "Kino", "Spiele", "Essen", "Buecher", "Kleidung"]
+  /** Every share vector on the 5 % grid for k categories. */
+  const compositions = (k: number, total = 100, snap = 5): number[][] =>
+    k === 1 ? [[total]] : Array.from({ length: total / snap + 1 }, (_, i) => i * snap).flatMap((p) => (total - p >= 0 ? compositions(k - 1, total - p, snap).map((r) => [p, ...r]) : []))
+
+  it("a 0 % sector gets no tag", () => {
+    const pl = pcTagPlacements(["A", "B", "C"], [50, 0, 50])
+    expect(pl.map((p) => p.visible)).toEqual([true, false, true])
+  })
+
+  it("every tag keeps >= 4 units from the circle, at all angles", () => {
+    for (const k of [2, 3, 4]) {
+      for (const shares of compositions(k)) {
+        for (const p of pcTagPlacements(cats.slice(0, k), shares)) {
+          expect(pcTagCircleClearance(p)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+        }
+      }
+    }
+  })
+
+  it("every visible tag keeps >= 4 units from every boundary knob", () => {
+    let visibleCount = 0
+    for (const k of [2, 3, 4]) {
+      for (const shares of compositions(k)) {
+        pcTagPlacements(cats.slice(0, k), shares).forEach((p) => {
+          if (!p.visible) return
+          visibleCount++
+          for (let i = 1; i < k; i++) expect(pcTagKnobClearance(p, shares, i)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+        })
+      }
+    }
+    expect(visibleCount).toBeGreaterThan(100)
+  })
+
+  it("negative control: with a 3-character tag a 1 % sector would touch a knob, so it is hidden", () => {
+    const names = ["Aaa", "Bbb", "Ccc"]
+    const shares = [1, 1, 98]
+    const pl = pcTagPlacements(names, shares)
+    const raw = pl.map((p) => ({ ...p, visible: true }))
+    const worst = Math.min(...raw.flatMap((p) => [1, 2].map((k) => pcTagKnobClearance(p, shares, k))))
+    expect(worst).toBeLessThan(PC_TAG_CLEARANCE)
+    expect(pl.some((p) => !p.visible)).toBe(true)
   })
 })

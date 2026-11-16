@@ -589,10 +589,11 @@ a.ghost.update-banner__link {
 }
 
 .curriculum-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-control);
-  padding: 16px 18px;
-  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 16px 0 0;
+  background: transparent;
 }
 
 .curriculum-card__head {
@@ -939,11 +940,13 @@ a.task-request__send {
   gap: 10px;
 }
 
+/* Ruled separator, not a nested box (inside the sheet) */
 .area {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-control);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
   overflow: hidden;
-  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  background: transparent;
 }
 
 .area__header {
@@ -1153,6 +1156,7 @@ a.task-request__send {
 
 .chip-btn--info:hover {
   border-color: var(--ink);
+  background: var(--ink);
   color: var(--paper);
 }
 
@@ -1584,14 +1588,15 @@ a.task-request__send {
 }
 
 .prompt {
-  text-align: center;
-  font-size: 30px;
-  font-weight: 800;
-  padding: 26px 16px;
-  border-radius: var(--radius-control);
-  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  text-align: left;
+  font-size: clamp(1.125rem, 0.9rem + 1.2vw, 1.5rem);
+  font-weight: 700;
+  padding: 12px;
+  border-radius: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
   transition: background 0.2s ease;
-  line-height: 1.3;
+  line-height: 1.35;
 }
 
 .prompt--correct {
@@ -1775,9 +1780,10 @@ select.answer-input__field {
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  padding: 16px 8px;
-  border-radius: var(--radius-control);
-  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  padding: 12px 8px 0;
+  border-radius: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
 }
 
 .result__value {
@@ -2204,10 +2210,11 @@ article.sheet .task-visual figcaption {
 }
 
 .exam-pool {
-  border: 1px solid var(--line);
-  border-radius: var(--radius-control);
-  padding: 14px 16px;
-  background: color-mix(in srgb, var(--grid) 30%, transparent);
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: 14px 0 0;
+  background: transparent;
 }
 
 .exam-pool__head {

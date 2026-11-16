@@ -35,7 +35,7 @@
   height: auto;
   min-width: 0;
   flex-shrink: 1;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
 }
 
 .param-slider__controls {

@@ -161,11 +161,9 @@ describe('named colours (white, black, red, ...) are not used in CSS either', ()
   })
 })
 
-describe('App.css radii', () => {
-  const app = read('src/App.css')
-
-  it('radii only use tokens, 999px, 50% or 0', () => {
-    expect(strayRadii(app)).toEqual([])
+describe('component and app radii', () => {
+  it('radii in EVERY stylesheet only use tokens, 999px, 50% or 0', () => {
+    for (const f of CSS_FILES) expect({ f, stray: strayRadii(read(f)) }).toEqual({ f, stray: [] })
     expect(strayRadii('a{border-radius: 12px;}')).toEqual(['12px'])
     expect(strayRadii('a{border-radius: var(--radius-control);}b{border-radius:999px;}c{border-radius:50%;}d{border-radius:0;}')).toEqual([])
   })

@@ -18,7 +18,7 @@
 .eq-steps__sheet {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   padding: 14px 16px;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
   font-size: 1.15rem;
@@ -73,7 +73,7 @@
 .eq-steps__btn {
   min-width: 4rem;
   padding: 10px 14px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   font-size: 1.05rem;
   font-weight: 700;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;

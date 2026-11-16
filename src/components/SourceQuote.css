@@ -13,7 +13,7 @@
 .source-quote__card {
   margin: 0;
   padding: 14px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--line);
   background: var(--surface);
 }

@@ -178,3 +178,11 @@ describe('DivideTool', () => {
     expect(sel).toEqual([0])
   })
 })
+
+describe("owner numbers only appear on distributed (filled) parts", () => {
+  const owners = (v: Value) => tree(v, () => {}).filter((e) => e.props.className === "divide-tool__owner").length
+  it("none while nothing is distributed, one per owned part afterwards", () => {
+    expect(owners(blank)).toBe(0)
+    expect(owners({ kind: "divideTool", partsPerWhole: 1, assignment: [0, null, 1] })).toBe(2)
+  })
+})

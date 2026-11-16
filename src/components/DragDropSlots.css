@@ -40,7 +40,7 @@
   min-height: 3.1rem;
   padding: 0.35rem;
   border: 2px dashed var(--pencil);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: transparent;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
 .drag-drop-slots__pool.drag-over {
   outline: 2px dashed var(--ink);
   outline-offset: 4px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
 }
 
 .drag-drop-slots__chip {
@@ -81,7 +81,7 @@
   padding: 0.65rem 0.9rem;
   background: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   color: var(--graphite);
   font-size: 1rem;
   font-weight: 600;
@@ -134,7 +134,7 @@
   padding: 0.55rem 0.85rem;
   background: var(--surface);
   border: 2px solid var(--ink);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   color: var(--graphite);
   font-size: 0.95rem;
   font-weight: 700;
@@ -225,7 +225,7 @@
   display: flex;
   align-items: center;
   padding: 0.65rem 0.85rem;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--pencil) 8%, transparent);
   border: 1px solid var(--line);
   color: var(--graphite);
@@ -277,7 +277,7 @@
 .drag-drop-slots__result-input {
   width: 5.5rem;
   padding: 0.55rem 0.7rem;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   border: 2px solid var(--pencil);
   background: var(--surface);
   color: var(--graphite);

@@ -359,3 +359,21 @@ describe('every text drawn on a fill uses --on-fill (and passes 4.5 on all fills
       expect(printCss).toContain(`--${t}: ${valueOf(heft, t)};`)
   })
 })
+
+describe("D5: .chip-btn--info:hover is a solid ink pill with paper text", () => {
+  const app = readFileSync(new URL("../App.css", import.meta.url), "utf8").replace(/\r\n/g, "\n")
+  const rule = app.slice(app.indexOf(".chip-btn--info:hover {"), app.indexOf("}", app.indexOf(".chip-btn--info:hover {")))
+  it("sets background var(--ink) and color var(--paper)", () => {
+    expect(rule).toMatch(/background:\s*var\(--ink\)/)
+    expect(rule).toMatch(/color:\s*var\(--paper\)/)
+  })
+  it.each([["Heft", heft], ["Tafel", tafel], ["Tafel auto", tafelAuto]] as const)("%s: paper on ink >= 4.5", (_n, body) => {
+    expect(contrastRatio(valueOf(body, "paper"), valueOf(body, "ink"))).toBeGreaterThanOrEqual(4.5)
+  })
+  it("negative control: paper text on a faint 10 % ink tint is unreadable (the old hover)", () => {
+    for (const body of [heft, tafel]) {
+      const faint = mixHex(valueOf(body, "ink"), 0.1, valueOf(body, "paper"))
+      expect(contrastRatio(valueOf(body, "paper"), faint)).toBeLessThan(1.5)
+    }
+  })
+})

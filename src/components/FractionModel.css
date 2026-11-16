@@ -23,7 +23,7 @@
 .fraction-model__step {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--pencil);
   background: var(--surface);
   color: var(--graphite);

@@ -45,7 +45,7 @@
   text-align: left;
   padding: 0.55rem 0.7rem;
   border: 1.5px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: var(--surface);
   /* Light card: always dark text */
   color: var(--graphite);

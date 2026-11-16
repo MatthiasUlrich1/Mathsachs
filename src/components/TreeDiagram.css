@@ -65,7 +65,7 @@
   justify-content: center;
   box-sizing: border-box;
   border: 1.5px solid var(--pencil);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: var(--surface);
   color: var(--graphite);
   font-weight: 600;
@@ -94,7 +94,7 @@
 .tree-diagram__input {
   padding: 2px;
   border: 1px solid var(--pencil);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: var(--surface);
   color: var(--graphite);
 }

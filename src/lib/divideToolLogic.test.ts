@@ -213,3 +213,16 @@ describe('dividePrintSvg', () => {
     expect(svg).not.toContain('Teile')
   })
 })
+
+describe("divide tool: --on-fill text is only ever drawn over a series fill", () => {
+  it("name and count baselines (with their font size) lie inside the filled person rect", () => {
+    for (const persons of [1, 2, 3, 4, 5, 6]) {
+      for (const p of divideLayout("circle", 3, persons, 2).people) {
+        expect(p.nameY - 13).toBeGreaterThanOrEqual(p.y)
+        expect(p.nameY).toBeLessThanOrEqual(p.y + p.h)
+        expect(p.countY - 11).toBeGreaterThanOrEqual(p.y)
+        expect(p.countY).toBeLessThanOrEqual(p.y + p.h)
+      }
+    }
+  })
+})

@@ -30,7 +30,7 @@
   padding: 12px 16px;
   background: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   cursor: grab;
   user-select: none;
   touch-action: none;
@@ -63,7 +63,7 @@
   padding: 10px 14px;
   background: var(--surface);
   border: 2px solid var(--ink);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   color: var(--graphite);
   font-size: 15px;
   font-weight: 600;
@@ -105,7 +105,7 @@
   border: 1px solid var(--line);
   background: var(--surface);
   color: var(--pencil);
-  border-radius: 4px;
+  border-radius: 0;
   width: 1.75rem;
   height: 1.35rem;
   line-height: 1;

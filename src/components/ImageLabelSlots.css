@@ -22,7 +22,7 @@
   position: relative;
   width: 100%;
   min-height: 12rem;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   overflow: visible;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -92,7 +92,7 @@
   max-width: 9rem;
   padding: 0.2rem;
   border: 2px dashed var(--pencil);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   background: color-mix(in srgb, var(--surface) 92%, transparent);
   display: flex;
   align-items: center;
@@ -187,7 +187,7 @@
 .image-label-slots__pool.drag-over {
   outline: 2px dashed var(--ink);
   outline-offset: 4px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
 }
 
 .image-label-slots__pool-empty {
@@ -202,7 +202,7 @@
   padding: 0.5rem 0.75rem;
   background: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   color: var(--graphite);
   cursor: grab;
   font: inherit;
@@ -249,7 +249,7 @@
   padding: 0.5rem 0.75rem;
   background: var(--surface);
   border: 2px solid var(--ink);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   color: var(--graphite);
   font-size: 0.9rem;
   font-weight: 700;

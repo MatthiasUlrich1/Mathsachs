@@ -52,7 +52,7 @@
 .construction-steps__check {
   font: inherit;
   padding: 0.4rem 0.9rem;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   border: 1px solid var(--line);
   background: color-mix(in srgb, var(--ink) 14%, var(--surface));
   color: var(--graphite);

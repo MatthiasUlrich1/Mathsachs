@@ -26,7 +26,7 @@ export const PC_LABEL_FONT = 14
 export const PC_LABEL_R = 80
 export const PC_LABEL_PAD = 8
 /** Radius on which the category tag sits, just outside the circle. */
-export const PC_TAG_R = PC_R + 18
+export const PC_TAG_R = PC_R + 22
 export const PC_TAG_FONT = 14
 export const PC_TAG_MAX_CHARS = 3
 
@@ -170,6 +170,50 @@ export const pcSectorTags = (categories: readonly string[]): string[] =>
     }
     return `${n.slice(0, 1)}${i + 1}`
   })
+
+/** Minimum free space (SVG units) between a sector tag and the circle or a boundary knob. */
+export const PC_TAG_CLEARANCE = 4
+
+export interface PcTagPlacement {
+  tag: string
+  x: number
+  y: number
+  w: number
+  h: number
+  /** false for a 0 % sector or when the tag would come closer than PC_TAG_CLEARANCE to a knob. */
+  visible: boolean
+}
+
+/** Distance from a point to an axis-aligned box centred on (cx, cy). */
+const boxDistance = (px: number, py: number, cx: number, cy: number, w: number, h: number): number => {
+  const dx = Math.max(Math.abs(px - cx) - w / 2, 0)
+  const dy = Math.max(Math.abs(py - cy) - h / 2, 0)
+  return Math.hypot(dx, dy)
+}
+
+/** Free space between the tag box and the circle edge (the nearest box point to the centre vs. PC_R). */
+export const pcTagCircleClearance = (tag: PcTagPlacement): number => boxDistance(PC_CX, PC_CY, tag.x, tag.y, tag.w, tag.h) - PC_R
+
+/** Free space between the tag box and the boundary knob `index` of the given shares. */
+export const pcTagKnobClearance = (tag: PcTagPlacement, percents: readonly number[], index: number): number => {
+  const k = pcPoint(pcBoundaries(percents)[index]!, PC_R)
+  return boxDistance(k.x, k.y, tag.x, tag.y, tag.w, tag.h) - PC_HANDLE_R
+}
+
+/** Where each sector tag sits and whether it is shown: no tag for 0 % sectors or tags that would touch a knob. */
+export const pcTagPlacements = (categories: readonly string[], percents: readonly number[]): PcTagPlacement[] => {
+  const tags = pcSectorTags(categories)
+  const b = pcBoundaries(percents)
+  return categories.map((_, i) => {
+    const pt = pcPoint(((b[i] ?? 0) + (b[i + 1] ?? 0)) / 2, PC_TAG_R)
+    const base = { tag: tags[i]!, x: pt.x, y: pt.y, w: pcTextWidth(tags[i]!, PC_TAG_FONT), h: PC_TAG_FONT }
+    let visible = (percents[i] ?? 0) > 0
+    for (let k = 1; visible && k < percents.length; k++) {
+      if (pcTagKnobClearance({ ...base, visible }, percents, k) < PC_TAG_CLEARANCE) visible = false
+    }
+    return { ...base, visible }
+  })
+}
 
 /** Whether a legend name leaves room for a percent value ("100 %") at the right. */
 export const pcLegendNameFits = (name: string): boolean =>

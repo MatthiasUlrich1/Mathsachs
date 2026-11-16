@@ -81,7 +81,7 @@
   font-size: 1rem;
   text-align: right;
   border: 1px solid var(--pencil);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
 }
 
 .ratio-bar__input:disabled {

@@ -24,18 +24,23 @@ export function markStateForPhase(phase: CheckPhase): CorrectionMarkState | null
   }
 }
 
+/** " (x von y)" for partial answers when the part results are known. */
+const partsText = (parts?: readonly boolean[]): string =>
+  parts && parts.length > 0 ? ` (${parts.filter(Boolean).length} von ${parts.length})` : ''
+
 /** Text for the persistent live region; empty while answering. */
 export function announcementForPhase(
   phase: CheckPhase,
   awarded: number,
   showPoints: boolean,
+  parts?: readonly boolean[],
 ): string {
   const pts = showPoints && awarded > 0 ? ` Plus ${awarded} Punkte.` : ''
   switch (phase) {
     case 'correct':
       return `Richtig!${pts}`
     case 'partial':
-      return `Teilweise richtig.${pts}`
+      return `Teilweise richtig${partsText(parts)}.${pts}`
     case 'wrong':
       return 'Leider falsch.'
     default:

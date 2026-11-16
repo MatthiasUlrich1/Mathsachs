@@ -9,7 +9,6 @@ import {
   PC_LABEL_FONT,
   PC_LABEL_R,
   PC_TAG_FONT,
-  PC_TAG_R,
   PC_LEGEND_FONT,
   PC_LEGEND_NAME_X,
   PC_LEGEND_RIGHT,
@@ -29,7 +28,7 @@ import {
   pcPoint,
   pcPointerPercent,
   pcSectorLabelFits,
-  pcSectorTags,
+  pcTagPlacements,
   pcSectorPath,
   pcStartPercents,
   pcWrapDelta,
@@ -113,7 +112,7 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
   }
 
   const fits = shown.map((p) => pcSectorLabelFits(p))
-  const tags = pcSectorTags(categories)
+  const tagPlacements = pcTagPlacements(categories, shown)
 
   return (
     <div className="pie-chart">
@@ -157,15 +156,13 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
             </text>
           )
         })}
-        {categories.map((_, i) => {
-          const mid = (bounds[i]! + bounds[i + 1]!) / 2
-          const pt = pcPoint(mid, PC_TAG_R)
-          return (
-            <text key={`tag-${i}`} className="pie-chart__tag" data-testid="pc-tag" x={pt.x} y={pt.y} textAnchor="middle" dominantBaseline="central" fontSize={PC_TAG_FONT}>
-              {tags[i]}
+        {tagPlacements.map((tp, i) =>
+          tp.visible ? (
+            <text key={`tag-${i}`} className="pie-chart__tag" data-testid="pc-tag" x={tp.x} y={tp.y} textAnchor="middle" dominantBaseline="central" fontSize={PC_TAG_FONT}>
+              {tp.tag}
             </text>
-          )
-        })}
+          ) : null,
+        )}
         {categories.map((name, i) => {
           const y = pcLegendRowY(i, n)
           return (

@@ -196,6 +196,7 @@ export function PracticeSession({
     phase,
     phase === 'correct' ? lastAwarded || activeTopic.pointsPerTask : lastAwarded,
     !skipProtocol,
+    lastGrade?.parts,
   )
   const showInteractiveFeedback = phase === 'partial' || phase === 'wrong'
   const partResults =

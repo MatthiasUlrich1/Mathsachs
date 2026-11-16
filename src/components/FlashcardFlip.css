@@ -42,7 +42,7 @@
   min-height: 8.5rem;
   padding: 1.25rem 1rem;
   border: 1.5px solid var(--line);
-  border-radius: 14px;
+  border-radius: var(--radius-sheet);
   background: var(--surface);
   cursor: pointer;
   font: inherit;
@@ -110,7 +110,7 @@
   flex: 1 1 7rem;
   padding: 0.65rem 0.75rem;
   border: 1.5px solid var(--line);
-  border-radius: 10px;
+  border-radius: var(--radius-control);
   background: var(--surface);
   color: var(--graphite);
   font: inherit;
@@ -139,7 +139,7 @@
 .flashcard-flip__input {
   padding: 0.65rem 0.75rem;
   border: 1.5px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--radius-control);
   font: inherit;
   font-weight: 600;
   background: var(--surface);
