@@ -20,6 +20,8 @@ import { AnswerInput } from './AnswerInput'
 import { taskReportChoices, taskReportSolution } from '../lib/taskReportSnapshot'
 import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
+import { CorrectionMark } from './CorrectionMark'
+import { markStateForPhase } from '../lib/correctionMarkState'
 
 export type PracticeMode = 'practice' | 'berichtigung' | 'replay'
 
@@ -187,6 +189,9 @@ export function PracticeSession({
       ? `${activeTopic.title} · Seed ${activeSeed}`
       : activeArea
 
+  // The feedback text below already says Richtig / Leider falsch, so the mark
+  // is decorative (announce=false) and screen readers hear it exactly once.
+  const markState = markStateForPhase(phase)
   const showInteractiveFeedback = phase === 'partial' || phase === 'wrong'
   const partResults =
     showInteractiveFeedback && lastGrade?.parts ? lastGrade.parts : undefined
@@ -261,7 +266,16 @@ export function PracticeSession({
         />
       </div>
 
-      <div className={`prompt prompt--${phase}`}>{task.question}</div>
+      <div className="correction-anchor">
+        {markState && (
+          <CorrectionMark
+            key={`${index}-${phase}`}
+            {...markState}
+            announce={false}
+          />
+        )}
+        <div className={`prompt prompt--${phase}`}>{task.question}</div>
+      </div>
 
       <TaskVisual
         html={
@@ -346,7 +360,7 @@ export function PracticeSession({
 
       {phase === 'answering' && (
         <button type="button" className="primary" onClick={submit}>
-          Antwort prüfen
+          Prüfen
         </button>
       )}
 

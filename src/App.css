@@ -1098,9 +1098,9 @@ a.task-request__send {
 }
 
 .topic__release-badge--neu {
-  background: var(--ink);
-  color: var(--paper);
-  border: 1px solid var(--ink);
+  background: var(--marker);
+  color: var(--on-marker);
+  border: 1px solid var(--marker);
 }
 
 .pruefer-criteria {

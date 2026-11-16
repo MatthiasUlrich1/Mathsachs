@@ -1,0 +1,73 @@
+/*
+ * Correction mark drawn into the red margin. The anchor wraps the task and
+ * pulls the mark out into the margin column of div.sheet (App.css:
+ * 40px margin + 20px body padding, 28px + 12px below 560px).
+ */
+.correction-anchor {
+  position: relative;
+  --margin-w: 40px;
+  --body-pad: 20px;
+}
+
+.correction-anchor > .correction-mark {
+  position: absolute;
+  top: 0;
+  left: calc(-1 * (var(--margin-w) + var(--body-pad)));
+  width: calc(var(--margin-w) - 4px); /* minus the double margin line */
+}
+
+@media (max-width: 560px) {
+  .correction-anchor {
+    --margin-w: 28px;
+    --body-pad: 12px;
+  }
+}
+
+.correction-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0;
+}
+
+.correction-mark svg {
+  width: 32px;
+  max-width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.correction-mark__path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: correction-draw 250ms ease-out both;
+}
+
+.correction-mark--tick {
+  color: var(--tick);
+}
+
+.correction-mark--cross {
+  color: var(--correction);
+}
+
+@keyframes correction-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .correction-mark__path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

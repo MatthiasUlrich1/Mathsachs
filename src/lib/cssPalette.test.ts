@@ -68,10 +68,10 @@ const LITERAL_ALLOW: Record<string, { literals: string[]; why: string }> = {
 const TOKEN_SOURCE = 'src/index.css'
 
 describe('every src/**/*.css file is covered', () => {
-  it('finds App.css, index.css and all 30 component stylesheets', () => {
+  it('finds App.css, index.css and all 31 component stylesheets', () => {
     expect(CSS_FILES).toContain('src/App.css')
     expect(CSS_FILES).toContain('src/index.css')
-    expect(CSS_FILES.filter((f) => f.startsWith('src/components/')).length).toBe(30)
+    expect(CSS_FILES.filter((f) => f.startsWith('src/components/')).length).toBe(31)
   })
 })
 
