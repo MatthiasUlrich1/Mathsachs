@@ -7,7 +7,6 @@ const cats = ['Sparen', 'Kino', 'Spiele', 'Essen', 'Buecher']
 
 describe('PieChart: every non-zero sector has a tag in the svg and in the legend', () => {
   it.each([
-    [1, [1, 1, 98]],
     [2, [2, 4, 94]],
     [4, [4, 4, 92]],
     [5, [5, 5, 5, 5, 80]],

@@ -10,7 +10,7 @@ export const PC_MAX_CATEGORIES = 5
 export const PC_MAX_CATEGORY_CHARS = 14
 export const PC_DEFAULT_SNAP = 5
 /** Snap values that divide 100 evenly and keep the handles usable. */
-export const PC_ALLOWED_SNAPS: readonly number[] = [1, 2, 4, 5, 10]
+export const PC_ALLOWED_SNAPS: readonly number[] = [2, 4, 5, 10]
 
 export const PC_VIEWBOX_W = 600
 export const PC_VIEWBOX_H = 340
@@ -180,7 +180,7 @@ export interface PcTagPlacement {
   y: number
   w: number
   h: number
-  /** false for a 0 % sector or when the tag would come closer than PC_TAG_CLEARANCE to a knob. */
+  /** false only for a 0 % sector (non-zero sectors always keep a tag; it is relocated if needed). */
   visible: boolean
 }
 
@@ -204,6 +204,9 @@ export const pcTagKnobClearance = (tag: PcTagPlacement, percents: readonly numbe
 const PC_TAG_MAX_X = PC_LEGEND_X - 15
 const PC_TAG_MAX_Y = PC_VIEWBOX_H - 21
 
+/** Whether two tag boxes overlap. */
+export const pcTagsOverlap = (a: PcTagPlacement, b: PcTagPlacement): boolean =>
+  a.visible && b.visible && Math.abs(a.x - b.x) < (a.w + b.w) / 2 && Math.abs(a.y - b.y) < (a.h + b.h) / 2
 const tagInBounds = (t: PcTagPlacement): boolean =>
   t.x - t.w / 2 >= 0 && t.x + t.w / 2 <= PC_TAG_MAX_X && t.y - t.h / 2 >= 0 && t.y + t.h / 2 <= PC_TAG_MAX_Y
 const tagClearance = (t: PcTagPlacement, percents: readonly number[]): number => {
@@ -221,7 +224,9 @@ const tagClearance = (t: PcTagPlacement, percents: readonly number[]): number =>
 export const pcTagPlacements = (categories: readonly string[], percents: readonly number[]): PcTagPlacement[] => {
   const tags = pcSectorTags(categories)
   const b = pcBoundaries(percents)
-  return categories.map((_, i) => {
+  const placed: PcTagPlacement[] = []
+  const free = (t: PcTagPlacement): boolean => placed.every((o) => !pcTagsOverlap(t, o))
+  categories.forEach((_, i) => {
     const mid = ((b[i] ?? 0) + (b[i + 1] ?? 0)) / 2
     const w = pcTextWidth(tags[i]!, PC_TAG_FONT)
     const at = (shiftDeg: number, radial: number): PcTagPlacement => {
@@ -229,25 +234,38 @@ export const pcTagPlacements = (categories: readonly string[], percents: readonl
       return { tag: tags[i]!, x: pt.x, y: pt.y, w, h: PC_TAG_FONT, visible: (percents[i] ?? 0) > 0 }
     }
     const first = at(0, 0)
-    if (!first.visible || tagClearance(first, percents) >= PC_TAG_CLEARANCE) return first
+    if (!first.visible) {
+      placed.push(first)
+      return
+    }
+    if (tagClearance(first, percents) >= PC_TAG_CLEARANCE && free(first)) {
+      placed.push(first)
+      return
+    }
     let best: PcTagPlacement | null = null
     let bestC = -Infinity
+    let found: PcTagPlacement | null = null
     for (const radial of [0, 4, 8, 12]) {
-      for (let s = 2; s <= 30; s += 2) {
+      for (let s = 2; s <= 30 && !found; s += 2) {
         for (const sign of [1, -1]) {
           const cand = at(sign * s, radial)
-          if (!tagInBounds(cand)) continue
-          const c = tagClearance(cand, percents)
-          if (c >= PC_TAG_CLEARANCE) return cand
-          if (c > bestC) {
-            bestC = c
+          if (!tagInBounds(cand) || !free(cand)) continue
+          const cl = tagClearance(cand, percents)
+          if (cl >= PC_TAG_CLEARANCE) {
+            found = cand
+            break
+          }
+          if (cl > bestC) {
+            bestC = cl
             best = cand
           }
         }
       }
+      if (found) break
     }
-    return best ?? first
+    placed.push(found ?? best ?? first)
   })
+  return placed
 }
 
 /** Legend text: tag and name ("Sp Spiele"), so every sector tag can be looked up. */

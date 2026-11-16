@@ -1121,7 +1121,7 @@ function ElementPropsForm({
       return (
         <>
           {field('items', 'Kategorien mit ihrem Anteil in Prozent, eine pro Zeile als „Name = Prozent“ (2–5, Name höchstens 14 Zeichen, zusammen 100). Die Daten (Tabelle mit Anzahlen oder Prozenten) müssen in der Aufgabenfigur stehen.', true)}
-          {field('snapPercent', 'Schrittweite in Prozent (1, 2, 4, 5 oder 10; leer = 5)')}
+          {field('snapPercent', 'Schrittweite in Prozent (2, 4, 5 oder 10; leer = 5)')}
           {field('tolerance', 'Erlaubte Abweichung je Sektor in Prozent (leer = halbe Schrittweite)')}
         </>
       )

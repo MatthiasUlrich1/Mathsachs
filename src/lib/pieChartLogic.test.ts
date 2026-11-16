@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import {
+  PC_ALLOWED_SNAPS,
   PC_TAG_CLEARANCE,
   PC_TAG_R,
   pcLegendLabel,
   pcTagCircleClearance,
   pcTagKnobClearance,
   pcTagPlacements,
+  pcTagsOverlap,
   PC_CX,
   PC_CY,
   PC_HIT_R,
@@ -76,7 +78,7 @@ describe('start state', () => {
   })
 
   it('always sums to 100 and every sector is a multiple of snap and at least one step', () => {
-    for (const snap of [1, 2, 4, 5, 10]) {
+    for (const snap of [2, 4, 5, 10]) {
       for (let k = 2; k <= 5; k++) {
         const s = pcStartPercents(k, snap)
         expect(s.reduce((a, b) => a + b, 0)).toBe(100)
@@ -213,9 +215,9 @@ describe('validation', () => {
     expect(() => pcValidateAxis(['A', 'Eine viel zu lange Kategorie'], 5)).toThrow(/category/)
   })
 
-  it('with snap 1 a neighbouring split of the start is a valid target', () => {
-    // 5 % target, 5 % tolerance would be rejected earlier; with snap 1, tol 0.5 only exact matches
-    expect(() => pcValidate(['A', 'B'], [51, 49], 1, 0.5)).not.toThrow()
+  it('with snap 2 a neighbouring split of the start is a valid target', () => {
+    // with the smallest allowed snap a neighbouring split of the start is valid
+    expect(() => pcValidate(['A', 'B'], [52, 48], 2, 0.5)).not.toThrow()
   })
 })
 
@@ -298,9 +300,9 @@ describe("sector tags: never hidden for a non-zero sector, relocated for clearan
     expect(pl.map((p) => p.visible)).toEqual([true, false, true])
   })
 
-  it("snaps 1,2,4,5,10 x 2..5 categories: every non-zero sector keeps a visible tag", () => {
+  it("snaps 2,4,5,10 x 2..5 categories: every non-zero sector keeps a visible tag", () => {
     let checked = 0
-    for (const snap of [1, 2, 4, 5, 10]) {
+    for (const snap of [2, 4, 5, 10]) {
       for (const k of [2, 3, 4, 5]) {
         for (const shares of sampleCompositions(k, snap)) {
           const pl = pcTagPlacements(cats.slice(0, k), shares)
@@ -315,7 +317,7 @@ describe("sector tags: never hidden for a non-zero sector, relocated for clearan
   })
 
   it("every tag keeps >= 4 units from the circle and from every knob (sampled compositions, all snaps)", () => {
-    for (const snap of [1, 2, 4, 5, 10]) {
+    for (const snap of [2, 4, 5, 10]) {
       for (const k of [2, 3, 4, 5]) {
         for (const shares of sampleCompositions(k, snap)) {
           pcTagPlacements(cats.slice(0, k), shares).forEach((p) => {
@@ -341,5 +343,47 @@ describe("sector tags: never hidden for a non-zero sector, relocated for clearan
 
   it("legend label is tag plus name", () => {
     expect(pcLegendLabel("Sp", "Spiele")).toBe("Sp Spiele")
+  })
+})
+
+describe("sector tags never overlap each other", () => {
+  const names = ["Sparen", "Kino", "Spiele", "Essen", "Buecher"]
+  const overlap = pcTagsOverlap
+  const overlaps = (cats: string[], shares: number[]): number =>
+    pcTagPlacements(cats, shares).filter((p) => p.visible).reduce((n, p, i, vis) => n + vis.slice(i + 1).filter((q) => overlap(p, q)).length, 0)
+  /** All compositions of 100 into k parts > 0 on the snap grid. */
+  const all = (k: number, snap: number): number[][] => {
+    const units = 100 / snap
+    const rec = (left: number, parts: number): number[][] =>
+      parts === 1 ? [[left]] : Array.from({ length: left - parts + 1 }, (_, i) => i + 1).flatMap((u) => rec(left - u, parts - 1).map((r) => [u, ...r]))
+    return rec(units, k).map((r) => r.map((u) => u * snap))
+  }
+
+  it("snaps 2,4,5,10: no two tags overlap (full enumeration k=2..4, dense sample k=5)", () => {
+    let n = 0
+    for (const snap of [2, 4, 5, 10]) {
+      for (const k of [2, 3, 4, 5]) {
+        const set = k === 5 ? sampleCompositions(5, snap, 400) : all(k, snap)
+        for (const shares of set) {
+          n++
+          if (overlaps(names.slice(0, k), shares) !== 0) throw new Error("tags overlap for snap " + snap + " " + JSON.stringify(shares))
+        }
+      }
+    }
+    expect(n).toBeGreaterThan(5000)
+  })
+
+  it("negative control: default spots (no avoidance) overlap for [2,96,2], the placed tags do not; snap 1 is not allowed", () => {
+    const cats = ["Sparen", "Kino", "Spiele"]
+    const shares = [2, 96, 2]
+    const b = pcBoundaries(shares)
+    const raw = cats.map((_, i) => {
+      const pt = pcPoint((b[i]! + b[i + 1]!) / 2, PC_TAG_R)
+      return { tag: "x", x: pt.x, y: pt.y, w: 25.2, h: 14, visible: true }
+    })
+    expect(pcTagsOverlap(raw[0]!, raw[2]!)).toBe(true)
+    expect(overlaps(cats, shares)).toBe(0)
+    expect(PC_ALLOWED_SNAPS).not.toContain(1)
+    expect(() => pcValidate(["A", "B"], [50, 50], 1, 0.5)).toThrow(/snapPercent/)
   })
 })
