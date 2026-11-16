@@ -10,8 +10,13 @@
  *
  * Mehrere Quellen werden mit `blendGenerators` gemischt (gleiche Gewichte je Quelle,
  * deterministisch je Seed). `maxDifficulty` schließt Quellen mit höherem
- * Themen-`difficulty` aus; bleibt keine Quelle (und kein Custom-Generator), bleibt das
+ * Themen-`difficulty` aus (fehlt die `difficulty` am Master, gilt sie als 2:
+ * `DEFAULT_DIFFICULTY`); bleibt keine Quelle (und kein Custom-Generator), bleibt das
  * Pack-Thema Outline.
+ *
+ * Custom-Generatoren (`OS_CUSTOM_GENERATORS`) gewinnen allein; nur mit
+ * `includeCustom: true` wird der Custom-Generator als eine gleich gewichtete Quelle
+ * mit den `sources` gemischt.
  */
 export type SourceRef = string
 
@@ -20,9 +25,17 @@ export interface PackTopicMapping {
   /** Quellen mit Master-`difficulty` über diesem Wert werden ausgeschlossen. */
   maxDifficulty?: 1 | 2 | 3
   /** Master-Thema darf im selben Pack erneut vorkommen (nur mit `note`). */
+  /** Wiederholung desselben Masters im Pack (Lehrplan verlangt es); braucht `note`. */
   allowRepeat?: boolean
+  /** Custom-Generator des Themas mit den `sources` mischen statt allein zu laufen. */
+  includeCustom?: boolean
+  /** Begründung für difficulty-3-Quellen in Hauptschul-Packs (Guard d); `note` genügt nicht. */
+  difficultyReason?: string
   note?: string
 }
+
+/** Annahme für Master-Themen ohne `difficulty`. */
+export const DEFAULT_DIFFICULTY = 2
 
 /** Altes 1:1-Format (String) oder neues Format. */
 export type PackMappingEntry = string | PackTopicMapping

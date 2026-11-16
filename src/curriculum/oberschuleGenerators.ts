@@ -10,6 +10,7 @@ import { topicContentId } from './contentId'
 import { ensureTopicFachwissen } from './fachwissen'
 import { blendGenerators } from './mergeNeu'
 import {
+  DEFAULT_DIFFICULTY,
   isQualifiedRef,
   normalizeMapping,
   qualifyRef,
@@ -709,8 +710,8 @@ export function resolveSources(
       out.missing.push(ref)
       continue
     }
-    const difficulty = catalogEntryMeta(ref)?.difficulty
-    if (mapping.maxDifficulty && difficulty && difficulty > mapping.maxDifficulty) {
+    const difficulty = catalogEntryMeta(ref)?.difficulty ?? DEFAULT_DIFFICULTY
+    if (mapping.maxDifficulty && difficulty > mapping.maxDifficulty) {
       out.filtered.push(ref)
       continue
     }
@@ -720,38 +721,58 @@ export function resolveSources(
 }
 
 /**
- * Resolve a playable OS/ST/SKS topic generator.
+ * Gemeinsame Auflösung für `resolveOsGenerate` und `isPlayableOfficialTopic`
+ * (beide dürfen nie voneinander abweichen).
  *
- * Priorität: Custom-Generator (`OS_CUSTOM_GENERATORS`) allein, außer das Thema hat ein
- * explizites 1:n-Mapping (`*_TOPIC_MAPPINGS`) mit Quellen — dann wird Custom mit den
- * Quellen gemischt. Mehrere Quellen: `blendGenerators`, GLEICHE Gewichte je Quelle
- * (Custom zählt als eine Quelle), deterministisch je Seed. Bleibt nach `maxDifficulty`
- * nichts übrig (und kein Custom) → `undefined` (Outline).
- * String-Maps (Alt-Format) lösen wie bisher 1:1 ohne Filter auf.
+ * - Kein explizites Mapping: Custom-Generator, sonst String-Map (1:1, ohne Filter).
+ * - Explizites Mapping (`*_TOPIC_MAPPINGS`): ersetzt die String-Map. Custom gewinnt
+ *   allein, außer `includeCustom: true` — dann wird Custom als eine Quelle beigemischt.
+ *   Quellen werden nach `maxDifficulty` gefiltert (`difficulty` fehlt = 2).
+ */
+function resolveParts(
+  topicId: string,
+  gymCatalog: Map<string, Topic['generate']>,
+): Array<Topic['generate']> {
+  const custom = OS_CUSTOM_GENERATORS[topicId]
+  const explicit = explicitMapping(topicId)
+  if (!explicit) {
+    if (custom) return [custom]
+    const mapped = generatorIdForTopic(topicId)
+    const gen = mapped ? gymCatalog.get(mapped) : undefined
+    return gen ? [gen] : []
+  }
+  if (custom && !explicit.includeCustom) return [custom]
+  const gens = resolveSources(explicit, gymCatalog).gens.map((s) => s.gen)
+  return custom ? [custom, ...gens] : gens
+}
+
+/**
+ * Resolve a playable OS/ST/SKS topic generator. Mehrere Teile: `blendGenerators`,
+ * GLEICHE Gewichte je Quelle, deterministisch je Seed. Nichts übrig → `undefined`
+ * (Outline).
  */
 export function resolveOsGenerate(
   topicId: string,
   gymCatalog: Map<string, Topic['generate']>,
 ): Topic['generate'] | undefined {
-  const custom = OS_CUSTOM_GENERATORS[topicId]
-  const explicit = explicitMapping(topicId)
-  if (!explicit) {
-    if (custom) return custom
-    const mapped = generatorIdForTopic(topicId)
-    return mapped ? gymCatalog.get(mapped) : undefined
-  }
-  const parts = resolveSources(explicit, gymCatalog).gens.map((s) => ({ gen: s.gen, weight: 1 }))
-  if (custom) parts.unshift({ gen: custom, weight: 1 })
+  const parts = resolveParts(topicId, gymCatalog)
   if (parts.length === 0) return undefined
-  return parts.length === 1 ? parts[0]!.gen : blendGenerators(parts)
+  return parts.length === 1 ? parts[0] : blendGenerators(parts.map((gen) => ({ gen, weight: 1 })))
 }
 
-export function isPlayableOfficialTopic(topicId: string): boolean {
-  return Boolean(
-    OS_CUSTOM_GENERATORS[topicId] ||
-      explicitMapping(topicId)?.sources.length ||
-      generatorIdForTopic(topicId),
-  )
+/**
+ * Spielbar = der Resolver liefert einen Generator. Ohne geladenen Katalog
+ * (`gymGeneratorCatalog()` noch nicht aufgerufen) ist nur eine strukturelle
+ * Aussage möglich (Quellen vorhanden); mit Katalog identisch zum Resolver.
+ */
+export function isPlayableOfficialTopic(
+  topicId: string,
+  gymCatalog: Map<string, Topic['generate']> | null = catalog,
+): boolean {
+  if (gymCatalog) return resolveParts(topicId, gymCatalog).length > 0
+  const explicit = explicitMapping(topicId)
+  if (!explicit) return Boolean(OS_CUSTOM_GENERATORS[topicId] || generatorIdForTopic(topicId))
+  return Boolean(OS_CUSTOM_GENERATORS[topicId] || explicit.sources.length > 0)
 }
 
 export function outlineGenerate(title: string): Topic['generate'] {
