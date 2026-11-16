@@ -6,7 +6,7 @@
  */
 import { pick, randInt, type Rng } from '../lib/rng'
 import { formatDe, roundTo } from '../lib/num'
-import { makeFraction, format, multiply, subtract, type Fraction } from '../lib/fraction'
+import { gcd, makeFraction, format, multiply, subtract, type Fraction } from '../lib/fraction'
 import { generateLinearFunctionSvg, generateSpinnerSvg } from '../lib/geometrySvg'
 import { shuffleChoices } from './biologieHelpers'
 import {
@@ -49,6 +49,17 @@ function fourChoices(correct: string, wrongCandidates: string[]): string[] {
   }
   return out
 }
+
+/** Erklärung der Laplace-Formel; "Kürzen" wird nur erwähnt, wenn wirklich gekürzt wird. */
+export const laplaceErklaerung = (k: number, total: number): string => {
+  const r = format(makeFraction(k, total))
+  const roh = `${k}/${total}`
+  const kuerzen = r === roh ? ' Der Bruch lässt sich nicht kürzen.' : ` Kürzen mit ${gcd(k, total)} ergibt ${r}.`
+  return `Laplace: P = Anzahl der günstigen Ergebnisse : Anzahl aller Ergebnisse = ${roh}.${kuerzen}`
+}
+
+/** "davon ist 1 rote" / "davon sind 3 rote". */
+const davonSind = (k: number): string => (k === 1 ? 'davon ist' : 'davon sind')
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Arbeiten mit Termen und Gleichungen
@@ -412,13 +423,16 @@ const laplaceBruchNeu: Topic = asNeuTopic('k8-lb2-laplace-bruch', {
         ['blaue', blau],
       ] as const)
       const value = makeFraction(farbe[1], total)
-      return fractionTask({
-        question: `Ein Stapel enthält ${rot} rote, ${gelb} gelbe und ${blau} blaue Karten. Du ziehst verdeckt eine Karte. Wie groß ist die Wahrscheinlichkeit, eine ${farbe[0]} Karte zu ziehen? Gib den gekürzten Bruch an.`,
-        value,
-        requireReduced: true,
-        solution: format(value),
-        explanation: `Es gibt ${farbe[1]} günstige von ${total} möglichen Karten: P = ${farbe[1]}/${total} = ${format(value)}.`,
-      })
+      return {
+        ...fractionTask({
+          question: `Ein Stapel enthält ${rot} rote, ${gelb} gelbe und ${blau} blaue Karten. Du ziehst verdeckt eine Karte. Wie groß ist die Wahrscheinlichkeit, eine ${farbe[0]} Karte zu ziehen? Gib den gekürzten Bruch an.`,
+          value,
+          requireReduced: true,
+          solution: format(value),
+          explanation: `Es gibt ${farbe[1]} günstige von ${total} möglichen Karten. ${laplaceErklaerung(farbe[1], total)}`,
+        }),
+        dedupeKey: `k8neulapbr-bruch:${rot}:${gelb}:${blau}:${farbe[0]}`,
+      }
     },
     (rng: Rng) => {
       const rot = randInt(rng, 1, 8)
@@ -432,25 +446,26 @@ const laplaceBruchNeu: Topic = asNeuTopic('k8-lb2-laplace-bruch', {
       ] as const)
       const value = makeFraction(farbe[1], total)
       const correct = format(value)
-      const wrong1 = `${farbe[1]}/${total}` // ungekürzt angegeben
-      const wrong2 = format(makeFraction(total - farbe[1], total)) // Gegenwahrscheinlichkeit statt gesuchter Farbe
-      const wrong3 = format(makeFraction(farbe[1], farbe[1])) // Nenner mit Zähler verwechselt
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong1 = format(makeFraction(total - farbe[1], total)) // Gegenwahrscheinlichkeit statt gesuchter Farbe
+      const wrong2 = format(makeFraction(farbe[1], total - farbe[1])) // Verhältnis statt Anteil
+      const wrong3 = format(makeFraction(farbe[1] + 1, total)) // eine Karte zu viel gezählt
+      const wrong4 = format(makeFraction(farbe[1], total + farbe[1])) // Zähler zum Nenner addiert
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
-        question: `${total} Karten liegen auf einem Stapel, davon sind ${farbe[1]} ${farbe[0]}. Wie groß ist die Wahrscheinlichkeit, beim verdeckten Ziehen eine ${farbe[0]} Karte zu erhalten?`,
+        question: `${total} Karten liegen auf einem Stapel, ${davonSind(farbe[1])} ${farbe[1]} ${farbe[0]}. Wie groß ist die Wahrscheinlichkeit, beim verdeckten Ziehen eine ${farbe[0]} Karte zu erhalten?`,
         choices,
         correct,
         solution: correct,
-        explanation: `P = ${farbe[1]}/${total} = ${format(value)}.`,
-        dedupeKey: `k8neulapbr-mc:${rot}:${gelb}:${blau}:${farbe[1]}`,
+        explanation: laplaceErklaerung(farbe[1], total),
+        dedupeKey: `k8neulapbr-mc:${total}:${farbe[1]}:${farbe[0]}`,
       })
     },
     (rng: Rng) => {
       const total = 20
       const k = randInt(rng, 1, 19)
       const value = k / total
-      return numberLineTask({
-        question: `Ein Kartenstapel hat ${total} Karten, davon sind ${k} blau. Markiere die Wahrscheinlichkeit, verdeckt eine blaue Karte zu ziehen, als Dezimalzahl auf dem Zahlenstrahl.`,
+      const task = numberLineTask({
+        question: `Ein Kartenstapel hat ${total} Karten, ${davonSind(k)} ${k} blau. Markiere die Wahrscheinlichkeit, verdeckt eine blaue Karte zu ziehen, als Dezimalzahl auf dem Zahlenstrahl.`,
         min: 0,
         max: 1,
         step: 0.05,
@@ -459,6 +474,7 @@ const laplaceBruchNeu: Topic = asNeuTopic('k8-lb2-laplace-bruch', {
         solution: formatDe(value),
         explanation: `P = ${k}/${total} = ${formatDe(value)}.`,
       })
+      return { ...task, dedupeKey: `k8neulapbr-zahlenstrahl:${k}` }
     },
     // V4 Baumdiagramm — Urne, zweimal ziehen ohne Zurücklegen: Zweige der zweiten Stufe eintragen
     (rng: Rng) => {
@@ -519,7 +535,7 @@ const laplaceBruchNeu: Topic = asNeuTopic('k8-lb2-laplace-bruch', {
         blanks: { branches: [], leaves: [leaf] },
         rootLabel: 'Start',
         solution: format(value),
-        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt der Wahrscheinlichkeiten entlang des Pfades. P = ${a}/${n} · ${b}/${n - 1} = ${a * b}/${n * (n - 1)} = ${format(value)}.`,
+        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt der Wahrscheinlichkeiten entlang des Pfades. P = ${a}/${n} · ${b}/${n - 1} = ${a * b}/${n * (n - 1)}${format(value) === `${a * b}/${n * (n - 1)}` ? '' : ` = ${format(value)}`}.`,
         dedupeKey: `k8neu-tree-urne-pfad:${rot}:${blau}:${erste}`,
       })
     },
@@ -539,11 +555,11 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const total = pick(rng, [4, 5, 8, 10, 20, 25])
+      const total = pick(rng, [4, 5, 8, 10, 20])
       const k = randInt(rng, 1, total - 1)
       const value = roundTo((k / total) * 100, 2)
       return valueTask({
-        question: `Ein Glücksrad hat ${total} gleich große Felder, davon sind ${k} mit einem Gewinnsymbol markiert. Wie groß ist die Gewinnwahrscheinlichkeit in Prozent?`,
+        question: `Ein Glücksrad hat ${total} gleich große Felder, ${davonSind(k)} ${k} mit einem Gewinnsymbol markiert. Wie groß ist die Gewinnwahrscheinlichkeit in Prozent?`,
         unit: '%',
         answerKind: 'decimal',
         value,
@@ -553,16 +569,17 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
       })
     },
     (rng: Rng) => {
-      const total = pick(rng, [4, 5, 8, 10, 20, 25])
+      const total = pick(rng, [4, 5, 8, 10, 20])
       const k = randInt(rng, 1, total - 1)
       const value = roundTo((k / total) * 100, 2)
       const correct = `${formatDe(value)} %`
       const wrong1 = `${formatDe(roundTo(k / total, 2))} %` // ×100 vergessen
       const wrong2 = `${formatDe(roundTo(((total - k) / total) * 100, 2))} %` // Gegenwahrscheinlichkeit
-      const wrong3 = `${formatDe(roundTo((total / k) * 100, 2))} %` // Bruch verdreht
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong3 = `${formatDe(roundTo((k / (total - k)) * 100, 2))} %` // Verhältnis statt Anteil
+      const wrong4 = `${formatDe(roundTo(((k + 1) / total) * 100, 2))} %` // ein Feld zu viel gezählt
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
-        question: `Von ${total} gleich großen Feldern eines Glücksrads sind ${k} Gewinnfelder. Wie groß ist die Gewinnwahrscheinlichkeit in Prozent?`,
+        question: `Von ${total} gleich großen Feldern eines Glücksrads ${k === 1 ? 'ist 1 Feld ein Gewinnfeld' : `sind ${k} Felder Gewinnfelder`}. Wie groß ist die Gewinnwahrscheinlichkeit in Prozent?`,
         choices,
         correct,
         solution: correct,
@@ -585,13 +602,13 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
         ...Array.from({ length: total - k }, () => 'Leer'),
       ]
       return paramSliderTask({
-        question: `Das Glücksrad hat ${total} gleich große Felder, davon sind ${k} Gewinnfelder. Schätze die Gewinnwahrscheinlichkeit in Prozent und stelle sie am Regler ein.`,
-        params: [{ id: 'prozent', label: 'Prozent (%)', min: 0, max: 100, step: 5, start: 50 }],
+        question: `Das Glücksrad hat ${total} gleich große Felder, ${k === 1 ? 'davon ist 1 Feld ein Gewinnfeld' : `davon sind ${k} Felder Gewinnfelder`}. Bestimme die Gewinnwahrscheinlichkeit in Prozent und stelle sie am Regler ein.`,
+        params: [{ id: 'prozent', label: 'Prozent (%)', min: 0, max: 100, step: 5, start: 0 }],
         correct: { prozent: value },
         solution: `${formatDe(value)} %`,
         explanation: `P = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: ${formatDe(value)} %.`,
         visualContent: generateSpinnerSvg({ payoffs: sectors }),
-        instruction: 'Stelle die geschätzte Gewinnwahrscheinlichkeit ein:',
+        instruction: 'Stelle die berechnete Gewinnwahrscheinlichkeit ein:',
       })
     },
     // V4 Baumdiagramm — Münze und Würfel: Wahrscheinlichkeit jedes Pfades
@@ -605,13 +622,13 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
       const half = { n: 1, d: 2 }
       const pfad = (f: Fraction): string => format(multiply(half, f))
       return treeDiagramTask({
-        question: `Du wirfst eine Münze und danach einen Würfel. Beim Würfel unterscheidest du: ${wurf.wort} oder eine andere Zahl. Trage die Wahrscheinlichkeit jedes Pfades am Ende ein.`,
+        question: `Du wirfst eine Münze und danach einen Würfel. Beim Würfel unterscheidest du: ${wurf.wort} oder eine andere Augenzahl. Trage die Wahrscheinlichkeit jedes Pfades am Ende ein.`,
         levels: [{ outcomes: ['Kopf', 'Zahl'] }, { outcomes: [wurf.wort, wurf.rest] }],
         probabilities: { '0': '1/2', '1': '1/2', '0.0': format(w), '0.1': format(rest), '1.0': format(w), '1.1': format(rest) },
         blanks: { branches: [], leaves: ['0.0', '0.1', '1.0', '1.1'] },
         rootLabel: 'Start',
         solution: `Kopf, ${wurf.wort}: ${pfad(w)}; Kopf, andere: ${pfad(rest)}; Zahl, ${wurf.wort}: ${pfad(w)}; Zahl, andere: ${pfad(rest)}`,
-        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt entlang des Pfades. Kopf und ${wurf.wort}: 1/2 · ${format(w)} = ${pfad(w)}. Kopf und andere: 1/2 · ${format(rest)} = ${pfad(rest)}. Für Zahl sind die Werte genauso. Probe (Summenregel): Alle vier Pfade zusammen ergeben 1.`,
+        explanation: `Pfadregel: Die Wahrscheinlichkeit eines Pfades ist das Produkt entlang des Pfades. Kopf und ${wurf.wort}: 1/2 · ${format(w)} = ${pfad(w)}. Kopf und andere: 1/2 · ${format(rest)} = ${pfad(rest)}. Für Zahl sind die Werte genauso. Probe (Summenregel): Alle vier Pfade zusammen ergeben 1. In Prozent gerundet sind das ${formatDe(roundTo((wurf.k / 12) * 100, 1))} % und ${formatDe(roundTo(((6 - wurf.k) / 12) * 100, 1))} %.`,
         dedupeKey: `k8neu-tree-muenze-wuerfel:${wurf.wort}`,
       })
     },
@@ -631,7 +648,7 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
       const q2 = subtract({ n: 1, d: 1 }, p2)
       const beide = multiply(p1, p2)
       return treeDiagramTask({
-        question: `Ein Glücksrad hat ${n1} gleich große Felder, davon ${k1 === 1 ? 'ist' : 'sind'} ${k1} rot. Die übrigen Felder sind grün. Egal ob Rot oder Grün: Danach drehst du ein zweites Rad mit ${n2} gleich großen Feldern, davon ${k2 === 1 ? 'ist 1 Gewinn' : `sind ${k2} Gewinne`}. Wie groß ist die Wahrscheinlichkeit für Rot und Gewinn? Trage sie am Ende des passenden Pfades ein.`,
+        question: `Ein Glücksrad hat ${n1} gleich große Felder, davon ${k1 === 1 ? 'ist' : 'sind'} ${k1} rot. Die übrigen Felder sind grün. Unabhängig vom ersten Ergebnis drehst du danach ein zweites Rad mit ${n2} gleich großen Feldern, davon ${k2 === 1 ? 'ist 1 Gewinn' : `sind ${k2} Gewinne`}. Wie groß ist die Wahrscheinlichkeit für Rot und Gewinn? Trage sie am Ende des passenden Pfades ein.`,
         levels: [{ outcomes: ['Rot', 'Grün'] }, { outcomes: ['Gewinn', 'Niete'] }],
         probabilities: {
           '0': format(p1),
@@ -664,16 +681,16 @@ const gegenwahrscheinlichkeitNeu: Topic = asNeuTopic('k8-lb2-gegenwahrscheinlich
   },
   generate: mixedVariants(
     (rng: Rng) => {
-      const total = pick(rng, [4, 5, 6, 8, 10, 12])
-      const k = randInt(rng, 1, total - 1)
-      const p: Fraction = makeFraction(k, total)
-      const value = subtract({ n: 1, d: 1 }, p)
-      return fractionTask({
-        question: `Die Regenwahrscheinlichkeit für morgen beträgt ${format(p)}. Wie groß ist die Wahrscheinlichkeit, dass es nicht regnet? Gib den gekürzten Bruch an.`,
+      const regen = pick(rng, [10, 15, 20, 25, 30, 35, 40, 45, 60, 65, 70, 75, 80, 85])
+      const value = 100 - regen
+      return valueTask({
+        question: `Laut Wetterbericht beträgt die Regenwahrscheinlichkeit für morgen ${regen} %. Wie groß ist die Wahrscheinlichkeit in Prozent, dass es nicht regnet?`,
+        unit: '%',
+        answerKind: 'decimal',
         value,
-        requireReduced: true,
-        solution: format(value),
-        explanation: `P(kein Regen) = 1 − P(Regen) = 1 − ${format(p)} = ${format(value)}.`,
+        solution: `${value} %`,
+        explanation: `P(kein Regen) = 100 % − P(Regen) = 100 % − ${regen} % = ${value} %.`,
+        dedupeKey: `k8neugegen-regen:${regen}`,
       })
     },
     (rng: Rng) => {
@@ -683,24 +700,26 @@ const gegenwahrscheinlichkeitNeu: Topic = asNeuTopic('k8-lb2-gegenwahrscheinlich
       const value = subtract({ n: 1, d: 1 }, p)
       const correct = format(value)
       const wrong1 = format(p) // Gegenwahrscheinlichkeit mit Ausgangswahrscheinlichkeit verwechselt
-      const wrong2 = `${total - k}/${total}` // ungekürzt angegeben
-      const wrong3 = format(makeFraction(k, total - k)) // falscher Nenner gebildet
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong2 = format(makeFraction(total - k + 1, total)) // um eins verzählt
+      const wrong3 = format(makeFraction(1, total)) // nur ein einzelnes Ergebnis
+      const wrong4 = k < total - k ? format(makeFraction(k, total - k)) : format(makeFraction(total - k, total + k)) // falscher Nenner gebildet
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
         question: `Ein Ereignis hat die Wahrscheinlichkeit ${format(p)}. Wie groß ist die Gegenwahrscheinlichkeit?`,
         choices,
         correct,
         solution: correct,
         explanation: `P(Ā) = 1 − P(A) = 1 − ${format(p)} = ${format(value)}.`,
-        dedupeKey: `k8neugegen-mc:${k}:${total}`,
+        dedupeKey: `k8neugegen-mc:${format(p)}`,
       })
     },
     (rng: Rng) => {
       const total = 20
-      const k = randInt(rng, 1, 19)
+      let k = randInt(rng, 1, 19)
+      if (k === 10) k = 9 // 0,5: Gegenwahrscheinlichkeit wäre gleich dem Wert in der Frage
       const p = k / total
       const value = 1 - p
-      return numberLineTask({
+      const task = numberLineTask({
         question: `Ein Ereignis hat die Wahrscheinlichkeit ${formatDe(p)}. Markiere die Gegenwahrscheinlichkeit als Dezimalzahl auf dem Zahlenstrahl.`,
         min: 0,
         max: 1,
@@ -710,16 +729,17 @@ const gegenwahrscheinlichkeitNeu: Topic = asNeuTopic('k8-lb2-gegenwahrscheinlich
         solution: formatDe(value),
         explanation: `1 − ${formatDe(p)} = ${formatDe(value)}.`,
       })
+      return { ...task, dedupeKey: `k8neugegen-zahlenstrahl:${k}` }
     },
     // V4 Baumdiagramm — Regen an zwei Tagen: Gegenwahrscheinlichkeiten (Summenregel) und Pfad
     (rng: Rng) => {
       const sa = pick(rng, [30, 20, 60, 40, 10, 70])
       const so = pick(rng, [10, 15, 25])
-      const de = (prozent: number): string => formatDe(prozent / 100)
-      const keinBeide = ((100 - sa) * (100 - so)) / 10000
+      const de = (prozent: number): string => `${prozent} %`
+      const keinBeide = ((100 - sa) * (100 - so)) / 100
       return treeDiagramTask({
-        question: `Die Regenwahrscheinlichkeit beträgt am Samstag ${de(sa)} und am Sonntag ${de(so)}. An jedem Tag gibt es Regen oder Sonne (also keinen Regen). Die beiden Tage hängen nicht voneinander ab. Trage die fehlenden Wahrscheinlichkeiten ein, auch für den Pfad, bei dem an beiden Tagen die Sonne scheint.`,
-        levels: [{ outcomes: ['Regen', 'Sonne'] }, { outcomes: ['Regen', 'Sonne'] }],
+        question: `Die Regenwahrscheinlichkeit beträgt am Samstag ${de(sa)} und am Sonntag ${de(so)}. Der erste Zweig gehört zum Samstag, der zweite zum Sonntag. An jedem Tag lautet die Frage "Regnet es?" und die Antwort ist Ja oder Nein. Die beiden Tage hängen nicht voneinander ab. Trage die fehlenden Wahrscheinlichkeiten ein, auch für den Pfad, bei dem es an beiden Tagen nicht regnet (Nein, Nein).`,
+        levels: [{ outcomes: ['Ja', 'Nein'] }, { outcomes: ['Ja', 'Nein'] }],
         probabilities: {
           '0': de(sa),
           '1': de(100 - sa),
@@ -729,9 +749,9 @@ const gegenwahrscheinlichkeitNeu: Topic = asNeuTopic('k8-lb2-gegenwahrscheinlich
           '1.1': de(100 - so),
         },
         blanks: { branches: ['1', '0.1', '1.1'], leaves: ['1.1'] },
-        rootLabel: 'Samstag',
-        solution: `${de(100 - sa)}; ${de(100 - so)}; ${de(100 - so)}; Pfad Sonne, Sonne: ${formatDe(keinBeide)}`,
-        explanation: `Die Zweige, die von einem Punkt ausgehen, ergeben zusammen 1 (Summenregel): 1 − ${de(sa)} = ${de(100 - sa)} und 1 − ${de(so)} = ${de(100 - so)}. Weil die Tage nicht voneinander abhängen, gelten am Sonntag nach jedem Samstag dieselben Werte. Pfadregel: ${de(100 - sa)} · ${de(100 - so)} = ${formatDe(keinBeide)}.`,
+        rootLabel: 'Start',
+        solution: `${de(100 - sa)}; ${de(100 - so)}; ${de(100 - so)}; Pfad Nein, Nein: ${formatDe(keinBeide)} %`,
+        explanation: `Die Zweige, die von einem Punkt ausgehen, ergeben zusammen 1 (Summenregel): 1 − ${de(sa)} = ${de(100 - sa)} und 1 − ${de(so)} = ${de(100 - so)}. Weil die Tage nicht voneinander abhängen, gelten am Sonntag nach jedem Samstag dieselben Werte. Pfadregel: ${formatDe((100 - sa) / 100)} · ${formatDe((100 - so) / 100)} = ${formatDe(keinBeide / 100)}, also ${formatDe(keinBeide)} %.`,
         dedupeKey: `k8neu-tree-regen:${sa}:${so}`,
       })
     },

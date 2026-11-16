@@ -77,6 +77,24 @@ function fourChoices(correct: string, wrongCandidates: string[]): string[] {
   return out
 }
 
+/** Name des n-Ecks (Dativ mit Artikel für Aufgabentexte nutzt `eckName`). */
+const ECK_NAMEN: Record<number, string> = {
+  3: 'Dreieck',
+  4: 'Viereck',
+  5: 'Fünfeck',
+  6: 'Sechseck',
+  7: 'Siebeneck',
+  8: 'Achteck',
+  9: 'Neuneck',
+  10: 'Zehneck',
+  11: 'Elfeck',
+  12: 'Zwölfeck',
+  15: 'Fünfzehneck',
+  18: 'Achtzehneck',
+  20: 'Zwanzigeck',
+}
+export const eckName = (n: number): string => ECK_NAMEN[n] ?? `${n}-Eck`
+
 /** Startwinkel-Varianten, damit gleich große Winkel optisch unterschiedlich aussehen. */
 const START_ANGLES = [0, 20, 45, 90, 135, 180, 225, 270] as const
 /** Planfigur Mittelsenkrechte (Skizze, nicht maßstabsgetreu): AB, zwei Kreisbögen mit gleichem Radius, P, Q und die Gerade PQ. */
@@ -114,7 +132,8 @@ const nebenwinkelNeu: Topic = asNeuTopic('k7-lb1-nebenwinkel', {
   generate: mixedVariants(
     // V1 Tippen — Sachaufgabe (Straße/Weg)
     (rng: Rng) => {
-      const a = randInt(rng, 15, 165)
+      let a = randInt(rng, 15, 165)
+      if (a === 90) a = 85 // Nebenwinkel wäre gleich groß wie der gegebene Winkel
       const value = 180 - a
       return valueTask({
         question: `An einer geraden Straße trifft ein Weg so, dass der eine Winkel zur Straße ${a}° misst. Wie groß ist der Winkel auf der anderen Seite des Wegs (Nebenwinkel)?`,
@@ -128,13 +147,15 @@ const nebenwinkelNeu: Topic = asNeuTopic('k7-lb1-nebenwinkel', {
     },
     // V2 MC — typische Verwechslungen
     (rng: Rng) => {
-      const a = randInt(rng, 20, 160)
+      let a = randInt(rng, 20, 160)
+      if (a === 90) a = 95 // bei 90° wäre der Nebenwinkel gleich groß und die Verwechslung nicht erkennbar
       const value = 180 - a
       const correct = `${value}°`
       const wrong1 = `${a}°` // Verwechslung mit Scheitelwinkel (gleich groß statt ergänzend)
-      const wrong2 = `${360 - a}°` // Vollwinkel statt gestreckter Winkel verwendet
-      const wrong3 = `${Math.abs(90 - a)}°` // Verwechslung mit Komplementärwinkel
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong2 = `${Math.abs(90 - a)}°` // Verwechslung mit Komplementärwinkel
+      const wrong3 = `${value + 10}°` // Rechenfehler
+      const wrong4 = `${value - 10}°` // Rechenfehler
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
         question: `Ein Winkel an einer Geraden beträgt ${a}°. Wie groß ist der zugehörige Nebenwinkel?`,
         choices,
@@ -146,7 +167,8 @@ const nebenwinkelNeu: Topic = asNeuTopic('k7-lb1-nebenwinkel', {
     },
     // V3 Portfolio — Nebenwinkel berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
-      const a = randInt(rng, 20, 160)
+      let a = randInt(rng, 20, 160)
+      if (a === 90) a = 95 // Nebenwinkel wäre gleich groß wie der gegebene Winkel
       const value = 180 - a
       const startAngle = pick(rng, START_ANGLES)
       return angleProtractorTask({
@@ -160,21 +182,38 @@ const nebenwinkelNeu: Topic = asNeuTopic('k7-lb1-nebenwinkel', {
         dedupeKey: `k7neben-zeichnen:${a}`,
       })
     },
-    // V4 MC — Konzeptfrage
+    // V4 MC — Konzeptfragen (zwei Fragen, Antworten gleich lang)
     (rng: Rng) => {
-      const correct =
-        'Nebenwinkel liegen an einer Geraden nebeneinander und ergänzen sich stets zu 180°.'
-      const wrong1 = 'Nebenwinkel sind immer gleich groß wie der gegebene Winkel.'
-      const wrong2 = 'Nebenwinkel ergänzen sich zu 360°, da sie einen Vollwinkel bilden.'
-      const wrong3 = 'Nebenwinkel entstehen nur bei rechten Winkeln (90°).'
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const set = pick(rng, [
+        {
+          key: 'aussage',
+          question: 'Welche Aussage über Nebenwinkel ist richtig?',
+          correct: 'Nebenwinkel ergänzen sich zu 180°.',
+          wrong: [
+            'Nebenwinkel sind immer gleich groß.',
+            'Nebenwinkel ergänzen sich zu 360°.',
+            'Nebenwinkel gibt es nur bei 90°.',
+          ],
+          explanation:
+            'Nebenwinkel teilen sich einen Schenkel und liegen an einer Geraden — zusammen bilden sie den gestreckten Winkel von 180°.',
+        },
+        {
+          key: 'name',
+          question: 'Zwei Winkel liegen an einer Geraden nebeneinander und ergänzen sich zu 180°. Wie heißen sie?',
+          correct: 'Nebenwinkel',
+          wrong: ['Scheitelwinkel', 'Stufenwinkel', 'Komplementwinkel'],
+          explanation:
+            'Winkel, die an einer Geraden nebeneinanderliegen und zusammen 180° ergeben, heißen Nebenwinkel. Scheitelwinkel liegen sich gegenüber, Komplementwinkel ergeben 90°.',
+        },
+      ])
+      const choices = shuffleChoices(rng, fourChoices(set.correct, set.wrong), set.correct)
       return choicePickTask({
-        question: 'Welche Aussage über Nebenwinkel ist richtig?',
+        question: set.question,
         choices,
-        correct,
-        solution: correct,
-        explanation:
-          'Nebenwinkel teilen sich einen Schenkel und liegen an einer Geraden — zusammen bilden sie den gestreckten Winkel von 180°.',
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
+        dedupeKey: `k7neben-konzept:${set.key}`,
       })
     },
   ),
@@ -193,40 +232,62 @@ const scheitelwinkelNeu: Topic = asNeuTopic('k7-lb1-scheitelwinkel', {
     url: 'https://de.wikipedia.org/wiki/Scheitelwinkel',
   },
   generate: mixedVariants(
-    // V1 Tippen — Sachaufgabe (Parallelen/Transversale)
+    // V1 Tippen — Stufen-, Wechsel- und Nachbarwinkel an Parallelen (zweischrittig, Lösung steht nie in der Frage)
     (rng: Rng) => {
-      const a = randInt(rng, 15, 165)
-      const art = pick(rng, ['Stufenwinkel', 'Wechselwinkel'] as const)
+      let a = randInt(rng, 15, 165)
+      if (a === 90) a = 85
+      const art = pick(rng, ['Stufenwinkel', 'Wechselwinkel', 'Nachbarwinkel'] as const)
+      if (art === 'Nachbarwinkel') {
+        const value = 180 - a
+        return valueTask({
+          question: `Zwei parallele Gehwege werden von einem dritten Weg (Transversale) geschnitten. Der Winkel α zwischen den Parallelen misst ${a}°. Der Nachbarwinkel β liegt ebenfalls zwischen den Parallelen, auf derselben Seite der Transversalen an der anderen Parallele. Wie groß ist β?`,
+          unit: '°',
+          answerKind: 'integer',
+          value,
+          solution: `${value}°`,
+          explanation: `Nachbarwinkel (Winkel auf derselben Seite der Transversalen zwischen den Parallelen) ergänzen sich zu 180°: β = 180° − ${a}° = ${value}°.`,
+          dedupeKey: `k7scheitel-tippen:${a}:${art}`,
+        })
+      }
+      const value = 180 - a
+      const lage =
+        art === 'Stufenwinkel'
+          ? 'β liegt an der anderen Parallele an der gleichen Stelle wie α (Stufenwinkel)'
+          : 'β liegt an der anderen Parallele auf der gegenüberliegenden Seite der Transversalen (Wechselwinkel, Z-Form)'
       return valueTask({
-        question: `Zwei parallele Gehwege werden von einem dritten Weg (Transversale) geschnitten. Ein ${art} dazu beträgt ${a}°. Wie groß ist der entsprechende ${art} an der anderen Parallele?`,
+        question: `Zwei parallele Gehwege werden von einem dritten Weg (Transversale) geschnitten. Der Winkel α misst ${a}°. ${lage}. Der Winkel γ ist der Nebenwinkel von β. Wie groß ist γ?`,
         unit: '°',
         answerKind: 'integer',
-        value: a,
-        solution: `${a}°`,
-        explanation: `${art} an Parallelen sind gleich groß: ${a}°.`,
+        value,
+        solution: `${value}°`,
+        explanation: `${art} an Parallelen sind gleich groß: β = α = ${a}°. γ ist der Nebenwinkel von β und ergänzt β zu 180°: γ = 180° − ${a}° = ${value}°.`,
         dedupeKey: `k7scheitel-tippen:${a}:${art}`,
       })
     },
-    // V2 MC — typische Verwechslungen
+    // V2 MC — Nebenwinkel des Scheitelwinkels (zwei Schritte)
     (rng: Rng) => {
-      const a = randInt(rng, 20, 160)
-      const correct = `${a}°`
-      const wrong1 = `${180 - a}°` // Verwechslung mit Nebenwinkel
-      const wrong2 = `${360 - a}°`
-      const wrong3 = `${Math.abs(90 - a)}°`
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      let a = randInt(rng, 20, 160)
+      if (a === 90) a = 95
+      const value = 180 - a
+      const correct = `${value}°`
+      const wrong1 = `${a}°` // Scheitelwinkel selbst angegeben
+      const wrong2 = `${Math.abs(90 - a)}°` // Verwechslung mit Komplementärwinkel
+      const wrong3 = `${value + 10}°` // Rechenfehler
+      const wrong4 = `${value - 10}°` // Rechenfehler
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
-        question: `Zwei Geraden schneiden sich. Ein Winkel beträgt ${a}°. Wie groß ist sein Scheitelwinkel?`,
+        question: `Zwei Geraden schneiden sich. Ein Winkel beträgt ${a}°. Wie groß ist der Nebenwinkel seines Scheitelwinkels?`,
         choices,
         correct,
         solution: correct,
-        explanation: `Scheitelwinkel liegen sich gegenüber und sind gleich groß: ${a}°.`,
+        explanation: `Der Scheitelwinkel liegt gegenüber und ist gleich groß: ${a}°. Sein Nebenwinkel ergänzt ihn zu 180°: 180° − ${a}° = ${value}°.`,
         dedupeKey: `k7scheitel-mc:${a}`,
       })
     },
     // V3 Portfolio — Scheitelwinkel über den Nebenwinkel bestimmen und zeichnen
     (rng: Rng) => {
-      const a = randInt(rng, 20, 160)
+      let a = randInt(rng, 20, 160)
+      if (a === 90) a = 95
       const neben = 180 - a
       const startAngle = pick(rng, START_ANGLES)
       return angleProtractorTask({
@@ -257,6 +318,44 @@ const scheitelwinkelNeu: Topic = asNeuTopic('k7-lb1-scheitelwinkel', {
           'Scheitelwinkel brauchen zwei sich kreuzende Geraden; Stufen- und Wechselwinkel brauchen zusätzlich eine Transversale durch zwei Parallelen. In beiden Fällen sind die jeweiligen Winkelpaare gleich groß.',
       })
     },
+    // V5 MC — Stufenwinkel erkennen und Größe bestimmen
+    (rng: Rng) => {
+      const set = pick(rng, [
+        {
+          key: 'stufe',
+          question: 'Zwei Parallelen werden von einer Transversalen geschnitten. Welche Winkel sind Stufenwinkel?',
+          correct: 'Winkel an gleicher Stelle an beiden Parallelen',
+          wrong: [
+            'Winkel, die sich an einem Schnittpunkt gegenüberliegen',
+            'Winkel, die an einer Geraden nebeneinanderliegen',
+            'Winkel auf derselben Seite zwischen den Parallelen',
+          ],
+          explanation:
+            'Stufenwinkel liegen an beiden Parallelen an der gleichen Stelle und sind gleich groß. Gegenüberliegende Winkel heißen Scheitelwinkel, nebeneinanderliegende Nebenwinkel.',
+        },
+        {
+          key: 'wechsel',
+          question: 'Zwei Parallelen werden von einer Transversalen geschnitten. Welche Winkel sind Wechselwinkel?',
+          correct: 'Winkel in Z-Form auf verschiedenen Seiten der Transversalen',
+          wrong: [
+            'Winkel an gleicher Stelle an beiden Parallelen',
+            'Winkel, die sich an einem Schnittpunkt gegenüberliegen',
+            'Winkel, die an einer Geraden nebeneinanderliegen',
+          ],
+          explanation:
+            'Wechselwinkel liegen in Z-Form zwischen den Parallelen auf verschiedenen Seiten der Transversalen und sind gleich groß.',
+        },
+      ])
+      const choices = shuffleChoices(rng, fourChoices(set.correct, set.wrong), set.correct)
+      return choicePickTask({
+        question: set.question,
+        choices,
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
+        dedupeKey: `k7scheitel-begriff:${set.key}`,
+      })
+    },
   ),
 })
 
@@ -282,7 +381,7 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
         answerKind: 'integer',
         value: n,
         solution: `n = ${n}`,
-        explanation: `(n − 2) · 180° = ${sum}°  →  n − 2 = ${sum} : 180 = ${n - 2}  →  n = ${n}.`,
+        explanation: `(n − 2) · 180° = ${sum}° → n − 2 = ${sum} : 180 = ${n - 2} → n = ${n}.`,
         dedupeKey: `k7vieleck-tippen:${n}`,
       })
     },
@@ -296,10 +395,11 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
         `${(n - 2) * 90}°`, // falscher Faktor (90 statt 180)
         `360°`, // immer Viereck-Wert angenommen
         `${(n - 3) * 180}°`, // falsche Dreieckszahl
+        `${(n - 1) * 180}°`, // nur 1 statt 2 abgezogen
       ]
       const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({
-        question: `Wie groß ist die Innenwinkelsumme in einem ${n}-Eck?`,
+        question: `Wie groß ist die Innenwinkelsumme in einem ${eckName(n)}${n === 3 || n === 4 ? '' : ` (${n} Ecken)`}?`,
         choices,
         correct,
         solution: correct,
@@ -310,8 +410,6 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
     // V3 Portfolio — Innenwinkel eines regelmäßigen n-Ecks berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
       const regularPairs: Array<{ n: number; interior: number }> = [
-        { n: 3, interior: 60 },
-        { n: 4, interior: 90 },
         { n: 5, interior: 108 },
         { n: 6, interior: 120 },
         { n: 8, interior: 135 },
@@ -325,7 +423,7 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
       const { n, interior } = pick(rng, regularPairs)
       const startAngle = pick(rng, START_ANGLES)
       return angleProtractorTask({
-        question: `Zeichne mit dem Geodreieck einen Innenwinkel eines regelmäßigen ${n}-Ecks. Alle ${n} Innenwinkel sind gleich groß.`,
+        question: `Zeichne mit dem Geodreieck einen Innenwinkel eines regelmäßigen ${eckName(n)}s mit ${n} Ecken. Alle ${n} Innenwinkel sind gleich groß.`,
         mode: 'draw',
         angle: interior,
         startAngle,
@@ -338,9 +436,9 @@ const winkelsummeVieleckNeu: Topic = asNeuTopic('k7-lb1-winkelsumme-vieleck', {
     // V4 MC — Konzeptfrage (Begründung der Formel)
     (rng: Rng) => {
       const correct =
-        'Weil sich ein konvexes n-Eck von einer Ecke aus durch Diagonalen in (n − 2) Dreiecke zerlegen lässt und jedes Dreieck 180° Winkelsumme hat.'
-      const wrong1 = 'Weil jedes Vieleck aus genau zwei Dreiecken besteht.'
-      const wrong2 = 'Weil jede Ecke eines Vielecks automatisch 180° misst.'
+        'Weil sich ein n-Eck in (n − 2) Dreiecke zerlegen lässt, die je 180° haben.'
+      const wrong1 = 'Weil jedes Vieleck aus zwei Dreiecken besteht, die je 180° haben.'
+      const wrong2 = 'Weil jede Ecke eines Vielecks 180° misst und man diese addiert.'
       const wrong3 = 'Weil man die Anzahl der Seiten einfach mit 180° multipliziert.'
       const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
       return choicePickTask({
@@ -370,7 +468,8 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
   generate: mixedVariants(
     // V1 Tippen — umgekehrte Richtung: aus dem Basiswinkel den Spitzenwinkel bestimmen
     (rng: Rng) => {
-      const basis = randInt(rng, 10, 80)
+      let basis = randInt(rng, 10, 80)
+      if (basis === 60) basis = 65 // gleichseitig: Spitzenwinkel = Basiswinkel verrät die Lösung
       const spitze = 180 - 2 * basis
       return valueTask({
         question: `In einem gleichschenkligen Dreieck sind beide Basiswinkel gleich groß und betragen je ${basis}°. Wie groß ist der Winkel an der Spitze?`,
@@ -384,13 +483,16 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
     },
     // V2 MC — typische Fehler
     (rng: Rng) => {
-      const apex = randInt(rng, 10, 70) * 2
+      let apex = randInt(rng, 10, 70) * 2
+      if (apex === 60) apex = 64 // gleichseitig: Spitzenwinkel = Basiswinkel verrät die Lösung
       const base = (180 - apex) / 2
       const correct = `${base}°`
       const wrong1 = `${apex / 2}°` // teilt den Spitzenwinkel statt (180° − Spitze)
       const wrong2 = `${180 - apex}°` // vergisst die Division durch 2
       const wrong3 = `${(360 - apex) / 2}°` // verwendet 360° statt 180°
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong4 = `${base + 10}°` // Rechenfehler um 10°
+      const wrong5 = `${base - 10}°` // Rechenfehler um 10°
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4, wrong5]), correct)
       return choicePickTask({
         question: `In einem gleichschenkligen Dreieck ist der Winkel an der Spitze ${apex}°. Wie groß ist jeder Basiswinkel?`,
         choices,
@@ -402,11 +504,12 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
     },
     // V3 Portfolio — Basiswinkel berechnen und mit dem Geodreieck zeichnen
     (rng: Rng) => {
-      const apex = randInt(rng, 10, 70) * 2
+      let apex = randInt(rng, 10, 70) * 2
+      if (apex === 60) apex = 64 // gleichseitig: Spitzenwinkel = Basiswinkel verrät die Lösung
       const base = (180 - apex) / 2
       const startAngle = pick(rng, START_ANGLES)
       return angleProtractorTask({
-        question: `Ein gleichschenkliges Dreieck hat an der Spitze einen Winkel von ${apex}°. Zeichne mit dem Geodreieck einen der beiden Basiswinkel.`,
+        question: `Ein gleichschenkliges Dreieck hat an der Spitze einen Winkel von ${apex}°. Zeichne mit dem Geodreieck einen der beiden Basiswinkel (die Winkel an den Enden der Basis).`,
         mode: 'draw',
         angle: base,
         startAngle,
@@ -439,6 +542,7 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
 const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-schritte', {
   id: 'k7-lb1-mittelsenkrechte-schritte__neu',
   title: 'Mittelsenkrechte: Konstruktionsschritte',
+  // Titel bleibt identisch mit dem Hauptthema (math7.ts); die Mittelpunkt-Varianten üben die Eigenschaft der Konstruktion.
   hint: 'Jeder Punkt auf der Mittelsenkrechten ist von A und B gleich weit entfernt.',
   pointsPerTask: 10,
   difficulty: 2,
@@ -481,7 +585,7 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
         answerKind: 'integer',
         value: mid,
         solution: `x = ${signed(mid)}`,
-        explanation: `Die Mittelsenkrechte schneidet AB immer im Mittelpunkt: x = (${a} + ${b}) : 2 = ${mid}.`,
+        explanation: `Die Mittelsenkrechte schneidet AB immer im Mittelpunkt: x = (${signed(a)} + ${num(b)}) : 2 = ${signed(mid)}.`,
         dedupeKey: `k7mittel-tippen:${a}:${b}`,
       })
     },
@@ -490,8 +594,12 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
       const a = randInt(rng, -8, 8)
       const b = a + 2 * randInt(rng, 1, 6)
       const mid = (a + b) / 2
-      const min = Math.min(a, b) - 3
-      const max = Math.max(a, b) + 3
+      // Ungleiche Ränder: Die Mitte der Zahlengeraden darf nie der gesuchte Mittelpunkt sein.
+      const left = randInt(rng, 2, 5)
+      let right = randInt(rng, 2, 5)
+      if (right === left) right = left === 5 ? 2 : left + 1
+      const min = Math.min(a, b) - left
+      const max = Math.max(a, b) + right
       return numberLineTask({
         question: `A liegt bei x = ${signed(a)}, B liegt bei x = ${signed(b)}. Markiere den Punkt, in dem die Mittelsenkrechte die Strecke AB schneidet.`,
         min,
@@ -499,7 +607,7 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
         step: 1,
         value: mid,
         solution: `x = ${signed(mid)}`,
-        explanation: `Der Schnittpunkt mit der Mittelsenkrechten ist der Mittelpunkt: (${a} + ${b}) : 2 = ${mid}.`,
+        explanation: `Der Schnittpunkt mit der Mittelsenkrechten ist der Mittelpunkt: (${signed(a)} + ${num(b)}) : 2 = ${signed(mid)}.`,
       })
     },
     // V4 MC — Konzeptfrage
@@ -538,7 +646,7 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
         sameRadius: true,
         minRadius: half,
         solution: `Zwei Kreisbögen mit gleichem Radius (größer als ${half} cm) um A und um B`,
-        explanation: `Die Punkte der Mittelsenkrechten sind von A und B gleich weit entfernt. Darum brauchst du um A und um B Kreisbögen mit demselben Radius. Ist der Radius kleiner als ${half} cm (die Hälfte von AB), erreichen sich die Bögen nicht und schneiden sich nicht. Zum Beispiel passt r = ${r} cm.`,
+        explanation: `Die Punkte der Mittelsenkrechten sind von A und B gleich weit entfernt. Darum brauchst du um A und um B Kreisbögen mit demselben Radius. Ist der Radius kleiner als ${half} cm (die Hälfte von AB), berühren oder schneiden sich die Bögen nicht. Zum Beispiel passt r = ${r} cm.`,
         dedupeKey: `k7mittel-zirkel:${len}:${ax}:${ay}`,
       })
     },
@@ -556,8 +664,8 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
       const Q = { x: len / 2, y: -h }
       const fmt = (v: number) => formatDe(v)
       const startScene = emptyCoordinateScene({
-        xRange: [-3, len + 3],
-        yRange: [-5, 5],
+        xRange: [-Math.ceil(r) - 1, len + Math.ceil(r) + 1],
+        yRange: [-Math.ceil(r) - 1, Math.ceil(r) + 1],
         snap: 'half',
         objects: [
           { id: 'A', kind: 'point', x: A.x, y: A.y, label: 'A', fixed: true },
@@ -912,29 +1020,31 @@ const betragNeu: Topic = asNeuTopic('k7-lb2-betrag', {
       const ist = soll + nonZero(rng, -15, 15)
       const value = Math.abs(ist - soll)
       return valueTask({
-        question: `Der Sollwert ist ${soll}, der gemessene Istwert ${ist}. Wie groß ist die Abweichung |Istwert − Sollwert|?`,
+        question: `Ein Thermostat soll ${signed(soll)} °C einstellen, gemessen werden ${signed(ist)} °C. Wie groß ist die Abweichung |Istwert − Sollwert| in Grad Celsius?`,
+        unit: '°C',
         answerKind: 'integer',
         value,
-        solution: `${value}`,
-        explanation: `|${num(ist)} − ${num(soll)}| = |${ist - soll}| = ${value}.`,
+        solution: `${value} °C`,
+        explanation: `|${num(ist)} − ${num(soll)}| = |${signed(ist - soll)}| = ${value}. Die Abweichung beträgt ${value} °C.`,
         dedupeKey: `k7betrag-tippen:${soll}:${ist}`,
       })
     },
     // V2 MC — typischer Fehler: Betrag wird nicht gebildet
     (rng: Rng) => {
-      const a = nonZero(rng, -30, 30)
+      const a = -randInt(rng, 2, 30)
       const value = Math.abs(a)
       const correct = `${value}`
-      const wrong1 = `${a}` // kein Betrag gebildet
-      const wrong2 = `${-value}` // Vorzeichen falsch gesetzt
-      const wrong3 = `${value - 1}` // Rechenfehler
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong1 = signed(a) // kein Betrag gebildet
+      const wrong2 = `${value - 1}` // Rechenfehler
+      const wrong3 = `${value + 1}` // Rechenfehler
+      const wrong4 = signed(a - 1) // Vorzeichen behalten und verrechnet
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
-        question: `Berechne den Betrag: |${a}|`,
+        question: `Berechne den Betrag: |${signed(a)}|`,
         choices,
         correct,
         solution: correct,
-        explanation: `Der Betrag ist der Abstand von 0 auf dem Zahlenstrahl und daher nie negativ: |${a}| = ${value}.`,
+        explanation: `Der Betrag ist der Abstand von 0 auf dem Zahlenstrahl und daher nie negativ: |${signed(a)}| = ${value}.`,
         dedupeKey: `k7betrag-mc:${a}`,
       })
     },
@@ -947,40 +1057,40 @@ const betragNeu: Topic = asNeuTopic('k7-lb2-betrag', {
         if (v === 0 || Math.abs(v) === target || distractors.includes(v)) continue
         distractors.push(v)
       }
-      const correctLabels = [`${target}`, `${-target}`]
+      const correctLabels = [`${target}`, signed(-target)]
       return multiSelectTask({
         question: `Welche der folgenden Zahlen haben den Betrag ${target}?`,
-        choices: [...correctLabels, ...distractors.map(String)],
+        choices: [...correctLabels, ...distractors.map(signed)],
         correct: correctLabels,
-        solution: `${target} und ${-target}`,
-        explanation: `|${target}| = ${target} und |${-target}| = ${target}. Die anderen Zahlen haben einen anderen Betrag.`,
+        solution: `${target} und ${signed(-target)}`,
+        explanation: `|${target}| = ${target} und |${signed(-target)}| = ${target}. Die anderen Zahlen haben einen anderen Betrag.`,
         instruction: 'Tippe alle Zahlen mit diesem Betrag:',
+        dedupeKey: `k7betrag-multi:${target}`,
       })
     },
-    // V4 Zahlengerade — negative und positive Zahlen einordnen (Betrag = Abstand von 0)
+    // V4 Zahlengerade — Betrag als Abstand von 0: Zahlen nach Beschreibung (Betrag, Seite) platzieren
     (rng: Rng) => {
-      const labels = pick(rng, [
-        ['-2,5', '-0,5', '1,5', '2,5'],
-        ['-2,5', '-1,5', '0,5', '1,5'],
-        ['-1,5', '-0,5', '1,5', '2,5'],
-      ])
-      const items = labels.map((label, i) => ({ id: String.fromCharCode(97 + i), label, value: Number(label.replace(',', '.')) }))
-      const hinweis = items
-        .map((it) => {
-          const k = Math.round(Math.abs(it.value) * 2)
-          return `${it.label}: ${k} ${k === 1 ? 'Strich' : 'Striche'} ${it.value < 0 ? 'links' : 'rechts'} von der 0`
-        })
-        .join('; ')
+      const werte = [0.5, 1.5, 2.5]
+      const b = pick(rng, werte)
+      const c = pick(rng, werte.filter((w) => w !== b))
+      const d = pick(rng, werte.filter((w) => w !== b))
+      const zahl = (v: number): string => `${v < 0 ? '−' : ''}${formatDe(Math.abs(v))}`
+      const items = [
+        { id: 'kb', label: 'B', value: b },
+        { id: 'kd', label: 'D', value: d },
+        { id: 'ka', label: 'A', value: -b },
+        { id: 'kc', label: 'C', value: -c },
+      ]
       return numberLineMultiTask({
-        question: `Ordne die Zahlen ${[labels[2], labels[0], labels[3]].join('; ')} und ${labels[1]} auf der Zahlengeraden ein. Zwischen zwei beschrifteten Strichen liegen zwei gleich große Abschnitte.`,
+        question: `Ordne die Karten A, B, C und D auf der Zahlengeraden ein. A hat den Betrag ${formatDe(b)} und liegt links von der 0. B hat denselben Betrag wie A und liegt rechts von der 0. C liegt links von der 0 und hat den Abstand ${formatDe(c)} zur 0. D hat den Betrag ${formatDe(d)} und liegt rechts von der 0. Zwischen zwei beschrifteten Strichen liegen zwei gleich große Abschnitte.`,
         min: -3,
         max: 3,
         step: 0.5,
         labelEvery: 2,
         items,
-        solution: `${labels.join(' < ')} (von links nach rechts)`,
-        explanation: `Ein Abschnitt ist 0,5 lang. Negative Zahlen liegen links von der 0, positive rechts. ${hinweis}. Zahlen mit gleichem Betrag haben den gleichen Abstand zur 0 und liegen spiegelbildlich zur 0.`,
-        dedupeKey: `k7-nlmulti-betrag:${labels.join(',')}`,
+        solution: items.map((it) => `${it.label} = ${zahl(it.value)}`).join('; '),
+        explanation: `Der Betrag ist der Abstand zur 0. A und B haben beide den Abstand ${formatDe(b)} und liegen spiegelbildlich zur 0: A = ${zahl(-b)}, B = ${zahl(b)}. C liegt links, also negativ: C = ${zahl(-c)}. D liegt rechts, also positiv: D = ${zahl(d)}.`,
+        dedupeKey: `k7-nlmulti-betrag:${b}:${c}:${d}`,
       })
     },
   ),
