@@ -51,10 +51,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Gymnasium",
       "subject": "Mathematik",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/gym-sachsen-anhalt.json",
-      "size": 46301,
-      "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10."
+      "size": 46357,
+      "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10. 1.2.0: dublettenfreies 1:n-Mapping nach Lehrplan (E5a)."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-hs",

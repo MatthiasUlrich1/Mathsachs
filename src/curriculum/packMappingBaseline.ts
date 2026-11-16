@@ -6,19 +6,6 @@
  * bei Einträgen, die nicht mehr auftreten.
  */
 export const KNOWN_BEFORE_E5: Record<string, readonly string[]> = {
-  "repeat:gym-sachsen-anhalt": [
-    "gym-sachsen-anhalt: mathematik-jgs-11-12:k1112-lb2-betrag-vektor <- st-k10-vektor-betrag, st-k1112-betrag",
-    "gym-sachsen-anhalt: mathematik-jgs-11-12:k1112-lb2-skalarprodukt <- st-k10-vektor-skalar, st-k1112-skalar",
-    "gym-sachsen-anhalt: mathematik-klasse-10:k10-lb1-prozentuale-zunahme <- st-k10-zunahme, st-k7-preisaenderung",
-    "gym-sachsen-anhalt: mathematik-klasse-10:k10-lb1-zinsen <- st-k10-zinsen, st-k7-zinsen",
-    "gym-sachsen-anhalt: mathematik-klasse-10:k10-lb1-zinseszins <- st-k10-zinseszins, st-k7-zinseszins",
-    "gym-sachsen-anhalt: mathematik-klasse-6:lb5-anteil-prozent <- st-k6-anteil-prozent, st-k7-prozent",
-    "gym-sachsen-anhalt: mathematik-klasse-7:k7-lb4-spannweite <- st-k7-spannweite, st-k9-spannweite",
-  ],
-  "ambiguous:gym-sachsen-anhalt": [
-    "gym-sachsen-anhalt: st-k5-oberflaeche-quader -> lb4-oberflaeche-quader",
-    "gym-sachsen-anhalt: st-k5-volumen-quader -> lb4-volumen-quader",
-  ],
   "repeat:oberschule-sachsen-hs": [
     "oberschule-sachsen-hs: mathematik-klasse-10:k10-lb1-zinsen <- os-hs-k8-lb1-zinsen, os-hs-k8-lb5-zinsen",
     "oberschule-sachsen-hs: mathematik-klasse-5:lb2-grafische-brueche <- os-hs-k7-lb2-kreisdiagramm, os-k5-lb2-anteil",

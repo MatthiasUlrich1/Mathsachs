@@ -4,8 +4,8 @@
   "region": "Sachsen-Anhalt",
   "school": "Gymnasium",
   "subject": "Mathematik",
-  "version": "1.1.0",
-  "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10.",
+  "version": "1.2.0",
+  "changelog": "Lehrplan-Teilaspekt Differentialrechnung (11/12). Alias auf Gym-Sachsen-Generatoren. tasksPerRound 10. 1.2.0: dublettenfreies 1:n-Mapping nach Lehrplan (E5a).",
   "official": [
     {
       "id": "st-gym-klasse-5",

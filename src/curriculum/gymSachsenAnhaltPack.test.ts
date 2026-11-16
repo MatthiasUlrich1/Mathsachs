@@ -15,7 +15,7 @@ import { gymGeneratorCatalog, isPlayableOfficialTopic } from './oberschuleGenera
 import {
   allOfficialStTopics,
   buildGymSachsenAnhaltPack,
-  ST_GENERATOR_MAP,
+  ST_TOPIC_MAPPINGS,
 } from './gymSachsenAnhaltPack'
 import { GYM_SACHSEN_ANHALT_PACK_ID, parseCurriculumPack, parseManifest } from './pack'
 import { getLoadedIds, listVisibleGradeModules } from './registry'
@@ -44,7 +44,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     expect(parsed?.region).toBe('Sachsen-Anhalt')
     expect(parsed?.school).toBe('Gymnasium')
     expect(parsed?.subject).toBe('Mathematik')
-    expect(parsed?.version).toBe('1.1.0')
+    expect(parsed?.version).toBe('1.2.0')
     expect(parsed?.extras).toEqual([])
   })
 
@@ -59,11 +59,11 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
 
   it('maps aliases to existing Gym generators and leaves gaps unmapped', async () => {
     const catalog = await gymGeneratorCatalog()
-    for (const [stId, gymId] of Object.entries(ST_GENERATOR_MAP)) {
-      expect(catalog.has(gymId), `${stId} → ${gymId}`).toBe(true)
+    for (const [stId, m] of Object.entries(ST_TOPIC_MAPPINGS)) {
+      for (const gymId of m.sources) expect(catalog.has(gymId), `${stId} → ${gymId}`).toBe(true)
       expect(isPlayableOfficialTopic(stId)).toBe(true)
     }
-    const outline = allOfficialStTopics().filter((t) => !ST_GENERATOR_MAP[t.id])
+    const outline = allOfficialStTopics().filter((t) => !ST_TOPIC_MAPPINGS[t.id])
     expect(outline.length).toBeGreaterThan(0)
     expect(outline.some((t) => /Logarithm|Boxplot|Normalverteilung|bedingte/i.test(t.title))).toBe(
       true,
@@ -104,7 +104,7 @@ describe('Gymnasium Sachsen-Anhalt Mathematik pack', () => {
     const manifest = parseManifest(
       JSON.parse(readFileSync(join(curriculaDir, 'manifest.json'), 'utf8')),
     )
-    expect(file?.version).toBe('1.1.0')
+    expect(file?.version).toBe('1.2.0')
     expect(file?.contentHash).toBe(pack.contentHash)
     expect(manifest?.packs.map((p) => p.id)).toContain(GYM_SACHSEN_ANHALT_PACK_ID)
     expect(manifest?.packs.find((p) => p.id === GYM_SACHSEN_ANHALT_PACK_ID)?.region).toBe(
