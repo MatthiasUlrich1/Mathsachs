@@ -3,8 +3,8 @@ import { join } from 'node:path'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { describe, expect, it } from 'vitest'
-import { CorrectionMark } from './CorrectionMark'
-import { markStateForPhase } from '../lib/correctionMarkState'
+import { CheckAnnouncement, CorrectionMark } from './CorrectionMark'
+import { announcementForPhase, markStateForPhase } from '../lib/correctionMarkState'
 
 const css = readFileSync(
   join(process.cwd(), 'src/components/CorrectionMark.css'),
@@ -18,14 +18,47 @@ describe('markStateForPhase', () => {
       kind: 'cross',
       label: 'Leider falsch',
     })
-    expect(markStateForPhase('partial')?.kind).toBe('cross')
+    expect(markStateForPhase('partial')).toEqual({
+      kind: 'half',
+      label: 'Teilweise richtig',
+    })
   })
   it('shows nothing while answering', () => {
     expect(markStateForPhase('answering')).toBeNull()
   })
 })
 
+describe('announcementForPhase + CheckAnnouncement', () => {
+  it('is empty while answering and texts the result afterwards', () => {
+    expect(announcementForPhase('answering', 5, true)).toBe('')
+    expect(announcementForPhase('correct', 5, true)).toBe('Richtig! Plus 5 Punkte.')
+    expect(announcementForPhase('correct', 5, false)).toBe('Richtig!')
+    expect(announcementForPhase('partial', 0, true)).toBe('Teilweise richtig.')
+    expect(announcementForPhase('wrong', 0, true)).toBe('Leider falsch.')
+  })
+  it('live region exists in the answering phase and holds the text after checking', () => {
+    const before = renderToStaticMarkup(createElement(CheckAnnouncement, { text: '' }))
+    expect(before).toContain('role="status"')
+    expect(before).toContain('aria-live="polite"')
+    const after = renderToStaticMarkup(
+      createElement(CheckAnnouncement, {
+        text: announcementForPhase('wrong', 0, true),
+      }),
+    )
+    expect(after).toContain('role="status"')
+    expect(after).toContain('Leider falsch.')
+  })
+})
+
 describe('CorrectionMark', () => {
+  it('renders half as tick in parentheses', () => {
+    const html = renderToStaticMarkup(
+      createElement(CorrectionMark, { kind: 'half', label: 'Teilweise richtig' }),
+    )
+    expect(html).toContain('correction-mark--half')
+    expect(html).toContain('correction-mark__parens')
+    expect(html).toContain('correction-mark__tick')
+  })
   it('renders a tick with accessible text', () => {
     const html = renderToStaticMarkup(
       createElement(CorrectionMark, { kind: 'tick', label: 'Richtig' }),

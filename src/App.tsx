@@ -875,9 +875,7 @@ export default function App() {
       </header>
 
       <div className="sheet">
-        <div className="sheet__margin" aria-hidden="true">
-          <span className="sheet__margin-slot" />
-        </div>
+        <div className="sheet__margin" aria-hidden="true" />
         <div className="sheet__body">
           {view.name === 'browse' && (
             <section className="card">

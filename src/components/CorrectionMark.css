@@ -1,26 +1,18 @@
 /*
  * Correction mark drawn into the red margin. The anchor wraps the task and
- * pulls the mark out into the margin column of div.sheet (App.css:
- * 40px margin + 20px body padding, 28px + 12px below 560px).
+ * pulls the mark out into the margin column of div.sheet, using the
+ * --sheet-margin-w / --sheet-body-pad-left custom properties from App.css.
  */
 .correction-anchor {
   position: relative;
-  --margin-w: 40px;
-  --body-pad: 20px;
 }
 
 .correction-anchor > .correction-mark {
   position: absolute;
   top: 0;
-  left: calc(-1 * (var(--margin-w) + var(--body-pad)));
-  width: calc(var(--margin-w) - 4px); /* minus the double margin line */
-}
-
-@media (max-width: 560px) {
-  .correction-anchor {
-    --margin-w: 28px;
-    --body-pad: 12px;
-  }
+  bottom: 0; /* centred vertically on the prompt (flex) */
+  left: calc(-1 * (var(--sheet-margin-w) + var(--sheet-body-pad-left)));
+  width: calc(var(--sheet-margin-w) - 4px); /* minus the double margin line */
 }
 
 .correction-mark {
@@ -52,16 +44,31 @@
   color: var(--tick);
 }
 
+/* both: a tick in pencil parentheses */
 .correction-mark--cross {
   color: var(--correction);
 }
 
+.correction-mark--half .correction-mark__tick {
+  stroke: var(--tick);
+}
+
+.correction-mark--half .correction-mark__parens {
+  stroke: var(--pencil);
+}
+
 @keyframes correction-draw {
+  /* opacity ramp hides the round-cap dot of a zero-length dash at frame 0 */
   from {
     stroke-dashoffset: 1;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
   }
   to {
     stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 

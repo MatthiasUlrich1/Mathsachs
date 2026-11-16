@@ -20,8 +20,8 @@ import { AnswerInput } from './AnswerInput'
 import { taskReportChoices, taskReportSolution } from '../lib/taskReportSnapshot'
 import { ReportFaultyTask } from './ReportFaultyTask'
 import { initTaskInput, TaskInteractive, TaskVisual } from './TaskMedia'
-import { CorrectionMark } from './CorrectionMark'
-import { markStateForPhase } from '../lib/correctionMarkState'
+import { CheckAnnouncement, CorrectionMark } from './CorrectionMark'
+import { announcementForPhase, markStateForPhase } from '../lib/correctionMarkState'
 
 export type PracticeMode = 'practice' | 'berichtigung' | 'replay'
 
@@ -189,9 +189,14 @@ export function PracticeSession({
       ? `${activeTopic.title} · Seed ${activeSeed}`
       : activeArea
 
-  // The feedback text below already says Richtig / Leider falsch, so the mark
-  // is decorative (announce=false) and screen readers hear it exactly once.
+  // The live region announces the result once; the mark and the visible
+  // feedback headline are decorative for screen readers (aria-hidden).
   const markState = markStateForPhase(phase)
+  const announcement = announcementForPhase(
+    phase,
+    phase === 'correct' ? lastAwarded || activeTopic.pointsPerTask : lastAwarded,
+    !skipProtocol,
+  )
   const showInteractiveFeedback = phase === 'partial' || phase === 'wrong'
   const partResults =
     showInteractiveFeedback && lastGrade?.parts ? lastGrade.parts : undefined
@@ -256,7 +261,11 @@ export function PracticeSession({
         <span>
           Aufgabe {index} von {totalTasks}
         </span>
-        {!skipProtocol && <span>Punkte: {points}</span>}
+        {!skipProtocol && (
+          <span>
+            Punkte: <span className="reward">{points}</span>
+          </span>
+        )}
         <span>{accuracy}%</span>
       </div>
       <div className="progress">
@@ -364,11 +373,19 @@ export function PracticeSession({
         </button>
       )}
 
+      {/* Persistent live region: exists while answering, so the result is announced once. */}
+      <CheckAnnouncement text={announcement} />
+
       {phase === 'correct' && (
         <div className="feedback feedback--good">
-          <strong>
+          <strong aria-hidden="true">
             Richtig!
-            {!skipProtocol ? ` +${lastAwarded || activeTopic.pointsPerTask} Punkte` : ''}
+            {!skipProtocol && (
+              <>
+                {' '}
+                <span className="reward">+{lastAwarded || activeTopic.pointsPerTask}</span> Punkte
+              </>
+            )}
           </strong>
           <button type="button" className="primary" onClick={next}>
             {index >= totalTasks ? 'Runde abschließen' : 'Nächste Aufgabe'}
@@ -378,12 +395,17 @@ export function PracticeSession({
 
       {phase === 'partial' && (
         <div className="feedback feedback--partial">
-          <strong>
+          <strong aria-hidden="true">
             Teilweise richtig
             {lastGrade?.parts
               ? ` (${lastGrade.parts.filter(Boolean).length} von ${lastGrade.parts.length})`
               : ''}
-            {!skipProtocol && lastAwarded > 0 ? ` · +${lastAwarded} Punkte` : ''}
+            {!skipProtocol && lastAwarded > 0 && (
+              <>
+                {' · '}
+                <span className="reward">+{lastAwarded}</span> Punkte
+              </>
+            )}
           </strong>
           <p>
             Vollständige Lösung: <span className="solution">{task.solution}</span>
@@ -409,7 +431,7 @@ export function PracticeSession({
 
       {phase === 'wrong' && (
         <div className="feedback feedback--bad">
-          <strong>Leider falsch.</strong>
+          <strong aria-hidden="true">Leider falsch.</strong>
           <p>
             Richtige Lösung: <span className="solution">{task.solution}</span>
           </p>

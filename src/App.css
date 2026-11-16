@@ -269,8 +269,11 @@
  * (div.sheet = app shell; article.sheet = printable worksheet/protocol below.)
  */
 div.sheet {
+  /* Margin geometry: also used by CorrectionMark.css to place the marks */
+  --sheet-margin-w: 40px;
+  --sheet-body-pad-left: 20px;
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
+  grid-template-columns: var(--sheet-margin-w) minmax(0, 1fr);
   min-width: 0;
   background: var(--surface);
   border: 1px solid var(--line);
@@ -285,15 +288,9 @@ div.sheet {
   border-right: 4px double var(--correction);
 }
 
-/* Empty on purpose: D4 draws the correction mark (check/cross/f) here. */
-.sheet__margin-slot {
-  position: absolute;
-  inset: 0;
-}
-
 .sheet__body {
   min-width: 0;
-  padding: 24px 24px 28px 20px;
+  padding: 24px 24px 28px var(--sheet-body-pad-left);
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -315,10 +312,11 @@ div.sheet .card + .card {
 
 @media (max-width: 560px) {
   div.sheet {
-    grid-template-columns: 28px minmax(0, 1fr);
+    --sheet-margin-w: 28px;
+    --sheet-body-pad-left: 12px;
   }
   .sheet__body {
-    padding: 16px 14px 20px 12px;
+    padding: 16px 14px 20px var(--sheet-body-pad-left);
   }
   .topbar {
     padding: 8px 10px;
@@ -1703,6 +1701,30 @@ select.answer-input__field {
   border: 1px solid color-mix(in srgb, var(--correction) 35%, transparent);
 }
 
+/* Reward = highlighter stripe */
+.reward {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-marker);
+  background: linear-gradient(transparent 55%, var(--marker) 55%);
+  padding: 0 4px;
+}
+
+/* Tafel: dark text on the dark board would vanish above the stripe, so the highlighter covers the whole word */
+:root[data-theme='tafel'] .reward {
+  background: var(--marker);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='heft']) .reward {
+    background: var(--marker);
+  }
+}
+
+.prompt--partial {
+  background: color-mix(in srgb, var(--marker) 20%, transparent);
+}
+
 .solution {
   font-weight: 800;
   color: var(--ink);
@@ -2966,8 +2988,9 @@ a.link {
     background: none;
     overflow: visible;
   }
-  .sheet__margin {
-    display: none;
+  .sheet__margin,
+  .correction-mark {
+    display: none !important;
   }
   .sheet__body {
     padding: 0;
