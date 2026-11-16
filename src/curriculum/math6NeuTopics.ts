@@ -52,6 +52,7 @@ import {
   generateValueTableSvg,
 } from '../lib/geometrySvg'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
+import { barChartTableSvg } from '../lib/barChartLogic'
 import { asNeuTopic } from './neuTopic'
 import { TABLE_SURVEYS, TALLY_SURVEYS, surveyBarChartTask } from './barChartSurveys'
 import { COUNT_SURVEYS_ANTEIL, COUNT_SURVEYS_HAEUFIGKEIT, PERCENT_SURVEYS, countPieChartTask, percentPieChartTask } from './pieChartSurveys'
@@ -74,6 +75,51 @@ function fourChoices(correct: string, wrongCandidates: string[]): string[] {
     }
   }
   return out
+}
+
+/** Echter, gekürzter Bruch mit Nenner 2..maxD (Zähler < Nenner, nie eine ganze Zahl). */
+function properFractionNeu(rng: Rng, maxD: number): Fraction {
+  const d = randInt(rng, 2, maxD)
+  return makeFraction(randInt(rng, 1, d - 1), d)
+}
+
+/** Größe mit Einheit: Euro immer mit zwei Nachkommastellen, sonst deutsche Dezimalzahl. */
+function betragNeu(x: number, unit: string): string {
+  return unit === '€' ? euroNeu(x) : `${formatDe(x)} ${unit}`
+}
+
+/** Klasse-6-Tabellen mit 25 Kindern (jedes Kind = 4 %), damit alle relativen Häufigkeiten ganze Prozent sind. */
+const HAEUFIGKEIT_TABELLEN = TABLE_SURVEYS.filter((s) => s.id === 'eis6b' || s.id === 'haustier6d')
+
+/** Drei Dreieckswinkel (Summe 180°), alle zwischen 30° und 110°; gesuchter Winkel c ist nie gleich a oder b (kein Raten). */
+function dreieckWinkelNeu(rng: Rng): [number, number, number] {
+  for (;;) {
+    const a = randInt(rng, 35, 95)
+    const b = randInt(rng, 25, 95)
+    const c = 180 - a - b
+    if (c >= 30 && c <= 110 && a !== b && c !== a && c !== b) return [a, b, c]
+  }
+}
+
+/** Vier Viereckswinkel (Summe 360°): drei gegebene 60°–120°, der vierte 50°–140° und von den anderen verschieden. */
+function viereckWinkelNeu(rng: Rng): [number, number, number, number] {
+  for (;;) {
+    const a = randInt(rng, 60, 120)
+    const b = randInt(rng, 60, 120)
+    const c = randInt(rng, 60, 120)
+    const d = 360 - a - b - c
+    if (d >= 50 && d <= 140 && d !== a && d !== b && d !== c) return [a, b, c, d]
+  }
+}
+
+/** Geldbetrag immer mit zwei Nachkommastellen: 12,50 € */
+function euroNeu(x: number): string {
+  return `${roundTo(x, 2).toFixed(2).replace('.', ',')} €`
+}
+
+/** Reihenfolge-unabhängiger Schlüssel für ein Bruchpaar. */
+function pairKeyNeu(a: Fraction, b: Fraction): string {
+  return [`${a.n}/${a.d}`, `${b.n}/${b.d}`].sort().join('|')
 }
 
 /** Zwei SVGs nebeneinander mit einem Operator-/Vergleichssymbol dazwischen. */
@@ -157,13 +203,19 @@ const kuerzenNeu: Topic = asNeuTopic('lb1-kuerzen', {
     },
     // V3 MC — welcher Bruch ist NICHT vollständig gekürzt
     (rng: Rng) => {
-      const base = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 9))
+      const base = properFractionNeu(rng, 9)
       const k = randInt(rng, 2, 5)
       const correct = `${base.n * k}/${base.d * k}`
-      const reducedA = format(makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10)))
-      const reducedB = format(makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10)))
-      const reducedC = format(makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10)))
-      const labeled = shuffleChoices(rng, fourChoices(correct, [reducedA, reducedB, reducedC]), correct)
+      // Distraktoren: echte, vollständig gekürzte Brüche (nie "1", nie n/n), alle verschieden
+      const reducedPool: string[] = []
+      while (reducedPool.length < 3) {
+        const n = randInt(rng, 1, 8)
+        const d = randInt(rng, n + 1, 10)
+        const f = makeFraction(n, d)
+        const label = format(f)
+        if (f.n === n && f.d === d && label !== correct && !reducedPool.includes(label)) reducedPool.push(label)
+      }
+      const labeled = shuffleChoices(rng, fourChoices(correct, reducedPool), correct)
       return choicePickTask({
         question: 'Welcher der folgenden Brüche ist NICHT vollständig gekürzt?',
         choices: labeled,
@@ -229,8 +281,8 @@ const erweiternNeu: Topic = asNeuTopic('lb1-erweitern', {
   generate: mixedVariants(
     // V1 Tippen — Nenner gesucht (Gegenrichtung zum Haupt-Thema)
     (rng: Rng) => {
-      const n = randInt(rng, 1, 6)
       const d = randInt(rng, 2, 8)
+      const n = randInt(rng, 1, d - 1)
       const k = randInt(rng, 2, 6)
       const targetNum = n * k
       return valueTask({
@@ -244,8 +296,8 @@ const erweiternNeu: Topic = asNeuTopic('lb1-erweitern', {
     },
     // V2 MC — gleichwertigen (erweiterten) Bruch erkennen
     (rng: Rng) => {
-      const n = randInt(rng, 1, 7)
       const d = randInt(rng, 2, 9)
+      const n = randInt(rng, 1, d - 1)
       const k = randInt(rng, 2, 5)
       const correct = `${n * k}/${d * k}`
       const wrong1 = `${n * k}/${d}` // nur Zähler erweitert
@@ -318,8 +370,8 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
   generate: mixedVariants(
     // V1 Tippen — größerer Zahlenraum als im Haupt-Thema
     (rng: Rng) => {
-      const a = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
-      const b = makeFraction(randInt(rng, 1, 11), randInt(rng, 2, 12))
+      const a = properFractionNeu(rng, 12)
+      const b = properFractionNeu(rng, 12)
       const cmp = a.n * b.d - b.n * a.d
       const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
       const left = a.n * b.d
@@ -329,15 +381,15 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         accepted: [symbol],
         solution: symbol,
         explanation: `Gemeinsamer Nenner ${a.d * b.d}: ${format(a)} = ${left}/${a.d * b.d}, ${format(b)} = ${right}/${a.d * b.d}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${format(b)}.`,
-        dedupeKey: `vgl-tippen:${a.n}:${a.d}:${b.n}:${b.d}`,
+        dedupeKey: `vgl-tippen:${pairKeyNeu(a, b)}`,
       })
     },
     // V2 MC — den größeren Bruch erkennen
     (rng: Rng) => {
-      const a = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10))
-      let b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10))
+      const a = properFractionNeu(rng, 10)
+      let b = properFractionNeu(rng, 10)
       while (a.n * b.d === b.n * a.d) {
-        b = makeFraction(randInt(rng, 1, 9), randInt(rng, 2, 10))
+        b = properFractionNeu(rng, 10)
       }
       const aIsBigger = a.n * b.d > b.n * a.d
       const correct = aIsBigger ? format(a) : format(b)
@@ -349,7 +401,7 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         correct,
         solution: correct,
         explanation: `Gemeinsamer Nenner ${a.d * b.d}: ${format(a)} = ${a.n * b.d}/${a.d * b.d}, ${format(b)} = ${b.n * a.d}/${a.d * b.d}. ${correct} ist größer als ${otherLabel}.`,
-        dedupeKey: `vgl-mc:${a.n}:${a.d}:${b.n}:${b.d}`,
+        dedupeKey: `vgl-mc:${pairKeyNeu(a, b)}`,
       })
     },
     // V3 Portfolio — Rastermodell-Vergleich
@@ -375,10 +427,10 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
     },
     // V4 Portfolio — Zahlenstrahl, größeren Wert markieren
     (rng: Rng) => {
-      const a = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
-      let b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+      const a = properFractionNeu(rng, 8)
+      let b = properFractionNeu(rng, 8)
       while (a.n * b.d === b.n * a.d) {
-        b = makeFraction(randInt(rng, 1, 7), randInt(rng, 2, 8))
+        b = properFractionNeu(rng, 8)
       }
       const valueA = toDecimal(a)
       const valueB = toDecimal(b)
@@ -417,7 +469,7 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
         instruction: 'Färbe den größeren Bruch: Tippe auf sein letztes Teil. Mit der roten Linie kannst du die Längen vergleichen.',
         solution: `${big.n}/${big.d}`,
         explanation: `Die Teile reichen von links unterschiedlich weit: ${big.n}/${big.d} ragt weiter als ${small.n}/${small.d}. Rechnerisch: Mit dem gemeinsamen Nenner ${common} ist ${a.n}/${a.d} = ${a.n * b.d}/${common} und ${b.n}/${b.d} = ${b.n * a.d}/${common}. Also ist ${big.n}/${big.d} größer.`,
-        dedupeKey: `vgl-wand:${a.n}:${a.d}:${b.n}:${b.d}`,
+        dedupeKey: `vgl-wand:${pairKeyNeu(a, b)}`,
       })
     },
     // V4 Zahlenstrahl — mehrere Brüche an die richtige Stelle ziehen
@@ -429,7 +481,12 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
       const set = pick(rng, line.sets as Array<Array<[string, number]>>)
       const items = set.map(([label, k], i) => ({ id: String.fromCharCode(97 + i), label, value: k / line.den }))
       const names = set.map(([label]) => label)
-      const hinweis = set.map(([label, k]) => `${label} liegt beim ${k}. Strich nach der 0`).join('; ')
+      const hinweis = set
+        .map(([label, k]) => {
+          const kurz = gcd(k, line.den) > 1 ? ` (${label} = ${k}/${line.den})` : ''
+          return `${label} liegt beim ${k}. Strich nach der 0${kurz}`
+        })
+        .join('; ')
       return numberLineMultiTask({
         question: `Ordne die Brüche ${[names[2], names[0], names[3]].join(', ')} und ${names[1]} auf dem Zahlenstrahl ein. Der Zahlenstrahl geht von 0 bis ${line.max}. Zwischen 0 und 1 liegen ${line.den} gleich große Abschnitte.`,
         min: 0,
@@ -790,7 +847,7 @@ const prozentNeu: Topic = asNeuTopic('lb1-prozent', {
         choices: labeled,
         correct,
         solution: correct,
-        explanation: `${format(f)} · 100 = ${formatDe(value)} %.`,
+        explanation: `Erweitere auf den Nenner 100: ${format(f)} = ${(f.n * 100) / f.d}/100 = ${formatDe(value)} %.`,
         dedupeKey: `proz-mc:${f.n}:${f.d}`,
       })
     },
@@ -1167,82 +1224,119 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
   generate: mixedVariants(
-    // V1 Tippen — neue Kontexte (Rezept, Taschengeld, Buch)
+    // V1 Tippen — neue Kontexte (Rezept, Taschengeld, Buch) mit realistischen Größen
     (rng: Rng) => {
       const d = pick(rng, [2, 3, 4, 5, 8])
       const n = randInt(rng, 1, d - 1)
-      const gesamt = d * randInt(rng, 3, 12)
-      const value = (n / d) * gesamt
       const ctx = pick(rng, [
         {
           id: 'rezept',
           unit: 'g',
+          totals: [120, 200, 240, 300, 360, 400, 480, 500, 600],
           text: (g: number, nn: number, dd: number) =>
             `Ein Rezept braucht ${g} g Mehl. ${nn}/${dd} davon sind Vollkornmehl. Wie viele Gramm Vollkornmehl werden gebraucht?`,
         },
         {
           id: 'taschengeld',
           unit: '€',
+          totals: [12, 16, 20, 24, 30, 40, 48, 60],
           text: (g: number, nn: number, dd: number) =>
-            `Lea hat ${g} € Taschengeld. Sie spart ${nn}/${dd} davon. Wie viele Euro spart sie?`,
+            `Lea hat ${euroNeu(g)} Taschengeld. Sie spart ${nn}/${dd} davon. Wie viel Geld spart sie?`,
         },
         {
           id: 'buch',
           unit: '',
+          totals: [120, 160, 180, 200, 240, 300],
           text: (g: number, nn: number, dd: number) =>
             `Ein Buch hat ${g} Seiten. Tom hat bereits ${nn}/${dd} des Buches gelesen. Wie viele Seiten hat er gelesen?`,
         },
       ])
+      const gesamt = pick(rng, ctx.totals.filter((t) => t % d === 0))
+      const value = (n / d) * gesamt
+      const geld = ctx.id === 'taschengeld'
+      const show = (x: number) => (geld ? euroNeu(x) : formatDe(x))
       return valueTask({
         question: ctx.text(gesamt, n, d),
         unit: ctx.unit || undefined,
         answerKind: 'decimal',
         value,
-        solution: `${formatDe(value)}${ctx.unit ? ' ' + ctx.unit : ''}`,
-        explanation: `${n}/${d} von ${gesamt}: ${gesamt} : ${d} = ${gesamt / d}, dann mal ${n}: ${gesamt / d} · ${n} = ${formatDe(value)}.`,
+        solution: geld ? show(value) : `${formatDe(value)}${ctx.unit ? ' ' + ctx.unit : ''}`,
+        explanation: `${n}/${d} von ${show(gesamt)}: ${show(gesamt)} : ${d} = ${show(gesamt / d)}, dann mal ${n}: ${show(gesamt / d)} · ${n} = ${show(value)}.`,
         dedupeKey: `sach-tippen:${ctx.id}:${n}:${d}:${gesamt}`,
       })
     },
     // V2 MC — Sachaufgabe mit typischen Fehlern als Distraktoren
     (rng: Rng) => {
       const d = pick(rng, [3, 4, 5, 6])
-      const n = randInt(rng, 1, d - 1)
-      const gesamt = d * randInt(rng, 2, 10)
+      let n = randInt(rng, 1, d - 1)
+      if (2 * n === d) n = 1 // 1/2 würde Anteil und Rest gleich machen
+      const ctx = pick(rng, [
+        {
+          id: 'tribuene',
+          text: (g: number) => `Eine Tribüne hat ${g} Sitzplätze. ${n}/${d} davon sind bei einem Spiel besetzt. Wie viele Sitzplätze sind besetzt?`,
+        },
+        {
+          id: 'konzert',
+          text: (g: number) => `Für ein Schulkonzert wurden ${g} Karten gedruckt. ${n}/${d} davon sind schon verkauft. Wie viele Karten sind schon verkauft?`,
+        },
+      ])
+      const gesamt = d * randInt(rng, 20, 60)
       const value = (n / d) * gesamt
       const correct = `${formatDe(value)}`
       const wrong1 = `${formatDe(gesamt - value)}` // Restmenge statt Anteil
       const wrong2 = `${formatDe(gesamt)}` // Gesamtmenge statt Anteil
       const wrong3 = `${formatDe(value * d)}` // falscher Faktor
-      const labeled = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong4 = `${formatDe(gesamt / d)}` // nur ein Teil
+      const wrong5 = `${formatDe(value + gesamt / d)}` // ein Teil zu viel
+      const wrong6 = `${formatDe(value + 2 * d)}`
+      const labeled = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4, wrong5, wrong6]), correct)
       return choicePickTask({
-        question: `In einer Sporthalle gibt es ${gesamt} Plätze. ${n}/${d} davon sind von der 6. Klasse belegt. Wie viele Plätze belegt die 6. Klasse?`,
+        question: ctx.text(gesamt),
         choices: labeled,
         correct,
         solution: correct,
         explanation: `${n}/${d} von ${gesamt}: ${gesamt} : ${d} = ${gesamt / d}, dann mal ${n}: ${gesamt / d} · ${n} = ${correct}.`,
-        dedupeKey: `sach-mc:${n}:${d}:${gesamt}`,
+        dedupeKey: `sach-mc:${ctx.id}:${n}:${d}:${gesamt}`,
       })
     },
-    // V3 Umkehrung — Gesamtmenge gesucht
+    // V3 Umkehrung — Gesamtmenge gesucht (n ≥ 2, damit "n Teile" immer Plural ist)
     (rng: Rng) => {
-      const d = pick(rng, [2, 3, 4, 5])
-      const n = randInt(rng, 1, d - 1)
-      const proTeil = randInt(rng, 2, 20)
+      const d = pick(rng, [3, 4, 5, 6])
+      const n = randInt(rng, 2, d - 1)
+      const ctx = pick(rng, [
+        {
+          id: 'buecherei',
+          lo: 40,
+          hi: 120,
+          unit: 'Bücher',
+          text: (nn: number, dd: number, a: number) =>
+            `Von den Büchern einer Schulbücherei sind ${nn}/${dd} Sachbücher, das sind ${a} Bücher. Wie viele Bücher hat die Bücherei insgesamt?`,
+        },
+        {
+          id: 'schule',
+          lo: 30,
+          hi: 60,
+          unit: 'Kinder',
+          text: (nn: number, dd: number, a: number) =>
+            `${nn}/${dd} der Kinder einer Schule fahren mit dem Bus zur Schule, das sind ${a} Kinder. Wie viele Kinder hat die Schule insgesamt?`,
+        },
+      ])
+      const proTeil = randInt(rng, ctx.lo, ctx.hi)
       const anteilBetrag = proTeil * n
       const gesamt = proTeil * d
       return valueTask({
-        question: `${n}/${d} einer Schulbücherei sind ${anteilBetrag} Bücher. Wie viele Bücher hat die Bücherei insgesamt?`,
-        unit: 'Bücher',
+        question: ctx.text(n, d, anteilBetrag),
+        unit: ctx.unit,
         answerKind: 'integer',
         value: gesamt,
-        solution: `${gesamt} Bücher`,
-        explanation: `${n} Teile entsprechen ${anteilBetrag} Büchern, also entspricht 1 Teil ${anteilBetrag} : ${n} = ${proTeil} Büchern. Das Ganze (${d} Teile) sind dann ${proTeil} · ${d} = ${gesamt} Bücher.`,
-        dedupeKey: `sach-reverse:${n}:${d}:${anteilBetrag}`,
+        solution: `${gesamt} ${ctx.unit}`,
+        explanation: `${n} Teile entsprechen ${anteilBetrag} ${ctx.unit}, also entspricht 1 Teil ${anteilBetrag} : ${n} = ${proTeil} ${ctx.unit}. Das Ganze (${d} Teile) sind dann ${proTeil} · ${d} = ${gesamt} ${ctx.unit}.`,
+        dedupeKey: `sach-reverse:${ctx.id}:${n}:${d}:${anteilBetrag}`,
       })
     },
     // V4 Teilwerkzeug — gerecht verteilen: Bruch als Quotient (Anzahl der Teile selbst finden)
     (rng: Rng) => {
-      const [count, persons] = pick(rng, [[4, 3], [3, 2], [3, 5], [4, 5], [2, 6], [3, 4]] as Array<[number, number]>)
+      const [count, persons] = pick(rng, [[4, 3], [3, 2], [2, 6], [4, 6], [3, 6], [4, 5]] as Array<[number, number]>)
       const treat = pick(rng, [
         { shape: 'bar' as const, art: 'Eine', one: 'Schokoladentafel', many: 'Schokoladentafeln' },
         { shape: 'bar' as const, art: 'Ein', one: 'Schokoriegel', many: 'Schokoriegel' },
@@ -1351,24 +1445,52 @@ const proportionalNeu: Topic = asNeuTopic('lb2-proportional', {
     },
     // V4 MC — Konzept: Eigenschaften einer proportionalen Zuordnung
     (rng: Rng) => {
-      const correct = 'Der Quotient y : x ist für alle Wertepaare gleich groß.'
-      const wrong1 = 'Das Produkt x · y ist für alle Wertepaare gleich groß.'
-      const wrong2 = 'Je größer x wird, desto kleiner wird y.'
-      const wrong3 = 'Der Graph ist eine Gerade, die nicht durch den Ursprung verläuft.'
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const sets = [
+        {
+          id: 'quotient',
+          question: 'Welche Aussage über eine proportionale Zuordnung ist richtig?',
+          correct: 'Der Quotient y : x ist für alle Wertepaare gleich groß.',
+          wrong: [
+            'Das Produkt x · y ist für alle Wertepaare gleich groß.',
+            'Je größer x wird, desto kleiner wird y.',
+            'Der Graph ist eine Gerade, die nicht durch den Ursprung verläuft.',
+          ],
+          explanation:
+            'Bei einer proportionalen Zuordnung ist der Quotient y : x = k konstant. Ein konstantes Produkt kennzeichnet dagegen eine antiproportionale Zuordnung, und der Graph einer proportionalen Zuordnung ist eine Ursprungsgerade (sie verläuft durch (0|0)).',
+        },
+        {
+          id: 'verdoppeln',
+          question: 'Bei einer proportionalen Zuordnung wird x verdoppelt. Was passiert mit y?',
+          correct: 'y wird ebenfalls verdoppelt.',
+          wrong: ['y wird halbiert.', 'y bleibt gleich.', 'y wird um 2 größer.'],
+          explanation:
+            'Wegen y = k · x ändert sich y im selben Verhältnis wie x: Wird x verdoppelt, wird auch y verdoppelt. Halbiert würde y bei einer antiproportionalen Zuordnung.',
+        },
+        {
+          id: 'graph',
+          question: 'Wie sieht der Graph einer proportionalen Zuordnung aus?',
+          correct: 'Er ist eine Gerade durch den Ursprung.',
+          wrong: ['Er ist eine Gerade, die die y-Achse bei 1 schneidet.', 'Er ist eine gekrümmte Kurve.', 'Er ist eine waagerechte Gerade.'],
+          explanation:
+            'Wegen y = k · x gehört zu x = 0 immer y = 0. Alle Punkte liegen auf einer Geraden, die durch (0|0) verläuft.',
+        },
+      ]
+      const set = pick(rng, sets)
+      const choices = shuffleChoices(rng, fourChoices(set.correct, set.wrong), set.correct)
       return choicePickTask({
-        question: 'Welche Aussage über eine proportionale Zuordnung ist richtig?',
+        question: set.question,
         choices,
-        correct,
-        solution: correct,
-        explanation:
-          'Bei einer proportionalen Zuordnung ist der Quotient y : x = k konstant. Ein konstantes Produkt kennzeichnet dagegen eine antiproportionale Zuordnung, und der Graph einer proportionalen Zuordnung ist eine Ursprungsgerade (sie verläuft durch (0|0)).',
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
+        dedupeKey: `lb2prop-konzept:${set.id}`,
       })
     },
     // V5 Verhältnisleiste (Färben) — Mischung als Verhältnis darstellen
     (rng: Rng) => {
       const t = (n: number) => (n === 1 ? '1 Teil' : `${n} Teile`)
       const td = (n: number) => (n === 1 ? '1 Teil' : `${n} Teilen`)
+      const felder = (n: number) => (n === 1 ? '1 Feld' : `${n} Felder`)
       const mix = pick(rng, [
         { text: (a: number, b: number) => `Für einen Saftdrink mischst du ${t(a)} Apfelsaft mit ${td(b)} Wasser.`, labels: ['Apfelsaft', 'Wasser'] as [string, string], what: 'saft' },
         { text: (a: number, b: number) => `Für Mörtel werden ${t(a)} Zement und ${t(b)} Sand gemischt.`, labels: ['Zement', 'Sand'] as [string, string], what: 'moertel' },
@@ -1385,19 +1507,19 @@ const proportionalNeu: Topic = asNeuTopic('lb2-proportional', {
         segments,
         ratio: [a, b],
         labels: mix.labels,
-        solution: `${a * k} Felder ${mix.labels[0]} und ${b * k} Felder ${mix.labels[1]}`,
-        explanation: `Das Verhältnis ${a} : ${b} heißt: Auf ${t(a)} ${mix.labels[0]} kommen ${t(b)} ${mix.labels[1]}. Zusammen sind das ${a + b} Teile. Die Leiste hat ${segments} Felder, das sind ${k} Gruppe${k === 1 ? '' : 'n'} zu je ${a + b} Feldern. In jeder Gruppe gehören ${a} Felder zu ${mix.labels[0]} und ${b} Felder zu ${mix.labels[1]}. Also färbst du ${a * k} Felder in der einen und ${b * k} Felder in der anderen Farbe. Die Reihenfolge der Felder ist egal, es kommt nur auf die Anzahl an.`,
+        solution: `${felder(a * k)} ${mix.labels[0]} und ${felder(b * k)} ${mix.labels[1]}`,
+        explanation: `Das Verhältnis ${a} : ${b} heißt: Auf ${t(a)} ${mix.labels[0]} kommen ${t(b)} ${mix.labels[1]}. Zusammen sind das ${a + b} Teile. Die Leiste hat ${segments} Felder, das sind ${k} Gruppe${k === 1 ? '' : 'n'} zu je ${a + b} Feldern. In jeder Gruppe sind ${felder(a)} für ${mix.labels[0]} und ${felder(b)} für ${mix.labels[1]}. Also färbst du ${felder(a * k)} in der einen und ${felder(b * k)} in der anderen Farbe. Die Reihenfolge der Felder ist egal, es kommt nur auf die Anzahl an.`,
         dedupeKey: `ratiobar-farben:${mix.what}:${a}:${b}:${segments}`,
       })
     },
     // V6 Verhältnisleiste (Aufteilen) — Rezept: Gesamtmenge im Verhältnis teilen
     (rng: Rng) => {
       const rec = pick(rng, [
-        { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [50, 60, 100, 150], ratios: [[1, 2], [1, 3], [2, 3], [3, 2], [1, 4], [2, 1]] as Array<[number, number]> },
+        { text: 'Eine Saftschorle', labels: ['Saft', 'Wasser'] as [string, string], unit: 'ml', ks: [80, 100, 150, 180], ratios: [[1, 2], [1, 3], [2, 3], [3, 2], [1, 4], [2, 1]] as Array<[number, number]> },
         // Öl immer mehr als Essig, Mehl immer mehr als Wasser, Apfelsaft immer mehr als Tee (beide Teile in derselben Einheit)
         { text: 'Ein Salatdressing', labels: ['Öl', 'Essig'] as [string, string], unit: 'ml', ks: [10, 20, 25, 30], ratios: [[3, 1], [2, 1], [3, 2], [5, 2]] as Array<[number, number]> },
         { text: 'Ein Teig', labels: ['Mehl', 'Wasser'] as [string, string], unit: 'g', ks: [25, 50, 75, 100], ratios: [[2, 1], [3, 2], [5, 3], [3, 1]] as Array<[number, number]> },
-        { text: 'Ein Kinderpunsch', labels: ['Apfelsaft', 'Tee'] as [string, string], unit: 'ml', ks: [25, 50, 75, 100], ratios: [[2, 1], [3, 1], [3, 2], [4, 1]] as Array<[number, number]> },
+        { text: 'Ein Kinderpunsch', labels: ['Apfelsaft', 'Tee'] as [string, string], unit: 'ml', ks: [80, 100, 150, 180], ratios: [[2, 1], [3, 1], [3, 2], [4, 1]] as Array<[number, number]> },
       ])
       const [a, b] = pick(rng, rec.ratios)
       const k = pick(rng, rec.ks)
@@ -1532,13 +1654,13 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
     url: 'https://de.wikipedia.org/wiki/Relative_H%C3%A4ufigkeit',
   },
   generate: mixedVariants(
-    // V1 Tippen — Umfrage-Kontext statt Würfel
+    // V1 Tippen — Umfrage-Kontext statt Würfel (Gesamtzahlen so, dass das Ergebnis höchstens zwei Nachkommastellen hat)
     (rng: Rng) => {
-      const total = pick(rng, [60, 120, 150, 250, 400])
-      const k = randInt(rng, 1, total - 1)
+      const total = pick(rng, [20, 25, 40, 50, 80, 100, 200, 250, 400])
+      const k = randInt(rng, Math.ceil(total * 0.1), Math.floor(total * 0.9))
       const value = roundTo((k / total) * 100, 2)
       return valueTask({
-        question: `Bei einer Umfrage unter ${total} Schülern gaben ${k} an, lieber Mathe als Deutsch zu mögen. Wie groß ist die relative Häufigkeit in Prozent?`,
+        question: `Bei einer Umfrage an einer Schule wurden ${total} Kinder gefragt. ${k} davon gaben an, lieber Mathe als Deutsch zu mögen. Wie groß ist die relative Häufigkeit in Prozent?`,
         unit: '%',
         answerKind: 'decimal',
         value,
@@ -1547,18 +1669,20 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
         dedupeKey: `lb2haeuf-tippen:${k}:${total}`,
       })
     },
-    // V2 MC — Umkehrung: aus Prozent + Gesamtzahl die absolute Anzahl bestimmen
+    // V2 MC — Umkehrung: aus Prozent + Gesamtzahl die absolute Anzahl bestimmen (immer ganzzahlig)
     (rng: Rng) => {
-      const total = pick(rng, [20, 25, 40, 50, 80])
-      const percent = pick(rng, [10, 20, 25, 40, 50, 60, 75])
-      const correctCount = roundTo((percent / 100) * total, 0)
+      const total = pick(rng, [20, 40, 50, 80, 200])
+      const percent = pick(rng, [10, 20, 25, 40, 50, 60, 75].filter((p) => (total * p) % 100 === 0))
+      const correctCount = (total * percent) / 100
       const correct = `${correctCount}`
       const wrong1 = `${total - correctCount}` // Restmenge statt Treffer
       const wrong2 = `${percent}` // Prozentzahl statt Anzahl
       const wrong3 = `${roundTo(total / (percent / 100), 0)}` // falsch gerechnet (dividiert statt multipliziert)
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const wrong4 = `${correctCount * 2}`
+      const wrong5 = `${correctCount + 5}`
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4, wrong5]), correct)
       return choicePickTask({
-        question: `Bei ${total} Würfen eines Glücksrads landete der Zeiger in ${percent} % der Fälle auf Rot. Wie oft war das (absolute Häufigkeit)?`,
+        question: `Ein Glücksrad wurde ${total}-mal gedreht. Der Zeiger landete in ${percent} % der Fälle auf Rot. Wie oft war das (absolute Häufigkeit)?`,
         choices,
         correct,
         solution: correct,
@@ -1566,15 +1690,19 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
         dedupeKey: `lb2haeuf-mc:${total}:${percent}`,
       })
     },
-    // V3 Portfolio — absolute Häufigkeit aus Kreisdiagramm-Anteil bestimmen (Umkehrung)
+    // V3 Portfolio — absolute Häufigkeit aus Kreisdiagramm-Anteil bestimmen (Umkehrung, immer ganzzahlig)
     (rng: Rng) => {
       const total = pick(rng, [20, 25, 40, 50])
-      const denom = pick(rng, [5, 8, 10, 20])
-      const k = randInt(rng, 1, denom - 1)
+      let denom = pick(rng, [5, 8, 10, 20])
+      let k = randInt(rng, 1, denom - 1)
+      while ((total * k) % denom !== 0) {
+        denom = pick(rng, [5, 8, 10, 20])
+        k = randInt(rng, 1, denom - 1)
+      }
       const percent = roundTo((k / denom) * 100, 2)
-      const value = roundTo((k / denom) * total, 0)
+      const value = (total * k) / denom
       return visualTask({
-        question: `Im Kreisdiagramm ist der eingefärbte Anteil markiert. Bei insgesamt ${total} Versuchen: Wie viele davon entspricht dieser Anteil?`,
+        question: `Im Kreisdiagramm ist der eingefärbte Anteil markiert. Es wurden insgesamt ${total} Versuche gemacht. Wie viele der Versuche entsprechen diesem Anteil?`,
         answerKind: 'integer',
         value,
         solution: `${value}`,
@@ -1604,6 +1732,47 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
     (rng: Rng) => surveyBarChartTask(rng, pick(rng, TABLE_SURVEYS), 'table'),
     // V7 Kreisdiagramm — Anzahlen aus einer Umfrage in Prozent umrechnen und als Kreisdiagramm zeichnen (Grenzen ziehen)
     (rng: Rng) => countPieChartTask(rng, pick(rng, COUNT_SURVEYS_HAEUFIGKEIT)),
+    // V8 Tabelle — relative Häufigkeit einer Kategorie in Prozent (Klassengröße 25: ganze Prozent)
+    (rng: Rng) => {
+      const survey = pick(rng, HAEUFIGKEIT_TABELLEN)
+      const total = survey.counts.reduce((s, c) => s + c, 0)
+      const idx = pick(rng, survey.counts.map((c, i) => (c > 0 ? i : -1)).filter((i) => i >= 0))
+      const category = survey.categories[idx]!
+      const count = survey.counts[idx]!
+      const percent = (count * 100) / total
+      return {
+        ...visualTask({
+          question: `${survey.context} Die Ergebnisse stehen in der Tabelle. Wie viel Prozent der Kinder haben „${category}“ gewählt?`,
+          unit: '%',
+          answerKind: 'decimal',
+          value: percent,
+          solution: `${formatDe(percent)} %`,
+          explanation: `In der Tabelle stehen zusammen ${total} Kinder, bei „${category}“ sind es ${count}. Relative Häufigkeit: ${count} : ${total} = ${formatDe(count / total)}. In Prozent: ${formatDe(percent)} %.`,
+          visualContent: barChartTableSvg(`Tabelle: ${survey.head}`, survey.head, 'Anzahl Kinder', survey.categories, survey.counts),
+        }),
+        dedupeKey: `lb2haeuf-tabelle-prozent:${survey.id}:${category}`,
+      }
+    },
+    // V9 Tabelle — welche Kategorie hat eine gegebene relative Häufigkeit?
+    (rng: Rng) => {
+      const survey = pick(rng, HAEUFIGKEIT_TABELLEN)
+      const total = survey.counts.reduce((s, c) => s + c, 0)
+      const idx = pick(rng, survey.counts.map((c, i) => (c > 0 ? i : -1)).filter((i) => i >= 0))
+      const category = survey.categories[idx]!
+      const percent = (survey.counts[idx]! * 100) / total
+      const choices = shuffleChoices(rng, [...survey.categories], category)
+      return {
+        ...choicePickTask({
+          question: `${survey.context} Die Ergebnisse stehen in der Tabelle. Bei welcher Antwort beträgt die relative Häufigkeit ${formatDe(percent)} %?`,
+          choices,
+          correct: category,
+          solution: category,
+          explanation: `${formatDe(percent)} % von ${total} Kindern sind ${survey.counts[idx]} Kinder. Diese Zahl steht in der Tabelle bei „${category}“.`,
+          dedupeKey: `lb2haeuf-tabelle-kategorie:${survey.id}:${category}`,
+        }),
+        visualContent: barChartTableSvg(`Tabelle: ${survey.head}`, survey.head, 'Anzahl Kinder', survey.categories, survey.counts),
+      }
+    },
   ),
 })
 
@@ -1720,9 +1889,9 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
     url: 'https://de.wikipedia.org/wiki/Dreieck',
   },
   generate: mixedVariants(
-    // V1 Tippen — gleichschenkliges Dreieck, Spitzenwinkel gesucht
+    // V1 Tippen — gleichschenkliges Dreieck, Spitzenwinkel gesucht (Basiswinkel ≠ 60°: sonst steht die Lösung schon in der Frage)
     (rng: Rng) => {
-      const basis = randInt(rng, 20, 80)
+      const basis = pick(rng, [20, 25, 30, 35, 40, 45, 50, 55, 65, 70, 75, 80])
       const spitze = 180 - 2 * basis
       return valueTask({
         question: `In einem gleichschenkligen Dreieck sind die beiden Basiswinkel gleich groß und betragen je ${basis}°. Wie groß ist der Winkel an der Spitze?`,
@@ -1736,14 +1905,17 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
     },
     // V2 MC — typische Fehler (360° statt 180°, Vorzeichenfehler)
     (rng: Rng) => {
-      const a = randInt(rng, 30, 100)
-      const b = randInt(rng, 20, 150 - a)
-      const c = 180 - a - b
+      const [a, b, c] = dreieckWinkelNeu(rng)
       const correct = `${c}°`
-      const wrong1 = `${360 - a - b}°` // 360° statt 180° verwendet
-      const wrong2 = `${a + b}°` // addiert statt von 180° abgezogen
-      const wrong3 = `${180 - a}°` // zweiten Winkel vergessen
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const candidates = [
+        `${360 - a - b}°`, // 360° statt 180° verwendet
+        `${a + b}°`, // addiert statt von 180° abgezogen
+        `${180 - a}°`, // zweiten Winkel vergessen
+        `${c + 10}°`,
+        `${c - 10}°`,
+        `${c + 20}°`,
+      ]
+      const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({
         question: `In einem Dreieck sind zwei Winkel ${a}° und ${b}° groß. Wie groß ist der dritte Winkel?`,
         choices,
@@ -1755,12 +1927,10 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
     },
     // V3 Portfolio — Winkel γ mit dem Geodreieck messen (Figur ohne Gradzahl)
     (rng: Rng) => {
-      const a = randInt(rng, 40, 90)
-      const b = randInt(rng, 30, 150 - a)
-      const c = 180 - a - b
+      const [a, b, c] = dreieckWinkelNeu(rng)
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
       return angleProtractorTask({
-        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist abgebildet (ohne Gradangabe). Miss γ mit dem Geodreieck und kontrolliere dein Ergebnis mit der Winkelsumme.`,
+        question: `Ein Dreieck hat die Winkel α = ${a}° und β = ${b}°. Der dritte Winkel γ ist abgebildet (ohne Gradangabe). Miss γ mit dem Geodreieck und prüfe danach, ob alle drei Winkel zusammen 180° ergeben.`,
         mode: 'measure',
         angle: c,
         startAngle,
@@ -1770,20 +1940,45 @@ const winkelDreieckNeu: Topic = asNeuTopic('lb3-winkel-dreieck', {
         dedupeKey: `lb3dreieck-messen:${a}:${b}`,
       })
     },
-    // V4 MC — Konzept: Winkelsumme unabhängig von der Dreiecksart
+    // V4 MC — Konzept: Winkelsumme, rechter Winkel, stumpfe Winkel (richtige Antwort nicht die längste)
     (rng: Rng) => {
-      const correct = 'Die Innenwinkelsumme beträgt 180° — unabhängig davon, ob das Dreieck spitz-, recht- oder stumpfwinklig ist.'
-      const wrong1 = 'Die Innenwinkelsumme beträgt nur bei rechtwinkligen Dreiecken 180°.'
-      const wrong2 = 'Je größer das Dreieck ist, desto größer wird die Innenwinkelsumme.'
-      const wrong3 = 'Die Innenwinkelsumme beträgt 360°, wie beim Viereck.'
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const sets = [
+        {
+          id: 'summe',
+          question: 'Welche Aussage zur Innenwinkelsumme im Dreieck ist richtig?',
+          correct: 'In jedem Dreieck beträgt die Winkelsumme 180°.',
+          wrong: [
+            'Nur im rechtwinkligen Dreieck beträgt die Summe 180°.',
+            'Je größer das Dreieck, desto größer die Winkelsumme.',
+            'Die Winkelsumme beträgt 360°, wie beim Viereck.',
+          ],
+          explanation:
+            'Die Innenwinkelsumme beträgt in jedem Dreieck 180° — egal ob spitz-, recht- oder stumpfwinklig und unabhängig von der Größe des Dreiecks.',
+        },
+        {
+          id: 'rechtwinklig',
+          question: 'Ein Dreieck hat einen rechten Winkel. Was gilt für die beiden anderen Winkel?',
+          correct: 'Sie ergeben zusammen 90°.',
+          wrong: ['Sie ergeben zusammen 180°.', 'Sie sind beide 45° groß.', 'Sie ergeben zusammen 270°.'],
+          explanation: 'Alle drei Winkel ergeben 180°. Weil der rechte Winkel schon 90° hat, bleiben für die beiden anderen zusammen 180° − 90° = 90°.',
+        },
+        {
+          id: 'stumpf',
+          question: 'Kann ein Dreieck zwei stumpfe Winkel haben?',
+          correct: 'Nein, sie ergäben mehr als 180°.',
+          wrong: ['Ja, wenn das Dreieck groß genug ist.', 'Ja, wenn die Seiten verschieden lang sind.', 'Nein, ein Dreieck hat nur spitze Winkel.'],
+          explanation: 'Ein stumpfer Winkel ist größer als 90°. Zwei davon wären zusammen schon größer als 180°. Die Winkelsumme im Dreieck beträgt aber genau 180°.',
+        },
+      ]
+      const set = pick(rng, sets)
+      const choices = shuffleChoices(rng, fourChoices(set.correct, set.wrong), set.correct)
       return choicePickTask({
-        question: 'Welche Aussage zur Innenwinkelsumme im Dreieck ist richtig?',
+        question: set.question,
         choices,
-        correct,
-        solution: correct,
-        explanation:
-          'Die Innenwinkelsumme beträgt in jedem Dreieck 180° — egal ob spitz-, recht- oder stumpfwinklig und unabhängig von der Größe des Dreiecks.',
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
+        dedupeKey: `lb3dreieck-konzept:${set.id}`,
       })
     },
   ),
@@ -1796,19 +1991,16 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
   hint: 'Die Innenwinkel im Viereck ergeben zusammen 360°.',
   pointsPerTask: 10,
   difficulty: 1,
-  keywords: ['Winkelsumme', 'Viereck', 'Innenwinkel', 'Vieleck'],
+  keywords: ['Winkelsumme', 'Viereck', 'Innenwinkel', 'Diagonale'],
   fachwissen: {
-    text: 'Die Innenwinkelsumme eines Vierecks beträgt 360°, da man es durch eine Diagonale in zwei Dreiecke mit je 180° zerlegen kann. Für ein beliebiges n-Eck gilt allgemein die Formel Winkelsumme = (n − 2) · 180°; für n = 4 ergibt das 360°, für n = 5 (Fünfeck) bereits 540°.',
+    text: 'Die Innenwinkelsumme eines Vierecks beträgt 360°. Man sieht das, wenn man das Viereck durch eine Diagonale in zwei Dreiecke zerlegt: Jedes Dreieck hat die Winkelsumme 180°, zusammen sind das 2 · 180° = 360°. Kennt man drei Winkel eines Vierecks, erhält man den vierten, indem man ihre Summe von 360° abzieht.',
     quelle: 'Wikipedia: Viereck',
     url: 'https://de.wikipedia.org/wiki/Viereck',
   },
   generate: mixedVariants(
-    // V1 Tippen — größerer Zahlenraum als Haupt-Thema
+    // V1 Tippen — vierter Winkel (immer ein realistischer, konvexer Viereckswinkel)
     (rng: Rng) => {
-      const a = randInt(rng, 50, 130)
-      const b = randInt(rng, 50, 130)
-      const c = randInt(rng, 30, 130)
-      const d = 360 - a - b - c
+      const [a, b, c, d] = viereckWinkelNeu(rng)
       return valueTask({
         question: `In einem Viereck sind drei Winkel α = ${a}°, β = ${b}° und γ = ${c}° groß. Wie groß ist der vierte Winkel δ?`,
         unit: '°',
@@ -1819,17 +2011,14 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
         dedupeKey: `lb3viereck-tippen:${a}:${b}:${c}`,
       })
     },
-    // V2 MC — typische Fehler (180° statt 360°, nur zwei Winkel abgezogen)
+    // V2 MC — typische Fehler (Ergänzung zu 180°, einen Winkel vergessen), alle Optionen zwischen 10° und 170°
     (rng: Rng) => {
-      const a = randInt(rng, 70, 110)
-      const b = randInt(rng, 70, 110)
-      const c = randInt(rng, 50, 110)
-      const d = 360 - a - b - c
+      const [a, b, c, d] = viereckWinkelNeu(rng)
       const correct = `${d}°`
-      const wrong1 = `${720 - a - b - c}°` // 720° (wie zwei Vierecke) statt 360° verwendet
-      const wrong2 = `${360 - a - b}°` // einen Winkel vergessen abzuziehen
-      const wrong3 = `${360 - a - c}°` // falschen Winkel vergessen
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const candidates = [180 - d, 360 - a - b, 360 - a - c, 360 - b - c, d + 10, d - 10, d + 20, d - 20]
+        .filter((x) => x >= 10 && x <= 170 && x !== d)
+        .map((x) => `${x}°`)
+      const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({
         question: `In einem Viereck sind drei Winkel ${a}°, ${b}° und ${c}° groß. Wie groß ist der vierte Winkel?`,
         choices,
@@ -1839,15 +2028,12 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
         dedupeKey: `lb3viereck-mc:${a}:${b}:${c}`,
       })
     },
-    // V3 Portfolio — Winkel schätzen und am Regler einstellen
+    // V3 Portfolio — Winkel mit dem Geodreieck messen
     (rng: Rng) => {
-      const a = randInt(rng, 70, 110)
-      const b = randInt(rng, 70, 110)
-      const c = randInt(rng, 60, 110)
-      const d = 360 - a - b - c
+      const [a, b, c, d] = viereckWinkelNeu(rng)
       const startAngle = pick(rng, [0, 20, 45, 90, 135, 180, 225, 270])
       return angleProtractorTask({
-        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist abgebildet (ohne Gradangabe). Miss δ mit dem Geodreieck und kontrolliere dein Ergebnis mit der Winkelsumme.`,
+        question: `Ein Viereck hat die Winkel α = ${a}°, β = ${b}° und γ = ${c}°. Der vierte Winkel δ ist abgebildet (ohne Gradangabe). Miss δ mit dem Geodreieck und prüfe danach, ob alle vier Winkel zusammen 360° ergeben.`,
         mode: 'measure',
         angle: d,
         startAngle,
@@ -1857,19 +2043,33 @@ const winkelViereckNeu: Topic = asNeuTopic('lb3-winkel-viereck', {
         dedupeKey: `lb3viereck-messen:${a}:${b}:${c}`,
       })
     },
-    // V4 MC — Konzept: Winkelsumme im Fünfeck (Formel (n−2)·180°)
+    // V4 MC — Konzept: Zerlegung in Dreiecke, Rechteck (kein Stoff aus Klasse 7)
     (rng: Rng) => {
-      const correct = '540°'
-      const wrong1 = '360°' // Viereck-Wert verwechselt
-      const wrong2 = '450°'
-      const wrong3 = '900°' // 5 · 180° statt (5−2) · 180°
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const sets = [
+        {
+          id: 'diagonale',
+          question: 'Ein Viereck wird durch eine Diagonale in zwei Dreiecke zerlegt. Wie groß ist die Innenwinkelsumme des Vierecks?',
+          correct: '360°',
+          wrong: ['180°', '270°', '720°'],
+          explanation: 'Jedes der beiden Dreiecke hat die Winkelsumme 180°. Zusammen sind das 2 · 180° = 360° für das Viereck.',
+        },
+        {
+          id: 'rechteck',
+          question: 'Alle vier Winkel eines Rechtecks sind gleich groß. Wie groß ist jeder Winkel?',
+          correct: '90°',
+          wrong: ['45°', '60°', '180°'],
+          explanation: 'Die Winkelsumme im Viereck beträgt 360°. Geteilt durch 4 gleich große Winkel ergibt das 360° : 4 = 90°.',
+        },
+      ]
+      const set = pick(rng, sets)
+      const choices = shuffleChoices(rng, fourChoices(set.correct, set.wrong), set.correct)
       return choicePickTask({
-        question: 'Die Innenwinkelsumme eines Vierecks beträgt 360°. Mit der Formel (n − 2) · 180° — wie groß ist die Innenwinkelsumme eines Fünfecks (n = 5)?',
+        question: set.question,
         choices,
-        correct,
-        solution: correct,
-        explanation: 'Für n = 5: (5 − 2) · 180° = 3 · 180° = 540°.',
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
+        dedupeKey: `lb3viereck-konzept:${set.id}`,
       })
     },
   ),
@@ -2152,37 +2352,67 @@ const dreieckPlanSvg = (c: string, b: string, a: string): string =>
 // 23) Kongruenzsatz wählen
 const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
   id: 'lb3-kongruenzsatz__neu',
-  title: 'Kongruenzsatz wählen',
+  title: 'Kongruenzsätze und Dreieckskonstruktion',
   hint: 'SSS, SWS, WSW oder SsW — welche Angabe reicht?',
   pointsPerTask: 10,
   difficulty: 2,
   keywords: ['Kongruenz', 'SSS', 'SWS', 'WSW', 'SsW', 'Dreieck', 'Hypotenuse', 'Kathete'],
   fachwissen: {
-    text: 'Beim rechtwinkligen Dreieck sind eine Kathete und die Hypotenuse ein wichtiger Sonderfall: Die Hypotenuse ist die längere der beiden bekannten Seiten, und der rechte Winkel (90°) liegt ihr gegenüber. Damit greift der Kongruenzsatz SsW (zwei Seiten und der Gegenwinkel der längeren Seite). Gleiche Winkel allein (ohne Seitenangabe) legen ein Dreieck dagegen nur in der Form, nicht in der Größe fest — solche Dreiecke sind nur ähnlich, nicht notwendig kongruent.',
+    text: 'Zwei Dreiecke sind kongruent (deckungsgleich), wenn sie in drei passenden Angaben übereinstimmen: SSS (drei Seiten), SWS (zwei Seiten und der eingeschlossene Winkel), WSW (eine Seite und die beiden anliegenden Winkel) oder SsW (zwei Seiten und der Gegenwinkel der längeren Seite). Drei Seiten ergeben nur dann ein Dreieck, wenn je zwei Seiten zusammen länger sind als die dritte. Beim rechtwinkligen Dreieck sind eine Kathete und die Hypotenuse ein wichtiger Sonderfall: Die Hypotenuse ist die längere der beiden bekannten Seiten, und der rechte Winkel (90°) liegt ihr gegenüber. Damit greift der Kongruenzsatz SsW (zwei Seiten und der Gegenwinkel der längeren Seite). Gleiche Winkel allein (ohne Seitenangabe) legen ein Dreieck dagegen nur in der Form, nicht in der Größe fest — solche Dreiecke sind nur ähnlich, nicht notwendig kongruent.',
     quelle: 'Wikipedia: Kongruenzsatz',
     url: 'https://de.wikipedia.org/wiki/Kongruenzsatz',
   },
   generate: mixedVariants(
-    // V1 Tippen — freie Texteingabe, Klassiker SSS
+    // V1 Tippen — freie Texteingabe: passenden Satz zu gegebenen Angaben nennen (SSS, SWS oder WSW)
     (rng: Rng) => {
-      const a = randInt(rng, 3, 10)
-      const b = randInt(rng, 3, 10)
-      const c = randInt(rng, 3, 10)
+      const kind = pick(rng, ['SSS', 'SWS', 'WSW'] as const)
+      if (kind === 'SSS') {
+        let a = 3
+        let b = 3
+        let c = 3
+        do {
+          a = randInt(rng, 3, 10)
+          b = randInt(rng, 3, 10)
+          c = randInt(rng, 3, 10)
+        } while (!(a + b > c && a + c > b && b + c > a))
+        return textTask({
+          question: `Von einem Dreieck sind alle drei Seitenlängen bekannt: a = ${a} cm, b = ${b} cm, c = ${c} cm. Welcher Kongruenzsatz legt das Dreieck eindeutig fest? (Tippe die Abkürzung, z. B. SWS)`,
+          accepted: ['SSS', 'sss'],
+          solution: 'SSS',
+          explanation: `Drei Seitenlängen bestimmen ein Dreieck eindeutig: SSS. Ein solches Dreieck gibt es hier, weil je zwei Seiten zusammen länger sind als die dritte (zum Beispiel ${a} + ${b} = ${a + b} > ${c}).`,
+          dedupeKey: `lb3kong-text-sss:${[a, b, c].sort((x, y) => x - y).join(':')}`,
+        })
+      }
+      if (kind === 'SWS') {
+        const a = randInt(rng, 3, 9)
+        const b = randInt(rng, 3, 9)
+        const gamma = pick(rng, [40, 50, 60, 70, 80, 100, 110])
+        return textTask({
+          question: `Von einem Dreieck sind zwei Seitenlängen und der Winkel zwischen ihnen bekannt: a = ${a} cm, b = ${b} cm und γ = ${gamma}°. Welcher Kongruenzsatz legt das Dreieck eindeutig fest? (Tippe die Abkürzung, z. B. SSS)`,
+          accepted: ['SWS', 'sws'],
+          solution: 'SWS',
+          explanation: `Zwei Seiten und der von ihnen eingeschlossene Winkel bestimmen ein Dreieck eindeutig: SWS. Der Winkel γ liegt zwischen a und b.`,
+          dedupeKey: `lb3kong-text-sws:${a}:${b}:${gamma}`,
+        })
+      }
+      const c = randInt(rng, 4, 9)
+      const alpha = pick(rng, [40, 45, 50, 55, 60, 70])
+      const beta = pick(rng, [35, 50, 65, 75].filter((x) => x !== alpha))
       return textTask({
-        question: `Von einem Dreieck sind alle drei Seitenlängen bekannt: a = ${a} cm, b = ${b} cm, c = ${c} cm. Welcher Kongruenzsatz legt das Dreieck eindeutig fest? (Tippe die Abkürzung, z. B. SWS)`,
-        accepted: ['SSS', 'sss'],
-        solution: 'SSS',
-        explanation: 'Drei bekannte Seitenlängen bestimmen ein Dreieck eindeutig: SSS.',
-        dedupeKey: `lb3kong-text-sss:${a}:${b}:${c}`,
+        question: `Von einem Dreieck sind eine Seitenlänge und die beiden anliegenden Winkel bekannt: c = ${c} cm, α = ${alpha}° und β = ${beta}°. Welcher Kongruenzsatz legt das Dreieck eindeutig fest? (Tippe die Abkürzung, z. B. SSS)`,
+        accepted: ['WSW', 'wsw'],
+        solution: 'WSW',
+        explanation: `Eine Seite und die beiden Winkel an ihren Enden bestimmen ein Dreieck eindeutig: WSW. Die Seite c liegt zwischen den Winkeln α und β.`,
+        dedupeKey: `lb3kong-text-wsw:${c}:${alpha}:${beta}`,
       })
     },
-    // V2 MC — Sonderfall Kathete + Hypotenuse (SsW)
+    // V2 MC — Sonderfall Kathete + Hypotenuse (SsW); Reihenfolge der Optionen gemischt
     (rng: Rng) => {
       const a = randInt(rng, 3, 9)
       const c = randInt(rng, a + 2, 12)
       return choicePickTask({
         question: `In einem rechtwinkligen Dreieck sind eine Kathete (a = ${a} cm) und die Hypotenuse (c = ${c} cm) bekannt. Welcher Kongruenzsatz greift (zusammen mit dem rechten Winkel)?`,
-        choices: ['SSS', 'SWS', 'WSW', 'SsW'],
+        choices: shuffleChoices(rng, ['SSS', 'SWS', 'WSW', 'SsW'], 'SsW'),
         correct: 'SsW',
         solution: 'SsW',
         explanation: `Die Hypotenuse c ist die längere der beiden bekannten Seiten, und der rechte Winkel liegt ihr gegenüber. Zwei Seiten + Gegenwinkel der längeren Seite → SsW.`,
@@ -2195,8 +2425,8 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
       const a = randInt(rng, 4, 8)
       const c = randInt(rng, a + 3, 13)
       return choicePickTask({
-        question: 'Im abgebildeten rechtwinkligen Dreieck sind eine Kathete a und die Hypotenuse c bekannt. Welcher Kongruenzsatz greift (inkl. rechtem Winkel)?',
-        choices: ['SSS', 'SWS', 'WSW', 'SsW'],
+        question: 'Im abgebildeten rechtwinkligen Dreieck sind eine Kathete a und die Hypotenuse c bekannt. Welcher Kongruenzsatz greift (zusammen mit dem rechten Winkel)?',
+        choices: shuffleChoices(rng, ['SSS', 'SWS', 'WSW', 'SsW'], 'SsW'),
         correct: 'SsW',
         solution: 'SsW',
         explanation: `c (Hypotenuse) ist die längere Seite der beiden bekannten Seiten und liegt dem rechten Winkel gegenüber: SsW (Kathete-Hypotenuse-Satz).`,
@@ -2206,19 +2436,47 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
           cLabel: `c=${c}`,
         }),
         instruction: 'Tippe den passenden Kongruenzsatz:',
+        dedupeKey: `lb3kong-vis-ssw:${a}:${c}`,
       })
     },
-    // V4 MC — Konzept: gleiche Winkel reichen NICHT für Kongruenz
+    // V4 MC — Konzept: Ja/Nein zur Kongruenz (Antwort wechselt)
     (rng: Rng) => {
-      const correct = 'Nein'
-      const choices = shuffleChoices(rng, ['Ja', 'Nein'], correct)
+      const sets = [
+        {
+          id: 'www',
+          question: 'Zwei Dreiecke haben in allen drei Winkeln die gleichen Gradzahlen, aber unterschiedlich lange Seiten. Sind die beiden Dreiecke kongruent?',
+          correct: 'Nein',
+          explanation: 'Nein — gleiche Winkel allein legen nur die Form fest (die Dreiecke sind ähnlich), nicht die Größe. Für Kongruenz braucht man zusätzlich mindestens eine Seitenlänge (z. B. WSW statt nur WWW).',
+        },
+        {
+          id: 'sss',
+          question: 'Zwei Dreiecke stimmen in allen drei Seitenlängen überein. Sind die beiden Dreiecke kongruent?',
+          correct: 'Ja',
+          explanation: 'Ja — nach dem Kongruenzsatz SSS sind zwei Dreiecke mit drei gleich langen Seiten deckungsgleich.',
+        },
+        {
+          id: 'sws',
+          question: 'Zwei Dreiecke stimmen in zwei Seitenlängen und in dem Winkel überein, der zwischen diesen beiden Seiten liegt. Sind die beiden Dreiecke kongruent?',
+          correct: 'Ja',
+          explanation: 'Ja — zwei Seiten und der eingeschlossene Winkel entsprechen dem Kongruenzsatz SWS.',
+        },
+        {
+          id: 'zwei-seiten',
+          question: 'Zwei Dreiecke stimmen nur in zwei Seitenlängen überein. Sind die beiden Dreiecke immer kongruent?',
+          correct: 'Nein',
+          explanation: 'Nein — zwei Seiten reichen nicht. Der Winkel zwischen ihnen kann verschieden groß sein, dann ist auch die dritte Seite verschieden lang.',
+        },
+      ]
+      const set = pick(rng, sets)
+      const choices = shuffleChoices(rng, ['Ja', 'Nein'], set.correct)
       return choicePickTask({
-        question: 'Zwei Dreiecke haben in allen drei Winkeln die gleichen Gradzahlen, aber unterschiedlich lange Seiten. Sind die beiden Dreiecke kongruent?',
+        question: set.question,
         choices,
-        correct,
-        solution: correct,
-        explanation: 'Nein — gleiche Winkel allein legen nur die Form fest (die Dreiecke sind ähnlich), nicht die Größe. Für Kongruenz braucht man zusätzlich mindestens eine Seitenlänge (z. B. WSW statt nur WWW).',
+        correct: set.correct,
+        solution: set.correct,
+        explanation: set.explanation,
         instruction: 'Ja oder Nein?',
+        dedupeKey: `lb3kong-ja-nein:${set.id}`,
       })
     },
     // V5 Geführte Konstruktion — Dreieck aus drei Seiten (SSS) mit Zirkel und Lineal
@@ -2297,6 +2555,19 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
     (rng: Rng) => swsConstructionTask(pick(rng, SWS_SETS)),
     // V7 Geführte Konstruktion — WSW mit Winkel-Werkzeug
     (rng: Rng) => wswConstructionTask(pick(rng, WSW_SETS)),
+    // V8 MC — welche Angaben legen ein Dreieck NICHT eindeutig fest?
+    (rng: Rng) => {
+      const correct = 'Drei Winkel (WWW)'
+      const wrong = ['Drei Seiten (SSS)', 'Zwei Seiten und der eingeschlossene Winkel (SWS)', 'Eine Seite und die beiden anliegenden Winkel (WSW)']
+      return choicePickTask({
+        question: 'Mit welchen Angaben ist ein Dreieck NICHT eindeutig festgelegt?',
+        choices: shuffleChoices(rng, fourChoices(correct, wrong), correct),
+        correct,
+        solution: correct,
+        explanation: 'Drei Winkel legen nur die Form des Dreiecks fest, nicht seine Größe: Man kann das Dreieck beliebig vergrößern oder verkleinern. SSS, SWS und WSW legen dagegen ein Dreieck eindeutig fest.',
+        dedupeKey: 'lb3kong-nicht-eindeutig:www',
+      })
+    },
   ),
 })
 
@@ -2886,63 +3157,106 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
   difficulty: 1,
   keywords: ['Anteil', 'Bruch', 'Größe', 'Zähler', 'Nenner'],
   fachwissen: {
-    text: 'Kennt man den Anteil p/q und den berechneten Teil, lässt sich die ganze Größe zurückrechnen: ein Teil entspricht Teilwert : p, die ganze Größe ist dann (Teilwert : p) · q. Diese Umkehrung ist nützlich, wenn z. B. nur „3/4 des Preises sind 60 €" bekannt ist und der volle Preis gesucht wird.',
+    text: 'Den Anteil n/d einer Größe berechnet man, indem man die Größe durch d teilt und das Ergebnis mit n multipliziert. Kennt man umgekehrt den Anteil n/d und den berechneten Teil, lässt sich die ganze Größe zurückrechnen: ein Teil entspricht Teilwert : p, die ganze Größe ist dann (Teilwert : p) · q. Diese Umkehrung ist nützlich, wenn z. B. nur „3/4 des Preises sind 60 €" bekannt ist und der volle Preis gesucht wird.',
     quelle: 'Wikipedia: Bruchrechnung',
     url: 'https://de.wikipedia.org/wiki/Bruchrechnung',
   },
   generate: mixedVariants(
-    // V1 Tippen — Umkehrung: Anteil-Wert bekannt, ganze Größe gesucht
+    // V1 Tippen — Umkehrung: Anteil-Wert bekannt, ganze Größe gesucht (n ≥ 2, Alltagskontexte)
     (rng: Rng) => {
-      const d = pick(rng, [2, 3, 4, 5, 6, 8])
-      const n = randInt(rng, 1, d - 1)
-      const unit = pick(rng, ['kg', 'm', '€', 'Liter'])
-      const whole = d * randInt(rng, 2, 12)
-      const value = (n / d) * whole
+      const d = pick(rng, [3, 4, 5, 6, 8])
+      const n = randInt(rng, 2, d - 1)
+      const ctx = pick(rng, [
+        {
+          id: 'fahrrad',
+          unit: '€',
+          lo: 10,
+          hi: 30,
+          text: (v: string) => `Für eine Jacke hat Jonas schon ${n}/${d} des Preises gespart, das sind ${v}. Wie viel kostet die Jacke?`,
+        },
+        {
+          id: 'mehl',
+          unit: 'kg',
+          lo: 2,
+          hi: 12,
+          text: (v: string) => `Ein Bäcker hat ${n}/${d} seines Mehlvorrats verbraucht, das sind ${v}. Wie viel Mehl war es am Anfang?`,
+        },
+        {
+          id: 'band',
+          unit: 'm',
+          lo: 2,
+          hi: 12,
+          text: (v: string) => `Von einer Rolle Geschenkband sind ${n}/${d} abgeschnitten, das sind ${v}. Wie lang war das Band ursprünglich?`,
+        },
+        {
+          id: 'tank',
+          unit: 'Liter',
+          lo: 5,
+          hi: 20,
+          text: (v: string) => `Ein Wassertank ist zu ${n}/${d} gefüllt, das sind ${v}. Wie viel Wasser passt insgesamt in den Tank?`,
+        },
+      ])
+      const teil = randInt(rng, ctx.lo, ctx.hi)
+      const whole = d * teil
+      const value = n * teil
       return valueTask({
-        question: `${n}/${d} einer Menge sind ${formatDe(value)} ${unit}. Wie groß ist die ganze Menge?`,
-        unit,
+        question: ctx.text(betragNeu(value, ctx.unit)),
+        unit: ctx.unit,
         answerKind: 'decimal',
         value: whole,
-        solution: `${formatDe(whole)} ${unit}`,
-        explanation: `Ein Teil entspricht ${formatDe(value)} : ${n} = ${formatDe(value / n)} ${unit}. Die ganze Menge (${d} Teile) ist ${formatDe(value / n)} · ${d} = ${formatDe(whole)} ${unit}.`,
-        dedupeKey: `lb5anteilgroesse-tippen:${n}:${d}:${whole}`,
+        solution: betragNeu(whole, ctx.unit),
+        explanation: `${n} Teile entsprechen ${betragNeu(value, ctx.unit)}. Ein Teil ist also ${betragNeu(value, ctx.unit)} : ${n} = ${betragNeu(teil, ctx.unit)}. Die ganze Menge (${d} Teile) ist ${betragNeu(teil, ctx.unit)} · ${d} = ${betragNeu(whole, ctx.unit)}.`,
+        dedupeKey: `lb5anteilgroesse-tippen:${ctx.id}:${n}:${d}:${whole}`,
       })
     },
-    // V2 MC — typische Fehler beim Anteil berechnen
+    // V2 MC — typische Fehler beim Anteil berechnen (immer vier verschiedene Optionen)
     (rng: Rng) => {
-      const d = pick(rng, [2, 4, 5, 8])
-      const n = randInt(rng, 1, d - 1)
+      const d = pick(rng, [3, 4, 5, 8])
+      let n = randInt(rng, 1, d - 1)
+      if (2 * n === d) n = 1 // bei 1/2 wären Anteil und Gegenanteil gleich
       const unit = pick(rng, ['kg', 'm', '€'])
       const whole = d * randInt(rng, 2, 10)
       const value = (n / d) * whole
-      const correct = `${formatDe(value)} ${unit}`
-      const wrong1 = `${formatDe(n * whole)} ${unit}` // nicht durch Nenner geteilt
-      const wrong2 = `${formatDe(((d - n) / d) * whole)} ${unit}` // Gegenanteil berechnet
-      const wrong3 = `${formatDe(whole / d)} ${unit}` // Zähler vergessen (nur ein Teil)
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const correct = betragNeu(value, unit)
+      const candidates = [
+        n * whole, // nicht durch Nenner geteilt
+        ((d - n) / d) * whole, // Gegenanteil berechnet
+        whole / d, // Zähler vergessen (nur ein Teil)
+        value + whole / d, // ein Teil zu viel
+        value * 2,
+        whole,
+        value + 2,
+        value + 1,
+        value + whole,
+        value * 3,
+      ]
+        .filter((x) => x > 0 && Math.abs(x - value) > 1e-9)
+        .map((x) => betragNeu(x, unit))
+      const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({
-        question: `Berechne ${n}/${d} von ${whole} ${unit}. Welches Ergebnis ist richtig?`,
+        question: `Berechne ${n}/${d} von ${betragNeu(whole, unit)}. Welches Ergebnis ist richtig?`,
         choices,
         correct,
         solution: correct,
-        explanation: `Ein Teil = ${whole} : ${d} = ${formatDe(whole / d)} ${unit}. ${n} Teile = ${formatDe(whole / d)} · ${n} = ${formatDe(value)} ${unit}.`,
-        dedupeKey: `lb5anteilgroesse-mc:${n}:${d}:${whole}`,
+        explanation: `Ein Teil = ${betragNeu(whole, unit)} : ${d} = ${betragNeu(whole / d, unit)}.${n === 1 ? '' : ` ${n} Teile = ${betragNeu(whole / d, unit)} · ${n} = ${betragNeu(value, unit)}.`}${n === 1 ? ` Der Anteil ${n}/${d} ist genau ein Teil: ${correct}.` : ''}`,
+        dedupeKey: `lb5anteilgroesse-mc:${n}:${d}:${whole}:${unit}`,
       })
     },
-    // V3 Visual — Streifen zeigt Anteil, Teilwert bekannt, ganze Menge gesucht
+    // V3 Visual — Streifen zeigt Anteil, Teilwert bekannt, ganze Menge gesucht (n ≥ 2)
     (rng: Rng) => {
-      const d = pick(rng, [2, 4, 5, 8])
-      const n = randInt(rng, 1, d - 1)
-      const unit = pick(rng, ['kg', 'm', '€'])
-      const whole = d * randInt(rng, 2, 10)
-      const value = (n / d) * whole
+      const d = pick(rng, [4, 5, 8])
+      const n = randInt(rng, 2, d - 1)
+      const unit = pick(rng, ['kg', 'Liter', '€'])
+      const teil = randInt(rng, 2, 10)
+      const whole = d * teil
+      const value = n * teil
       return visualTask({
-        question: `Der Streifen zeigt den Anteil ${n}/${d}. Der eingefärbte Teil entspricht ${formatDe(value)} ${unit}. Wie groß ist die ganze Menge?`,
+        question: `Der Streifen zeigt den Anteil ${n}/${d}. Der eingefärbte Teil entspricht ${betragNeu(value, unit)}. Wie groß ist die ganze Menge?`,
         unit,
         answerKind: 'decimal',
         value: whole,
-        solution: `${formatDe(whole)} ${unit}`,
-        explanation: `Ein Teil = ${formatDe(value)} : ${n} = ${formatDe(value / n)} ${unit}. Ganze Menge = ${formatDe(value / n)} · ${d} = ${formatDe(whole)} ${unit}.`,
+        solution: betragNeu(whole, unit),
+        explanation: `${n} Teile entsprechen ${betragNeu(value, unit)}, ein Teil ist also ${betragNeu(value, unit)} : ${n} = ${betragNeu(teil, unit)}. Ganze Menge = ${betragNeu(teil, unit)} · ${d} = ${betragNeu(whole, unit)}.`,
         visualContent: generateFractionBarSvg({
           numerator: n,
           denominator: d,
@@ -2959,12 +3273,12 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
       const valueColored = (n / d) * whole
       const valueRest = whole - valueColored
       return visualTask({
-        question: `Das Kreisdiagramm zeigt den Anteil ${n}/${d} von ${whole} ${unit} (eingefärbt). Wie groß ist der NICHT eingefärbte Teil?`,
+        question: `Das Kreisdiagramm zeigt den Anteil ${n}/${d} von ${betragNeu(whole, unit)} (eingefärbt). Wie groß ist der NICHT eingefärbte Teil?`,
         unit,
         answerKind: 'decimal',
         value: valueRest,
-        solution: `${formatDe(valueRest)} ${unit}`,
-        explanation: `Eingefärbt: ${n}/${d} · ${whole} = ${formatDe(valueColored)} ${unit}. Rest: ${whole} − ${formatDe(valueColored)} = ${formatDe(valueRest)} ${unit}.`,
+        solution: betragNeu(valueRest, unit),
+        explanation: `Eingefärbt: ${n}/${d} · ${betragNeu(whole, unit)} = ${betragNeu(valueColored, unit)}. Rest: ${betragNeu(whole, unit)} − ${betragNeu(valueColored, unit)} = ${betragNeu(valueRest, unit)}.`,
         visualContent: generateFractionCircleSvg({
           numerator: n,
           denominator: d,
@@ -2999,6 +3313,27 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
         dedupeKey: `ratiobar-anteil:${ctx.names[0]}:${a}:${b}:${total}`,
       })
     },
+    // V6 Tippen — Hauptfall: Anteil einer Größe berechnen ("n/d von G")
+    (rng: Rng) => {
+      const d = pick(rng, [3, 4, 5, 6, 8, 10])
+      const n = randInt(rng, 1, d - 1)
+      const ctx = pick(rng, [
+        { id: 'pizza', unit: 'g', wholes: [240, 360, 480, 600], text: (g: string) => `Ein Pizzateig wiegt ${g}. ${n}/${d} davon ist Käse. Wie viel Gramm Käse sind das?` },
+        { id: 'sparen', unit: '€', wholes: [30, 60, 90, 120], text: (g: string) => `Mia bekommt ${g} Geburtstagsgeld und legt ${n}/${d} davon zurück. Wie viel Geld legt sie zurück?` },
+        { id: 'strecke', unit: 'km', wholes: [30, 60, 90, 120], text: (g: string) => `Eine Wanderung ist ${g} lang. ${n}/${d} der Strecke sind schon geschafft. Wie viele Kilometer sind das?` },
+      ])
+      const whole = pick(rng, ctx.wholes.filter((w) => w % d === 0))
+      const value = (n / d) * whole
+      return valueTask({
+        question: ctx.text(betragNeu(whole, ctx.unit)),
+        unit: ctx.unit,
+        answerKind: 'decimal',
+        value,
+        solution: betragNeu(value, ctx.unit),
+        explanation: `Ein Teil = ${betragNeu(whole, ctx.unit)} : ${d} = ${betragNeu(whole / d, ctx.unit)}.${n === 1 ? ` Der Anteil ${n}/${d} ist genau ein Teil: ${betragNeu(value, ctx.unit)}.` : ` ${n} Teile = ${betragNeu(whole / d, ctx.unit)} · ${n} = ${betragNeu(value, ctx.unit)}.`}`,
+        dedupeKey: `lb5anteilgroesse-von:${ctx.id}:${n}:${d}:${whole}`,
+      })
+    },
   ),
 })
 
@@ -3016,57 +3351,101 @@ const anteilProzentNeu: Topic = asNeuTopic('lb5-anteil-prozent', {
     url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
   },
   generate: mixedVariants(
-    // V1 Tippen — Umkehrung: Grundwert aus Prozentwert und Prozentsatz
+    // V1 Tippen — Hauptfall: Prozentwert aus Grundwert und Prozentsatz ("x % von G")
     (rng: Rng) => {
-      const percent = pick(rng, [10, 20, 25, 50, 75, 5])
-      const unit = pick(rng, ['€', 'kg', 'm', 'Liter'])
-      const whole = pick(rng, [20, 40, 50, 60, 80, 100, 200])
-      const value = roundTo((percent / 100) * whole, 2)
+      const percent = pick(rng, [10, 20, 25, 50, 75])
+      const ctx = pick(rng, [
+        {
+          id: 'rabatt',
+          unit: '€',
+          wholes: [40, 60, 80, 120, 200],
+          text: (g: string) => `Ein Pullover kostet ${g}. Im Angebot gibt es ${percent} % Rabatt. Wie viel Geld sparst du?`,
+        },
+        {
+          id: 'kinder',
+          unit: 'Kinder',
+          wholes: [100, 200, 300, 400],
+          text: (g: string) => `An einer Schule sind ${g}. ${percent} % davon fahren mit dem Fahrrad zur Schule. Wie viele Kinder sind das?`,
+        },
+        {
+          id: 'saft',
+          unit: 'Liter',
+          wholes: [20, 40, 80, 200],
+          text: (g: string) => `Ein Tank fasst ${g}. Er ist zu ${percent} % gefüllt. Wie viele Liter sind im Tank?`,
+        },
+      ])
+      const whole = pick(rng, ctx.wholes)
+      const value = (percent / 100) * whole
+      const g = ctx.id === 'kinder' ? `${whole} Kinder` : betragNeu(whole, ctx.unit)
       return valueTask({
-        question: `${percent} % einer Menge sind ${formatDe(value)} ${unit}. Wie groß ist die ganze Menge (Grundwert)?`,
-        unit,
+        question: ctx.text(g),
+        unit: ctx.unit,
         answerKind: 'decimal',
-        value: whole,
-        solution: `${formatDe(whole)} ${unit}`,
-        explanation: `G = W : p · 100 = ${formatDe(value)} : ${percent} · 100 = ${formatDe(roundTo(value / percent, 4))} · 100 = ${formatDe(whole)} ${unit}.`,
-        dedupeKey: `lb5anteilprozent-tippen:${percent}:${whole}`,
+        value,
+        solution: betragNeu(value, ctx.unit),
+        explanation: `W = G · p : 100 = ${betragNeu(whole, ctx.unit)} · ${percent} : 100. Zuerst ${betragNeu(whole, ctx.unit)} : 100 = ${betragNeu(whole / 100, ctx.unit)} (das sind 1 %), dann mal ${percent}: ${betragNeu(whole / 100, ctx.unit)} · ${percent} = ${betragNeu(value, ctx.unit)}.`,
+        dedupeKey: `lb5anteilprozent-wert:${ctx.id}:${percent}:${whole}`,
       })
     },
-    // V2 MC — Prozentsatz aus Prozentwert und Grundwert
+    // V2 Tippen — Umkehrung: Grundwert aus Prozentwert und Prozentsatz
+    (rng: Rng) => {
+      const percent = pick(rng, [10, 20, 25, 50, 75, 5])
+      const ctx = pick(rng, [
+        { id: 'anzahlung', unit: '€', wholes: [20, 40, 50, 60, 80, 100, 200], text: (p: number, v: string) => `Für ein Fahrrad wurden ${p} % des Preises angezahlt, das sind ${v}. Wie viel kostet das Fahrrad (Grundwert)?` },
+        { id: 'ernte', unit: 'kg', wholes: [20, 40, 50, 60, 80, 100, 200], text: (p: number, v: string) => `${p} % der Äpfel einer Ernte sind ${v} schwer. Wie viel wiegt die gesamte Ernte (Grundwert)?` },
+        { id: 'tank', unit: 'Liter', wholes: [20, 40, 50, 60, 80, 100, 200], text: (p: number, v: string) => `${p} % des Wassers eines Beckens sind ${v}. Wie viel Wasser ist insgesamt im Becken (Grundwert)?` },
+      ])
+      const whole = pick(rng, ctx.wholes)
+      const value = (percent / 100) * whole
+      return valueTask({
+        question: ctx.text(percent, betragNeu(value, ctx.unit)),
+        unit: ctx.unit,
+        answerKind: 'decimal',
+        value: whole,
+        solution: betragNeu(whole, ctx.unit),
+        explanation: `G = W : p · 100 = ${betragNeu(value, ctx.unit)} : ${percent} · 100 = ${betragNeu(value / percent, ctx.unit)} · 100 = ${betragNeu(whole, ctx.unit)}.`,
+        dedupeKey: `lb5anteilprozent-tippen:${ctx.id}:${percent}:${whole}`,
+      })
+    },
+    // V3 MC — Prozentsatz aus Prozentwert und Grundwert
     (rng: Rng) => {
       const percent = pick(rng, [10, 20, 25, 50, 75])
       const unit = pick(rng, ['€', 'kg', 'Liter'])
       const whole = pick(rng, [40, 50, 80, 100, 200])
-      const value = roundTo((percent / 100) * whole, 2)
+      const value = (percent / 100) * whole
       const correct = `${percent} %`
-      const wrong1 = `${formatDe(roundTo(value / whole, 2))} %` // ·100 vergessen
-      const wrong2 = `${formatDe(roundTo((whole / value) * 100, 1))} %` // Verhältnis vertauscht
-      const wrong3 = `${percent + 10} %` // nahe Rateantwort
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const candidates = [
+        `${formatDe(roundTo(value / whole, 2))} %`, // ·100 vergessen
+        `${formatDe(roundTo((whole / value) * 100, 1))} %`, // Verhältnis vertauscht
+        `${percent + 10} %`, // nahe Rateantwort
+        `${percent + 5} %`,
+        `${percent + 20} %`,
+      ]
+      const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({
-        question: `${formatDe(value)} ${unit} sind wie viel Prozent von ${whole} ${unit}?`,
+        question: `${betragNeu(value, unit)} sind wie viel Prozent von ${betragNeu(whole, unit)}?`,
         choices,
         correct,
         solution: correct,
         explanation: `p = (W : G) · 100 = (${formatDe(value)} : ${whole}) · 100 = ${formatDe(roundTo(value / whole, 4))} · 100 = ${percent} %.`,
-        dedupeKey: `lb5anteilprozent-mc:${percent}:${whole}`,
+        dedupeKey: `lb5anteilprozent-mc:${percent}:${whole}:${unit}`,
       })
     },
-    // V3 Visual — Streifen zeigt Prozent, Teilwert bekannt, ganze Menge gesucht
+    // V4 Visual — Streifen zeigt Prozent, Teilwert bekannt, ganze Menge gesucht
     (rng: Rng) => {
       const percent = pick(rng, [10, 20, 25, 50, 75])
       const unit = pick(rng, ['€', 'kg'])
       const whole = pick(rng, [40, 50, 80, 100, 200])
-      const value = roundTo((percent / 100) * whole, 2)
+      const value = (percent / 100) * whole
       const denom = percent % 10 === 0 ? 10 : 4
       const num = Math.round((percent / 100) * denom)
       return visualTask({
-        question: `Der Streifen zeigt ${percent} % einer Menge. Der eingefärbte Teil entspricht ${formatDe(value)} ${unit}. Wie groß ist die ganze Menge?`,
+        question: `Der Streifen zeigt ${percent} % einer Menge. Der eingefärbte Teil entspricht ${betragNeu(value, unit)}. Wie groß ist die ganze Menge?`,
         unit,
         answerKind: 'decimal',
         value: whole,
-        solution: `${formatDe(whole)} ${unit}`,
-        explanation: `${percent} % entsprechen ${formatDe(value)} ${unit}. 100 % (ganze Menge) = ${formatDe(value)} : ${percent} · 100 = ${formatDe(whole)} ${unit}.`,
+        solution: betragNeu(whole, unit),
+        explanation: `${percent} % entsprechen ${betragNeu(value, unit)}. 100 % (ganze Menge) = ${betragNeu(value, unit)} : ${percent} · 100 = ${betragNeu(whole, unit)}.`,
         visualContent: generateFractionBarSvg({
           numerator: num,
           denominator: denom,
@@ -3074,23 +3453,23 @@ const anteilProzentNeu: Topic = asNeuTopic('lb5-anteil-prozent', {
         }),
       })
     },
-    // V4 Visual — Kreisdiagramm, nicht eingefärbter Teil (Rest-Prozent) gesucht
+    // V5 Visual — Kreisdiagramm, nicht eingefärbter Teil (Rest-Prozent) gesucht
     (rng: Rng) => {
       const percent = pick(rng, [25, 50, 75])
       const unit = pick(rng, ['€', 'kg', 'Liter'])
       const whole = pick(rng, [40, 80, 100, 200])
-      const valueColored = roundTo((percent / 100) * whole, 2)
-      const valueRest = roundTo(whole - valueColored, 2)
+      const valueColored = (percent / 100) * whole
+      const valueRest = whole - valueColored
       const restPercent = 100 - percent
       const denom = 4
       const num = percent / 25
       return visualTask({
-        question: `Das Kreisdiagramm zeigt ${percent} % von ${whole} ${unit} (eingefärbt). Wie groß ist der NICHT eingefärbte Teil (${restPercent} %)?`,
+        question: `Das Kreisdiagramm zeigt ${percent} % von ${betragNeu(whole, unit)} (eingefärbt). Wie groß ist der NICHT eingefärbte Teil (${restPercent} %)?`,
         unit,
         answerKind: 'decimal',
         value: valueRest,
-        solution: `${formatDe(valueRest)} ${unit}`,
-        explanation: `Eingefärbt: ${percent} % von ${whole} ${unit} = ${formatDe(valueColored)} ${unit}. Rest (${restPercent} %): ${formatDe(whole)} − ${formatDe(valueColored)} = ${formatDe(valueRest)} ${unit}.`,
+        solution: betragNeu(valueRest, unit),
+        explanation: `Eingefärbt: ${percent} % von ${betragNeu(whole, unit)} = ${betragNeu(valueColored, unit)}. Rest (${restPercent} %): ${betragNeu(whole, unit)} − ${betragNeu(valueColored, unit)} = ${betragNeu(valueRest, unit)}.`,
         visualContent: generateFractionCircleSvg({
           numerator: num,
           denominator: denom,
@@ -3100,6 +3479,34 @@ const anteilProzentNeu: Topic = asNeuTopic('lb5-anteil-prozent', {
     },
     // V5 Kreisdiagramm — Anzahlen in Prozentanteile umrechnen und als Kreisdiagramm zeichnen (Grenzen ziehen)
     (rng: Rng) => countPieChartTask(rng, pick(rng, COUNT_SURVEYS_ANTEIL)),
+    // V6 MC — Hauptfall: Prozentwert berechnen, mit typischen Fehlern
+    (rng: Rng) => {
+      const percent = pick(rng, [10, 20, 25, 40, 50, 75])
+      const unit = pick(rng, ['€', 'kg', 'Liter'])
+      const whole = pick(rng, [40, 80, 120, 200, 400])
+      const value = (percent / 100) * whole
+      const correct = betragNeu(value, unit)
+      const candidates = [
+        percent * whole, // nicht durch 100 geteilt
+        whole - value, // Rest statt Prozentwert
+        whole / percent, // geteilt statt multipliziert
+        value * 2,
+        value + whole / 10,
+        value + 5,
+        value + whole,
+      ]
+        .filter((x) => x > 0 && Math.abs(x - value) > 1e-9)
+        .map((x) => betragNeu(roundTo(x, 2), unit))
+      const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
+      return choicePickTask({
+        question: `Wie viel sind ${percent} % von ${betragNeu(whole, unit)}?`,
+        choices,
+        correct,
+        solution: correct,
+        explanation: `1 % von ${betragNeu(whole, unit)} sind ${betragNeu(whole / 100, unit)}. ${percent} % sind ${betragNeu(whole / 100, unit)} · ${percent} = ${correct}.`,
+        dedupeKey: `lb5anteilprozent-von:${percent}:${whole}:${unit}`,
+      })
+    },
   ),
 })
 
