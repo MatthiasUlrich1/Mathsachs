@@ -333,3 +333,69 @@ describe('Laplace-Prozent', () => {
     }
   })
 })
+
+describe('Politur (Gesamtcheck C, N5/N8/N9/N10)', () => {
+  const percentValue = (c: string): number => Number(c.replace(/[^\d,]/g, '').replace(',', '.'))
+
+  it('N5: laplace-prozent hat nie eine Prozent-Option über 100 % und immer 4 verschiedene Optionen', () => {
+    expect(percentValue('300 %')).toBeGreaterThan(100) // Negativkontrolle für den Parser
+    let mc = 0
+    for (const t of sweep(topicOf(math8NeuTopics, 'k8-lb2-laplace-prozent__neu'), 12)) {
+      const ch = choicesOf(t)
+      if (!ch) continue
+      mc++
+      expect(new Set(ch).size, t.question).toBe(ch.length)
+      if (ch.every((c) => /%$/.test(c))) {
+        expect(ch.length, t.question).toBe(4)
+        for (const c of ch) expect(percentValue(c), `${t.question} ${c}`).toBeLessThanOrEqual(100)
+      }
+    }
+    expect(mc).toBeGreaterThan(300)
+  })
+
+  it('N8: Mittelsenkrechten-Lösungen (P, Q) benutzen das echte Minus "−", nie ASCII-"-" vor Ziffern', () => {
+    const ascii = /(?:\(|\||\s)-\d/
+    expect(ascii.test('Q(4|-3)')).toBe(true) // Negativkontrolle
+    let negatives = 0
+    for (const t of sweep(topicOf(math7NeuTopics, 'k7-lb1-mittelsenkrechte-schritte__neu'), 12)) {
+      expect(`${t.question} ${t.solution} ${t.explanation}`, t.question).not.toMatch(ascii)
+      if (/\|−\d|\(−\d/.test(t.solution)) negatives++
+    }
+    expect(negatives).toBeGreaterThan(10)
+  })
+
+  it('N9: Konzept-MC (Scheitel-/Basiswinkel): richtige Option ist nicht deutlich die längste', () => {
+    const tooLong = (correct: string, wrongs: string[]): boolean =>
+      correct.length > 1.2 * Math.max(...wrongs.map((w) => w.length))
+    // Negativkontrolle mit dem früheren Wortlaut
+    expect(
+      tooLong(
+        'Die beiden Basiswinkel liegen gegenüber den gleich langen Schenkeln und sind deshalb stets gleich groß.',
+        ['Die Basiswinkel sind nur bei einem gleichseitigen Dreieck gleich groß.', 'Ein Basiswinkel ist immer größer als der Winkel an der Spitze.'],
+      ),
+    ).toBe(true)
+    for (const id of ['k7-lb1-scheitelwinkel__neu', 'k7-lb1-basiswinkel__neu']) {
+      let concept = 0
+      for (const t of sweep(topicOf(math7NeuTopics, id), 12)) {
+        if (!/^Welche Aussage( über die Basiswinkel im gleichschenkligen Dreieck)? ist richtig\?$/.test(t.question)) continue
+        concept++
+        const ch = choicesOf(t)!
+        const correct = correctOf(t)
+        expect(ch.length, t.question).toBe(4)
+        expect(tooLong(correct, ch.filter((c) => c !== correct)), `${id}: ${correct}`).toBe(false)
+      }
+      expect(concept, id).toBeGreaterThan(30)
+    }
+  })
+
+  it('N10: keine Geldbeträge mit 4+ Ziffern ohne Tausenderpunkt (K7/K8)', () => {
+    const missingSeparator = /(?<![\d.,])\d{4,}(,\d+)?\s*(€|EUR|Euro)/
+    expect(missingSeparator.test('3000,00 €')).toBe(true) // Negativkontrolle
+    for (const topic of [...math7NeuTopics, ...math8NeuTopics]) {
+      for (const t of sweep(topic, 4)) {
+        const all = `${t.question} ${t.explanation} ${t.solution} ${(choicesOf(t) ?? []).join(' ')}`
+        expect(all, t.question).not.toMatch(missingSeparator)
+      }
+    }
+  })
+})

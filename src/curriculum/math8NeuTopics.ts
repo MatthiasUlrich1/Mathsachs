@@ -575,7 +575,7 @@ const laplaceProzentNeu: Topic = asNeuTopic('k8-lb2-laplace-prozent', {
       const correct = `${formatDe(value)} %`
       const wrong1 = `${formatDe(roundTo(k / total, 2))} %` // ×100 vergessen
       const wrong2 = `${formatDe(roundTo(((total - k) / total) * 100, 2))} %` // Gegenwahrscheinlichkeit
-      const wrong3 = `${formatDe(roundTo((k / (total - k)) * 100, 2))} %` // Verhältnis statt Anteil
+      const wrong3 = `${formatDe(roundTo((k / (total + 1)) * 100, 2))} %` // ein Feld zu viel im Nenner (immer ≤ 100 %)
       const wrong4 = `${formatDe(roundTo(((k + 1) / total) * 100, 2))} %` // ein Feld zu viel gezählt
       const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({

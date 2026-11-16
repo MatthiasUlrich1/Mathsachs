@@ -114,7 +114,8 @@ function viereckWinkelNeu(rng: Rng): [number, number, number, number] {
 
 /** Geldbetrag immer mit zwei Nachkommastellen: 12,50 € */
 function euroNeu(x: number): string {
-  return `${roundTo(x, 2).toFixed(2).replace('.', ',')} €`
+  // Deutsche Schreibweise inkl. Tausenderpunkt: 3.000,00 €
+  return `${roundTo(x, 2).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €`
 }
 
 /** Reihenfolge-unabhängiger Schlüssel für ein Bruchpaar. */
@@ -187,10 +188,11 @@ const kuerzenNeu: Topic = asNeuTopic('lb1-kuerzen', {
       const d = base.d * k
       const g = gcd(n, d)
       const correct = `${base.n}/${base.d}`
-      const wrong1 = `${n}/${base.d}` // nur Nenner gekürzt
-      const wrong2 = `${base.n}/${d}` // nur Zähler gekürzt
-      const wrong3 = `${base.d}/${base.n}` // Zähler/Nenner vertauscht
-      const wrong4 = `${n}/${d}` // gar nicht gekürzt
+      // Distraktoren sind immer echte Brüche (Zähler < Nenner), nie ein unechter Bruch oder eine ganze Zahl.
+      const wrong1 = `${base.n}/${d}` // nur der Zähler gekürzt
+      const wrong2 = `${n}/${d}` // gar nicht gekürzt
+      const wrong3 = `${base.n}/${base.d + 1}` // Nenner falsch angepasst
+      const wrong4 = `${base.n + 1}/${base.d + 1}` // beide "um 1" verändert
       const labeled = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4]), correct)
       return choicePickTask({
         question: `Welcher Bruch ist die vollständig gekürzte Form von ${n}/${d}?`,
@@ -371,17 +373,24 @@ const vergleichenNeu: Topic = asNeuTopic('lb1-vergleichen', {
     // V1 Tippen — größerer Zahlenraum als im Haupt-Thema
     (rng: Rng) => {
       const a = properFractionNeu(rng, 12)
-      const b = properFractionNeu(rng, 12)
-      const cmp = a.n * b.d - b.n * a.d
+      const b0 = properFractionNeu(rng, 12)
+      // Zwei gleich aussehende Brüche (1/2 ___ 1/2) sind keine Aufgabe. Ist der Zufallsbruch identisch,
+      // zeigen wir stattdessen die erweiterte Form (1/2 ___ 2/4): "=" bleibt als echtes Lernziel erhalten.
+      const identical = a.n === b0.n && a.d === b0.d
+      const k = identical ? pick(rng, [2, 3]) : 1
+      const bn = b0.n * k
+      const bd = b0.d * k
+      const bLabel = `${bn}/${bd}`
+      const cmp = a.n * bd - bn * a.d
       const symbol = cmp < 0 ? '<' : cmp > 0 ? '>' : '='
-      const left = a.n * b.d
-      const right = b.n * a.d
+      const left = a.n * bd
+      const right = bn * a.d
       return textTask({
-        question: `Vergleiche: ${format(a)} ___ ${format(b)}`,
+        question: `Vergleiche: ${format(a)} ___ ${bLabel}`,
         accepted: [symbol],
         solution: symbol,
-        explanation: `Gemeinsamer Nenner ${a.d * b.d}: ${format(a)} = ${left}/${a.d * b.d}, ${format(b)} = ${right}/${a.d * b.d}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${format(b)}.`,
-        dedupeKey: `vgl-tippen:${pairKeyNeu(a, b)}`,
+        explanation: `Gemeinsamer Nenner ${a.d * bd}: ${format(a)} = ${left}/${a.d * bd}, ${bLabel} = ${right}/${a.d * bd}. Da ${left} ${symbol} ${right}, gilt ${format(a)} ${symbol} ${bLabel}.`,
+        dedupeKey: `vgl-tippen:${[format(a), bLabel].sort().join('|')}`,
       })
     },
     // V2 MC — den größeren Bruch erkennen
@@ -838,10 +847,12 @@ const prozentNeu: Topic = asNeuTopic('lb1-prozent', {
       const f = makeFraction(n, denom)
       const value = roundTo(toDecimal(f) * 100, 2)
       const correct = `${formatDe(value)} %`
-      const wrong1 = `${formatDe(roundTo(value / 10, 2))} %`
-      const wrong2 = `${formatDe(roundTo(value + 10, 2))} %`
-      const wrong3 = `${n} %`
-      const labeled = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      // Genügend Kandidaten, damit es immer genau 4 verschiedene Optionen gibt (Zähler = Wert/10 u. ä. kollidieren sonst).
+      const wrongValues = [value / 10, value + 10, n, value - 10, denom, 100 - value, value / 2]
+        .map((x) => roundTo(x, 2))
+        .filter((x) => x > 0 && x <= 100 && Math.abs(x - value) > 1e-9)
+      const wrongs = wrongValues.map((x) => `${formatDe(x)} %`)
+      const labeled = shuffleChoices(rng, fourChoices(correct, wrongs), correct)
       return choicePickTask({
         question: `Wie viel Prozent sind ${format(f)}?`,
         choices: labeled,
@@ -1309,6 +1320,7 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
           lo: 40,
           hi: 120,
           unit: 'Bücher',
+          dat: 'Büchern',
           text: (nn: number, dd: number, a: number) =>
             `Von den Büchern einer Schulbücherei sind ${nn}/${dd} Sachbücher, das sind ${a} Bücher. Wie viele Bücher hat die Bücherei insgesamt?`,
         },
@@ -1317,6 +1329,7 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
           lo: 30,
           hi: 60,
           unit: 'Kinder',
+          dat: 'Kindern',
           text: (nn: number, dd: number, a: number) =>
             `${nn}/${dd} der Kinder einer Schule fahren mit dem Bus zur Schule, das sind ${a} Kinder. Wie viele Kinder hat die Schule insgesamt?`,
         },
@@ -1330,7 +1343,7 @@ const sachaufgabeBruchNeu: Topic = asNeuTopic('lb1-sachaufgabe-bruch', {
         answerKind: 'integer',
         value: gesamt,
         solution: `${gesamt} ${ctx.unit}`,
-        explanation: `${n} Teile entsprechen ${anteilBetrag} ${ctx.unit}, also entspricht 1 Teil ${anteilBetrag} : ${n} = ${proTeil} ${ctx.unit}. Das Ganze (${d} Teile) sind dann ${proTeil} · ${d} = ${gesamt} ${ctx.unit}.`,
+        explanation: `${n} Teile entsprechen ${anteilBetrag} ${ctx.dat}, also entspricht 1 Teil ${anteilBetrag} : ${n} = ${proTeil} ${ctx.unit}. Das Ganze (${d} Teile) sind dann ${proTeil} · ${d} = ${gesamt} ${ctx.unit}.`,
         dedupeKey: `sach-reverse:${ctx.id}:${n}:${d}:${anteilBetrag}`,
       })
     },
@@ -1767,7 +1780,7 @@ const haeufigkeitNeu: Topic = asNeuTopic('lb2-haeufigkeit', {
           choices,
           correct: category,
           solution: category,
-          explanation: `${formatDe(percent)} % von ${total} Kindern sind ${survey.counts[idx]} Kinder. Diese Zahl steht in der Tabelle bei „${category}“.`,
+          explanation: `${formatDe(percent)} % von ${total} Kindern sind ${survey.counts[idx]} ${survey.counts[idx] === 1 ? 'Kind' : 'Kinder'}. Diese Zahl steht in der Tabelle bei „${category}“.`,
           dedupeKey: `lb2haeuf-tabelle-kategorie:${survey.id}:${category}`,
         }),
         visualContent: barChartTableSvg(`Tabelle: ${survey.head}`, survey.head, 'Anzahl Kinder', survey.categories, survey.counts),
@@ -2546,7 +2559,7 @@ const kongruenzSatzNeu: Topic = asNeuTopic('lb3-kongruenzsatz', {
             { id: 's-bc', kind: 'segment', x1: B.x, y1: B.y, x2: cx, y2: cy },
           ],
         },
-        solution: `Dreieck ABC mit C(${cx}|${cy}) (oder gespiegelt an AB)`,
+        solution: `Dreieck ABC mit C(${formatDe(cx).replace('-', '−')}|${formatDe(cy).replace('-', '−')}) (oder gespiegelt an AB)`,
         explanation: `Bei SSS sind alle drei Seiten bekannt. Die Kreisbögen um A (b = ${b} cm) und um B (a = ${a} cm) schneiden sich in zwei Punkten, die spiegelbildlich zu AB liegen. Beide Punkte liefern ein Dreieck mit denselben Seitenlängen, die beiden Dreiecke sind kongruent. Das Dreieck ist durch SSS also bis auf Spiegelung eindeutig festgelegt.`,
         dedupeKey: `lb3kong-konstruktion-sss:${c}:${b}:${a}`,
       })
@@ -3318,7 +3331,7 @@ const anteilVonGroesseNeu: Topic = asNeuTopic('lb5-anteil-groesse', {
       const d = pick(rng, [3, 4, 5, 6, 8, 10])
       const n = randInt(rng, 1, d - 1)
       const ctx = pick(rng, [
-        { id: 'pizza', unit: 'g', wholes: [240, 360, 480, 600], text: (g: string) => `Ein Pizzateig wiegt ${g}. ${n}/${d} davon ist Käse. Wie viel Gramm Käse sind das?` },
+        { id: 'obstsalat', unit: 'g', wholes: [240, 360, 480, 600], text: (g: string) => `Eine Schüssel Obstsalat wiegt ${g}. ${n}/${d} davon sind Äpfel. Wie viel Gramm Äpfel sind das?` },
         { id: 'sparen', unit: '€', wholes: [30, 60, 90, 120], text: (g: string) => `Mia bekommt ${g} Geburtstagsgeld und legt ${n}/${d} davon zurück. Wie viel Geld legt sie zurück?` },
         { id: 'strecke', unit: 'km', wholes: [30, 60, 90, 120], text: (g: string) => `Eine Wanderung ist ${g} lang. ${n}/${d} der Strecke sind schon geschafft. Wie viele Kilometer sind das?` },
       ])
@@ -3486,16 +3499,19 @@ const anteilProzentNeu: Topic = asNeuTopic('lb5-anteil-prozent', {
       const whole = pick(rng, [40, 80, 120, 200, 400])
       const value = (percent / 100) * whole
       const correct = betragNeu(value, unit)
+      // Distraktoren bleiben plausibel: ein Prozentwert (hier höchstens 75 %) liegt immer unter dem Ganzen,
+      // und Beträge unter 1 sind unrealistisch. Fehlertypen: Rest, geteilt statt mal, doppelt, knapp daneben.
       const candidates = [
-        percent * whole, // nicht durch 100 geteilt
         whole - value, // Rest statt Prozentwert
         whole / percent, // geteilt statt multipliziert
         value * 2,
         value + whole / 10,
         value + 5,
-        value + whole,
+        value - whole / 10,
+        value - 5,
+        value / 2,
       ]
-        .filter((x) => x > 0 && Math.abs(x - value) > 1e-9)
+        .filter((x) => x >= 1 && x < whole && Math.abs(x - value) > 1e-9)
         .map((x) => betragNeu(roundTo(x, 2), unit))
       const choices = shuffleChoices(rng, fourChoices(correct, candidates), correct)
       return choicePickTask({

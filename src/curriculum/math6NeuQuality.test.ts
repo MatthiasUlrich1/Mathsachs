@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
 import { buildUniqueTaskRound } from './uniqueRound'
 import { math6NeuTopics } from './math6NeuTopics'
+import { valueTask } from './taskHelpers'
 import type { Task, Topic } from './types'
 
 const SEEDS = 320
@@ -435,5 +436,148 @@ describe('lb5-anteil-prozent', () => {
       const sol = Number(t.solution.replace(/[^\d,]/g, '').replace(',', '.'))
       expect(sol, t.question).toBeCloseTo((Number(m[1]) * Number(m[2])) / 100, 6)
     }
+  })
+})
+
+describe('Klasse 6 Politur (Gesamtcheck C, N1/N2/N4/N6/N8/N10/N11/N13)', () => {
+  const ALL_IDS = math6NeuTopics.map((t) => t.id.replace(/__neu$/, ''))
+
+  it('N1: lb2-haeufigkeit nennt nie "1 Kinder" (Singular wird korrekt gebildet)', () => {
+    const bad = /\b1 Kinder\b/
+    expect(bad.test('sind 1 Kinder')).toBe(true) // Negativkontrolle
+    let ones = 0
+    for (const t of tasksOf('lb2-haeufigkeit')) {
+      const all = `${t.question} ${t.explanation} ${t.solution} ${(choicesOf(t) ?? []).join(' ')}`
+      expect(all, t.question).not.toMatch(bad)
+      if (/\b1 Kind\b/.test(all)) ones++
+    }
+    expect(ones).toBeGreaterThan(0) // der Singular-Fall kommt tatsächlich vor
+  })
+
+  it('N2: Umkehraufgaben stehen im Dativ ("entsprechen 98 Kindern")', () => {
+    const nominative = /entsprechen \d+ (Kinder|Bücher|Sitzplätze|Karten|Plätze)\b/
+    expect(nominative.test('2 Teile entsprechen 98 Kinder')).toBe(true) // Negativkontrolle
+    let dative = 0
+    for (const id of ALL_IDS) {
+      for (const t of tasksOf(id)) {
+        expect(t.explanation, t.question).not.toMatch(nominative)
+        if (/entsprechen \d+ (Kindern|Büchern)\b/.test(t.explanation)) dative++
+      }
+    }
+    expect(dative).toBeGreaterThan(50)
+  })
+
+  it('N4: vergleichen zeigt nie zwei identisch aussehende Brüche; "=" bleibt über erweiterte Formen erhalten', () => {
+    const identical = (q: string): boolean => {
+      const m = /Vergleiche: (\d+)\/(\d+) ___ (\d+)\/(\d+)/.exec(q)
+      return !!m && m[1] === m[3] && m[2] === m[4]
+    }
+    expect(identical('Vergleiche: 1/2 ___ 1/2')).toBe(true) // Negativkontrolle
+    let equalSign = 0
+    let typed = 0
+    for (const t of tasksOf('lb1-vergleichen')) {
+      expect(identical(t.question), t.question).toBe(false)
+      if (/^Vergleiche: /.test(t.question)) {
+        typed++
+        if (t.solution === '=') equalSign++
+      }
+    }
+    expect(typed).toBeGreaterThan(100)
+    expect(equalSign).toBeGreaterThan(0)
+  })
+
+  it('N6: kürzen-MC hat nur echte Brüche, vier verschiedene Optionen, höchstens eine wertgleiche falsche Option', () => {
+    const proper = (c: string): boolean => {
+      const m = /^(\d+)\/(\d+)$/.exec(c)
+      return !!m && Number(m[1]) < Number(m[2])
+    }
+    expect(['2/1', '4/3', '3/2'].every(proper)).toBe(false) // Negativkontrolle
+    let mc = 0
+    for (const t of tasksOf('lb1-kuerzen')) {
+      const choices = choicesOf(t)
+      if (!choices) continue
+      mc++
+      expect(new Set(choices).size, t.question).toBe(4)
+      for (const c of choices) expect(proper(c), `${t.question} ${c}`).toBe(true)
+      const value = (c: string) => {
+        const [n, d] = c.split('/').map(Number)
+        return n! / d!
+      }
+      const correct = (t.sampleAnswer as { choice: string }).choice
+      const equalWrong = choices.filter((c) => c !== correct && Math.abs(value(c) - value(correct)) < 1e-9)
+      // nur bei "vollständig gekürzt" darf die ungekürzte Ausgangsform als Distraktor stehen
+      expect(equalWrong.length, t.question).toBeLessThanOrEqual(1)
+    }
+    expect(mc).toBeGreaterThan(300)
+  })
+
+  it('N8: Lösungs-, Frage- und Erklärungstexte der Konstruktionsaufgaben enthalten kein ASCII-Minus vor Ziffern', () => {
+    const ascii = /(?:\(|\||\s)-\d/
+    expect(ascii.test('Dreieck ABC mit C(-3|4)')).toBe(true) // Negativkontrolle
+    for (const t of tasksOf('lb3-kongruenzsatz')) {
+      expect(`${t.question} ${t.solution} ${t.explanation}`, t.question).not.toMatch(ascii)
+    }
+  })
+
+  it('N10: Geldbeträge und große Zahlen mit Tausenderpunkt; Eingaben "3000", "3000,00" und "3.000,00" gelten', () => {
+    const missingSeparator = /(?<![\d.,])\d{4,}(,\d+)?\s*(€|EUR|Euro)/
+    expect(missingSeparator.test('3000,00 €')).toBe(true) // Negativkontrolle
+    expect(missingSeparator.test('3.000,00 €')).toBe(false)
+    for (const id of ALL_IDS) {
+      for (const t of tasksOf(id)) {
+        const all = `${t.question} ${t.explanation} ${t.solution} ${(choicesOf(t) ?? []).join(' ')}`
+        expect(all, t.question).not.toMatch(missingSeparator)
+      }
+    }
+    const task = valueTask({ question: '?', answerKind: 'decimal', value: 3000, solution: '3.000,00 €', explanation: 'x' })
+    for (const input of ['3000', '3000,00', '3.000,00', '3000.00']) {
+      expect(task.check({ kind: 'value', value: input }), input).toBe(true)
+    }
+    expect(task.check({ kind: 'value', value: '300,00' })).toBe(false)
+  })
+
+  it('N10: lb5-anteil-prozent-MC hat 4 verschiedene, plausible Optionen (unter dem Grundwert, mindestens 1)', () => {
+    let mc = 0
+    for (const t of tasksOf('lb5-anteil-prozent')) {
+      const m = /^Wie viel sind (\d+) % von ([\d.]+(?:,\d+)?) /.exec(t.question)
+      const choices = choicesOf(t)
+      if (!m || !choices) continue
+      mc++
+      const whole = Number(m[2]!.replace(/\./g, '').replace(',', '.'))
+      expect(new Set(choices).size, t.question).toBe(4)
+      for (const c of choices) {
+        const v = Number(c.replace(/[^\d,]/g, '').replace(',', '.'))
+        expect(v, `${t.question} ${c}`).toBeGreaterThanOrEqual(1)
+        expect(v, `${t.question} ${c}`).toBeLessThan(whole)
+      }
+    }
+    expect(mc).toBeGreaterThan(50)
+  })
+
+  it('N11: Anteil-Sachaufgaben ohne unrealistischen Käseanteil im Pizzateig', () => {
+    expect(/Pizzateig/.test('Ein Pizzateig wiegt 360 g. 5/8 davon ist Käse.')).toBe(true) // Negativkontrolle
+    let obstsalat = 0
+    for (const t of tasksOf('lb5-anteil-groesse')) {
+      expect(t.question).not.toMatch(/Pizzateig|davon ist /)
+      if (/Obstsalat/.test(t.question)) obstsalat++
+    }
+    expect(obstsalat).toBeGreaterThan(10)
+  })
+
+  it('N13: lb1-prozent-MC hat immer vier verschiedene Optionen mit der richtigen Antwort', () => {
+    let mc = 0
+    for (const t of tasksOf('lb1-prozent')) {
+      const choices = choicesOf(t)
+      if (!choices) continue
+      mc++
+      expect(new Set(choices).size, t.question).toBe(4)
+      expect(choices).toContain((t.sampleAnswer as { choice: string }).choice)
+      for (const c of choices) {
+        const v = Number(c.replace(/[^\d,]/g, '').replace(',', '.'))
+        expect(v, `${t.question} ${c}`).toBeLessThanOrEqual(100)
+      }
+    }
+    expect(mc).toBeGreaterThan(100)
+    expect(new Set(['9/10', '3/5', '1/2']).size).not.toBe(4) // Negativkontrolle
   })
 })

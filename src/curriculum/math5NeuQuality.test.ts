@@ -226,3 +226,67 @@ describe('math5 Neu: Qualitaets-Sweeps', () => {
     }
   })
 })
+
+describe('Klasse 5 Politur (Gesamtcheck C, N3/N7/N10/N12)', () => {
+  it('N3: anteil-bruch sagt "ist 1 blau", nie "sind 1 blau"', () => {
+    const bad = /\bsind 1 (blau|rot|Schoko)\b/
+    expect(bad.test('Von 12 Murmeln sind 1 blau.')).toBe(true) // Negativkontrolle
+    let singular = 0
+    for (const t of tasksOf('lb2-anteil-bruch__neu')) {
+      expect(t.question).not.toMatch(bad)
+      if (/\bist 1 (blau|rot|Schoko)\b/.test(t.question)) singular++
+    }
+    expect(singular).toBeGreaterThan(5)
+  })
+
+  it('N7: mittelwert V5 (Geschwister-Tabelle) hat wechselnde, ganzzahlige Mittelwerte und passende Tabellensumme', () => {
+    const means = new Map<string, number>()
+    let n = 0
+    for (const t of tasksOf('lb2-mittelwert__neu')) {
+      if (!/Wie viele Geschwister hat ein Kind im Mittel/.test(t.question)) continue
+      n++
+      means.set(t.solution, (means.get(t.solution) ?? 0) + 1)
+      const m = /Teile durch die Anzahl der Kinder: (\d+) : (\d+) = (\d+)/.exec(t.explanation)
+      expect(m, t.explanation).not.toBeNull()
+      expect(Number(m![1]) / Number(m![2]), t.question).toBe(Number(m![3]))
+    }
+    expect(n).toBeGreaterThan(100)
+    expect([...means.keys()].sort()).toEqual(['1', '2'])
+    for (const count of means.values()) expect(count / n).toBeGreaterThan(0.25)
+  })
+
+  it('N10: keine Geldbeträge mit 4+ Ziffern ohne Tausenderpunkt (K5)', () => {
+    const missingSeparator = /(?<![\d.,])\d{4,}(,\d+)?\s*(€|EUR|Euro)/
+    expect(missingSeparator.test('3000,00 €')).toBe(true) // Negativkontrolle
+    for (const topic of math5NeuTopics) {
+      for (const t of tasksOf(topic.id)) {
+        const all = `${t.question} ${t.explanation} ${t.solution} ${(choicesOf(t) ?? []).join(' ')}`
+        expect(all, t.question).not.toMatch(missingSeparator)
+      }
+    }
+  })
+
+  it('N12: Punktspiegelung per Klick nennt A und S mit Koordinaten im Aufgabentext, Lösung = 2S − A', () => {
+    const parse = (s: string): [number, number] | null => {
+      const m = /\((−?\d+)\|(−?\d+)\)/.exec(s)
+      return m ? [Number(m[1]!.replace('−', '-')), Number(m[2]!.replace('−', '-'))] : null
+    }
+    const solves = (t: Task): boolean => {
+      const a = /Punkt A(\([^)]*\))/.exec(t.question)
+      const s = /Punkt S(\([^)]*\))/.exec(t.question)
+      const A = a ? parse(a[1]!) : null
+      const S = s ? parse(s[1]!) : null
+      const sol = parse(t.solution)
+      return !!A && !!S && !!sol && sol[0] === 2 * S[0] - A[0] && sol[1] === 2 * S[1] - A[1]
+    }
+    expect(solves({ question: "Spiegle Punkt A am Punkt S. Setze A' im Koordinatensystem.", solution: '(4|4)' } as Task)).toBe(false) // Negativkontrolle
+    let n = 0
+    for (const t of tasksOf('lb3-punktsymmetrie__neu')) {
+      if (!/^Spiegle den Punkt A/.test(t.question)) continue
+      n++
+      expect(solves(t), `${t.question} -> ${t.solution}`).toBe(true)
+    }
+    expect(n).toBeGreaterThan(100)
+    for (const t of tasksOf('lb3-punktsymmetrie__neu')) expect(t.question).not.toMatch(/^Spiegle Punkt A am Punkt S\./)
+  })
+})

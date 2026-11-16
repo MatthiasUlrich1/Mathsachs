@@ -1,6 +1,9 @@
 /** Parse a user-entered number, accepting both "3,5" (German) and "3.5". */
 export const parseNumber = (raw: string): number | null => {
-  const cleaned = raw.trim().replace(/\s/g, '').replace(',', '.')
+  let text = raw.trim().replace(/\s/g, '')
+  // Deutsche Schreibweise mit Tausenderpunkt und Komma, z. B. "3.000,00" -> "3000,00".
+  if (/^[-+]?\d{1,3}(\.\d{3})+,\d+$/.test(text)) text = text.replace(/\./g, '')
+  const cleaned = text.replace(',', '.')
   if (cleaned === '' || !/^[-+]?\d*\.?\d+$/.test(cleaned)) return null
   const value = Number(cleaned)
   return Number.isFinite(value) ? value : null
@@ -8,7 +11,9 @@ export const parseNumber = (raw: string): number | null => {
 
 /** Parse an integer, accepting a leading sign. */
 export const parseInteger = (raw: string): number | null => {
-  const cleaned = raw.trim().replace(/\s/g, '')
+  let cleaned = raw.trim().replace(/\s/g, '')
+  // Tausenderpunkte (z. B. "3.000") sind bei ganzen Zahlen eindeutig.
+  if (/^[-+]?\d{1,3}(\.\d{3})+$/.test(cleaned)) cleaned = cleaned.replace(/\./g, '')
   if (!/^[-+]?\d+$/.test(cleaned)) return null
   return Number(cleaned)
 }

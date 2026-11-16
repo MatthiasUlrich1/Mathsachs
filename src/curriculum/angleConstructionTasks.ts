@@ -146,7 +146,7 @@ export const swsConstructionTask = (set: SwsSet): Task => {
       },
     ],
     solutionScene,
-    solution: `Dreieck ABC mit C(${formatDe(C.x)}|${formatDe(C.y)}) (oder gespiegelt an AB), dritte Seite a ≈ ${formatDe(Math.round(a * 10) / 10)} cm`,
+    solution: `Dreieck ABC mit C(${formatDe(C.x).replace('-', '−')}|${formatDe(C.y).replace('-', '−')}) (oder gespiegelt an AB), dritte Seite a ≈ ${formatDe(Math.round(a * 10) / 10)} cm`,
     explanation:
       `Bei SWS sind zwei Seiten und der eingeschlossene Winkel bekannt. ` +
       `1. Zeichne AB mit c = ${cm(c)}. ` +
@@ -214,7 +214,7 @@ export const wswConstructionTask = (set: WswSet): Task => {
       },
     ],
     solutionScene,
-    solution: `Dreieck ABC mit C(${formatDe(C.x)}|${formatDe(C.y)}) (oder gespiegelt an AB)`,
+    solution: `Dreieck ABC mit C(${formatDe(C.x).replace('-', '−')}|${formatDe(C.y).replace('-', '−')}) (oder gespiegelt an AB)`,
     explanation:
       `Bei WSW sind eine Seite und die beiden anliegenden Winkel bekannt. ` +
       `1. Zeichne AB mit c = ${cm(c)}. ` +

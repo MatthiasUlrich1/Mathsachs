@@ -304,10 +304,11 @@ const scheitelwinkelNeu: Topic = asNeuTopic('k7-lb1-scheitelwinkel', {
     // V4 MC — Konzeptfrage
     (rng: Rng) => {
       const correct =
-        'Scheitelwinkel entstehen an sich kreuzenden Geraden, Stufen- und Wechselwinkel entstehen an einer Transversalen durch zwei Parallelen — alle sind jeweils paarweise gleich groß.'
-      const wrong1 = 'Scheitelwinkel ergänzen sich zu 180°, genau wie Nebenwinkel.'
-      const wrong2 = 'Stufenwinkel entstehen nur an sich kreuzenden Geraden, nicht an Parallelen.'
-      const wrong3 = 'Wechselwinkel sind nur bei rechten Winkeln (90°) gleich groß.'
+        'Scheitelwinkel liegen sich an zwei sich kreuzenden Geraden gegenüber und sind gleich groß.'
+      // Alle vier Optionen haben ähnliche Länge, damit die richtige nicht an ihrer Länge erkennbar ist.
+      const wrong1 = 'Scheitelwinkel liegen nebeneinander an einer Geraden und ergänzen sich zu 180°.'
+      const wrong2 = 'Stufenwinkel entstehen nur an sich kreuzenden Geraden, nicht an Parallelen mit Transversale.'
+      const wrong3 = 'Wechselwinkel an zwei Parallelen sind nur bei rechten Winkeln (90°) gleich groß.'
       const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
       return choicePickTask({
         question: 'Welche Aussage ist richtig?',
@@ -522,9 +523,9 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
     // V4 MC — Konzeptfrage
     (rng: Rng) => {
       const correct =
-        'Die beiden Basiswinkel liegen gegenüber den gleich langen Schenkeln und sind deshalb stets gleich groß.'
-      const wrong1 = 'Die Basiswinkel sind nur bei einem gleichseitigen Dreieck gleich groß.'
-      const wrong2 = 'Ein Basiswinkel ist immer größer als der Winkel an der Spitze.'
+        'Die Basiswinkel liegen den gleich langen Schenkeln gegenüber und sind deshalb gleich groß.'
+      const wrong1 = 'Die Basiswinkel sind nur im gleichseitigen Dreieck gleich groß, sonst verschieden.'
+      const wrong2 = 'Ein Basiswinkel ist in jedem gleichschenkligen Dreieck größer als der Spitzenwinkel.'
       const wrong3 = 'Basiswinkel und Spitzenwinkel sind in jedem gleichschenkligen Dreieck gleich groß.'
       const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
       return choicePickTask({
@@ -662,7 +663,7 @@ const mittelsenkrechteSchritteNeu: Topic = asNeuTopic('k7-lb1-mittelsenkrechte-s
       const B = { x: len, y: 0 }
       const P = { x: len / 2, y: h }
       const Q = { x: len / 2, y: -h }
-      const fmt = (v: number) => formatDe(v)
+      const fmt = (v: number) => formatDe(v).replace('-', '−')
       const startScene = emptyCoordinateScene({
         xRange: [-Math.ceil(r) - 1, len + Math.ceil(r) + 1],
         yRange: [-Math.ceil(r) - 1, Math.ceil(r) + 1],

@@ -1091,7 +1091,7 @@ export const math5NeuLb2: Topic[] = [
         const choices = shuffleChoices(rng, [correct, wrong1, wrong2, wrong3], correct)
         const thing = pick(rng, [['Murmeln', 'blau'], ['Stiften', 'rot'], ['Eiskugeln', 'Schoko']])
         return choicePickTask({
-          question: `Von ${total} ${thing[0]} sind ${k} ${thing[1]}. Welcher Bruch beschreibt den Anteil richtig (muss nicht gekürzt sein)?`,
+          question: `Von ${total} ${thing[0]} ${k === 1 ? 'ist' : 'sind'} ${k} ${thing[1]}. Welcher Bruch beschreibt den Anteil richtig (muss nicht gekürzt sein)?`,
           choices,
           correct,
           solution: correct,
@@ -1636,12 +1636,17 @@ export const math5NeuLb2: Topic[] = [
       // Variant 5: Umfrage (Geschwister) lesen, Mittelwert berechnen
       (rng: Rng) => {
         const categories = ['0', '1', '2', '3']
-        let counts: number[] = [8, 10, 4, 2]
-        for (let attempt = 0; attempt < 400; attempt++) {
-          const c = [randInt(rng, 4, 10), randInt(rng, 6, 12), randInt(rng, 2, 7), randInt(rng, 1, 3)]
+        // Zielmittelwert 1 oder 2 (immer ganzzahlig) – der Mittelwert variiert also zwischen den Aufgaben.
+        const targetMean = pick(rng, [1, 2])
+        let counts: number[] = targetMean === 1 ? [8, 10, 4, 2] : [2, 4, 10, 8]
+        for (let attempt = 0; attempt < 2000; attempt++) {
+          const c =
+            targetMean === 1
+              ? [randInt(rng, 4, 10), randInt(rng, 6, 12), randInt(rng, 2, 7), randInt(rng, 1, 3)]
+              : [randInt(rng, 1, 5), randInt(rng, 2, 8), randInt(rng, 5, 11), randInt(rng, 4, 10)]
           const n = c.reduce((t, x) => t + x, 0)
           const total = c[1]! + 2 * c[2]! + 3 * c[3]!
-          if (n >= 20 && n <= 30 && total % n === 0) {
+          if (n >= 20 && n <= 30 && total === targetMean * n) {
             counts = c
             break
           }
@@ -2758,7 +2763,7 @@ export const math5NeuLb3: Topic[] = [
           labelVertices: true,
         })
         return coordinateClickTask({
-          question: 'Spiegle Punkt A am Punkt S. Setze A\' im Koordinatensystem.',
+          question: `Spiegle den Punkt A${coordPair(A[0], A[1])} am Punkt S${coordPair(S[0], S[1])}. Setze A' im Koordinatensystem.`,
           x: tx,
           y: ty,
           solution: coordPair(tx, ty),
@@ -3998,8 +4003,8 @@ export const math5NeuLb5: Topic[] = [
           unit: '€',
           answerKind: 'integer',
           value: kosten,
-          solution: `${kosten} €`,
-          explanation: `Fläche: ${a} · ${b} = ${flaeche} m². Kosten: ${flaeche} · ${preisProM2} € = ${kosten} €.`,
+          solution: `${formatDe(kosten)} €`,
+          explanation: `Fläche: ${a} · ${b} = ${flaeche} m². Kosten: ${flaeche} · ${preisProM2} € = ${formatDe(kosten)} €.`,
           dedupeKey: `flaeche-kosten:${a}-${b}-${preisProM2}`,
         })
       },
@@ -4045,8 +4050,8 @@ export const math5NeuLb5: Topic[] = [
           unit: '€',
           answerKind: 'integer',
           value: kosten,
-          solution: `${kosten} €`,
-          explanation: `Fläche: A = ${d.outerWidth}·${d.outerHeight} − ${d.cutWidth}·${d.cutHeight} = ${d.area} m². Kosten: ${d.area} · ${preisProM2} € = ${kosten} €.`,
+          solution: `${formatDe(kosten)} €`,
+          explanation: `Fläche: A = ${d.outerWidth}·${d.outerHeight} − ${d.cutWidth}·${d.cutHeight} = ${d.area} m². Kosten: ${d.area} · ${preisProM2} € = ${formatDe(kosten)} €.`,
           visualContent: svg,
           dedupeKey: `flaeche-l-kosten:${d.outerWidth}-${d.outerHeight}-${d.cutWidth}-${d.cutHeight}-${preisProM2}`,
         })
