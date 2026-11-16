@@ -344,7 +344,12 @@ describe('lb3-winkel-viereck', () => {
       expect([a, b, c], t.question).not.toContain(d)
       expect(Number(t.solution.replace('°', '')), t.question).toBe(d)
       const choices = choicesOf(t)
-      if (choices) for (const x of choices) expect(Number(x.replace('°', '')), t.question).toBeGreaterThan(0), expect(Number(x.replace('°', '')), t.question).toBeLessThan(180)
+      if (choices) {
+        for (const x of choices) {
+          expect(Number(x.replace('°', '')), t.question).toBeGreaterThan(0)
+          expect(Number(x.replace('°', '')), t.question).toBeLessThan(180)
+        }
+      }
     }
     expect(seen).toBeGreaterThan(150)
   })

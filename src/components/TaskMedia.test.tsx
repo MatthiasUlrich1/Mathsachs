@@ -4,7 +4,8 @@ import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
 import { fractionModelTask, constructionStepsTask, angleProtractorTask, digitGridMultiplyTask, rulerMeasureTask, visualTask } from '../curriculum/taskHelpers'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
-import { TaskVisual, initTaskInput, taskInteractiveKey } from './TaskMedia'
+import { TaskVisual, initTaskInput } from './TaskMedia'
+import { taskInteractiveKey } from '../lib/taskInteractiveKey'
 
 describe('TaskMedia', () => {
   it('renders visualContent as SVG markup', () => {

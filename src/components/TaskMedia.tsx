@@ -1,6 +1,7 @@
 import type { Task, UserInput } from '../curriculum/types'
 import { emptyInput } from '../curriculum/types'
 import { ensureSvgViewBox } from '../lib/ensureSvgViewBox'
+import { taskInteractiveKey } from '../lib/taskInteractiveKey'
 import { NumberLineSlider } from './NumberLineSlider'
 import { ThermometerSlider } from './ThermometerSlider'
 import { DragDropSort } from './DragDropSort'
@@ -222,22 +223,6 @@ interface InteractiveProps {
   partResults?: boolean[]
   /** Exam: construction steps are all shown at once instead of unlocked one by one. */
   allAtOnce?: boolean
-}
-
-/**
- * Stable identity of a task's interactive widget. Used as React key so widget-local
- * state (typed text, pose, drag) never leaks between consecutive tasks.
- */
-export function taskInteractiveKey(task: Task): string {
-  const i = task.interactive
-  if (!i) return ''
-  let props = ''
-  try {
-    props = JSON.stringify(i.props)
-  } catch {
-    props = ''
-  }
-  return `${i.type}|${task.question}|${props}`
 }
 
 /** Interactive widgets for a task. */
