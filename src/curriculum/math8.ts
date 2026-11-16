@@ -8,13 +8,8 @@ import { formatDe, roundTo } from '../lib/num'
 import { fractionTask, mixedVariants, valueTask, visualTask, paramSliderTask, choicePickTask, coordinateClickTask } from './taskHelpers'
 import { math8GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
-import {
-  math8NeuLb1,
-  math8NeuLb2,
-  math8NeuLb3,
-  math8NeuLb4,
-  math8NeuLb5,
-} from './math8NeuTopics'
+import { math8NeuTopics } from './math8NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -767,7 +762,8 @@ const rueckwaerts: Topic = {
 export const klasse8: Grade = {
   id: 'klasse-8',
   title: 'Klasse 8',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Arbeiten mit Termen und Gleichungen',
@@ -778,14 +774,13 @@ export const klasse8: Grade = {
         gleichungLinear,
         gleichungBeidseitig,
         ausmultiplizieren,
-        ...math8NeuLb1,
       ],
     },
     {
       id: 'lb2',
       title: 'Zufallsversuche',
       ustd: 24,
-      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit, ...math8NeuLb2],
+      topics: [laplaceBruch, laplaceProzent, gegenwahrscheinlichkeit],
     },
     {
       id: 'lb3',
@@ -797,20 +792,21 @@ export const klasse8: Grade = {
         achsenabschnitt,
         lgs,
         ...math8GraphicReviews,
-        ...math8NeuLb3,
       ],
     },
     {
       id: 'lb4',
       title: 'Ähnlichkeit',
       ustd: 20,
-      topics: [streckfaktor, strahlensatz, aehnlicheSeite, ...math8NeuLb4],
+      topics: [streckfaktor, strahlensatz, aehnlicheSeite],
     },
     {
       id: 'lb5',
       title: 'Vernetzung: Heuristische Strategien',
       ustd: 4,
-      topics: [zahlenraetsel, rueckwaerts, ...math8NeuLb5],
+      topics: [zahlenraetsel, rueckwaerts],
     },
-  ],
+    ],
+    math8NeuTopics,
+  ),
 }

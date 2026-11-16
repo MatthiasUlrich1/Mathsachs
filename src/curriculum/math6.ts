@@ -40,13 +40,8 @@ import {
 } from './taskHelpers'
 import { conversionTopic, FLAECHE, LAENGE } from './units'
 import type { Grade, Topic } from './types'
-import {
-  math6NeuLb1,
-  math6NeuLb2,
-  math6NeuLb3,
-  math6NeuLb4,
-  math6NeuLb5,
-} from './math6NeuTopics'
+import { math6NeuTopics } from './math6NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 
 /**
  * Proper fraction that still needs shortening when shown as a diagram:
@@ -2027,7 +2022,8 @@ const laengeUmrechnen = conversionTopic('k6', LAENGE)
 export const klasse6: Grade = {
   id: 'klasse-6',
   title: 'Klasse 6',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Arbeiten mit gebrochenen Zahlen',
@@ -2046,14 +2042,13 @@ export const klasse6: Grade = {
         dezDiv,
         runden,
         sachaufgabeBruch,
-        ...math6NeuLb1,
       ],
     },
     {
       id: 'lb2',
       title: 'Zuordnungen in der Umwelt',
       ustd: 24,
-      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz, ...math6NeuLb2],
+      topics: [proportional, antiproportional, haeufigkeit, sachaufgabeDreisatz],
     },
     {
       id: 'lb3',
@@ -2067,7 +2062,6 @@ export const klasse6: Grade = {
         flaecheDreieck,
         kongruenzSatz,
         sachaufgabeGeometrie,
-        ...math6NeuLb3,
       ],
     },
     {
@@ -2080,7 +2074,6 @@ export const klasse6: Grade = {
         volumenPrisma,
         flaecheKanteQuader,
         wuerfelNetz,
-        ...math6NeuLb4,
       ],
     },
     {
@@ -2092,8 +2085,9 @@ export const klasse6: Grade = {
         anteilProzent,
         flaecheUmrechnen,
         laengeUmrechnen,
-        ...math6NeuLb5,
       ],
     },
-  ],
+    ],
+    math6NeuTopics,
+  ),
 }

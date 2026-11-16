@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { createRng } from '../lib/rng'
 import { gcd } from '../lib/fraction'
 import { klasse6 } from './math6'
+import { blendSourcesOf } from './mergeNeu'
 
 const allTopics = klasse6.areas.flatMap((a) => a.topics)
 
@@ -160,9 +161,11 @@ describe('Klasse 6 curriculum', () => {
   it('lb1-kuerzen visuals are proper partial fractions matching the answer pipeline', () => {
     const topic = allTopics.find((t) => t.id === 'lb1-kuerzen')
     expect(topic).toBeTruthy()
+    // Der Parent ist jetzt ein Mix (alt + ehemals Neu); dieser Test prüft die bisherige Aufgabenfamilie.
+    const oldGenerate = blendSourcesOf(topic!)?.old ?? topic!.generate
     let visualCount = 0
     for (let seed = 1; seed <= 400; seed++) {
-      const task = topic!.generate(createRng(seed))
+      const task = oldGenerate(createRng(seed))
       const svg = task.visualContent
       if (!svg?.includes('<svg')) continue
       visualCount++

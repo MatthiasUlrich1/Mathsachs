@@ -8,13 +8,8 @@ import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, choicePickTask } from './taskHelpers'
 import { math10GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
-import {
-  math10NeuLb1,
-  math10NeuLb2,
-  math10NeuLb3,
-  math10NeuLb4,
-  math10NeuLb5,
-} from './math10NeuTopics'
+import { math10NeuTopics } from './math10NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 
 // ---------------------------------------------------------------------------
 // Lernbereich 1 — Wachstumsvorgänge und periodische Vorgänge
@@ -544,24 +539,25 @@ const zinssatz: Topic = {
 export const klasse10: Grade = {
   id: 'klasse-10',
   title: 'Klasse 10',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Wachstumsvorgänge und periodische Vorgänge',
       ustd: 22,
-      topics: [zinsen, zinseszins, prozentualeZunahme, expWachstum, ...math10NeuLb1],
+      topics: [zinsen, zinseszins, prozentualeZunahme, expWachstum],
     },
     {
       id: 'lb2',
       title: 'Diskrete Zufallsgrößen',
       ustd: 16,
-      topics: [erwartungswert, erwartungswertWuerfel, ...math10NeuLb2],
+      topics: [erwartungswert, erwartungswertWuerfel],
     },
     {
       id: 'lb3',
       title: 'Algebraisches Lösen geometrischer Probleme',
       ustd: 20,
-      topics: [rechteckBreite, quadratSeite, rechteckBreiteUmfang, ...math10NeuLb3],
+      topics: [rechteckBreite, quadratSeite, rechteckBreiteUmfang],
     },
     {
       id: 'lb4',
@@ -572,14 +568,15 @@ export const klasse10: Grade = {
         quadratischGleichung,
         parabelWert,
         ...math10GraphicReviews,
-        ...math10NeuLb4,
       ],
     },
     {
       id: 'lb5',
       title: 'Vernetzung: Zinsrechnung',
       ustd: 4,
-      topics: [kapitalAusZinsen, zinssatz, ...math10NeuLb5],
+      topics: [kapitalAusZinsen, zinssatz],
     },
-  ],
+    ],
+    math10NeuTopics,
+  ),
 }

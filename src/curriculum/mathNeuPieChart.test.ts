@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen das Kreisdiagramm zum Selberbauen (pieChartTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen das Kreisdiagramm zum Selberbauen (pieChartTask).
  * Klasse 6: Relative Häufigkeit, In Prozent umwandeln, Prozent einer Größe berechnen.
  */
 import { describe, expect, it } from 'vitest'
@@ -65,7 +65,7 @@ describe.each(CASES)('Neu-Thema Kreisdiagramm $id', (c) => {
   const topic = topicOf(c.id)
   const tasks = chartTasks(topic)
 
-  it('bleibt gesperrt und neu', () => {
+  it('Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', () => {
     expect(topic.released).toBe(false)
     expect(topic.neu).toBe(true)
   })

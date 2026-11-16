@@ -114,13 +114,13 @@ export async function buildGymSachsenSeed(): Promise<CurriculumPack> {
     region: 'Sachsen',
     school: 'Gymnasium',
     subject: 'Mathematik',
-    version: '1.2.9',
+    version: '1.2.10',
     changelog:
-      'tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).',
+      'Mathe: Neu-Themen aufgelöst und in die Hauptthemen gemischt (Aufgabenpool vollständig, Runden zu 10 ohne Wiederholung). Alte Neu-IDs verweisen auf das Hauptthema. tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).',
     contentHash: packContentHash(official, extras),
     official,
     extras,
   }
 }
 
-export const GYM_SACHSEN_PACK_VERSION = '1.2.9'
+export const GYM_SACHSEN_PACK_VERSION = '1.2.10'

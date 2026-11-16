@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen die interaktive Verhältnisleiste (ratioBarTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen die interaktive Verhältnisleiste (ratioBarTask).
  * Es gibt kein eigenes Verhältnis-Thema in __neu; passende Themen: Zuordnungen (proportional) und Anteil einer Größe.
  */
 import { describe, expect, it } from 'vitest'
@@ -51,7 +51,7 @@ const barTasks = (topic: Topic): Task[] => {
 }
 
 describe('Neu-Themen Verhältnisleiste', () => {
-  it.each(TOPIC_IDS)('%s: bleibt gesperrt und neu', (id) => {
+  it.each(TOPIC_IDS)('%s: Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', (id) => {
     expect(topicOf(id).released).toBe(false)
     expect(topicOf(id).neu).toBe(true)
   })

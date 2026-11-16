@@ -1,5 +1,6 @@
 import { topicContentId } from './contentId'
 import { loadInstalledGrade } from './loadGrade'
+import { findTopicWithLegacy } from './mergeNeu'
 import { listVisibleGradeModules } from './registry'
 import type { Topic } from './types'
 
@@ -25,15 +26,14 @@ export async function resolveFaultyTask(report: {
     for (const mod of modules) {
       const grade = await loadInstalledGrade(mod.id).catch(() => null)
       if (!grade) continue
-      for (const area of grade.areas) {
-        const topic = area.topics.find((t) => t.id === topicId)
-        if (topic) {
-          return {
-            topic,
-            areaTitle: area.title,
-            gradeTitle: grade.title,
-            moduleId: mod.id,
-          }
+      // `<parent>__neu` aus alten Berichten → Parent (Neu-Themen wurden gemergt).
+      const found = findTopicWithLegacy(grade.areas, topicId)
+      if (found) {
+        return {
+          topic: found.topic,
+          areaTitle: found.area.title,
+          gradeTitle: grade.title,
+          moduleId: mod.id,
         }
       }
     }

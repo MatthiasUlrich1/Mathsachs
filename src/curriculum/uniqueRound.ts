@@ -20,7 +20,7 @@ const TRIVIAL_SOLUTION =
 /** Generic prompts whose stem alone must not block distinct item sets. */
 function isGenericPromptStem(stem: string): boolean {
   return (
-    /^(ordne|ordne zu|zuordnung|passe .* zu|klick-paare|karteikarte)/i.test(stem) ||
+    /^(ordne|ordne zu|sortiere|zuordnung|passe .* zu|klick-paare|karteikarte)/i.test(stem) ||
     /klick-paare/i.test(stem) ||
     /^ordne (begriff|fachbegriff|term|jedem|die|den|das|\d+)/i.test(stem) ||
     /fachbegriffe ihren erkl/i.test(stem) ||

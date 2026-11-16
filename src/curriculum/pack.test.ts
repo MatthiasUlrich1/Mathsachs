@@ -213,7 +213,7 @@ describe('explore (Erkundungs-Tafelbild) im Pack', () => {
     })
   })
 
-  it('Seed-Pack: die __neu-Themen tragen explore, Round-Trip identisch', async () => {
+  it('Seed-Pack: die Hauptthemen tragen das explore der ehemaligen Neu-Themen, Round-Trip identisch', async () => {
     const { buildGymSachsenSeed } = await import('./seed')
     const pack = await buildGymSachsenSeed()
     const found: Record<string, unknown> = {}
@@ -221,10 +221,10 @@ describe('explore (Erkundungs-Tafelbild) im Pack', () => {
       for (const a of g.areas)
         for (const t of a.topics) if (t.explore) found[t.id] = t.explore
     expect(found).toEqual({
-      'lb2-erweitern__neu': { boardId: 'bruchErweitern' },
-      'lb3-winkelarten__neu': { boardId: 'winkelarten' },
-      'lb1-erweitern__neu': { boardId: 'bruchErweitern' },
-      'k7-lb1-mittelsenkrechte-schritte__neu': { boardId: 'mittelsenkrechte' },
+      'lb2-erweitern': { boardId: 'bruchErweitern' },
+      'lb3-winkelarten': { boardId: 'winkelarten' },
+      'lb1-erweitern': { boardId: 'bruchErweitern' },
+      'k7-lb1-mittelsenkrechte-schritte': { boardId: 'mittelsenkrechte' },
     })
     const again = parseCurriculumPack(JSON.parse(JSON.stringify(pack)))
     expect(again?.official).toEqual(pack.official)

@@ -29,13 +29,8 @@ import {
   type LineFigureKind,
 } from '../lib/geometrySvg'
 import type { Grade, Topic } from './types'
-import {
-  math5NeuLb1,
-  math5NeuLb2,
-  math5NeuLb3,
-  math5NeuLb4,
-  math5NeuLb5,
-} from './math5NeuTopics'
+import { math5NeuTopics } from './math5NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 
 /** Whether n is a prime number (n ≥ 2). */
 const isPrime = (n: number): boolean => {
@@ -2732,7 +2727,8 @@ const zeitUmrechnen = conversionTopic('k5', ZEIT)
 export const klasse5: Grade = {
   id: 'klasse-5',
   title: 'Klasse 5',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Arbeiten mit natürlichen Zahlen',
@@ -2748,7 +2744,6 @@ export const klasse5: Grade = {
         potenzieren,
         teilbarkeit,
         primzahl,
-        ...math5NeuLb1,
       ],
     },
     {
@@ -2767,7 +2762,6 @@ export const klasse5: Grade = {
         mittelwert,
         zahlenstrahl,
         ordnenMitEinheiten,
-        ...math5NeuLb2,
       ],
     },
     {
@@ -2786,7 +2780,6 @@ export const klasse5: Grade = {
         verschiebungFormen,
         symmetrieAchsen,
         symmetriePunkt,
-        ...math5NeuLb3,
       ],
     },
     {
@@ -2801,7 +2794,6 @@ export const klasse5: Grade = {
         flaecheZusammengesetzt,
         umfangZusammengesetzt,
         volumenZusammengesetzt,
-        ...math5NeuLb4,
       ],
     },
     {
@@ -2818,8 +2810,9 @@ export const klasse5: Grade = {
         volumenUmrechnen,
         masseUmrechnen,
         zeitUmrechnen,
-        ...math5NeuLb5,
       ],
     },
-  ],
+    ],
+    math5NeuTopics,
+  ),
 }

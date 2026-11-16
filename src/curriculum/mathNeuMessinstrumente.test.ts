@@ -1,5 +1,5 @@
 /**
- * Neu-Themen Winkel/Strecken/Konstruktion: gesperrte __neu-Themen nutzen die Messinstrumente
+ * Neu-Themen Winkel/Strecken/Konstruktion: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen die Messinstrumente
  * (Geodreieck, Lineal, Zirkel, geführte Konstruktion) statt Schieberegler.
  */
 import { describe, expect, it } from 'vitest'
@@ -71,7 +71,7 @@ const mentionsCm = (text: string, cm: number): boolean =>
   )
 
 describe('Neu-Themen Messinstrumente', () => {
-  it.each(SWITCHED)('$id: bleibt gesperrt und neu', ({ id }) => {
+  it.each(SWITCHED)('$id: Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', ({ id }) => {
     const t = topicOf(id)
     expect(t.released).toBe(false)
     expect(t.neu).toBe(true)

@@ -7,11 +7,8 @@ import { formatDe, roundTo } from '../lib/num'
 import { mixedVariants, valueTask, visualTask, coordinateClickTask } from './taskHelpers'
 import { math1112GraphicReviews } from './graphicReviewTopics'
 import type { Grade, Topic } from './types'
-import {
-  math1112NeuLb1,
-  math1112NeuLb2,
-  math1112NeuLb3,
-} from './math11_12NeuTopics'
+import { math1112NeuTopics } from './math11_12NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 
 const num = (n: number): string => (n < 0 ? `(−${Math.abs(n)})` : `${n}`)
 const nonZero = (rng: Rng, min: number, max: number): number => {
@@ -393,7 +390,8 @@ const erwartungswertBinom: Topic = {
 export const klasse11_12: Grade = {
   id: 'jgs-11-12',
   title: 'Jahrgangsstufe 11/12 (Grundkurs)',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Differential- und Integralrechnung',
@@ -403,20 +401,21 @@ export const klasse11_12: Grade = {
         nullstelleLinear,
         bestimmtesIntegral,
         ...math1112GraphicReviews,
-        ...math1112NeuLb1,
       ],
     },
     {
       id: 'lb2',
       title: 'Vektoren, Geraden und Ebenen',
       ustd: 32,
-      topics: [skalarprodukt, betragVektor, ...math1112NeuLb2],
+      topics: [skalarprodukt, betragVektor],
     },
     {
       id: 'lb3',
       title: 'Binomialverteilte Zufallsgrößen',
       ustd: 18,
-      topics: [binomialverteilung, erwartungswertBinom, ...math1112NeuLb3],
+      topics: [binomialverteilung, erwartungswertBinom],
     },
-  ],
+    ],
+    math1112NeuTopics,
+  ),
 }

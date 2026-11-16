@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen das interaktive Teilwerkzeug (divideToolTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen das interaktive Teilwerkzeug (divideToolTask).
  */
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
@@ -41,7 +41,7 @@ const divideTasks = (topic: Topic): Task[] => {
 }
 
 describe('Neu-Themen Teilwerkzeug', () => {
-  it.each(TOPIC_IDS)('%s: bleibt gesperrt und neu', (id) => {
+  it.each(TOPIC_IDS)('%s: Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', (id) => {
     expect(topicOf(id).released).toBe(false)
     expect(topicOf(id).neu).toBe(true)
   })

@@ -1,5 +1,5 @@
 /**
- * Neu-Themen Bruchrechnung: gesperrte __neu-Themen nutzen das interaktive Bruchmodell (fractionModelTask).
+ * Neu-Themen Bruchrechnung: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen das interaktive Bruchmodell (fractionModelTask).
  */
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
@@ -31,7 +31,7 @@ const modelTasks = (topic: Topic): Task[] => {
 }
 
 describe('Neu-Themen Bruchmodell', () => {
-  it.each(TOPIC_IDS)('%s: bleibt gesperrt und neu', (id) => {
+  it.each(TOPIC_IDS)('%s: Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', (id) => {
     const t = topicOf(id)
     expect(t.released).toBe(false)
     expect(t.neu).toBe(true)

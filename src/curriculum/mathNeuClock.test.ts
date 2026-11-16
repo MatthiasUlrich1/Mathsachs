@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen die Uhr mit verschiebbaren Zeigern (clockTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen die Uhr mit verschiebbaren Zeigern (clockTask).
  * Klasse 5: Winkelarten (Winkel zwischen den Zeigern), Zeiteinheiten (Uhrzeit nach einer Dauer, Uhrzeit in Worten).
  */
 import { describe, expect, it } from 'vitest'
@@ -69,7 +69,7 @@ describe.each(CASES)('Neu-Thema Uhr $id', (c) => {
   const topic = topicOf(c.id)
   const tasks = clockTasks(topic)
 
-  it('bleibt gesperrt und neu', () => {
+  it('Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', () => {
     expect(topic.released).toBe(false)
     expect(topic.neu).toBe(true)
   })

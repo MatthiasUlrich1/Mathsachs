@@ -24,12 +24,8 @@ import {
   visualTask,
 } from './taskHelpers'
 import type { Grade, Topic } from './types'
-import {
-  math7NeuLb1,
-  math7NeuLb2,
-  math7NeuLb3,
-  math7NeuLb4,
-} from './math7NeuTopics'
+import { math7NeuTopics } from './math7NeuTopics'
+import { mergeNeuIntoParents } from './mergeNeu'
 import { opKey, solveAddPath, suggestOps } from '../lib/equationSteps'
 
 /** Format a signed integer, wrapping negatives in parentheses with a real minus. */
@@ -1025,7 +1021,8 @@ const mittelsenkrechteSchritte: Topic = {
 export const klasse7: Grade = {
   id: 'klasse-7',
   title: 'Klasse 7',
-  areas: [
+  areas: mergeNeuIntoParents(
+    [
     {
       id: 'lb1',
       title: 'Geometrie in der Ebene',
@@ -1036,7 +1033,6 @@ export const klasse7: Grade = {
         winkelsummeVieleck,
         basiswinkel,
         mittelsenkrechteSchritte,
-        ...math7NeuLb1,
       ],
     },
     {
@@ -1052,7 +1048,6 @@ export const klasse7: Grade = {
         termVorrang,
         gleichungAdd,
         gleichungMul,
-        ...math7NeuLb2,
       ],
     },
     {
@@ -1065,7 +1060,6 @@ export const klasse7: Grade = {
         volumenPyramide,
         oberflaechePrisma,
         oberflaechePyramide,
-        ...math7NeuLb3,
       ],
     },
     {
@@ -1077,8 +1071,9 @@ export const klasse7: Grade = {
         median,
         spannweite,
         relativeHaeufigkeit,
-        ...math7NeuLb4,
       ],
     },
-  ],
+    ],
+    math7NeuTopics,
+  ),
 }

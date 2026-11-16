@@ -20,7 +20,8 @@ import {
   OS_RS_PACK_ID,
 } from './pack'
 
-export const CURRICULUM_VERSION = 1
+/** 2: Mathe-`__neu`-Themen in ihre Haupt-Themen gemergt (Seeds alter Codes können abweichen). */
+export const CURRICULUM_VERSION = 2
 export type { CurriculumModule }
 export {
   bundledCurricula,

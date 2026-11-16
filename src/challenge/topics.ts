@@ -1,3 +1,4 @@
+import { legacyNeuIdToParent } from '../curriculum/mergeNeu'
 import type { Grade, Topic } from '../curriculum/types'
 
 export interface LoadedGrade {
@@ -21,5 +22,8 @@ export function findLoadedTopic(
       if (topic) return { topic, areaTitle: area.title, gradeTitle: grade.title }
     }
   }
+  // `<parent>__neu` aus alten Challenges → Parent (Neu-Themen wurden gemergt).
+  const parentId = legacyNeuIdToParent(topicId)
+  if (parentId !== topicId) return findLoadedTopic(loaded, parentId)
   return null
 }

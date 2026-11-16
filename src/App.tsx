@@ -52,6 +52,7 @@ import {
 } from './components/TeacherCodePanel'
 import { searchTopics, searchUnloadedHints } from './curriculum/search'
 import { resolveFaultyTask } from './curriculum/resolveFaultyTask'
+import { findTopicWithLegacy } from './curriculum/mergeNeu'
 import { CurriculumBrowser } from './components/CurriculumBrowser'
 import { PracticeSession } from './components/PracticeSession'
 import { Worksheet } from './components/Worksheet'
@@ -771,13 +772,9 @@ export default function App() {
   const openPracticeById = async (moduleId: string, topicId: string) => {
     const grade = await loadInstalledGrade(moduleId).catch(() => null)
     if (!grade) return
-    for (const area of grade.areas) {
-      const topic = area.topics.find((t) => t.id === topicId)
-      if (topic) {
-        openPractice(topic, area.title, grade.title, 'examRun')
-        return
-      }
-    }
+    // `<parent>__neu` aus alten Klausuren/Protokollen → Parent (Neu-Themen wurden gemergt).
+    const found = findTopicWithLegacy(grade.areas, topicId)
+    if (found) openPractice(found.topic, found.area.title, grade.title, 'examRun')
   }
 
   const openBerichtigung = async (
@@ -792,12 +789,9 @@ export default function App() {
       seen.add(key)
       const grade = await loadInstalledGrade(ref.moduleId).catch(() => null)
       if (!grade) continue
-      for (const area of grade.areas) {
-        const topic = area.topics.find((t) => t.id === ref.topicId)
-        if (topic) {
-          pool.push({ topic, areaTitle: area.title, gradeTitle: grade.title })
-          break
-        }
+      const found = findTopicWithLegacy(grade.areas, ref.topicId)
+      if (found) {
+        pool.push({ topic: found.topic, areaTitle: found.area.title, gradeTitle: grade.title })
       }
     }
     if (pool.length === 0) {

@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen das Baumdiagramm (treeDiagramTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen das Baumdiagramm (treeDiagramTask).
  * Klasse 8: Urne ohne Zurücklegen, Münze und Würfel, zweistufiges Glücksrad, Regen an zwei Tagen.
  */
 import { describe, expect, it } from 'vitest'
@@ -49,7 +49,7 @@ describe.each(IDS)('Neu-Thema Baumdiagramm %s', (id) => {
   const topic = topicOf(id)
   const tasks = treeTasks(topic)
 
-  it('bleibt gesperrt und neu', () => {
+  it('Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', () => {
     expect(topic.released).toBe(false)
     expect(topic.neu).toBe(true)
   })

@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen die interaktive Bruchwand (fractionWallTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen die interaktive Bruchwand (fractionWallTask).
  */
 import { describe, expect, it } from 'vitest'
 import { createRng } from '../lib/rng'
@@ -40,7 +40,7 @@ const wallTasks = (topic: Topic): Task[] => {
 }
 
 describe('Neu-Themen Bruchwand', () => {
-  it.each(TOPIC_IDS)('%s: bleibt gesperrt und neu', (id) => {
+  it.each(TOPIC_IDS)('%s: Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', (id) => {
     expect(topicOf(id).released).toBe(false)
     expect(topicOf(id).neu).toBe(true)
   })

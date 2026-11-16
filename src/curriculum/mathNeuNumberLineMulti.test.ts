@@ -1,5 +1,5 @@
 /**
- * Neu-Themen: gesperrte __neu-Themen nutzen die Zahlengerade mit mehreren Zahlen (numberLineMultiTask).
+ * Neu-Themen: ehemalige __neu-Themen (seit E1 in ihre Parents gemergt; geprüft wird der Neu-Generator) nutzen die Zahlengerade mit mehreren Zahlen (numberLineMultiTask).
  * Klasse 5 Dezimalzahlen, Klasse 6 Brüche, Klasse 7 negative Zahlen.
  */
 import { describe, expect, it } from 'vitest'
@@ -58,7 +58,7 @@ describe.each(CASES)('Neu-Thema Zahlengerade $id', (c) => {
   const topic = topicOf(c)
   const tasks = multiTasks(topic)
 
-  it('bleibt gesperrt und neu', () => {
+  it('Neu-Quelle ist als Neu markiert (Thema selbst lebt im Parent, siehe mergeNeu.test)', () => {
     expect(topic.released).toBe(false)
     expect(topic.neu).toBe(true)
   })

@@ -3,6 +3,7 @@ import { makeFraction } from '../lib/fraction'
 import { parseNumber } from '../lib/num'
 import { loadInstalledGrade } from '../curriculum/loadGrade'
 import { CURRICULUM_VERSION } from '../curriculum/registry'
+import { findTopicWithLegacy } from '../curriculum/mergeNeu'
 import { checkCurriculumRefs } from '../curriculum/versionGate'
 import { fractionTask, textTask, valueTask } from '../curriculum/taskHelpers'
 import type { Grade, Task, Topic } from '../curriculum/types'
@@ -298,11 +299,9 @@ const findTopic = (
   grade: Grade,
   topicId: string,
 ): { topic: Topic; areaTitle: string } | null => {
-  for (const area of grade.areas) {
-    const topic = area.topics.find((t) => t.id === topicId)
-    if (topic) return { topic, areaTitle: area.title }
-  }
-  return null
+  // Alte Codes mit `<parent>__neu` landen beim Parent (Neu-Themen wurden gemergt).
+  const found = findTopicWithLegacy(grade.areas, topicId)
+  return found ? { topic: found.topic, areaTitle: found.area.title } : null
 }
 
 /**
