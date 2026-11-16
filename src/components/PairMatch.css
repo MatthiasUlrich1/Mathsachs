@@ -9,7 +9,7 @@
 .pair-match__status {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .pair-match__cols {
@@ -28,9 +28,7 @@
   margin: 0 0 0.35rem;
   font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .pair-match__col {
@@ -46,30 +44,30 @@
   gap: 0.15rem;
   text-align: left;
   padding: 0.55rem 0.7rem;
-  border: 1.5px solid var(--border, #cbd5e1);
+  border: 1.5px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: var(--surface);
   /* Light card: always dark text */
-  color: #0f172a;
+  color: var(--graphite);
   cursor: pointer;
   font: inherit;
   line-height: 1.35;
 }
 
 .pair-match__item:hover:not(:disabled) {
-  border-color: var(--accent, #0d9488);
+  border-color: var(--ink);
 }
 
 .pair-match__item--active {
-  border-color: var(--accent, #6366f1);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent, #6366f1) 35%, transparent);
-  color: #0f172a;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ink) 35%, transparent);
+  color: var(--graphite);
 }
 
 .pair-match__item--linked {
-  background: color-mix(in srgb, var(--accent, #0d9488) 12%, white);
-  border-color: var(--accent, #0d9488);
-  color: #0f172a;
+  background: color-mix(in srgb, var(--ink) 12%, var(--surface));
+  border-color: var(--ink);
+  color: var(--graphite);
 }
 
 .pair-match__item--taken {
@@ -86,17 +84,30 @@
 }
 
 .pair-match__item--ok {
-  border-color: #16a34a !important;
-  background: color-mix(in srgb, #16a34a 14%, white) !important;
+  border-color: var(--tick) !important;
+  background: color-mix(in srgb, var(--tick) 14%, var(--surface)) !important;
 }
 
 .pair-match__item--bad {
-  border-color: #dc2626 !important;
-  background: color-mix(in srgb, #dc2626 14%, white) !important;
+  border-color: var(--correction) !important;
+  background: color-mix(in srgb, var(--correction) 14%, var(--surface)) !important;
+}
+
+/* Right/wrong never by colour alone: a check or cross mark is added. */
+.pair-match__item--ok::after {
+  content: ' ✓';
+  font-weight: 800;
+  color: color-mix(in srgb, var(--tick) 55%, var(--graphite));
+}
+
+.pair-match__item--bad::after {
+  content: ' ✗';
+  font-weight: 800;
+  color: color-mix(in srgb, var(--correction) 55%, var(--graphite));
 }
 
 .pair-match__hint {
   font-size: 0.8rem;
-  color: #334155;
+  color: var(--graphite);
   font-weight: 500;
 }

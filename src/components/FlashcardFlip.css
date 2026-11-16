@@ -13,41 +13,41 @@
   list-style: decimal;
   font-size: 0.9rem;
   line-height: 1.45;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .flashcard-flip__steps li {
   margin: 0.15rem 0;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .flashcard-flip__steps li::marker {
-  color: var(--text, #e2e8f0);
+  color: var(--graphite);
   font-weight: 600;
 }
 
 .flashcard-flip__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .flashcard-flip__hint {
   margin: 0;
   font-size: 0.85rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .flashcard-flip__card {
   min-height: 8.5rem;
   padding: 1.25rem 1rem;
-  border: 1.5px solid var(--border, #cbd5e1);
+  border: 1.5px solid var(--line);
   border-radius: 14px;
-  background: #fff;
+  background: var(--surface);
   cursor: pointer;
   font: inherit;
   /* Light card: always dark text */
-  color: #0f172a;
+  color: var(--graphite);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,27 +58,27 @@
 }
 
 .flashcard-flip__card:hover:not(:disabled) {
-  border-color: var(--accent, #6366f1);
+  border-color: var(--ink);
   transform: translateY(-1px);
 }
 
 .flashcard-flip__card--flipped {
   cursor: default;
-  background: #f8fafc;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
 }
 
 .flashcard-flip__face {
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.4;
-  color: #0f172a;
+  color: var(--graphite);
 }
 
 .flashcard-flip__tap {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #475569;
+  color: var(--pencil);
 }
 
 .flashcard-flip__answer-area {
@@ -91,13 +91,13 @@
   margin: 0;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text, #e2e8f0);
+  color: var(--graphite);
 }
 
 .flashcard-flip__check-hint {
   margin: 0;
   font-size: 0.8rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .flashcard-flip__choices {
@@ -109,10 +109,10 @@
 .flashcard-flip__choice {
   flex: 1 1 7rem;
   padding: 0.65rem 0.75rem;
-  border: 1.5px solid var(--border, #cbd5e1);
+  border: 1.5px solid var(--line);
   border-radius: 10px;
-  background: #fff;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
   font: inherit;
   font-weight: 600;
   cursor: pointer;
@@ -121,14 +121,14 @@
 }
 
 .flashcard-flip__choice:hover:not(:disabled) {
-  border-color: var(--accent, #6366f1);
+  border-color: var(--ink);
 }
 
 .flashcard-flip__choice--selected {
-  border-color: var(--accent, #6366f1);
-  background: color-mix(in srgb, var(--accent, #6366f1) 14%, white);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent, #6366f1) 30%, transparent);
-  color: #0f172a;
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 14%, var(--surface));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--ink) 30%, transparent);
+  color: var(--graphite);
 }
 
 .flashcard-flip__choice:disabled {
@@ -138,20 +138,20 @@
 
 .flashcard-flip__input {
   padding: 0.65rem 0.75rem;
-  border: 1.5px solid var(--border, #cbd5e1);
+  border: 1.5px solid var(--line);
   border-radius: 8px;
   font: inherit;
   font-weight: 600;
-  background: #fff;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
 }
 
 .flashcard-flip__input::placeholder {
-  color: #64748b;
+  color: var(--pencil);
   font-weight: 500;
 }
 
 .flashcard-flip__input:focus {
-  outline: 2px solid color-mix(in srgb, var(--accent, #6366f1) 45%, transparent);
-  border-color: var(--accent, #6366f1);
+  outline: 2px solid color-mix(in srgb, var(--ink) 45%, transparent);
+  border-color: var(--ink);
 }

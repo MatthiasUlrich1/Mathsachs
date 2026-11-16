@@ -10,7 +10,7 @@
 .tree-diagram__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .tree-diagram__lines line {
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 1.6;
 }
 
@@ -46,7 +46,7 @@
   height: 9px;
   margin: -4.5px 0 0 -4.5px;
   border-radius: 50%;
-  background: #0f172a;
+  background: var(--graphite);
 }
 
 .tree-diagram__root-label {
@@ -64,10 +64,10 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  border: 1.5px solid #334155;
+  border: 1.5px solid var(--pencil);
   border-radius: 8px;
-  background: #f8fafc;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
   font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
@@ -85,28 +85,28 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
   font-weight: 600;
   white-space: nowrap;
 }
 
 .tree-diagram__input {
   padding: 2px;
-  border: 1px solid #94a3b8;
+  border: 1px solid var(--pencil);
   border-radius: 8px;
-  background: #ffffff;
-  color: #0f172a;
+  background: var(--surface);
+  color: var(--graphite);
 }
 
 .tree-diagram__input:focus-visible {
-  outline: 3px solid #dc2626;
+  outline: 3px solid var(--correction);
   outline-offset: 1px;
 }
 
 .tree-diagram__input--leaf {
-  border-color: #475569;
-  background: #f1f5f9;
+  border-color: var(--pencil);
+  background: var(--grid);
 }
 
 .tree-diagram__input:disabled {

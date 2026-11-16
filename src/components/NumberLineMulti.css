@@ -11,7 +11,7 @@
 .number-line-multi__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -20,7 +20,7 @@
   width: 100%;
   max-width: 600px;
   height: auto;
-  background: #f8fafc;
+  background: var(--surface);
   border-radius: 12px;
   user-select: none;
   -webkit-user-select: none;
@@ -28,7 +28,7 @@
 
 .number-line-multi__line,
 .number-line-multi__tick {
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 2;
   stroke-linecap: round;
 }
@@ -38,26 +38,26 @@
 }
 
 .number-line-multi__num {
-  fill: #0f172a;
+  fill: var(--graphite);
   pointer-events: none;
 }
 
 .number-line-multi__slot {
   fill: none;
-  stroke: #94a3b8;
+  stroke: var(--svg-line);
   stroke-width: 1.5;
   stroke-dasharray: 5 4;
 }
 
 .number-line-multi__stem {
-  stroke: #0ea5e9;
+  stroke: var(--ink);
   stroke-width: 2;
   pointer-events: none;
 }
 
 .number-line-multi__dot {
-  fill: #0ea5e9;
-  stroke: #fff;
+  fill: var(--ink);
+  stroke: var(--surface);
   stroke-width: 1.5;
   pointer-events: none;
 }
@@ -70,18 +70,18 @@
 }
 
 .number-line-multi__chip rect {
-  fill: #e0f2fe;
-  stroke: #0369a1;
+  fill: color-mix(in srgb, var(--ink) 12%, var(--surface));
+  stroke: var(--ink);
   stroke-width: 2;
 }
 
 .number-line-multi__chip text {
-  fill: #0f172a;
+  fill: var(--graphite);
   font-weight: 600;
 }
 
 .number-line-multi__chip--placed rect {
-  fill: #bae6fd;
+  fill: color-mix(in srgb, var(--ink) 22%, var(--surface));
 }
 
 .number-line-multi__chip--dragging {
@@ -89,11 +89,11 @@
 }
 
 .number-line-multi__chip--dragging rect {
-  filter: drop-shadow(0 2px 3px rgba(15, 23, 42, 0.35));
+  filter: drop-shadow(0 2px 3px color-mix(in srgb, var(--graphite) 35%, transparent));
 }
 
 .number-line-multi__chip:focus-visible rect {
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 3;
 }
 

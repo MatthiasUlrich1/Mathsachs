@@ -10,7 +10,7 @@
 .fraction-wall__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -27,23 +27,23 @@
 
 .fraction-wall__label {
   font-size: 11px;
-  fill: #0f172a;
+  fill: var(--graphite);
   pointer-events: none;
 }
 
 .fraction-wall__tile {
-  fill: #e2e8f0;
-  stroke: #334155;
+  fill: var(--grid);
+  stroke: var(--svg-line);
   stroke-width: 1.5;
   cursor: pointer;
 }
 
 .fraction-wall__tile--on {
-  fill: #3b82f6;
+  fill: var(--svg-fill-a);
 }
 
 .fraction-wall__tile--ref {
-  fill: #f59e0b;
+  fill: var(--svg-fill-b);
 }
 
 .fraction-wall__tile--fixed,
@@ -53,12 +53,12 @@
 
 .fraction-wall__tile:focus-visible,
 .fraction-wall__handle:focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid var(--svg-highlight);
   outline-offset: 1px;
 }
 
 .fraction-wall__line {
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 2;
   stroke-dasharray: 5 3;
   pointer-events: none;
@@ -72,8 +72,8 @@
 }
 
 .fraction-wall__handle-visual {
-  fill: #dc2626;
-  stroke: #fff;
+  fill: var(--correction);
+  stroke: var(--surface);
   stroke-width: 2;
   pointer-events: none;
 }

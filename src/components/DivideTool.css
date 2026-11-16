@@ -10,7 +10,7 @@
 .divide-tool__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -24,9 +24,9 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid #94a3b8;
-  background: #fff;
-  color: #0f172a;
+  border: 1px solid var(--pencil);
+  background: var(--surface);
+  color: var(--graphite);
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
@@ -55,19 +55,19 @@
 }
 
 .divide-tool__part {
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 1.5;
   cursor: pointer;
 }
 
 .divide-tool__part--selected {
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 3.5;
   stroke-dasharray: 5 3;
 }
 
 .divide-tool__person {
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 1.5;
   cursor: default;
 }
@@ -84,14 +84,18 @@
 
 .divide-tool__part:focus-visible,
 .divide-tool__person:focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid var(--svg-highlight);
   outline-offset: 1px;
 }
 
 .divide-tool__owner,
 .divide-tool__name,
 .divide-tool__count {
-  fill: #0f172a;
+  fill: var(--graphite);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  stroke-linejoin: round;
   pointer-events: none;
 }
 

@@ -8,7 +8,7 @@
 .cloze-multi__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .cloze-multi__text {
@@ -25,23 +25,23 @@
   margin: 0 0.2rem;
   padding: 0.2rem 0.45rem;
   border: none;
-  border-bottom: 2px solid var(--accent, #0d9488);
-  background: #fff;
+  border-bottom: 2px solid var(--ink);
+  background: var(--surface);
   border-radius: 4px 4px 0 0;
   font: inherit;
   font-weight: 600;
   text-align: center;
   /* Light input field: dark text */
-  color: #0f172a;
+  color: var(--graphite);
 }
 
 .cloze-multi__input::placeholder {
-  color: #64748b;
+  color: var(--pencil);
   font-weight: 500;
 }
 
 .cloze-multi__input:focus {
-  outline: 2px solid color-mix(in srgb, var(--accent, #0d9488) 45%, transparent);
+  outline: 2px solid color-mix(in srgb, var(--ink) 45%, transparent);
   outline-offset: 1px;
 }
 
@@ -50,11 +50,24 @@
 }
 
 .cloze-multi__input--ok {
-  border-bottom-color: #16a34a;
-  background: color-mix(in srgb, #16a34a 12%, white);
+  border-bottom-color: var(--tick);
+  background: color-mix(in srgb, var(--tick) 12%, var(--surface));
+}
+
+.cloze-multi__mark {
+  font-weight: 800;
+  margin-left: 0.2rem;
+}
+
+.cloze-multi__mark--ok {
+  color: var(--tick);
+}
+
+.cloze-multi__mark--bad {
+  color: var(--correction);
 }
 
 .cloze-multi__input--bad {
-  border-bottom-color: #dc2626;
-  background: color-mix(in srgb, #dc2626 12%, white);
+  border-bottom-color: var(--correction);
+  background: color-mix(in srgb, var(--correction) 12%, var(--surface));
 }

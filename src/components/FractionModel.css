@@ -10,7 +10,7 @@
 .fraction-model__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -24,9 +24,9 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid #94a3b8;
-  background: #fff;
-  color: #0f172a;
+  border: 1px solid var(--pencil);
+  background: var(--surface);
+  color: var(--graphite);
   font-size: 1.4rem;
   line-height: 1;
   cursor: pointer;
@@ -62,15 +62,15 @@
 }
 
 .fraction-model__part {
-  fill: #e2e8f0;
-  stroke: #334155;
+  fill: var(--grid);
+  stroke: var(--svg-line);
   stroke-width: 2;
   stroke-linejoin: round;
   cursor: pointer;
 }
 
 .fraction-model__part--on {
-  fill: #3b82f6;
+  fill: var(--svg-fill-a);
 }
 
 .fraction-model__svg[aria-disabled="true"] .fraction-model__part {
@@ -78,6 +78,6 @@
 }
 
 .fraction-model__part:focus-visible {
-  outline: 3px solid #f59e0b;
+  outline: 3px solid var(--svg-highlight);
   outline-offset: 1px;
 }

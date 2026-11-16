@@ -9,7 +9,7 @@
 .choice-pick__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -26,20 +26,20 @@
   border-radius: 10px;
   font-size: 1.05rem;
   font-weight: 700;
-  color: var(--text, #e2e8f0);
-  background: rgba(15, 23, 42, 0.75);
-  border: 2px solid rgba(148, 163, 184, 0.35);
+  color: var(--graphite);
+  background: var(--surface);
+  border: 2px solid var(--line);
   cursor: pointer;
 }
 
 .choice-pick__btn:hover:not(:disabled) {
-  border-color: var(--accent, #6366f1);
+  border-color: var(--ink);
 }
 
 .choice-pick__btn--selected {
-  background: linear-gradient(135deg, var(--accent, #6366f1), #4f46e5);
+  background: var(--ink);
   border-color: transparent;
-  color: #fff;
+  color: var(--paper);
 }
 
 .choice-pick__btn:disabled {

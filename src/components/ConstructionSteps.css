@@ -10,6 +10,14 @@
   max-width: 360px;
 }
 
+.construction-steps__plan-svg {
+  /* Fixed-colour figure: a Heft sheet pinned to the board in both themes. */
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 0.5rem;
+}
+
 .construction-steps__plan-svg svg {
   width: 100%;
   height: auto;
@@ -17,7 +25,7 @@
 
 .construction-steps__plan figcaption {
   font-size: 0.8rem;
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .construction-steps__indicator {
@@ -45,9 +53,9 @@
   font: inherit;
   padding: 0.4rem 0.9rem;
   border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  background: rgba(30, 64, 175, 0.55);
-  color: var(--text, #e2e8f0);
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--ink) 14%, var(--surface));
+  color: var(--graphite);
   cursor: pointer;
 }
 
@@ -57,9 +65,19 @@
 }
 
 .construction-steps__feedback.is-ok {
-  color: #22c55e;
+  color: var(--tick);
+}
+
+.construction-steps__feedback.is-ok::before {
+  content: '✓ ';
+  font-weight: 800;
 }
 
 .construction-steps__feedback.is-retry {
-  color: #f59e0b;
+  color: var(--correction);
+}
+
+.construction-steps__feedback.is-retry::before {
+  content: '✗ ';
+  font-weight: 800;
 }

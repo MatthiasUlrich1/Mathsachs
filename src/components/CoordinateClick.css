@@ -9,7 +9,7 @@
 .coordinate-click__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -18,7 +18,7 @@
   height: auto;
   cursor: crosshair;
   border-radius: 8px;
-  background: #fafafa;
+  background: var(--surface);
 }
 
 .coordinate-click__svg--disabled {
@@ -30,5 +30,5 @@
   margin: 0;
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--text, #e2e8f0);
+  color: var(--graphite);
 }

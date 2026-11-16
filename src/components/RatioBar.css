@@ -10,7 +10,7 @@
 .ratio-bar__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .ratio-bar__cell {
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 1.5;
   cursor: pointer;
 }
@@ -40,15 +40,23 @@
 }
 
 .ratio-bar__cell:focus-visible {
-  outline: 3px solid #dc2626;
+  outline: 3px solid var(--correction);
   outline-offset: 1px;
 }
 
 .ratio-bar__letter,
 .ratio-bar__legend,
 .ratio-bar__total {
-  fill: #0f172a;
+  fill: var(--graphite);
   pointer-events: none;
+}
+
+/* Letters sit on the shaded fields: a surface halo keeps them legible on any fill. */
+.ratio-bar__letter {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .ratio-bar__total {
@@ -75,7 +83,7 @@
   padding: 4px 8px;
   font-size: 1rem;
   text-align: right;
-  border: 1px solid #94a3b8;
+  border: 1px solid var(--pencil);
   border-radius: 8px;
 }
 

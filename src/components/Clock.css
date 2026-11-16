@@ -11,7 +11,7 @@
 .clock__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -20,38 +20,38 @@
   width: 100%;
   max-width: 340px;
   height: auto;
-  background: #f8fafc;
+  background: var(--surface);
   border-radius: 12px;
   user-select: none;
   -webkit-user-select: none;
 }
 
 .clock__face {
-  fill: #fff;
-  stroke: #334155;
+  fill: var(--surface);
+  stroke: var(--svg-line);
   stroke-width: 3;
   pointer-events: none;
 }
 
 .clock__tick {
-  stroke: #475569;
+  stroke: var(--svg-line);
   stroke-width: 1;
   pointer-events: none;
 }
 
 .clock__tick--major {
-  stroke: #0f172a;
+  stroke: var(--graphite);
   stroke-width: 2.5;
 }
 
 .clock__number {
-  fill: #0f172a;
+  fill: var(--graphite);
   font-weight: 700;
   pointer-events: none;
 }
 
 .clock__hand {
-  stroke: #0f172a;
+  stroke: var(--graphite);
   stroke-linecap: round;
   pointer-events: none;
 }
@@ -62,11 +62,11 @@
 
 .clock__hand--minute {
   stroke-width: 5;
-  stroke: #1d4ed8;
+  stroke: var(--ink);
 }
 
 .clock__centre {
-  fill: #0f172a;
+  fill: var(--graphite);
   pointer-events: none;
 }
 
@@ -82,17 +82,17 @@
 }
 
 .clock__knob {
-  fill: #fff;
-  stroke: #0f172a;
+  fill: var(--surface);
+  stroke: var(--graphite);
   stroke-width: 3;
 }
 
 .clock__handle--minute .clock__knob {
-  stroke: #1d4ed8;
+  stroke: var(--ink);
 }
 
 .clock__handle--touched .clock__knob {
-  fill: #e2e8f0;
+  fill: var(--grid);
 }
 
 .clock__handle--dragging {
@@ -100,7 +100,7 @@
 }
 
 .clock__handle:focus-visible .clock__knob {
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 4;
 }
 

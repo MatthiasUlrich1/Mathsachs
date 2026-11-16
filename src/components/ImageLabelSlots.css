@@ -9,7 +9,7 @@
 .image-label-slots__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -24,8 +24,8 @@
   min-height: 12rem;
   border-radius: 8px;
   overflow: visible;
-  background: #f8fafc;
-  border: 1px solid var(--border, #e2e8f0);
+  background: var(--surface);
+  border: 1px solid var(--line);
 }
 
 .image-label-slots__img {
@@ -34,7 +34,7 @@
   height: auto;
   min-height: 12rem;
   object-fit: contain;
-  background: #faf8f4;
+  background: var(--surface);
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -46,10 +46,10 @@
   min-height: 12rem;
   padding: 1rem;
   text-align: center;
-  color: #b91c1c;
+  color: color-mix(in srgb, var(--correction) 55%, var(--graphite));
   font-size: 0.95rem;
   font-weight: 600;
-  background: #fef2f2;
+  background: color-mix(in srgb, var(--correction) 10%, var(--surface));
 }
 
 .image-label-slots__leaders {
@@ -63,7 +63,7 @@
 }
 
 .image-label-slots__leader-halo {
-  stroke: #fff;
+  stroke: var(--surface);
   stroke-width: 4.5;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
@@ -71,15 +71,15 @@
 }
 
 .image-label-slots__leader-line {
-  stroke: #0f172a;
+  stroke: var(--graphite);
   stroke-width: 2.25;
   stroke-linecap: round;
   vector-effect: non-scaling-stroke;
 }
 
 .image-label-slots__leader-dot {
-  fill: #0f172a;
-  stroke: #fff;
+  fill: var(--graphite);
+  stroke: var(--surface);
   stroke-width: 0.55;
 }
 
@@ -91,13 +91,13 @@
   min-height: 2.75rem;
   max-width: 9rem;
   padding: 0.2rem;
-  border: 2px dashed #64748b;
+  border: 2px dashed var(--pencil);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--graphite) 12%, transparent);
   transition: border-color 0.15s, background 0.15s;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
@@ -106,34 +106,64 @@
 
 .image-label-slots__slot.filled {
   border-style: solid;
-  border-color: #475569;
+  border-color: var(--pencil);
   padding: 0;
 }
 
 .image-label-slots__slot.drag-over {
-  border-color: #0d9488;
-  background: color-mix(in srgb, #0d9488 14%, white);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 14%, var(--surface));
 }
 
 .image-label-slots__slot.selected {
-  border-color: #0d9488;
-  box-shadow: 0 0 0 3px color-mix(in srgb, #0d9488 35%, transparent);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 35%, transparent);
 }
 
 .image-label-slots__slot--ok {
-  border-color: #16a34a !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, #16a34a 35%, transparent);
+  border-color: var(--tick) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tick) 35%, transparent);
 }
 
 .image-label-slots__slot--bad {
-  border-color: #dc2626 !important;
-  box-shadow: 0 0 0 2px color-mix(in srgb, #dc2626 30%, transparent);
+  border-color: var(--correction) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--correction) 30%, transparent);
+}
+
+/* Right/wrong never by colour alone: a check or cross badge is added. */
+.image-label-slots__slot--ok::after,
+.image-label-slots__slot--bad::after {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid currentColor;
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.image-label-slots__slot--ok::after {
+  content: '✓';
+  color: var(--tick);
+}
+
+.image-label-slots__slot--bad::after {
+  content: '✗';
+  color: var(--correction);
 }
 
 .image-label-slots__placeholder {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #64748b;
+  color: var(--pencil);
   user-select: none;
 }
 
@@ -141,7 +171,7 @@
   margin-top: 0.45rem;
   font-size: 0.72rem;
   line-height: 1.35;
-  color: var(--text-muted, #64748b);
+  color: var(--pencil);
   text-align: left;
 }
 
@@ -155,14 +185,14 @@
 }
 
 .image-label-slots__pool.drag-over {
-  outline: 2px dashed #0d9488;
+  outline: 2px dashed var(--ink);
   outline-offset: 4px;
   border-radius: 10px;
 }
 
 .image-label-slots__pool-empty {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--pencil);
 }
 
 .image-label-slots__chip {
@@ -170,10 +200,10 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.5rem 0.75rem;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background: var(--surface);
+  border: 2px solid var(--line);
   border-radius: 8px;
-  color: #0f172a;
+  color: var(--graphite);
   cursor: grab;
   font: inherit;
   font-size: 0.9rem;
@@ -191,14 +221,14 @@
 }
 
 .image-label-slots__chip.selected {
-  border-color: #0d9488;
-  box-shadow: 0 0 0 3px color-mix(in srgb, #0d9488 35%, transparent);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 35%, transparent);
 }
 
 .image-label-slots__hint {
   margin: 0;
   font-size: 0.82rem;
-  color: var(--text-muted, #94a3b8);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -206,7 +236,7 @@
   margin: 0;
   font-size: 0.88rem;
   font-weight: 600;
-  color: #5eead4;
+  color: var(--ink);
   text-align: center;
 }
 
@@ -217,13 +247,13 @@
   pointer-events: none;
   touch-action: none;
   padding: 0.5rem 0.75rem;
-  background: #f8fafc;
-  border: 2px solid #0d9488;
+  background: var(--surface);
+  border: 2px solid var(--ink);
   border-radius: 8px;
-  color: #0f172a;
+  color: var(--graphite);
   font-size: 0.9rem;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--graphite) 28%, transparent);
   max-width: min(90vw, 16rem);
 }
 
@@ -236,14 +266,14 @@
 }
 
 .image-label-slots__handle {
-  color: #94a3b8;
+  color: var(--pencil);
   font-size: 0.85rem;
 }
 
 .image-label-slots__clear {
   border: none;
   background: transparent;
-  color: #64748b;
+  color: var(--pencil);
   cursor: pointer;
   font-size: 1.1rem;
   line-height: 1;
@@ -251,7 +281,7 @@
 }
 
 .image-label-slots__clear:hover {
-  color: #0f172a;
+  color: var(--graphite);
 }
 
 @media (max-width: 640px) {

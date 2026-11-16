@@ -10,11 +10,16 @@
 .param-slider__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
 .param-slider__preview {
+  /* Fixed-colour figure: a Heft sheet pinned to the board in both themes. */
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  padding: 0.5rem;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -48,10 +53,10 @@
 
 .param-slider__label {
   font-size: 0.95rem;
-  color: var(--text, #e2e8f0);
+  color: var(--graphite);
 }
 
 .param-slider__row input[type='range'] {
   width: 100%;
-  accent-color: var(--accent, #6366f1);
+  accent-color: var(--ink);
 }

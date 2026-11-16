@@ -11,7 +11,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   text-align: center;
-  color: #cbd5e1;
+  color: var(--pencil);
 }
 
 .drag-drop-slots__pool {
@@ -25,7 +25,7 @@
 
 .drag-drop-slots__pool-empty {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--pencil);
 }
 
 .drag-drop-slots__slots {
@@ -39,7 +39,7 @@
   min-width: 4.5rem;
   min-height: 3.1rem;
   padding: 0.35rem;
-  border: 2px dashed #94a3b8;
+  border: 2px dashed var(--pencil);
   border-radius: 10px;
   background: transparent;
   display: flex;
@@ -53,23 +53,23 @@
 
 .drag-drop-slots__slot.filled {
   border-style: solid;
-  border-color: #64748b;
+  border-color: var(--pencil);
   padding: 0;
 }
 
 .drag-drop-slots__slot.drag-over {
-  border-color: #60a5fa;
-  background: rgba(96, 165, 250, 0.12);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 .drag-drop-slots__placeholder {
   font-size: 0.85rem;
-  color: #64748b;
+  color: var(--pencil);
   user-select: none;
 }
 
 .drag-drop-slots__pool.drag-over {
-  outline: 2px dashed #60a5fa;
+  outline: 2px dashed var(--ink);
   outline-offset: 4px;
   border-radius: 10px;
 }
@@ -79,20 +79,20 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.65rem 0.9rem;
-  background: #f8fafc;
-  border: 2px solid #e2e8f0;
+  background: var(--surface);
+  border: 2px solid var(--line);
   border-radius: 10px;
-  color: #0f172a;
+  color: var(--graphite);
   font-size: 1rem;
   font-weight: 600;
   cursor: grab;
   user-select: none;
   touch-action: none;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--graphite) 12%, transparent);
 }
 
 .drag-drop-slots__chip:hover {
-  border-color: #94a3b8;
+  border-color: var(--pencil);
 }
 
 .drag-drop-slots__chip.dragging {
@@ -101,19 +101,19 @@
 }
 
 .drag-drop-slots__chip.selected {
-  border-color: #60a5fa;
-  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.35);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 35%, transparent);
 }
 
 .drag-drop-slots__slot.selected {
-  border-color: #60a5fa;
-  background: rgba(96, 165, 250, 0.12);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 .drag-drop-slots__hint {
   margin: 0;
   font-size: 0.82rem;
-  color: #94a3b8;
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -121,7 +121,7 @@
   margin: 0;
   font-size: 0.88rem;
   font-weight: 600;
-  color: #93c5fd;
+  color: var(--ink);
   text-align: center;
 }
 
@@ -132,13 +132,13 @@
   pointer-events: none;
   touch-action: none;
   padding: 0.55rem 0.85rem;
-  background: #f8fafc;
-  border: 2px solid #60a5fa;
+  background: var(--surface);
+  border: 2px solid var(--ink);
   border-radius: 10px;
-  color: #0f172a;
+  color: var(--graphite);
   font-size: 0.95rem;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.28);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--graphite) 28%, transparent);
   max-width: min(90vw, 18rem);
   white-space: normal;
 }
@@ -153,7 +153,7 @@
 
 .drag-drop-slots__handle {
   font-size: 1.05rem;
-  color: #64748b;
+  color: var(--pencil);
   line-height: 1;
 }
 
@@ -161,7 +161,7 @@
   appearance: none;
   border: none;
   background: transparent;
-  color: #64748b;
+  color: var(--pencil);
   font-size: 1.25rem;
   line-height: 1;
   padding: 0 0.15rem;
@@ -172,7 +172,7 @@
 }
 
 .drag-drop-slots__clear:active {
-  color: #0f172a;
+  color: var(--graphite);
 }
 
 .drag-drop-slots__worksheet {
@@ -190,7 +190,7 @@
   gap: 0.55rem;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--graphite);
 }
 
 .drag-drop-slots__given {
@@ -198,7 +198,7 @@
 }
 
 .drag-drop-slots__bar {
-  color: #86efac;
+  color: var(--tick);
   font-weight: 700;
   margin: 0 0.15rem;
 }
@@ -226,9 +226,9 @@
   align-items: center;
   padding: 0.65rem 0.85rem;
   border-radius: 10px;
-  background: rgba(148, 163, 184, 0.12);
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  color: #e2e8f0;
+  background: color-mix(in srgb, var(--pencil) 8%, transparent);
+  border: 1px solid var(--line);
+  color: var(--graphite);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -257,7 +257,7 @@
   margin: 0;
   text-align: center;
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: var(--pencil);
 }
 
 .drag-drop-slots__result {
@@ -271,16 +271,16 @@
 .drag-drop-slots__result-label {
   font-size: 1.15rem;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--graphite);
 }
 
 .drag-drop-slots__result-input {
   width: 5.5rem;
   padding: 0.55rem 0.7rem;
   border-radius: 10px;
-  border: 2px solid #64748b;
-  background: #0f172a;
-  color: #f8fafc;
+  border: 2px solid var(--pencil);
+  background: var(--surface);
+  color: var(--graphite);
   font-size: 1.15rem;
   font-weight: 700;
   text-align: center;
@@ -288,5 +288,5 @@
 
 .drag-drop-slots__result-input:focus {
   outline: none;
-  border-color: #60a5fa;
+  border-color: var(--ink);
 }

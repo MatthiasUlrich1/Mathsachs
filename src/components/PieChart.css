@@ -11,7 +11,7 @@
 .pie-chart__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -20,7 +20,7 @@
   width: 100%;
   max-width: 600px;
   height: auto;
-  background: #f8fafc;
+  background: var(--surface);
   border-radius: 12px;
   user-select: none;
   -webkit-user-select: none;
@@ -28,13 +28,13 @@
 
 .pie-chart__rim {
   fill: none;
-  stroke: #334155;
+  stroke: var(--svg-line);
   stroke-width: 2;
   pointer-events: none;
 }
 
 .pie-chart__start {
-  stroke: #0f172a;
+  stroke: var(--graphite);
   stroke-width: 3;
   stroke-linecap: round;
   pointer-events: none;
@@ -47,8 +47,16 @@
 .pie-chart__label,
 .pie-chart__legend-name,
 .pie-chart__legend-value {
-  fill: #0f172a;
+  fill: var(--graphite);
   pointer-events: none;
+}
+
+/* Percent labels sit on the sectors: a surface halo keeps them legible on any fill. */
+.pie-chart__label {
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+  stroke-linejoin: round;
 }
 
 .pie-chart__label,
@@ -68,13 +76,13 @@
 }
 
 .pie-chart__knob {
-  fill: #fff;
-  stroke: #0f172a;
+  fill: var(--surface);
+  stroke: var(--graphite);
   stroke-width: 3;
 }
 
 .pie-chart__handle--touched .pie-chart__knob {
-  fill: #e2e8f0;
+  fill: var(--grid);
 }
 
 .pie-chart__handle--dragging {
@@ -82,7 +90,7 @@
 }
 
 .pie-chart__handle:focus-visible .pie-chart__knob {
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 4;
 }
 

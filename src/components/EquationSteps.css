@@ -11,13 +11,13 @@
 .eq-steps__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
 .eq-steps__sheet {
-  background: rgba(15, 23, 42, 0.55);
-  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 12px;
   padding: 14px 16px;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
@@ -33,25 +33,25 @@
 }
 
 .eq-steps__eq {
-  color: var(--text, #e2e8f0);
+  color: var(--graphite);
   white-space: pre-wrap;
   word-break: break-word;
 }
 
 .eq-steps__op {
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
   font-size: 1rem;
   white-space: nowrap;
 }
 
 .eq-steps__hi {
-  color: #86efac;
+  color: var(--tick);
   font-weight: 700;
 }
 
 .eq-steps__done {
   margin: 10px 0 0;
-  color: #86efac;
+  color: var(--tick);
   font-weight: 700;
   font-size: 1.05rem;
 }
@@ -59,7 +59,7 @@
 .eq-steps__hint {
   margin: 0;
   font-size: 0.9rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -77,14 +77,14 @@
   font-size: 1.05rem;
   font-weight: 700;
   font-family: ui-monospace, 'Cascadia Code', 'Segoe UI Mono', monospace;
-  color: var(--text, #e2e8f0);
-  background: rgba(15, 23, 42, 0.75);
-  border: 2px solid rgba(148, 163, 184, 0.35);
+  color: var(--graphite);
+  background: var(--surface);
+  border: 2px solid var(--line);
   cursor: pointer;
 }
 
 .eq-steps__btn:hover:not(:disabled) {
-  border-color: var(--accent, #6366f1);
+  border-color: var(--ink);
 }
 
 .eq-steps__tools {

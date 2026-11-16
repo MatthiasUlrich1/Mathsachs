@@ -1237,7 +1237,8 @@ a.task-request__send {
   align-items: center;
   margin: 20px 0;
   padding: 20px;
-  background: color-mix(in srgb, var(--grid) 25%, transparent);
+  /* .heft-scope: generated figures use fixed print-safe colours, so they sit on a Heft sheet in both themes. */
+  background: var(--surface);
   border-radius: var(--radius-control);
   border: 1px solid var(--line);
   width: 100%;

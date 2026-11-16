@@ -12,7 +12,7 @@
   font-size: 16px;
   font-weight: 500;
   margin-bottom: 10px;
-  color: #e2e8f0;
+  color: var(--graphite);
 }
 
 .number-line-mobile-hint {
@@ -23,7 +23,7 @@
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.35;
-  color: #94a3b8;
+  color: var(--pencil);
 }
 
 @media (max-width: 640px) and (orientation: portrait) {

@@ -8,7 +8,7 @@
 .coordinate-graph-editor__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
 }
 
 .coordinate-graph-editor__toolbar {
@@ -23,15 +23,15 @@
   font-size: 0.85rem;
   padding: 0.25rem 0.55rem;
   border-radius: 6px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.55);
-  color: var(--text, #e2e8f0);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--graphite);
   cursor: pointer;
 }
 
 .coordinate-graph-editor__tool.is-active {
-  border-color: #38bdf8;
-  background: rgba(14, 165, 233, 0.2);
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--ink) 20%, transparent);
 }
 
 .coordinate-graph-editor__tool:disabled {
@@ -44,7 +44,7 @@
   align-items: center;
   gap: 0.35rem;
   font-size: 0.85rem;
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
   margin-left: 0.25rem;
 }
 
@@ -53,9 +53,9 @@
   font-size: 0.85rem;
   padding: 0.2rem 0.35rem;
   border-radius: 6px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.55);
-  color: var(--text, #e2e8f0);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--graphite);
 }
 
 .coordinate-graph-editor__svg {
@@ -64,7 +64,7 @@
   cursor: crosshair;
   border-radius: 8px;
   touch-action: none;
-  background: #fafafa;
+  background: var(--surface);
 }
 
 .coordinate-graph-editor__svg.is-disabled {
@@ -75,5 +75,5 @@
 .coordinate-graph-editor__hint {
   margin: 0;
   font-size: 0.8rem;
-  color: var(--muted, #94a3b8);
+  color: var(--pencil);
 }

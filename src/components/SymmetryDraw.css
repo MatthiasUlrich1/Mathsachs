@@ -10,7 +10,7 @@
 .sym-draw__instruction {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--muted, #64748b);
+  color: var(--pencil);
   text-align: center;
 }
 
@@ -40,6 +40,6 @@
 .sym-draw__cell:focus-visible {
   /* Keyboard focus: a thick red frame (stroke), outlines do not fit rects inside an svg. */
   outline: none;
-  stroke: #dc2626;
+  stroke: var(--correction);
   stroke-width: 3;
 }
