@@ -27,6 +27,7 @@ import {
   numberLineMultiTask,
 } from './taskHelpers'
 import { ckFormatTime } from '../lib/clockLogic'
+import { barChartTableSvg } from '../lib/barChartLogic'
 import { symmetryHorizontalVariant, symmetryPointVariantA, symmetryPointVariantB, symmetryVerticalVariant } from './symmetryDrawContent'
 import { digitGridDivideTask, longDivisionSteps } from './digitGridTasks'
 import {
@@ -50,6 +51,14 @@ import {
 import { asNeuTopic } from './neuTopic'
 import { SIBLING_SURVEYS, surveyBarChartTask } from './barChartSurveys'
 import type { Topic } from './types'
+
+const fmt1 = (n: number): string => n.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
+
+/** Zahl mit echtem Minuszeichen ("−3"), für Koordinaten und Ergebnisse. */
+const coordNum = (n: number): string => (n < 0 ? `−${-n}` : `${n}`)
+/** Zahl für Rechnungen: negative Zahlen in Klammern ("(−3)"). */
+const calcNum = (n: number): string => (n < 0 ? `(−${-n})` : `${n}`)
+const coordPair = (x: number, y: number): string => `(${coordNum(x)}|${coordNum(y)})`
 
 /** Whether n is a prime number (n ≥ 2). Lokale Kopie für die Neu-Bank. */
 const isPrimeNeu = (n: number): boolean => {
@@ -948,8 +957,8 @@ export const math5NeuLb2: Topic[] = [
     generate: mixedVariants(
       // Variant 1: Tippen — fehlenden Nenner bestimmen
       (rng: Rng) => {
-        const n = randInt(rng, 1, 6)
-        const d = randInt(rng, 2, 7)
+        const d = randInt(rng, 3, 8)
+        const n = randInt(rng, 1, d - 1)
         const k = randInt(rng, 2, 6)
         return valueTask({
           question: `Der Bruch ${n}/${d} wird erweitert. Der neue Zähler lautet ${n * k}. Wie lautet der neue Nenner?`,
@@ -974,7 +983,7 @@ export const math5NeuLb2: Topic[] = [
           choices,
           correct: wrong,
           solution: wrong,
-          explanation: `${equivalents.join(', ')} sind alle durch Erweitern aus ${n}/${d} entstanden (Zähler und Nenner mit derselben Zahl multipliziert). Bei ${wrong} wurden Zähler und Nenner nicht mit derselben Zahl multipliziert.`,
+          explanation: `${equivalents.join(', ')} sind alle durch Erweitern aus ${n}/${d} entstanden (Zähler und Nenner mit derselben Zahl multipliziert). Bei ${wrong} wurden Zähler und Nenner nicht mit derselben Zahl multipliziert: Der Zähler ist ${n * kA + 1}, der Nenner ${d * kA}. Wäre ${wrong} gleichwertig, müsste der Zähler ${n * kA} sein.`,
           dedupeKey: `erweitern-mc:${n}:${d}:${wrong}`,
         })
       },
@@ -1026,9 +1035,9 @@ export const math5NeuLb2: Topic[] = [
           mode: 'equivalent',
           rows,
           target: { num: n, den: d },
-          question: `In der Bruchwand ist die Reihe 1/${d} bis zum Bruch ${n}/${d} gefärbt. Färbe in den anderen Reihen die Teile, die genauso weit reichen. Welche Brüche sind gleichwertig zu ${n}/${d}?`,
+          question: `In der Bruchwand ${n === 1 ? 'ist in der Reihe mit' : 'sind in der Reihe mit'} ${d} Teilen ${n === 1 ? 'der erste Teil' : `die ersten ${n} Teile`} gefärbt (${n}/${d}). Färbe in den anderen Reihen die Teile, die genauso weit reichen. Welche Brüche sind gleichwertig zu ${n}/${d}?`,
           solution: same.join(', '),
-          explanation: `Alle Teile, die von links genauso weit reichen wie ${n}/${d}, zeigen denselben Anteil. Du findest ${same.join(', ')}. Sie entstehen, wenn du Zähler und Nenner von ${n}/${d} mit derselben Zahl multiplizierst (erweiterst). Eine Reihe ohne passendes Teilstück, zum Beispiel die Reihe mit 1 Teil, bleibt leer.`,
+          explanation: `Alle Teile, die von links genauso weit reichen wie ${n}/${d}, zeigen denselben Anteil. Du findest ${same.join(', ')}. Sie entstehen, wenn du Zähler und Nenner von ${n}/${d} mit derselben Zahl multiplizierst (erweiterst). Die Wand zeigt nur die Reihen mit ${rows.join(', ')} Teilen. Eine Reihe ohne passendes Teilstück bleibt leer.`,
           dedupeKey: `erweitern-wand:${n}:${d}`,
         })
       },
@@ -1053,22 +1062,22 @@ export const math5NeuLb2: Topic[] = [
     generate: mixedVariants(
       // Variant 1: Tippen — Komplement-Anteil
       (rng: Rng) => {
-        const total = randInt(rng, 6, 24)
-        const k = randInt(rng, 1, total - 1)
+        const scenario = pick(rng, [
+          { min: 18, max: 30, text: (t: number, k: number) => `In einer Klasse mit ${t} Kindern tragen ${k} eine Brille. Welcher Anteil der Kinder trägt keine Brille?` },
+          { min: 8, max: 24, text: (t: number, k: number) => `Von ${t} Karten sind ${k} rot. Welcher Anteil der Karten ist nicht rot?` },
+          { min: 10, max: 24, text: (t: number, k: number) => `Von ${t} Plätzchen sind ${k} schon gegessen. Welcher Anteil der Plätzchen ist noch übrig?` },
+          { min: 10, max: 24, text: (t: number, k: number) => `Im Aquarium schwimmen ${t} Fische, ${k} davon sind orange. Welcher Anteil der Fische ist nicht orange?` },
+        ])
+        const total = randInt(rng, scenario.min, scenario.max)
+        const k = randInt(rng, 2, total - 1)
         const rest = total - k
         const value = makeFraction(rest, total)
-        const thing = pick(rng, [
-          ['Schüler:innen', 'tragen eine Brille'],
-          ['Karten', 'sind rot'],
-          ['Plätzchen', 'sind schon gegessen'],
-          ['Fischen im Aquarium', 'sind orange'],
-        ])
         return fractionTask({
-          question: `In einer Gruppe von ${total} ${thing[0]} ${thing[1]} ${k}. Welcher Anteil der ${thing[0]} ${thing[1]} NICHT? Gib den gekürzten Bruch an.`,
+          question: `${scenario.text(total, k)} Gib den gekürzten Bruch an.`,
           value,
           requireReduced: true,
           solution: `${value.n}/${value.d}`,
-          explanation: `${k} von ${total} ${thing[1]}, also bleiben ${rest} von ${total} übrig: ${rest}/${total}. Vollständig gekürzt: ${value.n}/${value.d}.`,
+          explanation: `Von ${total} sind ${k} gemeint, also bleiben ${total} − ${k} = ${rest} übrig: ${rest}/${total}. Vollständig gekürzt: ${value.n}/${value.d}.`,
         })
       },
       // Variant 2: MC — richtigen Anteil-Bruch erkennen
@@ -1528,7 +1537,7 @@ export const math5NeuLb2: Topic[] = [
   // ---------------------------------------------------------------------
   asNeuTopic('lb2-mittelwert', {
     id: 'lb2-mittelwert__neu',
-    title: 'Arithmetisches Mittel (Dezimalwerte & fehlende Zahl)',
+    title: 'Arithmetisches Mittel (Berechnen & fehlende Zahl)',
     pointsPerTask: 10,
     difficulty: 2,
     keywords: ['Mittelwert', 'Durchschnitt', 'arithmetisches Mittel', 'Ergänzen'],
@@ -1554,31 +1563,42 @@ export const math5NeuLb2: Topic[] = [
         const mean = roundTo(sumTenths / 10 / count, 2)
         const context = pick(rng, ['Temperaturen (in °C)', 'Laufzeiten (in Minuten)', 'Gewichte (in kg)'])
         return valueTask({
-          question: `Berechne das arithmetische Mittel dieser ${context}: ${numbers.map((n) => formatDe(n)).join(', ')}.`,
+          question: `Berechne das arithmetische Mittel dieser ${context}: ${numbers.map((n) => fmt1(n)).join('; ')}.`,
           answerKind: 'decimal',
           value: mean,
           eps: 0.005,
           solution: formatDe(mean),
-          explanation: `Summe: ${numbers.map((n) => formatDe(n)).join(' + ')} = ${formatDe(sum)}. Teile durch die Anzahl ${count}: ${formatDe(sum)} : ${count} = ${formatDe(mean)}.`,
+          explanation: `Summe: ${numbers.map((n) => fmt1(n)).join(' + ')} = ${formatDe(sum)}. Teile durch die Anzahl ${count}: ${formatDe(sum)} : ${count} = ${formatDe(mean)}.`,
         })
       },
       // Variant 2: MC — richtigen Mittelwert erkennen
       (rng: Rng) => {
-        const count = randInt(rng, 3, 4)
-        const numbers: number[] = []
-        for (let i = 0; i < count; i++) numbers.push(randInt(rng, 2, 20))
-        let sum = numbers.reduce((s, x) => s + x, 0)
-        const remainder = sum % count
-        if (remainder !== 0) {
-          numbers[count - 1]! += count - remainder
-          sum += count - remainder
+        let count = 3
+        let numbers: number[] = []
+        let sum = 0
+        let mean = 0
+        for (let attempt = 0; attempt < 60; attempt++) {
+          count = randInt(rng, 3, 4)
+          numbers = []
+          for (let i = 0; i < count; i++) numbers.push(randInt(rng, 2, 20))
+          sum = numbers.reduce((t, x) => t + x, 0)
+          const remainder = sum % count
+          if (remainder !== 0) {
+            numbers[count - 1]! += count - remainder
+            sum += count - remainder
+          }
+          mean = sum / count
+          // Das Mittel soll nicht einfach in der Liste stehen (sonst leicht zu raten).
+          if (!numbers.includes(mean)) break
         }
-        const mean = sum / count
-        const choices = [mean, mean + 1, mean - 1, Math.round(sum / (count + 1))]
+        const wrongPool = [mean + 1, mean - 1, mean + 2, mean - 2, Math.round(sum / (count + 1)), Math.round(sum / (count - 1))]
+        const wrongs: number[] = []
+        for (const w of wrongPool) if (w >= 1 && w !== mean && !wrongs.includes(w) && wrongs.length < 3) wrongs.push(w)
+        for (let extra = 3; wrongs.length < 3; extra++) if (!wrongs.includes(mean + extra)) wrongs.push(mean + extra)
         const correct = formatDe(mean)
-        const labeled = shuffleChoices(rng, choices.map((c) => formatDe(c)), correct)
+        const labeled = shuffleChoices(rng, [mean, ...wrongs].map((c) => formatDe(c)), correct)
         return choicePickTask({
-          question: `Welches arithmetische Mittel ist richtig für: ${numbers.join(', ')}?`,
+          question: `Wie groß ist das arithmetische Mittel von ${numbers.slice(0, -1).join(', ')} und ${numbers[numbers.length - 1]}?`,
           choices: labeled,
           correct,
           solution: correct,
@@ -1613,6 +1633,33 @@ export const math5NeuLb2: Topic[] = [
       },
       // Variant 4: Umfrage (Geschwister) als Säulendiagramm darstellen, Balken ziehen
       (rng: Rng) => surveyBarChartTask(rng, pick(rng, SIBLING_SURVEYS), 'table'),
+      // Variant 5: Umfrage (Geschwister) lesen, Mittelwert berechnen
+      (rng: Rng) => {
+        const categories = ['0', '1', '2', '3']
+        let counts: number[] = [8, 10, 4, 2]
+        for (let attempt = 0; attempt < 400; attempt++) {
+          const c = [randInt(rng, 4, 10), randInt(rng, 6, 12), randInt(rng, 2, 7), randInt(rng, 1, 3)]
+          const n = c.reduce((t, x) => t + x, 0)
+          const total = c[1]! + 2 * c[2]! + 3 * c[3]!
+          if (n >= 20 && n <= 30 && total % n === 0) {
+            counts = c
+            break
+          }
+        }
+        const n = counts.reduce((t, x) => t + x, 0)
+        const total = counts[1]! + 2 * counts[2]! + 3 * counts[3]!
+        const mean = total / n
+        const parts = [counts[1]! + ' · 1', counts[2]! + ' · 2', counts[3]! + ' · 3']
+        return valueTask({
+          question: `In einer Klasse mit ${n} Kindern wurde gefragt, wie viele Geschwister jedes Kind hat. Die Tabelle zeigt das Ergebnis. Wie viele Geschwister hat ein Kind im Mittel?`,
+          answerKind: 'integer',
+          value: mean,
+          solution: formatDe(mean),
+          visualContent: barChartTableSvg('Tabelle: Geschwister', 'Geschwister', 'Anzahl Kinder', categories, counts),
+          explanation: `Alle Geschwister zusammen: ${counts[0]} · 0 + ${parts.join(' + ')} = ${total}. Teile durch die Anzahl der Kinder: ${total} : ${n} = ${mean}.`,
+          dedupeKey: `mittel-geschwister:${counts.join('-')}`,
+        })
+      },
     ),
   }),
 
@@ -1666,7 +1713,7 @@ export const math5NeuLb2: Topic[] = [
           choices,
           correct,
           solution: correct,
-          explanation: `Zwischen ${formatDe(a)} und ${formatDe(b)} liegen alle Zahlen außer ${correct}.`,
+          explanation: `Zwischen ${formatDe(a)} und ${formatDe(b)} liegen alle Zahlen außer ${correct}: Sie liegt ${outside > b ? `rechts von ${formatDe(b)}` : `links von ${formatDe(a)}`} und damit außerhalb.`,
           dedupeKey: `zahlenstrahl-mc:${a}:${b}:${outside}`,
         })
       },
@@ -1678,7 +1725,7 @@ export const math5NeuLb2: Topic[] = [
         const third = roundTo(start + 2 * step, 1)
         const next = roundTo(start + 3 * step, 1)
         return numberLineTask({
-          question: `Die Zahlen ${formatDe(start)}, ${formatDe(second)}, ${formatDe(third)} folgen mit gleichem Abstand aufeinander.\nMarkiere die nächste Zahl der Folge auf dem Zahlenstrahl.`,
+          question: `Die Zahlen ${formatDe(start)}; ${formatDe(second)}; ${formatDe(third)} folgen mit gleichem Abstand aufeinander.\nMarkiere die nächste Zahl der Folge auf dem Zahlenstrahl.`,
           min: Math.floor(start) - 0.5,
           max: Math.ceil(next) + 0.5,
           step: 0.1,
@@ -1895,17 +1942,18 @@ const sampleQuadNeu = (): Array<[number, number]> => [
 
 const pickMirrorNeu = (rng: Rng): MirrorLineKind => {
   const kind = pick(rng, ['x-axis', 'y-axis', 'y=x', 'vertical', 'horizontal'] as const)
-  if (kind === 'vertical') return { type: 'vertical', x: pick(rng, [0, 1, 2]) }
-  if (kind === 'horizontal') return { type: 'horizontal', y: pick(rng, [0, 1, 2]) }
+  // x = 0 und y = 0 sind die Koordinatenachsen selbst und heißen dort „x-Achse“ bzw. „y-Achse“.
+  if (kind === 'vertical') return { type: 'vertical', x: pick(rng, [1, 2, 3]) }
+  if (kind === 'horizontal') return { type: 'horizontal', y: pick(rng, [1, 2, 3]) }
   return kind
 }
 
 const mirrorDescribeNeu = (mirror: MirrorLineKind): string => {
-  if (mirror === 'x-axis') return 'die x-Achse'
-  if (mirror === 'y-axis') return 'die y-Achse'
-  if (mirror === 'y=x') return 'die Gerade y = x'
-  if (mirror.type === 'vertical') return `die Gerade x = ${mirror.x}`
-  return `die Gerade y = ${mirror.y}`
+  if (mirror === 'x-axis') return 'der x-Achse'
+  if (mirror === 'y-axis') return 'der y-Achse'
+  if (mirror === 'y=x') return 'der Geraden y = x'
+  if (mirror.type === 'vertical') return `der Geraden x = ${mirror.x}`
+  return `der Geraden y = ${mirror.y}`
 }
 
 const LINE_KIND_LABEL_NEU: Record<'strecke' | 'halbgerade' | 'gerade', string> = {
@@ -1944,7 +1992,7 @@ export const math5NeuLb3: Topic[] = [
           choices: ['spitz', 'recht', 'stumpf', 'gestreckt'],
           correct: kind,
           solution: kind,
-          explanation: `Der Stundenzeiger steht bei der ${h}, das sind ${deg}° vom 12-Uhr-Strich entfernt. ${deg}° ist ${
+          explanation: `Der Stundenzeiger steht bei der ${h}. Das sind ${raw}° vom 12-Uhr-Strich aus gemessen${raw > 180 ? `; in der kürzeren Richtung sind es 360° − ${raw}° = ${deg}°` : ''}. ${deg}° ist ${
             kind === 'recht'
               ? 'genau 90°, also ein rechter Winkel'
               : kind === 'gestreckt'
@@ -1964,14 +2012,14 @@ export const math5NeuLb3: Topic[] = [
           { name: 'eine normal geöffnete Zimmertür', deg: 110 },
           { name: 'die Spitze eines steil zulaufenden Kirchturmdachs', deg: 50 },
           { name: 'ein fast ganz aufgeklapptes Laptop-Display', deg: 170 },
-          { name: 'die Öffnung einer an die Wand gelehnten Leiter', deg: 35 },
+          { name: 'die Öffnung zwischen einer angelehnten Leiter und der Wand', deg: 20 },
           { name: 'eine nur leicht angelehnte Tür', deg: 15 },
-          { name: 'die Neigung einer Kinderrutsche gegen den Boden', deg: 140 },
+          { name: 'die Neigung einer Kinderrutsche gegen den Boden', deg: 35 },
         ] as const
         const item = pick(rng, items)
         const kind = item.deg === 90 ? 'recht' : item.deg < 90 ? 'spitz' : 'stumpf'
         return choicePickTask({
-          question: `Welche Winkelart passt am besten zu: ${item.name} (ca. ${item.deg}°)?`,
+          question: `Welche Winkelart hat ${item.name} (ca. ${item.deg}°)?`,
           choices: ['spitz', 'recht', 'stumpf', 'gestreckt'],
           correct: kind,
           solution: kind,
@@ -2089,7 +2137,8 @@ export const math5NeuLb3: Topic[] = [
       },
       // Variant 2: MC — Nebenwinkel an der Geradenkreuzung
       (rng: Rng) => {
-        const x = randInt(rng, 20, 160)
+        // x ≠ 90 und |180 − 2x| ≥ 40, damit Distraktoren (x, Ergebnis ± 20) nie zusammenfallen.
+        const x = pick(rng, [20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 110, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160])
         const correctVal = 180 - x
         const wrong1 = x
         const wrong2 = Math.min(179, correctVal + 20)
@@ -2531,17 +2580,17 @@ export const math5NeuLb3: Topic[] = [
       // Variant 1: Tippen — Buchstaben-Symmetrie
       (rng: Rng) => {
         const symmetric = ['A', 'B', 'C', 'D', 'E', 'H', 'I', 'M', 'O', 'T', 'U', 'V', 'W', 'X', 'Y']
-        const asymmetric = ['F', 'G', 'J', 'K', 'L', 'N', 'P', 'Q', 'R']
+        const asymmetric = ['F', 'G', 'J', 'L', 'N', 'P', 'Q', 'R']
         const letter = pick(rng, [...symmetric, ...asymmetric])
         const yes = symmetric.includes(letter)
         return choicePickTask({
-          question: `Ist der Großbuchstabe „${letter}" achsensymmetrisch (besitzt er eine Spiegelachse)?`,
+          question: `Ist der Großbuchstabe „${letter}“ in der üblichen Druckschrift achsensymmetrisch (besitzt er eine Spiegelachse)?`,
           choices: ['ja', 'nein'],
           correct: yes ? 'ja' : 'nein',
           solution: yes ? 'ja' : 'nein',
           explanation: yes
-            ? `„${letter}" hat in den meisten Schriftarten eine Spiegelachse, an der die beiden Hälften zusammenpassen.`
-            : `„${letter}" hat in den meisten Schriftarten keine Spiegelachse — eine Hälfte passt nicht zur anderen.`,
+            ? `„${letter}“ hat in den meisten Schriftarten eine Spiegelachse, an der die beiden Hälften zusammenpassen.`
+            : `„${letter}“ hat in den meisten Schriftarten keine Spiegelachse — eine Hälfte passt nicht zur anderen.`,
           instruction: 'Tippe:',
           dedupeKey: `achsensym-buchstabe:${letter}`,
         })
@@ -2564,23 +2613,20 @@ export const math5NeuLb3: Topic[] = [
           A = [ax, ay]
           Ap = [A[1], A[0]]
         }
-        const label = kind === 'x-axis' ? 'x-Achse' : kind === 'y-axis' ? 'y-Achse' : 'y=x'
-        const accepted =
-          kind === 'x-axis'
-            ? ['x-achse', 'die x-achse', 'xachse']
-            : kind === 'y-axis'
-              ? ['y-achse', 'die y-achse', 'yachse']
-              : ['y=x', 'die gerade y=x', 'gerade y=x', 'y = x']
-        return textTask({
-          question: `Punkt A(${A[0]}|${A[1]}) wird gespiegelt zu A'(${Ap[0]}|${Ap[1]}). An welcher Achse bzw. Geraden wurde gespiegelt? Antworte mit "x-Achse", "y-Achse" oder "y=x".`,
-          accepted,
+        const label = kind === 'x-axis' ? 'x-Achse' : kind === 'y-axis' ? 'y-Achse' : 'y = x'
+        return choicePickTask({
+          question: `Punkt A${coordPair(A[0], A[1])} wird gespiegelt zu A'${coordPair(Ap[0], Ap[1])}. An welcher Achse bzw. Geraden wurde gespiegelt?`,
+          choices: ['x-Achse', 'y-Achse', 'y = x'],
+          correct: label,
           solution: label,
           explanation:
             kind === 'x-axis'
-              ? `x bleibt gleich (${A[0]}), y wechselt das Vorzeichen (${A[1]} → ${Ap[1]}) → Spiegelung an der x-Achse.`
+              ? `Die x-Koordinate bleibt gleich (${A[0]}), die y-Koordinate wechselt das Vorzeichen (${coordNum(A[1])} → ${coordNum(Ap[1])}) → Spiegelung an der x-Achse.`
               : kind === 'y-axis'
-                ? `y bleibt gleich (${A[1]}), x wechselt das Vorzeichen (${A[0]} → ${Ap[0]}) → Spiegelung an der y-Achse.`
-                : `x- und y-Koordinate werden vertauscht (${A[0]}|${A[1]}) → (${Ap[0]}|${Ap[1]}) → Spiegelung an der Geraden y = x.`,
+                ? `Die y-Koordinate bleibt gleich (${A[1]}), die x-Koordinate wechselt das Vorzeichen (${coordNum(A[0])} → ${coordNum(Ap[0])}) → Spiegelung an der y-Achse.`
+                : `Die x- und die y-Koordinate werden vertauscht ${coordPair(A[0], A[1])} → ${coordPair(Ap[0], Ap[1])} → Spiegelung an der Geraden y = x.`,
+          instruction: 'Tippe die Spiegelachse:',
+          dedupeKey: `achsensym-achse:${kind}:${A[0]}:${A[1]}`,
         })
       },
       // Variant 3: Portfolio — Spiegelpunkt per Klick setzen
@@ -2609,11 +2655,11 @@ export const math5NeuLb3: Topic[] = [
           labelVertices: true,
         })
         return coordinateClickTask({
-          question: `Spiegle Punkt A an ${mirrorDescribeNeu(mirror)}. Setze A' im Koordinatensystem.`,
+          question: `Spiegle den Punkt A(${A[0]}|${A[1]}) an ${mirrorDescribeNeu(mirror)}. Setze A' im Koordinatensystem.`,
           x: tx,
           y: ty,
-          solution: `(${tx}|${ty})`,
-          explanation: `A liegt bei (${A[0]}|${A[1]}). Spiegelung an ${mirrorDescribeNeu(mirror)} liefert A' = (${tx}|${ty}).`,
+          solution: coordPair(tx, ty),
+          explanation: `A liegt bei (${A[0]}|${A[1]}). Die Spiegelung an ${mirrorDescribeNeu(mirror)} liefert A' = ${coordPair(tx, ty)}.`,
           xRange: [-5, 8],
           yRange: [-5, 8],
           visualContent: svg,
@@ -2649,37 +2695,47 @@ export const math5NeuLb3: Topic[] = [
         const ch = pick(rng, [...pointSym, ...nonSym])
         const yes = pointSym.includes(ch)
         return choicePickTask({
-          question: `Ist das Zeichen „${ch}" punktsymmetrisch (bei 180°-Drehung um die Mitte deckungsgleich mit sich selbst)?`,
+          question: `Ist das Zeichen „${ch}“ in der üblichen Druckschrift punktsymmetrisch (bei 180°-Drehung um die Mitte deckungsgleich mit sich selbst)?`,
           choices: ['ja', 'nein'],
           correct: yes ? 'ja' : 'nein',
           solution: yes ? 'ja' : 'nein',
           explanation: yes
-            ? `„${ch}" sieht nach einer 180°-Drehung um die Mitte genauso aus wie vorher — punktsymmetrisch.`
-            : `„${ch}" sieht nach einer 180°-Drehung um die Mitte anders aus — nicht punktsymmetrisch.`,
+            ? `„${ch}“ sieht nach einer 180°-Drehung um die Mitte genauso aus wie vorher — punktsymmetrisch.`
+            : `„${ch}“ sieht nach einer 180°-Drehung um die Mitte anders aus — nicht punktsymmetrisch.`,
           instruction: 'Tippe:',
           dedupeKey: `punktsym-zeichen:${ch}`,
         })
       },
       // Variant 2: MC — Bildpunkt bei Punktspiegelung (typische Fehler als Distraktoren)
       (rng: Rng) => {
-        const sx = randInt(rng, -2, 3)
-        const sy = randInt(rng, -2, 3)
-        let ax = randInt(rng, -4, 5)
-        const ay = randInt(rng, -4, 5)
-        if (ax === sx && ay === sy) ax += 1
-        const correctX = 2 * sx - ax
-        const correctY = 2 * sy - ay
-        const correct = `(${correctX}|${correctY})`
-        const wrong1 = `(${sx - ax}|${sy - ay})`
-        const wrong2 = `(${ax}|${ay})`
-        const wrong3 = `(${2 * sx + ax}|${2 * sy + ay})`
-        const choices = shuffleChoices(rng, [correct, wrong1, wrong2, wrong3], correct)
+        let sx = 1
+        let sy = 1
+        let ax = 3
+        let ay = 3
+        let options: string[] = []
+        // Zentrum nicht im Ursprung; Distraktoren müssen paarweise verschieden sein.
+        for (let attempt = 0; attempt < 200; attempt++) {
+          sx = randInt(rng, -2, 3)
+          sy = randInt(rng, -2, 3)
+          ax = randInt(rng, -4, 5)
+          ay = randInt(rng, -4, 5)
+          if ((sx === 0 && sy === 0) || (ax === sx && ay === sy)) continue
+          options = [
+            coordPair(2 * sx - ax, 2 * sy - ay),
+            coordPair(sx - ax, sy - ay),
+            coordPair(ax, ay),
+            coordPair(2 * sx + ax, 2 * sy + ay),
+          ]
+          if (new Set(options).size === 4) break
+        }
+        const correct = options[0]!
+        const choices = shuffleChoices(rng, options, correct)
         return choicePickTask({
-          question: `A(${ax}|${ay}) wird am Punkt S(${sx}|${sy}) punktgespiegelt. Welcher Punkt ist A'?`,
+          question: `A${coordPair(ax, ay)} wird am Punkt S${coordPair(sx, sy)} punktgespiegelt. Welcher Punkt ist A'?`,
           choices,
           correct,
           solution: correct,
-          explanation: `A' = 2S − A = (2·${sx} − ${ax}|2·${sy} − ${ay}) = ${correct}.`,
+          explanation: `A' = 2S − A = (2 · ${calcNum(sx)} − ${calcNum(ax)}|2 · ${calcNum(sy)} − ${calcNum(ay)}) = ${correct}.`,
           dedupeKey: `punktsym-mc:${ax}:${ay}:${sx}:${sy}`,
         })
       },
@@ -2705,8 +2761,8 @@ export const math5NeuLb3: Topic[] = [
           question: 'Spiegle Punkt A am Punkt S. Setze A\' im Koordinatensystem.',
           x: tx,
           y: ty,
-          solution: `(${tx}|${ty})`,
-          explanation: `A' = 2S − A = (${2 * sx} − ${A[0]}|${2 * sy} − ${A[1]}) = (${tx}|${ty}).`,
+          solution: coordPair(tx, ty),
+          explanation: `A' = 2S − A = (2 · ${sx} − ${A[0]}|2 · ${sy} − ${A[1]}) = ${coordPair(tx, ty)}.`,
           xRange: [-5, 8],
           yRange: [-5, 8],
           visualContent: svg,
@@ -2767,18 +2823,31 @@ export const math5NeuLb3: Topic[] = [
       // Variant 2: MC — Streckenaddition auf einer Geraden
       (rng: Rng) => {
         const ab = randInt(rng, 2, 8)
-        const bc = randInt(rng, 2, 8)
+        // AB ≠ BC, damit die Antwortmöglichkeiten nie zusammenfallen.
+        let bc = randInt(rng, 2, 8)
+        if (bc === ab) bc = ab === 8 ? 7 : ab + 1
         const ac = ab + bc
-        const choices = [ac, ab, bc, Math.abs(ab - bc)]
-        const correct = String(ac)
-        const labeled = shuffleChoices(rng, choices.map(String), correct)
+        if (rng() < 0.5) {
+          const correct = String(ac)
+          const labeled = shuffleChoices(rng, [ac, ab, bc, ac + 1].map(String), correct)
+          return choicePickTask({
+            question: `Auf einer Geraden liegen die Punkte A, B und C in dieser Reihenfolge. AB = ${ab} cm, BC = ${bc} cm. Wie lang ist die Strecke AC?`,
+            choices: labeled,
+            correct,
+            solution: `${correct} cm`,
+            explanation: `B liegt zwischen A und C: AC = AB + BC = ${ab} + ${bc} = ${ac} cm.`,
+            dedupeKey: `streckenlaenge-addition:${ab}:${bc}`,
+          })
+        }
+        const correct = String(bc)
+        const labeled = shuffleChoices(rng, [bc, ab, ac, ac + ab].map(String), correct)
         return choicePickTask({
-          question: `Auf einer Geraden liegen die Punkte A, B und C in dieser Reihenfolge. AB = ${ab} cm, BC = ${bc} cm. Wie lang ist die Strecke AC?`,
+          question: `Auf einer Geraden liegen die Punkte A, B und C in dieser Reihenfolge. AC = ${ac} cm, AB = ${ab} cm. Wie lang ist die Strecke BC?`,
           choices: labeled,
           correct,
-          solution: correct,
-          explanation: `B liegt zwischen A und C: AC = AB + BC = ${ab} + ${bc} = ${ac} cm.`,
-          dedupeKey: `streckenlaenge-addition:${ab}:${bc}`,
+          solution: `${correct} cm`,
+          explanation: `B liegt zwischen A und C, also ist AC = AB + BC. Daraus folgt BC = AC − AB = ${ac} − ${ab} = ${bc} cm.`,
+          dedupeKey: `streckenlaenge-differenz:${ab}:${bc}`,
         })
       },
       // Variant 3: Portfolio — Streckenaddition am Raster
@@ -2876,10 +2945,10 @@ export const math5NeuLb3: Topic[] = [
         const by = 2 * my - ay
         const accepted = pairAnswerAcceptedNeu(bx, by)
         return textTask({
-          question: `Der Mittelpunkt der Strecke AB ist M(${mx}|${my}). Punkt A liegt bei (${ax}|${ay}). Wie lautet Punkt B? Gib x; y an.`,
+          question: `Der Mittelpunkt der Strecke AB ist M${coordPair(mx, my)}. Punkt A liegt bei ${coordPair(ax, ay)}. Wie lautet Punkt B? Gib x; y an.`,
           accepted,
-          solution: `${bx}; ${by}`,
-          explanation: `Da M der Mittelpunkt ist, gilt M = (A + B) : 2, also B = 2M − A = (2·${mx} − ${ax}|2·${my} − ${ay}) = (${bx}|${by}).`,
+          solution: `${coordNum(bx)}; ${coordNum(by)}`,
+          explanation: `Da M der Mittelpunkt ist, gilt M = (A + B) : 2, also B = 2M − A = (2 · ${calcNum(mx)} − ${calcNum(ax)}|2 · ${calcNum(my)} − ${calcNum(ay)}) = ${coordPair(bx, by)}.`,
         })
       },
       // Variant 2: MC — Mittelpunkt unter Distraktoren erkennen
@@ -2890,24 +2959,24 @@ export const math5NeuLb3: Topic[] = [
         const by = ay + 2 * randInt(rng, -2, 2)
         const mx = (ax + bx) / 2
         const my = (ay + by) / 2
-        const correct = `(${mx}|${my})`
-        const wrong1 = `(${mx + 1}|${my})`
-        const wrong2 = `(${ax}|${ay})`
-        const wrong3 = `(${bx}|${by})`
+        const correct = coordPair(mx, my)
+        const wrong1 = coordPair(mx, my + 1)
+        const wrong2 = coordPair(ax, ay)
+        const wrong3 = coordPair(bx, by)
         const choices = shuffleChoices(rng, [correct, wrong1, wrong2, wrong3], correct)
         return choicePickTask({
-          question: `A(${ax}|${ay}) und B(${bx}|${by}) sind die Endpunkte einer Strecke. Welcher Punkt ist der Mittelpunkt von AB?`,
+          question: `A${coordPair(ax, ay)} und B${coordPair(bx, by)} sind die Endpunkte einer Strecke. Welcher Punkt ist der Mittelpunkt von AB?`,
           choices,
           correct,
           solution: correct,
-          explanation: `M = ((${ax}+${bx}) : 2|(${ay}+${by}) : 2) = ${correct}.`,
+          explanation: `M = ((${calcNum(ax)} + ${calcNum(bx)}) : 2|(${calcNum(ay)} + ${calcNum(by)}) : 2) = ${correct}.`,
           dedupeKey: `mittelpunkt-mc:${ax}:${ay}:${bx}:${by}`,
         })
       },
       // Variant 3: Portfolio — Mittelpunkt per Klick setzen
       (rng: Rng) => {
         const halfDx = randInt(rng, 1, 3)
-        const halfDy = rng() < 0.4 ? 0 : randInt(rng, 0, 2)
+        const halfDy = rng() < 0.25 ? 0 : randInt(rng, 1, 2)
         const ax = randInt(rng, -2, 6 - 2 * halfDx)
         const ay = randInt(rng, -2, 6 - 2 * halfDy)
         const bx = ax + 2 * halfDx
@@ -2922,11 +2991,11 @@ export const math5NeuLb3: Topic[] = [
           yRange: [-3, 8],
         })
         return coordinateClickTask({
-          question: 'Setze den Mittelpunkt M der Strecke AB im Koordinatensystem.',
+          question: `Die Strecke AB hat die Endpunkte A${coordPair(ax, ay)} und B${coordPair(bx, by)}. Setze ihren Mittelpunkt M im Koordinatensystem.`,
           x: mx,
           y: my,
-          solution: `(${mx}|${my})`,
-          explanation: `M = ((${ax}+${bx}) : 2|(${ay}+${by}) : 2) = (${mx}|${my}).`,
+          solution: coordPair(mx, my),
+          explanation: `M = ((${calcNum(ax)} + ${calcNum(bx)}) : 2|(${calcNum(ay)} + ${calcNum(by)}) : 2) = ${coordPair(mx, my)}.`,
           xRange: [-3, 8],
           yRange: [-3, 8],
           visualContent: svg,
@@ -2971,29 +3040,30 @@ export const math5NeuLb3: Topic[] = [
       // Variant 1: Tippen — Alltagsbeispiel klassifizieren
       (rng: Rng) => {
         const items = [
-          { desc: 'ein Laserstrahl, der an einem Gerät beginnt und sich unendlich weit ausbreitet', kind: 'halbgerade' as const },
+          { desc: 'ein Laserstrahl, der an einem Gerät beginnt und gedanklich unendlich weit geht', kind: 'halbgerade' as const },
           { desc: 'eine gedanklich unendlich verlängerte, gerade Straße ohne Anfang und Ende', kind: 'gerade' as const },
-          { desc: 'eine Zugstrecke zwischen zwei bestimmten Bahnhöfen', kind: 'strecke' as const },
-          { desc: 'der Lichtkegel einer Taschenlampe, der am Lämpchen beginnt', kind: 'halbgerade' as const },
-          { desc: 'die Verbindung zwischen deinem Zuhause und der Schule', kind: 'strecke' as const },
-          { desc: 'ein Sonnenstrahl, der von der Sonne ausgeht', kind: 'halbgerade' as const },
+          { desc: 'die Luftlinie zwischen zwei bestimmten Bahnhöfen', kind: 'strecke' as const },
+          { desc: 'ein Lichtstrahl, der an einer Taschenlampe beginnt (als dünner Strahl gedacht)', kind: 'halbgerade' as const },
+          { desc: 'die Luftlinie zwischen deinem Zuhause und der Schule', kind: 'strecke' as const },
+          { desc: 'ein Sonnenstrahl, der an der Sonne beginnt und gedanklich unendlich weit geht', kind: 'halbgerade' as const },
         ]
         const item = pick(rng, items)
         const solution = LINE_KIND_LABEL_NEU[item.kind]
+        const desc = `${item.desc.charAt(0).toUpperCase()}${item.desc.slice(1)}`
         return choicePickTask({
-          question: `Welche geometrische Figur beschreibt am besten: ${item.desc}?`,
+          question: `Welche Figur passt zu dieser Beschreibung: ${item.desc}?`,
           choices: ['Strecke', 'Halbgerade', 'Gerade'],
           correct: solution,
           solution,
-          explanation: `${item.desc} hat ${
+          explanation: `${desc} hat ${
             item.kind === 'strecke'
               ? 'zwei feste Endpunkte (begrenzt)'
               : item.kind === 'halbgerade'
                 ? 'einen festen Anfangspunkt, geht aber unbegrenzt weiter'
                 : 'kein Ende in beide Richtungen'
-          } — das ist eine ${solution}.`,
+          } — das ist eine ${solution}${item.kind === 'halbgerade' ? ' (auch Strahl genannt)' : ''}.`,
           instruction: 'Tippe die passende Bezeichnung:',
-          dedupeKey: `streckenbez-alltag:${item.kind}:${item.desc.slice(0, 12)}`,
+          dedupeKey: `streckenbez-alltag:${item.kind}:${item.desc}`,
         })
       },
       // Variant 2: MC — Anzahl der Endpunkte
@@ -3016,15 +3086,18 @@ export const math5NeuLb3: Topic[] = [
       (rng: Rng) => {
         const kind = pick(rng, ['strecke', 'halbgerade', 'gerade'] as const)
         const yes = kind === 'strecke'
-        return textTask({
-          question: `Hat eine ${LINE_KIND_LABEL_NEU[kind]} eine endliche (messbare) Länge? Antworte mit ja oder nein.`,
-          accepted: yes ? ['ja'] : ['nein'],
+        return choicePickTask({
+          question: `Hat eine ${LINE_KIND_LABEL_NEU[kind]} eine endliche (messbare) Länge?`,
+          choices: ['ja', 'nein'],
+          correct: yes ? 'ja' : 'nein',
           solution: yes ? 'ja' : 'nein',
           explanation: yes
             ? 'Eine Strecke ist durch zwei Endpunkte begrenzt, also hat sie eine endliche Länge.'
             : `Eine ${LINE_KIND_LABEL_NEU[kind]} geht ${
                 kind === 'halbgerade' ? 'von ihrem Anfangspunkt aus' : 'nach beiden Seiten'
               } unbegrenzt weiter, daher hat sie keine endliche Länge.`,
+          instruction: 'Tippe:',
+          dedupeKey: `streckenbez-laenge:${kind}`,
         })
       },
       // Variant 4: Lineal — Strecke mit vorgegebener Länge zeichnen (nur Strecken haben eine Länge)
@@ -4308,7 +4381,8 @@ export const math5NeuLb5: Topic[] = [
       // Variant 2: MC — welche Zeitspanne ist länger?
       (rng: Rng) => {
         const minWert = pick(rng, [80, 90, 100, 110, 120, 130, 140, 150, 160, 170])
-        const hWert = pick(rng, [1, 1.5, 2, 2.5])
+        // Nie 1 Stunde (Singular, trivial): 1,5 und mehr Stunden stehen immer im Plural.
+        const hWert = pick(rng, [1.5, 2, 2.5, 3])
         const hAlsMin = hWert * 60
         const correct = minWert > hAlsMin ? `${minWert} Minuten` : minWert < hAlsMin ? `${formatDe(hWert)} Stunden` : 'gleich lang'
         const choices = shuffleChoices(rng, [`${minWert} Minuten`, `${formatDe(hWert)} Stunden`, 'gleich lang'], correct)
@@ -4330,14 +4404,14 @@ export const math5NeuLb5: Topic[] = [
       },
       // Variant 3: MC — Vergleich gemischte Einheit vs. Minuten mit <, >, =
       (rng: Rng) => {
-        const hPart = randInt(rng, 1, 3)
+        const hPart = randInt(rng, 2, 3)
         const minPart = pick(rng, [15, 30, 45])
         const baseMin = hPart * 60 + minPart
         const compareMin = baseMin + pick(rng, [-20, -10, 0, 10, 20])
         const relation = baseMin < compareMin ? '<' : baseMin > compareMin ? '>' : '='
         const choices = shuffleChoices(rng, ['<', '>', '='], relation)
         return choicePickTask({
-          question: `Ein Film dauert ${hPart} h ${minPart} min, ein Serienmarathon dauert ${compareMin} min. Vergleiche: ${hPart} h ${minPart} min ___ ${compareMin} min.`,
+          question: `Ein Film dauert ${hPart} h ${minPart} min, ein Fernsehabend dauert ${compareMin} min. Vergleiche: ${hPart} h ${minPart} min ___ ${compareMin} min.`,
           choices,
           correct: relation,
           solution: relation,
@@ -4350,18 +4424,21 @@ export const math5NeuLb5: Topic[] = [
       (rng: Rng) => {
         // Jede Szene nur mit Uhrzeiten und Dauern, die dort realistisch sind.
         const szene = pick(rng, [
-          { id: 'bus', hours: [6, 7, 8], dauer: [20, 25, 35, 40, 50], satz: (s: string, d: number) => `Der Bus fährt um ${s} Uhr ab. Die Fahrt dauert ${d} Minuten. Zeige an der Uhr, wann der Bus ankommt.` },
-          { id: 'film', hours: [3, 4, 5, 6, 7], dauer: [85, 90, 95, 105, 115], satz: (s: string, d: number) => `Der Film beginnt um ${s} Uhr und läuft ${d} Minuten. Zeige an der Uhr, wann er zu Ende ist.` },
-          { id: 'kuchen', hours: [2, 3, 4], dauer: [35, 40, 45, 50, 55, 60], satz: (s: string, d: number) => `Ein Kuchen kommt um ${s} Uhr in den Ofen und muss ${d} Minuten backen. Zeige an der Uhr, wann er fertig ist.` },
-          { id: 'training', hours: [4, 5, 6], dauer: [45, 60, 75, 90], satz: (s: string, d: number) => `Das Fußballtraining beginnt um ${s} Uhr und dauert ${d} Minuten. Zeige an der Uhr, wann es endet.` },
-          { id: 'hausaufgaben', hours: [2, 3, 4], dauer: [25, 30, 35, 40, 45], satz: (s: string, d: number) => `Mia beginnt um ${s} Uhr mit den Hausaufgaben und braucht ${d} Minuten dafür. Zeige an der Uhr, wann sie fertig ist.` },
+          { id: 'bus', hours: [6, 7, 8], dauer: [20, 25, 35, 40, 50], satz: (s: string, d: number) => `Der Bus fährt morgens um ${s} Uhr ab. Die Fahrt dauert ${d} Minuten. Zeige an der Uhr, wann der Bus ankommt.` },
+          { id: 'film', hours: [3, 4, 5, 6, 7], minuten: [0, 15, 30, 45], dauer: [85, 90, 95, 105, 115], satz: (s: string, d: number, tz: string) => `Der Film beginnt ${tz} um ${s} Uhr und läuft ${d} Minuten. Zeige an der Uhr, wann er zu Ende ist.` },
+          { id: 'kuchen', hours: [2, 3, 4], dauer: [35, 40, 45, 50, 55, 60], satz: (s: string, d: number, tz: string) => `Ein Kuchen kommt ${tz} um ${s} Uhr in den Ofen und muss ${d} Minuten backen. Zeige an der Uhr, wann er fertig ist.` },
+          { id: 'training', hours: [4, 5, 6], minuten: [0, 15, 30, 45], dauer: [45, 60, 75, 90], satz: (s: string, d: number, tz: string) => `Das Fußballtraining beginnt ${tz} um ${s} Uhr und dauert ${d} Minuten. Zeige an der Uhr, wann es endet.` },
+          { id: 'hausaufgaben', hours: [2, 3, 4], dauer: [25, 30, 35, 40, 45], satz: (s: string, d: number, tz: string) => `Mia beginnt ${tz} um ${s} Uhr mit den Hausaufgaben und braucht ${d} Minuten dafür. Zeige an der Uhr, wann sie fertig ist.` },
         ])
         const startH = pick(rng, szene.hours)
-        let startM = pick(rng, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
+        // Uhrzeiten ohne Tageszeit sind auf einer 12-Stunden-Uhr mehrdeutig.
+        const tageszeit = startH >= 6 && szene.id !== 'bus' ? 'abends' : szene.id === 'bus' ? 'morgens' : 'nachmittags'
+        const minutenPool = szene.minuten ?? [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55]
+        let startM = pick(rng, minutenPool)
         let d = pick(rng, szene.dauer)
         // 12:00 ist die Startstellung der Uhr und darf keine Lösung sein.
         while ((startH * 60 + startM + d) % 720 === 0) {
-          startM = pick(rng, [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55])
+          startM = pick(rng, minutenPool.filter((m) => m !== 0))
           d = pick(rng, szene.dauer)
         }
         const total = startH * 60 + startM + d
@@ -4370,8 +4447,8 @@ export const math5NeuLb5: Topic[] = [
         const endHour = end.h === 0 ? 12 : end.h
         const calc =
           sum < 60
-            ? `${startM} min + ${d} min = ${sum} min, das ist weniger als eine Stunde. Die Stunde bleibt ${startH}.`
-            : `${startM} min + ${d} min = ${sum} min = ${Math.floor(sum / 60)} h ${sum % 60} min. Zur Stunde ${startH} kommen ${Math.floor(sum / 60)} h dazu.`
+            ? `Zu den ${startM} Minuten der Startzeit kommen ${d} Minuten Dauer dazu: ${startM} + ${d} = ${sum} Minuten. Das ist weniger als eine Stunde, die Stunde bleibt ${startH}.`
+            : `Zu den ${startM} Minuten der Startzeit kommen ${d} Minuten Dauer dazu: ${startM} + ${d} = ${sum} Minuten = ${Math.floor(sum / 60)} h ${sum % 60} min. Zur Stunde ${startH} kommen ${Math.floor(sum / 60)} h dazu.`
         const nextHour = endHour === 12 ? 1 : endHour + 1
         const hourHandText =
           end.m === 0
@@ -4380,9 +4457,11 @@ export const math5NeuLb5: Topic[] = [
               ? `steht ein Stück hinter der ${endHour}`
               : end.m === 30
                 ? `steht genau in der Mitte zwischen der ${endHour} und der ${nextHour}`
-                : `steht kurz vor der ${nextHour}`
+                : end.m < 45
+                  ? `steht schon hinter der Mitte zwischen der ${endHour} und der ${nextHour}`
+                  : `steht kurz vor der ${nextHour}`
         return clockTask({
-          question: szene.satz(ckFormatTime({ h: startH, m: startM }), d),
+          question: szene.satz(ckFormatTime({ h: startH, m: startM }), d, tageszeit),
           mode: 'setTime',
           time: end,
           solution: `${ckFormatTime(end)} Uhr`,

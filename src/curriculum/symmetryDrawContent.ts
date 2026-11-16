@@ -105,7 +105,7 @@ export const SYM_HORIZONTAL_FIGURES: SymFigure[] = [
     rows: 6,
     at: 3,
     art: ['#.#.#.#', '#######', '#######'],
-    tip: 'Die Zinnen sind am weitesten von der Achse entfernt, ihr Bild liegt auf der Gegenseite ebenso weit weg. Die zwei vollen Reihen grenzen an die Achse.',
+    tip: 'Die Zinnen sind am weitesten von der Achse entfernt, ihr Bild liegt auf der Gegenseite ebenso weit weg. Von den zwei vollen Reihen grenzt nur die eine direkt an die Achse, die andere liegt eine Reihe weiter weg.',
   },
   {
     id: 'pfeil-rechts',

@@ -183,7 +183,7 @@ describe('Uhr im Thema Zeiteinheiten', () => {
       const { h, m } = answerOf(t)
       const shown = h === 0 ? 12 : h
       const next = shown === 12 ? 1 : shown + 1
-      const want = m === 0 ? `genau auf der ${shown}` : m < 30 ? `ein Stück hinter der ${shown}` : m === 30 ? `genau in der Mitte zwischen der ${shown} und der ${next}` : `kurz vor der ${next}`
+      const want = m === 0 ? `genau auf der ${shown}` : m < 30 ? `ein Stück hinter der ${shown}` : m === 30 ? `genau in der Mitte zwischen der ${shown} und der ${next}` : m < 45 ? `schon hinter der Mitte zwischen der ${shown} und der ${next}` : `kurz vor der ${next}`
       expect(t.explanation, t.question).toContain(`Stundenzeiger steht ${want}.`)
       expect(t.explanation).not.toContain('kurz hinter')
       seen.add(m === 0 ? 'voll' : m < 30 ? 'vor30' : m === 30 ? 'halb' : 'nach30')
