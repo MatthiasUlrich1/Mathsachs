@@ -6,7 +6,7 @@
   "subject": "Mathematik",
   "version": "1.2.9",
   "changelog": "tasksPerRound Standard 10 für alle Mathe-Themen. K11/12 Grafik freigegeben: Tangente-Steigung (2453), Fläche unter Graph (8970), Nullstelle linear tippen (5544).",
-  "contentHash": "0e4916b3",
+  "contentHash": "643fef9b",
   "official": [
     {
       "id": "klasse-5",
@@ -546,7 +546,7 @@
             },
             {
               "id": "lb2-mittelwert__neu",
-              "title": "Arithmetisches Mittel (Dezimalwerte & fehlende Zahl) · Neu (Prüfung)",
+              "title": "Arithmetisches Mittel (Berechnen & fehlende Zahl) · Neu (Prüfung)",
               "pointsPerTask": 10,
               "tasksPerRound": 10,
               "keywords": [
@@ -2001,7 +2001,7 @@
                 "Winkelsumme",
                 "Viereck",
                 "Innenwinkel",
-                "Vieleck",
+                "Diagonale",
                 "Neu",
                 "Prüfung",
                 "lb3-winkel-viereck"
@@ -2065,7 +2065,7 @@
             },
             {
               "id": "lb3-kongruenzsatz__neu",
-              "title": "Kongruenzsatz wählen · Neu (Prüfung)",
+              "title": "Kongruenzsätze und Dreieckskonstruktion · Neu (Prüfung)",
               "hint": "SSS, SWS, WSW oder SsW — welche Angabe reicht?",
               "pointsPerTask": 10,
               "tasksPerRound": 10,

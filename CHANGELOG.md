@@ -9,6 +9,24 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.29.0] – 2026-11-16
+
+### Hinzugefügt
+- **Neues Design „Schulheft & Tafel“:** Karopapier, Heftseite mit rotem Rand, Schulheft-Etikett als Kopfzeile, Schriften Bricolage Grotesque und Atkinson Hyperlegible (offline eingebunden), dunkles Tafel-Thema (Einstellungen → Darstellung).
+- **Korrekturzeichen im Heftrand:** ✓, ✗, (✓) für teilweise richtig; das Ergebnis wird für Screenreader angesagt; Punkte werden mit Textmarker markiert.
+- **Mathe Messinstrumente:** Geodreieck, Lineal, Zirkel, Winkel-Werkzeug und geführte Konstruktion sowie 10 weitere Interaktionen aus 0.28.147/0.28.148 — weiterhin nur in gesperrten Neu-Themen, sichtbar nur für Prüfer/Entwickler.
+
+### Geändert
+- Alle Farben laufen über Design-Tokens.
+- Kontraste in beiden Themes ≥ 4,5:1.
+- Druck bleibt schwarz-weiß.
+- Aufgabentext ist linksbündig.
+- Hinweis „Noch keine Klassenstufe ausgewählt“ statt „Kein Lehrplan installiert“, wenn ein Lehrplan installiert ist.
+- Zahleneingabe akzeptiert Tausenderpunkte („3.000,00“).
+
+### Behoben
+- **Inhaltsqualität der gesperrten Neu-Themen Klasse 5–8:** Gesamtcheck mit 31 Fehlern behoben, z. B. unlösbare Zahlenstrahl-Aufgaben, unmögliche Dreiecke/Vierecke, doppelte Antwortoptionen, Grammatik.
+
 ## [0.28.148] – 2026-11-15
 
 ### Hinzugefügt
