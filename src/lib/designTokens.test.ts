@@ -302,7 +302,7 @@ import { SVG_SERIES } from './svgTokens'
 
 const tokenOfVar = (v: string): string => v.slice(4, -1)
 const readRule = (file: string, selector: string): string => {
-  const src = readFileSync(new URL(`../components/${file}`, import.meta.url), 'utf8')
+  const src = readFileSync(new URL(`../components/${file}`, import.meta.url), 'utf8').replace(/\r\n/g, '\n')
   const at = src.indexOf(`${selector} {`)
   if (at < 0) throw new Error(`rule not found: ${selector}`)
   return src.slice(at, src.indexOf('}', at))
@@ -340,7 +340,7 @@ describe('every text drawn on a fill uses --on-fill (and passes 4.5 on all fills
     ['DivideTool.css', '.divide-tool__owner,\n.divide-tool__name,\n.divide-tool__count'],
   ]
   it.each(PAIRS)('%s %s sets fill: var(--on-fill)', (file, selector) => {
-    const rule = readRule(file, selector.replace(/\r/g, ''))
+    const rule = readRule(file, selector)
     expect(rule).toContain('fill: var(--on-fill)')
     expect(rule).not.toContain('paint-order')
   })

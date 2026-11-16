@@ -6,6 +6,7 @@ import {
   type PackGrade,
   type PackTopic,
 } from './pack'
+import type { PackTopicMapping } from './packMapping'
 import { DEFAULT_TASKS_PER_ROUND } from './tasksPerRound'
 
 /**
@@ -54,6 +55,9 @@ const grade = (
   searchHints,
   areas,
 })
+
+/** Neue 1:n-Mappings (Vorrang vor ST_GENERATOR_MAP; E5 füllt sie). */
+export const ST_TOPIC_MAPPINGS: Record<string, PackTopicMapping> = {}
 
 /** ST topic id → Gym Sachsen generator topic id. */
 export const ST_GENERATOR_MAP: Record<string, string> = {

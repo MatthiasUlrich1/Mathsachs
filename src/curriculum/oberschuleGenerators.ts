@@ -8,8 +8,16 @@ import { pick, randInt, type Rng } from '../lib/rng'
 import { bundledCurricula } from './bundled'
 import { topicContentId } from './contentId'
 import { ensureTopicFachwissen } from './fachwissen'
-import { ST_GENERATOR_MAP } from './gymSachsenAnhaltPack'
-import { SKS_GENERATOR_MAP } from './sekundarschuleSachsenAnhaltPack'
+import { blendGenerators } from './mergeNeu'
+import {
+  isQualifiedRef,
+  normalizeMapping,
+  qualifyRef,
+  type PackTopicMapping,
+  type SourceRef,
+} from './packMapping'
+import { ST_GENERATOR_MAP, ST_TOPIC_MAPPINGS } from './gymSachsenAnhaltPack'
+import { SKS_GENERATOR_MAP, SKS_TOPIC_MAPPINGS } from './sekundarschuleSachsenAnhaltPack'
 import {
   choicePickTask,
   coordinateClickTask,
@@ -601,45 +609,148 @@ export const OS_GENERATOR_MAP: Record<string, string> = {
   'os-rs-k10-lbw3-strahlensatz': 'k8-lb4-strahlensatz',
 }
 
-let catalog: Map<string, Topic['generate']> | null = null
+/** Metadaten eines Master-Themas im Katalog. */
+export interface CatalogEntryMeta {
+  /** Kanonischer Schlüssel `<moduleId>:<topicId>`. */
+  key: string
+  moduleId: string
+  topicId: string
+  difficulty?: 1 | 2 | 3
+}
 
+let catalog: Map<string, Topic['generate']> | null = null
+const catalogMeta = new Map<string, CatalogEntryMeta>()
+/** Einfache Master-ID → alle qualifizierten Schlüssel, nur bei Mehrfachvorkommen. */
+const catalogAmbiguous = new Map<string, string[]>()
+
+/**
+ * Master-Katalog. Schlüssel: immer `<moduleId>:<topicId>` (eindeutig) und zusätzlich
+ * die einfache `topicId` (bei Mehrfachvorkommen das ERSTE, wie bisher — Bestands-IDs
+ * werden nicht umbenannt). Mehrdeutige einfache IDs: `ambiguousCatalogIds()`.
+ */
 export async function gymGeneratorCatalog(): Promise<Map<string, Topic['generate']>> {
   if (catalog) return catalog
   const next = new Map<string, Topic['generate']>()
+  const seen = new Map<string, string[]>()
   for (const mod of bundledCurricula) {
     const grade = await mod.load()
     for (const area of grade.areas) {
       for (const topic of area.topics) {
+        const key = qualifyRef(mod.id, topic.id)
+        next.set(key, topic.generate)
+        catalogMeta.set(key, {
+          key,
+          moduleId: mod.id,
+          topicId: topic.id,
+          difficulty: topic.difficulty,
+        })
         if (!next.has(topic.id)) next.set(topic.id, topic.generate)
+        const keys = seen.get(topic.id) ?? []
+        keys.push(key)
+        seen.set(topic.id, keys)
       }
     }
   }
+  for (const [id, keys] of seen) if (keys.length > 1) catalogAmbiguous.set(id, keys)
   catalog = next
   return next
+}
+
+/** Einfache Master-IDs, die in mehreren Klassen existieren (Mapping muss qualifizieren). */
+export function ambiguousCatalogIds(): ReadonlyMap<string, readonly string[]> {
+  return catalogAmbiguous
+}
+
+/** Metadaten zu einer (einfachen oder qualifizierten) Quelle; nur nach `gymGeneratorCatalog()`. */
+export function catalogEntryMeta(ref: SourceRef): CatalogEntryMeta | undefined {
+  if (isQualifiedRef(ref)) return catalogMeta.get(ref)
+  const keys = catalogAmbiguous.get(ref)
+  if (keys) return catalogMeta.get(keys[0]!)
+  for (const meta of catalogMeta.values()) if (meta.topicId === ref) return meta
+  return undefined
+}
+
+/** Neue Mappings (1:n). Haben Vorrang vor den String-Maps; E5 füllt sie. */
+export const OS_TOPIC_MAPPINGS: Record<string, PackTopicMapping> = {}
+
+function explicitMapping(topicId: string): PackTopicMapping | undefined {
+  return OS_TOPIC_MAPPINGS[topicId] ?? ST_TOPIC_MAPPINGS[topicId] ?? SKS_TOPIC_MAPPINGS[topicId]
 }
 
 export function generatorIdForTopic(topicId: string): string | undefined {
   return OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId] ?? SKS_GENERATOR_MAP[topicId]
 }
 
-/** Resolve a playable OS/ST/SKS topic generator (custom wrapper or Gymnasium map). */
+/** Effektives Mapping: explizites 1:n-Mapping, sonst String-Map (1:1). */
+export function mappingForTopic(topicId: string): PackTopicMapping | undefined {
+  const explicit = explicitMapping(topicId)
+  if (explicit) return explicit
+  const legacy = generatorIdForTopic(topicId)
+  return legacy ? normalizeMapping(legacy) : undefined
+}
+
+export interface ResolvedSources {
+  /** Aufgelöste Quellen nach `maxDifficulty`-Filter. */
+  gens: Array<{ ref: SourceRef; gen: Topic['generate'] }>
+  /** Wegen `maxDifficulty` ausgeschlossen. */
+  filtered: SourceRef[]
+  /** Nicht im Katalog gefunden. */
+  missing: SourceRef[]
+}
+
+export function resolveSources(
+  mapping: PackTopicMapping,
+  gymCatalog: Map<string, Topic['generate']>,
+): ResolvedSources {
+  const out: ResolvedSources = { gens: [], filtered: [], missing: [] }
+  for (const ref of mapping.sources) {
+    const gen = gymCatalog.get(ref)
+    if (!gen) {
+      out.missing.push(ref)
+      continue
+    }
+    const difficulty = catalogEntryMeta(ref)?.difficulty
+    if (mapping.maxDifficulty && difficulty && difficulty > mapping.maxDifficulty) {
+      out.filtered.push(ref)
+      continue
+    }
+    out.gens.push({ ref, gen })
+  }
+  return out
+}
+
+/**
+ * Resolve a playable OS/ST/SKS topic generator.
+ *
+ * Priorität: Custom-Generator (`OS_CUSTOM_GENERATORS`) allein, außer das Thema hat ein
+ * explizites 1:n-Mapping (`*_TOPIC_MAPPINGS`) mit Quellen — dann wird Custom mit den
+ * Quellen gemischt. Mehrere Quellen: `blendGenerators`, GLEICHE Gewichte je Quelle
+ * (Custom zählt als eine Quelle), deterministisch je Seed. Bleibt nach `maxDifficulty`
+ * nichts übrig (und kein Custom) → `undefined` (Outline).
+ * String-Maps (Alt-Format) lösen wie bisher 1:1 ohne Filter auf.
+ */
 export function resolveOsGenerate(
   topicId: string,
   gymCatalog: Map<string, Topic['generate']>,
 ): Topic['generate'] | undefined {
   const custom = OS_CUSTOM_GENERATORS[topicId]
-  if (custom) return custom
-  const mapped =
-    OS_GENERATOR_MAP[topicId] ?? ST_GENERATOR_MAP[topicId] ?? SKS_GENERATOR_MAP[topicId]
-  return mapped ? gymCatalog.get(mapped) : undefined
+  const explicit = explicitMapping(topicId)
+  if (!explicit) {
+    if (custom) return custom
+    const mapped = generatorIdForTopic(topicId)
+    return mapped ? gymCatalog.get(mapped) : undefined
+  }
+  const parts = resolveSources(explicit, gymCatalog).gens.map((s) => ({ gen: s.gen, weight: 1 }))
+  if (custom) parts.unshift({ gen: custom, weight: 1 })
+  if (parts.length === 0) return undefined
+  return parts.length === 1 ? parts[0]!.gen : blendGenerators(parts)
 }
 
 export function isPlayableOfficialTopic(topicId: string): boolean {
   return Boolean(
     OS_CUSTOM_GENERATORS[topicId] ||
-      OS_GENERATOR_MAP[topicId] ||
-      ST_GENERATOR_MAP[topicId] ||
-      SKS_GENERATOR_MAP[topicId],
+      explicitMapping(topicId)?.sources.length ||
+      generatorIdForTopic(topicId),
   )
 }
 
