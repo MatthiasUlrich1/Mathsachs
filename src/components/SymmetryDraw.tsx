@@ -1,10 +1,6 @@
 import type { UserInput } from '../curriculum/types'
 import {
-  SYM_AXIS_STROKE,
   SYM_CENTRE_R,
-  SYM_DRAWN_FILL,
-  SYM_GIVEN_FILL,
-  SYM_GRID_STROKE,
   SYM_MAX_SIZE,
   cellKey,
   sortCells,
@@ -16,6 +12,7 @@ import {
   type SymAxis,
   type SymPoint,
 } from '../lib/symmetryDrawLogic'
+import { SVG_COLOR } from '../lib/svgTokens'
 import './SymmetryDraw.css'
 
 type SymmetryValue = Extract<UserInput, { kind: 'symmetryDraw' }>
@@ -81,8 +78,8 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
           data-cell={key}
           data-state={isGiven ? 'given' : on ? 'on' : 'off'}
           className={`sym-draw__cell${free ? ' sym-draw__cell--free' : ''}`}
-          fill={isGiven ? SYM_GIVEN_FILL : on ? SYM_DRAWN_FILL : '#ffffff'}
-          stroke={SYM_GRID_STROKE}
+          fill={isGiven ? SVG_COLOR.svgLine : on ? SVG_COLOR.fillA : SVG_COLOR.surface}
+          stroke={SVG_COLOR.svgLine}
           strokeWidth={1}
           role={free ? 'button' : undefined}
           aria-label={isGiven ? `${where}, vorgegeben` : free ? `${where}, ${on ? 'gefärbt' : 'nicht gefärbt'}` : undefined}
@@ -122,13 +119,13 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
             y1={a.y1}
             x2={a.x2}
             y2={a.y2}
-            stroke={SYM_AXIS_STROKE}
+            stroke={SVG_COLOR.highlight}
             strokeWidth={2.5}
             strokeDasharray="8 5"
             pointerEvents="none"
           />
         )}
-        {c && <circle data-testid="sym-centre" cx={c.cx} cy={c.cy} r={SYM_CENTRE_R} fill={SYM_AXIS_STROKE} pointerEvents="none" />}
+        {c && <circle data-testid="sym-centre" cx={c.cx} cy={c.cy} r={SYM_CENTRE_R} fill={SVG_COLOR.highlight} pointerEvents="none" />}
       </svg>
     </div>
   )

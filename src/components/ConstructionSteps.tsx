@@ -55,7 +55,7 @@ export function ConstructionSteps({
     <div className="construction-steps">
       <figure className="construction-steps__plan">
         <div
-          className="construction-steps__plan-svg"
+          className="construction-steps__plan-svg heft-scope"
           dangerouslySetInnerHTML={{ __html: ensureSvgViewBox(planFigureSvg) }}
         />
         <figcaption>Planfigur (nicht maßstabsgetreu)</figcaption>

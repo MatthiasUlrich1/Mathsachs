@@ -10,6 +10,7 @@ import {
   type SnapMode,
 } from '../lib/coordinateScene'
 import { angleLegFromPointer, angleReleasePointer } from '../lib/angleToolLogic'
+import { SVG_COLOR, dataColor } from '../lib/svgTokens'
 import './CoordinateGraphEditor.css'
 
 export type EditorTool =
@@ -450,7 +451,7 @@ export function CoordinateGraphEditor({
         y1={padT}
         x2={sx}
         y2={padT + gridH}
-        stroke={x === 0 ? '#555' : '#c8c8c8'}
+        stroke={x === 0 ? SVG_COLOR.svgLine : SVG_COLOR.line}
         strokeWidth={x === 0 ? 2 : 1}
       />,
     )
@@ -464,7 +465,7 @@ export function CoordinateGraphEditor({
         y1={sy}
         x2={padL + gridW}
         y2={sy}
-        stroke={y === 0 ? '#555' : '#c8c8c8'}
+        stroke={y === 0 ? SVG_COLOR.svgLine : SVG_COLOR.line}
         strokeWidth={y === 0 ? 2 : 1}
       />,
     )
@@ -472,14 +473,14 @@ export function CoordinateGraphEditor({
 
   const renderObject = (o: GraphObject, ghost = false) => {
     const opacity = ghost ? 0.35 : 1
-    const color = o.color ?? (ghost ? '#c62828' : '#1565c0')
+    const color = dataColor(o.color, ghost ? SVG_COLOR.tick : SVG_COLOR.ink)
     if (o.kind === 'point') {
       const [sx, sy] = toSvg(o.x, o.y)
       return (
         <g key={o.id} opacity={opacity}>
-          <circle cx={sx} cy={sy} r={7} fill={color} stroke="#0d47a1" strokeWidth={2} />
+          <circle cx={sx} cy={sy} r={7} fill={color} stroke={SVG_COLOR.graphite} strokeWidth={2} />
           {o.label && (
-            <text x={sx + 10} y={sy - 8} fontSize={12} fontWeight={700} fill="#334155">
+            <text x={sx + 10} y={sy - 8} fontSize={12} fontWeight={700} fill={SVG_COLOR.graphite}>
               {o.label}
             </text>
           )}
@@ -531,8 +532,8 @@ export function CoordinateGraphEditor({
         />
         {!ghost && (
           <>
-            <circle cx={h1x} cy={h1y} r={4} fill="#fff" stroke={color} strokeWidth={2} />
-            <circle cx={h2x} cy={h2y} r={4} fill="#fff" stroke={color} strokeWidth={2} />
+            <circle cx={h1x} cy={h1y} r={4} fill={SVG_COLOR.surface} stroke={color} strokeWidth={2} />
+            <circle cx={h2x} cy={h2y} r={4} fill={SVG_COLOR.surface} stroke={color} strokeWidth={2} />
           </>
         )}
       </g>
@@ -548,7 +549,7 @@ export function CoordinateGraphEditor({
           y1: pending.y,
           x2: hover.x,
           y2: hover.y,
-          color: '#64b5f6',
+          color: SVG_COLOR.fillA,
         } as GraphObject)
       : null
 
@@ -564,7 +565,7 @@ export function CoordinateGraphEditor({
           cx: pending!.x,
           cy: pending!.y,
           r: circlePreviewR,
-          color: '#64b5f6',
+          color: SVG_COLOR.fillA,
         }
       : null
 
@@ -580,7 +581,7 @@ export function CoordinateGraphEditor({
         y1: pending!.y,
         x2: angleLive.end.x,
         y2: angleLive.end.y,
-        color: '#64b5f6',
+        color: SVG_COLOR.fillA,
       }
     : null
 
@@ -664,17 +665,17 @@ export function CoordinateGraphEditor({
             refY="4"
             orient="auto"
           >
-            <polygon points="0,0 8,4 0,8" fill="#1565c0" />
+            <polygon points="0,0 8,4 0,8" fill={SVG_COLOR.ink} />
           </marker>
         </defs>
-        <rect x={0} y={0} width={totalW} height={totalH} fill="#fafafa" />
+        <rect x={0} y={0} width={totalW} height={totalH} fill={SVG_COLOR.surface} />
         {gridLines}
         <line
           x1={padL}
           y1={oy}
           x2={padL + gridW + 10}
           y2={oy}
-          stroke="#555"
+          stroke={SVG_COLOR.svgLine}
           strokeWidth={2}
         />
         <line
@@ -682,13 +683,13 @@ export function CoordinateGraphEditor({
           y1={padT + gridH}
           x2={ox}
           y2={padT - 10}
-          stroke="#555"
+          stroke={SVG_COLOR.svgLine}
           strokeWidth={2}
         />
-        <text x={padL + gridW + 14} y={oy + 4} fontSize={14} fontWeight="bold" fill="#333">
+        <text x={padL + gridW + 14} y={oy + 4} fontSize={14} fontWeight="bold" fill={SVG_COLOR.graphite}>
           x
         </text>
-        <text x={ox + 8} y={padT - 6} fontSize={14} fontWeight="bold" fill="#333">
+        <text x={ox + 8} y={padT - 6} fontSize={14} fontWeight="bold" fill={SVG_COLOR.graphite}>
           y
         </text>
         {solutionOverlay?.objects.map((o) => renderObject({ ...o, id: `sol-${o.id}` }, true))}
@@ -698,8 +699,8 @@ export function CoordinateGraphEditor({
             cx={toSvg(pending.x, pending.y)[0]}
             cy={toSvg(pending.x, pending.y)[1]}
             r={5}
-            fill="#90caf9"
-            stroke="#1565c0"
+            fill={SVG_COLOR.fillA}
+            stroke={SVG_COLOR.ink}
             strokeWidth={2}
           />
         )}
@@ -711,7 +712,7 @@ export function CoordinateGraphEditor({
             y={toSvg(pending.x, pending.y)[1] + 18}
             fontSize={13}
             fontWeight={700}
-            fill="#0d47a1"
+            fill={SVG_COLOR.ink}
             pointerEvents="none"
             data-testid="circle-radius"
           >
@@ -725,7 +726,7 @@ export function CoordinateGraphEditor({
             y1={toSvg(pending.x, pending.y)[1]}
             x2={toSvg(angleLeg.x, angleLeg.y)[0]}
             y2={toSvg(angleLeg.x, angleLeg.y)[1]}
-            stroke="#90caf9"
+            stroke={SVG_COLOR.fillA}
             strokeWidth={2}
             strokeDasharray="4 3"
             pointerEvents="none"
@@ -737,7 +738,7 @@ export function CoordinateGraphEditor({
             y={toSvg(pending.x, pending.y)[1] + 18}
             fontSize={13}
             fontWeight={700}
-            fill="#0d47a1"
+            fill={SVG_COLOR.ink}
             pointerEvents="none"
             data-testid="angle-value"
           >
@@ -749,7 +750,7 @@ export function CoordinateGraphEditor({
             cx={toSvg(hover.x, hover.y)[0]}
             cy={toSvg(hover.x, hover.y)[1]}
             r={4}
-            fill="#bbdefb"
+            fill={SVG_COLOR.fillA}
             pointerEvents="none"
           />
         )}

@@ -83,7 +83,7 @@ export const ParamSlider: React.FC<ParamSliderProps> = ({
       {instruction && <p className="param-slider__instruction">{instruction}</p>}
       {previewSvg && (
         <div
-          className="param-slider__preview"
+          className="param-slider__preview heft-scope"
           dangerouslySetInnerHTML={{ __html: ensureSvgViewBox(previewSvg) }}
         />
       )}

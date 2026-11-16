@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
+import { SVG_COLOR } from '../lib/svgTokens'
 import './NumberLineSlider.css'
 
 export interface NumberLineSliderProps {
@@ -130,7 +131,7 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
           y1={lineY}
           x2={width - padding}
           y2={lineY}
-          stroke="#e2e8f0"
+          stroke={SVG_COLOR.svgLine}
           strokeWidth="3"
         />
 
@@ -145,11 +146,11 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
                 y1={lineY - tickHeight / 2}
                 x2={x}
                 y2={lineY + tickHeight / 2}
-                stroke="#e2e8f0"
+                stroke={SVG_COLOR.svgLine}
                 strokeWidth={major ? 2.5 : 1.5}
               />
               {major && (
-                <text x={x} y={lineY + 30} textAnchor="middle" fontSize="14" fill="#f8fafc">
+                <text x={x} y={lineY + 30} textAnchor="middle" fontSize="14" fill={SVG_COLOR.graphite}>
                   {formatNumber(tick)}
                 </text>
               )}
@@ -164,7 +165,7 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
               y1={lineY - 30}
               x2={valueToX(value)}
               y2={lineY}
-              stroke="#38bdf8"
+              stroke={SVG_COLOR.ink}
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}
             />
@@ -172,8 +173,8 @@ export const NumberLineSlider: React.FC<NumberLineSliderProps> = ({
               cx={valueToX(value)}
               cy={lineY - 30}
               r={10}
-              fill="#38bdf8"
-              stroke="#fff"
+              fill={SVG_COLOR.ink}
+              stroke={SVG_COLOR.surface}
               strokeWidth={2}
               className={isDragging ? 'dragging' : ''}
               style={{ cursor: 'grab' }}

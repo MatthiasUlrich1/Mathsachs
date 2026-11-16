@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
+import { SVG_COLOR, dataColor } from '../lib/svgTokens'
 import './CoordinateClick.css'
 
 export interface CoordinateMarker {
@@ -143,7 +144,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
     const [sx] = toSvg(x, 0)
     gridLines.push(
       `<line x1="${sx}" y1="${padT}" x2="${sx}" y2="${padT + gridH}" stroke="${
-        x === 0 ? '#555' : '#c8c8c8'
+        x === 0 ? SVG_COLOR.svgLine : SVG_COLOR.line
       }" stroke-width="${x === 0 ? 2 : 1}"/>`,
     )
   }
@@ -151,7 +152,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
     const [, sy] = toSvg(0, y)
     gridLines.push(
       `<line x1="${padL}" y1="${sy}" x2="${padL + gridW}" y2="${sy}" stroke="${
-        y === 0 ? '#555' : '#c8c8c8'
+        y === 0 ? SVG_COLOR.svgLine : SVG_COLOR.line
       }" stroke-width="${y === 0 ? 2 : 1}"/>`,
     )
   }
@@ -161,7 +162,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
     if (x === 0) continue
     const [sx] = toSvg(x, 0)
     tickLabels.push(
-      <text key={`x${x}`} x={sx} y={oy + 16} textAnchor="middle" fontSize={11} fill="#444">
+      <text key={`x${x}`} x={sx} y={oy + 16} textAnchor="middle" fontSize={11} fill={SVG_COLOR.graphite}>
         {x}
       </text>,
     )
@@ -170,7 +171,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
     if (y === 0) continue
     const [, sy] = toSvg(0, y)
     tickLabels.push(
-      <text key={`y${y}`} x={ox - 10} y={sy + 4} textAnchor="end" fontSize={11} fill="#444">
+      <text key={`y${y}`} x={ox - 10} y={sy + 4} textAnchor="end" fontSize={11} fill={SVG_COLOR.graphite}>
         {y}
       </text>,
     )
@@ -211,14 +212,14 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
             : 'Kästchenpapier – Punkt tippen'
         }
       >
-        <rect x={0} y={0} width={totalW} height={totalH} fill="#fafafa" />
+        <rect x={0} y={0} width={totalW} height={totalH} fill={SVG_COLOR.surface} />
         <g dangerouslySetInnerHTML={{ __html: gridLines.join('') }} />
         <line
           x1={padL}
           y1={oy}
           x2={padL + gridW + 10}
           y2={oy}
-          stroke="#555"
+          stroke={SVG_COLOR.svgLine}
           strokeWidth={2}
         />
         <line
@@ -226,13 +227,13 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
           y1={padT + gridH}
           x2={ox}
           y2={padT - 10}
-          stroke="#555"
+          stroke={SVG_COLOR.svgLine}
           strokeWidth={2}
         />
-        <text x={padL + gridW + 14} y={oy + 4} fontSize={14} fontWeight="bold" fill="#333">
+        <text x={padL + gridW + 14} y={oy + 4} fontSize={14} fontWeight="bold" fill={SVG_COLOR.graphite}>
           x
         </text>
-        <text x={ox + 8} y={padT - 6} fontSize={14} fontWeight="bold" fill="#333">
+        <text x={ox + 8} y={padT - 6} fontSize={14} fontWeight="bold" fill={SVG_COLOR.graphite}>
           y
         </text>
         {tickLabels}
@@ -242,7 +243,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
             y1={guideFrom[1]}
             x2={guideTo[0]}
             y2={guideTo[1]}
-            stroke="#f59e0b"
+            stroke={SVG_COLOR.highlight}
             strokeWidth={3}
             strokeDasharray="6 4"
             pointerEvents="none"
@@ -254,24 +255,24 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
             y1={rayFrom[1]}
             x2={rayTo[0]}
             y2={rayTo[1]}
-            stroke="#2563eb"
+            stroke={SVG_COLOR.ink}
             strokeWidth={3.5}
             pointerEvents="none"
           />
         )}
         {markers.map((m, i) => {
           const [sx, sy] = toSvg(m.x, m.y)
-          const fill = m.color ?? '#f59e0b'
+          const fill = dataColor(m.color, SVG_COLOR.highlight)
           return (
             <g key={`m${i}`} pointerEvents="none">
-              <circle cx={sx} cy={sy} r={8} fill={fill} stroke="#92400e" strokeWidth={2} />
+              <circle cx={sx} cy={sy} r={8} fill={fill} stroke={SVG_COLOR.graphite} strokeWidth={2} />
               {m.label && (
                 <text
                   x={sx}
                   y={sy - 12}
                   textAnchor="middle"
                   fontSize={11}
-                  fill="#334155"
+                  fill={SVG_COLOR.graphite}
                   fontWeight={600}
                 >
                   {m.label}
@@ -288,10 +289,10 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
               cx={sx}
               cy={sy}
               r={7}
-              fill="#c62828"
-              stroke="#b71c1c"
+              fill={SVG_COLOR.tick}
+              stroke={SVG_COLOR.graphite}
               strokeWidth={2}
-              opacity={0.55}
+              strokeDasharray="3 2"
               pointerEvents="none"
             />
           )
@@ -304,8 +305,8 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
                 cx={sx}
                 cy={sy}
                 r={7}
-                fill="#1565c0"
-                stroke="#0d47a1"
+                fill={SVG_COLOR.ink}
+                stroke={SVG_COLOR.graphite}
                 strokeWidth={2}
               />
               {multi && (
@@ -315,7 +316,7 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
                   textAnchor="middle"
                   fontSize={10}
                   fontWeight={700}
-                  fill="#fff"
+                  fill={SVG_COLOR.paper}
                 >
                   {i + 1}
                 </text>
@@ -328,8 +329,8 @@ export const CoordinateClick: React.FC<CoordinateClickProps> = ({
             cx={hoverPos[0]}
             cy={hoverPos[1]}
             r={5}
-            fill="#90caf9"
-            stroke="#0d47a1"
+            fill={SVG_COLOR.fillA}
+            stroke={SVG_COLOR.graphite}
             strokeWidth={2}
             pointerEvents="none"
           />

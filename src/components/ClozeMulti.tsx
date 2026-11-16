@@ -57,6 +57,14 @@ export const ClozeMulti: React.FC<ClozeMultiProps> = ({
                 spellCheck={false}
               />
             )}
+            {i < blanks.length && partResults?.[i] !== undefined && (
+              <span
+                className={`cloze-multi__mark cloze-multi__mark--${partResults[i] ? 'ok' : 'bad'}`}
+                aria-hidden="true"
+              >
+                {partResults[i] ? '✓' : '✗'}
+              </span>
+            )}
           </React.Fragment>
         ))}
       </p>

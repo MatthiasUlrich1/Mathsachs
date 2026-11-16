@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import type { UserInput } from '../curriculum/types'
 import {
-  PC_COLORS,
   PC_CX,
   PC_CY,
   PC_DEFAULT_SNAP,
@@ -15,7 +14,6 @@ import {
   PC_LEGEND_SWATCH,
   PC_LEGEND_X,
   PC_R,
-  PC_STROKES,
   PC_VIEWBOX_H,
   PC_VIEWBOX_W,
   pcBoundaries,
@@ -33,6 +31,7 @@ import {
   pcStartPercents,
   pcWrapDelta,
 } from '../lib/pieChartLogic'
+import { SVG_COLOR, seriesColor } from '../lib/svgTokens'
 import './PieChart.css'
 
 type PieChartValue = Extract<UserInput, { kind: 'pieChart' }>
@@ -134,8 +133,8 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
             data-percent={shown[i]}
             className="pie-chart__sector"
             d={pcSectorPath(bounds[i]!, bounds[i + 1]!)}
-            fill={PC_COLORS[i]}
-            stroke="#fff"
+            fill={seriesColor(i)}
+            stroke={SVG_COLOR.svgLine}
             strokeWidth={2}
           >
             <title>{name}</title>
@@ -158,7 +157,7 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
           const y = pcLegendRowY(i, n)
           return (
             <g key={`legend-${i}`} data-testid="pc-legend">
-              <rect x={PC_LEGEND_X} y={y - PC_LEGEND_SWATCH / 2} width={PC_LEGEND_SWATCH} height={PC_LEGEND_SWATCH} fill={PC_COLORS[i]} stroke={PC_STROKES[i]} strokeWidth={1.5} />
+              <rect x={PC_LEGEND_X} y={y - PC_LEGEND_SWATCH / 2} width={PC_LEGEND_SWATCH} height={PC_LEGEND_SWATCH} fill={seriesColor(i)} stroke={SVG_COLOR.svgLine} strokeWidth={1.5} />
               <text className="pie-chart__legend-name" x={PC_LEGEND_NAME_X} y={y + 5} fontSize={PC_LEGEND_FONT}>
                 {name}
               </text>

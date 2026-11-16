@@ -3,7 +3,6 @@ import type { UserInput } from '../curriculum/types'
 import {
   DIVIDE_MAX_PARTS,
   DIVIDE_MIN_PARTS,
-  DIVIDE_PERSON_FILLS,
   DIVIDE_LABEL_FONT,
   assignPart,
   clampParts,
@@ -15,6 +14,7 @@ import {
   partsPerPerson,
   type DivideShape,
 } from '../lib/divideToolLogic'
+import { SVG_COLOR, seriesColor } from '../lib/svgTokens'
 import './DivideTool.css'
 
 type DivideToolValue = Extract<UserInput, { kind: 'divideTool' }>
@@ -134,7 +134,7 @@ export function DivideToolBoard({
                     data-owner={owner === null ? '' : String(owner)}
                     data-selected={isSel ? 'true' : 'false'}
                     className={`divide-tool__part${isSel ? ' divide-tool__part--selected' : ''}`}
-                    fill={owner === null ? '#ffffff' : DIVIDE_PERSON_FILLS[owner % DIVIDE_PERSON_FILLS.length]}
+                    fill={owner === null ? SVG_COLOR.surface : seriesColor(owner)}
                     role="button"
                     aria-pressed={isSel}
                     aria-disabled={disabled ? true : undefined}
@@ -170,7 +170,7 @@ export function DivideToolBoard({
               data-testid="divide-person"
               data-person={p.index}
               className={`divide-tool__person${pending !== null ? ' divide-tool__person--ready' : ''}`}
-              fill={DIVIDE_PERSON_FILLS[p.index % DIVIDE_PERSON_FILLS.length]}
+              fill={seriesColor(p.index)}
               role="button"
               aria-disabled={disabled || pending === null ? true : undefined}
               aria-label={`${dividePersonName(p.index)}, ${divideCountLabel(held[p.index] ?? 0)}`}

@@ -1,8 +1,6 @@
 import type { UserInput } from '../curriculum/types'
 import {
   RATIO_CELL_FONT,
-  RATIO_FILL_A,
-  RATIO_FILL_B,
   RATIO_LEGEND_FONT,
   RATIO_SWATCH,
   RATIO_TOTAL_FONT,
@@ -15,6 +13,7 @@ import {
   type RatioBarMode,
   type RatioPart,
 } from '../lib/ratioBarLogic'
+import { SVG_COLOR } from '../lib/svgTokens'
 import './RatioBar.css'
 
 type RatioBarValue = Extract<UserInput, { kind: 'ratioBar' }>
@@ -35,7 +34,7 @@ export interface RatioBarProps {
   disabled?: boolean
 }
 
-const fillOf = (p: RatioPart): string => (p === 'A' ? RATIO_FILL_A : p === 'B' ? RATIO_FILL_B : '#ffffff')
+const fillOf = (p: RatioPart): string => (p === 'A' ? SVG_COLOR.fillA : p === 'B' ? SVG_COLOR.fillB : SVG_COLOR.surface)
 
 const keyActivate = (run: () => void) => (e: { key: string; preventDefault: () => void }) => {
   if (e.key === ' ' || e.key === 'Enter') {
@@ -125,8 +124,8 @@ export function RatioBar({ mode, segments, ratio, labels, total, unit, value, on
               y={it.swatchY}
               width={RATIO_SWATCH}
               height={RATIO_SWATCH}
-              fill={it.letter === 'A' ? RATIO_FILL_A : RATIO_FILL_B}
-              stroke="#334155"
+              fill={it.letter === 'A' ? SVG_COLOR.fillA : SVG_COLOR.fillB}
+              stroke={SVG_COLOR.svgLine}
               strokeWidth={1.5}
             />
             <text className="ratio-bar__legend" x={it.textX} y={it.textY} fontSize={RATIO_LEGEND_FONT}>

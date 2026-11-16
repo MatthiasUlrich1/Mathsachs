@@ -207,7 +207,7 @@ export function TaskVisual({ html }: { html?: string }) {
   if (!html) return null
   return (
     <div
-      className="task-visual"
+      className="task-visual heft-scope"
       dangerouslySetInnerHTML={{ __html: ensureSvgViewBox(html) }}
     />
   )

@@ -1,14 +1,22 @@
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 /*
- * Guards the "Schulheft & Tafel" redesign: the old dark slate/indigo/cyan
- * palette must not come back. Scope for now: App.css and index.css (done in D1/D2).
- * D3 migrates the component CSS files; it must widen CSS_FILES to every
- * src/**\/*.css file (glob) once those are migrated.
+ * Guards the "Schulheft & Tafel" redesign across EVERY src/**\/*.css file
+ * (App.css, index.css and all component stylesheets): the old dark
+ * slate/indigo/cyan palette must not come back, colours come from tokens.
  */
-const CSS_FILES = ['src/App.css', 'src/index.css']
+const listCss = (dir: string): string[] =>
+  readdirSync(dir).flatMap((name) => {
+    const p = join(dir, name)
+    return statSync(p).isDirectory() ? listCss(p) : p.endsWith('.css') ? [p] : []
+  })
+
+const ROOT = process.cwd()
+const CSS_FILES = listCss(join(ROOT, 'src'))
+  .map((p) => p.slice(ROOT.length + 1).replace(/\\/g, '/'))
+  .sort()
 
 const OLD_PALETTE = [
   '#0f172a',
@@ -20,15 +28,18 @@ const OLD_PALETTE = [
   'rgba(34,211,238',
 ]
 
-const read = (f: string) => readFileSync(join(process.cwd(), f), 'utf8')
+const read = (f: string) => readFileSync(join(ROOT, f), 'utf8')
 const squash = (css: string) => css.toLowerCase().replace(/\s+/g, '')
 
 /** Returns the old-palette entries found in the css (whitespace-insensitive). */
 export const findOldPalette = (css: string): string[] =>
   OLD_PALETTE.filter((c) => squash(css).includes(c))
 export const hasBackdropFilter = (css: string): boolean => /backdrop-filter/i.test(css)
+/** Gradients other than the highlighter stripe (--marker) and squared-paper lines (--grid). */
 export const foreignGradients = (css: string): string[] =>
-  (css.match(/linear-gradient\([^;]*/g) ?? []).filter((g) => !g.includes('var(--marker)'))
+  (css.match(/linear-gradient\([^;]*/g) ?? []).filter(
+    (g) => !g.includes('var(--marker)') && !g.includes('var(--grid)'),
+  )
 /** Literal colours (hex / rgb / rgba / hsl) outside `@media print`. */
 export const literalColours = (css: string): string[] => {
   const noPrint = css.replace(/@media print\s*\{[\s\S]*?\n\}/, '')
@@ -39,6 +50,30 @@ export const strayRadii = (css: string): string[] =>
   [...css.matchAll(/border(?:-[a-z]+)*-radius:\s*([^;]+);/g)]
     .map((m) => m[1].trim())
     .filter((v) => !/^(var\(--radius-(sheet|control|chip)\)|999px|50%|0)$/.test(v))
+/** Deprecated D1 aliases that were removed from index.css. */
+export const aliasUses = (css: string): string[] =>
+  css.match(/var\(--(?:text|text-muted|accent|accent-2|good|bad|muted|bg-0|bg-1|border)\b/g) ?? []
+
+/**
+ * Literal colours that are allowed to stay, per file, with the reason.
+ * Everything not listed here must be a token (var(--...)).
+ */
+const LITERAL_ALLOW: Record<string, { literals: string[]; why: string }> = {
+  'src/App.css': {
+    literals: ['#0a0a0a', '#0a0a0a', '#fff'],
+    why: '#0a0a0a x2: supporter logos are designed for a dark background in both themes; #fff: QR code needs a white quiet zone.',
+  },
+}
+/** index.css is the single source of the token values: literals only inside `--token:` declarations. */
+const TOKEN_SOURCE = 'src/index.css'
+
+describe('every src/**/*.css file is covered', () => {
+  it('finds App.css, index.css and all 30 component stylesheets', () => {
+    expect(CSS_FILES).toContain('src/App.css')
+    expect(CSS_FILES).toContain('src/index.css')
+    expect(CSS_FILES.filter((f) => f.startsWith('src/components/')).length).toBe(30)
+  })
+})
 
 describe('old palette is gone from CSS', () => {
   for (const file of CSS_FILES) {
@@ -54,28 +89,64 @@ describe('old palette is gone from CSS', () => {
   })
 })
 
-describe('App.css has no glass, gradients or stray literals', () => {
-  const app = read('src/App.css')
+describe('no glass, foreign gradients, uppercase labels or removed aliases in any CSS file', () => {
+  for (const file of CSS_FILES) {
+    const css = read(file)
+    it(`${file}: no backdrop-filter, gradients only marker/grid, no uppercase, no aliases`, () => {
+      expect(hasBackdropFilter(css)).toBe(false)
+      expect(foreignGradients(css)).toEqual([])
+      expect(css).not.toMatch(/text-transform:\s*uppercase/)
+      expect(aliasUses(css)).toEqual([])
+    })
+  }
 
-  it('no backdrop-filter (also -webkit-)', () => {
-    expect(hasBackdropFilter(app)).toBe(false)
+  it('negative controls', () => {
     expect(hasBackdropFilter('a{-webkit-backdrop-filter:blur(4px)}')).toBe(true)
     expect(hasBackdropFilter('a{backdrop-filter:blur(4px)}')).toBe(true)
-  })
-
-  it('only the highlighter gradient remains', () => {
-    expect(foreignGradients(app)).toEqual([])
     expect(foreignGradients('a{background:linear-gradient(135deg,red,blue)}')).toHaveLength(1)
+    expect(foreignGradients('a{background:linear-gradient(135deg,var(--ink),var(--ink))}')).toHaveLength(1)
     expect(foreignGradients('a{background:linear-gradient(transparent,var(--marker))}')).toEqual([])
+    expect(foreignGradients('a{background:linear-gradient(var(--grid) 1px,transparent 1px)}')).toEqual([])
+    expect(aliasUses('a{color:var(--muted, #64748b)}')).toEqual(['var(--muted'])
+    expect(aliasUses('a{color:var(--pencil)}')).toEqual([])
+  })
+})
+
+describe('literal colours: tokens everywhere except a minimal allow-list', () => {
+  for (const file of CSS_FILES.filter((f) => f !== TOKEN_SOURCE)) {
+    it(`${file}: ${LITERAL_ALLOW[file] ? 'only the allow-listed literals' : 'no literal colours'}`, () => {
+      const lits = literalColours(read(file)).map((l) => l.toLowerCase())
+      expect(lits.sort()).toEqual(LITERAL_ALLOW[file]?.literals ?? [])
+    })
+  }
+
+  it('index.css: literal colours only appear in --token declarations (the token source)', () => {
+    const lines = read(TOKEN_SOURCE)
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/@media print\s*\{[\s\S]*?\n\}/, '')
+      .split(/\r?\n/)
+      .filter((l) => literalColours(l).length > 0)
+    expect(lines.length).toBeGreaterThan(20)
+    for (const l of lines) expect(l).toMatch(/^\s*--[a-z-]+:/)
   })
 
-  it('no literal colours except the accepted logo/QR backgrounds (print excluded)', () => {
-    // Accepted: #0a0a0a x2 (on-dark supporter logos), #fff (QR quiet zone).
-    const lits = literalColours(app).map((l) => l.toLowerCase())
-    expect(lits.sort()).toEqual(['#0a0a0a', '#0a0a0a', '#fff'])
+  it('the allow-list has no stale entries and every entry has a reason', () => {
+    for (const [file, { literals, why }] of Object.entries(LITERAL_ALLOW)) {
+      expect(CSS_FILES).toContain(file)
+      expect(literals.length).toBeGreaterThan(0)
+      expect(why.length).toBeGreaterThan(10)
+    }
+  })
+
+  it('negative control: detects literals, ignores print blocks', () => {
     expect(literalColours('a{color:#abc;b:rgb(1,2,3)}')).toHaveLength(2)
     expect(literalColours('@media print {\n a{color:#fff}\n}\n')).toEqual([])
+    expect(literalColours('a{color:var(--ink);b:color-mix(in srgb, var(--tick) 10%, transparent)}')).toEqual([])
   })
+})
+
+describe('App.css radii', () => {
+  const app = read('src/App.css')
 
   it('radii only use tokens, 999px, 50% or 0', () => {
     expect(strayRadii(app)).toEqual([])

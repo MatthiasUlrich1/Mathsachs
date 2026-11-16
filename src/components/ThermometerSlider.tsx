@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { SVG_COLOR } from '../lib/svgTokens'
 import './ThermometerSlider.css'
 
 export interface ThermometerSliderProps {
@@ -107,7 +108,7 @@ export function ThermometerSlider({
         aria-valuenow={current}
         aria-label="Thermometer"
       >
-        <rect width={width} height={height} fill="#f8fafc" rx="8" />
+        <rect width={width} height={height} fill={SVG_COLOR.surface} rx="8" />
         {/* tube */}
         <rect
           x={tubeX}
@@ -115,14 +116,14 @@ export function ThermometerSlider({
           width={tubeW}
           height={yBot - yTop + 8}
           rx={tubeW / 2}
-          fill="#e2e8f0"
-          stroke="#64748b"
+          fill={SVG_COLOR.grid}
+          stroke={SVG_COLOR.svgLine}
           strokeWidth="2"
         />
         {/* mercury column */}
-        <rect x={tubeX + 5} y={fillY} width={tubeW - 10} height={Math.max(0, fillH)} fill="#ef4444" />
+        <rect x={tubeX + 5} y={fillY} width={tubeW - 10} height={Math.max(0, fillH)} fill={SVG_COLOR.ink} />
         {/* bulb */}
-        <circle cx={tubeX + tubeW / 2} cy={yBot + 22} r={22} fill="#ef4444" stroke="#b91c1c" strokeWidth="2" />
+        <circle cx={tubeX + tubeW / 2} cy={yBot + 22} r={22} fill={SVG_COLOR.ink} stroke={SVG_COLOR.svgLine} strokeWidth="2" />
         {/* scale ticks */}
         {ticks.map((tick) => {
           const y = valueToY(tick)
@@ -136,14 +137,14 @@ export function ThermometerSlider({
                 y1={y}
                 x2={tubeX + tubeW + len}
                 y2={y}
-                stroke="#334155"
+                stroke={SVG_COLOR.svgLine}
                 strokeWidth={major ? 2 : 1}
               />
               {major && (
                 <text
                   x={tubeX + tubeW + len + 6}
                   y={y + 4}
-                  fill="#334155"
+                  fill={SVG_COLOR.graphite}
                   fontSize="13"
                   fontFamily="system-ui,sans-serif"
                 >
@@ -160,15 +161,15 @@ export function ThermometerSlider({
             y1={fillY}
             x2={tubeX + 2}
             y2={fillY}
-            stroke="#2563eb"
+            stroke={SVG_COLOR.highlight}
             strokeWidth="3"
           />
           <circle
             cx={tubeX - 14}
             cy={fillY}
             r={11}
-            fill="#2563eb"
-            stroke="#fff"
+            fill={SVG_COLOR.highlight}
+            stroke={SVG_COLOR.surface}
             strokeWidth="2"
           />
         </g>

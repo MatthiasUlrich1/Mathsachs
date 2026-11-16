@@ -53,12 +53,9 @@ describe('design tokens', () => {
     expect(tafelAuto).toMatch(/color-scheme:\s*dark/)
   })
 
-  it('keeps deprecated aliases mapped to the new tokens', () => {
-    expect(heft).toMatch(/--text:\s*var\(--graphite\)/)
-    expect(heft).toMatch(/--accent:\s*var\(--ink\)/)
-    expect(heft).toMatch(/--good:\s*var\(--tick\)/)
-    expect(heft).toMatch(/--bad:\s*var\(--correction\)/)
-    expect(heft).toMatch(/--muted:\s*var\(--pencil\)/)
+  it('has dropped the deprecated aliases (components use the real tokens)', () => {
+    for (const alias of ['text', 'accent', 'accent-2', 'good', 'bad', 'muted', 'bg-0', 'bg-1'])
+      expect(css).not.toMatch(new RegExp(`--${alias}:`))
   })
 
   it('has no leftovers of the old palette', () => {
@@ -228,4 +225,72 @@ describe('print is always Heft', () => {
   it('print block comes after the Tafel blocks (cascade order)', () => {
     expect(css.indexOf('@media print')).toBeGreaterThan(css.lastIndexOf("--marker: #f6e27a"))
   })
+})
+
+/* ---- D3: semantic SVG tokens, component pairs, Heft scope ---- */
+
+const SVG_TOKENS = ['svg-line', 'svg-fill-a', 'svg-fill-b', 'svg-highlight'] as const
+
+describe('semantic SVG tokens', () => {
+  const themes = { Heft: heft, Tafel: tafel }
+  it.each(SVG_TOKENS)('--%s is defined in Heft and both Tafel blocks, identical in the Tafel pair', (t) => {
+    expect(() => valueOf(heft, t)).not.toThrow()
+    expect(valueOf(tafelAuto, t)).toBe(valueOf(tafel, t))
+  })
+  for (const [name, body] of Object.entries(themes)) {
+    const c = (t: string) => valueOf(body, t)
+    for (const base of ['paper', 'surface']) {
+      it.each(SVG_TOKENS)(`${name}: --%s on --${base} >= 3:1 (non-text)`, (t) => {
+        expect(contrastRatio(c(t), c(base))).toBeGreaterThanOrEqual(3)
+      })
+    }
+    it.each(['svg-fill-a', 'svg-fill-b'])(`${name}: --on-marker text on --%s >= 4.5`, (t) => {
+      expect(contrastRatio(c('on-marker'), c(t))).toBeGreaterThanOrEqual(4.5)
+    })
+    it(`${name}: --svg-fill-a and --svg-fill-b are clearly different colours`, () => {
+      const [a, b] = [c('svg-fill-a'), c('svg-fill-b')].map(toRgb)
+      const dist = Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2])
+      expect(dist).toBeGreaterThanOrEqual(60)
+    })
+  }
+  it('negative control: a pale tint would fail the 3:1 rule', () => {
+    expect(contrastRatio('#d2d9ee', valueOf(heft, 'surface'))).toBeLessThan(3)
+  })
+  it('print block and .heft-scope carry the Heft values of every SVG token', () => {
+    const scope = block(/^:where\(\.heft-scope\)\s*\{/m)
+    const i = css.indexOf('@media print')
+    const printCss = css.slice(i)
+    for (const t of [...SVG_TOKENS, ...TOKENS, 'on-marker']) {
+      const re = new RegExp(`--${t}:\\s*(#[0-9a-fA-F]{6})\\s*;`)
+      expect(re.exec(scope)?.[1].toLowerCase(), `scope --${t}`).toBe(re.exec(heft)![1].toLowerCase())
+      expect(re.exec(printCss)?.[1].toLowerCase(), `print --${t}`).toBe(re.exec(heft)![1].toLowerCase())
+    }
+  })
+})
+
+describe('component pairs (mixed over paper and surface)', () => {
+  const themes = { Heft: heft, Tafel: tafel }
+  for (const [name, body] of Object.entries(themes)) {
+    const c = (t: string) => valueOf(body, t)
+    for (const base of ['paper', 'surface']) {
+      it(`${name}: --graphite on instrument body (--ink 25%) over --${base}`, () => {
+        expect(contrastRatio(c('graphite'), mixHex(c('ink'), 0.25, c(base)))).toBeGreaterThanOrEqual(4.5)
+      })
+      it(`${name}: --graphite on selected/hover chips (--ink 14%) over --${base}`, () => {
+        expect(contrastRatio(c('graphite'), mixHex(c('ink'), 0.14, c(base)))).toBeGreaterThanOrEqual(4.5)
+      })
+      it(`${name}: --ink input text on its 10% tint over --${base} (DigitGrid)`, () => {
+        expect(contrastRatio(c('ink'), mixHex(c('ink'), 0.1, c(base)))).toBeGreaterThanOrEqual(4.5)
+      })
+      for (const x of ['tick', 'correction']) {
+        it(`${name}: --${x} 55% with graphite (check/cross mark) on 14% tint over --${base} (PairMatch)`, () => {
+          const mark = mixHex(c(x), 0.55, c('graphite'))
+          expect(contrastRatio(mark, mixHex(c(x), 0.14, c(base)))).toBeGreaterThanOrEqual(4.5)
+        })
+      }
+      it(`${name}: --graphite on ${base} with surface halo`, () => {
+        expect(contrastRatio(c('graphite'), c('surface'))).toBeGreaterThanOrEqual(4.5)
+      })
+    }
+  }
 })
