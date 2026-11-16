@@ -65,6 +65,9 @@ export const ClozeMulti: React.FC<ClozeMultiProps> = ({
                 {partResults[i] ? '✓' : '✗'}
               </span>
             )}
+            {i < blanks.length && partResults?.[i] !== undefined && (
+              <span className="visually-hidden">{partResults[i] ? `Lücke ${i + 1}: richtig` : `Lücke ${i + 1}: falsch`}</span>
+            )}
           </React.Fragment>
         ))}
       </p>

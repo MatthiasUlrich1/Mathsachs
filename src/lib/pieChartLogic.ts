@@ -25,6 +25,10 @@ export const PC_LABEL_FONT = 14
 /** Radius on which the percent text of a sector is centred. */
 export const PC_LABEL_R = 80
 export const PC_LABEL_PAD = 8
+/** Radius on which the category tag sits, just outside the circle. */
+export const PC_TAG_R = PC_R + 18
+export const PC_TAG_FONT = 14
+export const PC_TAG_MAX_CHARS = 3
 
 export const PC_LEGEND_X = 340
 export const PC_LEGEND_SWATCH = 16
@@ -152,6 +156,21 @@ export const pcTouched = (percents: readonly number[] | null | undefined): boole
 export const pcSectorLabelFits = (percent: number): boolean =>
   ((pcAngle(percent) * Math.PI) / 180) * PC_LABEL_R >= pcTextWidth(pcPercentText(percent), PC_LABEL_FONT) + PC_LABEL_PAD
 
+/**
+ * Short tag per category for the direct label next to its sector: the shortest prefix of the name
+ * (1..PC_TAG_MAX_CHARS characters) that no other category shares; falls back to initial + number.
+ */
+export const pcSectorTags = (categories: readonly string[]): string[] =>
+  categories.map((name, i) => {
+    const n = name.trim()
+    for (let len = 1; len <= Math.min(PC_TAG_MAX_CHARS, n.length); len++) {
+      const tag = n.slice(0, len)
+      const clash = categories.some((o, j) => j !== i && o.trim().slice(0, len).toLowerCase() === tag.toLowerCase())
+      if (!clash) return tag
+    }
+    return `${n.slice(0, 1)}${i + 1}`
+  })
+
 /** Whether a legend name leaves room for a percent value ("100 %") at the right. */
 export const pcLegendNameFits = (name: string): boolean =>
   PC_LEGEND_NAME_X + pcTextWidth(name, PC_LEGEND_FONT) + 12 + pcTextWidth(pcPercentText(100), PC_LEGEND_FONT) <= PC_LEGEND_RIGHT
@@ -175,6 +194,12 @@ export const pcTextExtents = (categories: readonly string[]): PcTextExtent[] => 
     out.push({ text: name, fontSize: PC_LEGEND_FONT, x: PC_LEGEND_NAME_X, y, anchor: 'start' })
     out.push({ text: pcPercentText(100), fontSize: PC_LEGEND_FONT, x: PC_LEGEND_RIGHT, y, anchor: 'end' })
   })
+  // Category tags sit outside the circle at the middle of their sector, which can be anywhere.
+  const tags = pcSectorTags(categories)
+  for (let p = 0; p < 100; p += 2.5) {
+    const pt = pcPoint(p, PC_TAG_R)
+    for (const tag of tags) out.push({ text: tag, fontSize: PC_TAG_FONT, x: pt.x, y: pt.y + 4, anchor: 'middle' })
+  }
   for (let p = 0; p < 100; p += 10) {
     const pt = pcPoint(p, PC_RING_LABEL_R)
     out.push({ text: String(p), fontSize: PC_RING_FONT, x: pt.x, y: pt.y + 4, anchor: 'middle' })

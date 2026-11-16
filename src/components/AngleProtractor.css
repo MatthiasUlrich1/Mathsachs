@@ -26,13 +26,14 @@
 }
 
 .angle-protractor__leg {
-  stroke: var(--svg-line);
-  stroke-width: 2.5;
+  stroke: var(--graphite);
+  stroke-width: 2;
   stroke-linecap: round;
 }
 
 .angle-protractor__leg--second {
-  stroke: var(--svg-highlight);
+  stroke: var(--ink);
+  stroke-width: 4.5;
 }
 
 .angle-protractor__leg--solution {
@@ -95,9 +96,9 @@
 }
 
 .angle-protractor__leg-handle {
-  fill: color-mix(in srgb, var(--svg-highlight) 35%, transparent);
-  stroke: var(--svg-highlight);
-  stroke-width: 2.5;
+  fill: color-mix(in srgb, var(--ink) 30%, var(--surface));
+  stroke: var(--ink);
+  stroke-width: 3.5;
   cursor: grab;
 }
 

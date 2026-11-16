@@ -51,12 +51,9 @@
   pointer-events: none;
 }
 
-/* Letters sit on the shaded fields: a surface halo keeps them legible on any fill. */
+/* Letters sit on the shaded fields: dark text that passes 4.5:1 on fill-a and fill-b. */
 .ratio-bar__letter {
-  paint-order: stroke;
-  stroke: var(--surface);
-  stroke-width: 3px;
-  stroke-linejoin: round;
+  fill: var(--on-fill);
 }
 
 .ratio-bar__total {

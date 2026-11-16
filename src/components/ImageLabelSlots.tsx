@@ -232,7 +232,7 @@ export const ImageLabelSlots: React.FC<ImageLabelSlotsProps> = ({
                   overSlot === slotIdx ? 'drag-over' : ''
                 } ${isSelected(slotState) ? 'selected' : ''} ${resultClass}`}
                 style={{ left: `${s.x}%`, top: `${s.y}%` }}
-                aria-label={`Beschriftungsfeld ${slotIdx + 1}`}
+                aria-label={`Beschriftungsfeld ${slotIdx + 1}${result === true ? ': richtig' : result === false ? ': falsch' : ''}`}
                 onClick={() => onSlotActivate(slotIdx)}
                 role="button"
                 tabIndex={disabled ? -1 : 0}

@@ -78,7 +78,7 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
           data-cell={key}
           data-state={isGiven ? 'given' : on ? 'on' : 'off'}
           className={`sym-draw__cell${free ? ' sym-draw__cell--free' : ''}`}
-          fill={isGiven ? SVG_COLOR.svgLine : on ? SVG_COLOR.fillA : SVG_COLOR.surface}
+          fill={isGiven ? 'url(#sym-given-hatch)' : on ? SVG_COLOR.fillA : SVG_COLOR.surface}
           stroke={SVG_COLOR.svgLine}
           strokeWidth={1}
           role={free ? 'button' : undefined}
@@ -111,6 +111,13 @@ export function SymmetryDraw({ cols, rows, given, axis, point, value, onChange, 
             : `Gitter mit ${config.cols} Spalten und ${config.rows} Zeilen, Spiegelachse gestrichelt, ${cells.size} Felder gefärbt`
         }
       >
+        <defs>
+          {/* Given cells are hatched, drawn cells solid: they differ by pattern, not only by hue. */}
+          <pattern id="sym-given-hatch" width="8" height="8" patternUnits="userSpaceOnUse">
+            <rect width="8" height="8" fill={SVG_COLOR.svgLine} />
+            <path d="M-2 2 L2 -2 M0 8 L8 0 M6 10 L10 6" stroke={SVG_COLOR.surface} strokeWidth="2" />
+          </pattern>
+        </defs>
         {grid}
         {a && (
           <line

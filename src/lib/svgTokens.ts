@@ -18,20 +18,23 @@ export const SVG_COLOR = {
   fillB: 'var(--svg-fill-b)',
   highlight: 'var(--svg-highlight)',
   onMarker: 'var(--on-marker)',
+  onFill: 'var(--on-fill)',
 } as const
 
 /**
  * Shading colours for up to six categories (pie sectors, people in DivideTool).
- * The first two are the semantic fills; the rest are mixes of them. Identity is
- * never carried by colour alone (labels, numbers, legend names are always shown).
+ * The first two are the semantic fills; --svg-fill-c..f are palette tints chosen
+ * per theme so every pair differs in lightness and hue (CIE76 dE >= 15, tested).
+ * Text on any of them uses --on-fill. Identity is never carried by colour alone
+ * (numbers, tags and legend names are always shown).
  */
 export const SVG_SERIES: readonly string[] = [
   'var(--svg-fill-a)',
   'var(--svg-fill-b)',
-  'color-mix(in srgb, var(--svg-fill-a) 55%, var(--svg-fill-b))',
-  'color-mix(in srgb, var(--svg-fill-a) 60%, var(--surface))',
-  'color-mix(in srgb, var(--svg-fill-b) 60%, var(--surface))',
-  'color-mix(in srgb, var(--svg-fill-b) 55%, var(--svg-fill-a))',
+  'var(--svg-fill-c)',
+  'var(--svg-fill-d)',
+  'var(--svg-fill-e)',
+  'var(--svg-fill-f)',
 ]
 
 export const seriesColor = (i: number): string => SVG_SERIES[((i % SVG_SERIES.length) + SVG_SERIES.length) % SVG_SERIES.length]!

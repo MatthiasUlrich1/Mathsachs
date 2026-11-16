@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { join } from 'node:path'
 import { describe, expect, it } from 'vitest'
+import { namedColoursInCss } from './colourScan'
 
 /*
  * Guards the "Schulheft & Tafel" redesign across EVERY src/**\/*.css file
@@ -142,6 +143,21 @@ describe('literal colours: tokens everywhere except a minimal allow-list', () =>
     expect(literalColours('a{color:#abc;b:rgb(1,2,3)}')).toHaveLength(2)
     expect(literalColours('@media print {\n a{color:#fff}\n}\n')).toEqual([])
     expect(literalColours('a{color:var(--ink);b:color-mix(in srgb, var(--tick) 10%, transparent)}')).toEqual([])
+  })
+})
+
+describe('named colours (white, black, red, ...) are not used in CSS either', () => {
+  for (const file of CSS_FILES) {
+    it(`${file}: no named colours`, () => {
+      expect(namedColoursInCss(read(file))).toEqual([])
+    })
+  }
+
+  it('negative control: the real predicate finds names, also inside color-mix, and ignores keywords and tokens', () => {
+    expect(namedColoursInCss('a{color:white;border:1px solid Red}')).toEqual(['white', 'red'])
+    expect(namedColoursInCss('a{background:color-mix(in srgb, var(--tick) 12%, white)}')).toEqual(['white'])
+    expect(namedColoursInCss('a{fill:currentColor;stroke:transparent;color:inherit;background:none}')).toEqual([])
+    expect(namedColoursInCss('a{color:var(--green-ish);background:var(--surface)}')).toEqual([])
   })
 })
 

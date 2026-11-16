@@ -12,6 +12,7 @@ import { symmetryPrintSvg } from './symmetryDrawLogic'
 import { treePrintSvg } from './treeDiagramLogic'
 import { emptyCoordinateScene, generateCoordinateSceneSvg } from './coordinateScene'
 import { SVG_COLOR, SVG_SERIES, dataColor } from './svgTokens'
+import { colourLiterals, namedColoursInSource } from './colourScan'
 
 /*
  * On-screen SVG follows the theme (var(--...) tokens). Fixed hex colours are only
@@ -25,9 +26,6 @@ const walk = (dir: string): string[] =>
   })
 const rel = (p: string) => p.slice(ROOT.length + 1).replace(/\\/g, '/')
 
-/** Hex colour or rgb()/hsl() literal. */
-export const colourLiterals = (src: string): string[] =>
-  src.match(/#[0-9a-fA-F]{3}(?:[0-9a-fA-F]{3})?\b|\b(?:rgba?|hsla?)\(/g) ?? []
 
 /** Excluded from the scan entirely: released curriculum data (task content, unchanged by the redesign). */
 const SKIP_PREFIX = ['src/curriculum/']
@@ -92,6 +90,20 @@ describe('no colour literals in on-screen TS/TSX', () => {
     expect(colourLiterals('fill="#0f172a" stroke="#fff"')).toEqual(['#0f172a', '#fff'])
     expect(colourLiterals('a: rgba(1,2,3,.5); b: hsl(1 2% 3%)')).toHaveLength(2)
     expect(colourLiterals('fill="var(--ink)" marker-end="url(#cge-arrow)" #root')).toEqual([])
+  })
+
+  it('no component file uses a named colour (white, black, red, ...) in SVG attributes or style props', () => {
+    const offenders = files
+      .filter((f) => f.startsWith('src/components/'))
+      .filter((f) => namedColoursInSource(readFileSync(join(ROOT, f), 'utf8')).length > 0)
+    expect(offenders).toEqual([])
+  })
+
+  it('negative control: the named-colour predicate finds names, ignores allowed keywords and tokens', () => {
+    expect(namedColoursInSource('<rect fill="white" stroke=\'Black\'/>')).toEqual(['white', 'black'])
+    expect(namedColoursInSource('style={{ color: "red", backgroundColor: `blue` }}')).toEqual(['red', 'blue'])
+    expect(namedColoursInSource('<g fill="none" stroke="currentColor" color="inherit"/>')).toEqual([])
+    expect(namedColoursInSource('fill={SVG_COLOR.surface} stroke="var(--ink)" fill="transparent"')).toEqual([])
   })
 })
 

@@ -91,11 +91,8 @@
 .divide-tool__owner,
 .divide-tool__name,
 .divide-tool__count {
-  fill: var(--graphite);
-  paint-order: stroke;
-  stroke: var(--surface);
-  stroke-width: 3px;
-  stroke-linejoin: round;
+  /* drawn on the person shades: dark text that passes 4.5:1 on every series fill */
+  fill: var(--on-fill);
   pointer-events: none;
 }
 

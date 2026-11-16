@@ -8,6 +8,8 @@ import {
   PC_HIT_R,
   PC_LABEL_FONT,
   PC_LABEL_R,
+  PC_TAG_FONT,
+  PC_TAG_R,
   PC_LEGEND_FONT,
   PC_LEGEND_NAME_X,
   PC_LEGEND_RIGHT,
@@ -27,6 +29,7 @@ import {
   pcPoint,
   pcPointerPercent,
   pcSectorLabelFits,
+  pcSectorTags,
   pcSectorPath,
   pcStartPercents,
   pcWrapDelta,
@@ -110,6 +113,7 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
   }
 
   const fits = shown.map((p) => pcSectorLabelFits(p))
+  const tags = pcSectorTags(categories)
 
   return (
     <div className="pie-chart">
@@ -134,8 +138,8 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
             className="pie-chart__sector"
             d={pcSectorPath(bounds[i]!, bounds[i + 1]!)}
             fill={seriesColor(i)}
-            stroke={SVG_COLOR.svgLine}
-            strokeWidth={2}
+            stroke={SVG_COLOR.surface}
+            strokeWidth={2.5}
           >
             <title>{name}</title>
           </path>
@@ -150,6 +154,15 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
           return (
             <text key={`label-${i}`} className="pie-chart__label" data-testid="pc-label" x={pt.x} y={pt.y} textAnchor="middle" dominantBaseline="central" fontSize={PC_LABEL_FONT}>
               {pcPercentText(shown[i]!)}
+            </text>
+          )
+        })}
+        {categories.map((_, i) => {
+          const mid = (bounds[i]! + bounds[i + 1]!) / 2
+          const pt = pcPoint(mid, PC_TAG_R)
+          return (
+            <text key={`tag-${i}`} className="pie-chart__tag" data-testid="pc-tag" x={pt.x} y={pt.y} textAnchor="middle" dominantBaseline="central" fontSize={PC_TAG_FONT}>
+              {tags[i]}
             </text>
           )
         })}

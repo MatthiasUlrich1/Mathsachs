@@ -21,11 +21,17 @@
   --on-marker: #23272f;
   /* Dialog scrim, dark in both themes */
   --scrim: color-mix(in srgb, #23272f 60%, transparent);
-  /* Semantic SVG colours (derived from the palette, >= 3:1 on --surface and --paper) */
+  /* Semantic SVG colours (derived from the palette). line/fill-a/fill-b/highlight >= 3:1 on --surface and --paper.
+     fill-c..f complete the six-shade series (palette tints, pairwise distinct); --on-fill = dark text on any fill. */
   --svg-line: #5b6472;
   --svg-fill-a: #778ccb;
   --svg-fill-b: #9e8f40;
   --svg-highlight: #7b713b;
+  --svg-fill-c: #cfd7ed;
+  --svg-fill-d: #e7e3cf;
+  --svg-fill-e: #c0b683;
+  --svg-fill-f: #949aa3;
+  --on-fill: #23272f;
   --focus: var(--ink);
 
   /* Type */
@@ -69,6 +75,11 @@
   --svg-fill-a: #9cc7f2;
   --svg-fill-b: #c1ba6a;
   --svg-highlight: #f6e27a;
+  --svg-fill-c: #cde1ed;
+  --svg-fill-d: #e7ead7;
+  --svg-fill-e: #d5d3a4;
+  --svg-fill-f: #afc1ae;
+  --on-fill: #13261f;
   color-scheme: dark;
 }
 
@@ -90,6 +101,11 @@
     --svg-fill-a: #9cc7f2;
     --svg-fill-b: #c1ba6a;
     --svg-highlight: #f6e27a;
+    --svg-fill-c: #cde1ed;
+    --svg-fill-d: #e7ead7;
+    --svg-fill-e: #d5d3a4;
+    --svg-fill-f: #afc1ae;
+    --on-fill: #13261f;
     color-scheme: dark;
   }
 }
@@ -252,6 +268,11 @@ body {
     --svg-fill-a: #778ccb;
     --svg-fill-b: #9e8f40;
     --svg-highlight: #7b713b;
+    --svg-fill-c: #cfd7ed;
+    --svg-fill-d: #e7e3cf;
+    --svg-fill-e: #c0b683;
+    --svg-fill-f: #949aa3;
+    --on-fill: #23272f;
     color-scheme: light;
   }
 }
@@ -278,6 +299,11 @@ body {
   --svg-fill-a: #778ccb;
   --svg-fill-b: #9e8f40;
   --svg-highlight: #7b713b;
+  --svg-fill-c: #cfd7ed;
+  --svg-fill-d: #e7e3cf;
+  --svg-fill-e: #c0b683;
+  --svg-fill-f: #949aa3;
+  --on-fill: #23272f;
   --focus: var(--ink);
   color: var(--graphite);
   color-scheme: light;

@@ -294,3 +294,68 @@ describe('component pairs (mixed over paper and surface)', () => {
     }
   }
 })
+
+/* ---- D3 fix round 1: six-shade series, --on-fill, every text/fill pair ---- */
+
+import { minPairwiseDeltaE, deltaE76 } from './contrast'
+import { SVG_SERIES } from './svgTokens'
+
+const tokenOfVar = (v: string): string => v.slice(4, -1)
+const readRule = (file: string, selector: string): string => {
+  const src = readFileSync(new URL(`../components/${file}`, import.meta.url), 'utf8')
+  const at = src.indexOf(`${selector} {`)
+  if (at < 0) throw new Error(`rule not found: ${selector}`)
+  return src.slice(at, src.indexOf('}', at))
+}
+
+describe('SVG_SERIES: six clearly different shades per theme', () => {
+  const themes = { Heft: heft, Tafel: tafel }
+  for (const [name, body] of Object.entries(themes)) {
+    const series = SVG_SERIES.map((v) => valueOf(body, tokenOfVar(v).slice(2)))
+    it(`${name}: six distinct entries, pairwise CIE76 dE >= 15`, () => {
+      expect(series).toHaveLength(6)
+      expect(new Set(series).size).toBe(6)
+      expect(minPairwiseDeltaE(series)).toBeGreaterThanOrEqual(15)
+    })
+    it(`${name}: no series shade is (nearly) the unfilled --surface`, () => {
+      for (const c of series) expect(deltaE76(c, valueOf(body, 'surface'))).toBeGreaterThanOrEqual(10)
+    })
+    it(`${name}: --on-fill text >= 4.5 on every series shade`, () => {
+      for (const c of series) expect(contrastRatio(valueOf(body, 'on-fill'), c)).toBeGreaterThanOrEqual(4.5)
+    })
+  }
+  it('negative control: the old mixes (a 55% b, b 55% a) were not distinguishable', () => {
+    for (const body of [heft, tafel]) {
+      const a = valueOf(body, 'svg-fill-a')
+      const b = valueOf(body, 'svg-fill-b')
+      expect(deltaE76(mixHex(a, 0.55, b), mixHex(b, 0.55, a))).toBeLessThan(15)
+    }
+  })
+})
+
+describe('every text drawn on a fill uses --on-fill (and passes 4.5 on all fills it can meet)', () => {
+  const PAIRS: Array<[string, string]> = [
+    ['PieChart.css', '.pie-chart__label'],
+    ['RatioBar.css', '.ratio-bar__letter'],
+    ['DivideTool.css', '.divide-tool__owner,\n.divide-tool__name,\n.divide-tool__count'],
+  ]
+  it.each(PAIRS)('%s %s sets fill: var(--on-fill)', (file, selector) => {
+    const rule = readRule(file, selector.replace(/\r/g, ''))
+    expect(rule).toContain('fill: var(--on-fill)')
+    expect(rule).not.toContain('paint-order')
+  })
+  const fills = ['svg-fill-a', 'svg-fill-b', 'svg-fill-c', 'svg-fill-d', 'svg-fill-e', 'svg-fill-f']
+  for (const [name, body] of Object.entries({ Heft: heft, Tafel: tafel })) {
+    it.each(fills)(`${name}: --on-fill on --%s >= 4.5`, (f) => {
+      expect(contrastRatio(valueOf(body, 'on-fill'), valueOf(body, f))).toBeGreaterThanOrEqual(4.5)
+    })
+  }
+  it('the old halo approach would have failed: --graphite on fill-a in Tafel < 4.5', () => {
+    expect(contrastRatio(valueOf(tafel, 'graphite'), valueOf(tafel, 'svg-fill-a'))).toBeLessThan(4.5)
+  })
+  it('print block also carries --on-fill and the series tokens', () => {
+    const printCss = css.slice(css.indexOf('@media print'))
+    for (const t of ['on-fill', 'svg-fill-c', 'svg-fill-d', 'svg-fill-e', 'svg-fill-f'])
+      expect(printCss).toContain(`--${t}: ${valueOf(heft, t)};`)
+  })
+})

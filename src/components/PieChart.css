@@ -51,12 +51,16 @@
   pointer-events: none;
 }
 
-/* Percent labels sit on the sectors: a surface halo keeps them legible on any fill. */
+/* Percent labels sit on the sectors: dark text that passes 4.5:1 on every series fill. */
 .pie-chart__label {
-  paint-order: stroke;
-  stroke: var(--surface);
-  stroke-width: 3px;
-  stroke-linejoin: round;
+  fill: var(--on-fill);
+}
+
+/* Category tag outside the sector (on the sheet, not on a fill). */
+.pie-chart__tag {
+  fill: var(--graphite);
+  font-weight: 700;
+  pointer-events: none;
 }
 
 .pie-chart__label,
