@@ -8,7 +8,7 @@
  * injizierten Mappings.
  */
 import { describe, expect, it } from 'vitest'
-import { createRng } from '../lib/rng'
+import { createRng, randInt } from '../lib/rng'
 import { buildGymSachsenAnhaltPack } from './gymSachsenAnhaltPack'
 import { blendIndex } from './mergeNeu'
 import {
@@ -30,6 +30,7 @@ import {
   diffBaseline,
   findAmbiguous,
   findHsDifficulty3,
+  findShortRounds,
   findRepeats,
   mastersWithoutDifficulty,
   type CheckPack,
@@ -38,8 +39,7 @@ import {
   buildSekundarschuleSachsenAnhaltHsPack,
   buildSekundarschuleSachsenAnhaltRsPack,
 } from './sekundarschuleSachsenAnhaltPack'
-import { resolveTasksPerRound } from './tasksPerRound'
-import { buildUniqueTaskRoundWithSeeds } from './uniqueRound'
+import { textTask } from './taskHelpers'
 
 interface PackUnderTest extends CheckPack {
   topics: PackTopic[]
@@ -150,23 +150,10 @@ describe('Pack-Mappings: Katalog und Quellen', () => {
     '(c) jedes spielbare Pack-Thema erreicht die Rundenlänge (10 oder dokumentiertes tasksPerRound) über 30 Seeds',
     async () => {
       const catalog = await gymGeneratorCatalog()
-      const seen = new Set<string>()
-      const short: string[] = []
-      for (const pack of PACKS) {
-        for (const topic of pack.topics) {
-          if (seen.has(topic.id)) continue
-          seen.add(topic.id)
-          const gen = resolveOsGenerate(topic.id, catalog)
-          if (!gen) continue
-          const want = resolveTasksPerRound(topic)
-          let worst = want
-          for (let s = 1; s <= 30; s++) {
-            const rows = buildUniqueTaskRoundWithSeeds(gen, createRng(s * 977), want)
-            worst = Math.min(worst, rows.length)
-          }
-          if (worst < want) short.push(`${topic.id}: ${worst}/${want}`)
-        }
-      }
+      const short = findShortRounds(
+        PACKS.flatMap((p) => p.topics),
+        (id) => resolveOsGenerate(id, catalog),
+      )
       expectBaseline('roundLength', short)
     },
     240_000,
@@ -262,6 +249,32 @@ describe('Negativ-Kontrollen: die Guards schlagen bei injizierten Verstößen an
     expect(findHsDifficulty3(pack, lookupOf({ t: { sources: [d3], maxDifficulty: 2 } }))).toEqual([])
     // Nicht-HS-Pack wird nicht geprüft
     expect(findHsDifficulty3(fake(['t'], false), lookupOf({ t: { sources: [d3] } }))).toEqual([])
+  })
+
+  it('(c) Rundenlänge: Pool 1 bei Ziel 10 wird gemeldet, Pool 12 nicht, dokumentiertes tasksPerRound 1 nicht', () => {
+    const task = (q: string) => textTask({ question: q, accepted: [q], solution: q, explanation: q })
+    const pool1 = () => task('immer gleich')
+    const pool12 = (rng: Parameters<typeof randInt>[0]) => task(`Aufgabe ${randInt(rng, 0, 11)}`)
+    const gens: Record<string, (rng: Parameters<typeof randInt>[0]) => ReturnType<typeof task>> = {
+      klein: pool1,
+      gross: pool12,
+      doku: pool1,
+    }
+    const out = findShortRounds(
+      [{ id: 'klein' }, { id: 'gross' }, { id: 'doku', tasksPerRound: 1 }, { id: 'outline' }],
+      (id) => gens[id],
+    )
+    expect(out).toEqual(['klein: 1/10'])
+  })
+
+  it('(a) Ausnahme playsViaCustom: leere Quellen + Custom ok, ohne Custom gemeldet', async () => {
+    const catalog = await gymGeneratorCatalog()
+    const diff3 = findDiff3(catalog)
+    const m = { 'os-k5-lb3-koordinaten': { sources: [diff3], maxDifficulty: 2 as const } }
+    expect(checkSources(fake(['os-k5-lb3-koordinaten']), lookupOf(m), catalog)).toEqual([])
+    expect(
+      checkSources(fake(['kein-custom-thema']), lookupOf({ 'kein-custom-thema': m['os-k5-lb3-koordinaten'] }), catalog),
+    ).toHaveLength(1)
   })
 
   it('expectBaseline: neuer Verstoß und veralteter Baseline-Eintrag schlagen an', () => {

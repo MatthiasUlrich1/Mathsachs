@@ -24,7 +24,6 @@ export interface PackTopicMapping {
   sources: SourceRef[]
   /** Quellen mit Master-`difficulty` über diesem Wert werden ausgeschlossen. */
   maxDifficulty?: 1 | 2 | 3
-  /** Master-Thema darf im selben Pack erneut vorkommen (nur mit `note`). */
   /** Wiederholung desselben Masters im Pack (Lehrplan verlangt es); braucht `note`. */
   allowRepeat?: boolean
   /** Custom-Generator des Themas mit den `sources` mischen statt allein zu laufen. */

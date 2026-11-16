@@ -11,6 +11,9 @@ import {
   resolveSources,
 } from './oberschuleGenerators'
 import type { Topic } from './types'
+import { createRng } from '../lib/rng'
+import { resolveTasksPerRound } from './tasksPerRound'
+import { buildUniqueTaskRoundWithSeeds } from './uniqueRound'
 
 export interface CheckPack {
   id: string
@@ -112,4 +115,27 @@ export function mastersWithoutDifficulty(catalog: Map<string, Topic['generate']>
     .filter((k) => k.includes(':'))
     .filter((k) => catalogEntryMeta(k)?.difficulty === undefined)
     .sort()
+}
+
+/** (c) Themen, deren Runde über `seeds` Seeds die Soll-Länge (10 oder `tasksPerRound`) verfehlt. */
+export function findShortRounds(
+  topics: ReadonlyArray<{ id: string; tasksPerRound?: number }>,
+  resolveGen: (topicId: string) => Topic['generate'] | undefined,
+  seeds = 30,
+): string[] {
+  const short: string[] = []
+  const seen = new Set<string>()
+  for (const topic of topics) {
+    if (seen.has(topic.id)) continue
+    seen.add(topic.id)
+    const gen = resolveGen(topic.id)
+    if (!gen) continue
+    const want = resolveTasksPerRound(topic)
+    let worst = want
+    for (let s = 1; s <= seeds; s++) {
+      worst = Math.min(worst, buildUniqueTaskRoundWithSeeds(gen, createRng(s * 977), want).length)
+    }
+    if (worst < want) short.push(`${topic.id}: ${worst}/${want}`)
+  }
+  return short
 }
