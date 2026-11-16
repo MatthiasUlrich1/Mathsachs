@@ -169,7 +169,7 @@ export const PieChart: React.FC<PieChartProps> = ({ categories, snapPercent = PC
             <g key={`legend-${i}`} data-testid="pc-legend">
               <rect x={PC_LEGEND_X} y={y - PC_LEGEND_SWATCH / 2} width={PC_LEGEND_SWATCH} height={PC_LEGEND_SWATCH} fill={seriesColor(i)} stroke={SVG_COLOR.svgLine} strokeWidth={1.5} />
               <text className="pie-chart__legend-name" x={PC_LEGEND_NAME_X} y={y + 5} fontSize={PC_LEGEND_FONT}>
-                {name}
+                <tspan className="pie-chart__legend-tag" data-testid="pc-legend-tag" fontWeight={700}>{tagPlacements[i]!.tag}</tspan> {name}
               </text>
               {!fits[i] && (
                 <text className="pie-chart__legend-value" data-testid="pc-legend-value" x={PC_LEGEND_RIGHT} y={y + 5} textAnchor="end" fontSize={PC_LEGEND_FONT}>

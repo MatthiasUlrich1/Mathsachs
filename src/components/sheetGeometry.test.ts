@@ -52,11 +52,16 @@ describe('sheet margin geometry is shared via custom properties', () => {
 })
 
 describe('CorrectionMark.css comments', () => {
-  it('the half-kind comment sits above the --half rules, not below them', () => {
-    const c = mark.indexOf('tick in pencil parentheses')
-    const half = mark.indexOf('.correction-mark--half')
-    expect(c).toBeGreaterThan(0)
-    expect(c).toBeLessThan(half)
+  it('the half-kind comment directly precedes the first --half rule (nothing but whitespace between)', () => {
+    const m = /\/\*[^*]*tick in pencil parentheses[^*]*\*\/\s*(\.correction-mark--half)/.exec(mark)
+    expect(m).not.toBeNull()
+    // the match ends at the selector, so no other rule sits between comment and rule
+    expect(m![0]).not.toContain('}')
+    expect(mark.indexOf('.correction-mark--half')).toBe(m!.index + m![0].length - m![1].length)
+  })
+  it('negative control: a rule between comment and --half rule would not match', () => {
+    const broken = mark.replace(/(tick in pencil parentheses[^]*?\/)\s*/, '$1\n.x { a: b }\n')
+    expect(/tick in pencil parentheses[^*]*\*\/\s*\.correction-mark--half/.test(broken)).toBe(false)
   })
 })
 
@@ -71,5 +76,14 @@ describe('flat sheet: no tinted boxes for purely visual panels', () => {
     const p = ruleBody(app, '.prompt')
     expect(p).toMatch(/text-align:\s*left/)
     expect(p).toMatch(/font-size:\s*clamp\(/)
+  })
+})
+
+describe('D5 round 2: left edges line up with the sheet content', () => {
+  it('.hint is left-aligned under the left-aligned prompt', () => {
+    expect(ruleBody(app, '.hint')).toMatch(/text-align:\s*left/)
+  })
+  it('.area__header has no horizontal padding (same left edge as the sheet content)', () => {
+    expect(ruleBody(app, '.area__header')).toMatch(/padding:\s*\d+px 0;/)
   })
 })

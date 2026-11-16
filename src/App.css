@@ -954,7 +954,7 @@ a.task-request__send {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 15px 16px;
+  padding: 15px 0;
   background: transparent;
   color: var(--graphite);
   text-align: left;
@@ -1608,8 +1608,8 @@ a.task-request__send {
 }
 
 .hint {
-  margin: 10px 2px 0;
-  text-align: center;
+  margin: 10px 0 0;
+  text-align: left;
 }
 
 /* Answer input */

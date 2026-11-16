@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import {
   PC_TAG_CLEARANCE,
+  PC_TAG_R,
+  pcLegendLabel,
   pcTagCircleClearance,
   pcTagKnobClearance,
   pcTagPlacements,
@@ -267,48 +269,77 @@ describe('print and table svgs', () => {
   })
 })
 
-describe("sector tags: clearance and zero-width sectors", () => {
+/** Deterministic sample of share vectors on the snap grid (each > 0) for k categories, plus the extreme ones. */
+const sampleCompositions = (k: number, snap: number, n = 60): number[][] => {
+  const units = 100 / snap
+  const out: number[][] = []
+  const edge = Array.from({ length: k }, () => 1)
+  for (let j = 0; j < k; j++) {
+    const v = [...edge]
+    v[j] = units - (k - 1)
+    out.push(v.map((u) => u * snap))
+  }
+  let seed = 12345 + k * 97 + snap
+  const rnd = () => ((seed = (seed * 1103515245 + 12345) % 2147483648) / 2147483648)
+  while (out.length < n) {
+    const cuts = new Set<number>()
+    while (cuts.size < k - 1) cuts.add(1 + Math.floor(rnd() * (units - 1)))
+    const s = [0, ...[...cuts].sort((a, b) => a - b), units]
+    out.push(s.slice(1).map((u, idx) => (u - s[idx]!) * snap))
+  }
+  return out
+}
+
+describe("sector tags: never hidden for a non-zero sector, relocated for clearance", () => {
   const cats = ["Sparen", "Kino", "Spiele", "Essen", "Buecher", "Kleidung"]
-  /** Every share vector on the 5 % grid for k categories. */
-  const compositions = (k: number, total = 100, snap = 5): number[][] =>
-    k === 1 ? [[total]] : Array.from({ length: total / snap + 1 }, (_, i) => i * snap).flatMap((p) => (total - p >= 0 ? compositions(k - 1, total - p, snap).map((r) => [p, ...r]) : []))
 
   it("a 0 % sector gets no tag", () => {
     const pl = pcTagPlacements(["A", "B", "C"], [50, 0, 50])
     expect(pl.map((p) => p.visible)).toEqual([true, false, true])
   })
 
-  it("every tag keeps >= 4 units from the circle, at all angles", () => {
-    for (const k of [2, 3, 4]) {
-      for (const shares of compositions(k)) {
-        for (const p of pcTagPlacements(cats.slice(0, k), shares)) {
-          expect(pcTagCircleClearance(p)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+  it("snaps 1,2,4,5,10 x 2..5 categories: every non-zero sector keeps a visible tag", () => {
+    let checked = 0
+    for (const snap of [1, 2, 4, 5, 10]) {
+      for (const k of [2, 3, 4, 5]) {
+        for (const shares of sampleCompositions(k, snap)) {
+          const pl = pcTagPlacements(cats.slice(0, k), shares)
+          shares.forEach((s, i) => {
+            checked++
+            expect(pl[i]!.visible, JSON.stringify(shares) + " sector " + i).toBe(s > 0)
+          })
+        }
+      }
+    }
+    expect(checked).toBeGreaterThan(1000)
+  })
+
+  it("every tag keeps >= 4 units from the circle and from every knob (sampled compositions, all snaps)", () => {
+    for (const snap of [1, 2, 4, 5, 10]) {
+      for (const k of [2, 3, 4, 5]) {
+        for (const shares of sampleCompositions(k, snap)) {
+          pcTagPlacements(cats.slice(0, k), shares).forEach((p) => {
+            expect(pcTagCircleClearance(p), JSON.stringify(shares)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+            for (let i = 1; i < k; i++) expect(pcTagKnobClearance(p, shares, i), JSON.stringify(shares)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+          })
         }
       }
     }
   })
 
-  it("every visible tag keeps >= 4 units from every boundary knob", () => {
-    let visibleCount = 0
-    for (const k of [2, 3, 4]) {
-      for (const shares of compositions(k)) {
-        pcTagPlacements(cats.slice(0, k), shares).forEach((p) => {
-          if (!p.visible) return
-          visibleCount++
-          for (let i = 1; i < k; i++) expect(pcTagKnobClearance(p, shares, i)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
-        })
-      }
-    }
-    expect(visibleCount).toBeGreaterThan(100)
-  })
-
-  it("negative control: with a 3-character tag a 1 % sector would touch a knob, so it is hidden", () => {
+  it("negative control: with the default spot a 1 % sector would touch a knob; the tag is moved, not hidden", () => {
     const names = ["Aaa", "Bbb", "Ccc"]
     const shares = [1, 1, 98]
     const pl = pcTagPlacements(names, shares)
-    const raw = pl.map((p) => ({ ...p, visible: true }))
-    const worst = Math.min(...raw.flatMap((p) => [1, 2].map((k) => pcTagKnobClearance(p, shares, k))))
-    expect(worst).toBeLessThan(PC_TAG_CLEARANCE)
-    expect(pl.some((p) => !p.visible)).toBe(true)
+    const mid = pcPoint(1.5, PC_TAG_R)
+    const naive = { ...pl[1]!, x: mid.x, y: mid.y }
+    expect(pcTagKnobClearance(naive, shares, 1)).toBeLessThan(PC_TAG_CLEARANCE)
+    expect(pl[1]!.visible).toBe(true)
+    expect(pcTagKnobClearance(pl[1]!, shares, 1)).toBeGreaterThanOrEqual(PC_TAG_CLEARANCE)
+    expect(pl[1]!.x).not.toBeCloseTo(mid.x, 3)
+  })
+
+  it("legend label is tag plus name", () => {
+    expect(pcLegendLabel("Sp", "Spiele")).toBe("Sp Spiele")
   })
 })

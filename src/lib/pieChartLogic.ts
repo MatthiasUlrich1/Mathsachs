@@ -200,24 +200,62 @@ export const pcTagKnobClearance = (tag: PcTagPlacement, percents: readonly numbe
   return boxDistance(k.x, k.y, tag.x, tag.y, tag.w, tag.h) - PC_HANDLE_R
 }
 
-/** Where each sector tag sits and whether it is shown: no tag for 0 % sectors or tags that would touch a knob. */
+/** Right edge available to tags (the legend starts at PC_LEGEND_X) and bottom edge of the viewBox. */
+const PC_TAG_MAX_X = PC_LEGEND_X - 15
+const PC_TAG_MAX_Y = PC_VIEWBOX_H - 21
+
+const tagInBounds = (t: PcTagPlacement): boolean =>
+  t.x - t.w / 2 >= 0 && t.x + t.w / 2 <= PC_TAG_MAX_X && t.y - t.h / 2 >= 0 && t.y + t.h / 2 <= PC_TAG_MAX_Y
+const tagClearance = (t: PcTagPlacement, percents: readonly number[]): number => {
+  let c = pcTagCircleClearance(t)
+  for (let k = 1; k < percents.length; k++) c = Math.min(c, pcTagKnobClearance(t, percents, k))
+  return c
+}
+
+/**
+ * Where each sector tag sits. A tag is never hidden for a non-zero sector (it is the only direct label next to
+ * the sector and also appears in the legend). If the default spot (middle of the sector, PC_TAG_R) is too close
+ * to a knob, it is shifted tangentially along the arc, then radially outwards in small steps; if nothing reaches
+ * PC_TAG_CLEARANCE the position with the most room is used. 0 % sectors get no tag.
+ */
 export const pcTagPlacements = (categories: readonly string[], percents: readonly number[]): PcTagPlacement[] => {
   const tags = pcSectorTags(categories)
   const b = pcBoundaries(percents)
   return categories.map((_, i) => {
-    const pt = pcPoint(((b[i] ?? 0) + (b[i + 1] ?? 0)) / 2, PC_TAG_R)
-    const base = { tag: tags[i]!, x: pt.x, y: pt.y, w: pcTextWidth(tags[i]!, PC_TAG_FONT), h: PC_TAG_FONT }
-    let visible = (percents[i] ?? 0) > 0
-    for (let k = 1; visible && k < percents.length; k++) {
-      if (pcTagKnobClearance({ ...base, visible }, percents, k) < PC_TAG_CLEARANCE) visible = false
+    const mid = ((b[i] ?? 0) + (b[i + 1] ?? 0)) / 2
+    const w = pcTextWidth(tags[i]!, PC_TAG_FONT)
+    const at = (shiftDeg: number, radial: number): PcTagPlacement => {
+      const pt = pcPoint(mid + shiftDeg / 3.6, PC_TAG_R + radial)
+      return { tag: tags[i]!, x: pt.x, y: pt.y, w, h: PC_TAG_FONT, visible: (percents[i] ?? 0) > 0 }
     }
-    return { ...base, visible }
+    const first = at(0, 0)
+    if (!first.visible || tagClearance(first, percents) >= PC_TAG_CLEARANCE) return first
+    let best: PcTagPlacement | null = null
+    let bestC = -Infinity
+    for (const radial of [0, 4, 8, 12]) {
+      for (let s = 2; s <= 30; s += 2) {
+        for (const sign of [1, -1]) {
+          const cand = at(sign * s, radial)
+          if (!tagInBounds(cand)) continue
+          const c = tagClearance(cand, percents)
+          if (c >= PC_TAG_CLEARANCE) return cand
+          if (c > bestC) {
+            bestC = c
+            best = cand
+          }
+        }
+      }
+    }
+    return best ?? first
   })
 }
 
-/** Whether a legend name leaves room for a percent value ("100 %") at the right. */
-export const pcLegendNameFits = (name: string): boolean =>
-  PC_LEGEND_NAME_X + pcTextWidth(name, PC_LEGEND_FONT) + 12 + pcTextWidth(pcPercentText(100), PC_LEGEND_FONT) <= PC_LEGEND_RIGHT
+/** Legend text: tag and name ("Sp Spiele"), so every sector tag can be looked up. */
+export const pcLegendLabel = (tag: string, name: string): string => `${tag} ${name}`
+
+/** Whether a legend label (tag + name) leaves room for a percent value ("100 %") at the right. */
+export const pcLegendNameFits = (name: string, tag = ''): boolean =>
+  PC_LEGEND_NAME_X + pcTextWidth(tag ? pcLegendLabel(tag, name) : name, PC_LEGEND_FONT) + 12 + pcTextWidth(pcPercentText(100), PC_LEGEND_FONT) <= PC_LEGEND_RIGHT
 
 export const pcLegendTop = (count: number): number => PC_CY - (count * PC_LEGEND_ROW_H) / 2
 export const pcLegendRowY = (index: number, count: number): number => pcLegendTop(count) + index * PC_LEGEND_ROW_H + PC_LEGEND_ROW_H / 2
@@ -235,7 +273,7 @@ export const pcTextExtents = (categories: readonly string[]): PcTextExtent[] => 
   const out: PcTextExtent[] = []
   categories.forEach((name, i) => {
     const y = pcLegendRowY(i, categories.length) + 5
-    out.push({ text: name, fontSize: PC_LEGEND_FONT, x: PC_LEGEND_NAME_X, y, anchor: 'start' })
+    out.push({ text: pcLegendLabel(pcSectorTags(categories)[i]!, name), fontSize: PC_LEGEND_FONT, x: PC_LEGEND_NAME_X, y, anchor: 'start' })
     out.push({ text: pcPercentText(100), fontSize: PC_LEGEND_FONT, x: PC_LEGEND_RIGHT, y, anchor: 'end' })
   })
   // Category tags sit outside the circle at the middle of their sector, which can be anywhere.
@@ -268,11 +306,12 @@ export const pcValidateAxis = (categories: readonly string[], snap: number): voi
     fail(`need ${PC_MIN_CATEGORIES}..${PC_MAX_CATEGORIES} categories`)
   }
   if (new Set(categories.map((c) => String(c).trim())).size !== categories.length) fail('category names must differ')
-  for (const c of categories) {
+  const legendTags = pcSectorTags(categories.map((c) => String(c)))
+  for (const [ci, c] of categories.entries()) {
     if (typeof c !== 'string' || c.trim() === '' || c.length > PC_MAX_CATEGORY_CHARS) {
       fail(`category needs 1..${PC_MAX_CATEGORY_CHARS} characters, got ${JSON.stringify(c)}`)
     }
-    if (!pcLegendNameFits(c)) fail(`category ${JSON.stringify(c)} does not fit in the legend`)
+    if (!pcLegendNameFits(c, legendTags[ci])) fail(`category ${JSON.stringify(c)} does not fit in the legend`)
   }
   if (!PC_ALLOWED_SNAPS.includes(snap)) fail(`snapPercent must be one of ${PC_ALLOWED_SNAPS.join(', ')}, got ${snap}`)
 }
