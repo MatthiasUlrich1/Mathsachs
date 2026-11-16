@@ -1,6 +1,7 @@
 import type { Rng } from '../lib/rng'
 import { createRng, timeSeed } from '../lib/rng'
 import { buildUniqueTaskRoundWithSeeds } from '../curriculum/uniqueRound'
+import { legacyNeuIdToParent } from '../curriculum/mergeNeu'
 import type { Task } from '../curriculum/types'
 import type { ExamSpec } from './types'
 
@@ -50,12 +51,15 @@ export function hydrateExamBuilderFromSpec(spec: ExamSpec): ExamBuilderHydrateSt
   const themes = new Set<string>()
 
   for (const task of spec.aufgaben) {
-    const tKey = examThemeKey(task.modul, task.thema)
+    // Alte `<parent>__neu`-Refs → Parent; Seeds beider IDs landen im selben Pool.
+    const thema = legacyNeuIdToParent(task.thema)
+    const tKey = examThemeKey(task.modul, thema)
     themes.add(tKey)
     const list = pools[tKey] ?? []
     if (!list.includes(task.seed)) list.push(task.seed)
     pools[tKey] = list
-    selections[examSelKey(task.modul, task.thema, task.seed)] = Math.max(1, task.punkte)
+    const selKey = examSelKey(task.modul, thema, task.seed)
+    selections[selKey] = Math.max(selections[selKey] ?? 0, Math.max(1, task.punkte))
   }
 
   for (const tKey of themes) {

@@ -1,3 +1,4 @@
+import { legacyNeuIdToParent, normalizeLegacyTopicIds } from '../curriculum/mergeNeu'
 import type {
   ClassCodeSettings,
   ClassTransferRecord,
@@ -212,6 +213,14 @@ export function mergeVisibleChallenges<T extends ListableChallenge>(input: {
   return [...byId.values()].sort((a, b) => compareListedChallenges(a, b, now))
 }
 
+/** Auswahl beim Bearbeiten einer Challenge: gespeicherte IDs (ggf. `x__neu`) → Parents, dedupliziert. */
+export function initialChallengeSelection(challenge: ChallengeTopicSource): Set<string> {
+  const ids = challenge.topicIds?.length
+    ? challenge.topicIds
+    : (challenge.topics ?? []).map((topic) => topic.id)
+  return new Set(normalizeLegacyTopicIds(ids))
+}
+
 export type ChallengeTopicSource = {
   topicIds?: string[]
   topics?: Array<{ id: string }>
@@ -219,10 +228,13 @@ export type ChallengeTopicSource = {
 
 /** Union of stored topicIds and public `topics[].id` (Worker summaries omit topicIds). */
 export function challengeTopicIds(challenge: ChallengeTopicSource): string[] {
-  return parseTopicIds([
-    ...(Array.isArray(challenge.topicIds) ? challenge.topicIds : []),
-    ...(Array.isArray(challenge.topics) ? challenge.topics.map((topic) => topic.id) : []),
-  ])
+  // Alte `<parent>__neu`-IDs → Parent (Neu-Themen wurden gemergt), ohne Duplikate.
+  return normalizeLegacyTopicIds(
+    parseTopicIds([
+      ...(Array.isArray(challenge.topicIds) ? challenge.topicIds : []),
+      ...(Array.isArray(challenge.topics) ? challenge.topics.map((topic) => topic.id) : []),
+    ]),
+  )
 }
 
 export type ChallengeWindowFilter = ChallengeTopicSource &
@@ -293,7 +305,7 @@ export function shouldAttributeChallengePoints(
   topicId: string | undefined,
   now: number = Date.now(),
 ): boolean {
-  const topic = topicId?.trim() ?? ''
+  const topic = legacyNeuIdToParent(topicId?.trim() ?? '')
   if (!topic) return false
   if (!challengeTopicIds(challenge).includes(topic)) return false
   return isInChallengeWindow(challenge.start, challenge.end, now)
@@ -315,7 +327,8 @@ export function belongsToChallenge(
   if (item.date < bounds.from || item.date > bounds.to) return false
   if (!challengeIdMatches(item, challenge)) return false
   const topics = new Set(challengeTopicIds(challenge))
-  const topic = item.topicId?.trim()
+  const rawTopic = item.topicId?.trim()
+  const topic = rawTopic ? legacyNeuIdToParent(rawTopic) : rawTopic
   if (requireTopic) {
     return Boolean(topic && topics.size > 0 && topics.has(topic))
   }

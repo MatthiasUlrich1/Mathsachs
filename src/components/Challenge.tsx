@@ -25,6 +25,7 @@ import {
   createChallengePayload,
   deleteChallengeConfirm,
   gradeCodesForChallengeList,
+  initialChallengeSelection,
   mergeVisibleChallenges,
   NO_ACTIVE_CHALLENGE_MESSAGE,
   prizeAudienceLine,
@@ -443,14 +444,7 @@ function ChallengeCreateForm({
     editing ? berlinLocalInput(editing.end) : defaults.endLocal,
   )
   const [selected, setSelected] = useState<Set<string>>(
-    () =>
-      new Set(
-        editing
-          ? editing.topicIds?.length
-            ? editing.topicIds
-            : editing.topics.map((topic) => topic.id)
-          : [],
-      ),
+    () => (editing ? initialChallengeSelection(editing) : new Set<string>()),
   )
   const [prizeEnabled, setPrizeEnabled] = useState(Boolean(editing?.prize.enabled))
   const [classPrize, setClassPrize] = useState(Boolean(editing?.prize.classPrize))
@@ -480,13 +474,7 @@ function ChallengeCreateForm({
     setName(editing.name)
     setStartLocal(berlinLocalInput(editing.start))
     setEndLocal(berlinLocalInput(editing.end))
-    setSelected(
-      new Set(
-        editing.topicIds?.length
-          ? editing.topicIds
-          : editing.topics.map((topic) => topic.id),
-      ),
-    )
+    setSelected(initialChallengeSelection(editing))
     setPrizeEnabled(Boolean(editing.prize.enabled))
     setClassPrize(Boolean(editing.prize.classPrize))
     setStudentPrize(Boolean(editing.prize.studentPrize))

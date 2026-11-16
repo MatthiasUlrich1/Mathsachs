@@ -285,9 +285,11 @@ const POOL_LIMITED: Record<string, { minOldShare?: number; maxRound?: number }> 
 }
 
 describe('Mathe-Runden der gemergten Themen (30 Seeds)', () => {
-  it.each(GRADES.map((g) => [g.grade.id, g] as const))(
-    '%s: Runde 10, keine Wiederholung, alt und neu je >= 20 %%',
-    (_id, { grade, neu }) => {
+  for (const entry of GRADES) {
+    it(
+    `${entry.grade.id}: Runde 10, keine Wiederholung, alt und neu je >= 20 %`,
+    () => {
+      const { grade, neu } = entry
       const merged = new Set(neu.map((n) => n.reviewOf))
       const failures: string[] = []
       for (const t of topicsOf(grade)) {
@@ -310,6 +312,8 @@ describe('Mathe-Runden der gemergten Themen (30 Seeds)', () => {
               if (seen.has(id)) failures.push(`${t.id} seed ${s}: doppelt ${id.slice(0, 60)}`)
             }
             for (const id of taskContentIds(row.task)) seen.add(id)
+            // blendIndex mit demselben Seed ist der Auswahlschritt von blendGenerators selbst:
+            // Zuordnung alt/neu ist damit per Konstruktion exakt (Proxy ohne Task-Markierung).
             if (blendIndex(w, createRng(row.seed)) === 0) nOld++
             else nNeu++
           }
@@ -322,7 +326,8 @@ describe('Mathe-Runden der gemergten Themen (30 Seeds)', () => {
       expect(failures).toEqual([])
     },
     240_000,
-  )
+    )
+  }
 
   it('Gewichts-Overrides verweisen auf existierende Parents', () => {
     const ids = new Set(GRADES.flatMap(({ grade }) => topicsOf(grade).map((t) => t.id)))

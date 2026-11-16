@@ -62,6 +62,7 @@ import {
 } from './sharedState'
 import { applySharedPacksToKv, snapshotPacksForSharedState } from '../curriculum/install'
 import { normalizePreferredSubjects } from '../curriculum/packFilters'
+import { legacyNeuIdToParent } from '../curriculum/mergeNeu'
 import { canSendClassPoints, normalizeRole, roleForUser } from './roles'
 import {
   summarizeClassTransfers,
@@ -1225,13 +1226,44 @@ export interface ChallengeProtocolReport extends Protocol {
   classThreshold?: number
 }
 
+/**
+ * Stats unter alten `<parent>__neu`-IDs zählen zum Parent (Neu-Themen wurden gemergt).
+ * Nur Lesezeit-Aggregation; gespeicherte Daten werden nicht umgeschrieben.
+ */
+export const mergeStatsByLegacyId = <T extends { topicId: string; attempts: number; correct: number; points: number; lastPracticed?: number }>(
+  stats: readonly T[],
+): T[] => {
+  const byId = new Map<string, T>()
+  for (const stat of stats) {
+    const id = legacyNeuIdToParent(stat.topicId)
+    const prev = byId.get(id)
+    if (!prev) {
+      byId.set(id, id === stat.topicId ? stat : { ...stat, topicId: id })
+      continue
+    }
+    // Titel des Parents (neuere Namensgebung ohne „Neu“) bevorzugen.
+    const base = stat.topicId === id ? stat : prev
+    byId.set(id, {
+      ...base,
+      topicId: id,
+      attempts: prev.attempts + stat.attempts,
+      correct: prev.correct + stat.correct,
+      points: prev.points + stat.points,
+      ...(prev.lastPracticed !== undefined || stat.lastPracticed !== undefined
+        ? { lastPracticed: Math.max(prev.lastPracticed ?? 0, stat.lastPracticed ?? 0) }
+        : {}),
+    })
+  }
+  return [...byId.values()]
+}
+
 /** Build a points-and-progress report for a user, grouped by topic area. */
 export const buildProtocol = (
   name: string,
   now: Date | number = Date.now(),
 ): Protocol => {
   const data = loadUser(name)
-  const stats = Object.values(data.stats)
+  const stats = mergeStatsByLegacyId(Object.values(data.stats))
   const rows: ProtocolRow[] = stats
     .map((s) => ({
       areaTitle: s.areaTitle,
@@ -1296,15 +1328,16 @@ export const buildChallengeProtocol = (
   const challengeTransfers = filterTransfersForChallenge(data.classTransfers ?? [], filter)
   const byTopic = new Map<string, ProtocolRow & { topicId: string }>()
   for (const session of sessions) {
-    const prev = byTopic.get(session.topicId)
+    const topicKey = legacyNeuIdToParent(session.topicId)
+    const prev = byTopic.get(topicKey)
     if (prev) {
       prev.attempts += session.attempts
       prev.correct += session.correct
       prev.points += session.points
       prev.percent = prev.attempts ? Math.round((prev.correct / prev.attempts) * 100) : 0
     } else {
-      byTopic.set(session.topicId, {
-        topicId: session.topicId,
+      byTopic.set(topicKey, {
+        topicId: topicKey,
         areaTitle: session.areaTitle,
         topicTitle: session.topicTitle,
         attempts: session.attempts,

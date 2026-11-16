@@ -119,3 +119,34 @@ describe('uniqueRound', () => {
     expect(new Set(round.map(taskFingerprint)).size).toBe(3)
   })
 })
+
+describe('uniqueRound: generischer Stamm "Sortiere …"', () => {
+  const sortTask = (solution: string) =>
+    textTask({
+      question: 'Sortiere die Größen von klein nach groß (kleinste zuerst):',
+      accepted: [solution],
+      solution,
+      explanation: 'x',
+    })
+
+  it('gleicher Stamm, andere Elemente: Aufgaben bleiben unterscheidbar', async () => {
+    const { taskContentIds } = await import('./uniqueRound')
+    const a = taskContentIds(sortTask('877 ml < 0,9 l < 1,878 l'))
+    const b = taskContentIds(sortTask('838 g < 1465 g < 1,8 kg'))
+    expect(a.some((id) => b.includes(id))).toBe(false)
+    expect(a.some((id) => id.startsWith('stem:'))).toBe(false)
+  })
+
+  it('gleicher Stamm und gleiche Elemente: weiterhin Duplikat', async () => {
+    const { taskContentIds } = await import('./uniqueRound')
+    const a = taskContentIds(sortTask('877 ml < 0,9 l < 1,878 l'))
+    const b = taskContentIds(sortTask('877 ml < 0,9 l < 1,878 l'))
+    expect(a.some((id) => b.includes(id))).toBe(true)
+  })
+
+  it('eine Runde enthält verschiedene Sortieraufgaben, aber keine doppelte', () => {
+    const pool = ['1 m < 2 m < 3 m', '5 g < 6 g < 7 g', '9 l < 10 l < 11 l']
+    const round = buildUniqueTaskRound((rng) => sortTask(pool[Math.floor(rng() * pool.length)]!), createRng(3), 10)
+    expect(round.map((t) => t.solution).sort()).toEqual([...pool].sort())
+  })
+})

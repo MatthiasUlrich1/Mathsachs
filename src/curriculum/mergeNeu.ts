@@ -41,6 +41,19 @@ export function findTopicWithLegacy<A extends { topics: Topic[] }>(
   return null
 }
 
+/** Alte `__neu`-IDs einer Liste auf Parents abbilden und Duplikate entfernen (Reihenfolge bleibt). */
+export function normalizeLegacyTopicIds(ids: readonly string[]): string[] {
+  const out: string[] = []
+  const seen = new Set<string>()
+  for (const id of ids) {
+    const mapped = legacyNeuIdToParent(id)
+    if (seen.has(mapped)) continue
+    seen.add(mapped)
+    out.push(mapped)
+  }
+  return out
+}
+
 export interface BlendPart {
   gen: (rng: Rng) => Task
   weight: number
