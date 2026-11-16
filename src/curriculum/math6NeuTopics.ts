@@ -51,6 +51,14 @@ import {
   generateTriangleSvg,
   generateValueTableSvg,
 } from '../lib/geometrySvg'
+import {
+  cubeNetCountValidTask,
+  cubeNetCutEdgesTask,
+  cubeNetMarkedPairTask,
+  cubeNetOppositeTask,
+  cubeNetPerimeterTask,
+  cubeNetPickValidTask,
+} from './cubeNetTasks'
 import { emptyCoordinateScene } from '../lib/coordinateScene'
 import { barChartTableSvg } from '../lib/barChartLogic'
 import { asNeuTopic } from './neuTopic'
@@ -840,27 +848,34 @@ const prozentNeu: Topic = asNeuTopic('lb1-prozent', {
     url: 'https://de.wikipedia.org/wiki/Prozentrechnung',
   },
   generate: mixedVariants(
-    // V1 MC — Bruch -> Prozent
+    // V1 MC — Bruch, Prozentangabe und Dezimalzahl vergleichen: welche Angabe ist am größten?
     (rng: Rng) => {
-      const denom = pick(rng, [2, 4, 5, 10, 20, 25, 50])
-      const n = randInt(rng, 1, denom - 1)
-      const f = makeFraction(n, denom)
-      const value = roundTo(toDecimal(f) * 100, 2)
-      const correct = `${formatDe(value)} %`
-      // Genügend Kandidaten, damit es immer genau 4 verschiedene Optionen gibt (Zähler = Wert/10 u. ä. kollidieren sonst).
-      const wrongValues = [value / 10, value + 10, n, value - 10, denom, 100 - value, value / 2]
-        .map((x) => roundTo(x, 2))
-        .filter((x) => x > 0 && x <= 100 && Math.abs(x - value) > 1e-9)
-      const wrongs = wrongValues.map((x) => `${formatDe(x)} %`)
-      const labeled = shuffleChoices(rng, fourChoices(correct, wrongs), correct)
-      return choicePickTask({
-        question: `Wie viel Prozent sind ${format(f)}?`,
-        choices: labeled,
-        correct,
-        solution: correct,
-        explanation: `Erweitere auf den Nenner 100: ${format(f)} = ${(f.n * 100) / f.d}/100 = ${formatDe(value)} %.`,
-        dedupeKey: `proz-mc:${f.n}:${f.d}`,
-      })
+      for (let attempt = 0; attempt < 200; attempt++) {
+        const denom = pick(rng, [2, 4, 5, 10, 20, 25, 50])
+        const n = randInt(rng, 1, denom - 1)
+        const f = makeFraction(n, denom)
+        const vF = roundTo(toDecimal(f) * 100, 2)
+        const wantAllEqual = rng() < 0.12
+        const vP = wantAllEqual ? vF : vF + pick(rng, [-15, -10, -5, 5, 10, 15])
+        const vD = wantAllEqual ? vF : vF + pick(rng, [-15, -10, -5, 5, 10, 15])
+        if (vP < 1 || vP > 99 || vD < 1 || vD > 99) continue
+        const values = [vF, vP, vD]
+        const top = Math.max(...values)
+        const winners = values.filter((v) => v === top).length
+        const allEqual = vF === vP && vP === vD
+        if (!allEqual && winners !== 1) continue
+        const labels = ['Der Bruch', 'Die Prozentangabe', 'Die Dezimalzahl']
+        const correct = allEqual ? 'Alle drei sind gleich groß' : labels[values.indexOf(top)]!
+        return choicePickTask({
+          question: `Welche Angabe ist am größten: ${format(f)}, ${vP} % oder ${formatDe(vD / 100)}?`,
+          choices: [...labels, 'Alle drei sind gleich groß'],
+          correct,
+          solution: correct,
+          explanation: `Rechne alles in Prozent um: ${format(f)} = ${formatDe(vF)} %, ${vP} %, ${formatDe(vD / 100)} = ${vD} %. ${allEqual ? 'Alle drei Angaben sind gleich groß.' : `${correct} ist mit ${formatDe(top)} % am größten.`}`,
+          dedupeKey: `proz-vergleich:${f.n}:${f.d}:${vP}:${vD}`,
+        })
+      }
+      throw new Error('lb1-prozent: kein Vergleichsbeispiel gefunden')
     },
     // V2 Umkehrung — Prozent -> vollständig gekürzter Bruch
     (rng: Rng) => {
@@ -3064,7 +3079,7 @@ const wuerfelnetzNeu: Topic = asNeuTopic('lb4-wuerfelnetz', {
   difficulty: 1,
   keywords: ['Würfel', 'Körpernetz', 'Netz', 'falten', 'Prisma', 'Kanten', 'Ecken', 'Flächen'],
   fachwissen: {
-    text: 'Ein Würfel hat 6 Flächen, 12 Kanten und 8 Ecken. Für den Würfel gibt es genau 11 verschiedene faltbare Netze aus sechs Quadraten. Auch bei einem dreiseitigen Prisma besteht das Netz aus zwei Dreiecken (Grund- und Deckfläche) und drei Rechtecken (Seitenflächen) — nicht jede Anordnung dieser Teile ist faltbar.',
+    text: 'Ein Würfel hat 6 Flächen, 12 Kanten und 8 Ecken. Für den Würfel gibt es genau 11 verschiedene faltbare Netze aus sechs Quadraten. Im gefalteten Würfel liegen gegenüberliegende Flächen im Netz nie als Nachbarn nebeneinander. Der Rand eines Würfelnetzes besteht immer aus 14 Quadratseiten. Auch bei einem dreiseitigen Prisma besteht das Netz aus zwei Dreiecken (Grund- und Deckfläche) und drei Rechtecken (Seitenflächen) — nicht jede Anordnung dieser Teile ist faltbar.',
     quelle: 'Wikipedia: Netz (Geometrie)',
     url: 'https://de.wikipedia.org/wiki/Netz_(Geometrie)',
   },
@@ -3129,6 +3144,7 @@ const wuerfelnetzNeu: Topic = asNeuTopic('lb4-wuerfelnetz', {
         explanation: `Netz ${correct} überlappt beim Falten bzw. schließt sich nicht zu einem Würfel. Die anderen beiden Netze (Kreuz- bzw. Zickzackform) sind gültige Würfelnetze.`,
         visualContent: generateCubeNetChoicesSvg(options),
         instruction: 'Tippe den Buchstaben des nicht faltbaren Netzes:',
+        dedupeKey: `wnetz-nicht:${invalid}`,
       })
     },
     // V4 Visual MC — Prismennetz erkennen
@@ -3152,8 +3168,16 @@ const wuerfelnetzNeu: Topic = asNeuTopic('lb4-wuerfelnetz', {
         explanation: `Netz ${correct} zeigt zwei Dreiecke (Grund- und Deckfläche) und drei Rechtecke (Seitenflächen) richtig angeordnet — das lässt sich zu einem Prisma falten. Die andere Anordnung überlappt bzw. schließt nicht.`,
         visualContent: generatePrismNetChoicesSvg(options),
         instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+        dedupeKey: `wnetz-prisma:${correct}`,
       })
     },
+    // V5–V10 Würfelnetze (cubeNetTasks.ts): beliebige Figuren erkennen, gegenüberliegende Flächen, Rand, Kanten
+    cubeNetPickValidTask,
+    cubeNetCountValidTask,
+    cubeNetOppositeTask,
+    cubeNetMarkedPairTask,
+    cubeNetPerimeterTask,
+    () => cubeNetCutEdgesTask(),
   ),
 })
 

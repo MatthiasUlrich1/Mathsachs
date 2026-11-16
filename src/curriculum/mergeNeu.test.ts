@@ -269,19 +269,12 @@ describe('Mathe-Klassenstufen: Neu-Themen sind aufgelöst', () => {
 })
 
 /**
- * Parents mit nur wenigen eindeutigen Aufgaben auf einer Seite. Die Pools wurden mit
- * `buildUniqueTaskRound` (Ziel 60) gemessen; hier steckt die Begrenzung in der Aufgabenfamilie
- * selbst (identischer Stamm bzw. eine einzige feste Aufgabe), nicht im Mix.
- * - minOldShare: Untergrenze des Parent-Anteils, wo ein Pool von 1 keine 20 % zulässt.
- * - maxRound: Runde kürzer als 10, weil Gesamtpool (alt + neu) < 10.
+ * Einzige verbleibende Pool-Begrenzung: der Parent von „Mittelsenkrechte: Konstruktionsschritte“ ist EINE feste
+ * Ordnungsaufgabe (Schritte nur anders gemischt, gleiche Lösung) und damit höchstens 1 von 10 Aufgaben (gemessen 10 %).
+ * Bewusst so belassen: Parent-Inhalt ist freigegeben und wird nicht verändert.
  */
-const POOL_LIMITED: Record<string, { minOldShare?: number; maxRound?: number }> = {
-  // alt: 1 feste Ordnungsaufgabe → höchstens 1 von 10 Aufgaben stammt vom Parent
-  'k7-lb1-mittelsenkrechte-schritte': { minOldShare: 0.05 },
-  // alt-Pool 1 (gleicher Stamm), neu-Pool 6 → Gesamtpool 7
-  'lb4-wuerfelnetz': { minOldShare: 0.08, maxRound: 7 },
-  // alt-Pool 3, neu-Pool 3 → Gesamtpool 6
-  'lb2-grafische-brueche': { maxRound: 6 },
+const POOL_LIMITED: Record<string, { minOldShare: number }> = {
+  'k7-lb1-mittelsenkrechte-schritte': { minOldShare: 0.09 },
 }
 
 describe('Mathe-Runden der gemergten Themen (30 Seeds)', () => {
@@ -302,9 +295,8 @@ describe('Mathe-Runden der gemergten Themen (30 Seeds)', () => {
         let nNeu = 0
         for (let s = 1; s <= 30; s++) {
           const rows = buildUniqueTaskRoundWithSeeds(t.generate, createRng(s * 977), want)
-          const maxLen = limit?.maxRound ?? want
-          if (rows.length > want || (limit?.maxRound ? rows.length < 5 : rows.length !== want)) {
-            failures.push(`${t.id} seed ${s}: Länge ${rows.length} (erwartet ${maxLen})`)
+          if (rows.length !== want) {
+            failures.push(`${t.id} seed ${s}: Länge ${rows.length} (erwartet ${want})`)
           }
           const seen = new Set<string>()
           for (const row of rows) {

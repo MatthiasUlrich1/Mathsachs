@@ -18,7 +18,7 @@ const TRIVIAL_SOLUTION =
   /^(richtig|falsch|ja|nein|true|false|ok|—|-|r|f|\.|…)$/i
 
 /** Generic prompts whose stem alone must not block distinct item sets. */
-function isGenericPromptStem(stem: string): boolean {
+export function isGenericPromptStem(stem: string): boolean {
   return (
     /^(ordne|ordne zu|sortiere|zuordnung|passe .* zu|klick-paare|karteikarte)/i.test(stem) ||
     /klick-paare/i.test(stem) ||
@@ -26,8 +26,30 @@ function isGenericPromptStem(stem: string): boolean {
     /fachbegriffe ihren erkl/i.test(stem) ||
     /lebensmerkmale ihren erkl/i.test(stem) ||
     /welches schaltsymbol/i.test(stem) ||
+    // Bild-Aufgaben: gleicher Stamm, die Abbildung trägt den Inhalt (Bruchbilder, Würfelnetze)
+    /^welche[rsn]? (gekürzte[rn]? )?bruch(anteil)? ist im (kreisdiagramm|balken|raster|rastermodell)\b/i.test(stem) ||
+    /^welche[sr]? der (drei|beiden) netze\b/i.test(stem) ||
     /ist der schalter offen oder geschlossen/i.test(stem)
   )
+}
+
+/** Zahlen eines Textes (Dezimalkomma → Punkt, typografisches Minus → `-`). */
+function extractNumbers(text: string): string[] {
+  return (text.replace(/[−–]/g, '-').match(/-?\d+(?:[.,]\d+)?/g) ?? []).map((n) => n.replace(',', '.'))
+}
+
+/**
+ * Gleiche Rechenaufgabe in anderer Einkleidung: dieselben Zahlen in der Frage (Reihenfolge egal)
+ * und dieselbe Lösung. Fängt Tipp-/MC-/Sachaufgaben-Varianten ab, deren Stamm sich unterscheidet und
+ * deren kurze Lösung (< 4 Zeichen) keinen `ans:`-Treffer ergibt. Ohne Ziffern in Frage UND Lösung
+ * (Geschichte, Biologie, reine Begriffsfragen) entsteht keine Identität.
+ */
+export function numericFactKey(task: Task): string | null {
+  const q = extractNumbers(task.question ?? '')
+  const sol = extractNumbers(String(task.solution ?? ''))
+  if (q.length === 0 || sol.length === 0) return null
+  if (new Set([...q, ...sol]).size < 2) return null
+  return `${[...q].sort().join(',')}=>${sol.join(',')}`
 }
 
 /** Extra identity for interactive tasks when dedupeKey/contentIds are absent. */
@@ -101,6 +123,9 @@ export function taskContentIds(task: Task): string[] {
       .trim()
     if (core.length >= 12 && core !== stem) ids.add(`stemcore:${core}`)
   }
+
+  const numFact = numericFactKey(task)
+  if (numFact) ids.add(`numfact:${numFact}`)
 
   const sol = normalizeTaskText(String(task.solution ?? ''))
   if (sol && sol.length >= 4 && !TRIVIAL_SOLUTION.test(sol)) {

@@ -111,13 +111,7 @@ export const KNOWN_BEFORE_E5: Record<string, readonly string[]> = {
   "roundLength": [
     "os-hs-k7-lb1-netze: 1/10",
     "os-hs-k7-lb4-netze: 1/10",
-    "os-k5-lb2-anteil: 6/10",
-    "os-k5-lb3-wuerfel: 7/10",
     "os-k6-lb4-darstellen: 1/10",
     "os-rs-k7-lb4-darstellen: 1/10",
-    "sks-k5-bruch-grafik: 6/10",
-    "sks-k7-netz: 7/10",
-    "st-k5-bruch-grafik: 6/10",
-    "st-k6-wuerfelnetz: 7/10",
   ],
 }

@@ -855,44 +855,47 @@ const parabelWertReglerNeu: Topic = asNeuTopic('k10-lb4-parabel-wert', {
   difficulty: 2,
   keywords: ['Parabel', 'quadratische Funktion', 'Funktionswert', 'Regler', 'einsetzen'],
   fachwissen: {
-    text: 'Der Funktionswert f(x) einer Parabel f(x) = a·x² + c ergibt sich durch Einsetzen von x: zuerst quadrieren, dann mit a multiplizieren, zuletzt c addieren. Am Graphen lässt sich dieser Wert anschließend als y-Koordinate überprüfen.',
+    text: 'Der Funktionswert f(x) einer Parabel f(x) = a·x² + c ergibt sich durch Einsetzen von x: zuerst quadrieren, dann mit a multiplizieren, zuletzt c addieren. Am Graphen lässt sich dieser Wert anschließend als y-Koordinate überprüfen. Umgekehrt liegt ein Punkt P(x | y) genau dann auf dem Graphen, wenn beim Einsetzen von x der Wert y herauskommt; so lässt sich auch die Verschiebung c aus einem Punkt bestimmen.',
     quelle: 'Wikipedia: Parabel (Mathematik)',
     url: 'https://de.wikipedia.org/wiki/Parabel_(Mathematik)',
   },
   generate: mixedVariants(
+    // V1 Tippen — Parabel durch einen Punkt: Verschiebung c bestimmen (Umkehrung)
     (rng: Rng) => {
-      const a = pick(rng, [-2, -1, 1, 2, 3])
+      const a = pick(rng, [-3, -2, -1, 1, 2, 3])
+      const x = pick(rng, [-4, -3, -2, -1, 1, 2, 3, 4])
       const c = randInt(rng, -8, 8)
-      const x = randInt(rng, -6, 6)
-      const value = a * x * x + c
-      const cStr = c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`
+      const y = a * x * x + c
+      const aStr = a === 1 ? '' : a === -1 ? '−' : `${a < 0 ? '−' : ''}${Math.abs(a)}·`
+      const ySigned = y < 0 ? `−${Math.abs(y)}` : `${y}`
+      const xSigned = x < 0 ? `−${Math.abs(x)}` : `${x}`
       return valueTask({
-        question: `Gegeben ist f(x) = ${a}·x² ${cStr}. Berechne f(${x}).`,
+        question: `Der Graph von f(x) = ${aStr}x² + c geht durch den Punkt P(${xSigned} | ${ySigned}). Bestimme c.`,
         answerKind: 'integer',
-        value,
-        solution: formatDe(value),
-        explanation: `Setze x = ${x} ein: ${a} · ${x}² ${cStr} = ${a} · ${x * x} ${cStr} = ${a * x * x} ${cStr} = ${value}.`,
-        dedupeKey: `k10neuparabelregler-tippen:${a}:${c}:${x}`,
+        value: c,
+        solution: `c = ${formatDe(c)}`,
+        explanation: `Setze P in die Funktionsgleichung ein: ${ySigned} = ${aStr}(${xSigned})² + c = ${a * x * x} + c. Also c = ${ySigned} − (${a * x * x}) = ${formatDe(c)}.`,
+        dedupeKey: `k10neuparabelregler-c:${a}:${c}:${x}`,
       })
     },
+    // V2 MC — Punktprobe: Welcher Punkt liegt auf dem Graphen?
     (rng: Rng) => {
       const a = pick(rng, [-2, -1, 1, 2, 3])
-      const c = randInt(rng, -8, 8)
-      const x = randInt(rng, -6, 6)
-      const value = a * x * x + c
+      const c = randInt(rng, -6, 6)
+      const x = pick(rng, [-4, -3, -2, -1, 1, 2, 3, 4])
+      const y = a * x * x + c
       const cStr = c < 0 ? `− ${Math.abs(c)}` : `+ ${c}`
-      const correct = formatDe(value)
-      const wrong1 = formatDe(a * x + c) // vergisst x zu quadrieren
-      const wrong2 = formatDe(a * x * x) // c vergessen
-      const wrong3 = formatDe(-value) // Vorzeichenfehler
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const pt = (py: number) => `P(${x} | ${py})`
+      const correct = pt(y)
+      const wrongYs = [a * x + c, a * x * x, -y, y + 1, y - 1, y + a].filter((v) => v !== y)
+      const choices = shuffleChoices(rng, fourChoices(correct, wrongYs.map(pt)), correct)
       return choicePickTask({
-        question: `Gegeben ist f(x) = ${a}·x² ${cStr}. Was ist f(${x})?`,
+        question: `Welcher Punkt liegt auf dem Graphen von f(x) = ${a}·x² ${cStr}?`,
         choices,
         correct,
         solution: correct,
-        explanation: `f(${x}) = ${a} · ${x}² ${cStr} = ${value}.`,
-        dedupeKey: `k10neuparabelregler-mc:${a}:${c}:${x}`,
+        explanation: `Ein Punkt liegt auf dem Graphen, wenn beim Einsetzen seiner x-Koordinate genau seine y-Koordinate herauskommt: f(${x}) = ${a} · ${x}² ${cStr} = ${y}. Also liegt ${correct} auf dem Graphen.`,
+        dedupeKey: `k10neuparabelregler-punkt:${a}:${c}:${x}`,
       })
     },
     (rng: Rng) => {

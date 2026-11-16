@@ -347,23 +347,32 @@ const skalarproduktNeu: Topic = asNeuTopic('k1112-lb2-skalarprodukt', {
         dedupeKey: `k1112neuskalortho-tippen:${p}:${q}:${k}`,
       })
     },
+    // V2 MC — Orthogonalität im Raum prüfen (Skalarprodukt gleich null?)
     (rng: Rng) => {
-      const a = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
-      const b = [nonZero(rng, -6, 6), nonZero(rng, -6, 6), nonZero(rng, -6, 6)]
-      const value = a[0]! * b[0]! + a[1]! * b[1]! + a[2]! * b[2]!
-      const correct = `${value}`
-      const wrong1 = `${a[0]! * b[0]! + a[1]! * b[1]!}` // dritte Komponente vergessen
-      const wrong2 = `${a[0]! * b[0]! - a[1]! * b[1]! + a[2]! * b[2]!}` // Vorzeichenfehler bei einer Komponente
-      const wrong3 = `${a[0]! + b[0]! + a[1]! + b[1]! + a[2]! + b[2]!}` // addiert statt multipliziert
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
-      return choicePickTask({
-        question: `Berechne das Skalarprodukt der Vektoren a = ${vec(a)} und b = ${vec(b)}.`,
-        choices,
-        correct,
-        solution: correct,
-        explanation: `a · b = ${minus(a[0]!)}·${minus(b[0]!)} + ${minus(a[1]!)}·${minus(b[1]!)} + ${minus(a[2]!)}·${minus(b[2]!)} = ${value}.`,
-        dedupeKey: `k1112neuskalortho-mc:${a.join(',')}:${b.join(',')}`,
-      })
+      const wantOrtho = rng() < 0.5
+      for (let attempt = 0; attempt < 400; attempt++) {
+        const a = [nonZero(rng, -5, 5), nonZero(rng, -5, 5), nonZero(rng, -5, 5)]
+        const b1 = nonZero(rng, -5, 5)
+        const b2 = nonZero(rng, -5, 5)
+        const rest = -(a[0]! * b1 + a[1]! * b2)
+        if (rest % a[2]! !== 0) continue
+        let b3 = rest / a[2]!
+        if (!wantOrtho) b3 += pick(rng, [-2, -1, 1, 2])
+        if (b3 === 0 || Math.abs(b3) > 9) continue
+        const b = [b1, b2, b3]
+        const value = a[0]! * b[0]! + a[1]! * b[1]! + a[2]! * b[2]!
+        if ((value === 0) !== wantOrtho) continue
+        const correct = value === 0 ? 'Ja, senkrecht' : 'Nein, nicht senkrecht'
+        return choicePickTask({
+          question: `Stehen die Vektoren a = ${vec(a)} und b = ${vec(b)} senkrecht zueinander?`,
+          choices: ['Ja, senkrecht', 'Nein, nicht senkrecht'],
+          correct,
+          solution: correct,
+          explanation: `a · b = ${minus(a[0]!)}·${minus(b[0]!)} + ${minus(a[1]!)}·${minus(b[1]!)} + ${minus(a[2]!)}·${minus(b[2]!)} = ${value}. ${value === 0 ? 'Das Skalarprodukt ist 0, die Vektoren stehen also senkrecht zueinander.' : `Das Skalarprodukt ist ${value} und damit ungleich 0, die Vektoren stehen nicht senkrecht zueinander.`}`,
+          dedupeKey: `k1112neuskalortho-ja:${a.join(',')}:${b.join(',')}`,
+        })
+      }
+      throw new Error('skalarprodukt: keine passende Vektorpaarung')
     },
     (rng: Rng) => {
       const p = nonZero(rng, -4, 4)

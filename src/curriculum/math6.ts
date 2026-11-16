@@ -1338,6 +1338,7 @@ const wuerfelNetz: Topic = {
       explanation: `Nur Netz ${correct} ist ein gültiges Würfelnetz. Die anderen Anordnungen überlappen oder schließen sich nicht.`,
       visualContent: generateCubeNetChoicesSvg(options),
       instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
+      dedupeKey: `wnetz-falt:${valid}:${invalid}`,
     })
   },
 }

@@ -593,6 +593,7 @@ const grafischeBrueche: Topic = {
           explanation: `${numerator} von ${denominator} Teilen sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
         }),
         visualContent: svg,
+        dedupeKey: `graf:kreis:${numerator}:${denominator}`,
       }
     },
     // Variant: Balken
@@ -610,6 +611,7 @@ const grafischeBrueche: Topic = {
           explanation: `${numerator} von ${denominator} Abschnitten sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
         }),
         visualContent: svg,
+        dedupeKey: `graf:balken:${numerator}:${denominator}`,
       }
     },
     // Variant: Raster
@@ -628,6 +630,7 @@ const grafischeBrueche: Topic = {
           explanation: `${numerator} von ${denominator} Feldern sind eingefärbt, also ${numerator}/${denominator}. Vollständig gekürzt: ${value.n}/${value.d}.`,
         }),
         visualContent: svg,
+        dedupeKey: `graf:raster:${numerator}:${denominator}`,
       }
     },
   ),

@@ -482,25 +482,47 @@ const basiswinkelNeu: Topic = asNeuTopic('k7-lb1-basiswinkel', {
         dedupeKey: `k7basis-tippen:${basis}`,
       })
     },
-    // V2 MC — typische Fehler
+    // V2 MC — aus zwei Winkeln den dritten Winkel bestimmen und prüfen, ob das Dreieck gleichschenklig ist
     (rng: Rng) => {
-      let apex = randInt(rng, 10, 70) * 2
-      if (apex === 60) apex = 64 // gleichseitig: Spitzenwinkel = Basiswinkel verrät die Lösung
-      const base = (180 - apex) / 2
-      const correct = `${base}°`
-      const wrong1 = `${apex / 2}°` // teilt den Spitzenwinkel statt (180° − Spitze)
-      const wrong2 = `${180 - apex}°` // vergisst die Division durch 2
-      const wrong3 = `${(360 - apex) / 2}°` // verwendet 360° statt 180°
-      const wrong4 = `${base + 10}°` // Rechenfehler um 10°
-      const wrong5 = `${base - 10}°` // Rechenfehler um 10°
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, wrong4, wrong5]), correct)
+      const wantYes = rng() < 0.5
+      let p = 0
+      let q = 0
+      if (wantYes) {
+        // Zwei gleich große Winkel e werden genannt; der dritte (180° − 2e) steht nicht in der Frage.
+        let e = randInt(rng, 25, 75)
+        if (e === 60) e = 55 // gleichseitig: alle drei Winkel gleich, die Frage wäre trivial
+        p = e
+        q = e
+      } else {
+        for (let attempt = 0; attempt < 400; attempt++) {
+          const a = randInt(rng, 20, 100)
+          const b = randInt(rng, 20, 100)
+          const c = 180 - a - b
+          if (c < 15 || a === b || a === c || b === c) continue
+          p = a
+          q = b
+          break
+        }
+        if (p === 0) {
+          p = 50
+          q = 60
+        }
+      }
+      const r = 180 - p - q
+      const yes = p === q || p === r || q === r
+      const verdict = (v: boolean) => (v ? 'gleichschenklig' : 'nicht gleichschenklig')
+      const correct = `${r}°, ${verdict(yes)}`
+      const wrong1 = `${r}°, ${verdict(!yes)}` // Dritten Winkel richtig, aber falsch gefolgert
+      const wrong2 = `${180 - Math.max(p, q)}°, ${verdict(yes)}` // zieht nur einen Winkel ab
+      const wrong3 = `${360 - p - q}°, ${verdict(yes)}` // rechnet mit 360° statt 180°
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
       return choicePickTask({
-        question: `In einem gleichschenkligen Dreieck ist der Winkel an der Spitze ${apex}°. Wie groß ist jeder Basiswinkel?`,
+        question: `Ein Dreieck hat die Winkel α = ${p}° und β = ${q}°. Wie groß ist der dritte Winkel, und ist das Dreieck gleichschenklig?`,
         choices,
         correct,
         solution: correct,
-        explanation: `Basiswinkel = (180° − ${apex}°) : 2 = ${base}°.`,
-        dedupeKey: `k7basis-mc:${apex}`,
+        explanation: `Der dritte Winkel ist 180° − ${p}° − ${q}° = ${r}°. ${yes ? `Zwei Winkel sind gleich groß (${p === q ? p : p === r ? p : q}°). Dann sind auch die gegenüberliegenden Seiten gleich lang: Das Dreieck ist gleichschenklig.` : `Die drei Winkel ${p}°, ${q}° und ${r}° sind alle verschieden, also gibt es keine zwei gleich langen Seiten.`}`,
+        dedupeKey: `k7basis-gleichschenklig:${[p, q].sort((x, y) => x - y).join(':')}`,
       })
     },
     // V3 Portfolio — Basiswinkel berechnen und mit dem Geodreieck zeichnen
@@ -758,23 +780,23 @@ const addRationalNeu: Topic = asNeuTopic('k7-lb2-add-rational', {
         dedupeKey: `k7add-temp:${a}:${change}`,
       })
     },
-    // V2 MC — typische Vorzeichenfehler
+    // V2 MC — fehlenden Summanden ergänzen
     (rng: Rng) => {
       const a = nonZero(rng, -20, 20)
       const b = nonZero(rng, -20, 20)
-      const value = a + b
-      const correct = formatDe(value)
-      const wrong1 = formatDe(Math.abs(a) + Math.abs(b)) // Vorzeichen ignoriert
-      const wrong2 = formatDe(a - b) // Vorzeichen von b falsch übernommen
-      const wrong3 = formatDe(-value) // Gesamtvorzeichen vertauscht
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const c = a + b
+      const correct = formatDe(b)
+      const wrong1 = formatDe(c + a) // addiert statt die Differenz zu bilden
+      const wrong2 = formatDe(-b) // Vorzeichen des Ergebnisses vertauscht
+      const wrong3 = formatDe(c) // Summe selbst als Lösung genannt
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, formatDe(b + 2), formatDe(b - 2)]), correct)
       return choicePickTask({
-        question: `Berechne: ${num(a)} + ${num(b)}`,
+        question: `Welche Zahl gehört auf das Fragezeichen? ${num(a)} + ? = ${num(c)}`,
         choices,
         correct,
         solution: correct,
-        explanation: `Addiere unter Beachtung der Vorzeichen: ${num(a)} + ${num(b)} = ${value}.`,
-        dedupeKey: `k7add-mc:${a}:${b}`,
+        explanation: `Gesucht ist die Zahl b mit ${num(a)} + b = ${num(c)}. Also b = ${num(c)} − ${num(a)} = ${b}.`,
+        dedupeKey: `k7add-fehlt:${a}:${b}`,
       })
     },
     // V3 Portfolio — Addition als Sprung auf dem Zahlenstrahl
@@ -825,23 +847,23 @@ const subRationalNeu: Topic = asNeuTopic('k7-lb2-sub-rational', {
         dedupeKey: `k7sub-konto:${a}:${b}`,
       })
     },
-    // V2 MC — typische Vorzeichenfehler
+    // V2 MC — fehlenden Subtrahenden ergänzen
     (rng: Rng) => {
       const a = nonZero(rng, -20, 20)
       const b = nonZero(rng, -20, 20)
-      const value = a - b
-      const correct = formatDe(value)
-      const wrong1 = formatDe(a + b) // Minus einer negativen Zahl nicht erkannt
-      const wrong2 = formatDe(-(a - b)) // Gesamtvorzeichen vertauscht
-      const wrong3 = formatDe(Math.abs(a) - Math.abs(b)) // Vorzeichen ignoriert
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const c = a - b
+      const correct = formatDe(b)
+      const wrong1 = formatDe(c - a) // Subtraktion andersherum angesetzt
+      const wrong2 = formatDe(a + c) // addiert statt zu subtrahieren
+      const wrong3 = formatDe(c) // Ergebnis selbst als Lösung genannt
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, formatDe(b + 2), formatDe(b - 2)]), correct)
       return choicePickTask({
-        question: `Berechne: ${num(a)} − ${num(b)}`,
+        question: `Welche Zahl gehört auf das Fragezeichen? ${num(a)} − ? = ${num(c)}`,
         choices,
         correct,
         solution: correct,
-        explanation: `Subtrahieren heißt die Gegenzahl addieren: ${num(a)} − ${num(b)} = ${num(a)} + ${num(-b)} = ${value}.`,
-        dedupeKey: `k7sub-mc:${a}:${b}`,
+        explanation: `Gesucht ist die Zahl b mit ${num(a)} − b = ${num(c)}. Also b = ${num(a)} − ${num(c)} = ${b}.`,
+        dedupeKey: `k7sub-fehlt:${a}:${b}`,
       })
     },
     // V3 Portfolio — Subtraktion als Sprung auf dem Zahlenstrahl
@@ -891,23 +913,23 @@ const mulRationalNeu: Topic = asNeuTopic('k7-lb2-mul-rational', {
         dedupeKey: `k7mul-schulden:${n}:${proBetrag}`,
       })
     },
-    // V2 MC — typische Vorzeichenfehler
+    // V2 MC — fehlenden Faktor ergänzen (Umkehrung der Multiplikation)
     (rng: Rng) => {
-      const a = nonZero(rng, -12, 12)
-      const b = nonZero(rng, -12, 12)
-      const value = a * b
-      const correct = formatDe(value)
-      const wrong1 = formatDe(-value) // Vorzeichenregel verwechselt
-      const wrong2 = formatDe(a + b) // Multiplikation mit Addition verwechselt
-      const wrong3 = formatDe(Math.abs(a) * Math.abs(b)) // Vorzeichen generell ignoriert
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const a = nonZero(rng, -9, 9)
+      const b = nonZero(rng, -9, 9)
+      const p = a * b
+      const correct = formatDe(b)
+      const wrong1 = formatDe(-b) // Vorzeichenregel verwechselt
+      const wrong2 = formatDe(p - a) // subtrahiert statt zu dividieren
+      const wrong3 = formatDe(p + a) // addiert statt zu dividieren
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, formatDe(b + 1), formatDe(b - 1)]), correct)
       return choicePickTask({
-        question: `Berechne: ${num(a)} · ${num(b)}`,
+        question: `Welche Zahl gehört auf das Fragezeichen? ${num(a)} · ? = ${num(p)}`,
         choices,
         correct,
         solution: correct,
-        explanation: `Vorzeichenregel: ${a * b >= 0 ? 'gleiche Vorzeichen ergeben ein positives' : 'verschiedene Vorzeichen ergeben ein negatives'} Ergebnis. Betrag: ${Math.abs(a)} · ${Math.abs(b)} = ${Math.abs(value)}. Also ${value}.`,
-        dedupeKey: `k7mul-mc:${a}:${b}`,
+        explanation: `Gesucht ist die Zahl b mit ${num(a)} · b = ${num(p)}. Umkehrung der Multiplikation: b = ${num(p)} : ${num(a)} = ${b}.`,
+        dedupeKey: `k7mul-fehlt:${a}:${b}`,
       })
     },
     // V3 Portfolio — Vorzeichen von Produkten erkennen
@@ -962,23 +984,23 @@ const divRationalNeu: Topic = asNeuTopic('k7-lb2-div-rational', {
         dedupeKey: `k7div-schulden:${a}:${n}`,
       })
     },
-    // V2 MC — typische Vorzeichenfehler
+    // V2 MC — fehlenden Dividenden ergänzen (Umkehrung der Division)
     (rng: Rng) => {
-      const b = nonZero(rng, -12, 12)
-      const q = nonZero(rng, -12, 12)
-      const a = b * q
-      const correct = formatDe(q)
-      const wrong1 = formatDe(-q) // Vorzeichenregel verwechselt
-      const wrong2 = formatDe(b) // Divisor statt Ergebnis genannt
-      const wrong3 = formatDe(Math.abs(q)) // Vorzeichen generell ignoriert
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const d = nonZero(rng, -9, 9)
+      const q = nonZero(rng, -9, 9)
+      const a = d * q
+      const correct = formatDe(a)
+      const wrong1 = formatDe(-a) // Vorzeichenregel verwechselt
+      const wrong2 = formatDe(q + d) // addiert statt zu multiplizieren
+      const wrong3 = formatDe(q - d) // subtrahiert statt zu multiplizieren
+      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3, formatDe(a + 1), formatDe(a - 1)]), correct)
       return choicePickTask({
-        question: `Berechne: ${num(a)} : ${num(b)}`,
+        question: `Welche Zahl gehört auf das Fragezeichen? ? : ${num(d)} = ${num(q)}`,
         choices,
         correct,
         solution: correct,
-        explanation: `Vorzeichenregel wie beim Multiplizieren. Betrag: ${Math.abs(a)} : ${Math.abs(b)} = ${Math.abs(q)}. Also ${num(a)} : ${num(b)} = ${q}.`,
-        dedupeKey: `k7div-mc:${a}:${b}`,
+        explanation: `Umkehrung der Division ist die Multiplikation: ? = ${num(q)} · ${num(d)} = ${a}.`,
+        dedupeKey: `k7div-fehlt:${a}:${d}`,
       })
     },
     // V3 Portfolio — Quotienten der Größe nach ordnen (echte Reihenfolge)
@@ -1908,23 +1930,30 @@ const relativeHaeufigkeitNeu: Topic = asNeuTopic('k7-lb4-rel-haeufigkeit', {
         dedupeKey: `k7neurel-tippen:${total}:${k}`,
       })
     },
-    // V2 MC — typische Fehler bei der Prozentumrechnung
+    // V2 MC — Vergleich: wer hat die höhere relative Häufigkeit? (verschiedene Gesamtzahlen)
     (rng: Rng) => {
-      const total = pick(rng, [10, 20, 25, 40, 50, 100])
-      const k = randInt(rng, Math.max(1, Math.round(total / 10)), total - Math.max(1, Math.round(total / 10)))
-      const pct = roundTo((k / total) * 100, 2)
-      const correct = `${formatDe(pct)} %`
-      const wrong1 = `${formatDe(roundTo(k / total, 2))} %` // vergisst ×100 (Dezimalzahl statt Prozent)
-      const wrong2 = `${formatDe(roundTo(((total - k) / total) * 100, 2))} %` // verwechselt mit Gegenereignis
-      const wrong3 = `${formatDe(roundTo((total / k) * 100, 2))} %` // Bruch verdreht (total/k statt k/total)
-      const choices = shuffleChoices(rng, fourChoices(correct, [wrong1, wrong2, wrong3]), correct)
+      const [n1, n2] = pick(rng, [
+        ['Anna', 'Ben'],
+        ['Lea', 'Tom'],
+        ['Mia', 'Paul'],
+        ['Emil', 'Nora'],
+      ] as const)
+      const t1 = pick(rng, [20, 25, 40, 50])
+      const t2 = pick(rng, [20, 25, 40, 50].filter((t) => t !== t1))
+      const k1 = randInt(rng, 3, t1 - 3)
+      // In etwa jeder fünften Aufgabe sind beide Häufigkeiten gleich.
+      const sameValue = rng() < 0.2 && (k1 * t2) % t1 === 0 && (k1 * t2) / t1 < t2
+      const k2 = sameValue ? (k1 * t2) / t1 : randInt(rng, 3, t2 - 3)
+      const p1 = roundTo((k1 / t1) * 100, 2)
+      const p2 = roundTo((k2 / t2) * 100, 2)
+      const correct = k1 * t2 === k2 * t1 ? 'Beide gleich' : k1 * t2 > k2 * t1 ? n1 : n2
       return choicePickTask({
-        question: `Von ${total} befragten Personen antworteten ${k} mit „ja". Wie groß ist die relative Häufigkeit in Prozent?`,
-        choices,
+        question: `Beim Torwandschießen trifft ${n1} ${k1}-mal bei ${t1} Versuchen, ${n2} trifft ${k2}-mal bei ${t2} Versuchen. Wer hat die höhere relative Häufigkeit für einen Treffer?`,
+        choices: [n1, n2, 'Beide gleich'],
         correct,
         solution: correct,
-        explanation: `Relative Häufigkeit = ${k} : ${total} = ${formatDe(k / total)}. In Prozent: · 100 = ${formatDe(pct)} %.`,
-        dedupeKey: `k7neurel-mc:${total}:${k}`,
+        explanation: `Relative Häufigkeit von ${n1}: ${k1} : ${t1} = ${formatDe(p1)} %. Relative Häufigkeit von ${n2}: ${k2} : ${t2} = ${formatDe(p2)} %. Verglichen werden die Prozentwerte, nicht die Trefferzahlen.`,
+        dedupeKey: `k7neurel-vergleich:${k1}:${t1}:${k2}:${t2}`,
       })
     },
     // V3 Portfolio — Glücksrad: relative Häufigkeit am Regler schätzen

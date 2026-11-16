@@ -635,18 +635,19 @@ export const math5NeuLb1: Topic[] = [
       url: 'https://de.wikipedia.org/wiki/Potenz_(Mathematik)',
     },
     generate: mixedVariants(
-      // Variant 1: Tippen — Potenz mit Exponent 2 bis 4 berechnen
+      // Variant 1: Tippen — Umkehrung: Basis gesucht
       (rng: Rng) => {
-        const base = randInt(rng, 2, 15)
-        const exp = randInt(rng, 2, 4)
+        const exp = pick(rng, [2, 3])
+        const base = exp === 2 ? randInt(rng, 2, 15) : randInt(rng, 2, 9)
         const value = base ** exp
-        const supers = ['⁰', '¹', '²', '³', '⁴']
+        const sup = exp === 2 ? '²' : '³'
         return valueTask({
-          question: `Berechne: ${base}${supers[exp]}`,
+          question: `Welche Zahl gehört auf das Fragezeichen? ?${sup} = ${formatDe(value)}`,
           answerKind: 'integer',
-          value,
-          solution: formatDe(value),
-          explanation: `${base}${supers[exp]} bedeutet ${Array(exp).fill(String(base)).join(' · ')} = ${formatDe(value)}.`,
+          value: base,
+          solution: formatDe(base),
+          explanation: `Gesucht ist die Basis: ${base}${sup} bedeutet ${Array(exp).fill(String(base)).join(' · ')} = ${formatDe(value)}. Also ist die gesuchte Zahl ${base}.`,
+          dedupeKey: `pot-basis:${base}:${exp}`,
         })
       },
       // Variant 2: MC — wiederholte Multiplikation als Potenz schreiben
@@ -1201,7 +1202,7 @@ export const math5NeuLb2: Topic[] = [
           solution: correct,
           explanation: `${numerator} von ${denominator} Teilen sind eingefärbt, also ${correct}.`,
           visualContent: svg,
-          dedupeKey: `graf-kreis-mc:${numerator}:${denominator}`,
+          dedupeKey: `graf:kreis:${numerator}:${denominator}`,
         })
       },
       // Variant 2: MC — Balken
@@ -1221,7 +1222,7 @@ export const math5NeuLb2: Topic[] = [
           solution: correct,
           explanation: `${numerator} von ${denominator} Abschnitten sind eingefärbt, also ${correct}.`,
           visualContent: svg,
-          dedupeKey: `graf-balken-mc:${numerator}:${denominator}`,
+          dedupeKey: `graf:balken:${numerator}:${denominator}`,
         })
       },
       // Variant 3: Tippen — Raster, genau ablesen (nicht kürzen)
@@ -1240,6 +1241,7 @@ export const math5NeuLb2: Topic[] = [
             explanation: `${numerator} von ${denominator} Feldern sind eingefärbt. Im Bild siehst du genau ${numerator}/${denominator} – ob man das noch kürzen kann, ist hier nicht gefragt.`,
           }),
           visualContent: svg,
+          dedupeKey: `graf:raster:${numerator}:${denominator}`,
         }
       },
     ),
