@@ -282,7 +282,7 @@ const osPieAnteil: Topic['generate'] = (rng: Rng) => {
 }
 
 /** Prisma-Netz erkennen (gültig vs. ungültig). */
-const osPrismNetz: Topic['generate'] = (rng: Rng) => {
+const osPrismNetzWahl = (rng: Rng) => {
   const options: Array<{ kind: 'valid' | 'invalid'; label: string }> = [
     { kind: 'valid', label: 'A' },
     { kind: 'invalid', label: 'B' },
@@ -306,6 +306,27 @@ const osPrismNetz: Topic['generate'] = (rng: Rng) => {
     instruction: 'Tippe den Buchstaben des faltbaren Netzes:',
   })
 }
+
+/** Prismen-Netz zählen: Flächen, Rechtecke (Mantel) oder Kanten eines n-seitigen Prismas. */
+const osPrismNetzZaehlen = (rng: Rng) => {
+  const n = randInt(rng, 3, 8)
+  const kind = randInt(rng, 0, 2)
+  const [what, value, how] =
+    kind === 0
+      ? ['Flächen hat das Netz insgesamt', n + 2, `${n} Rechtecke (Mantel) und 2 Grundflächen`]
+      : kind === 1
+        ? ['Rechtecke gehören zum Mantel im Netz', n, 'eine Mantelfläche je Seite der Grundfläche']
+        : ['Kanten hat der gefaltete Körper', 3 * n, `${n} Kanten je Grundfläche und ${n} Seitenkanten`]
+  return textTask({
+    question: `Ein Prisma hat als Grundfläche ein ${n}-Eck. Wie viele ${what}?`,
+    accepted: [String(value)],
+    solution: String(value),
+    explanation: `${how}: ${value}.`,
+  })
+}
+
+/** Prismen-Netze: Netz erkennen oder Netz-Bestandteile zählen (Rundenpool > 10). */
+const osPrismNetz: Topic['generate'] = mixedVariants(osPrismNetzWahl, osPrismNetzZaehlen, osPrismNetzZaehlen)
 
 /**
  * OS-specific generators that adapt Gymnasium tasks (ranges / variants)
@@ -391,224 +412,11 @@ export const OS_CUSTOM_GENERATORS: Record<string, Topic['generate']> = {
   'os-k6-lb4-darstellen': osPrismNetz,
 }
 
-/** Oberschule topic id → existing Gymnasium generator topic id. */
-export const OS_GENERATOR_MAP: Record<string, string> = {
-  // Klasse 5 (gemeinsam)
-  'os-k5-lb1-runden': 'lb1-runden-natuerlich',
-  'os-k5-lb1-addition': 'lb1-addition',
-  'os-k5-lb1-subtraktion': 'lb1-subtraktion',
-  'os-k5-lb1-multiplikation': 'lb1-multiplikation',
-  'os-k5-lb1-division': 'lb1-schriftliche-division',
-  'os-k5-lb1-potenz': 'lb1-potenzieren',
-  'os-k5-lb1-gleichung': 'k7-lb2-gleichung-add',
-  'os-k5-lb1-teilbarkeit': 'lb1-teilbarkeit',
-  'os-k5-lb1-primzahl': 'lb1-primzahl',
-  'os-k5-lb2-anteil': 'lb2-grafische-brueche',
-  'os-k5-lb2-kuerzen': 'lb2-kuerzen',
-  'os-k5-lb2-erweitern': 'lb2-erweitern',
-  'os-k5-lb2-runden-dez': 'lb2-runden-dezimal',
-  'os-k5-lb2-dez-add-sub': 'lb2-dez-add-sub',
-  'os-k5-lb2-dez-mult': 'lb2-dez-mult',
-  'os-k5-lb2-dez-div': 'lb2-dez-div',
-  'os-k5-lb2-mittelwert': 'lb2-mittelwert',
-  'os-k5-lb2-laenge': 'k5-umrechnen-laenge',
-  'os-k5-lb2-masse': 'k5-umrechnen-masse',
-  'os-k5-lb2-zeit': 'k5-umrechnen-zeit',
-  'os-k5-lb3-winkelarten': 'lb3-winkelarten',
-  'os-k5-lb3-winkel-erg': 'lb3-winkel-ergaenzung',
-  'os-k5-lb3-umfang': 'lb4-umfang-rechteck',
-  'os-k5-lb3-flaeche': 'lb4-flaeche-rechteck',
-  'os-k5-lb3-volumen-wuerfel': 'lb4-volumen-quader',
-  'os-k5-lb3-wuerfel': 'lb4-wuerfelnetz',
-  'os-k5-lb3-oberflaeche': 'lb4-oberflaeche-quader',
-  'os-k5-lb3-flaeche-eh': 'k5-umrechnen-flaeche',
-  'os-k5-lb3-volumen-eh': 'k5-umrechnen-volumen',
-  'os-k5-lb4-spiegelung': 'lb3-achsensymmetrie',
-
-  // Klasse 6 (gemeinsam)
-  'os-k6-lb1-kuerzen': 'lb1-kuerzen',
-  'os-k6-lb1-erweitern': 'lb1-erweitern',
-  'os-k6-lb1-vergleichen': 'lb1-vergleichen',
-  'os-k6-lb1-bruch-dez': 'lb1-bruch-dezimal',
-  'os-k6-lb1-add-sub': 'lb1-add-sub-brueche',
-  'os-k6-lb1-mult': 'lb1-mult-brueche',
-  'os-k6-lb1-div': 'lb1-div-brueche',
-  'os-k6-lb1-dez-add-sub': 'lb1-dez-add-sub',
-  'os-k6-lb1-dez-mult': 'lb1-dez-mult',
-  'os-k6-lb1-dez-div': 'lb1-dez-div',
-  'os-k6-lb1-runden': 'lb1-runden',
-  'os-k6-lb1-mittelwert': 'lb2-mittelwert',
-  'os-k6-lb2-prop': 'lb2-proportional',
-  'os-k6-lb2-antiprop': 'lb2-antiproportional',
-  'os-k6-lb2-anteil': 'lb5-anteil-groesse',
-  'os-k6-lb3-nebenwinkel': 'k7-lb1-nebenwinkel',
-  'os-k6-lb3-scheitel': 'k7-lb1-scheitelwinkel',
-  'os-k6-lb3-innenwinkel': 'lb3-winkel-dreieck',
-  'os-k6-lb3-kongruenz': 'lb3-kongruenzsatz',
-  'os-k6-lb3-winkelsumme-viereck': 'lb3-winkel-viereck',
-  'os-k6-lb3-flaeche-dreieck': 'lb3-flaeche-dreieck',
-  'os-k6-lb3-umfang': 'lb3-umfang-rechteck',
-  'os-k6-lb3-flaeche-rechteck': 'lb3-flaeche-rechteck',
-  'os-k6-lb4-volumen-quader': 'lb4-volumen-quader',
-  'os-k6-lb4-oberflaeche': 'lb4-oberflaeche-quader',
-  'os-k6-lb4-volumen-prisma': 'lb4-volumen-prisma',
-  'os-k6-lb4-darstellen': 'lb4-wuerfelnetz',
-  'os-k6-lb5-haeufigkeit': 'lb2-haeufigkeit',
-  'os-k6-lb5-anteil-prozent': 'lb5-anteil-prozent',
-  'os-k6-lbw3-mittelwert': 'lb2-mittelwert',
-  'os-k6-lbw3-modal': 'k9-lb4-modalwert',
-
-  // HS Klasse 7
-  'os-hs-k7-lb1-flaeche': 'lb4-flaeche-zusammengesetzt',
-  'os-hs-k7-lb1-volumen': 'lb4-volumen-zusammengesetzt',
-  'os-hs-k7-lb1-netze': 'lb4-wuerfelnetz',
-  'os-hs-k7-lb2-anteil-bruch': 'lb2-anteil-bruch',
-  'os-hs-k7-lb2-anteil-groesse': 'lb5-anteil-groesse',
-  'os-hs-k7-lb2-prozent': 'lb5-anteil-prozent',
-  'os-hs-k7-lb2-dreisatz': 'lb2-proportional',
-  'os-hs-k7-lb2-haeufigkeit': 'lb2-haeufigkeit',
-  'os-hs-k7-lb2-kreisdiagramm': 'lb2-grafische-brueche',
-  'os-hs-k7-lb3-add': 'k7-lb2-add-rational',
-  'os-hs-k7-lb3-sub': 'k7-lb2-sub-rational',
-  'os-hs-k7-lb3-mul': 'k7-lb2-mul-rational',
-  'os-hs-k7-lb3-div': 'k7-lb2-div-rational',
-  'os-hs-k7-lb3-term': 'k7-lb2-term-vorrang',
-  'os-hs-k7-lb3-gleichung': 'k7-lb2-gleichung-add',
-  'os-hs-k7-lb3-koordinaten': 'lb3-koordinaten-eintragen',
-  'os-hs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
-  'os-hs-k7-lb4-umfang': 'lb3-umfang-rechteck',
-  'os-hs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-hs-k7-lb4-volumen-prisma': 'lb4-volumen-prisma',
-  'os-hs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
-  'os-hs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
-  'os-hs-k7-lb4-zerlegen': 'lb4-flaeche-zusammengesetzt',
-  'os-hs-k7-lb4-netze': 'lb4-wuerfelnetz',
-
-  // HS Klasse 7 — interactive remaps
-  'os-hs-k7-lb3-zahlengerade': 'k7-lb2-betrag',
-  'os-hs-k7-lb4-konstruieren': 'k7-lb1-mittelsenkrechte-schritte',
-
-  // HS Klasse 8
-  'os-hs-k8-lb1-prozent': 'lb5-anteil-prozent',
-  'os-hs-k8-lb1-zinsen': 'k10-lb1-zinsen',
-  'os-hs-k8-lb1-zinseszins': 'k10-lb1-zinseszins',
-  'os-hs-k8-lb1-preisaenderung': 'k10-lb1-prozentuale-zunahme',
-  'os-hs-k8-lb2-term': 'k8-lb1-term-auswerten',
-  'os-hs-k8-lb2-gleichung': 'k8-lb1-gleichung-linear',
-  'os-hs-k8-lb2-zusammenfassen': 'k8-lb1-zusammenfassen',
-  'os-hs-k8-lb3-kreis-umfang': 'k9-lb2-kreis-umfang',
-  'os-hs-k8-lb3-kreis-flaeche': 'k9-lb2-kreis-flaeche',
-  'os-hs-k8-lb3-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-hs-k8-lb3-vieleck': 'lb3-achsensymmetrie',
-  'os-hs-k8-lb4-zylinder': 'k9-lb2-zylinder-volumen',
-  'os-hs-k8-lb5-zinsen': 'k10-lb1-zinsen',
-  'os-hs-k8-lb5-streckfaktor': 'k8-lb4-streckfaktor',
-
-  // HS Klasse 9
-  'os-hs-k9-lb1-hyp': 'k9-lb3-pythagoras-hypotenuse',
-  'os-hs-k9-lb1-kathete': 'k9-lb3-pythagoras-kathete',
-  'os-hs-k9-lb1-sinus': 'k9-lb3-trig-wert',
-  'os-hs-k9-lb1-sach': 'k9-lb5-leiter',
-  'os-hs-k9-lb2-pyramide': 'k7-lb3-volumen-pyramide',
-  'os-hs-k9-lb2-zylinder': 'k9-lb2-zylinder-volumen',
-  'os-hs-k9-lb2-zusammengesetzt': 'lb4-volumen-zusammengesetzt',
-  'os-hs-k9-lb3-funktionswert': 'k8-lb3-funktionswert',
-  'os-hs-k9-lb3-steigung': 'k8-lb3-steigung',
-  'os-hs-k9-lb3-achsen': 'k8-lb3-achsenabschnitt',
-  'os-hs-k9-lb3-quadrat': 'k9-lb1-quadrat-wert',
-  'os-hs-k9-lb4-mittelwert': 'k9-lb4-mittelwert',
-  'os-hs-k9-lbw1-median': 'k9-lb4-median',
-  'os-hs-k9-lbw1-modal': 'k9-lb4-modalwert',
-  'os-hs-k9-lbw1-spannweite': 'k7-lb4-spannweite',
-
-  // RS Klasse 7
-  'os-rs-k7-lb1-prozent': 'lb5-anteil-prozent',
-  'os-rs-k7-lb1-dreisatz': 'lb2-proportional',
-  'os-rs-k7-lb1-zinsen': 'k10-lb1-zinsen',
-  'os-rs-k7-lb1-zinseszins': 'k10-lb1-zinseszins',
-  'os-rs-k7-lb1-preisaenderung': 'k10-lb1-prozentuale-zunahme',
-  'os-rs-k7-lb1-kreisdiagramm': 'lb2-grafische-brueche',
-  'os-rs-k7-lb2-haeufigkeit': 'lb2-haeufigkeit',
-  'os-rs-k7-lb2-laplace': 'k8-lb2-laplace-bruch',
-  'os-rs-k7-lb2-laplace-pct': 'k8-lb2-laplace-prozent',
-  'os-rs-k7-lb3-add': 'k7-lb2-add-rational',
-  'os-rs-k7-lb3-sub': 'k7-lb2-sub-rational',
-  'os-rs-k7-lb3-mul': 'k7-lb2-mul-rational',
-  'os-rs-k7-lb3-div': 'k7-lb2-div-rational',
-  'os-rs-k7-lb3-term': 'k7-lb2-term-vorrang',
-  'os-rs-k7-lb3-gleichung': 'k8-lb1-gleichung-linear',
-  'os-rs-k7-lb3-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
-  'os-rs-k7-lb3-zahlenraetsel': 'k8-lb5-zahlenraetsel',
-  'os-rs-k7-lb3-koordinaten': 'lb3-koordinaten-eintragen',
-  'os-rs-k7-lb4-flaeche-dreieck': 'lb3-flaeche-dreieck',
-  'os-rs-k7-lb4-umfang': 'lb3-umfang-rechteck',
-  'os-rs-k7-lb4-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-rs-k7-lb4-volumen-prisma': 'lb4-volumen-prisma',
-  'os-rs-k7-lb4-mantel': 'k7-lb3-mantel-prisma',
-  'os-rs-k7-lb4-oberflaeche': 'lb4-oberflaeche-quader',
-  'os-rs-k7-lb4-vieleck-flaeche': 'lb4-flaeche-zusammengesetzt',
-  'os-rs-k7-lb4-darstellen': 'lb4-wuerfelnetz',
-  'os-rs-k7-lb3-ordnen': 'k7-lb2-betrag',
-  'os-rs-k7-lb4-konstruieren': 'k7-lb1-mittelsenkrechte-schritte',
-
-  // RS Klasse 8
-  'os-rs-k8-lb1-term': 'k8-lb1-term-auswerten',
-  'os-rs-k8-lb1-zusammenfassen': 'k8-lb1-zusammenfassen',
-  'os-rs-k8-lb1-ausmult': 'k8-lb1-ausmultiplizieren',
-  'os-rs-k8-lb1-gleichung': 'k8-lb1-gleichung-linear',
-  'os-rs-k8-lb1-gleichung-beid': 'k8-lb1-gleichung-beidseitig',
-  'os-rs-k8-lb2-funktionswert': 'k8-lb3-funktionswert',
-  'os-rs-k8-lb2-steigung': 'k8-lb3-steigung',
-  'os-rs-k8-lb2-achsen': 'k8-lb3-achsenabschnitt',
-  'os-rs-k8-lb4-kongruenz': 'lb3-kongruenzsatz',
-  'os-rs-k8-lb2-lgs': 'k8-lb3-lgs',
-  'os-rs-k8-lb3-kreis-umfang': 'k9-lb2-kreis-umfang',
-  'os-rs-k8-lb3-kreis-flaeche': 'k9-lb2-kreis-flaeche',
-  'os-rs-k8-lb3-zylinder': 'k9-lb2-zylinder-volumen',
-  'os-rs-k8-lb4-streckfaktor': 'k8-lb4-streckfaktor',
-  'os-rs-k8-lb4-strahlensatz': 'k8-lb4-strahlensatz',
-  'os-rs-k8-lb4-aehnlich': 'k8-lb4-aehnliche-seite',
-  'os-rs-k8-lb5-laplace': 'k8-lb2-laplace-bruch',
-  'os-rs-k8-lb5-gegen': 'k8-lb2-gegenwahrscheinlichkeit',
-  'os-rs-k8-lb6-zinsen': 'k10-lb1-zinsen',
-  'os-rs-k8-lb6-prozent': 'lb5-anteil-prozent',
-
-  // RS Klasse 9
-  'os-rs-k9-lb1-hyp': 'k9-lb3-pythagoras-hypotenuse',
-  'os-rs-k9-lb1-kathete': 'k9-lb3-pythagoras-kathete',
-  'os-rs-k9-lb1-trig': 'k9-lb3-trig-wert',
-  'os-rs-k9-lb1-sach': 'k9-lb5-leiter',
-  'os-rs-k9-lb2-pyramide': 'k7-lb3-volumen-pyramide',
-  'os-rs-k9-lb2-zylinder': 'k9-lb2-zylinder-volumen',
-  'os-rs-k9-lb2-kugel': 'k9-lb2-kugel-volumen',
-  'os-rs-k9-lb2-zusammengesetzt': 'lb4-volumen-zusammengesetzt',
-  'os-rs-k9-lb3-quadrat': 'k9-lb1-quadrat-wert',
-  'os-rs-k9-lb3-scheitel': 'k9-lb1-scheitel',
-  'os-rs-k9-lb3-gleichung': 'k10-lb4-quadratische-gleichung',
-  'os-rs-k9-lb3-potenz-prod': 'k9-lb1-potenz-produkt',
-  'os-rs-k9-lb3-potenz-quot': 'k9-lb1-potenz-quotient',
-  'os-rs-k9-lb4-mittelwert': 'k9-lb4-mittelwert',
-  'os-rs-k9-lb4-median': 'k9-lb4-median',
-  'os-rs-k9-lb4-modal': 'k9-lb4-modalwert',
-  'os-rs-k9-lb4-spannweite': 'k7-lb4-spannweite',
-
-  // RS Klasse 10
-  'os-rs-k10-lb1-hyp': 'k9-lb3-pythagoras-hypotenuse',
-  'os-rs-k10-lb1-trig': 'k9-lb3-trig-wert',
-  'os-rs-k10-lb1-winkelsumme': 'k7-lb1-winkelsumme-vieleck',
-  'os-rs-k10-lb1-flaeche-dreieck': 'lb3-flaeche-dreieck',
-  'os-rs-k10-lb2-quadrat': 'k9-lb1-quadrat-wert',
-  'os-rs-k10-lb2-exp': 'k10-lb1-exp-wachstum',
-  'os-rs-k10-lb2-zinseszins': 'k10-lb1-zinseszins',
-  'os-rs-k10-lb2-zunahme': 'k10-lb1-prozentuale-zunahme',
-  'os-rs-k10-lb3-erwartung': 'k10-lb2-erwartungswert',
-  'os-rs-k10-lb3-laplace': 'k8-lb2-laplace-bruch',
-  'os-rs-k10-lb4-zinsen': 'k10-lb1-zinsen',
-  'os-rs-k10-lb4-pyramide': 'k7-lb3-volumen-pyramide',
-  'os-rs-k10-lb4-kugel': 'k9-lb2-kugel-volumen',
-  'os-rs-k10-lbw3-pythagoras': 'k9-lb3-pythagoras-hypotenuse',
-  'os-rs-k10-lbw3-strahlensatz': 'k8-lb4-strahlensatz',
-}
+/**
+ * Oberschule: String-Map (1:1) ist durch `OS_TOPIC_MAPPINGS` abgelöst (E5b) und bleibt leer.
+ * Themen ohne Eintrag dort laufen über `OS_CUSTOM_GENERATORS` oder sind Outline.
+ */
+export const OS_GENERATOR_MAP: Record<string, string> = {}
 
 /** Metadaten eines Master-Themas im Katalog. */
 export interface CatalogEntryMeta {
@@ -672,7 +480,867 @@ export function catalogEntryMeta(ref: SourceRef): CatalogEntryMeta | undefined {
 }
 
 /** Neue Mappings (1:n). Haben Vorrang vor den String-Maps; E5 füllt sie. */
-export const OS_TOPIC_MAPPINGS: Record<string, PackTopicMapping> = {}
+export const OS_TOPIC_MAPPINGS: Record<string, PackTopicMapping> = {
+  'os-k5-lb1-runden': {
+    sources: ['lb1-runden-natuerlich'],
+    maxDifficulty: 2,
+    note: "1:1 Rundenübung natürlicher Zahlen",
+  },
+  'os-k5-lb1-potenz': {
+    sources: ['lb1-potenzieren'],
+    maxDifficulty: 2,
+    note: "Quadrat- und Zehnerpotenzen; deckt os-k5-lb1-quadrat inhaltlich mit ab",
+  },
+  'os-k5-lb1-addition': {
+    sources: ['lb1-addition'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb1-subtraktion': {
+    sources: ['lb1-subtraktion'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb1-multiplikation': {
+    sources: ['lb1-multiplikation', 'lb1-schriftliches-rechnen'],
+    maxDifficulty: 2,
+    note: "LP: mündlich/halbschriftlich/schriftlich multiplizieren; schriftliches Rechnen (Kästchenpapier) ergänzt (neu)",
+  },
+  'os-k5-lb1-division': {
+    sources: ['lb1-schriftliche-division', 'lb1-division-rest'],
+    maxDifficulty: 2,
+    note: "LP: schriftliche Division durch einstelligen Divisor; Rest-Variante ergänzt (neu)",
+  },
+  'os-k5-lb1-gleichung': {
+    sources: ['k7-lb2-gleichung-add'],
+    maxDifficulty: 2,
+    note: "K7-Master (x + a = b, difficulty 1) für inhaltliches Lösen einfacher Gleichungen; bleibt",
+  },
+  'os-k5-lb1-teilbarkeit': {
+    sources: ['lb1-teilbarkeit'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb1-primzahl': {
+    sources: ['lb1-primzahl'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-anteil': {
+    sources: ['lb2-anteil-bruch', 'lb2-grafische-brueche'],
+    maxDifficulty: 2,
+    note: "LP: Erkennen und Darstellen gemeiner Brüche; lb2-anteil-bruch neu hier (war HS-K7, dort Dublette)",
+  },
+  'os-k5-lb2-kuerzen': {
+    sources: ['lb2-kuerzen'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-erweitern': {
+    sources: ['lb2-erweitern'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-runden-dez': {
+    sources: ['lb2-runden-dezimal'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-dez-add-sub': {
+    sources: ['lb2-dez-add-sub'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-dez-mult': {
+    sources: ['lb2-dez-mult'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-dez-div': {
+    sources: ['lb2-dez-div'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb2-mittelwert': {
+    sources: ['lb2-mittelwert'],
+    maxDifficulty: 2,
+    note: "K5-Master; K6 nutzt den K7-Master k7-lb4-mittelwert (kein Doppelt im Pack)",
+  },
+  'os-k5-lb2-laenge': {
+    sources: ['k5-umrechnen-laenge', 'lb2-ordnen-einheiten'],
+    maxDifficulty: 2,
+    note: "k5-umrechnen-laenge existiert nur als Neu-Aufgabenbank (Waise, siehe Coverage); Größen ordnen ergänzt",
+  },
+  'os-k5-lb2-masse': {
+    sources: ['k5-umrechnen-masse'],
+    maxDifficulty: 2,
+    note: "Neu-Waise (kein Parent in math5.ts)",
+  },
+  'os-k5-lb2-zeit': {
+    sources: ['k5-umrechnen-zeit'],
+    maxDifficulty: 2,
+    note: "Neu-Waise (kein Parent in math5.ts)",
+  },
+  'os-k5-lb3-lage': {
+    sources: ['lb3-strecken-bezeichnung'],
+    maxDifficulty: 2,
+    note: "LP K5 LB3: parallel/senkrecht/schneiden; Strecke/Gerade/Halbgerade als nächste Quelle (neu)",
+  },
+  'os-k5-lb3-winkelarten': {
+    sources: ['lb3-winkelarten'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb3-winkel-erg': {
+    sources: ['lb3-winkel-ergaenzung'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k5-lb3-wuerfel': {
+    sources: ['lb4-wuerfelnetz'],
+    maxDifficulty: 2,
+    note: "math6-ID, inhaltlich K5 (Würfelnetz); K6-Darstellen bleibt custom",
+  },
+  'os-k5-lb3-umfang': {
+    sources: ['lb4-umfang-rechteck', 'lb4-umfang-zusammengesetzt'],
+    maxDifficulty: 2,
+    note: "LP K5 LB3: Umfang/Fläche an in Rechtecke zerlegbaren Figuren",
+  },
+  'os-k5-lb3-flaeche': {
+    sources: ['lb4-flaeche-rechteck', 'lb4-flaeche-zusammengesetzt', 'lb5-sachaufgabe-flaeche'],
+    maxDifficulty: 2,
+    note: "LP K5 LB3: Zerlegen/Ergänzen; Sachaufgabe Fläche/Umfang ergänzt",
+  },
+  'os-k5-lb3-flaeche-eh': {
+    sources: ['k5-umrechnen-flaeche'],
+    maxDifficulty: 2,
+    note: "Neu-Waise (kein Parent in math5.ts)",
+  },
+  'os-k5-lb3-oberflaeche': {
+    sources: ['mathematik-klasse-5:lb4-oberflaeche-quader'],
+    maxDifficulty: 2,
+    note: "K5-Quelle klassenqualifiziert (ID-Kollision math5/math6, D24); K6 nutzt die K6-Quelle",
+  },
+  'os-k5-lb3-volumen-wuerfel': {
+    sources: ['mathematik-klasse-5:lb4-volumen-quader'],
+    maxDifficulty: 2,
+    note: "K5-Quelle klassenqualifiziert (ID-Kollision math5/math6, D24); K6 nutzt die K6-Quelle",
+  },
+  'os-k5-lb3-volumen-eh': {
+    sources: ['k5-umrechnen-volumen'],
+    maxDifficulty: 2,
+    note: "Neu-Waise (kein Parent in math5.ts)",
+  },
+  'os-k5-lb4-spiegelung': {
+    sources: ['lb3-achsensymmetrie'],
+    maxDifficulty: 2,
+    note: "1:1 (Geradenspiegelung/Symmetrieachse)",
+  },
+  'os-k5-lb4-verschiebungsweite': {
+    sources: ['lb3-verschiebung'],
+    maxDifficulty: 2,
+    note: "LP K5 LB4: Verschiebungsrichtung/-weite (neu)",
+  },
+  'os-k5-lbw3-angebote': {
+    sources: ['lb5-gesamtpreis'],
+    maxDifficulty: 2,
+    note: "Wahlbereich Klassenfahrt: Gesamtpreis/Angebote (neu)",
+  },
+  'os-k5-lbw3-budget': {
+    sources: ['lb5-mehrstufig', 'lb5-teilen'],
+    maxDifficulty: 2,
+    note: "Budget und Stückkosten (neu)",
+  },
+  'os-k6-lb1-zahlenstrahl': {
+    sources: ['lb2-zahlenstrahl'],
+    maxDifficulty: 2,
+    note: "LP K6 LB1: Veranschaulichen am Zahlenstrahl (neu)",
+  },
+  'os-k6-lb1-kuerzen': {
+    sources: ['lb1-kuerzen'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-erweitern': {
+    sources: ['lb1-erweitern'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-bruch-dez': {
+    sources: ['lb1-bruch-dezimal'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-vergleichen': {
+    sources: ['lb1-vergleichen'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-add-sub': {
+    sources: ['lb1-add-sub-brueche'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-mult': {
+    sources: ['lb1-mult-brueche'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-div': {
+    sources: ['lb1-div-brueche'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-dez-add-sub': {
+    sources: ['lb1-dez-add-sub'],
+    maxDifficulty: 2,
+    note: "1:1 (math6-ID, distinkt von K5 lb2-dez-add-sub)",
+  },
+  'os-k6-lb1-dez-mult': {
+    sources: ['lb1-dez-mult'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-dez-div': {
+    sources: ['lb1-dez-div'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-runden': {
+    sources: ['lb1-runden'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb1-mittelwert': {
+    sources: ['k7-lb4-mittelwert'],
+    maxDifficulty: 2,
+    note: "LP K6 LB1: arithmetisches Mittel; K7-Master, damit lb2-mittelwert nur in K5 liegt",
+  },
+  'os-k6-lb2-prop': {
+    sources: ['lb2-proportional'],
+    maxDifficulty: 2,
+    note: "1:1 Dreisatz direkt",
+  },
+  'os-k6-lb2-antiprop': {
+    sources: ['lb2-antiproportional'],
+    maxDifficulty: 2,
+    note: "1:1 Dreisatz indirekt",
+  },
+  'os-k6-lb2-anteil': {
+    sources: ['lb1-sachaufgabe-bruch'],
+    maxDifficulty: 2,
+    note: "Titel nicht im LP K6 LB2 (D6); Bruchteil-Sachaufgaben als Ersatzquelle, lb5-anteil-groesse geht nach K7",
+  },
+  'os-k6-lb3-nebenwinkel': {
+    sources: ['k7-lb1-nebenwinkel'],
+    maxDifficulty: 2,
+    note: "LP K6 LB3: Nebenwinkelsatz (K7-Master)",
+  },
+  'os-k6-lb3-scheitel': {
+    sources: ['k7-lb1-scheitelwinkel'],
+    maxDifficulty: 2,
+    note: "LP K6 LB3: Scheitel-/Stufen-/Wechselwinkel (K7-Master)",
+  },
+  'os-k6-lb3-innenwinkel': {
+    sources: ['lb3-winkel-dreieck'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb3-einteilung': {
+    sources: ['k7-lb1-basiswinkel'],
+    maxDifficulty: 2,
+    note: "Dreiecke nach Seiten und Winkeln; Basiswinkel gleichschenklig als Näherung (neu)",
+  },
+  'os-k6-lb3-kongruenz': {
+    sources: ['lb3-kongruenzsatz'],
+    maxDifficulty: 2,
+    note: "1:1; RS-K8 Kongruenz bekommt keine zweite Quelle",
+  },
+  'os-k6-lb3-flaeche-dreieck': {
+    sources: ['lb3-flaeche-dreieck'],
+    maxDifficulty: 2,
+    note: "1:1; K7/K10 ohne Doppelung",
+  },
+  'os-k6-lb3-umfang': {
+    sources: ['lb3-umfang-rechteck', 'lb3-sachaufgabe-geometrie'],
+    maxDifficulty: 2,
+    note: "Umfang; Sachaufgabe Fläche/Umfang ergänzt (neu)",
+  },
+  'os-k6-lb3-flaeche-rechteck': {
+    sources: ['lb3-flaeche-rechteck'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb3-winkelsumme-viereck': {
+    sources: ['lb3-winkel-viereck'],
+    maxDifficulty: 2,
+    note: "1:1; im LP K6 LB3 nicht ausdrücklich genannt, Gym-Quelle belassen",
+  },
+  'os-k6-lb4-oberflaeche': {
+    sources: ['mathematik-klasse-6:lb4-oberflaeche-quader', 'lb4-flaeche-kante-quader'],
+    maxDifficulty: 2,
+    note: "K6-Quelle klassenqualifiziert (D24 aufgelöst); lb4-flaeche-kante-quader bleibt als zweite Quelle (Fläche/Seitenlänge am Quader)",
+  },
+  'os-k6-lb4-volumen-prisma': {
+    sources: ['lb4-volumen-prisma'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-k6-lb5-haeufigkeit': {
+    sources: ['lb2-haeufigkeit'],
+    maxDifficulty: 2,
+    note: "LP K6 LB5: absolute/relative Häufigkeit",
+  },
+  'os-k6-lbw1-konstruktion': {
+    sources: ['lb3-strecken-mittelpunkt'],
+    maxDifficulty: 2,
+    note: "Wahlbereich DGS: Streckenmittelpunkt/Grundkonstruktion (neu)",
+  },
+  'os-k6-lbw1-messen': {
+    sources: ['lb3-strecken-laenge'],
+    maxDifficulty: 2,
+    note: "Wahlbereich DGS: Längen messen (neu)",
+  },
+  'os-hs-k7-lb1-flaeche': {
+    sources: ['lb4-flaeche-zusammengesetzt'],
+    maxDifficulty: 2,
+    allowRepeat: true,
+    note: "LP HS Kl. 7 LB 1 (Überarbeitung): Wiederholen und Vernetzen der Klassenstufen 5 und 6 -> dokumentierte Wiederholung von lb4-flaeche-zusammengesetzt (K5)",
+  },
+  'os-hs-k7-lb1-volumen': {
+    sources: ['lb4-volumen-zusammengesetzt', 'mathematik-klasse-5:lb4-volumen-quader'],
+    maxDifficulty: 2,
+    allowRepeat: true,
+    note: "LP HS Kl. 7 LB 1 (Überarbeitung): Wiederholen und Vernetzen der Klassenstufen 5 und 6 -> dokumentierte Wiederholung (Volumen von Quader und Würfel aus K5 als zweite Quelle, K9-Zusammengesetzt entfällt im HS-Pack)",
+  },
+  'os-hs-k7-lb2-anteil-bruch': {
+    sources: ['lb1-prozent'],
+    maxDifficulty: 2,
+    note: "Anteile als Prozent (K6-Master \"In Prozent umwandeln\"); K5-Prozenteinblick bleibt ohne Master",
+  },
+  'os-hs-k7-lb2-anteil-groesse': {
+    sources: ['lb5-anteil-groesse'],
+    maxDifficulty: 2,
+    note: "Anteil/Prozentwert einer Größe",
+  },
+  'os-hs-k7-lb2-prozent': {
+    sources: ['lb5-anteil-prozent'],
+    maxDifficulty: 2,
+    note: "Grundaufgaben der Prozentrechnung (LP K7 LB2); aus K6 nach K7 verlagert (D5)",
+  },
+  'os-hs-k7-lb2-dreisatz': {
+    sources: ['lb2-sachaufgabe-dreisatz'],
+    maxDifficulty: 2,
+    note: "Dreisatz in Sachaufgaben; lb2-proportional bleibt in K6",
+  },
+  'os-hs-k7-lb2-haeufigkeit': {
+    sources: ['k7-lb4-rel-haeufigkeit'],
+    maxDifficulty: 2,
+    note: "K7-Master relative Häufigkeit; lb2-haeufigkeit bleibt in K6",
+  },
+  'os-hs-k7-lb2-chancen': {
+    sources: ['k8-lb2-laplace-bruch'],
+    maxDifficulty: 2,
+    note: "LP HS K7 LB2: gleichwahrscheinliche Ergebnisse, Chancen abschätzen; nur einfache Laplace-Variante (neu, difficulty 1)",
+  },
+  'os-hs-k7-lb3-zahlengerade': {
+    sources: ['k7-lb2-betrag'],
+    maxDifficulty: 2,
+    note: "Symmetrie zur Null auf der Zahlengeraden (Betrag); bleibt",
+  },
+  'os-hs-k7-lb3-add': {
+    sources: ['k7-lb2-add-rational'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k7-lb3-sub': {
+    sources: ['k7-lb2-sub-rational'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k7-lb3-mul': {
+    sources: ['k7-lb2-mul-rational'],
+    maxDifficulty: 1,
+    note: "LP HS: Vervielfachen mit nat. Zahl; Multiplizieren rationaler Zahlen nur Differenzierung -> maxDifficulty 1 (D11)",
+  },
+  'os-hs-k7-lb3-div': {
+    sources: ['k7-lb2-div-rational'],
+    maxDifficulty: 1,
+    note: "LP HS: Teilen durch nat. Zahl; allgemeines Dividieren nur Differenzierung -> maxDifficulty 1 (D11)",
+  },
+  'os-hs-k7-lb3-term': {
+    sources: ['k7-lb2-term-vorrang'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k7-lb3-gleichung': {
+    sources: ['k7-lb2-gleichung-mul', 'k8-lb5-zahlenraetsel'],
+    maxDifficulty: 2,
+    note: "LP: einfache Gleichungen und Zahlenrätsel; gleichung-add liegt in K5; Zahlenrätsel (diff 2) einbezogen",
+  },
+  'os-hs-k7-lb3-koordinaten': {
+    sources: ['lb3-koordinaten-eintragen', 'lb3-koordinaten-ablesen'],
+    maxDifficulty: 2,
+    includeCustom: true,
+    note: "Custom osQ1CoordinatePlace (nur 1. Quadrant) wird mit den Master-Themen (4 Quadranten) gemischt, weil der LP \"Verwenden von vier Quadranten\" verlangt (D10; HS Kl. 7 LB 3 S. 19-20, RS Kl. 7 LB 3 S. 29-30)",
+  },
+  'os-hs-k7-lb4-konstruieren': {
+    sources: ['k7-lb1-mittelsenkrechte-schritte'],
+    maxDifficulty: 2,
+    note: "Konstruktionsschritte; bleibt",
+  },
+  'os-hs-k7-lb4-volumen-prisma': {
+    sources: ['k7-lb3-volumen-prisma'],
+    maxDifficulty: 2,
+    note: "K7-Master (vorher K6-Quelle, Dublette)",
+  },
+  'os-hs-k7-lb4-mantel': {
+    sources: ['k7-lb3-mantel-prisma'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k7-lb4-oberflaeche': {
+    sources: ['k7-lb3-oberflaeche-quader'],
+    maxDifficulty: 2,
+    note: "K7-Master (vorher K5/K6-Quelle, Dublette)",
+  },
+  'os-hs-k8-lb1-zinsen': {
+    sources: ['k10-lb1-zinsen'],
+    maxDifficulty: 2,
+    note: "Kapital/Zinssatz/Jahreszins (LP K8 LB1)",
+  },
+  'os-hs-k8-lb1-zinseszins': {
+    sources: ['k10-lb1-zinseszins'],
+    maxDifficulty: 2,
+    note: "LP: Zinseszins nur Differenzierungshinweis (D14); difficulty 2 reicht",
+  },
+  'os-hs-k8-lb1-preisaenderung': {
+    sources: ['k10-lb1-prozentuale-zunahme'],
+    maxDifficulty: 2,
+    note: "Preiserhöhung/-senkung",
+  },
+  'os-hs-k8-lb2-struktur': {
+    sources: ['k8-lb5-rueckwaerts'],
+    maxDifficulty: 2,
+    note: "Umstellen von Formeln ~ Rückwärtsrechnen (neu)",
+  },
+  'os-hs-k8-lb2-term': {
+    sources: ['k8-lb1-term-auswerten'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k8-lb2-zusammenfassen': {
+    sources: ['k8-lb1-zusammenfassen'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k8-lb2-gleichung': {
+    sources: ['k8-lb1-gleichung-linear'],
+    maxDifficulty: 1,
+    note: "LP HS: kalkülmäßiges Lösen nur Differenzierung -> maxDifficulty 1",
+  },
+  'os-hs-k8-lb3-vieleck': {
+    sources: ['lb3-punktsymmetrie'],
+    maxDifficulty: 2,
+    note: "Drehsymmetrie regelmäßiger Vielecke ~ Punktsymmetrie (K5-Master, neu); vorher Dublette lb3-achsensymmetrie",
+  },
+  'os-hs-k8-lb3-winkelsumme': {
+    sources: ['k7-lb1-winkelsumme-vieleck'],
+    maxDifficulty: 2,
+    note: "LP HS K8 LB3: Innenwinkelsumme regelmäßiger Vielecke (Heimat des Masters, K7 entfällt, D9)",
+  },
+  'os-hs-k8-lb3-kreis-umfang': {
+    sources: ['k9-lb2-kreis-umfang'],
+    maxDifficulty: 2,
+    note: "1:1 (K9-Master, LP K8)",
+  },
+  'os-hs-k8-lb3-kreis-flaeche': {
+    sources: ['k9-lb2-kreis-flaeche'],
+    maxDifficulty: 2,
+    note: "1:1 (K9-Master, LP K8)",
+  },
+  'os-hs-k8-lb4-zylinder': {
+    sources: ['k9-lb2-zylinder-volumen'],
+    maxDifficulty: 2,
+    note: "Heimat des Masters ist HS K8 LB4; K9-Zylinder entfällt (D16)",
+  },
+  'os-hs-k8-lb5-zinsen': {
+    sources: ['k10-lb5-kapital', 'k10-lb5-zinssatz'],
+    maxDifficulty: 2,
+    note: "Kapital/Zinssatz bestimmen (neu, vorher Dublette k10-lb1-zinsen)",
+  },
+  'os-hs-k8-lb5-streckfaktor': {
+    sources: ['k8-lb4-streckfaktor'],
+    maxDifficulty: 2,
+    note: "Maßstäbliches Darstellen; Ähnlichkeit nur Differenzierung",
+  },
+  'os-hs-k8-lbw3-modell': {
+    sources: ['k8-lb4-aehnliche-seite'],
+    maxDifficulty: 2,
+    note: "Maßstab/Modellbau (neu); Strahlensatz nicht HS",
+  },
+  'os-hs-k9-lb1-hyp': {
+    sources: ['k9-lb3-pythagoras-hypotenuse'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k9-lb1-kathete': {
+    sources: ['k9-lb3-pythagoras-kathete'],
+    maxDifficulty: 2,
+    note: "1:1",
+  },
+  'os-hs-k9-lb1-sinus': {
+    sources: ['k9-lb3-trig-wert'],
+    maxDifficulty: 2,
+    note: "Bekannte Abweichung D12: LP HS Kl. 9 LB 1 verlangt nur Sinus; k9-lb3-trig-wert mischt Sinus/Kosinus/Tangens (kein reines Sinus-Master; Variantenfilter zurückgestellt)",
+  },
+  'os-hs-k9-lb1-sach': {
+    sources: ['k9-lb5-leiter'],
+    maxDifficulty: 2,
+    note: "Sachaufgaben Pythagoras",
+  },
+  'os-hs-k9-lb2-pyramide': {
+    sources: ['k7-lb3-volumen-pyramide', 'k7-lb3-oberflaeche-pyramide'],
+    maxDifficulty: 2,
+    note: "LP HS K9 LB2: Mantel-/Oberfläche und Volumen bei quadratischer Grundfläche (Oberfläche neu)",
+  },
+  'os-hs-k9-lb3-quadrat': {
+    sources: ['k9-lb1-quadrat-wert'],
+    maxDifficulty: 2,
+    note: "LP: nur Einblick y=x² bzw. y=a·x²; difficulty 2, nur Variante ohne Scheitelform (D13)",
+  },
+  'os-hs-k9-lb4-mittelwert': {
+    sources: ['k9-lb4-mittelwert'],
+    maxDifficulty: 2,
+    note: "Auswerten von Daten",
+  },
+  'os-hs-k9-lbw1-median': {
+    sources: ['k9-lb4-median'],
+    maxDifficulty: 2,
+    note: "Wahlbereich Statistische Erhebungen",
+  },
+  'os-hs-k9-lbw1-modal': {
+    sources: ['k9-lb4-modalwert'],
+    maxDifficulty: 2,
+    note: "Wahlbereich Statistische Erhebungen (K6-Modal entfällt)",
+  },
+  'os-hs-k9-lbw1-spannweite': {
+    sources: ['k7-lb4-spannweite'],
+    maxDifficulty: 2,
+    note: "Wahlbereich Statistische Erhebungen",
+  },
+  'os-rs-k7-lb1-dreisatz': {
+    sources: ['lb2-sachaufgabe-dreisatz', 'lb5-anteil-groesse'],
+    maxDifficulty: 3,
+    note: "LP RS K7 LB1: Dreisatz auf Grundaufgaben der Prozentrechnung",
+  },
+  'os-rs-k7-lb1-prozent': {
+    sources: ['lb1-prozent', 'lb5-anteil-prozent'],
+    maxDifficulty: 3,
+    note: "Bequeme Prozentsätze, Grundaufgaben; aus K5/K6 verlagert (D5)",
+  },
+  'os-rs-k7-lb1-preisaenderung': {
+    sources: ['k10-lb1-prozentuale-zunahme'],
+    maxDifficulty: 3,
+    note: "Preiserhöhung/-senkung",
+  },
+  'os-rs-k7-lb1-zinsen': {
+    sources: ['k10-lb1-zinsen'],
+    maxDifficulty: 3,
+    note: "Zinssatz, Zinsen, Kapital",
+  },
+  'os-rs-k7-lb1-zinseszins': {
+    sources: ['k10-lb1-zinseszins'],
+    maxDifficulty: 3,
+    note: "LP RS K7 LB1: Tageszins, Zinseszins ausdrücklich (Heimat; K10-Doppelung entfällt)",
+  },
+  'os-rs-k7-lb2-haeufigkeit': {
+    sources: ['k7-lb4-rel-haeufigkeit'],
+    maxDifficulty: 3,
+    note: "Urliste, abs./rel. Häufigkeit",
+  },
+  'os-rs-k7-lb3-ordnen': {
+    sources: ['k7-lb2-betrag'],
+    maxDifficulty: 3,
+    note: "bleibt",
+  },
+  'os-rs-k7-lb3-add': {
+    sources: ['k7-lb2-add-rational'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb3-sub': {
+    sources: ['k7-lb2-sub-rational'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb3-mul': {
+    sources: ['k7-lb2-mul-rational'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb3-div': {
+    sources: ['k7-lb2-div-rational'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb3-term': {
+    sources: ['k7-lb2-term-vorrang'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb3-gleichung': {
+    sources: ['k7-lb2-gleichung-mul'],
+    maxDifficulty: 3,
+    note: "LP RS K7 LB3: Gleichungen kalkülmäßig (gleichung-add liegt in K5); vorher Dublette zu K8",
+  },
+  'os-rs-k7-lb3-gleichung-beid': {
+    sources: ['k8-lb1-gleichung-beidseitig'],
+    maxDifficulty: 3,
+    note: "Form a·x+b=c·x+d (LP K7); K8 bekommt keine zweite Quelle",
+  },
+  'os-rs-k7-lb3-zahlenraetsel': {
+    sources: ['k8-lb5-zahlenraetsel'],
+    maxDifficulty: 3,
+    note: "Aufstellen von Gleichungen",
+  },
+  'os-rs-k7-lb3-koordinaten': {
+    sources: ['lb3-koordinaten-eintragen', 'lb3-koordinaten-ablesen'],
+    maxDifficulty: 3,
+    includeCustom: true,
+    note: "Custom osQ1CoordinatePlace (nur 1. Quadrant) wird mit den Master-Themen (4 Quadranten) gemischt, weil der LP \"Verwenden von vier Quadranten\" verlangt (D10; HS Kl. 7 LB 3 S. 19-20, RS Kl. 7 LB 3 S. 29-30)",
+  },
+  'os-rs-k7-lb4-konstruieren': {
+    sources: ['k7-lb1-mittelsenkrechte-schritte'],
+    maxDifficulty: 3,
+    note: "bleibt",
+  },
+  'os-rs-k7-lb4-volumen-prisma': {
+    sources: ['k7-lb3-volumen-prisma'],
+    maxDifficulty: 3,
+    note: "K7-Master (vorher K6-Quelle, Dublette)",
+  },
+  'os-rs-k7-lb4-mantel': {
+    sources: ['k7-lb3-mantel-prisma'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k7-lb4-oberflaeche': {
+    sources: ['k7-lb3-oberflaeche-quader'],
+    maxDifficulty: 3,
+    note: "K7-Master (vorher K5/K6-Dublette)",
+  },
+  'os-rs-k7-lbw3-symmetrie': {
+    sources: ['lb3-punktsymmetrie'],
+    maxDifficulty: 3,
+    note: "Wahlbereich Parkettierungen: Symmetrie (neu, K5-Master)",
+  },
+  'os-rs-k8-lb1-term': {
+    sources: ['k8-lb1-term-auswerten'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb1-zusammenfassen': {
+    sources: ['k8-lb1-zusammenfassen'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb1-ausmult': {
+    sources: ['k8-lb1-ausmultiplizieren'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb1-gleichung': {
+    sources: ['k8-lb1-gleichung-linear'],
+    maxDifficulty: 3,
+    note: "Heimat k8-lb1-gleichung-linear; K7 nutzt gleichung-mul/-beidseitig",
+  },
+  'os-rs-k8-lb1-formel': {
+    sources: ['k8-lb5-rueckwaerts'],
+    maxDifficulty: 3,
+    note: "Umstellen von Formeln ~ Rückwärtsrechnen (neu)",
+  },
+  'os-rs-k8-lb2-funktionswert': {
+    sources: ['k8-lb3-funktionswert'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb2-steigung': {
+    sources: ['k8-lb3-steigung'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb2-achsen': {
+    sources: ['k8-lb3-achsenabschnitt'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb2-nullstelle': {
+    sources: ['k1112-lb1-nullstelle-linear'],
+    maxDifficulty: 3,
+    note: "Nullstelle linearer Funktion (neu; Master stammt aus 11/12, Inhalt K8-tauglich, difficulty 2)",
+  },
+  'os-rs-k8-lb2-lgs': {
+    sources: ['k8-lb3-lgs'],
+    maxDifficulty: 3,
+    note: "LP RS K8 LB2 verlangt LGS (difficulty 3 begründet)",
+  },
+  'os-rs-k8-lb3-kreis-umfang': {
+    sources: ['k9-lb2-kreis-umfang'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb3-kreis-flaeche': {
+    sources: ['k9-lb2-kreis-flaeche'],
+    maxDifficulty: 3,
+    note: "1:1 (Kreisring ohne Master)",
+  },
+  'os-rs-k8-lb3-zylinder': {
+    sources: ['k9-lb2-zylinder-volumen'],
+    maxDifficulty: 3,
+    note: "Heimat LP RS K8 LB3; K9-Zylinder entfällt (D16)",
+  },
+  'os-rs-k8-lb4-streckfaktor': {
+    sources: ['k8-lb4-streckfaktor'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb4-strahlensatz': {
+    sources: ['k8-lb4-strahlensatz'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb4-aehnlich': {
+    sources: ['k8-lb4-aehnliche-seite'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb5-laplace': {
+    sources: ['k8-lb2-laplace-bruch'],
+    maxDifficulty: 3,
+    note: "Laplace/kombinatorisches Zählen (aus K7 hierher, D23)",
+  },
+  'os-rs-k8-lb5-gegen': {
+    sources: ['k8-lb2-gegenwahrscheinlichkeit'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k8-lb5-baum': {
+    sources: ['k8-lb2-laplace-prozent'],
+    maxDifficulty: 3,
+    note: "Baumdiagramm-Aufgaben liegen nach Neu-Merge in den Laplace-Eltern; Verteilung in E1/E2 prüfen",
+  },
+  'os-rs-k8-lb6-zinsen': {
+    sources: ['k10-lb5-kapital', 'k10-lb5-zinssatz'],
+    maxDifficulty: 3,
+    note: "Sparanlagen/Zinsen (neu, vorher Dublette)",
+  },
+  'os-rs-k9-lb1-hyp': {
+    sources: ['k9-lb3-pythagoras-hypotenuse'],
+    maxDifficulty: 3,
+    note: "1:1; K10-Wiederholung entfällt",
+  },
+  'os-rs-k9-lb1-kathete': {
+    sources: ['k9-lb3-pythagoras-kathete'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k9-lb1-trig': {
+    sources: ['k9-lb3-trig-wert'],
+    maxDifficulty: 3,
+    note: "Sinus/Kosinus/Tangens (LP RS K9 LB1)",
+  },
+  'os-rs-k9-lb1-sach': {
+    sources: ['k9-lb5-leiter'],
+    maxDifficulty: 3,
+    note: "Sachaufgaben",
+  },
+  'os-rs-k9-lb2-pyramide': {
+    sources: ['k7-lb3-volumen-pyramide', 'k7-lb3-oberflaeche-pyramide'],
+    maxDifficulty: 3,
+    note: "LP: Mantel/Oberfläche/Volumen von Pyramiden (Oberfläche neu)",
+  },
+  'os-rs-k9-lb2-kugel': {
+    sources: ['k9-lb2-kugel-volumen'],
+    maxDifficulty: 3,
+    note: "LP RS K9 LB2: Kugel; K10-Doppelung entfällt",
+  },
+  'os-rs-k9-lb2-zusammengesetzt': {
+    sources: ['lb4-volumen-zusammengesetzt'],
+    maxDifficulty: 3,
+    note: "LP RS K9 LB2: Anwenden auf zusammengesetzte Körper",
+  },
+  'os-rs-k9-lb3-quadrat': {
+    sources: ['k9-lb1-quadrat-wert'],
+    maxDifficulty: 3,
+    note: "Funktionswert quadratischer Funktion",
+  },
+  'os-rs-k9-lb3-scheitel': {
+    sources: ['k9-lb1-scheitel'],
+    maxDifficulty: 3,
+    note: "Scheitelpunkt (LP: y=(x-d)²+e)",
+  },
+  'os-rs-k9-lb3-gleichung': {
+    sources: ['k10-lb4-reinquadratisch', 'k10-lb4-quadratische-gleichung'],
+    maxDifficulty: 3,
+    note: "LP: quadratische Gleichungen inkl. Lösungsformel -> difficulty 3 begründet",
+  },
+  'os-rs-k9-lb3-nullstellen': {
+    sources: ['k10-lb3-quadrat-seite', 'k10-lb3-rechteck-breite', 'k10-lb3-rechteck-umfang'],
+    maxDifficulty: 3,
+    note: "nur Sachproblem-Variante (LP: Anwenden auf Sachprobleme); Nullstellen/Schnittpunkte rechnerisch ohne Master",
+  },
+  'os-rs-k9-lb4-mittelwert': {
+    sources: ['k9-lb4-mittelwert'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k9-lb4-median': {
+    sources: ['k9-lb4-median'],
+    maxDifficulty: 3,
+    note: "1:1",
+  },
+  'os-rs-k9-lb4-modal': {
+    sources: ['k9-lb4-modalwert'],
+    maxDifficulty: 3,
+    note: "1:1 (K6-Modal entfällt)",
+  },
+  'os-rs-k9-lb4-spannweite': {
+    sources: ['k7-lb4-spannweite'],
+    maxDifficulty: 3,
+    note: "Max/Min/Spannweite",
+  },
+  'os-rs-k10-lb1-winkelsumme': {
+    sources: ['k7-lb1-winkelsumme-vieleck'],
+    maxDifficulty: 3,
+    note: "LP RS K10 LB1: Winkelgrößen in Vielecken (Heimat; K7-Doppelung entfällt)",
+  },
+  'os-rs-k10-lb2-quadrat': {
+    sources: ['k10-lb4-parabel-wert'],
+    maxDifficulty: 3,
+    note: "Potenzfunktion y=a·x² (LP K10 LB2); K9 nutzt quadrat-wert",
+  },
+  'os-rs-k10-lb2-exp': {
+    sources: ['k10-lb1-exp-wachstum'],
+    maxDifficulty: 3,
+    note: "Exponentialfunktionen/Wachstum",
+  },
+  'os-rs-k10-lb3-erwartung': {
+    sources: ['k10-lb2-erwartungswert'],
+    maxDifficulty: 3,
+    note: "LP K10 LB3: Erwartungswert",
+  },
+  'os-rs-k10-lb3-gewinnchance': {
+    sources: ['k10-lb2-erwartungswert-wuerfel'],
+    maxDifficulty: 3,
+    note: "Gewinnerwartung beim Würfel (neu, vorher Dublette)",
+  },
+  'os-k6-lb4-volumen-quader': {
+    sources: ['mathematik-klasse-6:lb4-volumen-quader'],
+    maxDifficulty: 2,
+    note: "K6-Quelle klassenqualifiziert (D24 aufgelöst); LP Kl. 6 LB 4: Volumen von Quader und Würfel",
+  },
+}
 
 function explicitMapping(topicId: string): PackTopicMapping | undefined {
   return OS_TOPIC_MAPPINGS[topicId] ?? ST_TOPIC_MAPPINGS[topicId] ?? SKS_TOPIC_MAPPINGS[topicId]

@@ -14,7 +14,7 @@ import {
   gymGeneratorCatalog,
   isPlayableOfficialTopic,
   OS_CUSTOM_GENERATORS,
-  OS_GENERATOR_MAP,
+  OS_TOPIC_MAPPINGS,
 } from './oberschuleGenerators'
 import {
   allOfficialTopics,
@@ -61,7 +61,7 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
     expect(parsedHs?.region).toBe('Sachsen')
     expect(parsedHs?.school).toBe('Oberschule')
     expect(parsedHs?.subject).toBe('Mathematik')
-    expect(parsedHs?.version).toBe('1.1.0')
+    expect(parsedHs?.version).toBe('1.2.0')
     expect(parsedRs?.school).toBe('Oberschule')
   })
 
@@ -117,12 +117,14 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
 
   it('maps playable topics to existing Gymnasium generators', async () => {
     const catalog = await gymGeneratorCatalog()
-    for (const [osId, gymId] of Object.entries(OS_GENERATOR_MAP)) {
-      expect(catalog.has(gymId), `missing gym generator ${gymId} for ${osId}`).toBe(true)
+    for (const [osId, m] of Object.entries(OS_TOPIC_MAPPINGS)) {
+      for (const gymId of m.sources) {
+        expect(catalog.has(gymId), `missing gym generator ${gymId} for ${osId}`).toBe(true)
+      }
     }
     const hsIds = new Set(allOfficialTopics(hs).map((t) => t.id))
     const rsIds = new Set(allOfficialTopics(rs).map((t) => t.id))
-    for (const osId of Object.keys(OS_GENERATOR_MAP)) {
+    for (const osId of Object.keys(OS_TOPIC_MAPPINGS)) {
       expect(hsIds.has(osId) || rsIds.has(osId), `mapped id ${osId} missing from packs`).toBe(true)
     }
     for (const osId of Object.keys(OS_CUSTOM_GENERATORS)) {
@@ -156,30 +158,34 @@ describe('Oberschule Sachsen Lehrplan packs', () => {
   it('uses prism-net choices for Körpernetze', () => {
     const gen = OS_CUSTOM_GENERATORS['os-hs-k7-lb4-netze']
     expect(gen).toBeDefined()
-    for (let seed = 1; seed <= 12; seed++) {
+    let sawChoice = false
+    for (let seed = 1; seed <= 30; seed++) {
       const task = gen!(createRng(seed))
       expect(task.check(task.sampleAnswer)).toBe(true)
-      expect(task.visualContent).toContain('<rect')
-      expect(task.interactive?.type).toBe('choicePick')
+      if (task.interactive?.type === 'choicePick') {
+        expect(task.visualContent).toContain('<rect')
+        sawChoice = true
+      }
     }
+    expect(sawChoice).toBe(true)
   })
 
   it('wires composite geometry and graphical fractions into both tracks', async () => {
     const catalog = await gymGeneratorCatalog()
-    expect(OS_GENERATOR_MAP['os-hs-k7-lb1-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
-    expect(OS_GENERATOR_MAP['os-hs-k7-lb1-volumen']).toBe('lb4-volumen-zusammengesetzt')
-    expect(OS_GENERATOR_MAP['os-k5-lb2-anteil']).toBe('lb2-grafische-brueche')
-    expect(OS_GENERATOR_MAP['os-k5-lb4-spiegelung']).toBe('lb3-achsensymmetrie')
-    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-vieleck-flaeche']).toBe('lb4-flaeche-zusammengesetzt')
-    // Prefer visual K6 generators where OS previously fell back to text-only K7
-    expect(OS_GENERATOR_MAP['os-hs-k7-lb2-haeufigkeit']).toBe('lb2-haeufigkeit')
-    expect(OS_GENERATOR_MAP['os-rs-k7-lb2-haeufigkeit']).toBe('lb2-haeufigkeit')
-    expect(OS_GENERATOR_MAP['os-hs-k7-lb4-volumen-prisma']).toBe('lb4-volumen-prisma')
-    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-volumen-prisma']).toBe('lb4-volumen-prisma')
-    expect(OS_GENERATOR_MAP['os-hs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
-    expect(OS_GENERATOR_MAP['os-rs-k7-lb4-oberflaeche']).toBe('lb4-oberflaeche-quader')
-    expect(OS_GENERATOR_MAP['os-k6-lb3-kongruenz']).toBe('lb3-kongruenzsatz')
-    expect(OS_GENERATOR_MAP['os-k5-lb3-wuerfel']).toBe('lb4-wuerfelnetz')
+    const src = (id: string) => OS_TOPIC_MAPPINGS[id]?.sources ?? []
+    expect(src('os-hs-k7-lb1-flaeche')).toContain('lb4-flaeche-zusammengesetzt')
+    expect(src('os-hs-k7-lb1-volumen')).toContain('lb4-volumen-zusammengesetzt')
+    expect(src('os-k5-lb2-anteil')).toContain('lb2-grafische-brueche')
+    expect(src('os-k5-lb4-spiegelung')).toContain('lb3-achsensymmetrie')
+    // K7: K7-Master statt der K6-Quellen (dublettenfrei, E5b)
+    expect(src('os-hs-k7-lb2-haeufigkeit')).toContain('k7-lb4-rel-haeufigkeit')
+    expect(src('os-rs-k7-lb2-haeufigkeit')).toContain('k7-lb4-rel-haeufigkeit')
+    expect(src('os-hs-k7-lb4-volumen-prisma')).toContain('k7-lb3-volumen-prisma')
+    expect(src('os-rs-k7-lb4-volumen-prisma')).toContain('k7-lb3-volumen-prisma')
+    expect(src('os-hs-k7-lb4-oberflaeche')).toContain('k7-lb3-oberflaeche-quader')
+    expect(src('os-rs-k7-lb4-oberflaeche')).toContain('k7-lb3-oberflaeche-quader')
+    expect(src('os-k6-lb3-kongruenz')).toContain('lb3-kongruenzsatz')
+    expect(src('os-k5-lb3-wuerfel')).toContain('lb4-wuerfelnetz')
     expect(OS_CUSTOM_GENERATORS['os-hs-k9-lb3-steigung']).toBeDefined()
     expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb3-koordinaten']).toBeDefined()
     expect(OS_CUSTOM_GENERATORS['os-hs-k7-lb2-kreisdiagramm']).toBeDefined()

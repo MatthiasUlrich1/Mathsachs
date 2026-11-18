@@ -18,6 +18,7 @@ import {
   isPlayableOfficialTopic,
   mappingForTopic,
   OS_CUSTOM_GENERATORS,
+  OS_GENERATOR_MAP,
   OS_TOPIC_MAPPINGS,
   resolveOsGenerate,
 } from './oberschuleGenerators'
@@ -412,8 +413,14 @@ describe('Resolver: 1:n, maxDifficulty, Custom, isPlayable', () => {
 
   it('String-Maps (Alt-Format) lösen unverändert auf', async () => {
     const catalog = await gymGeneratorCatalog()
-    expect(resolveOsGenerate('os-k5-lb1-addition', catalog)).toBe(catalog.get('lb1-addition'))
-    expect(mappingForTopic('os-k5-lb1-addition')).toEqual({ sources: ['lb1-addition'] })
+    // E5b: OS_GENERATOR_MAP ist leer; Alt-Format mit einem temporären Eintrag prüfen.
+    OS_GENERATOR_MAP['os-legacy-test'] = 'lb1-addition'
+    try {
+      expect(resolveOsGenerate('os-legacy-test', catalog)).toBe(catalog.get('lb1-addition'))
+      expect(mappingForTopic('os-legacy-test')).toEqual({ sources: ['lb1-addition'] })
+    } finally {
+      delete OS_GENERATOR_MAP['os-legacy-test']
+    }
   })
 
   it('isPlayableOfficialTopic stimmt mit dem Resolver überein (Randfälle)', async () => {

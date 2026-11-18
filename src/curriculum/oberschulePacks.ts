@@ -741,7 +741,7 @@ const wrap = (
   region: 'Sachsen',
   school: 'Oberschule',
   subject: 'Mathematik',
-  version: '1.1.0',
+  version: '1.2.0',
   changelog,
   contentHash: packContentHash(official, []),
   official,
@@ -753,7 +753,7 @@ export function buildOberschuleHsPack(): CurriculumPack {
   return wrap(
     OS_HS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Hauptschulbildungsgang',
-    'Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+    'Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung. 1.2.0: dublettenfreies Lehrplan-Mapping.',
     official,
   )
 }
@@ -763,7 +763,7 @@ export function buildOberschuleRsPack(): CurriculumPack {
   return wrap(
     OS_RS_PACK_ID,
     'Oberschule Sachsen · Mathematik · Realschulbildungsgang',
-    'Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung.',
+    'Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung. 1.2.0: dublettenfreies Lehrplan-Mapping.',
     official,
   )
 }
