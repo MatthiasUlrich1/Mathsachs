@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T16:17:29.423Z",
+  "updatedAt": "2026-11-18T07:23:27.110Z",
   "packs": [
     {
       "id": "gym-sachsen",
@@ -62,10 +62,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-hs.json",
-      "size": 33338,
-      "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Daten, Winkel, LGS, Wachstum). Alias Gym-Sachsen."
+      "size": 30095,
+      "changelog": "1.2.0: Dublettenfreies 1:n-Mapping auf den Gym-Sachsen-Master-Pool nach Fachlehrplan 2019; nicht lehrplankonforme Themen entfernt (Median/Modalwert, Potenzgesetze, Kegel, Zinsdubletten u. a.); neu: Sachaufgaben, Kapital, Zinssatz, Häufigkeit, Formeln umstellen."
     },
     {
       "id": "sekundarschule-sachsen-anhalt-rs",
@@ -73,10 +73,10 @@
       "region": "Sachsen-Anhalt",
       "school": "Sekundarschule",
       "subject": "Mathematik",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/sekundarschule-sachsen-anhalt-rs.json",
-      "size": 38679,
-      "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Trig, LGS, Wachstum, Zins). Alias Gym-Sachsen."
+      "size": 35387,
+      "changelog": "1.2.0: Dublettenfreies 1:n-Mapping auf den Gym-Sachsen-Master-Pool nach Fachlehrplan 2019; nicht lehrplankonforme Themen entfernt (Modalwert, Erwartungswert, Zins- und Laplace-Dubletten u. a.); neu: Sachaufgaben, Häufigkeit, Formeln umstellen, Pyramidenoberfläche."
     },
     {
       "id": "oberschule-sachsen-hs",
@@ -84,10 +84,10 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-hs.json",
-      "size": 61700,
-      "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
+      "size": 61741,
+      "changelog": "Klassen 5–9 (Hauptschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung. 1.2.0: dublettenfreies Lehrplan-Mapping."
     },
     {
       "id": "oberschule-sachsen-rs",
@@ -95,10 +95,10 @@
       "region": "Sachsen",
       "school": "Oberschule",
       "subject": "Mathematik",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "url": "https://raw.githubusercontent.com/MatthiasUlrich1/Mathsachs/main/curricula/oberschule-sachsen-rs.json",
-      "size": 74565,
-      "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung."
+      "size": 74606,
+      "changelog": "Klassen 5–10 (Realschulbildungsgang). tasksPerRound Standard 10. Ohne Netz lokale Fassung. 1.2.0: dublettenfreies Lehrplan-Mapping."
     }
   ]
 }

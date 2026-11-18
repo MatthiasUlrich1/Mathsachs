@@ -145,6 +145,29 @@ describe('Sekundarschule Sachsen-Anhalt: Mapping HS/RS', () => {
     }
   })
 
+  it('Duplikatprüfung: jeder Mapping-Schlüssel ist ein HS/RS-Pack-Thema, keine Quelle doppelt je Pack (außer allowRepeat + note)', () => {
+    const all = new Set([...ids(hs), ...ids(rs)])
+    // Mapping-Schlüssel ohne Pack-Thema sind nur die laut Doc entfernten Themen (Auflösung gespeicherter IDs).
+    const removed = new Set([...REMOVED_BOTH, ...REMOVED_HS, ...REMOVED_RS])
+    for (const key of Object.keys(SKS_TOPIC_MAPPINGS)) {
+      expect(all.has(key) || removed.has(key), `Mapping-Schlüssel ${key}`).toBe(true)
+    }
+
+    for (const [name, topics] of [['HS', hs], ['RS', rs]] as const) {
+      const users = new Map<string, Array<{ id: string; allowed: boolean }>>()
+      for (const t of topics) {
+        const m = SKS_TOPIC_MAPPINGS[t.id]
+        if (!m) continue
+        const allowed = Boolean(m.allowRepeat && m.note)
+        for (const s of new Set(m.sources)) users.set(s, [...(users.get(s) ?? []), { id: t.id, allowed }])
+      }
+      const dups = [...users]
+        .filter(([, u]) => u.length > 1 && u.filter((x) => !x.allowed).length > 1)
+        .map(([s, u]) => `${name}: ${s} <- ${u.map((x) => x.id).sort().join(', ')}`)
+      expect(dups).toEqual([])
+    }
+  })
+
   it('alte String-Map ist leer (vollständig durch 1:n-Mappings ersetzt)', () => {
     expect(Object.keys(SKS_GENERATOR_MAP)).toEqual([])
   })

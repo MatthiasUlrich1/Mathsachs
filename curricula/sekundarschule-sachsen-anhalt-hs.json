@@ -4,9 +4,9 @@
   "region": "Sachsen-Anhalt",
   "school": "Sekundarschule",
   "subject": "Mathematik",
-  "version": "1.1.0",
-  "changelog": "1.0.2: Dünne Pflicht-LBs verdichtet (Gleichungen, Daten, Winkel, LGS, Wachstum). Alias Gym-Sachsen.",
-  "contentHash": "85c12022",
+  "version": "1.2.0",
+  "changelog": "1.2.0: Dublettenfreies 1:n-Mapping auf den Gym-Sachsen-Master-Pool nach Fachlehrplan 2019; nicht lehrplankonforme Themen entfernt (Median/Modalwert, Potenzgesetze, Kegel, Zinsdubletten u. a.); neu: Sachaufgaben, Kapital, Zinssatz, Häufigkeit, Formeln umstellen.",
+  "contentHash": "00012bea",
   "official": [
     {
       "id": "sks-hs-klasse-5",
@@ -91,6 +91,12 @@
               "title": "Primzahlen erkennen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
+            },
+            {
+              "id": "sks-k5-sachaufgaben",
+              "title": "Sachaufgaben mit natürlichen Zahlen und Größen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
             }
           ]
         },
@@ -107,12 +113,6 @@
             {
               "id": "sks-k5-gleichung-mul",
               "title": "Gleichung umstellen: a · x = b",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k5-gleichung-beid",
-              "title": "Gleichung mit x auf beiden Seiten",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -289,12 +289,6 @@
               "title": "Achsensymmetrie erkennen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k5-geo-punkt",
-              "title": "Punktsymmetrie / Punktspiegelung",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
             }
           ]
         },
@@ -335,18 +329,6 @@
             {
               "id": "sks-k5-mittelwert",
               "title": "Arithmetisches Mittel",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k5-median",
-              "title": "Median (Zentralwert)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k5-spannweite",
-              "title": "Spannweite berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -537,7 +519,7 @@
             },
             {
               "id": "sks-k6-anteil-prozent",
-              "title": "Prozent einer Größe berechnen",
+              "title": "Anteil einer Größe berechnen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -548,20 +530,8 @@
           "title": "Erfassen, Darstellen und Auswerten von Daten",
           "topics": [
             {
-              "id": "sks-k6-haeufigkeit",
-              "title": "Relative Häufigkeit in Prozent",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
               "id": "sks-k6-mittelwert",
               "title": "Arithmetisches Mittel",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k6-median",
-              "title": "Median (Zentralwert)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -639,8 +609,14 @@
               "tasksPerRound": 10
             },
             {
-              "id": "sks-k7-zinseszins",
-              "title": "Zinseszins: Endkapital",
+              "id": "sks-hs-k7-kapital",
+              "title": "Kapital aus Zinsen bestimmen",
+              "pointsPerTask": 10,
+              "tasksPerRound": 10
+            },
+            {
+              "id": "sks-hs-k7-zinssatz",
+              "title": "Zinssatz bestimmen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -665,12 +641,6 @@
             {
               "id": "sks-k7-gleichung-klammer",
               "title": "Gleichung mit Klammern vorbereiten",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k7-ungleichung",
-              "title": "Einfache lineare Ungleichung (Idee)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -717,18 +687,6 @@
               "tasksPerRound": 10
             },
             {
-              "id": "sks-k7-winkelsumme",
-              "title": "Innenwinkelsumme im Vieleck",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k7-flaeche-rechteck",
-              "title": "Flächeninhalt von Rechteck und Quadrat",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
               "id": "sks-k7-parallelogramm",
               "title": "Flächeninhalt von Dreieck/Parallelogramm (Idee)",
               "pointsPerTask": 10,
@@ -754,7 +712,7 @@
             },
             {
               "id": "sks-k7-oberflaeche-quader",
-              "title": "Oberfläche eines Quaders",
+              "title": "Oberflächeninhalt von Prismen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -784,20 +742,8 @@
           "title": "Erfassen, Darstellen und Auswerten von Daten",
           "topics": [
             {
-              "id": "sks-k7-mittelwert",
-              "title": "Arithmetisches Mittel",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k7-median",
-              "title": "Median (Zentralwert)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k7-spannweite",
-              "title": "Spannweite berechnen",
+              "id": "sks-k7-haeufigkeit",
+              "title": "Absolute und relative Häufigkeit",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             }
@@ -836,21 +782,6 @@
               "title": "Flächeninhalt eines Kreises",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k8-zylinder",
-              "title": "Volumen eines Kreiszylinders",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-k8-thales",
-              "title": "Satz des Thales",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Thales"
-              ]
             }
           ]
         },
@@ -949,14 +880,8 @@
           "title": "Arbeiten mit Variablen, Potenzen",
           "topics": [
             {
-              "id": "sks-hs-k9-potenz-prod",
-              "title": "Potenzgesetz: Produkt gleicher Basis",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-hs-k9-potenz-quot",
-              "title": "Potenzgesetz: Quotient und Potenz einer Potenz",
+              "id": "sks-hs-k9-formeln",
+              "title": "Formeln umstellen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -995,15 +920,6 @@
               "title": "Zusammengesetzte Körper: Volumen",
               "pointsPerTask": 10,
               "tasksPerRound": 10
-            },
-            {
-              "id": "sks-hs-k9-kegel",
-              "title": "Kegel (Volumen / Oberfläche)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10,
-              "keywords": [
-                "Kegel"
-              ]
             }
           ]
         },
@@ -1014,12 +930,6 @@
             {
               "id": "sks-hs-k9-lgs",
               "title": "Lineares Gleichungssystem (x bestimmen)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-hs-k9-lgs-y",
-              "title": "Lineares Gleichungssystem (y bestimmen)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
@@ -1048,12 +958,6 @@
               "tasksPerRound": 10
             },
             {
-              "id": "sks-hs-k9-zinsen",
-              "title": "Jahreszinsen berechnen",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
               "id": "sks-hs-k9-zinseszins",
               "title": "Zinseszins: Endkapital",
               "pointsPerTask": 10,
@@ -1068,18 +972,6 @@
             {
               "id": "sks-hs-k9-mittelwert",
               "title": "Arithmetisches Mittel",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-hs-k9-median",
-              "title": "Median (Zentralwert)",
-              "pointsPerTask": 10,
-              "tasksPerRound": 10
-            },
-            {
-              "id": "sks-hs-k9-modal",
-              "title": "Modalwert (häufigster Wert)",
               "pointsPerTask": 10,
               "tasksPerRound": 10
             },
