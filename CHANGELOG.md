@@ -9,6 +9,17 @@ der [Semantischen Versionierung](https://semver.org/lang/de/).
 
 ## [Unreleased]
 
+## [0.29.1] – 2026-11-18
+
+### Geändert
+- Lehrplan-Packs Gymnasium Sachsen-Anhalt, Oberschule Sachsen (HS/RS) und Sekundarschule Sachsen-Anhalt (HS/RS) auf Pack 1.2.0: dublettenfreies 1:n-Mapping auf den Master-Aufgabenpool nach Lehrplan.
+
+### Behoben
+- Doppelte Aufgaben zwischen alten und neuen Themen bereinigt; Rundenlänge für Würfelnetz und Bruchbilder korrigiert.
+
+### Tests
+- Guard-Tests für Pack-Mappings, inkl. Duplikatprüfung je Pack.
+
 ## [0.29.0] – 2026-11-16
 
 ### Hinzugefügt
