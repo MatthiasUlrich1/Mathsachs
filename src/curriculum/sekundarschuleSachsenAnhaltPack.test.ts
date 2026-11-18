@@ -24,7 +24,7 @@ import {
   allOfficialSksTopics,
   buildSekundarschuleSachsenAnhaltHsPack,
   buildSekundarschuleSachsenAnhaltRsPack,
-  SKS_GENERATOR_MAP,
+  SKS_TOPIC_MAPPINGS,
 } from './sekundarschuleSachsenAnhaltPack'
 
 const memoryKv = (): CurriculumKv => {
@@ -66,15 +66,17 @@ describe('Sekundarschule Sachsen-Anhalt Mathematik packs', () => {
     expect(names).not.toContain('Arbeiten mit natürlichen Zahlen')
   })
 
-  it('maps aliases to existing Gym generators and leaves gaps unmapped', async () => {
+  it('maps every source to an existing Gym generator and leaves gaps as outline', async () => {
     const catalog = await gymGeneratorCatalog()
-    for (const [sksId, gymId] of Object.entries(SKS_GENERATOR_MAP)) {
-      expect(catalog.has(gymId), `${sksId} → ${gymId}`).toBe(true)
-      expect(isPlayableOfficialTopic(sksId)).toBe(true)
+    for (const [sksId, mapping] of Object.entries(SKS_TOPIC_MAPPINGS)) {
+      for (const ref of mapping.sources) {
+        expect(catalog.has(ref), `${sksId} → ${ref}`).toBe(true)
+      }
+      expect(isPlayableOfficialTopic(sksId), sksId).toBe(true)
     }
-    const outline = allOfficialSksTopics().filter((t) => !SKS_GENERATOR_MAP[t.id])
+    const outline = allOfficialSksTopics().filter((t) => !SKS_TOPIC_MAPPINGS[t.id])
     expect(outline.length).toBeGreaterThan(0)
-    expect(outline.some((t) => /Thales|Kegel|Sinus|Pfad|Umkreis/i.test(t.title))).toBe(true)
+    expect(outline.some((t) => /Thales|Sinus|Pfad|Wechselwinkel/i.test(t.title))).toBe(true)
   })
 
   it('hydrates playable topics', async () => {
