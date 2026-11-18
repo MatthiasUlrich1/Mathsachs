@@ -1,0 +1,1 @@
+function l(u,e,r){const s=(r==null?void 0:r.released)===!0,n=e.title.replace(/\s*·\s*Neu\s*\(Prüfung\)\s*$/i,"").replace(/\s*\(Neu\)\s*$/i,"").trim();return{...e,id:e.id.includes("__neu")?e.id:`${u}__neu`,reviewOf:u,neu:!0,released:s,outlineOnly:!1,title:s?n:`${n} · Neu (Prüfung)`,keywords:[...e.keywords??[],"Neu","Prüfung",u]}}export{l as a};

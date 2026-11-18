@@ -1,0 +1,19 @@
+{
+  "name": "TaskTrophy",
+  "short_name": "TaskTrophy",
+  "description": "Das Klassen-Duell — lehrplanorientiertes Mathematik- und Physik-Übungsprogramm (Sachsen).",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#05122b",
+  "theme_color": "#05122b",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
